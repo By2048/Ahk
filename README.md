@@ -2,10 +2,10 @@
 
 
 ## 系统信息
-![Keyboard](./image/Keyboard.png)
-![Screen](./image/Screen.png)
+![Keyboard](image/Keyboard.png)
+![Screen](image/Screen.png)
 
 
 ## 快捷键展示
-![Windows](./image/Hotkey/Windows.png)
+![Windows](/image/Hotkey/Windows.png)
 ![Appskey](./image/Hotkey/Appskey.png)
