@@ -2,10 +2,11 @@
 
 
 ## 系统信息
-![Keyboard](image/Keyboard.png)
-![Screen](image/Screen.png)
+![](https://github.com/By2048/Ahk/raw/master/Image/Keyboard.png)
+![](https://github.com/By2048/Ahk/raw/master/Image/Screen.png)
+
 
 
 ## 快捷键展示
-![Windows](/image/Hotkey/Windows.png)
-![Appskey](./image/Hotkey/Appskey.png)
+![](https://github.com/By2048/Ahk/raw/master/Image/Hotkey/Windows.png)
+![](https://github.com/By2048/Ahk/raw/master/Image/Hotkey/Appskey.png)
