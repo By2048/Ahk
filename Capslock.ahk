@@ -4,10 +4,10 @@
 
 CoordMode, Mouse, Screen
 
-Capslock &  o::MouseMove( 0, -9)
-Capslock &  l::MouseMove( 0,  9)
-Capslock &  k::MouseMove(-9,  0)
-Capslock & `;::MouseMove( 9,  0)
+Capslock &  p::MouseMove( 0, -9)
+Capslock & `;::MouseMove( 0,  9)
+Capslock &  l::MouseMove(-9,  0)
+Capslock &  '::MouseMove( 9,  0)
 
 
 Capslock & w::MouseMove(  0, -99)
@@ -16,8 +16,8 @@ Capslock & a::MouseMove(-99,   0)
 Capslock & d::MouseMove( 99,   0)
 
 Capslock &    Up::MouseMove(   0, -333)
-Capslock &  Left::MouseMove(-333,    0)
 Capslock &  Down::MouseMove(   0,  333)
+Capslock &  Left::MouseMove(-333,    0)
 Capslock & Right::MouseMove( 333,    0)
 
 Capslock &   Tab::LButton
