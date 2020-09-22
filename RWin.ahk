@@ -16,8 +16,9 @@ global windows_resize_small:=False
 ; RWin 系统全局快捷键 (Ctrl Alt Shift)
 
     >#o::Send ^!+o
- >#PgUp::Send ^!+{PgUp}
- >#PgDn::Send ^!+{PgDn}
+    
+    >#[::Send ^!+[
+    >#]::Send ^!+]
     >#=::Send ^!+=
     >#-::Send ^!+-
     >#m::Send ^!+m

@@ -46,16 +46,16 @@
     /::Send !/
     \::Send !\
 
-    PgUp::Send !{PgUp}
-    PgDn::Send !{PgDn}
+    [::Send ![
+    ]::Send !]
 
     l::Send !l
     m::Send !m
 
     Up::Send !=
     Down::Send !-
-    Left::Send !{PgUp}
-    Right::Send !{PgDn}
+    Left::Send ![
+    Right::Send !]
 
 #if
 
