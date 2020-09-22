@@ -32,13 +32,13 @@
 
 #if WinActive("ahk_exe cloudmusic.exe")
 
-    `::MouseClick(53,934)
-    1::MouseClick(53,1008)
-    2::MouseClick(52,1073)
-    3::MouseClick(52,1137)
-    4::MouseClick(52,1202)
-    5::MouseClick(52,1267)
-    6::MouseClick(52,1327)
+    `::MouseClick(53,1008)
+    1::MouseClick(52,1073)
+    2::MouseClick(52,1137)
+    3::MouseClick(52,1202)
+    4::MouseClick(52,1267)
+    5::MouseClick(52,1327)
+    6::MouseClick(52,1391)
 
     =::Send !=
     -::Send !-
