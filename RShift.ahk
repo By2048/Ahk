@@ -5,7 +5,6 @@
 
 
 global windows:=False ; 当前是否显示图片
-global current:="" ;指定当前应用程序
 global index:=1 ; 当前显示图片的序号
 global hotkeys:={} ; 快捷键图片集合
 global total:=1 ; 当前展示图片组的数量
@@ -31,6 +30,7 @@ hotkeys["QuiteRSS"]:=hotkeys["QuiteRSS.exe"]
 
 hotkeys["chrome.exe"]:=["Chrome.png","Chrome-1.png"]
 hotkeys["Chrome"]:=hotkeys["chrome.exe"]
+hotkeys["Chrome_Bilibili"]:=["Chrome-Bilibili.png"]
 
 
 hotkeys["PotPlayerMini64.exe"]:=["PotPlayer.png"]
@@ -45,24 +45,24 @@ hotkeys["CloudMusic"]:=hotkeys["cloudmusic.exe"]
 get_image() 
 {
     global index
-    global current
     global hotkeys
     global total
 
     result:=hotkeys["default"]
 
-    if (current) {
-        result:=hotkeys[current]
-    }
-
-    if (not current) {
-        for exe, image in hotkeys {
-            if WinActive("ahk_exe"+exe) {
-                result:=image
-            }
+    ; 优先根据应用名进行查找
+    for exe, image in hotkeys {
+        if WinActive("ahk_exe"+exe) {
+            result:=image
         }
     }
-    
+
+    ; 根据应用显示的标题进行查找
+    WinGetTitle, title, A
+    if WinActive("ahk_exe chrome.exe") and InStr(Title,"bilibili") {
+        result:=hotkeys["Chrome_Bilibili"]
+    }
+
     total:=result.MaxIndex()
     if (index>total) {
         index:=1
@@ -75,6 +75,7 @@ get_image()
     result=%A_ScriptDir%\Image\Hotkey\%result%
     return result
 }
+
 
 
 
@@ -106,11 +107,9 @@ hide_image()
 {
     global windows
     global index
-    global current
 
     windows:=False
     index:=1 
-    current:=""
 
     SplashImage, Off
     Progress, Off

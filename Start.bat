@@ -40,7 +40,7 @@ if exist %~dp0Private.ahk (
     echo  - Strat Private  Success -
 )
 if exist %~dp0Test.ahk (
-    start Private.ahk
+    start Test.ahk
     echo  - Strat Test     Success -
 )
 

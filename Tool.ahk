@@ -16,17 +16,19 @@ global screen_2_h:=2302
 DefaultProgress() 
 {
     Progress, b w150 h15 cbBlack p0
-    current:=0
+    index:=0
     Loop {
-        Progress, %current%
+        Progress, %index%
         sleep 50
-        current:=current+10
-        if (current>=100) {
+        index:=index+10
+        if (index>=100) {
             Progress, Off
             break
         }
     }
 }
+
+
 
 MouseMove(right,down) {
     MouseGetPos, x, y
@@ -42,6 +44,8 @@ MouseMove(right,down) {
     ; MouseMove, xx, yy, 0
     DllCall("SetCursorPos", "int", xx, "int", yy) ;多显示器环境中更好
 }
+
+
 
 MouseClick(x,y)
 {

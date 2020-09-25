@@ -68,15 +68,7 @@
     >!w::ClickImage("E:\Sync\Ahk\Image\Chrome\WÎÄµµ.png")
     >!n::ClickImage("E:\Sync\Ahk\Image\Chrome\N×ÊÑ¶.png")
 
-    >!\::
-        CoordMode Mouse Window
-        MouseMove 900, 900, 0
-        Sleep, 300
-        ClickImage("E:\Sync\Ahk\Image\Other\Bilibili.png",30,30)
-    Return
-
 #if
-
 
 
 
