@@ -1,16 +1,25 @@
+
+
 global help_text_show_status:=False
 global help_image_show_status:=False
 
 
 global screen_1_x:=0
 global screen_1_y:=0
-global screen_1_w:=A_ScreenWidth
-global screen_1_h:=A_ScreenHeight
+global screen_1_xx:=3840
+global screen_1_yy:=2160
 
-global screen_2_x:=-4096
-global screen_2_y:=573
-global screen_2_w:=4096
-global screen_2_h:=2302
+global screen_2_x:=-5120
+global screen_2_y:=1100
+global screen_2_xx:=-1710
+global screen_2_yy:=3020
+
+global screen_3_x:=7680
+global screen_3_y:=1060
+global screen_3_xx:=9840
+global screen_3_yy:=4900
+
+
 
 
 DefaultProgress() 
@@ -94,9 +103,13 @@ HelpImage(image:="")
 
 
 
-HelpText(data:="",xy="right_down",screen12="screen1")
+HelpText(data:="",xy="right_down",screens="screen1")
 {   
     Progress, Off
+
+    CoordMode Pixel Screen
+    CoordMode Mouse Screen
+    
     if (not data) {
         help_text_show_status:=False
         Return
@@ -106,42 +119,43 @@ HelpText(data:="",xy="right_down",screen12="screen1")
     ; 15 设置字符宽度 
     ; 2 DPI
     w:=StrLen(data)*15*2
-    h:=60
+    h:=63
 
-    if (screen12="screen1") {
-        if (xy="right_down") {
-            x:=screen_1_w-w-5
-            y:=screen_1_h-h-5
-        } else if (xy="center") {
-            x:=screen_1_w/2-w/2
-            y:=screen_1_h/2-h/2
-        } else if (xy="center_up") {
-            x:=screen_1_w/2-w/2
-            y:=5
-        } else if (xy="center_down") {
-            x:=screen_1_w/2-w/2
-            y:=screen_1_h-h-5
-        }
+    if (screens="screen1") {
+        screen_x:=screen_1_x
+        screen_y:=screen_1_y
+        screen_xx:=screen_1_xx
+        screen_yy:=screen_1_yy
+    } else if (screens="screen2") {
+        screen_x:=screen_2_x
+        screen_y:=screen_2_y
+        screen_xx:=screen_2_xx
+        screen_yy:=screen_2_yy
+    } else if (screens="screen3") {
+        screen_x:=screen_3_x
+        screen_y:=screen_3_y
+        screen_xx:=screen_3_xx
+        screen_yy:=screen_3_yy
     }
 
-    if (screen12="screen2") {
-        if (xy="right_down") {
-            x:=screen_2_w+screen_2_x-w-5
-            y:=screen_2_h+screen_2_y-h-5
-        } else if (xy="center") {
-            x:=screen_2_w/2+screen_2_x-w/2
-            y:=screen_2_h/2+screen_2_y-h/2
-        } else if (xy="center_up") {
-            x:=screen_2_w/2+screen_2_x-w/2
-            y:=screen_2_y+5
-        } else if (xy="center_down") {
-            x:=screen_2_w/2+screen_2_x-w/2
-            y:=screen_2_h+screen_2_y-h-5
-        }
+    if (xy="right_down") {
+        x:=screen_xx-w-5
+        y:=screen_yy-h-5
+    } else if (xy="center") {
+        x:=screen_x+(screen_xx-screen_x)/2-w/2
+        y:=screen_y+(screen_yy-screen_y)/2-h/2
+    } else if (xy="center_up") {
+        x:=screen_x+(screen_xx-screen_x)/2-w/2
+        y:=screen_y+5
+    } else if (xy="center_down") {
+        x:=screen_x+(screen_xx-screen_x)/2-w/2
+        y:=screen_yy-h-5
     }
-    
-    w:=w/2 ; Progress中w为实际图片的一半
-    Progress, b fs19 zh0 x%x% y%y% w%w%, %data%,  , Courier New
+
+    w:=w/2
+    h:=h/2
+
+    Progress, b fs19 zh0 x%x% y%y% w%w% h%h%, %data%,  , Courier New
     help_text_show_status:=True
 }
 
@@ -163,10 +177,10 @@ MoveWindows(size="center")
     if (size="center") {
         if (x+w/2<0) {
             xx:=screen_2_x/2-w/2
-            yy:=screen_2_h/2-h/2+screen_2_y
+            yy:=screen_2_yy/2-h/2+screen_2_y
         } else {
-            xx:=screen_1_w/2-w/2
-            yy:=screen_1_h/2-h/2
+            xx:=screen_1_xx/2-w/2
+            yy:=screen_1_xx/2-h/2
         }
         WinMove, ahk_id %w_id%, , %xx%, %yy%
         Return
@@ -184,10 +198,10 @@ MoveWindows(size="center")
     
     if (x+ww/2<0) {
         xx:=screen_2_x/2-ww/2
-        yy:=screen_2_h/2-hh/2+screen_2_y
+        yy:=screen_2_yy/2-hh/2+screen_2_y
     } else {
-        xx:=screen_1_w/2-ww/2
-        yy:=screen_1_h/2-hh/2
+        xx:=screen_1_xx/2-ww/2
+        yy:=screen_1_yy/2-hh/2
     }
 
     WinMove, ahk_id %w_id%, , %xx%, %yy%, %ww%, %hh%

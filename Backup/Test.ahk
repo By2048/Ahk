@@ -1,10 +1,13 @@
+#Include %A_ScriptDir%\Tool.ahk
+#SingleInstance Force
+#NoTrayIcon
 
 
 
 
-F1::Reload
+; Reload
+; ExitApp
 
-F4::ExitApp
 
 F12::
     Progress, b w200, My SubText, My MainText, My Title
@@ -14,24 +17,52 @@ F12::
 return
 
 
-#Include %A_ScriptDir%\Tool.ahk
-#SingleInstance Force
-#NoTrayIcon
 
 
 test_help_text()
 {
-    ; HelpText("qwerasdf","right_down","screen1")
-    ; HelpText("qwerasdf","center","screen1")
-    ; HelpText("qwerasdf","center_up","screen1")
-    ; HelpText("qwerasdf","center_down","screen1")
+    HelpText("right_down","right_down","screen1")
+    Sleep, 2000
+    
+    HelpText("center","center","screen1")
+    Sleep, 2000
+    
+    HelpText("center_up","center_up","screen1")
+    Sleep, 2000
+    
+    HelpText("center_down","center_down","screen1")
+    Sleep, 2000
 
-    ; HelpText("qwerasdf","right_down","screen2")
-    ; HelpText("qwerasdf","center","screen2")
-    ; HelpText("qwerasdf","center_up","screen2")
-    ; HelpText("qwerasdf","center_down","screen2")
+
+
+    HelpText("right_down","right_down","screen2")
+    Sleep, 2000
+
+    HelpText("center","center","screen2")
+    Sleep, 2000
+
+    HelpText("center_up","center_up","screen2")
+    Sleep, 2000
+
+    HelpText("center_down","center_down","screen2")
+    Sleep, 2000
+
+
+
+    HelpText("right_down","right_down","screen3")
+    Sleep, 2000
+
+    HelpText("center","center","screen3")
+    Sleep, 2000
+
+    HelpText("center_up","center_up","screen3")
+    Sleep, 2000
+
+    HelpText("center_down","center_down","screen3")
+    Sleep, 2000
+
+    HelpText()
 }
-
 
 
 

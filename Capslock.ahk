@@ -28,6 +28,7 @@ Capslock & Shift::RButton
 ; 1 主显示器中心 
 ; 2 副显示器中心
 $CapsLock::
+    CoordMode Mouse Screen
     SetCapsLockState, Off
     if (not cnt) {
         cnt:=1
@@ -39,16 +40,19 @@ return
 
 
 
+
+
 timer:
+    ; [screen2] [screen1] [screen3]
     if (cnt=1) {
         ; 屏幕1 中心
-        x:=(screen_1_w-screen_1_x)/2
-        y:=(screen_1_h-screen_1_y)/2
+        x:=(screen_1_xx-screen_1_x)/2
+        y:=(screen_1_yy-screen_1_y)/2
         DllCall("SetCursorPos", "int", x, "int", y)
     } else if (cnt=2) {
         ; 屏幕2 中心
-        x:=screen_2_x/2
-        y:=screen_2_h-screen_2_y
+        x:=0-(screen_2_xx-screen_2_x)
+        y:=screen_2_yy-screen_2_y
         DllCall("SetCursorPos", "int", x, "int", y)
     }
 
