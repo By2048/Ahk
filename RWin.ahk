@@ -98,7 +98,7 @@ timer:
     }
     if (cnt=2) {
         HelpText("Move To Center")
-        MoveWindows()
+        MoveWindowsCenter()
         Sleep, 3000
         HelpText()
     }

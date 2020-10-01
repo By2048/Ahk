@@ -161,8 +161,8 @@ HelpText(data:="",xy="right_down",screens="screen1")
 
 
 
-MoveWindows(size="center")
-{   
+MoveWindowsCenter() 
+{
     If WinActive("ahk_class WorkerW") {
         HelpText("Windows Desktop")
         Sleep 1000
@@ -172,41 +172,121 @@ MoveWindows(size="center")
 
     WinGet, w_id, ID, A
     WinGetPos, x, y, w, h, ahk_id %w_id%
+
     ; 判断窗口主体在那个屏幕
+    in_screen_1:=False
+    in_screen_2:=False
+    in_screen_3:=False
+    if (x>=screen_1_x and x<screen_1_xx) {
+        in_screen_1:=True
+    } else if (x>=screen_2_x and x<screen_2_xx) {
+        in_screen_2:=True
+    } else if (x>=screen_3_x and x<screen_3_xx) {
+        in_screen_3:=True
+    }
 
     if (size="center") {
-        if (x+w/2<0) {
-            xx:=screen_2_x/2-w/2
-            yy:=screen_2_yy/2-h/2+screen_2_y
-        } else {
-            xx:=screen_1_xx/2-w/2
-            yy:=screen_1_xx/2-h/2
+        if (in_screen_1) {
+            xx:=screen_1_x+(screen_1_xx-screen_1_x)/2-w/2
+            yy:=screen_1_y+(screen_1_yy-screen_1_y)/2-h/2
+        }
+        if (in_screen_2) {
+            xx:=screen_2_x+(screen_2_xx-screen_2_x)/2-w/2
+            yy:=screen_2_y+(screen_2_yy-screen_2_y)/2-h/2
+        }
+        if (in_screen_3) {
+            xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
+            yy:=screen_3_y+(screen_3_yy-screen_3_y)/2-h/2
         }
         WinMove, ahk_id %w_id%, , %xx%, %yy%
         Return
     }
-
-    if (size="mini") {
-        HelpText("Windows Mini Size")
-        ww:=A_ScreenWidth*1/2
-        hh:=A_ScreenHeight*2/3
-    } else if (size="main") {
-        HelpText("Windows Main Size")
-        ww:=A_ScreenWidth*5/6
-        hh:=A_ScreenHeight*8/9
-    }
-    
-    if (x+ww/2<0) {
-        xx:=screen_2_x/2-ww/2
-        yy:=screen_2_yy/2-hh/2+screen_2_y
-    } else {
-        xx:=screen_1_xx/2-ww/2
-        yy:=screen_1_yy/2-hh/2
-    }
-
-    WinMove, ahk_id %w_id%, , %xx%, %yy%, %ww%, %hh%
-
-    Sleep 3000
-    HelpText()
 }
+
+
+
+MoveWindowsMM(size)
+{   
+    If WinActive("ahk_class WorkerW") {
+        HelpText("Windows Desktop")
+        Sleep 1000
+        HelpText()
+        Return
+    }
+
+    x:=0
+    y:=0
+    w:=0
+    h:=0
+
+    WinGet, w_id, ID, A
+    WinGetPos, x, y, w, h, ahk_id %w_id%
+
+    ; 判断窗口主体在那个屏幕
+    in_screen_1:=False
+    in_screen_2:=False
+    in_screen_3:=False
+    if (x>=screen_1_x and x<screen_1_xx) {
+        in_screen_1:=True
+    } else if (x>=screen_2_x and x<screen_2_xx) {
+        in_screen_2:=True
+    } else if (x>=screen_3_x and x<screen_3_xx) {
+        in_screen_3:=True
+    }
+
+
+    if (size="main" or size="mini") {
+        xx:=0
+        yy:=0
+        ww:=0
+        hh:=0
+
+        if (size="main") {
+            HelpText("Windows Main Size")
+            if (in_screen_1) {
+                ww:=(screen_1_xx-screen_1_x)*5/6
+                hh:=(screen_1_yy-screen_1_y)*8/9
+            } else if (in_screen_2) {
+                ww:=(screen_2_xx-screen_2_x)*5/6
+                hh:=(screen_2_yy-screen_2_y)*8/9
+            } else if (in_screen_3) {
+                ww:=(screen_3_xx-screen_3_x)*5/6
+                hh:=(screen_3_yy-screen_3_y)*8/9
+            }
+        } else if (size="mini") {
+            HelpText("Windows Mini Size")
+            if (in_screen_1) {
+                ww:=(screen_1_xx-screen_1_x)*1/2
+                hh:=(screen_1_yy-screen_1_y)*2/3
+            } else if (in_screen_2) {
+                ww:=(screen_2_xx-screen_2_x)*1/2
+                hh:=(screen_2_yy-screen_2_y)*2/3
+            } else if (in_screen_3) {
+                ww:=(screen_3_xx-screen_3_x)*1/2
+                hh:=(screen_3_yy-screen_3_y)*2/3
+            }
+        } 
+
+        if (in_screen_1) {
+            xx:=screen_1_x+(screen_1_xx-screen_1_x)/2-ww/2
+            yy:=screen_1_y+(screen_1_yy-screen_1_y)/2-hh/2
+        } else if (in_screen_2) {
+            xx:=screen_2_x+(screen_2_xx-screen_2_x)/2-ww/2
+            yy:=screen_2_y+(screen_2_yy-screen_2_y)/2-hh/2
+        } else if (in_screen_3) {
+            xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-ww/2
+            yy:=screen_3_y+(screen_3_yy-screen_3_y)/2-hh/2
+        }
+
+        WinMove, ahk_id %w_id%, , %xx%, %yy%, %ww%, %hh%
+
+        Sleep 3000
+        HelpText()
+        Return
+    }
+
+}
+
+
+
 

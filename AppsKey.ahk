@@ -32,11 +32,11 @@ AppsKey & /::Run explorer.exe
 
 
 AppsKey & RWin::
-    MoveWindows("mini")
+    MoveWindowsMM("mini")
 return
 
 RWin & AppsKey::
-    MoveWindows("main")
+    MoveWindowsMM("main")
 return
 
 
