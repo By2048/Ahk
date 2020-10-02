@@ -62,8 +62,8 @@ key_help()
 }
 
 
-RAlt:: 
-    key_help()
-Return
+; RAlt:: 
+    ; key_help()
+; Return
 
 
