@@ -280,7 +280,7 @@ MoveWindowsMM(size)
 
         WinMove, ahk_id %w_id%, , %xx%, %yy%, %ww%, %hh%
 
-        Sleep 3000
+        Sleep 1000
         HelpText()
         Return
     }
