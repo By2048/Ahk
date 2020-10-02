@@ -78,7 +78,6 @@ get_image()
 
 
 
-
 show_image()
 {
     global windows
@@ -93,7 +92,9 @@ show_image()
     x:=A_ScreenWidth/2-w/2   ;中下
     y:=A_ScreenHeight-h-5
 
-    Progress, b fs15 zh0 x%x% y%y% w%w%, %index%/%total%
+    if (total>1) {
+        Progress, b fs15 zh0 x%x% y%y% w%w%, %index%/%total%
+    }
 
     ; 显示后额外操作
     If WinActive("ahk_exe pycharm64.exe") {
@@ -121,23 +122,16 @@ hide_image()
 
 
 
-; 展示图片
-show_hide_image()
-{
-    global windows
-    if (windows=False) {
-        show_image()
-    } else if (windows=True) {
-        hide_image()
-    }
-}
-
-
-
 ; 展示图片切换上一个下一个
 change(np:="")
 {
     global index
+    global total
+
+    if (total==1) {
+        return
+    }
+
     if (np="next") {
         index:=index+1
     }
@@ -159,6 +153,7 @@ change(np:="")
 return
 
 
+
 timer:
     global windows
     if (cnt=1) {
@@ -171,8 +166,10 @@ timer:
 return
 
 
+
 #if (windows=True)
     [::change("privious")
     ]::change("next")
 #if
+
 
