@@ -4,9 +4,9 @@
 
 
 
+global hotkeys:={} ; 快捷键图片集合
 global windows:=False ; 当前是否显示图片
 global index:=1 ; 当前显示图片的序号
-global hotkeys:={} ; 快捷键图片集合
 global total:=1 ; 当前展示图片组的数量
 
 
@@ -87,12 +87,11 @@ show_image()
     image:=get_image()
     SplashImage, %image%, B1
 
-    w:=100
-    h:=50    
-    x:=A_ScreenWidth/2-w/2   ;中下
-    y:=A_ScreenHeight-h-5
-
     if (total>1) {
+        w:=100
+        h:=50    
+        x:=A_ScreenWidth/2-w/2
+        y:=A_ScreenHeight-h-5
         Progress, b fs15 zh0 x%x% y%y% w%w%, %index%/%total%
     }
 

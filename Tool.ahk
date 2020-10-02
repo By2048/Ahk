@@ -1,4 +1,4 @@
-
+#include %A_ScriptDir%\Libs\Gdip_All.ahk
 
 global help_text_show_status:=False
 global help_image_show_status:=False
@@ -288,5 +288,14 @@ MoveWindowsMM(size)
 }
 
 
-
-
+get_image_size(image)
+{
+    GDIPToken:=Gdip_Startup()
+    pBM:=Gdip_CreateBitmapFromFile(image)
+    W:=Gdip_GetImageWidth(pBM)
+    H:=Gdip_GetImageHeight(pBM)   
+    Gdip_DisposeImage(pBM)
+    Gdip_Shutdown(GDIPToken)
+    data:=[W,H]
+    Return data
+}

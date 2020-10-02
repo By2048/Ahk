@@ -11,17 +11,6 @@ keymaps["VSCode"]:=[]
 keymaps["VSCode"].Push([[60,123],  "!F1", "center"])
 
 
-get_image_size(img)
-{
-    GDIPToken:=Gdip_Startup()
-    pBM:=Gdip_CreateBitmapFromFile(img)
-    W:=Gdip_GetImageWidth(pBM)
-    H:=Gdip_GetImageHeight(pBM)   
-    Gdip_DisposeImage(pBM)
-    Gdip_Shutdown(GDIPToken)
-    data:=[W,H]
-    Return data
-}
 
 
 key_help()
