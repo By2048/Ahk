@@ -3,110 +3,88 @@
 #NoTrayIcon
 
 
-global fxx:=12
 
 
-f12_mode()
+
+
+global keymaps:={}
+global keymap_show_status:=False
+
+keymaps["VSCode"]:=[]
+keymaps["VSCode"].Push([[60,123],  "!F1", "center"])
+
+
+
+show_key_help()
 {
-    global fxx
-    fxx:=12
-    HelpText()
-    HelpText("F12")
-    Sleep, 1000
-    HelpText()
-}
+    CoordMode Pixel Window
+    CoordMode Mouse Window
 
+    global keymaps
+    global keymap_show_status
 
+    WinGet, w_id, ID, A
+    WinGetPos, windows_x, windows_y, xx, xx, ahk_id %w_id%
 
-f24_mode()
-{
-    global fxx
-    HelpText()
-    HelpText("F24")
-    fxx:=24
-}
+    find_x:=0
+    find_y:=0
 
+    for exe, data in keymaps {
+        for index, info in data {
+            postion_x:=info[1][1]
+            postion_y:=info[1][2]
+            key:=info[2]
 
+            help_image_w:=StrLen(key)*11*2
+            help_image_h:=46
+            
+            image_size:=get_image_size(img)
+            image_size_x:=image_size[1]
+            image_size_y:=image_size[2]
 
-f12_f24_switch()
-{
-    global fxx
-    if (fxx=12) {
-        fxx:=24
-        f24_mode()
-        return
+            x:=windows_x+postion_x+(image_size_x-help_image_w)/2
+            y:=windows_y+postion_y+(image_size_y-help_image_h)/2
+            w:=help_image_w/2
+            h:=help_image_h/2
+            Progress, b fs13 zh0 x%x% y%y% w%w% h%h%, %key%,  , Courier New
+
+            keymap_show_status:=True
+        }
     }
-    if (fxx=24) {
-        fxx:=12
-        f12_mode()
-        return
-    }
 }
 
 
 
-SendFxx(num)
+hide_key_help()
 {
-    global fxx
-    if (not fxx) {
-        fxx:=12
-    } else if (fxx=12) {
-        num:="F"+num
-        Send {%num%}
-    } else if (fxx=24) {
-        num:=num+12
-        num:="F"+num
-        Send {%num%}
-    }
-    return
+    global keymap_show_status
+    Progress Off
+    keymap_show_status:=False
 }
 
 
 
-
-RAlt::Return
-
-
-
-; $RAlt::
-;     if (not cnt) {
-;         cnt:=1
-;     } else {
-;         cnt+=1
-;     }
-;     SetTimer, timer, -500
-; return
+$RAlt::
+    if (not cnt) {
+        cnt:=1
+    } else {
+        cnt+=1
+    }
+    SetTimer, timer, -700
+return
 
 
 
-; timer:
-;     if (cnt=1) {
-;         f12_mode()
-;         cnt:=0
-;         return
-;     } 
-;     if (cnt=2) {
-;         f24_mode()
-;         cnt:=0
-;         return
-;     }
-;     cnt:=0
-; return
+timer:
+    if (cnt==1) {    
+        hide_key_help()
+    }
+    if (cnt==2) {
+        show_key_help()
+    }
+    cnt:=0
+return
 
-
-
- $F1::SendFxx( 1)
- $F2::SendFxx( 2)
- $F3::SendFxx( 3)
- $F4::SendFxx( 4)
- $F5::SendFxx( 5)
- $F6::SendFxx( 6)
- $F7::SendFxx( 7)
- $F8::SendFxx( 8)
- $F9::SendFxx( 9)
-$F10::SendFxx(10)
-$F11::SendFxx(11)
-$F12::SendFxx(12)
 
 
  >!F1::Send {F13}
@@ -121,6 +99,3 @@ $F12::SendFxx(12)
 >!F10::Send {F22}
 >!F11::Send {F23}
 >!F12::Send {F24}
-
-
-

@@ -154,7 +154,6 @@ return
 
 
 timer:
-    global windows
     if (cnt=1) {
         hide_image()
     }
