@@ -185,22 +185,19 @@ MoveWindowsCenter()
         in_screen_3:=True
     }
 
-    if (size="center") {
-        if (in_screen_1) {
-            xx:=screen_1_x+(screen_1_xx-screen_1_x)/2-w/2
-            yy:=screen_1_y+(screen_1_yy-screen_1_y)/2-h/2
-        }
-        if (in_screen_2) {
-            xx:=screen_2_x+(screen_2_xx-screen_2_x)/2-w/2
-            yy:=screen_2_y+(screen_2_yy-screen_2_y)/2-h/2
-        }
-        if (in_screen_3) {
-            xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
-            yy:=screen_3_y+(screen_3_yy-screen_3_y)/2-h/2
-        }
-        WinMove, ahk_id %w_id%, , %xx%, %yy%
-        Return
+    if (in_screen_1) {
+        xx:=screen_1_x+(screen_1_xx-screen_1_x)/2-w/2
+        yy:=screen_1_y+(screen_1_yy-screen_1_y)/2-h/2
     }
+    if (in_screen_2) {
+        xx:=screen_2_x+(screen_2_xx-screen_2_x)/2-w/2
+        yy:=screen_2_y+(screen_2_yy-screen_2_y)/2-h/2
+    }
+    if (in_screen_3) {
+        xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
+        yy:=screen_3_y+(screen_3_yy-screen_3_y)/2-h/2
+    }
+    WinMove, ahk_id %w_id%, , %xx%, %yy%
 }
 
 
