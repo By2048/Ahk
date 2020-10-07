@@ -7,8 +7,8 @@ global keymaps:={}
 global keymap_show_status:=False
 
 keymaps["Code.exe"]:=[]
-keymaps["Code.exe"].Push([[60,126],  "!F1"])
-keymaps["Code.exe"].Push([[60,320],  "!F12"])
+keymaps["Code.exe"].Push([[47,108],  "!F1"])
+keymaps["Code.exe"].Push([[47,316], "!F12"])
 
 
 
@@ -103,8 +103,8 @@ return
 
 timer:
     if (cnt==1) {    
-        show_pos()
         hide_key_help()
+        show_pos()
     }
     if (cnt==2) {
         show_key_help()
