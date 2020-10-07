@@ -19,6 +19,7 @@ show_pos()
     data := xpos "|" ypos
     HelpText(data,"center")
     Sleep, 3000
+    HelpText()
 }
 
 
