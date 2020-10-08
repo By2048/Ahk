@@ -90,6 +90,14 @@ hide_key_help()
 
 
 
+show_time()
+{
+    FormatTime, result,  , yyyy-dd-MM
+    Progress, m2 b fs18 zh0, %result%, , , Courier New
+}
+
+
+
 $RAlt::
     if (not cnt) {
         cnt:=1
@@ -105,9 +113,10 @@ timer:
     if (cnt==1) {    
         hide_key_help()
         show_pos()
-    }
-    if (cnt==2) {
+    } else if (cnt==2) {
         show_key_help()
+    } else if (cnt==3) {
+        show_time()
     }
     cnt:=0
 return
@@ -126,6 +135,5 @@ return
 >!F10::Send {F22}
 >!F11::Send {F23}
 >!F12::Send {F24}
-
 
 
