@@ -75,11 +75,6 @@ timer:
     global windows_resize_big
     global windows_resize_small
 
-    if (cnt=1) {
-        cnt:=0
-        return
-    }
-
     ; 桌面不处理
     If WinActive("ahk_class WorkerW") {
         HelpText("Windows Desktop")
@@ -87,30 +82,32 @@ timer:
         HelpText()
         Return
     }
+
+    ; 软件全屏不处理
     WinGet, w_id, ID, A
     WinGet, w_status, MinMax, ahk_id %w_id%
-    ; 软件全屏不处理
     if (w_status) {
         HelpText("Max Screen Return")
         Sleep, 1000
         HelpText()
         return
     }
-    if (cnt=2) {
+
+    if (cnt=1) {
+        cnt:=0
+        return
+    } else if (cnt=2) {
         HelpText("Move To Center")
         MoveWindowsCenter()
         Sleep, 1000
         HelpText()
-    }
-    if (cnt=3) {
+    } else if (cnt=3) {
         windows_move:=True    
         HelpText("Move Windows")
-    }
-    if (cnt=4) {
+    } else if (cnt=4) {
         windows_resize_big:=True
         HelpText("Windows Resize Big")
-    }
-    if (cnt=5) {
+    } else if (cnt=5) {
         windows_resize_small:=True
         HelpText("Windows Resize Small")
     }
@@ -126,14 +123,11 @@ MoveXXX(direction)
     step:=10
     if (direction="Up") {
         y:=y-step
-    }
-    if (direction="Down") {
+    } else if (direction="Down") {
         y:=y+step
-    }
-    if (direction="Left") {
+    } else if (direction="Left") {
         x:=x-step
-    }
-    if (direction="Right") {
+    } else if (direction="Right") {
         x:=x+step
     }
     WinMove, ahk_id %w_id%, , %x%, %y%
@@ -153,15 +147,13 @@ ResizeXXX(status,direction)
             y:=y+step
             h:=h-step
         }
-    }
-    if (direction="Down") {
+    } else if (direction="Down") {
         if (status="Big") {
             h:=h+step
         } else if (status="Small") {
             h:=h-step
         }
-    }
-    if (direction="Left") {
+    } else if (direction="Left") {
         if (status="Big") {
             x:=x-step
             w:=w+step
@@ -169,8 +161,7 @@ ResizeXXX(status,direction)
             x:=x+step
             w:=w-step
         }
-    }
-    if (direction="Right") {
+    } else if (direction="Right") {
         if (status="Big") {
             w:=w+step
         } else if (status="Small") {

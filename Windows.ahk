@@ -15,7 +15,6 @@ MouseIsOver(WinTitle) {
 
 
 
-
 #x::Return ; 系统菜单
 #k::Return ; 打开“连接”快速操作.
 #m::Return ; 最小化所有窗口。

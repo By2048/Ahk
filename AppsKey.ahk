@@ -53,16 +53,16 @@ return
 
 
 timer:
-    if (cnt=2) {
-        path=%A_ScriptDir%\Image\Hotkey\AppsKey.png
-        HelpImage(path)
-    }
     if (cnt=1) {
         if (help_image_show_status=True) {
             HelpImage()
         } else {
             Send, {AppsKey}
         }
+    }
+    if (cnt=2) {
+        path=%A_ScriptDir%\Image\Hotkey\AppsKey.png
+        HelpImage(path)
     }
     cnt:=0
 return

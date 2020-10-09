@@ -127,7 +127,7 @@ change(np:="")
     global index
     global total
 
-    if (total==1) {
+    if (total=1) {
         return
     }
 
@@ -156,8 +156,7 @@ return
 timer:
     if (cnt=1) {
         hide_image()
-    }
-    if (cnt=2) {
+    } else if (cnt=2) {
         show_image()
     }
     cnt:=0

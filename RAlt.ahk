@@ -102,11 +102,11 @@ return
 
 
 timer:
-    if (cnt==1) {    
+    if (cnt=1) {    
         hide_key_help()
-    } else if (cnt==2) {
+    } else if (cnt=2) {
         show_key_help()
-    } else if (cnt==3) {
+    } else if (cnt=3) {
         show_pos()
     }
     cnt:=0

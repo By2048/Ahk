@@ -1,7 +1,6 @@
-; #include %A_ScriptDir%\Tool.ahk
-; #Include %A_ScriptDir%\Keyboard.ahk
 #SingleInstance Force
 #NoTrayIcon
+
 
 
  ::/phone/::17769742361
@@ -13,6 +12,5 @@
 ::/qmail2/::2045516477@qq.com
  ::/gmail/::byamend@gmail.com
    ::/pwd/::F00oOskOoO0J
-
 
 

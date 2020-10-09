@@ -44,6 +44,7 @@ return
 timer:
     ; [screen2] [screen1] [screen3]
     CoordMode Mouse Screen
+
     if (cnt=1) {
         ; 屏幕1 中心
         x:=screen_1_x+(screen_1_xx-screen_1_x)/2
@@ -69,6 +70,7 @@ timer:
     name:=RTrim(name,"exe")
     name:=RTrim(name,"EXE")
     name:=RTrim(name,".")
+
     if (cnt=1) {
         HelpText(name,"center_down")
     } else if (cnt=2) {

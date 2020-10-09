@@ -2,23 +2,21 @@
 #NoTrayIcon
 
 
+global keyboard_show_status:=false
 
 k_FontSize = 5
 k_FontName = Verdana  
 k_FontStyle = Bold   
 k_TC = F1ECED
 
-keyboard_show_status:=false
-
 k_x:=10
 k_y:=4
 k_h:=30
 
-
 line4_12="`n'
-; line0:=[[""],["F13"],["F14"],["F15"],["F16"],["F17"],["F18"],["F19"],["F20"],["F21"],["F22"],["F23"],["F24"],[""],[""],[""]]
+line0:=[[""],["F13"],["F14"],["F15"],["F16"],["F17"],["F18"],["F19"],["F20"],["F21"],["F22"],["F23"],["F24"],[""],[""],[""]]
 line1:=[["Esc"],["F1"],["F2"],["F3"],["F4"],["F5"],["F6"],["F7"],["F8"],["F9"],["F10"],["F11"],["F12"],["Print`nScreen"],["Pause`nBreak"],["Delete"]]
-; line11:=[["Esc"],["F1`nF13"],["F2`nF14"],["F3`nF15"],["F4`nF16"],["F5`nF17"],["F6`nF18"],["F7`nF19"],["F8`nF20"],["F9`nF21"],["F10`nF22"],["F11`nF23"],["F12`nF24"],["Print`nScreen"],["Pause`nBreak"],["Delete"]]
+line11:=[["Esc"],["F1`nF13"],["F2`nF14"],["F3`nF15"],["F4`nF16"],["F5`nF17"],["F6`nF18"],["F7`nF19"],["F8`nF20"],["F9`nF21"],["F10`nF22"],["F11`nF23"],["F12`nF24"],["Print`nScreen"],["Pause`nBreak"],["Delete"]]
 line2:=[["~`n``"],["!`n1"],["@`n2"],["#`n3"],["$`n4"],["%`n5"],["^`n6"],["&&`n7"],["*`n8"],["(`n9"],[")`n0"],["_`n-"],["+`n="],["BackSpace",2],["Home"]]
 line3:=[["Tab",1.5],["Q"],["W"],["E"],["R"],["T"],["Y"],["U"],["I"],["O"],["P"],["{`n["],["}`n]"],["|`n\",1.5],["Page`nUp"]]
 line4:=[["CapsLock",1.75],["A"],["S"],["D"],["F"],["G"],["H"],["J"],["K"],["L"],[":`n;"],[line4_12],["Enter",2.25],["Page`nDown"]]
@@ -119,6 +117,7 @@ show_keyboard()
 
 #if (keyboard_show_status=True)
     AppsKey::
+        global keyboard_show_status
         keyboard_show_status:=False
         Gui Hide
         Gui Destroy 
