@@ -88,20 +88,24 @@ timer:
         Return
     }
 
-    ; 软件全屏不处理
-    WinGet, w_id, ID, A
-    WinGet, w_status, MinMax, ahk_id %w_id%
-    if (w_status) {
-        HelpText("Max Screen Return")
-        Sleep, 1000
-        HelpText()
-        return
-    }
-
     if (cnt=1) {
         cnt:=0
         return
-    } else if (cnt=2) {
+    }
+
+    ; 软件全屏不处理
+    if (cnt>1) {
+        WinGet, w_id, ID, A
+        WinGet, w_status, MinMax, ahk_id %w_id%
+        if (w_status) {
+            HelpText("Max Screen Return")
+            Sleep, 1000
+            HelpText()
+            return
+        }
+    }
+
+    if (cnt=2) {
         HelpText("Move To Center")
         MoveWindowsCenter()
         Sleep, 1000
