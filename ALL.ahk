@@ -3,6 +3,10 @@
 
 Menu, Tray, Icon, %A_ScriptDir%\Image\ALL.png
 
+if (not A_IsAdmin) {
+    Run *RunAs "%A_ScriptFullPath%"
+}
+
 
 
 ; 重启所有脚本
@@ -28,5 +32,9 @@ Return
     FormatTime, result,  , yyyy-dd-MM H:mm
     SendInput %result%
 Return
+
+
+
+
 
 

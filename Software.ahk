@@ -2,6 +2,10 @@
 #SingleInstance Force
 #NoTrayIcon
 
+if (not A_IsAdmin) {
+    Run *RunAs "%A_ScriptFullPath%"
+}
+
 
 
 ; 软件内无法进行处理的在此进行处理

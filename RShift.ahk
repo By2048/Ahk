@@ -2,6 +2,10 @@
 #SingleInstance Force
 #NoTrayIcon
 
+if (not A_IsAdmin) {
+    Run *RunAs "%A_ScriptFullPath%"
+}
+
 
 
 global hotkeys:={} ; ¿ì½Ý¼üÍ¼Æ¬¼¯ºÏ

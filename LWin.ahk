@@ -1,6 +1,11 @@
 #SingleInstance Force
 #NoTrayIcon
 
+if (not A_IsAdmin) {
+    Run *RunAs "%A_ScriptFullPath%"
+}
+
+
 
 <#=::Send {Volume_Up}
 <#-::Send {Volume_Down}

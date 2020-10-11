@@ -2,13 +2,18 @@
 #Include %A_ScriptDir%\Tool.ahk
 #NoTrayIcon
 
+if (not A_IsAdmin) {
+    Run *RunAs "%A_ScriptFullPath%"
+}
+
+
+
 CoordMode, Mouse, Screen
 
 Capslock &  p::MouseMove( 0, -9)
 Capslock & `;::MouseMove( 0,  9)
 Capslock &  l::MouseMove(-9,  0)
 Capslock &  '::MouseMove( 9,  0)
-
 
 Capslock & w::MouseMove(  0, -99)
 Capslock & s::MouseMove(  0,  99)
@@ -25,6 +30,7 @@ Capslock & Space::MButton
 Capslock & Shift::RButton
 
 
+
 ; 1 主显示器中心 
 ; 2 副显示器中心
 $CapsLock::
@@ -36,8 +42,6 @@ $CapsLock::
     }
     SetTimer, timer, -500
 return
-
-
 
 
 

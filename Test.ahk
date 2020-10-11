@@ -1,6 +1,9 @@
 #SingleInstance Force
 #include %A_ScriptDir%\Tool.ahk
 
+if (not A_IsAdmin) {
+    Run *RunAs "%A_ScriptFullPath%"
+}
 
 test_help_text()
 {
