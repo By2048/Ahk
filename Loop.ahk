@@ -22,9 +22,9 @@ Loop {
         WinGet, w_id, ID, A
         WinGetPos, x, y, w, h, ahk_id %w_id%
         xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
+        yy:=screen_3_y+500
         ; 计算窗口的理论位置与获取的实际位置，存在微小偏差
-        if (Abs(x-xx)>5) {
-            yy:=screen_3_y+500
+        if (Abs(x-xx)>5 or Abs(y-yy)>5) {
             WinMove, ahk_id %w_id%, , %xx%, %yy%
         }
     }
