@@ -50,4 +50,3 @@ test_help_text()
     HelpText()
 }
 
-

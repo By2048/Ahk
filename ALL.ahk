@@ -33,8 +33,3 @@ Return
     SendInput %result%
 Return
 
-
-
-
-
-

@@ -135,34 +135,3 @@ if (not A_IsAdmin) {
 ; 软件/窗口 特殊位置 ;
 ;;;;;;;;;;;;;;;;;;;;
 
-
-
-#if WinActive("ahk_exe explorer.exe") and WinActive("ahk_class OperationStatusWindow")
-   
-    ; 传输文件窗口 （移动第三屏幕左上角）
-    RWin::
-        WinGet, w_id, ID, A
-        WinGetPos, x, y, w, h, ahk_id %w_id%
-        xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
-        yy:=y+200
-        WinMove, ahk_id %w_id%, , %xx%, %yy%
-    Return
-
-#if
-
-
-
-#if WinActive("ahk_exe fdm.exe")
-
-    RWin::
-        WinGet, w_id, ID, A
-        WinGetPos, x, y, w, h, ahk_id %w_id%
-        ww:=screen_3_xx-screen_3_x-100-100
-        hh:=1500
-        xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-ww/2
-        yy:=screen_3_y+100
-        WinMove, ahk_id %w_id%, , %xx%, %yy%,     ,     
-        WinMove, ahk_id %w_id%, ,     ,     , %ww%, %hh%
-    Return
-
-#If

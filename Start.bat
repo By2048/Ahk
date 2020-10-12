@@ -1,7 +1,7 @@
 @echo off
 @Title Start All Ahk
 
-mode 40,17
+mode 40,20
 
 cd /d %~dp0
 
@@ -9,6 +9,7 @@ start ALL.ahk
 
 start Dexpot.ahk
 start Software.ahk
+start Loop.ahk
 start Windows.ahk
 
 start Keys.ahk
@@ -21,10 +22,12 @@ start AppsKey.ahk
 
 start Keyboard.ahk
 
+echo.    
 echo  --------------------------
 echo  - Strat ALL      Success -
 echo  - Strat Dexpot   Success -
 echo  - Strat Software Success -
+echo  - Strat Loop     Success -
 echo  - Strat Windows  Success -
 echo  - Strat Keys     Success -
 echo  - Strat Capslock Success -
