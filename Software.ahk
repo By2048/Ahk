@@ -128,3 +128,18 @@ if (not A_IsAdmin) {
 
 #If
 
+
+
+
+#if WinActive("ahk_exe explorer.exe") and WinActive("ahk_class OperationStatusWindow")
+   
+    ; 传输文件窗口 （移动第三屏幕左上角）
+    RWin::
+        WinGet, w_id, ID, A
+        xx:=screen_3_x+10
+        yy:=screen_3_y+10
+        WinMove, ahk_id %w_id%, , %xx%, %yy%
+    Return
+
+#if
+
