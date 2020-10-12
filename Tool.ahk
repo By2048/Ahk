@@ -1,3 +1,4 @@
+#include %A_ScriptDir%\Init.ahk
 #include %A_ScriptDir%\Libs\Gdip_All.ahk
 
 if (not A_IsAdmin) {
@@ -6,23 +7,6 @@ if (not A_IsAdmin) {
 
 global help_text_show_status:=False
 global help_image_show_status:=False
-
-
-global screen_1_x:=0
-global screen_1_y:=0
-global screen_1_xx:=3840
-global screen_1_yy:=2160
-
-global screen_2_x:=-5120
-global screen_2_y:=1100
-global screen_2_xx:=-1710
-global screen_2_yy:=3020
-
-global screen_3_x:=7680
-global screen_3_y:=1060
-global screen_3_xx:=9840
-global screen_3_yy:=4900
-
 
 
 
@@ -60,7 +44,7 @@ MouseMove(right,down) {
 
 
 
-MouseClick(x,y)
+MouseClickAndResetting(x,y)
 {
     MouseGetPos, x_origin, y_origin
     MouseClick, left, x,y, 1, 0
@@ -87,6 +71,7 @@ ClickImage(image,x=0,y=0)
         MouseMove x_origin, y_origin, 0
     }
 }
+
 
 
 HelpImage(image:="")
@@ -289,7 +274,8 @@ MoveWindowsMM(size)
 }
 
 
-get_image_size(image)
+
+GetImageSize(image)
 {
     GDIPToken:=Gdip_Startup()
     pBM:=Gdip_CreateBitmapFromFile(image)

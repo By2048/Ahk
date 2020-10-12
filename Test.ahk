@@ -1,4 +1,5 @@
 #SingleInstance Force
+#include %A_ScriptDir%\Init.ahk
 #include %A_ScriptDir%\Tool.ahk
 
 if (not A_IsAdmin) {
@@ -50,3 +51,9 @@ test_help_text()
     HelpText()
 }
 
+
+
+
+; F12::
+
+; Return

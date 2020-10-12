@@ -1,7 +1,10 @@
-#include %A_ScriptDir%\Tool.ahk
 #SingleInstance Force
+#include %A_ScriptDir%\Init.ahk
+#include %A_ScriptDir%\Tool.ahk
+
 
 Menu, Tray, Icon, %A_ScriptDir%\Image\ALL.png
+
 
 if (not A_IsAdmin) {
     Run *RunAs "%A_ScriptFullPath%"
@@ -12,8 +15,11 @@ if (not A_IsAdmin) {
 ; 重启所有脚本
 LWin & RWin::
 RWin & LWin::
-    DefaultProgress()
-    Run %A_ScriptDir%\Start.bat
+    result:=CheckEnv()
+    if (result) {
+        DefaultProgress()
+        Run %A_ScriptDir%\Start.bat
+    }
 Return
 
 

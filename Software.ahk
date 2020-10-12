@@ -36,13 +36,13 @@ if (not A_IsAdmin) {
 
 #if WinActive("ahk_exe cloudmusic.exe")
 
-    `::MouseClick(53,1008)
-    1::MouseClick(52,1073)
-    2::MouseClick(52,1137)
-    3::MouseClick(52,1202)
-    4::MouseClick(52,1267)
-    5::MouseClick(52,1327)
-    6::MouseClick(52,1391)
+    `::MouseClickAndResetting(53,1008)
+    1::MouseClickAndResetting(52,1073)
+    2::MouseClickAndResetting(52,1137)
+    3::MouseClickAndResetting(52,1202)
+    4::MouseClickAndResetting(52,1267)
+    5::MouseClickAndResetting(52,1327)
+    6::MouseClickAndResetting(52,1391)
 
     =::Send !=
     -::Send !-
