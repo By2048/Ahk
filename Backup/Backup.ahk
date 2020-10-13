@@ -48,3 +48,32 @@ return
 
 ; Ctrl+Alt+Shift+Win opens the new Office app
 ; REG ADD HKCU\Software\Classes\ms-officeapp\Shell\Open\Command /t REG_SZ /d rundll32
+
+
+
+    Space:: 
+        CoordMode Mouse Window
+        CoordMode Pixel Window
+        x_origin:=0
+        y_origin:=0
+        x_find:=0
+        y_find:=0
+        MouseGetPos, x_origin, y_origin
+        image:="E:\Sync\Ahk\Image\Software\CloudMusicCloseDetail.png"
+        size:=GetImageSize(image)
+        w:=size[1]
+        h:=size[2]
+        CoordMode Pixel Screen
+        ImageSearch, x_find, y_find, 0, 0, A_ScreenWidth, A_ScreenHeight, %image%
+        MsgBox, %x_find% | %y_find%
+        MsgBox, %A_ScreenWidth% | %A_ScreenHeight%
+        if (x_find and y_find) {
+            x_find:=x_find+w/2
+            y_find:=y_find+h/2
+            MouseClick, Left, x_find, y_find, 1, 0
+        } else {
+            MouseClick, Left, 57, 1765, 1, 0
+        }
+        CoordMode Pixel Window
+        MouseMove x_origin, y_origin, 0
+    Return
