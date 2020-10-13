@@ -186,6 +186,9 @@ MoveWindowsCenter()
         xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
         yy:=screen_3_y+(screen_3_yy-screen_3_y)/2-h/2
     }
+    if (x=xx and y=yy) {
+        Return
+    }
     WinMove, ahk_id %w_id%, , %xx%, %yy%
 }
 
@@ -271,6 +274,30 @@ MoveWindowsMM(size)
         Return
     }
 
+}
+
+
+
+SetWindows(xx,yy,ww:=0,hh:=0,step:=False)
+{
+    WinGet, wid, ID, A
+    WinGetPos, x, y, w, h, ahk_id %wid%
+    if (not ww) { 
+        ww:=w
+    }
+    if (not hh) {
+        hh:=h
+    }
+    ; txt=%xx% %yy% | %ww% %hh% | %step%
+    if (Abs(xx-x)>3 or Abs(yy-y)>3 or Abs(ww-w)>3 or Abs(hh-h)>3) {
+        if (step) {
+           ; 不同分辨率屏幕之间移动窗口 分两次处理 （兼容）
+            WinMove, ahk_id %wid%, , %xx%, %yy%,     ,     
+            WinMove, ahk_id %wid%, ,     ,     , %ww%, %hh%
+        } else {
+            WinMove, ahk_id %wid%, , %xx%, %yy%, %ww%, %hh%
+        }
+    }
 }
 
 
