@@ -46,6 +46,19 @@ return
           
 
 
+WinGet, wid, ID, A
+WinGetPos, x, y, w, h, ahk_id %wid%
+
+
+
+
+WinGetPos, x, y, w, h, A 
+
+
+
+
+
+
 ; Ctrl+Alt+Shift+Win opens the new Office app
 ; REG ADD HKCU\Software\Classes\ms-officeapp\Shell\Open\Command /t REG_SZ /d rundll32
 

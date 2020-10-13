@@ -19,6 +19,7 @@ Loop {
 
     ; 文件复制移动窗口 (移动到屏幕3上部分)
     if WinActive("ahk_exe explorer.exe") and WinActive("ahk_class OperationStatusWindow") {
+        WinGetPos, x, y, w, h, A 
         xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
         yy:=screen_3_y+500
         SetWindows(xx,yy)

@@ -280,8 +280,7 @@ MoveWindowsMM(size)
 
 SetWindows(xx,yy,ww:=0,hh:=0,step:=False)
 {
-    WinGet, wid, ID, A
-    WinGetPos, x, y, w, h, ahk_id %wid%
+    WinGetPos, x, y, w, h, A 
     if (not ww) { 
         ww:=w
     }
