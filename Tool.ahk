@@ -1,9 +1,13 @@
 #include %A_ScriptDir%\Init.ahk
 #include %A_ScriptDir%\Libs\Gdip_All.ahk
 
+
+
 if (not A_IsAdmin) {
     Run *RunAs "%A_ScriptFullPath%"
 }
+
+
 
 global help_text_show_status:=False
 global help_image_show_status:=False

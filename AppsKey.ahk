@@ -1,7 +1,10 @@
 ﻿#include %A_ScriptDir%\Tool.ahk
 #Include %A_ScriptDir%\Keyboard.ahk
+#Include %A_ScriptDir%\Private.ahk
 #SingleInstance Force
 #NoTrayIcon
+
+
 
 if (not A_IsAdmin) {
     Run *RunAs "%A_ScriptFullPath%"
@@ -24,8 +27,8 @@ AppsKey & F::Run D:\Firefox\firefox.exe
 AppsKey & G::Run C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
 AppsKey & J::Run calc.exe
 AppsKey & K::show_keyboard()
-AppsKey & [::Run D:\VSCode\Code.exe E:\Git\Notes\
-AppsKey & ]::Run D:\VSCode\Code.exe E:\Sync\Ahk\
+AppsKey & [::RunNormalUser("D:\VSCode\Code.exe E:\Git\Notes\")
+AppsKey & ]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
 
 AppsKey & Z::Run explorer.exe ::{645FF040-5081-101B-9F08-00AA002F954E}
 AppsKey & C::Run D:\CloudMusic\cloudmusic.exe

@@ -1,9 +1,11 @@
 #SingleInstance Force
 
 
+
 if (not A_IsAdmin) {
     Run *RunAs "%A_ScriptFullPath%"
 }
+
 
 
 global screen_count

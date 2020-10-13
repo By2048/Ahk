@@ -2,6 +2,8 @@
 #Include %A_ScriptDir%\Tool.ahk
 #NoTrayIcon
 
+
+
 if (not A_IsAdmin) {
     Run *RunAs "%A_ScriptFullPath%"
 }

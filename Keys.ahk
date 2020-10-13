@@ -2,9 +2,9 @@
 #SingleInstance Force
 #NoTrayIcon
 
-if (not A_IsAdmin) {
-    Run *RunAs "%A_ScriptFullPath%"
-}
+; if (not A_IsAdmin) {
+;     Run *RunAs "%A_ScriptFullPath%"
+; }
 
 
 
