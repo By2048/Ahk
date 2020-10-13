@@ -54,6 +54,6 @@ test_help_text()
 
 
 
-; F12::
-
-; Return
+F12::
+    MsgBox, %screen_count%
+Return

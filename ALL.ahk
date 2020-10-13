@@ -15,11 +15,8 @@ if (not A_IsAdmin) {
 ; 重启所有脚本
 LWin & RWin::
 RWin & LWin::
-    result:=CheckEnv()
-    if (result) {
-        DefaultProgress()
-        Run %A_ScriptDir%\Start.bat
-    }
+    DefaultProgress()
+    Run %A_ScriptDir%\Start.bat, ,Hide
 Return
 
     

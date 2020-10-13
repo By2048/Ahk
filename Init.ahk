@@ -6,6 +6,8 @@ if (not A_IsAdmin) {
 }
 
 
+global screen_count
+
 global screen_1_x
 global screen_1_y
 global screen_1_xx
@@ -23,6 +25,9 @@ global screen_3_yy
 
 InitScreenValue() 
 {
+    SysGet, screen_count, MonitorCount
+    screen_count:=screen_count+0
+
     ; ahk 屏幕从左到右 [1][3][2]
     ; 实际系统设置 [2][1][3]
     SysGet, Mon1, Monitor, 1
@@ -49,17 +54,13 @@ InitScreenValue()
 
 CheckEnv()
 {
-    SysGet, monitor_count, MonitorCount
-    if (monitor_count!=3) {
-        txt=MonitorCount=%monitor_count%
-        Progress, m2 b fs18 zh0, %txt%`nThis is a 2nd line., , , Courier New
-        Sleep, 3000
-        Progress, Off
-        Return False
-    }
-    Return True
+    txt=ScreenCount=%screen_count%
+    Progress, m2 b fs18 zh0, %txt%`n`nStart Success, , , Courier New
+    Sleep, 1000
+    Progress, Off
 }
 
 
 
 InitScreenValue()
+CheckEnv()
