@@ -31,7 +31,6 @@ Loop {
         yy:=screen_3_y+100
         SetWindows(xx,yy,ww,hh,True)
     }
-
     
     if WinActive("ahk_exe cloudmusic.exe") {
         ww:=(screen_1_xx-screen_1_x)*5/6

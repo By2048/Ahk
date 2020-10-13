@@ -2,6 +2,8 @@
 #SingleInstance Force
 #NoTrayIcon
 
+
+
 if (not A_IsAdmin) {
     Run *RunAs "%A_ScriptFullPath%"
 }
@@ -29,8 +31,6 @@ if (not A_IsAdmin) {
     !F4::^!F4 ;Alt F4 -> Ctrl Alt F4
 
 #if
-
-
 
 
 
@@ -84,7 +84,6 @@ if (not A_IsAdmin) {
     Left::Send ![
     Right::Send !]
 
-
 #if
 
 
@@ -97,7 +96,6 @@ if (not A_IsAdmin) {
     >!n::ClickImage("E:\Sync\Ahk\Image\Chrome\N×ÊÑ¶.png")
 
 #if
-
 
 
 
@@ -122,7 +120,6 @@ if (not A_IsAdmin) {
     Return
 
 #if
-
 
 
 
@@ -151,7 +148,6 @@ if (not A_IsAdmin) {
     Return
 
 #If
-
 
 
 

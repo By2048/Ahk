@@ -22,7 +22,7 @@ RWin & LWin::
     }
 Return
 
-
+    
 
 ::/date/::
     FormatTime, result,  , yyyy-dd-MM
