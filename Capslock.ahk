@@ -10,20 +10,20 @@ if (not A_IsAdmin) {
 
 CoordMode, Mouse, Screen
 
-Capslock &  p::MouseMove( 0, -9)
-Capslock & `;::MouseMove( 0,  9)
-Capslock &  l::MouseMove(-9,  0)
-Capslock &  '::MouseMove( 9,  0)
+Capslock &  p::MouseMoveDC( 0, -9)
+Capslock & `;::MouseMoveDC( 0,  9)
+Capslock &  l::MouseMoveDC(-9,  0)
+Capslock &  '::MouseMoveDC( 9,  0)
 
-Capslock & w::MouseMove(  0, -99)
-Capslock & s::MouseMove(  0,  99)
-Capslock & a::MouseMove(-99,   0)
-Capslock & d::MouseMove( 99,   0)
+Capslock & w::MouseMoveDC(  0, -99)
+Capslock & s::MouseMoveDC(  0,  99)
+Capslock & a::MouseMoveDC(-99,   0)
+Capslock & d::MouseMoveDC( 99,   0)
 
-Capslock &    Up::MouseMove(   0, -333)
-Capslock &  Down::MouseMove(   0,  333)
-Capslock &  Left::MouseMove(-333,    0)
-Capslock & Right::MouseMove( 333,    0)
+Capslock &    Up::MouseMoveDC(   0, -333)
+Capslock &  Down::MouseMoveDC(   0,  333)
+Capslock &  Left::MouseMoveDC(-333,    0)
+Capslock & Right::MouseMoveDC( 333,    0)
 
 Capslock &   Tab::LButton
 Capslock & Space::MButton

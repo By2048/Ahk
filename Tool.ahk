@@ -27,7 +27,7 @@ DefaultProgress()
 
 
 
-MouseMove(right,down) {
+MouseMoveDC(right,down) {
     MouseGetPos, x, y
     xx:=x+right
     yy:=y+down

@@ -44,6 +44,29 @@ if (not A_IsAdmin) {
     5::MouseClickAndResetting(52,1327)
     6::MouseClickAndResetting(52,1391)
 
+    Space:: 
+        CoordMode Mouse Window
+        CoordMode Pixel Window
+        x_origin:=0
+        y_origin:=0
+        x_find:=0
+        y_find:=0
+        MouseGetPos, x_origin, y_origin
+        image:="E:\Sync\Ahk\Image\Software\CloudMusicCloseDetail.png"
+        size:=GetImageSize(image)
+        w:=size[1]
+        h:=size[2]
+        ImageSearch, x_find, y_find, 0, 0, A_ScreenWidth, A_ScreenHeight, %image%
+        if (x_find and y_find) {
+            x_find:=x_find+w/2
+            y_find:=y_find+h/2
+            MouseClick, Left, x_find, y_find, 1, 0
+        } else {
+            MouseClick, Left, 57, 1765, 1, 0
+        }
+        MouseMove x_origin, y_origin, 0
+    Return
+
     =::Send !=
     -::Send !-
 
@@ -60,6 +83,7 @@ if (not A_IsAdmin) {
     Down::Send !-
     Left::Send ![
     Right::Send !]
+
 
 #if
 
