@@ -1,6 +1,6 @@
-#include %A_WorkingDir%\Other\Private.ahk
 #include %A_WorkingDir%\Libs\Gdip_All.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Other\Private.ahk
 
 #SingleInstance Force
 
@@ -27,9 +27,10 @@ GetImageSize(image)
 
 RunNormalUser(command)
 {
-    MsgBox, %PC_USER% \ %PC_PWD%
     if (not PC_USER or not PC_PWD) {
         HelpText(" PC_USER/PC_PWD -> (Other/Private.ahk) ")
+        Sleep, 3000
+        HelpText()
     }
     RunAs, %PC_USER%, %PC_PWD%
     Run %command%

@@ -1,11 +1,11 @@
 #include %A_WorkingDir%\Tool\Help.ahk
-#include %A_WorkingDir%\Tool\Init.ahk
+#include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 
 #SingleInstance Force
-; #NoTrayIcon
+#NoTrayIcon
 
 
 
