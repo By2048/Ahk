@@ -1,11 +1,10 @@
-#include %A_ScriptDir%\Tool.ahk
 #SingleInstance Force
 #NoTrayIcon
 
-; if (not A_IsAdmin) {
-;     Run *RunAs "%A_ScriptFullPath%"
-; }
 
+if (not A_IsAdmin) {
+    Run *RunAs "%A_ScriptFullPath%"
+}
 
 
 ; ~e::
@@ -13,5 +12,4 @@
 ;         Run, explorer.exe T:\
 ;     }
 ; return
-
 

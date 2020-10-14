@@ -1,15 +1,11 @@
+; 虚拟桌面 Dextop 快捷键按拓展 (部分快捷键与Win系统冲突，在此处进行兼容处理)
+
 #SingleInstance Force
 #NoTrayIcon
-
-
 
 if (not A_IsAdmin) {
     Run *RunAs "%A_ScriptFullPath%"
 }
-
-
-
-; 虚拟桌面 Dextop 快捷键按拓展 (部分快捷键与Win系统冲突，在此处进行兼容处理)
 
 ; 切换桌面
 <#1::#^!1 ; LWin 1 -> Win Ctrl Alt 1
@@ -32,12 +28,6 @@ if (not A_IsAdmin) {
 <#+a::#^!+a ; LWin Shift a -> Win Ctrl Alt Shift a
 <#+s::#^!+s ; LWin Shift s -> Win Ctrl Alt Shift s
 <#+d::#^!+d ; LWin Shift d -> Win Ctrl Alt Shift d
-
-; 上一个桌面
-; <#CapsLock::#^!+CapsLock ; LWin Tab -> LWin Ctrl Alt Shift Capslock
-
-; DexTab任务切换器
-; Windown + `
 
 ; 全屏预览
 LWin & LCtrl::#^!+F12

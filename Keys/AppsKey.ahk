@@ -1,6 +1,9 @@
-﻿#include %A_ScriptDir%\Tool.ahk
-#Include %A_ScriptDir%\Keyboard.ahk
-#Include %A_ScriptDir%\Private.ahk
+﻿#include %A_WorkingDir%\Tool\Screen.ahk
+#Include %A_WorkingDir%\Other\Keyboard.ahk
+#include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Tool\Other.ahk
+#include %A_WorkingDir%\Tool\Windows.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 
@@ -68,7 +71,7 @@ timer:
         }
     }
     if (cnt=2) {
-        path=%A_ScriptDir%\Image\Hotkey\AppsKey.png
+        path=%A_WorkingDir%\Image\Hotkey\AppsKey.png
         HelpImage(path)
     }
     cnt:=0

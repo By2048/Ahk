@@ -1,7 +1,5 @@
-#Include %A_ScriptDir%\Tool.ahk
 #SingleInstance Force
 #NoTrayIcon
-
 
 
 if (not A_IsAdmin) {
@@ -9,12 +7,10 @@ if (not A_IsAdmin) {
 }
 
 
-
 global hotkeys:={} ; 快捷键图片集合
-global windows:=False ; 当前是否显示图片
-global index:=1 ; 当前显示图片的序号
-global total:=1 ; 当前展示图片组的数量
-
+global hotkeys_show_status:=False ; 当前是否显示图片
+global hotkeys_index:=1 ; 当前显示图片的序号
+global hotkeys_total:=1 ; 当前展示图片组的数量
 
 hotkeys["default"]:=["Windows.png","Windows-1.png"]
 hotkeys["Windows"]:=hotkeys["default"]
@@ -36,8 +32,6 @@ hotkeys["QuiteRSS"]:=hotkeys["QuiteRSS.exe"]
 
 hotkeys["chrome.exe"]:=["Chrome.png","Chrome-1.png"]
 hotkeys["Chrome"]:=hotkeys["chrome.exe"]
-hotkeys["Chrome_Bilibili"]:=["Chrome-Bilibili.png"]
-
 
 hotkeys["PotPlayerMini64.exe"]:=["PotPlayer.png"]
 hotkeys["PotPlayer"]:=hotkeys["PotPlayerMini64.exe"]
@@ -45,14 +39,16 @@ hotkeys["PotPlayer"]:=hotkeys["PotPlayerMini64.exe"]
 hotkeys["cloudmusic.exe"]:=["CloudMusic.png"]
 hotkeys["CloudMusic"]:=hotkeys["cloudmusic.exe"]
 
+hotkeys["Title_Chrome_Bilibili"]:=["Chrome-Bilibili.png"]
+
 
 
 ; 快捷键帮助 获取需要展示的图片
 get_image() 
 {
-    global index
     global hotkeys
-    global total
+    global hotkeys_index
+    global hotkeys_total
 
     result:=hotkeys["default"]
 
@@ -66,19 +62,20 @@ get_image()
     ; 根据应用显示的标题进行查找
     WinGetTitle, title, A
     if WinActive("ahk_exe chrome.exe") and InStr(Title,"bilibili") {
-        result:=hotkeys["Chrome_Bilibili"]
+        result:=hotkeys["Title_Chrome_Bilibili"]
     }
 
-    total:=result.MaxIndex()
-    if (index>total) {
-        index:=1
+    hotkeys_total:=result.MaxIndex()
+    if (hotkeys_index>hotkeys_total) {
+        hotkeys_index:=1
     } 
-    if (index<=0) {
-        index:=total
+    if (hotkeys_index<=0) {
+        hotkeys_index:=hotkeys_total
     }
 
-    result:=result[index]
-    result=%A_ScriptDir%\Image\Hotkey\%result%
+    result:=result[hotkeys_index]
+    ; result=%A_WorkingDir%\Image\Hotkey\%result%
+    result=E:\Sync\Ahk\Image\Hotkey\%result%
     return result
 }
 
@@ -86,19 +83,20 @@ get_image()
 
 show_image()
 {
-    global windows
-    global total
+    global hotkeys_show_status
+    global hotkeys_index
+    global hotkeys_total
 
-    windows:=True
     image:=get_image()
     SplashImage, %image%, B1
+    hotkeys_show_status:=True
 
-    if (total>1) {
+    if (hotkeys_total>1) {
         w:=100
         h:=50    
         x:=A_ScreenWidth/2-w/2
         y:=A_ScreenHeight-h-5
-        Progress, b fs15 zh0 x%x% y%y% w%w%, %index%/%total%
+        Progress, b fs15 zh0 x%x% y%y% w%w%, %hotkeys_index%/%hotkeys_total%
     }
 
     ; 显示后额外操作
@@ -111,14 +109,15 @@ show_image()
 
 hide_image()
 {
-    global windows
-    global index
-
-    windows:=False
-    index:=1 
+    global hotkeys_show_status
+    global hotkeys_index
+    global hotkeys_total
 
     SplashImage, Off
     Progress, Off
+    hotkeys_show_status:=False
+    hotkeys_index:=1 
+    hotkeys_total:=1
 
     If WinActive("ahk_exe pycharm64.exe") {
         Send, {Esc} ;关闭因双击Shift打开的快速搜索界面
@@ -130,18 +129,19 @@ hide_image()
 ; 展示图片切换上一个下一个
 change(np:="")
 {
-    global index
-    global total
+    global hotkeys
+    global hotkeys_index
+    global hotkeys_total
+    global hotkeys_show_status
 
-    if (total=1) {
+    if (hotkeys_total=1) {
         return
     }
-
     if (np="next") {
-        index:=index+1
+        hotkeys_index:=hotkeys_index+1
     }
     if (np="privious") {
-        index:=index-1
+        hotkeys_index:=hotkeys_index-1
     }
     show_image()
 }
@@ -154,7 +154,7 @@ change(np:="")
     } else {
         cnt+=1
     }
-    SetTimer, timer, -700
+    SetTimer, timer, -500
 return
 
 
@@ -170,7 +170,7 @@ return
 
 
 
-#if (windows=True)
+#if (hotkeys_show_status=True)
     [::change("privious")
     ]::change("next")
 #if

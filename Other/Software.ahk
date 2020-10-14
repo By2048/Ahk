@@ -1,4 +1,9 @@
-#Include %A_ScriptDir%\Tool.ahk
+#include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Tool\Init.ahk
+#include %A_WorkingDir%\Tool\Mouse.ahk
+#include %A_WorkingDir%\Tool\Other.ahk
+#include %A_WorkingDir%\Tool\Windows.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 
@@ -90,10 +95,10 @@ if (not A_IsAdmin) {
 
 #if WinActive("ahk_exe chrome.exe")
 
-    >!y::ClickImage("E:\Sync\Ahk\Image\Chrome\Y娱乐.png")
-    >!z::ClickImage("E:\Sync\Ahk\Image\Chrome\Z资源.png")
-    >!w::ClickImage("E:\Sync\Ahk\Image\Chrome\W文档.png")
-    >!n::ClickImage("E:\Sync\Ahk\Image\Chrome\N资讯.png")
+    >!y::MouseClickImage("E:\Sync\Ahk\Image\Chrome\Y娱乐.png")
+    >!z::MouseClickImage("E:\Sync\Ahk\Image\Chrome\Z资源.png")
+    >!w::MouseClickImage("E:\Sync\Ahk\Image\Chrome\W文档.png")
+    >!n::MouseClickImage("E:\Sync\Ahk\Image\Chrome\N资讯.png")
 
 #if
 

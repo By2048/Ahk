@@ -1,6 +1,9 @@
+#include %A_WorkingDir%\Tool\Screen.ahk
+#include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Tool\Windows.ahk
+
 #SingleInstance Force
 #NoTrayIcon
-#include %A_ScriptDir%\Tool.ahk
 
 
 
@@ -26,6 +29,7 @@ Loop {
     }
 
     if WinActive("ahk_exe fdm.exe") {
+        HelpText("ahk_exe fdm.exe","center_down")
         ww:=screen_3_xx-screen_3_x-100-100
         hh:=1500
         xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-ww/2
@@ -44,10 +48,5 @@ Loop {
     Sleep, 1000
 
 }
-
-
-
-
-
 
 
