@@ -14,11 +14,12 @@ start Windows.ahk
 
 start Keys.ahk
 start Capslock.ahk
-start LWin.ahk
-start RAlt.ahk
 start RShift.ahk
-start RWin.ahk
 start AppsKey.ahk
+start LAlt.ahk
+start RAlt.ahk
+start LWin.ahk
+start RWin.ahk
 
 start Keyboard.ahk
 
@@ -30,11 +31,12 @@ echo  - Strat Software Success -
 echo  - Strat Loop     Success -
 echo  - Strat Windows  Success -
 echo  - Strat Keys     Success -
+echo  - Strat RShift   Success -
 echo  - Strat Capslock Success -
 echo  - Strat LWin     Success -
-echo  - Strat RAlt     Success -
-echo  - Strat RShift   Success -
 echo  - Strat RWin     Success -
+echo  - Strat LAlt     Success -
+echo  - Strat RAlt     Success -
 echo  - Strat AppsKey  Success -
 echo  - Strat Keyboard Success -
 

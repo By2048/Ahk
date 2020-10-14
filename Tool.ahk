@@ -1,4 +1,5 @@
 #include %A_ScriptDir%\Init.ahk
+#include %A_ScriptDir%\Private.ahk
 #include %A_ScriptDir%\Libs\Gdip_All.ahk
 
 
@@ -284,14 +285,17 @@ MoveWindowsMM(size)
 
 SetWindows(xx,yy,ww:=0,hh:=0,step:=False)
 {
-    WinGetPos, x, y, w, h, A 
+    WinGet, wid, ID, A
+    WinGetPos, x, y, w, h, ahk_id %wid%
     if (not ww) { 
         ww:=w
     }
     if (not hh) {
         hh:=h
     }
+    ; txt=%x% %y% | %w% %h% | %step%
     ; txt=%xx% %yy% | %ww% %hh% | %step%
+    ; HelpText(txt)
     if (Abs(xx-x)>3 or Abs(yy-y)>3 or Abs(ww-w)>3 or Abs(hh-h)>3) {
         if (step) {
            ; 不同分辨率屏幕之间移动窗口 分两次处理 （兼容）
@@ -315,4 +319,14 @@ GetImageSize(image)
     Gdip_Shutdown(GDIPToken)
     data:=[W,H]
     Return data
+}
+
+
+
+RunNormalUser(command)
+{
+    MsgBox, %PC_USER% | %PC_PWD%
+    RunAs, %PC_USER%, %PC_PWD%
+    Run %command%
+    RunAs
 }

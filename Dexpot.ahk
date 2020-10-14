@@ -34,14 +34,16 @@ if (not A_IsAdmin) {
 <#+d::#^!+d ; LWin Shift d -> Win Ctrl Alt Shift d
 
 ; 上一个桌面
-<#Tab::#^!+Tab ; LWin Tab -> LWin Ctrl Alt Shift Tab
+; <#CapsLock::#^!+CapsLock ; LWin Tab -> LWin Ctrl Alt Shift Capslock
 
 ; DexTab任务切换器
 ; Windown + `
 
-; 窗口目录（所有桌面）
-LCtrl & LWin::#^!+Esc
-LWin & LCtrl::#^!+Esc
+; 全屏预览
+LWin & LCtrl::#^!+F12
+
+; 窗口目录 
+LCtrl & LWin::#^!+F1
 
 ; 窗口透明度
 <#PgUp::<#^!+PgUp
