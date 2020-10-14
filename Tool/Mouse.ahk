@@ -1,5 +1,6 @@
 
 MouseMoveDC(right,down) {
+    CoordMode, Mouse, Screen
     MouseGetPos, x, y
     xx:=x+right
     yy:=y+down
@@ -12,6 +13,7 @@ MouseMoveDC(right,down) {
     }
     ; MouseMove, xx, yy, 0
     DllCall("SetCursorPos", "int", xx, "int", yy) ;多显示器环境中更好
+    SetCapsLockState, Off
 }
 
 
