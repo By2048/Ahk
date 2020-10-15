@@ -38,6 +38,3 @@ return
         WinHide ahk_class Shell_TrayWnd
     }
 return
-
-; PowerToy Run
-LWin & Space::#^!Space  

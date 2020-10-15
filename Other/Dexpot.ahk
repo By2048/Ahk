@@ -36,12 +36,19 @@ if (not A_IsAdmin) {
     SetCapsLockState, Off
 Return
 
-; 全屏预览
-LWin & LCtrl::#^!+F12
-
 ; 窗口目录 
 LWin & Alt::#^!+F1
 
+; 全屏预览
+LWin & LCtrl::#^!+F2
+
+
+;最小化到系统托盘
+<#Esc::#^!+Esc
+
+;DexTab任务切换器
+<#`::<#^!+`
+
 ; 窗口透明度
-<#PgUp::<#^!+PgUp
-<#PgDn::<#^!+PgDn
+<#PgUp::#^!+PgUp
+<#PgDn::#^!+PgDn

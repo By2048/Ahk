@@ -9,18 +9,6 @@ if (not A_IsAdmin) {
 
 
 
-MouseIsOver(WinTitle) {
-    MouseGetPos,,, Win
-    return WinExist(WinTitle . " ahk_id " . Win)
-}
-
-#if MouseIsOver("ahk_class Shell_TrayWnd")
-    WheelUp::Send {Volume_Up}
-    WheelDown::Send {Volume_Down}
-#if
-
-
-
 #x::Return ; 系统菜单
 #k::Return ; 打开“连接”快速操作.
 #m::Return ; 最小化所有窗口。
@@ -35,14 +23,15 @@ MouseIsOver(WinTitle) {
 #+s::return ;原生截图
 
 #t::Return  ;快速切换任务栏程序
-#+t::Return
+#+t::Return ;快速切换任务栏程序
 
 #^d::return ;创建虚拟桌面
 #^F4::return ;关闭当前虚拟桌面
 #^Left::return ;向左切换虚拟桌面
 #^Right::return ;向右切换虚拟桌面
+#,::Return ; 透明窗口显示桌面
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ^+Esc::Return ;任务管理器
 

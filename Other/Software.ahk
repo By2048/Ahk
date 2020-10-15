@@ -15,6 +15,17 @@ if (not A_IsAdmin) {
 
 
 
+MouseIsOver(WinTitle) {
+    MouseGetPos,,, Win
+    return WinExist(WinTitle . " ahk_id " . Win)
+}
+#if MouseIsOver("ahk_class Shell_TrayWnd")
+    WheelUp::Send {Volume_Up}
+    WheelDown::Send {Volume_Down}
+#if
+
+
+
 ; 软件内无法进行处理的在此进行处理
 #if WinActive("ahk_exe Code.exe")
 
@@ -25,6 +36,7 @@ if (not A_IsAdmin) {
     !v::Send, ^v ; 粘贴
     !z::Send, ^z ; 撤销
     !+z::Send ^+z ; 重做
+
     !BackSpace::Send, ^{BackSpace} ; 删除
 
 #if
@@ -84,22 +96,20 @@ if (not A_IsAdmin) {
         MouseMove x_origin, y_origin, 0
     Return
 
-    =::Send !=
-    -::Send !-
 
-    /::Send !/
     \::Send !\
+    p::Send !p
+    o::Send !o
 
     [::Send ![
     ]::Send !]
+    =::Send !=
+    -::Send !-
 
-    l::Send !l
-    m::Send !m
-
-    Up::Send !=
-    Down::Send !-
     Left::Send ![
     Right::Send !]
+    Up::Send !=
+    Down::Send !-
 
 #if
 

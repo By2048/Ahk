@@ -16,9 +16,24 @@ if (not A_IsAdmin) {
 
 
 
+; RWin 系统全局快捷键 (Ctrl Alt Shift)
+
+>#`;::Send ^!+; ;识图
+>#'::Send ^!+' ;翻译
+
+>#\::Send ^!+\ ;播放/暂停
+>#[::Send ^!+[ ;上一首
+>#]::Send ^!+] ;下一首
+>#=::Send ^!+= ;音量+
+>#-::Send ^!+- ;音量-
+>#o::Send ^!+o ;喜欢歌曲
+>#p::Send ^!+p ;歌词
+
+
+
+
 SetWinDelay, 1
 CoordMode, Mouse
-
 
 global windows_move:=False
 global windows_resize_big:=False
@@ -26,18 +41,6 @@ global windows_resize_small:=False
 
 
 
-; RWin 系统全局快捷键 (Ctrl Alt Shift)
-
-    >#o::Send ^!+o
-    
-    >#[::Send ^!+[
-    >#]::Send ^!+]
-    >#=::Send ^!+=
-    >#-::Send ^!+-
-    >#m::Send ^!+m
-    >#l::Send ^!+l
-    >#/::Send ^!+/
-    >#\::Send ^!+\
 
 
 RAlt & RWin::
@@ -46,12 +49,12 @@ RAlt & RWin::
     }
 return
 
-
 RWin & RAlt::
     if not WinActive("ahk_class WorkerW") {
         Send !{F4}
     }
 return
+
 
 
 $RWin::
@@ -97,6 +100,7 @@ timer:
     }
 
     if (cnt=1) {
+        Send #^!+{F11} ;Listary工具条
         cnt:=0
         return
     }

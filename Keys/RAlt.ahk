@@ -114,8 +114,12 @@ return
 
 
 timer:
-    if (cnt=1) {    
-        hide_key_help()
+    if (cnt=1) {   
+        if (keymap_show_status=True) {
+            hide_key_help()
+        } else {
+            Send #^!+{F12} ;Listary弹出式菜单
+        }
     } else if (cnt=2) {
         show_key_help()
     } else if (cnt=3) {
