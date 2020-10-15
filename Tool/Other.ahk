@@ -36,3 +36,21 @@ RunNormalUser(command)
     Run %command%
     RunAs
 }
+
+
+
+Screenshot()
+{
+    snipaste=D:\Snipaste\Snipaste.exe
+    path=R:\Screens
+    FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
+    file=%path%\%name%.png
+    x:=0
+    y:=0
+    w:=A_ScreenWidth
+    h:=A_ScreenHeight
+    cmd=%snipaste% snip --area %x% %y% %w% %h% -o %file%
+    Run %cmd%
+}
+
+

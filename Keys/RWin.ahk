@@ -97,7 +97,7 @@ timer:
     }
 
     if (cnt=1) {
-        cnt:=0
+        Screenshot()
         return
     }
 
