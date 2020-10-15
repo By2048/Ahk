@@ -98,6 +98,7 @@ timer:
 
     if (cnt=1) {
         Screenshot()
+        cnt:=0
         return
     }
 
@@ -128,8 +129,8 @@ timer:
         windows_resize_small:=True
         HelpText("Windows Resize Small")
     }
-    
     cnt:=0
+    
 return
 
 
