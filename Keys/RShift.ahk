@@ -74,8 +74,7 @@ get_image()
     }
 
     result:=result[hotkeys_index]
-    ; result=%A_WorkingDir%\Image\Hotkey\%result%
-    result=E:\Sync\Ahk\Image\Hotkey\%result%
+    result=%A_WorkingDir%\Image\Hotkey\%result%
     return result
 }
 

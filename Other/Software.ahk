@@ -57,11 +57,11 @@ if (not A_IsAdmin) {
         x_find:=0
         y_find:=0
         MouseGetPos, x_origin, y_origin
-        image:="E:\Sync\Ahk\Image\Software\CloudMusicCloseDetail.png"
+        image=%A_WorkingDir%\Image\Software\CloudMusicCloseDetail.png
         size:=GetImageSize(image)
         w:=size[1]
         h:=size[2]
-        ImageSearch, x_find, y_find, 0, 0, A_ScreenWidth, A_ScreenHeight, %image%
+        ImageSearch, x_find, y_find, 0, 0, A_ScreenWidth, A_ScreenHeight, *%w% *%h% *25 %image%
         if (x_find and y_find) {
             x_find:=x_find+w/2
             y_find:=y_find+h/2
