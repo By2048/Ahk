@@ -17,7 +17,11 @@ Loop {
 
     ; 文件选择窗口居中
     if WinActive("ahk_class #32770") {
-        MoveWindowsCenter()
+        WinGetPos, x, y, w, h, A 
+        result:=GetWindowsCenterPos()
+        xx:=result[1]
+        yy:=result[2]
+        SetWindows(xx,yy,w,h,False,70)
     }
 
     ; 文件复制移动窗口 (移动到屏幕3上部分)

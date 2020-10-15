@@ -40,5 +40,4 @@ return
 return
 
 ; PowerToy Run
-LWin & LAlt::#^!Space  
-LAlt & LWin::#^!Space
+LWin & Space::#^!Space  

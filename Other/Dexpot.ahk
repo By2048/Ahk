@@ -29,11 +29,18 @@ if (not A_IsAdmin) {
 <#+s::#^!+s ; LWin Shift s -> Win Ctrl Alt Shift s
 <#+d::#^!+d ; LWin Shift d -> Win Ctrl Alt Shift d
 
+
+; 上一个桌面
+<#CapsLock::
+    Send #^!+{CapsLock}
+    SetCapsLockState, Off
+Return
+
 ; 全屏预览
 LWin & LCtrl::#^!+F12
 
 ; 窗口目录 
-LCtrl & LWin::#^!+F1
+LWin & Alt::#^!+F1
 
 ; 窗口透明度
 <#PgUp::<#^!+PgUp
