@@ -56,12 +56,23 @@ if (not A_IsAdmin) {
         y_origin:=0
         x_find:=0
         y_find:=0
+
         MouseGetPos, x_origin, y_origin
+
         image=%A_WorkingDir%\Image\Software\CloudMusicCloseDetail.png
         size:=GetImageSize(image)
         w:=size[1]
         h:=size[2]
-        ImageSearch, x_find, y_find, 0, 0, A_ScreenWidth, A_ScreenHeight, *%w% *%h% *25 %image%
+
+        ; 将搜索区域设置为窗口右上方
+        WinGetPos, wx, wy, ww, wh, A
+        x1:=wx+ww/2
+        y1:=wy
+        x2:=x1+ww/2
+        y2:=y1+wh
+
+        ImageSearch, x_find, y_find, x1, y1, x2, y2, *%w% *%h% *20 %image%
+
         if (x_find and y_find) {
             x_find:=x_find+w/2
             y_find:=y_find+h/2
@@ -69,6 +80,7 @@ if (not A_IsAdmin) {
         } else {
             MouseClick, Left, 57, 1765, 1, 0
         }
+
         MouseMove x_origin, y_origin, 0
     Return
 
