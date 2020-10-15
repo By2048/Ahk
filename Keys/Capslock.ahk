@@ -78,18 +78,17 @@ timer:
     WinActivate, ahk_id %wid%
 
     ; 显示激活的窗口名
-    WinGet, name, ProcessName, A
-    name:=RTrim(name,"exe")
-    name:=RTrim(name,"EXE")
-    name:=RTrim(name,".")
-
-    if (cnt=1) {
-        HelpText(name,"center_down")
-    } else if (cnt=2) {
-        HelpText(name,"center_down","screen2")
-    }
-    Sleep, 500
-    HelpText()
+    ; WinGet, name, ProcessName, A
+    ; name:=RTrim(name,"exe")
+    ; name:=RTrim(name,"EXE")
+    ; name:=RTrim(name,".")
+    ; if (cnt=1) {
+    ;     HelpText(name,"center_down")
+    ; } else if (cnt=2) {
+    ;     HelpText(name,"center_down","screen2")
+    ; }
+    ; Sleep, 500
+    ; HelpText()
 
     cnt:=0
 return
