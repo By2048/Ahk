@@ -1,5 +1,6 @@
 #include %A_WorkingDir%\Libs\Gdip_All.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Other\Private.ahk
 
 #SingleInstance Force
@@ -39,17 +40,42 @@ RunNormalUser(command)
 
 
 
-Screenshot()
+Screenshot(screens:="screen1")
 {
+    if (screens="screen1") {
+        x:=screen_1_x
+        y:=screen_1_y
+        w:=screen_1_w
+        h:=screen_1_h
+    } else if (screens="screen2") {
+        x:=screen_2_x/screen_1_zoom
+        y:=screen_2_y/screen_1_zoom
+        w:=screen_2_w*screen_2_zoom/screen_1_zoom
+        h:=screen_2_h*screen_2_zoom/screen_1_zoom
+    } else if (screens="screen3") {
+        x:=screen_3_x/screen_1_zoom
+        y:=screen_3_y/screen_1_zoom
+        w:=screen_3_w*screen_3_zoom/screen_1_zoom
+        h:=screen_3_h*screen_3_zoom/screen_1_zoom
+    }
+
+    x:=Round(x)
+    y:=Round(y)
+    w:=Round(w)
+    h:=Round(h)
+
     snipaste=D:\Snipaste\Snipaste.exe
     path=R:\Screens
-    FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
+    screens:=StrReplace(screens,"screen")
+
+    FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss][%screens%]
     file=%path%\%name%.png
-    x:=0
-    y:=0
-    w:=A_ScreenWidth
-    h:=A_ScreenHeight
     cmd=%snipaste% snip --area %x% %y% %w% %h% -o %file%
+
+    ; Clipboard=%cmd%
+    ; txt=%x% %y% | %w% %h%
+    ; HelpText(txt)
+    
     Run %cmd%
 }
 
