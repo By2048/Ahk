@@ -39,9 +39,7 @@ show_pos()
 {
     MouseGetPos, xpos, ypos 
     data := xpos "|" ypos
-    HelpText(data,"center")
-    Sleep, 3000
-    HelpText()
+    HelpText(data,"center", ,3000)
 }
 
 

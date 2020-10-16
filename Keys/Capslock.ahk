@@ -80,13 +80,15 @@ timer:
     ; name:=RTrim(name,"exe")
     ; name:=RTrim(name,"EXE")
     ; name:=RTrim(name,".")
+    ; HelpText(name,"center_down", ,500)
     ; if (cnt=1) {
-    ;     HelpText(name,"center_down")
+    ;     HelpText(name,"center_down", ,500)
     ; } else if (cnt=2) {
-    ;     HelpText(name,"center_down","screen2")
+    ;     HelpText(name,"center_down","screen2",500)
+    ;     HelpText(name,"center_down",)
+    ; } else if (cnt=3) {
+    ;     HelpText(name,"center_down","screen3",500)
     ; }
-    ; Sleep, 500
-    ; HelpText()
 
     cnt:=0
 return

@@ -6,10 +6,7 @@ f12_mode()
 {
     global fxx
     fxx:=12
-    HelpText()
-    HelpText("F12")
-    Sleep, 1000
-    HelpText()
+    HelpText("F12", , ,1000)
 }
 
 
@@ -17,7 +14,6 @@ f12_mode()
 f24_mode()
 {
     global fxx
-    HelpText()
     HelpText("F24")
     fxx:=24
 }

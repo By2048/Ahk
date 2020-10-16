@@ -29,9 +29,7 @@ GetImageSize(image)
 RunNormalUser(command)
 {
     if (not PC_USER or not PC_PWD) {
-        HelpText(" PC_USER/PC_PWD -> (Other/Private.ahk) ")
-        Sleep, 3000
-        HelpText()
+        HelpText(" PC_USER/PC_PWD -> (Other/Private.ahk) ", , ,3000)
     }
     RunAs, %PC_USER%, %PC_PWD%
     Run %command%

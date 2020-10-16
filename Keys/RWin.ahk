@@ -41,28 +41,12 @@ global windows_resize_small:=False
 
 
 $RWin::
-
-
     if (not cnt) {
         cnt:=1
     } else {
         cnt++
     }
-
     SetTimer, timer, -1000
-return
-
-
-
-RWin & RAlt::
-    if not WinActive("ahk_class WorkerW") {
-        Send !{F4}
-    }
-return
-
-
-RWin & AppsKey::
-    MoveWindowsMM("main")
 return
 
 
@@ -79,8 +63,6 @@ return
     }
 Return
 
-
-
 >#.::
     if (IsDesktops()) {
         HelpText("Windows Desktop", , ,1000)
@@ -93,8 +75,6 @@ Return
     }
 Return
 
-
-
 >#/::
     if (IsDesktops()) {
         HelpText("Windows Desktop", , ,1000)
@@ -106,6 +86,14 @@ Return
         HelpText("Move Windows")
     }
 Return
+
+RWin & RAlt::
+    if not WinActive("ahk_class WorkerW") {
+        Send !{F4}
+    }
+return
+
+RWin & AppsKey::MoveWindowsMM("main")
 
 
 
@@ -134,10 +122,8 @@ timer:
         Send #^!+{F11} ;Listary工具
     }
     if (cnt=2) {
-        HelpText("Move To Center")
         MoveWindowsCenter()
-        Sleep, 1000
-        HelpText()
+        HelpText("Move To Center", , ,1000)
     } 
     cnt:=0
     

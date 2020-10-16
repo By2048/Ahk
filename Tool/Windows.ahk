@@ -172,7 +172,7 @@ MoveWindowsMM(size)
         hh:=0
 
         if (size="main") {
-            HelpText("Windows Main Size")
+            HelpText("Windows Main Size", , ,1000)
             if (in_screen_1) {
                 ww:=(screen_1_xx-screen_1_x)*5/6
                 hh:=(screen_1_yy-screen_1_y)*8/9
@@ -184,7 +184,7 @@ MoveWindowsMM(size)
                 hh:=(screen_3_yy-screen_3_y)*8/9
             }
         } else if (size="mini") {
-            HelpText("Windows Mini Size")
+            HelpText("Windows Mini Size", , ,1000)
             if (in_screen_1) {
                 ww:=(screen_1_xx-screen_1_x)*1/2
                 hh:=(screen_1_yy-screen_1_y)*2/3
@@ -209,10 +209,6 @@ MoveWindowsMM(size)
         }
 
         WinMove, ahk_id %w_id%, , %xx%, %yy%, %ww%, %hh%
-
-        Sleep 1000
-        HelpText()
-        Return
     }
 
 }
