@@ -40,7 +40,7 @@ Loop {
         SetWindows(xx,yy,ww,hh,True)
     }
     
-    if WinActive("ahk_exe cloudmusic.exe") {
+    if WinActive("ahk_exe cloudmusic.exe") and WinActive("ahk_class OrpheusBrowserHost") {
         ww:=(screen_1_xx-screen_1_x)*5/6
         hh:=(screen_1_yy-screen_1_y)*8/9
         xx:=screen_1_x+(screen_1_xx-screen_1_x)/2-ww/2

@@ -16,7 +16,7 @@ if (not A_IsAdmin) {
 
 
 MouseIsOver(WinTitle) {
-    MouseGetPos,,, Win
+    MouseGetPos,  ,  , Win
     return WinExist(WinTitle . " ahk_id " . Win)
 }
 #if MouseIsOver("ahk_class Shell_TrayWnd")
@@ -51,7 +51,7 @@ MouseIsOver(WinTitle) {
 
 
 
-#if WinActive("ahk_exe cloudmusic.exe")
+#if WinActive("ahk_exe cloudmusic.exe") and WinActive("ahk_class OrpheusBrowserHost")
 
     `::MouseClickAndResetting(53,1008)
     1::MouseClickAndResetting(52,1073)
@@ -178,13 +178,11 @@ MouseIsOver(WinTitle) {
 
 
 
-
 #if WinActive("ahk_class Listary_ServerWindow")
 
     RAlt::Send, {Esc}
 
 #if
-
 #if WinActive("ahk_class Listary_WidgetWin_0")
 
     RWin::Send, {Esc}
