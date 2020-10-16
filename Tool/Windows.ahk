@@ -50,6 +50,25 @@ GetWindowsCenterPos()
 }
 
 
+
+MoveWindows(direction)
+{
+    WinGet, w_id, ID, A
+    WinGetPos, x, y, w, h, ahk_id %w_id%
+    step:=10
+    if (direction="Up") {
+        y:=y-step
+    } else if (direction="Down") {
+        y:=y+step
+    } else if (direction="Left") {
+        x:=x-step
+    } else if (direction="Right") {
+        x:=x+step
+    }
+    WinMove, ahk_id %w_id%, , %x%, %y%
+}
+
+
 MoveWindowsCenter() 
 {
     If WinActive("ahk_class WorkerW") {
@@ -159,6 +178,45 @@ MoveWindowsMM(size)
 
 
 
+ResizeWindows(status,direction)
+{
+    WinGet, w_id, ID, A
+    WinGetPos, x, y, w, h, ahk_id %w_id%
+    step:=10
+    if (direction="Up") {
+        if (status="Big") { 
+            y:=y-step
+            h:=h+step
+        } else if (status="Small") {
+            y:=y+step
+            h:=h-step
+        }
+    } else if (direction="Down") {
+        if (status="Big") {
+            h:=h+step
+        } else if (status="Small") {
+            h:=h-step
+        }
+    } else if (direction="Left") {
+        if (status="Big") {
+            x:=x-step
+            w:=w+step
+        } else if (status="Small") {
+            x:=x+step
+            w:=w-step
+        }
+    } else if (direction="Right") {
+        if (status="Big") {
+            w:=w+step
+        } else if (status="Small") {
+            w:=w-step
+        }
+    }
+    WinMove, ahk_id %w_id%,  , %x%, %y%, %w%, %h%
+}
+
+
+
 ; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
 ; offset | 在一定误差内不进行窗口移动
 SetWindows(xx,yy,ww:=0,hh:=0,step:=False,offset:=3)
@@ -184,7 +242,4 @@ SetWindows(xx,yy,ww:=0,hh:=0,step:=False,offset:=3)
         }
     }
 }
-
-
-
 

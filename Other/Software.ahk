@@ -178,6 +178,21 @@ MouseIsOver(WinTitle) {
 
 
 
+
+#if WinActive("ahk_class Listary_ServerWindow")
+
+    RAlt::Send, {Esc}
+
+#if
+
+#if WinActive("ahk_class Listary_WidgetWin_0")
+
+    RWin::Send, {Esc}
+
+#if 
+
+
+
 ;;;;;;;;;;;;;;;;;;;;
 ; 软件/窗口 特殊位置 ;
 ;;;;;;;;;;;;;;;;;;;;

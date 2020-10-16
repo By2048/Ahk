@@ -46,9 +46,6 @@ AppsKey & RWin::
     MoveWindowsMM("mini")
 return
 
-RWin & AppsKey::
-    MoveWindowsMM("main")
-return
 
 
 

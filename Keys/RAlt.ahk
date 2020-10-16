@@ -1,8 +1,7 @@
 #include %A_WorkingDir%\Tool\Help.ahk
-#include %A_WorkingDir%\Tool\Init.ahk
-#include %A_WorkingDir%\Tool\Mouse.ahk
-#include %A_WorkingDir%\Tool\Other.ahk
-#include %A_WorkingDir%\Tool\Windows.ahk
+; #include %A_WorkingDir%\Tool\Mouse.ahk
+; #include %A_WorkingDir%\Tool\Other.ahk
+; #include %A_WorkingDir%\Tool\Windows.ahk
 
 #SingleInstance Force
 #NoTrayIcon
@@ -22,6 +21,19 @@ keymaps["Code.exe"]:=[]
 keymaps["Code.exe"].Push([[47,108],  "!F1"])
 keymaps["Code.exe"].Push([[47,316], "!F12"])
 
+
+ >!F1::Send {F13}
+ >!F2::Send {F14}
+ >!F3::Send {F15}
+ >!F4::Send {F16}
+ >!F5::Send {F17}
+ >!F6::Send {F18}
+ >!F7::Send {F19}
+ >!F8::Send {F20}
+ >!F9::Send {F21}
+>!F10::Send {F22}
+>!F11::Send {F23}
+>!F12::Send {F24}
 
 
 
@@ -108,7 +120,14 @@ $RAlt::
     } else {
         cnt+=1
     }
-    SetTimer, timer, -700
+    SetTimer, timer, -1000
+return
+
+
+RAlt & RWin::
+    if not WinActive("ahk_class WorkerW") {
+        Send ^w
+    }
 return
 
 
@@ -120,27 +139,15 @@ timer:
         } else {
             Send #^!+{F12} ;Listary弹出式菜单
         }
-    } else if (cnt=2) {
+    } 
+    if (cnt=2) {
         show_key_help()
-    } else if (cnt=3) {
+    }
+    if (cnt=3) {
         show_pos()
     }
     cnt:=0
 return
 
-
-
- >!F1::Send {F13}
- >!F2::Send {F14}
- >!F3::Send {F15}
- >!F4::Send {F16}
- >!F5::Send {F17}
- >!F6::Send {F18}
- >!F7::Send {F19}
- >!F8::Send {F20}
- >!F9::Send {F21}
->!F10::Send {F22}
->!F11::Send {F23}
->!F12::Send {F24}
 
 

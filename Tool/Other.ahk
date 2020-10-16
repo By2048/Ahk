@@ -80,3 +80,16 @@ Screenshot(screens:="screen1")
 }
 
 
+
+InDesktops()
+{
+    If WinActive("ahk_class WorkerW") {
+        HelpText("Windows Desktop")
+        Sleep 1000
+        HelpText()
+        Return
+    }
+}
+
+
+

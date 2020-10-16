@@ -29,9 +29,7 @@ if (not A_IsAdmin) {
 #^F4::return ;关闭当前虚拟桌面
 #^Left::return ;向左切换虚拟桌面
 #^Right::return ;向右切换虚拟桌面
-#,::Return ; 透明窗口显示桌面
+; #,::Return ; 透明窗口显示桌面
 
 
-
-^+Esc::Return ;任务管理器
 

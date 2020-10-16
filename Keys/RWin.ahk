@@ -31,29 +31,12 @@ if (not A_IsAdmin) {
 
 
 
-
 SetWinDelay, 1
 CoordMode, Mouse
 
 global windows_move:=False
 global windows_resize_big:=False
 global windows_resize_small:=False
-
-
-
-
-
-RAlt & RWin::
-    if not WinActive("ahk_class WorkerW") {
-        Send ^w
-    }
-return
-
-RWin & RAlt::
-    if not WinActive("ahk_class WorkerW") {
-        Send !{F4}
-    }
-return
 
 
 
@@ -83,6 +66,49 @@ $RWin::
 
     SetTimer, timer, -1000
 return
+
+
+
+RWin & RAlt::
+    if not WinActive("ahk_class WorkerW") {
+        Send !{F4}
+    }
+return
+
+
+RWin & AppsKey::
+    MoveWindowsMM("main")
+return
+
+
+
+>#,::
+    if (not WinActive("ahk_class WorkerW")){
+        global windows_resize_small
+        windows_resize_small:=True
+        HelpText("Windows Resize Small")
+    }
+Return
+
+
+
+>#.::
+    if (not WinActive("ahk_class WorkerW")) {
+        global windows_resize_big
+        windows_resize_big:=True
+        HelpText("Windows Resize Big")
+    }
+Return
+
+
+
+>#/::
+    if (not WinActive("ahk_class WorkerW")) {
+        global windows_move
+        windows_move:=True    
+        HelpText("Move Windows")
+    }
+Return
 
 
 
@@ -116,102 +142,37 @@ timer:
             return
         }
     }
-
     if (cnt=2) {
         HelpText("Move To Center")
         MoveWindowsCenter()
         Sleep, 1000
         HelpText()
-    } else if (cnt=3) {
-        windows_move:=True    
-        HelpText("Move Windows")
-    } else if (cnt=4) {
-        windows_resize_big:=True
-        HelpText("Windows Resize Big")
-    } else if (cnt=5) {
-        windows_resize_small:=True
-        HelpText("Windows Resize Small")
-    }
+    } 
     cnt:=0
     
 return
 
 
-MoveXXX(direction)
-{
-    WinGet, w_id, ID, A
-    WinGetPos, x, y, w, h, ahk_id %w_id%
-    step:=10
-    if (direction="Up") {
-        y:=y-step
-    } else if (direction="Down") {
-        y:=y+step
-    } else if (direction="Left") {
-        x:=x-step
-    } else if (direction="Right") {
-        x:=x+step
-    }
-    WinMove, ahk_id %w_id%, , %x%, %y%
-}
-
-
-ResizeXXX(status,direction)
-{
-    WinGet, w_id, ID, A
-    WinGetPos, x, y, w, h, ahk_id %w_id%
-    step:=10
-    if (direction="Up") {
-        if (status="Big") { 
-            y:=y-step
-            h:=h+step
-        } else if (status="Small") {
-            y:=y+step
-            h:=h-step
-        }
-    } else if (direction="Down") {
-        if (status="Big") {
-            h:=h+step
-        } else if (status="Small") {
-            h:=h-step
-        }
-    } else if (direction="Left") {
-        if (status="Big") {
-            x:=x-step
-            w:=w+step
-        } else if (status="Small") {
-            x:=x+step
-            w:=w-step
-        }
-    } else if (direction="Right") {
-        if (status="Big") {
-            w:=w+step
-        } else if (status="Small") {
-            w:=w-step
-        }
-    }
-    WinMove, ahk_id %w_id%,  , %x%, %y%, %w%, %h%
-}
-
 
 #if (windows_move=True)
-    Up::MoveXXX("Up")
-    Down::MoveXXX("Down")
-    Left::MoveXXX("Left")
-    Right::MoveXXX("Right")
+    Up::MoveWindows("Up")
+    Down::MoveWindows("Down")
+    Left::MoveWindows("Left")
+    Right::MoveWindows("Right")
 #if
 
 
 #if (windows_resize_big=True)
-    Up::ResizeXXX("Big","Up")
-    Down::ResizeXXX("Big","Down")
-    Left::ResizeXXX("Big","Left")
-    Right::ResizeXXX("Big","Right")
+    Up::ResizeWindows("Big","Up")
+    Down::ResizeWindows("Big","Down")
+    Left::ResizeWindows("Big","Left")
+    Right::ResizeWindows("Big","Right")
 #if
 
 
 #if (windows_resize_small=True)
-    Up::ResizeXXX("Small","Up")
-    Down::ResizeXXX("Small","Down")
-    Left::ResizeXXX("Small","Left")
-    Right::ResizeXXX("Small","Right")
+    Up::ResizeWindows("Small","Up")
+    Down::ResizeWindows("Small","Down")
+    Left::ResizeWindows("Small","Left")
+    Right::ResizeWindows("Small","Right")
 #if
