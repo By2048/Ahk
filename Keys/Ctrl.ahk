@@ -9,7 +9,7 @@ if (not A_IsAdmin) {
 
 
 
-^Esc::Return ;开始菜单
+ ^Esc::Return ;开始菜单
 ^+Esc::Return ;任务管理器
 
 

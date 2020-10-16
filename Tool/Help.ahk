@@ -28,7 +28,7 @@ HelpImage(image:="")
 
 
 
-HelpText(data:="",xy="right_down",screens="screen1")
+HelpText(data:="",xy:="right_down",screens:="screen1",sleep_time:=0)
 {   
     Progress, Off
 
@@ -82,7 +82,16 @@ HelpText(data:="",xy="right_down",screens="screen1")
 
     Progress, b fs19 zh0 x%x% y%y% w%w% h%h%, %data%,  , Courier New
     help_text_show_status:=True
+
+    if (sleep_time>0) {
+        Sleep, %sleep_time%
+        Progress, Off
+        help_text_show_status:=False
+    }
+
 }
+
+
 
 
 

@@ -15,8 +15,6 @@ if (not A_IsAdmin) {
 
 
 
-CoordMode, Mouse, Screen
-
 Capslock &  p::MouseMoveDC( 0, -9)
 Capslock & `;::MouseMoveDC( 0,  9)
 Capslock &  l::MouseMoveDC(-9,  0)
@@ -53,7 +51,6 @@ return
 
 
 timer:
-    CoordMode Mouse Screen
     if (cnt=1) {
         ; 屏幕1 中心
         Screenshot("screen1")
@@ -71,6 +68,7 @@ timer:
         y:=screen_3_y+(screen_3_yy-screen_3_y)/2
     }
 
+    CoordMode Mouse Screen
     DllCall("SetCursorPos", "int", x, "int", y)
 
     ; 激活鼠标下的窗口
@@ -92,4 +90,5 @@ timer:
 
     cnt:=0
 return
+
 

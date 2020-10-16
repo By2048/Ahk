@@ -40,12 +40,7 @@ AppsKey & V::RunNormalUser("D:\VSCode\Code.exe")
 AppsKey & M::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
 AppsKey & /::RunNormalUser("explorer.exe")
 
-
-
-AppsKey & RWin::
-    MoveWindowsMM("mini")
-return
-
+AppsKey & RWin::MoveWindowsMM("mini")
 
 
 
@@ -74,6 +69,5 @@ timer:
     }
     cnt:=0
 return
-
 
 

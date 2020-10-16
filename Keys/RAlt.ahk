@@ -1,7 +1,4 @@
 #include %A_WorkingDir%\Tool\Help.ahk
-; #include %A_WorkingDir%\Tool\Mouse.ahk
-; #include %A_WorkingDir%\Tool\Other.ahk
-; #include %A_WorkingDir%\Tool\Windows.ahk
 
 #SingleInstance Force
 #NoTrayIcon
@@ -20,6 +17,7 @@ global keymap_show_status:=False
 keymaps["Code.exe"]:=[]
 keymaps["Code.exe"].Push([[47,108],  "!F1"])
 keymaps["Code.exe"].Push([[47,316], "!F12"])
+
 
 
  >!F1::Send {F13}

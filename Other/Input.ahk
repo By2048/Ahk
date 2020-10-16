@@ -17,3 +17,8 @@ Return
     FormatTime, result,  , yyyy-dd-MM H:mm
     SendInput %result%
 Return
+
+::/jqb/::
+    result:=Clipboard
+    SendInput, %result%
+Return

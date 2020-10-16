@@ -10,6 +10,28 @@ if (not A_IsAdmin) {
 
 
 
+
+IsDesktops()
+{
+    If WinActive("ahk_class WorkerW") {
+        Return True
+    }
+    Return False
+}
+
+IsMaxWindows()
+{
+    WinGet, w_id, ID, A
+    WinGet, w_status, MinMax, ahk_id %w_id%
+    if (w_status) {
+        return True
+    }
+    Return False
+}
+
+
+
+
 GetWindowsCenterPos()
 {
     result:=[-1,-1]
@@ -52,7 +74,19 @@ GetWindowsCenterPos()
 
 
 MoveWindows(direction)
-{
+{    
+    if (IsDesktops()) {
+        HelpText("Windows Desktop", , ,1000)
+        Return
+    }
+    If (IsMaxWindows()) {
+        HelpText("Max Screen Return", , , 1000)
+        Return
+    }
+
+    SetWinDelay, 1
+    CoordMode, Mouse
+
     WinGet, w_id, ID, A
     WinGetPos, x, y, w, h, ahk_id %w_id%
     step:=10
@@ -71,10 +105,12 @@ MoveWindows(direction)
 
 MoveWindowsCenter() 
 {
-    If WinActive("ahk_class WorkerW") {
-        HelpText("Windows Desktop")
-        Sleep 1000
-        HelpText()
+    if (IsDesktops()) {
+        HelpText("Windows Desktop", , ,1000)
+        Return
+    }
+    If (IsMaxWindows()) {
+        HelpText("Max Screen Return", , , 1000)
         Return
     }
 
@@ -96,12 +132,17 @@ MoveWindowsCenter()
 
 MoveWindowsMM(size)
 {   
-    If WinActive("ahk_class WorkerW") {
-        HelpText("Windows Desktop")
-        Sleep 1000
-        HelpText()
+    if (IsDesktops()) {
+        HelpText("Windows Desktop", , ,1000)
         Return
     }
+    If (IsMaxWindows()) {
+        HelpText("Max Screen Return", , , 1000)
+        Return
+    }
+
+    SetWinDelay, 1
+    CoordMode, Mouse
 
     x:=0
     y:=0
@@ -180,8 +221,21 @@ MoveWindowsMM(size)
 
 ResizeWindows(status,direction)
 {
+    if (IsDesktops()) {
+        HelpText("Windows Desktop", , ,1000)
+        Return
+    }
+    If (IsMaxWindows()) {
+        HelpText("Max Screen Return", , , 1000)
+        Return
+    }
+
+    SetWinDelay, 1
+    CoordMode, Mouse
+
     WinGet, w_id, ID, A
     WinGetPos, x, y, w, h, ahk_id %w_id%
+
     step:=10
     if (direction="Up") {
         if (status="Big") { 
@@ -221,6 +275,15 @@ ResizeWindows(status,direction)
 ; offset | 在一定误差内不进行窗口移动
 SetWindows(xx,yy,ww:=0,hh:=0,step:=False,offset:=3)
 {
+    if (IsDesktops()) {
+        HelpText("Windows Desktop", , ,1000)
+        Return
+    }
+    If (IsMaxWindows()) {
+        HelpText("Max Screen Return", , , 1000)
+        Return
+    }
+
     WinGet, wid, ID, A
     WinGetPos, x, y, w, h, ahk_id %wid%
     if (not ww) { 

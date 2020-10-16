@@ -1,4 +1,3 @@
-#include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk
@@ -18,9 +17,11 @@ if (not A_IsAdmin) {
 
 ; RWin 系统全局快捷键 (Ctrl Alt Shift)
 
+; TIM
 >#`;::Send ^!+; ;识图
 >#'::Send ^!+' ;翻译
 
+; CloudMusic
 >#\::Send ^!+\ ;播放/暂停
 >#[::Send ^!+[ ;上一首
 >#]::Send ^!+] ;下一首
@@ -31,8 +32,7 @@ if (not A_IsAdmin) {
 
 
 
-SetWinDelay, 1
-CoordMode, Mouse
+
 
 global windows_move:=False
 global windows_resize_big:=False
@@ -41,22 +41,7 @@ global windows_resize_small:=False
 
 
 $RWin::
-    global windows_move
-    global windows_resize_big
-    global windows_resize_small
 
-    if (windows_move=True) {
-        windows_move:=False
-        HelpText()
-    }
-    if (windows_resize_big=True) {
-        windows_resize_big:=False
-        HelpText()
-    }
-    if (windows_resize_small=True) {
-        windows_resize_small:=False
-        HelpText()    
-    }
 
     if (not cnt) {
         cnt:=1
@@ -83,7 +68,11 @@ return
 
 
 >#,::
-    if (not WinActive("ahk_class WorkerW")){
+    if (IsDesktops()) {
+        HelpText("Windows Desktop", , ,1000)
+    } else If (IsMaxWindows()) {
+        HelpText("Max Screen Return", , , 1000)
+    } else {
         global windows_resize_small
         windows_resize_small:=True
         HelpText("Windows Resize Small")
@@ -93,7 +82,11 @@ Return
 
 
 >#.::
-    if (not WinActive("ahk_class WorkerW")) {
+    if (IsDesktops()) {
+        HelpText("Windows Desktop", , ,1000)
+    } else If (IsMaxWindows()) {
+        HelpText("Max Screen Return", , , 1000)
+    } else {
         global windows_resize_big
         windows_resize_big:=True
         HelpText("Windows Resize Big")
@@ -103,7 +96,11 @@ Return
 
 
 >#/::
-    if (not WinActive("ahk_class WorkerW")) {
+    if (IsDesktops()) {
+        HelpText("Windows Desktop", , ,1000)
+    } else If (IsMaxWindows()) {
+        HelpText("Max Screen Return", , , 1000)
+    } else {
         global windows_move
         windows_move:=True    
         HelpText("Move Windows")
@@ -117,30 +114,24 @@ timer:
     global windows_resize_big
     global windows_resize_small
 
-    ; 桌面不处理
-    If WinActive("ahk_class WorkerW") {
-        HelpText("Windows Desktop")
-        Sleep 1000
+    if (windows_move=True) {
+        windows_move:=False
         HelpText()
+        Return
+    }
+    if (windows_resize_big=True) {
+        windows_resize_big:=False
+        HelpText()
+        Return
+    }
+    if (windows_resize_small=True) {
+        windows_resize_small:=False
+        HelpText()    
         Return
     }
 
     if (cnt=1) {
-        Send #^!+{F11} ;Listary工具条
-        cnt:=0
-        return
-    }
-
-    ; 软件全屏不处理
-    if (cnt>1) {
-        WinGet, w_id, ID, A
-        WinGet, w_status, MinMax, ahk_id %w_id%
-        if (w_status) {
-            HelpText("Max Screen Return")
-            Sleep, 1000
-            HelpText()
-            return
-        }
+        Send #^!+{F11} ;Listary工具
     }
     if (cnt=2) {
         HelpText("Move To Center")
