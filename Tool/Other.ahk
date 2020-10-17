@@ -68,4 +68,11 @@ Screenshot(screens:="screen1")
 
 
 
+show_pos()
+{
+    MouseGetPos, xpos, ypos 
+    data := xpos "|" ypos
+    HelpText(data,"center", ,3000)
+}
+
 
