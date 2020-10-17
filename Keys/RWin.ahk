@@ -123,7 +123,6 @@ timer:
     }
     if (cnt=2) {
         MoveWindowsCenter()
-        HelpText("Move To Center", , ,1000)
     } 
     cnt:=0
     

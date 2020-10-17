@@ -130,18 +130,15 @@ return
 
 timer:
     if (cnt=1) {   
-        if (keymap_show_status=True) {
-            hide_key_help()
-        } else {
-            Send #^!+{F12} ;Listary弹出式菜单
-        }
+        hide_key_help()
     } 
     if (cnt=2) {
         show_key_help()
     }
-    if (cnt=3) {
-        show_pos()
-    }
+    ; if (cnt=3) {
+        ; Send #^!+{F12} ;Listary弹出式菜单
+        ; show_pos()
+    ; }
     cnt:=0
 return
 

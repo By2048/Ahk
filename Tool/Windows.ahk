@@ -126,6 +126,9 @@ MoveWindowsCenter()
     }
 
     WinMove, ahk_id %w_id%, , %xx%, %yy%
+
+    HelpText("Move To Center", , ,1000)
+
 }
 
 
