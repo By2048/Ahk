@@ -9,7 +9,23 @@ if (not A_IsAdmin) {
 
 
 
-<#Tab::AltTab
+LWin & Tab:: 
+    win_tab:=true
+    If (GetKeyState("Shift","P")) {
+        Send {Alt Down}{Shift Down}{Tab}
+    } else {
+        Send {Alt Down}{Tab}
+    }
+return
+
+#If (win_tab)
+    ~*LWin Up::
+        Send {Shift Up}{Alt Up}
+        win_tab:=false 
+    return
+#If
+
+
 
 <#=::Send {Volume_Up}
 <#-::Send {Volume_Down}

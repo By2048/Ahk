@@ -15,6 +15,16 @@ WinMaximize, ahk_id %active_id%
 MsgBox, The active window's ID is "%active_id%".
 
 
+LCtrl & Tab::AltTab
+Shift::ShiftAltTab
+
+
+
+<#Tab::AltTab
+
+
+
+
 ~RWin::
 $RWin::
     if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<300)
