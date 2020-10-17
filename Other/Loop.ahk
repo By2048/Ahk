@@ -15,7 +15,7 @@ if (not A_IsAdmin) {
 
 Loop {
 
-    ; ÎÄ¼şÑ¡Ôñ´°¿Ú¾ÓÖĞ
+    ; æ–‡ä»¶é€‰æ‹©çª—å£å±…ä¸­
     if WinActive("ahk_class #32770") {
         WinGetPos, x, y, w, h, A 
         result:=GetWindowsCenterPos()
@@ -24,7 +24,7 @@ Loop {
         SetWindows(xx,yy,w,h,False,70)
     }
 
-    ; ÎÄ¼ş¸´ÖÆÒÆ¶¯´°¿Ú (ÒÆ¶¯µ½ÆÁÄ»3ÉÏ²¿·Ö)
+    ; æ–‡ä»¶å¤åˆ¶ç§»åŠ¨çª—å£ (ç§»åŠ¨åˆ°å±å¹•3ä¸Šéƒ¨åˆ†)
     if WinActive("ahk_exe explorer.exe") and WinActive("ahk_class OperationStatusWindow") {
         WinGetPos, x, y, w, h, A 
         xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
@@ -51,7 +51,7 @@ Loop {
     ; if WinActive("ahk_exe happ.exe") {
         ; WinGetTitle, title, A
         ; HelpText(title, , ,1000)
-        ; if (title="ÍË³ö´°") {
+        ; if (title="é€€å‡ºçª—") {
             ; image=%A_WorkingDir%\Image\Software\Happ_Exit.png
             ; HelpText(image)
             ; MouseClickImage(image)

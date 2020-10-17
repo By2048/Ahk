@@ -39,8 +39,8 @@ HelpText(data:="",xy:="right_down",screens:="screen1",sleep_time:=0)
         Return
     } 
     
-    ;窗体宽度（与字体大小长度样式相关
-    ; 15 设置字符宽度 
+    ;绐椾綋瀹藉害锛堜笌瀛椾綋澶у皬闀垮害鏍峰紡鐩稿叧
+    ; 15 璁剧疆瀛楃瀹藉害 
     ; 2 DPI
     w:=StrLen(data)*15*2
     h:=63

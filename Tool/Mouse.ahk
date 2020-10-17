@@ -34,7 +34,7 @@ MouseMoveDC(xright,ydown) {
     xx:=x+xright
     yy:=y+ydown
 
-    ; ¶à·Ö±æÂÊ²»Í¬µÄÆÁÄ»Ö®¼äÒÆ¶¯Êó±ê ½øÐÐ¼æÈÝ´¦Àí
+    ; å¤šåˆ†è¾¨çŽ‡ä¸åŒçš„å±å¹•ä¹‹é—´ç§»åŠ¨é¼ æ ‡ è¿›è¡Œå…¼å®¹å¤„ç†
     if (x>=0) and (xx<=0) {
         yy:=yy+screen_2_y
     }
@@ -42,7 +42,7 @@ MouseMoveDC(xright,ydown) {
         yy:=yy-screen_2_y
     }
     ; MouseMove, xx, yy, 0
-    DllCall("SetCursorPos", "int", xx, "int", yy) ;¶àÏÔÊ¾Æ÷»·¾³ÖÐ¸üºÃ
+    DllCall("SetCursorPos", "int", xx, "int", yy) ;å¤šæ˜¾ç¤ºå™¨çŽ¯å¢ƒä¸­æ›´å¥½
     SetCapsLockState, Off
 }
 

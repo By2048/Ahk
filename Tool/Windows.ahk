@@ -44,7 +44,7 @@ GetWindowsCenterPos()
 
     WinGetPos, x, y, w, h, A
     
-    ; ÅĞ¶Ï´°¿ÚÖ÷ÌåÔÚÄÇ¸öÆÁÄ»
+    ; åˆ¤æ–­çª—å£ä¸»ä½“åœ¨é‚£ä¸ªå±å¹•
     in_screen_1:=False
     in_screen_2:=False
     in_screen_3:=False
@@ -159,7 +159,7 @@ MoveWindowsMM(size)
     WinGet, w_id, ID, A
     WinGetPos, x, y, w, h, ahk_id %w_id%
 
-    ; ÅĞ¶Ï´°¿ÚÖ÷ÌåÔÚÄÇ¸öÆÁÄ»
+    ; åˆ¤æ–­çª—å£ä¸»ä½“åœ¨é‚£ä¸ªå±å¹•
     in_screen_1:=False
     in_screen_2:=False
     in_screen_3:=False
@@ -277,8 +277,8 @@ ResizeWindows(status,direction)
 
 
 
-; step   | ²»Í¬·Ö±æÂÊÆÁÄ»Ö®¼äÒÆ¶¯´°¿Ú ·ÖÁ½´Î´¦Àí ÏÈÎ»ÖÃ ºó´óĞ¡
-; offset | ÔÚÒ»¶¨Îó²îÄÚ²»½øĞĞ´°¿ÚÒÆ¶¯
+; step   | ä¸åŒåˆ†è¾¨ç‡å±å¹•ä¹‹é—´ç§»åŠ¨çª—å£ åˆ†ä¸¤æ¬¡å¤„ç† å…ˆä½ç½® åå¤§å°
+; offset | åœ¨ä¸€å®šè¯¯å·®å†…ä¸è¿›è¡Œçª—å£ç§»åŠ¨
 SetWindows(xx,yy,ww:=0,hh:=0,step:=False,offset:=3)
 {
     if (IsDesktops()) {

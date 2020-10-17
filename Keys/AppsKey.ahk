@@ -1,4 +1,4 @@
-﻿#Include %A_WorkingDir%\Other\Keyboard.ahk
+#Include %A_WorkingDir%\Other\Keyboard.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 #include %A_WorkingDir%\Libs\TrayIcon.ahk
@@ -77,12 +77,3 @@ timer:
     }
     cnt:=0
 return
-
-
-
-
-F11::
-
-    Menu, Tray, Icon
-
-Return

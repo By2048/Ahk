@@ -9,7 +9,7 @@ if (not A_IsAdmin) {
 
 
 
- ^Esc::Return ;¿ªÊ¼²Ëµ¥
-^+Esc::Return ;ÈÎÎñ¹ÜÀíÆ÷
+ ^Esc::Return ;å¼€å§‹èœå•
+^+Esc::Return ;ä»»åŠ¡ç®¡ç†å™¨
 
 

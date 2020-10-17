@@ -24,18 +24,18 @@ MouseIsOver(WinTitle) {
 
 
 
-; Èí¼şÄÚÎŞ·¨½øĞĞ´¦ÀíµÄÔÚ´Ë½øĞĞ´¦Àí
+; è½¯ä»¶å†…æ— æ³•è¿›è¡Œå¤„ç†çš„åœ¨æ­¤è¿›è¡Œå¤„ç†
 #if WinActive("ahk_exe Code.exe")
 
-    >!m::Send, !VM ;ÏÔÊ¾ÃÔÄãµØÍ¼
+    >!m::Send, !VM ;æ˜¾ç¤ºè¿·ä½ åœ°å›¾
 
-    !x::Send, ^x ; ¼ôÇĞ
-    !c::Send, ^c ; ¿½±´
-    !v::Send, ^v ; Õ³Ìù
-    !z::Send, ^z ; ³·Ïú
-    !+z::Send ^+z ; ÖØ×ö
+    !x::Send, ^x ; å‰ªåˆ‡
+    !c::Send, ^c ; æ‹·è´
+    !v::Send, ^v ; ç²˜è´´
+    !z::Send, ^z ; æ’¤é”€
+    !+z::Send ^+z ; é‡åš
 
-    !BackSpace::Send, ^{BackSpace} ; É¾³ı
+    !BackSpace::Send, ^{BackSpace} ; åˆ é™¤
 
 #if
 
@@ -74,7 +74,7 @@ MouseIsOver(WinTitle) {
         w:=size[1]
         h:=size[2]
 
-        ; ½«ËÑË÷ÇøÓòÉèÖÃÎª´°¿ÚÓÒÉÏ·½
+        ; å°†æœç´¢åŒºåŸŸè®¾ç½®ä¸ºçª—å£å³ä¸Šæ–¹
         WinGetPos, wx, wy, ww, wh, A
         x1:=wx+ww/2
         y1:=wy
@@ -115,10 +115,10 @@ MouseIsOver(WinTitle) {
 
 #if WinActive("ahk_exe chrome.exe")
 
-    >!y::MouseClickImage("E:\Sync\Ahk\Image\Chrome\YÓéÀÖ.png")
-    >!z::MouseClickImage("E:\Sync\Ahk\Image\Chrome\Z×ÊÔ´.png")
-    >!w::MouseClickImage("E:\Sync\Ahk\Image\Chrome\WÎÄµµ.png")
-    >!n::MouseClickImage("E:\Sync\Ahk\Image\Chrome\N×ÊÑ¶.png")
+    >!y::MouseClickImage("E:\Sync\Ahk\Image\Chrome\Yå¨±ä¹.png")
+    >!z::MouseClickImage("E:\Sync\Ahk\Image\Chrome\Zèµ„æº.png")
+    >!w::MouseClickImage("E:\Sync\Ahk\Image\Chrome\Wæ–‡æ¡£.png")
+    >!n::MouseClickImage("E:\Sync\Ahk\Image\Chrome\Nèµ„è®¯.png")
 
 #if
 
@@ -126,7 +126,7 @@ MouseIsOver(WinTitle) {
 
 #if WinActive("ahk_exe wps.exe")
 
-    >![:: ;ÎŞ¿òÏß
+    >![:: ;æ— æ¡†çº¿
         MouseGetPos, x_origin, y_origin
         MouseClick, left, 536, 118, 1, 0
         CoordMode Mouse Window
@@ -135,7 +135,7 @@ MouseIsOver(WinTitle) {
         MouseMove x_origin, y_origin, 0
     Return
 
-    >!]:: ;´Ö¿òÏß
+    >!]:: ;ç²—æ¡†çº¿
         MouseGetPos, x_origin, y_origin
         CoordMode Mouse Window
         MouseClick, left, 536, 118, 1, 0
@@ -150,7 +150,7 @@ MouseIsOver(WinTitle) {
 
 #if WinActive("ahk_exe FSViewer.exe")
 
-    \:: ;ÒÆ¶¯µ½ÊÕ²Ø
+    \:: ;ç§»åŠ¨åˆ°æ”¶è—
         Send m
         Sleep 100
         Send 1
@@ -158,7 +158,7 @@ MouseIsOver(WinTitle) {
         Run D:\Python\_python_\Scripts\pythonw.exe E:\Git\_python_\_script_\_image_rename_.py
     Return
 
-    /:: ;É¾³ı
+    /:: ;åˆ é™¤
         Send {Delete}
         Sleep 100
         Send {Enter}

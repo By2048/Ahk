@@ -9,10 +9,10 @@ if (not A_IsAdmin) {
 
 
 
-global hotkeys:={} ; ¿ì½İ¼üÍ¼Æ¬¼¯ºÏ
-global hotkeys_show_status:=False ; µ±Ç°ÊÇ·ñÏÔÊ¾Í¼Æ¬
-global hotkeys_index:=1 ; µ±Ç°ÏÔÊ¾Í¼Æ¬µÄĞòºÅ
-global hotkeys_total:=1 ; µ±Ç°Õ¹Ê¾Í¼Æ¬×éµÄÊıÁ¿
+global hotkeys:={} ; å¿«æ·é”®å›¾ç‰‡é›†åˆ
+global hotkeys_show_status:=False ; å½“å‰æ˜¯å¦æ˜¾ç¤ºå›¾ç‰‡
+global hotkeys_index:=1 ; å½“å‰æ˜¾ç¤ºå›¾ç‰‡çš„åºå·
+global hotkeys_total:=1 ; å½“å‰å±•ç¤ºå›¾ç‰‡ç»„çš„æ•°é‡
 
 hotkeys["default"]:=["Windows.png","Windows-1.png"]
 hotkeys["Windows"]:=hotkeys["default"]
@@ -45,7 +45,7 @@ hotkeys["Title_Chrome_Bilibili"]:=["Chrome-Bilibili.png"]
 
 
 
-; ¿ì½İ¼ü°ïÖú »ñÈ¡ĞèÒªÕ¹Ê¾µÄÍ¼Æ¬
+; å¿«æ·é”®å¸®åŠ© è·å–éœ€è¦å±•ç¤ºçš„å›¾ç‰‡
 get_image() 
 {
     global hotkeys
@@ -54,14 +54,14 @@ get_image()
 
     result:=hotkeys["default"]
 
-    ; ÓÅÏÈ¸ù¾İÓ¦ÓÃÃû½øĞĞ²éÕÒ
+    ; ä¼˜å…ˆæ ¹æ®åº”ç”¨åè¿›è¡ŒæŸ¥æ‰¾
     for exe, image in hotkeys {
         if WinActive("ahk_exe"+exe) {
             result:=image
         }
     }
 
-    ; ¸ù¾İÓ¦ÓÃÏÔÊ¾µÄ±êÌâ½øĞĞ²éÕÒ
+    ; æ ¹æ®åº”ç”¨æ˜¾ç¤ºçš„æ ‡é¢˜è¿›è¡ŒæŸ¥æ‰¾
     WinGetTitle, title, A
     if WinActive("ahk_exe chrome.exe") and InStr(Title,"bilibili") {
         result:=hotkeys["Title_Chrome_Bilibili"]
@@ -100,9 +100,9 @@ show_image()
         Progress, b fs15 zh0 x%x% y%y% w%w%, %hotkeys_index%/%hotkeys_total%
     }
 
-    ; ÏÔÊ¾ºó¶îÍâ²Ù×÷
+    ; æ˜¾ç¤ºåé¢å¤–æ“ä½œ
     If WinActive("ahk_exe pycharm64.exe") {
-        Send, {Esc} ;¹Ø±ÕÒòË«»÷Shift´ò¿ªµÄ¿ìËÙËÑË÷½çÃæ
+        Send, {Esc} ;å…³é—­å› åŒå‡»Shiftæ‰“å¼€çš„å¿«é€Ÿæœç´¢ç•Œé¢
     }
 }
 
@@ -121,13 +121,13 @@ hide_image()
     hotkeys_total:=1
 
     If WinActive("ahk_exe pycharm64.exe") {
-        Send, {Esc} ;¹Ø±ÕÒòË«»÷Shift´ò¿ªµÄ¿ìËÙËÑË÷½çÃæ
+        Send, {Esc} ;å…³é—­å› åŒå‡»Shiftæ‰“å¼€çš„å¿«é€Ÿæœç´¢ç•Œé¢
     }
 }
 
 
 
-; Õ¹Ê¾Í¼Æ¬ÇĞ»»ÉÏÒ»¸öÏÂÒ»¸ö
+; å±•ç¤ºå›¾ç‰‡åˆ‡æ¢ä¸Šä¸€ä¸ªä¸‹ä¸€ä¸ª
 change(np:="")
 {
     global hotkeys

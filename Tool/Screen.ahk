@@ -13,8 +13,8 @@ global screen_count := screen_count+0
 
 
 
-; ahk 屏幕从左到右 [2][3][1]
-; 实际系统设置 [2][1][3]
+; ahk 灞忓箷浠庡乏鍒板彸 [2][3][1]
+; 瀹為檯绯荤粺璁剧疆 [2][1][3]
 SysGet, Mon1, Monitor, 3
 SysGet, Mon2, Monitor, 1
 SysGet, Mon3, Monitor, 2

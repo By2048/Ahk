@@ -13,7 +13,7 @@ if (not A_IsAdmin) {
 
 
 
-; ÖØÆôËùÓĞ½Å±¾
+; é‡å¯æ‰€æœ‰è„šæœ¬
 LWin & RWin::
 RWin & LWin::
     DefaultProgress()

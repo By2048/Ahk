@@ -1,6 +1,6 @@
-; �������� Dextop ��ݼ�����չ 
-; ���ֿ�ݼ���Winϵͳ��ͻ���޷�ͨ����������ʵ��
-; �ڴ˴����м��ݴ���
+; 虚拟桌面 Dextop 快捷键按拓展 
+; 部分快捷键与Win系统冲突，无法通过软件定义实现
+; 在此处进行兼容处理
 
 #SingleInstance Force
 #NoTrayIcon
@@ -9,7 +9,7 @@ if (not A_IsAdmin) {
     Run *RunAs "%A_ScriptFullPath%"
 }
 
-; �л�����
+; 切换桌面
 <#1::#^!1
 <#2::#^!2
 <#3::#^!3
@@ -20,7 +20,7 @@ if (not A_IsAdmin) {
 <#s::#^!s
 <#d::#^!d
 
-; �ƶ�����
+; 移动桌面
 <#+1::#^!+1
 <#+2::#^!+2
 <#+3::#^!+3
@@ -31,24 +31,24 @@ if (not A_IsAdmin) {
 <#+s::#^!+s
 <#+d::#^!+d
 
-; ��һ������
+; 上一个桌面
 <#CapsLock::
     Send #^!+{CapsLock}
     SetCapsLockState, Off
 Return
 
-; ����Ŀ¼ 
+; 窗口目录 
 LWin & LAlt::#^!+F1
 
-; ȫ��Ԥ��
+; 全屏预览
 LWin & LCtrl::#^!+F2
 
-;��С����ϵͳ����
+;最小化到系统托盘
 <#Esc::#^!+Esc
 
-;DexTab�����л���
+;DexTab任务切换器
 <#`::<#^!+`
 
-; ����͸����
+; 窗口透明度
 <#PgUp::#^!+PgUp
 <#PgDn::#^!+PgDn
