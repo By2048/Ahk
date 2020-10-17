@@ -1,9 +1,6 @@
-﻿#include %A_WorkingDir%\Tool\Screen.ahk
-#include %A_WorkingDir%\Tool\Help.ahk
+﻿#Include %A_WorkingDir%\Other\Keyboard.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
-#Include %A_WorkingDir%\Other\Keyboard.ahk
-#Include %A_WorkingDir%\Other\Private.ahk
 #include %A_WorkingDir%\Libs\TrayIcon.ahk
 
 #SingleInstance Force
@@ -40,7 +37,7 @@ AppsKey & S::RunNormalUser("D:\Everything\Everything.exe")
 AppsKey & F::RunNormalUser("D:\Firefox\firefox.exe")
 AppsKey & G::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
 AppsKey & J::RunNormalUser("calc.exe")
-AppsKey & K::show_keyboard()
+AppsKey & K::Keyboard()
 AppsKey & [::RunNormalUser("D:\VSCode\Code.exe E:\Git\Notes\")
 AppsKey & ]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
 
@@ -51,6 +48,7 @@ AppsKey & M::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
 AppsKey & /::RunNormalUser("explorer.exe")
 
 AppsKey & RWin::MoveWindowsMM("mini")
+
 
 
 
@@ -81,3 +79,10 @@ timer:
 return
 
 
+
+
+F11::
+
+    Menu, Tray, Icon
+
+Return
