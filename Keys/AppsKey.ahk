@@ -4,6 +4,7 @@
 #include %A_WorkingDir%\Tool\Windows.ahk
 #Include %A_WorkingDir%\Other\Keyboard.ahk
 #Include %A_WorkingDir%\Other\Private.ahk
+#include %A_WorkingDir%\Libs\TrayIcon.ahk
 
 #SingleInstance Force
 #NoTrayIcon
@@ -23,6 +24,15 @@ AppsKey & F2::Run E:\Sync\Script\Dexpot_清理.bat
 AppsKey & `::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
 
 AppsKey & Q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
+AppsKey & W::RunNormalUser("D:\WeChat\WeChat.exe")
+AppsKey & T::
+    Process, Exist, TIM.exe
+    if (ErrorLevel) {
+        TrayIcon_Button("TIM.exe", "L")
+    } else {
+        RunNormalUser("D:\TIM\Bin\QQScLauncher.exe")
+    }
+Return
 AppsKey & P::RunNormalUser("wt.exe") 
 
 AppsKey & A::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
