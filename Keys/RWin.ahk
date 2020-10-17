@@ -30,7 +30,7 @@ if (not A_IsAdmin) {
 >#o::Send ^!+o ;喜欢歌曲
 >#p::Send ^!+p ;歌词
 
-
+>#b::Return
 
 
 
