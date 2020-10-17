@@ -21,6 +21,7 @@ DefaultProgress()
 
 PrintConfig()
 {
+    screen_count:=0
     SysGet, screen_count, MonitorCount
  
     title = 
@@ -28,10 +29,9 @@ PrintConfig()
     title = %title% Ahk Config
     title = %title% ---------------------------
 
+    content = 
     content = ScreenCount=%screen_count% `n`n
-
     content = %content% A_WorkingDir=%A_WorkingDir% `n`n
-
     content = %content% Snipaste=D:\Snipaste\Snipaste.exe `n
     content = %content% Screens=R:\Screens `n  
     

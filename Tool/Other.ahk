@@ -1,27 +1,13 @@
-#include %A_WorkingDir%\Libs\Gdip_All.ahk
-#include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
+#include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Other\Private.ahk
 
 #SingleInstance Force
 
 
+
 if (not A_IsAdmin) {
     Run *RunAs "%A_ScriptFullPath%"
-}
-
-
-
-GetImageSize(image)
-{
-    GDIPToken:=Gdip_Startup()
-    pBM:=Gdip_CreateBitmapFromFile(image)
-    W:=Gdip_GetImageWidth(pBM)
-    H:=Gdip_GetImageHeight(pBM)   
-    Gdip_DisposeImage(pBM)
-    Gdip_Shutdown(GDIPToken)
-    data:=[W,H]
-    Return data
 }
 
 
@@ -62,11 +48,14 @@ Screenshot(screens:="screen1")
     w:=Round(w)
     h:=Round(h)
 
-    snipaste=D:\Snipaste\Snipaste.exe
-    path=R:\Screens
-    screens:=StrReplace(screens,"screen")
+    snipaste:="D:\Snipaste\Snipaste.exe"
+    path:="R:\Screens"
+    screens_name:=StrReplace(screens,"screen")
+    name:=""
+    file:=""
+    cmd:=""
 
-    FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss][%screens%]
+    FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss][%screens_name%]
     file=%path%\%name%.png
     cmd=%snipaste% snip --area %x% %y% %w% %h% -o %file%
 
@@ -76,6 +65,7 @@ Screenshot(screens:="screen1")
     
     Run %cmd%
 }
+
 
 
 

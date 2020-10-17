@@ -1,4 +1,4 @@
-#include %A_WorkingDir%\Tool\Init.ahk
+#SingleInstance Force
 
 
 
@@ -7,13 +7,10 @@ global help_image_show_status:=False
 
 
 
-
-
-
 HelpImage(image:="")
 {    
     global help_image_show_status
-    if (help_image_show_status=True) and (image) {
+    if (help_image_show_status) and (image) {
         Return
     }
     if (not image) {
@@ -34,6 +31,8 @@ HelpText(data:="",xy:="right_down",screens:="screen1",sleep_time:=0)
 
     CoordMode Pixel Screen
     CoordMode Mouse Screen
+
+    global help_text_show_status
     
     if (not data) {
         help_text_show_status:=False

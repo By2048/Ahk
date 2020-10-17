@@ -19,6 +19,8 @@ IsDesktops()
     Return False
 }
 
+
+
 IsMaxWindows()
 {
     WinGet, w_id, ID, A
@@ -35,6 +37,7 @@ IsMaxWindows()
 GetWindowsCenterPos()
 {
     result:=[-1,-1]
+
     If WinActive("ahk_class WorkerW") {
         Return result
     }
@@ -68,6 +71,7 @@ GetWindowsCenterPos()
         yy:=screen_3_y+(screen_3_yy-screen_3_y)/2-h/2
     }
     result:=[xx,yy]
+    
     Return result
 }
 

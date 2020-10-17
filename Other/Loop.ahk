@@ -1,6 +1,6 @@
-#include %A_WorkingDir%\Tool\Screen.ahk
-#include %A_WorkingDir%\Tool\Help.ahk
+; #Include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
+
 
 #SingleInstance Force
 #NoTrayIcon
@@ -48,8 +48,17 @@ Loop {
         SetWindows(xx,yy,ww,hh)
     }
 
+    ; if WinActive("ahk_exe happ.exe") {
+        ; WinGetTitle, title, A
+        ; HelpText(title, , ,1000)
+        ; if (title="ÍË³ö´°") {
+            ; image=%A_WorkingDir%\Image\Software\Happ_Exit.png
+            ; HelpText(image)
+            ; MouseClickImage(image)
+        ; }
+    ; }
+
+
     Sleep, 1000
 
 }
-
-

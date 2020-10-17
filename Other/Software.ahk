@@ -1,12 +1,10 @@
 #include %A_WorkingDir%\Tool\Help.ahk
-#include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 
 #SingleInstance Force
 #NoTrayIcon
-
 
 
 if (not A_IsAdmin) {
@@ -71,7 +69,7 @@ MouseIsOver(WinTitle) {
 
         MouseGetPos, x_origin, y_origin
 
-        image=%A_WorkingDir%\Image\Software\CloudMusicCloseDetail.png
+        image=%A_WorkingDir%\Image\Software\CloudMusic_CloseDetail.png
         size:=GetImageSize(image)
         w:=size[1]
         h:=size[2]
@@ -188,3 +186,6 @@ MouseIsOver(WinTitle) {
     RWin::Send, {Esc}
 
 #if 
+
+
+
