@@ -74,7 +74,7 @@ timer:
         }
     }
     if (cnt=2) {
-        path=%A_WorkingDir%\Image\Hotkey\AppsKey.png
+        path=%A_WorkingDir%\Image\AppsKey.png
         HelpImage(path)
     }
     cnt:=0
