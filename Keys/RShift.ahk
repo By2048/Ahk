@@ -18,22 +18,31 @@ global hotkeys_total:=1 ; 当前展示图片组的数量
     
                 hotkeys["default"]:=["Windows.png","Windows-1.png"]
                 hotkeys["Windows"]:=hotkeys["default"]
+
                hotkeys["Code.exe"]:=["VSCode.png","VSCode-1.png"]
                  hotkeys["VSCode"]:=hotkeys["Code.exe"]
+
              hotkeys["Xshell.exe"]:=["XShell.png"]
                  hotkeys["XShell"]:=hotkeys["Xshell.exe"]
+
              hotkeys["SumatraPDF"]:=["SumatraPDF.png"]
          hotkeys["SumatraPDF.exe"]:=hotkeys["SumatraPDF"]
+
           hotkeys["pycharm64.exe"]:=["PyCharm.png","PyCharm-1.png"]
                 hotkeys["PyCharm"]:=hotkeys["pycharm64.exe"]
+
            hotkeys["QuiteRSS.exe"]:=["QuiteRSS.png"]
                hotkeys["QuiteRSS"]:=hotkeys["QuiteRSS.exe"]
+
              hotkeys["chrome.exe"]:=["Chrome.png","Chrome-1.png"]
                  hotkeys["Chrome"]:=hotkeys["chrome.exe"]
+
     hotkeys["PotPlayerMini64.exe"]:=["PotPlayer.png"]
               hotkeys["PotPlayer"]:=hotkeys["PotPlayerMini64.exe"]
+
          hotkeys["cloudmusic.exe"]:=["CloudMusic.png"]
              hotkeys["CloudMusic"]:=hotkeys["cloudmusic.exe"]
+
   hotkeys["Title_Chrome_Bilibili"]:=["Chrome-Bilibili.png"]
 
 
