@@ -1,3 +1,5 @@
+#include %A_WorkingDir%\Tool\Screen.ahk
+
 #SingleInstance Force
 
 
@@ -20,7 +22,6 @@ HelpImage(image:="")
         SplashImage, %image%, B1
         help_image_show_status:=True
     }
-
 }
 
 

@@ -100,13 +100,15 @@ show_image()
 
     hotkeys_show_status:=True
 
-    ; 页面索引（1/2）
+    ; 页面索引（1/2）h:=h/2
     if (hotkeys_total>1) {
-        w:=100
-        h:=50    
-        x:=A_ScreenWidth/2-w/2
+        w:=200
+        h:=62
+        x:=A_ScreenWidth/2-w
         y:=A_ScreenHeight-h-5
-        Progress, b fs15 zh0 x%x% y%y% w%w%, %hotkeys_index%/%hotkeys_total%
+        w:=w/2
+        h:=h/2
+        Progress, b fs19 zh0 x%x% y%y% w%w% h%h%, %hotkeys_index%/%hotkeys_total%
     }
 
     ; 显示后额外操作
