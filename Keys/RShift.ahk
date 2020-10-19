@@ -48,7 +48,6 @@ hotkeys["Title_Chrome_Bilibili"]:=["Chrome-Bilibili.png"]
 ; 快捷键帮助 获取需要展示的图片
 get_image() 
 {
-    global hotkeys
     global hotkeys_index
     global hotkeys_total
 
@@ -85,13 +84,12 @@ get_image()
 show_image()
 {
     global hotkeys_show_status
-    global hotkeys_index
-    global hotkeys_total
 
     image:=get_image()
     SplashImage, %image%, B1
     hotkeys_show_status:=True
 
+    ; 1/2 页面索引
     if (hotkeys_total>1) {
         w:=100
         h:=50    
@@ -116,6 +114,7 @@ hide_image()
 
     SplashImage, Off
     Progress, Off
+
     hotkeys_show_status:=False
     hotkeys_index:=1 
     hotkeys_total:=1
@@ -130,20 +129,18 @@ hide_image()
 ; 展示图片切换上一个下一个
 change(np:="")
 {
-    global hotkeys
     global hotkeys_index
-    global hotkeys_total
-    global hotkeys_show_status
 
     if (hotkeys_total=1) {
         return
     }
+
     if (np="next") {
         hotkeys_index:=hotkeys_index+1
-    }
-    if (np="privious") {
+    } else if (np="privious") {
         hotkeys_index:=hotkeys_index-1
     }
+
     show_image()
 }
 
