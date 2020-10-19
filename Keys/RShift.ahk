@@ -1,3 +1,5 @@
+#include %A_WorkingDir%\Libs\Image.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 
@@ -86,7 +88,16 @@ show_image()
     global hotkeys_show_status
 
     image:=get_image()
-    SplashImage, %image%, B1
+    
+    size:=GetImageSize(image)
+    w:=size[1]
+    h:=size[2]
+    x:=A_ScreenWidth/2-w/2
+    y:=A_ScreenHeight/2-h/2
+    
+    SplashImage, %image%, X%x% Y%y% H%h% W%w% B1   ;  全屏幕居中
+    ; SplashImage, %image%, B1  ; 去除任务栏屏幕居中
+
     hotkeys_show_status:=True
 
     ; 1/2 页面索引

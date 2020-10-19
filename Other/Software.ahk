@@ -96,8 +96,6 @@ MouseIsOver(WinTitle) {
 
 
     \::Send !\
-    p::Send !p
-    o::Send !o
 
     [::Send ![
     ]::Send !]
