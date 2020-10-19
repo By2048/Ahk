@@ -100,7 +100,7 @@ show_image()
 
     hotkeys_show_status:=True
 
-    ; 1/2 页面索引
+    ; 页面索引（1/2）
     if (hotkeys_total>1) {
         w:=100
         h:=50    

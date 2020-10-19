@@ -1,6 +1,6 @@
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
-#include %A_WorkingDir%\Libs\Gdip_All.ahk
+#include %A_WorkingDir%\Libs\Image.ahk
 
 #SingleInstance Force
 
@@ -8,20 +8,6 @@
 
 if (not A_IsAdmin) {
     Run *RunAs "%A_ScriptFullPath%"
-}
-
-
-
-GetImageSize(image)
-{
-    token:=Gdip_Startup()
-    bit_file:=Gdip_CreateBitmapFromFile(image)
-    image_w:=Gdip_GetImageWidth(bit_file)
-    image_h:=Gdip_GetImageHeight(bit_file)
-    Gdip_DisposeImage(bit_file)
-    Gdip_Shutdown(token)
-    result:=[image_w,image_h]
-    Return result
 }
 
 
