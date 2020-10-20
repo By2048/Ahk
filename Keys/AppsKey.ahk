@@ -42,6 +42,7 @@ AppsKey & [::RunNormalUser("D:\VSCode\Code.exe E:\Git\Notes\")
 AppsKey & ]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
 
 AppsKey & Z::RunNormalUser("explorer.exe ::{645FF040-5081-101B-9F08-00AA002F954E}")
+AppsKey & X::RunNormalUser("D:\Xshell\Xshell.exe")
 AppsKey & C::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
 AppsKey & V::RunNormalUser("D:\VSCode\Code.exe")
 AppsKey & M::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
