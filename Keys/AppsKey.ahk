@@ -15,8 +15,8 @@ if (not A_IsAdmin) {
 
 
 AppsKey & Esc::Run taskmgr.exe ;任务管理器
-AppsKey & F1::Run E:\Sync\Script\Dexpot_启动.bat
-AppsKey & F2::Run E:\Sync\Script\Dexpot_清理.bat
+AppsKey & F1::Run %A_WorkingDir%\Scripts\Dexpot_Start.bat
+AppsKey & F2::Run %A_WorkingDir%\Scripts\Dexpot_Clean.bat
 
 AppsKey & `::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
 
@@ -32,7 +32,7 @@ AppsKey & T::
 Return
 AppsKey & P::RunNormalUser("wt.exe") 
 
-AppsKey & A::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
+AppsKey & A::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe1
 AppsKey & S::RunNormalUser("D:\Everything\Everything.exe")
 AppsKey & F::RunNormalUser("D:\Firefox\firefox.exe")
 AppsKey & G::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
