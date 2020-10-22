@@ -17,7 +17,7 @@ if (not A_IsAdmin) {
 AppsKey & Esc::Run taskmgr.exe ;任务管理器
 AppsKey & F1::Run %A_WorkingDir%\Scripts\Dexpot_Start.bat
 AppsKey & F2::Run %A_WorkingDir%\Scripts\Dexpot_Clean.bat
-AppsKey & F3::Run %A_WorkingDir%\Scripts\Restart_Explorer.bat
+AppsKey & F5::Run %A_WorkingDir%\Scripts\Restart_Explorer.bat
 
 AppsKey & `::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
 
