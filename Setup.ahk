@@ -25,7 +25,7 @@ Return
 ; 暂停脚本
 RWin & LWin::
     Run .\Setup.bat stop, ,Hide
-    txt:="`n Close All Scripts `n"
+    txt:="`n Close All Script `n"
     Progress, b fs19 zh0 , %txt% ,  , Courier New
     Sleep, 1000
     Progress, Off
