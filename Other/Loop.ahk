@@ -1,3 +1,4 @@
+#include %A_WorkingDir%\Other\Base.ahk
 ; #Include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 

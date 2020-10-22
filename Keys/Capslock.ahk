@@ -1,3 +1,4 @@
+#include %A_WorkingDir%\Other\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk

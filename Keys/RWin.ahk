@@ -1,3 +1,4 @@
+#include %A_WorkingDir%\Other\Base.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk
@@ -118,9 +119,9 @@ timer:
         Return
     }
 
-    if (cnt=1) {
-        Send #^!+{F11} ;Listary工具
-    }
+    ; if (cnt=1) {
+        ; Send #^!+{F11} ;Listary工具
+    ; }
     if (cnt=2) {
         MoveWindowsCenter()
     } 

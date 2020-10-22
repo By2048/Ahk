@@ -1,3 +1,5 @@
+#include %A_WorkingDir%\Other\Base.ahk
+
 ; 虚拟桌面 Dextop 快捷键按拓展 
 ; 部分快捷键与Win系统冲突，无法通过软件定义实现
 ; 在此处进行兼容处理

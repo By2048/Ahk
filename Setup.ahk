@@ -15,10 +15,17 @@ if (not A_IsAdmin) {
 
 ; 重启所有脚本
 LWin & RWin::
-RWin & LWin::
     DefaultProgress()
     PrintConfig()
-    Run .\Setup.bat, ,Hide
+    Run .\Setup.bat start, ,Hide
+Return
+
+
+
+; 暂停脚本
+RWin & LWin::
+    DefaultProgress() 
+    Run .\Setup.bat stop, ,Hide
 Return
 
 

@@ -1,5 +1,7 @@
+#include %A_WorkingDir%\Other\Base.ahk
 #SingleInstance Force
 #NoTrayIcon
+
 
 
 if (not A_IsAdmin) {

@@ -1,0 +1,17 @@
+D:\AutoHotkey\AutoHotkey.exe .\Keys\All.ahk          /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Keys\AppsKey.ahk      /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Keys\Capslock.ahk     /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Keys\Ctrl.ahk         /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Keys\LAlt.ahk         /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Keys\LWin.ahk         /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Keys\RAlt.ahk         /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Keys\RShift.ahk       /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Keys\RWin.ahk         /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Keys\Win.ahk          /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Other\Dexpot.ahk      /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Other\Input.ahk       /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Other\Keyboard.ahk    /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Other\Loop.ahk        /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Other\Software.ahk    /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Other\Private.ahk     /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Test.ahk              /f /r stop
