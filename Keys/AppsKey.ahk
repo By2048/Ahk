@@ -32,7 +32,7 @@ AppsKey & T::
 Return
 AppsKey & P::RunNormalUser("wt.exe") 
 
-AppsKey & A::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe1
+AppsKey & A::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 AppsKey & S::RunNormalUser("D:\Everything\Everything.exe")
 AppsKey & F::RunNormalUser("D:\Firefox\firefox.exe")
 AppsKey & G::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
