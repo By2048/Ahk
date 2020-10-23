@@ -24,6 +24,13 @@ Shift::ShiftAltTab
 
 
 
+    content .= "`n"
+    content .= Format("{1} | {2:-25}`n", "Snipaste", "D:\Snipaste\Snipaste.exe")
+    content .= Format("{1} | {2:-25}`n", "Screens", "R:\Screens")
+    content := StrReplace(content," ","  ")
+
+    content := StrReplace(content," ","  ")
+
 
 ~RWin::
 $RWin::
