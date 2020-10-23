@@ -13,8 +13,12 @@ global screen_count := screen_count+0
 
 
 
-; ahk 屏幕从左到右 [2][3][1]
 ; 实际系统设置 [2][1][3]
+global TRUE_SCREENS := [2, 1, 3]
+
+; ahk 屏幕从左到右 [2][3][1]
+global AHK_SCREENS := [3, 1, 2]
+
 SysGet, Mon1, Monitor, 3
 SysGet, Mon2, Monitor, 1
 SysGet, Mon3, Monitor, 2
