@@ -191,6 +191,7 @@ MouseIsOver(WinTitle) {
 
 
 #if WinActive("ahk_exe NemuPlayer.exe")
-    `::Send, {LButton 4}
+    Space::Send, {LButton 4}
+    `::Send, {LButton}
 #if
 

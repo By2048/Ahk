@@ -72,7 +72,19 @@ WinGetPos, x, y, w, h, ahk_id %wid%
 WinGetPos, x, y, w, h, A 
 
 
+; 简单替换
+s .= Format("{2}, {1}!`r`n", "World", "Hello")
+; 填充空格
+s .= Format("|{:-10}|`r`n|{:10}|`r`n", "Left", "Right")
+; 十六进制
+s .= Format("{1:#x} {2:X} 0x{3:x}`r`n", 3735928559, 195948557, 0)
+; 浮点数
+s .= Format("{1:0.3f} {1:.10f}", 4*ATan(1))
 
+ListVars  ; 用 AutoHotkey 的主窗口显示等宽文本.
+WinWaitActive ahk_class AutoHotkey
+ControlSetText Edit1, %s%
+WinWaitClose
 
 
 
