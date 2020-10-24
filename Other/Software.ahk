@@ -115,10 +115,10 @@ MouseIsOver(WinTitle) {
 
 #if WinActive("ahk_exe chrome.exe")
 
-    >!y::MouseClickImage("E:\Sync\Ahk\Image\Chrome\Y娱乐.png")
-    >!z::MouseClickImage("E:\Sync\Ahk\Image\Chrome\Z资源.png")
-    >!w::MouseClickImage("E:\Sync\Ahk\Image\Chrome\W文档.png")
-    >!n::MouseClickImage("E:\Sync\Ahk\Image\Chrome\N资讯.png")
+    >!y::MouseClickImage("E:\Sync\Ahk\Image\Software\Y.png")
+    >!z::MouseClickImage("E:\Sync\Ahk\Image\Software\Z.png")
+    >!w::MouseClickImage("E:\Sync\Ahk\Image\Software\W.png")
+    >!n::MouseClickImage("E:\Sync\Ahk\Image\Software\N.png")
 
 #if
 

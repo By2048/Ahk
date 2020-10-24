@@ -48,8 +48,7 @@ return
 
 timer:
     if (cnt=1) {
-    } 
-    if (cnt=2) {
+    } else if (cnt=2) {
     }
     cnt:=0
 return

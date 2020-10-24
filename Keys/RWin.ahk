@@ -107,26 +107,20 @@ timer:
         windows_move:=False
         HelpText()
         Return
-    }
-    if (windows_resize_big=True) {
+    } else if (windows_resize_big=True) {
         windows_resize_big:=False
         HelpText()
         Return
-    }
-    if (windows_resize_small=True) {
+    } else if (windows_resize_small=True) {
         windows_resize_small:=False
         HelpText()    
         Return
     }
-
-    ; if (cnt=1) {
-        ; Send #^!+{F11} ;Listary工具
-    ; }
+    
     if (cnt=2) {
         MoveWindowsCenter()
     } 
     cnt:=0
-    
 return
 
 

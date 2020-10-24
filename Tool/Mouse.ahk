@@ -44,10 +44,10 @@ MouseClickAndResetting(x,y)
 
 
 
-MouseClickImage(image)
+MouseClickImage(image,trans:="")
 {
-    CoordMode Pixel Window
-    CoordMode Mouse Window
+    CoordMode, Pixel, Screen
+    CoordMode, Mouse, Screen
     
     x_origin:=0
     y_origin:=0
@@ -67,7 +67,11 @@ MouseClickImage(image)
     x_find:=0
     y_find:=0
     
-    ImageSearch, x_find, y_find, x1, y1, x2, y2, *30 %image%
+    if (trans) {
+        ImageSearch, x_find, y_find, x1, y1, x2, y2, *Trans%trans%  *30 %image%
+    } else {
+        ImageSearch, x_find, y_find, x1, y1, x2, y2, *30 %image%
+    }
 
     if (x_find and y_find) {
         x_find:=x_find+w/2
