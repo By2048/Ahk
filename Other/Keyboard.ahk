@@ -51,6 +51,14 @@ keyboard_line(data)
 Keyboard()
 {
     global keyboard_show_status
+
+    global keyboard_x
+    global keyboard_y
+    global keyboard_h
+
+    keyboard_x := 10
+    keyboard_y := 4
+    keyboard_h := 30
     
     if (keyboard_show_status=False) {
         keyboard_show_status:=True
