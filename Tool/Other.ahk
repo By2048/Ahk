@@ -59,10 +59,6 @@ Screenshot(screens:="screen1")
     file=%path%\%name%.png
     cmd=%snipaste% snip --area %x% %y% %w% %h% -o %file%
 
-    ; Clipboard=%cmd%
-    ; txt=%x% %y% | %w% %h%
-    ; HelpText(txt)
-    
     Run %cmd%
 }
 

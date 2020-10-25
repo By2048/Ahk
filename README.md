@@ -24,11 +24,18 @@
 
 
 ## 运行环境
-| 配置项            | 作用                   | 备注                           |
-|-------------------|------------------------|--------------------------------|
-| AutoHotkey.exe    | 脚本运行               | 1.xx.xx.xx                     |
-| Snipaste.exe      | 屏幕截图               | 2.x                            |
-| Other/Private.ahk | 以非管理员权限启动应用 | PC_USER / PC_PWD [示例](#示例) |
+| 配置项                      | 作用                   | 备注                            |
+|-----------------------------|------------------------|---------------------------------|
+| AutoHotkey.exe              | 脚本运行               | 1.xx.xx.xx                      |
+| Tool/Other.ahk/Screenshot() | 屏幕截图               | 2.x [示例](#注意1)              |
+| Other/Private.ahk           | 以非管理员权限启动应用 | PC_USER / PC_PWD [示例](#注意2) |
+
+
+## 启动运行
+在 `Setup.ahk` 脚本所在目录,运行 `Setup.ahk`
+`LWin & RWin` 重启脚本 
+`RWin & LWin` 暂停脚本
+
 
 
 ## 系统信息
@@ -41,7 +48,13 @@
 ![](https://github.com/By2048/Ahk/raw/master/Image/Appskey.png)
 
 
-## 示例
+### 注意1
+![](https://github.com/By2048/Ahk/raw/master/Image/Other.ahk.png)
+
+
+### 注意2
 ![](https://github.com/By2048/Ahk/raw/master/Image/Private.ahk.png)
 
 
+## 其他
+- 暂未进行单屏、多屏优化
