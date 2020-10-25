@@ -49,10 +49,14 @@ return
 return
 
 ; 显示隐藏任务栏
-<#0:: 
+<#8:: 
     if !WinExist("ahk_class Shell_TrayWnd") {
         WinShow ahk_class Shell_TrayWnd
     } else {
         WinHide ahk_class Shell_TrayWnd
     }
 return
+
+; 调节显示器亮度 (Twinkle Tray)
+<#9::Send #^!(
+<#0::Send #^!)
