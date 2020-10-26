@@ -98,7 +98,7 @@ return
 
 RWin & AppsKey::MoveWindowsMM("main")
 
-RWin & RShift::PrintConfig(1000*60*3)
+RWin & RShift::PrintConfig(1000*60*1)
 
 
 timer:
