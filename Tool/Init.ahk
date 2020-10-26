@@ -52,7 +52,7 @@ PrintConfig(sleep_time:=1000)
     title = %title% Ahk Config
     title = %title% ---
 
-    content := ""
+    content := "`n"
     content .= Format("{1} | {2} `n", " A_WorkingDir", A_WorkingDir)
     content .= "`n`n"
     content .= Format("{1} | {2} `n", "  ScreenCount", screen_count)

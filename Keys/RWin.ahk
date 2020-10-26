@@ -1,5 +1,6 @@
 #include %A_WorkingDir%\Other\Base.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
+#include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
@@ -88,6 +89,7 @@ Return
     }
 Return
 
+
 RWin & RAlt::
     if not WinActive("ahk_class WorkerW") {
         Send !{F4}
@@ -96,6 +98,7 @@ return
 
 RWin & AppsKey::MoveWindowsMM("main")
 
+RWin & RShift::PrintConfig(1000*60*3)
 
 
 timer:
