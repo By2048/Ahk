@@ -96,7 +96,7 @@ RWin & RAlt::
     }
 return
 
-RWin & AppsKey::MoveWindowsMM("main")
+RWin & RCtrl::MoveWindowsMM("main")
 
 RWin & RShift::PrintConfig(1000*60*1)
 

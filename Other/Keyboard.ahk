@@ -23,6 +23,7 @@ global keyboard_line_3  := [["Tab",1.5],["Q"],["W"],["E"],["R"],["T"],["Y"],["U"
 global keyboard_line_4  := [["CapsLock",1.75],["A"],["S"],["D"],["F"],["G"],["H"],["J"],["K"],["L"],[":`n;"],["""`n'"],["Enter",2.25],["Page`nDown"]]
 global keyboard_line_5  := [["Shift",2.25],["Z"],["X"],["C"],["V"],["B"],["N"],["M"],["<`n,"],[">`n."],["?`n/"],["Shift",1.75],["Up"],["End"]]
 global keyboard_line_6  := [["Ctrl",1.25],["Win",1.25],["Alt",1.25],["Space",5.5],["Alt",1.25],["Fn",1.25],["Ctrl",1.25],["Left"],["Down"],["Right"]]
+global keyboard_line_66 := [["Ctrl",1.25],["Win",1.25],["Alt",1.25],["Space",5.5],["Alt",1.25],["Win",1.25],["Ctrl",1.25],["Left"],["Down"],["Right"]]
 
 
 
@@ -72,7 +73,8 @@ Keyboard()
         keyboard_line(keyboard_line_3)
         keyboard_line(keyboard_line_4)
         keyboard_line(keyboard_line_5)
-        keyboard_line(keyboard_line_6)
+        ; keyboard_line(keyboard_line_6)
+        keyboard_line(keyboard_line_66)
         
         Gui, Show
 

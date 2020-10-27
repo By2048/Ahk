@@ -49,7 +49,7 @@ PrintConfig(sleep_time:=1000)
  
     title = 
     title = %title% ---
-    title = %title% Ahk Config
+    title = %title% Ahk Config (%sleep_time%)
     title = %title% ---
 
     content := "`n"

@@ -1,5 +1,5 @@
 D:\AutoHotkey\AutoHotkey.exe .\Keys\All.ahk          /f /r stop
-D:\AutoHotkey\AutoHotkey.exe .\Keys\AppsKey.ahk      /f /r stop
+D:\AutoHotkey\AutoHotkey.exe .\Keys\RCtrl.ahk        /f /r stop
 D:\AutoHotkey\AutoHotkey.exe .\Keys\Capslock.ahk     /f /r stop
 D:\AutoHotkey\AutoHotkey.exe .\Keys\Ctrl.ahk         /f /r stop
 D:\AutoHotkey\AutoHotkey.exe .\Keys\LAlt.ahk         /f /r stop

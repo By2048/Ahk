@@ -13,7 +13,7 @@ if "%command%"=="" (
 
 if "%command%"=="stop" (
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\All.ahk        /f /r  stop
-    start D:\AutoHotkey\AutoHotkey.exe .\Keys\AppsKey.ahk    /f /r  stop
+    start D:\AutoHotkey\AutoHotkey.exe .\Keys\RCtrl.ahk      /f /r  stop
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\Capslock.ahk   /f /r  stop
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\Ctrl.ahk       /f /r  stop
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\LAlt.ahk       /f /r  stop
@@ -29,7 +29,7 @@ if "%command%"=="stop" (
     start D:\AutoHotkey\AutoHotkey.exe .\Other\Software.ahk  /f /r  stop
     echo.
     echo stop .\Keys\All.ahk
-    echo stop .\Keys\AppsKey.ahk
+    echo stop .\Keys\RCtrl.ahk
     echo stop .\Keys\Capslock.ahk
     echo stop .\Keys\Ctrl.ahk
     echo stop .\Keys\LAlt.ahk
@@ -54,7 +54,7 @@ if "%command%"=="stop" (
 if "%command%"=="start" (
     start D:\AutoHotkey\AutoHotkey.exe .\Setup.ahk           /f /r
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\All.ahk        /f /r
-    start D:\AutoHotkey\AutoHotkey.exe .\Keys\AppsKey.ahk    /f /r
+    start D:\AutoHotkey\AutoHotkey.exe .\Keys\RCtrl.ahk      /f /r
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\Capslock.ahk   /f /r
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\Ctrl.ahk       /f /r
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\LAlt.ahk       /f /r
@@ -71,7 +71,7 @@ if "%command%"=="start" (
     echo.
     echo start .\Setup.ahk
     echo start .\Keys\All.ahk
-    echo start .\Keys\AppsKey.ahk
+    echo start .\Keys\RCtrl.ahk
     echo start .\Keys\Capslock.ahk
     echo start .\Keys\Ctrl.ahk
     echo start .\Keys\LAlt.ahk
