@@ -19,6 +19,7 @@ if (not A_IsAdmin) {
 >^F1::Run %A_WorkingDir%\Scripts\Dexpot_Start.bat
 >^F2::Run %A_WorkingDir%\Scripts\Dexpot_Clean.bat
 >^F5::Run %A_WorkingDir%\Scripts\Restart_Explorer.bat
+>^F12::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
 
 >^Q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
 >^W::RunNormalUser("D:\WeChat\WeChat.exe")
@@ -31,7 +32,6 @@ if (not A_IsAdmin) {
     }
 Return
 >^P::RunNormalUser("wt.exe") 
->^\::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
 
 >^A::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^S::RunNormalUser("D:\Everything\Everything.exe")
@@ -41,6 +41,7 @@ Return
 >^K::Keyboard()
 >^[::RunNormalUser("D:\VSCode\Code.exe E:\Git\Notes\")
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
+>^\::RunNormalUser("D:\VSCode\Code.exe T:\")
 
 >^Z::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ; 回收站
 >^X::RunNormalUser("D:\Xshell\Xshell.exe")
