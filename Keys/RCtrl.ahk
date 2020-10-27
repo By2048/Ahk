@@ -20,8 +20,6 @@ if (not A_IsAdmin) {
 >^F2::Run %A_WorkingDir%\Scripts\Dexpot_Clean.bat
 >^F5::Run %A_WorkingDir%\Scripts\Restart_Explorer.bat
 
->^`::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
-
 >^Q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
 >^W::RunNormalUser("D:\WeChat\WeChat.exe")
 >^T::
@@ -33,6 +31,7 @@ if (not A_IsAdmin) {
     }
 Return
 >^P::RunNormalUser("wt.exe") 
+>^\::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
 
 >^A::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^S::RunNormalUser("D:\Everything\Everything.exe")
@@ -43,12 +42,14 @@ Return
 >^[::RunNormalUser("D:\VSCode\Code.exe E:\Git\Notes\")
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
 
->^Z::RunNormalUser("explorer.exe ::{645FF040-5081-101B-9F08-00AA002F954E}")
+>^Z::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ; 回收站
 >^X::RunNormalUser("D:\Xshell\Xshell.exe")
 >^C::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
 >^V::RunNormalUser("D:\VSCode\Code.exe")
 >^M::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
->^/::RunNormalUser("explorer.exe")
+>^,::Run "explorer.exe"
+>^.::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::"  ; 我的电脑
+>^/::run "T:\\"
 
 RCtrl & RWin::MoveWindowsMM("mini")
 
@@ -73,8 +74,7 @@ timer:
         } else {
             Send, {AppsKey}
         }
-    }
-    if (cnt=2) {
+    } else if (cnt=2) {
         path=%A_WorkingDir%\Image\RCtrl.png
         HelpImage(path)
     }

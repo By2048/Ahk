@@ -11,6 +11,8 @@ if (not A_IsAdmin) {
 }
 
 
+global wox_show_status := False
+
 
  >!F1::Send {F13}
  >!F2::Send {F14}
@@ -47,8 +49,15 @@ return
 
 
 timer:
+    global wox_show_status
     if (cnt=1) {
+        if (wox_show_status=True) {
+            wox_show_status:=False
+            Send, ^!+R
+        }
     } else if (cnt=2) {
+        wox_show_status:=True
+        Send, ^!+R
     }
     cnt:=0
 return

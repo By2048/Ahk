@@ -20,6 +20,33 @@ Shift::ShiftAltTab
 
 
 
+;Win+L
+#l:: ;a new purpose for Win+L
+MsgBox, % "a new purpose for Win+L"
+return
+
+;Ctrl+Win+Alt+L
+^#!l:: ;lock workstation (note: requires 2 'run as admin' registry writes)
+;tested with Windows 7
+
+;enable 'lock workstation' (and enable Win+L hotkey):
+RegRead, vIsDisabled, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation
+if vIsDisabled
+	try RunWait, % "*RunAs " A_ComSpec " /c REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableLockWorkstation /t REG_DWORD /d 0 /f",, Hide ;enable Win+L
+	;RegWrite, REG_DWORD, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation, 0 ;enable Win+L
+
+;lock workstation:
+DllCall("user32\LockWorkStation")
+
+;disable 'lock workstation' (and disable Win+L hotkey):
+RegRead, vIsDisabled, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation
+if !vIsDisabled
+	try RunWait, % "*RunAs " A_ComSpec " /c REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableLockWorkstation /t REG_DWORD /d 1 /f",, Hide ;disable Win+L
+	;RegWrite, REG_DWORD, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation, 1 ;disable Win+L
+return
+
+
+
 <#Tab::AltTab
 
 
