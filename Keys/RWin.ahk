@@ -48,7 +48,7 @@ $RWin::
     } else {
         cnt++
     }
-    SetTimer, timer, -1000
+    SetTimer, timer, -500
 return
 
 
