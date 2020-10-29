@@ -196,7 +196,7 @@ MouseIsOver(WinTitle) {
     
     `::Send, {LButton}
 
-    ; 无脑女物流
+    ; 女巫流
     >!0::
         CoordMode Mouse Window
         CoordMode Pixel Window
