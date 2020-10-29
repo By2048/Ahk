@@ -38,7 +38,6 @@ MouseClickAndResetting(x,y)
 {
     MouseGetPos, x_origin, y_origin
     MouseClick, left, x, y, 1, 0
-    Send N
     MouseMove x_origin, y_origin, 0
 }
 
