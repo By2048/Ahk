@@ -191,7 +191,37 @@ MouseIsOver(WinTitle) {
 
 
 #if WinActive("ahk_exe NemuPlayer.exe")
+    
     Space::Send, {LButton 4}
+    
     `::Send, {LButton}
+
+    ; 无脑女物流
+    >!0::
+        CoordMode Mouse Window
+        CoordMode Pixel Window
+
+        MouseGetPos, xx, yy
+
+        ; 战争机器
+        MouseClick, Left, 1836, 1680
+        MouseClick, Left, %xx%, %yy%
+
+        Sleep, 3000
+        
+        ; 第一个兵种
+        MouseClick, Left, 641, 1680
+        MouseClick, Left, %xx%, %yy%, 12
+
+        Sleep, 100
+
+        ; 战争机器 释放技能
+        Loop, 5 {
+            MouseClick, Left, 1836, 1680
+            Sleep, 15*1000
+        }
+    return
+
+
 #if
 
