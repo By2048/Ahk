@@ -146,3 +146,20 @@ WinWaitClose
         CoordMode Pixel Window
         MouseMove x_origin, y_origin, 0
     Return
+
+
+
+
+
+
+
+
+MouseIsOver(WinTitle) {
+    MouseGetPos,  ,  , Win
+    return WinExist(WinTitle . " ahk_id " . Win)
+}
+#if MouseIsOver("ahk_class Shell_TrayWnd")
+    WheelUp::Send {Volume_Up}
+    WheelDown::Send {Volume_Down}
+#if
+

@@ -15,42 +15,6 @@ if (not A_IsAdmin) {
 
 
 
-MouseIsOver(WinTitle) {
-    MouseGetPos,  ,  , Win
-    return WinExist(WinTitle . " ahk_id " . Win)
-}
-#if MouseIsOver("ahk_class Shell_TrayWnd")
-    WheelUp::Send {Volume_Up}
-    WheelDown::Send {Volume_Down}
-#if
-
-
-
-; 软件内无法进行处理的在此进行处理
-#if WinActive("ahk_exe Code.exe")
-
-    >!m::Send, !VM ;显示迷你地图
-
-    !x::Send, ^x ; 剪切
-    !c::Send, ^c ; 拷贝
-    !v::Send, ^v ; 粘贴
-    !z::Send, ^z ; 撤销
-    !+z::Send ^+z ; 重做
-
-    !BackSpace::Send, ^{BackSpace} ; 删除
-
-#if
-
-
-
-#if WinActive("ahk_exe pycharm64.exe")
-
-    !F4::^!F4 ;Alt F4 -> Ctrl Alt F4
-
-#if
-
-
-
 #if WinActive("ahk_exe cloudmusic.exe") and WinActive("ahk_class OrpheusBrowserHost")
 
     `::MouseClickAndResetting(53,1118)
@@ -176,20 +140,6 @@ MouseIsOver(WinTitle) {
 
 
 
-#if WinActive("ahk_class Listary_ServerWindow")
-
-    RAlt::Send, {Esc}
-
-#if
-#if WinActive("ahk_class Listary_WidgetWin_0")
-
-    RWin::Send, {Esc}
-
-#if 
-
-
-
-
 #if WinActive("ahk_exe NemuPlayer.exe")
     
     Space::Send, {LButton 4}
@@ -216,12 +166,81 @@ MouseIsOver(WinTitle) {
         Sleep, 100
 
         ; 战争机器 释放技能
-        Loop, 5 {
+        Loop, 4 {
             MouseClick, Left, 1836, 1680
-            Sleep, 15*1000
+            txt:="   " A_Index "   "
+            HelpText(txt,"center_down")
+            if (A_Index<4) {
+                Sleep, 15*1000
+            } else {
+                Sleep, 1000
+                HelpText()
+            }
         }
     return
 
+    ; 退出
+    BackSpace::
+        Send A
+        Sleep, 200
+
+        Send S
+        Sleep, 1000
+
+        Send D
+        Sleep, 3000
+
+        Send Esc
+
+        Send, Q
+        Sleep, 500
+        Send, Esc        
+    Return
+
+    ; 降杯
+    >!8::
+
+        CoordMode Mouse Window
+
+        Send, Q
+        Sleep, 500
+        Send, Esc
+        Sleep, 500
+
+        Send, Q
+        Sleep, 500
+        
+        Send, R
+        Sleep, 5000
+        
+        Send, ^{WheelDown}
+        Sleep, 500
+        Send, ^{WheelDown}
+        Sleep, 500
+        Send, ^{WheelDown}
+        Sleep, 500
+        Send, ^{WheelDown}
+
+        Send 1
+        Sleep, 500
+        Send Esc
+        Sleep, 500
+        
+        MouseClick, Left, 400, 700
+        Sleep, 500
+
+        Send, A
+        Sleep, 500
+
+        Send, S
+        Sleep, 500
+
+        Send, D
+        Sleep, 2000
+
+        Send Esc
+
+    Return
 
 #if
 
