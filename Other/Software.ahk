@@ -148,8 +148,7 @@ if (not A_IsAdmin) {
 
     ; 女巫流
     >!0::
-        CoordMode Mouse Window
-        CoordMode Pixel Window
+        CoordMode, Mouse, Window
 
         MouseGetPos, xx, yy
 
@@ -200,7 +199,7 @@ if (not A_IsAdmin) {
     ; 降杯
     >!8::
 
-        CoordMode Mouse Window
+        CoordMode, Mouse, Window
 
         Send, Q
         Sleep, 500
@@ -212,22 +211,38 @@ if (not A_IsAdmin) {
         
         Send, R
         Sleep, 5000
-        
-        Send, ^{WheelDown}
-        Sleep, 500
-        Send, ^{WheelDown}
-        Sleep, 500
-        Send, ^{WheelDown}
-        Sleep, 500
-        Send, ^{WheelDown}
 
         Send 1
         Sleep, 500
         Send Esc
         Sleep, 500
         
-        MouseClick, Left, 400, 700
-        Sleep, 500
+        MouseClick, Left, 400, 400
+        Sleep, 100
+        MouseClick, Left, 1500, 400
+        Sleep, 100
+        MouseClick, Left, 2700, 400
+        Sleep, 100
+        MouseClick, Left, 2600, 400
+        Sleep, 100
+        
+        MouseClick, Left, 400, 900
+        Sleep, 100
+        MouseClick, Left, 1500, 900
+        Sleep, 100
+        MouseClick, Left, 2700, 900
+        Sleep, 100
+        MouseClick, Left, 2600, 900
+        Sleep, 100
+
+        MouseClick, Left, 400, 1200
+        Sleep, 100
+        MouseClick, Left, 1500, 1200
+        Sleep, 100
+        MouseClick, Left, 2700, 1200
+        Sleep, 100
+        MouseClick, Left, 2600, 1200
+        Sleep, 100
 
         Send, A
         Sleep, 500
