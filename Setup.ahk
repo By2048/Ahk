@@ -17,7 +17,7 @@ if (not A_IsAdmin) {
 LWin & RWin::
     DefaultProgress()
     PrintConfig()
-    Run .\Setup.bat start, ,Hide
+    Run .\Setup.bat start, , Hide
 Return
 
 
@@ -25,8 +25,7 @@ Return
 ; 暂停脚本
 RWin & LWin::
     Run .\Setup.bat stop, ,Hide
-    txt:="`n Close All Script `n"
-    Progress, b fs19 zh0 , %txt% ,  , Courier New
+    Progress, b fs19 zh0, `n Close All Script `n, , Courier New
     Sleep, 1000
     Progress, Off
 Return
