@@ -2,7 +2,7 @@
 
 @echo off
 
-mode 30,25
+mode 40,25
 cd /d %~dp0
 
 set command=%1%
@@ -147,4 +147,5 @@ if "%command%"=="start" (
 )
 
 ping -n 2 127.0.0.1 > nul
+
 
