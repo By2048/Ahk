@@ -178,24 +178,6 @@ if (not A_IsAdmin) {
         }
     return
 
-    ; 退出
-    BackSpace::
-        Send A
-        Sleep, 200
-
-        Send S
-        Sleep, 1000
-
-        Send D
-        Sleep, 3000
-
-        Send Esc
-
-        Send, Q
-        Sleep, 500
-        Send, Esc        
-    Return
-
     ; 降杯
     >!8::
 
@@ -216,33 +198,17 @@ if (not A_IsAdmin) {
         Sleep, 500
         Send Esc
         Sleep, 500
-        
-        MouseClick, Left, 400, 400
-        Sleep, 100
-        MouseClick, Left, 1500, 400
-        Sleep, 100
-        MouseClick, Left, 2700, 400
-        Sleep, 100
-        MouseClick, Left, 2600, 400
-        Sleep, 100
-        
-        MouseClick, Left, 400, 900
-        Sleep, 100
-        MouseClick, Left, 1500, 900
-        Sleep, 100
-        MouseClick, Left, 2700, 900
-        Sleep, 100
-        MouseClick, Left, 2600, 900
-        Sleep, 100
 
-        MouseClick, Left, 400, 1200
-        Sleep, 100
-        MouseClick, Left, 1500, 1200
-        Sleep, 100
-        MouseClick, Left, 2700, 1200
-        Sleep, 100
-        MouseClick, Left, 2600, 1200
-        Sleep, 100
+        y:=0
+        Loop, 4 {
+            y:=y+300
+            MouseClick, Left, 300, %y%
+            Sleep, 100
+            MouseClick, Left, 1700, %y%
+            Sleep, 100
+            MouseClick, Left, 2800, %y%
+            Sleep, 100
+        }
 
         Send, A
         Sleep, 500
@@ -255,6 +221,24 @@ if (not A_IsAdmin) {
 
         Send Esc
 
+    Return
+
+    ; 退出
+    BackSpace::
+        Send A
+        Sleep, 200
+
+        Send S
+        Sleep, 1000
+
+        Send D
+        Sleep, 3000
+
+        Send Esc
+
+        Send, Q
+        Sleep, 500
+        Send, Esc        
     Return
 
 #if
