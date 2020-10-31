@@ -1,3 +1,4 @@
+#include %A_WorkingDir%\Libs\Image.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 
 #SingleInstance Force
@@ -19,7 +20,12 @@ HelpImage(image:="")
         help_image_show_status:=False
         SplashImage, Off
     } else {
-        SplashImage, %image%, B1
+        size:=GetImageSize(image)
+        w:=size[1]
+        h:=size[2]
+        x:=A_ScreenWidth/2-w/2
+        y:=A_ScreenHeight/2-h/2
+        SplashImage, %image%, X%x% Y%y% H%h% W%w% B1
         help_image_show_status:=True
     }
 }
