@@ -10,6 +10,19 @@ if (not A_IsAdmin) {
 }
 
 
+
+    size:=GetImageSize(image)
+    w:=size[1]
+    h:=size[2]
+    x:=A_ScreenWidth/2-w/2
+    y:=A_ScreenHeight/2-h/2
+    
+    SplashImage, %image%, X%x% Y%y% H%h% W%w% B1   ;  全屏幕居中
+    ; SplashImage, %image%, B1  ; 去除任务栏屏幕居中
+
+
+
+
 WinGet, active_id, ID, A
 WinMaximize, ahk_id %active_id%
 MsgBox, The active window's ID is "%active_id%".
