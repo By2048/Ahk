@@ -66,9 +66,9 @@ GetWindowsCenterPos()
         xx:=screen_2_x+(screen_2_xx-screen_2_x)/2-w/2
         yy:=screen_2_y+(screen_2_yy-screen_2_y)/2-h/2
     }
-    if (in_screen_3) {
+    if (in_screen_3) { ; [屏幕3] 移动到上半部分
         xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
-        yy:=screen_3_y+(screen_3_yy-screen_3_y)/2-h/2
+        yy:=screen_3_y+(screen_3_yy-screen_3_y)/2/2-h/2
     }
     result:=[xx,yy]
     
