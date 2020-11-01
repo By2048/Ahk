@@ -14,22 +14,10 @@ if (not A_IsAdmin) {
 
 MouseMoveDC(xright,ydown) {
     CoordMode, Mouse, Screen
-
     MouseGetPos, x, y
-    
     xx:=x+xright
     yy:=y+ydown
-
-    ; 多分辨率不同的屏幕之间移动鼠标 进行兼容处理
-    if (x>=0) and (xx<=0) {
-        yy:=yy+screen_2_y
-    }
-    if (x<=0) and (xx>=0) {
-        yy:=yy-screen_2_y
-    }
-    ; MouseMove, xx, yy, 0
     DllCall("SetCursorPos", "int", xx, "int", yy) ;多显示器环境中更好
-    SetCapsLockState, Off
 }
 
 

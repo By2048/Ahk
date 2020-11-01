@@ -40,7 +40,6 @@ Capslock & Shift::RButton
 ; 1 主显示器中心 
 ; 2 副显示器中心
 $CapsLock::
-    SetCapsLockState, Off
     if (not cnt) {
         cnt:=1
     } else {
@@ -50,8 +49,14 @@ $CapsLock::
 return
 
 
+CapsLock Up::
+    SetCapsLockState, Off
+Return
+
 
 timer:
+    CoordMode Mouse Screen
+
     if (cnt=1) {
         ; 屏幕1 中心
         Screenshot("screen1")
@@ -68,8 +73,8 @@ timer:
         x:=screen_3_x+(screen_3_xx-screen_3_x)/2
         y:=screen_3_y+(screen_3_yy-screen_3_y)/2
     }
+    cnt:=0
 
-    CoordMode Mouse Screen
     DllCall("SetCursorPos", "int", x, "int", y)
 
     ; 激活鼠标下的窗口
@@ -91,7 +96,6 @@ timer:
     ;     HelpText(name,"center_down","screen3",500)
     ; }
 
-    cnt:=0
 return
 
 
