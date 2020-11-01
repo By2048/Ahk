@@ -16,7 +16,9 @@ if (not A_IsAdmin) {
 ; 重启所有脚本
 LWin & RWin::
     DefaultProgress()
-    PrintConfig()
+    ShowConfig()
+    Sleep, 1000
+    HideConfig()
     Run .\Setup.bat start, , Hide
 Return
 

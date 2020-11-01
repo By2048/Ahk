@@ -1,4 +1,5 @@
 #include %A_WorkingDir%\Other\Base.ahk
+#include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Libs\Image.ahk
 
 #SingleInstance Force
@@ -174,8 +175,11 @@ return
 timer:
     if (cnt=1) {
         hide_image()
+        HideConfig()
     } else if (cnt=2) {
         show_image()
+    } else if (cnt=3) {
+        ShowConfig()
     }
     cnt:=0
 return

@@ -98,8 +98,6 @@ return
 
 RWin & RCtrl::MoveWindowsMM("main")
 
-RWin & RShift::PrintConfig(1000*60*1)
-
 
 timer:
     global windows_move

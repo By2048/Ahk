@@ -2,6 +2,8 @@
 #SingleInstance Force
 
 
+global print_config_show_status:=False
+
 
 DefaultProgress() 
 {
@@ -26,6 +28,8 @@ DefaultProgress()
     }
 }
 
+
+
 ListToStr(data)
 {
     result:=""
@@ -37,14 +41,14 @@ ListToStr(data)
 
 
 
-
-PrintConfig(sleep_time:=1000)
+ShowConfig()
 {
-
-    Progress, Off
+    global print_config_show_status
 
     CoordMode Pixel Screen
     CoordMode Mouse Screen
+
+    Progress, Off
 
     SysGet, Mon3, Monitor, 2
     screen_3_x    := Mon3Left+0
@@ -57,7 +61,7 @@ PrintConfig(sleep_time:=1000)
  
     title = 
     title = %title% ---
-    title = %title% Ahk Config (%sleep_time%)
+    title = %title% Ahk Config
     title = %title% ---
 
     content := "`n"
@@ -90,7 +94,19 @@ PrintConfig(sleep_time:=1000)
     w:=w/2
     h:=h/2
 
-    Progress, b zh0 fs15 fm19 c01 x%x% y%y% w%w% h%h%, %content%, %title% , Source Code Pro
-    Sleep, %sleep_time%
-    Progress Off
+    if (print_config_show_status=False) {
+        Progress, b zh0 fs15 fm19 c01 x%x% y%y% w%w% h%h%, %content%, %title% , Source Code Pro
+        print_config_show_status:=True
+    }
 }
+
+
+HideConfig()
+{
+    global print_config_show_status
+    if (print_config_show_status=True) {
+        print_config_show_status:=False
+    }
+}
+
+
