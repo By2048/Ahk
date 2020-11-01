@@ -188,7 +188,7 @@ MoveWindowsMM(size)
                 hh:=(screen_2_yy-screen_2_y)*8/9
             } else if (in_screen_3) {
                 ww:=(screen_3_xx-screen_3_x)*5/6
-                hh:=(screen_3_yy-screen_3_y)*8/9
+                hh:=(screen_3_yy-screen_3_y)/2*8/9
             }
         } else if (size="mini") {
             HelpText("Windows Mini Size")
@@ -200,7 +200,7 @@ MoveWindowsMM(size)
                 hh:=(screen_2_yy-screen_2_y)*2/3
             } else if (in_screen_3) {
                 ww:=(screen_3_xx-screen_3_x)*1/2
-                hh:=(screen_3_yy-screen_3_y)*2/3
+                hh:=(screen_3_yy-screen_3_y)/2*2/3
             }
         } 
 
@@ -212,7 +212,7 @@ MoveWindowsMM(size)
             yy:=screen_2_y+(screen_2_yy-screen_2_y)/2-hh/2
         } else if (in_screen_3) {
             xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-ww/2
-            yy:=screen_3_y+(screen_3_yy-screen_3_y)/2-hh/2
+            yy:=screen_3_y+(screen_3_yy-screen_3_y)/2/2-hh/2
         }
 
         WinMove, ahk_id %w_id%, , %xx%, %yy%, %ww%, %hh%
