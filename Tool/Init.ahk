@@ -5,7 +5,15 @@
 
 DefaultProgress() 
 {
-    Progress, b w150 h15 cbBlack p0
+    w:=150*2
+    h:=15*2
+    x:=A_ScreenWidth/2-w/2
+    y:=A_ScreenHeight/2-h/2    
+    w:=w/2
+    h:=h/2
+    
+    Progress, b w%w% h%h% x%x% y%y% cbBlack p0
+    
     index:=0
     Loop {
         Progress, %index%
