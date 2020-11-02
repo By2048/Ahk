@@ -21,7 +21,7 @@ global hotkeys_total:=1 ; 当前展示图片组的数量
                 hotkeys["default"]:=["Windows.png"]
                 hotkeys["Windows"]:=hotkeys["default"]
 
-               hotkeys["Code.exe"]:=["VSCode.png","VSCode-1.png"]
+               hotkeys["Code.exe"]:=["VSCode.png","VSCode-Fxx.png"]
                  hotkeys["VSCode"]:=hotkeys["Code.exe"]
 
              hotkeys["Xshell.exe"]:=["XShell.png"]
@@ -30,13 +30,13 @@ global hotkeys_total:=1 ; 当前展示图片组的数量
              hotkeys["SumatraPDF"]:=["SumatraPDF.png"]
          hotkeys["SumatraPDF.exe"]:=hotkeys["SumatraPDF"]
 
-          hotkeys["pycharm64.exe"]:=["PyCharm.png","PyCharm-1.png"]
+          hotkeys["pycharm64.exe"]:=["PyCharm.png","PyCharm-Fxx.png"]
                 hotkeys["PyCharm"]:=hotkeys["pycharm64.exe"]
 
            hotkeys["QuiteRSS.exe"]:=["QuiteRSS.png"]
                hotkeys["QuiteRSS"]:=hotkeys["QuiteRSS.exe"]
 
-             hotkeys["chrome.exe"]:=["Chrome.png","Chrome-1.png"]
+             hotkeys["chrome.exe"]:=["Chrome.png"]
                  hotkeys["Chrome"]:=hotkeys["chrome.exe"]
 
     hotkeys["PotPlayerMini64.exe"]:=["PotPlayer.png"]
