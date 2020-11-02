@@ -18,7 +18,7 @@ global hotkeys_show_status:=False ; 当前是否显示图片
 global hotkeys_index:=1 ; 当前显示图片的序号
 global hotkeys_total:=1 ; 当前展示图片组的数量
     
-                hotkeys["default"]:=["Windows.png","Windows-1.png"]
+                hotkeys["default"]:=["Windows.png"]
                 hotkeys["Windows"]:=hotkeys["default"]
 
                hotkeys["Code.exe"]:=["VSCode.png","VSCode-1.png"]

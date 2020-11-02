@@ -33,15 +33,16 @@ if (not A_IsAdmin) {
 Return
 >^P::RunNormalUser("wt.exe") 
 
+>^[::RunNormalUser("D:\VSCode\Code.exe E:\Git\Notes\")
+>^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
+>^\::RunNormalUser("D:\VSCode\Code.exe T:\")
+
 >^A::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^S::RunNormalUser("D:\Everything\Everything.exe")
 >^F::RunNormalUser("D:\Firefox\firefox.exe")
 >^G::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
 >^J::RunNormalUser("calc.exe")
 >^K::Keyboard()
->^[::RunNormalUser("D:\VSCode\Code.exe E:\Git\Notes\")
->^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
->^\::RunNormalUser("D:\VSCode\Code.exe T:\")
 
 >^Z::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ; 回收站
 >^X::RunNormalUser("D:\Xshell\Xshell.exe")
