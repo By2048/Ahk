@@ -26,6 +26,7 @@ SetWorkingDir, %A_ScriptDir%  ; Ensures a consistent starting directory.
 	border12 := "═│╒╤╕╞╪╡╘╧╛═│"
 	;}
 border := borderThickThin	; Specify the choice of border style here
+border := borderThin	; Specify the choice of border style here
 useTopBorder := 1	; Choose whether to add a top border to the table
 useRowSeparatingBorders := 1	; Choose whether to use horizontal borders between rows
 useBottomBorder := 1	; Choose whether to add a bottom border to the table
@@ -146,3 +147,5 @@ getColMaxWidth(colN)
 	Return this
 }
 ;}
+
+
