@@ -18,6 +18,7 @@ global hotkeys_show_status:=False ; 当前是否显示图片
 global hotkeys_index:=1 ; 当前显示图片的序号
 global hotkeys_total:=1 ; 当前展示图片组的数量
     
+
                 hotkeys["default"]:=["Windows.png"]
                 hotkeys["Windows"]:=hotkeys["default"]
 
@@ -106,7 +107,7 @@ show_image()
     if (hotkeys_total>1) {
         w:=200
         h:=62
-        x:=A_ScreenWidth/2-w
+        x:=A_ScreenWidth/2-w/2
         y:=A_ScreenHeight-h-5
         w:=w/2
         h:=h/2
