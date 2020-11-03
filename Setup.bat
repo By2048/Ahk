@@ -24,9 +24,6 @@ if "%command%"=="stop" (
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\Capslock.ahk   /f /r  stop
     echo stop .\Keys\Capslock.ahk
 
-    start D:\AutoHotkey\AutoHotkey.exe .\Keys\Ctrl.ahk       /f /r  stop
-    echo stop .\Keys\Ctrl.ahk
-
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\LAlt.ahk       /f /r  stop
     echo stop .\Keys\LAlt.ahk
 
@@ -41,9 +38,6 @@ if "%command%"=="stop" (
 
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\RWin.ahk       /f /r  stop
     echo stop .\Keys\RWin.ahk
-
-    start D:\AutoHotkey\AutoHotkey.exe .\Keys\Win.ahk        /f /r  stop
-    echo stop .\Keys\Win.ahk
 
     Start D:\AutoHotkey\AutoHotkey.exe .\Other\Dexpot.ahk    /f /r  stop
     echo stop .\Other\Dexpot.ahk
@@ -93,9 +87,6 @@ if "%command%"=="start" (
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\Capslock.ahk   /f /r
     echo start .\Keys\Capslock.ahk
 
-    start D:\AutoHotkey\AutoHotkey.exe .\Keys\Ctrl.ahk       /f /r
-    echo start .\Keys\Ctrl.ahk
-
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\LAlt.ahk       /f /r
     echo start .\Keys\LAlt.ahk
 
@@ -110,9 +101,6 @@ if "%command%"=="start" (
 
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\RWin.ahk       /f /r
     echo start .\Keys\RWin.ahk
-
-    start D:\AutoHotkey\AutoHotkey.exe .\Keys\Win.ahk        /f /r
-    echo start .\Keys\Win.ahk
 
     Start D:\AutoHotkey\AutoHotkey.exe .\Other\Dexpot.ahk    /f /r
     echo start .\Other\Dexpot.ahk
