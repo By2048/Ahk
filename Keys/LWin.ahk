@@ -9,9 +9,12 @@ if (not A_IsAdmin) {
 }
 
 
+global win_tab:=False
 
-LWin & Tab:: 
-    win_tab:=true
+
+LWin & Tab::
+    global win_tab
+    win_tab:=True
     If (GetKeyState("Shift","P")) {
         Send {Alt Down}{Shift Down}{Tab}
     } else {
@@ -20,9 +23,10 @@ LWin & Tab::
 return
 
 #If (win_tab)
+    global win_tab
     ~*LWin Up::
         Send {Shift Up}{Alt Up}
-        win_tab:=false 
+        win_tab:=False 
     return
 #If
 

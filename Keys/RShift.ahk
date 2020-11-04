@@ -162,7 +162,7 @@ change(np:="")
 
 
 
-~RShift::
+$RShift::
     if (not cnt) {
         cnt:=1
     } else {
@@ -193,3 +193,10 @@ return
 #if
 
 
+
+
+; >+BackSpace::Send {Delete}
+; >^+BackSpace::Send ^{Delete}
+
+; >!BackSpace::Delete
+; :":":":"''：”‘’：“”“”

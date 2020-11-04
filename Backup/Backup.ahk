@@ -11,6 +11,15 @@ if (not A_IsAdmin) {
 
 
 
+~LControl & WheelUp::
+Send {LWin Down}{Ctrl Down}{Left}{Ctrl Up}{LWin Up}
+return
+~LControl & WheelDown::
+Send {LWin Down}{Ctrl Down}{Right}{Ctrl Up}{LWin Up}
+return
+
+
+
     size:=GetImageSize(image)
     w:=size[1]
     h:=size[2]

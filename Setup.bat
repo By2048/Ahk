@@ -24,9 +24,6 @@ if "%command%"=="stop" (
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\Capslock.ahk   /f /r  stop
     echo stop .\Keys\Capslock.ahk
 
-    start D:\AutoHotkey\AutoHotkey.exe .\Keys\LAlt.ahk       /f /r  stop
-    echo stop .\Keys\LAlt.ahk
-
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\LWin.ahk       /f /r  stop
     echo stop .\Keys\LWin.ahk
 
@@ -86,9 +83,6 @@ if "%command%"=="start" (
 
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\Capslock.ahk   /f /r
     echo start .\Keys\Capslock.ahk
-
-    start D:\AutoHotkey\AutoHotkey.exe .\Keys\LAlt.ahk       /f /r
-    echo start .\Keys\LAlt.ahk
 
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\LWin.ahk       /f /r
     echo start .\Keys\LWin.ahk

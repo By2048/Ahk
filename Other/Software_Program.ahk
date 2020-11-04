@@ -1,9 +1,9 @@
 #include %A_WorkingDir%\Other\Base.ahk
-#include %A_WorkingDir%\Tool\Help.ahk
-#include %A_WorkingDir%\Tool\Mouse.ahk
-#include %A_WorkingDir%\Tool\Other.ahk
-#include %A_WorkingDir%\Tool\Windows.ahk
-#include %A_WorkingDir%\Libs\Image.ahk
+; #include %A_WorkingDir%\Tool\Help.ahk
+; #include %A_WorkingDir%\Tool\Other.ahk
+; #include %A_WorkingDir%\Tool\Mouse.ahk
+; #include %A_WorkingDir%\Tool\Windows.ahk
+; #include %A_WorkingDir%\Libs\Image.ahk
 
 #SingleInstance Force
 #NoTrayIcon
