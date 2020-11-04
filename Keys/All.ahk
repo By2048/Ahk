@@ -49,12 +49,9 @@ if (not A_IsAdmin) {
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-; Delete::AppsKey
-
-
 ; ~e::
 ;     if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<150) {
 ;         Run, explorer.exe T:\
 ;     }
 ; return
+

@@ -22,7 +22,7 @@ global hotkeys_total:=1 ; 当前展示图片组的数量
                 hotkeys["default"]:=["Windows.png"]
                 hotkeys["Windows"]:=hotkeys["default"]
 
-               hotkeys["Code.exe"]:=["VSCode.png","VSCode-Fxx.png"]
+               hotkeys["Code.exe"]:=["VSCode-Fxx.png","VSCode.png"]
                  hotkeys["VSCode"]:=hotkeys["Code.exe"]
 
              hotkeys["Xshell.exe"]:=["XShell.png"]
@@ -193,10 +193,3 @@ return
 #if
 
 
-
-
-; >+BackSpace::Send {Delete}
-; >^+BackSpace::Send ^{Delete}
-
-; >!BackSpace::Delete
-; :":":":"''：”‘’：“”“”
