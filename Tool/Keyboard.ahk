@@ -1,6 +1,3 @@
-#include %A_WorkingDir%\Libs\Base.ahk
-#SingleInstance Force
-#NoTrayIcon
 
 
 
@@ -97,4 +94,5 @@ Keyboard()
         Gui Destroy 
     }
 }
+
 

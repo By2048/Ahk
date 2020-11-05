@@ -42,9 +42,6 @@ if "%command%"=="stop" (
     Start D:\AutoHotkey\AutoHotkey.exe .\Other\Input.ahk     /f /r  stop
     echo stop .\Other\Input.ahk
 
-    start D:\AutoHotkey\AutoHotkey.exe .\Other\Keyboard.ahk  /f /r  stop
-    echo stop .\Other\Keyboard.ahk
-
     start D:\AutoHotkey\AutoHotkey.exe .\Other\Loop.ahk      /f /r  stop
     echo stop .\Other\Loop.ahk
 
@@ -101,9 +98,6 @@ if "%command%"=="start" (
 
     Start D:\AutoHotkey\AutoHotkey.exe .\Other\Input.ahk     /f /r
     echo start .\Other\Input.ahk
-
-    start D:\AutoHotkey\AutoHotkey.exe .\Other\Keyboard.ahk  /f /r
-    echo start .\Other\Keyboard.ahk
 
     start D:\AutoHotkey\AutoHotkey.exe .\Other\Loop.ahk      /f /r
     echo start .\Other\Loop.ahk
