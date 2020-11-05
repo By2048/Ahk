@@ -2,14 +2,6 @@
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
 
-#SingleInstance Force
-
-
-
-if (not A_IsAdmin) {
-    Run *RunAs "%A_ScriptFullPath%"
-}
-
 
 
 MouseMoveDC(xright,ydown) {

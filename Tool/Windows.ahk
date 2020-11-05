@@ -1,14 +1,6 @@
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 
-#SingleInstance Force
-
-
-if (not A_IsAdmin) {
-    Run *RunAs "%A_ScriptFullPath%"
-}
-
-
 
 
 IsDesktops()

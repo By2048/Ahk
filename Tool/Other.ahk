@@ -2,14 +2,6 @@
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Other\Private.ahk
 
-#SingleInstance Force
-
-
-
-if (not A_IsAdmin) {
-    Run *RunAs "%A_ScriptFullPath%"
-}
-
 
 
 RunNormalUser(command)

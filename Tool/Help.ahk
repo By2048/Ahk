@@ -1,7 +1,5 @@
-#include %A_WorkingDir%\Tool\Image.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
-
-#SingleInstance Force
+#include %A_WorkingDir%\Tool\Image.ahk
 
 
 

@@ -1,5 +1,4 @@
 #include %A_WorkingDir%\Tool\Screen.ahk 
-#SingleInstance Force
 
 
 global print_config_show_status:=False

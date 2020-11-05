@@ -1,9 +1,8 @@
-#include %A_WorkingDir%\Other\Base.ahk
+#include %A_WorkingDir%\Libs\Base.ahk
 #Include %A_WorkingDir%\Other\Keyboard.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 #include %A_WorkingDir%\Libs\TrayIcon.ahk
-
 #SingleInstance Force
 #NoTrayIcon
 
