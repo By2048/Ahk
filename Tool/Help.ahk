@@ -1,4 +1,4 @@
-#include %A_WorkingDir%\Libs\Image.ahk
+#include %A_WorkingDir%\Tool\Image.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 
 #SingleInstance Force

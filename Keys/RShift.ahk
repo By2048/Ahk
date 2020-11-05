@@ -1,6 +1,6 @@
 #include %A_WorkingDir%\Other\Base.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
-#include %A_WorkingDir%\Libs\Image.ahk
+#include %A_WorkingDir%\Tool\Image.ahk
 
 #SingleInstance Force
 #NoTrayIcon
