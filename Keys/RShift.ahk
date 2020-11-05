@@ -162,7 +162,7 @@ change(np:="")
 
 
 
-$RShift::
+~RShift::
     if (not cnt) {
         cnt:=1
     } else {

@@ -160,24 +160,21 @@ MouseIsOver(WinTitle) {
     ; 女巫流
     >!0::
         CoordMode, Mouse, Window
-
         MouseGetPos, xx, yy
 
         ; 战争机器
-        MouseClick, Left, 1836, 1680
+        Send, 7        
         MouseClick, Left, %xx%, %yy%
-
         Sleep, 3000
         
         ; 第一个兵种
-        MouseClick, Left, 641, 1680
+        Send, 1        
         MouseClick, Left, %xx%, %yy%, 12
-
         Sleep, 100
 
         ; 战争机器 释放技能
         Loop, 4 {
-            MouseClick, Left, 1836, 1680
+            Send, 7
             txt:="   " A_Index "   "
             HelpText(txt,"center_down")
             if (A_Index<4) {
@@ -191,7 +188,6 @@ MouseIsOver(WinTitle) {
 
     ; 降杯
     >!8::
-
         CoordMode, Mouse, Window
 
         Send, Q
@@ -223,15 +219,12 @@ MouseIsOver(WinTitle) {
 
         Send, A
         Sleep, 500
-
         Send, S
         Sleep, 500
-
         Send, D
-        Sleep, 2000
-
+        Sleep, 3000
+        
         Send Esc
-
     Return
 
     ; 退出
