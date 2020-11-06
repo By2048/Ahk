@@ -15,15 +15,15 @@ if (not A_IsAdmin) {
 
 
 
-Capslock &  p::MouseMoveDC( 0, -9)
-Capslock & `;::MouseMoveDC( 0,  9)
-Capslock &  l::MouseMoveDC(-9,  0)
-Capslock &  '::MouseMoveDC( 9,  0)
+Capslock &  p::MouseMoveDC( 0, -3)
+Capslock & `;::MouseMoveDC( 0,  3)
+Capslock &  l::MouseMoveDC(-3,  0)
+Capslock &  '::MouseMoveDC( 3,  0)
 
-Capslock & w::MouseMoveDC(  0, -99)
-Capslock & s::MouseMoveDC(  0,  99)
-Capslock & a::MouseMoveDC(-99,   0)
-Capslock & d::MouseMoveDC( 99,   0)
+Capslock & w::MouseMoveDC(  0, -33)
+Capslock & s::MouseMoveDC(  0,  33)
+Capslock & a::MouseMoveDC(-33,   0)
+Capslock & d::MouseMoveDC( 33,   0)
 
 Capslock &    Up::MouseMoveDC(   0, -333)
 Capslock &  Down::MouseMoveDC(   0,  333)
