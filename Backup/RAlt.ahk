@@ -1,5 +1,4 @@
 #include %A_WorkingDir%\Tool\Help.ahk
-
 #SingleInstance Force
 #NoTrayIcon
 
@@ -54,6 +53,7 @@ get_keys()
     }
     return result
 }
+
 
 
 show_key_help()
@@ -120,6 +120,7 @@ $RAlt::
 return
 
 
+
 RAlt & RWin::
     if not WinActive("ahk_class WorkerW") {
         Send ^w
@@ -135,12 +136,7 @@ timer:
     if (cnt=2) {
         show_key_help()
     }
-    ; if (cnt=3) {
-        ; Send #^!+{F12} ;Listary弹出式菜单
-        ; show_pos()
-    ; }
     cnt:=0
 return
-
 
 
