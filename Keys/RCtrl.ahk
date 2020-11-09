@@ -32,7 +32,7 @@ if (not A_IsAdmin) {
 Return
 >^P::RunNormalUser("wt.exe") 
 
->^[::RunNormalUser("D:\VSCode\Code.exe E:\Git\Notes\")
+>^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
 >^\::RunNormalUser("D:\VSCode\Code.exe T:\")
 
