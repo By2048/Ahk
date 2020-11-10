@@ -1,4 +1,4 @@
-; #include %A_WorkingDir%\Libs\Base.ahk
+#include %A_WorkingDir%\Libs\Base.ahk
 ; #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 ; #include %A_WorkingDir%\Tool\Mouse.ahk
@@ -6,7 +6,7 @@
 #include %A_WorkingDir%\Tool\Windows.ahk
 ; #include %A_WorkingDir%\Tool\Image.ahk
 #SingleInstance Force
-; #NoTrayIcon
+#NoTrayIcon
 
 
 
@@ -19,7 +19,7 @@ if (not A_IsAdmin) {
 global fxx_help_software:=""
 
 
-FxxHelp(data:="")
+FxxHelp()
 {
     Progress, Off
     CoordMode Pixel Screen
@@ -57,4 +57,5 @@ FxxHelp(data:="")
 
 #if WinActive("ahk_exe Code.exe")
 #if
+
 
