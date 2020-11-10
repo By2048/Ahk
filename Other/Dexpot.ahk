@@ -38,18 +38,18 @@ if (not A_IsAdmin) {
     SetCapsLockState, Off
 Return
 
+;最小化到系统托盘
+<#Esc::#^!+Esc
+
+;DexTab任务切换器
+; <#`::
+
+; 窗口透明度
+<#PgUp::#^!+PgUp
+<#PgDn::#^!+PgDn
+
 ; 窗口目录 
 LWin & LAlt::#^!+[
 
 ; 全屏预览
 LWin & LCtrl::#^!+]
-
-;最小化到系统托盘
-<#Esc::#^!+Esc
-
-;DexTab任务切换器
-<#`::#^!+`
-
-; 窗口透明度
-<#PgUp::#^!+PgUp
-<#PgDn::#^!+PgDn
