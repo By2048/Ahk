@@ -9,13 +9,13 @@ if (not A_IsAdmin) {
 }
 
 
-global win_tab:=False
 
+global win_tab:=False
 
 LWin & Tab::
     global win_tab
     win_tab:=True
-    If (GetKeyState("Shift","P")) {
+    If ( GetKeyState("Shift","P") ) {
         Send {Alt Down}{Shift Down}{Tab}
     } else {
         Send {Alt Down}{Tab}
@@ -39,8 +39,8 @@ return
 <#.::Run control ;控制面板
 <#/::Run, ms-settings: ;设置
 
-<#]::#t  ;切换任务栏应用（预览
 <#[::#+t ;切换任务栏应用（预览
+<#]::#t  ;切换任务栏应用（预览
 
 <#v::#, ; 显示隐藏所有应用
 <#n::#k  ; 打开“连接”快速操作.
@@ -54,7 +54,7 @@ return
 
 ; 显示隐藏任务栏
 <#8:: 
-    if !WinExist("ahk_class Shell_TrayWnd") {
+    if ( !WinExist("ahk_class Shell_TrayWnd") ) {
         WinShow ahk_class Shell_TrayWnd
     } else {
         WinHide ahk_class Shell_TrayWnd
