@@ -18,6 +18,7 @@ if (not A_IsAdmin) {
 >^F1::Run %A_WorkingDir%\Scripts\Dexpot_Start.bat
 >^F2::Run %A_WorkingDir%\Scripts\Dexpot_Clean.bat
 >^F5::Run %A_WorkingDir%\Scripts\Restart_Explorer.bat
+>^F6::Run %A_WorkingDir%\Scripts\Folder_Icon.bat
 >^F12::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
 
 >^Q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
