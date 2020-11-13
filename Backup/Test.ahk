@@ -78,26 +78,28 @@ return
     ; fun()
     
 
-; sleep, 1000
-; Progress, b w200 h20 cbBlack p0
-; count:=10
-; Loop {
-;     if not GetKeyState("RShift", "P")
-;     {
-;         Progress, Off
-;         break
+; RShift::
+;     sleep, 1000
+;     Progress, b w200 h20 cbBlack p0
+;     count:=10
+;     Loop {
+;         if not GetKeyState("RShift", "P")
+;         {
+;             Progress, Off
+;             break
+;         }
+;         Progress, %count%
+;         sleep 50
+;         count:=count+10
+;         if count>=100
+;         {
+;             Progress, Off
+;             help()
+;             break
+;         }
 ;     }
-;     Progress, %count%
-;     sleep 50
-;     count:=count+10
-;     if count>=100
-;     {
-;         Progress, Off
-;         help()
-;         break
-;     }
-; }
-
+; Return
+;
 ; RShift Up::
 ;     Progress, Off
 ; return
