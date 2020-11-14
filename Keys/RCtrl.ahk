@@ -57,10 +57,6 @@ RCtrl & RWin::MoveWindowsMM("mini")
 
 
 
-global appskey_status:=False
-
-
-
 $RCtrl::
     if (not cnt) {
         cnt:=1
@@ -70,25 +66,28 @@ $RCtrl::
     SetTimer, timer, -500
 return
 
-
+global appskey_status:=False
 
 timer:
     global appskey_status
     if (cnt=1) {
         if (help_image_show_status=True) {
             HelpImage()
-        } else {
-            if (appskey_status=False) {
-                appskey_status:=True
-                Send, {Esc}
-            } else {
-                appskey_status:=False
-                Send, {AppsKey}
-            }
-        }
+        } 
+        ; else {
+        ;     if (appskey_status=False) {
+        ;         appskey_status:=True
+        ;         Send, {Esc}
+        ;     } else {
+        ;         appskey_status:=False
+        ;         Send, {AppsKey}
+        ;     }
+        ; }
     } else if (cnt=2) {
         path=%A_WorkingDir%\Image\RCtrl.png
         HelpImage(path)
     }
     cnt:=0
 return
+
+

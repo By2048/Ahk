@@ -49,9 +49,12 @@ if (not A_IsAdmin) {
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; ~e::
-;     if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<150) {
-;         Run, explorer.exe T:\
-;     }
-; return
+\::Send, \
+\ & BackSpace::
+    if (GetKeyState("Ctrl","P")) {
+        Send ^{Delete}
+    } else {
+        Send {Delete}
+    }
+Return
 

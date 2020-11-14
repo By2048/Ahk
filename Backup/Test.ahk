@@ -78,6 +78,9 @@ return
     ; fun()
     
 
+; ~*RCtrl::Return
+
+
 ; RShift::
 ;     sleep, 1000
 ;     Progress, b w200 h20 cbBlack p0

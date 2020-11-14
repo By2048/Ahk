@@ -136,6 +136,11 @@ ControlSetText Edit1, %s%
 WinWaitClose
 
 
+; if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<500) {
+; } else {
+; }
+
+
 
 ; Ctrl+Alt+Shift+Win opens the new Office app
 ; REG ADD HKCU\Software\Classes\ms-officeapp\Shell\Open\Command /t REG_SZ /d rundll32
