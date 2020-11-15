@@ -48,17 +48,3 @@ if (not A_IsAdmin) {
 #,::Return ; 透明窗口显示桌面
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-+\::Send |
-\::Send \
-\ & BackSpace::
-    if (GetKeyState("Ctrl","P")) {
-        Send ^{Delete}
-    } else if (GetKeyState("Shift","P")) {
-        Send +{Delete}
-    } else {
-        Send {Delete}
-    }
-Return
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -50,8 +50,23 @@ Screenshot(screens:="screen1")
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss][%screens_name%]
     file=%path%\%name%.png
     cmd=%snipaste% snip --area %x% %y% %w% %h% -o %file%
-
     Run %cmd%
+
+    SetTimer, delete_last_file, -1000
+}
+
+
+
+delete_last_file()
+{
+    default_folder := "E:\Snipaste\"
+    default_folder := default_folder . "*.png"
+    last_file:=""
+    Loop, Files, %default_folder% 
+    {
+        last_file:=A_LoopFileFullPath
+    }
+    FileDelete %last_file%
 }
 
 

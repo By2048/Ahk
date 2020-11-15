@@ -181,3 +181,35 @@ WinWaitClose
 
 
 
+
+
++\::Send |
+\::Send \
+\ & BackSpace::
+    if (GetKeyState("Ctrl","P")) {
+        Send ^{Delete}
+    } else if (GetKeyState("Shift","P")) {
+        Send +{Delete}
+    } else {
+        Send {Delete}
+    }
+Return
+
+
+
+
+
+
+CloseWindows()
+{
+    WinGet, w_id, ID, A
+    WinGet, w_name, ProcessName, A
+    Process, Close, %w_name%
+}
+
+
+
+KillWindows()
+{
+    WinGet, w_id, ID, A
+}

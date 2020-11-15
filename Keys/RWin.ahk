@@ -31,6 +31,11 @@ if (not A_IsAdmin) {
 >#o::Send ^!+o ;喜欢歌曲
 >#p::Send ^!+p ;歌词
 
+
+; Snipaste
+>#PrintScreen::Send ^!+{PrintScreen}
+>#Pause::Send ^!+{Pause}
+
 >#b::Return
 
 
