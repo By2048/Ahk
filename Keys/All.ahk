@@ -48,3 +48,18 @@ if (not A_IsAdmin) {
 #,::Return ; 透明窗口显示桌面
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+Delete::Send, {Delete}
+Esc::Send, {Esc}
+
+Esc & Delete::
+    WinGet, w_id, ID, A
+    WinKill, ahk_id %w_id%
+Return
+
+Delete & Esc::
+    WinGet, w_id, ID, A
+    WinGet, w_name, ProcessName, A
+    Process, Close, %w_name%    
+Return
