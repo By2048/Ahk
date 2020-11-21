@@ -157,18 +157,20 @@ MouseIsOver(WinTitle) {
     `::Send, {LButton}
 
     ; 女巫流
-    >!0::
+    =::
         CoordMode, Mouse, Window
         MouseGetPos, xx, yy
 
         ; 战争机器
-        Send, 7        
+        Send, 7 
         MouseClick, Left, %xx%, %yy%
+
         Sleep, 3000
         
         ; 第一个兵种
         Send, 1        
         MouseClick, Left, %xx%, %yy%, 12
+        
         Sleep, 100
 
         ; 战争机器 释放技能
@@ -186,7 +188,7 @@ MouseIsOver(WinTitle) {
     return
 
     ; 降杯
-    >!8::
+    -::
         CoordMode, Mouse, Window
 
         Send, Q
