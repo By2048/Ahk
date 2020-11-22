@@ -17,9 +17,14 @@ if (not A_IsAdmin) {
 >^Esc::Run taskmgr.exe ;任务管理器
 >^F1::Run %A_WorkingDir%\Scripts\Dexpot_Start.bat
 >^F2::Run %A_WorkingDir%\Scripts\Dexpot_Clean.bat
->^F5::Run %A_WorkingDir%\Scripts\Restart_Explorer.bat
->^F6::Run %A_WorkingDir%\Scripts\Folder_Icon.bat
->^F12::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
+>^F3::Run %A_WorkingDir%\Scripts\Restart_Explorer.bat
+>^F4::Run %A_WorkingDir%\Scripts\Folder_Icon.bat
+
+>^F9::Run %A_WorkingDir%\Scripts\Bilibil_Free.bat
+>^F10::Run %A_WorkingDir%\Scripts\Bilibil_Download.bat
+>^F11::Run %A_WorkingDir%\Scripts\bd-film_rename.bat
+
+>^`::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
 
 >^Q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
 >^W::RunNormalUser("D:\WeChat\WeChat.exe")
