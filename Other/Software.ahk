@@ -246,5 +246,23 @@ MouseIsOver(WinTitle) {
         Send, Esc        
     Return
 
+    Tab::
+        Send a
+        Sleep, 200
+        Send s
+        Sleep, 1000
+        Send d
+        Sleep, 3000
+
+        Send z
+        Sleep, 300
+        Send x
+        Sleep, 600
+        Send c
+        Sleep, 300
+
+        Send Esc
+    Return
+
 #if
 
