@@ -92,12 +92,12 @@ show_image()
     image:=get_image()
     
     size:=GetImageSize(image)
-    w:=size[1]
-    h:=size[2]
-    x:=A_ScreenWidth/2-w/2
-    y:=A_ScreenHeight/2-h/2
+    size_w:=size[1]
+    size_h:=size[2]
+    x:=A_ScreenWidth/2-size_w/2
+    y:=A_ScreenHeight/2-size_h/2
     
-    SplashImage, %image%, X%x% Y%y% H%h% W%w% B1   ;  全屏幕居中
+    SplashImage, %image%, X%x% Y%y% H%size_h% W%size_w% B1   ;  全屏幕居中
     ; SplashImage, %image%, B1  ; 去除任务栏屏幕居中
 
     hotkeys_show_status:=True
@@ -107,7 +107,8 @@ show_image()
         w:=200
         h:=62
         x:=A_ScreenWidth/2-w/2
-        y:=A_ScreenHeight-h-5
+        y:=A_ScreenHeight-h-5 ; 屏幕底部
+        ; y:=A_ScreenHeight/2+size_h/2+5 ; 图片底部
         w:=w/2
         h:=h/2
         Progress, b fs19 zh0 x%x% y%y% w%w% h%h%, %hotkeys_index%/%hotkeys_total%
