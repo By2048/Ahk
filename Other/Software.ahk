@@ -193,7 +193,7 @@ MouseIsOver(WinTitle) {
 
         Send, Q
         Sleep, 500
-        Send, Esc
+        Send, /
         Sleep, 500
 
         Send, Q
@@ -204,7 +204,7 @@ MouseIsOver(WinTitle) {
 
         Send 1
         Sleep, 500
-        Send Esc
+        Send /
         Sleep, 500
 
         y:=0
@@ -225,25 +225,22 @@ MouseIsOver(WinTitle) {
         Send, D
         Sleep, 3000
         
-        Send Esc
+        Send /
     Return
 
     ; 退出
     BackSpace::
         Send A
         Sleep, 200
-
         Send S
         Sleep, 1000
-
         Send D
         Sleep, 3000
-
-        Send Esc
+        Send /
 
         Send, Q
         Sleep, 500
-        Send, Esc        
+        Send, /     
     Return
 
     Tab::
@@ -257,11 +254,11 @@ MouseIsOver(WinTitle) {
         Send z
         Sleep, 300
         Send x
-        Sleep, 600
+        Sleep, 300
         Send c
         Sleep, 300
 
-        Send Esc
+        Send /
     Return
 
 #if
