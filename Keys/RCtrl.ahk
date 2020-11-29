@@ -70,6 +70,9 @@ Return
 >^.::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::"  ; 我的电脑
 >^/::run "T:\\"
 
+
+RCtrl & Enter::Run E:\Sync\All.xlsx
+
 RCtrl & RWin::MoveWindowsMM("mini")
 
 

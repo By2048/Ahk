@@ -231,33 +231,29 @@ MouseIsOver(WinTitle) {
     ; 退出
     BackSpace::
         Send A
-        Sleep, 200
+        Sleep, 100
         Send S
         Sleep, 1000
         Send D
         Sleep, 3000
         Send /
-
-        Send, Q
-        Sleep, 500
-        Send, /     
     Return
 
     Tab::
         Send a
-        Sleep, 200
+        Sleep, 100
         Send s
         Sleep, 1000
         Send d
         Sleep, 3000
+        Send /
 
         Send z
-        Sleep, 300
+        Sleep, 100
         Send x
-        Sleep, 300
+        Sleep, 100
         Send c
-        Sleep, 300
-
+        Sleep, 100
         Send /
     Return
 
