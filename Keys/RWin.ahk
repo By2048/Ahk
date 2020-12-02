@@ -108,17 +108,11 @@ timer:
     global windows_resize_big
     global windows_resize_small
 
-    if (windows_move=True) {
+    if ( windows_move=True or windows_resize_big=True or windows_resize_small=True ) {
         windows_move:=False
-        HelpText()
-        Return
-    } else if (windows_resize_big=True) {
+        windows_resize_small:=False
         windows_resize_big:=False
         HelpText()
-        Return
-    } else if (windows_resize_small=True) {
-        windows_resize_small:=False
-        HelpText()    
         Return
     }
     
