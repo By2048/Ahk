@@ -35,7 +35,7 @@ Return
     Sleep, 300
     MoveWindowsMM("main")
 Return
->Delete::
+>^Delete::
     if (IsDesktops()) {
         Return
     }
