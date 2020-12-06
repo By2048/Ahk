@@ -35,6 +35,15 @@ Return
     Sleep, 300
     MoveWindowsMM("main")
 Return
+>Delete::
+    if (IsDesktops()) {
+        Return
+    }
+    WinGet, w_id, ID, A
+    WinGet, w_name, ProcessName, A
+    Process, Close, %w_name%    
+Return
+
 
 >^`::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
 
