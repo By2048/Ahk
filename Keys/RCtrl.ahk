@@ -61,7 +61,7 @@ Return
 
 >^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
->^\::RunNormalUser("D:\VSCode\Code.exe T:\")
+>^\::Run, "D:\Microsoft Whiteboard.lnk"
 
 >^A::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^S::RunNormalUser("D:\Everything\Everything.exe")
