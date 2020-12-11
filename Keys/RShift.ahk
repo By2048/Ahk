@@ -175,9 +175,9 @@ return
 
 
 timer:
+    global appskey_status
     if (cnt=1) {
         if (hotkeys_show_status=False) {
-            global appskey_status
             if (appskey_status=False) {
                 appskey_status:=True
                 Send, {Esc}
@@ -190,8 +190,10 @@ timer:
             HideConfig()
         }
     } else if (cnt=2) {
+        appskey_status:=False
         show_image()
     } else if (cnt=3) {
+        appskey_status:=False
         ShowConfig()
     }
     cnt:=0
