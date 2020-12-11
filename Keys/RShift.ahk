@@ -11,6 +11,7 @@ if (not A_IsAdmin) {
 }
 
 
+global appskey_status:=False
 
 global hotkeys:={} ; 快捷键图片集合
 global hotkeys_show_status:=False ; 当前是否显示图片
@@ -171,14 +172,12 @@ change(np="")
     SetTimer, timer, -500
 return
 
-global appskey_status:=False
 
 
 timer:
-    global appskey_status
-
     if (cnt=1) {
         if (hotkeys_show_status=False) {
+            global appskey_status
             if (appskey_status=False) {
                 appskey_status:=True
                 Send, {Esc}
