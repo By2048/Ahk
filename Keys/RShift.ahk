@@ -143,7 +143,7 @@ hide_image()
 
 
 ; 展示图片切换上一个下一个
-change(np:="")
+change(np="")
 {
     global hotkeys_index
 
@@ -171,12 +171,25 @@ change(np:="")
     SetTimer, timer, -500
 return
 
+global appskey_status:=False
 
 
 timer:
+    global appskey_status
+
     if (cnt=1) {
-        hide_image()
-        HideConfig()
+        if (hotkeys_show_status=False) {
+            if (appskey_status=False) {
+                appskey_status:=True
+                Send, {Esc}
+            } else {
+                appskey_status:=False
+                Send, {AppsKey}
+            }
+        } else {
+            hide_image()
+            HideConfig()
+        }
     } else if (cnt=2) {
         show_image()
     } else if (cnt=3) {

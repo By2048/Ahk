@@ -8,10 +8,10 @@ global help_image_show_status:=False
 
 
 
-HelpImage(image:="")
+HelpImage(image="")
 {    
     global help_image_show_status
-    if (help_image_show_status) and (image) {
+    if (help_image_show_status and image) {
         Return
     }
     if (not image) {
@@ -30,7 +30,7 @@ HelpImage(image:="")
 
 
 
-HelpText(data:="",xy:="right_down",screens:="screen1",sleep_time:=0)
+HelpText(data="",xy="right_down",screens="screen1",sleep_time=0)
 {   
     Progress, Off
 
@@ -94,8 +94,6 @@ HelpText(data:="",xy:="right_down",screens:="screen1",sleep_time:=0)
     }
 
 }
-
-
 
 
 

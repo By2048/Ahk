@@ -23,7 +23,7 @@ MouseClickAndResetting(x,y)
 
 
 
-MouseClickImage(image,trans:="")
+MouseClickImage(image,trans="")
 {
     CoordMode, Pixel, Screen
     CoordMode, Mouse, Screen

@@ -217,7 +217,7 @@ MoveWindowsMM(size)
 
 
 
-ResizeWindows(status,direction)
+ResizeWindows(status, direction)
 {
     if (IsDesktops()) {
         HelpText("Windows Desktop", , ,1000)
@@ -271,7 +271,7 @@ ResizeWindows(status,direction)
 
 ; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
 ; offset | 在一定误差内不进行窗口移动
-SetWindows(xx,yy,ww:=0,hh:=0,step:=False,offset:=3)
+SetWindows(xx, yy, ww=0, hh=0, step=False, offset=3)
 {
     if (IsDesktops()) {
         HelpText("Windows Desktop", , ,1000)
@@ -295,7 +295,6 @@ SetWindows(xx,yy,ww:=0,hh:=0,step:=False,offset:=3)
     ; HelpText(txt)
     if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
         if (step) {
-           
             WinMove, ahk_id %wid%, , %xx%, %yy%,     ,     
             WinMove, ahk_id %wid%, ,     ,     , %ww%, %hh%
         } else {

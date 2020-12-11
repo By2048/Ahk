@@ -16,7 +16,7 @@ RunNormalUser(command)
 
 
 
-Screenshot(screens:="screen1")
+Screenshot(screens="screen1")
 {
     if (screens="screen1") {
         x:=screen_1_x
