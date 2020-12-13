@@ -170,29 +170,32 @@ MoveWindowsMM(size)
         ww:=0
         hh:=0
 
+        main:=[5/6,8/9]
+        mini:=[2/3,3/4]
+
         if (size="main") {
             HelpText("Windows Main Size")
             if (in_screen_1) {
-                ww:=(screen_1_xx-screen_1_x)*5/6
-                hh:=(screen_1_yy-screen_1_y)*8/9
+                ww:=(screen_1_xx-screen_1_x)*main[1]
+                hh:=(screen_1_yy-screen_1_y)*main[2]
             } else if (in_screen_2) {
-                ww:=(screen_2_xx-screen_2_x)*5/6
-                hh:=(screen_2_yy-screen_2_y)*8/9
+                ww:=(screen_2_xx-screen_2_x)*main[1]
+                hh:=(screen_2_yy-screen_2_y)*main[2]
             } else if (in_screen_3) {
-                ww:=(screen_3_xx-screen_3_x)*5/6
-                hh:=(screen_3_yy-screen_3_y)/2*8/9
+                ww:=(screen_3_xx-screen_3_x)  *main[1]
+                hh:=(screen_3_yy-screen_3_y)/2*main[2]
             }
         } else if (size="mini") {
             HelpText("Windows Mini Size")
             if (in_screen_1) {
-                ww:=(screen_1_xx-screen_1_x)*1/2
-                hh:=(screen_1_yy-screen_1_y)*2/3
+                ww:=(screen_1_xx-screen_1_x)*mini[1]
+                hh:=(screen_1_yy-screen_1_y)*mini[2]
             } else if (in_screen_2) {
-                ww:=(screen_2_xx-screen_2_x)*1/2
-                hh:=(screen_2_yy-screen_2_y)*2/3
+                ww:=(screen_2_xx-screen_2_x)*mini[1]
+                hh:=(screen_2_yy-screen_2_y)*mini[2]
             } else if (in_screen_3) {
-                ww:=(screen_3_xx-screen_3_x)*1/2
-                hh:=(screen_3_yy-screen_3_y)/2*2/3
+                ww:=(screen_3_xx-screen_3_x)  *mini[1]
+                hh:=(screen_3_yy-screen_3_y)/2*mini[2]
             }
         } 
 
