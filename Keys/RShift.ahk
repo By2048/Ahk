@@ -11,7 +11,6 @@ if (not A_IsAdmin) {
 }
 
 
-global appskey_status:=False
 
 global hotkeys:={} ; 快捷键图片集合
 global hotkeys_show_status:=False ; 当前是否显示图片
@@ -175,25 +174,12 @@ return
 
 
 timer:
-    global appskey_status
     if (cnt=1) {
-        if (hotkeys_show_status=False) {
-            if (appskey_status=False) {
-                appskey_status:=True
-                Send, {Esc}
-            } else {
-                appskey_status:=False
-                Send, {AppsKey}
-            }
-        } else {
-            hide_image()
-            HideConfig()
-        }
+        hide_image()
+        HideConfig()
     } else if (cnt=2) {
-        appskey_status:=False
         show_image()
     } else if (cnt=3) {
-        appskey_status:=False
         ShowConfig()
     }
     cnt:=0

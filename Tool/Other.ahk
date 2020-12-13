@@ -79,3 +79,7 @@ show_pos()
 }
 
 
+Ignore()
+{
+    WinGet, name, ProcessName, A
+}
