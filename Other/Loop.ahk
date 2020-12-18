@@ -1,4 +1,5 @@
 #include %A_WorkingDir%\Libs\Base.ahk
+#include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 #SingleInstance Force
 #NoTrayIcon
@@ -16,6 +17,14 @@ Loop {
     Sleep, 1000
     
     WinGet, windows_active_software, ProcessName, A
+
+    ; 手机剪切板同步
+    if (FileExist("T:\\JQB")) {
+        FileEncoding UTF-8
+        FileRead, Clipboard, T:\\JQB
+        HelpText(" JQB ","center","screen3",1000)
+        FileDelete T:\\JQB
+    }
 
     ; 文件选择窗口居中
     if ( WinActive("ahk_class #32770") ) {
