@@ -19,11 +19,13 @@ Loop {
     WinGet, windows_active_software, ProcessName, A
 
     ; 手机剪切板同步
-    if (FileExist("T:\\JQB")) {
+    if ( FileExist("T:\\JQB") ) {
         FileEncoding UTF-8
-        FileRead, Clipboard, T:\\JQB
-        HelpText(" JQB ","center","screen3",1000)
-        FileDelete T:\\JQB
+        Try {
+            FileRead, Clipboard, T:\\JQB
+            HelpText(" JQB UPDATE ","center","screen3",1000)
+            FileDelete T:\\JQB
+        }
     }
 
     ; 文件选择窗口居中
