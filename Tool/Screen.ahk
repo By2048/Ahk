@@ -4,14 +4,13 @@ SysGet, screen_count, MonitorCount
 global screen_count := screen_count+0
 
 ; 实际系统设置 [2][1][3]
-global TRUE_SCREENS := [2, 1, 3]
-
 ; ahk 屏幕从左到右 [2][3][1]
-global AHK_SCREENS := [3, 1, 2]
+global TRUE_SCREENS := [2, 1, 3]
+global AHK_SCREENS := [1, 3, 2]
 
-SysGet, Mon1, Monitor, AHK_SCREENS[1]
-SysGet, Mon2, Monitor, AHK_SCREENS[2]
-SysGet, Mon3, Monitor, AHK_SCREENS[3]
+SysGet, Mon2, Monitor, 1
+SysGet, Mon1, Monitor, 3
+SysGet, Mon3, Monitor, 2
 
 global screen_1_zoom := 2
 global screen_1_x    := Mon1Left+0
