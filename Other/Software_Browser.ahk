@@ -70,6 +70,7 @@ if (not A_IsAdmin) {
     !+o::Send, ^+o
     !+d::Return
     ^+t::Return
+    !+w::Send, ^+t
     !z::Send, ^+t
 
     ^o::Return
