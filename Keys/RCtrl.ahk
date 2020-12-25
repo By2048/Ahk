@@ -70,7 +70,8 @@ Return
 >^J::RunNormalUser("calc.exe")
 >^K::Keyboard()
 
->^Z::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ; 回收站
+; >^Z::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ; 回收站
+>^Z::RunNormalUser("D:\Zeal\zeal.exe")
 >^X::RunNormalUser("D:\Xshell\Xshell.exe")
 >^C::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
 >^V::RunNormalUser("D:\VSCode\Code.exe")
