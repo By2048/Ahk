@@ -34,15 +34,16 @@ if (not A_IsAdmin) {
     F7::Return ;光标浏览模式
     !i::Send, {F7}
 
-    ; F11::Return
+    F11::Return
     !Enter::Send, {F11}
 
     F12::Return
     ^+j::Return
     !\::Send, {F12}
 
+
     !e::Return
-    !+t::Return
+    !/::!e
 
     ^Esc::Return
     !Esc::Send, +{Esc}
@@ -51,14 +52,16 @@ if (not A_IsAdmin) {
     ^+Delete::Return
     !+Delete::Send, ^+{Delete}
 
+    !Tab::Send ^{Tab}
+    !+Tab::Send ^+{Tab}
     ^Tab::Return
-    ^PgUp::Return
-    !Tab::Send, ^{Tab}
     ^+Tab::Return
+
+    ^PgUp::Return
     ^PgDn::Return
-    !+Tab::Send, ^+{Tab}
-    !PgDn::Send, ^{Tab}
-    !PgUp::Send, ^+{Tab}
+    !PgUp::WheelUp
+    !PgDn::WheelDown
+
     !Home::Send, ^1
     !End::Send, ^9
 
