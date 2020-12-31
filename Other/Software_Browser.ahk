@@ -17,104 +17,76 @@ if (not A_IsAdmin) {
 
 #if WinActive("ahk_exe chrome.exe")
 
+    ;帮助
     F1::Return
+    
+    ;搜索
     F3::Return
+
+    ;重新加载
     F5::Return
     ^r::Return
-    !r::Send, ^r
+    !r::Send ^r
+
+    ;强制重新加载
     +F5::Return
     ^+r::Return
-    !+r::Send, ^+r
+    !+r::Send ^+r
 
-    F6::Return ;切换焦点
-    !`::Send, {F6}
-    F10::Return ;切换焦点
-    !+`::Send, {F10}
+    ;切换焦点
+    F6::Return 
+    !`::Send {F6}
+    
+    ;切换焦点到最右侧
+    F10::Return
+    !+`::Send {F10}
 
-    F7::Return ;光标浏览模式
-    !i::Send, {F7}
+    ;光标浏览模式
+    F7::Return 
+    !i::Send {F7}
 
+    ;全屏
     F11::Return
-    !Enter::Send, {F11}
+    !Enter::Send {F11}
 
+    ;开发者模式
     F12::Return
     ^+j::Return
-    !\::Send, {F12}
+    !\::Send {F12}
 
-
+    ;打开设置
     !e::Return
     !/::!e
 
+    ;任务管理
     ^Esc::Return
-    !Esc::Send, +{Esc}
+    !Esc::Send +{Esc}
+
+    ;删除联想
     +Delete::Return
-    !Delete::Send, +{Delete}
+    !Delete::Send +{Delete}
+
+    ;清理浏览记录
     ^+Delete::Return
-    !+Delete::Send, ^+{Delete}
+    !+Delete::Send ^+{Delete}
 
-    !Tab::Send ^{Tab}
-    !+Tab::Send ^+{Tab}
-    ^Tab::Return
-    ^+Tab::Return
-
-    ^PgUp::Return
-    ^PgDn::Return
-    !PgUp::WheelUp
-    !PgDn::WheelDown
-
-    !Home::Send, ^1
-    !End::Send, ^9
-
-    ^+m::Return
-    ^+w::Return
-    ^+b::Return
-    !+b::Send, ^+b
-    ^+o::Return
-    !+o::Send, ^+o
-    !+d::Return
-    ^+t::Return
-    !+w::Send, ^+t
-    !z::Send, ^+t
-
-    ^o::Return
-    ^k::Return
-    ^e::Return
-    ^h::Return
-    !h::Send, ^h
-    ^j::Return
-    !j::Send, ^j
-    ^d::Return
-    !d::Send, ^d
-    ^p::Return
-    !p::Send, ^p
-    ^+p::Return
-    !+p::Send, ^+p
-    ^s::Return
-    !s::Send, ^s
-    ^g::Return
-    !g::Send, ^g
-    ^+g::Return
-    !+g::Send, ^+g
-    ^u::Return
-    !u::Send, ^u
+    ;新标签页
     ^t::Return
     !t::Send, ^t
+
+    ;新窗口
     ^n::Return
     !n::Send, ^n
-    ^+n::Return
-    !+n::Send, ^+n
+    
+    ;关闭窗口
     ^w::Return
     !w::Send, ^w
-    ^f::Return
-    !f::Send, ^f
 
-    ^0::Return
-    !0::Send, ^0
-    ^-::Return
-    !-::Send, ^-
-    ^=::Return
-    !=::Send, ^=
+    ;新隐私窗口
+    ^+n::Return
+    !+n::Send, ^+n
 
+    ;切换标签页
     ^1::Return
     ^2::Return
     ^3::Return
@@ -124,6 +96,82 @@ if (not A_IsAdmin) {
     ^7::Return
     ^8::Return
     ^9::Return
+    ^Tab::Return
+    !Tab::Send ^{Tab}
+    ^+Tab::Return
+    !+Tab::Send ^+{Tab}
+    !Home::Send, ^1
+    !End::Send, ^9
+
+    ;滚动
+    ^PgUp::Return
+    !PgUp::WheelUp
+    ^PgDn::Return
+    !PgDn::WheelDown
+
+    ;切换书签栏显示隐藏状态
+    ^+b::Return
+    !b::Send ^+b
+
+    ;书签管理页面
+    ^+o::Return
+    !+o::Send ^+o
+    
+    ^+m::Return ;切换用户
+    ^+w::Return ;关闭所有窗口
+
+    ;重新打开标签页
+    ^+t::Return 
+    !+w::Send ^+t
+    !z::Send ^+t
+
+    ^o::Return ;打开文件
+    ^k::Return ;使用Google搜索
+    ^e::Return ;使用Google搜索
+
+    ;历史记录
+    ^h::Return
+    !h::Send ^h
+
+    ;下载页面
+    ^j::Return
+    !j::Send ^j
+
+    ;收藏 （原本是定位地址栏
+    ^d::Return
+    !d::Send ^d
+
+    ;打印
+    ^p::Return
+    !p::Send ^p
+    ^+p::Return
+    !+p::Send ^+p
+
+    ;保存
+    ^s::Return
+    !s::Send ^s
+
+    ;定位
+    ^g::Return
+    !g::Send ^g
+    ^+g::Return
+    !+g::Send ^+g
+
+    ;查看源码
+    ^u::Return
+    !u::Send ^u
+
+    ;查找
+    ^f::Return
+    !f::Send ^f
+
+    ;网页缩放
+    ^0::Return
+    !0::Send ^0
+    ^-::Return
+    !-::Send ^-
+    ^=::Return
+    !=::Send ^=
 
 #if
 
