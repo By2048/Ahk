@@ -47,12 +47,6 @@ if "%command%"=="stop" (
 
     start D:\AutoHotkey\AutoHotkey.exe .\Other\Software.ahk  /f /r  stop
     echo stop .\Other\Software.ahk
-
-    start D:\AutoHotkey\AutoHotkey.exe .\Other\Software_Program.ahk  /f /r  stop
-    echo stop .\Other\Software_Program.ahk
-
-    start D:\AutoHotkey\AutoHotkey.exe .\Other\Software_Browser.ahk  /f /r  stop
-    echo stop .\Other\Software_Browser.ahk
     
     if exist %~dp0Other\Private.ahk (
         start D:\AutoHotkey\AutoHotkey.exe .\Other\Private.ahk /f /r stop
@@ -107,13 +101,6 @@ if "%command%"=="start" (
 
     start D:\AutoHotkey\AutoHotkey.exe .\Other\Software.ahk  /f /r
     echo start .\Other\Software.ahk
-
-    start D:\AutoHotkey\AutoHotkey.exe .\Other\Software_Program.ahk  /f /r
-    echo start .\Other\Software_Program.ahk
-
-    start D:\AutoHotkey\AutoHotkey.exe .\Other\Software_Browser.ahk  /f /r
-    echo start .\Other\Software_Browser.ahk
-
 
     if exist %~dp0Other\Private.ahk (
         start D:\AutoHotkey\AutoHotkey.exe .\Other\Private.ahk /f /r

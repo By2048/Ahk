@@ -1,20 +1,3 @@
-#include %A_WorkingDir%\Libs\Base.ahk
-; #include %A_WorkingDir%\Tool\Help.ahk
-; #include %A_WorkingDir%\Tool\Other.ahk
-; #include %A_WorkingDir%\Tool\Mouse.ahk
-; #include %A_WorkingDir%\Tool\Windows.ahk
-; #include %A_WorkingDir%\Tool\Image.ahk
-#SingleInstance Force
-#NoTrayIcon
-
-
-
-if (not A_IsAdmin) {
-    Run *RunAs "%A_ScriptFullPath%"
-}
-
-
-
 #if WinActive("ahk_exe chrome.exe")
 
     ;帮助
@@ -176,4 +159,13 @@ if (not A_IsAdmin) {
 #if
 
 
+
+#if WinActive("ahk_exe chrome.exe")
+
+    >!y::MouseClickImage("E:\Sync\Ahk\Image\Software\Y.png")
+    >!z::MouseClickImage("E:\Sync\Ahk\Image\Software\Z.png")
+    >!w::MouseClickImage("E:\Sync\Ahk\Image\Software\W.png")
+    >!n::MouseClickImage("E:\Sync\Ahk\Image\Software\N.png")
+
+#if
 
