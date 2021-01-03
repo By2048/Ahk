@@ -45,8 +45,8 @@ if "%command%"=="stop" (
     start D:\AutoHotkey\AutoHotkey.exe .\Other\Loop.ahk      /f /r  stop
     echo stop .\Other\Loop.ahk
 
-    start D:\AutoHotkey\AutoHotkey.exe .\Other\Software.ahk  /f /r  stop
-    echo stop .\Other\Software.ahk
+    start D:\AutoHotkey\AutoHotkey.exe .\Software\All.ahk    /f /r  stop
+    echo stop .\Software\All.ahk
     
     if exist %~dp0Other\Private.ahk (
         start D:\AutoHotkey\AutoHotkey.exe .\Other\Private.ahk /f /r stop
@@ -99,8 +99,8 @@ if "%command%"=="start" (
     start D:\AutoHotkey\AutoHotkey.exe .\Other\Loop.ahk      /f /r
     echo start .\Other\Loop.ahk
 
-    start D:\AutoHotkey\AutoHotkey.exe .\Other\Software.ahk  /f /r
-    echo start .\Other\Software.ahk
+    start D:\AutoHotkey\AutoHotkey.exe .\Software\All.ahk    /f /r
+    echo start .\Software\All.ahk
 
     if exist %~dp0Other\Private.ahk (
         start D:\AutoHotkey\AutoHotkey.exe .\Other\Private.ahk /f /r
