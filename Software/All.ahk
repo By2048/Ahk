@@ -10,6 +10,7 @@
 #include %A_WorkingDir%\Software\FSViewer.ahk
 #include %A_WorkingDir%\Software\MuMu.ahk
 #include %A_WorkingDir%\Software\PyCharm.ahk
+#include %A_WorkingDir%\Software\Tim_WeChat.ahk
 #include %A_WorkingDir%\Software\VSCode.ahk
 #include %A_WorkingDir%\Software\Wps.ahk
 #include %A_WorkingDir%\Software\Xshell.ahk

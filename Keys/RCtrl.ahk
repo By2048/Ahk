@@ -20,6 +20,11 @@ if (not A_IsAdmin) {
 >^F3::Run %A_WorkingDir%\Scripts\Restart_Explorer.bat
 >^F4::Run %A_WorkingDir%\Scripts\Folder_Icon.bat
 
+>^F6::
+    Run %A_WorkingDir%\Scripts\zhihu_daily.bat
+    Sleep 300
+    MoveWindowsMM("main")
+return
 >^F9::
     Run %A_WorkingDir%\Scripts\Bilibil_Free.bat
     Sleep, 300

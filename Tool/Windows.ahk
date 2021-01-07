@@ -171,7 +171,7 @@ MoveWindowsMM(size)
         hh:=0
 
         main:=[5/6,8/9]
-        mini:=[2/3,3/4]
+        mini:=[1/2,3/4]
 
         if (size="main") {
             HelpText("Windows Main Size")
