@@ -50,9 +50,9 @@
         Send, R
         Sleep, 5000
 
-        Send 1
+        Send, 1
         Sleep, 500
-        Send /
+        Send, /
         Sleep, 500
 
         y:=0
@@ -88,21 +88,23 @@
     Return
 
     Tab::
-        Send a
+        Send, a
         Sleep, 100
-        Send s
-        Sleep, 1000
-        Send d
+        Send, s
+        Sleep 1000
+        Send, d
         Sleep, 3000
-        Send /
 
-        Send z
+        Send, /
         Sleep, 100
-        Send x
+
+        Send, z
         Sleep, 100
-        Send c
+        Send, x
         Sleep, 100
-        Send /
+        Send, c
+        Sleep, 100
+        Send, /
     Return
 
 #if

@@ -1,4 +1,4 @@
-#include %A_WorkingDir%\Tool\Screen.ahk
+ate#include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 
 
@@ -163,15 +163,19 @@ MoveWindowsMM(size)
         in_screen_3:=True
     }
 
+    main:=[5/6,8/9]
+    mini:=[1/2,3/4]
+
+    if ( WinActive("ahk_exe pycharm64.exe") and WinActive("ahk_class SunAwtDialog") ) {
+        main:=[5/6,8/9]
+        mini:=[1/5,2/3]
+    }
 
     if (size="main" or size="mini") {
         xx:=0
         yy:=0
         ww:=0
         hh:=0
-
-        main:=[5/6,8/9]
-        mini:=[1/2,3/4]
 
         if (size="main") {
             HelpText("Windows Main Size")
