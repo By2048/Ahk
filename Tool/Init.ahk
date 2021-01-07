@@ -94,7 +94,7 @@ ShowConfig()
     h:=h/2
 
     if (print_config_show_status=False) {
-        Progress, b zh0 fs15 fm19 c01 x%x% y%y% w%w% h%h%, %content%, %title% , Source Code Pro
+        Progress, b zh0 fs15 fm19 c01 x%x% y%y% w%w% h%h%, %content%, %title%, "Source Code Pro"
         print_config_show_status:=True
     }
 }
