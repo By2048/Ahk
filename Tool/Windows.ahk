@@ -143,13 +143,14 @@ MoveWindowsMM(size)
     SetWinDelay, 1
     CoordMode, Mouse
 
+    WinGet, w_id, ID, A
+    WinGetPos, x, y, w, h, ahk_id %w_id%
+    WinGetTitle, title, A
+
     x:=0
     y:=0
     w:=0
     h:=0
-
-    WinGet, w_id, ID, A
-    WinGetPos, x, y, w, h, ahk_id %w_id%
 
     ; 判断窗口主体在那个屏幕
     in_screen_1:=False
@@ -163,13 +164,14 @@ MoveWindowsMM(size)
         in_screen_3:=True
     }
 
+
     main:=[5/6,8/9]
     mini:=[1/2,3/4]
 
-    if ( WinActive("ahk_exe pycharm64.exe") and WinActive("ahk_class SunAwtDialog") ) {
-        main:=[5/6,8/9]
+    if ( WinActive("ahk_exe pycharm64.exe") and title="Open File or Project" ) {
         mini:=[1/5,2/3]
     }
+
 
     if (size="main" or size="mini") {
         xx:=0
