@@ -11,34 +11,13 @@ if (not A_IsAdmin) {
 }
 
 
-global current_activate_progress_name:=""
 
 
-; 显示激活的窗口名
-ShowActivateProcessName()
-{
-    WinGet, name, ProcessName, A
-    name:=RTrim(name,"exe")
-    name:=RTrim(name,"EXE")
-    name:=RTrim(name,".")
-    if (name="Code") {
-        name:="VSCode"
-    } else if (name:="chrome") {
-        name:="Chrome"
-    }
-    global current_activate_progress_name
-    if (name!=current_activate_progress_name) {
-        current_activate_progress_name:=name
-        HelpText(name,"center","screen3")
-    }
-}
 
 
 Loop {
 
     Sleep, 1000
-    
-    ShowActivateProcessName()
 
     WinGet, windows_active_software, ProcessName, A
 

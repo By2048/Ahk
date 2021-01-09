@@ -115,7 +115,9 @@ timer:
         HelpText()
         Return
     }
-    
+    if (cnt=1) {
+        ShowActivateProcessName()
+    }
     if (cnt=2) {
         MoveWindowsCenter()
     } 

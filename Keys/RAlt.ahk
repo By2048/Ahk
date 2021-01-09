@@ -10,7 +10,7 @@ if (not A_IsAdmin) {
 }
 
 
-global wox_show_status := False
+global search_tool_show_status := False
 
 
  >!F1::Send {F13}
@@ -48,14 +48,14 @@ return
 
 
 timer:
-    global wox_show_status
+    global search_tool_show_status
     if (cnt=1) {
-        if (wox_show_status=True) {
-            wox_show_status:=False
+        if (search_tool_show_status=True) {
+            search_tool_show_status:=False
             Send, ^!+R
         }
     } else if (cnt=2) {
-        wox_show_status:=True
+        search_tool_show_status:=True
         Send, ^!+R
     }
     cnt:=0
