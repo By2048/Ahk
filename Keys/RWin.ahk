@@ -37,7 +37,7 @@ if (not A_IsAdmin) {
 >#Pause::Send ^!+{Pause}
 
 >#b::Return
-
+>#Tab::Return
 
 
 global windows_move:=False
