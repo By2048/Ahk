@@ -166,7 +166,7 @@ MoveWindowsMM(size)
 
 
     main:=[5/6,8/9]
-    mini:=[1/2,3/4]
+    mini:=[1.8/3,3/4]
 
     if ( WinActive("ahk_exe pycharm64.exe") and title="Open File or Project" ) {
         mini:=[1/5,2/3]
