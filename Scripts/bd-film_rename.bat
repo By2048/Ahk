@@ -1,4 +1,6 @@
+set python=D:\Python\_python_\Scripts\python.exe
+set fodler=E:\Project\script\
 
-D:\Python\_3.8.5_\Scripts\python.exe  E:\Project\_python_\_script_\_rename_bd-film_.py
+cd /d %fodler% & %python% -m rename.bd-film
 
 pause

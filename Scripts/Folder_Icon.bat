@@ -1,2 +1,4 @@
+set python=D:\Python\_python_\Scripts\python.exe
+set fodler=E:\Project\script\
 
-D:\Python\_3.8.5_\Scripts\python.exe E:/Project/_python_/_script_/_folder_icon_.py
+cd /d %fodler% & %python% -m system.update_folder_icon
