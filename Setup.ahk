@@ -1,4 +1,6 @@
 #include %A_WorkingDir%\Tool\Init.ahk
+#include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Tool\Screen.ahk
 #SingleInstance Force
 
 
@@ -27,9 +29,10 @@ Return
 ; 暂停脚本
 RWin & LWin::
     Run .\Setup.bat stop, ,Hide
-    Progress, b fs19 zh0, `n Close All Script `n, , Courier New
-    Sleep, 1000
-    Progress, Off
+    ; Progress, b fs19 zh0, `n Close All Script `n, , Courier New
+    ; Sleep, 1000
+    ; Progress, Off
+    HelpText(" Close All Script ", "center", "screen3")
 Return
 
 

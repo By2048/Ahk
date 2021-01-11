@@ -64,7 +64,7 @@ HelpText(data="",xy="right_down",screens="screen1",sleep_time=0)
         screen_x:=screen_3_x
         screen_y:=screen_3_y
         screen_xx:=screen_3_xx
-        screen_yy:=screen_3_yy
+        screen_yy:=screen_3_yy/2
     }
 
     if (xy="right_down") {

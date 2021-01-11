@@ -98,6 +98,6 @@ ShowActivateProcessName()
     global last_activate_progress_name
     if (name!=last_activate_progress_name) {
         last_activate_progress_name:=name
-        HelpText(name,"center","screen3")
+        HelpText(name,"center_down","screen3")
     }
 }
