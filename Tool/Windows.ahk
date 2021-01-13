@@ -35,7 +35,7 @@ GetWindowsCenterPos()
     }
 
     WinGetPos, x, y, w, h, A
-    
+     
     ; 判断窗口主体在那个屏幕
     in_screen_1:=False
     in_screen_2:=False
@@ -58,7 +58,7 @@ GetWindowsCenterPos()
         xx:=screen_2_x+(screen_2_xx-screen_2_x)/2-w/2
         yy:=screen_2_y+(screen_2_yy-screen_2_y)/2-h/2
     }
-    if (in_screen_3) { ; [屏幕3] 移动到上半部分
+    if (in_screen_3) { ;上半部分
         xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
         yy:=screen_3_y+(screen_3_yy-screen_3_y)/2/2-h/2
     }
@@ -95,7 +95,7 @@ MoveWindows(direction)
     } else if (direction="Right") {
         x:=x+step
     }
-    WinMove, ahk_id %w_id%, , %x%, %y%
+    WinMove, ahk_id %w_id%,  , %x%, %y%
 }
 
 
@@ -141,17 +141,12 @@ MoveWindowsMM(size)
     }
 
     SetWinDelay, 1
-    CoordMode, Mouse
 
     WinGet, w_id, ID, A
     WinGetPos, x, y, w, h, ahk_id %w_id%
     WinGetTitle, title, A
 
-    x:=0
-    y:=0
-    w:=0
-    h:=0
-
+    ; MsgBox, %x% %y% %w% %h%
     ; 判断窗口主体在那个屏幕
     in_screen_1:=False
     in_screen_2:=False
@@ -163,6 +158,8 @@ MoveWindowsMM(size)
     } else if (x>=screen_3_x and x<screen_3_xx) {
         in_screen_3:=True
     }
+
+    ; MsgBox, %in_screen_1% %in_screen_2% %in_screen_3%
 
 
     main:=[5/6,8/9]
@@ -211,12 +208,12 @@ MoveWindowsMM(size)
         } else if (in_screen_2) {
             xx:=screen_2_x+(screen_2_xx-screen_2_x)/2-ww/2
             yy:=screen_2_y+(screen_2_yy-screen_2_y)/2-hh/2
-        } else if (in_screen_3) {
+        } else if (in_screen_3) { ;上半部分
             xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-ww/2
             yy:=screen_3_y+(screen_3_yy-screen_3_y)/2/2-hh/2
         }
 
-        WinMove, ahk_id %w_id%, , %xx%, %yy%, %ww%, %hh%
+        WinMove, ahk_id %w_id%,  , %xx%, %yy%, %ww%, %hh%
 
         Sleep, 1000
         HelpText()
@@ -304,10 +301,10 @@ SetWindows(xx, yy, ww=0, hh=0, step=False, offset=3)
     ; HelpText(txt)
     if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
         if (step) {
-            WinMove, ahk_id %wid%, , %xx%, %yy%,     ,     
-            WinMove, ahk_id %wid%, ,     ,     , %ww%, %hh%
+            WinMove, ahk_id %wid%,  , %xx%, %yy%,     ,     
+            WinMove, ahk_id %wid%,  ,     ,     , %ww%, %hh%
         } else {
-            WinMove, ahk_id %wid%, , %xx%, %yy%, %ww%, %hh%
+            WinMove, ahk_id %wid%,  , %xx%, %yy%, %ww%, %hh%
         }
     }
 }
