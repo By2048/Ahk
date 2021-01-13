@@ -86,6 +86,9 @@
     !Home::Send, ^1
     !End::Send, ^9
 
+    ; 主页
+    !BackSpace::Send, !{Home}
+
     ;滚动
     ^PgUp::Return
     !PgUp::WheelUp
@@ -155,6 +158,7 @@
     !-::Send ^-
     ^=::Return
     !=::Send ^=
+
 
 #if
 
