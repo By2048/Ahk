@@ -57,7 +57,11 @@ Return
         RunNormalUser("D:\TIM\Bin\QQScLauncher.exe")
     }
 Return
->^P::RunNormalUser("wt.exe") 
+>^P::
+    RunNormalUser("wt.exe") 
+    Sleep, 300
+    MoveWindowsMM("main")
+Return
 
 >^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
