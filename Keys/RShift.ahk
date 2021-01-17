@@ -161,8 +161,26 @@ change(np="")
 }
 
 
+ignore()
+{
+    data:=[]
+	data.push("LeagueClientUx.exe")
+	data.push("League of Legends.exe")
+    
+    WinGet, name, ProcessName, A
+    for index, item in data {
+        if (name=item) {
+            Return True
+        }
+    }
+    Return False
+}
+
 
 ~RShift::
+    if (ignore()) {
+        Return
+    }
     if (not cnt) {
         cnt:=1
     } else {
