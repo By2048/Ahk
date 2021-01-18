@@ -1,7 +1,9 @@
 #include %A_WorkingDir%\Tool\Screen.ahk 
 
 
+
 global print_config_show_status:=False
+
 
 
 DefaultProgress() 
@@ -64,26 +66,28 @@ ShowConfig()
     title = %title% ---
 
     content := "`n"
-    content .= Format("{1} | {2} `n", " A_WorkingDir", A_WorkingDir)
-    content .= "`n`n"
+    content .= "-----------------------------------------------------------`n"
+    content .= Format("{1} | {2} `n", " A_WorkingDir", A_WorkingDir "\")
     content .= Format("{1} | {2} `n", "  ScreenCount", screen_count)
-    content .= "--------------------------------------------`n"
+    content .= "-----------------------------------------------------------`n"
     content .= Format("{1} | {2:5} {3:5} {4:5} {5:5} `n", " [1] x y xx yy", screen_1_x, screen_1_y, screen_1_xx, screen_1_yy)
     content .= Format("{1} | {2:5} {3:5} {4:5} {5:5} `n", " [2] x y xx yy", screen_2_x, screen_2_y, screen_2_xx, screen_2_yy)
     content .= Format("{1} | {2:5} {3:5} {4:5} {5:5} `n", " [3] x y xx yy", screen_3_x, screen_3_y, screen_3_xx, screen_3_yy)
-    content .= "--------------------------------------------`n"
+    content .= "-----------------------------------------------------------`n"
     content .= Format("{1} | {2} `n", " screen_1_zoom", screen_1_zoom)
     content .= Format("{1} | {2} `n", " screen_2_zoom", screen_2_zoom)
     content .= Format("{1} | {2} `n", " screen_3_zoom", screen_3_zoom)
-    content .= "--------------------------------------------`n"
+    content .= "-----------------------------------------------------------`n"
     content .= Format("{1} | {2} `n", " TRUE_SCREENS", ListToStr(TRUE_SCREENS))
     content .= Format("{1} | {2} `n", "  AHK_SCREENS", ListToStr(AHK_SCREENS))
-    content .= "`n`n"
+    content .= "-----------------------------------------------------------`n"
     content .= Format("{1} | {2} `n", " Snipaste", "D:\Snipaste\Snipaste.exe")
-    content .= Format("{1} | {2} `n", "  Screens", "R:\Screens")
+    content .= Format("{1} | {2} `n", "  Screens", "R:\Screens\")
+    content .= Format("{1} | {2} `n", "   Python", "D:\Python\_python_\Scripts\python.exe")
+    content .= "-----------------------------------------------------------`n"
 
-    w:=500*2
-    h:=700*2
+    w:=600*2
+    h:=800*2
     x:=A_ScreenWidth/2-w/2
     y:=A_ScreenHeight/2-h/2
     if (screen_3_xx and screen_3_yy) {
@@ -98,6 +102,7 @@ ShowConfig()
         print_config_show_status:=True
     }
 }
+
 
 
 HideConfig()
