@@ -140,6 +140,19 @@ MoveWindowsMM(size)
         Return
     }
 
+    data:=[]
+    data.push("Snipaste.exe")
+    check_ignore:=False
+    WinGet, name, ProcessName, A
+    for index, item in data {
+        if (name=item) {
+            check_ignore:=True
+        }
+    }
+    if (check_ignore=True) {
+        Return
+    }
+    
     SetWinDelay, 1
 
     WinGet, w_id, ID, A
