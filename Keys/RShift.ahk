@@ -1,6 +1,7 @@
 #include %A_WorkingDir%\Libs\Base.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
+#include %A_WorkingDir%\Tool\Windows.ahk
 #SingleInstance Force
 #NoTrayIcon
 
@@ -161,24 +162,9 @@ change(np="")
 }
 
 
-ignore()
-{
-    data:=[]
-	data.push("LeagueClientUx.exe")
-	data.push("League of Legends.exe")
-    
-    WinGet, name, ProcessName, A
-    for index, item in data {
-        if (name=item) {
-            Return True
-        }
-    }
-    Return False
-}
-
 
 ~RShift::
-    if (ignore()) {
+    if ( IsGame() ) {
         Return
     }
     if (not cnt) {

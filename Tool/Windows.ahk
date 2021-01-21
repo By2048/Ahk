@@ -6,6 +6,7 @@
 IsDesktops()
 {
     If WinActive("ahk_class WorkerW") {
+        HelpText("Windows Desktop", , ,1000)
         Return True
     }
     Return False
@@ -18,11 +19,27 @@ IsMaxWindows()
     WinGet, w_id, ID, A
     WinGet, w_status, MinMax, ahk_id %w_id%
     if (w_status) {
+        HelpText("Max Screen Return", , , 1000)
         return True
     }
     Return False
 }
 
+
+
+IsGame()
+{
+    data:=[]
+	data.push("LeagueClientUx.exe")
+	data.push("League of Legends.exe")
+    WinGet, name, ProcessName, A
+    for index, item in data {
+        if (name=item) {
+            Return True
+        }
+    }
+    Return False
+}
 
 
 
@@ -71,13 +88,8 @@ GetWindowsCenterPos()
 
 MoveWindows(direction)
 {    
-    if (IsDesktops()) {
-        HelpText("Windows Desktop", , ,1000)
-        Return
-    }
-    If (IsMaxWindows()) {
-        HelpText("Max Screen Return", , , 1000)
-        Return
+    if ( IsDesktops() or IsMaxWindows() ) {
+        Return 
     }
 
     SetWinDelay, 1
@@ -101,13 +113,8 @@ MoveWindows(direction)
 
 MoveWindowsCenter() 
 {
-    if (IsDesktops()) {
-        HelpText("Windows Desktop", , ,1000)
-        Return
-    }
-    If (IsMaxWindows()) {
-        HelpText("Max Screen Return", , , 1000)
-        Return
+    if ( IsDesktops() or IsMaxWindows() ) {
+        Return 
     }
 
     WinGet, w_id, ID, A
@@ -124,20 +131,14 @@ MoveWindowsCenter()
     WinMove, ahk_id %w_id%, , %xx%, %yy%
 
     HelpText("Move To Center", , ,1000)
-
 }
 
 
 
 MoveWindowsMM(size)
 {   
-    if (IsDesktops()) {
-        HelpText("Windows Desktop", , ,1000)
-        Return
-    }
-    If (IsMaxWindows()) {
-        HelpText("Max Screen Return", , , 1000)
-        Return
+    if ( IsDesktops() or IsMaxWindows() ) {
+        Return 
     }
 
     data:=[]
@@ -238,13 +239,8 @@ MoveWindowsMM(size)
 
 ResizeWindows(status, direction)
 {
-    if (IsDesktops()) {
-        HelpText("Windows Desktop", , ,1000)
-        Return
-    }
-    If (IsMaxWindows()) {
-        HelpText("Max Screen Return", , , 1000)
-        Return
+    if ( IsDesktops() or IsMaxWindows() ) {
+        Return 
     }
 
     SetWinDelay, 1
@@ -292,13 +288,8 @@ ResizeWindows(status, direction)
 ; offset | 在一定误差内不进行窗口移动
 SetWindows(xx, yy, ww=0, hh=0, step=False, offset=3)
 {
-    if (IsDesktops()) {
-        HelpText("Windows Desktop", , ,1000)
-        Return
-    }
-    If (IsMaxWindows()) {
-        HelpText("Max Screen Return", , , 1000)
-        Return
+    if ( IsDesktops() or IsMaxWindows() ) {
+        Return 
     }
 
     WinGet, wid, ID, A
