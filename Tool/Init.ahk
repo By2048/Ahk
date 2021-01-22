@@ -1,3 +1,4 @@
+#include %A_WorkingDir%\Libs\Change.ahk 
 #include %A_WorkingDir%\Tool\Screen.ahk 
 
 
@@ -27,17 +28,6 @@ DefaultProgress()
             break
         }
     }
-}
-
-
-
-ListToStr(data)
-{
-    result:=""
-    For index, value In data {
-        result .= value . "|"
-    }
-    Return result
 }
 
 
