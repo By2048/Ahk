@@ -55,11 +55,11 @@ ShowConfig()
     title = %title% Ahk Config
     title = %title% ---
 
-    content := "`n"
+    content := ""
     content .= "-----------------------------------------------------------"
-    content .= Format("`n{1} | {2} ", " A_WorkingDir", A_WorkingDir "\")
+    content .= Format("`n {1} | {2}\ ", "A_WorkingDir", A_WorkingDir)
     content .= "`n-----------------------------------------------------------"
-    content .= Format("`n{1} | {2} ", "   ScreenCount", screen_count)
+    content .= Format("`n {1} | {2} ", "ScreenCount", screen_count)
     content .= "`n-----------------------------------------------------------"
     content .= Format("`n{1} | {2:5} {3:5} {4:5} {5:5} ", " [1] x y xx yy", screen_1_x, screen_1_y, screen_1_xx, screen_1_yy)
     content .= Format("`n{1} | {2:5} {3:5} {4:5} {5:5} ", " [2] x y xx yy", screen_2_x, screen_2_y, screen_2_xx, screen_2_yy)
@@ -75,6 +75,8 @@ ShowConfig()
     content .= Format("`n {1} | {2} ", " Screens", "R:\Screens\")
     content .= Format("`n {1} | {2} ", "Snipaste", "D:\Snipaste\Snipaste.exe")
     content .= Format("`n {1} | {2} ", "  Python", "D:\Python\_python_\Scripts\python.exe")
+    content .= "`n-----------------------------------------------------------"
+    content .= Format("`n {1} | {2} ", "JQB", "T:\\JQB")
     content .= "`n-----------------------------------------------------------"
 
     w:=600*2
