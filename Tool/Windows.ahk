@@ -45,14 +45,9 @@ IsGame()
 
 GetWindowsCenterPos()
 {
-    result:=[-1,-1]
-
-    If WinActive("ahk_class WorkerW") {
-        Return result
-    }
-
     WinGetPos, x, y, w, h, A
      
+    result:=[-1,-1]
     ; 判断窗口主体在那个屏幕
     in_screen_1:=False
     in_screen_2:=False
@@ -88,7 +83,7 @@ GetWindowsCenterPos()
 
 MoveWindows(direction)
 {    
-    if ( IsDesktops() or IsMaxWindows() ) {
+    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
         Return 
     }
 
@@ -113,7 +108,7 @@ MoveWindows(direction)
 
 MoveWindowsCenter() 
 {
-    if ( IsDesktops() or IsMaxWindows() ) {
+    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
         Return 
     }
 
@@ -137,7 +132,7 @@ MoveWindowsCenter()
 
 MoveWindowsMM(size)
 {   
-    if ( IsDesktops() or IsMaxWindows() ) {
+    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
         Return 
     }
 
@@ -239,7 +234,7 @@ MoveWindowsMM(size)
 
 ResizeWindows(status, direction)
 {
-    if ( IsDesktops() or IsMaxWindows() ) {
+    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
         Return 
     }
 
@@ -288,7 +283,7 @@ ResizeWindows(status, direction)
 ; offset | 在一定误差内不进行窗口移动
 SetWindows(xx, yy, ww=0, hh=0, step=False, offset=3)
 {
-    if ( IsDesktops() or IsMaxWindows() ) {
+    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
         Return 
     }
 

@@ -12,9 +12,6 @@ if (not A_IsAdmin) {
 
 
 
-
-
-
 Loop {
 
     Sleep, 1000
@@ -49,8 +46,6 @@ Loop {
     }
 
     if ( WinActive("ahk_exe fdm.exe") ) {
-        ; ww:=screen_3_w-100-100
-        ; hh:=1500
         ww:=screen_3_w*8/9
         hh:=screen_3_h/2*5/6
         xx:=screen_3_x+screen_3_w/2-ww/2

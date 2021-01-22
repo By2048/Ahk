@@ -58,7 +58,7 @@ return
 
 
 >#,::
-    if ( IsDesktops() or IsMaxWindows() ) {
+    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
         Return 
     }
     global windows_resize_small
@@ -67,7 +67,7 @@ return
 Return
 
 >#.::
-    if ( IsDesktops() or IsMaxWindows() ) {
+    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
         Return 
     }
     global windows_resize_big
@@ -76,7 +76,7 @@ Return
 Return
 
 >#/::
-    if ( IsDesktops() or IsMaxWindows() ) {
+    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
         Return 
     }
     global windows_move
@@ -86,7 +86,7 @@ Return
 
 
 RWin & RAlt::
-    if not WinActive("ahk_class WorkerW") {
+    if (not IsDesktops()) {
         Send !{F4}
     }
 return

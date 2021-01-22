@@ -1,5 +1,6 @@
 #include %A_WorkingDir%\Libs\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Tool\Windows.ahk
 #SingleInstance Force
 #NoTrayIcon
 
@@ -29,7 +30,7 @@ global search_tool_show_status := False
 
 
 RAlt & RWin::
-    if not WinActive("ahk_class WorkerW") {
+    if (not IsDesktops()) {
         Send ^w
     }
 return
