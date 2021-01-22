@@ -59,7 +59,7 @@ Return
 Return
 >^P::
     RunNormalUser("wt.exe") 
-    Sleep, 300
+    Sleep, 500
     MoveWindowsMM("main")
 Return
 
