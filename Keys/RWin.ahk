@@ -58,39 +58,30 @@ return
 
 
 >#,::
-    if (IsDesktops()) {
-        HelpText("Windows Desktop", , ,1000)
-    } else If (IsMaxWindows()) {
-        HelpText("Max Screen Return", , , 1000)
-    } else {
-        global windows_resize_small
-        windows_resize_small:=True
-        HelpText("Windows Resize Small")
+    if ( IsDesktops() or IsMaxWindows() ) {
+        Return 
     }
+    global windows_resize_small
+    windows_resize_small:=True
+    HelpText("Windows Resize Small")
 Return
 
 >#.::
-    if (IsDesktops()) {
-        HelpText("Windows Desktop", , ,1000)
-    } else If (IsMaxWindows()) {
-        HelpText("Max Screen Return", , , 1000)
-    } else {
-        global windows_resize_big
-        windows_resize_big:=True
-        HelpText("Windows Resize Big")
+    if ( IsDesktops() or IsMaxWindows() ) {
+        Return 
     }
+    global windows_resize_big
+    windows_resize_big:=True
+    HelpText("Windows Resize Big")
 Return
 
 >#/::
-    if (IsDesktops()) {
-        HelpText("Windows Desktop", , ,1000)
-    } else If (IsMaxWindows()) {
-        HelpText("Max Screen Return", , , 1000)
-    } else {
-        global windows_move
-        windows_move:=True    
-        HelpText("Move Windows")
+    if ( IsDesktops() or IsMaxWindows() ) {
+        Return 
     }
+    global windows_move
+    windows_move:=True    
+    HelpText("Move Windows")
 Return
 
 
