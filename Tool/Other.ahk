@@ -79,25 +79,3 @@ show_pos()
 }
 
 
-
-; 显示激活的窗口名
-global last_activate_progress_name:=""
-ShowActivateProcessName()
-{
-    WinGet, name, ProcessName, A
-    name:=RTrim(name,"exe")
-    name:=RTrim(name,"EXE")
-    name:=RTrim(name,".")
-    if (name="Code") {
-        name:="VSCode"
-    } else if (name="chrome") {
-        name:="Chrome"
-    } else if (name="cloudmusic") {
-        name:="CloudMusic"
-    }
-    global last_activate_progress_name
-    if (name!=last_activate_progress_name) {
-        last_activate_progress_name:=name
-        HelpText(name,"center_down","screen3")
-    }
-}

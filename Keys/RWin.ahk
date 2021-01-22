@@ -107,7 +107,7 @@ timer:
         Return
     }
     if (cnt=1) {
-        ShowActivateProcessName()
+        ShowActivateWindowsProcessName()
     }
     if (cnt=2) {
         MoveWindowsCenter()

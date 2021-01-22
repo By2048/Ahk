@@ -308,3 +308,27 @@ SetWindows(xx, yy, ww=0, hh=0, step=False, offset=3)
     }
 }
 
+
+
+; 显示激活的窗口名
+global last_activate_windows_process_name:=""
+ShowActivateWindowsProcessName()
+{
+    WinGet, name, ProcessName, A
+    name:=RTrim(name,"exe")
+    name:=RTrim(name,"EXE")
+    name:=RTrim(name,".")
+    if (name="Code") {
+        name:="VSCode"
+    } else if (name="chrome") {
+        name:="Chrome"
+    } else if (name="cloudmusic") {
+        name:="CloudMusic"
+    }
+    global last_activate_windows_process_name
+    if (name!=last_activate_windows_process_name) {
+        last_activate_windows_process_name:=name
+        HelpText(name,"center_down","screen3")
+    }
+}
+
