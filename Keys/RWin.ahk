@@ -111,7 +111,10 @@ timer:
     }
     if (cnt=2) {
         MoveWindowsCenter()
-    } 
+    }
+    if (cnt=3) {
+        WindowsDefaultPosition()
+    }
     cnt:=0
 return
 
