@@ -38,6 +38,12 @@ return
 
 
 $RAlt::
+    if (WinActive("ahk_exe pycharm64.exe")) {
+        return
+    }
+    if (IsGame()) {
+        Return
+    }
     if (not cnt) {
         cnt:=1
     } else {
