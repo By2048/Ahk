@@ -108,11 +108,9 @@ timer:
     }
     if (cnt=1) {
         ShowActivateWindowsProcessName()
-    }
-    if (cnt=2) {
+    } else if (cnt=2) {
         MoveWindowsCenter()
-    }
-    if (cnt=3) {
+    } else if (cnt=3) {
         WindowsDefaultPosition()
     }
     cnt:=0
