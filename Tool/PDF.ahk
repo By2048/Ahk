@@ -1,17 +1,26 @@
 #include %A_WorkingDir%\Tool\Help.ahk
 
+        
+    
+`::Send, {LButton} 
 
 
 PDF_Main() {
     CoordMode Mouse Windows
-    page_count:=250
-    delete_x:=1840
-    delete_y:=1864
+
+    page_count := 268
+    delete_xy  := [ [1406,1905] , [1590,1962] ]
+
     Loop, %page_count% {
-        HelpText("   " A_Index "   ", "center_down")
-        MouseClick, Left, %delete_x%, %delete_y%, 1, 0
-        Send, {Delete}
+        for index, item in delete_xy {
+            x:=item[1]
+            y:=item[2]
+            MouseClick, Left, %x%, %y%, 1, 0
+            Send, {Delete}
+        }
         MouseClick, Left, 1016, 138, 1, 0 ; 下一页
+        HelpText("   " A_Index "   ", "center_down")
     }
+
     HelpText()
 }
