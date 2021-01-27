@@ -15,8 +15,7 @@ if (not A_IsAdmin) {
 
 
 >^Esc::Run taskmgr.exe ;任务管理器
->^F1::Run %A_WorkingDir%\Scripts\Dexpot_Start.bat
->^F2::Run %A_WorkingDir%\Scripts\Dexpot_Clean.bat
+>^F1::Run %A_WorkingDir%\Scripts\Dexpot.bat
 >^F3::Run %A_WorkingDir%\Scripts\Restart_Explorer.bat
 >^F4::Run %A_WorkingDir%\Scripts\Folder_Icon.bat
 
