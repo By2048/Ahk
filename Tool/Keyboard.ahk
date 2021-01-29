@@ -1,4 +1,9 @@
 
+/*
+
+正在使用的键盘界面效果
+
+*/
 
 
 global keyboard_show_status:=False
@@ -13,12 +18,12 @@ global keyboard_y := 4
 global keyboard_h := 30
 
 global keyboard_line_0  := [[""],["F13"],["F14"],["F15"],["F16"],["F17"],["F18"],["F19"],["F20"],["F21"],["F22"],["F23"],["F24"],[""],[""],[""]]
-global keyboard_line_1  := [["Esc"],["F1"],["F2"],["F3"],["F4"],["F5"],["F6"],["F7"],["F8"],["F9"],["F10"],["F11"],["F12"],["Print`nScreen"],["Pause`nBreak"],["Delete"]]
-global keyboard_line_11 := [["Esc"],["F1`nF13"],["F2`nF14"],["F3`nF15"],["F4`nF16"],["F5`nF17"],["F6`nF18"],["F7`nF19"],["F8`nF20"],["F9`nF21"],["F10`nF22"],["F11`nF23"],["F12`nF24"],["Print`nScreen"],["Pause`nBreak"],["Delete"]]
-global keyboard_line_2  := [["~`n``"],["!`n1"],["@`n2"],["#`n3"],["$`n4"],["%`n5"],["^`n6"],["&&`n7"],["*`n8"],["(`n9"],[")`n0"],["_`n-"],["+`n="],["BackSpace",2],["Home"]]
-global keyboard_line_3  := [["Tab",1.5],["Q"],["W"],["E"],["R"],["T"],["Y"],["U"],["I"],["O"],["P"],["{`n["],["}`n]"],["|`n\",1.5],["Page`nUp"]]
-global keyboard_line_4  := [["CapsLock",1.75],["A"],["S"],["D"],["F"],["G"],["H"],["J"],["K"],["L"],[":`n;"],["""`n'"],["Enter",2.25],["Page`nDown"]]
-global keyboard_line_5  := [["Shift",2.25],["Z"],["X"],["C"],["V"],["B"],["N"],["M"],["<`n,"],[">`n."],["?`n/"],["Shift",1.75],["Up"],["End"]]
+global keyboard_line_1  := [["Esc"],["F1"],["F2"],["F3"],["F4"],["F5"],["F6"],["F7"],["F8"],["F9"],["F10"],["F11"],["F12"],["Print Screen"],["Pause Break"],["Delete"]]
+global keyboard_line_11 := [["Esc"],["F1 F13"],["F2 F14"],["F3 F15"],["F4 F16"],["F5 F17"],["F6 F18"],["F7 F19"],["F8 F20"],["F9 F21"],["F10 F22"],["F11 F23"],["F12 F24"],["Print Screen"],["Pause Break"],["Delete"]]
+global keyboard_line_2  := [["~ ``"],["! 1"],["@ 2"],["# 3"],["$ 4"],["% 5"],["^ 6"],["&& 7"],["* 8"],["( 9"],[") 0"],["_ -"],["+ ="],["BackSpace",2],["Home"]]
+global keyboard_line_3  := [["Tab",1.5],["Q"],["W"],["E"],["R"],["T"],["Y"],["U"],["I"],["O"],["P"],["{ ["],["} ]"],["| \",1.5],["Page Up"]]
+global keyboard_line_4  := [["CapsLock",1.75],["A"],["S"],["D"],["F"],["G"],["H"],["J"],["K"],["L"],[": `;"],[""" '"],["Enter",2.25],["Page Down"]]
+global keyboard_line_5  := [["Shift",2.25],["Z"],["X"],["C"],["V"],["B"],["N"],["M"],["< ,"],["> ."],["? /"],["Shift",1.75],["Up"],["End"]]
 global keyboard_line_6  := [["Ctrl",1.25],["Win",1.25],["Alt",1.25],["Space",5.5],["Alt",1.25],["Fn",1.25],["Ctrl",1.25],["Left"],["Down"],["Right"]]
 global keyboard_line_66 := [["Ctrl",1.25],["Win",1.25],["Alt",1.25],["Space",5.5],["Alt",1.25],["Win",1.25],["Ctrl",1.25],["Left"],["Down"],["Right"]]
 
@@ -26,22 +31,26 @@ global keyboard_line_66 := [["Ctrl",1.25],["Win",1.25],["Alt",1.25],["Space",5.5
 
 keyboard_line(data) 
 {
-    global keyboard_x
-    global keyboard_h
-    global keyboard_y
+    global keyboard_x, keyboard_h , keyboard_y
+
     for index, item in data {
-        name:=item[1]
-        length:=item[2]
-        if not (length) {
-            length:=1
+        keyboard_txt := item[1]
+        keyboard_txt := StrReplace(keyboard_txt, " ", "`n")
+
+        width := item[2]
+        if (not width) {
+            width:=1
         }
-        k_w:=keyboard_h*length+(length-1)
-        Gui, Add, Button, w%k_w% h%keyboard_h% x%keyboard_x% y%keyboard_y%, %name%
-        keyboard_x:=keyboard_x+k_w+1
+        keyboard_w := keyboard_h * width + (width-1)
+
+        Gui, Add, Button, w%keyboard_w% h%keyboard_h% x%keyboard_x% y%keyboard_y%, %keyboard_txt%
+
+        keyboard_x := keyboard_x + keyboard_w + 1
     }
-    keyboard_x:=10
-    keyboard_y:=keyboard_y+30+1
-    keyboard_h:=30
+
+    keyboard_x := 10
+    keyboard_y := keyboard_y + 30 + 1
+    keyboard_h := 30
 }
 
 
@@ -49,9 +58,7 @@ keyboard_line(data)
 Keyboard()
 {
     global keyboard_show_status
-    global keyboard_x
-    global keyboard_y
-    global keyboard_h
+    global keyboard_x, keyboard_y, keyboard_h
     
     keyboard_x := 10
     keyboard_y := 4
@@ -76,18 +83,17 @@ Keyboard()
         Gui, Show
 
         ; 移动窗口到中下位置
-        WinGet, k_ID, ID, A 
+        WinGet, wid, ID, A 
         WinGetPos, x, y, w, h, A
         x:=A_ScreenWidth/2-w/2
         y:=A_ScreenHeight-h
-        WinMove, ahk_id %k_ID%, , %x%, %y%
-        WinSet, AlwaysOnTop, On, ahk_id %k_ID%
-        WinSet, TransColor, %keyboard_transcolor% 220, ahk_id %k_ID%      
+        WinMove, ahk_id %wid%, , %x%, %y%
+        WinSet, AlwaysOnTop, On, ahk_id %wid%
+        WinSet, TransColor, %keyboard_transcolor% 220, ahk_id %wid%
 
         ; 激活鼠标下的窗口
         MouseGetPos, , , wid
         WinActivate, ahk_id %wid%
-
     } else {
         keyboard_show_status:=False
         Gui Hide
