@@ -24,7 +24,7 @@ Loop {
 	WinGetText, win_text, ahk_id %win_id%
 	WinGetPos, win_x, win_y, win_w, win_h, ahk_id %win_id%
 
-    ; HelpText(" " win_process_name " " win_class " ","center_down","screen_3")
+    ; HelpText(" " win_process_name " " win_class " ", "center_down")
 
     if (IsGame(win_process_name)) {
         Sleep, 3000
