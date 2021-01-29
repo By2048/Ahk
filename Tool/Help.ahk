@@ -37,12 +37,18 @@ HelpText(data="",xy="right_down",screens="screen1",sleep_time=0)
     CoordMode Pixel Screen
     CoordMode Mouse Screen
 
+    if (data=True) {
+        data:="True"
+    }
+    if (data=False) {
+        data:="False"
+    }
+
     global help_text_show_status
-    
     if (not data) {
         help_text_show_status:=False
         Return
-    } 
+    }
     
     ;窗体宽度（与字体大小长度样式相关
     ; 15 设置字符宽度 
@@ -50,34 +56,37 @@ HelpText(data="",xy="right_down",screens="screen1",sleep_time=0)
     w:=StrLen(data)*15*2
     h:=63
 
-    if (screens="screen1") {
+    if (screens="screen1" or screens="screen_1") {
         screen_x:=screen_1_x
         screen_y:=screen_1_y
         screen_xx:=screen_1_xx
         screen_yy:=screen_1_yy
-    } else if (screens="screen2") {
+    } else if (screens="screen2" or screens="screen_2") {
         screen_x:=screen_2_x
         screen_y:=screen_2_y
         screen_xx:=screen_2_xx
         screen_yy:=screen_2_yy
-    } else if (screens="screen3") {
+    } else if (screens="screen3" or screens="screen_3") {
         screen_x:=screen_3_x
         screen_y:=screen_3_y
         screen_xx:=screen_3_xx
         screen_yy:=screen_3_yy/2
     }
 
+    screen_w:=screen_xx-screen_x
+    screen_h:=screen_yy-screen_y
+
     if (xy="right_down") {
         x:=screen_xx-w-5
         y:=screen_yy-h-5
     } else if (xy="center") {
-        x:=screen_x+(screen_xx-screen_x)/2-w/2
-        y:=screen_y+(screen_yy-screen_y)/2-h/2
+        x:=screen_x+screen_w/2-w/2
+        y:=screen_y+screen_h/2-h/2
     } else if (xy="center_up") {
-        x:=screen_x+(screen_xx-screen_x)/2-w/2
+        x:=screen_x+screen_w/2-w/2
         y:=screen_y+5
     } else if (xy="center_down") {
-        x:=screen_x+(screen_xx-screen_x)/2-w/2
+        x:=screen_x+screen_w/2-w/2
         y:=screen_yy-h-5
     }
 

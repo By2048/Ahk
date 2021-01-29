@@ -27,14 +27,19 @@ IsMaxWindows()
 
 
 
-IsGame()
+IsGame(process_name="")
 {
     data:=[]
 	data.push("LeagueClientUx.exe")
 	data.push("League of Legends.exe")
-    WinGet, name, ProcessName, A
+    name:=""
+    if (process_name) {
+        win_process_name:=process_name
+    } else {
+        WinGet, win_process_name, ProcessName, A
+    }
     for index, item in data {
-        if (name=item) {
+        if (win_process_name=item) {
             Return True
         }
     }
@@ -43,10 +48,10 @@ IsGame()
 
 
 
-GetWindowsCenterPos()
+GetWindowsCenterPos(win_id)
 {
-    WinGetPos, x, y, w, h, A
-     
+    WinGetPos, x, y, w, h, ahk_id %win_id%
+
     result:=[-1,-1]
     ; 判断窗口主体在那个屏幕
     in_screen_1:=False
@@ -63,19 +68,19 @@ GetWindowsCenterPos()
     xx:=0
     yy:=0
     if (in_screen_1) {
-        xx:=screen_1_x+(screen_1_xx-screen_1_x)/2-w/2
-        yy:=screen_1_y+(screen_1_yy-screen_1_y)/2-h/2
+        xx:=screen_1_x+screen_1_w/2-w/2
+        yy:=screen_1_y+screen_1_h/2-h/2
     }
     if (in_screen_2) {
-        xx:=screen_2_x+(screen_2_xx-screen_2_x)/2-w/2
-        yy:=screen_2_y+(screen_2_yy-screen_2_y)/2-h/2
+        xx:=screen_2_x+screen_2_w/2-w/2
+        yy:=screen_2_y+screen_2_h/2-h/2
     }
-    if (in_screen_3) { ;上半部分
-        xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
-        yy:=screen_3_y+(screen_3_yy-screen_3_y)/2/2-h/2
+    if (in_screen_3) {
+        xx:=screen_3_x+screen_3_w/2-w/2
+        yy:=screen_3_y+screen_3_h/2/2-h/2
     }
     result:=[xx,yy]
-    
+
     Return result
 }
 
@@ -83,7 +88,7 @@ GetWindowsCenterPos()
 
 MoveWindows(direction)
 {    
-    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
+    if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
     }
 
@@ -108,14 +113,14 @@ MoveWindows(direction)
 
 MoveWindowsCenter() 
 {
-    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
+    if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
     }
 
-    WinGet, w_id, ID, A
-    WinGetPos, x, y, w, h, ahk_id %w_id%
+    WinGet, win_id, ID, A
+    WinGetPos, x, y, w, h, ahk_id %win_id%
 
-    result:=GetWindowsCenterPos()
+    result:=GetWindowsCenterPos(win_id)
     xx:=result[1]
     yy:=result[2]
 
@@ -123,16 +128,16 @@ MoveWindowsCenter()
         Return
     }
 
-    WinMove, ahk_id %w_id%, , %xx%, %yy%
+    WinMove, ahk_id %win_id%,  , %xx%, %yy%
 
-    HelpText("Move To Center", , ,1000)
+    HelpText("Move To Center",  ,  ,1000)
 }
 
 
 
 MoveWindowsMM(size)
 {   
-    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
+    if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
     }
 
@@ -174,7 +179,7 @@ MoveWindowsMM(size)
     main:=[5/6,8/9]
     mini:=[1.8/3,3/4]
 
-    if ( WinActive("ahk_exe pycharm64.exe") and title="Open File or Project" ) {
+    if (WinActive("ahk_exe pycharm64.exe") and title="Open File or Project") {
         mini:=[1/5,2/3]
     }
 
@@ -234,7 +239,7 @@ MoveWindowsMM(size)
 
 ResizeWindows(status, direction)
 {
-    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
+    if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
     }
 
@@ -281,29 +286,28 @@ ResizeWindows(status, direction)
 
 ; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
 ; offset | 在一定误差内不进行窗口移动
-SetWindows(xx, yy, ww=0, hh=0, step=False, offset=3)
+SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 {
-    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
+    if (not win_id) {
+        HelpText("No WinID")
+    }
+    
+    if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
     }
 
-    WinGet, wid, ID, A
-    WinGetPos, x, y, w, h, ahk_id %wid%
-    if (not ww) { 
+    if (not ww or not hh) { 
+        WinGetPos, x, y, w, h, ahk_id %win_id%
         ww:=w
-    }
-    if (not hh) {
         hh:=h
     }
-    ; txt=%x% %y% | %w% %h% | %step%
-    ; txt=%xx% %yy% | %ww% %hh% | %step%
-    ; HelpText(txt)
+
     if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
         if (step) {
-            WinMove, ahk_id %wid%,  , %xx%, %yy%,     ,     
-            WinMove, ahk_id %wid%,  ,     ,     , %ww%, %hh%
+            WinMove, ahk_id %win_id%,  , %xx%, %yy%,     ,     
+            WinMove, ahk_id %win_id%,  ,     ,     , %ww%, %hh%
         } else {
-            WinMove, ahk_id %wid%,  , %xx%, %yy%, %ww%, %hh%
+            WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
         }
     }
 }
@@ -336,19 +340,22 @@ ShowActivateWindowsProcessName()
 
 WindowsDefaultPosition()
 {
-    if (WinActive("ahk_exe TIM.exe")) {
+    WinGet, win_id, ID, A
+	WinGet, win_process_name, ProcessName, ahk_id %win_id%
+    if (win_process_name="TIM.exe") {
         xx:=10
         yy:=10
         ww:=screen_1_w/2-10-10
         hh:=screen_1_h-10-10
-        SetWindows(xx,yy,ww,hh)
+        SetWindows(win_id, xx, yy, ww, hh)
         HelpText("TIM", "center_down", "screen1", 1000)
-    } else if WinActive("ahk_exe WeChat.exe") {
+    }
+    if (win_process_name="WeChat.exe") {
         xx:=screen_1_w/2+10
         yy:=10+14
         ww:=screen_1_w/2-10-10
         hh:=screen_1_h-10-10-14-14
-        SetWindows(xx,yy,ww,hh)
+        SetWindows(win_id, xx, yy, ww, hh)
         HelpText("WeChat", "center_down", "screen1", 1000)
     }
 }

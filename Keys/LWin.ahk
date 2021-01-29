@@ -15,7 +15,7 @@ global win_tab:=False
 LWin & Tab::
     global win_tab
     win_tab:=True
-    If ( GetKeyState("Shift","P") ) {
+    If (GetKeyState("Shift","P")) {
         Send {Alt Down}{Shift Down}{Tab}
     } else {
         Send {Alt Down}{Tab}
@@ -54,7 +54,7 @@ return
 
 ; 显示隐藏任务栏
 <#8:: 
-    if ( !WinExist("ahk_class Shell_TrayWnd") ) {
+    if (!WinExist("ahk_class Shell_TrayWnd")) {
         WinShow ahk_class Shell_TrayWnd
     } else {
         WinHide ahk_class Shell_TrayWnd

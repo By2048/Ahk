@@ -16,9 +16,17 @@ Loop {
 
     Sleep, 1000
 
-    WinGet, windows_active_software, ProcessName, A
+    WinGet, win_id, ID, A
+    WinGet, w_min_max, MinMax, ahk_id %win_id%
+	WinGet, win_process_name, ProcessName, ahk_id %win_id%
+    WinGetClass, win_class, ahk_id %win_id%
+	WinGetTitle, win_title, ahk_id %win_id%
+	WinGetText, win_text, ahk_id %win_id%
+	WinGetPos, win_x, win_y, win_w, win_h, ahk_id %win_id%
 
-    if (IsGame()) {
+    ; HelpText(" " win_process_name " " win_class " ","center_down","screen_3")
+
+    if (IsGame(win_process_name)) {
         Sleep, 3000
         Continue
     }
@@ -34,36 +42,36 @@ Loop {
     }
 
     ; 文件选择窗口居中
-    if (WinActive("ahk_class #32770")) {
-        WinGetPos, x, y, w, h, A 
-        result:=GetWindowsCenterPos()
-        xx:=result[1]
-        yy:=result[2]
-        SetWindows(xx,yy,w,h,False,70)
+    if (win_class="#32770") {
+        xx:=screen_1_x+screen_1_w/2-win_w/2
+        yy:=screen_1_y+screen_1_h/2-win_h/2
+        offset:=70
+        SetWindows(win_id, xx, yy, win_w, win_h, offset)
     }
 
-    ; 文件复制移动窗口 (移动到屏幕3上部分)
-    if ((WinActive("ahk_exe Q-Dir.exe") or WinActive("ahk_exe explorer.exe")) and WinActive("ahk_class OperationStatusWindow"))  {
-        WinGetPos, x, y, w, h, A 
-        xx:=screen_3_x+screen_3_w/2-w/2
-        yy:=screen_3_y+screen_3_h/4-h/2
-        SetWindows(xx,yy)
+    ; 文件复制移动窗口
+    if ((win_process_name="Q-Dir.exe" or win_process_name="explorer.exe") and win_class="OperationStatusWindow") {
+        xx:=screen_3_x+screen_3_w/2-win_w/2
+        yy:=screen_3_y+screen_3_h/4-win_h/2
+        SetWindows(win_id, xx, yy, win_w, win_h)
     }
 
-    if (WinActive("ahk_exe fdm.exe")) {
+    ; FDM下载
+    if (win_process_name="fdm.exe") {
         ww:=screen_3_w*8/9
         hh:=screen_3_h/2*5/6
         xx:=screen_3_x+screen_3_w/2-ww/2
         yy:=screen_3_y+100
-        SetWindows(xx,yy,ww,hh,True)
+        SetWindows(win_id, xx, yy, ww, hh,  ,True)
     }
     
-    if (WinActive("ahk_exe cloudmusic.exe") and WinActive("ahk_class OrpheusBrowserHost")) {
+    ; 网易云音乐
+    if (win_process_name="cloudmusic.exe" and win_class="OrpheusBrowserHost") {
         ww:=screen_1_w*5/6
         hh:=screen_1_h*8/9
         xx:=screen_1_x+screen_1_w/2-ww/2
         yy:=screen_1_y+screen_1_h/2-hh/2
-        SetWindows(xx,yy,ww,hh)
+        SetWindows(win_id, xx, yy, ww, hh)
     }
 
 }

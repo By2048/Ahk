@@ -164,7 +164,7 @@ change(np="")
 
 
 ~RShift::
-    if ( IsGame() ) {
+    if (IsGame()) {
         Return
     }
     if (not cnt) {

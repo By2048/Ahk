@@ -58,7 +58,7 @@ return
 
 
 >#,::
-    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
+    if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
     }
     global windows_resize_small
@@ -67,7 +67,7 @@ return
 Return
 
 >#.::
-    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
+    if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
     }
     global windows_resize_big
@@ -76,7 +76,7 @@ Return
 Return
 
 >#/::
-    if ( IsDesktops() or IsMaxWindows() or IsGame() ) {
+    if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
     }
     global windows_move
@@ -94,12 +94,13 @@ return
 RWin & RCtrl::MoveWindowsMM("main")
 
 
+
 timer:
     global windows_move
     global windows_resize_big
     global windows_resize_small
 
-    if ( windows_move=True or windows_resize_big=True or windows_resize_small=True ) {
+    if (windows_move=True or windows_resize_big=True or windows_resize_small=True) {
         windows_move:=False
         windows_resize_small:=False
         windows_resize_big:=False
@@ -126,12 +127,14 @@ return
 #if
 
 
+
 #if (windows_resize_big=True)
     Up::ResizeWindows("Big","Up")
     Down::ResizeWindows("Big","Down")
     Left::ResizeWindows("Big","Left")
     Right::ResizeWindows("Big","Right")
 #if
+
 
 
 #if (windows_resize_small=True)
