@@ -12,8 +12,6 @@ IsDesktops()
     Return False
 }
 
-
-
 IsMaxWindows()
 {
     WinGet, w_id, ID, A
@@ -24,8 +22,6 @@ IsMaxWindows()
     }
     Return False
 }
-
-
 
 IsGame(process_name="")
 {
@@ -47,46 +43,52 @@ IsGame(process_name="")
 }
 
 
-
-GetWindowsCenterPos(win_id)
+; 根据窗口ID 获取窗口的所在屏幕信息 以及窗口信息
+GetWindowsScreen(win_id)
 {
     WinGetPos, x, y, w, h, ahk_id %win_id%
 
-    result:=[-1,-1]
-    ; 判断窗口主体在那个屏幕
-    in_screen_1:=False
-    in_screen_2:=False
-    in_screen_3:=False
+    ; 判断窗口主体在那个屏幕,并初始化相关参数
+    in_screen:=1
+    screen_x:=0, screen_y:=0, screen_xx:=0, screen_yy:=0
     if (x>=screen_1_x and x<screen_1_xx) {
-        in_screen_1:=True
+        in_screen:=1
+        screen_x:=screen_1_x, screen_y:=screen_1_y
+        screen_xx:=screen_1_xx, screen_yy:=screen_1_yy
     } else if (x>=screen_2_x and x<screen_2_xx) {
-        in_screen_2:=True
+        in_screen:=2
+        screen_x:=screen_2_x ,screen_y:=screen_2_y
+        screen_xx:=screen_2_xx, screen_yy:=screen_2_yy
     } else if (x>=screen_3_x and x<screen_3_xx) {
-        in_screen_3:=True
+        in_screen:=3
+        screen_x:=screen_3_x, screen_y:=screen_3_y
+        screen_xx:=screen_3_xx, screen_yy:=screen_3_yy/2
     }
 
-    xx:=0
-    yy:=0
-    if (in_screen_1) {
-        xx:=screen_1_x+screen_1_w/2-w/2
-        yy:=screen_1_y+screen_1_h/2-h/2
-    }
-    if (in_screen_2) {
-        xx:=screen_2_x+screen_2_w/2-w/2
-        yy:=screen_2_y+screen_2_h/2-h/2
-    }
-    if (in_screen_3) {
-        xx:=screen_3_x+screen_3_w/2-w/2
-        yy:=screen_3_y+screen_3_h/2/2-h/2
-    }
-    result:=[xx,yy]
-
-    Return result
+    Return [x,y,w,h, screen_x,screen_y,screen_xx,screen_yy, screen_w,screen_h]
 }
 
 
 
-MoveWindows(direction)
+; 获取窗口在居中时应处的位置
+GetWindowsCenterPos(win_id)
+{
+    result:=GetWindowsScreen(win_id)
+    x:=result[1], y:=result[2], w:=result[3], h:=result[4]
+    screen_x:=result[5], screen_y:=result[6], screen_xx:=result[7], screen_yy:=result[8]
+    screen_w:=screen_xx-screen_x
+    screen_h:=screen_yy-screen_y
+
+    xx:=x, yy:=y
+    xx:=screen_x+screen_w/2-w/2
+    yy:=screen_y+screen_h/2-h/2
+
+    Return [xx,yy]
+}
+
+
+; 窗口上下左右移动
+MoveWindowsUDLR(direction)
 {    
     if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
@@ -95,8 +97,9 @@ MoveWindows(direction)
     SetWinDelay, 1
     CoordMode, Mouse
 
-    WinGet, w_id, ID, A
-    WinGetPos, x, y, w, h, ahk_id %w_id%
+    WinGet, win_id, ID, A
+    WinGetPos, x, y, w, h, ahk_id %win_id%
+
     step:=10
     if (direction="Up") {
         y:=y-step
@@ -107,11 +110,13 @@ MoveWindows(direction)
     } else if (direction="Right") {
         x:=x+step
     }
-    WinMove, ahk_id %w_id%,  , %x%, %y%
+
+    WinMove, ahk_id %win_id%,  , %x%, %y%
 }
 
 
-MoveWindowsCenter() 
+; 窗口移动到屏幕中心
+MoveWindowsToCenter() 
 {
     if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
@@ -121,8 +126,7 @@ MoveWindowsCenter()
     WinGetPos, x, y, w, h, ahk_id %win_id%
 
     result:=GetWindowsCenterPos(win_id)
-    xx:=result[1]
-    yy:=result[2]
+    xx:=result[1], yy:=result[2]
 
     if (x=xx and y=yy) {
         Return
@@ -135,104 +139,58 @@ MoveWindowsCenter()
 
 
 
-MoveWindowsMM(size)
+MoveWindowsMM(command)
 {   
     if (IsDesktops() or IsMaxWindows() or IsGame()) {
         Return 
     }
 
+    WinGet, win_id, ID, A
+	WinGet, win_process_name, ProcessName, ahk_id %win_id%
+	WinGetTitle, win_title, ahk_id %win_id%
+
     data:=[]
     data.push("Snipaste.exe")
     check_ignore:=False
-    WinGet, name, ProcessName, A
     for index, item in data {
-        if (name=item) {
+        if (win_process_name=item) {
             check_ignore:=True
         }
     }
     if (check_ignore=True) {
         Return
     }
-    
-    SetWinDelay, 1
 
-    WinGet, w_id, ID, A
-    WinGetPos, x, y, w, h, ahk_id %w_id%
-    WinGetTitle, title, A
+    result:=GetWindowsScreen(win_id)
+    x:=result[1], y:=result[2], w:=result[3], h:=result[4]
+    screen_x:=result[5], screen_y:=result[6], screen_xx:=result[7], screen_yy:=result[8]
+    screen_w:=screen_xx-screen_x
+    screen_h:=screen_yy-screen_y
 
-    ; MsgBox, %x% %y% %w% %h%
-    ; 判断窗口主体在那个屏幕
-    in_screen_1:=False
-    in_screen_2:=False
-    in_screen_3:=False
-    if (x>=screen_1_x and x<screen_1_xx) {
-        in_screen_1:=True
-    } else if (x>=screen_2_x and x<screen_2_xx) {
-        in_screen_2:=True
-    } else if (x>=screen_3_x and x<screen_3_xx) {
-        in_screen_3:=True
+    main := [   5/6 , 8/9 ]
+    mini := [ 1.8/3 , 3/4 ]
+    if (WinActive("ahk_exe pycharm64.exe") and win_title="Open File or Project") {
+        mini:=[ 1/5 , 2/3 ]
     }
 
-    ; MsgBox, %in_screen_1% %in_screen_2% %in_screen_3%
-
-
-    main:=[5/6,8/9]
-    mini:=[1.8/3,3/4]
-
-    if (WinActive("ahk_exe pycharm64.exe") and title="Open File or Project") {
-        mini:=[1/5,2/3]
+    if (command="main") {
+        HelpText("Windows Main Size")
+        ww:=screen_w*main[1]
+        hh:=screen_h*main[2]
+    }
+    if (command="mini") {
+        HelpText("Windows Mini Size")
+        ww:=screen_w*mini[1]
+        hh:=screen_h*mini[2]
     }
 
+    WinMove, ahk_id %win_id%,  ,  ,  , %ww%, %hh%
+    result:=GetWindowsCenterPos(win_id)
+    xx:=result[1], yy:=result[2]
+    WinMove, ahk_id %win_id%,  , %xx%, %yy%
 
-    if (size="main" or size="mini") {
-        xx:=0
-        yy:=0
-        ww:=0
-        hh:=0
-
-        if (size="main") {
-            HelpText("Windows Main Size")
-            if (in_screen_1) {
-                ww:=(screen_1_xx-screen_1_x)*main[1]
-                hh:=(screen_1_yy-screen_1_y)*main[2]
-            } else if (in_screen_2) {
-                ww:=(screen_2_xx-screen_2_x)*main[1]
-                hh:=(screen_2_yy-screen_2_y)*main[2]
-            } else if (in_screen_3) {
-                ww:=(screen_3_xx-screen_3_x)  *main[1]
-                hh:=(screen_3_yy-screen_3_y)/2*main[2]
-            }
-        } else if (size="mini") {
-            HelpText("Windows Mini Size")
-            if (in_screen_1) {
-                ww:=(screen_1_xx-screen_1_x)*mini[1]
-                hh:=(screen_1_yy-screen_1_y)*mini[2]
-            } else if (in_screen_2) {
-                ww:=(screen_2_xx-screen_2_x)*mini[1]
-                hh:=(screen_2_yy-screen_2_y)*mini[2]
-            } else if (in_screen_3) {
-                ww:=(screen_3_xx-screen_3_x)  *mini[1]
-                hh:=(screen_3_yy-screen_3_y)/2*mini[2]
-            }
-        } 
-
-        if (in_screen_1) {
-            xx:=screen_1_x+(screen_1_xx-screen_1_x)/2-ww/2
-            yy:=screen_1_y+(screen_1_yy-screen_1_y)/2-hh/2
-        } else if (in_screen_2) {
-            xx:=screen_2_x+(screen_2_xx-screen_2_x)/2-ww/2
-            yy:=screen_2_y+(screen_2_yy-screen_2_y)/2-hh/2
-        } else if (in_screen_3) { ;上半部分
-            xx:=screen_3_x+(screen_3_xx-screen_3_x)/2-ww/2
-            yy:=screen_3_y+(screen_3_yy-screen_3_y)/2/2-hh/2
-        }
-
-        WinMove, ahk_id %w_id%,  , %xx%, %yy%, %ww%, %hh%
-
-        Sleep, 1000
-        HelpText()
-    }
-
+    Sleep, 1000
+    HelpText()
 }
 
 
@@ -246,7 +204,7 @@ ResizeWindows(status, direction)
     SetWinDelay, 1
     CoordMode, Mouse
 
-    WinGet, w_id, ID, A
+    WinGet, win_id, ID, A
     WinGetPos, x, y, w, h, ahk_id %w_id%
 
     step:=10
@@ -279,13 +237,14 @@ ResizeWindows(status, direction)
             w:=w-step
         }
     }
-    WinMove, ahk_id %w_id%,  , %x%, %y%, %w%, %h%
+    WinMove, ahk_id %win_id%,  , %x%, %y%, %w%, %h%
 }
 
 
 
-; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
+; 将窗口移动到指定位置
 ; offset | 在一定误差内不进行窗口移动
+; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
 SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 {
     if (not win_id) {
@@ -314,6 +273,31 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 
 
 
+; 将窗口移动到软件设置的默认位置
+MoveWindowsToDefaultPosition()
+{
+    WinGet, win_id, ID, A
+	WinGet, win_process_name, ProcessName, ahk_id %win_id%
+    if (win_process_name="TIM.exe") {
+        xx:=10
+        yy:=10
+        ww:=screen_1_w/2-10-10
+        hh:=screen_1_h-10-10
+        SetWindows(win_id, xx, yy, ww, hh)
+        HelpText("TIM", "center_down", "screen1", 1000)
+    }
+    if (win_process_name="WeChat.exe") {
+        xx:=screen_1_w/2+10
+        yy:=10+14
+        ww:=screen_1_w/2-10-10
+        hh:=screen_1_h-10-10-14-14
+        SetWindows(win_id, xx, yy, ww, hh)
+        HelpText("WeChat", "center_down", "screen1", 1000)
+    }
+}
+
+
+
 ; 显示激活的窗口名
 global last_activate_windows_process_name:=""
 ShowActivateWindowsProcessName()
@@ -333,29 +317,5 @@ ShowActivateWindowsProcessName()
     if (name!=last_activate_windows_process_name) {
         last_activate_windows_process_name:=name
         HelpText(name,"center_down","screen3")
-    }
-}
-
-
-
-WindowsDefaultPosition()
-{
-    WinGet, win_id, ID, A
-	WinGet, win_process_name, ProcessName, ahk_id %win_id%
-    if (win_process_name="TIM.exe") {
-        xx:=10
-        yy:=10
-        ww:=screen_1_w/2-10-10
-        hh:=screen_1_h-10-10
-        SetWindows(win_id, xx, yy, ww, hh)
-        HelpText("TIM", "center_down", "screen1", 1000)
-    }
-    if (win_process_name="WeChat.exe") {
-        xx:=screen_1_w/2+10
-        yy:=10+14
-        ww:=screen_1_w/2-10-10
-        hh:=screen_1_h-10-10-14-14
-        SetWindows(win_id, xx, yy, ww, hh)
-        HelpText("WeChat", "center_down", "screen1", 1000)
     }
 }

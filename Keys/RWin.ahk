@@ -110,9 +110,9 @@ timer:
     if (cnt=1) {
         ShowActivateWindowsProcessName()
     } else if (cnt=2) {
-        MoveWindowsCenter()
+        MoveWindowsToCenter()
     } else if (cnt=3) {
-        WindowsDefaultPosition()
+        MoveWindowsToDefaultPosition()
     }
     cnt:=0
 return
@@ -120,10 +120,10 @@ return
 
 
 #if (windows_move=True)
-    Up::MoveWindows("Up")
-    Down::MoveWindows("Down")
-    Left::MoveWindows("Left")
-    Right::MoveWindows("Right")
+    Up::MoveWindowsUDLR("Up")
+    Down::MoveWindowsUDLR("Down")
+    Left::MoveWindowsUDLR("Left")
+    Right::MoveWindowsUDLR("Right")
 #if
 
 
