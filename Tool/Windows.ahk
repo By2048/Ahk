@@ -5,22 +5,24 @@
 
 IsDesktops()
 {
-    If WinActive("ahk_class WorkerW") {
-        HelpText("Windows Desktop", , ,1000)
+    if (WinActive("ahk_class WorkerW")) {
+        HelpText("Windows Desktop",  ,  ,1000)
         Return True
+    } else {
+        Return False
     }
-    Return False
 }
 
 IsMaxWindows()
 {
-    WinGet, w_id, ID, A
-    WinGet, w_status, MinMax, ahk_id %w_id%
-    if (w_status) {
-        HelpText("Max Screen Return", , , 1000)
+    WinGet, win_id, ID, A
+    WinGet, win_status, MinMax, ahk_id %win_id%
+    if (win_status) {
+        HelpText("Max Screen Return",  ,  , 1000)
         return True
+    } else {
+        Return False
     }
-    Return False
 }
 
 IsGame(process_name="")
@@ -41,6 +43,7 @@ IsGame(process_name="")
     }
     Return False
 }
+
 
 
 ; 根据窗口ID 获取窗口的所在屏幕信息 以及窗口信息
@@ -87,6 +90,7 @@ GetWindowsCenterPos(win_id)
 }
 
 
+
 ; 窗口上下左右移动
 MoveWindowsUDLR(direction)
 {    
@@ -113,6 +117,7 @@ MoveWindowsUDLR(direction)
 
     WinMove, ahk_id %win_id%,  , %x%, %y%
 }
+
 
 
 ; 窗口移动到屏幕中心
@@ -248,7 +253,7 @@ ResizeWindows(status, direction)
 SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 {
     if (not win_id) {
-        HelpText("No WinID")
+        HelpText("No WinId")
     }
     
     if (IsDesktops() or IsMaxWindows() or IsGame()) {
@@ -319,3 +324,4 @@ ShowActivateWindowsProcessName()
         HelpText(name,"center_down","screen3")
     }
 }
+
