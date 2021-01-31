@@ -23,6 +23,7 @@ Loop {
 	WinGetTitle, win_title, ahk_id %win_id%
 	WinGetText, win_text, ahk_id %win_id%
 	WinGetPos, win_x, win_y, win_w, win_h, ahk_id %win_id%
+	WinGet, win_transparent, Transparent, ahk_id %win_id%
 
     ; HelpText(" " win_process_name " " win_class " ", "center_down")
 

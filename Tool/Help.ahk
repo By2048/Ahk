@@ -37,12 +37,12 @@ HelpText(data="",xy="right_down",screens="screen1",sleep_time=0)
     CoordMode Pixel Screen
     CoordMode Mouse Screen
 
-    if (data=True) {
-        data:="True"
-    }
-    if (data=False) {
-        data:="False"
-    }
+    ; if (data=True) {
+    ;     data:="True"
+    ; }
+    ; if (data=False) {
+    ;     data:="False"
+    ; }
 
     global help_text_show_status
     if (not data) {

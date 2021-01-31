@@ -5,5 +5,6 @@ ListToStr(data)
     For index, value In data {
         result .= value . "|"
     }
+    result:=RTrim(result,"|")
     Return result
 }
