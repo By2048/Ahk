@@ -174,7 +174,7 @@ MoveWindowsMM(command)
 
     main := [   5/6 , 8/9 ]
     mini := [ 1.8/3 , 3/4 ]
-    if (WinActive("ahk_exe pycharm64.exe") and win_title="Open File or Project") {
+    if (win_process_name="pycharm64.exe" and win_title="Open File or Project") {
         mini:=[ 1/5 , 2/3 ]
     }
 
@@ -188,9 +188,9 @@ MoveWindowsMM(command)
         ww:=screen_w*mini[1]
         hh:=screen_h*mini[2]
     }
-
     xx:=screen_x+screen_w/2-ww/2
     yy:=screen_y+screen_h/2-hh/2
+    
     WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
 
     Sleep, 1000
