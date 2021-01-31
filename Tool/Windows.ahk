@@ -189,10 +189,9 @@ MoveWindowsMM(command)
         hh:=screen_h*mini[2]
     }
 
-    WinMove, ahk_id %win_id%,  ,  ,  , %ww%, %hh%
-    result:=GetWindowsCenterPos(win_id)
-    xx:=result[1], yy:=result[2]
-    WinMove, ahk_id %win_id%,  , %xx%, %yy%
+    xx:=screen_x+screen_w/2-ww/2
+    yy:=screen_y+screen_h/2-hh/2
+    WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
 
     Sleep, 1000
     HelpText()
