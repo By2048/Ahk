@@ -78,6 +78,10 @@ ShowConfig()
     content .= "`n-----------------------------------------------------------"
     content .= Format("`n JQB | T:\\JQB")
     content .= "`n-----------------------------------------------------------"
+    content .= Format("`n date time datetime jqb")
+    content .= Format("`n phone qq qq1 qq2 qmail qmail1 qmail2 gmail pwd aly")
+    content .= Format("`n cmd_py ps_py")
+    content .= "`n-----------------------------------------------------------"
 
     w:=600*2
     h:=800*2
