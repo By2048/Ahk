@@ -44,6 +44,9 @@ Loop {
 
     ; 文件选择窗口居中
     if (win_class="#32770") {
+        if (win_process_name="fdm.exe") {
+            Return
+        }
         xx:=screen_1_x+screen_1_w/2-win_w/2
         yy:=screen_1_y+screen_1_h/2-win_h/2
         offset:=70
