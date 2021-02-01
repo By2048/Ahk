@@ -16,8 +16,12 @@ if (not A_IsAdmin) {
 !Esc::Return
 !+Esc::Return
 
-!Tab::Return
+;Switch between open apps.
+!Tab::Return 
 !+Tab::Return
+
+;Use the arrow keys to switch between all open apps.
+^!Tab::Return 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
