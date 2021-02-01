@@ -84,14 +84,16 @@ Return
     HelpText("Move Windows")
 Return
 
-
-RWin & RAlt::
+>#Esc::
     if (not IsDesktops()) {
         Send !{F4}
     }
 return
 
+
+
 RWin & RCtrl::MoveWindowsMM("main")
+RWin & RAlt::MoveWindowsMM("mini")
 
 
 

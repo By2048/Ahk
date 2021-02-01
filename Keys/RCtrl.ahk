@@ -86,9 +86,6 @@ Return
 
 RCtrl & Enter::Run E:\Sync\All.xlsx
 
-RCtrl & RWin::MoveWindowsMM("mini")
-
-
 
 $RCtrl::
     if (not cnt) {
