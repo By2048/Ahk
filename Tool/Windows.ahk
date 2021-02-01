@@ -209,38 +209,38 @@ ResizeWindows(status, direction)
     CoordMode, Mouse
 
     WinGet, win_id, ID, A
-    WinGetPos, x, y, w, h, ahk_id %w_id%
+    WinGetPos, x, y, w, h, ahk_id %win_id%
 
     step:=10
-    if (direction="Up") {
-        if (status="Big") { 
+
+    if (status="Big") {
+        if (direction="Up") {
             y:=y-step
             h:=h+step
-        } else if (status="Small") {
-            y:=y+step
-            h:=h-step
-        }
-    } else if (direction="Down") {
-        if (status="Big") {
+        } else if (direction="Down") {
             h:=h+step
-        } else if (status="Small") {
-            h:=h-step
-        }
-    } else if (direction="Left") {
-        if (status="Big") {
+        } else if (direction="Left") {
             x:=x-step
             w:=w+step
-        } else if (status="Small") {
+        } else if (direction="Right") {
+            w:=w+step
+        }
+    }
+
+    if (status="Small") {
+        if (direction="Up") {
+            y:=y+step
+            h:=h-step
+        } else if (direction="Down") {
+            h:=h-step
+        } else if (direction="Left") {
             x:=x+step
             w:=w-step
-        }
-    } else if (direction="Right") {
-        if (status="Big") {
-            w:=w+step
-        } else if (status="Small") {
+        } else if (direction="Right") {
             w:=w-step
         }
     }
+
     WinMove, ahk_id %win_id%,  , %x%, %y%, %w%, %h%
 }
 
