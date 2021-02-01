@@ -4,6 +4,9 @@
     
     !F4::^!F4
 
+    !Tab::send, ^!]
+    !+Tab::send, ^![
+
 #if
 
 
