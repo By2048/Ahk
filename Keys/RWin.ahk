@@ -89,6 +89,14 @@ Return
         Send !{F4}
     }
 return
+>#Delete::
+    if (IsDesktops() or IsGame()) {
+        Return
+    }
+    WinGet, win_process_name, ProcessName, A
+    Process, Close, %win_process_name%    
+Return
+
 
 
 

@@ -34,14 +34,6 @@ Return
     Sleep, 300
     MoveWindowsMM("main")
 Return
->^Delete::
-    if (IsDesktops()) {
-        Return
-    }
-    WinGet, w_id, ID, A
-    WinGet, w_name, ProcessName, A
-    Process, Close, %w_name%    
-Return
 
 
 >^`::Run E:\Sync\Ahk\Doc\Hotkey.xlsx
@@ -73,7 +65,6 @@ Return
 >^J::RunNormalUser("calc.exe")
 >^K::Keyboard()
 
-; >^Z::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ; 回收站
 >^Z::RunNormalUser("D:\Zeal\zeal.exe")
 >^X::RunNormalUser("D:\Xshell\Xshell.exe")
 >^C::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 

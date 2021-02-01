@@ -11,6 +11,9 @@ if (not A_IsAdmin) {
 
 
 
+; >^Z::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ; 回收站
+
+
 ~LControl & WheelUp::
 Send {LWin Down}{Ctrl Down}{Left}{Ctrl Up}{LWin Up}
 return
