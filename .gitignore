@@ -1,3 +1,4 @@
+
 .vscode
 .idea
 
@@ -8,4 +9,6 @@ Test.bat
 
 ~$Hotkey.xlsx
 
+*test*
+*Test*
 *baiduyun*
