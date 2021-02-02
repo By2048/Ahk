@@ -47,7 +47,7 @@ IsGame(process_name="")
 
 
 ; 根据窗口ID 获取窗口的所在屏幕信息 以及窗口信息
-GetWindowsScreen(win_id)
+GetWindowsScreenInfo(win_id)
 {
     WinGetPos, x, y, w, h, ahk_id %win_id%
 
@@ -76,7 +76,7 @@ GetWindowsScreen(win_id)
 ; 获取窗口在居中时应处的位置
 GetWindowsCenterPos(win_id)
 {
-    result:=GetWindowsScreen(win_id)
+    result:=GetWindowsScreenInfo(win_id)
     x:=result[1], y:=result[2], w:=result[3], h:=result[4]
     screen_x:=result[5], screen_y:=result[6], screen_xx:=result[7], screen_yy:=result[8]
     screen_w:=screen_xx-screen_x
@@ -166,7 +166,7 @@ MoveWindowsMM(command)
         Return
     }
 
-    result:=GetWindowsScreen(win_id)
+    result:=GetWindowsScreenInfo(win_id)
     x:=result[1], y:=result[2], w:=result[3], h:=result[4]
     screen_x:=result[5], screen_y:=result[6], screen_xx:=result[7], screen_yy:=result[8]
     screen_w:=screen_xx-screen_x
