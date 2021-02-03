@@ -1,4 +1,4 @@
-#include %A_WorkingDir%\Libs\Base.ahk
+#include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Other.ahk

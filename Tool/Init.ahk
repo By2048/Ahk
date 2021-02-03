@@ -1,4 +1,4 @@
-#include %A_WorkingDir%\Libs\Change.ahk 
+#include %A_WorkingDir%\Tool\Change.ahk 
 #include %A_WorkingDir%\Tool\Screen.ahk 
 
 
@@ -80,7 +80,7 @@ ShowConfig()
     content .= "`n-----------------------------------------------------------"
     content .= Format("`n date time datetime jqb")
     content .= Format("`n phone qq qq1 qq2 qmail qmail1 qmail2 gmail pwd aly")
-    content .= Format("`n cmd_py ps_py")
+    content .= Format("`n py")
     content .= "`n-----------------------------------------------------------"
 
     w:=600*2

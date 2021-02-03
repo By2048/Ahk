@@ -1,4 +1,5 @@
-#include %A_WorkingDir%\Libs\Base.ahk
+#include %A_WorkingDir%\Tool\Base.ahk
+#include %A_WorkingDir%\Tool\Help.ahk
 #SingleInstance Force
 #NoTrayIcon
 
@@ -12,6 +13,7 @@ if (not A_IsAdmin) {
 
 global win_tab:=False
 
+;切换应用
 LWin & Tab::
     global win_tab
     win_tab:=True
@@ -31,36 +33,38 @@ return
 #If
 
 
+;声音
+<#=::Volume_Up
+<#-::Volume_Down
 
-<#=::Send {Volume_Up}
-<#-::Send {Volume_Down}
-
-<#,::#x ; 系统菜单
-<#.::Run control ;控制面板
+<#,::#x ;系统菜单
+<#.::Run, control ;控制面板
 <#/::Run, ms-settings: ;设置
 
-<#[::#+t ;切换任务栏应用（预览
-<#]::#t  ;切换任务栏应用（预览
+;切换任务栏应用（预览
+<#[::#+t
+<#]::#t
 
-<#v::#, ; 显示隐藏所有应用
-<#n::#k  ; 打开“连接”快速操作.
-<#m::Send #d  ;切换隐藏所有应用界面
+<#v::#, ;显示隐藏所有应用
+<#n::#k ;打开“连接”快速操作
+<#m::#d ;切换隐藏所有应用界面
 
 ; 复制文件路径
 <#c::	
-    send ^c
+    Send, ^c
     clipboard = %clipboard%
+    HelpText(clipboard, "center_down",  , 3000)
 return
 
 ; 显示隐藏任务栏
 <#8:: 
     if (!WinExist("ahk_class Shell_TrayWnd")) {
-        WinShow ahk_class Shell_TrayWnd
+        WinShow, ahk_class Shell_TrayWnd
     } else {
-        WinHide ahk_class Shell_TrayWnd
+        WinHide, ahk_class Shell_TrayWnd
     }
 return
 
 ; 调节显示器亮度 (Twinkle Tray)
-<#9::Send #^!(
-<#0::Send #^!)
+<#9::#^!(
+<#0::#^!)

@@ -1,4 +1,4 @@
-#include %A_WorkingDir%\Libs\Base.ahk
+#include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 #SingleInstance Force
@@ -45,6 +45,12 @@ Loop {
     ; 文件选择窗口居中
     if (win_class="#32770") {
         if (win_process_name="fdm.exe") {
+            Return
+        }
+        if (win_process_name="LeagueClientUx.exe") {
+            Return
+        }
+        if (win_process_name="League of Legends.exe") {
             Return
         }
         xx:=screen_1_x+screen_1_w/2-win_w/2

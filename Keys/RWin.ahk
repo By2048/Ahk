@@ -1,4 +1,4 @@
-#include %A_WorkingDir%\Libs\Base.ahk
+#include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
@@ -16,7 +16,13 @@ if (not A_IsAdmin) {
 
 
 
-; RWin 系统全局快捷键 (Ctrl Alt Shift)
+; RWin 
+; 系统全局快捷键 (Ctrl Alt Shift)
+; 窗口位置大小调整
+; 结束窗口
+
+>#b::Return
+>#Tab::Return
 
 ; TIM
 >#`;::Send ^!+; ;识图
@@ -36,8 +42,7 @@ if (not A_IsAdmin) {
 >#PrintScreen::Send ^!+{PrintScreen}
 >#Pause::Send ^!+{Pause}
 
->#b::Return
->#Tab::Return
+
 
 
 global windows_move:=False
@@ -84,12 +89,8 @@ Return
     HelpText("Move Windows")
 Return
 
+
 >#Esc::
-    if (not IsDesktops()) {
-        Send !{F4}
-    }
-return
->#Delete::
     if (IsDesktops() or IsGame()) {
         Return
     }

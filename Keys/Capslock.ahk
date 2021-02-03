@@ -1,4 +1,4 @@
-#include %A_WorkingDir%\Libs\Base.ahk
+#include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk
@@ -36,8 +36,7 @@ Capslock & Shift::RButton
 
 
 
-; 1 主显示器中心 
-; 2 副显示器中心
+;切换到显示器中心 
 $CapsLock::
     if (not cnt) {
         cnt:=1
@@ -48,9 +47,12 @@ $CapsLock::
 return
 
 
+
+;永久关闭大写锁定
 CapsLock Up::
     SetCapsLockState, Off
 Return
+
 
 
 timer:
@@ -77,9 +79,7 @@ timer:
     DllCall("SetCursorPos", "int", x, "int", y)
 
     ; 激活鼠标下的窗口
-    MouseGetPos, , , wid
-    WinActivate, ahk_id %wid%
-
+    MouseGetPos,  ,  , win_id
+    WinActivate, ahk_id %win_id%
 return
-
 
