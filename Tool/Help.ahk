@@ -1,6 +1,6 @@
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
-#include %A_WorkingDir%\Tool\Other.ahk
+#include %A_WorkingDir%\Tool\Change.ahk
 
 
 
@@ -94,6 +94,10 @@ HelpText(data="",xy="right_down",screens="screen1",sleep_time=0)
 
     w:=w/2
     h:=h/2
+
+    ; Progress, b fs19 zh0, `n Close All Script `n, , Courier New
+    ; Sleep, 1000
+    ; Progress, Off
 
     Progress, b fs19 zh0 x%x% y%y% w%w% h%h%, %data%,  , Courier New
     help_text_show_status:=True

@@ -3,34 +3,31 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SetTitleMatchMode 2    
 
-Activate(t)
+Activate(title)
 {
-  IfWinActive,%t%
-  {
-    WinMinimize
-    return
-  }
-  SetTitleMatchMode 2    
-  DetectHiddenWindows,on
-  IfWinExist,%t%
-  {
-    WinShow
-    WinActivate           
-    return 1
-  }
-  return 0
+    IfWinActive, %title%
+    {
+        WinMinimize
+        return
+    }
+    SetTitleMatchMode 2    
+    DetectHiddenWindows,on
+    IfWinExist, %title%
+    {
+        WinShow
+        WinActivate           
+        return 1
+    }
+    return 0
 }
 
-ActivateAndOpen(t,p)
+ActivateAndOpen(title, command)
 {
-  if Activate(t)==0
-  {
-    Run %p%
-    WinActivate
-    return
-  }
+    if (not Activate(title)) {
+        Run %command%
+        WinActivate
+        return
+    }
 }
 
-#a::ActivateAndOpen("Microsoft Outlook","outlook.exe")
-#b::ActivateAndOpen("UltraEdit","C:\Program Files\UltraEdit\UltraEdit.exe")
-#c::Activate("UltraEdit")
+; #b::ActivateAndOpen("UltraEdit","C:\Program Files\UltraEdit\UltraEdit.exe")

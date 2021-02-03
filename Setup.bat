@@ -18,24 +18,26 @@ if "%command%"=="stop" (
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\All.ahk        /f /r  stop
     echo stop .\Keys\All.ahk
 
-    start D:\AutoHotkey\AutoHotkey.exe .\Keys\RCtrl.ahk      /f /r  stop
-    echo stop .\Keys\RCtrl.ahk
-    
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\Capslock.ahk   /f /r  stop
     echo stop .\Keys\Capslock.ahk
       
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\LWin.ahk       /f /r  stop
     echo stop .\Keys\LWin.ahk
-
+    
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\RAlt.ahk       /f /r  stop
     echo stop .\Keys\RAlt.ahk
+
+    start D:\AutoHotkey\AutoHotkey.exe .\Keys\RCtrl.ahk      /f /r  stop
+    echo stop .\Keys\RCtrl.ahk
 
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\RShift.ahk     /f /r  stop
     echo stop .\Keys\RShift.ahk
 
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\RWin.ahk       /f /r  stop
     echo stop .\Keys\RWin.ahk
-
+    
+    @REM ===============================================================
+    
     Start D:\AutoHotkey\AutoHotkey.exe .\Other\Dexpot.ahk    /f /r  stop
     echo stop .\Other\Dexpot.ahk
 
@@ -45,8 +47,12 @@ if "%command%"=="stop" (
     start D:\AutoHotkey\AutoHotkey.exe .\Other\Loop.ahk      /f /r  stop
     echo stop .\Other\Loop.ahk
 
+    @REM ===============================================================
+
     start D:\AutoHotkey\AutoHotkey.exe .\Software\All.ahk    /f /r  stop
     echo stop .\Software\All.ahk
+    
+    @REM ===============================================================
     
     if exist %~dp0Other\Private.ahk (
         start D:\AutoHotkey\AutoHotkey.exe .\Other\Private.ahk /f /r stop
@@ -58,6 +64,7 @@ if "%command%"=="stop" (
     )
     
     echo.
+
 ) 
 
 
@@ -69,11 +76,10 @@ if "%command%"=="start" (
     start D:\AutoHotkey\AutoHotkey.exe .\Setup.ahk           /f /r
     echo start .\Setup.ahk
 
+    @REM =========================================================
+
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\All.ahk        /f /r
     echo start .\Keys\All.ahk
-
-    start D:\AutoHotkey\AutoHotkey.exe .\Keys\RCtrl.ahk      /f /r
-    echo start .\Keys\RCtrl.ahk
 
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\Capslock.ahk   /f /r
     echo start .\Keys\Capslock.ahk
@@ -84,11 +90,16 @@ if "%command%"=="start" (
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\RAlt.ahk       /f /r
     echo start .\Keys\RAlt.ahk
 
+    start D:\AutoHotkey\AutoHotkey.exe .\Keys\RCtrl.ahk      /f /r
+    echo start .\Keys\RCtrl.ahk
+
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\RShift.ahk     /f /r
     echo start .\Keys\RShift.ahk
 
     start D:\AutoHotkey\AutoHotkey.exe .\Keys\RWin.ahk       /f /r
     echo start .\Keys\RWin.ahk
+
+    @REM =========================================================
 
     Start D:\AutoHotkey\AutoHotkey.exe .\Other\Dexpot.ahk    /f /r
     echo start .\Other\Dexpot.ahk
@@ -99,8 +110,12 @@ if "%command%"=="start" (
     start D:\AutoHotkey\AutoHotkey.exe .\Other\Loop.ahk      /f /r
     echo start .\Other\Loop.ahk
 
+    @REM =========================================================
+
     start D:\AutoHotkey\AutoHotkey.exe .\Software\All.ahk    /f /r
     echo start .\Software\All.ahk
+
+    @REM =========================================================
 
     if exist %~dp0Other\Private.ahk (
         start D:\AutoHotkey\AutoHotkey.exe .\Other\Private.ahk /f /r
