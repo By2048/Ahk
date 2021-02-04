@@ -61,7 +61,7 @@ Return
 >^A::Run, "D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe"
 >^S::RunNormalUser("D:\Everything\Everything.exe")
 >^F::RunNormalUser("D:\Firefox\firefox.exe")
->^G::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
+>^G::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --new-window")
 >^J::RunNormalUser("calc.exe")
 >^K::Keyboard()
 

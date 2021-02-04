@@ -5,15 +5,19 @@ Esc & Delete::
     if (IsDesktops()) {
         Return
     }
-    WinGet, w_id, ID, A
-    WinKill, ahk_id %w_id%
+    WinGet, win_id, ID, A
+    WinKill, ahk_id %win_id%
 Return
 
 Delete & Esc::
     if (IsDesktops()) {
         Return
     }
-    WinGet, w_id, ID, A
-    WinGet, w_name, ProcessName, A
-    Process, Close, %w_name%    
+    WinGet, win_name, ProcessName, A
+    Process, Close, %win_name%
 Return
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
