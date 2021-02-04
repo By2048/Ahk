@@ -81,31 +81,6 @@ return
 ; ~*RCtrl::Return
 
 
-; RShift::
-;     sleep, 1000
-;     Progress, b w200 h20 cbBlack p0
-;     count:=10
-;     Loop {
-;         if not GetKeyState("RShift", "P")
-;         {
-;             Progress, Off
-;             break
-;         }
-;         Progress, %count%
-;         sleep 50
-;         count:=count+10
-;         if count>=100
-;         {
-;             Progress, Off
-;             help()
-;             break
-;         }
-;     }
-; Return
-;
-; RShift Up::
-;     Progress, Off
-; return
 
 ; Gui, ProgressWindows:Add, Progress, w200 h20 b cBlue vMyProgress, 0
 ; Sleep, 4000
@@ -117,19 +92,7 @@ return
 
 ; }
 
-;<
-; {
-;     Space::
-;         Loop
-;         {
-;             if not GetKeyState("Space", "P")
-;                 break
-;              Send, Some text.{Enter}
-;         }
-;     return
-; }
 
-; RCtrl::Run T:\\HuntAndPeck\\hap.exe /hinth
 
 
 ; ms-settings:windowsupdate
@@ -166,80 +129,3 @@ return
 ; ^Down::PgDn
 
 
-;计时器
-; #c::
-; InputBox UserInput, Counter, Enter a number(minutes):
-; IfEqual, Errorlevel, 0
-; {
-;     sleep UserInput * 1000
-;     SoundBeep
-;     MsgBox 时间到！
-; }
-; return
-
-
-
-
-; MouseGetPos, xpos, ypos
-; if (xpos!=screen1_x) and (ypos!=screen1_y) {
-;     DllCall("SetCursorPos", "int", screen1_x, "int", screen1_y)
-; } else if (xpos=screen1_x) and (ypos=screen1_y) {
-;     DllCall("SetCursorPos", "int", screen2_x, "int", screen2_y)
-; } else if (xpos=screen2_x) and (ypos=screen2_y) {
-;     DllCall("SetCursorPos", "int", screen2_x, "int", screen2_y)
-; }
-
-
-
-
-
-; test_help_text()
-; {
-;     HelpText("right_down","right_down","screen1")
-;     Sleep, 2000
-    
-;     HelpText("center","center","screen1")
-;     Sleep, 2000
-    
-;     HelpText("center_up","center_up","screen1")
-;     Sleep, 2000
-    
-;     HelpText("center_down","center_down","screen1")
-;     Sleep, 2000
-
-
-
-;     HelpText("right_down","right_down","screen2")
-;     Sleep, 2000
-
-;     HelpText("center","center","screen2")
-;     Sleep, 2000
-
-;     HelpText("center_up","center_up","screen2")
-;     Sleep, 2000
-
-;     HelpText("center_down","center_down","screen2")
-;     Sleep, 2000
-
-
-
-;     HelpText("right_down","right_down","screen3")
-;     Sleep, 2000
-
-;     HelpText("center","center","screen3")
-;     Sleep, 2000
-
-;     HelpText("center_up","center_up","screen3")
-;     Sleep, 2000
-
-;     HelpText("center_down","center_down","screen3")
-;     Sleep, 2000
-
-;     HelpText()
-; }
-
-
-
-
-; Progress, 2: Off
-; Progress, 2: b zh0 fs18 c11 ws1000 x%x% y%y% w%w% h%h%, %content%,  ,  , "Source Code Pro"

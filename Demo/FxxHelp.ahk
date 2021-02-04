@@ -1,12 +1,8 @@
 
-
-
 global FxxData:={}
 
 FxxData["default"]  := ["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12"]
 FxxData["Code.exe"] := ["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","Run"]
-
-
 
 
 Fxx()
@@ -60,15 +56,12 @@ Fxx()
 
 
 
-; #if WinActive("ahk_exe explorer.exe")
-;     ; F1::Run, D:\\
-;     ; F2::Run, E:\\
-;     ; F3::Run, F:\\
-;     ; F4::Run, R:\\
-; #if
+#if WinActive("ahk_exe explorer.exe")
+    F1::Run, D:\\
+    F2::Run, E:\\
+    F3::Run, F:\\
+    F4::Run, R:\\
+#if
 
 
-; #if WinActive("ahk_exe Code.exe")
-; #if
-
-; F12::Fxx()
+F12::Fxx()
