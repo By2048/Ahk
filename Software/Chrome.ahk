@@ -148,8 +148,8 @@
     !u::Send ^u
 
     ;查找
-    ^f::Return
-    !f::Send ^f
+    ; ^f::Return
+    ; !f::Send ^f
 
     ;网页缩放
     ^0::Return
