@@ -4,10 +4,13 @@
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
+#include %A_WorkingDir%\Tool\Language.ahk
+
 
 #include %A_WorkingDir%\Software\Chrome.ahk
 #include %A_WorkingDir%\Software\CloudMusic.ahk
 #include %A_WorkingDir%\Software\FSViewer.ahk
+#include %A_WorkingDir%\Software\LOL.ahk
 #include %A_WorkingDir%\Software\MuMu.ahk
 #include %A_WorkingDir%\Software\PyCharm.ahk
 #include %A_WorkingDir%\Software\SumatraPDF.ahk
