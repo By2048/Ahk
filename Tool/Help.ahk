@@ -1,6 +1,6 @@
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
-#include %A_WorkingDir%\Tool\Change.ahk
+#include %A_WorkingDir%\Tool\Language.ahk
 
 
 
