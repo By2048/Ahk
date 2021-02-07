@@ -6,7 +6,7 @@
 
 		Send, {Enter}
 		Sleep, 300
-		Send, /surrender
+		Send, /ff
 		Sleep, 300
 		Send, {Enter}
 
@@ -50,7 +50,7 @@
 
 		Send, {Enter}
 		Sleep, 300
-		Send, /fullmute all
+		Send, /mute all
 		Sleep, 300
 		Send, {Enter}
 
