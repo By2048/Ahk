@@ -176,6 +176,7 @@ MoveWindowsMM(command)
     mini := [ 1.8/3 , 3/4 ]
     if (win_process_name="pycharm64.exe" and win_title="Open File or Project") {
         mini:=[ 1/5 , 2/3 ]
+        main:=mini
     }
 
     if (command="main") {

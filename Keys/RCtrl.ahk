@@ -77,7 +77,7 @@ Return
 
 RCtrl & Enter::Run, E:\Sync\All.xlsx
 
-RCtrl & RAlt::
+RCtrl & RWin::
     if (not IsDesktops()) {
         Send, ^w
     }
