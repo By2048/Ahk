@@ -17,7 +17,7 @@ Loop {
     Sleep, 1000
 
     WinGet, win_id, ID, A
-    WinGet, w_min_max, MinMax, ahk_id %win_id%
+    WinGet, win_min_max, MinMax, ahk_id %win_id%
 	WinGet, win_process_name, ProcessName, ahk_id %win_id%
     WinGetClass, win_class, ahk_id %win_id%
 	WinGetTitle, win_title, ahk_id %win_id%
@@ -76,7 +76,7 @@ Loop {
     }
     
     ; 网易云音乐
-    if (win_process_name="cloudmusic.exe" and win_class="OrpheusBrowserHost") {
+    if (win_process_name="cloudmusic.exe" and StrLen(win_title)>0) {
         ww:=screen_1_w*5/6
         hh:=screen_1_h*8/9
         xx:=screen_1_x+screen_1_w/2-ww/2

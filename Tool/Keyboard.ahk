@@ -16,13 +16,14 @@ global keyboard_x := 10
 global keyboard_y := 4
 global keyboard_h := 30
 
-global keyboard_line_1  := [["Esc"],["F1"],["F2"],["F3"],["F4"],["F5"],["F6"],["F7"],["F8"],["F9"],["F10"],["F11"],["F12"],["Print Screen"],["Pause Break"],["Delete"]]
-global keyboard_line_2  := [["~ ``"],["! 1"],["@ 2"],["# 3"],["$ 4"],["% 5"],["^ 6"],["&& 7"],["* 8"],["( 9"],[") 0"],["_ -"],["+ ="],["BackSpace",2],["Home"]]
-global keyboard_line_3  := [["Tab",1.5],["Q"],["W"],["E"],["R"],["T"],["Y"],["U"],["I"],["O"],["P"],["{ ["],["} ]"],["| \",1.5],["Page Up"]]
-global keyboard_line_4  := [["CapsLock",1.75],["A"],["S"],["D"],["F"],["G"],["H"],["J"],["K"],["L"],[": `;"],[""" '"],["Enter",2.25],["Page Down"]]
-global keyboard_line_5  := [["Shift",2.25],["Z"],["X"],["C"],["V"],["B"],["N"],["M"],["< ,"],["> ."],["? /"],["Shift",1.75],["Up"],["End"]]
+global keyboard_line_1 := [["Esc"],["F1"],["F2"],["F3"],["F4"],["F5"],["F6"],["F7"],["F8"],["F9"],["F10"],["F11"],["F12"],["Print Screen"],["Pause Break"],["Delete"]]
+global keyboard_line_2 := [["~ ``"],["! 1"],["@ 2"],["# 3"],["$ 4"],["% 5"],["^ 6"],["&& 7"],["* 8"],["( 9"],[") 0"],["_ -"],["+ ="],["BackSpace",2],["Home"]]
+global keyboard_line_3 := [["Tab",1.5],["Q"],["W"],["E"],["R"],["T"],["Y"],["U"],["I"],["O"],["P"],["{ ["],["} ]"],["| \",1.5],["Page Up"]]
+global keyboard_line_4 := [["CapsLock",1.75],["A"],["S"],["D"],["F"],["G"],["H"],["J"],["K"],["L"],[": `;"],[""" '"],["Enter",2.25],["Page Down"]]
+global keyboard_line_5 := [["Shift",2.25],["Z"],["X"],["C"],["V"],["B"],["N"],["M"],["< ,"],["> ."],["? /"],["Shift",1.75],["Up"],["End"]]
 global keyboard_line_6 := [["Ctrl",1.25],["Win",1.25],["Alt",1.25],["Space",5.5],["Alt",1.25],["Win",1.25],["Ctrl",1.25],["Left"],["Down"],["Right"]]
 
+global keyboard_win_id := ""
 
 
 keyboard_line(data) 
@@ -51,10 +52,11 @@ keyboard_line(data)
 
 
 
-Keyboard()
+KeyboardGUI()
 {
     global keyboard_show_status
     global keyboard_x, keyboard_y, keyboard_h
+    global keyboard_win_id
     
     keyboard_x := 10
     keyboard_y := 4
@@ -83,6 +85,8 @@ Keyboard()
         y:=A_ScreenHeight-h
         WinMove, ahk_id %win_id%, , %x%, %y%
 
+        keyboard_win_id:=win_id
+
         ; 透明度 追上层
         WinSet, AlwaysOnTop, On, ahk_id %win_id%
         WinSet, TransColor, %keyboard_transcolor% 220, ahk_id %win_id%
@@ -96,5 +100,20 @@ Keyboard()
         Gui Destroy 
     }
 }
+
+
+
+KeyboardClick(keys)
+{
+    global keyboard_win_id
+    keys:=StrReplace(keys, " ", "`n")
+    ControlClick, %keys%, ahk_id %keyboard_win_id%,  , LEFT, 1, D
+    Sleep, 100
+    ControlClick, %keys%, ahk_id %keyboard_win_id%,  , LEFT, 1, U
+}
+
+
+
+; F12::KeyboardClick("Shift")
 
 

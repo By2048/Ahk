@@ -49,7 +49,7 @@ Return
     }
 Return
 >^P::
-    RunNormalUser("wt.exe") 
+    RunNormalUser("C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe") 
     Sleep, 500
     MoveWindowsMM("main")
 Return
@@ -63,7 +63,7 @@ Return
 >^F::RunNormalUser("D:\Firefox\firefox.exe")
 >^G::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --new-window")
 >^J::RunNormalUser("calc.exe")
->^K::Keyboard()
+>^K::KeyboardGUI()
 
 >^Z::RunNormalUser("D:\Zeal\zeal.exe")
 >^X::RunNormalUser("D:\Xshell\Xshell.exe")

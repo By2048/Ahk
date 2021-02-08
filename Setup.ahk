@@ -29,7 +29,7 @@ Return
 ; 暂停脚本
 RWin & LWin::
     Run .\Setup.bat stop,  ,Hide
-    HelpText(" Close All Script ", "center", "screen3")
+    HelpText(" Close All Script ", "center_down", "screen3")
 Return
 
 

@@ -90,14 +90,23 @@ Return
 Return
 
 
->#Esc::
+>#Delete::
     if (IsDesktops() or IsGame()) {
         Return
     }
     WinGet, win_process_name, ProcessName, A
     Process, Close, %win_process_name%    
 Return
+>#Esc::
+    if (IsDesktops() or IsGame()) {
+        Return
+    }
+    WinGet, win_id, ID, A
+    WinClose, ahk_id %win_id%
+Return
 
+
+WinClose 
 
 
 

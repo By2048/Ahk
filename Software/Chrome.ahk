@@ -124,8 +124,14 @@
     !j::Send ^j
 
     ;收藏 （原本是定位地址栏
+    ;取消收藏
     ^d::Return
     !d::Send ^d
+    !+d::
+        Send, ^d
+        Send, {Tab 4}
+        Send, {Enter}
+    Return
 
     ;打印
     ^p::Return
@@ -158,7 +164,6 @@
     !-::Send ^-
     ^=::Return
     !=::Send ^=
-
 
 #if
 
