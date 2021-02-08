@@ -8,10 +8,10 @@
 RunNormalUser(command)
 {
     if (not PC_USER or not PC_PWD) {
-        HelpText(" PC_USER/PC_PWD -> (Other/Private.ahk) ", , ,3000)
+        HelpText(" PC_USER/PC_PWD - (./Tool/Private.ahk) ",  ,  ,3000)
     }
     RunAs, %PC_USER%, %PC_PWD%
-    Run %command%
+    Run, %command%
     RunAs
 }
 
