@@ -9,7 +9,7 @@
 
 
 if (not A_IsAdmin) {
-    Run *RunAs "%A_ScriptFullPath%"
+    Run *RunAs %A_ScriptFullPath%
 }
 
 
@@ -49,16 +49,16 @@ Return
     }
 Return
 >^P::
-    RunNormalUser("C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe") 
+    Run C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe
     Sleep, 500
     MoveWindowsMM("main")
 Return
 
 >^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
->^\::Run, "D:\Microsoft Whiteboard.lnk"
+>^\::Run, D:\Microsoft Whiteboard.lnk
 
->^A::Run, "D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe"
+>^A::Run, D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^S::RunNormalUser("D:\Everything\Everything.exe")
 >^F::RunNormalUser("D:\Firefox\firefox.exe")
 >^G::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --new-window")
@@ -71,7 +71,7 @@ Return
 >^V::RunNormalUser("D:\VSCode\Code.exe")
 >^M::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
 >^,::Run, explorer.exe
->^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}::  ; 我的电脑
+>^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}::  ;我的电脑
 >^/::run, T:\\
 
 

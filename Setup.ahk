@@ -10,7 +10,7 @@ Menu, Tray, Icon, %A_WorkingDir%\Image\Setup.png
 
 
 if (not A_IsAdmin) {
-    Run *RunAs "%A_ScriptFullPath%"
+    Run *RunAs %A_ScriptFullPath%
 }
 
 
