@@ -4,8 +4,9 @@
     
     !F4::^!F4
 
-    !Tab::send, ^!]
-    !+Tab::send, ^![
+    !Tab::Send, ^!]
+    !+Tab::Send, ^![
+    !CapsLock::Send, ^!\
 
 #if
 

@@ -64,6 +64,7 @@
     ;关闭窗口
     ^w::Return
     !w::Send, ^w
+    !CapsLock::Send, ^w
 
     ;新隐私窗口
     ^+n::Return
