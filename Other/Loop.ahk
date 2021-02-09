@@ -42,6 +42,16 @@ Loop {
         }
     }
 
+    ; 文件 删除\复制\移动
+    if (win_process_name="Q-Dir.exe" or win_process_name="explorer.exe") {
+        if (win_class="OperationStatusWindow" or win_class="#32770") {
+            xx:=screen_3_x+screen_3_w/2-win_w/2
+            yy:=screen_3_y+screen_3_h/4-win_h/2
+            SetWindows(win_id, xx, yy, win_w, win_h)
+            Continue
+        }
+    }
+
     ; 文件选择窗口居中
     if (win_class="#32770") {
         if (win_process_name="fdm.exe") {
@@ -57,14 +67,10 @@ Loop {
         yy:=screen_1_y+screen_1_h/2-win_h/2
         offset:=70
         SetWindows(win_id, xx, yy, win_w, win_h, offset)
+        Continue
     }
 
-    ; 文件复制移动窗口
-    if ((win_process_name="Q-Dir.exe" or win_process_name="explorer.exe") and win_class="OperationStatusWindow") {
-        xx:=screen_3_x+screen_3_w/2-win_w/2
-        yy:=screen_3_y+screen_3_h/4-win_h/2
-        SetWindows(win_id, xx, yy, win_w, win_h)
-    }
+
 
     ; FDM下载
     if (win_process_name="fdm.exe") {
@@ -73,6 +79,7 @@ Loop {
         xx:=screen_3_x+screen_3_w/2-ww/2
         yy:=screen_3_y+100
         SetWindows(win_id, xx, yy, ww, hh,  ,True)
+        Continue
     }
     
     ; 网易云音乐
@@ -82,6 +89,7 @@ Loop {
         xx:=screen_1_x+screen_1_w/2-ww/2
         yy:=screen_1_y+screen_1_h/2-hh/2
         SetWindows(win_id, xx, yy, ww, hh)
+        Continue
     }
 
 }
