@@ -20,7 +20,7 @@ if (not A_IsAdmin) {
 >^F4::Run, %A_WorkingDir%\Scripts\Folder_Icon.bat
 
 >^F9::
-    Run, %A_WorkingDir%\Scripts\Bilibil_Free.bat
+    Run, %A_WorkingDir%\Scripts\Bilibil_Free_Video.bat
     Sleep, 300
     MoveWindowsMM("mini")
 Return    
