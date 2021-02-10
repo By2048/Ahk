@@ -1,3 +1,4 @@
+#include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 
@@ -174,9 +175,14 @@ MoveWindowsMM(command)
 
     main := [   5/6 , 8/9 ]
     mini := [ 1.8/3 , 3/4 ]
+
+    if (win_process_name="pycharm64.exe") {
+        main:=PyCharm_Main
+        mini:=PyCharm_Mini
+    }
     if (win_process_name="pycharm64.exe" and win_title="Open File or Project") {
-        mini:=[ 1/5 , 2/3 ]
-        main:=mini
+        main:=PyCharm_Open_XXX_Main
+        mini:=PyCharm_Open_XXX_Mini
     }
 
     if (command="main") {

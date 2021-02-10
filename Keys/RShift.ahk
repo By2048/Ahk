@@ -115,9 +115,11 @@ show_image()
         Progress, b fs19 zh0 x%x% y%y% w%w% h%h%, %hotkeys_index%/%hotkeys_total%
     }
 
-    ; 显示后额外操作
-    If WinActive("ahk_exe pycharm64.exe") {
-        Send, {Esc} ;关闭因双击Shift打开的快速搜索界面
+    WinGet, win_id, ID, A
+	WinGet, win_process_name, ProcessName, ahk_id %win_id%
+    ; 关闭因双击Shift打开的快速搜索界面
+    If (win_process_name="pycharm64.exe") {
+        Send, {Esc} 
     }
 }
 
@@ -164,6 +166,12 @@ change(np="")
 
 
 ~RShift::
+    WinGet, win_id, ID, A
+	WinGet, win_process_name, ProcessName, ahk_id %win_id%
+	WinGetTitle, win_title, ahk_id %win_id%
+    If (win_process_name="pycharm64.exe" and win_title="Evaluate") {
+        Return
+    }
     if (IsGame()) {
         Return
     }

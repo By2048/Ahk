@@ -1,3 +1,4 @@
+#include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
@@ -33,12 +34,12 @@ Loop {
     }
 
     ; 手机剪切板同步
-    if (FileExist("T:\\JQB")) {
+    if (FileExist(JQB_File)) {
         FileEncoding UTF-8
         Try {
-            FileRead, Clipboard, T:\\JQB
-            HelpText(" JQB UPDATE ","center","screen3",1000)
-            FileDelete T:\\JQB
+            FileRead, Clipboard, %JQB_File%
+            HelpText(" JQB UPDATE ","center_down","screen3",1000)
+            FileDelete %JQB_File%
         }
     }
 

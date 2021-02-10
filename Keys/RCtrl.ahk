@@ -63,6 +63,7 @@ Return
 >^s::RunNormalUser("D:\Everything\Everything.exe")
 >^f::RunNormalUser("D:\Firefox\firefox.exe")
 >^g::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --new-window")
+>^h::Run D:\AutoHotkey\WindowSpy.ahk
 >^j::RunNormalUser("calc.exe")
 >^k::KeyboardGUI()
 
