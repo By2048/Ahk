@@ -1,3 +1,4 @@
+#include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
@@ -44,31 +45,25 @@ Screenshot(screens="screen1")
     w:=Round(w)
     h:=Round(h)
 
-    snipaste:="D:\Snipaste\Snipaste.exe"
-    path:="R:\Screens"
     screens_name:=StrReplace(screens,"screen")
-    name:=""
-    file:=""
-    cmd:=""
-
+    name:="" ,file:="" ,cmd:=""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss][%screens_name%]
-    file=%path%\%name%.png
-    cmd=%snipaste% snip --area %x% %y% %w% %h% -o %file%
+    file := Snipaste_Screenshot_Path "\" name ".png"
+    file := StrReplace(file,"\\","\")
+    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, x, y, w, h, file)
     Run %cmd%
 
-    SetTimer, delete_last_file, -1000
+    SetTimer, delete_snipaste_auto_save_file, -1000
 }
 
 
 
-delete_last_file()
+delete_snipaste_auto_save_file()
 {
-    default_folder := "E:\Snipaste\"
-    default_folder := default_folder . "*.png"
-    last_file:=""
-    Loop, Files, %default_folder% 
+    last_file := ""
+    Loop, Files, %Snipaste_Auto_Save_File%
     {
-        last_file:=A_LoopFileFullPath
+        last_file := A_LoopFileFullPath
     }
     FileDelete %last_file%
 }

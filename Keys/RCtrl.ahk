@@ -1,3 +1,4 @@
+#include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Libs\TrayIcon.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 #Include %A_WorkingDir%\Tool\Keyboard.ahk
@@ -15,22 +16,22 @@ if (not A_IsAdmin) {
 
 
 >^Esc::Run, taskmgr.exe ;任务管理器
->^F1::Run, %A_WorkingDir%\Scripts\Dexpot.bat
->^F3::Run, %A_WorkingDir%\Scripts\Restart_Explorer.bat
->^F4::Run, %A_WorkingDir%\Scripts\Folder_Icon.bat
+>^F1::Run, %WT% %A_WorkingDir%\Scripts\Dexpot.bat
+>^F3::Run, %WT% %A_WorkingDir%\Scripts\Restart_Explorer.bat
+>^F4::Run, %WT% %A_WorkingDir%\Scripts\Folder_Icon.bat
 
 >^F9::
-    Run, %A_WorkingDir%\Scripts\Bilibil_Free_Video.bat
+    Run, %WT% %A_WorkingDir%\Scripts\Bilibil_Free_Video.bat
     Sleep, 300
     MoveWindowsMM("mini")
 Return    
 >^F10::
-    Run, %A_WorkingDir%\Scripts\Bilibil_Download.bat
+    Run, %WT% %A_WorkingDir%\Scripts\Bilibil_Download.bat
     Sleep, 300
     MoveWindowsMM("main")
 Return
 >^F11::
-    Run, %A_WorkingDir%\Scripts\bd-film_rename.bat
+    Run, %WT% %A_WorkingDir%\Scripts\bd-film_rename.bat
     Sleep, 300
     MoveWindowsMM("main")
 Return
@@ -38,9 +39,9 @@ Return
 
 >^`::Run, E:\Sync\Ahk\Doc\Hotkey.xlsx
 
->^Q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
->^W::RunNormalUser("D:\WeChat\WeChat.exe")
->^T::
+>^q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
+>^w::RunNormalUser("D:\WeChat\WeChat.exe")
+>^t::
     Process, Exist, TIM.exe
     if (ErrorLevel) {
         TrayIcon_Button("TIM.exe", "L")
@@ -48,8 +49,8 @@ Return
         RunNormalUser("D:\TIM\Bin\QQScLauncher.exe")
     }
 Return
->^P::
-    Run C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe
+>^p::
+    Run, %WT%
     Sleep, 500
     MoveWindowsMM("main")
 Return
@@ -58,18 +59,18 @@ Return
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
 >^\::Run, D:\Microsoft Whiteboard.lnk
 
->^A::Run, D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
->^S::RunNormalUser("D:\Everything\Everything.exe")
->^F::RunNormalUser("D:\Firefox\firefox.exe")
->^G::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --new-window")
->^J::RunNormalUser("calc.exe")
->^K::KeyboardGUI()
+>^a::Run, D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
+>^s::RunNormalUser("D:\Everything\Everything.exe")
+>^f::RunNormalUser("D:\Firefox\firefox.exe")
+>^g::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --new-window")
+>^j::RunNormalUser("calc.exe")
+>^k::KeyboardGUI()
 
->^Z::RunNormalUser("D:\Zeal\zeal.exe")
->^X::RunNormalUser("D:\Xshell\Xshell.exe")
->^C::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
->^V::RunNormalUser("D:\VSCode\Code.exe")
->^M::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
+>^z::RunNormalUser("D:\Zeal\zeal.exe")
+>^x::RunNormalUser("D:\Xshell\Xshell.exe")
+>^c::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
+>^v::RunNormalUser("D:\VSCode\Code.exe")
+>^m::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
 >^,::Run, explorer.exe
 >^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}::  ;我的电脑
 >^/::run, T:\\
