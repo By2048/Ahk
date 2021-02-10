@@ -177,12 +177,14 @@ MoveWindowsMM(command)
     mini := [ 1.8/3 , 3/4 ]
 
     if (win_process_name="pycharm64.exe") {
-        main:=PyCharm_Main
-        mini:=PyCharm_Mini
-    }
-    if (win_process_name="pycharm64.exe" and win_title="Open File or Project") {
-        main:=PyCharm_Open_XXX_Main
-        mini:=PyCharm_Open_XXX_Mini
+        if (win_title="Run" or win_title="Debug") {
+            main:=PyCharm_Main
+            mini:=PyCharm_Mini
+        }
+        if (win_title="Open File or Project") {
+            main:=PyCharm_Open_XXX_Main
+            mini:=PyCharm_Open_XXX_Mini
+        }
     }
 
     if (command="main") {
