@@ -96,7 +96,7 @@ Loop {
             hh:=300
             xx:=screen_3_x+screen_3_w/2-ww/2
             yy:=2020
-            SetWindows(win_id, xx, yy, ww, hh)
+            SetWindows(win_id, xx, yy, ww, hh,  , True)
         }
     }
 
