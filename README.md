@@ -22,8 +22,8 @@
 | 配置项                            | 作用                   | 备注                              |
 |-----------------------------------|------------------------|-----------------------------------|
 | `AutoHotkey.exe`                  | 脚本运行               | `1.xx.xx.xx`                      |
-| `Tool/Other.ahk` > `Screenshot()` | 屏幕截图               | `2.x` [示例](#Note1)              |
-| `Other/Private.ahk`               | 以非管理员权限启动应用 | `PC_USER / PC_PWD` [示例](#Note2) |
+| `Tool/Other.ahk` > `Screenshot()` | 屏幕截图               | `2.x`                             |
+| `Other/Private.ahk`               | 以非管理员权限启动应用 | `PC_USER / PC_PWD` [示例](#Note1) |
 
 
 
@@ -48,7 +48,6 @@
 
 ## 注意
 #### Note1
-![](https://github.com/By2048/Ahk/raw/master/Image/Note1.png)
-#### Note2
 ![](https://github.com/By2048/Ahk/raw/master/Image/Note2.png)
+
 
