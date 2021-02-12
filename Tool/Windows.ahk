@@ -268,8 +268,10 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
         Return 
     }
 
+    ; HelpText(xx "|" yy "|" ww "|" hh)
+
     WinGetPos, x, y, w, h, ahk_id %win_id%
-    if (not ww or not hh) { 
+    if (ww=0 or hh=0) { 
         ww:=w
         hh:=h
     }
