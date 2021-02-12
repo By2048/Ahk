@@ -10,20 +10,20 @@
         MouseGetPos, xx, yy
 
         ; 战争机器
-        Send, 7 
+        Send, 9
         MouseClick, Left, %xx%, %yy%
 
         Sleep, 3000
         
         ; 第一个兵种
-        Send, 1        
+        Send, 0
         MouseClick, Left, %xx%, %yy%, 12
         
         Sleep, 100
 
         ; 战争机器 释放技能
         Loop, 4 {
-            Send, 7
+            Send, 9
             txt:="   " A_Index "   "
             HelpText(txt,"center_down")
             if (A_Index<4) {
@@ -41,18 +41,17 @@
 
         Send, Q
         Sleep, 500
-        Send, /
+        Send, \
         Sleep, 500
 
         Send, Q
         Sleep, 500
-        
         Send, R
         Sleep, 5000
 
-        Send, 1
+        Send, 0
         Sleep, 500
-        Send, /
+        Send, \
         Sleep, 500
 
         y:=0
@@ -73,7 +72,7 @@
         Send, D
         Sleep, 3000
         
-        Send /
+        Send \
     Return
 
     ; 退出
@@ -84,7 +83,7 @@
         Sleep, 1000
         Send D
         Sleep, 3000
-        Send /
+        Send \
     Return
 
     Tab::
@@ -95,7 +94,7 @@
         Send, d
         Sleep, 3000
 
-        Send, /
+        Send, \
         Sleep, 100
 
         Send, z
@@ -104,7 +103,7 @@
         Sleep, 100
         Send, c
         Sleep, 100
-        Send, /
+        Send, \
     Return
 
 #if
