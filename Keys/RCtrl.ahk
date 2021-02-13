@@ -17,21 +17,26 @@ if (not A_IsAdmin) {
 
 >^Esc::Run, taskmgr.exe ;任务管理器
 >^F1::Run, %WT% %A_WorkingDir%\Scripts\Dexpot.bat
->^F3::Run, %WT% %A_WorkingDir%\Scripts\Restart_Explorer.bat
->^F4::Run, %WT% %A_WorkingDir%\Scripts\Folder_Icon.bat
+>^F3::Run, %WT% %A_WorkingDir%\Scripts\restart_explorer.bat
+>^F4::Run, %WT% %A_WorkingDir%\Scripts\folder_icon.bat
 
 >^F9::
-    Run, %WT% %A_WorkingDir%\Scripts\Bilibil_Free_Video.bat
+    Run, %WT% %A_WorkingDir%\Scripts\bilibil_free_video.bat
     Sleep, 300
     MoveWindowsMM("mini")
 Return    
 >^F10::
-    Run, %WT% %A_WorkingDir%\Scripts\Bilibil_Download.bat
+    Run, %WT% %A_WorkingDir%\Scripts\bilibil_download.bat
     Sleep, 300
     MoveWindowsMM("main")
 Return
 >^F11::
     Run, %WT% %A_WorkingDir%\Scripts\bd-film_rename.bat
+    Sleep, 300
+    MoveWindowsMM("main")
+Return
+>^F12::
+    Run, %WT% %A_WorkingDir%\Scripts\nicotv.bat
     Sleep, 300
     MoveWindowsMM("main")
 Return
