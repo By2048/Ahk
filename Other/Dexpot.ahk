@@ -2,9 +2,8 @@
 #SingleInstance Force
 #NoTrayIcon
 
-; 虚拟桌面 Dextop 快捷键按拓展 
-; 部分快捷键与Win系统冲突，无法通过软件定义实现
-; 在此处进行兼容处理
+; 虚拟桌面 Dextop 快捷键按拓展
+; 部分快捷键与Win系统冲突 无法通过软件中配置 故在此处进行处理
 
 if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
@@ -21,7 +20,7 @@ if (not A_IsAdmin) {
 <#s::#^!s
 <#d::#^!d
 
-; 移动桌面
+; 窗口移动到桌面
 <#+1::#^!+1
 <#+2::#^!+2
 <#+3::#^!+3
@@ -34,7 +33,7 @@ if (not A_IsAdmin) {
 
 ; 上一个桌面
 <#CapsLock::
-    Send #^!+{CapsLock}
+    Send, #^!+{CapsLock}
     SetCapsLockState, Off
 Return
 
@@ -53,3 +52,4 @@ LWin & LAlt::#^!+[
 
 ; 全屏预览
 LWin & LCtrl::#^!+]
+
