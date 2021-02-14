@@ -45,16 +45,16 @@ return
 <#[::#+t
 <#]::#t
 
-<#v::#, ;显示隐藏所有应用
-<#n::#k ;打开“连接”快速操作
-<#m::#d ;切换隐藏所有应用界面
-
 ; 复制文件路径
 <#c::	
     Send, ^c
     clipboard = %clipboard%
     HelpText(clipboard, "center_down",  , 3000)
 return
+
+<#v::#, ;显示隐藏所有应用
+<#n::#k ;打开“连接”快速操作
+<#m::#d ;切换隐藏所有应用界面
 
 ; 显示隐藏任务栏
 <#8:: 
