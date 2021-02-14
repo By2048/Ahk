@@ -153,19 +153,25 @@ MoveWindowsMM(command)
 
     WinGet, win_id, ID, A
 	WinGet, win_process_name, ProcessName, ahk_id %win_id%
+    WinGetClass, win_class, ahk_id %win_id%
 	WinGetTitle, win_title, ahk_id %win_id%
 
-    data:=[]
-    data.push("Snipaste.exe")
-    check_ignore:=False
-    for index, item in data {
-        if (win_process_name=item) {
-            check_ignore:=True
-        }
-    }
-    if (check_ignore=True) {
+    if (win_class="Qt5QWindowToolSaveBits" and win_process_name="Snipaste.exe") {
+        HelpText("Snipaste",  ,  , 1000)
         Return
     }
+
+    ; data:=[]
+    ; data.push("Snipaste.exe")
+    ; check_ignore:=False
+    ; for index, item in data {
+    ;     if (win_process_name=item) {
+    ;         check_ignore:=True
+    ;     }
+    ; }
+    ; if (check_ignore=True) {
+    ;     Return
+    ; }
 
     result:=GetWindowsScreenInfo(win_id)
     x:=result[1], y:=result[2], w:=result[3], h:=result[4]
