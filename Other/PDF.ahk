@@ -2,9 +2,6 @@
 
         
     
-`::Send, {LButton} 
-
-
 PDF_Main() {
     CoordMode Mouse Windows
 
