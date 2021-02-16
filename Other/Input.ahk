@@ -22,7 +22,6 @@ Return
 Return
 
 ::\jqb\::
-    result:=Clipboard
-    SendInput, %result%
+    SendInput, %Clipboard%
 Return
-
+    
