@@ -1,3 +1,4 @@
+
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
@@ -160,4 +161,3 @@ return
     Left::ResizeWindows("Small","Left")
     Right::ResizeWindows("Small","Right")
 #if
-

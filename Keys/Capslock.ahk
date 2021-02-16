@@ -1,3 +1,4 @@
+
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
@@ -82,4 +83,3 @@ timer:
     MouseGetPos,  ,  , win_id
     WinActivate, ahk_id %win_id%
 return
-

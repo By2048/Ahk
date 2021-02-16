@@ -1,3 +1,4 @@
+
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Libs\TrayIcon.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
@@ -106,5 +107,3 @@ timer:
     }
     cnt:=0
 return
-
-

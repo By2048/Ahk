@@ -1,3 +1,4 @@
+
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
@@ -70,5 +71,3 @@ timer:
     }
     cnt:=0
 return
-
-
