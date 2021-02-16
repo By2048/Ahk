@@ -1,4 +1,4 @@
-#if WinActive("ahk_exe ui32.exe")
+#if ( WinActive("ahk_exe ui32.exe") )
 
 
 	; 取消订阅

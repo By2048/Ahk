@@ -1,4 +1,4 @@
-#if WinActive("ahk_exe Code.exe")
+#if ( WinActive("ahk_exe Code.exe") )
 
     >!m::Send, !VM ;显示迷你地图
     

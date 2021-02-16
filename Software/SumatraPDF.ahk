@@ -1,6 +1,6 @@
 
 
-#if WinActive("ahk_exe SumatraPDF.exe")
+#if ( WinActive("ahk_exe SumatraPDF.exe") )
 
     ; 重命名
     F2::Return

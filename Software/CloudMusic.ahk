@@ -1,4 +1,4 @@
-#if WinActive("ahk_exe cloudmusic.exe") and WinActive("ahk_class OrpheusBrowserHost")
+#if ( WinActive("ahk_exe cloudmusic.exe") and WinActive("ahk_class OrpheusBrowserHost") )
 
     `::MouseClickAndResetting(53,1118)
     1::MouseClickAndResetting(52,1206)

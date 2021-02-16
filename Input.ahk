@@ -1,9 +1,12 @@
 #include %A_WorkingDir%\Tool\Base.ahk
 #SingleInstance Force
 #NoTrayIcon
-
-
 #Hotstring EndChars `t
+
+
+if (not A_IsAdmin) {
+    Run *RunAs %A_ScriptFullPath%
+}
 
 
 ::\date\::

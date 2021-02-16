@@ -1,4 +1,4 @@
-#if WinActive("ahk_exe chrome.exe")
+#if ( WinActive("ahk_exe chrome.exe") )
 
     ;帮助
     F1::Return
