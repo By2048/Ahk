@@ -1,5 +1,5 @@
-#if ( WinActive("ahk_exe ui32.exe") )
 
+#if ( WinActive("ahk_exe ui32.exe") )
 
 	; 取消订阅
 	!Delete::
@@ -15,7 +15,6 @@
 		Send, {Enter}
 	Return
 
-
 	; 在资源管理器中打开
 	!Enter::
 		CoordMode, Mouse, Window
@@ -27,6 +26,5 @@
 		MouseClick, Left, %xx%, %yy%
         MouseMove %x%, %y%, 0
 	Return
-
 
 #If

@@ -44,6 +44,9 @@ LCtrl & Tab::AltTab
 Shift::ShiftAltTab
 
 
+; WinSet, Style, ^0xC00000, A
+
+
 
 ;Win+L
 #l:: ;a new purpose for Win+L

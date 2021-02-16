@@ -1,3 +1,4 @@
+
 #if ( WinActive("ahk_exe wps.exe") )
 
     >![:: ;无框线
@@ -19,4 +20,3 @@
     Return
 
 #if
-

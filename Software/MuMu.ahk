@@ -1,3 +1,4 @@
+
 #if ( WinActive("ahk_exe NemuPlayer.exe") )
     
     Space::Send, {LButton 4}

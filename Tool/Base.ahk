@@ -1,13 +1,6 @@
 
-
-
-for args_index, args_value in A_Args {
-    if (args_value="stop") {
+for Arg_Index, Arg_Value in A_Args {
+    if (Arg_Value="stop") {
         ExitApp
     }
-    if (args_value="pause") {
-        Pause
-    }
 }
-
-

@@ -1,5 +1,4 @@
 
-
 #if ( WinActive("ahk_exe SumatraPDF.exe") )
 
     ; 重命名

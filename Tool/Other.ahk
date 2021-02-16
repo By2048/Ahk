@@ -1,3 +1,4 @@
+
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Private.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
@@ -10,14 +11,12 @@ RunNormalUser(command)
 {
     if (not PC_USER or not PC_PWD) {
         HelpText(" PC_USER/PC_PWD - (./Tool/Private.ahk) ",  ,  ,3000)
+    } else {
+        RunAs, %PC_USER%, %PC_PWD%
+        Run, %command%
+        RunAs
     }
-    RunAs, %PC_USER%, %PC_PWD%
-    Run, %command%
-    RunAs
 }
-
-
-
 
 
 
@@ -76,5 +75,3 @@ show_pos()
     data := xpos "|" ypos
     HelpText(data,"center", ,3000)
 }
-
-

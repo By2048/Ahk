@@ -1,3 +1,4 @@
+
 #if ( WinActive("ahk_exe chrome.exe") )
 
     ;帮助
@@ -166,16 +167,9 @@
     ^=::Return
     !=::Send ^=
 
-#if
-
-
-
-#if WinActive("ahk_exe chrome.exe")
-
-    >!y::MouseClickImage("E:\Sync\Ahk\Image\Software\Y.png")
-    >!z::MouseClickImage("E:\Sync\Ahk\Image\Software\Z.png")
-    >!w::MouseClickImage("E:\Sync\Ahk\Image\Software\W.png")
-    >!n::MouseClickImage("E:\Sync\Ahk\Image\Software\N.png")
+    >!y::MouseClickImage(A_WorkingDir "\Image\Software\Y.png")
+    >!z::MouseClickImage(A_WorkingDir "\Image\Software\Z.png")
+    >!w::MouseClickImage(A_WorkingDir "\Image\Software\W.png")
+    >!n::MouseClickImage(A_WorkingDir "\Image\Software\N.png")
 
 #if
-

@@ -1,5 +1,4 @@
 
-
 #if ( WinActive("ahk_exe pycharm64.exe") )
     
     !F4::^!F4
@@ -9,6 +8,7 @@
     !CapsLock::Send, ^!\
 
 #if
+
 
 
 ; 悬浮窗口
@@ -23,12 +23,6 @@
     Return
  
 #if
-
-
-; Debug
-; ahk_class SunAwtDialog
-; ahk_exe pycharm64.exe
-; ahk_pid 20148
 
 
 

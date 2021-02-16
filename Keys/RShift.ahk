@@ -1,3 +1,4 @@
+
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
@@ -13,40 +14,9 @@ if (not A_IsAdmin) {
 
 
 
-global hotkeys:={} ; 快捷键图片集合
 global hotkeys_show_status:=False ; 当前是否显示图片
 global hotkeys_index:=1 ; 当前显示图片的序号
 global hotkeys_total:=1 ; 当前展示图片组的数量
-    
-
-                hotkeys["default"]:=["Windows.png"]
-                hotkeys["Windows"]:=hotkeys["default"]
-
-               hotkeys["Code.exe"]:=["VSCode-Fxx.png","VSCode.png"]
-                 hotkeys["VSCode"]:=hotkeys["Code.exe"]
-
-             hotkeys["Xshell.exe"]:=["XShell.png"]
-                 hotkeys["XShell"]:=hotkeys["Xshell.exe"]
-
-             hotkeys["SumatraPDF"]:=["SumatraPDF.png"]
-         hotkeys["SumatraPDF.exe"]:=hotkeys["SumatraPDF"]
-
-          hotkeys["pycharm64.exe"]:=["PyCharm.png","PyCharm-Fxx.png"]
-                hotkeys["PyCharm"]:=hotkeys["pycharm64.exe"]
-
-           hotkeys["QuiteRSS.exe"]:=["QuiteRSS.png"]
-               hotkeys["QuiteRSS"]:=hotkeys["QuiteRSS.exe"]
-
-             hotkeys["chrome.exe"]:=["Chrome.png"]
-                 hotkeys["Chrome"]:=hotkeys["chrome.exe"]
-
-    hotkeys["PotPlayerMini64.exe"]:=["PotPlayer.png"]
-              hotkeys["PotPlayer"]:=hotkeys["PotPlayerMini64.exe"]
-
-         hotkeys["cloudmusic.exe"]:=["CloudMusic.png"]
-             hotkeys["CloudMusic"]:=hotkeys["cloudmusic.exe"]
-
-  hotkeys["Title_Chrome_Bilibili"]:=["Chrome-Bilibili.png"]
 
 
 
@@ -56,19 +26,22 @@ get_image()
     global hotkeys_index
     global hotkeys_total
 
-    result:=hotkeys["default"]
+    WinGetTitle, win_title, A
+	WinGet, win_process_name, ProcessName, A
+
+    win_process_name := ProcessNameFormat(win_process_name)
+
+    result := hotkeys["default"]
 
     ; 优先根据应用名进行查找
-    for exe, image in hotkeys {
-        if WinActive("ahk_exe"+exe) {
+    for exe, image in Process_Hotkeys_Image {
+        if (exe=win_process_name) {
             result:=image
         }
     }
 
-    ; 根据应用显示的标题进行查找
-    WinGetTitle, title, A
-    if WinActive("ahk_exe chrome.exe") and InStr(Title,"bilibili") {
-        result:=hotkeys["Title_Chrome_Bilibili"]
+    if ( win_process_name="Chrome" and InStr(win_title, "bilibili") ) {
+        result:=hotkeys["Chrome_Bilibili"]
     }
 
     hotkeys_total:=result.MaxIndex()
@@ -79,8 +52,8 @@ get_image()
         hotkeys_index:=hotkeys_total
     }
 
-    result:=result[hotkeys_index]
-    result=%A_WorkingDir%\Image\RShift\%result%
+    result := result[hotkeys_index]
+    result := A_WorkingDir "\Image\RShift\" result
     return result
 }
 
@@ -95,8 +68,8 @@ show_image()
     size:=GetImageSize(image)
     size_w:=size[1]
     size_h:=size[2]
-    x:=A_ScreenWidth/2-size_w/2
-    y:=A_ScreenHeight/2-size_h/2
+    x:=screen_1_w/2-size_w/2
+    y:=screen_1_h/2-size_h/2
     
     SplashImage, %image%, X%x% Y%y% H%size_h% W%size_w% B1   ;  全屏幕居中
     ; SplashImage, %image%, B1  ; 去除任务栏屏幕居中
@@ -107,19 +80,19 @@ show_image()
     if (hotkeys_total>1) {
         w:=200
         h:=62
-        x:=A_ScreenWidth/2-w/2
-        y:=A_ScreenHeight-h-5 ; 屏幕底部
-        ; y:=A_ScreenHeight/2+size_h/2+5 ; 图片底部
+        x:=screen_1_w/2-w/2
+        y:=screen_1_h-h-5 ; 屏幕底部
+        ; y:=screen_1_h/2+size_h/2+5 ; 图片底部
         w:=w/2
         h:=h/2
         Progress, b fs19 zh0 x%x% y%y% w%w% h%h%, %hotkeys_index%/%hotkeys_total%
     }
 
-    WinGet, win_id, ID, A
-	WinGet, win_process_name, ProcessName, ahk_id %win_id%
     ; 关闭因双击Shift打开的快速搜索界面
-    If (win_process_name="pycharm64.exe") {
-        Send, {Esc} 
+	WinGet, win_process_name, ProcessName, A
+    win_process_name := ProcessNameFormat(win_process_name)
+    If (win_process_name="PyCharm") {
+        Send, {Esc}
     }
 }
 
@@ -137,10 +110,6 @@ hide_image()
     hotkeys_show_status:=False
     hotkeys_index:=1 
     hotkeys_total:=1
-
-    If WinActive("ahk_exe pycharm64.exe") {
-        Send, {Esc} ;关闭因双击Shift打开的快速搜索界面
-    }
 }
 
 
@@ -153,7 +122,7 @@ change(np="")
     if (hotkeys_total=1) {
         return
     }
-
+    
     if (np="next") {
         hotkeys_index:=hotkeys_index+1
     } else if (np="privious") {
@@ -166,10 +135,10 @@ change(np="")
 
 
 ~RShift::
-    WinGet, win_id, ID, A
-	WinGet, win_process_name, ProcessName, ahk_id %win_id%
-	WinGetTitle, win_title, ahk_id %win_id%
-    If (win_process_name="pycharm64.exe" and win_title="Evaluate") {
+	WinGet,      win_process_name, ProcessName, A
+	WinGetTitle, win_title, A
+    win_process_name := ProcessNameFormat(win_process_name)
+    If (win_process_name="PyCharm" and win_title="Evaluate") {
         Return
     }
     if (IsGame()) {

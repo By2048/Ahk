@@ -1,3 +1,4 @@
+
 #if ( WinActive("ahk_exe cloudmusic.exe") and WinActive("ahk_class OrpheusBrowserHost") )
 
     `::MouseClickAndResetting(53,1118)
@@ -57,4 +58,3 @@
     Down::Send !-
 
 #if
-

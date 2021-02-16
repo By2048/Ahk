@@ -1,10 +1,11 @@
+
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
 
 
 
-MouseMoveDC(xright,ydown) {
+MouseMoveDC(xright, ydown) {
     CoordMode, Mouse, Screen
     MouseGetPos, x, y
     xx:=x+xright
@@ -14,7 +15,7 @@ MouseMoveDC(xright,ydown) {
 
 
 
-MouseClickAndResetting(x,y)
+MouseClickAndResetting(x, y)
 {
     MouseGetPos, x_origin, y_origin
     MouseClick, left, x, y, 1, 0
@@ -23,7 +24,7 @@ MouseClickAndResetting(x,y)
 
 
 
-MouseClickImage(image,trans="")
+MouseClickImage(image, trans="")
 {
     CoordMode, Pixel, Screen
     CoordMode, Mouse, Screen
@@ -60,9 +61,4 @@ MouseClickImage(image,trans="")
     } else {
         HelpText("Not Find", , ,1000)
     }
-
 }
-
-
-
-

@@ -1,11 +1,13 @@
+
+#include %A_WorkingDir%\Config.ahk
+#include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
+#include %A_WorkingDir%\Tool\Change.ahk 
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
-#include %A_WorkingDir%\Tool\Language.ahk
-
 
 #include %A_WorkingDir%\Software\Chrome.ahk
 #include %A_WorkingDir%\Software\CloudMusic.ahk
@@ -23,7 +25,6 @@
 
 #SingleInstance Force
 #NoTrayIcon
-
 
 
 if (not A_IsAdmin) {

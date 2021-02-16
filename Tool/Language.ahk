@@ -1,3 +1,4 @@
+
 #include %A_WorkingDir%\Tool\Change.ahk
 
 

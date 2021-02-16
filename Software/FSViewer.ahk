@@ -1,3 +1,4 @@
+
 #if ( WinActive("ahk_exe FSViewer.exe") )
 
     \:: ;移动到收藏
@@ -22,5 +23,4 @@
         Send {Left}
     Return
 
-#If
-
+#if

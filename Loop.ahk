@@ -17,16 +17,16 @@ Loop {
 
     Sleep, 1000
 
-    WinGet, win_id, ID, A
-    WinGet, win_min_max, MinMax, ahk_id %win_id%
-	WinGet, win_process_name, ProcessName, ahk_id %win_id%
-    WinGetClass, win_class, ahk_id %win_id%
-	WinGetTitle, win_title, ahk_id %win_id%
-	WinGetText, win_text, ahk_id %win_id%
-	WinGetPos, win_x, win_y, win_w, win_h, ahk_id %win_id%
-	WinGet, win_transparent, Transparent, ahk_id %win_id%
+    WinGet,           win_id, ID,           A
+    WinGet,      win_min_max, MinMax,       ahk_id %win_id%
+	WinGet, win_process_name, ProcessName,  ahk_id %win_id%
+	WinGet,  win_transparent, Transparent,  ahk_id %win_id%
+    WinGetClass,   win_class,               ahk_id %win_id%
+	WinGetTitle,   win_title,               ahk_id %win_id%
+	WinGetText,     win_text,               ahk_id %win_id%
+	WinGetPos,  win_x, win_y, win_w, win_h, ahk_id %win_id%
 
-    ; HelpText(win_x "|" win_y "|" win_w "|" win_h)/
+    ; HelpText(win_x "|" win_y "|" win_w "|" win_h)
 
     if (IsGame(win_process_name)) {
         Sleep, 3000

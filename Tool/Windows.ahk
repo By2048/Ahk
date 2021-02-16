@@ -1,3 +1,4 @@
+
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
@@ -319,6 +320,23 @@ MoveWindowsToDefaultPosition()
 
 
 
+ProcessNameFormat(process_name)
+{
+    process_name := RTrim(process_name,"exe")
+    process_name := RTrim(process_name,"EXE")
+    process_name := RTrim(process_name,".")
+    for index, value in Windows_Process_Name {
+        name_old := value[1]
+        name_new := value[2]
+        if (process_name = name_old) {
+            process_name := name_new
+            Break
+        }
+    }
+    Return process_name
+}
+
+
 ; 显示激活的窗口名
 global last_activate_windows_process_name:=""
 ShowActivateWindowsProcessName()
@@ -342,4 +360,3 @@ ShowActivateWindowsProcessName()
         HelpText(name,"center_down","screen3")
     }
 }
-

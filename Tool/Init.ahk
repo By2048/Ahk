@@ -1,5 +1,6 @@
-#include %A_WorkingDir%\Tool\Change.ahk 
-#include %A_WorkingDir%\Tool\Screen.ahk 
+
+#include %A_WorkingDir%\Tool\Change.ahk
+#include %A_WorkingDir%\Tool\Screen.ahk
 
 
 
@@ -7,12 +8,12 @@ global print_config_show_status:=False
 
 
 
-DefaultProgress() 
+DefaultProgress()
 {
     w:=150*2
     h:=15*2
-    x:=A_ScreenWidth/2-w/2
-    y:=A_ScreenHeight/2-h/2    
+    x:=screen_1_w/2-w/2
+    y:=screen_1_h/2-h/2
     w:=w/2
     h:=h/2
     
@@ -34,22 +35,9 @@ DefaultProgress()
 
 ShowConfig()
 {
-    global print_config_show_status
-
     CoordMode Pixel Screen
     CoordMode Mouse Screen
 
-    Progress, Off
-
-    SysGet, Mon3, Monitor, 2
-    screen_3_x    := Mon3Left+0
-    screen_3_y    := Mon3Top+0
-    screen_3_xx   := Mon3Right+0
-    screen_3_yy   := Mon3Bottom+0
-
-    screen_count:=0
-    SysGet, screen_count, MonitorCount
- 
     title = 
     title = %title% ---
     title = %title% Ahk Config
@@ -94,6 +82,7 @@ ShowConfig()
     w:=w/2
     h:=h/2
 
+    global print_config_show_status
     if (print_config_show_status=False) {
         Progress, b zh0 fs15 fm19 c01 x%x% y%y% w%w% h%h%, %content%, %title%, "Source Code Pro"
         print_config_show_status:=True
@@ -107,7 +96,6 @@ HideConfig()
     global print_config_show_status
     if (print_config_show_status=True) {
         print_config_show_status:=False
+        Progress, Off
     }
 }
-
-
