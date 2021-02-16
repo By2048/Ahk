@@ -3,6 +3,8 @@
 #NoTrayIcon
 
 
+#Hotstring EndChars `t
+
 
 ::\date\::
     FormatTime, result,  , yyyy-dd-MM
@@ -23,5 +25,4 @@ Return
     result:=Clipboard
     SendInput, %result%
 Return
-
 
