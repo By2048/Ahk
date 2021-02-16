@@ -137,8 +137,8 @@ KeyImage()
     }
 
     keyimage:=[]
-    keyimage.push("4 A1 G26 0 E:\Sync\Ahk\Image\RCtrl.png")
     keyimage.push("3 A1 J27 1 E:\Sync\Ahk\Image\RShift\Windows.png")
+    keyimage.push("4 A1 G26 0 E:\Sync\Ahk\Image\RCtrl.png")
     keyimage.push("9 A1 I41 6 E:\Sync\Ahk\Image\RShift\Chrome.png")
     keyimage.push("9 K1 Q26 2 E:\Sync\Ahk\Image\RShift\Chrome-Bilibili.png")
 
@@ -152,4 +152,7 @@ KeyImage()
         ExcelMoveToSheet(sheet)
         ExcelKeyToImage(excel_x,excel_y,multi_line,image_file)
     }
+
+    HelpText(" Over ",  ,  , 1000)
+
 }

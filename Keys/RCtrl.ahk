@@ -35,11 +35,6 @@ Return
     Sleep, 300
     MoveWindowsMM("main")
 Return
->^F12::
-    Run, %WT% %A_WorkingDir%\Scripts\nicotv.bat
-    Sleep, 300
-    MoveWindowsMM("main")
-Return
 
 
 >^`::Run, E:\Sync\Ahk\Doc\Hotkey.xlsx
