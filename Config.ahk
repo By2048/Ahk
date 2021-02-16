@@ -17,8 +17,9 @@ global PyCharm_Open_XXX_Mini := [ 1/5 , 2/3 ]
 
 global JQB_File := "T:\\JQB"
 
-
-
-
-
+global Windows_Process_Name := []
+Windows_Process_Name.Push( [ "Code"       , "VSCode"     ] )
+Windows_Process_Name.Push( [ "chrome"     , "Chrome"     ] )
+Windows_Process_Name.Push( [ "cloudmusic" , "CloudMusic" ] )
+Windows_Process_Name.Push( [ "pycharm64"  , "PyCharm"    ] )
 

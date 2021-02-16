@@ -106,9 +106,6 @@ Return
 Return
 
 
-WinClose 
-
-
 
 RWin & RCtrl::MoveWindowsMM("main")
 RWin & RAlt::MoveWindowsMM("mini")

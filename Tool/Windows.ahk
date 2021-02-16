@@ -327,13 +327,15 @@ ShowActivateWindowsProcessName()
     name:=RTrim(name,"exe")
     name:=RTrim(name,"EXE")
     name:=RTrim(name,".")
-    if (name="Code") {
-        name:="VSCode"
-    } else if (name="chrome") {
-        name:="Chrome"
-    } else if (name="cloudmusic") {
-        name:="CloudMusic"
+
+    for index, value in Windows_Process_Name {
+        name_old:=value[1]
+        name_new:=value[2]
+        if (name=name_old) {
+            name:=name_new
+        }
     }
+
     global last_activate_windows_process_name
     if (name!=last_activate_windows_process_name) {
         last_activate_windows_process_name:=name
