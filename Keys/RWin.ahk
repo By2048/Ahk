@@ -1,6 +1,6 @@
 
+#include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
-#include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk
@@ -64,7 +64,7 @@ return
 
 
 >#,::
-    if (IsDesktops() or IsMaxWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
     }
     global windows_resize_small
@@ -73,7 +73,7 @@ return
 Return
 
 >#.::
-    if (IsDesktops() or IsMaxWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
     }
     global windows_resize_big
@@ -82,7 +82,7 @@ Return
 Return
 
 >#/::
-    if (IsDesktops() or IsMaxWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
     }
     global windows_move

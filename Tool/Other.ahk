@@ -1,7 +1,6 @@
 
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Private.ahk
-#include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 

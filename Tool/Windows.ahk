@@ -1,45 +1,38 @@
 
 #include %A_WorkingDir%\Config.ahk
-#include %A_WorkingDir%\Tool\Screen.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 
 
 
 IsDesktops()
 {
-    if (WinActive("ahk_class WorkerW")) {
-        HelpText("Windows Desktop",  ,  ,1000)
+    WinGetClass, win_class, A
+    if ( win_class="WorkerW" ) {
+        HelpText("Desktop",  ,  ,1000)
         Return True
     } else {
         Return False
     }
 }
 
-IsMaxWindows()
+IsMaxMinWindows()
 {
-    WinGet, win_id, ID, A
-    WinGet, win_status, MinMax, ahk_id %win_id%
-    if (win_status) {
-        HelpText("Max Screen Return",  ,  , 1000)
+    WinGet, win_min_max, MinMax, A
+    if (win_min_max) {
+        HelpText("Max\Min",  ,  , 1000)
         return True
     } else {
-        Return False
+        return False
     }
 }
 
-IsGame(process_name="")
-{
-    data:=[]
-	data.push("LeagueClientUx.exe")
-	data.push("League of Legends.exe")
-    name:=""
-    if (process_name) {
-        win_process_name:=process_name
-    } else {
-        WinGet, win_process_name, ProcessName, A
-    }
-    for index, item in data {
-        if (win_process_name=item) {
+IsGame()
+{    
+    WinGet, process_name, ProcessName, A
+    process_name := ProcessNameFormat(process_name)
+    for index, value in Game_Process_Name {
+        if (value = process_name) {
+            HelpText("Game",  ,  , 1000)
             Return True
         }
     }
@@ -48,29 +41,39 @@ IsGame(process_name="")
 
 
 
-; 根据窗口ID 获取窗口的所在屏幕信息 以及窗口信息
+; 获取窗口的所在屏的幕信息 以及窗口信息
+; 根据窗口ID 或者激活的窗口
+; 1 in_screen
+; 2 win_x, 3 win_y, 4 win_w, 5 win_h
+; 6 screen_x, 7 screen_y, 8 screen_xx, 9 screen_yy
+; 10 screen_w, 11 screen_h
 GetWindowsScreenInfo(win_id)
 {
-    WinGetPos, x, y, w, h, ahk_id %win_id%
-
-    ; 判断窗口主体在那个屏幕,并初始化相关参数
+    WinGetPos, win_x,win_y,win_w,win_h, ahk_id %win_id%
     in_screen:=1
     screen_x:=0, screen_y:=0, screen_xx:=0, screen_yy:=0
-    if (x>=screen_1_x and x<screen_1_xx) {
+    if (win_x>=screen_1_x and win_x<screen_1_xx) {
         in_screen:=1
         screen_x:=screen_1_x, screen_y:=screen_1_y
         screen_xx:=screen_1_xx, screen_yy:=screen_1_yy
-    } else if (x>=screen_2_x and x<screen_2_xx) {
+    } else if (win_x>=screen_2_x and win_x<screen_2_xx) {
         in_screen:=2
         screen_x:=screen_2_x ,screen_y:=screen_2_y
         screen_xx:=screen_2_xx, screen_yy:=screen_2_yy
-    } else if (x>=screen_3_x and x<screen_3_xx) {
+    } else if (win_x>=screen_3_x and win_x<screen_3_xx) {
         in_screen:=3
         screen_x:=screen_3_x, screen_y:=screen_3_y
         screen_xx:=screen_3_xx, screen_yy:=screen_3_yy/2
     }
+    screen_w:=screen_xx-screen_x
+    screen_h:=screen_yy-screen_y
 
-    Return [x,y,w,h, screen_x,screen_y,screen_xx,screen_yy, screen_w,screen_h]
+    result := []
+    result.Push( in_screen )
+    result.Push( win_x, win_y, win_w, win_h )
+    result.Push( screen_x, screen_y, screen_xx, screen_yy )
+    result.Push( screen_w, screen_h )
+    Return result
 }
 
 
@@ -79,15 +82,17 @@ GetWindowsScreenInfo(win_id)
 GetWindowsCenterPos(win_id)
 {
     result:=GetWindowsScreenInfo(win_id)
-    x:=result[1], y:=result[2], w:=result[3], h:=result[4]
-    screen_x:=result[5], screen_y:=result[6], screen_xx:=result[7], screen_yy:=result[8]
-    screen_w:=screen_xx-screen_x
-    screen_h:=screen_yy-screen_y
+    in_screen:=result[1]
+    x:=result[2], y:=result[3]
+    w:=result[4], h:=result[5]
+    screen_x:=result[6], screen_y:=result[7]
+    screen_xx:=result[8], screen_yy:=result[9]
+    screen_w:=result[10]
+    screen_h:=result[11]
 
     xx:=x, yy:=y
     xx:=screen_x+screen_w/2-w/2
     yy:=screen_y+screen_h/2-h/2
-
     Return [xx,yy]
 }
 
@@ -96,7 +101,7 @@ GetWindowsCenterPos(win_id)
 ; 窗口上下左右移动
 MoveWindowsUDLR(direction)
 {    
-    if (IsDesktops() or IsMaxWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
     }
 
@@ -125,7 +130,7 @@ MoveWindowsUDLR(direction)
 ; 窗口移动到屏幕中心
 MoveWindowsToCenter() 
 {
-    if (IsDesktops() or IsMaxWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
     }
 
@@ -148,7 +153,7 @@ MoveWindowsToCenter()
 
 MoveWindowsMM(command)
 {   
-    if (IsDesktops() or IsMaxWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
     }
 
@@ -217,7 +222,7 @@ MoveWindowsMM(command)
 
 ResizeWindows(status, direction)
 {
-    if (IsDesktops() or IsMaxWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
     }
 
@@ -271,7 +276,7 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
         HelpText("No WinId")
     }
     
-    if (IsDesktops() or IsMaxWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
     }
 
@@ -299,22 +304,19 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 MoveWindowsToDefaultPosition()
 {
     WinGet, win_id, ID, A
+	WinGetPos, win_x, win_y, win_w, win_h, ahk_id %win_id%
 	WinGet, win_process_name, ProcessName, ahk_id %win_id%
-    if (win_process_name="TIM.exe") {
-        xx:=10
-        yy:=10
-        ww:=screen_1_w/2-10-10
-        hh:=screen_1_h-10-10
-        SetWindows(win_id, xx, yy, ww, hh)
-        HelpText("TIM", "center_down", "screen1", 1000)
-    }
-    if (win_process_name="WeChat.exe") {
-        xx:=screen_1_w/2+10
-        yy:=10+14
-        ww:=screen_1_w/2-10-10
-        hh:=screen_1_h-10-10-14-14
-        SetWindows(win_id, xx, yy, ww, hh)
-        HelpText("WeChat", "center_down", "screen1", 1000)
+
+    win_process_name := ProcessNameFormat(win_process_name)
+    xx:=win_x, yy:=win_y, ww:=win_w, hh:=win_h
+
+    for key, value in Windows_Default_Position {
+        if (key=win_process_name) {
+            xx:=value[1], yy:=value[2]
+            ww:=value[3], hh:=value[4]
+            SetWindows(win_id, xx, yy, ww, hh)
+            HelpText(%key%, "center_down", "screen1", 1000)
+        }
     }
 }
 
@@ -360,3 +362,18 @@ ShowActivateWindowsProcessName()
         HelpText(name,"center_down","screen3")
     }
 }
+
+
+
+WActive(process_name="")
+{
+    ; HelpText(process_name)
+    WinGet, win_process_name, ProcessName, A
+    win_process_name := ProcessNameFormat(win_process_name)
+    if (win_process_name=process_name) {
+        return True
+    }
+    return False
+}
+
+

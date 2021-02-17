@@ -1,5 +1,6 @@
 ﻿
 #if ( WinActive("ahk_exe League of Legends.exe") )
+
 	]::
 		SetDefaultKeyboard(0x0409)
 		Sleep, 300
@@ -56,4 +57,5 @@
 
 		SetDefaultKeyboard(0x0804)
 	Return
+	
 #If

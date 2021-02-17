@@ -32,7 +32,9 @@ global search_tool_show_status := False
 
 
 RAlt & RWin::
-    if (not IsDesktops()) {
+    if (IsDesktops() or IsGame()) {
+        Return
+    } else {
         Send !{F4}
     }
 return

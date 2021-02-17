@@ -1,4 +1,50 @@
 
+; 初始化系统屏幕相关信息
+SysGet, screen_count, MonitorCount
+SysGet, Monitor1,     Monitor,      3
+SysGet, Monitor2,     Monitor,      1
+SysGet, Monitor3,     Monitor,      2
+
+; 系统实际的屏幕设置 [2][1][3]
+;     Ahk获取的屏幕 [1][3][2]
+global TRUE_SCREENS := [2, 1, 3]
+global  AHK_SCREENS := [1, 3, 2]
+
+global screen_main  := 1
+global screen_count := screen_count
+
+global screen_1_zoom := 2
+global screen_2_zoom := 1.5
+global screen_3_zoom := 1
+
+global screen_1_x  := Monitor1Left   + 0
+global screen_1_y  := Monitor1Top    + 0
+global screen_1_xx := Monitor1Right  + 0
+global screen_1_yy := Monitor1Bottom + 0
+global screen_1_w  := screen_1_xx    - screen_1_x
+global screen_1_h  := screen_1_yy    - screen_1_y
+
+global screen_2_x  := Monitor2Left   + 0
+global screen_2_y  := Monitor2Top    + 0
+global screen_2_xx := Monitor2Right  + 0
+global screen_2_yy := Monitor2Bottom + 0
+global screen_2_w  := screen_2_xx    - screen_2_x
+global screen_2_h  := screen_2_yy    - screen_2_y
+
+global screen_3_x  := Monitor3Left   + 0
+global screen_3_y  := Monitor3Top    + 0
+global screen_3_xx := Monitor3Right  + 0
+global screen_3_yy := Monitor3Bottom + 0
+global screen_3_w  := screen_3_xx    - screen_3_x
+global screen_3_h  := screen_3_yy    - screen_3_y
+
+global screen_1_screen_2_top  := screen_1_y  - screen_2_y
+global screen_1_screen_2_down := screen_1_yy - screen_2_yy
+global screen_1_screen_3_top  := screen_1_y  - screen_3_y
+global screen_1_screen_3_down := screen_1_yy - screen_3_yy
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ; Windows Terminal
 global WT := "C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe"
 
@@ -18,27 +64,39 @@ global JQB_File := "T:\\JQB"
 
 ; 软件自定义名字替换
 global Windows_Process_Name := []
-Windows_Process_Name.Push( [ "code"            , "VSCode"     ] )
-Windows_Process_Name.Push( [ "chrome"          , "Chrome"     ] )
-Windows_Process_Name.Push( [ "firefox"         , "FireFox"    ] )
-Windows_Process_Name.Push( [ "cloudmusic"      , "CloudMusic" ] )
-Windows_Process_Name.Push( [ "pycharm64"       , "PyCharm"    ] )
-Windows_Process_Name.Push( [ "wps"             , "WPS"        ] )
-Windows_Process_Name.Push( [ "explorer"        , "Explorer"   ] )
-Windows_Process_Name.Push( [ "fdm"             , "FDM"        ] )
-Windows_Process_Name.Push( [ "Xshell"          , "XShell"     ] )
-Windows_Process_Name.Push( [ "PotPlayerMini64" , "PotPlayer"  ] )
+Windows_Process_Name.Push( [ "code"              , "VSCode"       ] )
+Windows_Process_Name.Push( [ "chrome"            , "Chrome"       ] )
+Windows_Process_Name.Push( [ "firefox"           , "FireFox"      ] )
+Windows_Process_Name.Push( [ "cloudmusic"        , "CloudMusic"   ] )
+Windows_Process_Name.Push( [ "pycharm64"         , "PyCharm"      ] )
+Windows_Process_Name.Push( [ "wps"               , "WPS"          ] )
+Windows_Process_Name.Push( [ "explorer"          , "Explorer"     ] )
+Windows_Process_Name.Push( [ "fdm"               , "FDM"          ] )
+Windows_Process_Name.Push( [ "Xshell"            , "XShell"       ] )
+Windows_Process_Name.Push( [ "PotPlayerMini64"   , "PotPlayer"    ] )
+Windows_Process_Name.Push( [ "LeagueClientUx"    , "LOL"          ] )
+Windows_Process_Name.Push( [ "League of Legends" , "LOL"          ] )
+Windows_Process_Name.Push( [ "NemuPlayer"        , "Android"      ] )
 
 ; RShift快捷键帮助配置 快捷键图片对应关系
 global Process_Hotkeys_Image := {}
-Process_Hotkeys_Image["default"]         := ["Windows.png"]
-Process_Hotkeys_Image["Windows"]         := ["Windows.png"]
-Process_Hotkeys_Image["VSCode"]          := ["VSCode-Fxx.png", "VSCode.png"]
-Process_Hotkeys_Image["XShell"]          := ["XShell.png"]
-Process_Hotkeys_Image["SumatraPDF"]      := ["SumatraPDF.png"]
-Process_Hotkeys_Image["PyCharm"]         := ["PyCharm.png", "PyCharm-Fxx.png"]
-Process_Hotkeys_Image["QuiteRSS"]        := ["QuiteRSS.png"]
-Process_Hotkeys_Image["Chrome"]          := ["Chrome.png"]
-Process_Hotkeys_Image["Chrome_Bilibili"] := ["Chrome-Bilibili.png"]
-Process_Hotkeys_Image["PotPlayer"]       := ["PotPlayer.png"]
-Process_Hotkeys_Image["CloudMusic"]      := ["CloudMusic.png"]
+Process_Hotkeys_Image[ "default"         ] := [ "Windows.png"                    ]
+Process_Hotkeys_Image[ "Windows"         ] := [ "Windows.png"                    ]
+Process_Hotkeys_Image[ "VSCode"          ] := [ "VSCode-Fxx.png", "VSCode.png"   ]
+Process_Hotkeys_Image[ "XShell"          ] := [ "XShell.png"                     ]
+Process_Hotkeys_Image[ "SumatraPDF"      ] := [ "SumatraPDF.png"                 ]
+Process_Hotkeys_Image[ "PyCharm"         ] := [ "PyCharm.png", "PyCharm-Fxx.png" ]
+Process_Hotkeys_Image[ "QuiteRSS"        ] := [ "QuiteRSS.png"                   ]
+Process_Hotkeys_Image[ "Chrome"          ] := [ "Chrome.png"                     ]
+Process_Hotkeys_Image[ "Chrome_Bilibili" ] := [ "Chrome-Bilibili.png"            ]
+Process_Hotkeys_Image[ "PotPlayer"       ] := [ "PotPlayer.png"                  ]
+Process_Hotkeys_Image[ "CloudMusic"      ] := [ "CloudMusic.png"                 ]
+
+; 指定游戏进程
+global Game_Process_Name := []
+Game_Process_Name.Push( "LOL" )
+
+; 设置一些软件默认位置
+global Windows_Default_Position := {}
+Windows_Default_Position["TIM"   ] := [ 10, 10, screen_1_w/2-10-10, screen_1_h-10-10                       ]
+Windows_Default_Position["WeChat"] := [ screen_1_w/2+10, 10+14, screen_1_w/2-10-10, screen_1_h-10-10-14-14 ]

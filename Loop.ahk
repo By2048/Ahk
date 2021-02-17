@@ -27,10 +27,13 @@ Loop {
 	WinGetPos,  win_x, win_y, win_w, win_h, ahk_id %win_id%
 
     ; HelpText(win_x "|" win_y "|" win_w "|" win_h)
+    win_process_name_format := ProcessNameFormat(win_process_name)
 
-    if (IsGame(win_process_name)) {
-        Sleep, 3000
-        Continue
+    for index, value in Game_Process_Name {
+        if (value=win_process_name_format) {
+            Sleep, 3000
+            Continue
+        }
     }
 
     ; 手机剪切板同步
