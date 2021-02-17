@@ -126,7 +126,9 @@ timer:
         Return
     }
     if (cnt=1) {
-        ShowActivateWindowsProcessName()
+        result := GetWindowsInfo()
+        process_name := result.win_process_name
+        HelpText(process_name, "center_down", "screen3")
     } else if (cnt=2) {
         MoveWindowsToCenter()
     } else if (cnt=3) {

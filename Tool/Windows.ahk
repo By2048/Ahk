@@ -1,13 +1,15 @@
 
 #include %A_WorkingDir%\Config.ahk
+#include %A_WorkingDir%\Tool\Change.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 
 
-
+; 判断是否在桌面
+; return | True \ False
 IsDesktops()
 {
     WinGetClass, win_class, A
-    if ( win_class="WorkerW" ) {
+    if (win_class="WorkerW") {
         HelpText("Desktop",  ,  ,1000)
         Return True
     } else {
@@ -15,6 +17,9 @@ IsDesktops()
     }
 }
 
+
+; 判断软件是否全屏\最小化
+; return | True \ False
 IsMaxMinWindows()
 {
     WinGet, win_min_max, MinMax, A
@@ -26,6 +31,9 @@ IsMaxMinWindows()
     }
 }
 
+
+; 判断当前激活的应用是否为游戏
+; return | True \ False
 IsGame()
 {    
     WinGet, process_name, ProcessName, A
@@ -41,176 +49,148 @@ IsGame()
 
 
 
-; 获取窗口的所在屏的幕信息 以及窗口信息
-; 根据窗口ID 或者激活的窗口
-; 1 in_screen
-; 2 win_x, 3 win_y, 4 win_w, 5 win_h
-; 6 screen_x, 7 screen_y, 8 screen_xx, 9 screen_yy
-; 10 screen_w, 11 screen_h
-GetWindowsScreenInfo(win_id)
+; 获取窗口的所在屏幕的信息 以及窗口信息
+; result | {} 应用信息
+GetWindowsInfo()
 {
-    WinGetPos, win_x,win_y,win_w,win_h, ahk_id %win_id%
+    WinGet,                          win_id, ID,           A
+    WinGet,                     win_min_max, MinMax,       ahk_id %win_id%
+	WinGet,                win_process_name, ProcessName,  ahk_id %win_id%
+	WinGet,                 win_transparent, Transparent,  ahk_id %win_id%
+    WinGetClass,                  win_class,               ahk_id %win_id%
+	WinGetTitle,                  win_title,               ahk_id %win_id%
+	WinGetText,                    win_text,               ahk_id %win_id%
+	WinGetPos,   win_x, win_y, win_w, win_h,               ahk_id %win_id%
+
     in_screen:=1
     screen_x:=0, screen_y:=0, screen_xx:=0, screen_yy:=0
-    if (win_x>=screen_1_x and win_x<screen_1_xx) {
-        in_screen:=1
-        screen_x:=screen_1_x, screen_y:=screen_1_y
-        screen_xx:=screen_1_xx, screen_yy:=screen_1_yy
-    } else if (win_x>=screen_2_x and win_x<screen_2_xx) {
-        in_screen:=2
-        screen_x:=screen_2_x ,screen_y:=screen_2_y
-        screen_xx:=screen_2_xx, screen_yy:=screen_2_yy
+    if (win_x >= screen_1_x and win_x < screen_1_xx) {
+        in_screen := 1
+        screen_x  := screen_1_x  ,   screen_y := screen_1_y
+        screen_xx := screen_1_xx ,  screen_yy := screen_1_yy
+    } else if (win_x >= screen_2_x and win_x < screen_2_xx) {
+        in_screen := 2
+        screen_x  := screen_2_x  ,   screen_y := screen_2_y
+        screen_xx := screen_2_xx ,  screen_yy := screen_2_yy
     } else if (win_x>=screen_3_x and win_x<screen_3_xx) {
-        in_screen:=3
-        screen_x:=screen_3_x, screen_y:=screen_3_y
-        screen_xx:=screen_3_xx, screen_yy:=screen_3_yy/2
+        in_screen := 3
+        screen_x  := screen_3_x,     screen_y := screen_3_y
+        screen_xx := screen_3_xx,   screen_yy := screen_3_yy/2
     }
-    screen_w:=screen_xx-screen_x
-    screen_h:=screen_yy-screen_y
+    screen_w := screen_xx - screen_x
+    screen_h := screen_yy - screen_y
 
-    result := []
-    result.Push( in_screen )
-    result.Push( win_x, win_y, win_w, win_h )
-    result.Push( screen_x, screen_y, screen_xx, screen_yy )
-    result.Push( screen_w, screen_h )
+    result := {}
+
+    result.win_id           := win_id
+    result.win_min_max      := win_min_max
+    result.win_process_name := ProcessNameFormat(win_process_name)
+    result.win_transparent  := win_transparent
+    result.win_class        := win_class
+    result.win_title        := win_title
+    result.win_text         := win_text
+    result.win_x            := win_x
+    result.win_y            := win_y
+    result.win_w            := win_w
+    result.win_h            := win_h
+    result.in_screen        := in_screen
+    result.screen_x         := screen_x
+    result.screen_y         := screen_y
+    result.screen_xx        := screen_xx
+    result.screen_yy        := screen_yy
+    result.screen_w         := screen_w
+    result.screen_h         := screen_h
+
     Return result
 }
 
 
 
-; 获取窗口在居中时应处的位置
-GetWindowsCenterPos(win_id)
-{
-    result:=GetWindowsScreenInfo(win_id)
-    in_screen:=result[1]
-    x:=result[2], y:=result[3]
-    w:=result[4], h:=result[5]
-    screen_x:=result[6], screen_y:=result[7]
-    screen_xx:=result[8], screen_yy:=result[9]
-    screen_w:=result[10]
-    screen_h:=result[11]
-
-    xx:=x, yy:=y
-    xx:=screen_x+screen_w/2-w/2
-    yy:=screen_y+screen_h/2-h/2
-    Return [xx,yy]
-}
-
-
-
-; 窗口上下左右移动
-MoveWindowsUDLR(direction)
-{    
-    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
-        Return 
-    }
-
-    SetWinDelay, 1
-    CoordMode, Mouse
-
-    WinGet, win_id, ID, A
-    WinGetPos, x, y, w, h, ahk_id %win_id%
-
-    step:=10
-    if (direction="Up") {
-        y:=y-step
-    } else if (direction="Down") {
-        y:=y+step
-    } else if (direction="Left") {
-        x:=x-step
-    } else if (direction="Right") {
-        x:=x+step
-    }
-
-    WinMove, ahk_id %win_id%,  , %x%, %y%
-}
-
-
-
 ; 窗口移动到屏幕中心
+; return | None
 MoveWindowsToCenter() 
 {
     if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
     }
 
-    WinGet, win_id, ID, A
-    WinGetPos, x, y, w, h, ahk_id %win_id%
+    result := GetWindowsInfo()
 
-    result:=GetWindowsCenterPos(win_id)
-    xx:=result[1], yy:=result[2]
+    win_id := result.win_id
 
-    if (x=xx and y=yy) {
+    win_x := result.win_x
+    win_y := result.win_y
+    win_w := result.win_w
+    win_h := result.win_h
+
+    screen_x := result.screen_x
+    screen_y := result.screen_y
+    screen_w := result.screen_w
+    screen_h := result.screen_h
+
+    xx := screen_x + screen_w/2 - win_w/2
+    yy := screen_y + screen_h/2 - win_h/2
+    
+    if (win_x=xx and win_y=yy) {
         Return
     }
-
+    
     WinMove, ahk_id %win_id%,  , %xx%, %yy%
-
-    HelpText("Move To Center",  ,  ,1000)
+    HelpText("Move To Center",  ,  , 1000)
 }
 
 
 
+; 调整窗口为Main\Mini 并居中
+; command | Main 或者 Mini
+; return  | None
 MoveWindowsMM(command)
 {   
-    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
-        Return 
-    }
-
-    WinGet, win_id, ID, A
-	WinGet, win_process_name, ProcessName, ahk_id %win_id%
-    WinGetClass, win_class, ahk_id %win_id%
-	WinGetTitle, win_title, ahk_id %win_id%
-
-    if (win_class="Qt5QWindowToolSaveBits" and win_process_name="Snipaste.exe") {
-        HelpText("Snipaste",  ,  , 1000)
+    if ( IsDesktops() or IsMaxMinWindows() or IsGame() ) {
         Return
     }
 
-    ; data:=[]
-    ; data.push("Snipaste.exe")
-    ; check_ignore:=False
-    ; for index, item in data {
-    ;     if (win_process_name=item) {
-    ;         check_ignore:=True
-    ;     }
-    ; }
-    ; if (check_ignore=True) {
-    ;     Return
+    result := GetWindowsInfo()
+
+    win_id           := result.win_id
+    win_process_name := result.win_process_name
+    win_class        := result.win_class
+    win_title        := result.win_title
+
+    ; if (win_class="Qt5QWindowToolSaveBits" and win_process_name="Snipaste.exe") {
+        ; HelpText("Snipaste",  ,  , 1000)
+        ; Return
     ; }
 
-    result:=GetWindowsScreenInfo(win_id)
-    x:=result[1], y:=result[2], w:=result[3], h:=result[4]
-    screen_x:=result[5], screen_y:=result[6], screen_xx:=result[7], screen_yy:=result[8]
-    screen_w:=screen_xx-screen_x
-    screen_h:=screen_yy-screen_y
+    screen_x := result.screen_x
+    screen_y := result.screen_y
+    screen_w := result.screen_w
+    screen_h := result.screen_h
 
     main := [   5/6 , 8/9 ]
     mini := [ 1.8/3 , 3/4 ]
 
     if (win_process_name="pycharm64.exe") {
         if (win_title="Run" or win_title="Debug") {
-            main:=PyCharm_Main
-            mini:=PyCharm_Mini
-        }
-        if (win_title="Open File or Project") {
-            main:=PyCharm_Open_XXX_Main
-            mini:=PyCharm_Open_XXX_Mini
+            main := PyCharm_Main
+            mini := PyCharm_Mini
+        } else if (win_title="Open File or Project") {
+            main := PyCharm_Open_XXX_Main
+            mini := PyCharm_Open_XXX_Mini
         }
     }
 
     if (command="main") {
         HelpText("Windows Main Size")
-        ww:=screen_w*main[1]
-        hh:=screen_h*main[2]
-    }
-    if (command="mini") {
+        ww := screen_w * main[1]
+        hh := screen_h * main[2]
+    } else if (command="mini") {
         HelpText("Windows Mini Size")
-        ww:=screen_w*mini[1]
-        hh:=screen_h*mini[2]
+        ww := screen_w * mini[1]
+        hh := screen_h * mini[2]
     }
-    xx:=screen_x+screen_w/2-ww/2
-    yy:=screen_y+screen_h/2-hh/2
+    xx := screen_x + screen_w/2 - ww/2
+    yy := screen_y + screen_h/2 - hh/2
     
     WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
 
@@ -220,7 +200,45 @@ MoveWindowsMM(command)
 
 
 
-ResizeWindows(status, direction)
+; 窗口上下左右移动
+; direction | Up \ Down \ Left \ Right
+; return    | None
+MoveWindowsUDLR(direction)
+{    
+    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
+        Return 
+    }
+
+    SetWinDelay, 1
+    CoordMode, Mouse
+
+    result := GetWindowsInfo()
+    win_id := result.win_id
+    win_x  := result.win_x
+    win_y  := result.win_y
+    win_w  := result.win_w
+    win_h  := result.win_h
+
+    step := 10
+    if (direction="Up") {
+        win_y := win_y - step
+    } else if (direction="Down") {
+        win_y := win_y + step
+    } else if (direction="Left") {
+        win_x := win_x - step
+    } else if (direction="Right") {
+        win_x := win_x + step
+    }
+
+    WinMove, ahk_id %win_id%,  , %win_x%, %win_y%
+}
+
+
+; 调整窗口大小
+; status    | Big \ Small
+; direction | Up \ Down \ Left \ Right
+; return    | None
+ResizeWindows(command, direction)
 {
     if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
@@ -229,40 +247,44 @@ ResizeWindows(status, direction)
     SetWinDelay, 1
     CoordMode, Mouse
 
-    WinGet, win_id, ID, A
-    WinGetPos, x, y, w, h, ahk_id %win_id%
+    result := GetWindowsInfo()
+    win_id := result.win_id
+    win_x  := result.win_x
+    win_y  := result.win_y
+    win_w  := result.win_w
+    win_h  := result.win_h
 
-    step:=10
+    step := 10
 
-    if (status="Big") {
+    if (command="Big") {
         if (direction="Up") {
-            y:=y-step
-            h:=h+step
+            win_y := win_y - step
+            win_h := win_h + step
         } else if (direction="Down") {
-            h:=h+step
+            win_h := win_h + step
         } else if (direction="Left") {
-            x:=x-step
-            w:=w+step
+            win_x := win_x - step
+            win_w := win_w + step
         } else if (direction="Right") {
-            w:=w+step
+            win_w := win_w + step
         }
     }
 
-    if (status="Small") {
+    if (command="Small") {
         if (direction="Up") {
-            y:=y+step
-            h:=h-step
+            win_y := win_y + step
+            win_h := win_h - step
         } else if (direction="Down") {
-            h:=h-step
+            win_h := win_h - step
         } else if (direction="Left") {
-            x:=x+step
-            w:=w-step
+            win_x := win_x + step
+            win_w := win_w - step
         } else if (direction="Right") {
-            w:=w-step
+            win_w := win_w - step
         }
     }
 
-    WinMove, ahk_id %win_id%,  , %x%, %y%, %w%, %h%
+    WinMove, ahk_id %win_id%,  , %win_x%, %win_y%, %win_w%, %win_h%
 }
 
 
@@ -270,6 +292,7 @@ ResizeWindows(status, direction)
 ; 将窗口移动到指定位置
 ; offset | 在一定误差内不进行窗口移动
 ; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
+; return | None
 SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 {
     if (not win_id) {
@@ -280,9 +303,8 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
         Return 
     }
 
-    ; HelpText(xx "|" yy "|" ww "|" hh)
-
     WinGetPos, x, y, w, h, ahk_id %win_id%
+    
     if (ww=0 or hh=0) { 
         ww:=w
         hh:=h
@@ -301,14 +323,17 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 
 
 ; 将窗口移动到软件设置的默认位置
+; return | None
 MoveWindowsToDefaultPosition()
 {
-    WinGet, win_id, ID, A
-	WinGetPos, win_x, win_y, win_w, win_h, ahk_id %win_id%
-	WinGet, win_process_name, ProcessName, ahk_id %win_id%
-
-    win_process_name := ProcessNameFormat(win_process_name)
-    xx:=win_x, yy:=win_y, ww:=win_w, hh:=win_h
+    result := GetWindowsInfo()
+    
+    win_id           := result.win_id
+    win_x            := result.win_x
+    win_y            := result.win_y
+    win_w            := result.win_w
+    win_h            := result.win_h
+    win_process_name := result.win_process_name
 
     for key, value in Windows_Default_Position {
         if (key=win_process_name) {
@@ -322,58 +347,25 @@ MoveWindowsToDefaultPosition()
 
 
 
-ProcessNameFormat(process_name)
+; 检测当前激活的应用是否满足条件
+; _process_name_ | 
+; _class_        | 
+; _title_        |
+; return         | True \ False
+CheckWindowsActive(_process_name_="", _class_="", _title_="")
 {
-    process_name := RTrim(process_name,"exe")
-    process_name := RTrim(process_name,"EXE")
-    process_name := RTrim(process_name,".")
-    for index, value in Windows_Process_Name {
-        name_old := value[1]
-        name_new := value[2]
-        if (process_name = name_old) {
-            process_name := name_new
-            Break
-        }
+    result := GetWindowsInfo()
+    win_process_name := result.win_process_name
+    win_class        := result.win_class
+    win_title        := result.win_title
+    if (_process_name_ = win_process_name) {
+        return True
     }
-    Return process_name
-}
-
-
-; 显示激活的窗口名
-global last_activate_windows_process_name:=""
-ShowActivateWindowsProcessName()
-{
-    WinGet, name, ProcessName, A
-    name:=RTrim(name,"exe")
-    name:=RTrim(name,"EXE")
-    name:=RTrim(name,".")
-
-    for index, value in Windows_Process_Name {
-        name_old:=value[1]
-        name_new:=value[2]
-        if (name=name_old) {
-            name:=name_new
-        }
+    if (_class_ = process_name) {
+        return True
     }
-
-    global last_activate_windows_process_name
-    if (name!=last_activate_windows_process_name) {
-        last_activate_windows_process_name:=name
-        HelpText(name,"center_down","screen3")
-    }
-}
-
-
-
-WActive(process_name="")
-{
-    ; HelpText(process_name)
-    WinGet, win_process_name, ProcessName, A
-    win_process_name := ProcessNameFormat(win_process_name)
-    if (win_process_name=process_name) {
+    if (_title_ = win_title_) {
         return True
     }
     return False
 }
-
-

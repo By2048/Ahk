@@ -1,4 +1,8 @@
 
+#include %A_WorkingDir%\Config.ahk
+
+
+
 ; 数组格式化成字符串输出
 ListToStr(data)
 {
@@ -24,3 +28,19 @@ ToBase(n, b)
 }
 
 
+
+ProcessNameFormat(process_name)
+{
+    process_name := RTrim(process_name, "exe")
+    process_name := RTrim(process_name, "EXE")
+    process_name := RTrim(process_name, "."  )
+    for index, value in Windows_Process_Name {
+        name_old := value[1]
+        name_new := value[2]
+        if (process_name = name_old) {
+            process_name := name_new
+            Break
+        }
+    }
+    Return process_name
+}
