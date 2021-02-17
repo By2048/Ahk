@@ -8,12 +8,12 @@
 #include %A_WorkingDir%\Tool\Windows.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
 
+#include %A_WorkingDir%\Software\Android.ahk
 #include %A_WorkingDir%\Software\Chrome.ahk
 #include %A_WorkingDir%\Software\CloudMusic.ahk
 #include %A_WorkingDir%\Software\Dexpot.ahk
 #include %A_WorkingDir%\Software\FSViewer.ahk
 #include %A_WorkingDir%\Software\LOL.ahk
-#include %A_WorkingDir%\Software\MuMu.ahk
 #include %A_WorkingDir%\Software\PyCharm.ahk
 #include %A_WorkingDir%\Software\SumatraPDF.ahk
 #include %A_WorkingDir%\Software\VSCode.ahk
@@ -40,5 +40,3 @@ MouseIsOver(WinTitle) {
     WheelUp::Send {Volume_Up}
     WheelDown::Send {Volume_Down}
 #if
-
-

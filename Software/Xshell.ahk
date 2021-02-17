@@ -1,5 +1,5 @@
 
-#if ( WinActive("ahk_exe Xshell.exe") )
+#if ( WindowsActive("Xshell") )
 
      !Tab::Send ^!] ;下一个选项卡
     !+Tab::Send ^![ ;上一个选项卡

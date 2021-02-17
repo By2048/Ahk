@@ -1,5 +1,5 @@
 
-#if ( WinActive("ahk_exe FSViewer.exe") )
+#if ( WindowsActive("FSViewer") )
 
     \:: ;移动到收藏
         Send m

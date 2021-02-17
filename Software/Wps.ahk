@@ -1,5 +1,5 @@
 
-#if ( WinActive("ahk_exe wps.exe") )
+#if ( WindowsActive("WPS") )
 
     >![:: ;无框线
         MouseGetPos, x_origin, y_origin

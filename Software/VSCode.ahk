@@ -1,5 +1,5 @@
 
-#if ( WinActive("ahk_exe Code.exe") )
+#if ( WindowsActive("VSCode") )
 
     >!m::Send, !VM ;显示迷你地图
     

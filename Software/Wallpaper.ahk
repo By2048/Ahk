@@ -1,5 +1,5 @@
 
-#if ( WinActive("ahk_exe ui32.exe") )
+#if ( WindowsActive("Wallpaper") )
 
 	; 取消订阅
 	!Delete::

@@ -1,5 +1,5 @@
 ﻿
-#if ( WinActive("ahk_exe League of Legends.exe") )
+#if ( WindowsActive("LOL") )
 
 	]::
 		SetDefaultKeyboard(0x0409)

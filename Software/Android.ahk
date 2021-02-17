@@ -1,5 +1,5 @@
 
-#if ( WinActive("ahk_exe NemuPlayer.exe") )
+#if ( WindowsActive("Android") )
     
     Space::Send, {LButton 4}
     

@@ -1,5 +1,5 @@
 
-#if ( WinActive("ahk_exe pycharm64.exe") )
+#if ( WindowsActive("PyCharm") )
     
     !F4::^!F4
 
@@ -12,7 +12,7 @@
 
 
 ; 悬浮窗口
-#if ( WinActive("ahk_exe pycharm64.exe") and WinActive("ahk_class SunAwtDialog") )
+#if ( WindowsActive("PyCharm", "SunAwtDialog") )
   
     ~RAlt::
         WinSet, Transparent, 30, A

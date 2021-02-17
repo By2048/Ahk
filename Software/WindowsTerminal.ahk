@@ -1,5 +1,5 @@
 
-#if ( WinActive("ahk_exe WindowsTerminal.exe") )
+#if ( WindowsActive("WindowsTerminal") )
 
     ; 下一个选项卡
     ^Tab::Return
