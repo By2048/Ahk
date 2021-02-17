@@ -72,18 +72,18 @@ Windows_Process_Name.Push( [ "pycharm64"         , "PyCharm"      ] )
 Windows_Process_Name.Push( [ "wps"               , "WPS"          ] )
 Windows_Process_Name.Push( [ "explorer"          , "Explorer"     ] )
 Windows_Process_Name.Push( [ "fdm"               , "FDM"          ] )
-Windows_Process_Name.Push( [ "Xshell"            , "XShell"       ] )
 Windows_Process_Name.Push( [ "PotPlayerMini64"   , "PotPlayer"    ] )
 Windows_Process_Name.Push( [ "LeagueClientUx"    , "LOL"          ] )
 Windows_Process_Name.Push( [ "League of Legends" , "LOL"          ] )
 Windows_Process_Name.Push( [ "NemuPlayer"        , "Android"      ] )
+Windows_Process_Name.Push( [ "ui32"              , "Wallpaper"    ] )
 
 ; RShift快捷键帮助配置 快捷键图片对应关系
 global Process_Hotkeys_Image := {}
 Process_Hotkeys_Image[ "default"         ] := [ "Windows.png"                    ]
 Process_Hotkeys_Image[ "Windows"         ] := [ "Windows.png"                    ]
 Process_Hotkeys_Image[ "VSCode"          ] := [ "VSCode-Fxx.png", "VSCode.png"   ]
-Process_Hotkeys_Image[ "XShell"          ] := [ "XShell.png"                     ]
+Process_Hotkeys_Image[ "Xshell"          ] := [ "Xshell.png"                     ]
 Process_Hotkeys_Image[ "SumatraPDF"      ] := [ "SumatraPDF.png"                 ]
 Process_Hotkeys_Image[ "PyCharm"         ] := [ "PyCharm.png", "PyCharm-Fxx.png" ]
 Process_Hotkeys_Image[ "QuiteRSS"        ] := [ "QuiteRSS.png"                   ]
