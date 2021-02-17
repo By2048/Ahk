@@ -77,6 +77,7 @@ Windows_Process_Name.Push( [ "LeagueClientUx"    , "LOL"          ] )
 Windows_Process_Name.Push( [ "League of Legends" , "LOL"          ] )
 Windows_Process_Name.Push( [ "NemuPlayer"        , "Android"      ] )
 Windows_Process_Name.Push( [ "ui32"              , "Wallpaper"    ] )
+Windows_Process_Name.Push( [ "steam"             , "Steam"        ] )
 
 ; RShift快捷键帮助配置 快捷键图片对应关系
 global Process_Hotkeys_Image := {}
