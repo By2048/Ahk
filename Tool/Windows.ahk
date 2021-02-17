@@ -352,7 +352,7 @@ MoveWindowsToDefaultPosition()
 ; _class_        | 
 ; _title_        |
 ; return         | True \ False
-CheckWindowsActive(_process_name_="", _class_="", _title_="")
+WindowsActive(_process_name_="", _class_="", _title_="")
 {
     result := GetWindowsInfo()
     win_process_name := result.win_process_name
@@ -361,10 +361,10 @@ CheckWindowsActive(_process_name_="", _class_="", _title_="")
     if (_process_name_ = win_process_name) {
         return True
     }
-    if (_class_ = process_name) {
+    if (_class_ = win_class) {
         return True
     }
-    if (_title_ = win_title_) {
+    if (_title_ = win_title) {
         return True
     }
     return False
