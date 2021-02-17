@@ -298,6 +298,12 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
     if (not win_id) {
         HelpText("No WinId")
     }
+    if (not offset) {
+        offset:=3
+    }
+    if (not step) {
+        step:=False
+    }
     
     if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
@@ -339,7 +345,9 @@ MoveWindowsToDefaultPosition()
         if (key=win_process_name) {
             xx:=value[1], yy:=value[2]
             ww:=value[3], hh:=value[4]
-            SetWindows(win_id, xx, yy, ww, hh)
+            offset:=value[5]
+            step:=value[6]
+            SetWindows(win_id, xx, yy, ww, hh, offset, step)
             HelpText(%key%, "center_down", "screen1", 1000)
         }
     }
