@@ -15,37 +15,46 @@ if (not A_IsAdmin) {
 
 
 
-global hotkeys_show_status:=False ; 当前是否显示图片
-global hotkeys_index:=1 ; 当前显示图片的序号
-global hotkeys_total:=1 ; 当前展示图片组的数量
+global hotkeys_images           := []     ; 显示的图片组
+global hotkeys_show_status      := False  ; 是否正在显示图片
+global hotkeys_index            := 1      ; 显示图片的序号
+global hotkeys_total            := 1      ; 显示图片组的数量
+global hotkeys_process_name := ""     ; 激活的应用
+global hotkeys_title        := ""     ; 激活的应用窗口标题
 
 
 
-; 快捷键帮助 获取需要展示的图片
+; 获取需要展示的图片
 get_image() 
 {
     global hotkeys_index
     global hotkeys_total
+    global hotkeys_images
+    global hotkeys_title
+    global hotkeys_process_name
 
-    WinGetTitle, win_title, A
-	WinGet, win_process_name, ProcessName, A
+    result := GetWindowsInfo()
+	hotkeys_process_name := result.win_process_name
+	hotkeys_title        := result.win_title
+    
+    If (win_process_name="PyCharm" and win_title="Evaluate") {
+        Return
+    }
 
-    win_process_name := ProcessNameFormat(win_process_name)
-
-    result := hotkeys["default"]
+    hotkeys_images := Process_Hotkeys_Image["default"]
 
     ; 优先根据应用名进行查找
-    for exe, image in Process_Hotkeys_Image {
-        if (exe=win_process_name) {
-            result:=image
+    for key_exe, key_image in Process_Hotkeys_Image {
+        if (key_exe=hotkeys_process_name) {
+            hotkeys_images:=key_image
         }
     }
 
-    if ( win_process_name="Chrome" and InStr(win_title, "bilibili") ) {
-        result:=hotkeys["Chrome_Bilibili"]
+    if ( hotkeys_process_name="Chrome" and InStr(hotkeys_title, "bilibili") ) {
+        hotkeys_images:=Process_Hotkeys_Image["Chrome_Bilibili"]
     }
 
-    hotkeys_total:=result.MaxIndex()
+    hotkeys_total:=hotkeys_images.MaxIndex()
     if (hotkeys_index>hotkeys_total) {
         hotkeys_index:=1
     } 
@@ -53,7 +62,7 @@ get_image()
         hotkeys_index:=hotkeys_total
     }
 
-    result := result[hotkeys_index]
+    result := hotkeys_images[hotkeys_index]
     result := A_WorkingDir "\Image\RShift\" result
     return result
 }
@@ -63,16 +72,17 @@ get_image()
 show_image()
 {
     global hotkeys_show_status
+    global hotkeys_process_name
 
-    image:=get_image()
+    image      := get_image()
+    image_size := GetImageSize(image)
+    image_w    := image_size[1]
+    image_h    := image_size[2]
+    image_x    := screen_1_w/2 - image_w/2
+    image_y    := screen_1_h/2 - image_h/2
+
     
-    size:=GetImageSize(image)
-    size_w:=size[1]
-    size_h:=size[2]
-    x:=screen_1_w/2-size_w/2
-    y:=screen_1_h/2-size_h/2
-    
-    SplashImage, %image%, X%x% Y%y% H%size_h% W%size_w% B1   ;  全屏幕居中
+    SplashImage, %image%, X%image_x% Y%image_y% H%image_h% W%image_w% B1   ;  全屏幕居中
     ; SplashImage, %image%, B1  ; 去除任务栏屏幕居中
 
     hotkeys_show_status:=True
@@ -90,9 +100,7 @@ show_image()
     }
 
     ; 关闭因双击Shift打开的快速搜索界面
-	WinGet, win_process_name, ProcessName, A
-    win_process_name := ProcessNameFormat(win_process_name)
-    If (win_process_name="PyCharm") {
+    If (hotkeys_process_name="PyCharm") {
         Send, {Esc}
     }
 }
@@ -104,13 +112,19 @@ hide_image()
     global hotkeys_show_status
     global hotkeys_index
     global hotkeys_total
+    global hotkeys_images          
+    global hotkeys_process_name
+    global hotkeys_title
 
     SplashImage, Off
     Progress, Off
 
-    hotkeys_show_status:=False
-    hotkeys_index:=1 
-    hotkeys_total:=1
+    hotkeys_show_status      := False
+    hotkeys_index            := 1 
+    hotkeys_total            := 1
+    hotkeys_images           := []
+    hotkeys_process_name     := ""
+    hotkeys_title            := ""
 }
 
 
@@ -123,25 +137,17 @@ change(np="")
     if (hotkeys_total=1) {
         return
     }
-    
     if (np="next") {
         hotkeys_index:=hotkeys_index+1
     } else if (np="privious") {
         hotkeys_index:=hotkeys_index-1
     }
-
     show_image()
 }
 
 
 
 ~RShift::
-	WinGet,      win_process_name, ProcessName, A
-	WinGetTitle, win_title, A
-    win_process_name := ProcessNameFormat(win_process_name)
-    If (win_process_name="PyCharm" and win_title="Evaluate") {
-        Return
-    }
     if (IsGame()) {
         Return
     }
