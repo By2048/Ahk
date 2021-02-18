@@ -8,8 +8,8 @@
 
 RunNormalUser(command)
 {
-    if (not PC_USER or not PC_PWD) {
-        HelpText(" PC_USER/PC_PWD - (./Tool/Private.ahk) ",  ,  ,3000)
+    if (StrLen(PC_USER)=0 or StrLen(PC_PWD)=0) {
+        HelpText(" PC_USER/PC_PWD - (./Private.ahk) ",  , "center_down", 3000)
     } else {
         RunAs, %PC_USER%, %PC_PWD%
         Run, %command%
@@ -64,13 +64,4 @@ delete_snipaste_auto_save_file()
         last_file := A_LoopFileFullPath
     }
     FileDelete %last_file%
-}
-
-
-
-show_pos()
-{
-    MouseGetPos, xpos, ypos 
-    data := xpos "|" ypos
-    HelpText(data,"center", ,3000)
 }
