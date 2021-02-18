@@ -1,4 +1,5 @@
 
+#include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Image.ahk

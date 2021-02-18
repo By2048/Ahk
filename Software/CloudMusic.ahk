@@ -52,9 +52,9 @@
     =::Send !=
     -::Send !-
 
-    Left::Send ![
-    Right::Send !]
-    Up::Send !=
-    Down::Send !-
+    ; Left::Send ![
+    ; Right::Send !]
+    ; Up::Send !=
+    ; Down::Send !-
 
 #if
