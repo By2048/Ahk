@@ -19,8 +19,8 @@ global hotkeys_images           := []     ; 显示的图片组
 global hotkeys_show_status      := False  ; 是否正在显示图片
 global hotkeys_index            := 1      ; 显示图片的序号
 global hotkeys_total            := 1      ; 显示图片组的数量
-global hotkeys_process_name := ""     ; 激活的应用
-global hotkeys_title        := ""     ; 激活的应用窗口标题
+global hotkeys_process_name     := ""     ; 激活的应用
+global hotkeys_title            := ""     ; 激活的应用窗口标题
 
 
 
@@ -46,20 +46,20 @@ get_image()
     ; 优先根据应用名进行查找
     for key_exe, key_image in Process_Hotkeys_Image {
         if (key_exe=hotkeys_process_name) {
-            hotkeys_images:=key_image
+            hotkeys_images := key_image
         }
     }
 
     if ( hotkeys_process_name="Chrome" and InStr(hotkeys_title, "bilibili") ) {
-        hotkeys_images:=Process_Hotkeys_Image["Chrome_Bilibili"]
+        hotkeys_images := Process_Hotkeys_Image["Chrome_Bilibili"]
     }
 
-    hotkeys_total:=hotkeys_images.MaxIndex()
+    hotkeys_total := hotkeys_images.MaxIndex()
     if (hotkeys_index>hotkeys_total) {
-        hotkeys_index:=1
+        hotkeys_index := 1
     } 
     if (hotkeys_index<=0) {
-        hotkeys_index:=hotkeys_total
+        hotkeys_index := hotkeys_total
     }
 
     result := hotkeys_images[hotkeys_index]
@@ -89,13 +89,13 @@ show_image()
 
     ; 页面索引（1/2）h:=h/2
     if (hotkeys_total>1) {
-        w:=200
-        h:=62
-        x:=screen_1_w/2-w/2
-        y:=screen_1_h-h-5 ; 屏幕底部
+        w := 200
+        h := 62
+        x := screen_1_w/2 - w/2
+        y := screen_1_h - h - 5 ; 屏幕底部
         ; y:=screen_1_h/2+size_h/2+5 ; 图片底部
-        w:=w/2
-        h:=h/2
+        w := w/2
+        h := h/2
         Progress, b fs19 zh0 x%x% y%y% w%w% h%h%, %hotkeys_index%/%hotkeys_total%
     }
 
@@ -138,9 +138,9 @@ change(np="")
         return
     }
     if (np="next") {
-        hotkeys_index:=hotkeys_index+1
+        hotkeys_index := hotkeys_index + 1
     } else if (np="privious") {
-        hotkeys_index:=hotkeys_index-1
+        hotkeys_index := hotkeys_index - 1
     }
     show_image()
 }
