@@ -12,8 +12,10 @@ if "%command%"=="" (
     set command=start
 )
 
-if "%command%"=="start" (
+if %command%==start (
     echo.
+    start  D:\AutoHotkey\AutoHotkey.exe  .\Setup.ahk      
+    @REM =========================================================
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\All.ahk      
     echo   start .\Keys\All.ahk
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\Capslock.ahk 
@@ -48,7 +50,7 @@ if "%command%"=="start" (
     echo.
 )
 
-if "%command%"=="stop" (
+if %command%==stop (
     echo.
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\All.ahk       stop
     echo   stop .\Keys\All.ahk

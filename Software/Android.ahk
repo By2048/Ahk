@@ -81,7 +81,7 @@
         Send A
         Sleep, 100
         Send S
-        Sleep, 1000
+        Sleep, 2000
         Send D
         Sleep, 3000
         Send \
