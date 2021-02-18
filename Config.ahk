@@ -101,7 +101,3 @@ Game_Process_Name.Push( "LOL" )
 global Windows_Default_Position := {}
 Windows_Default_Position["TIM"   ] := [ 10, 10, screen_1_w/2-10-10, screen_1_h-10-10                       ]
 Windows_Default_Position["WeChat"] := [ screen_1_w/2+10, 10+14, screen_1_w/2-10-10, screen_1_h-10-10-14-14 ]
-
-; Windows循环处理软件配置 [x,y,w,h,offset,step]
-global Windows_loop := {}
-Windows_loop["FDM"] := [screen_3_x+screen_3_w/2-(screen_3_w*8/9)/2, screen_3_y+100, screen_3_w*8/9, screen_3_h/2*5/6,  ,True]

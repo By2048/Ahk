@@ -73,16 +73,14 @@ Loop {
         Continue
     }
 
-    ; 加载配置文件中的自定义位置配置
-    for key, value in Windows_loop {
-        if (key=win_process_name) {
-            xx:=value[1], yy:=value[2]
-            ww:=value[3], hh:=value[4]
-            offset:=value[5]
-            step:=value[6]
-            SetWindows(win_id, xx, yy, ww, hh, offset, step)
-            Continue
-        }
+    ; FDM下载
+    if (win_process_name="FDM") {
+        ww:=screen_3_w*8/9
+        hh:=screen_3_h/2*5/6
+        xx:=screen_3_x+screen_3_w/2-ww/2
+        yy:=screen_3_y+100
+        SetWindows(win_id, xx, yy, ww, hh,  ,True)
+        Continue
     }
     
     ; 网易云音乐
