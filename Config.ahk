@@ -109,7 +109,9 @@ global Windows_Default_Position := {}
 Windows_Default_Position["TIM"   ] := [ 10, 10, screen_1_w/2-10-10, screen_1_h-10-10                       ]
 Windows_Default_Position["WeChat"] := [ screen_1_w/2+10, 10+14, screen_1_w/2-10-10, screen_1_h-10-10-14-14 ]
 
-; WPS Excel 图片截图 [sheet, start[x], end[y], multi_line, image_file]
+; WPS Sheet 图片截图
+; [1]System  [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
+; [sheet, start[x], end[y], multi_line, image_file]
 global WPS_Hotkeys_Image := []
 WPS_Hotkeys_Image.Push( "3 A1 J27 1 E:\Sync\Ahk\Image\RShift\Windows.png"         )
 WPS_Hotkeys_Image.Push( "4 A1 G26 0 E:\Sync\Ahk\Image\RCtrl.png"                  )
