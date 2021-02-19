@@ -1,24 +1,21 @@
 
+; 默认屏幕数量
+global screen_count := 3
+
 ; 初始化系统屏幕相关信息
 SysGet, screen_count, MonitorCount
 
-SysGet, Monitor1, Monitor, 3
-SysGet, Monitor2, Monitor, 1
-SysGet, Monitor3, Monitor, 2
-
+; 系统实际的屏幕设置 [2][1][3]
 if (screen_count=1) {
     SysGet, Monitor1, Monitor
     SysGet, Monitor2, Monitor
     SysGet, Monitor3, Monitor
 } 
-
-; 系统实际的屏幕设置 [2][1][3]
-;     Ahk获取的屏幕 [1][3][2]
-global TRUE_SCREENS := [2, 1, 3]
-global  AHK_SCREENS := [1, 3, 2]
-
-global screen_main  := 1
-global screen_count := screen_count
+if (screen_count=3) {
+    SysGet, Monitor1, Monitor, 3
+    SysGet, Monitor2, Monitor, 1
+    SysGet, Monitor3, Monitor, 2
+}
 
 global screen_1_zoom := 2
 global screen_2_zoom := 1.5
@@ -44,11 +41,6 @@ global screen_3_xx := Monitor3Right  + 0
 global screen_3_yy := Monitor3Bottom + 0
 global screen_3_w  := screen_3_xx    - screen_3_x
 global screen_3_h  := screen_3_yy    - screen_3_y
-
-global screen_1_screen_2_top  := screen_1_y  - screen_2_y
-global screen_1_screen_2_down := screen_1_yy - screen_2_yy
-global screen_1_screen_3_top  := screen_1_y  - screen_3_y
-global screen_1_screen_3_down := screen_1_yy - screen_3_yy
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

@@ -49,21 +49,26 @@ ShowConfig()
     content .= "`n-----------------------------------------------------------`n"
     content .= Format(" ScreenCount | {1} ", screen_count)
     content .= "`n-----------------------------------------------------------"
-    content .= Format("`n [1] x y xx yy | {1:5} {2:5} {3:5} {4:5} ", screen_1_x,screen_1_y, screen_1_xx,screen_1_yy)
-    if (screen_count>1) {
+    if (screen_count>=1) {
+        content .= Format("`n [1] x y xx yy | {1:5} {2:5} {3:5} {4:5} ", screen_1_x,screen_1_y, screen_1_xx,screen_1_yy)
+    }
+    if (screen_count>=2) {
         content .= Format("`n [2] x y xx yy | {1:5} {2:5} {3:5} {4:5} ", screen_2_x,screen_2_y, screen_2_xx,screen_2_yy)
+    }
+    if (screen_count>=3) {
         content .= Format("`n [3] x y xx yy | {1:5} {2:5} {3:5} {4:5} ", screen_3_x,screen_3_y, screen_3_xx,screen_3_yy)
     }
     content .= "`n-----------------------------------------------------------"
-    content .= Format("`n screen_1_zoom w*h | {1:3} {2:5}x{3} ", screen_1_zoom, screen_1_w,screen_1_h)
-    content .= Format("`n screen_2_zoom w*h | {1:3} {2:5}x{3} ", screen_2_zoom, screen_2_w,screen_2_h)
-    content .= Format("`n screen_3_zoom w*h | {1:3} {2:5}x{3} ", screen_3_zoom, screen_3_w,screen_3_h)
-    content .= "`n-----------------------------------------------------------"
-    if (screen_count>1) {
-        content .= Format("`n TRUE_SCREENS | {1} ", ListToStr(TRUE_SCREENS))
-        content .= Format("`n AHK_SCREENS  | {1} ", ListToStr(AHK_SCREENS))
-        content .= "`n-----------------------------------------------------------"
+    if (screen_count>=1) {
+        content .= Format("`n screen_1_zoom w*h | {1:3} {2:5}x{3} ", screen_1_zoom, screen_1_w,screen_1_h)
     }
+    if (screen_count>=2) {
+        content .= Format("`n screen_2_zoom w*h | {1:3} {2:5}x{3} ", screen_2_zoom, screen_2_w,screen_2_h)
+    }
+    if (screen_count>=3) {
+        content .= Format("`n screen_3_zoom w*h | {1:3} {2:5}x{3} ", screen_3_zoom, screen_3_w,screen_3_h)
+    }
+    content .= "`n-----------------------------------------------------------"
     content .= Format("`n  Screens | R:\Screens\")
     content .= Format("`n Snipaste | D:\Snipaste\Snipaste.exe")
     content .= Format("`n   Python | D:\Python\_python_\Scripts\python.exe")
