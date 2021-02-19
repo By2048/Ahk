@@ -76,8 +76,8 @@ ShowConfig()
     x:=screen_1_w/2-w/2
     y:=screen_1_h/2-h/2
     if (screen_3_xx and screen_3_yy) {
-        x:=screen_3_x+(screen_3_xx-screen_3_x)/2-w/2
-        y:=screen_3_y+(screen_3_yy-screen_3_y)/2-h/2-(screen_3_yy-screen_3_y)/4
+        x:=screen_3_x+screen_3_w/2-w/2
+        y:=screen_3_y+screen_3_h/2-h/2-screen_3_h/4
     }
     w:=w/2
     h:=h/2

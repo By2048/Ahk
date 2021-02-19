@@ -62,18 +62,18 @@ timer:
     if (cnt=1) {
         ; 屏幕1 中心
         Screenshot("screen1")
-        x:=screen_1_x+(screen_1_xx-screen_1_x)/2
-        y:=screen_1_y+(screen_1_yy-screen_1_y)/2
+        x:=screen_1_x+screen_1_w/2
+        y:=screen_1_y+screen_1_h/2
     } else if (cnt=2) {
         ; 屏幕2 中心
         Screenshot("screen2")
-        x:=screen_2_x+(screen_2_xx-screen_2_x)/2
-        y:=screen_2_y+(screen_2_yy-screen_2_y)/2
+        x:=screen_2_x+screen_2_w/2
+        y:=screen_2_y+screen_2_h/2
     } else if (cnt=3) {
         ; 屏幕3 中心
         Screenshot("screen3")
-        x:=screen_3_x+(screen_3_xx-screen_3_x)/2
-        y:=screen_3_y+(screen_3_yy-screen_3_y)/2
+        x:=screen_3_x+screen_3_w/2
+        y:=screen_3_y+screen_3_h/2
     }
     cnt:=0
 
