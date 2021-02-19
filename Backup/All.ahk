@@ -22,8 +22,8 @@ Return
 
 
 BackSpace::BackSpace
-BackSpace & PrintScreen::Send ^!+{PrintScreen}
-BackSpace & Pause::Send ^!+{Pause}
+BackSpace & PrintScreen::Send ^!{PrintScreen}
+BackSpace & Pause::Send ^!{Pause}
 
 \::Send \
 +\::Send |

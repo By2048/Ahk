@@ -65,11 +65,11 @@ timer:
     if (cnt=1) {
         if (search_tool_show_status=True) {
             search_tool_show_status:=False
-            Send, ^!+R
+            Send, ^!r
         }
     } else if (cnt=2) {
         search_tool_show_status:=True
-        Send, ^!+R
+        Send, ^!r
     }
     cnt:=0
 return
