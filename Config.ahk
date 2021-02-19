@@ -1,9 +1,16 @@
 
 ; 初始化系统屏幕相关信息
 SysGet, screen_count, MonitorCount
-SysGet, Monitor1,     Monitor,      3
-SysGet, Monitor2,     Monitor,      1
-SysGet, Monitor3,     Monitor,      2
+
+SysGet, Monitor1, Monitor, 3
+SysGet, Monitor2, Monitor, 1
+SysGet, Monitor3, Monitor, 2
+
+if (screen_count=1) {
+    SysGet, Monitor1, Monitor
+    SysGet, Monitor2, Monitor
+    SysGet, Monitor3, Monitor
+} 
 
 ; 系统实际的屏幕设置 [2][1][3]
 ;     Ahk获取的屏幕 [1][3][2]
