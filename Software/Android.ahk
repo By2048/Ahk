@@ -5,6 +5,22 @@
     
     `::Send, {LButton}
 
+    ^1::Return
+    ^2::Return
+    ^3::Return
+    ^4::Return
+    ^5::Return
+    ^6::Return
+    ^7::Return
+    ^8::Return
+    ^9::Return
+    ^0::Return
+
+    ^Tab::Return
+    ^+Tab::Return
+    !Tab::Send, ^{Tab}
+    !+Tab::Send, ^+{Tab}
+
     ; 女巫流
     =::
         CoordMode, Mouse, Window
