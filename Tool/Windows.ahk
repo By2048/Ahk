@@ -357,18 +357,31 @@ MoveWindowsToDefaultPosition()
 ; return         | True \ False
 WindowsActive(_process_name_="", _class_="", _title_="")
 {
-    result := GetWindowsInfo()
+    result           := GetWindowsInfo()
     win_process_name := result.win_process_name
     win_class        := result.win_class
     win_title        := result.win_title
-    if (_process_name_ = win_process_name) {
-        return True
+
+    check_windows_active := True
+
+    if (StrLen(_process_name_)>0) {
+        if (_process_name_ != win_process_name) {
+            check_windows_active := False
+            Return check_windows_active
+        }
     }
-    if (_class_ = win_class) {
-        return True
+    if (StrLen(_class_)>0) {
+        if (_class_ != win_class) {
+            check_windows_active := False
+            Return check_windows_active
+        }
     }
-    if (_title_ = win_title) {
-        return True
+    if (StrLen(_title_)>0) {
+        if (_title_ != win_title) {
+            check_windows_active := False
+            Return check_windows_active
+        }
     }
-    return False
+    
+    Return check_windows_active
 }

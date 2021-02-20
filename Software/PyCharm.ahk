@@ -3,9 +3,14 @@
     
     !F4::^!F4
 
-    !Tab::Send, ^!]
-    !+Tab::Send, ^![
-    !CapsLock::Send, ^!\
+    ^]::Return
+    !Tab::Send, ^]
+
+    ^[::Return
+    !+Tab::Send, ^[
+    
+    ^\::Return
+    !CapsLock::Send, ^\
 
 #if
 
