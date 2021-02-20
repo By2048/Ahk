@@ -157,11 +157,6 @@ MoveWindowsMM(command)
     win_class        := result.win_class
     win_title        := result.win_title
 
-    ; if (win_class="Qt5QWindowToolSaveBits" and win_process_name="Snipaste.exe") {
-        ; HelpText("Snipaste",  ,  , 1000)
-        ; Return
-    ; }
-
     screen_x := result.screen_x
     screen_y := result.screen_y
     screen_w := result.screen_w
@@ -170,7 +165,7 @@ MoveWindowsMM(command)
     main := [   5/6 , 8/9 ]
     mini := [ 1.8/3 , 3/4 ]
 
-    if (win_process_name="pycharm64.exe") {
+    if (win_process_name="PyCharm") {
         if (win_title="Run" or win_title="Debug") {
             main := PyCharm_Main
             mini := PyCharm_Mini
