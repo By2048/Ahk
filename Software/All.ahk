@@ -26,17 +26,15 @@
 #NoTrayIcon
 
 
+
 if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
 }
 
 
 
-MouseIsOver(WinTitle) {
-    MouseGetPos,  ,  , Win
-    return WinExist(WinTitle . " ahk_id " . Win)
-}
-#if MouseIsOver("ahk_class Shell_TrayWnd")
+; 任务栏
+#if ( WindowsActive("Explorer", "Shell_TrayWnd") )
     WheelUp::Send {Volume_Up}
     WheelDown::Send {Volume_Down}
 #if
