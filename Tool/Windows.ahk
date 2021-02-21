@@ -184,8 +184,8 @@ MoveWindowsMM(command)
         ww := screen_w * mini[1]
         hh := screen_h * mini[2]
     }
-    xx := screen_x + screen_w/2 - ww/2
-    yy := screen_y + screen_h/2 - hh/2
+    xx := screen_x + (screen_w - ww)/2
+    yy := screen_y + (screen_h - hh)/2
     
     WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
 

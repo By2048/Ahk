@@ -36,7 +36,7 @@ Fxx()
     ; 屏幕3顶部
     w:=screen_3_w
     h:=58
-    x:=screen_3_1
+    x:=screen_3_x
     y:=screen_3_y+100
 
     w:=w/2
