@@ -33,8 +33,8 @@ if (not A_IsAdmin) {
 
 
 
-; 任务栏
-#if ( WindowsActive("Explorer", "Shell_TrayWnd") )
-    WheelUp::Send {Volume_Up}
-    WheelDown::Send {Volume_Down}
-#if
+; 任务栏滚动鼠标调整音量
+; #if ( WindowsActive("Explorer", "Shell_TrayWnd") )
+;     WheelUp::Send {Volume_Up}
+;     WheelDown::Send {Volume_Down}
+; #if
