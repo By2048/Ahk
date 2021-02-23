@@ -78,6 +78,8 @@ Windows_Process_Name.Push( [ "NemuPlayer"        , "Android"      ] )
 Windows_Process_Name.Push( [ "ui32"              , "Wallpaper"    ] )
 Windows_Process_Name.Push( [ "steam"             , "Steam"        ] )
 Windows_Process_Name.Push( [ "mstsc"             , "Mstsc"        ] )
+Windows_Process_Name.Push( [ "FreeFileSync_x64"  , "FreeFileSync" ] )
+Windows_Process_Name.Push( [ "happ"              , "THS"          ] )
 
 ; RShift快捷键帮助配置 快捷键图片对应关系
 global Process_Hotkeys_Image := {}
