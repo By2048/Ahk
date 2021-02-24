@@ -59,6 +59,10 @@ Return
 timer:
     CoordMode Mouse Screen
 
+    if (IsGame()) {
+        Return
+    }
+
     if (cnt=1) {
         ; 屏幕1 中心
         Screenshot("screen1")

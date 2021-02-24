@@ -63,7 +63,14 @@ Return
 >^a::Run, D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^s::RunNormalUser("D:\Everything\Everything.exe")
 >^f::RunNormalUser("D:\Firefox\firefox.exe")
->^g::RunNormalUser("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe --new-window")
+>^g::
+    win_x:=160, win_y:=60, win_w:=1600, win_h:=960
+    cmd := "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+    cmd := Format("{} --new-window", cmd)
+    cmd := Format("{} --window-position={},{}", cmd,win_x,win_y)
+    cmd := Format("{} --window-size={},{}", cmd,win_w,win_h)
+    RunNormalUser(cmd)
+Return
 >^h::Run D:\AutoHotkey\WindowSpy.ahk
 >^j::RunNormalUser("calc.exe")
 >^k::KeyboardGUI()
