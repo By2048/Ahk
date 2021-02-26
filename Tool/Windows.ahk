@@ -306,8 +306,10 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 
     WinGetPos, x, y, w, h, ahk_id %win_id%
     
-    if (ww=0 or hh=0) { 
+    if (ww=0 or not ww) { 
         ww:=w
+    }
+    if (hh=0 or not hh) { 
         hh:=h
     }
 
@@ -334,18 +336,28 @@ MoveWindowsToDefaultPosition()
     win_y            := result.win_y
     win_w            := result.win_w
     win_h            := result.win_h
+    win_class        := result.win_class
     win_process_name := result.win_process_name
+    win_config       := []
 
     for key, value in Windows_Default_Position {
         if (key=win_process_name) {
-            xx:=value[1], yy:=value[2]
-            ww:=value[3], hh:=value[4]
-            offset:=value[5]
-            step:=value[6]
-            SetWindows(win_id, xx, yy, ww, hh, offset, step)
-            HelpText(%key%, "center_down", "screen1", 1000)
+            win_config:=value
         }
     }
+
+    win_process_name_win_class := Format("{}_{}",win_process_name,win_class)
+    for key, value in Windows_Default_Position {
+        if (key=win_process_name_win_class) {
+            win_config:=value
+        }
+    }
+
+    xx:=win_config[1], yy:=win_config[2]
+    ww:=win_config[3], hh:=win_config[4]    
+    SetWindows(win_id, xx, yy, ww, hh)
+    HelpText(%key%, "center_down", "screen1", 1000)
+
 }
 
 

@@ -42,7 +42,7 @@ global screen_3_yy := Monitor3Bottom + 0
 global screen_3_w  := screen_3_xx    - screen_3_x
 global screen_3_h  := screen_3_yy    - screen_3_y
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 可执行文件
 global WT     := "C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe" ; Windows Terminal
@@ -54,14 +54,14 @@ global Snipaste_EXE             := "D:\Snipaste\Snipaste.exe"
 global Snipaste_Auto_Save_File  := "E:\Snipaste\*.png"
 global Snipaste_Screenshot_Path := "R:\Screens\"
 
+; 手机向电脑写入的剪切板文件
+global JQB_File := "T:\\JQB"
+
 ; PyCharm中一些界面大小配置
 global PyCharm_Main := [   5/6 , 5.7/7 ]
 global PyCharm_Mini := [ 1.8/3 ,   3/4 ]
 global PyCharm_Open_XXX_Main := [ 1/5 , 2/3 ]
 global PyCharm_Open_XXX_Mini := [ 1/5 , 2/3 ]
-
-; 手机向电脑写入的剪切板文件
-global JQB_File := "T:\\JQB"
 
 ; 软件自定义名字替换
 global Windows_Process_Name := []
@@ -101,10 +101,42 @@ Process_Hotkeys_Image[ "CloudMusic"      ] := [ "CloudMusic.png"                
 global Game_Process_Name := []
 Game_Process_Name.Push( "LOL" )
 
-; 设置一些软件默认位置 [x,y,w,h,offset,step]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; 设置一些软件默认位置 [x,y,w,h]
 global Windows_Default_Position := {}
-Windows_Default_Position["TIM"   ] := [ 10, 10, screen_1_w/2-10-10, screen_1_h-10-10                       ]
-Windows_Default_Position["WeChat"] := [ screen_1_w/2+10, 10+14, screen_1_w/2-10-10, screen_1_h-10-10-14-14 ]
+
+win_x := 10
+win_y := 10
+win_w := screen_1_w/2-10-10
+win_h := screen_1_h-10-10
+Windows_Default_Position["TIM"] := [ win_x, win_y, win_w, win_h ]
+
+win_x := screen_1_w/2+10
+win_y := 10+14
+win_w := screen_1_w/2-10-10
+win_h := screen_1_h-10-10-14-14
+Windows_Default_Position["WeChat"] := [ win_x, win_y, win_w, win_h ]
+
+win_w := screen_3_w*8/9
+win_h := screen_3_h/2*5/6
+win_x := screen_3_x+screen_3_w/2-win_w/2
+win_y := screen_3_y+100
+Windows_Default_Position["FDM"] := [win_x, win_y, win_w, win_h]
+
+win_w := screen_1_w*4/6
+win_h := screen_1_h*7/9
+win_x := screen_1_x+screen_1_w/2-win_w/2
+win_y := screen_1_y+screen_1_h/2-win_h/2
+Windows_Default_Position["CloudMusic"] := [win_x, win_y, win_w, win_h]
+
+win_w := 2020
+win_h := 300
+win_x := screen_3_x+screen_3_w/2-win_w/2
+win_y := 2020
+Windows_Default_Position["CloudMusic_DesktopLyrics"] := [win_x, win_y, win_w, win_h]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; WPS Sheet 图片截图
 ; [1]System  [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
