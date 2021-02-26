@@ -44,8 +44,10 @@ global screen_3_h  := screen_3_yy    - screen_3_y
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Windows Terminal
-global WT := "C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe"
+; 可执行文件
+global WT     := "C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe" ; Windows Terminal
+global CMD    := "C:\Windows\System32\cmd.exe"
+global Python := "D:\Python\_python_\Scripts\python.exe"
 
 ; 截图软件配置
 global Snipaste_EXE             := "D:\Snipaste\Snipaste.exe"

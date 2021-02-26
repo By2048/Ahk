@@ -17,24 +17,39 @@ if (not A_IsAdmin) {
 
 
 >^Esc::Run, taskmgr.exe ;任务管理器
->^F1::Run, %WT% %A_WorkingDir%\Scripts\Dexpot.bat
->^F3::Run, %WT% %A_WorkingDir%\Scripts\restart_explorer.bat
->^F4::Run, %WT% %A_WorkingDir%\Scripts\folder_icon.bat
+>^F1::
+    Run, D:\Dexpot\dexpot.exe
+    Run, %CMD% /c taskkill /f /im shellexperiencehost.exe,  , Hide
+    Run, %CMD% /c taskkill /f /im MicrosoftEdge.exe,  , Hide
+Return
+>^F3::
+    RunWait, %CMD% /c taskkill /f /im explorer.exe
+    RunWait, %CMD% /c start explorer.exe
+Return
+>^F4::
+    cmd := Format("{} {} E:\Project\script\system\update_folder_icon.py", WT,Python)
+    Run, %cmd%
+    Sleep, 300
+    MoveWindowsMM("mini")
+return
 
 >^F9::
-    Run, %WT% %A_WorkingDir%\Scripts\bilibil_free_video.bat
+    cmd := Format("{} {} E:\Project\script\bilibili\free_video.py", WT,Python)
+    Run, %cmd%
     Sleep, 300
     MoveWindowsMM("mini")
 Return    
 >^F10::
-    Run, %WT% %A_WorkingDir%\Scripts\bilibil_download.bat
+    cmd := Format("{} {} E:\Project\script\bilibili\download_video_join.py", WT,Python)
+    Run, %cmd%
     Sleep, 300
     MoveWindowsMM("main")
 Return
 >^F11::
-    Run, %WT% %A_WorkingDir%\Scripts\bd-film_rename.bat
+    cmd := Format("{} {} E:\Project\script\rename\bd-film.py", WT,Python)
+    Run, %cmd%
     Sleep, 300
-    MoveWindowsMM("main")
+    MoveWindowsMM("mini")
 Return
 
 
@@ -51,7 +66,7 @@ Return
     }
 Return
 >^p::
-    Run, %WT%
+    Run, %WT% -d t:\
     Sleep, 500
     MoveWindowsMM("main")
 Return

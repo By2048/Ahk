@@ -29,7 +29,7 @@ return
     global win_tab
     ~*LWin Up::
         Send {Shift Up}{Alt Up}
-        win_tab:=False 
+        win_tab:=False
     return
 #If
 

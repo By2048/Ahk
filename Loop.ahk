@@ -87,8 +87,8 @@ Loop {
     if (win_process_name="CloudMusic") {
         ; 主界面
         if (win_class="OrpheusBrowserHost" and StrLen(win_title)>0) {
-            ww:=screen_1_w*5/6
-            hh:=screen_1_h*8/9
+            ww:=screen_1_w*4/6
+            hh:=screen_1_h*7/9
             xx:=screen_1_x+(screen_1_w/2-ww/2)
             yy:=screen_1_y+(screen_1_h/2-hh/2)
             SetWindows(win_id, xx, yy, ww, hh)

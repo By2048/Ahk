@@ -15,14 +15,14 @@ if (not A_IsAdmin) {
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;切换窗口
-!Esc::Return 
+!Esc::Return
 !+Esc::Return
 
 ;关闭窗口
 !F4::Return
 
 ;Switch between open apps.
-!Tab::Return 
+!Tab::Return
 !+Tab::Return
 
 ;Use the arrow keys to switch between all open apps.
@@ -43,7 +43,7 @@ if (not A_IsAdmin) {
 
 #F1::Return ;系统帮助
 #PrintScreen::Return ;不明
-#Pause::Return ;控制面板\所有控制面板项\系统 
+#Pause::Return ;控制面板\所有控制面板项\系统
 
 #r::return ;Run
 #i::Return ;打开系统设置

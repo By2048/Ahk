@@ -1,6 +1,11 @@
 ﻿
 #if ( WindowsActive("LOL") )
 
+	CapsLock::Return
+	; 	Send, w
+	; 	Send, q
+	; Return
+
 	]::
 		SetDefaultKeyboard(0x0409)
 		Sleep, 300
