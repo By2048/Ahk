@@ -1,6 +1,8 @@
 
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
+#include %A_WorkingDir%\Tool\Language.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 
@@ -58,3 +60,12 @@ if (not A_IsAdmin) {
 #^Left::return ;向左切换虚拟桌面
 #^Right::return ;向右切换虚拟桌面
 #,::Return ; 透明窗口显示桌面
+
+LCtrl & LAlt::
+    SetDefaultKeyboard(0x0804) ;ZH
+    HelpText("ZH","center","screen1",1000)
+Return
+LAlt & LCtrl::
+    SetDefaultKeyboard(0x0409) ;EN
+    HelpText("EN","center","screen1",1000)
+Return
