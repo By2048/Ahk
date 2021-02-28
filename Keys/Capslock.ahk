@@ -65,17 +65,17 @@ timer:
 
     if (cnt=1) {
         ; 屏幕1 中心
-        Screenshot("screen1")
+        Screenshot("screen1","backup")
         x:=screen_1_x+screen_1_w/2
         y:=screen_1_y+screen_1_h/2
     } else if (cnt=2) {
         ; 屏幕2 中心
-        Screenshot("screen2")
+        Screenshot("screen2","backup")
         x:=screen_2_x+screen_2_w/2
         y:=screen_2_y+screen_2_h/2
     } else if (cnt=3) {
         ; 屏幕3 中心
-        Screenshot("screen3")
+        Screenshot("screen3","backup")
         x:=screen_3_x+screen_3_w/2
         y:=screen_3_y+screen_3_h/2
     }

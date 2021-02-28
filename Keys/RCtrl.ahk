@@ -75,6 +75,7 @@ Return
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
 >^\::Run, D:\Microsoft Whiteboard.lnk
 
+>^CapsLock::Screenshot("screen1","tmp")
 >^a::Run, D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^s::RunNormalUser("D:\Everything\Everything.exe")
 >^f::RunNormalUser("D:\Firefox\firefox.exe")
@@ -98,6 +99,7 @@ Return
 >^,::Run, explorer.exe
 >^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}::  ;我的电脑
 >^/::run, T:\\
+
 
 
 RCtrl & Enter::Run, E:\Sync\All.xlsx
