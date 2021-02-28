@@ -10,7 +10,7 @@ IsDesktops()
 {
     WinGetClass, win_class, A
     if (win_class="WorkerW") {
-        HelpText("Desktop",  ,  ,1000)
+        HelpText("Desktop", "center_down", "screen1", 1000)
         Return True
     } else {
         Return False
@@ -24,7 +24,7 @@ IsMaxMinWindows()
 {
     WinGet, win_min_max, MinMax, A
     if (win_min_max) {
-        HelpText("Max\Min",  ,  , 1000)
+        HelpText("Max\Min", "center_down", "screen1", 1000)
         return True
     } else {
         return False
@@ -40,7 +40,7 @@ IsGame()
     process_name := ProcessNameFormat(process_name)
     for index, value in Game_Process_Name {
         if (value = process_name) {
-            HelpText("Game",  ,  , 1000)
+            HelpText("Game", "center_down", "screen1", 1000)
             Return True
         }
     }
