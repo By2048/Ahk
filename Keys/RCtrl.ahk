@@ -5,6 +5,7 @@
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 #Include %A_WorkingDir%\Other\Keyboard.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 
@@ -18,12 +19,12 @@ if (not A_IsAdmin) {
 
 >^Esc::Run, taskmgr.exe ;任务管理器
 >^F1::
+    Run, %CMD% /c %TaskKill% /f /im shellexperiencehost.exe,  , Hide
+    Run, %CMD% /c %TaskKill% /f /im MicrosoftEdge.exe,  , Hide
     Run, D:\Dexpot\dexpot.exe
-    Run, %CMD% /c taskkill /f /im shellexperiencehost.exe,  , Hide
-    Run, %CMD% /c taskkill /f /im MicrosoftEdge.exe,  , Hide
 Return
 >^F3::
-    RunWait, %CMD% /c taskkill /f /im explorer.exe
+    RunWait, %CMD% /c %TaskKill% /f /im explorer.exe
     RunWait, %CMD% /c start explorer.exe
 Return
 >^F4::
@@ -102,7 +103,7 @@ Return
 
 
 
-RCtrl & Enter::Run, E:\Sync\All.xlsx
+RCtrl & Enter::Run, R:\Doc\All.xlsx
 
 RCtrl & RWin::
     if (not IsDesktops()) {

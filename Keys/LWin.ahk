@@ -1,6 +1,8 @@
 
+#include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 
@@ -45,6 +47,10 @@ return
 ;切换任务栏应用（预览
 <#[::#+t
 <#]::#t
+
+;类似于Vim的快捷键操作工具
+<#;::Run, %HuntAndPeck% /tray ;任务栏
+<#'::Run, %HuntAndPeck% /hint ;当前应用
 
 ; 复制文件路径
 <#c::	
