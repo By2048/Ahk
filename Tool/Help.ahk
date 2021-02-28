@@ -56,7 +56,11 @@ HelpText(data="",xy="right_down",screens="screen1",sleep_time=0)
     ; 15 设置字符宽度 
     ; 2 DPI
     zh_cn_count:=ZH_CN(data)
-    w:=(StrLen(data)+zh_cn_count)*15*2
+    data_count:=StrLen(data)
+    if (data_count<6) {
+        data_count:=6
+    }
+    w:=(data_count+zh_cn_count)*15*2
     h:=63
 
     if (screens="screen1" or screens="screen_1") {

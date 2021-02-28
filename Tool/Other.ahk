@@ -18,8 +18,10 @@ RunNormalUser(command)
 }
 
 
-
-Screenshot(screens="screen1")
+; 屏幕截图
+; screens   | screen1 screen2 screen3
+; keep_path | backup tmp
+Screenshot(screens="screen1",keep_path="backup")
 {
     if (screens="screen1") {
         x:=screen_1_x
@@ -43,12 +45,24 @@ Screenshot(screens="screen1")
     w:=Round(w)
     h:=Round(h)
 
+    screenshot_keep_path := ""
+    if (keep_path="backup") {
+        screenshot_keep_path := Snipaste_Screenshot_Path_Backup
+    } else if (keep_path="tmp") {
+        screenshot_keep_path := Snipaste_Screenshot_Path_Tmp
+    }
+
+    if (screenshot_keep_path="") {
+        Return
+    }
+
     screens_name:=StrReplace(screens,"screen")
     name:="" ,file:="" ,cmd:=""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss][%screens_name%]
-    file := Snipaste_Screenshot_Path "\" name ".png"
+    file := screenshot_keep_path "\" name ".png"
     file := StrReplace(file,"\\","\")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, x, y, w, h, file)
+    MsgBox, %cmd%
     Run %cmd%
 
     SetTimer, delete_snipaste_auto_save_file, -1000
