@@ -31,7 +31,7 @@ Loop {
     win_w            := result.win_w
     win_h            := result.win_h
 
-    for index, value in Game_Process_Name {
+    for index, value in Loop_Ignore_Process_Name {
         if (value=win_process_name) {
             Sleep, 3000
             Continue

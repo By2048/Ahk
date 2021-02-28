@@ -150,30 +150,18 @@ MoveWindowsMM(command)
         Return
     }
 
-    result := GetWindowsInfo()
-
+    result           := GetWindowsInfo()
     win_id           := result.win_id
     win_process_name := result.win_process_name
     win_class        := result.win_class
     win_title        := result.win_title
+    screen_x         := result.screen_x
+    screen_y         := result.screen_y
+    screen_w         := result.screen_w
+    screen_h         := result.screen_h
 
-    screen_x := result.screen_x
-    screen_y := result.screen_y
-    screen_w := result.screen_w
-    screen_h := result.screen_h
-
-    main := [   5/6 , 8/9 ]
-    mini := [ 1.8/3 , 3/4 ]
-
-    if (win_process_name="PyCharm") {
-        if (win_title="Run" or win_title="Debug") {
-            main := PyCharm_Main
-            mini := PyCharm_Mini
-        } else if (win_title="Open File or Project") {
-            main := PyCharm_Open_XXX_Main
-            mini := PyCharm_Open_XXX_Mini
-        }
-    }
+    main := [ 5/6 , 8/9 ]
+    mini := [ 3/5 , 3/4 ]
 
     if (command="main") {
         HelpText("Windows Main Size")
@@ -184,6 +172,7 @@ MoveWindowsMM(command)
         ww := screen_w * mini[1]
         hh := screen_h * mini[2]
     }
+
     xx := screen_x + (screen_w - ww)/2
     yy := screen_y + (screen_h - hh)/2
     
