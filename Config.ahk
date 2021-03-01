@@ -62,30 +62,33 @@ global JQB_File := "T:\\JQB"
 
 ; 软件自定义名字替换
 global Windows_Process_Name := []
-Windows_Process_Name.Push( [ "code"              , "VSCode"       ] )
-Windows_Process_Name.Push( [ "pycharm64"         , "PyCharm"      ] )
-Windows_Process_Name.Push( [ "chrome"            , "Chrome"       ] )
-Windows_Process_Name.Push( [ "firefox"           , "FireFox"      ] )
-Windows_Process_Name.Push( [ "-----------------" , "------------" ] )
-Windows_Process_Name.Push( [ "cloudmusic"        , "CloudMusic"   ] )
-Windows_Process_Name.Push( [ "wps"               , "WPS"          ] )
-Windows_Process_Name.Push( [ "fdm"               , "FDM"          ] )
-Windows_Process_Name.Push( [ "PotPlayerMini64"   , "PotPlayer"    ] )
-Windows_Process_Name.Push( [ "FreeFileSync_x64"  , "FreeFileSync" ] )
-Windows_Process_Name.Push( [ "7zFM"              , "7-Zip"        ] )
-Windows_Process_Name.Push( [ "-----------------" , "------------" ] )
-Windows_Process_Name.Push( [ "TenSafe"           , "LOL"          ] )
-Windows_Process_Name.Push( [ "TenSafe_1"         , "LOL"          ] )
-Windows_Process_Name.Push( [ "LeagueClientUx"    , "LOL"          ] )
-Windows_Process_Name.Push( [ "League of Legends" , "LOL"          ] )
-Windows_Process_Name.Push( [ "steam"             , "Steam"        ] )
-Windows_Process_Name.Push( [ "NemuPlayer"        , "Android"      ] )
-Windows_Process_Name.Push( [ "ui32"              , "Wallpaper"    ] )
-Windows_Process_Name.Push( [ "-----------------" , "------------" ] )
-Windows_Process_Name.Push( [ "mstsc"             , "Mstsc"        ] )
-Windows_Process_Name.Push( [ "explorer"          , "Explorer"     ] )
-Windows_Process_Name.Push( [ "-----------------" , "------------" ] )
-Windows_Process_Name.Push( [ "happ"              , "TongHuaShun"  ] )
+Windows_Process_Name.Push( [ "code"                    , "VSCode"       ] )
+Windows_Process_Name.Push( [ "pycharm64"               , "PyCharm"      ] )
+Windows_Process_Name.Push( [ "chrome"                  , "Chrome"       ] )
+Windows_Process_Name.Push( [ "firefox"                 , "FireFox"      ] )
+Windows_Process_Name.Push( [ "-----------------------" , "------------" ] )
+Windows_Process_Name.Push( [ "cloudmusic"              , "CloudMusic"   ] )
+Windows_Process_Name.Push( [ "wps"                     , "WPS"          ] )
+Windows_Process_Name.Push( [ "fdm"                     , "FDM"          ] )
+Windows_Process_Name.Push( [ "PotPlayerMini64"         , "PotPlayer"    ] )
+Windows_Process_Name.Push( [ "FreeFileSync_x64"        , "FreeFileSync" ] )
+Windows_Process_Name.Push( [ "7zFM"                    , "7-Zip"        ] )
+Windows_Process_Name.Push( [ "-----------------------" , "------------" ] )
+Windows_Process_Name.Push( [ "TenSafe"                 , "LOL"          ] )
+Windows_Process_Name.Push( [ "TenSafe_1"               , "LOL"          ] )
+Windows_Process_Name.Push( [ "LeagueClientUx"          , "LOL"          ] )
+Windows_Process_Name.Push( [ "League of Legends"       , "LOL"          ] )
+Windows_Process_Name.Push( [ "steam"                   , "Steam"        ] )
+Windows_Process_Name.Push( [ "NemuPlayer"              , "Android"      ] )
+Windows_Process_Name.Push( [ "ui32"                    , "Wallpaper"    ] )
+Windows_Process_Name.Push( [ "-----------------------" , "------------" ] )
+Windows_Process_Name.Push( [ "mstsc"                   , "Mstsc"        ] )
+Windows_Process_Name.Push( [ "explorer"                , "Explorer"     ] )
+Windows_Process_Name.Push( [ "SearchApp"               , "Search"       ] )
+Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "StartMenu"    ] )
+Windows_Process_Name.Push( [ "-----------------------" , "------------" ] )
+Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"  ] )
+
 
 ; RShift快捷键帮助配置 快捷键图片对应关系
 global Process_Hotkeys_Image := {}
@@ -149,6 +152,12 @@ win_h := 1300
 win_x := screen_1_x+screen_1_w/2-win_w/2
 win_y := screen_1_y+screen_1_h/2-win_h/2
 Windows_Default_Position["7-Zip"] := [win_x, win_y, win_w, win_h]
+
+win_w := 2200
+win_h := 1250
+win_x := screen_1_x+screen_1_w/2-win_w/2
+win_y := screen_1_y+screen_1_h/2-win_h/2
+Windows_Default_Position["StartMenu"] := [win_x, win_y, win_w, win_h]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

@@ -321,13 +321,23 @@ MoveWindowsToDefaultPosition()
     result := GetWindowsInfo()
     
     win_id           := result.win_id
-    win_x            := result.win_x
-    win_y            := result.win_y
-    win_w            := result.win_w
-    win_h            := result.win_h
     win_class        := result.win_class
     win_process_name := result.win_process_name
-    win_config       := []
+
+    ; 开始菜单在屏幕上居中 兼容处理
+    ; 按下Win键，此时在最上层激活的是Search(SearchApp)
+    ; 而需要处理的是 StartMenu(StartMenuExperienceHost)
+    if (win_process_name="Search") {
+        Process, Close, SearchApp.exe
+        Sleep, 100
+        WinActivate, StartMenuExperienceHost.exe
+        Sleep, 300
+        WinGet, win_id, ID, A
+        win_process_name:="StartMenu"
+    }
+
+    win_config := []
+    win_process_name_win_class := Format("{}_{}",win_process_name,win_class)
 
     for key, value in Windows_Default_Position {
         if (key=win_process_name) {
@@ -335,7 +345,6 @@ MoveWindowsToDefaultPosition()
         }
     }
 
-    win_process_name_win_class := Format("{}_{}",win_process_name,win_class)
     for key, value in Windows_Default_Position {
         if (key=win_process_name_win_class) {
             win_config:=value
@@ -346,7 +355,6 @@ MoveWindowsToDefaultPosition()
     ww:=win_config[3], hh:=win_config[4]    
     SetWindows(win_id, xx, yy, ww, hh)
     HelpText(%key%, "center_down", "screen1", 1000)
-
 }
 
 
