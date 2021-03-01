@@ -15,7 +15,7 @@ if (not A_IsAdmin) {
 
 Loop {
 
-    Sleep, 3000
+    Sleep, 1000
 
     result := GetWindowsInfo()
 
