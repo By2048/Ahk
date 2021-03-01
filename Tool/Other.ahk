@@ -62,7 +62,6 @@ Screenshot(screens="screen1",keep_path="backup")
     file := screenshot_keep_path "\" name ".png"
     file := StrReplace(file,"\\","\")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, x, y, w, h, file)
-    MsgBox, %cmd%
     Run %cmd%
 
     SetTimer, delete_snipaste_auto_save_file, -1000
