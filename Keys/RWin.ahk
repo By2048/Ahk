@@ -126,9 +126,11 @@ timer:
         Return
     }
     if (cnt=1) {
+        MouseGetPos,  ,  , win_id
+        WinActivate, ahk_id %win_id%
         result := GetWindowsInfo()
         process_name := result.win_process_name
-        HelpText(process_name, "center_down", "screen3")
+        HelpText(process_name, "center_down", "screen1",1000)
     } else if (cnt=2) {
         MoveWindowsToCenter()
     } else if (cnt=3) {
