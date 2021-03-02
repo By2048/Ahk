@@ -19,36 +19,40 @@ if (not A_IsAdmin) {
 
 >^Esc::Run, taskmgr.exe ;任务管理器
 >^F1::
-    Run, %CMD% /c %TaskKill% /f /im shellexperiencehost.exe,  , Hide
-    Run, %CMD% /c %TaskKill% /f /im MicrosoftEdge.exe,  , Hide
-    Run, D:\Dexpot\dexpot.exe
+    command :=  Format("{} /c {} /f /im shellexperiencehost.exe",CMD,TaskKill)
+    Run, %command%,  , Hide
+    command :=  Format("{} /c {} /f /im MicrosoftEdge.exe",CMD,TaskKill)
+    Run, %command%,  , Hide
+    Run, "D:\Dexpot\dexpot.exe"
 Return
 >^F3::
-    RunWait, %CMD% /c %TaskKill% /f /im explorer.exe
-    RunWait, %CMD% /c start explorer.exe
+    command :=  Format("{1} /c {2} /f /im explorer.exe", CMD,TaskKill)
+    RunWait, %command%
+    command :=  Format("{1} /c start explorer.exe", CMD)
+    RunWait, %command%
 Return
 >^F4::
-    cmd := Format("{} {} E:\Project\script\system\update_folder_icon.py", WT,Python)
-    Run, %cmd%
+    command := Format("{} {} E:\Project\script\system\update_folder_icon.py", WT,Python)
+    Run, %command%
     Sleep, 300
     MoveWindowsMM("mini")
 return
 
 >^F9::
-    cmd := Format("{} {} E:\Project\script\bilibili\free_video.py", WT,Python)
-    Run, %cmd%
+    command := Format("{} {} E:\Project\script\bilibili\free_video.py", WT,Python)
+    Run, %command%
     Sleep, 300
     MoveWindowsMM("mini")
 Return    
 >^F10::
-    cmd := Format("{} {} E:\Project\script\bilibili\download_video_join.py", WT,Python)
-    Run, %cmd%
+    command := Format("{} {} E:\Project\script\bilibili\download_video_join.py", WT,Python)
+    Run, %command%
     Sleep, 300
     MoveWindowsMM("main")
 Return
 >^F11::
-    cmd := Format("{} {} E:\Project\script\rename\bd-film.py", WT,Python)
-    Run, %cmd%
+    command := Format("{} {} E:\Project\script\rename\bd-film.py", WT,Python)
+    Run, %command%
     Sleep, 300
     MoveWindowsMM("mini")
 Return
@@ -82,11 +86,11 @@ Return
 >^f::RunNormalUser("D:\Firefox\firefox.exe")
 >^g::
     win_x:=160, win_y:=60, win_w:=1600, win_h:=960
-    cmd := "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-    cmd := Format("{} --new-window", cmd)
-    cmd := Format("{} --window-position={},{}", cmd,win_x,win_y)
-    cmd := Format("{} --window-size={},{}", cmd,win_w,win_h)
-    RunNormalUser(cmd)
+    command := "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+    command := Format("{} --new-window", command)
+    command := Format("{} --window-position={},{}", command,win_x,win_y)
+    command := Format("{} --window-size={},{}", command,win_w,win_h)
+    RunNormalUser(command)
 Return
 >^h::Run "D:\AutoHotkey\WindowSpy.ahk"
 >^j::RunNormalUser("calc.exe")
