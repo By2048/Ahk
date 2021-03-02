@@ -153,7 +153,7 @@ win_x := screen_1_x+screen_1_w/2-win_w/2
 win_y := screen_1_y+screen_1_h/2-win_h/2
 Windows_Default_Position["7-Zip"] := [win_x, win_y, win_w, win_h]
 
-win_w := 2200
+win_w := 2150
 win_h := 1250
 win_x := screen_1_x+screen_1_w/2-win_w/2
 win_y := screen_1_y+screen_1_h/2-win_h/2
