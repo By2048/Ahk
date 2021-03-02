@@ -54,7 +54,7 @@ Return
 Return
 
 
->^`::Run, E:\Sync\Ahk\Doc\Hotkey.xlsx
+>^`::Run, "E:\Sync\Ahk\Doc\Hotkey.xlsx"
 
 >^q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
 >^w::RunNormalUser("D:\WeChat\WeChat.exe")
@@ -74,10 +74,10 @@ Return
 
 >^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
->^\::Run, D:\Microsoft Whiteboard.lnk
+>^\::Run, "C:\Users\AM\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Whiteboard.lnk"
 
 >^CapsLock::Screenshot("screen1","tmp")
->^a::Run, D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
+>^a::Run, "D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe"
 >^s::RunNormalUser("D:\Everything\Everything.exe")
 >^f::RunNormalUser("D:\Firefox\firefox.exe")
 >^g::
@@ -88,7 +88,7 @@ Return
     cmd := Format("{} --window-size={},{}", cmd,win_w,win_h)
     RunNormalUser(cmd)
 Return
->^h::Run D:\AutoHotkey\WindowSpy.ahk
+>^h::Run "D:\AutoHotkey\WindowSpy.ahk"
 >^j::RunNormalUser("calc.exe")
 >^k::KeyboardGUI()
 
@@ -103,7 +103,7 @@ Return
 
 
 
-RCtrl & Enter::Run, R:\Doc\All.xlsx
+RCtrl & Enter::Run, "R:\Doc\All.xlsx"
 
 RCtrl & RWin::
     if (not IsDesktops()) {
