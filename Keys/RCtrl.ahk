@@ -131,7 +131,7 @@ timer:
     if (cnt=1) {
         HelpImage()
     } else if (cnt=2) {
-        path=%A_WorkingDir%\Image\RCtrl.png
+        path:=Format("{}\Image\RCtrl.png",A_WorkingDir)
         HelpImage(path)
     }
     cnt:=0
