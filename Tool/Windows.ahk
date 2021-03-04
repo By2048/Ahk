@@ -54,6 +54,7 @@ IsGame()
 GetWindowsInfo()
 {
     WinGet,                          win_id, ID,           A
+    WinGet,                         win_pid, ID,           ahk_id %win_id%
     WinGet,                     win_min_max, MinMax,       ahk_id %win_id%
 	WinGet,                win_process_name, ProcessName,  ahk_id %win_id%
 	WinGet,                 win_transparent, Transparent,  ahk_id %win_id%
@@ -83,6 +84,7 @@ GetWindowsInfo()
     result := {}
 
     result.win_id           := win_id
+    result.win_pid          := win_pid
     result.win_min_max      := win_min_max
     result.win_process_name := ProcessNameFormat(win_process_name)
     result.win_transparent  := win_transparent
