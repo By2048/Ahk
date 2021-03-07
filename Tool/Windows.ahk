@@ -324,6 +324,7 @@ MoveWindowsToDefaultPosition()
     
     win_id           := result.win_id
     win_class        := result.win_class
+    win_title        := result.win_title
     win_process_name := result.win_process_name
 
     ; 开始菜单在屏幕上居中 兼容处理
@@ -339,7 +340,6 @@ MoveWindowsToDefaultPosition()
     }
 
     win_config := []
-    win_process_name_win_class := Format("{}_{}",win_process_name,win_class)
 
     for key, value in Windows_Default_Position {
         if (key=win_process_name) {
@@ -347,8 +347,17 @@ MoveWindowsToDefaultPosition()
         }
     }
 
+    win_process_name_class := Format("{}_{}",win_process_name,win_class)
     for key, value in Windows_Default_Position {
-        if (key=win_process_name_win_class) {
+        if (key=win_process_name_class) {
+            win_config:=value
+        }
+    }
+
+    win_process_name_class_title := Format("{}_{}_{}",win_process_name,win_class,win_title)
+    win_process_name_class_title := StrReplace(win_process_name_class_title," ","")
+    for key, value in Windows_Default_Position {
+        if (key=win_process_name_class_title) {
             win_config:=value
         }
     }
