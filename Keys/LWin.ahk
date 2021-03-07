@@ -58,7 +58,7 @@ Return
 
 ; 复制文件路径
 <#c::	
-    Send, ^c
+    Send ^c
     clipboard = %clipboard%
     HelpText(clipboard, "center_down",  , 3000)
 return

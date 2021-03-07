@@ -26,7 +26,7 @@
 
 ; 上一个桌面
 <#CapsLock::
-    Send, #^!{CapsLock}
+    Send #^!{CapsLock}
     SetCapsLockState, Off
 Return
 

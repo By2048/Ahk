@@ -1,9 +1,9 @@
 
 #if ( WindowsActive("Android") )
     
-    Space::Send, {LButton 4}
+    Space::Send {LButton 4}
     
-    `::Send, {LButton}
+    `::Send {LButton}
 
     ^1::Return
     ^2::Return
@@ -18,8 +18,8 @@
 
     ^Tab::Return
     ^+Tab::Return
-    !Tab::Send, ^{Tab}
-    !+Tab::Send, ^+{Tab}
+    !Tab::Send ^{Tab}
+    !+Tab::Send ^+{Tab}
 
     ; 女巫流
     =::
@@ -27,20 +27,20 @@
         MouseGetPos, xx, yy
 
         ; 战争机器
-        Send, 9
+        Send 9
         MouseClick, Left, %xx%, %yy%
 
         Sleep, 3000
         
         ; 第一个兵种
-        Send, 0
+        Send 0
         MouseClick, Left, %xx%, %yy%, 12
         
         Sleep, 100
 
         ; 战争机器 释放技能
         Loop, 4 {
-            Send, 9
+            Send 9
             txt:="   " A_Index "   "
             HelpText(txt,"center_down")
             if (A_Index<4) {
@@ -56,19 +56,19 @@
     -::
         CoordMode, Mouse, Window
 
-        Send, Q
+        Send Q
         Sleep, 500
-        Send, \
+        Send \
         Sleep, 500
 
-        Send, Q
+        Send Q
         Sleep, 500
-        Send, R
+        Send R
         Sleep, 5000
 
-        Send, 0
+        Send 0
         Sleep, 500
-        Send, \
+        Send \
         Sleep, 500
 
         y:=0
@@ -82,11 +82,11 @@
             Sleep, 100
         }
 
-        Send, A
+        Send A
         Sleep, 500
-        Send, S
+        Send S
         Sleep, 500
-        Send, D
+        Send D
         Sleep, 3000
         
         Send \
@@ -104,23 +104,23 @@
     Return
 
     Tab::
-        Send, a
+        Send a
         Sleep, 100
-        Send, s
+        Send s
         Sleep 1000
-        Send, d
+        Send d
         Sleep, 3000
 
-        Send, \
+        Send \
         Sleep, 100
 
-        Send, z
+        Send z
         Sleep, 100
-        Send, x
+        Send x
         Sleep, 100
-        Send, c
+        Send c
         Sleep, 100
-        Send, \
+        Send \
     Return
 
 #if

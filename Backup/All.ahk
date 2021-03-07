@@ -1,5 +1,5 @@
-~Delete::Send, {Delete}
-~Esc::Send, {Esc}
+~Delete::Send {Delete}
+~Esc::Send {Esc}
 
 Esc & Delete::
     if (IsDesktops()) {

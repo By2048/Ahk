@@ -101,7 +101,7 @@ show_image()
 
     ; 关闭因双击Shift打开的快速搜索界面
     If (hotkeys_process_name="PyCharm") {
-        Send, {Esc}
+        Send {Esc}
     }
 }
 

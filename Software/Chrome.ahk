@@ -56,20 +56,20 @@
 
     ;新标签页
     ^t::Return
-    !t::Send, ^t
+    !t::Send ^t
 
     ;新窗口
     ^n::Return
-    !n::Send, ^n
+    !n::Send ^n
     
     ;关闭窗口
     ^w::Return
-    !w::Send, ^w
-    !CapsLock::Send, ^w
+    !w::Send ^w
+    !CapsLock::Send ^w
 
     ;新隐私窗口
     ^+n::Return
-    !+n::Send, ^+n
+    !+n::Send ^+n
 
     ;切换标签页
     ^1::Return
@@ -85,11 +85,11 @@
     !Tab::Send ^{Tab}
     ^+Tab::Return
     !+Tab::Send ^+{Tab}
-    !Home::Send, ^1
-    !End::Send, ^9
+    !Home::Send ^1
+    !End::Send ^9
 
     ; 主页
-    !BackSpace::Send, !{Home}
+    !BackSpace::Send !{Home}
 
     ;滚动
     ^PgUp::Return
@@ -101,21 +101,27 @@
     ^+b::Return
     !b::Send ^+b
 
+    ;打开文件
+    ^o::Return 
+
     ;书签管理页面
     ^+o::Return
-    !+o::Send ^+o
+    !o::Send ^+o
     
-    ^+m::Return ;切换用户
-    ^+w::Return ;关闭所有窗口
+    ;切换用户
+    ^+m::Return 
+    ;关闭所有窗口
+    ^+w::Return 
 
     ;重新打开标签页
     ^+t::Return 
     !+w::Send ^+t
     !z::Send ^+t
 
-    ^o::Return ;打开文件
-    ^k::Return ;使用Google搜索
-    ^e::Return ;使用Google搜索
+    ;使用Google搜索
+    ^k::Return 
+    ;使用Google搜索
+    ^e::Return 
 
     ;历史记录
     ^h::Return
@@ -130,9 +136,9 @@
     ^d::Return
     !d::Send ^d
     !+d::
-        Send, ^d
-        Send, {Tab 4}
-        Send, {Enter}
+        Send ^d
+        Send {Tab 4}
+        Send {Enter}
     Return
 
     ;打印

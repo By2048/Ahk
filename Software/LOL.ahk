@@ -2,19 +2,19 @@
 #if ( WindowsActive("LOL") )
 
 	CapsLock::Return
-	; 	Send, w
-	; 	Send, q
+	; 	Send w
+	; 	Send q
 	; Return
 
 	]::
 		SetDefaultKeyboard(0x0409)
 		Sleep, 300
 
-		Send, {Enter}
+		Send {Enter}
 		Sleep, 300
-		Send, /ff
+		Send /ff
 		Sleep, 300
-		Send, {Enter}
+		Send {Enter}
 
 		SetDefaultKeyboard(0x0804)
 	Return
@@ -23,42 +23,42 @@
 		SetDefaultKeyboard(0x0409)
 		Sleep, 300
 
-		Send, {Enter}
+		Send {Enter}
 		Sleep, 300
-		Send, /remake
+		Send /remake
 		Sleep, 300
-		Send, {Enter}
+		Send {Enter}
 
 		SetDefaultKeyboard(0x0804)
 	Return
 
 	\::
-		; Send, +{Enter}
+		; Send +{Enter}
 		; Sleep, 300
-		; Send, ======================
-		; Send, {Enter}
+		; Send ======================
+		; Send {Enter}
 
-		; Send,+{Enter}
+		; Send+{Enter}
 		; Sleep, 300
 		; data:="= 已屏蔽所有人聊天和信号 ="
-		; Send, %data%
-		; Send, {Enter}
+		; Send %data%
+		; Send {Enter}
 
-		; Send, +{Enter}
+		; Send +{Enter}
 		; Sleep, 300
-		; Send, ======================
-		; Send, {Enter}
+		; Send ======================
+		; Send {Enter}
 
 		; Sleep, 300
 
 		SetDefaultKeyboard(0x0409)
 		Sleep, 300
 
-		Send, {Enter}
+		Send {Enter}
 		Sleep, 300
-		Send, /mute all
+		Send /mute all
 		Sleep, 300
-		Send, {Enter}
+		Send {Enter}
 
 		SetDefaultKeyboard(0x0804)
 	Return

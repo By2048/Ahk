@@ -12,7 +12,7 @@
 		MouseClick, Left, %xx%, %yy%
         MouseMove %x%, %y%, 0
 		Sleep, 100
-		Send, {Enter}
+		Send {Enter}
 	Return
 
 	; 在资源管理器中打开

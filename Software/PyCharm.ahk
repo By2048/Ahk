@@ -2,25 +2,26 @@
 #if ( WindowsActive("PyCharm") )
     
     ^F4::Return
-    !f4::Send, ^{F4}
+    !f4::Send ^{F4}
 
     ^]::Return
-    !Tab::Send, ^]
+    !Tab::Send ^]
 
     ^[::Return
-    !+Tab::Send, ^[
+    !+Tab::Send ^[
     
     ; 关闭
     ^\::Return
-    !CapsLock::Send, ^\
+    !CapsLock::Send ^\
 
     ; 重新打开
     ^+\::Return
-    !+CapsLock::Send, ^+\
+    !+CapsLock::Send ^+\
 
+    ; 软件设置 | 右键菜单
     ^F1::Return
-    LAlt & RAlt::Send, ^{F1}
-    RAlt & LAlt::Send, {AppsKey}
+    LAlt & RAlt::Send ^{F1}
+    RAlt & LAlt::Send {AppsKey}
 
 #if
 
@@ -38,9 +39,3 @@
     Return
  
 #if
-
-
-
-; MouseGetPos,  ,  , win_id
-; WinGetClass, win_class, ahk_id %win_id%
-; WinActivate, ahk_class %win_class%

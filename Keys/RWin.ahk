@@ -26,22 +26,22 @@ if (not A_IsAdmin) {
 >#Tab::Return
 
 ; TIM
->#`;::Send, ^!; ;识图
->#'::Send, ^!' ;翻译
+>#`;::Send ^!; ;识图
+>#'::Send ^!' ;翻译
 
 ; CloudMusic
->#\::Send, ^!\ ;播放/暂停
->#[::Send, ^![ ;上一首
->#]::Send, ^!] ;下一首
->#=::Send, ^!= ;音量+
->#-::Send, ^!- ;音量-
->#o::Send, ^!o ;喜欢歌曲
->#p::Send, ^!p ;歌词
+>#\::Send ^!\ ;播放/暂停
+>#[::Send ^![ ;上一首
+>#]::Send ^!] ;下一首
+>#=::Send ^!= ;音量+
+>#-::Send ^!- ;音量-
+>#o::Send ^!o ;喜欢歌曲
+>#p::Send ^!p ;歌词
 
 
 ; Snipaste
->#PrintScreen::Send, ^!{PrintScreen}
->#Pause::Send, ^!{Pause}
+>#PrintScreen::Send ^!{PrintScreen}
+>#Pause::Send ^!{Pause}
 
 
 

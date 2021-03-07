@@ -111,7 +111,7 @@ RCtrl & Enter::Run, "R:\Doc\All.xlsx"
 
 RCtrl & RWin::
     if (not IsDesktops()) {
-        Send, ^w
+        Send ^w
     }
 Return
 

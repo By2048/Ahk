@@ -21,10 +21,10 @@ ExcelGetXYSpace(x, y)
 ; 移动到指定Sheet
 ExcelMoveToSheet(cnt)
 {
-    Send, ^{PgUp 30}
+    Send ^{PgUp 30}
     cnt:=cnt-1
     if (cnt>0) {
-        Send, ^{PgDn %cnt%}
+        Send ^{PgDn %cnt%}
     }
     Sleep, 500
 }
@@ -35,15 +35,15 @@ ExcelMoveToSheet(cnt)
 ExcelMoveToPosition(position)
 {
     ; 移动到A1
-    Send, ^{Home}
+    Send ^{Home}
     result:=ExcelGetXYSpace("A1",position)
     move_x:=result[1]
     move_y:=result[2]
     if (move_x!=0) {
-        Send, {Right %move_x%}
+        Send {Right %move_x%}
     }
     if (move_y!=0) {
-        Send, {Down %move_y%}
+        Send {Down %move_y%}
     }
 }
 
@@ -59,15 +59,15 @@ ExcelSelectXToY(excel_x, excel_y, multi_line)
     move_x:=result[1]
     move_y:=result[2]
     move_y:=move_y-multi_line
-    Send, {RShift Down}
+    Send {RShift Down}
     if (move_x!=0) {
-        Send, {Right %move_x%}
+        Send {Right %move_x%}
     }
     if (move_y!=0) {
-        Send, {Down %move_y%}
+        Send {Down %move_y%}
     }
-    Send, {RShift UP}
-    Send, ^c
+    Send {RShift UP}
+    Send ^c
 }
 
 
@@ -89,30 +89,30 @@ SnipasteClipboardToImageFile(image_file)
     MouseMove, %xx%, %yy%
 
     ; 右键保存
-    Send, {RButton}
+    Send {RButton}
     Sleep, 500
 
-    Send, s
+    Send s
     Sleep, 1000
 
 
     ; 设置文件名
-    Send, !n
+    Send !n
     ControlSetText, Edit1, %image_file%, A
     Sleep, 500
 
     ; 保存文件
-    Send, !s
+    Send !s
     Sleep, 500
 
 	WinGetTitle, win_title, A
     if (win_title="确认另存为") {
-        Send, !y
+        Send !y
         Sleep, 500
     }
 
     ; 关闭贴图
-    Send, {LButton 2}
+    Send {LButton 2}
 }
 
 

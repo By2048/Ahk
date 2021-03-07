@@ -13,7 +13,7 @@ PDF_Main() {
             x:=item[1]
             y:=item[2]
             MouseClick, Left, %x%, %y%, 1, 0
-            Send, {Delete}
+            Send {Delete}
         }
         MouseClick, Left, 1016, 138, 1, 0 ; 下一页
         HelpText("   " A_Index "   ", "center_down")
