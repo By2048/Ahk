@@ -133,7 +133,7 @@ HotkeysKeyImage()
         ExcelMoveToPosition("A1")
         SnipasteClipboardToImageFile(image_file)
     }
-    HelpText(" Over ",  ,  , 1000)
+    HelpText(" Over ", "center_down", "screen1", 1000)
 }
 
 

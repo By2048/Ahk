@@ -89,6 +89,7 @@ Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "StartMenu"    ] )
 Windows_Process_Name.Push( [ "-----------------------" , "------------" ] )
 Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"  ] )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; RShift快捷键帮助配置 快捷键图片对应关系
 global Process_Hotkeys_Image := {}
@@ -97,12 +98,26 @@ Process_Hotkeys_Image[ "Windows"         ] := [ "Windows.png"                   
 Process_Hotkeys_Image[ "VSCode"          ] := [ "VSCode-Fxx.png", "VSCode.png"      ]
 Process_Hotkeys_Image[ "Xshell"          ] := [ "Xshell.png"                        ]
 Process_Hotkeys_Image[ "SumatraPDF"      ] := [ "SumatraPDF.png"                    ]
-Process_Hotkeys_Image[ "PyCharm"         ] := [ "PyCharm.png", "PyCharm-Fxx.png"    ]
+Process_Hotkeys_Image[ "PyCharm"         ] := [ "PyCharm-Fxx.png", "PyCharm.png"    ]
 Process_Hotkeys_Image[ "QuiteRSS"        ] := [ "QuiteRSS.png"                      ]
 Process_Hotkeys_Image[ "Chrome"          ] := [ "Chrome.png"                        ]
 Process_Hotkeys_Image[ "Chrome_Bilibili" ] := [ "Chrome-Bilibili.png", "Chrome.png" ]
 Process_Hotkeys_Image[ "PotPlayer"       ] := [ "PotPlayer.png"                     ]
 Process_Hotkeys_Image[ "CloudMusic"      ] := [ "CloudMusic.png"                    ]
+
+; WPS Sheet 图片截图
+; [1]System  [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
+; [sheet, start[x], end[y], multi_line, image_file]
+global WPS_Hotkeys_Image := []
+WPS_Hotkeys_Image.Push( "3 A1 J27 1 E:\Sync\Ahk\Image\RShift\Windows.png"         )
+WPS_Hotkeys_Image.Push( "4 A1 G26 0 E:\Sync\Ahk\Image\RCtrl.png"                  )
+WPS_Hotkeys_Image.Push( "6 A1 J19 0 E:\Sync\Ahk\Image\PyCharm-Fxx.png"            )
+WPS_Hotkeys_Image.Push( "6 L1 O11 0 E:\Sync\Ahk\Image\PyCharm.png"                )
+WPS_Hotkeys_Image.Push( "8 A1 G25 0 E:\Sync\Ahk\Image\RShift\Xshell.png"          )
+WPS_Hotkeys_Image.Push( "9 A1 I41 6 E:\Sync\Ahk\Image\RShift\Chrome.png"          )
+WPS_Hotkeys_Image.Push( "9 K1 Q26 2 E:\Sync\Ahk\Image\RShift\Chrome-Bilibili.png" )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 指定游戏进程
 global Game_Process_Name := []
@@ -158,15 +173,3 @@ win_h := 1250
 win_x := screen_1_x+screen_1_w/2-win_w/2
 win_y := screen_1_y+screen_1_h/2-win_h/2
 Windows_Default_Position["StartMenu"] := [win_x, win_y, win_w, win_h]
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; WPS Sheet 图片截图
-; [1]System  [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
-; [sheet, start[x], end[y], multi_line, image_file]
-global WPS_Hotkeys_Image := []
-WPS_Hotkeys_Image.Push( "3 A1 J27 1 E:\Sync\Ahk\Image\RShift\Windows.png"         )
-WPS_Hotkeys_Image.Push( "4 A1 G26 0 E:\Sync\Ahk\Image\RCtrl.png"                  )
-WPS_Hotkeys_Image.Push( "8 A1 G25 0 E:\Sync\Ahk\Image\RShift\Xshell.png"          )
-WPS_Hotkeys_Image.Push( "9 A1 I41 6 E:\Sync\Ahk\Image\RShift\Chrome.png"          )
-WPS_Hotkeys_Image.Push( "9 K1 Q26 2 E:\Sync\Ahk\Image\RShift\Chrome-Bilibili.png" )
