@@ -1,8 +1,6 @@
 
 #if ( WindowsActive("VSCode") )
 
-    >!m::Send !VM ;显示迷你地图
-
     ^F1::Return
     LAlt & RAlt::Send ^{F1}
     RAlt & LAlt::Send {AppsKey}

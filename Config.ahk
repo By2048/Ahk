@@ -111,8 +111,8 @@ Process_Hotkeys_Image[ "CloudMusic"      ] := [ "CloudMusic.png"                
 global WPS_Hotkeys_Image := []
 WPS_Hotkeys_Image.Push( "4 A1 G26 0 E:\Sync\Ahk\Image\RCtrl.png"                  )
 WPS_Hotkeys_Image.Push( "3 A1 J27 1 E:\Sync\Ahk\Image\RShift\Windows.png"         )
-WPS_Hotkeys_Image.Push( "6 A1 J19 0 E:\Sync\Ahk\Image\RShift\PyCharm-Fxx.png"            )
-WPS_Hotkeys_Image.Push( "6 L1 O11 0 E:\Sync\Ahk\Image\RShift\PyCharm.png"                )
+WPS_Hotkeys_Image.Push( "6 A1 M18 0 E:\Sync\Ahk\Image\RShift\PyCharm-Fxx.png"     )
+WPS_Hotkeys_Image.Push( "6 O1 R3  0 E:\Sync\Ahk\Image\RShift\PyCharm.png"         )
 WPS_Hotkeys_Image.Push( "8 A1 G25 0 E:\Sync\Ahk\Image\RShift\Xshell.png"          )
 WPS_Hotkeys_Image.Push( "9 A1 I41 6 E:\Sync\Ahk\Image\RShift\Chrome.png"          )
 WPS_Hotkeys_Image.Push( "9 K1 Q26 2 E:\Sync\Ahk\Image\RShift\Chrome-Bilibili.png" )
