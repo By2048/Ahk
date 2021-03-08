@@ -121,6 +121,9 @@ SnipasteClipboardToImageFile(image_file)
 HotkeysKeyImage()
 {
     For index, value In WPS_Hotkeys_Image {
+        value:=StrReplace(value,"  "," ")
+        value:=StrReplace(value,"  "," ")
+        value:=StrReplace(value,"  "," ")
         value:=StrSplit(value," ")
         sheet:=value[1]
         excel_x:=value[2]
@@ -158,6 +161,12 @@ HotkeysKeyImage()
         MouseMove x_origin, y_origin, 0
     Return
 
-    >!\::HotkeysKeyImage()
+    >!\::
+        Send, #{Up}
+        Sleep, 500
+        HotkeysKeyImage()
+        Sleep, 500
+        Send, #{Down}
+    Return
 
 #if
