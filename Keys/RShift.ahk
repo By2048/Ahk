@@ -3,7 +3,9 @@
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
+#include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 
@@ -178,4 +180,12 @@ return
 #if (hotkeys_show_status=True)
     [::change("privious")
     ]::change("next")
+    Pause::
+        global hotkeys_index
+        global hotkeys_images
+        image := hotkeys_images[hotkeys_index]
+        image := A_WorkingDir "\Image\RShift\" image
+        Snipaste(image, "screen1")
+        SetTimer, hide_image, -300
+    Return
 #if

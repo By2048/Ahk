@@ -1,6 +1,7 @@
 
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Private.ahk
+#include %A_WorkingDir%\Tool\Image.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 
@@ -65,6 +66,29 @@ Screenshot(screens="screen1",keep_path="backup")
     Run %cmd%
 
     SetTimer, delete_snipaste_auto_save_file, -1000
+}
+
+
+
+Snipaste(image="",screens="screen1")
+{
+    image_size := GetImageSize(image)
+    image_w    := image_size[1]
+    image_h    := image_size[2]
+
+    if (screens="screen1" or screens="screen_1") {
+        x := screen_1_x + screen_1_w/2 - image_w/2
+        y := screen_1_y + screen_1_h/2 - image_h/2
+    }
+    if (screens="screen2" or screens="screen_2") {
+        x := screen_2_x + screen_2_w/2 - image_w/2
+        y := screen_2_y + screen_2_h/2 - image_h/2
+    }
+    x := Round(x)
+    y := Round(y)
+
+    cmd := Format("{1} paste --files {} --pos {} {}", Snipaste_EXE, image, x, y)
+    Run %cmd%
 }
 
 
