@@ -2,7 +2,10 @@
 #if ( WindowsActive("PyCharm") )
     
     <^F4::Return
-    <!F4::Send <^{F4}
+    <!F4::Send ^{F4}
+
+    <^+F4::Return
+    <!+F4::Send ^+{F4}
 
     ^]::Return
     !Tab::Send ^]

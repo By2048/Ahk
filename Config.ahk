@@ -111,8 +111,8 @@ Process_Hotkeys_Image[ "CloudMusic"      ] := [ "CloudMusic.png"                
 global WPS_Hotkeys_Image := []
 WPS_Hotkeys_Image.Push( "4 A1 G26 0 E:\Sync\Ahk\Image\RCtrl.png"                  )
 WPS_Hotkeys_Image.Push( "3 A1 J27 1 E:\Sync\Ahk\Image\RShift\Windows.png"         )
-WPS_Hotkeys_Image.Push( "6 A1 M18 0 E:\Sync\Ahk\Image\RShift\PyCharm-Fxx.png"     )
-WPS_Hotkeys_Image.Push( "6 O1 R3  0 E:\Sync\Ahk\Image\RShift\PyCharm.png"         )
+WPS_Hotkeys_Image.Push( "6 A1 K20 0 E:\Sync\Ahk\Image\RShift\PyCharm-Fxx.png"     )
+WPS_Hotkeys_Image.Push( "6 L1 R29 0 E:\Sync\Ahk\Image\RShift\PyCharm.png"         )
 WPS_Hotkeys_Image.Push( "8 A1 G25 0 E:\Sync\Ahk\Image\RShift\Xshell.png"          )
 WPS_Hotkeys_Image.Push( "9 A1 I41 6 E:\Sync\Ahk\Image\RShift\Chrome.png"          )
 WPS_Hotkeys_Image.Push( "9 K1 Q26 2 E:\Sync\Ahk\Image\RShift\Chrome-Bilibili.png" )
@@ -173,6 +173,12 @@ win_h := 1250
 win_x := screen_1_x+screen_1_w/2-win_w/2
 win_y := screen_1_y+screen_1_h/2-win_h/2
 Windows_Default_Position["StartMenu"] := [win_x, win_y, win_w, win_h]
+
+win_x := 320
+win_y := 120
+win_w := 3201
+win_h := 1921
+Windows_Default_Position["PyCharm"] := [win_x, win_y, win_w, win_h]
 
 win_w := 800
 win_h := 1400
