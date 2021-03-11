@@ -101,7 +101,7 @@ Process_Hotkeys_Image[ "SumatraPDF"      ] := [ "SumatraPDF.png"                
 Process_Hotkeys_Image[ "PyCharm"         ] := [ "PyCharm-Fxx.png", "PyCharm.png"    ]
 Process_Hotkeys_Image[ "QuiteRSS"        ] := [ "QuiteRSS.png"                      ]
 Process_Hotkeys_Image[ "Chrome"          ] := [ "Chrome.png"                        ]
-Process_Hotkeys_Image[ "Chrome_Bilibili" ] := [ "Chrome-Bilibili.png", "Chrome.png" ]
+Process_Hotkeys_Image[ "Chrome_Bilibili" ] := [ "Chrome-Bilibili.png"               ]
 Process_Hotkeys_Image[ "PotPlayer"       ] := [ "PotPlayer.png"                     ]
 Process_Hotkeys_Image[ "CloudMusic"      ] := [ "CloudMusic.png"                    ]
 
