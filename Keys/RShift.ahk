@@ -17,12 +17,12 @@ if (not A_IsAdmin) {
 
 
 
-global hotkeys_images           := []     ; 显示的图片组
-global hotkeys_show_status      := False  ; 是否正在显示图片
-global hotkeys_index            := 1      ; 显示图片的序号
-global hotkeys_total            := 1      ; 显示图片组的数量
-global hotkeys_process_name     := ""     ; 激活的应用
-global hotkeys_title            := ""     ; 激活的应用窗口标题
+global hotkeys_show_status  := False ; 是否正在显示图片
+global hotkeys_images       := []    ; 显示的图片组
+global hotkeys_index        := 1     ; 显示图片的序号
+global hotkeys_total        := 1     ; 显示图片组的数量
+global hotkeys_title        := ""    ; 激活的应用窗口标题
+global hotkeys_process_name := ""    ; 激活的应用
 
 
 
@@ -35,10 +35,11 @@ get_image()
     global hotkeys_title
     global hotkeys_process_name
 
-    result := GetWindowsInfo()
+    result               := GetWindowsInfo()
 	hotkeys_process_name := result.win_process_name
 	hotkeys_title        := result.win_title
     
+    ; PyCharm计算界面不处理
     If (win_process_name="PyCharm" and win_title="Evaluate") {
         Return
     }
@@ -84,10 +85,10 @@ show_image()
     image_y    := screen_1_h/2 - image_h/2
 
     
-    SplashImage, %image%, X%image_x% Y%image_y% H%image_h% W%image_w% B1   ;  全屏幕居中
+    SplashImage, %image%, X%image_x% Y%image_y% H%image_h% W%image_w% B1   ;全屏幕居中
     ; SplashImage, %image%, B1  ; 去除任务栏屏幕居中
 
-    hotkeys_show_status:=True
+    hotkeys_show_status := True
 
     ; 页面索引（1/2）h:=h/2
     if (hotkeys_total>=1) {
@@ -121,12 +122,12 @@ hide_image()
     SplashImage, Off
     Progress, Off
 
-    hotkeys_show_status      := False
-    hotkeys_index            := 1 
-    hotkeys_total            := 1
-    hotkeys_images           := []
-    hotkeys_process_name     := ""
-    hotkeys_title            := ""
+    hotkeys_show_status  := False
+    hotkeys_index        := 1 
+    hotkeys_total        := 1
+    hotkeys_images       := []
+    hotkeys_process_name := ""
+    hotkeys_title        := ""
 }
 
 
