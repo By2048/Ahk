@@ -90,11 +90,11 @@ show_image()
     hotkeys_show_status:=True
 
     ; 页面索引（1/2）h:=h/2
-    if (hotkeys_total>1) {
+    if (hotkeys_total>=1) {
         w := 200
         h := 62
-        x := screen_1_w/2 - w/2
-        y := screen_1_h - h - 5 ; 屏幕底部
+        x := screen_1_w/2-w/2
+        y := screen_1_h-h-5 ; 屏幕底部
         ; y:=screen_1_h/2+size_h/2+5 ; 图片底部
         w := w/2
         h := h/2
