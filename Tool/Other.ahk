@@ -105,6 +105,8 @@ delete_snipaste_auto_save_file()
 
 
 
+global key_map_show_status := False
+
 show_hide_key_config()
 {
     global key_map_show_status
@@ -119,6 +121,7 @@ show_hide_key_config()
                 Break
             }
         }
+        Return
     }
 
     result := GetWindowsInfo()
@@ -141,6 +144,5 @@ show_hide_key_config()
         ToolTip, %key%, %x%, %y%, %index%
     }
     key_map_show_status:=True
-
 }
 
