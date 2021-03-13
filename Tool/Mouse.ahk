@@ -1,11 +1,13 @@
 
 #include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Tool\Windows.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
 
 
 
-MouseMoveDC(xright, ydown) {
+MouseMoveDC(xright, ydown)
+{
     CoordMode, Mouse, Screen
     MouseGetPos, x, y
     xx:=x+xright
@@ -15,8 +17,26 @@ MouseMoveDC(xright, ydown) {
 
 
 
-MouseClickAndResetting(x, y)
+MouseCopyPosToClipboard()
 {
+    CoordMode, Mouse, Screen
+    MouseGetPos, x1, y1
+    CoordMode, Mouse, Window
+    MouseGetPos, x2, y2
+    data := Format("Screen {} {}`nWindow {} {}",x1,y1,x2,y2)
+    Clipboard := data
+}
+
+
+
+MouseClickAndResetting(x, y, move_type="Screen")
+{
+    if (move_type="Screen") {
+        CoordMode, Mouse, Screen
+    }
+    if (move_type="Window") {
+        CoordMode, Mouse, Window
+    }
     MouseGetPos, x_origin, y_origin
     MouseClick, left, x, y, 1, 0
     MouseMove x_origin, y_origin, 0
@@ -48,7 +68,7 @@ MouseClickImage(image, trans="")
     y_find:=0
     
     if (trans) {
-        ImageSearch, x_find, y_find, x1, y1, x2, y2, *Trans%trans%  *30 %image%
+        ImageSearch, x_find, y_find, x1, y1, x2, y2, *30 *Trans%trans% %image%
     } else {
         ImageSearch, x_find, y_find, x1, y1, x2, y2, *30 %image%
     }
@@ -59,6 +79,6 @@ MouseClickImage(image, trans="")
         MouseClick, Left, x_find, y_find, 1, 0
         MouseMove x_origin, y_origin, 0
     } else {
-        HelpText("Not Find", , ,1000)
+        HelpText("Not Find",  ,  ,1000)
     }
 }

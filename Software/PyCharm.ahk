@@ -65,3 +65,20 @@
     Return
  
 #if
+
+
+
+#if ( WindowsActive("PyCharm", "SunAwtDialog", "Python Console") )
+    ; ReRun
+    !BackSpace::MouseClickAndResetting(34, 92, "Window")
+    ; MouseClickImage(A_WorkingDir "\Image\PyCharm\rerun.png")
+
+    ; StopConsole    
+    !+BackSpace::MouseClickAndResetting(34, 142, "Window")
+    ; MouseClickImage(A_WorkingDir "\Image\PyCharm\stop_console.png")
+
+    <#'::show_hide_key_config()
+
+#if
+
+

@@ -129,6 +129,15 @@ Loop_Ignore_Process_Name.Push( "LOL" )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; 在软件中显示快捷键帮助（相对坐标（控件左上角
+global KeyMapConfig := {}
+
+KeyMapConfig["PyCharm"]:=[]
+KeyMapConfig["PyCharm"].Push( [ 14, 72,  "!BS"  ] )
+KeyMapConfig["PyCharm"].Push( [ 14, 123, "!+BS" ] )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ; 设置一些软件默认位置 [x,y,w,h]
 global Windows_Default_Position := {}
 
