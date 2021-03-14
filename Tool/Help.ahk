@@ -112,5 +112,4 @@ HelpText(data="",xy="right_down",screens="screen1",sleep_time=0)
         Progress, Off
         help_text_show_status:=False
     }
-
 }

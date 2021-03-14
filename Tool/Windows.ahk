@@ -4,6 +4,7 @@
 #include %A_WorkingDir%\Tool\Help.ahk
 
 
+
 ; 判断是否在桌面
 ; return | True \ False
 IsDesktops()
@@ -18,6 +19,7 @@ IsDesktops()
 }
 
 
+
 ; 判断软件是否全屏\最小化
 ; return | True \ False
 IsMaxMinWindows()
@@ -30,6 +32,7 @@ IsMaxMinWindows()
         return False
     }
 }
+
 
 
 ; 判断当前激活的应用是否为游戏
@@ -218,6 +221,7 @@ MoveWindowsUDLR(direction)
 
     WinMove, ahk_id %win_id%,  , %win_x%, %win_y%
 }
+
 
 
 ; 调整窗口大小

@@ -5,6 +5,7 @@
 #include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 

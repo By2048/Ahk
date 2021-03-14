@@ -9,13 +9,9 @@
 #SingleInstance Force
 #NoTrayIcon
 
-
-
 if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
 }
-
-
 
 >^Esc::Run, taskmgr.exe ;任务管理器
 >^F1::
@@ -37,7 +33,6 @@ Return
     Sleep, 300
     MoveWindowsMM("mini")
 return
-
 >^F9::
     command := Format("{} {} E:\Project\script\bilibili\free_video.py", WT,Python)
     Run, %command%
@@ -50,18 +45,12 @@ Return
     Sleep, 300
     MoveWindowsMM("main")
 Return
->^F11::
-    command := Format("{} {} E:\Project\script\rename\bd-film.py", WT,Python)
-    Run, %command%
-    Sleep, 300
-    MoveWindowsMM("mini")
-Return
-
 
 >^`::Run, "E:\Sync\Ahk\Doc\Hotkey.xlsx"
 
 >^q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
 >^w::RunNormalUser("D:\WeChat\WeChat.exe")
+>^r::RunNormalUser("D:\QuiteRSS\QuiteRSS.exe")
 >^t::
     Process, Exist, TIM.exe
     if (ErrorLevel) {
@@ -109,8 +98,6 @@ Return
 >^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}::  ;我的电脑
 >^/::run, T:\\
 
-
-
 RCtrl & Enter::Run, "R:\Doc\All.xlsx"
 
 RCtrl & RWin::
@@ -118,8 +105,6 @@ RCtrl & RWin::
         Send ^w
     }
 Return
-
-
 
 $RCtrl::
     if (not cnt) {
@@ -129,7 +114,6 @@ $RCtrl::
     }
     SetTimer, timer, -500
 return
-
 
 timer:
     if (cnt=1) {

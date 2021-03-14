@@ -6,6 +6,7 @@
 #include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 
@@ -38,17 +39,9 @@ if (not A_IsAdmin) {
 >#o::Send ^!o ;喜欢歌曲
 >#p::Send ^!p ;歌词
 
-
 ; Snipaste
 >#PrintScreen::Send ^!{PrintScreen}
 >#Pause::Send ^!{Pause}
-
-
-
-
-global windows_move:=False
-global windows_resize_big:=False
-global windows_resize_small:=False
 
 
 
@@ -90,7 +83,6 @@ Return
     HelpText("Move Windows")
 Return
 
-
 >#Delete::
     if (IsDesktops() or IsGame()) {
         Return
@@ -98,6 +90,7 @@ Return
     WinGet, win_process_name, ProcessName, A
     Process, Close, %win_process_name%    
 Return
+
 >#Esc::
     if (IsDesktops() or IsGame()) {
         Return
@@ -113,11 +106,16 @@ RWin & RAlt::MoveWindowsMM("mini")
 
 
 
+global windows_move:=False
+global windows_resize_big:=False
+global windows_resize_small:=False
+
+
+
 timer:
     global windows_move
     global windows_resize_big
     global windows_resize_small
-
     if (windows_move=True or windows_resize_big=True or windows_resize_small=True) {
         windows_move:=False
         windows_resize_small:=False
@@ -148,16 +146,12 @@ return
     Right::MoveWindowsUDLR("Right")
 #if
 
-
-
 #if (windows_resize_big=True)
     Up::ResizeWindows("Big","Up")
     Down::ResizeWindows("Big","Down")
     Left::ResizeWindows("Big","Left")
     Right::ResizeWindows("Big","Right")
 #if
-
-
 
 #if (windows_resize_small=True)
     Up::ResizeWindows("Small","Up")

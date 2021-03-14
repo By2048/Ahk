@@ -12,6 +12,9 @@
     ^r::Return
     !r::Send ^r
 
+    ;关闭标签
+    ^F4::Return
+
     ;强制重新加载
     +F5::Return
     ^+r::Return

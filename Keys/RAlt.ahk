@@ -14,6 +14,8 @@ if (not A_IsAdmin) {
 
 
 
+global search_tool_show_status := False
+
 
 
 RAlt & RWin::
@@ -41,10 +43,6 @@ $RAlt::
     ;全局搜索框
     SetTimer, timer, -500
 return
-
-
-
-global search_tool_show_status := False
 
 
 

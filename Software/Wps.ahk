@@ -21,12 +21,18 @@ ExcelGetXYSpace(x, y)
 ; 移动到指定Sheet
 ExcelMoveToSheet(cnt)
 {
-    Send ^{PgUp 30}
+    Loop, 30 {
+        Send ^{PgUp}
+        Sleep 50
+    }
     cnt:=cnt-1
     if (cnt>0) {
-        Send ^{PgDn %cnt%}
+        Loop, %cnt% {
+            Send ^{PgDn}
+            Sleep 300
+        }
     }
-    Sleep, 500
+    Sleep, 100
 }
 
 
@@ -36,15 +42,23 @@ ExcelMoveToPosition(position)
 {
     ; 移动到A1
     Send ^{Home}
+    Sleep, 100
     result:=ExcelGetXYSpace("A1",position)
     move_x:=result[1]
     move_y:=result[2]
     if (move_x!=0) {
-        Send {Right %move_x%}
+        Loop, %move_x% {
+            Send {Right}
+            Sleep, 30
+        }
     }
     if (move_y!=0) {
-        Send {Down %move_y%}
+        Loop, %move_y% {
+            Send {Down}
+            Sleep, 30
+        }
     }
+    Sleep, 100
 }
 
 
@@ -61,13 +75,20 @@ ExcelSelectXToY(excel_x, excel_y, multi_line)
     move_y:=move_y-multi_line
     Send {RShift Down}
     if (move_x!=0) {
-        Send {Right %move_x%}
+        Loop, %move_x% {
+            Send {Right}
+            Sleep, 30
+        }
     }
     if (move_y!=0) {
-        Send {Down %move_y%}
+        Loop, %move_y% {
+            Send {Down}
+            Sleep, 30
+        }
     }
     Send {RShift UP}
     Send ^c
+    Sleep, 300
 }
 
 
@@ -83,7 +104,7 @@ SnipasteClipboardToImageFile(image_file)
     Sleep, 500
 
     ; 打开设置界面
-	WinGetPos, x, y, w, h, A    
+	WinGetPos, x, y, w, h, A
     xx:=x+50
     yy:=y+50
     MouseMove, %xx%, %yy%
@@ -132,9 +153,16 @@ HotkeysKeyImage()
         image_file:=value[5]
         ExcelMoveToSheet(sheet)
         ExcelMoveToPosition("A1")
+        Sleep, 300
         ExcelSelectXToY(excel_x, excel_y, multi_line)
-        ExcelMoveToPosition("A1")
+        Sleep, 1000
         SnipasteClipboardToImageFile(image_file)
+        Sleep, 300
+        Send {LButton}
+        Send {Esc}
+        Sleep, 300
+        ExcelMoveToPosition("A1")
+        Sleep, 1000
     }
     HelpText(" Over ", "center_down", "screen1", 1000)
 }
@@ -171,9 +199,9 @@ HotkeysKeyImage()
 
     >!\::
         Send, #{Up}
-        Sleep, 500
+        Sleep, 1000
         HotkeysKeyImage()
-        Sleep, 500
+        Sleep, 1000
         Send, #{Down}
     Return
 

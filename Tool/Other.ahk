@@ -19,6 +19,7 @@ RunNormalUser(command)
 }
 
 
+
 ; 屏幕截图
 ; screens   | screen1 screen2 screen3
 ; keep_path | backup tmp
@@ -145,4 +146,3 @@ show_hide_key_config()
     }
     key_map_show_status:=True
 }
-

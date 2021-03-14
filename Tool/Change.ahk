@@ -29,6 +29,7 @@ ToBase(n, b)
 
 
 
+; 软件进程名转换 code.exe -> VSCode
 ProcessNameFormat(process_name)
 {
     process_name := RTrim(process_name, "exe")
