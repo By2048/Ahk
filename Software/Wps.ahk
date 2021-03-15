@@ -205,4 +205,7 @@ HotkeysKeyImage()
         Send, #{Down}
     Return
 
+    !Tab::Send ^{PgDn}
+    !+Tab::Send ^{PgUp}
+
 #if
