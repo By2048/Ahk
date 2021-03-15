@@ -1,6 +1,17 @@
 
 #if ( WindowsActive("VSCode") )
 
+    ;切换标签页
+    ^]::Return
+    !Tab::Send ^]
+    ^[::Return
+    !+Tab::Send ^[
+    
+    ; 关闭
+    ^\::Return
+    !CapsLock::Send ^\
+
+    ; 设置 菜单
     ^F1::Return
     LAlt & RAlt::Send ^{F1}
     RAlt & LAlt::Send {AppsKey}
