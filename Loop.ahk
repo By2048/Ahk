@@ -51,6 +51,9 @@ Loop {
     ; 文件 删除\复制\移动
     if (win_process_name="Q-Dir" or win_process_name="Explorer") {
         if (win_class="OperationStatusWindow" or win_class="#32770") {
+            if (InStr(win_title, ".exe")) {
+                Continue
+            }
             xx := screen_3_x + screen_3_w/2 - win_w/2
             yy := screen_3_y + screen_3_h/4 - win_h/2
             SetWindows(win_id, xx, yy, win_w, win_h)

@@ -369,6 +369,10 @@ MoveWindowsToDefaultPosition()
     xx:=win_config[1], yy:=win_config[2]
     ww:=win_config[3], hh:=win_config[4]    
     SetWindows(win_id, xx, yy, ww, hh)
+    if (win_process_name="FDM") {
+        SetWindows(win_id, xx, yy, ww, hh)
+    }
+    
     HelpText(%key%, "center_down", "screen1", 1000)
 }
 

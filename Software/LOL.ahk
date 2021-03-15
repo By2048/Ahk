@@ -1,10 +1,8 @@
 ﻿
 #if ( WindowsActive("LOL") )
 
-	CapsLock::Return
-	; 	Send w
-	; 	Send q
-	; Return
+	; CapsLock::
+	; CapsLock Up::SetCapsLockState, Off
 
 	]::
 		SetDefaultKeyboard(0x0409)
