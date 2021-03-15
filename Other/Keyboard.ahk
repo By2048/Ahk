@@ -1,16 +1,12 @@
 
-/*
+; 正在使用的键盘界面效果 
 
-正在使用的键盘界面效果
-
-*/
-
-global keyboard_show_status:=False
-
-global keyboard_font_size  := 5
-global keyboard_font_name  := "Verdana"  
-global keyboard_font_style := "Bold"   
-global keyboard_transcolor := "F1ECED"
+global keyboard_show_status := False
+global keyboard_font_size   := 5
+global keyboard_font_name   := "Verdana"  
+global keyboard_font_style  := "Bold"   
+global keyboard_transcolor  := "F1ECED"
+global keyboard_win_id      := ""
 
 global keyboard_x := 10
 global keyboard_y := 4
@@ -23,12 +19,13 @@ global keyboard_line_4 := [["CapsLock",1.75],["A"],["S"],["D"],["F"],["G"],["H"]
 global keyboard_line_5 := [["Shift",2.25],["Z"],["X"],["C"],["V"],["B"],["N"],["M"],["< ,"],["> ."],["? /"],["Shift",1.75],["Up"],["End"]]
 global keyboard_line_6 := [["Ctrl",1.25],["Win",1.25],["Alt",1.25],["Space",5.5],["Alt",1.25],["Win",1.25],["Ctrl",1.25],["Left"],["Down"],["Right"]]
 
-global keyboard_win_id := ""
 
 
-keyboard_line(data) 
+KeyboardLine(data) 
 {
-    global keyboard_x, keyboard_h , keyboard_y
+    global keyboard_x
+    global keyboard_y
+    global keyboard_h
 
     for index, item in data {
         keyboard_txt := item[1]
@@ -55,13 +52,15 @@ keyboard_line(data)
 KeyboardGUI()
 {
     global keyboard_show_status
-    global keyboard_x, keyboard_y, keyboard_h
     global keyboard_win_id
+    global keyboard_x
+    global keyboard_y
+    global keyboard_h
     
     keyboard_x := 10
     keyboard_y := 4
     keyboard_h := 30
-    
+
     if (keyboard_show_status=False) {
         keyboard_show_status:=True
 
@@ -69,12 +68,12 @@ KeyboardGUI()
         Gui, -Caption +E0x200 +ToolWindow
         Gui, Color, %keyboard_transcolor%
 
-        keyboard_line(keyboard_line_1)
-        keyboard_line(keyboard_line_2)
-        keyboard_line(keyboard_line_3)
-        keyboard_line(keyboard_line_4)
-        keyboard_line(keyboard_line_5)
-        keyboard_line(keyboard_line_6)
+        KeyboardLine(keyboard_line_1)
+        KeyboardLine(keyboard_line_2)
+        KeyboardLine(keyboard_line_3)
+        KeyboardLine(keyboard_line_4)
+        KeyboardLine(keyboard_line_5)
+        KeyboardLine(keyboard_line_6)
         
         Gui, Show
 
@@ -88,11 +87,11 @@ KeyboardGUI()
         keyboard_win_id:=win_id
 
         ; 透明度 追上层
-        WinSet, AlwaysOnTop, On, ahk_id %win_id%
-        WinSet, TransColor, %keyboard_transcolor% 220, ahk_id %win_id%
+        WinSet, AlwaysOnTop, On, ahk_id %keyboard_win_id%
+        WinSet, TransColor, %keyboard_transcolor% 220, ahk_id %keyboard_win_id%
 
         ; 激活鼠标下的窗口
-        MouseGetPos, , , win_id
+        MouseGetPos,  ,  , win_id
         WinActivate, ahk_id %win_id%
     } else {
         keyboard_show_status:=False
@@ -111,9 +110,3 @@ KeyboardClick(keys)
     Sleep, 100
     ControlClick, %keys%, ahk_id %keyboard_win_id%,  , LEFT, 1, U
 }
-
-
-
-; F12::KeyboardClick("Shift")
-
-
