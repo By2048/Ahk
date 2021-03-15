@@ -95,7 +95,7 @@ Return
 >^v::RunNormalUser("D:\VSCode\Code.exe")
 >^m::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
 >^,::Run, explorer.exe
->^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}::  ;我的电脑
+>^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;控制面板
 >^/::run, T:\\
 
 RCtrl & Enter::Run, "R:\Doc\All.xlsx"
