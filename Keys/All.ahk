@@ -61,13 +61,13 @@ if (not A_IsAdmin) {
 #^Right::return ;向右切换虚拟桌面
 #,::Return ; 透明窗口显示桌面
 
-LCtrl & LAlt::
+RCtrl & RAlt::
     if (not IsDesktops()) {
         SetDefaultKeyboard(0x0804) ;ZH
         HelpText("ZH","center","screen1",1000)
     }
 Return
-LAlt & LCtrl::
+RAlt & RCtrl::
     if (not IsDesktops()) {
         SetDefaultKeyboard(0x0409) ;EN
         HelpText("EN","center","screen1",1000)
