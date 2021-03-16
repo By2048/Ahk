@@ -49,17 +49,21 @@ Loop {
             HelpText(" JQB UPDATE ", "center_down", "screen3", 1000)
             FileDelete %JQB_File%
         }
-    }
-
-    ; 删除文件
-    if (win_class="#32770" and win_title="删除文件") {
-        xx := screen_3_x + screen_3_w/2 - win_w/2
-        yy := screen_3_y + screen_3_h/4 - win_h/2
-        SetWindows(win_id, xx, yy,win_w, win_h)
         Continue
     }
 
-    ; 标准对话框
+    ; 删除文件 
+    ; 替换或跳过文件
+    if ( win_class="#32770" or win_class="OperationStatusWindow" ) {
+        if (InStr(win_title,"文件")) {
+            xx := screen_3_x + screen_3_w/2 - win_w/2
+            yy := screen_3_y + screen_3_h/4 - win_h/2
+            SetWindows(win_id, xx, yy, win_w, win_h)
+            Continue
+        }
+    }
+
+    ; Windows标准对话框
     if (win_class="#32770") {
         xx := screen_1_x + screen_1_w/2 - win_w/2
         yy := screen_1_y + screen_1_h/2 - win_h/2
