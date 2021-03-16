@@ -56,7 +56,7 @@ Return
     if (ErrorLevel) {
         TrayIcon_Button("TIM.exe", "L")
     } else {
-        RunNormalUser("D:\TIM\Bin\QQScLauncher.exe")
+        RunNormalUser("D:\TIM\Bin\TIM.exe")
     }
 Return
 >^p::
