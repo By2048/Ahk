@@ -16,6 +16,16 @@
     LAlt & RAlt::Send ^{F1}
     RAlt & LAlt::Send {AppsKey}
 
+    ;快速命令
+    ^p::Return
+    ~LShift::
+        if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<300) {
+            Send, ^p
+            Sleep, 100
+            Send, {LShift}
+        }
+    Return
+
     >!F1::Send {F13}
     >!F2::Send {F14}
     >!F3::Send {F15}

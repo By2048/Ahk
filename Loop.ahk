@@ -1,7 +1,9 @@
+﻿
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 
@@ -31,6 +33,7 @@ Loop {
     win_w            := result.win_w
     win_h            := result.win_h
 
+    ; 特定软件不进行处理 并延迟循环时间
     for index, value in Loop_Ignore_Process_Name {
         if (value=win_process_name) {
             Sleep, 30000
@@ -48,17 +51,12 @@ Loop {
         }
     }
 
-    ; 文件 删除\复制\移动
-    if (win_process_name="Q-Dir" or win_process_name="Explorer") {
-        if (win_class="OperationStatusWindow" or win_class="#32770") {
-            if (InStr(win_title, ".exe")) {
-                Continue
-            }
-            xx := screen_3_x + screen_3_w/2 - win_w/2
-            yy := screen_3_y + screen_3_h/4 - win_h/2
-            SetWindows(win_id, xx, yy, win_w, win_h)
-            Continue
-        }
+    ; 删除文件
+    if (win_class="#32770" and win_title="删除文件") {
+        xx := screen_3_x + screen_3_w/2 - win_w/2
+        yy := screen_3_y + screen_3_h/4 - win_h/2
+        SetWindows(win_id, xx, yy,win_w, win_h)
+        Continue
     }
 
     ; 标准对话框
@@ -69,5 +67,14 @@ Loop {
         SetWindows(win_id, xx, yy, win_w, win_h, offset)
         Continue
     }
+
+    ; if (win_process_name="Q-Dir" or win_process_name="Explorer") {
+    ;     if (win_class="OperationStatusWindow" or win_class="#32770") {
+    ;         xx := screen_3_x + screen_3_w/2 - win_w/2
+    ;         yy := screen_3_y + screen_3_h/4 - win_h/2
+    ;         SetWindows(win_id, xx, yy, win_w, win_h)
+    ;         Continue
+    ;     }
+    ; }
 
 }
