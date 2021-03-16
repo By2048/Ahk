@@ -23,13 +23,13 @@ ExcelMoveToSheet(cnt)
 {
     Loop, 30 {
         Send ^{PgUp}
-        Sleep 50
+        Sleep 100
     }
     cnt:=cnt-1
     if (cnt>0) {
         Loop, %cnt% {
             Send ^{PgDn}
-            Sleep 300
+            Sleep 100
         }
     }
     Sleep, 100
@@ -201,8 +201,6 @@ HotkeysKeyImage()
         Send, #{Up}
         Sleep, 1000
         HotkeysKeyImage()
-        Sleep, 1000
-        Send, #{Down}
     Return
 
     !Tab::Send ^{PgDn}

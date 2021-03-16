@@ -10,7 +10,15 @@
     !+Tab::Send ^[
 
     ;清屏 
+    ^/::Return
+    !Esc::Send ^/
+
+    ;关闭窗口
     ^\::Return
-    !Esc::Send ^\ 
+    !CapsLock::Send ^\
+
+    ;关闭所有窗口
+    ^+\::Return
+    !+CapsLock::Send ^+\
 
 #if
