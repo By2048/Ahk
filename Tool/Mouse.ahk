@@ -17,6 +17,17 @@ MouseMoveDC(xright, ydown)
 
 
 
+MousueTool()
+{
+    CoordMode, Mouse, Screen
+    MouseGetPos, x1, y1
+    CoordMode, Mouse, Window
+    MouseGetPos, x2, y2
+    Clipboard := Format("Screen {} {}`nWindow {} {}", x1,y1, x2,y2)
+}
+
+
+
 MouseClickAndResetting(x, y, move_type="Screen")
 {
     if (move_type="Screen") {
