@@ -86,9 +86,12 @@ ShowConfig()
     
     x:=screen_3_x+screen_3_w/2-w/2    
     y:=screen_3_y+screen_3_h/4-h/2
+    
     if (screen_count=1) {
-        y:=screen_3_y+screen_3_h/2-h/2
+        x:=screen_1_x+screen_1_w/2-w/2    
+        y:=screen_1_y+screen_1_h/2-h/2
     }
+    
     w:=w/2
     h:=h/2
 
