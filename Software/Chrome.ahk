@@ -165,9 +165,8 @@
     ^u::Return
     !u::Send ^u
 
-    ;查找
-    ; ^f::Return
-    ; !f::Send ^f
+    ; 设置
+    !f::Return
 
     ;网页缩放
     ^0::Return

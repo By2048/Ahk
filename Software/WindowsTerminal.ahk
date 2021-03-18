@@ -13,5 +13,11 @@
     ^F4::Return
     !CapsLock::Send ^{F4}
 
+    ^,::Return ; 设置
+    
+    ^+1::Return ; Windows PowerShell
+    ^+2::Return ; 命令提示符
+    ^+3::Return ; Azure Cloud Shell
+
 #if
 
