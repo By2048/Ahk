@@ -137,6 +137,7 @@
     ;收藏 （原本是定位地址栏
     ;取消收藏
     ^d::Return
+    ^+d::Return
     !d::Send ^d
     !+d::
         Send ^d
