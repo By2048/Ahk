@@ -146,3 +146,7 @@ show_hide_key_config()
     }
     key_map_show_status:=True
 }
+
+#if (key_map_show_status=True)
+    Esc::show_hide_key_config()
+#if

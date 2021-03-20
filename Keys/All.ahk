@@ -20,8 +20,7 @@ if (not A_IsAdmin) {
 !Esc::Return
 !+Esc::Return
 
-;关闭窗口
-!F4::Return
+!F4::Return ;关闭窗口
 
 ;Switch between open apps.
 !Tab::Return
@@ -30,12 +29,8 @@ if (not A_IsAdmin) {
 ;Use the arrow keys to switch between all open apps.
 ^!Tab::Return 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ^Esc::Return ;开始菜单
 ^+Esc::Return ;任务管理器
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 #a::Return ;打开操作中心
 #w::Return ;打开WindwsInk
@@ -60,6 +55,13 @@ if (not A_IsAdmin) {
 #^Left::return ;向左切换虚拟桌面
 #^Right::return ;向右切换虚拟桌面
 #,::Return ; 透明窗口显示桌面
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;TODO Error
+^!r::Return ; PowerToys
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 RCtrl & RAlt::
     if (not IsDesktops()) {
