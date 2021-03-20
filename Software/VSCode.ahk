@@ -1,44 +1,18 @@
 
 #if ( WindowsActive("VSCode") )
 
-    ;切换标签页
-    ^]::Return
-    !Tab::Send ^]
-    ^[::Return
-    !+Tab::Send ^[
-    
-    ; 关闭
-    ^\::Return
-    !CapsLock::Send ^\
+    #IncludeAgain %A_WorkingDir%\Software\Demo\Ide.ahk
 
-    ; 设置 菜单
-    ^F1::Return
-    LAlt & RAlt::Send ^{F1}
-    RAlt & LAlt::Send {AppsKey}
+    ; f1-f19 正常
+    ; f20-f24 unknown
 
-    ;快速命令
-    ^p::Return
+    ;快速命令 
     ~LShift::
         if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<300) {
-            Send, ^p
-            Sleep, 100
-            Send, {LShift}
+            Send {f17} ; {f5}
+            Sleep 100
+            Send {LShift}
         }
     Return
-
-    >!F1::Send {F13}
-    >!F2::Send {F14}
-    >!F3::Send {F15}
-    >!F4::Send {F16}
-
-    >!F5::Send {F17}
-    >!F6::Send {F18}
-    >!F7::Send {F19}
-    >!F8::Send {F20}
-    
-    >!F9::Send {F21}
-    >!F10::Send {F22}
-    >!F11::Send {F23}
-    >!F12::Send {F24}
 
 #if

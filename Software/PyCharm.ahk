@@ -1,27 +1,7 @@
 
 #if ( WindowsActive("PyCharm") )
     
-    ; 软件设置 | 右键菜单
-    LAlt & RAlt::Send {F13}
-    RAlt & LAlt::Send {AppsKey}
-
-    ; 切换
-    !Tab::Send !{F14}
-    !+Tab::Send !+{F14}
-
-    ; 关闭
-    !CapsLock::Send !{F15}
-    !+CapsLock::Send !+{F15}
-
-    ; 特殊按键覆盖
-    ^F4::Return
-    ^+F4::Return
-    !F4::Send !{F16}
-    !+F4::Send !+{F16}
-
-    ; 停止 重启
-    !Esc::Send !{F24}
-    !+Esc::Send !+{F24}
+    #IncludeAgain %A_WorkingDir%\Software\Demo\Ide.ahk
 
 #if
 
