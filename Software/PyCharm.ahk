@@ -5,9 +5,11 @@
     LAlt & RAlt::Send {F13}
     RAlt & LAlt::Send {AppsKey}
 
-    ; 切换 | 关闭
+    ; 切换
     !Tab::Send !{F14}
     !+Tab::Send !+{F14}
+
+    ; 关闭
     !CapsLock::Send !{F15}
     !+CapsLock::Send !+{F15}
 
