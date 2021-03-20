@@ -31,9 +31,9 @@
 
 
 ## 启动运行
-在 `Setup.ahk` 脚本所在目录,运行 `Setup.ahk`
-`LWin & RWin` 重启脚本
-`RWin & LWin` 暂停脚本
+- 在 `Setup.ahk` 脚本所在目录,运行 `Setup.ahk`
+- `LWin & RWin` 重启脚本
+- `RWin & LWin` 暂停脚本
 
 
 
@@ -44,7 +44,7 @@
 
 
 
-## 快捷键展示
+## 部分快捷键展示
 ![](https://github.com/By2048/Ahk/raw/master/Image/RShift/Windows.png)
 ![](https://github.com/By2048/Ahk/raw/master/Image/RShift/PyCharm-Fxx.png)
 ![](https://github.com/By2048/Ahk/raw/master/Image/RShift/RCtrl.png)
@@ -53,4 +53,4 @@
 
 ## 注意
 #### Note1
-![](https://github.com/By2048/Ahk/raw/master/Image/Readme/Note_Private.png.png)
+![](https://github.com/By2048/Ahk/raw/master/Image/Readme/Note_Private.png)
