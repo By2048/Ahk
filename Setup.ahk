@@ -6,7 +6,7 @@
 
 
 
-Menu, Tray, Icon, %A_WorkingDir%\Image\Setup.png
+Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Setup.png
 
 
 

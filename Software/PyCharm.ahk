@@ -25,7 +25,6 @@
 
 
 
-; 悬浮窗口
 #if ( WindowsActive("PyCharm", "SunAwtDialog") )
   
     ~RWin::
@@ -52,12 +51,11 @@
 
     ; ReRun
     !BackSpace::MouseClickAndResetting(34, 92, "Window")
-    ; MouseClickImage(A_WorkingDir "\Image\PyCharm\rerun.png")
 
     ; StopConsole
     !+BackSpace::MouseClickAndResetting(34, 142, "Window")
-    ; MouseClickImage(A_WorkingDir "\Image\PyCharm\stop_console.png")
 
+    ; 快捷键帮助
     <#'::show_hide_key_config()
 
 #if
