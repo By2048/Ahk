@@ -181,6 +181,7 @@ return
 #if (hotkeys_show_status=True)
     [::change("privious")
     ]::change("next")
+    Esc::hide_image()
     Pause::
         global hotkeys_index
         global hotkeys_images
