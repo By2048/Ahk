@@ -45,6 +45,9 @@ Return
     Sleep, 300
     MoveWindowsMM("main")
 Return
+>^PrintScreen::
+    Screenshot_Activate_Software()
+Return
 
 >^`::Run, "E:\Sync\Ahk\Doc\Hotkey.xlsx"
 
@@ -69,11 +72,6 @@ Return
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
 >^\::Run, "C:\Users\AM\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Whiteboard.lnk"
 
->^CapsLock::
-    Screenshot("screen1","tmp")
-    Screenshot("screen2","tmp")
-    Screenshot("screen3","tmp")
-Return
 >^a::Run, "D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe"
 >^s::RunNormalUser("D:\Everything\Everything.exe")
 >^f::RunNormalUser("D:\Firefox\firefox.exe")

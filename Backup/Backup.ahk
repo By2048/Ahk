@@ -1,7 +1,12 @@
 
-; Process, Priority,,high ;脚本高优先级
-; SetTitleMatchMode 2 ;窗口标题模糊匹配
-; Menu, Tray, NoStandard ; 不显示任何菜单
+;脚本高优先级
+Process, Priority,,high 
+
+;窗口标题模糊匹配
+SetTitleMatchMode 2 
+
+; 不显示任何菜单
+Menu, Tray, NoStandard 
 
 
 if (not A_IsAdmin) {
@@ -9,30 +14,31 @@ if (not A_IsAdmin) {
     ExitApp
 }
 
+MsgBox % Format("{:U}, {:L} and {:T}", "upper", "LOWER", "title")
+
+FileMove, T:\vscode.png, T:\VSCode.png
 
 
-; >^Z::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ; 回收站
+Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ; 回收站
 
 
 ~LControl & WheelUp::
-Send {LWin Down}{Ctrl Down}{Left}{Ctrl Up}{LWin Up}
+    Send {LWin Down}{Ctrl Down}{Left}{Ctrl Up}{LWin Up}
 return
 ~LControl & WheelDown::
-Send {LWin Down}{Ctrl Down}{Right}{Ctrl Up}{LWin Up}
+    Send {LWin Down}{Ctrl Down}{Right}{Ctrl Up}{LWin Up}
 return
 
 
 
-    size:=GetImageSize(image)
-    w:=size[1]
-    h:=size[2]
-    x:=A_ScreenWidth/2-w/2
-    y:=A_ScreenHeight/2-h/2
-    
-    SplashImage, %image%, X%x% Y%y% H%h% W%w% B1   ;  全屏幕居中
-    ; SplashImage, %image%, B1  ; 去除任务栏屏幕居中
+size:=GetImageSize(image)
+w:=size[1]
+h:=size[2]
+x:=A_ScreenWidth/2-w/2
+y:=A_ScreenHeight/2-h/2
 
-
+SplashImage, %image%, X%x% Y%y% H%h% W%w% B1   ;  全屏幕居中
+SplashImage, %image%, B1  ; 去除任务栏屏幕居中
 
 
 WinGet, active_id, ID, A
@@ -44,18 +50,18 @@ LCtrl & Tab::AltTab
 Shift::ShiftAltTab
 
 
-; WinSet, Style, ^0xC00000, A
+WinSet, Style, ^0xC00000, A
 
 
 
 ;Win+L
-#l:: ;a new purpose for Win+L
-MsgBox, % "a new purpose for Win+L"
-return
+;a new purpose for Win+L
+#l::MsgBox, % "a new purpose for Win+L"
 
 ;Ctrl+Win+Alt+L
-^#!l:: ;lock workstation (note: requires 2 'run as admin' registry writes)
-;tested with Windows 7
+;lock workstation (note: requires 2 'run as admin' registry writes)
+^#!l:: 
+
 
 ;enable 'lock workstation' (and enable Win+L hotkey):
 RegRead, vIsDisabled, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation
@@ -79,22 +85,18 @@ return
 
 
 
-    content .= "`n"
-    content .= Format("{1} | {2:-25}`n", "Snipaste", "D:\Snipaste\Snipaste.exe")
-    content .= Format("{1} | {2:-25}`n", "Screens", "R:\Screens")
-    content := StrReplace(content," ","  ")
+content .= "`n"
+content .= Format("{1} | {2:-25}`n", "Snipaste", "D:\Snipaste\Snipaste.exe")
+content .= Format("{1} | {2:-25}`n", "Screens", "R:\Screens")
+content := StrReplace(content," ","  ")
 
-    content := StrReplace(content," ","  ")
+content := StrReplace(content," ","  ")
 
 
-~RWin::
-$RWin::
-    if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<300)
-    {}
-return
+if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<300){
+}
 
 SetCapsLockState % !GetKeyState("CapsLock", "T") 
-
 
 
  Shift::
@@ -153,39 +155,32 @@ WinWaitClose
 
 
 
-    Space:: 
-        CoordMode Mouse Window
-        CoordMode Pixel Window
-        x_origin:=0
-        y_origin:=0
-        x_find:=0
-        y_find:=0
-        MouseGetPos, x_origin, y_origin
-        image:="E:\Sync\Ahk\Image\Software\CloudMusicCloseDetail.png"
-        size:=GetImageSize(image)
-        w:=size[1]
-        h:=size[2]
-        CoordMode Pixel Screen
-        ImageSearch, x_find, y_find, 0, 0, A_ScreenWidth, A_ScreenHeight, %image%
-        MsgBox, %x_find% | %y_find%
-        MsgBox, %A_ScreenWidth% | %A_ScreenHeight%
-        if (x_find and y_find) {
-            x_find:=x_find+w/2
-            y_find:=y_find+h/2
-            MouseClick, Left, x_find, y_find, 1, 0
-        } else {
-            MouseClick, Left, 57, 1765, 1, 0
-        }
-        CoordMode Pixel Window
-        MouseMove x_origin, y_origin, 0
-    Return
-
-
-
-
-
-
-
+Space:: 
+    CoordMode Mouse Window
+    CoordMode Pixel Window
+    x_origin:=0
+    y_origin:=0
+    x_find:=0
+    y_find:=0
+    MouseGetPos, x_origin, y_origin
+    image:="E:\Sync\Ahk\Image\Software\CloudMusicCloseDetail.png"
+    size:=GetImageSize(image)
+    w:=size[1]
+    h:=size[2]
+    CoordMode Pixel Screen
+    ImageSearch, x_find, y_find, 0, 0, A_ScreenWidth, A_ScreenHeight, %image%
+    MsgBox, %x_find% | %y_find%
+    MsgBox, %A_ScreenWidth% | %A_ScreenHeight%
+    if (x_find and y_find) {
+        x_find:=x_find+w/2
+        y_find:=y_find+h/2
+        MouseClick, Left, x_find, y_find, 1, 0
+    } else {
+        MouseClick, Left, 57, 1765, 1, 0
+    }
+    CoordMode Pixel Window
+    MouseMove x_origin, y_origin, 0
+Return
 
 
 
@@ -200,22 +195,3 @@ WinWaitClose
         Send {Delete}
     }
 Return
-
-
-
-
-
-
-CloseWindows()
-{
-    WinGet, w_id, ID, A
-    WinGet, w_name, ProcessName, A
-    Process, Close, %w_name%
-}
-
-
-
-KillWindows()
-{
-    WinGet, w_id, ID, A
-}

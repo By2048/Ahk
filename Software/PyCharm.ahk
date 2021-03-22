@@ -9,7 +9,7 @@
 
 #if ( WindowsActive("PyCharm", "SunAwtDialog") )
   
-    ~RWin::
+    ~RAlt::
         result := GetWindowsInfo()
         win_title := result.win_title
         if (win_title="Run" or win_title="Debug") {
@@ -17,7 +17,7 @@
         }
     Return
 
-    ~RWin Up::
+    ~RAlt Up::
         result := GetWindowsInfo()
         win_title := result.win_title
         if (win_title="Run" or win_title="Debug") {

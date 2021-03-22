@@ -2,6 +2,7 @@
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Private.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
+#include %A_WorkingDir%\Tool\Windows.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 
@@ -59,8 +60,9 @@ Screenshot(screens="screen1",keep_path="backup")
     }
 
     screens_name:=StrReplace(screens,"screen")
-    name:="" ,file:="" ,cmd:=""
-    FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss][%screens_name%]
+    name:="", file:="", cmd:=""
+    FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
+    name := Format("{1}[{2}]",name,screens_name)
     file := screenshot_keep_path "\" name ".png"
     file := StrReplace(file,"\\","\")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, x, y, w, h, file)
@@ -71,6 +73,35 @@ Screenshot(screens="screen1",keep_path="backup")
 
 
 
+; 软件设置界面截图保存
+Screenshot_Activate_Software()
+{
+    result := GetWindowsInfo()
+	win_process_name := result.win_process_name
+    win_x := result.win_x
+    win_y := result.win_y
+    win_w := result.win_w
+    win_h := result.win_h
+
+    name:="", file:="", cmd:=""
+    FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
+    name := Format("[{1}]{2}",win_process_name,name)
+    file := Snipaste_Screenshot_Path_Backup "\" name ".png"
+    file := StrReplace(file,"\\","\")
+    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, win_x, win_y, win_w, win_h, file)
+    Run %cmd%
+
+    SetTimer, delete_snipaste_auto_save_file, -1000
+    
+    ; 修复文件名大小写问题
+    Sleep, 1000
+    file_lower := Format("{:L}",file)
+    FileMove, %file_lower%, %file%
+}
+
+
+
+; 屏幕截图
 Snipaste(image="",screens="screen1")
 {
     image_size := GetImageSize(image)
@@ -94,6 +125,7 @@ Snipaste(image="",screens="screen1")
 
 
 
+; 删除软件自动保存的文件
 delete_snipaste_auto_save_file()
 {
     last_file := ""

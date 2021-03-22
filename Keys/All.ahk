@@ -1,6 +1,7 @@
 
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
+#include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Language.ahk
 
 #SingleInstance Force
@@ -74,4 +75,12 @@ RAlt & RCtrl::
         SetDefaultKeyboard(0x0409) ;EN
         HelpText("EN","center","screen1",1000)
     }
+Return
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+CapsLock & PrintScreen::
+    Screenshot("screen1","tmp")
+    Screenshot("screen2","tmp")
+    Screenshot("screen3","tmp")
 Return
