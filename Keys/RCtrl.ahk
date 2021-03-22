@@ -33,18 +33,6 @@ Return
     Sleep, 300
     MoveWindowsMM("mini")
 return
->^F9::
-    command := Format("{} {} E:\Project\script\bilibili\free_video.py", WT,Python)
-    Run, %command%
-    Sleep, 300
-    MoveWindowsMM("mini")
-Return    
->^F10::
-    command := Format("{} {} E:\Project\script\bilibili\download_video_join.py", WT,Python)
-    Run, %command%
-    Sleep, 300
-    MoveWindowsMM("main")
-Return
 >^PrintScreen::
     Screenshot_Activate_Software()
 Return

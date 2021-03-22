@@ -75,10 +75,12 @@ ShowConfig()
     content .= "`n-----------------------------------------------------------`n"
     content .= Format(" JQB | T:\\JQB")
     content .= "`n-----------------------------------------------------------"
-    content .= Format("`n date time datetime jqb ")
+    content .= Format("`n date time datetime jqb pipjx ")
     content .= Format("`n phone qq qq1 qq2 qmail qmail1 qmail2 gmail pwd aly ")
-    content .= Format("`n py pipjx ")
     content .= Format("`n nc.download nc.rename ")
+    content .= Format("`n bd.rename ")
+    content .= Format("`n bi.free bi.join ")
+    content .= Format("`n t py ")
     content .= "-----------------------------------------------------------"
 
     w:=600*2

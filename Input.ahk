@@ -1,13 +1,13 @@
+
 #include %A_WorkingDir%\Tool\Base.ahk
+
 #SingleInstance Force
 #NoTrayIcon
 #Hotstring EndChars `t
 
-
 if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
 }
-
 
 ::\date\::
     FormatTime, result,  , yyyy-dd-MM
@@ -27,4 +27,7 @@ Return
 ::\jqb\::
     SendInput, %Clipboard%
 Return
-    
+
+::\pipjx\::
+    SendInput -i https://pypi.tuna.tsinghua.edu.cn/simple
+Return
