@@ -18,7 +18,3 @@ RAlt & LAlt::Send {AppsKey}
 ^+F4::Return
 !F4::Send !{F16}
 !+F4::Send !+{F16}
-
-; 停止|重启{f12}
-!Esc::Send !{F24}
-!+Esc::Send !+{F24}
