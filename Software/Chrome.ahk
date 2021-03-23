@@ -161,6 +161,9 @@
     ^+g::Return
     !+g::Send ^+g
 
+    ; 反馈
+    !+i::Return
+
     ;查看源码
     ^u::Return
     !u::Send ^u
