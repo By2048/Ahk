@@ -115,7 +115,7 @@ WPS_Hotkeys_Image.Push( "6 A1 K20 0 E:\Sync\Ahk\Image\RShift\PyCharm-Fxx.png"   
 WPS_Hotkeys_Image.Push( "6 L1 U31 0 E:\Sync\Ahk\Image\RShift\PyCharm.png"         )
 WPS_Hotkeys_Image.Push( "8 A1 G26 0 E:\Sync\Ahk\Image\RShift\Xshell.png"          )
 WPS_Hotkeys_Image.Push( "9 A1 I41 6 E:\Sync\Ahk\Image\RShift\Chrome.png"          )
-WPS_Hotkeys_Image.Push( "9 K1 Q26 2 E:\Sync\Ahk\Image\RShift\Chrome-Bilibili.png" )
+WPS_Hotkeys_Image.Push( "9 J1 P26 2 E:\Sync\Ahk\Image\RShift\Chrome-Bilibili.png" )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
