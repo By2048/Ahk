@@ -96,6 +96,10 @@ ExcelSelectXToY(excel_x, excel_y, multi_line)
 ; Snipaste贴图自动保存
 SnipasteClipboardToImageFile(image_file)
 {
+    if (not FileExist(Snipaste_EXE)) {
+        Return
+    }
+
     CoordMode, Mouse, Screen
 
     ; 贴图

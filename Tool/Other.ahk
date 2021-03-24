@@ -26,6 +26,20 @@ RunNormalUser(command)
 ; keep_path | backup tmp
 Screenshot(screens="screen1",keep_path="backup")
 {
+    if (not FileExist(Snipaste_EXE)) {
+        Return
+    }
+    if (keep_path="backup") {
+        if (not FileExist(Snipaste_Screenshot_Path_Backup)) {
+            Return
+        }
+    }
+    if (keep_path="tmp") {
+        if (not FileExist(Snipaste_Screenshot_Path_Tmp)) {
+            Return
+        }
+    }
+
     if (screens="screen1") {
         x:=screen_1_x
         y:=screen_1_y
@@ -76,6 +90,10 @@ Screenshot(screens="screen1",keep_path="backup")
 ; 软件设置界面截图保存
 Screenshot_Activate_Software()
 {
+    if (not FileExist(Snipaste_EXE)) {
+        Return
+    }
+
     result := GetWindowsInfo()
 	win_process_name := result.win_process_name
     win_x := result.win_x
@@ -128,6 +146,9 @@ Snipaste(image="",screens="screen1")
 ; 删除软件自动保存的文件
 delete_snipaste_auto_save_file()
 {
+    if (not FileExist(Snipaste_Auto_Save_File)) {
+        Return
+    }
     last_file := ""
     Loop, Files, %Snipaste_Auto_Save_File%
     {
