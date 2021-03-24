@@ -31,12 +31,25 @@
     F4::Return
     !/::Send {F4}
 
+    ; 刷新
+    F5::Return
+    \::Send {F5}
+
     ; 显示Alt快捷键帮助
     F10::Return
 
     ; 全屏
     F11::Return
     !Enter::Send {F11}
+
+    ; 排序方式
+    ; 前进|返回|历史
+    ; 切换到树状列表
+    ; 文件夹列表
+    Tab::
+        Send ^+e
+        Send {F6}
+    Return
 
     ; 属性对话框
     !\::Send !{Enter}
@@ -57,17 +70,14 @@
     ^w::Return
     !CapsLock::Send ^w
 
+    ; 切换
+    ^Tab::Return
+    ^+Tab::Return
+    !Tab::Send ^{Tab}
+    !+Tab::Send ^+{Tab}
+
     ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
     ^WheelUp::Return
     ^WheelDown::Return
-
-    ; 排序方式
-    ; 前进|返回|历史
-    ; 切换到树状列表
-    ; 文件夹列表
-    Tab::
-        Send ^+e
-        Send {F6}
-    Return
 
 #if
