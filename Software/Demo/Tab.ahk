@@ -1,20 +1,15 @@
 
-; 软件设置{f1}
-LAlt & RAlt::Send ^{F1}
+; 软件设置
+^/::Return
+LAlt & RAlt::Send ^/
 
-; 右键菜单{AppsKey}
+; 右键菜单
 RAlt & LAlt::Send {AppsKey}
 
-; 切换标签页{f2}
-!Tab::Send !{F2}
-!+Tab::Send !+{F2}
+; 切换标签页
+!Tab::Send !]
+!+Tab::Send ![
 
-; 关闭标签页{f3}
-!CapsLock::Send !{F3}
-!+CapsLock::Send !+{F3}
-
-; 特殊按键覆盖{f4}
-^F4::Return
-^+F4::Return
-!F4::Send !{F4}
-!+F4::Send !+{F4}
+; 关闭标签页
+!CapsLock::Send !\
+!+CapsLock::Send !+\
