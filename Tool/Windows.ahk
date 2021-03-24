@@ -379,9 +379,9 @@ MoveWindowsToDefaultPosition()
 
 
 ; 检测当前激活的应用是否满足条件
-; _process_name_ | 
-; _class_        | 
-; _title_        |
+; _process_name_ | 进程名（转换后的
+; _class_        | 进程Class
+; _title_        | 软件标题
 ; return         | True \ False
 WindowsActive(_process_name_="", _class_="", _title_="")
 {

@@ -82,12 +82,13 @@ Windows_Process_Name.Push( [ "steam"                   , "Steam"        ] )
 Windows_Process_Name.Push( [ "NemuPlayer"              , "Android"      ] )
 Windows_Process_Name.Push( [ "ui32"                    , "Wallpaper"    ] )
 Windows_Process_Name.Push( [ "-----------------------" , "------------" ] )
-Windows_Process_Name.Push( [ "mstsc"                   , "Mstsc"        ] )
-Windows_Process_Name.Push( [ "explorer"                , "Explorer"     ] )
-Windows_Process_Name.Push( [ "SearchApp"               , "Search"       ] )
-Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "StartMenu"    ] )
+Windows_Process_Name.Push( [ "mstsc"                   , "Mstsc"        ] ) ;远程桌面
+Windows_Process_Name.Push( [ "taskmgr"                 , "TaskMGR"      ] ) ;任务管理器
+Windows_Process_Name.Push( [ "explorer"                , "Explorer"     ] ) ;资源管理器
+Windows_Process_Name.Push( [ "SearchApp"               , "Search"       ] ) ;搜索
+Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "StartMenu"    ] ) ;开始菜单
 Windows_Process_Name.Push( [ "-----------------------" , "------------" ] )
-Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"  ] )
+Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"  ] ) ;同花顺
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -182,6 +183,12 @@ win_h := 1250
 win_x := screen_1_x+screen_1_w/2-win_w/2
 win_y := screen_1_y+screen_1_h/2-win_h/2
 Windows_Default_Position["StartMenu"] := [win_x, win_y, win_w, win_h]
+
+win_w := screen_3_w-6-6
+win_h := screen_3_h/2-6-6
+win_x := screen_3_x+6
+win_y := screen_3_y+6
+Windows_Default_Position["TaskMGR"] := [win_x, win_y, win_w, win_h]
 
 win_x := 60
 win_y := 30
