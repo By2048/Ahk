@@ -94,17 +94,18 @@ Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"  ] ) ;同
 
 ; RShift快捷键帮助配置 快捷键图片对应关系
 global Process_Hotkeys_Image := {}
-Process_Hotkeys_Image[ "default"         ] := [ "Windows.png"                       ]
-Process_Hotkeys_Image[ "Windows"         ] := [ "Windows.png"                       ]
-Process_Hotkeys_Image[ "VSCode"          ] := [ "VSCode-Fxx.png", "VSCode.png"      ]
-Process_Hotkeys_Image[ "Xshell"          ] := [ "Xshell.png"                        ]
-Process_Hotkeys_Image[ "SumatraPDF"      ] := [ "SumatraPDF.png"                    ]
-Process_Hotkeys_Image[ "PyCharm"         ] := [ "PyCharm-Fxx.png", "PyCharm.png"    ]
-Process_Hotkeys_Image[ "QuiteRSS"        ] := [ "QuiteRSS.png"                      ]
-Process_Hotkeys_Image[ "Chrome"          ] := [ "Chrome.png"                        ]
-Process_Hotkeys_Image[ "Chrome_Bilibili" ] := [ "Chrome-Bilibili.png"               ]
-Process_Hotkeys_Image[ "PotPlayer"       ] := [ "PotPlayer.png"                     ]
-Process_Hotkeys_Image[ "CloudMusic"      ] := [ "CloudMusic.png"                    ]
+Process_Hotkeys_Image[ "default"         ] := [ "Windows.png"                    ]
+Process_Hotkeys_Image[ "Windows"         ] := [ "Windows.png"                    ]
+Process_Hotkeys_Image[ "VSCode"          ] := [ "VSCode-Fxx.png", "VSCode.png"   ]
+Process_Hotkeys_Image[ "Xshell"          ] := [ "Xshell.png"                     ]
+Process_Hotkeys_Image[ "SumatraPDF"      ] := [ "SumatraPDF.png"                 ]
+Process_Hotkeys_Image[ "PyCharm"         ] := [ "PyCharm-Fxx.png", "PyCharm.png" ]
+Process_Hotkeys_Image[ "QuiteRSS"        ] := [ "QuiteRSS.png"                   ]
+Process_Hotkeys_Image[ "Chrome"          ] := [ "Chrome.png"                     ]
+Process_Hotkeys_Image[ "Chrome_Bilibili" ] := [ "Chrome-Bilibili.png"            ]
+Process_Hotkeys_Image[ "PotPlayer"       ] := [ "PotPlayer.png"                  ]
+Process_Hotkeys_Image[ "CloudMusic"      ] := [ "CloudMusic.png"                 ]
+Process_Hotkeys_Image[ "Explorer"        ] := [ "Explorer.png"                   ]
 
 ; WPS Sheet 图片截图
 ; [1]System  [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
@@ -146,13 +147,13 @@ win_x := 10
 win_y := 10
 win_w := screen_1_w/2-10-10
 win_h := screen_1_h-10-10
-Windows_Default_Position["TIM"] := [ win_x, win_y, win_w, win_h ]
+Windows_Default_Position["TIM"] := [win_x, win_y, win_w, win_h]
 
 win_x := screen_1_w/2+10
 win_y := 10+14
 win_w := screen_1_w/2-10-10
 win_h := screen_1_h-10-10-14-14
-Windows_Default_Position["WeChat"] := [ win_x, win_y, win_w, win_h ]
+Windows_Default_Position["WeChat"] := [win_x, win_y, win_w, win_h]
 
 win_w := screen_3_w*8/9
 win_h := screen_3_h/2*5/6
