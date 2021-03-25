@@ -51,6 +51,16 @@
         Send {F6}
     Return
 
+    ; 切换
+    ^Tab::Return
+    ^+Tab::Return
+    !Tab::Send ^{Tab}
+    !+Tab::Send ^+{Tab}
+
+    ; Ctrl+W 关闭活动窗口
+    ^w::Return
+    !CapsLock::Send ^w
+
     ; 属性对话框
     !\::Send !{Enter}
 
@@ -66,16 +76,6 @@
     ^+n::Return
     ^n::Send ^+n
     
-    ; Ctrl+W 关闭活动窗口
-    ^w::Return
-    !CapsLock::Send ^w
-
-    ; 切换
-    ^Tab::Return
-    ^+Tab::Return
-    !Tab::Send ^{Tab}
-    !+Tab::Send ^+{Tab}
-
     ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
     ^WheelUp::Return
     ^WheelDown::Return
