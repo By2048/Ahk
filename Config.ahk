@@ -10,7 +10,8 @@ if (screen_count=1) {
     SysGet, Monitor1, Monitor
     SysGet, Monitor2, Monitor
     SysGet, Monitor3, Monitor
-} 
+}
+
 if (screen_count=3) {
     SysGet, Monitor1, Monitor, 3
     SysGet, Monitor2, Monitor, 1
@@ -133,7 +134,6 @@ Loop_Ignore_Process_Name.Push( "LOL" )
 
 ; 在软件中显示快捷键帮助（相对坐标（控件左上角
 global Key_Map_Config := {}
-
 Key_Map_Config["PyCharm"]:=[]
 Key_Map_Config["PyCharm"].Push( [ 14, 72,  "!BS"  ] )
 Key_Map_Config["PyCharm"].Push( [ 14, 123, "!+BS" ] )
