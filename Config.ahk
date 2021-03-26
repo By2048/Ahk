@@ -167,6 +167,12 @@ win_x := screen_1_x+screen_1_w/2-win_w/2
 win_y := screen_1_y+screen_1_h/2-win_h/2
 Windows_Default_Position["CloudMusic"] := [win_x, win_y, win_w, win_h]
 
+win_w := screen_1_w*0.7
+win_h := screen_1_h*0.7
+win_x := screen_1_x+screen_1_w/2-win_w/2
+win_y := screen_1_y+screen_1_h/2-win_h/2
+Windows_Default_Position["PotPlayer"] := [win_x, win_y, win_w, win_h]
+
 win_w := 2020
 win_h := 300
 win_x := screen_3_x+screen_3_w/2-win_w/2

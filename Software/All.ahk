@@ -17,6 +17,7 @@
 #include %A_WorkingDir%\Software\Explorer.ahk
 #include %A_WorkingDir%\Software\FSViewer.ahk
 #include %A_WorkingDir%\Software\LOL.ahk
+#include %A_WorkingDir%\Software\PotPlayer.ahk
 #include %A_WorkingDir%\Software\PyCharm.ahk
 #include %A_WorkingDir%\Software\Q-Dir.ahk
 #include %A_WorkingDir%\Software\SumatraPDF.ahk
