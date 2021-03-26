@@ -180,23 +180,26 @@ show_hide_key_config()
 
     result := GetWindowsInfo()
     win_process_name := result.win_process_name
-    key_map_config :=[]
-    for exe, config in KeyMapConfig {
+    
+    key_map_item:=[]
+    for exe,config in Key_Map_Config {
         if (exe=win_process_name) {
-            key_map_config:=config
+            key_map_item:=config
         }
     }
-    if (key_map_config.Length()=0) {
+    
+    if (key_map_item.Length()=0) {
         Return
     }
 
     CoordMode ToolTip Window
-    for index, config in key_map_config {
+    for index,config in key_map_item {
         x:=config[1]
         y:=config[2]
         key:=config[3]
         ToolTip, %key%, %x%, %y%, %index%
     }
+    
     key_map_show_status:=True
 }
 

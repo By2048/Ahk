@@ -168,6 +168,13 @@ MoveWindowsMM(command)
     main := [ 5/6 , 8/9 ]
     mini := [ 3/5 , 3/4 ]
 
+    for key, value in Windows_MM {
+        if (key = win_process_name) {
+            mini := value[1]
+            main := value[2]
+        }
+    }
+
     if (command="main") {
         HelpText("Windows Main Size")
         ww := screen_w * main[1]
@@ -367,7 +374,8 @@ MoveWindowsToDefaultPosition()
     }
 
     xx:=win_config[1], yy:=win_config[2]
-    ww:=win_config[3], hh:=win_config[4]    
+    ww:=win_config[3], hh:=win_config[4]
+
     SetWindows(win_id, xx, yy, ww, hh)
     
     if (win_process_name="FDM") {
