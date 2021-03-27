@@ -103,7 +103,7 @@ Screenshot_Activate_Software()
 
     name:="", file:="", cmd:=""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
-    name := Format("[{1}]{2}",win_process_name,name)
+    name := Format("{2}[{1}]",win_process_name,name)
     file := Snipaste_Screenshot_Path_Backup "\" name ".png"
     file := StrReplace(file,"\\","\")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, win_x, win_y, win_w, win_h, file)

@@ -76,11 +76,12 @@ ShowConfig()
     content .= Format(" JQB | T:\\JQB")
     content .= "`n-----------------------------------------------------------"
     content .= Format("`n date time datetime jqb pipjx ")
+    content .= "`n-----------------------------------------------------------"
     content .= Format("`n phone qq qq1 qq2 qmail qmail1 qmail2 gmail pwd aly ")
     content .= Format("`n nc.download nc.rename ")
     content .= Format("`n bd.rename ")
-    content .= Format("`n bi.free bi.join ")
-    content .= Format("`n t py ")
+    content .= Format("`n bi.free bi.join bi.getname bi.rename ")
+    content .= Format("`n history screen t py ")
     content .= "-----------------------------------------------------------"
 
     w:=600*2
