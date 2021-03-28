@@ -7,20 +7,15 @@
 #SingleInstance Force
 #NoTrayIcon
 
-
-
 if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
 }
-
-
 
 Loop {
 
     Sleep, 1000
 
-    result := GetWindowsInfo()
-
+    result           := GetWindowsInfo()
     win_id           := result.win_id
     win_min_max      := result.win_min_max
 	win_process_name := result.win_process_name
@@ -52,13 +47,16 @@ Loop {
         Continue
     }
 
-    ; 删除|替换|跳过 文件
+    ; 删除|替换|跳过|已完成
+    win_title_rule := [ "删除", "替换", "跳过", "已完成" ]
     if (win_class="#32770" or win_class="OperationStatusWindow") {
-        if (InStr(win_title,"删除") or InStr(win_title,"替换") or InStr(win_title,"跳过")) {
-            xx := screen_3_x + screen_3_w/2 - win_w/2
-            yy := screen_3_y + screen_3_h/4 - win_h/2
-            SetWindows(win_id, xx, yy, win_w, win_h)
-            Continue
+        for index, rule in win_title_rule {
+            if (InStr(win_title, rule)) {
+                xx := screen_3_x + screen_3_w/2 - win_w/2
+                yy := screen_3_y + screen_3_h/4 - win_h/2
+                SetWindows(win_id, xx, yy, win_w, win_h)
+                Continue
+            }
         }
     }
 
@@ -72,12 +70,6 @@ Loop {
     }
 
     ; if (win_process_name="Q-Dir" or win_process_name="Explorer") {
-    ;     if (win_class="OperationStatusWindow" or win_class="#32770") {
-    ;         xx := screen_3_x + screen_3_w/2 - win_w/2
-    ;         yy := screen_3_y + screen_3_h/4 - win_h/2
-    ;         SetWindows(win_id, xx, yy, win_w, win_h)
-    ;         Continue
-    ;     }
     ; }
 
 }
