@@ -14,10 +14,27 @@
     =::Send !=
     -::Send !-
 
-    ; Left::Send ![
-    ; Right::Send !]
-    ; Up::Send !=
-    ; Down::Send !-
+    ; 列表上一首
+    PgUp::
+        MoveWindowsToDefaultPosition()
+        Sleep, 300
+        MouseClickAndResetting(1076,1584,"Window")
+        Sleep, 300
+        Send ![
+        Sleep, 300
+        MouseClickAndResetting(1076,1584,"Window",3)
+    Return
+
+    ; 列表下一首
+    PgDn::
+        MoveWindowsToDefaultPosition()
+        Sleep, 300
+        MouseClickAndResetting(1076,1584,"Window")
+        Sleep, 300
+        Send !]
+        Sleep, 300
+        MouseClickAndResetting(1076,1584,"Window",3)
+    Return
 
 #if
 
