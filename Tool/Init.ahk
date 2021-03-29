@@ -45,6 +45,7 @@ ShowConfig()
 
     content := ""
     for index, value in Init_Config {
+        content .= "`n"
         content .= value
     }
 
