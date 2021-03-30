@@ -1,6 +1,5 @@
 
 #include %A_WorkingDir%\Config.ahk
-#include %A_WorkingDir%\Global.ahk
 #include %A_WorkingDir%\Private.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
