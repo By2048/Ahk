@@ -70,19 +70,20 @@ GetWindowsInfo()
     screen_x:=0, screen_y:=0, screen_xx:=0, screen_yy:=0
     if (win_x >= screen_1_x and win_x < screen_1_xx) {
         in_screen := 1
-        screen_x  := screen_1_x  ,   screen_y := screen_1_y
-        screen_xx := screen_1_xx ,  screen_yy := screen_1_yy
+        screen_x  := screen_1_x  ,  screen_y := screen_1_y
+        screen_w  := screen_1_w  ,  screen_h := screen_1_h
+        screen_xx := screen_1_xx , screen_yy := screen_1_yy
     } else if (win_x >= screen_2_x and win_x < screen_2_xx) {
         in_screen := 2
-        screen_x  := screen_2_x  ,   screen_y := screen_2_y
-        screen_xx := screen_2_xx ,  screen_yy := screen_2_yy
+        screen_x  := screen_2_x  ,  screen_y := screen_2_y
+        screen_w  := screen_2_w  ,  screen_h := screen_2_h
+        screen_xx := screen_2_xx , screen_yy := screen_2_yy
     } else if (win_x>=screen_3_x and win_x<screen_3_xx) {
         in_screen := 3
-        screen_x  := screen_3_x,     screen_y := screen_3_y
-        screen_xx := screen_3_xx,   screen_yy := screen_3_yy/2
+        screen_x  := screen_3_x  ,  screen_y := screen_3_y
+        screen_w  := screen_3_w  ,  screen_h := screen_3_h
+        screen_xx := screen_3_xx , screen_yy := screen_3_yy/2
     }
-    screen_w := screen_xx - screen_x
-    screen_h := screen_yy - screen_y
 
     result := {}
 
@@ -425,7 +426,7 @@ WindowsActive(_process_name_="", _class_="", _title_="")
 
 
 ; 修改窗口透明度
-UpdateWinTransparent(change=0)
+UpdateWindowsTransparent(change=0)
 {
     result := GetWindowsInfo()
     win_id := result.win_id

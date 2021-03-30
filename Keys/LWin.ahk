@@ -54,15 +54,9 @@ return
 <#n::#k ;打开“连接”快速操作
 <#m::#d ;切换隐藏所有应用界面
 
-
 ; 修改窗口透明度
-<#WheelUp::
-    UpdateWinTransparent(10)
-Return
-<#WheelDown::
-    UpdateWinTransparent(-10)
-Return
-
+<#WheelUp::UpdateWindowsTransparent(10)
+<#WheelDown::UpdateWindowsTransparent(-10)
 
 ;切换应用
 global win_tab:=False

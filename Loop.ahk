@@ -27,6 +27,11 @@ Loop {
     win_y            := result.win_y
     win_w            := result.win_w
     win_h            := result.win_h
+    in_screen        := result.in_screen
+    screen_x         := result.screen_x
+    screen_y         := result.screen_y
+    screen_w         := result.screen_w
+    screen_h         := result.screen_h
 
     ; 特定软件不进行处理 并延迟循环时间
     for index, value in Loop_Ignore_Process_Name {
@@ -47,17 +52,32 @@ Loop {
         Continue
     }
 
-    ; 删除|替换|跳过|已完成
-    win_title_rule := [ "删除", "替换", "跳过", "已完成" ]
+    ; Windows系统文件操作
     if (win_class="#32770" or win_class="OperationStatusWindow") {
-        for index, rule in win_title_rule {
-            if (InStr(win_title, rule)) {
-                xx := screen_3_x + screen_3_w/2 - win_w/2
-                yy := screen_3_y + screen_3_h/4 - win_h/2
-                SetWindows(win_id, xx, yy, win_w, win_h)
-                Continue
+        if (InStr(win_title,"删除") or InStr(win_title,"替换") or InStr(win_title,"跳过")) {
+            if (in_screen=3) {
+                screen_w := screen_w/2
             }
+            xx := screen_x + screen_w/2 - win_w/2
+            yy := screen_y + screen_h/2 - win_h/2
+            SetWindows(win_id, xx, yy, win_w, win_h)
         }
+        if (InStr(win_title, "已完成")) {
+            ; [2][1][3] 屏幕1移动到屏幕3
+            ; 不同屏幕之间移动Windows会进行微调窗口大小
+            if (in_screen=1) {
+                Send, #+{Right}
+                Sleep, 100
+                result := GetWindowsInfo()
+                win_id := result.win_id
+                win_w := result.win_w
+                win_h := result.win_h
+            }
+            xx := screen_3_x + screen_3_w/2 - win_w/2
+            yy := screen_3_y + screen_3_h/4 - win_h/2
+            SetWindows(win_id, xx, yy, win_w, win_h)
+        }
+        Continue
     }
 
     ; Windows标准对话框
