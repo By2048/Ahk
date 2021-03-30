@@ -1,5 +1,6 @@
 
 #include %A_WorkingDir%\Config.ahk
+#include %A_WorkingDir%\Global.ahk
 #include %A_WorkingDir%\Private.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
@@ -159,8 +160,6 @@ delete_snipaste_auto_save_file()
 
 
 
-global key_map_show_status := False
-
 show_hide_key_config()
 {
     global key_map_show_status
@@ -202,6 +201,8 @@ show_hide_key_config()
     
     key_map_show_status:=True
 }
+
+
 
 #if (key_map_show_status=True)
     Esc::show_hide_key_config()

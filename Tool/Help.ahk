@@ -1,12 +1,8 @@
 
 #include %A_WorkingDir%\Config.ahk
+#include %A_WorkingDir%\Global.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
 #include %A_WorkingDir%\Tool\Language.ahk
-
-
-
-global help_text_show_status:=False
-global help_image_show_status:=False
 
 
 

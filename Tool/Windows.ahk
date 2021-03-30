@@ -425,6 +425,7 @@ WindowsActive(_process_name_="", _class_="", _title_="")
 }
 
 
+
 ; 修改窗口透明度
 UpdateWindowsTransparent(change=0)
 {

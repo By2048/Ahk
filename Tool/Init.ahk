@@ -1,13 +1,11 @@
 
 #include %A_WorkingDir%\Config.ahk
+#include %A_WorkingDir%\Global.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
 
 
 
-global print_config_show_status:=False
-
-
-
+; 项目启动时创建的居中进度条 
 DefaultProgress()
 {
     w:=150*2
@@ -63,10 +61,10 @@ ShowConfig()
     w:=w/2
     h:=h/2
 
-    global print_config_show_status
-    if (print_config_show_status=False) {
+    global init_config_show_status
+    if (init_config_show_status=False) {
         Progress, b zh0 fs15 fm19 c01 x%x% y%y% w%w% h%h%, %content%, %title%, "Source Code Pro"
-        print_config_show_status:=True
+        init_config_show_status:=True
     }
 }
 
@@ -74,9 +72,9 @@ ShowConfig()
 
 HideConfig()
 {
-    global print_config_show_status
-    if (print_config_show_status=True) {
-        print_config_show_status:=False
+    global init_config_show_status
+    if (init_config_show_status=True) {
+        init_config_show_status:=False
         Progress, Off
     }
 }
