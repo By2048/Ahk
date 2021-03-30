@@ -422,3 +422,27 @@ WindowsActive(_process_name_="", _class_="", _title_="")
     
     Return check_windows_active
 }
+
+
+; 修改窗口透明度
+UpdateWinTransparent(change=0)
+{
+    result := GetWindowsInfo()
+    win_id := result.win_id
+    win_transparent := result.win_transparent
+    if (change>0) {
+        if (win_transparent+change>=255) {
+            win_transparent:=255
+        } else {
+            win_transparent:=win_transparent+change
+        }
+        WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
+    } else if (change<0) {
+        if (win_transparent+change<=55) {
+            win_transparent:=55
+        } else {
+            win_transparent:=win_transparent+change
+        }
+        WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
+    }
+}

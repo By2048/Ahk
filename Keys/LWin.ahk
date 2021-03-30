@@ -2,6 +2,7 @@
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Tool\Windows.ahk
 
 #SingleInstance Force
 #NoTrayIcon
@@ -53,6 +54,14 @@ return
 <#n::#k ;打开“连接”快速操作
 <#m::#d ;切换隐藏所有应用界面
 
+
+; 修改窗口透明度
+<#WheelUp::
+    UpdateWinTransparent(10)
+Return
+<#WheelDown::
+    UpdateWinTransparent(-10)
+Return
 
 
 ;切换应用
