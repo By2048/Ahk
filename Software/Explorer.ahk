@@ -51,6 +51,10 @@
         Send {F6}
     Return
 
+    ; 展开功能区
+    ^F1::Return
+    RAlt::Send ^{F1}
+
     ; 切换
     ^Tab::Return
     ^+Tab::Return

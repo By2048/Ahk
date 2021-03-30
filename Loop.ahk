@@ -54,6 +54,12 @@ Loop {
 
     ; Windows系统文件操作
     if (win_class="#32770" or win_class="OperationStatusWindow") {
+        if (InStr(win_title, "属性")) {
+            xx := screen_x + screen_w/2 - win_w/2
+            yy := screen_y + screen_h/2 - win_h/2
+            SetWindows(win_id, xx, yy, win_w, win_h)
+            Continue
+        }
         if (InStr(win_title,"删除") or InStr(win_title,"替换") or InStr(win_title,"跳过")) {
             if (in_screen=3) {
                 screen_w := screen_w/2
@@ -61,6 +67,7 @@ Loop {
             xx := screen_x + screen_w/2 - win_w/2
             yy := screen_y + screen_h/2 - win_h/2
             SetWindows(win_id, xx, yy, win_w, win_h)
+            Continue
         }
         if (InStr(win_title, "已完成")) {
             ; [2][1][3] 屏幕1移动到屏幕3
@@ -76,8 +83,8 @@ Loop {
             xx := screen_3_x + screen_3_w/2 - win_w/2
             yy := screen_3_y + screen_3_h/4 - win_h/2
             SetWindows(win_id, xx, yy, win_w, win_h)
+            Continue
         }
-        Continue
     }
 
     ; Windows标准对话框
