@@ -144,7 +144,7 @@ Init_Config.Push( " phone qq qq1 qq2 qmail qmail1 qmail2 gmail pwd aly "        
 Init_Config.Push( " nc.download nc.rename "                                     )
 Init_Config.Push( " bd.rename "                                                 )
 Init_Config.Push( " bi.free bi.join bi.getname bi.rename "                      )
-Init_Config.Push( " history screen camera "                                     )
+Init_Config.Push( " history screen camera weixin "                              )
 Init_Config.Push( " py "                                                        )
 Init_Config.Push( "-----------------------------------------------------------" )
 
