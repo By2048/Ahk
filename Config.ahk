@@ -44,6 +44,8 @@ global screen_3_w  := screen_3_xx    - screen_3_x
 global screen_3_h  := screen_3_yy    - screen_3_y
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; 工具类中使用的全局变量在此配置
+; /Other/ /Tool/
 
 ; Init Config
 global init_config_show_status := False

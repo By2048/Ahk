@@ -1,4 +1,5 @@
 ﻿
+#include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
@@ -31,10 +32,6 @@ if (not A_IsAdmin) {
 
 
 
-global search_tool_show_status := False
-
-
-
 RAlt & RWin::
     if (IsDesktops() or IsGame()) {
         Return
@@ -60,6 +57,10 @@ $RAlt::
     ;全局搜索框
     SetTimer, timer, -500
 return
+
+
+
+global search_tool_show_status := False
 
 
 
