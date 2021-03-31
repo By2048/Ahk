@@ -1,8 +1,16 @@
 ﻿
 #if ( WindowsActive("LOL") )
 
+	; 涤魂圣枪 赛娜
 	; CapsLock::
-	; CapsLock Up::SetCapsLockState, Off
+	; 	Loop, 5000Jq {
+	; 		Send, +j
+	; 		Send, q
+	; 		Sleep, 500
+    ;     	HelpText(" " A_Index " ", "center_down", "screen_1")
+	; 	}
+	; Return
+	; CapsLock Up::SetCapsLockState Off
 
 	]::
 		SetDefaultKeyboard(0x0409)

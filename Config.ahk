@@ -55,6 +55,12 @@ global help_image_show_status  := False
 ; 键盘快捷键帮助
 global key_map_show_status     := False
 
+; 安卓应用
+global software_android_rshift := 1
+
+; VSCode
+global software_vscode_ralt    := False
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 

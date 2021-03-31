@@ -53,7 +53,7 @@
 
     ; 展开功能区
     ^F1::Return
-    RAlt::Send ^{F1}
+    !BackSpace::Send ^{F1}
 
     ; 切换
     ^Tab::Return

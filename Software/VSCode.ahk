@@ -4,14 +4,19 @@
     #IncludeAgain %A_WorkingDir%\Software\Demo\Ide.ahk
 
     ; f1-f19 正常
-    ; f20-f24 unknown
 
     ;快速命令 
-    ~LShift::
+    RAlt::
+        global software_vscode_ralt
+        if (software_vscode_ralt=True) {
+            software_vscode_ralt:=False
+            Send {Esc}
+        } 
         if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<300) {
-            Send {f17} ; {f5}
-            Sleep 100
-            Send {LShift}
+            if (software_vscode_ralt=False) {
+                software_vscode_ralt:=True
+                Send {f17} ; {f5}
+            }
         }
     Return
 
