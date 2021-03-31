@@ -1,6 +1,6 @@
 
-#if ( WindowsActive("Android") )
-    
+#if ( WindowsActive("Android", "", "部落冲突") )
+
     `::Send {LButton}
 
     Space::Send {LButton 4}

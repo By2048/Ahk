@@ -1,4 +1,4 @@
-
+﻿
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
@@ -415,7 +415,7 @@ WindowsActive(_process_name_="", _class_="", _title_="")
         }
     }
     if (StrLen(_title_)>0) {
-        if (_title_ != win_title) {
+        If (not InStr(win_title, _title_)) {
             check_windows_active := False
             Return check_windows_active
         }
