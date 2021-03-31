@@ -1,28 +1,14 @@
 
 #if ( WindowsActive("Android") )
     
-    Space::Send {LButton 4}
-    
     `::Send {LButton}
 
-    ^1::Return
-    ^2::Return
-    ^3::Return
-    ^4::Return
-    ^5::Return
-    ^6::Return
-    ^7::Return
-    ^8::Return
-    ^9::Return
-    ^0::Return
-
-    ^Tab::Return
-    ^+Tab::Return
-    !Tab::Send ^{Tab}
-    !+Tab::Send ^+{Tab}
+    Space::Send {LButton 4}
 
     ; 女巫流
     =::
+        HelpText(" 女巫流开始 ","center_down","screen_1",1000)
+
         CoordMode, Mouse, Window
         MouseGetPos, xx, yy
 
@@ -50,10 +36,14 @@
                 HelpText()
             }
         }
+
+        HelpText(" 女巫流结束 ","center_down","screen_1",1000)
     return
 
     ; 降杯
     -::
+        HelpText(" 降杯开始 ","center_down","screen_1",1000)
+
         CoordMode, Mouse, Window
 
         Send Q
@@ -90,6 +80,8 @@
         Sleep, 3000
         
         Send \
+
+        HelpText(" 降杯结束 ","center_down","screen_1",1000)
     Return
 
     ; 退出
@@ -101,8 +93,10 @@
         Send D
         Sleep, 3000
         Send \
+        HelpText(" BackSpace ","center_down","screen_1",1000)
     Return
 
+    ; 补兵
     Tab::
         Send a
         Sleep, 100
@@ -121,6 +115,64 @@
         Send c
         Sleep, 100
         Send \
+
+        HelpText(" Tab ","center_down","screen_1",1000)
     Return
+
+    ; 按顺序切换兵种 1-5
+    LShift::
+        global software_android_rshift
+        Send %software_android_rshift%
+        software_android_rshift:=software_android_rshift-1
+        if (software_android_rshift<1) {
+            software_android_rshift:=5
+        }
+    Return
+
+    ; 按顺序切换兵种 1-5
+    LAlt::
+        global software_android_rshift
+        Send %software_android_rshift%
+        software_android_rshift:=software_android_rshift+1
+        if (software_android_rshift>5) {
+            software_android_rshift:=1
+        }
+    Return
+
+    ; 选择兵种
+    ^1::Return
+    ^2::Return
+    ^3::Return
+    ^4::Return
+    ^5::Return
+    ^6::Return
+    ^7::Return
+    ^8::Return
+    ^9::Return
+    ^0::Return
+
+    ; 全屏
+    F11::Return
+    !Enter::Send {F11}
+
+    ; 切换键鼠提示 
+    ; F12
+
+    ; 切换标签
+    ^Tab::Return
+    ^+Tab::Return
+    !Tab::Send ^{Tab}
+    !+Tab::Send ^+{Tab}
+
+    ; 键鼠
+    !1::Return
+
+    ; 手柄
+    !3::Return
+
+    ; 截屏
+    !q::Return
+    CapsLock::Send !q
+    CapsLock Up::SetCapsLockState off
 
 #if
