@@ -1,4 +1,4 @@
-
+﻿
 #if ( WindowsActive("Android", "", "部落冲突") )
 
     `::Send {LButton}

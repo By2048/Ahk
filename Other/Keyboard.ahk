@@ -1,4 +1,4 @@
-
+﻿
 ; 正在使用的键盘界面效果 
 
 global keyboard_show_status := False

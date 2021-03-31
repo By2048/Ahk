@@ -1,4 +1,4 @@
-
+﻿
 #if ( WindowsActive("Q-Dir") )
 
     ;全屏

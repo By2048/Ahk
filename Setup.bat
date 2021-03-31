@@ -1,4 +1,4 @@
-
+﻿
 @title [Start Ahk]
 @echo off
 

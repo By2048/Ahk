@@ -1,4 +1,4 @@
-
+﻿
 #if ( WindowsActive("PyCharm") )
     
     #IncludeAgain %A_WorkingDir%\Software\Demo\Ide.ahk

@@ -1,4 +1,4 @@
-
+﻿
 ^a::Return ;全选
 
 ^x::Return ;剪切

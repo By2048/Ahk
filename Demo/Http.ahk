@@ -1,4 +1,4 @@
-
+﻿
 F11::
     whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     whr.Open("GET", "https://autohotkey.com/download/1.1/version.txt")

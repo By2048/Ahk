@@ -1,4 +1,4 @@
-
+﻿
 ; 软件设置{f1}
 LAlt & RAlt::Send {F13}
 

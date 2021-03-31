@@ -1,4 +1,4 @@
-
+﻿
 #Include %A_ScriptDir%\Tool.ahk
 #SingleInstance Force
 #NoTrayIcon

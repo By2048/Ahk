@@ -1,4 +1,4 @@
-
+﻿
 #include %A_WorkingDir%\Libs\Gdip_All.ahk
 
 

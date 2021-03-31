@@ -1,4 +1,4 @@
-
+﻿
 ; 退出软件 修改软件界面设置
 ^Esc::Return
 !Esc::Return

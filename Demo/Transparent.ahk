@@ -1,4 +1,4 @@
-
+﻿
 !WheelDown::
 	WinGet, value, Transparent,A
 	if (not value){ 

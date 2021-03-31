@@ -1,4 +1,4 @@
-
+﻿
 #if ( WindowsActive("Explorer") )
 
     ; Ctrl+F 选择搜索框

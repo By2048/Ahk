@@ -1,4 +1,4 @@
-
+﻿
 #include %A_WorkingDir%\Tool\Base.ahk
 
 #SingleInstance Force

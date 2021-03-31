@@ -1,4 +1,4 @@
-;
+﻿;
 ; AutoHotkey Version: 1.x
 ; Language:       English
 ; Platform:       Win9x/NT

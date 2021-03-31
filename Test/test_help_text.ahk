@@ -1,4 +1,4 @@
-
+﻿
 test_help_text()
 {
     HelpText("right_down","right_down","screen1")

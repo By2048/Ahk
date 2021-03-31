@@ -1,4 +1,4 @@
-
+﻿
 #if ( WindowsActive("PotPlayer") )
 
     ; 2倍数播放

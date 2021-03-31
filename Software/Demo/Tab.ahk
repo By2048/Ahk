@@ -1,4 +1,4 @@
-
+﻿
 ; 软件设置
 ^/::Return
 LAlt & RAlt::Send ^/

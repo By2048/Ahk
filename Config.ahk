@@ -1,4 +1,4 @@
-
+﻿
 ; 默认屏幕数量
 global screen_count := 3
 

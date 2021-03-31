@@ -1,4 +1,4 @@
-
+﻿
 #if ( WindowsActive("VSCode") )
 
     #IncludeAgain %A_WorkingDir%\Software\Demo\Ide.ahk

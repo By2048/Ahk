@@ -1,4 +1,4 @@
-
+﻿
 ; 网易云音乐
 if (win_process_name="CloudMusic") {
     ; 主界面

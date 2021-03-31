@@ -1,4 +1,4 @@
-
+﻿
 #include %A_WorkingDir%\Config.ahk
 #Include %A_WorkingDir%\Other\Keyboard.ahk
 #include %A_WorkingDir%\Libs\TrayIcon.ahk

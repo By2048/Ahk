@@ -1,4 +1,4 @@
-
+﻿
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Help.ahk

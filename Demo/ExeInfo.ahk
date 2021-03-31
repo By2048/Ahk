@@ -1,4 +1,4 @@
-F12::
+﻿F12::
 
     ;~ COM Object: Shell.Application
     ;~ Purpose: Retrieves file properties.
