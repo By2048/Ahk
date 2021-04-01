@@ -228,7 +228,18 @@ Windows_MM["PotPlayer"].Push( [ 0.7, 0.7 ] )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Key
+; [process_name]
+; [process_name]_[class]
+; []_[class]
+; [process_name]_[title]
+; [process_name]_[class]_[title]
+; []_[class]_[title]
+; []_[]_[title]
+
+; Value
 ; 设置一些软件默认位置 [x,y,w,h]
+
 global Windows_Default_Position := {}
 
 win_x := 10
@@ -295,4 +306,4 @@ win_w := 750
 win_h := 1300
 win_x := 20
 win_y := screen_1_y+screen_1_h/2-win_h/2
-Windows_Default_Position["PotPlayer_播放列表"] := [win_x, win_y, win_w, win_h]
+Windows_Default_Position["PotPlayer__播放列表"] := [win_x, win_y, win_w, win_h]

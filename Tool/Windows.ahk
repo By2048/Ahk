@@ -351,39 +351,11 @@ MoveWindowsToDefaultPosition()
         win_process_name:="StartMenu"
     }
 
-    win_config := []
-
-    for key, value in Windows_Default_Position {
-        if (key=win_process_name) {
-            win_config:=value
-        }
-    }
-
-    win_process_name_class := Format("{}_{}",win_process_name,win_class)
-    for key, value in Windows_Default_Position {
-        if (key=win_process_name_class) {
-            win_config:=value
-        }
-    }
-
-    win_process_name_title := Format("{}_{}",win_process_name,win_title)
-    win_process_name_title := StrReplace(win_process_name_title," ","")
-    for key, value in Windows_Default_Position {
-        if (key=win_process_name_title) {
-            win_config:=value
-        }
-    }
-
-    win_process_name_class_title := Format("{}_{}_{}",win_process_name,win_class,win_title)
-    win_process_name_class_title := StrReplace(win_process_name_class_title," ","")
-    for key, value in Windows_Default_Position {
-        if (key=win_process_name_class_title) {
-            win_config:=value
-        }
-    }
-
-    xx:=win_config[1], yy:=win_config[2]
-    ww:=win_config[3], hh:=win_config[4]
+    win_config := GetWindowsConfig()
+    xx         := win_config[1]
+    yy         := win_config[2]
+    ww         := win_config[3]
+    hh         := win_config[4]
 
     SetWindows(win_id, xx, yy, ww, hh)
     
@@ -392,6 +364,112 @@ MoveWindowsToDefaultPosition()
     }
     
     HelpText(%key%, "center_down", "screen1", 1000)
+}
+
+
+
+; 获取当前激活的应用配置文件信息
+; return | win_config
+GetWindowsConfig()
+{
+    ; 1 A
+    ; 2 A_B
+    ; 2 _B
+    ; 3 A_B_C
+    ; 3 A__C
+    ; 3 _B_C
+    ; 3 __C
+
+    result           := GetWindowsInfo()
+    win_process_name := result.win_process_name
+    win_class        := result.win_class
+    win_title        := result.win_title
+
+    _process_name_ := ""
+    _class_        := ""
+    _title_        := ""
+    
+    check_count    := 0  ;满足条件数
+    win_config     := [] ;参数
+
+    for config_key, config_value in Windows_Default_Position {
+
+        config_items := StrSplit(config_key, "_")
+        max_index    := config_items.MaxIndex()
+        cnt          := 0
+    
+        if (max_index=1) {
+            _process_name_ := config_items[1]
+            if (StrLen(_process_name_)>0) {
+                if (InStr(win_process_name, _process_name_)) {
+                    cnt := cnt+1     
+                    if (cnt>check_count) {
+                        check_count := cnt
+                        win_config  := config_value
+                    }
+                }
+            }
+        }
+        
+        if (max_index=2) {
+            _process_name_ := config_items[1]
+            _class_        := config_items[2]
+            if (StrLen(_process_name_)>0) {
+                if (InStr(win_process_name, _process_name_)) {
+                    cnt := cnt+1     
+                    if (cnt>check_count) {
+                        check_count := cnt
+                        win_config  := config_value
+                    }
+                }
+            }
+            if (StrLen(_class_)>0) {
+                if (InStr(win_class, _class_)) {
+                    cnt := cnt+1
+                    if (cnt>check_count) {
+                        check_count := cnt
+                        win_config  := config_value
+                    }
+                }
+            }
+        }
+        
+        if (max_index=3) {
+            _process_name_ := config_items[1]
+            _class_        := config_items[2]
+            _title_        := config_items[3]
+            if (StrLen(_process_name_)>0) {
+                if (InStr(win_process_name, _process_name_)) {
+                    cnt := cnt+1     
+                    if (cnt>check_count) {
+                        check_count := cnt
+                        win_config  := config_value
+                    }
+                }
+            }
+            if (StrLen(_class_)>0) {
+                if (InStr(win_class, _class_)) {
+                    cnt := cnt+1
+                    if (cnt>check_count) {
+                        check_count := cnt
+                        win_config  := config_value
+                    }
+                }
+            }
+            if (StrLen(_title_)>0) {
+                if (InStr(win_title, _title_)) {
+                    cnt := cnt+1
+                    if (cnt>check_count) {
+                        check_count := cnt
+                        win_config  := config_value
+                    }
+                }
+            }
+        }
+        
+    }
+
+    return win_config
 }
 
 
@@ -411,13 +489,13 @@ WindowsActive(_process_name_="", _class_="", _title_="")
     check_windows_active := True
 
     if (StrLen(_process_name_)>0) {
-        if (_process_name_ != win_process_name) {
+        if (not InStr(win_process_name, _process_name_)) {
             check_windows_active := False
             Return check_windows_active
         }
     }
     if (StrLen(_class_)>0) {
-        if (_class_ != win_class) {
+        if (not InStr(win_class, _class_)) {
             check_windows_active := False
             Return check_windows_active
         }
