@@ -460,7 +460,7 @@ MoveWindowsToDefaultPosition()
         win_process_name:="StartMenu"
     }
 
-    win_config := GetWindowsConfig(DATA:=Windows_Default_Position)
+    win_config := GetWindowsConfig(Windows_Default_Position)
     xx         := win_config[1]
     yy         := win_config[2]
     ww         := win_config[3]

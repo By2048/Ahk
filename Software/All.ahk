@@ -6,6 +6,7 @@
 #include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
+#include %A_WorkingDir%\Tool\KeyMap.ahk
 #include %A_WorkingDir%\Tool\Mouse.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
 #include %A_WorkingDir%\Tool\Language.ahk

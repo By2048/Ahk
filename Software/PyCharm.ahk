@@ -37,7 +37,6 @@
     ; StopConsole
     !+BackSpace::MouseClickAndResetting(34, 142, "Window")
 
-    ; 快捷键帮助
     <#'::show_hide_key_config()
 
 #if
