@@ -119,23 +119,60 @@
         HelpText(" Tab ","center_down","screen_1",1000)
     Return
 
-    ; 按顺序切换兵种 1-5
+    ~e::
+        global software_android_rshift_current
+        software_android_rshift_current:=0
+    Return
+
+    ; 按顺序切换兵种 5-1
     LShift::
-        global software_android_rshift
-        Send %software_android_rshift%
-        software_android_rshift:=software_android_rshift-1
-        if (software_android_rshift<1) {
-            software_android_rshift:=5
+        global software_android_rshift_loop
+        global software_android_rshift_current
+        if (software_android_rshift_current=0) {
+            next_index:=software_android_rshift_loop.MaxIndex()
+            software_android_rshift_current:=software_android_rshift_loop[next_index]
+            Send %software_android_rshift_current%
+            Return
+        } else {
+            for index,value in software_android_rshift_loop {
+                if (value=software_android_rshift_current) {
+                    if (index=1) {
+                        next_index:=software_android_rshift_loop.MaxIndex()
+                        software_android_rshift_current:=software_android_rshift_loop[next_index]
+                        Send %software_android_rshift_current%
+                        Return
+                    } else {
+                        software_android_rshift_current:=software_android_rshift_loop[index-1]
+                        Send %software_android_rshift_current%
+                        Return
+                    }
+                }
+            }
         }
     Return
 
     ; 按顺序切换兵种 1-5
     LAlt::
-        global software_android_rshift
-        Send %software_android_rshift%
-        software_android_rshift:=software_android_rshift+1
-        if (software_android_rshift>5) {
-            software_android_rshift:=1
+        global software_android_rshift_loop
+        global software_android_rshift_current
+        if (software_android_rshift_current=0) {
+            software_android_rshift_current:=1
+            Send %software_android_rshift_current%
+            Return
+        } else {
+            for index,value in software_android_rshift_loop {
+                if (value=software_android_rshift_current) {
+                    if (index=software_android_rshift_loop.MaxIndex()) {
+                        software_android_rshift_current:=1
+                        Send %software_android_rshift_current%
+                        Return
+                    } else {
+                        software_android_rshift_current:=software_android_rshift_loop[index+1]
+                        Send %software_android_rshift_current%
+                        Return
+                    }
+                }
+            }
         }
     Return
 

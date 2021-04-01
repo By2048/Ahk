@@ -62,7 +62,7 @@ Loop {
         }
         if (InStr(win_title,"删除") or InStr(win_title,"替换") or InStr(win_title,"跳过")) {
             if (in_screen=3) {
-                screen_w := screen_w/2
+                screen_h := screen_h/2
             }
             xx := screen_x + screen_w/2 - win_w/2
             yy := screen_y + screen_h/2 - win_h/2
