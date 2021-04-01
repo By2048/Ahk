@@ -366,6 +366,14 @@ MoveWindowsToDefaultPosition()
         }
     }
 
+    win_process_name_title := Format("{}_{}",win_process_name,win_title)
+    win_process_name_title := StrReplace(win_process_name_title," ","")
+    for key, value in Windows_Default_Position {
+        if (key=win_process_name_title) {
+            win_config:=value
+        }
+    }
+
     win_process_name_class_title := Format("{}_{}_{}",win_process_name,win_class,win_title)
     win_process_name_class_title := StrReplace(win_process_name_class_title," ","")
     for key, value in Windows_Default_Position {

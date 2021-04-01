@@ -86,6 +86,7 @@
 
     ; 退出
     BackSpace::
+        HelpText(" BackSpace ","center_down","screen_1")
         Send A
         Sleep, 100
         Send S
@@ -93,11 +94,13 @@
         Send D
         Sleep, 3000
         Send \
-        HelpText(" BackSpace ","center_down","screen_1",1000)
+        HelpText()
     Return
 
     ; 补兵
     Tab::
+        HelpText(" Tab ","center_down","screen_1")
+
         Send a
         Sleep, 100
         Send s
@@ -116,7 +119,7 @@
         Sleep, 100
         Send \
 
-        HelpText(" Tab ","center_down","screen_1",1000)
+        HelpText()
     Return
 
     ~e::
