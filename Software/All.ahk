@@ -22,8 +22,10 @@
 #include %A_WorkingDir%\Software\PyCharm.ahk
 #include %A_WorkingDir%\Software\Q-Dir.ahk
 #include %A_WorkingDir%\Software\SumatraPDF.ahk
+#include %A_WorkingDir%\Software\TIM.ahk
 #include %A_WorkingDir%\Software\VSCode.ahk
 #include %A_WorkingDir%\Software\Wallpaper.ahk
+#include %A_WorkingDir%\Software\WeChat.ahk
 #include %A_WorkingDir%\Software\WindowsTerminal.Ahk
 #include %A_WorkingDir%\Software\Wps.ahk
 #include %A_WorkingDir%\Software\Xshell.ahk
