@@ -7,7 +7,7 @@
 
     ; 女巫流
     =::
-        HelpText(" 女巫流开始 ","center_down","screen_1",1000)
+        HelpText(" 女巫流 ","center_down","screen_1")
 
         CoordMode, Mouse, Window
         MouseGetPos, xx, yy
@@ -37,12 +37,12 @@
             }
         }
 
-        HelpText(" 女巫流结束 ","center_down","screen_1",1000)
+        HelpText()
     return
 
     ; 降杯
     -::
-        HelpText(" 降杯开始 ","center_down","screen_1",1000)
+        HelpText(" 降杯 ","center_down","screen_1")
 
         CoordMode, Mouse, Window
 
@@ -81,7 +81,7 @@
         
         Send \
 
-        HelpText(" 降杯结束 ","center_down","screen_1",1000)
+        HelpText()
     Return
 
     ; 退出
