@@ -23,6 +23,7 @@
 #include %A_WorkingDir%\Software\Q-Dir.ahk
 #include %A_WorkingDir%\Software\SumatraPDF.ahk
 #include %A_WorkingDir%\Software\TIM.ahk
+#include %A_WorkingDir%\Software\VMware.ahk
 #include %A_WorkingDir%\Software\VSCode.ahk
 #include %A_WorkingDir%\Software\Wallpaper.ahk
 #include %A_WorkingDir%\Software\WeChat.ahk

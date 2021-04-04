@@ -83,23 +83,23 @@ show_image()
     image_h    := image_size[2]
     image_x    := screen_1_w/2 - image_w/2
     image_y    := screen_1_h/2 - image_h/2
-
     
-    SplashImage, %image%, X%image_x% Y%image_y% H%image_h% W%image_w% B1   ;全屏幕居中
+    SplashImage, %image%, X%image_x% Y%image_y% W%image_w% H%image_h% B1   ;全屏幕居中
     ; SplashImage, %image%, B1  ; 去除任务栏屏幕居中
 
     hotkeys_show_status := True
 
     ; 页面索引（1/2）h:=h/2
     if (hotkeys_total>=1) {
-        w := 200
+        ; w := 200
+        w := image_w
         h := 62
-        x := screen_1_w/2-w/2
-        y := screen_1_h-h-5 ; 屏幕底部
-        ; y:=screen_1_h/2+size_h/2+5 ; 图片底部
+        x := screen_1_w/2 - w/2
+        ; y := screen_1_h - h - 5 ; 屏幕底部
+        y := screen_1_h/2 + image_h/2 + 3 ; 图片底部
         w := w/2
         h := h/2
-        Progress, b fs19 zh0 x%x% y%y% w%w% h%h%, %hotkeys_index%/%hotkeys_total%
+        Progress, b fs19 zh0 X%x% Y%y% W%w% H%h%, %hotkeys_index%/%hotkeys_total%
     }
 
     ; 关闭因双击Shift打开的快速搜索界面

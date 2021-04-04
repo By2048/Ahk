@@ -61,12 +61,10 @@ global key_map_show_status     := False
 global software_android_rshift_loop    := [1,2,3,4,5]
 global software_android_rshift_current := 0
 
-
 ; VSCode
 global software_vscode_ralt := False
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 ; 可执行文件
 global WT          := "C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe" ; Windows Terminal
@@ -90,6 +88,7 @@ Windows_Process_Name.Push( [ "code"                    , "VSCode"       ] )
 Windows_Process_Name.Push( [ "pycharm64"               , "PyCharm"      ] )
 Windows_Process_Name.Push( [ "chrome"                  , "Chrome"       ] )
 Windows_Process_Name.Push( [ "firefox"                 , "FireFox"      ] )
+Windows_Process_Name.Push( [ "vmware"                  , "VMware"       ] )
 Windows_Process_Name.Push( [ "-----------------------" , "------------" ] )
 Windows_Process_Name.Push( [ "cloudmusic"              , "CloudMusic"   ] )
 Windows_Process_Name.Push( [ "wps"                     , "WPS"          ] )
