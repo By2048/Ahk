@@ -21,6 +21,7 @@
 #include %A_WorkingDir%\Software\PotPlayer.ahk
 #include %A_WorkingDir%\Software\PyCharm.ahk
 #include %A_WorkingDir%\Software\Q-Dir.ahk
+#include %A_WorkingDir%\Software\Snipaste.ahk
 #include %A_WorkingDir%\Software\SumatraPDF.ahk
 #include %A_WorkingDir%\Software\TIM.ahk
 #include %A_WorkingDir%\Software\VMware.ahk

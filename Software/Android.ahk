@@ -81,6 +81,7 @@
         
         Send \
 
+        Sleep 500
         HelpText()
     Return
 
@@ -94,6 +95,7 @@
         Send D
         Sleep, 3000
         Send \
+        Sleep 500
         HelpText()
     Return
 
@@ -118,7 +120,8 @@
         Send c
         Sleep, 100
         Send \
-
+        
+        Sleep 500
         HelpText()
     Return
 

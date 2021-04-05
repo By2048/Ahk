@@ -1,0 +1,5 @@
+﻿
+#if ( WindowsActive("Snipaste") )
+    
+
+#if
