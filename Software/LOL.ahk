@@ -3,69 +3,77 @@
 
 	; 涤魂圣枪 赛娜
 	; CapsLock::
-	; 	Loop, 5000Jq {
-	; 		Send, +j
-	; 		Send, q
-	; 		Sleep, 500
-    ;     	HelpText(" " A_Index " ", "center_down", "screen_1")
+	; 	Loop 5000Jq {
+	; 		Send +j
+	; 		Send q
+	; 		Sleep 500
+    ;   	HelpText(" " A_Index " ", "center_down", "screen_1")
 	; 	}
 	; Return
 	; CapsLock Up::SetCapsLockState Off
 
+	; 截图
+	F12::Return
+	PrintScreen::
+		Screenshot("screen1","tmp")
+	Return
+
 	]::
 		SetDefaultKeyboard(0x0409)
-		Sleep, 300
+		Sleep 100
 
 		Send {Enter}
-		Sleep, 300
-		Send /ff
-		Sleep, 300
+		Sleep 300
+		SendInput /ff
+		Sleep 300
 		Send {Enter}
 
+		Sleep 100
 		SetDefaultKeyboard(0x0804)
 	Return
 
 	[::
 		SetDefaultKeyboard(0x0409)
-		Sleep, 300
+		Sleep 100
 
 		Send {Enter}
-		Sleep, 300
-		Send /remake
-		Sleep, 300
+		Sleep 300
+		SendInput /remake
+		Sleep 300
 		Send {Enter}
 
+		Sleep 100
 		SetDefaultKeyboard(0x0804)
 	Return
 
 	\::
-		; Send +{Enter}
-		; Sleep, 300
-		; Send ======================
-		; Send {Enter}
-
-		; Send+{Enter}
-		; Sleep, 300
-		; data:="= 已屏蔽所有人聊天和信号 ="
-		; Send %data%
-		; Send {Enter}
-
-		; Send +{Enter}
-		; Sleep, 300
-		; Send ======================
-		; Send {Enter}
-
-		; Sleep, 300
-
 		SetDefaultKeyboard(0x0409)
-		Sleep, 300
+		Sleep 100
+
+		; Send +{Enter}
+		; Sleep 300
+		; Send ======================
+		; Send {Enter}
+
+		; Send +{Enter}
+		; Sleep 300
+		; Send = 已屏蔽所有人聊天和信号 =
+		; Send {Enter}
+
+		; Send +{Enter}
+		; Sleep 300
+		; Send ======================
+		; Send {Enter}
+		; Sleep 300
 
 		Send {Enter}
-		Sleep, 300
-		Send /mute all
-		Sleep, 300
+		Sleep 300
+		SendInput /mute all
+		Sleep 300
 		Send {Enter}
+		Sleep 100
 
+		Sleep 100
 		SetDefaultKeyboard(0x0804)
 	Return
 	

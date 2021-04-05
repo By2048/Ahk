@@ -119,7 +119,7 @@ Screenshot_Activate_Software()
 
 
 
-; 屏幕截图
+; 屏幕贴图
 Snipaste(image="",screens="screen1")
 {
     image_size := GetImageSize(image)
