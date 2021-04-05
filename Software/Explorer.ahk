@@ -7,9 +7,7 @@
     ; Alt+P 显示预览面板
 
     ; Backspace 查看上一个文件夹
-    ; Alt+向左键 查看上一个文件夹
-    ; Alt+向右键 查看下一个文件夹
-    ; Alt+向上键 查看该文件夹所在的文件夹
+
 
     ; End  显示活动窗口底部
     ; Home 显示活动窗口顶部
@@ -42,6 +40,9 @@
     F11::Return
     !Enter::Send {F11}
 
+    ; Ctrl+Shift+E 显示选定文件夹上的所有文件夹
+    ^+e::Return
+
     ; 排序方式
     ; 前进|返回|历史
     ; 切换到树状列表
@@ -51,9 +52,12 @@
         Send {F6}
     Return
 
-    ; 展开功能区
+    ; Alt+向左键 查看上一个文件夹
+    ; Alt+向右键 查看下一个文件夹
+    ; Alt+向上键 查看该文件夹所在的文件夹
+    ; Alt+向下键 展开功能区
     ^F1::Return
-    !BackSpace::Send ^{F1}
+    !Down::Send ^{F1}
 
     ; 切换
     ^Tab::Return
@@ -71,9 +75,6 @@
     ; Ctrl+E 选择搜索框
     ^e::Return
 
-    ; Ctrl+Shift+E 显示选定文件夹上的所有文件夹
-    ; ^+e::Return
-    
     ; Ctrl+N 打开新窗口
     ; Ctrl+Shift+N 创建新文件夹
     ; Ctrl+N -> Ctrl+Shift+N
