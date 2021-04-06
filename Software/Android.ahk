@@ -7,7 +7,7 @@
 
     ; 女巫流
     =::
-        HelpText(" 女巫流 ","center_down","screen_1")
+        HelpText("女巫流","center_down","screen_1")
 
         CoordMode, Mouse, Window
         MouseGetPos, xx, yy
@@ -15,15 +15,13 @@
         ; 战争机器
         Send 9
         MouseClick, Left, %xx%, %yy%
-
-        Sleep, 3000
+        Sleep 3000
         
         ; 第一个兵种
         Send 0
         MouseClick, Left, %xx%, %yy%, 12
+        Sleep 100
         
-        Sleep, 100
-
         ; 战争机器 释放技能
         Loop, 4 {
             Send 9
@@ -42,42 +40,42 @@
 
     ; 降杯
     -::
-        HelpText(" 降杯 ","center_down","screen_1")
+        HelpText("降杯","center_down","screen_1")
 
         CoordMode, Mouse, Window
 
         Send Q
-        Sleep, 500
+        Sleep 500
         Send \
-        Sleep, 500
+        Sleep 500
 
         Send Q
-        Sleep, 500
+        Sleep 500
         Send R
-        Sleep, 5000
+        Sleep 5000
 
         Send 0
-        Sleep, 500
+        Sleep 500
         Send \
-        Sleep, 500
+        Sleep 500
 
         y:=0
         Loop, 4 {
             y:=y+300
             MouseClick, Left, 300, %y%
-            Sleep, 100
+            Sleep 100
             MouseClick, Left, 1700, %y%
-            Sleep, 100
+            Sleep 100
             MouseClick, Left, 2800, %y%
-            Sleep, 100
+            Sleep 100
         }
 
         Send A
-        Sleep, 500
+        Sleep 500
         Send S
-        Sleep, 500
+        Sleep 500
         Send D
-        Sleep, 3000
+        Sleep 3000
         
         Send \
 
@@ -87,13 +85,13 @@
 
     ; 退出
     BackSpace::
-        HelpText(" BackSpace ","center_down","screen_1")
+        HelpText("BackSpace","center_down","screen_1")
         Send A
-        Sleep, 100
+        Sleep 100
         Send S
-        Sleep, 2000
+        Sleep 2000
         Send D
-        Sleep, 3000
+        Sleep 3000
         Send \
         Sleep 500
         HelpText()
@@ -101,24 +99,24 @@
 
     ; 补兵
     Tab::
-        HelpText(" Tab ","center_down","screen_1")
+        HelpText("Tab","center_down","screen_1")
 
         Send a
-        Sleep, 100
+        Sleep 100
         Send s
         Sleep 1000
         Send d
-        Sleep, 3000
+        Sleep 3000
 
         Send \
         Sleep, 100
 
         Send z
-        Sleep, 100
+        Sleep 100
         Send x
-        Sleep, 100
+        Sleep 100
         Send c
-        Sleep, 100
+        Sleep 100
         Send \
         
         Sleep 500

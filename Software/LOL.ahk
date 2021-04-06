@@ -19,8 +19,7 @@
 	Return
 
 	]::
-		SetDefaultKeyboard(0x0409)
-		Sleep 100
+		EN()
 
 		Send {Enter}
 		Sleep 300
@@ -28,13 +27,11 @@
 		Sleep 300
 		Send {Enter}
 
-		Sleep 100
-		SetDefaultKeyboard(0x0804)
+		ZH()
 	Return
 
 	[::
-		SetDefaultKeyboard(0x0409)
-		Sleep 100
+		EN()
 
 		Send {Enter}
 		Sleep 300
@@ -42,13 +39,11 @@
 		Sleep 300
 		Send {Enter}
 
-		Sleep 100
-		SetDefaultKeyboard(0x0804)
+		ZH()
 	Return
 
 	\::
-		SetDefaultKeyboard(0x0409)
-		Sleep 100
+		EN()
 
 		; Send +{Enter}
 		; Sleep 300
@@ -73,8 +68,7 @@
 		Send {Enter}
 		Sleep 100
 
-		Sleep 100
-		SetDefaultKeyboard(0x0804)
+		ZH()
 	Return
 	
 #If

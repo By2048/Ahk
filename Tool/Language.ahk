@@ -4,8 +4,6 @@
 
 
 ; 切换默认输入法
-; SetDefaultKeyboard(0x0804) ;zh
-; SetDefaultKeyboard(0x0409) ;en
 ; https://www.voidtools.com/support/everything/language_ids/
 SetDefaultKeyboard(LocaleID)
 {
@@ -16,6 +14,14 @@ SetDefaultKeyboard(LocaleID)
 	NumPut(LocaleID, Lan%LocaleID%)
 	DllCall("SystemParametersInfo", "UInt", SPI_SETDEFAULTINPUTLANG, "UInt", 0, "UPtr", &Lan%LocaleID%, "UInt", SPIF_SENDWININICHANGE)
 	PostMessage 0x50, 0, %Lan%,  , A
+}
+ZH() {
+    SetDefaultKeyboard(0x0804)
+    Sleep 100
+}
+EN() {
+    SetDefaultKeyboard(0x0409)
+    Sleep 100
 }
 
 

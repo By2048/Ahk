@@ -66,13 +66,13 @@ if (not A_IsAdmin) {
 
 RCtrl & RAlt::
     if (not IsDesktops()) {
-        SetDefaultKeyboard(0x0804) ;ZH
+		ZH()
         HelpText("ZH","center","screen1",1000)
     }
 Return
 RAlt & RCtrl::
     if (not IsDesktops()) {
-        SetDefaultKeyboard(0x0409) ;EN
+		EN()
         HelpText("EN","center","screen1",1000)
     }
 Return
