@@ -1,5 +1,13 @@
 ﻿
+; 设定系统类型 Win10 | WinServer 
+global system_type := "Win10"
+if (A_ComputerName="WINSERVER") {
+    system_type := "WinServer"
+}
+
 ; 默认屏幕数量
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 global screen_count := 3
 
 ; 初始化系统屏幕相关信息
@@ -13,8 +21,8 @@ if (screen_count=1) {
 }
 
 if (screen_count=3) {
-    SysGet, Monitor1, Monitor, 3
-    SysGet, Monitor2, Monitor, 1
+    SysGet, Monitor1, Monitor, 1
+    SysGet, Monitor2, Monitor, 3
     SysGet, Monitor3, Monitor, 2
 }
 
@@ -67,6 +75,7 @@ global software_vscode_ralt := False
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 可执行文件
+global Ahk         := "D:\AutoHotkey\AutoHotkey.exe"
 global WT          := "C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe" ; Windows Terminal
 global CMD         := "C:\Windows\System32\cmd.exe"
 global TaskKill    := "C:\Windows\SysWOW64\taskkill.exe"
@@ -109,7 +118,9 @@ Windows_Process_Name.Push( [ "mstsc"                   , "Mstsc"        ] ) ;远
 Windows_Process_Name.Push( [ "taskmgr"                 , "TaskMGR"      ] ) ;任务管理器
 Windows_Process_Name.Push( [ "explorer"                , "Explorer"     ] ) ;资源管理器
 Windows_Process_Name.Push( [ "SearchApp"               , "Search"       ] ) ;搜索
-Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "StartMenu"    ] ) ;开始菜单
+Windows_Process_Name.Push( [ "SearchUI"                , "Search"       ] ) ;搜索
+Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "Start"        ] ) ;开始菜单
+Windows_Process_Name.Push( [ "ShellExperienceHost"     , "Start"        ] ) ;开始菜单
 Windows_Process_Name.Push( [ "-----------------------" , "------------" ] )
 Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"  ] ) ;同花顺
 
@@ -281,7 +292,7 @@ win_w := 2150
 win_h := 1250
 win_x := screen_1_x+screen_1_w/2-win_w/2
 win_y := screen_1_y+screen_1_h/2-win_h/2
-Windows_Default_Position["StartMenu"] := [win_x, win_y, win_w, win_h]
+Windows_Default_Position["Start"] := [win_x, win_y, win_w, win_h]
 
 win_w := screen_3_w-6-6
 win_h := screen_3_h/2-6-6
