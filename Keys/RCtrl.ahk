@@ -13,13 +13,16 @@ if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
 }
 
+; xxx::RunNormalUser("xxx.exe")
+; xxx::Run "xxx.exe"
+
 >^Esc::Run, taskmgr.exe ;任务管理器
 >^F1::
     command :=  Format("{} /c {} /f /im shellexperiencehost.exe",CMD,TaskKill)
     Run, %command%,  , Hide
     command :=  Format("{} /c {} /f /im MicrosoftEdge.exe",CMD,TaskKill)
     Run, %command%,  , Hide
-    Run, "D:\Dexpot\dexpot.exe"
+    Run, D:\Dexpot\dexpot.exe
 Return
 >^F3::
     command :=  Format("{1} /c {2} /f /im explorer.exe", CMD,TaskKill)
@@ -39,15 +42,15 @@ Return
 
 >^`::Run, "E:\Sync\Ahk\Doc\Hotkey.xlsx"
 
->^q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
->^w::RunNormalUser("D:\WeChat\WeChat.exe")
->^r::RunNormalUser("D:\QuiteRSS\QuiteRSS.exe")
+>^q::Run E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr
+>^w::Run D:\WeChat\WeChat.exe
+>^r::Run D:\QuiteRSS\QuiteRSS.exe
 >^t::
     Process, Exist, TIM.exe
     if (ErrorLevel) {
         TrayIcon_Button("TIM.exe", "L")
     } else {
-        RunNormalUser("D:\TIM\Bin\TIM.exe")
+        Run "D:\TIM\Bin\TIM.exe"
     }
 Return
 >^p::
@@ -56,30 +59,32 @@ Return
     MoveWindowsMM("main")
 Return
 
->^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
->^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
->^\::Run, "C:\Users\AM\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Whiteboard.lnk"
+>^[::Run D:\VSCode\Code.exe E:\Project\Notes\
+>^]::Run D:\VSCode\Code.exe E:\Sync\Ahk\
+>^\::Run C:\Users\AM\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Whiteboard.lnk
 
->^a::Run, "D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe"
->^s::RunNormalUser("D:\Everything\Everything.exe")
->^f::RunNormalUser("D:\Firefox\firefox.exe")
+>^a::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
+>^s::Run D:\Everything\Everything.exe
+>^f::Run D:\Firefox\firefox.exe
 >^g::
     win_x:=160, win_y:=60, win_w:=1600, win_h:=960
-    command := "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-    command := Format("{} --new-window", command)
+    command := Format("{} --new-window", Chrome)
     command := Format("{} --window-position={},{}", command,win_x,win_y)
     command := Format("{} --window-size={},{}", command,win_w,win_h)
-    RunNormalUser(command)
+    Run, %command%
 Return
->^h::Run "D:\AutoHotkey\WindowSpy.ahk"
->^j::RunNormalUser("calc.exe")
+>^h::
+    command := Format("{} D:\AutoHotkey\WindowSpy.ahk", Ahk)
+    Run, %command%
+Return
+>^j::Run calc.exe
 >^k::KeyboardGUI()
 
->^z::RunNormalUser("D:\Zeal\zeal.exe")
->^x::RunNormalUser("D:\Xshell\Xshell.exe")
->^c::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
->^v::RunNormalUser("D:\VSCode\Code.exe")
->^m::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
+>^z::Run D:\Zeal\zeal.exe
+>^x::Run D:\Xshell\Xshell.exe
+>^c::Run D:\CloudMusic\cloudmusic.exe
+>^v::Run D:\VSCode\Code.exe
+>^m::Run D:\PotPlayer\PotPlayerMini64.exe
 >^,::Run, explorer.exe
 >^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;控制面板
 >^/::run, T:\\

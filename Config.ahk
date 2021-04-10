@@ -81,6 +81,7 @@ global CMD         := "C:\Windows\System32\cmd.exe"
 global TaskKill    := "C:\Windows\SysWOW64\taskkill.exe"
 global Python      := "D:\Python\_python_\Scripts\python.exe"
 global HuntAndPeck := "D:\HuntAndPeck\hap.exe"
+global Chrome      := "C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 ; 截图软件配置
 global Snipaste_EXE                    := "D:\Snipaste\Snipaste.exe"
