@@ -87,25 +87,26 @@ GetWindowsInfo()
 
     result := {}
 
-    result.win_id           := win_id
-    result.win_pid          := win_pid
-    result.win_min_max      := win_min_max
-    result.win_process_name := ProcessNameFormat(win_process_name)
-    result.win_transparent  := win_transparent
-    result.win_class        := win_class
-    result.win_title        := win_title
-    result.win_text         := win_text
-    result.win_x            := win_x
-    result.win_y            := win_y
-    result.win_w            := win_w
-    result.win_h            := win_h
-    result.in_screen        := in_screen
-    result.screen_x         := screen_x
-    result.screen_y         := screen_y
-    result.screen_xx        := screen_xx
-    result.screen_yy        := screen_yy
-    result.screen_w         := screen_w
-    result.screen_h         := screen_h
+    result.win_id             := win_id
+    result.win_pid            := win_pid
+    result.win_min_max        := win_min_max
+    result._win_process_name_ := win_process_name
+    result.win_process_name   := ProcessNameFormat(win_process_name)
+    result.win_transparent    := win_transparent
+    result.win_class          := win_class
+    result.win_title          := win_title
+    result.win_text           := win_text
+    result.win_x              := win_x
+    result.win_y              := win_y
+    result.win_w              := win_w
+    result.win_h              := win_h
+    result.in_screen          := in_screen
+    result.screen_x           := screen_x
+    result.screen_y           := screen_y
+    result.screen_xx          := screen_xx
+    result.screen_yy          := screen_yy
+    result.screen_w           := screen_w
+    result.screen_h           := screen_h
 
     Return result
 }

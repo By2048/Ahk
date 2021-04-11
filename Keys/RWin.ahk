@@ -87,15 +87,23 @@ Return
     if (IsDesktops() or IsGame()) {
         Return
     }
-    WinGet, win_process_name, ProcessName, A
-    Process, Close, %win_process_name%    
+    result := GetWindowsInfo()
+    win_process_name := result.win_process_name
+    _win_process_name_ := result._win_process_name_
+    win_id := result.win_id
+    Process, Close, %_win_process_name_%
+    if (win_process_name="CloudMusic") {
+        Sleep 300
+        Process, Close, CrashReporter.exe
+    }
 Return
 
 >#Esc::
     if (IsDesktops() or IsGame()) {
         Return
     }
-    WinGet, win_id, ID, A
+    result := GetWindowsInfo()
+    win_id := result.win_id
     WinClose, ahk_id %win_id%
 Return
 
