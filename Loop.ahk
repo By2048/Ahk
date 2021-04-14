@@ -35,8 +35,8 @@ Loop {
 
     ; 特定软件不进行处理 并延迟循环时间
     for index, value in Loop_Ignore_Process_Name {
-        if (value=win_process_name) {
-            Sleep, 30000
+        if (value = win_process_name) {
+            Sleep 30000
             Continue
         }
     }

@@ -34,7 +34,9 @@
                 HelpText()
             }
         }
-
+        
+        HelpText("女巫流","center_down","screen_1")
+        Sleep 1000
         HelpText()
     return
 

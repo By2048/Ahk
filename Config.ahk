@@ -219,7 +219,8 @@ Game_Process_Name.Push( "LOL" )
 
 ; 循环任务忽略的进程
 global Loop_Ignore_Process_Name := []
-Loop_Ignore_Process_Name.Push( "LOL" )
+Loop_Ignore_Process_Name.Push( "LOL"          )
+Loop_Ignore_Process_Name.Push( "FreeFileSync" )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

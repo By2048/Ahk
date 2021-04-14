@@ -22,7 +22,7 @@ if (not A_IsAdmin) {
     Run, %command%,  , Hide
     command :=  Format("{} /c {} /f /im MicrosoftEdge.exe",CMD,TaskKill)
     Run, %command%,  , Hide
-    Run, D:\Dexpot\dexpot.exe
+    Run, "D:\Dexpot\dexpot.exe"
 Return
 >^F3::
     command :=  Format("{1} /c {2} /f /im explorer.exe", CMD,TaskKill)
@@ -42,15 +42,15 @@ Return
 
 >^`::Run, "E:\Sync\Ahk\Doc\Hotkey.xlsx"
 
->^q::Run E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr
->^w::Run D:\WeChat\WeChat.exe
->^r::Run D:\QuiteRSS\QuiteRSS.exe
+>^q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
+>^w::RunNormalUser("D:\WeChat\WeChat.exe")
+>^r::RunNormalUser("D:\QuiteRSS\QuiteRSS.exe")
 >^t::
     Process, Exist, TIM.exe
     if (ErrorLevel) {
         TrayIcon_Button("TIM.exe", "L")
     } else {
-        Run "D:\TIM\Bin\TIM.exe"
+        RunNormalUser("D:\TIM\Bin\TIM.exe")
     }
 Return
 >^p::
@@ -59,13 +59,13 @@ Return
     MoveWindowsMM("main")
 Return
 
->^[::Run D:\VSCode\Code.exe E:\Project\Notes\
->^]::Run D:\VSCode\Code.exe E:\Sync\Ahk\
->^\::Run C:\Users\AM\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Whiteboard.lnk
+>^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
+>^]::RunNormalUser("D:\VSCode\Code.exe E:\Sync\Ahk\")
+>^\::Run, "D:\Link\Whiteboard.lnk"
 
 >^a::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^s::Run D:\Everything\Everything.exe
->^f::Run D:\Firefox\firefox.exe
+>^f::RunNormalUser("D:\Firefox\firefox.exe")
 >^g::
     win_x:=160, win_y:=60, win_w:=1600, win_h:=960
     command := Format("{} --new-window", Chrome)
@@ -80,14 +80,14 @@ Return
 >^j::Run calc.exe
 >^k::KeyboardGUI()
 
->^z::Run D:\Zeal\zeal.exe
->^x::Run D:\Xshell\Xshell.exe
->^c::Run D:\CloudMusic\cloudmusic.exe
->^v::Run D:\VSCode\Code.exe
->^m::Run D:\PotPlayer\PotPlayerMini64.exe
+>^z::RunNormalUser("D:\Zeal\zeal.exe")
+>^x::RunNormalUser("D:\Xshell\Xshell.exe")
+>^c::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
+>^v::RunNormalUser("D:\VSCode\Code.exe")
+>^m::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
 >^,::Run, explorer.exe
 >^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;控制面板
->^/::run, T:\\
+>^/::Run, T:\\
 
 RCtrl & Enter::Run, "R:\Doc\All.xlsx"
 

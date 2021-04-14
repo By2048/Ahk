@@ -31,7 +31,10 @@
 
     ; 刷新
     F5::Return
-    \::Send {F5}
+    \::
+        Send {F5}
+        Send \
+    Return
 
     ; 显示Alt快捷键帮助
     F10::Return
