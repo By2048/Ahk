@@ -36,6 +36,12 @@ Capslock &   Tab::LButton
 Capslock & Space::MButton
 Capslock & Shift::RButton
 
+CapsLock & PrintScreen::
+    Screenshot("screen1","tmp")
+    Screenshot("screen2","tmp")
+    Screenshot("screen3","tmp")
+Return
+
 
 
 ;切换到显示器中心 

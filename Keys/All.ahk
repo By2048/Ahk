@@ -78,9 +78,3 @@ RAlt & RCtrl::
 Return
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-CapsLock & PrintScreen::
-    Screenshot("screen1","tmp")
-    Screenshot("screen2","tmp")
-    Screenshot("screen3","tmp")
-Return
