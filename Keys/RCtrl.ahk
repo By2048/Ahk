@@ -36,13 +36,14 @@ Return
     Sleep, 300
     MoveWindowsMM("mini")
 return
+>^F5::Run, "E:\Sync\EPQ.ffs_gui"
 >^PrintScreen::
     Screenshot_Activate_Software()
 Return
 
->^`::Run, "E:\Sync\Ahk\Doc\Hotkey.xlsx"
+>^`::Run, "E:\Project\Ahk\Doc\Hotkey.xlsx"
 
->^q::RunNormalUser("E:\Sync\Software\Q-Dir\Q-Dir.exe E:\Sync\Software\PC.qdr")
+>^q::RunNormalUser("D:\Q-Dir\Q-Dir.exe D:\#\PC.qdr")
 >^w::RunNormalUser("D:\WeChat\WeChat.exe")
 >^r::RunNormalUser("D:\QuiteRSS\QuiteRSS.exe")
 >^t::
@@ -89,7 +90,7 @@ Return
 >^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;控制面板
 >^/::Run, T:\\
 
-RCtrl & Enter::Run, "R:\Doc\All.xlsx"
+RCtrl & Enter::Run, "E:\Doc\All.xlsx"
 
 RCtrl & RWin::
     if (not IsDesktops()) {

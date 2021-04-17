@@ -85,8 +85,8 @@ global Chrome      := "C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 ; 截图软件配置
 global Snipaste_EXE                    := "D:\Snipaste\Snipaste.exe"
-global Snipaste_Auto_Save_File         := "E:\Snipaste\*.png"
-global Snipaste_Screenshot_Path_Backup := "R:\Screens\"
+global Snipaste_Auto_Save_File         := "D:\SnipasteData\AutoSave\*.png"
+global Snipaste_Screenshot_Path_Backup := "P:\Screens\"
 global Snipaste_Screenshot_Path_Tmp    := "T:\"
 
 ; 手机向电脑写入的剪切板文件
