@@ -1,4 +1,5 @@
 ﻿
+#include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 
 #SingleInstance Force
@@ -20,7 +21,7 @@ Return
 Return
 
 ::\datetime\::
-    FormatTime, result,  , yyyy-dd-MM H:mm
+    FormatTime, result,  , yyyy-dd-MM H-mm
     SendInput %result%
 Return
 
