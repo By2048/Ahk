@@ -35,9 +35,11 @@ get_image()
     global hotkeys_title
     global hotkeys_process_name
 
-    result               := GetWindowsInfo()
-	hotkeys_process_name := result.win_process_name
-	hotkeys_title        := result.win_title
+    if (not hotkeys_process_name) {
+        result               := GetWindowsInfo()
+        hotkeys_process_name := result.win_process_name
+        hotkeys_title        := result.win_title
+    }
     
     ; PyCharm计算界面不处理
     If (win_process_name="PyCharm" and win_title="Evaluate") {
@@ -83,24 +85,25 @@ show_image()
     image_h    := image_size[2]
     image_x    := screen_1_w/2 - image_w/2
     image_y    := screen_1_h/2 - image_h/2
+
+    image_w := image_w/screen_1_zoom
+    image_h := image_h/screen_1_zoom
     
-    SplashImage, %image%, X%image_x% Y%image_y% W%image_w% H%image_h% B1   ;全屏幕居中
-    ; SplashImage, %image%, B1  ; 去除任务栏屏幕居中
+    Gui, Destroy
+
+    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
+    Gui, Margin, 3, 3
+    Gui, Add, Picture, w%image_w% h%image_h%, %image%
 
     hotkeys_show_status := True
 
-    ; 页面索引（1/2）h:=h/2
+    ; 页面索引
     if (hotkeys_total>=1) {
-        ; w := 200
-        w := image_w
-        h := 62
-        x := screen_1_w/2 - w/2
-        ; y := screen_1_h - h - 5 ; 屏幕底部
-        y := screen_1_h/2 + image_h/2 + 3 ; 图片底部
-        w := w/2
-        h := h/2
-        Progress, b fs19 zh0 X%x% Y%y% W%w% H%h%, %hotkeys_index%/%hotkeys_total%
+        Gui, font, s15, Cascadia Code
+        Gui, Add, Text, w%image_w% +Center +Border, %hotkeys_index%/%hotkeys_total%
     }
+
+    Gui, Show, Center
 
     ; 关闭因双击Shift打开的快速搜索界面
     If (hotkeys_process_name="PyCharm") {
@@ -119,8 +122,7 @@ hide_image()
     global hotkeys_process_name
     global hotkeys_title
 
-    SplashImage, Off
-    Progress, Off
+    Gui, Destroy
 
     hotkeys_show_status  := False
     hotkeys_index        := 1 

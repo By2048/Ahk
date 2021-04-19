@@ -36,7 +36,7 @@ Return
     Sleep, 300
     MoveWindowsMM("mini")
 return
->^F5::Run, "E:\Sync\EPQ.ffs_gui"
+>^F5::Run, "E:\Config\EPQ.ffs_gui"
 >^PrintScreen::
     Screenshot_Activate_Software()
 Return
