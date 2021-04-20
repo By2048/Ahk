@@ -35,20 +35,19 @@ ShowConfig()
     CoordMode Pixel Screen
     CoordMode Mouse Screen
 
-    title = 
-    title = %title% ---
-    title = %title% Ahk Config
-    title = %title% ---
+    Gui, Destroy
+    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
+    Gui, Margin, 3, 3
+
 
     content := ""
     for index, value in Init_Config {
         content .= "`n"
         content .= value
     }
-
+    
     w:=600*2
     h:=800*2
-    
     x:=screen_3_x+screen_3_w/2-w/2    
     y:=screen_3_y+screen_3_h/4-h/2
     
@@ -58,11 +57,15 @@ ShowConfig()
     }
     
     w:=w/2
-    h:=h/2
+
+    Gui, font, s18, Source Code Pro
+    Gui, Add, Text, w%w% +Center +Border, Ahk Config
 
     global init_config_show_status
     if (init_config_show_status=False) {
-        Progress, b zh0 fs15 fm19 c01 x%x% y%y% w%w% h%h%, %content%, %title%, "Source Code Pro"
+        Gui, font, s15, Source Code Pro
+        Gui, Add, Text, w%w% -Center +Border, %content%
+        Gui, Show, x%x% y%y% 
         init_config_show_status:=True
     }
 }
@@ -74,6 +77,7 @@ HideConfig()
     global init_config_show_status
     if (init_config_show_status=True) {
         init_config_show_status:=False
-        Progress, Off
+        ; Progress, Off
+        Gui, Destroy
     }
 }

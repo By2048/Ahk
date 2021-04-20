@@ -88,7 +88,11 @@ Return
 >^m::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
 >^,::Run, explorer.exe
 >^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;控制面板
->^/::Run, T:\\
+>^/::
+    Run, T:\\
+    Sleep, 300
+    MoveWindowsMM("main")
+Return
 
 RCtrl & Enter::Run, "E:\Doc\All.xlsx"
 

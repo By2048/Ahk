@@ -129,7 +129,6 @@ Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"  ] ) ;同
 
 ; 在 Input.ahk Private.ahk 中定义的快捷输入
 global Init_Config := []
-Init_Config.Push( "-----------------------------------------------------------" )
 Init_Config.Push( Format(" A_WorkingDir | {1}\ ", A_WorkingDir)                 )
 Init_Config.Push( "-----------------------------------------------------------" )
 Init_Config.Push( Format(" ScreenCount | {1} ", screen_count)                   )
@@ -180,7 +179,7 @@ Init_Config.Push( " bd.rename "                                                 
 Init_Config.Push( " bi.free bi.join bi.getname bi.rename "                      )
 Init_Config.Push( " history screen camera weixin "                              )
 Init_Config.Push( " py "                                                        )
-Init_Config.Push( "-----------------------------------------------------------" )
+Init_Config.Push( " "                                                           )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
