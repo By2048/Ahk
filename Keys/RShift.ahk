@@ -90,7 +90,6 @@ show_image()
     image_h := image_h/screen_1_zoom
     
     Gui, Destroy
-
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
     Gui, Margin, 3, 3
     Gui, Add, Picture, w%image_w% h%image_h%, %image%

@@ -13,14 +13,18 @@ HelpImage(image="")
     }
     if (not image) {
         help_image_show_status:=False
-        SplashImage, Off
+        Gui, Destroy
     } else {
         size:=GetImageSize(image)
-        w:=size[1]
-        h:=size[2]
+        w:=size[1]/screen_1_zoom
+        h:=size[2]/screen_1_zoom
         x:=A_ScreenWidth/2-w/2
         y:=A_ScreenHeight/2-h/2
-        SplashImage, %image%, X%x% Y%y% H%h% W%w% B1
+        Gui, Destroy
+        Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
+        Gui, Margin, 1, 1
+        Gui, Add, Picture, +Border W%w% H%h%, %image%
+        Gui, Show, Center
         help_image_show_status:=True
     }
 }

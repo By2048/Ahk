@@ -58,7 +58,7 @@ ShowConfig()
     
     w:=w/2
 
-    Gui, font, s18, Source Code Pro
+    Gui, font, s19, Source Code Pro
     Gui, Add, Text, w%w% +Center +Border, Ahk Config
 
     global init_config_show_status
