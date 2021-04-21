@@ -26,9 +26,9 @@ if (screen_count=3) {
     SysGet, Monitor3, Monitor, 2
 }
 
-global screen_1_zoom := 2
-global screen_2_zoom := 1.5
-global screen_3_zoom := 1
+global screen_1_dpi := 2
+global screen_2_dpi := 1.5
+global screen_3_dpi := 1
 
 global screen_1_x  := Monitor1Left   + 0
 global screen_1_y  := Monitor1Top    + 0
@@ -150,18 +150,18 @@ if (screen_count>=3) {
 }
 Init_Config.Push( "-----------------------------------------------------------" )
 if (screen_count>=1) {
-    _format_ := " screen_1_zoom w*h | {1:3} {2:5}x{3} "
-    _value_  := [ screen_1_zoom, screen_1_w, screen_1_h ]
+    _format_ := " screen_1_dpi w*h | {1:3} {2:5}x{3} "
+    _value_  := [ screen_1_dpi, screen_1_w, screen_1_h ]
     Init_Config.Push( Format( _format_, _value_*) )
 }
 if (screen_count>=2) {
-    _format_ := " screen_2_zoom w*h | {1:3} {2:5}x{3} "
-    _value_  := [ screen_2_zoom, screen_2_w, screen_2_h ]
+    _format_ := " screen_2_dpi w*h | {1:3} {2:5}x{3} "
+    _value_  := [ screen_2_dpi, screen_2_w, screen_2_h ]
     Init_Config.Push( Format( _format_, _value_*) )
 }
 if (screen_count>=3) {
-    _format_ := " screen_3_zoom w*h | {1:3} {2:5}x{3} "
-    _value_  := [ screen_3_zoom, screen_3_w, screen_3_h ]
+    _format_ := " screen_3_dpi w*h | {1:3} {2:5}x{3} "
+    _value_  := [ screen_3_dpi, screen_3_w, screen_3_h ]
     Init_Config.Push( Format( _format_, _value_*) )
 }
 Init_Config.Push( "-----------------------------------------------------------" )
