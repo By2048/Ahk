@@ -1,16 +1,41 @@
 ﻿
 #if ( WindowsActive("LOL") )
 
+	; 装备
+	; 2167,2005,
+	; 2231,2008,
+	; 2297,2015,
+	; 
+	; 2171,2073,
+	; 2236,2073,
+	; 2299,2073,
+
+	; 撤销
+	; 1279,1666,
+
+    CoordMode, Mouse, Screen
+
 	; 涤魂圣枪 赛娜
-	; CapsLock::
-	; 	Loop 5000Jq {
-	; 		Send +j
-	; 		Send q
-	; 		Sleep 500
-    ;   	HelpText(" " A_Index " ", "center_down", "screen_1")
-	; 	}
-	; Return
-	; CapsLock Up::SetCapsLockState Off
+	; Loop 5000 {
+	; 	Send +j  ;刷新龙
+	; 	Send q
+	; 	Sleep 500
+  	;	HelpText(" " A_Index " ", "center_down", "screen_1")
+	; }
+
+	; 女神泪BUG
+	; Loop, 30 {
+	; 	MouseClick, Right,    2167,2005,    1, 0
+	; 	Sleep, 300
+	; 	MouseClick, Left,     1279,1666,    1, 0
+	; 	HelpText(" " A_Index " ", "center_down", "screen_1")
+	; } 
+
+	CapsLock::
+		; HelpText()
+	Return
+
+	CapsLock Up::SetCapsLockState Off
 
 	; 截图
 	F12::Return

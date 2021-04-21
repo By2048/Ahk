@@ -85,14 +85,11 @@ Return
 >^x::RunNormalUser("D:\Xshell\Xshell.exe")
 >^c::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
 >^v::RunNormalUser("D:\VSCode\Code.exe")
+>^b::Run, E:\\Book\\
 >^m::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
 >^,::Run, explorer.exe
 >^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;控制面板
->^/::
-    Run, T:\\
-    Sleep, 300
-    MoveWindowsMM("main")
-Return
+>^/::Run, T:\\
 
 RCtrl & Enter::Run, "E:\Doc\All.xlsx"
 

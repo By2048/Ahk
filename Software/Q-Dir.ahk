@@ -16,6 +16,9 @@
     ^+Tab::Return
     !+Tab::Send ^+{Tab}
 
+    f2::Return
+    ^r::Send {f2}
+
     ; TODO Error
     ; ^w::Return
     ; !CapsLock::Send ^w

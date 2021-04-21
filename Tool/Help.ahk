@@ -24,7 +24,7 @@ HelpImage(image="")
         Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
         Gui, Margin, 1, 1
         Gui, Add, Picture, +Border W%w% H%h%, %image%
-        Gui, Show, Center
+        Gui, Show, Center NA
         help_image_show_status:=True
     }
 }

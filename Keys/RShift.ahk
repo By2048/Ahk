@@ -97,12 +97,12 @@ show_image()
     hotkeys_show_status := True
 
     ; 页面索引
-    if (hotkeys_total>=1) {
+    if (hotkeys_total>1) {
         Gui, font, s15, Cascadia Code
         Gui, Add, Text, w%image_w% +Center +Border, %hotkeys_index%/%hotkeys_total%
     }
 
-    Gui, Show, Center
+    Gui, Show, Center NA
 
     ; 关闭因双击Shift打开的快速搜索界面
     If (hotkeys_process_name="PyCharm") {

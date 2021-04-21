@@ -65,7 +65,7 @@ ShowConfig()
     if (init_config_show_status=False) {
         Gui, font, s15, Source Code Pro
         Gui, Add, Text, w%w% -Center +Border, %content%
-        Gui, Show, x%x% y%y% 
+        Gui, Show, x%x% y%y% NA
         init_config_show_status:=True
     }
 }
