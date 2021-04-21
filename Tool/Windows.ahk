@@ -1,7 +1,8 @@
 ﻿
 #include %A_WorkingDir%\Config.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
-#include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Tool\Image.ahk
+#include %A_WorkingDir%\Tool\Language.ahk
 
 
 
@@ -66,23 +67,26 @@ GetWindowsInfo()
 	WinGetText,                    win_text,               ahk_id %win_id%
 	WinGetPos,   win_x, win_y, win_w, win_h,               ahk_id %win_id%
 
-    in_screen:=1
-    screen_x:=0, screen_y:=0, screen_xx:=0, screen_yy:=0
+    in_screen := 1
+    screen_x :=0, screen_y := 0, screen_xx := 0, screen_yy := 0
     if (win_x >= screen_1_x and win_x < screen_1_xx) {
-        in_screen := 1
-        screen_x  := screen_1_x  ,  screen_y := screen_1_y
-        screen_w  := screen_1_w  ,  screen_h := screen_1_h
-        screen_xx := screen_1_xx , screen_yy := screen_1_yy
+        in_screen  := 1
+        screen_x   := screen_1_x   ,  screen_y := screen_1_y
+        screen_w   := screen_1_w   ,  screen_h := screen_1_h
+        screen_xx  := screen_1_xx  , screen_yy := screen_1_yy
+        screen_dpi := screen_1_dpi
     } else if (win_x >= screen_2_x and win_x < screen_2_xx) {
-        in_screen := 2
-        screen_x  := screen_2_x  ,  screen_y := screen_2_y
-        screen_w  := screen_2_w  ,  screen_h := screen_2_h
-        screen_xx := screen_2_xx , screen_yy := screen_2_yy
+        in_screen  := 2
+        screen_x   := screen_2_x   ,  screen_y := screen_2_y
+        screen_w   := screen_2_w   ,  screen_h := screen_2_h
+        screen_xx  := screen_2_xx  , screen_yy := screen_2_yy
+        screen_dpi := screen_2_dpi
     } else if (win_x>=screen_3_x and win_x<screen_3_xx) {
-        in_screen := 3
-        screen_x  := screen_3_x  ,  screen_y := screen_3_y
-        screen_w  := screen_3_w  ,  screen_h := screen_3_h
-        screen_xx := screen_3_xx , screen_yy := screen_3_yy/2
+        in_screen  := 3
+        screen_x   := screen_3_x   ,  screen_y := screen_3_y
+        screen_w   := screen_3_w   ,  screen_h := screen_3_h
+        screen_xx  := screen_3_xx  , screen_yy := screen_3_yy/2
+        screen_dpi := screen_3_dpi
     }
 
     result := {}
@@ -101,6 +105,7 @@ GetWindowsInfo()
     result.win_w              := win_w
     result.win_h              := win_h
     result.in_screen          := in_screen
+    result.screen_dpi         := screen_dpi
     result.screen_x           := screen_x
     result.screen_y           := screen_y
     result.screen_xx          := screen_xx

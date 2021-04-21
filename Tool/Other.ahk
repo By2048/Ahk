@@ -46,15 +46,15 @@ Screenshot(screens="screen1",keep_path="backup")
         w:=screen_1_w
         h:=screen_1_h
     } else if (screens="screen2") {
-        x:=screen_2_x/screen_1_zoom
-        y:=screen_2_y/screen_1_zoom
-        w:=screen_2_w*screen_2_zoom/screen_1_zoom
-        h:=screen_2_h*screen_2_zoom/screen_1_zoom
+        x:=screen_2_x/screen_1_dpi
+        y:=screen_2_y/screen_1_dpi
+        w:=screen_2_w*screen_2_dpi/screen_1_dpi
+        h:=screen_2_h*screen_2_dpi/screen_1_dpi
     } else if (screens="screen3") {
-        x:=screen_3_x/screen_1_zoom
-        y:=screen_3_y/screen_1_zoom
-        w:=screen_3_w*screen_3_zoom/screen_1_zoom
-        h:=screen_3_h*screen_3_zoom/screen_1_zoom
+        x:=screen_3_x/screen_1_dpi
+        y:=screen_3_y/screen_1_dpi
+        w:=screen_3_w*screen_3_dpi/screen_1_dpi
+        h:=screen_3_h*screen_3_dpi/screen_1_dpi
     }
 
     x:=Round(x)

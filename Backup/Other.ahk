@@ -8,3 +8,13 @@
 
 ; SplashImage, Off
 ; SplashImage, %image%, X%x% Y%y% H%h% W%w% B1
+
+
+; Progress, Off
+
+; Progress, b fs19 zh0, `n Close All Script `n, , Courier New
+; Sleep, 1000
+; Progress, Off
+
+; Progress, b fs19 zh0 x%x% y%y% w%w% h%h%, %data%,  , Courier New
+

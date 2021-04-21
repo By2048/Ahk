@@ -86,8 +86,8 @@ show_image()
     image_x    := screen_1_w/2 - image_w/2
     image_y    := screen_1_h/2 - image_h/2
 
-    image_w := image_w/screen_1_zoom
-    image_h := image_h/screen_1_zoom
+    image_w := image_w/screen_1_dpi
+    image_h := image_h/screen_1_dpi
     
     Gui, Destroy
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
