@@ -68,32 +68,39 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     if (data_count < 6) {
         data_count := 6
     }
-    w := ( data_count + zh_cn_count ) * font_size * screen_dpi
-    h := font_hight
+    gui_w := ( data_count + zh_cn_count ) * font_size * screen_dpi
+    gui_h := font_hight
+
+    text_h := gui_h
+    gui_h  := gui_h + 10
+    text_w := gui_w
 
     if (xy="right_down") {
-        x:=screen_xx-w-5
-        y:=screen_yy-h-5
+        gui_x:=screen_xx-gui_w-5
+        gui_y:=screen_yy-gui_h-5
     } else if (xy="center") {
-        x:=screen_x+screen_w/2-w/2
-        y:=screen_y+screen_h/2-h/2
+        gui_x:=screen_x+screen_w/2-gui_w/2
+        gui_y:=screen_y+screen_h/2-gui_h/2
     } else if (xy="center_up") {
-        x:=screen_x+screen_w/2-w/2
-        y:=screen_y+5
+        gui_x:=screen_x+screen_w/2-gui_w/2
+        gui_y:=screen_y+5
     } else if (xy="center_down") {
-        x:=screen_x+screen_w/2-w/2
-        y:=screen_yy-h-5
+        gui_x:=screen_x+screen_w/2-gui_w/2
+        gui_y:=screen_yy-gui_h-5
     }
 
-    w := w/screen_dpi
-    h := h/screen_dpi
+    gui_w := gui_w/screen_dpi
+    gui_h := gui_h/screen_dpi
+    text_w := text_w/screen_dpi
+    text_h := text_h/screen_dpi
+
 
     Gui, Destroy
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
     Gui, Margin, 0, 0
     Gui, font, s%font_size%, Courier New
-    Gui, Add, Text, x0 y4 w%w% h%h% +Center -Border, %data%
-    Gui, Show, x%x% y%y% w%w% h%h% NA
+    Gui, Add, Text, x0 y7 w%text_w% h%text_h% +Center -Border, %data%
+    Gui, Show, x%gui_x% y%gui_y% w%gui_w% h%gui_h% NA
 
     help_text_show_status:=True
 

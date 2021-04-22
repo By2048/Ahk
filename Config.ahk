@@ -129,57 +129,56 @@ Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"  ] ) ;同
 
 ; 在 Input.ahk Private.ahk 中定义的快捷输入
 global Init_Config := []
-Init_Config.Push( Format(" A_WorkingDir | {1}\ ", A_WorkingDir)                 )
-Init_Config.Push( "-----------------------------------------------------------" )
-Init_Config.Push( Format(" ScreenCount | {1} ", screen_count)                   )
-Init_Config.Push( "-----------------------------------------------------------" )
+_line_ := "----------------------------------------------------------------------"
+Init_Config.Push( _line_                                                           )
+Init_Config.Push( Format(" A_WorkingDir | {1}\ ", A_WorkingDir)                    )
+Init_Config.Push( _line_                                                           )
 if (screen_count>=1) {
-    _format_ := " [1] x y xx yy | {1:5} {2:5} {3:5} {4:5} "
-    _value_  := [ screen_1_x ,screen_1_y, screen_1_xx, screen_1_yy ]
+    _format_ := " [1] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
+    _value_  := []
+    _value_.Push( screen_1_x, screen_1_y, screen_1_xx, screen_1_yy )
+    _value_.Push( screen_1_dpi, screen_1_w, screen_1_h             )
     Init_Config.Push( Format( _format_, _value_*) )
 }
 if (screen_count>=2) {
-    _format_ := " [2] x y xx yy | {1:5} {2:5} {3:5} {4:5} "
-    _value_  := [ screen_2_x, screen_2_y, screen_2_xx, screen_2_yy ]
+    _format_ := " [2] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
+    _value_  := []
+    _value_.Push( screen_2_x, screen_2_y, screen_2_xx, screen_2_yy )
+    _value_.Push( screen_2_dpi, screen_2_w, screen_2_h             )
     Init_Config.Push( Format( _format_, _value_*) )
 }
 if (screen_count>=3) {
-    _format_ := " [3] x y xx yy | {1:5} {2:5} {3:5} {4:5} "
-    _value_  := [ screen_3_x, screen_3_y, screen_3_xx, screen_3_yy ]
+    _format_ := " [3] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
+    _value_  := []
+    _value_.Push( screen_3_x, screen_3_y, screen_3_xx, screen_3_yy )
+    _value_.Push( screen_3_dpi, screen_3_w, screen_3_h             )
     Init_Config.Push( Format( _format_, _value_*) )
 }
-Init_Config.Push( "-----------------------------------------------------------" )
-if (screen_count>=1) {
-    _format_ := " screen_1_dpi w*h | {1:3} {2:5}x{3} "
-    _value_  := [ screen_1_dpi, screen_1_w, screen_1_h ]
-    Init_Config.Push( Format( _format_, _value_*) )
-}
-if (screen_count>=2) {
-    _format_ := " screen_2_dpi w*h | {1:3} {2:5}x{3} "
-    _value_  := [ screen_2_dpi, screen_2_w, screen_2_h ]
-    Init_Config.Push( Format( _format_, _value_*) )
-}
-if (screen_count>=3) {
-    _format_ := " screen_3_dpi w*h | {1:3} {2:5}x{3} "
-    _value_  := [ screen_3_dpi, screen_3_w, screen_3_h ]
-    Init_Config.Push( Format( _format_, _value_*) )
-}
-Init_Config.Push( "-----------------------------------------------------------" )
-Init_Config.Push( Format("  Screens | {1} ", Snipaste_Screenshot_Path_Backup)   )
-Init_Config.Push( Format(" Snipaste | {1}" , Snipaste_EXE)                      )
-Init_Config.Push( Format("   Python | {1}" , Python)                            )
-Init_Config.Push( "-----------------------------------------------------------" )
-Init_Config.Push( Format(" JQB | {1} ", JQB_File)                               )
-Init_Config.Push( "-----------------------------------------------------------" )
-Init_Config.Push( " date time datetime jqb pipjx "                              )
-Init_Config.Push( "-----------------------------------------------------------" )
-Init_Config.Push( " phone qq qq1 qq2 qmail qmail1 qmail2 gmail pwd aly "        )       
-Init_Config.Push( " nc.download nc.rename "                                     )
-Init_Config.Push( " bd.rename "                                                 )
-Init_Config.Push( " bi.free bi.join bi.getname bi.rename "                      )
-Init_Config.Push( " history screen camera weixin "                              )
-Init_Config.Push( " py "                                                        )
-Init_Config.Push( " "                                                           )
+Init_Config.Push( _line_ )
+Init_Config.Push( Format("     Snipaste | {1} " , Snipaste_EXE)                    )
+Init_Config.Push( Format("    Auto_Save | {1} " , Snipaste_Auto_Save_File)         )  
+Init_Config.Push( Format("  Path_Backup | {1} " , Snipaste_Screenshot_Path_Backup) )
+Init_Config.Push( Format("     Path_Tmp | {1} " , Snipaste_Screenshot_Path_Tmp)    )
+Init_Config.Push( _line_                                                           )
+Init_Config.Push( Format("         Ahk | {1}" , Ahk)                               )
+Init_Config.Push( Format("          WT | {1}" , WT)                                )
+Init_Config.Push( Format("         CMD | {1}" , CMD)                               )
+Init_Config.Push( Format("    TaskKill | {1}" , TaskKill)                          )
+Init_Config.Push( Format("      Python | {1}" , Python)                            )
+Init_Config.Push( Format(" HuntAndPeck | {1}" , HuntAndPeck)                       )
+Init_Config.Push( Format("      Chrome | {1}" , Chrome)                            )
+Init_Config.Push( _line_                                                           )
+Init_Config.Push( Format(" JQB | {1} ", JQB_File)                                  )
+Init_Config.Push( _line_                                                           )
+Init_Config.Push( " date time datetime jqb pipjx "                                 )
+Init_Config.Push( _line_                                                           )
+Init_Config.Push( " phone qq qq1 qq2 qmail qmail1 qmail2 gmail pwd aly "           )       
+Init_Config.Push( " nc.download nc.rename "                                        )
+Init_Config.Push( " bd.rename "                                                    )
+Init_Config.Push( " bi.free bi.join bi.getname bi.rename "                         )
+Init_Config.Push( " history screen camera weixin "                                 )
+Init_Config.Push( " py "                                                           )
+Init_Config.Push( _line_                                                           )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
