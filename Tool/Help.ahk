@@ -92,7 +92,7 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
     Gui, Margin, 0, 0
     Gui, font, s%font_size%, Courier New
-    Gui, Add, Text, x0 y0 w%w% h%h% +Center -Border, %data%
+    Gui, Add, Text, x0 y4 w%w% h%h% +Center -Border, %data%
     Gui, Show, x%x% y%y% w%w% h%h% NA
 
     help_text_show_status:=True
