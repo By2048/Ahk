@@ -160,13 +160,13 @@ Init_Config.Push( Format("    Auto_Save | {1} " , Snipaste_Auto_Save_File)      
 Init_Config.Push( Format("  Path_Backup | {1} " , Snipaste_Screenshot_Path_Backup) )
 Init_Config.Push( Format("     Path_Tmp | {1} " , Snipaste_Screenshot_Path_Tmp)    )
 Init_Config.Push( _line_                                                           )
-Init_Config.Push( Format("         Ahk | {1}" , Ahk)                               )
 Init_Config.Push( Format("          WT | {1}" , WT)                                )
+Init_Config.Push( Format("      Chrome | {1}" , Chrome)                            )
 Init_Config.Push( Format("         CMD | {1}" , CMD)                               )
 Init_Config.Push( Format("    TaskKill | {1}" , TaskKill)                          )
+Init_Config.Push( Format("         Ahk | {1}" , Ahk)                               )
 Init_Config.Push( Format("      Python | {1}" , Python)                            )
 Init_Config.Push( Format(" HuntAndPeck | {1}" , HuntAndPeck)                       )
-Init_Config.Push( Format("      Chrome | {1}" , Chrome)                            )
 Init_Config.Push( _line_                                                           )
 Init_Config.Push( Format(" JQB | {1} ", JQB_File)                                  )
 Init_Config.Push( _line_                                                           )
@@ -201,7 +201,7 @@ Process_Hotkeys_Image[ "Explorer"        ] := [ "Explorer.png"                  
 ; [1]System  [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
 ; [sheet, start[x], end[y], multi_line, image_file]
 global WPS_Hotkeys_Image := []
-WPS_Hotkeys_Image.Push( "4 A1 G22 0 E:\Project\Ahk\Image\RCtrl.png"                  )
+WPS_Hotkeys_Image.Push( "4 A1 G20 0 E:\Project\Ahk\Image\RCtrl.png"                  )
 WPS_Hotkeys_Image.Push( "3 A1 J29 1 E:\Project\Ahk\Image\RShift\Windows.png"         )
 WPS_Hotkeys_Image.Push( "6 A1 K20 0 E:\Project\Ahk\Image\RShift\PyCharm-Fxx.png"     )
 WPS_Hotkeys_Image.Push( "6 L1 U31 0 E:\Project\Ahk\Image\RShift\PyCharm.png"         )
@@ -312,10 +312,10 @@ win_x := screen_1_x+screen_1_w/2-win_w/2
 win_y := screen_1_y+screen_1_h/2-win_h/2
 Windows_Default_Position["PyCharm_SunAwtDialog_OpenFileOrProject"] := [win_x, win_y, win_w, win_h]
 
-win_w := screen_1_w * 0.5
-win_h := screen_1_h * 0.5
-win_x := screen_1_x + screen_1_w/2 - win_w/2
-win_y := screen_1_y + screen_1_h/2 - win_h/2
+win_w := screen_1_w*0.5
+win_h := screen_1_h*0.5
+win_x := screen_1_x+screen_1_w/2-win_w/2
+win_y := screen_1_y+screen_1_h/2-win_h/2
 Windows_Default_Position["PotPlayer"] := [win_x, win_y, win_w, win_h]
 
 win_w := 750

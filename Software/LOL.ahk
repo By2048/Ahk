@@ -15,25 +15,33 @@
 
     CoordMode, Mouse, Screen
 
+
+
 	; 涤魂圣枪 赛娜
-	; Loop 5000 {
-	; 	Send +j  ;刷新龙
-	; 	Send q
-	; 	Sleep 500
-  	;	HelpText(" " A_Index " ", "center_down", "screen_1")
-	; }
+	; CapsLock::
+	; 	Loop 5000 {
+	; 		Send +j  ;刷新龙
+	; 		Send q
+	; 		Sleep 500
+	; 		HelpText(" " A_Index " ", "center_down", "screen_1")
+	; 	}
+	; 	HelpText()
+	; Return
+
+
 
 	; 女神泪BUG
-	; Loop, 30 {
-	; 	MouseClick, Right,    2167,2005,    1, 0
-	; 	Sleep, 300
-	; 	MouseClick, Left,     1279,1666,    1, 0
-	; 	HelpText(" " A_Index " ", "center_down", "screen_1")
-	; } 
+	; CapsLock::
+	; 	Loop, 30 {
+	; 		MouseClick, Right,    2167,2005,    1, 0
+	; 		Sleep, 300
+	; 		MouseClick, Left,     1279,1666,    1, 0
+	; 		HelpText(" " A_Index " ", "center_down", "screen_1")
+	; 	} 
+	; 	HelpText()
+	; Return
 
-	CapsLock::
-		; HelpText()
-	Return
+
 
 	CapsLock Up::SetCapsLockState Off
 

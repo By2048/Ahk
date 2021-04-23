@@ -16,33 +16,6 @@ if (not A_IsAdmin) {
 ; xxx::RunNormalUser("xxx.exe")
 ; xxx::Run "xxx.exe"
 
->^Esc::Run, taskmgr.exe ;任务管理器
->^F1::
-    command :=  Format("{} /c {} /f /im shellexperiencehost.exe",CMD,TaskKill)
-    Run, %command%,  , Hide
-    command :=  Format("{} /c {} /f /im MicrosoftEdge.exe",CMD,TaskKill)
-    Run, %command%,  , Hide
-    Run, "D:\Dexpot\dexpot.exe"
-Return
->^F3::
-    command :=  Format("{1} /c {2} /f /im explorer.exe", CMD,TaskKill)
-    RunWait, %command%
-    command :=  Format("{1} /c start explorer.exe", CMD)
-    RunWait, %command%
-Return
->^F4::
-    command := Format("{} {} E:\Project\script\system\update_folder_icon.py", WT,Python)
-    Run, %command%
-    Sleep, 300
-    MoveWindowsMM("mini")
-return
->^F5::Run, "E:\Config\EPQ.ffs_gui"
->^PrintScreen::
-    Screenshot_Activate_Software()
-Return
-
->^`::Run, "E:\Project\Ahk\Doc\Hotkey.xlsx"
-
 >^q::RunNormalUser("D:\Q-Dir\Q-Dir.exe D:\#\PC.qdr")
 >^w::RunNormalUser("D:\WeChat\WeChat.exe")
 >^r::RunNormalUser("D:\QuiteRSS\QuiteRSS.exe")
@@ -59,10 +32,6 @@ Return
     Sleep, 500
     MoveWindowsMM("main")
 Return
-
->^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
->^]::RunNormalUser("D:\VSCode\Code.exe E:\Project\Ahk\")
->^\::Run, "D:\Link\Whiteboard.lnk"
 
 >^a::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^s::Run D:\Everything\Everything.exe
@@ -87,9 +56,45 @@ Return
 >^v::RunNormalUser("D:\VSCode\Code.exe")
 >^b::Run, E:\\Book\\
 >^m::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
->^,::Run, explorer.exe
->^.::Run, ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;控制面板
+
+
+
+>^F1::
+    command :=  Format("{} /c {} /f /im shellexperiencehost.exe",CMD,TaskKill)
+    Run, %command%,  , Hide
+    command :=  Format("{} /c {} /f /im MicrosoftEdge.exe",CMD,TaskKill)
+    Run, %command%,  , Hide
+    Run, "D:\Dexpot\dexpot.exe"
+Return
+>^F3::
+    command :=  Format("{1} /c {2} /f /im explorer.exe", CMD,TaskKill)
+    RunWait, %command%
+    command :=  Format("{1} /c start explorer.exe", CMD)
+    RunWait, %command%
+Return
+>^F4::
+    command := Format("{} {} E:\Project\script\system\update_folder_icon.py", WT,Python)
+    Run, %command%
+    Sleep, 300
+    MoveWindowsMM("mini")
+return
+>^F5::Run, "E:\Config\EPQ.ffs_gui"
+
+
+
+>^Esc::Run, taskmgr.exe ;任务管理器
+>^PrintScreen::Screenshot_Activate_Software()
+>^`::Run, "E:\Project\Ahk\Doc\Hotkey.xlsx"
+
+>^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
+>^]::RunNormalUser("D:\VSCode\Code.exe E:\Project\Ahk\")
+>^\::Run, "D:\Link\Whiteboard.lnk"
+
+>^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}::     ;回收站
+>^.::Run, explorer.exe
 >^/::Run, T:\\
+
+
 
 RCtrl & Enter::Run, "E:\Doc\All.xlsx"
 
