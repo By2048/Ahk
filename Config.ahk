@@ -177,7 +177,7 @@ Init_Config.Push( " nc.download nc.rename "                                     
 Init_Config.Push( " bd.rename "                                                    )
 Init_Config.Push( " bi.free bi.join bi.getname bi.rename "                         )
 Init_Config.Push( " history screen camera weixin "                                 )
-Init_Config.Push( " py "                                                           )
+Init_Config.Push( " py scrcpy "                                                    )
 Init_Config.Push( _line_                                                           )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

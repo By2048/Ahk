@@ -91,7 +91,7 @@ show_image()
     
     Gui, Destroy
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
-    Gui, Margin, 3, 3
+    Gui, Margin, 1, 1
     Gui, Add, Picture, w%image_w% h%image_h%, %image%
 
     hotkeys_show_status := True
