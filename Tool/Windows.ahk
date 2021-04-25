@@ -1,5 +1,5 @@
 ﻿
-#include %A_WorkingDir%\Config.ahk
+#include %A_WorkingDir%\Config\All.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
 #include %A_WorkingDir%\Tool\Image.ahk
 #include %A_WorkingDir%\Tool\Language.ahk
@@ -40,6 +40,7 @@ IsMaxMinWindows()
 ; return | True \ False
 IsGame()
 {    
+    Game_Process_Name := ["LOL"]
     WinGet, process_name, ProcessName, A
     process_name := ProcessNameFormat(process_name)
     for index, value in Game_Process_Name {
@@ -119,7 +120,7 @@ GetWindowsInfo()
 
 
 ; 获取当前激活的应用配置文件信息
-; Config_Data | config.ahk 中定义的配置信息
+; Config_Data | Config中定义的配置信息
 ; return | win_config
 GetWindowsConfig(Config_Data)
 {

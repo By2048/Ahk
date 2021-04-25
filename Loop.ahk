@@ -1,5 +1,5 @@
 ﻿
-#include %A_WorkingDir%\Config.ahk
+#include %A_WorkingDir%\Config\All.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
@@ -10,6 +10,10 @@
 if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
 }
+
+global Loop_Ignore_Process_Name := []
+Loop_Ignore_Process_Name.Push( "LOL"          )
+Loop_Ignore_Process_Name.Push( "FreeFileSync" )
 
 Loop {
 

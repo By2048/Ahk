@@ -1,5 +1,5 @@
 ﻿
-#include %A_WorkingDir%\Config.ahk
+#include %A_WorkingDir%\Config\All.ahk
 #Include %A_WorkingDir%\Other\Keyboard.ahk
 #include %A_WorkingDir%\Libs\TrayIcon.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
