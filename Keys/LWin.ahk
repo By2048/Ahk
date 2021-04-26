@@ -54,6 +54,10 @@ return
 <#n::#k ;打开“连接”快速操作
 <#m::#d ;切换隐藏所有应用界面
 
+; 窗口全屏
+<#Enter::Send ^!`
+<#+Enter::Send ^!+`
+
 ; 修改窗口透明度
 <#WheelUp::UpdateWindowsTransparent(10)
 <#WheelDown::UpdateWindowsTransparent(-10)
@@ -77,31 +81,25 @@ return
     return
 #If
 
-
-
-; 拖动来移动窗口.
-; LWin & LButton::
-    
-;     SetWinDelay, 30
-
-;     MouseGetPos, mouse_x1, mouse_y1, win_id
-;     WinGet, win_min_max, MinMax, ahk_id %win_id%
-;     if (win_min_max) {
-;         return
-;     }
-
-;     WinGetPos, win_x1, win_y1, win_w1, win_h1, ahk_id %win_id%
-;     Loop {
-;         GetKeyState, left_button, LButton, P
-;         if (left_button="U") {
-;             break
-;         }
-;         MouseGetPos, mouse_x2, mouse_y2, win_id
-;         move_x := mouse_x2 - mouse_x1
-;         move_y := mouse_y2 - mouse_y1
-;         win_x2 := win_x1 + move_x
-;         win_y2 := win_y1 + move_y
-;         WinMove, ahk_id %win_id%,  , %win_x2%, %win_y2%
-;     }
-
-; return
+; 移动窗口.
+LWin & LButton::
+    SetWinDelay, 30
+    MouseGetPos, mouse_x1, mouse_y1, win_id
+    WinGet, win_min_max, MinMax, ahk_id %win_id%
+    if (win_min_max) {
+        return
+    }
+    WinGetPos, win_x1, win_y1, win_w1, win_h1, ahk_id %win_id%
+    Loop {
+        GetKeyState, left_button, LButton, P
+        if (left_button="U") {
+            break
+        }
+        MouseGetPos, mouse_x2, mouse_y2, win_id
+        move_x := mouse_x2 - mouse_x1
+        move_y := mouse_y2 - mouse_y1
+        win_x2 := win_x1 + move_x
+        win_y2 := win_y1 + move_y
+        WinMove, ahk_id %win_id%,  , %win_x2%, %win_y2%
+    }
+return

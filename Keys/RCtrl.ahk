@@ -57,8 +57,6 @@ Return
 >^b::Run, E:\\Book\\
 >^m::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
 
-
-
 >^F1::
     command :=  Format("{} /c {} /f /im shellexperiencehost.exe",CMD,TaskKill)
     Run, %command%,  , Hide
@@ -79,12 +77,10 @@ Return
     MoveWindowsMM("mini")
 return
 >^F5::Run, "E:\Config\EPQ.ffs_gui"
-
-
+>^F12::Run, "E:\Project\Ahk\Doc\Hotkey.xlsx"
 
 >^Esc::Run, taskmgr.exe ;任务管理器
 >^PrintScreen::Screenshot_Activate_Software()
->^`::Run, "E:\Project\Ahk\Doc\Hotkey.xlsx"
 
 >^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Project\Ahk\")
@@ -93,7 +89,6 @@ return
 >^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}::     ;回收站
 >^.::Run, explorer.exe
 >^/::Run, T:\\
-
 
 
 RCtrl & Enter::Run, "E:\Doc\All.xlsx"
