@@ -34,7 +34,7 @@
 
     ;全屏
     F11::Return
-    !Enter::Send {F11}
+    #Enter::Send {F11}
 
     ;开发者模式
     F12::Return

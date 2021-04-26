@@ -3,7 +3,7 @@
 
     ;全屏
     F11::Return
-    !Enter::Send {F11}
+    <#Enter::Send {F11}
 
     ;切换下一模式 列表 详情 。。。
     +F6::Return

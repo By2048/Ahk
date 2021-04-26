@@ -41,7 +41,7 @@
 
     ; 全屏
     F11::Return
-    !Enter::Send {F11}
+    #Enter::Send {F11}
 
     ; Ctrl+Shift+E 显示选定文件夹上的所有文件夹
     ^+e::Return

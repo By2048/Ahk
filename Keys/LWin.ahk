@@ -55,8 +55,8 @@ return
 <#m::#d ;切换隐藏所有应用界面
 
 ; 窗口全屏
-<#Enter::Send ^!`
-<#+Enter::Send ^!+`
+<#Enter::Send ^!``
+<#+Enter::Send ^!+``
 
 ; 修改窗口透明度
 <#WheelUp::UpdateWindowsTransparent(10)
@@ -81,7 +81,7 @@ return
     return
 #If
 
-; 移动窗口.
+; 移动窗口
 LWin & LButton::
     SetWinDelay, 30
     MouseGetPos, mouse_x1, mouse_y1, win_id

@@ -13,6 +13,10 @@
     ^F4::Return
     !CapsLock::Send ^{F4}
 
+    ; 全屏
+    F11::Return
+    <#Enter::Send {F11}
+
     ^,::Return ; 设置
     
     ^+1::Return ; Windows PowerShell
