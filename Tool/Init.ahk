@@ -46,8 +46,8 @@ ShowConfig()
         content .= "`n"
     }
     
-    w := 700 * screen_1_dpi
-    h := 900 * screen_1_dpi
+    w := Init_W * screen_1_dpi
+    h := Init_H * screen_1_dpi
     x := screen_3_x + screen_3_w/2 - w/2    
     y := screen_3_y + screen_3_h/3 - h/2
     
@@ -77,7 +77,6 @@ HideConfig()
     global init_config_show_status
     if (init_config_show_status=True) {
         init_config_show_status:=False
-        ; Progress, Off
         Gui, Destroy
     }
 }

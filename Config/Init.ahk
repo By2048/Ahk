@@ -4,13 +4,17 @@
 
 ; 在 Input.ahk Private.ahk 中定义的快捷输入
 
+global Init_W := 750
+global Init_H := 900
+
 global Init_Config := []
 
 NewLine()
 {
     global Init_Config    
     line := ""
-    Loop, 70 {
+    length := Init_W/10
+    Loop, %length% {
         line := line "-"
     }
     Init_Config.Push(line)
@@ -63,8 +67,6 @@ Init_Config.Push( Format(" JQB | {1} ", JQB_File)                               
 NewLine()
 
 Init_Config.Push( " date time datetime jqb pipjx "                                 )
-NewLine()
-
 Init_Config.Push( " phone qq qq1 qq2  "                                            )
 Init_Config.Push( " qmail qmail1 qmail2 gmail "                                    )
 Init_Config.Push( " pwd aly "                                                      )
