@@ -282,8 +282,8 @@ MoveWindowsMM(command)
     screen_w         := result.screen_w
     screen_h         := result.screen_h
 
-    main := [ 5/6 , 8/9 ]
-    mini := [ 3/5 , 3/4 ]
+    mini := Windows_MM["Default"][1]
+    main := Windows_MM["Default"][2]
 
     for key, value in Windows_MM {
         if (key = win_process_name) {
