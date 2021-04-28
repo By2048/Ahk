@@ -66,7 +66,7 @@ NewLine()
 Init_Config.Push( Format(" JQB | {1} ", JQB_File)                                  )
 NewLine()
 
-Init_Config.Push( " date time datetime jqb "                                       )
+Init_Config.Push( " date time datetime "                                           )
 NewLine()
 
 Init_Config.Push( " phone qq qq1 qq2 "                                             )
