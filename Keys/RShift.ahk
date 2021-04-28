@@ -46,20 +46,9 @@ get_image()
         Return
     }
 
-    hotkeys_images := Process_Hotkeys_Image["default"]
+    hotkeys_images := GetWindowsConfig(Process_Hotkeys_Image)
+    hotkeys_total  := hotkeys_images.MaxIndex()
 
-    ; 优先根据应用名进行查找
-    for key_exe, key_image in Process_Hotkeys_Image {
-        if (key_exe=hotkeys_process_name) {
-            hotkeys_images := key_image
-        }
-    }
-
-    if ( hotkeys_process_name="Chrome" and InStr(hotkeys_title, "bilibili") ) {
-        hotkeys_images := Process_Hotkeys_Image["Chrome_Bilibili"]
-    }
-
-    hotkeys_total := hotkeys_images.MaxIndex()
     if (hotkeys_index>hotkeys_total) {
         hotkeys_index := 1
     } 

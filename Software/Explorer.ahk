@@ -46,15 +46,6 @@
     ; Ctrl+Shift+E 显示选定文件夹上的所有文件夹
     ^+e::Return
 
-    ; 排序方式
-    ; 前进|返回|历史
-    ; 切换到树状列表
-    ; 文件夹列表
-    Tab::
-        Send ^+e
-        Send {F6}
-    Return
-
     ; Alt+向左键 查看上一个文件夹
     ; Alt+向右键 查看下一个文件夹
     ; Alt+向上键 查看该文件夹所在的文件夹
@@ -63,10 +54,16 @@
     !Down::Send ^{F1}
 
     ; 切换
+    ; 排序方式
+    ; 前进|返回|历史
+    ; 切换到树状列表
+    ; 文件夹列表
+    !Tab::
+        Send ^+e
+        Send {F6}
+    Return
     ^Tab::Return
     ^+Tab::Return
-    !Tab::Send ^{Tab}
-    !+Tab::Send ^+{Tab}
 
     ; Ctrl+W 关闭活动窗口
     ^w::Return

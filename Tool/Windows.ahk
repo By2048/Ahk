@@ -146,6 +146,8 @@ GetWindowsConfig(Config_Data)
 
     win_title := StrReplace(win_title, " ", "")
 
+    win_config := Config_Data["default"]
+
     for config_key, config_value in Config_Data {
 
         config_items := StrSplit(config_key, "_")
