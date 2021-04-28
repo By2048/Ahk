@@ -2,6 +2,7 @@
 #include %A_WorkingDir%\Config\All.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
+#include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 
 #SingleInstance Force
@@ -61,6 +62,18 @@ return
 ; 修改窗口透明度
 <#WheelUp::UpdateWindowsTransparent(10)
 <#WheelDown::UpdateWindowsTransparent(-10)
+
+<#PrintScreen::
+    Screenshot("screen1", "tmp")
+    Screenshot("screen2", "tmp")
+    Screenshot("screen3", "tmp")
+Return
+
+<#+PrintScreen::
+    Screenshot("screen1", "backup")
+    Screenshot("screen2", "backup")
+    Screenshot("screen3", "backup")
+Return
 
 ;切换应用
 global win_tab:=False

@@ -35,7 +35,7 @@ Return
 
 >^a::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^s::Run D:\Everything\Everything.exe
->^f::RunNormalUser("D:\Firefox\firefox.exe")
+>^f::Run "D:\#\FreeFileSync.lnk"
 >^g::
     win_x:=160, win_y:=60, win_w:=1600, win_h:=960
     command := Format("{} --new-window", Chrome)
