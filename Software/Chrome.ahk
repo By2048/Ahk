@@ -1,4 +1,22 @@
 ﻿
+#if ( WindowsActive("Chrome", "", "修改书签") )
+
+    ; 收藏
+    Enter::
+        Send {Tab 4}
+        Send {Enter}
+    Return
+
+    ; 取消收藏
+    Esc::
+        Send {Esc}
+        Send ^d
+        Send {Tab 4}
+        Send {Enter}
+    Return
+
+#if
+
 #if ( WindowsActive("Chrome") )
 
     ;帮助
@@ -138,7 +156,13 @@
     ;取消收藏
     ^d::Return
     ^+d::Return
-    !d::Send ^d
+    !d::
+        Send ^d
+        Send {Tab 2}
+        Send {Enter}
+        Sleep 100
+        MoveWindowsToDefaultPosition()
+    Return
     !+d::
         Send ^d
         Send {Tab 4}
