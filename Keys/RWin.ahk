@@ -83,31 +83,6 @@ Return
     HelpText("Move Windows")
 Return
 
->#Delete::
-    if (IsDesktops() or IsGame()) {
-        Return
-    }
-    result := GetWindowsInfo()
-    win_process_name := result.win_process_name
-    _win_process_name_ := result._win_process_name_
-    win_id := result.win_id
-    Process, Close, %_win_process_name_%
-    if (win_process_name="CloudMusic") {
-        Sleep 300
-        Process, Close, CrashReporter.exe
-    }
-Return
-
->#Esc::
-    if (IsDesktops() or IsGame()) {
-        Return
-    }
-    result := GetWindowsInfo()
-    win_id := result.win_id
-    WinClose, ahk_id %win_id%
-Return
-
-
 
 RWin & RCtrl::MoveWindowsMM("main")
 RWin & RAlt::MoveWindowsMM("mini")

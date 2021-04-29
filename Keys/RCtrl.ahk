@@ -84,7 +84,7 @@ return
 
 >^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
 >^]::RunNormalUser("D:\VSCode\Code.exe E:\Project\Ahk\")
->^\::Run, "D:\Link\Whiteboard.lnk"
+>^\::Run, "D:\#\Whiteboard.lnk"
 
 >^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}::     ;回收站
 >^.::Run, explorer.exe
