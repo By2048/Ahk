@@ -32,8 +32,13 @@
     ^o::Return
     !o::Send ^o
 
-    ; 退出
+    ; 关闭 切换标签
     ^q::Return
+    ^Tab::Return
+    ^+Tab::Return
+    !CapsLock::Send ^q
+    !Tab::Send ^Tab
+    !+Tab::Send ^+Tab
 
     ; 新建窗口
     ^n::Return
