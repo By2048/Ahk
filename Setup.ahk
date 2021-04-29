@@ -14,9 +14,6 @@ if (not A_IsAdmin) {
 ; 启动脚本
 LWin & RWin::
     DefaultProgress()
-    ShowConfig()
-    Sleep, 1000
-    HideConfig()
     Run, .\Setup.bat start, %A_WorkingDir%, Hide
 Return
 

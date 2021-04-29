@@ -141,7 +141,7 @@ GetWindowsConfig(Config_Data)
     _class_        := ""
     _title_        := ""
     
-    check_count    := 0  ;满足条件数
+    match_count    := 0  ;满足的条件数
     win_config     := [] ;参数
 
     win_title := StrReplace(win_title, " ", "")
@@ -153,74 +153,47 @@ GetWindowsConfig(Config_Data)
         config_items := StrSplit(config_key, "_")
         max_index    := config_items.MaxIndex()
         cnt          := 0
-    
-        if (max_index=1) {
+
+        _process_name_ := ""
+        _class_        := ""
+        _title_        := ""
+        if (max_index > 0) {
             _process_name_ := config_items[1]
-            if (StrLen(_process_name_)>0) {
-                if (InStr(win_process_name, _process_name_)) {
-                    cnt := cnt+1     
-                    if (cnt>check_count) {
-                        check_count := cnt
-                        win_config  := config_value
-                    }
-                }
+        }
+        if (max_index > 1) {
+            _class_ := config_items[2]
+        }
+        if (max_index > 2) {
+            _title_ := config_items[3]
+        }
+
+        if (StrLen(_process_name_) > 0) {
+            if (InStr(win_process_name, _process_name_)) {
+                cnt := cnt + 1
+            } else {
+                cnt := cnt - 1
             }
         }
-        
-        if (max_index=2) {
-            _process_name_ := config_items[1]
-            _class_        := config_items[2]
-            if (StrLen(_process_name_)>0) {
-                if (InStr(win_process_name, _process_name_)) {
-                    cnt := cnt+1     
-                    if (cnt>check_count) {
-                        check_count := cnt
-                        win_config  := config_value
-                    }
-                }
-            }
-            if (StrLen(_class_)>0) {
-                if (InStr(win_class, _class_)) {
-                    cnt := cnt+1
-                    if (cnt>check_count) {
-                        check_count := cnt
-                        win_config  := config_value
-                    }
-                }
+
+        if (StrLen(_class_) > 0) {
+            if (InStr(win_class, _class_)) {
+                cnt := cnt + 1
+            } else {
+                cnt := cnt - 1
             }
         }
-        
-        if (max_index=3) {
-            _process_name_ := config_items[1]
-            _class_        := config_items[2]
-            _title_        := config_items[3]
-            if (StrLen(_process_name_)>0) {
-                if (InStr(win_process_name, _process_name_)) {
-                    cnt := cnt+1     
-                    if (cnt>check_count) {
-                        check_count := cnt
-                        win_config  := config_value
-                    }
-                }
+
+        if (StrLen(_title_) > 0) {
+            if (InStr(win_title, _title_)) {
+                cnt := cnt + 1
+            } else {
+                cnt := cnt - 1
             }
-            if (StrLen(_class_)>0) {
-                if (InStr(win_class, _class_)) {
-                    cnt := cnt+1
-                    if (cnt>check_count) {
-                        check_count := cnt
-                        win_config  := config_value
-                    }
-                }
-            }
-            if (StrLen(_title_)>0) {
-                if (InStr(win_title, _title_)) {
-                    cnt := cnt+1
-                    if (cnt>check_count) {
-                        check_count := cnt
-                        win_config  := config_value
-                    }
-                }
-            }
+        }
+
+        if (cnt > match_count) {
+            match_count := cnt
+            win_config  := config_value
         }
         
     }
