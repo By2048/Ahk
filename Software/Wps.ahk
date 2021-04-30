@@ -21,18 +21,16 @@ ExcelGetXYSpace(x, y)
 ; 移动到指定Sheet
 ExcelMoveToSheet(cnt)
 {
-    Loop, 30 {
-        Send ^{PgUp}
-        Sleep 100
-    }
+    Send ^{PgUp 30}
+    Sleep 1000
+
     cnt:=cnt-1
     if (cnt>0) {
-        Loop, %cnt% {
+        Loop %cnt% {
             Send ^{PgDn}
-            Sleep 100
+            Sleep 500
         }
-    }
-    Sleep, 100
+    }   
 }
 
 
@@ -40,25 +38,23 @@ ExcelMoveToSheet(cnt)
 ; 移动到position [A1]
 ExcelMoveToPosition(position)
 {
-    ; 移动到A1
-    Send ^{Home}
-    Sleep, 100
     result:=ExcelGetXYSpace("A1",position)
     move_x:=result[1]
     move_y:=result[2]
+
+    ; 移动到A1
+    Send ^{Home}
+    Sleep 200
+
     if (move_x!=0) {
-        Loop, %move_x% {
-            Send {Right}
-            Sleep, 30
-        }
+        Send {Right %move_x%}
     }
+    Sleep 200
+
     if (move_y!=0) {
-        Loop, %move_y% {
-            Send {Down}
-            Sleep, 30
-        }
+        Send {Down %move_y%}
     }
-    Sleep, 100
+    Sleep 200
 }
 
 
@@ -87,8 +83,6 @@ ExcelSelectXToY(excel_x, excel_y, multi_line)
         }
     }
     Send {RShift UP}
-    Send ^c
-    Sleep, 300
 }
 
 
@@ -105,30 +99,29 @@ SnipasteClipboardToImageFile(image_file)
     ; 贴图
     cmd := Format("{1} paste --clipboard", Snipaste_EXE)
     Run %cmd%
-    Sleep, 500
+    Sleep 500
 
     ; 打开设置界面
-	WinGetPos, x, y, w, h, A
-    xx:=x+50
-    yy:=y+50
-    MouseMove, %xx%, %yy%
-
-    ; 右键保存
-    Send {RButton}
+	; WinGetPos, x, y, w, h, A
+    ; xx:=x+50
+    ; yy:=y+50
+    ; MouseMove, %xx%, %yy%
+    ; Send {RButton}
+    
+    Send {AppsKey}
     Sleep, 500
 
     Send s
     Sleep, 1000
 
-
     ; 设置文件名
     Send !n
     ControlSetText, Edit1, %image_file%, A
-    Sleep, 500
+    Sleep 500
 
     ; 保存文件
     Send !s
-    Sleep, 500
+    Sleep 500
 
 	WinGetTitle, win_title, A
     if (win_title="确认另存为") {
@@ -137,7 +130,8 @@ SnipasteClipboardToImageFile(image_file)
     }
 
     ; 关闭贴图
-    Send {LButton 2}
+    ; Send {LButton 2}
+    Send {Esc}
 }
 
 
@@ -146,29 +140,41 @@ SnipasteClipboardToImageFile(image_file)
 HotkeysKeyImage()
 {
     For index, value In WPS_Hotkeys_Image {
-        value:=StrReplace(value,"  "," ")
-        value:=StrReplace(value,"  "," ")
-        value:=StrReplace(value,"  "," ")
-        value:=StrSplit(value," ")
-        sheet:=value[1]
-        excel_x:=value[2]
-        excel_y:=value[3]
-        multi_line:=value[4]
-        image_file:=value[5]
+        value := StrReplace(value,"  "," ")
+        value := StrReplace(value,"  "," ")
+        value := StrReplace(value,"  "," ")
+        value := StrSplit(value," ")
+        
+        sheet      := value[1]
+        excel_x    := value[2]
+        excel_y    := value[3]
+        multi_line := value[4]
+        image_file := value[5]
+        
         ExcelMoveToSheet(sheet)
+        Sleep 500
+
         ExcelMoveToPosition("A1")
-        Sleep, 300
+        Sleep 500
+
         ExcelSelectXToY(excel_x, excel_y, multi_line)
-        Sleep, 1000
+        Sleep 1000
+
+        Send ^c
+        Sleep 1000
+
         SnipasteClipboardToImageFile(image_file)
-        Sleep, 300
-        Send {LButton}
+        Sleep 500
+
         Send {Esc}
-        Sleep, 300
+        Sleep 1000
+        Send ^{Home}
+        Sleep 1000
+
         ExcelMoveToPosition("A1")
-        Sleep, 1000
+        Sleep 500
     }
-    HelpText(" Over ", "center_down", "screen1", 1000)
+    HelpText("Over", "center", "screen1", 3000)
 }
 
 
