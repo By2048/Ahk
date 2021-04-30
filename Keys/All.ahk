@@ -7,15 +7,9 @@
 #SingleInstance Force
 #NoTrayIcon
 
-
-
 if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
 }
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;切换窗口
 !Esc::Return
@@ -57,12 +51,8 @@ if (not A_IsAdmin) {
 #^Right::return ;向右切换虚拟桌面
 #,::Return ; 透明窗口显示桌面
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;TODO Error
-^!r::Return ; PowerToys
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; PowerToys Run
+^!r::Return
 
 RCtrl & RAlt::
     if (not IsDesktops()) {
@@ -76,5 +66,3 @@ RAlt & RCtrl::
         HelpText("EN","center","screen1",1000)
     }
 Return
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
