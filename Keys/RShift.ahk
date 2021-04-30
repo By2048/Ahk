@@ -157,7 +157,6 @@ return
 timer:
     if (cnt=1) {
         hide_image()
-        HideConfig()
     } else if (cnt=2) {
         show_image()
     }

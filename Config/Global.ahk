@@ -1,19 +1,25 @@
 ﻿
-; 工具类中使用的全局变量在此配置
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; 工具类中使用的全局变量在此配置 ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Init Config
+; Tool\Init.ahk\InitConfig()
 global init_config_show_status := False
 
-; 帮助信息
-global help_text_show_status  := False
+; Tool\Help.ahk\HelpImage()
+global help_text_show_status := False
+
+; Tool\Help.ahk\HelpText()
 global help_image_show_status := False
 
-; 键盘快捷键帮助
+; Tool\KeyMap.ahk\show_hide_key_config()
 global key_map_show_status := False
 
-; 安卓应用
-global software_android_rshift_loop    := [1,2,3,4,5]
+; Software\Android.ahk
+global software_android_rshift_loop := [1,2,3,4,5]
+
+; Software\Android.ahk
 global software_android_rshift_current := 0
 
-; VSCode
+; Software\VSCode.ahk
 global software_vscode_ralt := False

@@ -3,6 +3,7 @@
 #Include %A_WorkingDir%\Other\Keyboard.ahk
 #include %A_WorkingDir%\Libs\TrayIcon.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
+#include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 
@@ -27,6 +28,7 @@ if (not A_IsAdmin) {
         RunNormalUser("D:\TIM\Bin\TIM.exe")
     }
 Return
+>^i::InitConfig()
 >^p::
     Run, %WT% -d t:\
     Sleep, 500

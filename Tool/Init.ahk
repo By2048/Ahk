@@ -30,15 +30,22 @@ DefaultProgress()
 
 
 
-ShowConfig()
+; 显示Init帮助信息
+InitConfig()
 {
     CoordMode Pixel Screen
     CoordMode Mouse Screen
 
-    Gui, Destroy
+    global init_config_show_status
+
+    if (init_config_show_status=True) {
+        init_config_show_status:=False
+        Gui, Destroy
+        Return
+    }
+
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
     Gui, Margin, 3, 3
-
 
     content := "`n"
     for index, value in Init_Config {
@@ -67,16 +74,5 @@ ShowConfig()
         Gui, Add, Text, w%w% -Center -Border, %content%
         Gui, Show, x%x% y%y% NA
         init_config_show_status:=True
-    }
-}
-
-
-
-HideConfig()
-{
-    global init_config_show_status
-    if (init_config_show_status=True) {
-        init_config_show_status:=False
-        Gui, Destroy
     }
 }

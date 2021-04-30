@@ -7,6 +7,7 @@
 #include %A_WorkingDir%\Tool\Help.ahk
 
 
+
 show_hide_key_config()
 {
     global key_map_show_status

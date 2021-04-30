@@ -86,7 +86,6 @@ Return
 
 RWin & RCtrl::MoveWindowsMM("main")
 RWin & RAlt::MoveWindowsMM("mini")
-RWin & RShift::ShowConfig()
 
 
 

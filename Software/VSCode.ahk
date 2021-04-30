@@ -6,7 +6,7 @@
     ; f1-f19 正常
 
     ;快速命令 
-    ~LShift::
+    $RAlt::
         global software_vscode_ralt
         if (software_vscode_ralt=True) {
             software_vscode_ralt:=False
