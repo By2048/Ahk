@@ -17,7 +17,7 @@ global keyboard_line_2 := [["~ ``"],["! 1"],["@ 2"],["# 3"],["$ 4"],["% 5"],["^ 
 global keyboard_line_3 := [["Tab",1.5],["Q"],["W"],["E"],["R"],["T"],["Y"],["U"],["I"],["O"],["P"],["{ ["],["} ]"],["| \",1.5],["Page Up"]]
 global keyboard_line_4 := [["CapsLock",1.75],["A"],["S"],["D"],["F"],["G"],["H"],["J"],["K"],["L"],[": `;"],[""" '"],["Enter",2.25],["Page Down"]]
 global keyboard_line_5 := [["Shift",2.25],["Z"],["X"],["C"],["V"],["B"],["N"],["M"],["< ,"],["> ."],["? /"],["Shift",1.75],["Up"],["End"]]
-global keyboard_line_6 := [["Ctrl",1.25],["Win",1.25],["Alt",1.25],["Space",5.5],["Alt",1.25],["Win",1.25],["Ctrl",1.25],["Left"],["Down"],["Right"]]
+global keyboard_line_6 := [["LCtrl",1.25],["LWin",1.25],["LAlt",1.25],["Space",5.5],["RAlt",1.25],["RWin",1.25],["RCtrl",1.25],["Left"],["Down"],["Right"]]
 
 
 
