@@ -8,13 +8,9 @@
 #SingleInstance Force
 #NoTrayIcon
 
-
-
 if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
 }
-
-
 
 ; 显示隐藏任务栏
 <#8:: 
@@ -63,18 +59,22 @@ return
 <#WheelUp::UpdateWindowsTransparent(10)
 <#WheelDown::UpdateWindowsTransparent(-10)
 
+; 屏幕截图 临时
 <#PrintScreen::
     Screenshot("screen1", "tmp")
     Screenshot("screen2", "tmp")
     Screenshot("screen3", "tmp")
 Return
 
+; 屏幕截图 长久
 <#+PrintScreen::
     Screenshot("screen1", "backup")
     Screenshot("screen2", "backup")
     Screenshot("screen3", "backup")
 Return
 
+; 软件默认位置
+<#\::MoveWindowsToDefaultPosition()
 
 ; 结束应用
 <#BackSpace::
@@ -85,7 +85,6 @@ Return
     win_id := result.win_id
     WinClose, ahk_id %win_id%
 Return
-
 
 ; 结束进程
 <#+BackSpace::
@@ -102,8 +101,6 @@ Return
         Process, Close, CrashReporter.exe
     }
 Return
-
-
 
 ;切换应用
 global win_tab:=False

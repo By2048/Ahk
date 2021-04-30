@@ -86,6 +86,7 @@ Return
 
 RWin & RCtrl::MoveWindowsMM("main")
 RWin & RAlt::MoveWindowsMM("mini")
+RWin & RShift::ShowConfig()
 
 
 
@@ -114,8 +115,6 @@ timer:
         HelpText(process_name, "center_down", "screen1",1000)
     } else if (cnt=2) {
         MoveWindowsToCenter()
-    } else if (cnt=3) {
-        MoveWindowsToDefaultPosition()
     }
     cnt:=0
 return

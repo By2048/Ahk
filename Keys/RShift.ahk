@@ -160,8 +160,6 @@ timer:
         HideConfig()
     } else if (cnt=2) {
         show_image()
-    } else if (cnt=3) {
-        ShowConfig()
     }
     cnt:=0
 return
