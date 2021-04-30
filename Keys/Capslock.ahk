@@ -34,41 +34,38 @@ Capslock & Shift::RButton
 
 ;切换到显示器中心 
 $CapsLock::
-    if (not cnt) {
-        cnt:=1
-    } else {
-        cnt:=cnt+1
-    }
-    SetTimer, timer, -500
-return
-
-;永久关闭大写锁定
-CapsLock Up::SetCapsLockState, Off
-
-
-timer:
     CoordMode Mouse Screen
-
-    if (IsGame()) {
-        Return
-    }
+    MouseGetPos, x_pos, y_pos
 
     ; 屏幕中心
-    if (cnt=1) {
-        x:=screen_1_x+screen_1_w/2
-        y:=screen_1_y+screen_1_h/2
-    } else if (cnt=2) {
-        x:=screen_2_x+screen_2_w/2
-        y:=screen_2_y+screen_2_h/2
-    } else if (cnt=3) {
-        x:=screen_3_x+screen_3_w/2
-        y:=screen_3_y+screen_3_h/2
+    x_1 := screen_1_x + screen_1_w/2
+    y_1 := screen_1_y + screen_1_h/2
+    x_2 := screen_2_x + screen_2_w/2
+    y_2 := screen_2_y + screen_2_h/2
+
+    offset := 100
+    x_new  := 0
+    y_new  := 0
+
+    if ( Abs(x_pos-x_1)>offset and Abs(y_pos-y_1)>offset ) {
+        x_new := x_1 
+        y_new := y_1
+    } else if ( Abs(x_pos-x_2)>offset and Abs(y_pos-y_2)>offset ) {
+        x_new := x_2 
+        y_new := y_2
     }
-    DllCall("SetCursorPos", "int", x, "int", y)
+
+    DllCall("SetCursorPos", "int", x_new, "int", y_new)
     
     ; 激活鼠标下的窗口
-    MouseGetPos,  ,  , win_id
+    MouseGetPos,  _,  _, win_id
     WinActivate, ahk_id %win_id%
 
-    cnt:=0
+    ; 显示激活的应用名
+    result := GetWindowsInfo()
+	win_process_name := result.win_process_name
+    HelpText(win_process_name, "center_down", "screen1", 300)
 return
+
+;关闭大写锁定
+CapsLock Up::SetCapsLockState, Off
