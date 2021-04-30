@@ -50,22 +50,22 @@ Loop {
         FileEncoding UTF-8
         Try {
             FileRead, Clipboard, %JQB_File%
-            HelpText(" JQB UPDATE ", "center_down", "screen3", 1000)
+            HelpText("JQB UPDATE", "center_down", "screen3", 1000)
             FileDelete %JQB_File%
         }
         Continue
     }
 
     ; Windows系统文件操作
-    if (win_class="#32770" or win_class="OperationStatusWindow") {
+    if (win_class = "#32770" or win_class = "OperationStatusWindow") {
         if (InStr(win_title, "属性")) {
             xx := screen_x + screen_w/2 - win_w/2
             yy := screen_y + screen_h/2 - win_h/2
             SetWindows(win_id, xx, yy, win_w, win_h)
             Continue
         }
-        if (InStr(win_title,"删除") or InStr(win_title,"替换") or InStr(win_title,"跳过")) {
-            if (in_screen=3) {
+        if (InStr(win_title, "删除") or InStr(win_title, "替换") or InStr(win_title, "跳过")) {
+            if (in_screen = 3) {
                 screen_h := screen_h/2
             }
             xx := screen_x + screen_w/2 - win_w/2
@@ -76,14 +76,14 @@ Loop {
         if (InStr(win_title, "已完成")) {
             ; [2][1][3] 屏幕1移动到屏幕3
             ; 不同屏幕之间移动Windows会进行微调窗口大小
-            if (in_screen=1) {
-                Send, #+{Right}
-                Sleep, 100
-                result := GetWindowsInfo()
-                win_id := result.win_id
-                win_w := result.win_w
-                win_h := result.win_h
-            }
+            ; if (in_screen = 1) {
+            ;     Send #+{Right}
+            ;     Sleep 100
+            ;     result := GetWindowsInfo()
+            ;     win_id := result.win_id
+            ;     win_w  := result.win_w
+            ;     win_h  := result.win_h
+            ; }
             xx := screen_3_x + screen_3_w/2 - win_w/2
             yy := screen_3_y + screen_3_h/4 - win_h/2
             SetWindows(win_id, xx, yy, win_w, win_h)
@@ -92,15 +92,12 @@ Loop {
     }
 
     ; Windows标准对话框
-    if (win_class="#32770") {
+    if (win_class = "#32770") {
         xx := screen_1_x + screen_1_w/2 - win_w/2
         yy := screen_1_y + screen_1_h/2 - win_h/2
         offset := 70
         SetWindows(win_id, xx, yy, win_w, win_h, offset)
         Continue
     }
-
-    ; if (win_process_name="Q-Dir" or win_process_name="Explorer") {
-    ; }
 
 }
