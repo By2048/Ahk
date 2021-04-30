@@ -11,11 +11,11 @@
         if (software_vscode_ralt=True) {
             software_vscode_ralt:=False
             Send {Esc}
-        } 
-        if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<300) {
+        }
+        if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<500) {
             if (software_vscode_ralt=False) {
                 software_vscode_ralt:=True
-                Send {f17} ; {f5}
+                Send {f17}
             }
         }
     Return
