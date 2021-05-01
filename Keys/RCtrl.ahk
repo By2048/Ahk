@@ -28,7 +28,6 @@ if (not A_IsAdmin) {
         RunNormalUser("D:\TIM\Bin\TIM.exe")
     }
 Return
->^i::InitConfig()
 >^p::
     Run, %WT% -d t:\
     Sleep, 500

@@ -73,9 +73,6 @@ Return
     Screenshot("screen3", "backup")
 Return
 
-; 软件默认位置
-<#\::MoveWindowsToDefaultPosition()
-
 ; 结束应用
 <#BackSpace::
     if (IsDesktops() or IsGame()) {

@@ -159,6 +159,8 @@ timer:
         hide_image()
     } else if (cnt=2) {
         show_image()
+    } else if (cnt=3) {
+        InitConfig()
     }
     cnt:=0
 return

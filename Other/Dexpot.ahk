@@ -1,4 +1,14 @@
 ﻿
+#include %A_WorkingDir%\Config\All.ahk
+#include %A_WorkingDir%\Tool\Base.ahk
+
+#SingleInstance Force
+#NoTrayIcon
+
+if (not A_IsAdmin) {
+    Run *RunAs "%A_ScriptFullPath%" 
+}
+
 ; 虚拟桌面 Dextop 快捷键按拓展
 ; 部分快捷键与Win系统冲突 无法通过软件中配置 故在此处进行处理
 
@@ -42,10 +52,12 @@ Return
 ;DexTab任务切换器 
 ; #`
 
+;卷起
+<#\::#^!F12 
+
 ; 窗口透明度
 <#PgUp::#^!PgUp ;增加
 <#PgDn::#^!PgDn ;减少
-<#BackSpace::#^!F12 ;重置
 
 ; 窗口目录 
 LWin & LAlt::#^!F10

@@ -33,6 +33,8 @@ if %command%==start (
     @REM =========================================================
     start  D:\AutoHotkey\AutoHotkey.exe  .\Software\All.ahk  start
     echo   start .\Software\All.ahk
+    start  D:\AutoHotkey\AutoHotkey.exe  .\Other\Dexpot.ahk  start
+    echo   start .\Other\Dexpot.ahk
     @REM =========================================================
     Start  D:\AutoHotkey\AutoHotkey.exe  .\Input.ahk         start
     echo   start .\Input.ahk
@@ -69,6 +71,8 @@ if %command%==stop (
     @REM =========================================================
     start  D:\AutoHotkey\AutoHotkey.exe  .\Software\All.ahk   stop
     echo   stop .\Software\All.ahk
+    start  D:\AutoHotkey\AutoHotkey.exe  .\Other\Dexpot.ahk   stop
+    echo   start .\Other\Dexpot.ahk
     @REM =========================================================    
     Start  D:\AutoHotkey\AutoHotkey.exe .\Input.ahk           stop
     echo   stop .\Input.ahk
@@ -87,3 +91,5 @@ if %command%==stop (
 ) 
 
 ping -n 2 127.0.0.1 > nul
+
+exit
