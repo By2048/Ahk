@@ -15,13 +15,19 @@ global Windows_Default_Position := {}
 
 win_x := 10
 win_y := 10
-win_w := screen_1_w/2-10-10
-win_h := screen_1_h-10-10
+win_w := screen_1_w/2 -10-10 +100
+win_h := screen_1_h -10-10
 Windows_Default_Position["TIM"] := [win_x, win_y, win_w, win_h]
 
-win_x := screen_1_w/2+10
+win_x := 10
+win_y := 10
+win_w := screen_1_w/2 -10-10 +100
+win_h := screen_1_h -10-10
+Windows_Default_Position["DingDing"] := [win_x, win_y, win_w, win_h]
+
+win_x := screen_1_w/2+10 +100
 win_y := 10+14
-win_w := screen_1_w/2-10-10
+win_w := screen_1_w/2-10-10 -100
 win_h := screen_1_h-10-10-14-14
 Windows_Default_Position["WeChat"] := [win_x, win_y, win_w, win_h]
 
