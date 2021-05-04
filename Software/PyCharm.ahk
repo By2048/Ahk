@@ -3,6 +3,9 @@
     
     #IncludeAgain %A_WorkingDir%\Software\Demo\Ide.ahk
 
+    !Esc::Send ^{F1}
+    !+Esc::Send ^+{F1}
+
 #if
 
 

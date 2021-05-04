@@ -66,9 +66,10 @@ NewLine()
 Init_Config.Push( Format(" JQB | {1} ", JQB_File)                                  )
 NewLine()
 
-Init_Config.Push( " date time datetime "                                           )
+Init_Config.Push( " [date] [time] [datetime] "                                     )
 NewLine()
 
+Init_Config.Push( " \***\ "                                                        )
 Init_Config.Push( " phone qq qq1 qq2 "                                             )
 Init_Config.Push( " qmail qmail1 qmail2 gmail "                                    )
 Init_Config.Push( " pwd aly "                                                      )

@@ -14,6 +14,7 @@
 #include %A_WorkingDir%\Software\Android.ahk
 #include %A_WorkingDir%\Software\Chrome.ahk
 #include %A_WorkingDir%\Software\CloudMusic.ahk
+#include %A_WorkingDir%\Software\DingDing.ahk
 #include %A_WorkingDir%\Software\Explorer.ahk
 #include %A_WorkingDir%\Software\FSViewer.ahk
 #include %A_WorkingDir%\Software\LOL.ahk

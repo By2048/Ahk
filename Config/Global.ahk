@@ -16,7 +16,7 @@ global help_image_show_status := False
 global key_map_show_status := False
 
 ; Software\Android.ahk
-global software_android_rshift_loop := [1,2,3,4,5]
+global software_android_rshift_loop := [1,2,3,4,5,6]
 
 ; Software\Android.ahk
 global software_android_rshift_current := 0
