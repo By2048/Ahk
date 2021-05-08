@@ -10,7 +10,7 @@ if (not A_IsAdmin) {
 }
 
 ::[date]::
-    FormatTime, result, _, [yyyy-dd-MM]
+    FormatTime, result, _, [yyyy-MM-dd]
     SendInput %result%
 Return
 
@@ -20,6 +20,6 @@ Return
 Return
 
 ::[datetime]::
-    FormatTime, result, _, [yyyy-dd-MM H-mm]
+    FormatTime, result, _, [yyyy-MM-dd H-mm]
     SendInput %result%
 Return

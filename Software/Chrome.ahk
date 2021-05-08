@@ -120,14 +120,13 @@
 
     ;切换书签栏显示隐藏状态
     ^+b::Return
-    !b::Send ^+b
+    !v::Send ^+b
 
-    ;打开文件
-    ^o::Return 
+    ;打开文件 ^o
 
     ;书签管理页面
     ^+o::Return
-    !o::Send ^+o
+    !b::Send ^+o
     
     ;切换用户
     ^+m::Return 

@@ -82,7 +82,7 @@ GetWindowsInfo()
         screen_w   := screen_2_w   ,  screen_h := screen_2_h
         screen_xx  := screen_2_xx  , screen_yy := screen_2_yy
         screen_dpi := screen_2_dpi
-    } else if (win_x>=screen_3_x and win_x<screen_3_xx) {
+    } else if (win_x >= screen_3_x and win_x < screen_3_xx) {
         in_screen  := 3
         screen_x   := screen_3_x   ,  screen_y := screen_3_y
         screen_w   := screen_3_w   ,  screen_h := screen_3_h
@@ -252,10 +252,15 @@ MoveWindowsMM(command)
     win_process_name := result.win_process_name
     win_class        := result.win_class
     win_title        := result.win_title
+    in_screen        := result.in_screen
     screen_x         := result.screen_x
     screen_y         := result.screen_y
     screen_w         := result.screen_w
     screen_h         := result.screen_h
+
+    if (in_screen=3) {
+        screen_h := screen_h / 2
+    }
 
     mini := Windows_MM["Default"][1]
     main := Windows_MM["Default"][2]
