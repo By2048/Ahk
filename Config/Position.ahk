@@ -67,20 +67,37 @@ win_x := screen_3_x+6
 win_y := screen_3_y+6
 Windows_Default_Position["TaskMGR"] := [win_x, win_y, win_w, win_h]
 
-win_x := 60
-win_y := 30
-win_w := screen_1_w-win_x*2+1
-win_h := screen_1_h-win_y*2+1
-Windows_Default_Position["PyCharm"] := [win_x, win_y, win_w, win_h]
-
-win_w := 800
-win_h := 1400
-win_x := screen_1_x+screen_1_w/2-win_w/2
-win_y := screen_1_y+screen_1_h/2-win_h/2
-Windows_Default_Position["PyCharm_SunAwtDialog_OpenFileOrProject"] := [win_x, win_y, win_w, win_h]
-
 win_w := 900
 win_h := 1500
 win_x := screen_1_x+screen_1_w/2-win_w/2
 win_y := screen_1_y+screen_1_h/2-win_h/2
 Windows_Default_Position["Chrome__修改书签"] := [win_x, win_y, win_w, win_h]
+
+win_w := 1661
+win_h := 676
+win_x := screen_2_x + screen_2_w/2 - win_w/2
+win_y := screen_2_y + screen_2_h/2 - win_h/2
+Windows_Default_Position["v2rayN"] := [win_x, win_y, win_w, win_h]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+win_x := 60 
+win_y := 30
+win_w := screen_1_w - win_x*2 + 1
+win_h := screen_1_h - win_y*2 + 1
+Windows_Default_Position["PyCharm"] := [win_x, win_y, win_w, win_h]
+
+win_w := screen_1_w/1.5 + 1
+win_h := screen_1_h/1.5 + 1
+win_x := screen_1_x + screen_1_w/2 - win_w/2
+win_y := screen_1_y + screen_1_h/2 - win_h/2
+Windows_Default_Position["PyCharm__Settings"]             := [win_x, win_y, win_w, win_h]
+Windows_Default_Position["PyCharm__AddPythonInterpreter"] := [win_x, win_y, win_w, win_h]
+Windows_Default_Position["PyCharm__SSHConfigurations"]    := [win_x, win_y, win_w, win_h]
+
+win_w := 900  + 1
+win_h := 1500 + 1
+win_x := screen_1_x + screen_1_w/2 - win_w/2 + 1
+win_y := screen_1_y + screen_1_h/2 - win_h/2 + 1
+Windows_Default_Position["PyCharm__Open"]   := [win_x, win_y, win_w, win_h]
+Windows_Default_Position["PyCharm__Select"] := [win_x, win_y, win_w, win_h]

@@ -56,8 +56,8 @@ return
 <#+Enter::Send ^!+``
 
 ; 修改窗口透明度
-<#WheelUp::UpdateWindowsTransparent(10)
-<#WheelDown::UpdateWindowsTransparent(-10)
+; <#WheelUp::UpdateWindowsTransparent(10)
+; <#WheelDown::UpdateWindowsTransparent(-10)
 
 ; 屏幕截图 临时
 <#PrintScreen::
@@ -73,31 +73,32 @@ Return
     Screenshot("screen3", "backup")
 Return
 
-; 结束应用
-<#BackSpace::
-    if (IsDesktops() or IsGame()) {
-        Return
-    }
-    result := GetWindowsInfo()
-    win_id := result.win_id
-    WinClose, ahk_id %win_id%
-Return
 
-; 结束进程
-<#+BackSpace::
-    if (IsDesktops() or IsGame()) {
-        Return
-    }
-    result := GetWindowsInfo()
-    win_process_name := result.win_process_name
-    _win_process_name_ := result._win_process_name_
-    win_id := result.win_id
-    Process, Close, %_win_process_name_%
-    if (win_process_name="CloudMusic") {
-        Sleep 300
-        Process, Close, CrashReporter.exe
-    }
-Return
+; ; 结束应用
+; <#BackSpace::
+;     if (IsDesktops() or IsGame()) {
+;         Return
+;     }
+;     result := GetWindowsInfo()
+;     win_id := result.win_id
+;     WinClose, ahk_id %win_id%
+; Return
+
+; ; 结束进程
+; <#+BackSpace::
+;     if (IsDesktops() or IsGame()) {
+;         Return
+;     }
+;     result := GetWindowsInfo()
+;     win_process_name := result.win_process_name
+;     _win_process_name_ := result._win_process_name_
+;     win_id := result.win_id
+;     Process, Close, %_win_process_name_%
+;     if (win_process_name="CloudMusic") {
+;         Sleep 300
+;         Process, Close, CrashReporter.exe
+;     }
+; Return
 
 ;切换应用
 global win_tab:=False
