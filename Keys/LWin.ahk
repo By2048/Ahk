@@ -73,6 +73,17 @@ Return
     Screenshot("screen3", "backup")
 Return
 
+; 手动设置代理
+LWin & RShift::
+    RegRead, proxy_enable, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet settings, proxyenable
+    if (proxy_enable = "0") {
+        Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet settings, proxyenable, 1
+        HelpText("Proxy ON", "center_down", "screen1", 1000)
+    } else if (proxy_enable = "1") {
+        Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet settings, proxyenable, 0
+        HelpText("Proxy OFF", "center_down", "screen1", 1000)
+    }
+Return
 
 ; ; 结束应用
 ; <#BackSpace::

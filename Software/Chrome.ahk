@@ -1,33 +1,18 @@
 ﻿
-#if ( WindowsActive("Chrome", "", "修改书签") )
-
-    ; 收藏
-    Enter::
-        Send {Tab 4}
-        Send {Enter}
-    Return
-
-    ; 取消收藏
-    Esc::
-        Send {Esc}
-        Send ^d
-        Send {Tab 4}
-        Send {Enter}
-    Return
-
-#if
-
 #if ( WindowsActive("Chrome") )
 
     ;帮助
     F1::Return
     
+    ; 重命名
+    F2::Return
+    ^r::Send {F2}
+
     ;搜索
     F3::Return
 
     ;重新加载
     F5::Return
-    ^r::Return
     !r::Send ^r
 
     ;关闭标签
@@ -80,17 +65,17 @@
     !t::Send ^t
 
     ;新窗口
-    ^n::Return
-    !n::Send ^n
+    ; ^n::Return
+    ; !n::Send ^n
+
+    ;新隐私窗口
+    ; ^+n::Return
+    ; !+n::Send ^+n
     
     ;关闭窗口
     ^w::Return
     !w::Send ^w
     !CapsLock::Send ^w
-
-    ;新隐私窗口
-    ^+n::Return
-    !+n::Send ^+n
 
     ;切换标签页
     ^1::Return
@@ -206,5 +191,25 @@
     >!z::MouseClickImage(A_WorkingDir "\Image\Software\Z.png")
     >!w::MouseClickImage(A_WorkingDir "\Image\Software\W.png")
     >!n::MouseClickImage(A_WorkingDir "\Image\Software\N.png")
+
+#if
+
+
+
+#if ( WindowsActive("Chrome", "", "修改书签") )
+
+    ; 收藏
+    Enter::
+        Send {Tab 4}
+        Send {Enter}
+    Return
+
+    ; 取消收藏
+    Esc::
+        Send {Esc}
+        Send ^d
+        Send {Tab 4}
+        Send {Enter}
+    Return
 
 #if
