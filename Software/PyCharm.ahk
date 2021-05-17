@@ -32,6 +32,18 @@
 
 
 
+#if ( WindowsActive("PyCharm", "", "py") )
+    :*r:\#\::################################################################################
+#if
+
+
+
+#if ( WindowsActive("PyCharm", "", "admin.py") )
+    :*:\sd\::short_description
+#if
+
+
+
 #if ( WindowsActive("PyCharm", "SunAwtDialog", "Python Console") )
 
     ; ReRun

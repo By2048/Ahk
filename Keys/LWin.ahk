@@ -73,6 +73,9 @@ Return
     Screenshot("screen3", "backup")
 Return
 
+; 设置默认位置
+<#\::MoveWindowsToDefaultPosition()
+
 ; 手动设置代理
 LWin & RShift::
     RegRead, proxy_enable, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet settings, proxyenable
