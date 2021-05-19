@@ -1,6 +1,8 @@
 ﻿
 #if ( WindowsActive("Xshell") )
 
+    #IncludeAgain %A_WorkingDir%\Software\#Fxx.ahk
+
     ;下一个选项卡
     ^]::Return
     !Tab::Send ^] 
@@ -8,6 +10,13 @@
     ;上一个选项卡
     ^[::Return
     !+Tab::Send ^[
+
+    ;结束运行
+    !BackSpace::Send ^c
+    
+    ;复制
+    ^F1::Return
+    ^c::Send ^{F1}
 
     ;清屏 
     ^/::Return

@@ -48,6 +48,13 @@ LWin & LAlt::#^!F10
 ; 全屏预览
 LWin & LCtrl::#^!f11
 
+;  上一个桌面
+#CapsLock::
+    Send #{CapsLock}
+    SetCapsLockState Off
+Return
+
+
 ; 卷起
 ; <#\::#^!F12
 

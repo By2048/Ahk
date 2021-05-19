@@ -488,13 +488,13 @@ WindowsActive(_process_name_="", _class_="", _title_="")
     check_windows_active := True
 
     if (StrLen(_process_name_)>0) {
-        if (not InStr(win_process_name, _process_name_)) {
+        if (win_process_name != _process_name_) {
             check_windows_active := False
             Return check_windows_active
         }
     }
     if (StrLen(_class_)>0) {
-        if (not InStr(win_class, _class_)) {
+        if (win_class != _class_) {
             check_windows_active := False
             Return check_windows_active
         }

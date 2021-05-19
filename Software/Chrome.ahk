@@ -74,8 +74,17 @@
     
     ;关闭窗口
     ^w::Return
-    !w::Send ^w
+    ; !w::Send ^w
     !CapsLock::Send ^w
+    
+    ;关闭所有窗口
+    ^+w::Return
+
+    ;重新打开标签页
+    ^+t::Return 
+    ; !+w::Send ^+t
+    ; !z::Send ^+t
+    !+CapsLock::Send ^+t
 
     ;切换标签页
     ^1::Return
@@ -115,13 +124,6 @@
     
     ;切换用户
     ^+m::Return 
-    ;关闭所有窗口
-    ^+w::Return 
-
-    ;重新打开标签页
-    ^+t::Return 
-    !+w::Send ^+t
-    !z::Send ^+t
 
     ;使用Google搜索
     ^k::Return 

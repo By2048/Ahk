@@ -1,7 +1,7 @@
 ﻿
 #if ( WindowsActive("PyCharm") )
     
-    #IncludeAgain %A_WorkingDir%\Software\Demo\Ide.ahk
+    #IncludeAgain %A_WorkingDir%\Software\#Ide.ahk
 
     !Esc::Send ^{F1}
     !+Esc::Send ^+{F1}

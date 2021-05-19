@@ -1,7 +1,8 @@
 ﻿
 #if ( WindowsActive("VSCode") )
 
-    #IncludeAgain %A_WorkingDir%\Software\Demo\Ide.ahk
+    #IncludeAgain %A_WorkingDir%\Software\#Ide.ahk
+
 
     ; f1-f19 正常
 
