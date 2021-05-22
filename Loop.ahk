@@ -13,7 +13,6 @@ if (not A_IsAdmin) {
 
 global Loop_Ignore_Process_Name := []
 Loop_Ignore_Process_Name.Push( "LOL"          )
-Loop_Ignore_Process_Name.Push( "FreeFileSync" )
 
 Loop {
 
