@@ -74,17 +74,20 @@
     
     ;关闭窗口
     ^w::Return
-    ; !w::Send ^w
-    !CapsLock::Send ^w
+    !CapsLock::
+        Send ^w
+        SetCapsLockState off
+    Return
     
     ;关闭所有窗口
     ^+w::Return
 
     ;重新打开标签页
     ^+t::Return 
-    ; !+w::Send ^+t
-    ; !z::Send ^+t
-    !+CapsLock::Send ^+t
+    !+CapsLock::
+        Send ^+t
+        SetCapsLockState off
+    Return
 
     ;切换标签页
     ^1::Return
