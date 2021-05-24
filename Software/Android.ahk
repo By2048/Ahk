@@ -182,6 +182,22 @@
         }
     Return
 
+    ; 删除护盾
+    Delete::
+        CoordMode, Mouse, Window
+        
+        MouseGetPos, x_origin, y_origin
+        
+        MouseClick, Left, 1759, 105
+        Sleep 100
+        MouseClick, Left, 2049, 753
+        Sleep 100
+        MouseClick, Left, 1988, 1246
+        Sleep 100
+
+        MouseMove %x_origin%, %y_origin%, 0
+    Return
+
     ; 选择兵种
     ^1::Return
     ^2::Return
@@ -196,7 +212,7 @@
 
     ; 全屏
     F11::Return
-    !Enter::Send {F11}
+    #Enter::Send {F11}
 
     ; 切换键鼠提示 
     ; F12
@@ -216,6 +232,6 @@
     ; 截屏
     !q::Return
     CapsLock::Send !q
-    CapsLock Up::SetCapsLockState off
+    CapsLock Up::SetCapsLockState Off
 
 #if

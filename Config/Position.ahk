@@ -47,6 +47,12 @@ win_x := screen_3_x+screen_3_w/2-win_w/2
 win_y := screen_3_y+100
 Windows_Default_Position["FDM"] := [win_x, win_y, win_w, win_h]
 
+win_x := 176
+win_y := 10
+win_w := 3488
+win_h := 2140
+Windows_Default_Position["Android"] := [win_x, win_y, win_w, win_h]
+
 win_w := screen_1_w*4/6
 win_h := screen_1_h*7/9
 win_x := screen_1_x+screen_1_w/2-win_w/2
