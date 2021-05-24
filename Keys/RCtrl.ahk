@@ -54,7 +54,7 @@ Return
 >^z::RunNormalUser("D:\Zeal\zeal.exe")
 >^x::RunNormalUser("D:\Xshell\Xshell.exe")
 >^c::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
->^v::RunNormalUser("D:\VSCode\Code.exe")
+>^v::RunNormalUser("D:\VSCode\Code.exe E:\Config\Windows.code-workspace")
 >^b::Run, E:\\Book\\
 >^m::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
 
@@ -83,8 +83,9 @@ return
 >^Esc::Run, taskmgr.exe ;任务管理器
 >^PrintScreen::Screenshot_Activate_Software()
 
->^[::RunNormalUser("D:\VSCode\Code.exe E:\Project\Notes\")
->^]::RunNormalUser("D:\VSCode\Code.exe E:\Project\Ahk\")
+>^[::RunNormalUser("D:\VSCode\Code.exe E:\Config\Note.code-workspace")
+>^]::RunNormalUser("D:\VSCode\Code.exe E:\Config\Ahk.code-workspace")
+
 >^\::Run, "D:\#\Whiteboard.lnk"
 
 >^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}::     ;回收站
