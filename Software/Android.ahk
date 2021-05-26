@@ -198,6 +198,51 @@
         MouseMove %x_origin%, %y_origin%, 0
     Return
 
+    ;阵形1
+    F1::
+        CoordMode, Mouse, Window
+        MouseGetPos, x_origin, y_origin
+        MouseClick, Left, 3373, 1401
+        Sleep 300
+        MouseClick, Left, 665, 1129
+        Sleep 500
+        MouseClick, Left, 2274, 1907
+        Sleep 500
+        MouseClick, Left, 3360, 190
+        Sleep 100
+        MouseMove %x_origin%, %y_origin%, 0
+    Return
+    
+    ;阵形2
+    F2::
+        CoordMode, Mouse, Window
+        MouseGetPos, x_origin, y_origin
+        MouseClick, Left, 3373, 1401
+        Sleep 300
+        MouseClick, Left, 1729, 1103
+        Sleep 500
+        MouseClick, Left, 2274, 1907
+        Sleep 500
+        MouseClick, Left, 3360, 190
+        Sleep 100
+        MouseMove %x_origin%, %y_origin%, 0
+    Return
+    
+    ;阵形3
+    F3::
+        CoordMode, Mouse, Window
+        MouseGetPos, x_origin, y_origin
+        MouseClick, Left, 3373, 1401
+        Sleep 300
+        MouseClick, Left, 8094, 424
+        Sleep 500
+        MouseClick, Left, 2274, 1907
+        Sleep 500
+        MouseClick, Left, 3360, 190
+        Sleep 100
+        MouseMove %x_origin%, %y_origin%, 0
+    Return
+
     ; 选择兵种
     ^1::Return
     ^2::Return

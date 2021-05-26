@@ -45,7 +45,7 @@ IsGame()
     process_name := ProcessNameFormat(process_name)
     for index, value in Game_Process_Name {
         if (value = process_name) {
-            HelpText("Game", "center_down", "screen1", 1000)
+            HelpText("Game", "center_down", "screen3", 1000)
             Return True
         }
     }
