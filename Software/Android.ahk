@@ -234,7 +234,7 @@
         MouseGetPos, x_origin, y_origin
         MouseClick, Left, 3373, 1401
         Sleep 300
-        MouseClick, Left, 8094, 424
+        MouseClick, Left, 2786, 1103
         Sleep 500
         MouseClick, Left, 2274, 1907
         Sleep 500
