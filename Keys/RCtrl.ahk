@@ -51,7 +51,6 @@ Return
 >^j::Run calc.exe
 >^k::KeyboardGUI()
 
->^z::RunNormalUser("D:\Zeal\zeal.exe")
 >^x::RunNormalUser("D:\Xshell\Xshell.exe")
 >^c::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
 >^v::RunNormalUser("D:\VSCode\Code.exe E:\Config\Windows.code-workspace")
@@ -71,14 +70,6 @@ Return
     command :=  Format("{1} /c start explorer.exe", CMD)
     RunWait, %command%
 Return
->^F4::
-    command := Format("{} {} E:\Project\script\system\update_folder_icon.py", WT,Python)
-    Run, %command%
-    Sleep, 300
-    MoveWindowsMM("mini")
-return
->^F5::Run, "E:\Config\EPQ.ffs_gui"
->^F12::Run, "E:\Project\Ahk\Doc\Hotkey.xlsx"
 
 >^Esc::Run, taskmgr.exe ;任务管理器
 >^PrintScreen::Screenshot_Activate_Software()

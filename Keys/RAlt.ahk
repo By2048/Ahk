@@ -60,20 +60,18 @@ return
 
 
 
-global search_tool_show_status := False
-
-
+global tool_show_status := False
 
 timer:
-    global search_tool_show_status
+    global tool_show_status
     if (cnt=1) {
-        if (search_tool_show_status=True) {
-            search_tool_show_status:=False
-            Send ^!r
+        tool_show_status := False
+        if (WindowsActive("Maye")) {
+            Send {Esc}
         }
     } else if (cnt=2) {
-        search_tool_show_status:=True
-        Send ^!r
+        tool_show_status := True
+        Run "D:\#\Maye.lnk"
     }
     cnt:=0
 return
