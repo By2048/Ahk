@@ -85,6 +85,33 @@
         HelpText()
     Return
 
+    ; 降杯
+    0::
+        CoordMode, Mouse, Window
+
+        Loop, 10 {
+
+            Send q
+            Sleep 300
+            Send w
+            Sleep 1000
+
+            Send 2
+            Sleep 1000
+            MouseClick, Left, 117, 890
+            Sleep 500
+            
+            Send a
+            Sleep 100
+            Send s
+            Sleep 1000
+            Send d
+            Sleep 3000
+
+        }
+
+    Return
+
     ; 退出
     BackSpace::
         HelpText("BackSpace","center_down","screen_1")
