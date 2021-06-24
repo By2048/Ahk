@@ -44,8 +44,8 @@ return
 ; 复制文件路径
 <#c::	
     Send ^c
-    clipboard = %clipboard%
-    HelpText(clipboard, "center_down",  , 3000)
+    path = %clipboard%
+    HelpText(path, "center_down",  , 3000)
 return
 <#v::#, ;显示隐藏所有应用
 <#n::#k ;打开“连接”快速操作
