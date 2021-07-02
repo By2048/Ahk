@@ -49,3 +49,12 @@
     <#'::show_hide_key_config()
 
 #if
+
+
+
+#if ( WindowsActive("PyCharm", "SunAwtDialog", "Python Console History") )
+
+    ; 历史记录返回 \ 与书签冲突
+    !\::Send {Esc}
+
+#if 
