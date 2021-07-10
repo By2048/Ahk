@@ -45,6 +45,7 @@ return
 <#c::	
     Send ^c
     path = %clipboard%
+    clipboard = %path%
     HelpText(path, "center_down",  , 3000)
 return
 <#v::#, ;显示隐藏所有应用
