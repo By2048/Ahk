@@ -103,8 +103,13 @@ return
 
 timer:
     if (cnt=1) {
+        if (WindowsActive("Maye")) {
+            Send {Esc}
+        }
         HelpImage()
     } else if (cnt=2) {
+        Run "D:\#\Maye.lnk"
+    } else if (cnt=3) {
         path := A_WorkingDir "\Image\RCtrl.png"
         HelpImage(path)
     }

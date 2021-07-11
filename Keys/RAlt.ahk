@@ -60,18 +60,5 @@ return
 
 
 
-global tool_show_status := False
-
 timer:
-    global tool_show_status
-    if (cnt=1) {
-        tool_show_status := False
-        if (WindowsActive("Maye")) {
-            Send {Esc}
-        }
-    } else if (cnt=2) {
-        tool_show_status := True
-        Run "D:\#\Maye.lnk"
-    }
-    cnt:=0
 return
