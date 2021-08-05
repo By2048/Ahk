@@ -2,12 +2,9 @@
 #if ( WindowsActive("Explorer") )
 
     ; Ctrl+F 选择搜索框
-
     ; Alt+D 选择地址栏
     ; Alt+P 显示预览面板
-
     ; Backspace 查看上一个文件夹
-
 
     ; End  显示活动窗口底部
     ; Home 显示活动窗口顶部
@@ -49,9 +46,11 @@
     ; Alt+向左键 查看上一个文件夹
     ; Alt+向右键 查看下一个文件夹
     ; Alt+向上键 查看该文件夹所在的文件夹
-    ; Alt+向下键 展开功能区
+
+    ; 功能区展开缩放
     ^F1::Return
-    !Down::Send ^{F1}
+    !\::Send ^{F1}
+
 
     ; 切换
     ; 排序方式
@@ -59,8 +58,8 @@
     ; 切换到树状列表
     ; 文件夹列表
     !Tab::
-        Send ^+e
-        Send {F6}
+        Send ^+e ;目录树定位到文件夹
+        Send {F6} ;切换焦点
     Return
     ^Tab::Return
     ^+Tab::Return
@@ -69,8 +68,7 @@
     ^w::Return
     !CapsLock::Send ^w
 
-    ; 属性对话框
-    !\::Send !{Enter}
+    ; 属性对话框 !{Enter}
 
     ; Ctrl+E 选择搜索框
     ^e::Return

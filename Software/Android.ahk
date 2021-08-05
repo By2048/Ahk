@@ -5,6 +5,25 @@
 
     Space::Send {LButton 4}
 
+    b::
+        CoordMode, Mouse, Window
+        MouseGetPos, xx, yy
+
+        HelpText("女巫流-快速","center_down","screen_1")
+
+        ; 战争机器
+        Send 9
+        MouseClick, Left, %xx%, %yy%
+        Sleep 1000
+
+        ; 第一个兵种
+        Send 0
+        MouseClick, Left, %xx%, %yy%, 12
+        Sleep 100
+
+        HelpText()
+    Return
+
     ; 女巫流
     =::
         HelpText("女巫流","center_down","screen_1")
@@ -35,9 +54,7 @@
             }
         }
         
-        HelpText("女巫流","center_down","screen_1")
-        Sleep 1000
-        HelpText()
+        HelpText("女巫流","center_down","screen_1",1000)
     return
 
     ; 降杯
