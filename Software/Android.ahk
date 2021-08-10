@@ -14,7 +14,10 @@
         ; 战争机器
         Send 9
         MouseClick, Left, %xx%, %yy%
-        Sleep 1000
+        Sleep 100
+        Send 9
+
+        Sleep 1500
 
         ; 第一个兵种
         Send 0
