@@ -1,8 +1,11 @@
 ﻿
 #if ( WindowsActive("Wallpaper") )
 
+	F10::Return
+	CapsLock::Send {F10}
+
 	; 取消订阅
-	!Delete::
+	!CapsLock::
 		CoordMode, Mouse, Window
         MouseGetPos, x, y
 		MouseClick, Right, %x%, %y%
@@ -16,7 +19,7 @@
 	Return
 
 	; 在资源管理器中打开
-	!Enter::
+	!Tab::
 		CoordMode, Mouse, Window
         MouseGetPos, x, y
 		MouseClick, Right, %x%, %y%

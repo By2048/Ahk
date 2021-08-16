@@ -1,9 +1,23 @@
 ﻿
 #if ( WindowsActive("Android", "", "部落冲突") )
 
+    ; 选择兵种
+    ^1::Return
+    ^2::Return
+    ^3::Return
+    ^4::Return
+    ^5::Return
+    ^6::Return
+    ^7::Return
+    ^8::Return
+    ^9::Return
+    ^0::Return
+
     `::Send {LButton}
 
     Space::Send {LButton 4}
+
+    LCtrl::Send {LButton 10}
 
     b::
         CoordMode, Mouse, Window
@@ -172,12 +186,37 @@
         HelpText()
     Return
 
+    ; 兵种选择
     ~e::
         global software_android_rshift_current
         software_android_rshift_current:=0
     Return
+    ~1::
+        global software_android_rshift_current
+        software_android_rshift_current:=1
+    Return
+    ~2::
+        global software_android_rshift_current
+        software_android_rshift_current:=2
+    Return
+    ~3::
+        global software_android_rshift_current
+        software_android_rshift_current:=3
+    Return
+    ~4::
+        global software_android_rshift_current
+        software_android_rshift_current:=4
+    Return
+    ~5::
+        global software_android_rshift_current
+        software_android_rshift_current:=5
+    Return
+    ~6::
+        global software_android_rshift_current
+        software_android_rshift_current:=6
+    Return
 
-    ; 按顺序切换兵种 5-1
+    ; 按顺序切换兵种 6-1
     LShift::
         global software_android_rshift_loop
         global software_android_rshift_current
@@ -204,7 +243,7 @@
         }
     Return
 
-    ; 按顺序切换兵种 1-5
+    ; 按顺序切换兵种 1-6
     LAlt::
         global software_android_rshift_loop
         global software_android_rshift_current
@@ -289,18 +328,6 @@
         Sleep 100
         MouseMove %x_origin%, %y_origin%, 0
     Return
-
-    ; 选择兵种
-    ^1::Return
-    ^2::Return
-    ^3::Return
-    ^4::Return
-    ^5::Return
-    ^6::Return
-    ^7::Return
-    ^8::Return
-    ^9::Return
-    ^0::Return
 
     ; 全屏
     F11::Return
