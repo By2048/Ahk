@@ -29,6 +29,7 @@
 #include %A_WorkingDir%\Software\VSCode.ahk
 #include %A_WorkingDir%\Software\Wallpaper.ahk
 #include %A_WorkingDir%\Software\WeChat.ahk
+#include %A_WorkingDir%\Software\Windows.Ahk
 #include %A_WorkingDir%\Software\WindowsTerminal.Ahk
 #include %A_WorkingDir%\Software\Wps.ahk
 #include %A_WorkingDir%\Software\Xshell.ahk

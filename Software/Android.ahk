@@ -14,10 +14,8 @@
     ^0::Return
 
     `::Send {LButton}
-
-    Space::Send {LButton 4}
-
-    LCtrl::Send {LButton 10}
+    
+    Tab::Send {LButton 5}
 
     b::
         CoordMode, Mouse, Window
@@ -161,8 +159,8 @@
     Return
 
     ; 补兵
-    Tab::
-        HelpText("Tab","center_down","screen_1")
+    CapsLock::
+        HelpText("CapsLock", "center_down", "screen_1")
 
         Send a
         Sleep 100
@@ -180,11 +178,13 @@
         Sleep 100
         Send c
         Sleep 100
+
         Send \
-        
         Sleep 500
+        
         HelpText()
     Return
+    CapsLock Up::SetCapsLockState Off
 
     ; 兵种选择
     ~e::
@@ -350,7 +350,6 @@
 
     ; 截屏
     !q::Return
-    CapsLock::Send !q
-    CapsLock Up::SetCapsLockState Off
+    PrintScreen::Send !q
 
 #if
