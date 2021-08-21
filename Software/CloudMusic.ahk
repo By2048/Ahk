@@ -1,7 +1,7 @@
 ﻿
 #if ( WindowsActive("CloudMusic", "OrpheusBrowserHost") )
 
-    Space::
+    /::
         MoveWindowsToDefaultPosition()
         Sleep, 300
         MouseClickAndResetting(74,1608,"Window")

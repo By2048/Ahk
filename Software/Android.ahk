@@ -15,7 +15,7 @@
 
     `::Send {LButton}
     
-    Tab::Send {LButton 5}
+    Tab::Send {LButton 4}
 
     b::
         CoordMode, Mouse, Window
@@ -214,6 +214,10 @@
     ~6::
         global software_android_rshift_current
         software_android_rshift_current:=6
+    Return
+    ~7::
+        global software_android_rshift_current
+        software_android_rshift_current:=7
     Return
 
     ; 按顺序切换兵种 6-1

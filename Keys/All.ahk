@@ -54,15 +54,13 @@ if (not A_IsAdmin) {
 ; PowerToys Run
 ^!r::Return
 
++BackSpace::Send {Delete}
+
 RCtrl & RAlt::
-    if (not IsDesktops()) {
-		ZH()
-        HelpText("ZH","center","screen1",1000)
-    }
+    ZH()
+    HelpText("ZH","center","screen1",1000)
 Return
 RAlt & RCtrl::
-    if (not IsDesktops()) {
-		EN()
-        HelpText("EN","center","screen1",1000)
-    }
+    EN()
+    HelpText("EN","center","screen1",1000)
 Return
