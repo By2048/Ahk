@@ -18,8 +18,6 @@ if %command%==start (
     @REM =========================================================
     start  D:\AutoHotkey\AutoHotkey.exe  .\Software\All.ahk  start
     echo   start .\Software\All.ahk
-    start  D:\AutoHotkey\AutoHotkey.exe  .\Other\Dexpot.ahk  start
-    echo   start .\Other\Dexpot.ahk
     @REM =========================================================
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\All.ahk      start
     echo   start .\Keys\All.ahk
@@ -35,6 +33,9 @@ if %command%==start (
     echo   start .\Keys\RShift.ahk
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RWin.ahk     start
     echo   start .\Keys\RWin.ahk
+    @REM =========================================================
+    start  D:\AutoHotkey\AutoHotkey.exe  .\Other\Dexpot.ahk  start
+    echo   start .\Other\Dexpot.ahk
     @REM =========================================================
     Start  D:\AutoHotkey\AutoHotkey.exe  .\Input.ahk         start
     echo   start .\Input.ahk
@@ -56,8 +57,6 @@ if %command%==stop (
     echo.
     start  D:\AutoHotkey\AutoHotkey.exe  .\Software\All.ahk   stop
     echo   stop .\Software\All.ahk
-    start  D:\AutoHotkey\AutoHotkey.exe  .\Other\Dexpot.ahk   stop
-    echo   start .\Other\Dexpot.ahk
     @REM =========================================================    
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\All.ahk       stop
     echo   stop .\Keys\All.ahk
@@ -73,6 +72,9 @@ if %command%==stop (
     echo   stop .\Keys\RShift.ahk
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RWin.ahk      stop
     echo   stop .\Keys\RWin.ahk
+    @REM =========================================================    
+    start  D:\AutoHotkey\AutoHotkey.exe  .\Other\Dexpot.ahk   stop
+    echo   start .\Other\Dexpot.ahk
     @REM =========================================================
     Start  D:\AutoHotkey\AutoHotkey.exe .\Input.ahk           stop
     echo   stop .\Input.ahk
