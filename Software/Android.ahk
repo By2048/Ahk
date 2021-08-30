@@ -13,6 +13,30 @@
     ^9::Return
     ^0::Return
 
+    Space::
+        CoordMode, Mouse, Window
+        MouseGetPos, xx, yy
+        
+        Send {2}
+        Sleep 100
+        MouseClick, Left, %xx%, %yy%
+        Sleep 100
+        
+        Send {3}
+        Sleep 100
+        MouseClick, Left, %xx%, %yy%
+        Sleep 100
+
+        Send {4}
+        Sleep 100
+        MouseClick, Left, %xx%, %yy%
+        Sleep 100
+
+        Send {2}
+        Send {3}
+        Send {4}
+    Return
+
     `::Send {LButton}
     
     Tab::Send {LButton 4}

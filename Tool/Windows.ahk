@@ -464,6 +464,12 @@ MoveWindowsToDefaultPosition()
 
     SetWindows(win_id, xx, yy, ww, hh)
     
+    if (win_process_name="PyCharm") {
+        xx := xx - 3
+        ww := ww + 6
+        SetWindows(win_id, xx, yy, ww, hh, 0)
+    }
+
     if (win_process_name="FDM") {
         SetWindows(win_id, xx, yy, ww, hh)
     }
