@@ -63,7 +63,8 @@ Init_Config.Push( Format("      Python | {1}" , Python)                         
 Init_Config.Push( Format(" HuntAndPeck | {1}" , HuntAndPeck)                       )
 NewLine()
 
-Init_Config.Push( Format(" JQB | {1} ", JQB_File)                                  )
+Init_Config.Push( Format(" JQB | {1} ", JQB_Phone)                                  )
+Init_Config.Push( Format(" JQB | {1} ", JQB_Windows)                                  )
 NewLine()
 
 Init_Config.Push( " [date]         [time]         [datetime]                    "  )

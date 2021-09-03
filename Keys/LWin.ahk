@@ -44,9 +44,13 @@ return
 ; 复制文件路径
 <#c::	
     Send ^c
-    path = %clipboard%
-    clipboard = %path%
-    HelpText(path, "center_down",  , 3000)
+    data = %clipboard%
+    clipboard = %data%
+    FileDelete %JQB_Windows%
+    file:=FileOpen(JQB_Windows, "w")
+    file.Write(data)
+    file.Close()
+    HelpText(data, "center_down",  , 3000)
 return
 <#v::#, ;显示隐藏所有应用
 <#n::#k ;打开“连接”快速操作

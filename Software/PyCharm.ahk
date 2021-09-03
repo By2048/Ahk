@@ -6,6 +6,11 @@
     !Esc::Send ^{F1}
     !+Esc::Send ^+{F1}
 
+    <#Up::Send ^!+{Up}
+    <#Down::Send ^!+{Down}
+    <#Left::Send ^!+{Left}
+    <#Right::Send ^!+{Right}
+
 #if
 
 

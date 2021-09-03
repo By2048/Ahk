@@ -15,7 +15,8 @@ global Snipaste_Screenshot_Path_Backup := "P:\Screens\"
 global Snipaste_Screenshot_Path_Tmp    := "T:\"
 
 ; 手机向电脑写入的剪切板文件
-global JQB_File := "T:\\JQB"
+global JQB_Phone   := "T:\\JQB_Phone"
+global JQB_Windows := "T:\\JQB_Windows"
 
 ; 软件自定义名字替换
 global Windows_Process_Name := []

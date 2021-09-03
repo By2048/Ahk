@@ -45,12 +45,12 @@ Loop {
     }
 
     ; 手机剪切板同步
-    if (FileExist(JQB_File)) {
+    if (FileExist(JQB_Phone)) {
         FileEncoding UTF-8
         Try {
-            FileRead, Clipboard, %JQB_File%
+            FileRead, Clipboard, %JQB_Phone%
             HelpText("JQB UPDATE", "center_down", "screen3", 1000)
-            FileDelete %JQB_File%
+            FileDelete %JQB_Phone%
         }
         Continue
     }
