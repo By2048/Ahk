@@ -47,14 +47,29 @@ return
     data = %clipboard%
     clipboard = %data%
     FileDelete %JQB_Windows%
-    file:=FileOpen(JQB_Windows, "w")
+    file:=FileOpen(JQB_Windows, "w", "UTF-8")
     file.Write(data)
     file.Close()
-    HelpText(data, "center_down",  , 3000)
+    HelpText(data, "center_down",  , 1000)
 return
-<#v::#, ;显示隐藏所有应用
+<#v::
+    data = %clipboard%
+    if (FileExist(JQB_Phone)) {
+        FileEncoding UTF-8
+        Try {
+            FileRead, Clipboard, %JQB_Phone%
+            FileDelete %JQB_Phone%
+        }
+        Send ^v
+        HelpText(Clipboard, "center_down",  , 1000)
+    } else {
+        HelpText(" No Data ", "center_down",  , 1000)
+    }
+Return
+
 <#n::#k ;打开“连接”快速操作
-<#m::#d ;切换隐藏所有应用界面
+<#m::#, ;显示隐藏所有应用
+<#+m::#d ;切换隐藏所有应用界面
 
 ; 窗口全屏
 <#Enter::Send ^!``

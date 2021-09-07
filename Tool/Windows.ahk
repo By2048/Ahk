@@ -205,7 +205,7 @@ GetWindowsConfig(Config_Data)
 
 ; 窗口移动到屏幕中心
 ; return | None
-MoveWindowsToCenter() 
+MoveWindowsToCenter(silent=False) 
 {
     if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
@@ -233,7 +233,9 @@ MoveWindowsToCenter()
     }
     
     WinMove, ahk_id %win_id%,  , %xx%, %yy%
-    HelpText("Move To Center",  ,  , 1000)
+    if (not silent) {
+        HelpText("Move To Center",  ,  , 1000)
+    }
 }
 
 

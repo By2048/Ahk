@@ -1,15 +1,74 @@
 ﻿
 #if ( WindowsActive("PyCharm") )
     
-    #IncludeAgain %A_WorkingDir%\Software\#Ide.ahk
+    ^F1::Return
+    ^F2::Return
+    ^F3::Return
+    ^F4::Return
+    ^F5::Return
+    ^F6::Return
+    ^F7::Return
+    ^F8::Return
+    ^F9::Return
+    ^F10::Return
+    ^F11::Return
+    ^F12::Return
+
+    ^+F1::Return
+    ^+F2::Return
+    ^+F3::Return
+    ^+F4::Return
+    ^+F5::Return
+    ^+F6::Return
+    ^+F7::Return
+    ^+F8::Return
+    ^+F9::Return
+    ^+F10::Return
+    ^+F11::Return
+    ^+F12::Return
+
+    ; 软件设置{f1}
+    LAlt & RAlt::Send {F13}
+
+    ; 右键菜单{AppsKey}
+    RAlt & LAlt::Send {AppsKey}
+
+    ; 切换标签页{f2}
+    !Tab::Send !{F14}
+    !+Tab::Send !+{F14}
+
+    ; 关闭标签页{f3}
+    !CapsLock::Send !{F15}
+    !+CapsLock::Send !+{F15}
+
+    ; 特殊按键覆盖{f4}
+    !F4::Send !{F16}
+    !+F4::Send !+{F16}
+
+
 
     !Esc::Send ^{F1}
     !+Esc::Send ^+{F1}
 
-    <#Up::Send ^!+{Up}
-    <#Down::Send ^!+{Down}
-    <#Left::Send ^!+{Left}
-    <#Right::Send ^!+{Right}
+    <#Up::
+        Send ^{F8}
+        MoveWindowsToCenter(True)
+    Return
+
+    <#Down::
+        Send ^{F7}
+        MoveWindowsToCenter(True)
+    Return
+
+    <#Left::
+        Send ^{F5}
+        MoveWindowsToCenter(True)
+    Return
+
+    <#Right::
+        Send ^{F6}
+        MoveWindowsToCenter(True)
+    Return
 
 #if
 
@@ -17,21 +76,24 @@
 
 #if ( WindowsActive("PyCharm", "SunAwtDialog") )
   
-    ~RAlt::
-        result := GetWindowsInfo()
-        win_title := result.win_title
-        if (win_title="Run" or win_title="Debug") {
-            WinSet, Transparent, 30, A
-        }
-    Return
+    title := [ "终端" , "运行" , "调试" ]
 
-    ~RAlt Up::
-        result := GetWindowsInfo()
-        win_title := result.win_title
-        if (win_title="Run" or win_title="Debug") {
-            WinSet, Transparent, 255, A
-        }
-    Return
+    ; ~RAlt::
+    ;     result := GetWindowsInfo()
+    ;     win_title := result.win_title
+
+    ;     if (win_title In title) {
+    ;         WinSet, Transparent, 30, A
+    ;     }
+    ; Return
+
+    ; ~RAlt Up::
+    ;     result := GetWindowsInfo()
+    ;     win_title := result.win_title
+    ;     if (win_title In title) {
+    ;         WinSet, Transparent, 255, A
+    ;     }
+    ; Return
  
 #if
 

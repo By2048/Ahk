@@ -45,15 +45,15 @@ Loop {
     }
 
     ; 手机剪切板同步
-    if (FileExist(JQB_Phone)) {
-        FileEncoding UTF-8
-        Try {
-            FileRead, Clipboard, %JQB_Phone%
-            HelpText("JQB UPDATE", "center_down", "screen3", 1000)
-            FileDelete %JQB_Phone%
-        }
-        Continue
-    }
+    ; if (FileExist(JQB_Phone)) {
+    ;     FileEncoding UTF-8
+    ;     Try {
+    ;         FileRead, Clipboard, %JQB_Phone%
+    ;         HelpText("JQB UPDATE", "center_down", "screen3", 1000)
+    ;         FileDelete %JQB_Phone%
+    ;     }
+    ;     Continue
+    ; }
 
     ; Windows系统文件操作
     if (win_class = "#32770" or win_class = "OperationStatusWindow") {
