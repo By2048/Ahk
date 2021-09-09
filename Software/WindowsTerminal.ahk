@@ -79,10 +79,3 @@
     ^!8::Return
 
 #if
-
-
-#if ( WindowsActive("WindowsTerminal" , "" , "Windows PowerShell") )
-    Esc::
-        Send #{F12}
-    Return
-#if
