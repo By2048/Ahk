@@ -48,6 +48,8 @@
     ^0::Return
     ^NumpadAdd::Return
     ^NumpadSub::Return
+    ^WheelUp::Return
+    ^WheelDown::Return
     !0::Send ^0
     !=::Send ^{NumpadAdd}
     !-::Send ^{NumpadSub}
@@ -78,3 +80,9 @@
 
 #if
 
+
+#if ( WindowsActive("WindowsTerminal" , "" , "Windows PowerShell") )
+    Esc::
+        Send #{F12}
+    Return
+#if
