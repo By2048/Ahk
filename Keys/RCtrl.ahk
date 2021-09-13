@@ -28,11 +28,7 @@ if (not A_IsAdmin) {
         RunNormalUser("D:\TIM\Bin\TIM.exe")
     }
 Return
->^p::
-    Run, %WT% -d t:\
-    Sleep, 500
-    MoveWindowsMM("main")
-Return
+>^p::Run, %WT% -d t:\
 
 >^a::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
 >^s::Run D:\Everything\Everything.exe

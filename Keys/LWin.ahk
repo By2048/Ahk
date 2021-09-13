@@ -98,13 +98,27 @@ Return
 
 ; 手动设置代理
 LWin & RShift::
-    RegRead, proxy_enable, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet settings, proxyenable
-    if (proxy_enable = "0") {
-        Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet settings, proxyenable, 1
-        HelpText("Proxy ON", "center_down", "screen1", 1000)
-    } else if (proxy_enable = "1") {
-        Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet settings, proxyenable, 0
-        HelpText("Proxy OFF", "center_down", "screen1", 1000)
+    lshift_state := GetKeyState("LShift")
+    if (lshift_state) {
+        ; Internet设置
+        RegRead, proxy_enable, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable
+        if (proxy_enable = "0") {
+            Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable, 1
+            HelpText("Internet Proxy ON",  "center_down", "screen1", 1000)
+        } else if (proxy_enable = "1") {
+            Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet Settings, proxyenable, 0
+            HelpText("Internet Proxy OFF", "center_down", "screen1", 1000)
+        }
+    } else {
+        ; Windows设置
+        RegRead, proxy_enable, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable
+        if (proxy_enable = "0") {
+            Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable, 1
+            HelpText("Windows Proxy ON",  "center_down", "screen1", 1000)
+        } else if (proxy_enable = "1") {
+            Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable, 0
+            HelpText("Windows Proxy OFF", "center_down", "screen1", 1000)
+        }
     }
 Return
 

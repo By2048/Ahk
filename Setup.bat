@@ -24,8 +24,6 @@ if %command%==start (
     echo   start .\Keys\LWin.ahk
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RAlt.ahk     start
     echo   start .\Keys\RAlt.ahk
-    start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RCtrl.ahk    start
-    echo   start .\Keys\RCtrl.ahk
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RShift.ahk   start
     echo   start .\Keys\RShift.ahk
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RWin.ahk     start
@@ -33,6 +31,8 @@ if %command%==start (
     @REM =========================================================
     start  D:\AutoHotkey\AutoHotkey.exe  .\Software\All.ahk  start
     echo   start .\Software\All.ahk
+    start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RCtrl.ahk    start
+    echo   start .\Keys\RCtrl.ahk
     @REM =========================================================
     start  D:\AutoHotkey\AutoHotkey.exe  .\Other\Dexpot.ahk  start
     echo   start .\Other\Dexpot.ahk
@@ -63,8 +63,6 @@ if %command%==stop (
     echo   stop .\Keys\LWin.ahk
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RAlt.ahk      stop
     echo   stop .\Keys\RAlt.ahk
-    start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RCtrl.ahk     stop
-    echo   stop .\Keys\RCtrl.ahk
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RShift.ahk    stop
     echo   stop .\Keys\RShift.ahk
     start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RWin.ahk      stop
@@ -72,6 +70,8 @@ if %command%==stop (
     @REM =========================================================    
     start  D:\AutoHotkey\AutoHotkey.exe  .\Software\All.ahk   stop
     echo   stop .\Software\All.ahk  
+    start  D:\AutoHotkey\AutoHotkey.exe  .\Keys\RCtrl.ahk     stop
+    echo   stop .\Keys\RCtrl.ahk
     @REM =========================================================    
     start  D:\AutoHotkey\AutoHotkey.exe  .\Other\Dexpot.ahk   stop
     echo   start .\Other\Dexpot.ahk

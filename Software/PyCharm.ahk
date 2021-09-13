@@ -27,28 +27,28 @@
     ^+F11::Return
     ^+F12::Return
 
-    ; 软件设置{f1}
-    LAlt & RAlt::Send {F13}
-
     ; 右键菜单{AppsKey}
     RAlt & LAlt::Send {AppsKey}
 
-    ; 切换标签页{f2}
-    !Tab::Send !{F14}
-    !+Tab::Send !+{F14}
+    !Esc::Send ^{F1}
+    !+Esc::Send ^+{F1}
 
-    ; 关闭标签页{f3}
-    !CapsLock::Send !{F15}
-    !+CapsLock::Send !+{F15}
+    ; 软件设置{f1}
+    LAlt & RAlt::Send {F13}
+
+    ; 切换正 切换逆 关闭 重新打开 标签页
+    <!Tab::Send !{F14}
+    <!+Tab::Send !+{F14}
+    <!CapsLock::Send !{F15}
+    <!+CapsLock::Send !+{F15}
 
     ; 特殊按键覆盖{f4}
     !F4::Send !{F16}
     !+F4::Send !+{F16}
 
-
-
-    !Esc::Send ^{F1}
-    !+Esc::Send ^+{F1}
+    ; 横向 竖向 拆分
+    LAlt & RShift::Send {F17}
+    RShift & LAlt::Send {F18}
 
     <#Up::
         Send ^{F8}
