@@ -73,6 +73,7 @@ Return
 
 ; 窗口全屏
 <#Enter::Send ^!``
+; 窗口全屏选项
 <#+Enter::Send ^!+``
 
 ; 修改窗口透明度

@@ -1,28 +1,28 @@
 ﻿
 #if ( WindowsActive("PyCharm") )
     
-    ^F1::Return
-    ^F2::Return
-    ^F3::Return
-    ^F4::Return
-    ^F5::Return
-    ^F6::Return
-    ^F7::Return
-    ^F8::Return
-    ^F9::Return
+     ^F1::Return
+     ^F2::Return
+     ^F3::Return
+     ^F4::Return
+     ^F5::Return
+     ^F6::Return
+     ^F7::Return
+     ^F8::Return
+     ^F9::Return
     ^F10::Return
     ^F11::Return
     ^F12::Return
 
-    ^+F1::Return
-    ^+F2::Return
-    ^+F3::Return
-    ^+F4::Return
-    ^+F5::Return
-    ^+F6::Return
-    ^+F7::Return
-    ^+F8::Return
-    ^+F9::Return
+     ^+F1::Return
+     ^+F2::Return
+     ^+F3::Return
+     ^+F4::Return
+     ^+F5::Return
+     ^+F6::Return
+     ^+F7::Return
+     ^+F8::Return
+     ^+F9::Return
     ^+F10::Return
     ^+F11::Return
     ^+F12::Return
@@ -50,23 +50,28 @@
     LAlt & RShift::Send {F17}
     RShift & LAlt::Send {F18}
 
-    <#Up::
-        Send ^{F8}
-        MoveWindowsToCenter(True)
-    Return
+    ; 窗口全屏 选项
+    F23::Return
+    F24::Return
+    <#Enter::Send {F23}
+    <#+Enter::Send {F24}
 
-    <#Down::
-        Send ^{F7}
-        MoveWindowsToCenter(True)
-    Return
+    ; ^`::Send {F24}
 
     <#Left::
         Send ^{F5}
         MoveWindowsToCenter(True)
     Return
-
     <#Right::
         Send ^{F6}
+        MoveWindowsToCenter(True)
+    Return
+    <#Down::
+        Send ^{F7}
+        MoveWindowsToCenter(True)
+    Return
+    <#Up::
+        Send ^{F8}
         MoveWindowsToCenter(True)
     Return
 
@@ -74,7 +79,7 @@
 
 
 
-#if ( WindowsActive("PyCharm", "SunAwtDialog") )
+#if ( WindowsActive("PyCharm" , "SunAwtDialog") )
   
     title := [ "终端" , "运行" , "调试" ]
 
@@ -99,13 +104,13 @@
 
 
 
-#if ( WindowsActive("PyCharm", "", "admin.py") )
+#if ( WindowsActive("PyCharm" , "" , "admin.py") )
     :*:\sd\::short_description
 #if
 
 
 
-#if ( WindowsActive("PyCharm", "SunAwtDialog", "Python Console") )
+#if ( WindowsActive("PyCharm" , "SunAwtDialog" , "Python Console") )
 
     ; ReRun
     !BackSpace::MouseClickAndResetting(34, 92, "Window")
@@ -119,7 +124,7 @@
 
 
 
-#if ( WindowsActive("PyCharm", "SunAwtDialog", "Python Console History") )
+#if ( WindowsActive("PyCharm" , "SunAwtDialog" , "Python Console History") )
 
     ; 历史记录返回 \ 与书签冲突
     !\::Send {Esc}
