@@ -17,6 +17,9 @@
     ^+n::Return
     ^n::Send ^+n
 
+    !Tab::Send ^{Tab}
+    !+Tab::Send ^+{Tab}
+
     ; 复制标签页
     ^+d::Return
 
