@@ -214,6 +214,7 @@ MoveWindowsToCenter(silent=False)
     result := GetWindowsInfo()
 
     win_id := result.win_id
+    win_process_name := result.win_process_name
 
     win_x := result.win_x
     win_y := result.win_y
@@ -227,12 +228,27 @@ MoveWindowsToCenter(silent=False)
 
     xx := screen_x + screen_w/2 - win_w/2
     yy := screen_y + screen_h/2 - win_h/2
+    ww := win_w
+    hh := win_h
     
+    ; HelpText(xx yy ww hh)
+    ; HelpText(xx "|" yy "|" ww "|" hh)
+
+    SetWindows(win_id, xx, yy, ww, hh)   
+
+    if (win_process_name="PyCharm") {
+        xx := xx - 3
+        ww := ww + 6 + 1
+        SetWindows(win_id, xx, yy, ww, hh, 0)   
+        Return
+    }
+
     if (win_x=xx and win_y=yy) {
         Return
     }
     
-    WinMove, ahk_id %win_id%,  , %xx%, %yy%
+    SetWindows(win_id, xx, yy, ww, hh, 0)
+
     if (not silent) {
         HelpText("Move To Center",  ,  , 1000)
     }
