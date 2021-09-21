@@ -4,6 +4,8 @@
 
 Test/*.ahk
 
+*Ignore.ahk
+
 Private.ahk 
 Test.ahk
 
