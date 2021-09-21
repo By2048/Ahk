@@ -1,5 +1,5 @@
 
-@title [Start Ahk]
+@title [Ahk]
 @echo off
 
 mode 40,25
