@@ -10,6 +10,9 @@
 
 RunNormalUser(command)
 {
+    if InStr(command,".lnk") {
+        command := Format("C:\Windows\Explorer.exe {}", command) 
+    }
     if (StrLen(PC_USER)=0 and StrLen(PC_PWD)=0) {
         HelpText(" PC_USER/PC_PWD - (./Private.ahk) ", "center_down",  , 3000)
     } else {

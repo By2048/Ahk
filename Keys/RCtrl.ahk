@@ -17,9 +17,10 @@ if (not A_IsAdmin) {
 ; xxx::RunNormalUser("xxx.exe")
 ; xxx::Run "xxx.exe"
 
->^q::RunNormalUser("D:\Q-Dir\Q-Dir.exe D:\#URI\PC.qdr")
->^w::RunNormalUser("D:\WeChat\WeChat.exe")
->^r::RunNormalUser("D:\QuiteRSS\QuiteRSS.exe")
+; >^q::RunNormalUser("D:\Q-Dir\Q-Dir.exe D:\#URI\PC.qdr")
+>^q::RunNormalUser("D:\#URI\PC.qdr")
+>^w::RunNormalUser("D:\#URI\WeChat.lnk")
+>^r::RunNormalUser("D:\#URI\QuiteRSS.lnk")
 >^t::
     Process, Exist, TIM.exe
     if (ErrorLevel) {
@@ -30,8 +31,8 @@ if (not A_IsAdmin) {
 Return
 >^p::Run %WT% -d t:\
 
->^a::Run D:\MuMu\emulator\nemu\EmulatorShell\NemuPlayer.exe
->^s::Run D:\Everything\Everything.exe
+>^a::Run D:\#URI\MuMu.lnk
+>^s::Run D:\#URI\Everything.lnk
 >^f::Run D:\#URI\FreeFileSync.lnk
 >^g::
     win_x:=160, win_y:=60, win_w:=1600, win_h:=960
@@ -49,31 +50,31 @@ Return
 Return
 >^k::KeyboardGUI()
 
->^x::RunNormalUser("D:\Xshell\Xshell.exe")
->^c::RunNormalUser("D:\CloudMusic\cloudmusic.exe") 
->^v::RunNormalUser("D:\VSCode\Code.exe E:\Config\Windows.code-workspace")
->^b::Run E:\\Book\\
->^m::RunNormalUser("D:\PotPlayer\PotPlayerMini64.exe")
+>^x::RunNormalUser("D:\#URI\Xshell.lnk")
+>^c::RunNormalUser("D:\#URI\音乐.lnk") 
+>^v::RunNormalUser(VSCode " E:\Config\Windows.code-workspace")
+>^b::Run E:\Book\
+>^m::RunNormalUser("D:\#URI\PotPlayer.lnk")
 
 >+Delete::
-    command :=  Format("{} /c {} /f /im shellexperiencehost.exe", CMD, TaskKill)
+    command := Format("{} /c {} /f /im shellexperiencehost.exe", CMD, TaskKill)
     Run, %command%,  , Hide
-    command :=  Format("{} /c {} /f /im MicrosoftEdge.exe", CMD, TaskKill)
+    command := Format("{} /c {} /f /im MicrosoftEdge.exe", CMD, TaskKill)
     Run, %command%,  , Hide
-    Run, "D:\Dexpot\dexpot.exe"
+    Run, D:\#URI\Dexpot.lnk
 Return
 >^Delete::
-    command :=  Format("{1} /c {2} /f /im explorer.exe", CMD,TaskKill)
+    command := Format("{1} /c {2} /f /im explorer.exe", CMD,TaskKill)
     RunWait, %command%
-    command :=  Format("{1} /c start explorer.exe", CMD)
+    command := Format("{1} /c start explorer.exe", CMD)
     RunWait, %command%
 Return
 
->^Esc::Run, taskmgr.exe ;任务管理器
+>^Esc::Run, Taskmgr.exe ;任务管理器
 >^PrintScreen::Screenshot_Activate_Software()
 
->^[::RunNormalUser("D:\VSCode\Code.exe E:\Config\Note.code-workspace")
->^]::RunNormalUser("D:\VSCode\Code.exe E:\Config\Ahk.code-workspace")
+>^[::RunNormalUser(VSCode " E:\Config\Note.code-workspace")
+>^]::RunNormalUser(VSCode " E:\Config\Ahk.code-workspace")
 
 >^\::Run D:\#URI\Whiteboard.lnk
 
@@ -106,10 +107,9 @@ timer:
         }
         HelpImage()
     } else if (cnt=2) {
-        Run "D:\#URI\Maye.lnk"
+        Run D:\#URI\Maye.lnk
     } else if (cnt=3) {
-        path := A_WorkingDir "\Image\RCtrl.png"
-        HelpImage(path)
+        HelpImage(A_WorkingDir "\Image\RCtrl.png")
     }
     cnt:=0
 return
