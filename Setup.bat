@@ -2,7 +2,7 @@
 @title [Ahk]
 @echo off
 
-mode 40,25
+mode 40,20
 
 set AHK=D:\AutoHotkey\AutoHotkey.exe
 
@@ -29,7 +29,7 @@ if not exist %ignore_lol_ahk% (
     echo ;Ignore File; > %ignore_lol_ahk%
 )
 
-set command=%1%
+set command=%1
 
 if "%command%"=="" (
     set command=start
@@ -38,7 +38,7 @@ if "%command%"=="" (
 if %command%==start (
     echo.
     start %AHK% .\Setup.ahk    
-    @REM =========================================================
+    @REM =================================
     start %AHK% .\Keys\All.ahk      start
     echo  start .\Keys\All.ahk
     start %AHK% .\Keys\Capslock.ahk start
@@ -51,20 +51,20 @@ if %command%==start (
     echo  start .\Keys\RShift.ahk
     start %AHK% .\Keys\RWin.ahk     start
     echo  start .\Keys\RWin.ahk
-    @REM =========================================================
+    @REM =================================
     start %AHK% .\Software\All.ahk  start
     echo  start .\Software\All.ahk
     start %AHK% .\Keys\RCtrl.ahk    start
     echo  start .\Keys\RCtrl.ahk
-    @REM =========================================================
+    @REM =================================
     start %AHK% .\Other\Dexpot.ahk  start
     echo  start .\Other\Dexpot.ahk
-    @REM =========================================================
+    @REM =================================
     Start %AHK% .\Input.ahk         start
     echo  start .\Input.ahk
     start %AHK% .\Loop.ahk          start
     echo  start .\Loop.ahk
-    @REM =========================================================
+    @REM =================================
     if exist %private_ahk% (
         start %AHK% .\Private.ahk   start
         echo  start .\Private.ahk
@@ -90,20 +90,20 @@ if %command%==stop (
     echo  stop  .\Keys\RShift.ahk
     start %AHK% .\Keys\RWin.ahk     stop
     echo  stop  .\Keys\RWin.ahk
-    @REM =========================================================    
+    @REM =================================    
     start %AHK% .\Software\All.ahk  stop
     echo  stop  .\Software\All.ahk  
     start %AHK% .\Keys\RCtrl.ahk    stop
     echo  stop  .\Keys\RCtrl.ahk
-    @REM =========================================================    
+    @REM =================================    
     start %AHK% .\Other\Dexpot.ahk  stop
     echo  stop  .\Other\Dexpot.ahk
-    @REM =========================================================
+    @REM =================================
     Start %AHK% .\Input.ahk         stop
     echo  stop  .\Input.ahk
     start %AHK% .\Loop.ahk          stop
     echo  stop  .\Loop.ahk
-    @REM =========================================================
+    @REM =================================
     if exist %private_ahk% (
         start %AHK% .\Private.ahk   stop
         echo  stop  .\Private.ahk
