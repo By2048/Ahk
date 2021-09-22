@@ -17,10 +17,6 @@
 
 	#include %A_WorkingDir%\Software\LOL.Ignore.ahk
 	
-
-
-
-
 	; 截图
 	F12::Return
 
