@@ -17,6 +17,7 @@
 #include %A_WorkingDir%\Software\DingDing.ahk
 #include %A_WorkingDir%\Software\Explorer.ahk
 #include %A_WorkingDir%\Software\FSViewer.ahk
+#include %A_WorkingDir%\Software\JetBrains.ahk
 #include %A_WorkingDir%\Software\LOL.ahk
 #include %A_WorkingDir%\Software\Postman.ahk
 #include %A_WorkingDir%\Software\PotPlayer.ahk
