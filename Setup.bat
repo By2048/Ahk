@@ -90,12 +90,12 @@ if %command%==stop (
     echo  stop  .\Keys\RShift.ahk
     start %AHK% .\Keys\RWin.ahk     stop
     echo  stop  .\Keys\RWin.ahk
-    @REM =================================    
+    @REM =================================
     start %AHK% .\Software\All.ahk  stop
     echo  stop  .\Software\All.ahk  
     start %AHK% .\Keys\RCtrl.ahk    stop
     echo  stop  .\Keys\RCtrl.ahk
-    @REM =================================    
+    @REM =================================
     start %AHK% .\Other\Dexpot.ahk  stop
     echo  stop  .\Other\Dexpot.ahk
     @REM =================================
