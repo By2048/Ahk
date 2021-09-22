@@ -152,7 +152,7 @@ GetWindowsConfig(Config_Data)
 
         config_items := StrSplit(config_key, "_")
         max_index    := config_items.MaxIndex()
-        cnt          := 0
+        match_cnt    := 0
 
         _process_name_ := ""
         _class_        := ""
@@ -168,31 +168,37 @@ GetWindowsConfig(Config_Data)
         }
 
         if (StrLen(_process_name_) > 0) {
-            if (InStr(win_process_name, _process_name_)) {
-                cnt := cnt + 1
+            if (win_process_name = _process_name_) {
+                match_cnt := match_cnt + 2
+            } else if (InStr(win_process_name, _process_name_)) {
+                match_cnt := match_cnt + 1
             } else {
-                cnt := cnt - 1
+                match_cnt := match_cnt - 1
             }
         }
 
         if (StrLen(_class_) > 0) {
-            if (InStr(win_class, _class_)) {
-                cnt := cnt + 1
+            if (win_class = _class_) {
+                match_cnt := match_cnt + 2
+            } else if (InStr(win_class, _class_)) {
+                match_cnt := match_cnt + 1
             } else {
-                cnt := cnt - 1
+                match_cnt := match_cnt - 1
             }
         }
 
         if (StrLen(_title_) > 0) {
-            if (InStr(win_title, _title_)) {
-                cnt := cnt + 1
+            if (win_title = _title_) {
+                match_cnt := match_cnt + 2
+            } else if (InStr(win_title, _title_)) {
+                match_cnt := match_cnt + 1
             } else {
-                cnt := cnt - 1
+                match_cnt := match_cnt - 1
             }
         }
 
-        if (cnt > match_count) {
-            match_count := cnt
+        if (match_cnt > match_count) {
+            match_count := match_cnt
             win_config  := config_value
         }
         
