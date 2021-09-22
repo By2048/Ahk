@@ -58,22 +58,12 @@
 
     ; ^`::Send {F24}
 
-    <#Left::
-        Send ^{F5}
-        MoveWindowsToCenter(True)
-    Return
-    <#Right::
-        Send ^{F6}
-        MoveWindowsToCenter(True)
-    Return
-    <#Down::
-        Send ^{F7}
-        MoveWindowsToCenter(True)
-    Return
-    <#Up::
-        Send ^{F8}
-        MoveWindowsToCenter(True)
-    Return
+    <#Left::Send ^{F5}
+    <#Right::Send ^{F6}
+    <#Down::Send ^{F7}
+    <#Up::Send ^{F8}
+
+    ; MoveWindowsToCenter(True)
 
 #if
 

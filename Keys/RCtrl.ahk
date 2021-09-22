@@ -56,7 +56,7 @@ Return
 >^b::Run E:\Book\
 >^m::RunNormalUser("D:\#URI\PotPlayer.lnk")
 
->+Delete::
+>^+Delete::
     command := Format("{} /c {} /f /im shellexperiencehost.exe", CMD, TaskKill)
     Run, %command%,  , Hide
     command := Format("{} /c {} /f /im MicrosoftEdge.exe", CMD, TaskKill)
