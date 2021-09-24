@@ -1,35 +1,30 @@
 ﻿
+; https://support.google.com/chrome/answer/157179
+
 #if ( WindowsActive("Chrome") )
 
     ;帮助
     F1::Return
     
-    ; 重命名
-    F2::Return
-    ^r::Send {F2}
+    ;重命名
+    ; F2::Return
+    ; ^r::Send {F2}
 
     ;搜索
     F3::Return
 
     ;重新加载
-    F5::Return
-    !r::Send ^r
-
-    ;关闭标签
-    ^F4::Return
-
     ;强制重新加载
+    F5::Return
     +F5::Return
+    ^r::Return
     ^+r::Return
+    !r::Send ^r
     !+r::Send ^+r
 
     ;切换焦点
     F6::Return 
     !`::Send {F6}
-    
-    ;切换焦点到最右侧
-    F10::Return
-    !+`::Send {F10}
 
     ;光标浏览模式
     F7::Return 
@@ -43,10 +38,6 @@
     F12::Return
     ^+j::Return
     !\::Send {F12}
-
-    ;打开设置
-    !e::Return
-    !/::!e
 
     ;任务管理
     ^Esc::Return
@@ -73,7 +64,8 @@
     ; !+n::Send ^+n
     
     ;关闭窗口
-    ^w::Return
+    ^w::Return    
+    ^F4::Return
     !CapsLock::
         Send ^w
         SetCapsLockState off
@@ -81,6 +73,14 @@
     
     ;关闭所有窗口
     ^+w::Return
+
+    ;将焦点放置在Chrome工具栏中的第一项上
+    !+t::Return
+    ![::Send !+t
+
+    ;将焦点放置在Chrome工具栏中最右侧的那一项上
+    F10::Return
+    !]::Send {F10}
 
     ;重新打开标签页
     ^+t::Return 
@@ -100,19 +100,19 @@
     ^8::Return
     ^9::Return
     ^Tab::Return
-    !Tab::Send ^{Tab}
     ^+Tab::Return
+    !Tab::Send ^{Tab}
     !+Tab::Send ^+{Tab}
     !Home::Send ^1
     !End::Send ^9
 
-    ; 主页
+    ;主页
     !BackSpace::Send !{Home}
 
     ;滚动
     ^PgUp::Return
-    !PgUp::WheelUp
     ^PgDn::Return
+    !PgUp::WheelUp
     !PgDn::WheelDown
 
     ;切换书签栏显示隐藏状态
@@ -129,9 +129,8 @@
     ^+m::Return 
 
     ;使用Google搜索
-    ^k::Return 
-    ;使用Google搜索
-    ^e::Return 
+    ^k::Return
+    ^e::Return
 
     ;历史记录
     ^h::Return
@@ -141,10 +140,9 @@
     ^j::Return
     !j::Send ^j
 
-    ;收藏 （原本是定位地址栏
-    ;取消收藏
-    ^d::Return
-    ^+d::Return
+    ;收藏 取消收藏
+    ^d::Return  ;原本是定位地址栏
+    ^+d::Return ;为所有页面添加标签
     !d::
         Send ^d
         Send {Tab 2}
@@ -158,10 +156,10 @@
         Send {Enter}
     Return
 
-    ;打印
+    ;打印 高级打印  
     ^p::Return
-    !p::Send ^p
     ^+p::Return
+    !p::Send ^p
     !+p::Send ^+p
 
     ;保存
@@ -181,16 +179,20 @@
     ^u::Return
     !u::Send ^u
 
-    ; 设置
+    ;打开Chrome菜单
     !f::Return
+    !e::Return
+    !/::!e
 
     ;网页缩放
+    ^WheelUp::Return
+    ^WheelDown::Return
     ^0::Return
-    !0::Send ^0
     ^-::Return
-    !-::Send ^-
     ^=::Return
-    !=::Send ^=
+    !0::Send ^0
+    !-::Send ^{-}
+    !=::Send ^{=}
 
     ; >!y::MouseClickImage(A_WorkingDir "\Image\Software\Y.png")
     ; >!z::MouseClickImage(A_WorkingDir "\Image\Software\Z.png")
@@ -201,7 +203,7 @@
 
 
 
-#if ( WindowsActive("Chrome", "", "修改书签") )
+#if ( WindowsActive("Chrome" , "" , "修改书签") )
 
     ; 收藏
     Enter::
