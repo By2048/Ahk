@@ -15,7 +15,7 @@ global lol_x4 := 55
 global lol_y4 := 880
 
 
-#if ( WindowsActive("LOL") )
+#if ( WindowsActive("LOL_Game") )
 
 	; 装备
 	; 2167,2005,

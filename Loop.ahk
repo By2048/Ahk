@@ -11,8 +11,6 @@ if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
 }
 
-global Loop_Ignore_Process_Name := []
-Loop_Ignore_Process_Name.Push( "LOL"          )
 
 Loop {
 
@@ -36,8 +34,10 @@ Loop {
     screen_w         := result.screen_w
     screen_h         := result.screen_h
 
+    global loop_ignore_process_name
+
     ; 特定软件不进行处理 并延迟循环时间
-    for index, value in Loop_Ignore_Process_Name {
+    for index, value in loop_ignore_process_name {
         if (value = win_process_name) {
             Sleep 30000
             Continue

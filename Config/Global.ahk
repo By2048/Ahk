@@ -21,3 +21,18 @@ global software_android_rshift_current := 0
 
 ; Software\VSCode.ahk
 global software_vscode_ralt := False
+
+; Loop.ahk
+global loop_ignore_process_name := []
+loop_ignore_process_name.Push( "LOL_TX"     )
+loop_ignore_process_name.Push( "LOL_Client" )
+loop_ignore_process_name.Push( "LOL_Game"   )
+
+
+; Tool\Windows.ahk
+global game_process_name := []
+game_process_name.Push( "LOL_TX"     )
+game_process_name.Push( "LOL_Client" )
+game_process_name.Push( "LOL_Game"   )
+game_process_name.Push( "Steam"      )
+game_process_name.Push( "Android"    )

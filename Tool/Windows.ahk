@@ -40,10 +40,10 @@ IsMaxMinWindows()
 ; return | True \ False
 IsGame()
 {    
-    Game_Process_Name := ["LOL"]
+    global game_process_name
     WinGet, process_name, ProcessName, A
     process_name := ProcessNameFormat(process_name)
-    for index, value in Game_Process_Name {
+    for index, value in game_process_name {
         if (value = process_name) {
             HelpText("Game", "center_down", "screen3", 1000)
             Return True
