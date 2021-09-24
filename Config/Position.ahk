@@ -35,7 +35,7 @@ win_w := screen_1_w/2 -10-10 +100
 win_h := screen_1_h   -10-10
 Windows_Default_Position["DingDing"] := [win_x, win_y, win_w, win_h]
 
-win_x := screen_1_w/2 +10 +100
+win_x := screen_1_w/2 +10    +100
 win_y := 10 + 14
 win_w := screen_1_w/2 -10-10 -100
 win_h := screen_1_h   -10-10 -14-14
@@ -115,11 +115,17 @@ win_w := screen_1_w - win_x*2 + 1
 win_h := screen_1_h - win_y*2 + 1
 Windows_Default_Position["WindowsTerminal__WindowsPowerShell"] := [win_x, win_y, win_w, win_h]
 
-win_w := screen_1_w * 5/6
-win_h := screen_1_h * 8/9
+win_w := screen_1_w * 50/60
+win_h := screen_1_h * 80/90
 win_x := screen_1_x + screen_1_w/2 - win_w/2
 win_y := screen_1_y + screen_1_h/2 - win_h/2
 Windows_Default_Position["VSCode"] := [win_x, win_y, win_w, win_h]
+
+win_w := screen_1_w * 45/60
+win_h := screen_1_h * 70/90
+win_x := screen_1_x + screen_1_w/2 - win_w/2
+win_y := screen_1_y + screen_1_h/2 - win_h/2
+Windows_Default_Position["Notepad++"] := [win_x, win_y, win_w, win_h]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -147,7 +153,7 @@ win_w := 1200 + 1
 win_h := 1000 + 1
 win_x := screen_1_x + screen_1_w/2 - win_w/2 + 1
 win_y := screen_1_y + screen_1_h/2 - win_h/2 + 1
-Windows_Default_Position["PyCharm__Python解释器"]     := [win_x, win_y, win_w, win_h]
+Windows_Default_Position["PyCharm__Python解释器"] := [win_x, win_y, win_w, win_h]
 
 win_w := 1600 + 1
 win_h := 1500 + 1
@@ -163,9 +169,14 @@ win_y := screen_1_y + screen_1_h/2 - win_h/2 + 1
 Windows_Default_Position["PyCharm__设置"]            := [win_x, win_y, win_w, win_h]
 Windows_Default_Position["PyCharm__添加Python解释器"] := [win_x, win_y, win_w, win_h]
 Windows_Default_Position["PyCharm__TODO"]            := [win_x, win_y, win_w, win_h]
-Windows_Default_Position["PyCharm__问题"]            := [win_x, win_y, win_w, win_h]
+Windows_Default_Position["PyCharm__问题"]             := [win_x, win_y, win_w, win_h]
 Windows_Default_Position["PyCharm__远程主机"]         := [win_x, win_y, win_w, win_h]
 
+win_w := 2000 + 1
+win_h := 1750 + 1
+win_x := screen_1_x + screen_1_w/2 - win_w/2 + 1
+win_y := screen_1_y + screen_1_h/2 - win_h/2 + 1
+Windows_Default_Position["PyCharm__运行/调试配置"]     := [win_x, win_y, win_w, win_h]
 
 win_w := 2300 + 1
 win_h := 1700 + 1
