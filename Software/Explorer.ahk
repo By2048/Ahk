@@ -77,7 +77,7 @@
     ; Ctrl+Shift+N 创建新文件夹
     ; Ctrl+N -> Ctrl+Shift+N
     ^+n::Return
-    ^n::Send ^+n
+    <^n::Send ^+n
     
     ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
     ^WheelUp::Return

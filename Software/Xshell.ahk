@@ -15,7 +15,6 @@
     !BackSpace::Send ^c
     
     ;复制
-    ^F1::Return
     ^c::Send ^{F1}
 
     ;清屏 

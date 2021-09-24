@@ -22,6 +22,7 @@ global JQB_Windows := "T:\\JQB_Windows"
 ; 软件自定义名字替换
 global Windows_Process_Name := []
 Windows_Process_Name.Push( [ "code"                    , "VSCode"       ] )
+Windows_Process_Name.Push( [ "notepad++"               , "Notepad++"    ] )
 Windows_Process_Name.Push( [ "pycharm64"               , "PyCharm"      ] )
 Windows_Process_Name.Push( [ "jetbrains-toolbox"       , "JetBrains"    ] )
 Windows_Process_Name.Push( [ "chrome"                  , "Chrome"       ] )
