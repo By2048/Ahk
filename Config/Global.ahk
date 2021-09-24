@@ -28,7 +28,6 @@ loop_ignore_process_name.Push( "LOL_TX"     )
 loop_ignore_process_name.Push( "LOL_Client" )
 loop_ignore_process_name.Push( "LOL_Game"   )
 
-
 ; Tool\Windows.ahk
 global game_process_name := []
 game_process_name.Push( "LOL_TX"     )
@@ -36,3 +35,19 @@ game_process_name.Push( "LOL_Client" )
 game_process_name.Push( "LOL_Game"   )
 game_process_name.Push( "Steam"      )
 game_process_name.Push( "Android"    )
+
+; Software\LOL.ahk
+global lol_x  := 0
+global lol_y  := 0
+
+global lol_x1 := 55
+global lol_y1 := 400
+
+global lol_x2 := 55
+global lol_y2 := 550
+
+global lol_x3 := 55
+global lol_y3 := 710
+
+global lol_x4 := 55
+global lol_y4 := 880

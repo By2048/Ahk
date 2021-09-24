@@ -1,18 +1,4 @@
 ﻿
-global lol_x  := 0
-global lol_y  := 0
-
-global lol_x1 := 55
-global lol_y1 := 400
-
-global lol_x2 := 55
-global lol_y2 := 550
-
-global lol_x3 := 55
-global lol_y3 := 710
-
-global lol_x4 := 55
-global lol_y4 := 880
 
 
 #if ( WindowsActive("LOL_Game") )
