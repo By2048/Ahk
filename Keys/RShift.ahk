@@ -17,15 +17,6 @@ if (not A_IsAdmin) {
 
 
 
-global hotkeys_show_status  := False ; 是否正在显示图片
-global hotkeys_images       := []    ; 显示的图片组
-global hotkeys_index        := 1     ; 显示图片的序号
-global hotkeys_total        := 1     ; 显示图片组的数量
-global hotkeys_title        := ""    ; 激活的应用窗口标题
-global hotkeys_process_name := ""    ; 激活的应用
-
-
-
 ; 获取需要展示的图片
 get_image() 
 {

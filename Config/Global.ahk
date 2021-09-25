@@ -33,21 +33,23 @@ global game_process_name := []
 game_process_name.Push( "LOL_TX"     )
 game_process_name.Push( "LOL_Client" )
 game_process_name.Push( "LOL_Game"   )
-game_process_name.Push( "Steam"      )
-game_process_name.Push( "Android"    )
 
 ; Software\LOL.ahk
 global lol_x  := 0
 global lol_y  := 0
-
 global lol_x1 := 55
 global lol_y1 := 400
-
 global lol_x2 := 55
 global lol_y2 := 550
-
 global lol_x3 := 55
 global lol_y3 := 710
-
 global lol_x4 := 55
 global lol_y4 := 880
+
+; Config\Global.ahk
+global hotkeys_show_status  := False ; 是否正在显示图片
+global hotkeys_images       := []    ; 显示的图片组
+global hotkeys_index        := 1     ; 显示图片的序号
+global hotkeys_total        := 1     ; 显示图片组的数量
+global hotkeys_title        := ""    ; 激活的应用窗口标题
+global hotkeys_process_name := ""    ; 激活的应用
