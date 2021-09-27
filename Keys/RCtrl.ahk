@@ -29,6 +29,9 @@ if (not A_IsAdmin) {
         RunNormalUser("D:\TIM\Bin\TIM.exe")
     }
 Return
+>^y::
+    TrayIcon_Button("v2rayN.exe", "L")
+Return
 >^p::Run %WT% -d t:\
 
 >^a::Run D:\#URI\MuMu.lnk

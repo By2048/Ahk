@@ -13,20 +13,20 @@ if (not A_IsAdmin) {
     Run *RunAs %A_ScriptFullPath%
 }
 
-Capslock &  p::MouseMoveDC( 0, -3)
-Capslock & `;::MouseMoveDC( 0,  3)
-Capslock &  l::MouseMoveDC(-3,  0)
-Capslock &  '::MouseMoveDC( 3,  0)
+Capslock &  p::MouseMoveDC( 0, -5)
+Capslock & `;::MouseMoveDC( 0,  5)
+Capslock &  l::MouseMoveDC(-5,  0)
+Capslock &  '::MouseMoveDC( 5,  0)
 
-Capslock & w::MouseMoveDC(  0, -33)
-Capslock & s::MouseMoveDC(  0,  33)
-Capslock & a::MouseMoveDC(-33,   0)
-Capslock & d::MouseMoveDC( 33,   0)
+Capslock & w::MouseMoveDC(  0, -50)
+Capslock & s::MouseMoveDC(  0,  50)
+Capslock & a::MouseMoveDC(-50,   0)
+Capslock & d::MouseMoveDC( 50,   0)
 
-Capslock &    Up::MouseMoveDC(   0, -333)
-Capslock &  Down::MouseMoveDC(   0,  333)
-Capslock &  Left::MouseMoveDC(-333,    0)
-Capslock & Right::MouseMoveDC( 333,    0)
+Capslock &    Up::MouseMoveDC(   0, -100)
+Capslock &  Down::MouseMoveDC(   0,  100)
+Capslock &  Left::MouseMoveDC(-100,    0)
+Capslock & Right::MouseMoveDC( 100,    0)
 
 Capslock &   Tab::LButton
 Capslock & Space::MButton
@@ -68,4 +68,6 @@ $CapsLock::
 return
 
 ;关闭大写锁定
-CapsLock Up::SetCapsLockState, Off
+CapsLock Up::
+    SetCapsLockState, Off
+Return
