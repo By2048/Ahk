@@ -2,9 +2,8 @@
 #if ( WindowsActive("JetBrains") )
 
     ^Tab::Return
-    !Tab::Send ^{Tab}
-
     ^+Tab::Return
+    !Tab::Send ^{Tab}
     !+Tab::Send ^+{Tab}
 
     ^1::Return
@@ -16,7 +15,6 @@
 
     ; 隐藏
     ^h::Return
-
 
     ; 检查更新
     ^r::Return
