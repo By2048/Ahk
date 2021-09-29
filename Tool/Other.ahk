@@ -72,7 +72,7 @@ Screenshot(screens="screen1",keep_path="backup")
         screenshot_keep_path := Snipaste_Screenshot_Path_Tmp
     }
 
-    if (screenshot_keep_path="") {
+    if (not screenshot_keep_path) {
         Return
     }
 
@@ -85,6 +85,18 @@ Screenshot(screens="screen1",keep_path="backup")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, x, y, w, h, file)
     Run %cmd%
 
+    SetTimer, delete_snipaste_auto_save_file, -1000
+}
+
+
+
+; 游戏截图
+Screenshot_Quick()
+{
+    FormatTime, name, _, yyyy-MM-dd HH-mm-ss
+    file := Snipaste_Screenshot_Path_Tmp "\" name ".png"
+    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, screen_1_x, screen_1_y, screen_1_w, screen_1_h, file)
+    Run %cmd%
     SetTimer, delete_snipaste_auto_save_file, -1000
 }
 
