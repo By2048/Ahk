@@ -17,8 +17,7 @@ if (not A_IsAdmin) {
 ; xxx::RunNormalUser("xxx.exe")
 ; xxx::Run "xxx.exe"
 
-; >^q::RunNormalUser("D:\Q-Dir\Q-Dir.exe D:\#URI\PC.qdr")
->^q::RunNormalUser("D:\#URI\PC.qdr")
+>^q::Run D:\#URI\PC.qdr
 >^w::RunNormalUser("D:\#URI\WeChat.lnk")
 >^r::RunNormalUser("D:\#URI\QuiteRSS.lnk")
 >^t::

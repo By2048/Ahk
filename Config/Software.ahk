@@ -10,7 +10,6 @@ global HuntAndPeck := "D:\Bin\HuntAndPeck\hap.exe"
 global Chrome      := "C:\Program Files\Google\Chrome\Application\chrome.exe"
 global Scrcpy      := "D:\Bin\Scrcpy\scrcpy.exe"
 global Adb         := "D:\Bin\platform-tools\adb.exe"
-global Python      := "D:\Python\_python_\Scripts\python.exe"
 
 
 ; 截图软件配置
