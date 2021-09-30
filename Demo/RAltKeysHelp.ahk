@@ -13,9 +13,9 @@ if (not A_IsAdmin) {
 global keymaps:={}
 global keymap_show_status:=False
 
-keymaps["Code.exe"]:=[]
-keymaps["Code.exe"].Push([[47,108],  "!F1"])
-keymaps["Code.exe"].Push([[47,316], "!F12"])
+keymaps["VSCode"]:=[]
+keymaps["VSCode"].Push([[47,108],  "!F1"])
+keymaps["VSCode"].Push([[47,316], "!F12"])
 
 
 

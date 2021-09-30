@@ -43,7 +43,7 @@ return
 
 
 $RAlt::
-    if (WinActive("ahk_exe pycharm64.exe")) {
+    if (WindowsActive("PyCharm")) {
         return
     }
     if (IsGame()) {
