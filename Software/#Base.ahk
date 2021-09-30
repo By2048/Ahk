@@ -1,5 +1,6 @@
 ﻿
 ^a::Return ;全选
+^+a::Return ;反选
 
 ^x::Return ;剪切
 ^c::Return ;复制

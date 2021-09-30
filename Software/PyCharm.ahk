@@ -58,10 +58,10 @@
 
     ; ^`::Send {F24}
 
-    <#Left::Send ^{F5}
-    <#Right::Send ^{F6}
-    <#Down::Send ^{F7}
-    <#Up::Send ^{F8}
+    >#Left::Send ^{F5}
+    >#Right::Send ^{F6}
+    >#Down::Send ^{F7}
+    >#Up::Send ^{F8}
 
     ; MoveWindowsToCenter(True)
 

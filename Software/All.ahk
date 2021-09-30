@@ -16,6 +16,7 @@
 #include %A_WorkingDir%\Software\CloudMusic.ahk
 #include %A_WorkingDir%\Software\DingDing.ahk
 #include %A_WorkingDir%\Software\Explorer.ahk
+#include %A_WorkingDir%\Software\FFRenamePro.ahk
 #include %A_WorkingDir%\Software\FSViewer.ahk
 #include %A_WorkingDir%\Software\JetBrains.ahk
 #include %A_WorkingDir%\Software\LOL.ahk
