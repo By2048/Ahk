@@ -39,7 +39,7 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     CoordMode Mouse Screen
 
     global help_text_show_status
-    if (not data) {
+    if (not data and data != 0) {
         help_text_show_status:=False
         Gui, Destroy
         Return

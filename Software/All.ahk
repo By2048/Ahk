@@ -20,6 +20,7 @@
 #include %A_WorkingDir%\Software\FSViewer.ahk
 #include %A_WorkingDir%\Software\JetBrains.ahk
 #include %A_WorkingDir%\Software\LOL.ahk
+#include %A_WorkingDir%\Software\Maye.ahk
 #include %A_WorkingDir%\Software\Notepad++.ahk
 #include %A_WorkingDir%\Software\Postman.ahk
 #include %A_WorkingDir%\Software\PotPlayer.ahk

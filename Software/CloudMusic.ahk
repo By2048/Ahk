@@ -11,8 +11,37 @@
 
     [::Send ![
     ]::Send !]
-    =::Send !=
-    -::Send !-
+
+    =::
+        global cloud_music_volume
+        if (cloud_music_volume = -1){
+            Send !{- 10}
+            Send !{= 5}
+            cloud_music_volume := 5
+        } else {
+            Send !=
+            cloud_music_volume := cloud_music_volume + 1
+        }
+        if (cloud_music_volume >= 10) {
+            cloud_music_volume := 10
+        }
+        HelpText(cloud_music_volume , "center_down" ,   , 200)
+    Return
+    -::
+        global cloud_music_volume
+        if (cloud_music_volume = -1){
+            Send !{- 10}
+            Send !{= 5}
+            cloud_music_volume := 5
+        } else {
+            Send !-
+            cloud_music_volume := cloud_music_volume - 1
+        }
+        if (cloud_music_volume <= 0) {
+            cloud_music_volume := 0
+        }
+        HelpText(cloud_music_volume , "center_down" ,   , 200)
+    Return
 
     ; 列表上一首
     PgUp::

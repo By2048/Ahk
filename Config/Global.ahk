@@ -47,6 +47,9 @@ global lol_y3 := 710
 global lol_x4 := 55
 global lol_y4 := 880
 
+; Software\CloudMusic.ahk
+global cloud_music_volume := -1
+
 ; Config\Global.ahk
 global hotkeys_show_status  := False ; 是否正在显示图片
 global hotkeys_images       := []    ; 显示的图片组
@@ -54,3 +57,5 @@ global hotkeys_index        := 1     ; 显示图片的序号
 global hotkeys_total        := 1     ; 显示图片组的数量
 global hotkeys_title        := ""    ; 激活的应用窗口标题
 global hotkeys_process_name := ""    ; 激活的应用
+
+
