@@ -41,7 +41,7 @@
 #NoTrayIcon
 
 ; 任务栏滚动鼠标调整音量
-; #if ( WindowsActive("Explorer", "Shell_TrayWnd") )
-;     WheelUp::Send {Volume_Up}
-;     WheelDown::Send {Volume_Down}
-; #if
+#if ( WindowsActive("Explorer" , "Shell_TrayWnd") )
+    WheelUp::Send {Volume_Up}
+    WheelDown::Send {Volume_Down}
+#if
