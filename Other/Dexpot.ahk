@@ -5,10 +5,6 @@
 #SingleInstance Force
 #NoTrayIcon
 
-if (not A_IsAdmin) {
-    Run *RunAs "%A_ScriptFullPath%" 
-}
-
 ; 虚拟桌面 Dextop 快捷键按拓展
 ; 部分快捷键与Win系统冲突 无法通过软件中配置 故在此处进行处理
 

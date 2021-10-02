@@ -7,11 +7,6 @@
 #SingleInstance Force
 #NoTrayIcon
 
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath%
-}
-
-
 Loop {
 
     Sleep, 1000

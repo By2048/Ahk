@@ -11,13 +11,6 @@
 #NoTrayIcon
 
 
-
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath%
-}
-
-
-
 ; RWin 
 ; 快捷键 (Ctrl Alt 系统全局) (Shift 功能反转)
 ; 窗口位置大小调整

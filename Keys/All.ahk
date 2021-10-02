@@ -7,10 +7,6 @@
 #SingleInstance Force
 #NoTrayIcon
 
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath%
-}
-
 ;切换窗口
 !Esc::Return
 !+Esc::Return
@@ -28,6 +24,8 @@ if (not A_IsAdmin) {
 ^+Esc::Return ;任务管理器
 
 #a::Return ;打开操作中心
+#s::Return ;打开搜索
+#+s::Return ;获取部分屏幕的屏幕截图。
 #w::Return ;打开WindwsInk
 #x::Return ;系统菜单
 #k::Return ;打开“连接”快速操作
@@ -40,10 +38,14 @@ if (not A_IsAdmin) {
 #r::return ;Run
 #i::Return ;打开系统设置
 #u::Return ;显示器设置
-#+s::return ;原生截图
 
-#t::Return  ;快速切换任务栏程序
-#+t::Return ;快速切换任务栏程序
+;快速切换任务栏程序
+#t::Return  
+#+t::Return
+
+;打开任务视图
+#Tab::Return 
+#+Tab::Return
 
 #^d::return ;创建虚拟桌面
 #^F4::return ;关闭当前虚拟桌面
@@ -51,16 +53,12 @@ if (not A_IsAdmin) {
 #^Right::return ;向右切换虚拟桌面
 #,::Return ; 透明窗口显示桌面
 
+#Home::Return
+#End::Return
+#PgDn::Return
+#PgUp::Return
+
 ; PowerToys Run
 ^!r::Return
 
 +BackSpace::Send {Delete}
-
-RCtrl & RAlt::
-    ZH()
-    HelpText("ZH","center","screen1",1000)
-Return
-RAlt & RCtrl::
-    EN()
-    HelpText("EN","center","screen1",1000)
-Return

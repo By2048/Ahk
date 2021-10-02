@@ -7,14 +7,6 @@
 #SingleInstance Force
 #NoTrayIcon
 
-
-
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath%
-}
-
-
-
 >!F1::Send {F13}
 >!F2::Send {F14}
 >!F3::Send {F15}
@@ -30,8 +22,6 @@ if (not A_IsAdmin) {
 >!F11::Send {F23}
 >!F12::Send {F24}
 
-
-
 RAlt & RWin::
     if (IsDesktops() or IsGame()) {
         Return
@@ -40,6 +30,11 @@ RAlt & RWin::
     }
 return
 
+
+RAlt & RCtrl::
+    EN()
+    HelpText("EN","center","screen1",1000)
+Return
 
 
 $RAlt::
@@ -58,7 +53,6 @@ $RAlt::
     SetTimer, timer, -500
 return
 
-
-
 timer:
+    
 return

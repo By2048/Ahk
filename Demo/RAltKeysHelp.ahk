@@ -1,13 +1,7 @@
 ﻿#include %A_WorkingDir%\Tool\Help.ahk
+
 #SingleInstance Force
 #NoTrayIcon
-
-
-
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath%
-}
-
 
 
 global keymaps:={}

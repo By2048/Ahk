@@ -9,10 +9,6 @@
 #SingleInstance Force
 #NoTrayIcon
 
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath%
-}
-
 Capslock &  p::MouseMoveDC( 0, -5)
 Capslock & `;::MouseMoveDC( 0,  5)
 Capslock &  l::MouseMoveDC(-5,  0)

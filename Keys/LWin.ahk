@@ -8,10 +8,6 @@
 #SingleInstance Force
 #NoTrayIcon
 
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath%
-}
-
 ; 显示隐藏任务栏
 <#8:: 
     if (!WinExist("ahk_class Shell_TrayWnd")) {
@@ -70,6 +66,7 @@ Return
 <#n::#k ;打开“连接”快速操作
 <#m::#, ;显示隐藏所有应用
 <#+m::#d ;切换隐藏所有应用界面
+
 
 ; 窗口全屏
 <#Enter::Send ^!``
@@ -149,7 +146,7 @@ Return
     }
 Return
 
-;切换应用
+; 切换应用
 global win_tab:=False
 LWin & Tab::
     global win_tab

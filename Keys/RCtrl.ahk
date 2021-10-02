@@ -10,10 +10,6 @@
 #SingleInstance Force
 #NoTrayIcon
 
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath%
-}
-
 ; xxx::RunNormalUser("xxx.exe")
 ; xxx::Run "xxx.exe"
 
@@ -67,8 +63,9 @@ Return
     Run, D:\#URI\Dexpot.lnk
 Return
 >^Delete::
-    command := Format("{1} /c {2} /f /im explorer.exe", CMD,TaskKill)
+    command := Format("{1} /c {2} /f /im explorer.exe", CMD, TaskKill)
     RunWait, %command%
+    Sleep 5000
     command := Format("{1} /c start explorer.exe", CMD)
     RunWait, %command%
 Return
@@ -85,6 +82,10 @@ Return
 >^.::Run Explorer.exe
 >^/::Run T:\\
 
+>^Up::Return
+>^Down::Return
+>^Left::Return
+>^Right::Return
 
 RCtrl & Enter::Run E:\Doc\All.xlsx
 
@@ -92,6 +93,11 @@ RCtrl & RWin::
     if (not IsDesktops()) {
         Send ^w
     }
+Return
+
+RCtrl & RAlt::
+    ZH()
+    HelpText("ZH","center","screen1",1000)
 Return
 
 $RCtrl::

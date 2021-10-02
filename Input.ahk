@@ -5,10 +5,6 @@
 #SingleInstance Force
 #Hotstring EndChars `t
 
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath%
-}
-
 ::[date]::
     FormatTime, result, _, [yyyy-MM-dd]
     SendInput %result%

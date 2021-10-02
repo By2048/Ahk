@@ -70,10 +70,10 @@ SetTitleMatchMode 2
 Menu, Tray, NoStandard 
 
 
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath% 
-    ExitApp
-}
+; if (not A_IsAdmin) {
+;     Run *RunAs %A_ScriptFullPath% 
+;     ExitApp
+; }
 
 Format("{:U}, {:L} and {:T}", "upper", "LOWER", "title")
 

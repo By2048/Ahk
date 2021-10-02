@@ -9,14 +9,6 @@
 #SingleInstance Force
 #NoTrayIcon
 
-
-
-if (not A_IsAdmin) {
-    Run *RunAs %A_ScriptFullPath%
-}
-
-
-
 ; 获取需要展示的图片
 get_image() 
 {
