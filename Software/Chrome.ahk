@@ -28,7 +28,10 @@
 
     ;光标浏览模式
     F7::Return 
-    !i::Send {F7}
+    !i::
+        Send {F7}
+        Send {Enter}
+    Return
 
     ;全屏
     F11::Return
