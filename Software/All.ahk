@@ -1,5 +1,6 @@
 ﻿
 #include %A_WorkingDir%\Config\All.ahk
+
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
 #include %A_WorkingDir%\Tool\Help.ahk

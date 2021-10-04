@@ -7,10 +7,10 @@
 ListToStr(data)
 {
     result:=""
-    For index, value In data {
+    for index, value In data {
         result .= value . "|"
     }
-    result:=RTrim(result,"|")
+    result := RTrim(result,"|")
     Return result
 }
 
@@ -32,9 +32,8 @@ ToBase(n, b)
 ; 软件进程名转换 code.exe -> VSCode
 ProcessNameFormat(process_name)
 {
-    process_name := RTrim(process_name, "exe")
-    process_name := RTrim(process_name, "EXE")
-    process_name := RTrim(process_name, "."  )
+    process_name := RTrim(process_name, ".exe")
+    process_name := RTrim(process_name, ".EXE")
     for index, value in Windows_Process_Name {
         name_old := value[1]
         name_new := value[2]

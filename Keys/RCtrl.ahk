@@ -25,7 +25,12 @@
     }
 Return
 >^y::
-    TrayIcon_Button("v2rayN.exe", "L")
+    Process, Exist, v2rayN.exe
+    if (ErrorLevel) {
+        TrayIcon_Button("v2rayN.exe", "L")
+    } else {
+        Run D:\#URI\v2rayN.lnk
+    }
 Return
 >^p::Run %WT% -d t:\
 
