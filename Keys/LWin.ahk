@@ -30,12 +30,12 @@ return
 <#]::#t
 
 <#,::#x ;系统菜单
-<#.::Run, control ;控制面板
-<#/::Run, ms-settings: ;设置
+<#.::Run control ;控制面板
+<#/::Run ms-settings: ;设置
 
 ;类似于Vim的快捷键操作工具
-<#;::Run, %HuntAndPeck% /tray ;任务栏
-<#'::Run, %HuntAndPeck% /hint ;当前应用
+<#;::Run %HuntAndPeck% /tray ;任务栏
+<#'::Run %HuntAndPeck% /hint ;当前应用
 
 ; 复制文件路径
 <#c::	
@@ -63,13 +63,14 @@ return
     }
 Return
 
-<#n::#k ;打开“连接”快速操作
-<#m::#, ;显示隐藏所有应用
+<#n::#k  ;打开“连接”快速操作
+<#m::#,  ;显示隐藏所有应用
 <#+m::#d ;切换隐藏所有应用界面
 
 
 ; 窗口全屏
 <#Enter::Send ^!``
+
 ; 窗口全屏选项
 <#+Enter::Send ^!+``
 
@@ -96,27 +97,20 @@ Return
 
 ; 手动设置代理
 LWin & RShift::
-    lshift_state := GetKeyState("LShift")
-    if (lshift_state) {
-        ; Internet设置
-        RegRead, proxy_enable, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable
-        if (proxy_enable = "0") {
-            Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable, 1
-            HelpText("Internet Proxy ON",  "center_down", "screen1", 1000)
-        } else if (proxy_enable = "1") {
-            Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet Settings, proxyenable, 0
-            HelpText("Internet Proxy OFF", "center_down", "screen1", 1000)
-        }
-    } else {
-        ; Windows设置
-        RegRead, proxy_enable, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable
-        if (proxy_enable = "0") {
-            Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable, 1
-            HelpText("Windows Proxy ON",  "center_down", "screen1", 1000)
-        } else if (proxy_enable = "1") {
-            Regwrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Internet Settings, ProxyEnable, 0
-            HelpText("Windows Proxy OFF", "center_down", "screen1", 1000)
-        }
+    ; lshift_state := GetKeyState("LShift")
+    ; if (lshift_state) {
+    ; } else {  }
+    path        := "HKEY_CURRENT_USER"
+    config      := "Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+    path_config := Format("{}\{}", path, config)
+    RegRead, proxy_enable, %path_config%, ProxyEnable
+    if (proxy_enable = "0") {
+        Regwrite, REG_DWORD, %path%, %config%, ProxyEnable, 1
+        HelpText("Proxy ON",  "center_down", "screen1", 1000)
+    } else if (proxy_enable = "1") {
+        Regwrite, REG_DWORD, %path%, %config%, ProxyEnable, 0
+        HelpText("Proxy OFF", "center_down", "screen1", 500)
+        HelpText("`n Proxy OFF `n", "center_down", "screen3")
     }
 Return
 

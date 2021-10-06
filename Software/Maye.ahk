@@ -1,7 +1,6 @@
 ﻿
 #if ( WindowsActive("Maye") )
 
-    CapsLock::Send {Esc}
-    LShift::Send +{Tab}
+    CapsLock::Send +{Tab}
 
 #if

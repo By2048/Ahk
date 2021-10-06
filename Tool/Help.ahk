@@ -47,6 +47,11 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
 
     font_size  := 25
     font_hight := font_size * 3
+    
+    n_count := StrSplit(data, "`n").MaxIndex() 
+    if (n_count > 1) {
+        font_hight := font_hight * n_count
+    }
 
     if (screens="screen1" or screens="screen_1") {
         screen_x   := screen_1_x  , screen_y  := screen_1_y
