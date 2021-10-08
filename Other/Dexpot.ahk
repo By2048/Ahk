@@ -71,8 +71,8 @@ LWin & LCtrl::#^!F23
     SetCapsLockState Off
 Return
 
-; #Delete   卷起
-; #Esc      最小化到系统托盘
-; #`        DexTab任务切换器 
-; #PgUp     窗口透明度增加
-; #PgDn     窗口透明度减少
+; #Esc    卷起
+; #+Esc   最小化到系统托盘
+; #`      DexTab任务切换器 
+; #PgUp   窗口透明度增加
+; #PgDn   窗口透明度减少

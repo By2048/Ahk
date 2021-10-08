@@ -19,6 +19,7 @@
 #include %A_WorkingDir%\Software\Explorer.ahk
 #include %A_WorkingDir%\Software\FFRenamePro.ahk
 #include %A_WorkingDir%\Software\FSViewer.ahk
+#include %A_WorkingDir%\Software\Geek.ahk
 #include %A_WorkingDir%\Software\JetBrains.ahk
 #include %A_WorkingDir%\Software\LOL.ahk
 #include %A_WorkingDir%\Software\Maye.ahk

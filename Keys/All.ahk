@@ -55,8 +55,6 @@
 
 #Home::Return
 #End::Return
-#PgDn::Return
-#PgUp::Return
 
 ; PowerToys Run
 ^!r::Return

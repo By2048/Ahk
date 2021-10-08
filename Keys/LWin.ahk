@@ -17,9 +17,12 @@
     }
 return
 
-; 调节显示器亮度 (Twinkle Tray)
-<#9::#^!9
-<#0::#^!0
+; Twinkle Tray
+; 调节显示器亮度
+<#9::#^!9   ; 主显示器 +
+<#0::#^!0   ; 主显示器 -
+<#+9::#^!+9 ; 所有显示器 -
+<#+0::#^!+0 ; 所有显示器 -
 
 ;声音
 <#=::Volume_Up
@@ -29,7 +32,7 @@ return
 <#[::#+t
 <#]::#t
 
-<#,::#x ;系统菜单
+<#,::Send #x ;系统菜单
 <#.::Run control ;控制面板
 <#/::Run ms-settings: ;设置
 
@@ -48,6 +51,7 @@ return
     file.Close()
     HelpText(data, "center_down",  , 1000)
 return
+
 <#v::
     data = %clipboard%
     if (FileExist(JQB_Phone)) {
@@ -63,10 +67,9 @@ return
     }
 Return
 
-<#n::#k  ;打开“连接”快速操作
-<#m::#,  ;显示隐藏所有应用
-<#+m::#d ;切换隐藏所有应用界面
-
+<#n::Send #k  ;打开“连接”快速操作
+<#m::Send #,  ;显示隐藏所有应用
+<#+m::Send #d ;切换隐藏所有应用界面
 
 ; 窗口全屏
 <#Enter::Send ^!``
@@ -110,7 +113,7 @@ LWin & RShift::
     } else if (proxy_enable = "1") {
         Regwrite, REG_DWORD, %path%, %config%, ProxyEnable, 0
         HelpText("Proxy OFF", "center_down", "screen1", 500)
-        HelpText("`n Proxy OFF `n", "center_down", "screen3")
+        HelpText("`n Proxy OFF `n", "center", "screen3")
     }
 Return
 

@@ -21,6 +21,13 @@ win_x := screen_1_x + screen_1_w/2 - win_w/2
 win_y := screen_1_y + screen_1_h/2 - win_h/2
 Windows_Default_Position["_#32770_浏览文件夹"] := [win_x, win_y, win_w, win_h]
 
+win_w := 1000
+win_h := 1500
+win_x := screen_1_x + screen_1_w/2 - win_w/2
+win_y := screen_1_y + screen_1_h/2 - win_h/2
+; 开启关闭 Windows 功能
+Windows_Default_Position["OptionalFeatures_NativeHWNDHost"] := [win_x, win_y, win_w, win_h]
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 win_x := 10
@@ -107,11 +114,11 @@ win_x := screen_1_x + screen_1_w/2 - win_w/2
 win_y := screen_1_y + screen_1_h/2 - win_h/2
 Windows_Default_Position["Chrome__修改书签"] := [win_x, win_y, win_w, win_h]
 
-; win_w := 1661
-; win_h := 676
-; win_x := screen_2_x + screen_2_w/2 - win_w/2
-; win_y := screen_2_y + screen_2_h/2 - win_h/2
-; Windows_Default_Position["v2rayN"] := [win_x, win_y, win_w, win_h]
+win_w := 2635
+win_h := 1600
+win_x := screen_2_x + screen_2_w/2 - win_w/2
+win_y := screen_2_y + screen_2_h/2 - win_h/2
+Windows_Default_Position["v2rayN"] := [win_x, win_y, win_w, win_h]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
