@@ -1,20 +1,23 @@
 
-; 软件设置{f1}
-LAlt & RAlt::Send {F13}
+^a::Return ;全选
+^+a::Return ;反选
 
-; 右键菜单{AppsKey}
-RAlt & LAlt::Send {AppsKey}
+^x::Return ;剪切
+^c::Return ;复制
+^v::Return ;粘贴
 
-; 切换标签页{f2}
-!Tab::Send !{F14}
-!+Tab::Send !+{F14}
+^z::Return  ;撤销
+^+z::Return ;撤销恢复
 
-; 关闭标签页{f3}
-!CapsLock::Send !{F15}
-!+CapsLock::Send !+{F15}
+^f::Return  ;查找
+^+f::Return ;全局查找
 
-; 特殊按键覆盖{f4}
-^F4::Return
-^+F4::Return
-!F4::Send !{F16}
-!+F4::Send !+{F16}
+^h::Return  ;替换
+^+h::Return ;全局替换
+
+^o::Return  ;打开
+^+o::Return ;加强打开
+
+^n::Return ;创建新xxx
+^r::Return ;重命名
+^e::Return ;资源管理器打开文件位置

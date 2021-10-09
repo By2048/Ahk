@@ -17,3 +17,18 @@
     PgUp::Send !u
     PgDn::Send !o
 #if
+
+
+; 任务管理器
+#if ( WindowsActive( "TaskMGR" ) )
+    
+    ; 切换标签页
+    ^Tab::Return
+    !Tab::Send ^{Tab}
+
+    ^+Tab::Return
+    !+Tab::Send ^+{Tab}
+
+    !CapsLock::Send !{F4}
+
+#if
