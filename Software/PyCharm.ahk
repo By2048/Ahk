@@ -100,7 +100,7 @@
 
 
 
-#if ( WindowsActive("PyCharm" , "SunAwtDialog" , "Python Console") )
+#if ( WindowsActive("PyCharm" , "SunAwtDialog" , "Python 控制台") )
 
     ; ReRun
     !BackSpace::MouseClickAndResetting(34, 92, "Window")

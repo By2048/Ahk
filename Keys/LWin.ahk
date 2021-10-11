@@ -95,6 +95,18 @@ Return
     Screenshot("screen3", "backup")
 Return
 
+; 切换Windows默认标题栏
+<#Pause::
+    WS_CAPTION := 0xC00000
+    WinGet, _style_ , Style, A
+    WinSet, Style, ^%WS_CAPTION%, A
+    if (not (_style_ & WS_CAPTION)) {
+        HelpText("Windows Title Show",  ,  , 1000)
+    } else {
+        HelpText("Windows Title Hide",  ,  , 1000)
+    }
+Return
+
 ; 设置默认位置
 <#\::MoveWindowsToDefaultPosition()
 
