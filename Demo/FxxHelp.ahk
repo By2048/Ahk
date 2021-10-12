@@ -8,8 +8,8 @@ FxxData["VSCode"]  := ["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11",
 Fxx()
 {
     Progress Off
-    CoordMode Pixel Screen
-    CoordMode Mouse Screen
+    CoordMode, Pixel, Screen
+    CoordMode, Mouse, Screen
 
     FD:=FxxData["default"]
 

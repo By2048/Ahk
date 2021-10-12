@@ -199,8 +199,8 @@ WinWaitClose
 
 
 Space:: 
-    CoordMode Mouse Window
-    CoordMode Pixel Window
+    CoordMode, Mouse, Window
+    CoordMode, Pixel, Window
     x_origin:=0
     y_origin:=0
     x_find:=0
@@ -210,7 +210,7 @@ Space::
     size:=GetImageSize(image)
     w:=size[1]
     h:=size[2]
-    CoordMode Pixel Screen
+    CoordMode, Pixel, Screen
     ImageSearch, x_find, y_find, 0, 0, A_ScreenWidth, A_ScreenHeight, %image%
     MsgBox, %x_find% | %y_find%
     MsgBox, %A_ScreenWidth% | %A_ScreenHeight%
@@ -221,7 +221,7 @@ Space::
     } else {
         MouseClick, Left, 57, 1765, 1, 0
     }
-    CoordMode Pixel Window
+    CoordMode, Pixel, Window
     MouseMove x_origin, y_origin, 0
 Return
 

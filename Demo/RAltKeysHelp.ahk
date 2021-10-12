@@ -52,8 +52,8 @@ get_keys()
 
 show_key_help()
 {
-    CoordMode Pixel Window
-    CoordMode Mouse Window
+    CoordMode, Pixel, Window
+    CoordMode, Mouse, Window
 
     global keymaps
     global keymap_show_status

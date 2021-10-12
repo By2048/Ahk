@@ -3,7 +3,7 @@
         
     
 PDF_Main() {
-    CoordMode Mouse Windows
+    CoordMode, Mouse, Windows
 
     page_count := 268
     delete_xy  := [ [1406,1905] , [1590,1962] ]

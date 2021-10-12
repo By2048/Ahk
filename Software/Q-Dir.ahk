@@ -5,19 +5,25 @@
     F11::Return
     <#Enter::Send {F11}
 
+
+    ; 退出
+    !F4::Return
+
+    ; 重新启动
+    !F11::Return
+
     ; 状态栏历史
     F4::Return
     !/::Send {F4}
 
     ; 切换树
     ^e::Return
-    !\::
-        Send {Ctrl Down}{e}{Ctrl Up}
+    !\::Send ^e
+        ; Send {Ctrl Down}{e}{Ctrl Up}
         ; Send {b down}{b up}
         ; SendEvent ^e
-    Return
+    ; Return
     ; [CTRL+E]	 	
-
 
     ; 刷新
     F5::Return

@@ -9,18 +9,15 @@
     ;     Run D:\Python\_python_\Scripts\pythonw.exe E:\Git\_python_\_script_\_image_rename_.py
     ; Return
 
-    /:: ;删除
+    ;删除
+    /:: 
         Send {Delete}
         Sleep 100
         Send {Enter}
     Return
 
-    ]::
-        Send {Right}
-    Return
+    ]::Send {Right}
 
-    [::
-        Send {Left}
-    Return
+    [::Send {Left}
 
 #if

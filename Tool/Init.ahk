@@ -33,8 +33,8 @@ DefaultProgress()
 ; 显示Init帮助信息
 InitConfig()
 {
-    CoordMode Pixel Screen
-    CoordMode Mouse Screen
+    CoordMode, Pixel, Screen
+    CoordMode, Mouse, Screen
 
     global init_config_show_status
 

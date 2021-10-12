@@ -182,28 +182,28 @@ HotkeysKeyImage()
 #if ( WindowsActive("WPS") )
 
     >![:: ;无框线
-        CoordMode Mouse Screen
+        CoordMode, Mouse, Screen
         MouseGetPos, x_origin, y_origin
 
-        CoordMode Mouse Window
+        CoordMode, Mouse, Window
         MouseClick, left, 548, 240, 1, 0
         Send N
         MouseClick, left, 517, 240, 1, 0
 
-        CoordMode Mouse Screen
+        CoordMode, Mouse, Screen
         MouseMove x_origin, y_origin, 0
     Return
 
     >!]:: ;粗框线
-        CoordMode Mouse Screen
+        CoordMode, Mouse, Screen
         MouseGetPos, x_origin, y_origin
 
-        CoordMode Mouse Window
+        CoordMode, Mouse, Window
         MouseClick, left, 548, 240, 1, 0
         Send T
         MouseClick, left, 517, 240, 1, 0
 
-        CoordMode Mouse Screen
+        CoordMode, Mouse, Screen
         MouseMove x_origin, y_origin, 0
     Return
 

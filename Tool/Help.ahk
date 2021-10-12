@@ -35,8 +35,8 @@ HelpImage(image="")
 ; 显示帮助文本
 HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
 {   
-    CoordMode Pixel Screen
-    CoordMode Mouse Screen
+    CoordMode, Pixel, Screen
+    CoordMode, Mouse, Screen
 
     global help_text_show_status
     if (not data and data != 0) {

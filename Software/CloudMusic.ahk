@@ -68,8 +68,8 @@
 #if
 
 ; Space:: 
-;     CoordMode Mouse Window
-;     CoordMode Pixel Window
+;     CoordMode, Mouse, Window
+;     CoordMode, Pixel, Window
 ;     x_origin:=0
 ;     y_origin:=0
 ;     x_find:=0

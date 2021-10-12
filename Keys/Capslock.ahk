@@ -30,7 +30,7 @@ Capslock & Shift::RButton
 
 ;切换到显示器中心 
 $CapsLock::
-    CoordMode Mouse Screen
+    CoordMode, Mouse, Screen
     MouseGetPos, x, y
 
     ; 屏幕中心
@@ -39,12 +39,15 @@ $CapsLock::
     x2 := screen_2_x + screen_2_w/2
     y2 := screen_2_y + screen_2_h/2
 
-    offset := 300 , xx := 0 , yy := 0
+    offset := 300 
+    
+    xx := 0
+    yy := 0
 
-    if ( Abs(x-x1)>offset and Abs(y-y1)>offset ) {
+    if ( Abs(x-x1)>offset or Abs(y-y1)>offset ) {
         xx := x1
         yy := y1
-    } else if ( Abs(x-x2)>offset and Abs(y-y2)>offset ) {
+    } else if ( Abs(x-x2)>offset or Abs(y-y2)>offset ) {
         xx := x2
         yy := y2
     }

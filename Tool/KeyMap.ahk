@@ -34,7 +34,7 @@ show_hide_key_config()
         Return False
     }
 
-    CoordMode ToolTip Window
+    CoordMode, ToolTip, Window
     for index, config in key_map_cfg {
         x   := config[1]
         y   := config[2]
