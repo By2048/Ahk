@@ -1,27 +1,41 @@
 ﻿
-; 默认屏幕数量
 
-global screen_count := 3
+; 屏幕数量
+global screen_count := 1
 
 ; 初始化系统屏幕相关信息
 SysGet, screen_count, MonitorCount
 
 ; 系统实际的屏幕设置 [2][1][3]
 if (screen_count=1) {
-    SysGet, Monitor1, Monitor
-    SysGet, Monitor2, Monitor
-    SysGet, Monitor3, Monitor
-}
-
-if (screen_count=3) {
+    SysGet, Monitor1, Monitor, 1
+    SysGet, Monitor2, Monitor, 1
+    SysGet, Monitor3, Monitor, 1
+} else if (screen_count=2) {
+    SysGet, Monitor1, Monitor, 1
+    SysGet, Monitor2, Monitor, 2
+    SysGet, Monitor3, Monitor, 2
+} else if (screen_count=3) {
     SysGet, Monitor1, Monitor, 1
     SysGet, Monitor2, Monitor, 3
     SysGet, Monitor3, Monitor, 2
 }
 
-global screen_1_dpi := 2
-global screen_2_dpi := 1.5
+global screen_1_dpi := 1
+global screen_2_dpi := 1
 global screen_3_dpi := 1
+
+if (A_ComputerName="WINDOWS" and A_UserName="AM") {
+    screen_1_dpi := 2
+    screen_2_dpi := 1.5
+    screen_3_dpi := 1
+}
+
+if (A_ComputerName="WINSERVER" and A_UserName="Administrator") {
+    screen_1_dpi := 1
+    screen_2_dpi := 1
+    screen_3_dpi := 1
+}
 
 global screen_1_x  := Monitor1Left   + 0
 global screen_1_y  := Monitor1Top    + 0
