@@ -42,14 +42,14 @@
     Tab::Send {LButton 4}
 
     b::
-        CoordMode, Mouse, Window
+        CoordMode, Mouse, Screen
         MouseGetPos, xx, yy
 
         HelpText("女巫流-快速","center_down","screen_1")
 
         ; 战争机器
         Send 9
-        MouseClick, Left, %xx%, %yy%
+        MouseClick, Left, %xx%, %yy%, 1
         Sleep 100
         Send 9
 
@@ -72,7 +72,7 @@
 
         ; 战争机器
         Send 9
-        MouseClick, Left, %xx%, %yy%
+        MouseClick, Left, %xx%, %yy%, 1
         Sleep 3000
         
         ; 第一个兵种
