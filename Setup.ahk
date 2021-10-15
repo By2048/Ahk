@@ -22,5 +22,5 @@ Return
 RWin & LWin::
     Run, .\Setup.bat stop, %A_WorkingDir%, Hide
     Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Error.png
-    HelpText("Close All Script", "center_down", "screen3")
+    HelpText("`nClose All Script`n", "center_down", "screen3")
 Return
