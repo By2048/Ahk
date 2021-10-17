@@ -39,23 +39,23 @@ if %command%==start (
     echo.
     start %AHK% .\Setup.ahk    
     @REM =================================
-    start %AHK% .\Keys\All.ahk      start
-    echo  start .\Keys\All.ahk
-    start %AHK% .\Keys\Capslock.ahk start
-    echo  start .\Keys\Capslock.ahk
-    start %AHK% .\Keys\LWin.ahk     start
-    echo  start .\Keys\LWin.ahk
-    start %AHK% .\Keys\RAlt.ahk     start
-    echo  start .\Keys\RAlt.ahk
-    start %AHK% .\Keys\RShift.ahk   start
-    echo  start .\Keys\RShift.ahk
-    start %AHK% .\Keys\RWin.ahk     start
-    echo  start .\Keys\RWin.ahk
+    start %AHK% .\Key\All.ahk       start
+    echo  start .\Key\All.ahk
+    start %AHK% .\Key\Capslock.ahk  start
+    echo  start .\Key\Capslock.ahk
+    start %AHK% .\Key\LWin.ahk      start
+    echo  start .\Key\LWin.ahk
+    start %AHK% .\Key\RAlt.ahk      start
+    echo  start .\Key\RAlt.ahk
+    start %AHK% .\Key\RShift.ahk    start
+    echo  start .\Key\RShift.ahk
+    start %AHK% .\Key\RWin.ahk      start
+    echo  start .\Key\RWin.ahk
     @REM =================================
     start %AHK% .\Software\All.ahk  start
     echo  start .\Software\All.ahk
-    start %AHK% .\Keys\RCtrl.ahk    start
-    echo  start .\Keys\RCtrl.ahk
+    start %AHK% .\Key\RCtrl.ahk     start
+    echo  start .\Key\RCtrl.ahk
     @REM =================================
     start %AHK% .\Other\Dexpot.ahk  start
     echo  start .\Other\Dexpot.ahk
@@ -78,23 +78,23 @@ if %command%==start (
 
 if %command%==stop (
     echo.
-    start %AHK% .\Keys\All.ahk      stop
-    echo  stop  .\Keys\All.ahk
-    start %AHK% .\Keys\Capslock.ahk stop
-    echo  stop  .\Keys\Capslock.ahk
-    start %AHK% .\Keys\LWin.ahk     stop
-    echo  stop  .\Keys\LWin.ahk
-    start %AHK% .\Keys\RAlt.ahk     stop
-    echo  stop  .\Keys\RAlt.ahk
-    start %AHK% .\Keys\RShift.ahk   stop
-    echo  stop  .\Keys\RShift.ahk
-    start %AHK% .\Keys\RWin.ahk     stop
-    echo  stop  .\Keys\RWin.ahk
+    start %AHK% .\Key\All.ahk       stop
+    echo  stop  .\Key\All.ahk
+    start %AHK% .\Key\Capslock.ahk  stop
+    echo  stop  .\Key\Capslock.ahk
+    start %AHK% .\Key\LWin.ahk      stop
+    echo  stop  .\Key\LWin.ahk
+    start %AHK% .\Key\RAlt.ahk      stop
+    echo  stop  .\Key\RAlt.ahk
+    start %AHK% .\Key\RShift.ahk    stop
+    echo  stop  .\Key\RShift.ahk
+    start %AHK% .\Key\RWin.ahk      stop
+    echo  stop  .\Key\RWin.ahk
     @REM =================================
     start %AHK% .\Software\All.ahk  stop
     echo  stop  .\Software\All.ahk  
-    start %AHK% .\Keys\RCtrl.ahk    stop
-    echo  stop  .\Keys\RCtrl.ahk
+    start %AHK% .\Key\RCtrl.ahk     stop
+    echo  stop  .\Key\RCtrl.ahk
     @REM =================================
     start %AHK% .\Other\Dexpot.ahk  stop
     echo  stop  .\Other\Dexpot.ahk

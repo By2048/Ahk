@@ -1,7 +1,7 @@
 ﻿
 #include %A_WorkingDir%\Config\All.ahk
 #Include %A_WorkingDir%\Other\Keyboard.ahk
-#include %A_WorkingDir%\Libs\TrayIcon.ahk
+#include %A_WorkingDir%\Lib\TrayIcon.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
