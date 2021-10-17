@@ -15,6 +15,7 @@
 
 >^q::Run D:\#URI\PC.qdr
 >^w::RunNormalUser("D:\#URI\WeChat.lnk")
+>^e::Run D:\#URI\Everything.lnk
 >^r::RunNormalUser("D:\#URI\QuiteRSS.lnk")
 >^t::
     Process, Exist, TIM.exe
@@ -35,7 +36,7 @@ Return
 >^p::Run %WT% -d t:\
 
 >^a::Run D:\#URI\MuMu.lnk
->^s::Run D:\#URI\Everything.lnk
+>^s::Run D:\#URI\Sandboxie.lnk
 >^f::Run D:\#URI\FreeFileSync.lnk
 >^g::
     win_x:=160, win_y:=60, win_w:=1600, win_h:=960

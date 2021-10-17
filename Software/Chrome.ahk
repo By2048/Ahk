@@ -7,8 +7,7 @@
     F1::Return
     
     ;重命名
-    ; F2::Return
-    ; ^r::Send {F2}
+    F2::Return
 
     ;搜索
     F3::Return
@@ -28,10 +27,7 @@
 
     ;光标浏览模式
     F7::Return 
-    !i::
-        Send {F7}
-        Send {Enter}
-    Return
+    !i::Send {F7}{Enter}
 
     ;全屏
     F11::Return
@@ -86,7 +82,8 @@
     !]::Send {F10}
 
     ;重新打开标签页
-    ^+t::Return 
+    ^+t::Return
+    +CapsLock::
     !+CapsLock::
         Send ^+t
         SetCapsLockState off
@@ -106,6 +103,7 @@
     ^+Tab::Return
     !Tab::Send ^{Tab}
     !+Tab::Send ^+{Tab}
+    +Tab::Send ^+{Tab}
     !Home::Send ^1
     !End::Send ^9
 
@@ -209,10 +207,7 @@
 #if ( WindowsActive("Chrome" , "" , "修改书签") )
 
     ; 收藏
-    Enter::
-        Send {Tab 4}
-        Send {Enter}
-    Return
+    Enter::Send {Tab 4}{Enter}
 
     ; 取消收藏
     Esc::
