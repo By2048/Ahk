@@ -46,8 +46,8 @@ Return
     Run, %command%
 Return
 >^h::Run %Ahk% D:\AutoHotkey\WindowSpy.ahk
-; >^j::Run calc.exe
 >^j::
+    ; Run calc.exe
     Run D:\#URI\JetBrains\Toolbox.lnk
     Sleep 100
     MoveWindowsToCenter(true)
@@ -57,6 +57,7 @@ Return
 >^x::RunNormalUser("D:\#URI\Xshell.lnk")
 >^c::RunNormalUser("D:\#URI\音乐.lnk") 
 >^v::RunNormalUser(VSCode " E:\Config\Windows.code-workspace")
+>^+v::Run %VSCode% " E:\Config\Windows.code-workspace"
 >^b::Run E:\Book\
 >^n::Run D:\#URI\Notepad++.lnk
 >^m::RunNormalUser("D:\#URI\PotPlayer.lnk")
@@ -76,7 +77,7 @@ Return
     RunWait, %command%
 Return
 
->^Esc::Run, Taskmgr.exe ;任务管理器
+>^Esc::Run Taskmgr.exe ;任务管理器
 >^PrintScreen::Screenshot_Activate_Software()
 
 >^[::RunNormalUser(VSCode " E:\Config\Note.code-workspace")
