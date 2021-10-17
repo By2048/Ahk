@@ -60,6 +60,13 @@ win_w := 3488
 win_h := 2140
 Windows_Default_Position["Android"] := [win_x, win_y, win_w, win_h]
 
+win_w := 473
+win_h := 210
+win_x := screen_1_w - win_w - 10
+win_y := screen_1_h - win_h - 10
+; 火绒U盘工具
+Windows_Default_Position["HipsTray_HRUSBTRAY"] := [win_x, win_y, win_w, win_h]
+
 win_w := screen_1_w * 4/6
 win_h := screen_1_h * 7/9
 win_x := screen_1_x + screen_1_w/2 - win_w/2

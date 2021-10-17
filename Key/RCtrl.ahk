@@ -57,7 +57,7 @@ Return
 >^x::RunNormalUser("D:\#URI\Xshell.lnk")
 >^c::RunNormalUser("D:\#URI\音乐.lnk") 
 >^v::RunNormalUser(VSCode " E:\Config\Windows.code-workspace")
->^+v::Run %VSCode% " E:\Config\Windows.code-workspace"
+>^+v::Run %VSCode% E:\Config\Windows.code-workspace
 >^b::Run E:\Book\
 >^n::Run D:\#URI\Notepad++.lnk
 >^m::RunNormalUser("D:\#URI\PotPlayer.lnk")
