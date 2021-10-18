@@ -125,10 +125,10 @@ LWin & RShift::
         RegRead, light_theme, %path_config%, %key%
         if (light_theme = "0") {
             Regwrite, REG_DWORD, %path%, %config%, %key%, 1
-            HelpText("Light", "center_down", "screen1", 1000)
+            HelpText("`n Light `n", "center", "screen1", 1000)
         } else if (light_theme = "1") {
             Regwrite, REG_DWORD, %path%, %config%, %key%, 0
-            HelpText("Dark", "center_down", "screen1", 1000)
+            HelpText("`n Dark `n", "center", "screen1", 1000)
         }
     } else { 
         ; 手动设置代理
