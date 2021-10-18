@@ -450,7 +450,7 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 
 ; 将窗口移动到软件设置的默认位置
 ; return | None
-MoveWindowsToDefaultPosition()
+MoveWindowsToDefaultPosition(select:="Default")
 {
     result := GetWindowsInfo()
     
@@ -480,23 +480,30 @@ MoveWindowsToDefaultPosition()
         }
     }
 
-    win_config := GetWindowsConfig(Windows_Default_Position)
+    if (select="Default") {
+        win_config := GetWindowsConfig(Windows_Position_Default)
+    } else if (select="Backup") {
+        win_config := GetWindowsConfig(Windows_Position_Backup)
+    } else {
+        win_config := GetWindowsConfig(Windows_Position_Default)
+    }
+
     xx         := win_config[1]
     yy         := win_config[2]
     ww         := win_config[3]
     hh         := win_config[4]
 
     SetWindows(win_id, xx, yy, ww, hh)
+    ; 多屏幕切换时 部分软件需要多次操作
+    SetWindows(win_id, xx, yy, ww, hh)
     
     if (win_process_name="PyCharm") {
+        ;边框问题
         xx := xx - 3
         ww := ww + 6
         SetWindows(win_id, xx, yy, ww, hh, 0)
     }
 
-    if (win_process_name="FDM") {
-        SetWindows(win_id, xx, yy, ww, hh)
-    }
     ; HelpText("MoveWindowsToDefaultPosition", "center_down", "screen1", 1000)
 }
 

@@ -195,10 +195,10 @@
     !-::Send ^{-}
     !=::Send ^{=}
 
-    ; >!y::MouseClickImage(A_WorkingDir "\Image\Software\Y.png")
-    ; >!z::MouseClickImage(A_WorkingDir "\Image\Software\Z.png")
-    ; >!w::MouseClickImage(A_WorkingDir "\Image\Software\W.png")
-    ; >!n::MouseClickImage(A_WorkingDir "\Image\Software\N.png")
+    ; >!y::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Y.png")
+    ; >!z::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Z.png")
+    ; >!w::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\W.png")
+    ; >!n::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\N.png")
 
 #if
 

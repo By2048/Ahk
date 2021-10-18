@@ -110,24 +110,41 @@ Return
 <#Delete::Return
 
 ; 设置默认位置
-<#\::MoveWindowsToDefaultPosition()
+<#\::MoveWindowsToDefaultPosition("Default")
+<#+\::MoveWindowsToDefaultPosition("Backup")
 
-; 手动设置代理
+
 LWin & RShift::
-    ; lshift_state := GetKeyState("LShift")
-    ; if (lshift_state) {
-    ; } else {  }
-    path        := "HKEY_CURRENT_USER"
-    config      := "Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-    path_config := Format("{}\{}", path, config)
-    RegRead, proxy_enable, %path_config%, ProxyEnable
-    if (proxy_enable = "0") {
-        Regwrite, REG_DWORD, %path%, %config%, ProxyEnable, 1
-        HelpText("Proxy ON",  "center_down", "screen1", 1000)
-    } else if (proxy_enable = "1") {
-        Regwrite, REG_DWORD, %path%, %config%, ProxyEnable, 0
-        HelpText("Proxy OFF", "center_down", "screen1", 500)
-        HelpText("`n Proxy OFF `n", "center", "screen3")
+    lshift_state := GetKeyState("LShift")
+    if (lshift_state) {
+        ; 系统主题
+        path        := "HKEY_CURRENT_USER"
+        config      := "Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+        key         := "AppsUseLightTheme"
+        path_config := Format("{}\{}", path, config)
+        RegRead, light_theme, %path_config%, %key%
+        if (light_theme = "0") {
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 1
+            HelpText("Light", "center_down", "screen1", 1000)
+        } else if (light_theme = "1") {
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 0
+            HelpText("Dark", "center_down", "screen1", 1000)
+        }
+    } else { 
+        ; 手动设置代理
+        path        := "HKEY_CURRENT_USER"
+        config      := "Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        key         := "ProxyEnable"
+        path_config := Format("{}\{}", path, config)
+        RegRead, proxy_enable, %path_config%, %key%
+        if (proxy_enable = "0") {
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 1
+            HelpText("Proxy ON", "center_down", "screen1", 1000)
+        } else if (proxy_enable = "1") {
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 0
+            HelpText("Proxy OFF", "center_down", "screen1", 500)
+            HelpText("`n Proxy OFF `n", "center", "screen3")
+        }
     }
 Return
 
