@@ -186,12 +186,20 @@ win_x := screen_1_x + screen_1_w/2 - win_w/2 + 1
 win_y := screen_1_y + screen_1_h/2 - win_h/2 + 1
 Windows_Position_Default["PyCharm__Python解释器"] := [win_x, win_y, win_w, win_h]
 
+
 win_w := 1600 + 1
 win_h := 1500 + 1
 win_x := screen_1_x + screen_1_w/2 - win_w/2 + 1
 win_y := screen_1_y + screen_1_h/2 - win_h/2 + 1
 Windows_Position_Default["PyCharm__提交变更"] := [win_x, win_y, win_w, win_h]
 Windows_Position_Default["PyCharm__查找"]    := [win_x, win_y, win_w, win_h]
+Windows_Position_Default["PyCharm__检查"] := [win_x, win_y, win_w, win_h]
+
+win_w := 1500 + 1
+win_h := 1000 + 1
+win_x := screen_1_x + screen_1_w/2 - win_w/2 + 1
+win_y := screen_1_y + screen_1_h/2 - win_h/2 + 1
+Windows_Position_Default["PyCharm__指定检查范围"] := [win_x, win_y, win_w, win_h]
 
 win_w := 2000 + 1
 win_h := 1500 + 1
@@ -214,6 +222,7 @@ win_h := 1700 + 1
 win_x := screen_1_x + screen_1_w/2 - win_w/2 + 1
 win_y := screen_1_y + screen_1_h/2 - win_h/2 + 1
 Windows_Position_Default["PyCharm__评估"] := [win_x, win_y, win_w, win_h]
+
 
 win_w := 2800 + 1
 win_h := 1750 + 1
