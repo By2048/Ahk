@@ -108,7 +108,9 @@ timer:
     } else if (cnt=2) {
         MoveWindowsToCenter()
     } else if (cnt=3) {
-        MoveWindowsToDefaultPosition()
+        MoveWindowsToDefaultPosition("Default")
+    } else if (cnt=4) {
+        MoveWindowsToDefaultPosition("Backup")
     }
     cnt:=0
 return

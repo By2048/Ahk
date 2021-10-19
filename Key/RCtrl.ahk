@@ -47,10 +47,9 @@ Return
 Return
 >^h::Run %Ahk% D:\AutoHotkey\WindowSpy.ahk
 >^j::
-    ; Run calc.exe
     Run D:\#URI\JetBrains\Toolbox.lnk
     Sleep 100
-    MoveWindowsToCenter(true)
+    MoveWindowsToCenter(True)
 Return
 >^k::KeyboardGUI()
 

@@ -211,7 +211,7 @@ GetWindowsConfig(Config_Data)
 
 ; 窗口移动到屏幕中心
 ; return | None
-MoveWindowsToCenter(silent=False) 
+MoveWindowsToCenter(silent:=False) 
 {
     if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
         Return 
