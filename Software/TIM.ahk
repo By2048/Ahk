@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("TIM") )
+#if ( CheckWindowsActive("TIM") )
 
     ; 切换
     ^Tab::Return

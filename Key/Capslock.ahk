@@ -59,7 +59,7 @@ $CapsLock::
     WinActivate, ahk_id %win_id%
 
     ; 显示激活的应用名
-    result := GetWindowsInfo()
+    result := GetActiveWindowsInfo()
 	win_process_name := result.win_process_name
     ; HelpText(win_process_name, "center_down", "screen1", 500)
 return

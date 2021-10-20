@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("JetBrains") )
+#if ( CheckWindowsActive("JetBrains") )
 
     ^Tab::Return
     ^+Tab::Return

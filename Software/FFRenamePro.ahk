@@ -1,5 +1,5 @@
 
-#if ( WindowsActive("FFRenamePro") )
+#if ( CheckWindowsActive("FFRenamePro") )
 
     Esc::
         Send {Esc}
@@ -83,13 +83,13 @@
 #if
 
 ; 文件名编辑器
-; #if ( WindowsActive("FFRenamePro" , "TFileNameEditorForm") )
+; #if ( CheckWindowsActive("FFRenamePro" , "TFileNameEditorForm") )
 ; #if
 
 ; 参数设置
-; #if ( WindowsActive("FFRenamePro" , "TConfigForm") )
+; #if ( CheckWindowsActive("FFRenamePro" , "TConfigForm") )
 ; #if
 
 ; 批量更名完成
-; #if ( WindowsActive("FFRenamePro" , "TGoRenameOKForm") )
+; #if ( CheckWindowsActive("FFRenamePro" , "TGoRenameOKForm") )
 ; #if

@@ -56,7 +56,7 @@ Fxx()
 
 
 
-#if WindowsActive("Explorer")
+#if CheckWindowsActive("Explorer")
     F1::Run, D:\\
     F2::Run, E:\\
     F3::Run, F:\\

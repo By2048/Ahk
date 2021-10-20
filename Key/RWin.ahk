@@ -50,7 +50,7 @@ return
 
 
 >#,::
-    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
         Return 
     }
     global windows_resize_small
@@ -59,7 +59,7 @@ return
 Return
 
 >#.::
-    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
         Return 
     }
     global windows_resize_big
@@ -68,7 +68,7 @@ Return
 Return
 
 >#/::
-    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
         Return 
     }
     global windows_move
@@ -77,8 +77,8 @@ Return
 Return
 
 
-RWin & RCtrl::MoveWindowsMM("main")
-RWin & RAlt::MoveWindowsMM("mini")
+RWin & RCtrl::MoveWindowsToMainMini("main")
+RWin & RAlt::MoveWindowsToMainMini("mini")
 
 
 
@@ -102,7 +102,7 @@ timer:
     if (cnt=1) {
         MouseGetPos,  ,  , win_id
         WinActivate, ahk_id %win_id%
-        result := GetWindowsInfo()
+        result := GetActiveWindowsInfo()
         process_name := result.win_process_name
         HelpText(process_name, "center_down", "screen1",1000)
     } else if (cnt=2) {

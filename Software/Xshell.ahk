@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("Xshell") )
+#if ( CheckWindowsActive("Xshell") )
 
     ^F1::Return
     ^F2::Return

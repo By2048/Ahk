@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("PotPlayer") )
+#if ( CheckWindowsActive("PotPlayer") )
 
     ; 2倍数播放
     >!2::Send {c 10}

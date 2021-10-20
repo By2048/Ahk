@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("Explorer") )
+#if ( CheckWindowsActive("Explorer") )
 
     ; Ctrl+F 选择搜索框
     ; Alt+D 选择地址栏

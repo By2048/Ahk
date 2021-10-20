@@ -19,7 +19,7 @@ get_image()
     global hotkeys_process_name
 
     if (not hotkeys_process_name) {
-        result               := GetWindowsInfo()
+        result               := GetActiveWindowsInfo()
         hotkeys_process_name := result.win_process_name
         hotkeys_title        := result.win_title
     }
@@ -29,7 +29,7 @@ get_image()
         Return
     }
 
-    hotkeys_images := GetWindowsConfig(Process_Hotkeys_Image)
+    hotkeys_images := GetActiveWindowsConfig(Process_Hotkeys_Image)
     hotkeys_total  := hotkeys_images.MaxIndex()
 
     if (hotkeys_index>hotkeys_total) {

@@ -1,7 +1,7 @@
 ﻿
 
 
-#if ( WindowsActive("LOL_Game") )
+#if ( CheckWindowsActive("LOL_Game") )
 
 	; 装备
 	; 2167,2005,

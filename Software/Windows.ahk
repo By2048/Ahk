@@ -1,6 +1,6 @@
 ﻿
 ; 设置
-#if ( WindowsActive( "ApplicationFrameHost" , "ApplicationFrameWindow" ) )
+#if ( CheckWindowsActive( "ApplicationFrameHost" , "ApplicationFrameWindow" ) )
 
     ;点击返回
     Esc::
@@ -13,14 +13,14 @@
 #if
 
 ; 编辑环境变量
-#if ( WindowsActive( "systempropertiesadvanced" ) )
+#if ( CheckWindowsActive( "systempropertiesadvanced" ) )
     PgUp::Send !u
     PgDn::Send !o
 #if
 
 
 ; 任务管理器
-#if ( WindowsActive( "TaskMGR" ) )
+#if ( CheckWindowsActive( "TaskMGR" ) )
     
     ; 切换标签页
     ^Tab::Return

@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("Maye") )
+#if ( CheckWindowsActive("Maye") )
 
     CapsLock::Send +{Tab}
 

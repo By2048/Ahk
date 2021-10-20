@@ -33,7 +33,8 @@ Return
         Run D:\#URI\v2rayN.lnk
     }
 Return
->^p::Run %WT% -d t:\
+>^p::RunNormalUser(WT " -d T:\")
+>^+p::Run %WT% -d T:\
 
 >^a::Run D:\#URI\MuMu.lnk
 >^s::Run D:\#URI\Sandboxie.lnk
@@ -63,9 +64,9 @@ Return
 
 >^+Delete::
     command := Format("{} /c {} /f /im shellexperiencehost.exe", CMD, TaskKill)
-    Run, %command%,  , Hide
+    Run, %command%, , Hide
     command := Format("{} /c {} /f /im MicrosoftEdge.exe", CMD, TaskKill)
-    Run, %command%,  , Hide
+    Run, %command%, , Hide
     Run, D:\#URI\Dexpot.lnk
 Return
 >^Delete::
@@ -84,9 +85,9 @@ Return
 
 >^\::Run D:\#URI\Whiteboard.lnk
 
->^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}::     ;回收站
->^.::Run Explorer.exe
->^/::Run T:\\
+>^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}:: ;回收站
+    >^.::Run Explorer.exe
+    >^/::Run T:\\
 
 >^Up::Return
 >^Down::Return
@@ -117,7 +118,7 @@ return
 
 timer:
     if (cnt=1) {
-        if (WindowsActive("Maye")) {
+        if (CheckWindowsActive("Maye")) {
             Send {Esc}
         }
         HelpImage()

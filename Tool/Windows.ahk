@@ -23,7 +23,7 @@ IsDesktops()
 
 ; 判断软件是否全屏\最小化
 ; return | True \ False
-IsMaxMinWindows()
+IsMaxMin()
 {
     WinGet, win_min_max, MinMax, A
     if (win_min_max) {
@@ -54,22 +54,63 @@ IsGame()
 
 
 
-; 获取窗口的所在屏幕的信息 以及窗口信息
-; result | {} 应用信息
-GetWindowsInfo()
-{
-    WinGet,                          win_id, ID,           A
-    WinGet,                         win_pid, ID,           ahk_id %win_id%
-    WinGet,                     win_min_max, MinMax,       ahk_id %win_id%
-	WinGet,                win_process_name, ProcessName,  ahk_id %win_id%
-	WinGet,                 win_transparent, Transparent,  ahk_id %win_id%
-    WinGetClass,                  win_class,               ahk_id %win_id%
-	WinGetTitle,                  win_title,               ahk_id %win_id%
-	WinGetText,                    win_text,               ahk_id %win_id%
-	WinGetPos,   win_x, win_y, win_w, win_h,               ahk_id %win_id%
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-    in_screen := 1
-    screen_x :=0, screen_y := 0, screen_xx := 0, screen_yy := 0
+
+
+; 检测当前激活的应用是否满足参数条件
+; _process_name_ | 进程名（转换后的
+; _class_        | 进程Class
+; _title_        | 软件标题
+; return         | True \ False
+CheckWindowsActive(_process_name_="", _class_="", _title_="")
+{
+    result           := GetActiveWindowsInfo()
+    win_process_name := result.win_process_name
+    win_class        := result.win_class
+    win_title        := result.win_title
+
+    result := True
+
+    if (StrLen(_process_name_)>0) {
+        if (win_process_name != _process_name_) {
+            result := False
+            Return result
+        }
+    }
+    if (StrLen(_class_)>0) {
+        if (win_class != _class_) {
+            result := False
+            Return result
+        }
+    }
+    if (StrLen(_title_)>0) {
+        If (not InStr(win_title, _title_)) {
+            result := False
+            Return result
+        }
+    }
+
+    Return result
+}
+
+
+
+; 获取激活窗口的所在屏幕的信息以及窗口信息
+; result | {} 应用信息
+GetActiveWindowsInfo()
+{
+    WinGet,                          win_id, ID,          A
+    WinGet,                         win_pid, ID,          ahk_id %win_id%
+    WinGet,                     win_min_max, MinMax,      ahk_id %win_id%
+	WinGet,                win_process_name, ProcessName, ahk_id %win_id%
+	WinGet,                 win_transparent, Transparent, ahk_id %win_id%
+    WinGetClass,                  win_class,              ahk_id %win_id%
+	WinGetTitle,                  win_title,              ahk_id %win_id%
+	WinGetText,                    win_text,              ahk_id %win_id%
+	WinGetPos,   win_x, win_y, win_w, win_h,              ahk_id %win_id%
+    
+    in_screen := 1, screen_x :=0, screen_y := 0, screen_xx := 0, screen_yy := 0
     if (win_x >= screen_1_x and win_x < screen_1_xx) {
         in_screen  := 1
         screen_x   := screen_1_x   ,  screen_y := screen_1_y
@@ -122,7 +163,7 @@ GetWindowsInfo()
 ; 获取当前激活的应用配置文件信息
 ; Config_Data | Config中定义的配置信息
 ; return | win_config
-GetWindowsConfig(Config_Data)
+GetActiveWindowsConfig(Config_Data)
 {
     ; 1 A
     ; 2 A_B
@@ -132,7 +173,7 @@ GetWindowsConfig(Config_Data)
     ; 3 _B_C
     ; 3 __C
 
-    result           := GetWindowsInfo()
+    result           := GetActiveWindowsInfo()
     win_process_name := result.win_process_name
     win_class        := result.win_class
     win_title        := result.win_title
@@ -209,15 +250,175 @@ GetWindowsConfig(Config_Data)
 
 
 
-; 窗口移动到屏幕中心
-; return | None
-MoveWindowsToCenter(silent:=False) 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+; 修改窗口透明度
+SetWindowsTransparent(change=0)
 {
-    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
+    result := GetActiveWindowsInfo()
+    win_id := result.win_id
+    win_transparent := result.win_transparent
+    if (change>0) {
+        if (win_transparent+change>=255) {
+            win_transparent:=255
+        } else {
+            win_transparent:=win_transparent+change
+        }
+        WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
+    } else if (change<0) {
+        if (win_transparent+change<=55) {
+            win_transparent:=55
+        } else {
+            win_transparent:=win_transparent+change
+        }
+        WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
+    }
+}
+
+
+
+; 将窗口移动到指定位置
+; offset | 在一定误差内不进行窗口移动
+; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
+; return | None
+SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
+{
+    if (not win_id) {
+        HelpText("No WinId")
+    }
+    if (not offset) {
+        offset:=3
+    }
+    if (not step) {
+        step:=False
+    }
+    
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
         Return 
     }
 
-    result := GetWindowsInfo()
+    WinGetPos, x, y, w, h, ahk_id %win_id%
+    
+    if (ww=0 or not ww) { 
+        ww:=w
+    }
+    if (hh=0 or not hh) { 
+        hh:=h
+    }
+
+    if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
+        if (step) {
+            WinMove, ahk_id %win_id%,  , %xx%, %yy%,     ,     
+            WinMove, ahk_id %win_id%,  ,     ,     , %ww%, %hh%
+        } else {
+            WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
+        }
+    }
+}
+
+
+
+; 调整窗口大小
+; status    | Big \ Small
+; direction | Up \ Down \ Left \ Right
+; return    | None
+ResizeWindows(command, direction)
+{
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
+        Return 
+    }
+
+    SetWinDelay, 1
+    CoordMode, Mouse
+
+    result := GetActiveWindowsInfo()
+    win_id := result.win_id
+    win_x  := result.win_x
+    win_y  := result.win_y
+    win_w  := result.win_w
+    win_h  := result.win_h
+
+    step := 10
+
+    if (command="Big") {
+        if (direction="Up") {
+            win_y := win_y - step
+            win_h := win_h + step
+        } else if (direction="Down") {
+            win_h := win_h + step
+        } else if (direction="Left") {
+            win_x := win_x - step
+            win_w := win_w + step
+        } else if (direction="Right") {
+            win_w := win_w + step
+        }
+    }
+
+    if (command="Small") {
+        if (direction="Up") {
+            win_y := win_y + step
+            win_h := win_h - step
+        } else if (direction="Down") {
+            win_h := win_h - step
+        } else if (direction="Left") {
+            win_x := win_x + step
+            win_w := win_w - step
+        } else if (direction="Right") {
+            win_w := win_w - step
+        }
+    }
+
+    WinMove, ahk_id %win_id%,  , %win_x%, %win_y%, %win_w%, %win_h%
+}
+
+
+
+; 窗口上下左右移动
+; direction | Up \ Down \ Left \ Right
+; return    | None
+MoveWindowsUDLR(direction)
+{    
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
+        Return 
+    }
+
+    SetWinDelay, 1
+    CoordMode, Mouse
+
+    result := GetActiveWindowsInfo()
+    win_id := result.win_id
+    win_x  := result.win_x
+    win_y  := result.win_y
+    win_w  := result.win_w
+    win_h  := result.win_h
+
+    step := 10
+    if (direction="Up") {
+        win_y := win_y - step
+    } else if (direction="Down") {
+        win_y := win_y + step
+    } else if (direction="Left") {
+        win_x := win_x - step
+    } else if (direction="Right") {
+        win_x := win_x + step
+    }
+
+    WinMove, ahk_id %win_id%,  , %win_x%, %win_y%
+}
+
+
+
+; 窗口移动到屏幕中心
+; return | None
+MoveWindowsToCenter(silent=False)
+{
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
+        Return 
+    }
+
+    result := GetActiveWindowsInfo()
 
     win_id := result.win_id
     win_process_name := result.win_process_name
@@ -265,13 +466,13 @@ MoveWindowsToCenter(silent:=False)
 ; 调整窗口为Main\Mini 并居中
 ; command | Main 或者 Mini
 ; return  | None
-MoveWindowsMM(command)
+MoveWindowsToMainMini(command)
 {   
-    if ( IsDesktops() or IsMaxMinWindows() or IsGame() ) {
+    if ( IsDesktops() or IsMaxMin() or IsGame() ) {
         Return
     }
 
-    result           := GetWindowsInfo()
+    result           := GetActiveWindowsInfo()
     win_id           := result.win_id
     win_process_name := result.win_process_name
     win_class        := result.win_class
@@ -317,142 +518,11 @@ MoveWindowsMM(command)
 
 
 
-; 窗口上下左右移动
-; direction | Up \ Down \ Left \ Right
-; return    | None
-MoveWindowsUDLR(direction)
-{    
-    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
-        Return 
-    }
-
-    SetWinDelay, 1
-    CoordMode, Mouse
-
-    result := GetWindowsInfo()
-    win_id := result.win_id
-    win_x  := result.win_x
-    win_y  := result.win_y
-    win_w  := result.win_w
-    win_h  := result.win_h
-
-    step := 10
-    if (direction="Up") {
-        win_y := win_y - step
-    } else if (direction="Down") {
-        win_y := win_y + step
-    } else if (direction="Left") {
-        win_x := win_x - step
-    } else if (direction="Right") {
-        win_x := win_x + step
-    }
-
-    WinMove, ahk_id %win_id%,  , %win_x%, %win_y%
-}
-
-
-
-; 调整窗口大小
-; status    | Big \ Small
-; direction | Up \ Down \ Left \ Right
-; return    | None
-ResizeWindows(command, direction)
-{
-    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
-        Return 
-    }
-
-    SetWinDelay, 1
-    CoordMode, Mouse
-
-    result := GetWindowsInfo()
-    win_id := result.win_id
-    win_x  := result.win_x
-    win_y  := result.win_y
-    win_w  := result.win_w
-    win_h  := result.win_h
-
-    step := 10
-
-    if (command="Big") {
-        if (direction="Up") {
-            win_y := win_y - step
-            win_h := win_h + step
-        } else if (direction="Down") {
-            win_h := win_h + step
-        } else if (direction="Left") {
-            win_x := win_x - step
-            win_w := win_w + step
-        } else if (direction="Right") {
-            win_w := win_w + step
-        }
-    }
-
-    if (command="Small") {
-        if (direction="Up") {
-            win_y := win_y + step
-            win_h := win_h - step
-        } else if (direction="Down") {
-            win_h := win_h - step
-        } else if (direction="Left") {
-            win_x := win_x + step
-            win_w := win_w - step
-        } else if (direction="Right") {
-            win_w := win_w - step
-        }
-    }
-
-    WinMove, ahk_id %win_id%,  , %win_x%, %win_y%, %win_w%, %win_h%
-}
-
-
-
-; 将窗口移动到指定位置
-; offset | 在一定误差内不进行窗口移动
-; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
-; return | None
-SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
-{
-    if (not win_id) {
-        HelpText("No WinId")
-    }
-    if (not offset) {
-        offset:=3
-    }
-    if (not step) {
-        step:=False
-    }
-    
-    if (IsDesktops() or IsMaxMinWindows() or IsGame()) {
-        Return 
-    }
-
-    WinGetPos, x, y, w, h, ahk_id %win_id%
-    
-    if (ww=0 or not ww) { 
-        ww:=w
-    }
-    if (hh=0 or not hh) { 
-        hh:=h
-    }
-
-    if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
-        if (step) {
-            WinMove, ahk_id %win_id%,  , %xx%, %yy%,     ,     
-            WinMove, ahk_id %win_id%,  ,     ,     , %ww%, %hh%
-        } else {
-            WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
-        }
-    }
-}
-
-
-
 ; 将窗口移动到软件设置的默认位置
 ; return | None
-MoveWindowsToDefaultPosition(select:="Default")
+MoveWindowsToDefaultPosition(select="Default")
 {
-    result := GetWindowsInfo()
+    result := GetActiveWindowsInfo()
     
     win_id           := result.win_id
     win_class        := result.win_class
@@ -481,11 +551,11 @@ MoveWindowsToDefaultPosition(select:="Default")
     }
 
     if (select="Default") {
-        win_config := GetWindowsConfig(Windows_Position_Default)
+        win_config := GetActiveWindowsConfig(Windows_Position_Default)
     } else if (select="Backup") {
-        win_config := GetWindowsConfig(Windows_Position_Backup)
+        win_config := GetActiveWindowsConfig(Windows_Position_Backup)
     } else {
-        win_config := GetWindowsConfig(Windows_Position_Default)
+        win_config := GetActiveWindowsConfig(Windows_Position_Default)
     }
 
     xx         := win_config[1]
@@ -493,10 +563,6 @@ MoveWindowsToDefaultPosition(select:="Default")
     ww         := win_config[3]
     hh         := win_config[4]
 
-    SetWindows(win_id, xx, yy, ww, hh)
-    ; 多屏幕切换时 部分软件需要多次操作
-    SetWindows(win_id, xx, yy, ww, hh)
-    
     if (win_process_name="PyCharm") {
         ;边框问题
         xx := xx - 3
@@ -504,68 +570,11 @@ MoveWindowsToDefaultPosition(select:="Default")
         SetWindows(win_id, xx, yy, ww, hh, 0)
     }
 
-    ; HelpText("MoveWindowsToDefaultPosition", "center_down", "screen1", 1000)
-}
-
-
-
-; 检测当前激活的应用是否满足条件
-; _process_name_ | 进程名（转换后的
-; _class_        | 进程Class
-; _title_        | 软件标题
-; return         | True \ False
-WindowsActive(_process_name_="", _class_="", _title_="")
-{
-    result           := GetWindowsInfo()
-    win_process_name := result.win_process_name
-    win_class        := result.win_class
-    win_title        := result.win_title
-
-    check_windows_active := True
-
-    if (StrLen(_process_name_)>0) {
-        if (win_process_name != _process_name_) {
-            check_windows_active := False
-            Return check_windows_active
-        }
-    }
-    if (StrLen(_class_)>0) {
-        if (win_class != _class_) {
-            check_windows_active := False
-            Return check_windows_active
-        }
-    }
-    if (StrLen(_title_)>0) {
-        If (not InStr(win_title, _title_)) {
-            check_windows_active := False
-            Return check_windows_active
-        }
-    }
+    SetWindows(win_id, xx, yy, ww, hh)
+    ; 多屏幕切换时 部分软件需要多次操作
+    SetWindows(win_id, xx, yy, ww, hh)
     
-    Return check_windows_active
-}
 
 
-
-; 修改窗口透明度
-UpdateWindowsTransparent(change=0)
-{
-    result := GetWindowsInfo()
-    win_id := result.win_id
-    win_transparent := result.win_transparent
-    if (change>0) {
-        if (win_transparent+change>=255) {
-            win_transparent:=255
-        } else {
-            win_transparent:=win_transparent+change
-        }
-        WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
-    } else if (change<0) {
-        if (win_transparent+change<=55) {
-            win_transparent:=55
-        } else {
-            win_transparent:=win_transparent+change
-        }
-        WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
-    }
+    ; HelpText("MoveWindowsToDefaultPosition", "center_down", "screen1", 1000)
 }

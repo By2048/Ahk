@@ -25,10 +25,10 @@ show_hide_key_config()
         Return
     }
 
-    result := GetWindowsInfo()
+    result := GetActiveWindowsInfo()
     win_process_name := result.win_process_name
     
-    key_map_cfg := GetWindowsConfig(Key_Map_Config)
+    key_map_cfg := GetActiveWindowsConfig(Key_Map_Config)
     
     if (key_map_cfg.MaxIndex()=0) {
         Return False

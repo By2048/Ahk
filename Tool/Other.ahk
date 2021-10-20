@@ -109,7 +109,7 @@ Screenshot_Activate_Software()
         Return
     }
 
-    result := GetWindowsInfo()
+    result := GetActiveWindowsInfo()
 	win_process_name := result.win_process_name
     win_x := result.win_x
     win_y := result.win_y

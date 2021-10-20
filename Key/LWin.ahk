@@ -78,8 +78,8 @@ Return
 <#+Enter::Send ^!+``
 
 ; 修改窗口透明度
-; <#WheelUp::UpdateWindowsTransparent(10)
-; <#WheelDown::UpdateWindowsTransparent(-10)
+; <#WheelUp::SetWindowsTransparent(10)
+; <#WheelDown::SetWindowsTransparent(-10)
 
 ; 屏幕截图 临时
 <#PrintScreen::
@@ -153,7 +153,7 @@ Return
     if (IsDesktops() or IsGame()) {
         Return
     }
-    result := GetWindowsInfo()
+    result := GetActiveWindowsInfo()
     win_id := result.win_id
     WinClose, ahk_id %win_id%
 Return
@@ -163,7 +163,7 @@ Return
     if (IsDesktops() or IsGame()) {
         Return
     }
-    result := GetWindowsInfo()
+    result := GetActiveWindowsInfo()
     win_process_name := result.win_process_name
     _win_process_name_ := result._win_process_name_
     win_id := result.win_id

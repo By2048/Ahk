@@ -11,7 +11,7 @@ Loop {
 
     Sleep, 1000
 
-    result           := GetWindowsInfo()
+    result           := GetActiveWindowsInfo()
     win_id           := result.win_id
     win_min_max      := result.win_min_max
 	win_process_name := result.win_process_name
@@ -73,7 +73,7 @@ Loop {
             ; if (in_screen = 1) {
             ;     Send #+{Right}
             ;     Sleep 100
-            ;     result := GetWindowsInfo()
+            ;     result := GetActiveWindowsInfo()
             ;     win_id := result.win_id
             ;     win_w  := result.win_w
             ;     win_h  := result.win_h

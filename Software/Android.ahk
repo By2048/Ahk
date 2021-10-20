@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("Android", "", "部落冲突") )
+#if ( CheckWindowsActive("Android", "", "部落冲突") )
 
     ; 选择兵种
     ^1::Return

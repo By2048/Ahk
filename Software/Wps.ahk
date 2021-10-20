@@ -179,7 +179,7 @@ HotkeysKeyImage()
 
 
 
-#if ( WindowsActive("WPS") )
+#if ( CheckWindowsActive("WPS") )
 
     >![:: ;无框线
         CoordMode, Mouse, Screen

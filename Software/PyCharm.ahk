@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("PyCharm") )
+#if ( CheckWindowsActive("PyCharm") )
     
      ^F1::Return
      ^F2::Return
@@ -69,12 +69,12 @@
 
 
 
-#if ( WindowsActive("PyCharm" , "SunAwtDialog") )
+#if ( CheckWindowsActive("PyCharm" , "SunAwtDialog") )
   
     title := [ "终端" , "运行" , "调试" ]
 
     ; ~RAlt::
-    ;     result := GetWindowsInfo()
+    ;     result := GetActiveWindowsInfo()
     ;     win_title := result.win_title
 
     ;     if (win_title In title) {
@@ -83,7 +83,7 @@
     ; Return
 
     ; ~RAlt Up::
-    ;     result := GetWindowsInfo()
+    ;     result := GetActiveWindowsInfo()
     ;     win_title := result.win_title
     ;     if (win_title In title) {
     ;         WinSet, Transparent, 255, A
@@ -94,13 +94,13 @@
 
 
 
-#if ( WindowsActive("PyCharm" , "" , "admin.py") )
+#if ( CheckWindowsActive("PyCharm" , "" , "admin.py") )
     :*:\sd\::short_description
 #if
 
 
 
-#if ( WindowsActive("PyCharm" , "SunAwtDialog" , "Python 控制台") )
+#if ( CheckWindowsActive("PyCharm" , "SunAwtDialog" , "Python 控制台") )
 
     ; ReRun
     !BackSpace::MouseClickAndResetting(34, 92, "Window")
@@ -114,7 +114,7 @@
 
 
 
-#if ( WindowsActive("PyCharm" , "SunAwtDialog" , "Python Console History") )
+#if ( CheckWindowsActive("PyCharm" , "SunAwtDialog" , "Python Console History") )
 
     ; 历史记录返回 \ 与书签冲突
     !\::Send {Esc}

@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("Q-Dir") )
+#if ( CheckWindowsActive("Q-Dir") )
 
     ;全屏
     F11::Return

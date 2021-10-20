@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("Notepad++") )
+#if ( CheckWindowsActive("Notepad++") )
 
     ^F1::Return
     ^F2::Return

@@ -1,7 +1,7 @@
 ﻿
 ; https://support.google.com/chrome/answer/157179
 
-#if ( WindowsActive("Chrome") )
+#if ( CheckWindowsActive("Chrome") )
 
     ;帮助
     F1::Return
@@ -204,7 +204,7 @@
 
 
 
-#if ( WindowsActive("Chrome" , "" , "修改书签") )
+#if ( CheckWindowsActive("Chrome" , "" , "修改书签") )
 
     ; 收藏
     Enter::Send {Tab 4}{Enter}

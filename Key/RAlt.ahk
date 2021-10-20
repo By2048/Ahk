@@ -38,7 +38,7 @@ Return
 
 
 $RAlt::
-    if (WindowsActive("PyCharm")) {
+    if (CheckWindowsActive("PyCharm")) {
         return
     }
     if (IsGame()) {

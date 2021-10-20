@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("VSCode") )
+#if ( CheckWindowsActive("VSCode") )
 
     ; 软件设置{f1}
     LAlt & RAlt::Send {F13}
@@ -40,10 +40,10 @@
 #if
 
 
-#if ( WindowsActive( "VSCode" , "" , ".md" ) )
+#if ( CheckWindowsActive( "VSCode" , "" , ".md" ) )
 
     !\::
-        result    := GetWindowsInfo()
+        result    := GetActiveWindowsInfo()
 	    win_title := result.win_title
         script    := "E:/Project/script/note/setup.py"
         command   := Format("{} {} {}", Python, script, win_title)

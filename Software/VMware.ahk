@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("VMware") )
+#if ( CheckWindowsActive("VMware") )
 
     ; 新建虚拟机
     ^n::Return

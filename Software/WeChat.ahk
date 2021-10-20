@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("WeChat") )
+#if ( CheckWindowsActive("WeChat") )
 
     ; 切换
     ^Tab::Return

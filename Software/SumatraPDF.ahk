@@ -1,5 +1,5 @@
 ﻿
-#if ( WindowsActive("SumatraPDF") )
+#if ( CheckWindowsActive("SumatraPDF") )
 
     ; 重命名
     F2::Return
