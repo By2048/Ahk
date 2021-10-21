@@ -1,6 +1,6 @@
 ﻿
 ; 设置
-#if ( CheckWindowsActive( "ApplicationFrameHost" , "ApplicationFrameWindow" ) )
+#if ( CheckWindowsActive( "ApplicationFrameHost" , "ApplicationFrameWindow" , "设置" ) )
 
     ;点击返回
     Esc::

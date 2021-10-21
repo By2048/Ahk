@@ -10,8 +10,7 @@
 #SingleInstance Force
 #NoTrayIcon
 
-; xxx::RunNormalUser("xxx.exe")
-; xxx::Run "xxx.exe"
+
 
 >^q::Run D:\#URI\PC.qdr
 >^w::RunNormalUser("D:\#URI\WeChat.lnk")
