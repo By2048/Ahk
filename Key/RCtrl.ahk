@@ -85,15 +85,15 @@ Return
 >^\::Run D:\#URI\Whiteboard.lnk
 
 >^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}:: ;回收站
-    >^.::Run Explorer.exe
-    >^/::Run T:\\
+>^.::Run Explorer.exe
+>^/::Run T:\\
 
 >^Up::Return
 >^Down::Return
 >^Left::Return
 >^Right::Return
 
-RCtrl & Enter::Run E:\Doc\All.xlsx
+RCtrl & Enter::Run E:\Backup\All.xlsx
 
 RCtrl & RWin::
     if (not IsDesktops()) {

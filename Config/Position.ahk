@@ -98,6 +98,12 @@ win_x := screen_3_x + screen_3_w/2 - win_w/2
 win_y := 2020
 Windows_Position_Default["CloudMusic_DesktopLyrics"] := [win_x, win_y, win_w, win_h]
 
+win_w := 2500
+win_h := 1500
+win_x := screen_1_x + screen_1_w/2 - win_w/2
+win_y := screen_1_y + screen_1_h/2 - win_h/2
+Windows_Position_Default["Sandboxie"] := [win_x, win_y, win_w, win_h]
+
 win_w := 2000
 win_h := 1500
 win_x := screen_1_x + screen_1_w/2 - win_w/2
@@ -173,6 +179,7 @@ win_y := 30
 win_w := screen_1_w - win_x*2 + 1
 win_h := screen_1_h - win_y*2 + 1
 Windows_Position_Default["PyCharm"] := [win_x, win_y, win_w, win_h]
+Windows_Position_Default["PyCharm__更改"] := [win_x, win_y, win_w, win_h]
 
 win_w := 900  + 1
 win_h := 1500 + 1

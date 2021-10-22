@@ -34,6 +34,8 @@ Windows_Process_Name.Push( [ "firefox"                 , "FireFox"         ] )
 Windows_Process_Name.Push( [ "vmware"                  , "VMware"          ] )
 Windows_Process_Name.Push( [ "DingTalk"                , "DingDing"        ] )
 Windows_Process_Name.Push( [ "geek64"                  , "Geek"            ] )
+Windows_Process_Name.Push( [ "SandMan"                 , "Sandboxie"       ] )
+
 Windows_Process_Name.Push( [ "-----------------------" , "---------------" ] )
 Windows_Process_Name.Push( [ "cloudmusic"              , "CloudMusic"      ] )
 Windows_Process_Name.Push( [ "wps"                     , "WPS"             ] )

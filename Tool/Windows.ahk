@@ -563,18 +563,17 @@ MoveWindowsToDefaultPosition(select="Default")
     ww         := win_config[3]
     hh         := win_config[4]
 
+    SetWindows(win_id, xx, yy, ww, hh)
+    
     if (win_process_name="PyCharm") {
         ;边框问题
         xx := xx - 3
         ww := ww + 6
         SetWindows(win_id, xx, yy, ww, hh, 0)
+    } else {
+        ; 多屏幕切换时 部分软件需要多次操作
+        SetWindows(win_id, xx, yy, ww, hh)
     }
-
-    SetWindows(win_id, xx, yy, ww, hh)
-    ; 多屏幕切换时 部分软件需要多次操作
-    SetWindows(win_id, xx, yy, ww, hh)
-    
-
 
     ; HelpText("MoveWindowsToDefaultPosition", "center_down", "screen1", 1000)
 }
