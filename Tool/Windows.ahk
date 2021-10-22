@@ -558,10 +558,10 @@ MoveWindowsToDefaultPosition(select="Default")
         win_config := GetActiveWindowsConfig(Windows_Position_Default)
     }
 
-    xx         := win_config[1]
-    yy         := win_config[2]
-    ww         := win_config[3]
-    hh         := win_config[4]
+    xx := win_config[1]
+    yy := win_config[2]
+    ww := win_config[3]
+    hh := win_config[4]
 
     SetWindows(win_id, xx, yy, ww, hh)
     
