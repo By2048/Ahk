@@ -1,7 +1,6 @@
 ﻿
 #include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Private.ahk
-#include %A_WorkingDir%\Tool\Image.ahk
+#include %A_WorkingDir%\Tool\File.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
 #include %A_WorkingDir%\Tool\Help.ahk
@@ -46,9 +45,3 @@ show_hide_key_config()
 
     Return True
 }
-
-
-
-#if (key_map_show_status=True)
-    Esc::show_hide_key_config()
-#if

@@ -12,6 +12,7 @@
 
 #if
 
+
 ; 编辑环境变量
 #if ( CheckWindowsActive( "systempropertiesadvanced" ) )
     PgUp::Send !u

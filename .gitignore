@@ -1,16 +1,16 @@
 
-.vscode
-.idea
+/.vscode/
+/.idea/
 
-Test/*.ahk
+/Test/*.ahk
 
 *Ignore.ahk
 
-Private.ahk 
-Test.ahk
+/Config/Private.ahk 
+/Test.ahk
+/Debug.ahk
 
-Test.bat
+/Test.bat
 
-~$Hotkey.xlsx
+/~$Hotkey.xlsx
 
-*baiduyun*

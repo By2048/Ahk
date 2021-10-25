@@ -7,6 +7,12 @@
 #SingleInstance Force
 #NoTrayIcon
 
+global loop_ignore_process_name := []
+loop_ignore_process_name.Push( "LOL_TX"            )
+loop_ignore_process_name.Push( "LOL_Client"        )
+loop_ignore_process_name.Push( "LOL_Game"          )
+loop_ignore_process_name.Push( "GetWindowText"     )
+
 Loop {
 
     Sleep, 1000

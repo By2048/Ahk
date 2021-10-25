@@ -1,7 +1,8 @@
 ﻿
 #include %A_WorkingDir%\Config\All.ahk
+#include %A_WorkingDir%\Tool\Mouse.ahk
+#include %A_WorkingDir%\Tool\File.ahk
 #include %A_WorkingDir%\Tool\Change.ahk
-#include %A_WorkingDir%\Tool\Image.ahk
 #include %A_WorkingDir%\Tool\Language.ahk
 
 
@@ -39,8 +40,12 @@ IsMaxMin()
 ; 判断当前激活的应用是否为游戏
 ; return | True \ False
 IsGame()
-{    
-    global game_process_name
+{   
+    game_process_name := []
+    game_process_name.Push( "LOL_TX"     )
+    game_process_name.Push( "LOL_Client" )
+    game_process_name.Push( "LOL_Game"   )
+
     WinGet, process_name, ProcessName, A
     process_name := ProcessNameFormat(process_name)
     for index, value in game_process_name {

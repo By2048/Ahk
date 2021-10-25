@@ -4,6 +4,9 @@
 
 
 
+global init_config_show_status := False
+
+
 ; 项目启动时创建的居中进度条 
 DefaultProgress()
 {

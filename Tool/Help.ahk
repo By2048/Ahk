@@ -1,32 +1,30 @@
 ﻿
 #include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\Image.ahk
+#include %A_WorkingDir%\Tool\Change.ahk
+#include %A_WorkingDir%\Tool\File.ahk
 #include %A_WorkingDir%\Tool\Language.ahk
 
 
 
 ; 显示图片
 HelpImage(image="")
-{    
-    global help_image_show_status
-    if (help_image_show_status and image) {
-        Return
-    }
-    if (not image) {
-        help_image_show_status:=False
+{   
+    global INI
+    if (image="") {
         Gui, Destroy
+        GlobalBoolSet("help_image_show_status", False)
     } else {
-        size:=GetImageSize(image)
-        w:=size[1]/screen_1_dpi
-        h:=size[2]/screen_1_dpi
-        x:=A_ScreenWidth/2-w/2
-        y:=A_ScreenHeight/2-h/2
+        size := GetImageSize(image)
+        w := size[1] / screen_1_dpi
+        h := size[2] / screen_1_dpi
+        x := A_ScreenWidth/2  - w/2
+        y := A_ScreenHeight/2 - h/2
         Gui, Destroy
         Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
         Gui, Margin, 1, 1
         Gui, Add, Picture, +Border W%w% H%h%, %image%
         Gui, Show, Center NA
-        help_image_show_status:=True
+        GlobalBoolSet("help_image_show_status", True)
     }
 }
 
@@ -38,9 +36,8 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     CoordMode, Pixel, Screen
     CoordMode, Mouse, Screen
 
-    global help_text_show_status
     if (not data and data != 0) {
-        help_text_show_status:=False
+        GlobalBoolSet("help_text_show_status", False)
         Gui, Destroy
         Return
     }
@@ -106,12 +103,11 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     Gui, font, s%font_size%, Courier New
     Gui, Add, Text, x0 y7 w%text_w% h%text_h% +Center -Border, %data%
     Gui, Show, x%gui_x% y%gui_y% w%gui_w% h%gui_h% NA
-
-    help_text_show_status:=True
+    GlobalBoolSet("help_text_show_status", True)
 
     if (sleep_time>0) {
         Sleep, %sleep_time%
         Gui, Destroy
-        help_text_show_status:=False
+        GlobalBoolSet("help_text_show_status", False)
     }
 }

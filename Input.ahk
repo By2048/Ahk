@@ -19,3 +19,5 @@ Return
     FormatTime, result, _, [yyyy-MM-dd H-mm]
     SendInput %result%
 Return
+
+#Include %A_WorkingDir%\Input.Ignore.ahk

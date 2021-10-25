@@ -3,6 +3,20 @@
 
 
 
+; True False
+Bool(value)
+{
+    if (value="True") {
+        Return True
+    }
+    if (value="False") {
+        Return False
+    }
+    Return value
+}
+
+
+
 ; 数组格式化成字符串输出
 ListToStr(data)
 {
