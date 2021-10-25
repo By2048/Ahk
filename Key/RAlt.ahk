@@ -47,12 +47,25 @@ $RAlt::
     if (not cnt) {
         cnt:=1
     } else {
-        cnt+=1
+        cnt++
     }
     ;全局搜索框
     SetTimer, timer, -500
 return
 
+
+global appskey_status := False
+
 timer:
-    
+    global appskey_status
+    if (cnt=1) {
+        if (appskey_status=True) {
+            Send {Esc}
+            appskey_status := False
+        } else {
+            Send {AppsKey}
+            appskey_status := True
+        }
+    }
+    cnt:=0
 return

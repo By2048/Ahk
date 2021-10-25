@@ -99,17 +99,18 @@ timer:
         HelpText()
         Return
     }
+    ; if (cnt=1) {
+    ;     MouseGetPos,  ,  , win_id
+    ;     WinActivate, ahk_id %win_id%
+    ;     result := GetActiveWindowsInfo()
+    ;     process_name := result.win_process_name
+    ;     HelpText(process_name, "center_down", "screen1",1000)
+    ; } 
     if (cnt=1) {
-        MouseGetPos,  ,  , win_id
-        WinActivate, ahk_id %win_id%
-        result := GetActiveWindowsInfo()
-        process_name := result.win_process_name
-        HelpText(process_name, "center_down", "screen1",1000)
-    } else if (cnt=2) {
         MoveWindowsToCenter()
-    } else if (cnt=3) {
+    } else if (cnt=2) {
         MoveWindowsToDefaultPosition("Default")
-    } else if (cnt=4) {
+    } else if (cnt=3) {
         MoveWindowsToDefaultPosition("Backup")
     }
     cnt:=0

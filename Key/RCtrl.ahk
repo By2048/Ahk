@@ -110,20 +110,22 @@ $RCtrl::
     if (not cnt) {
         cnt:=1
     } else {
-        cnt+=1
+        cnt++
     }
     SetTimer, timer, -500
 return
 
 timer:
+    help_image_show_status := GlobalBoolGet("help_image_show_status")
     if (cnt=1) {
-        if (CheckWindowsActive("Maye")) {
+        if (help_image_show_status=True) {
+            HelpImage()
+        } else if (CheckWindowsActive("Maye")) {
             Send {Esc}
+        } else {
+            Run D:\#URI\Maye.lnk
         }
-        HelpImage()
     } else if (cnt=2) {
-        Run D:\#URI\Maye.lnk
-    } else if (cnt=3) {
         HelpImage(A_WorkingDir "\Image\RCtrl.png")
     }
     cnt:=0
