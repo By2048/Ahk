@@ -1,8 +1,7 @@
 ﻿#include %A_WorkingDir%\Tool\Help.ahk
 
-        
-    
-PDF_Main() {
+PDF_Main() 
+{
     CoordMode, Mouse, Windows
 
     page_count := 268

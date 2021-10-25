@@ -23,9 +23,7 @@ global keyboard_line_6 := [["LCtrl",1.25],["LWin",1.25],["LAlt",1.25],["Space",5
 
 KeyboardLine(data) 
 {
-    global keyboard_x
-    global keyboard_y
-    global keyboard_h
+    global keyboard_x, keyboard_y, keyboard_h
 
     for index, item in data {
         keyboard_txt := item[1]
@@ -53,9 +51,7 @@ KeyboardGUI()
 {
     global keyboard_show_status
     global keyboard_win_id
-    global keyboard_x
-    global keyboard_y
-    global keyboard_h
+    global keyboard_x, keyboard_y, keyboard_h
     
     keyboard_x := 10
     keyboard_y := 4
