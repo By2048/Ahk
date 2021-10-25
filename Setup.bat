@@ -12,11 +12,14 @@ set folder=%folder:\\=\%
 set test_ahk=%folder%\Test.ahk
 set test_ahk=%test_ahk:\\=\%
 
-set private_ahk=%folder%\Private.ahk
+set private_ahk=%folder%\Config\Private.ahk
 set private_ahk=%private_ahk:\\=\%
 
 set ignore_lol_ahk=%folder%\Software\LOL.Ignore.ahk
 set ignore_lol_ahk=%ignore_lol_ahk:\\=\%
+
+set ignore_input_ahk=%folder%\Input.Ignore.ahk
+set ignore_input_ahk=%ignore_input_ahk:\\=\%
 
 cd /d %folder%
 
@@ -27,6 +30,10 @@ if not exist %private_ahk% (
 if not exist %ignore_lol_ahk% (
     echo Create %ignore_lol_ahk%
     echo ;Ignore File; > %ignore_lol_ahk%
+)
+if not exist %ignore_input_ahk% (
+    echo Create %ignore_input_ahk%
+    echo ;Ignore File; > %ignore_input_ahk%
 )
 
 set command=%1
@@ -65,10 +72,6 @@ if %command%==start (
     start %AHK% .\Loop.ahk          start
     echo  start .\Loop.ahk
     @REM =================================
-    if exist %private_ahk% (
-        start %AHK% .\Private.ahk   start
-        echo  start .\Private.ahk
-    )
     if exist %test_ahk% (
         start %AHK% .\Test.ahk      start
         echo  start .\Test.ahk
@@ -104,10 +107,6 @@ if %command%==stop (
     start %AHK% .\Loop.ahk          stop
     echo  stop  .\Loop.ahk
     @REM =================================
-    if exist %private_ahk% (
-        start %AHK% .\Private.ahk   stop
-        echo  stop  .\Private.ahk
-    )
     if exist %test_ahk% (
         start %AHK% .\Test.ahk      stop
         echo  stop  .\Test.ahk
