@@ -8,6 +8,7 @@
 #NoTrayIcon
 
 global loop_ignore_process_name := []
+loop_ignore_process_name.Push( "Geek"              )
 loop_ignore_process_name.Push( "LOL_TX"            )
 loop_ignore_process_name.Push( "LOL_Client"        )
 loop_ignore_process_name.Push( "LOL_Game"          )

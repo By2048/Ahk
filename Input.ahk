@@ -1,4 +1,5 @@
 ﻿
+#include %A_WorkingDir%\Config\All.ahk
 #include %A_WorkingDir%\Tool\Base.ahk
 
 #NoTrayIcon
