@@ -77,6 +77,7 @@ Return
 Return
 
 >^Esc::Run Taskmgr.exe ;任务管理器
+>^+Esc::Run D:\#URI\HRSword.lnk
 >^PrintScreen::Screenshot_Activate_Software()
 
 >^[::RunNormalUser(VSCode " E:\Config\Note.code-workspace")
