@@ -28,16 +28,16 @@ Fxx()
     content .= data
 
     ; 屏幕1底部
-    ; w:=screen_1_w*2/3
+    ; w:=screen_1.w*2/3
     ; h:=58
-    ; x:=(screen_1_xx-w)/2
-    ; y:=screen_1_h-h-3
+    ; x:=(screen_1.xx-w)/2
+    ; y:=screen_1.h-h-3
 
     ; 屏幕3顶部
-    w:=screen_3_w
+    w:=screen_3.w
     h:=58
-    x:=screen_3_x
-    y:=screen_3_y+100
+    x:=screen_3.x
+    y:=screen_3.y+100
 
     w:=w/2
     h:=h/2

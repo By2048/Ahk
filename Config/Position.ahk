@@ -23,14 +23,14 @@ Center(screen="") {
         screen := "screen_1"
     }
     if (screen="screen_1") {
-        win_x := screen_1_x + screen_1_w/2 - win_w/2
-        win_y := screen_1_y + screen_1_h/2 - win_h/2
+        win_x := screen_1.x + screen_1.w/2 - win_w/2
+        win_y := screen_1.y + screen_1.h/2 - win_h/2
     } else if (screen="screen_2") {
-        win_x := screen_2_x + screen_2_w/2 - win_w/2
-        win_y := screen_2_y + screen_2_h/2 - win_h/2
+        win_x := screen_2.x + screen_2.w/2 - win_w/2
+        win_y := screen_2.y + screen_2.h/2 - win_h/2
     } else if (screen="screen_3") {
-        win_x := screen_3_x + screen_3_w/2 - win_w/2
-        win_y := screen_3_y + screen_3_h/2 - win_h/2
+        win_x := screen_3.x + screen_3.w/2 - win_w/2
+        win_y := screen_3.y + screen_3.h/2 - win_h/2
     }
     return [win_x , win_y]
 }
@@ -55,10 +55,10 @@ win_h := 1500
 ; 开启关闭 Windows 功能
 Windows_Position_Default["OptionalFeatures_NativeHWNDHost"] := [CenterX(), CenterY(), win_w, win_h]
 
-win_w := screen_3_w   -6-6
-win_h := screen_3_h/2 -6-6
-win_x := screen_3_x   + 6
-win_y := screen_3_y   + 6
+win_w := screen_3.w   -6-6
+win_h := screen_3.h/2 -6-6
+win_x := screen_3.x   + 6
+win_y := screen_3.y   + 6
 Windows_Position_Default["TaskMGR"] := [win_x, win_y, win_w, win_h]
 
 win_w := 2150
@@ -69,20 +69,20 @@ Windows_Position_Default["Start"] := [CenterX(), CenterY(), win_w, win_h]
 
 win_x := 10
 win_y := 10
-win_w := screen_1_w/2 -10-10 +100
-win_h := screen_1_h   -10-10
+win_w := screen_1.w/2 -10-10 +100
+win_h := screen_1.h   -10-10
 Windows_Position_Default["TIM"] := [win_x, win_y, win_w, win_h]
 
 win_x := 10
 win_y := 10
-win_w := screen_1_w/2 -10-10 +100
-win_h := screen_1_h   -10-10
+win_w := screen_1.w/2 -10-10 +100
+win_h := screen_1.h   -10-10
 Windows_Position_Default["DingDing"] := [win_x, win_y, win_w, win_h]
 
-win_x := screen_1_w/2 +10    +100
+win_x := screen_1.w/2 +10    +100
 win_y := 10 + 14
-win_w := screen_1_w/2 -10-10 -100
-win_h := screen_1_h   -10-10 -14-14
+win_w := screen_1.w/2 -10-10 -100
+win_h := screen_1.h   -10-10 -14-14
 Windows_Position_Default["WeChat"] := [win_x, win_y, win_w, win_h]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -91,9 +91,9 @@ win_w := 2000
 win_h := 1500
 Windows_Position_Default["FDM"] := [CenterX(), CenterY(), win_w, win_h]
 
-win_w := screen_3_w   * 8/9
-win_h := screen_3_h/2 * 5/6
-win_y := screen_3_y   + 100
+win_w := screen_3.w   * 8/9
+win_h := screen_3.h/2 * 5/6
+win_y := screen_3.y   + 100
 Windows_Position_Backup["FDM"] := [CenterX("screen_3"), win_y, win_w, win_h]
 
 win_x := 176
@@ -104,21 +104,21 @@ Windows_Position_Default["Android"] := [win_x, win_y, win_w, win_h]
 
 win_w := 473
 win_h := 210
-win_x := screen_1_w - win_w - 10
-win_y := screen_1_h - win_h - 10
+win_x := screen_1.w - win_w - 10
+win_y := screen_1.h - win_h - 10
 ; 火绒U盘工具
 Windows_Position_Default["HipsTray_HRUSBTRAY"] := [win_x, win_y, win_w, win_h]
 
-win_w := screen_1_w * 4/6
-win_h := screen_1_h * 7/9
+win_w := screen_1.w * 4/6
+win_h := screen_1.h * 7/9
 Windows_Position_Default["CloudMusic"] := [CenterX(), CenterY(), win_w, win_h]
 
-win_w := screen_1_w * 4/6
-win_h := screen_1_h * 4/6
+win_w := screen_1.w * 4/6
+win_h := screen_1.h * 4/6
 Windows_Position_Default["PotPlayer"] := [CenterX(), CenterY(), win_w, win_h]
 
-win_w := screen_2_w * 4/6
-win_h := screen_2_h * 4/6
+win_w := screen_2.w * 4/6
+win_h := screen_2.h * 4/6
 Windows_Position_Backup["PotPlayer"] := [CenterX("screen_2"), CenterY("screen_2"), win_w, win_h]
 
 win_w := 1000
@@ -139,12 +139,12 @@ win_w := 2000
 win_h := 1500
 Windows_Position_Default["7-Zip"] := [CenterX(), CenterY(), win_w, win_h]
 
-win_w := screen_1_w * 5/6
-win_h := screen_1_h * 8/9
+win_w := screen_1.w * 5/6
+win_h := screen_1.h * 8/9
 Windows_Position_Default["Chrome"] := [CenterX(), CenterY(), win_w, win_h]
 
-win_w := screen_2_w * 5/6
-win_h := screen_2_h * 8/9
+win_w := screen_2.w * 5/6
+win_h := screen_2.h * 8/9
 Windows_Position_Backup["Chrome"] := [CenterX("screen_2"), CenterY("screen_2"), win_w, win_h]
 
 win_w := 900
@@ -157,14 +157,14 @@ Windows_Position_Default["v2rayN"] := [CenterX("screen_2"), CenterY("screen_2"),
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-win_w := screen_1_w * 5/6
-win_h := screen_1_h * 8/9
+win_w := screen_1.w * 5/6
+win_h := screen_1.h * 8/9
 Windows_Position_Default["VSCode"] := [CenterX(), CenterY(), win_w, win_h]
 
-win_w := screen_2_w * 5/6
-win_h := screen_2_h * 8/9
+win_w := screen_2.w * 5/6
+win_h := screen_2.h * 8/9
 Windows_Position_Backup["VSCode"] := [CenterX("screen_2"), CenterY("screen_2"), win_w, win_h]
 
-win_w := screen_1_w * 45/60
-win_h := screen_1_h * 75/90
+win_w := screen_1.w * 45/60
+win_h := screen_1.h * 75/90
 Windows_Position_Default["Notepad++"] := [CenterX(), CenterY(), win_w, win_h]

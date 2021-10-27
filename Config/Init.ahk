@@ -28,22 +28,22 @@ NewLine()
 if (screen_count>=1) {
     _format_ := " [1] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
     _value_  := []
-    _value_.Push( screen_1_x, screen_1_y, screen_1_xx, screen_1_yy )
-    _value_.Push( screen_1_dpi, screen_1_w, screen_1_h             )
+    _value_.Push( screen_1.x, screen_1.y, screen_1.xx, screen_1.yy )
+    _value_.Push( screen_1.dpi, screen_1.w, screen_1.h             )
     Init_Config.Push( Format( _format_, _value_*) )
 }
 if (screen_count>=2) {
     _format_ := " [2] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
     _value_  := []
-    _value_.Push( screen_2_x, screen_2_y, screen_2_xx, screen_2_yy )
-    _value_.Push( screen_2_dpi, screen_2_w, screen_2_h             )
+    _value_.Push( screen_2.x, screen_2.y, screen_2.xx, screen_2.yy )
+    _value_.Push( screen_2.dpi, screen_2.w, screen_2.h             )
     Init_Config.Push( Format( _format_, _value_*) )
 }
 if (screen_count>=3) {
     _format_ := " [3] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
     _value_  := []
-    _value_.Push( screen_3_x, screen_3_y, screen_3_xx, screen_3_yy )
-    _value_.Push( screen_3_dpi, screen_3_w, screen_3_h             )
+    _value_.Push( screen_3.x, screen_3.y, screen_3.xx, screen_3.yy )
+    _value_.Push( screen_3.dpi, screen_3.w, screen_3.h             )
     Init_Config.Push( Format( _format_, _value_*) )
 }
 NewLine()

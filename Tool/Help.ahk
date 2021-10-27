@@ -15,8 +15,8 @@ HelpImage(image="")
         GlobalBoolSet("help_image_show_status", False)
     } else {
         size := GetImageSize(image)
-        w := size[1] / screen_1_dpi
-        h := size[2] / screen_1_dpi
+        w := size[1] / screen_1.dpi
+        h := size[2] / screen_1.dpi
         x := A_ScreenWidth/2  - w/2
         y := A_ScreenHeight/2 - h/2
         Gui, Destroy
@@ -51,19 +51,19 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     }
 
     if (screens="screen1" or screens="screen_1") {
-        screen_x   := screen_1_x  , screen_y  := screen_1_y
-        screen_xx  := screen_1_xx , screen_yy := screen_1_yy
-        screen_w   := screen_1_w  , screen_h  := screen_1_h
+        screen_x   := screen_1.x  , screen_y  := screen_1.y
+        screen_xx  := screen_1.xx , screen_yy := screen_1.yy
+        screen_w   := screen_1.w  , screen_h  := screen_1.h
     } else if (screens="screen2" or screens="screen_2") {
-        screen_x   := screen_2_x  , screen_y  := screen_2_y
-        screen_xx  := screen_2_xx , screen_yy := screen_2_yy
-        screen_w   := screen_2_w  , screen_h  := screen_2_h
+        screen_x   := screen_2.x  , screen_y  := screen_2.y
+        screen_xx  := screen_2.xx , screen_yy := screen_2.yy
+        screen_w   := screen_2.w  , screen_h  := screen_2.h
     } else if (screens="screen3" or screens="screen_3") {
-        screen_x   := screen_3_x   , screen_y  := screen_3_y
-        screen_xx  := screen_3_xx  , screen_yy := screen_3_yy/2
-        screen_w   := screen_3_w   , screen_h  := screen_3_h/2
+        screen_x   := screen_3.x   , screen_y  := screen_3.y
+        screen_xx  := screen_3.xx  , screen_yy := screen_3.yy/2
+        screen_w   := screen_3.w   , screen_h  := screen_3.h/2
     }
-    screen_dpi := screen_1_dpi
+    screen_dpi := screen_1.dpi
 
     zh_cn_count := ZH_CN(data)
     data_count := StrLen(data)

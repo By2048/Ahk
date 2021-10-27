@@ -43,20 +43,20 @@ Screenshot(screens="screen1",keep_path="backup")
     }
 
     if (screens="screen1") {
-        x:=screen_1_x
-        y:=screen_1_y
-        w:=screen_1_w
-        h:=screen_1_h
+        x:=screen_1.x
+        y:=screen_1.y
+        w:=screen_1.w
+        h:=screen_1.h
     } else if (screens="screen2") {
-        x:=screen_2_x/screen_1_dpi
-        y:=screen_2_y/screen_1_dpi
-        w:=screen_2_w*screen_2_dpi/screen_1_dpi
-        h:=screen_2_h*screen_2_dpi/screen_1_dpi
+        x:=screen_2.x/screen_1.dpi
+        y:=screen_2.y/screen_1.dpi
+        w:=screen_2.w*screen_2.dpi/screen_1.dpi
+        h:=screen_2.h*screen_2.dpi/screen_1.dpi
     } else if (screens="screen3") {
-        x:=screen_3_x/screen_1_dpi
-        y:=screen_3_y/screen_1_dpi
-        w:=screen_3_w*screen_3_dpi/screen_1_dpi
-        h:=screen_3_h*screen_3_dpi/screen_1_dpi
+        x:=screen_3.x/screen_1.dpi
+        y:=screen_3.y/screen_1.dpi
+        w:=screen_3.w*screen_3.dpi/screen_1.dpi
+        h:=screen_3.h*screen_3.dpi/screen_1.dpi
     }
 
     x:=Round(x)
@@ -94,7 +94,7 @@ Screenshot_Quick()
 {
     FormatTime, name, _, yyyy-MM-dd HH-mm-ss
     file := Snipaste_Screenshot_Path_Tmp "\" name ".png"
-    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, screen_1_x, screen_1_y, screen_1_w, screen_1_h, file)
+    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, screen_1.x, screen_1.y, screen_1.w, screen_1.h, file)
     Run %cmd%
     SetTimer, delete_snipaste_auto_save_file, -1000
 }
@@ -141,12 +141,12 @@ Snipaste(image="",screens="screen1")
     image_h    := image_size[2]
 
     if (screens="screen1" or screens="screen_1") {
-        x := screen_1_x + screen_1_w/2 - image_w/2
-        y := screen_1_y + screen_1_h/2 - image_h/2
+        x := screen_1.x + screen_1.w/2 - image_w/2
+        y := screen_1.y + screen_1.h/2 - image_h/2
     }
     if (screens="screen2" or screens="screen_2") {
-        x := screen_2_x + screen_2_w/2 - image_w/2
-        y := screen_2_y + screen_2_h/2 - image_h/2
+        x := screen_2.x + screen_2.w/2 - image_w/2
+        y := screen_2.y + screen_2.h/2 - image_h/2
     }
     x := Round(x)
     y := Round(y)

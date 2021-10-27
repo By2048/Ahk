@@ -116,24 +116,24 @@ GetActiveWindowsInfo()
 	WinGetPos,   win_x, win_y, win_w, win_h,              ahk_id %win_id%
     
     in_screen := 1, screen_x :=0, screen_y := 0, screen_xx := 0, screen_yy := 0
-    if (win_x >= screen_1_x and win_x < screen_1_xx) {
+    if (win_x >= screen_1.x and win_x < screen_1.xx) {
         in_screen  := 1
-        screen_x   := screen_1_x   ,  screen_y := screen_1_y
-        screen_w   := screen_1_w   ,  screen_h := screen_1_h
-        screen_xx  := screen_1_xx  , screen_yy := screen_1_yy
-        screen_dpi := screen_1_dpi
-    } else if (win_x >= screen_2_x and win_x < screen_2_xx) {
+        screen_x   := screen_1.x   ,  screen_y := screen_1.y
+        screen_w   := screen_1.w   ,  screen_h := screen_1.h
+        screen_xx  := screen_1.xx  , screen_yy := screen_1.yy
+        screen_dpi := screen_1.dpi
+    } else if (win_x >= screen_2.x and win_x < screen_2.xx) {
         in_screen  := 2
-        screen_x   := screen_2_x   ,  screen_y := screen_2_y
-        screen_w   := screen_2_w   ,  screen_h := screen_2_h
-        screen_xx  := screen_2_xx  , screen_yy := screen_2_yy
-        screen_dpi := screen_2_dpi
-    } else if (win_x >= screen_3_x and win_x < screen_3_xx) {
+        screen_x   := screen_2.x   ,  screen_y := screen_2.y
+        screen_w   := screen_2.w   ,  screen_h := screen_2.h
+        screen_xx  := screen_2.xx  , screen_yy := screen_2.yy
+        screen_dpi := screen_2.dpi
+    } else if (win_x >= screen_3.x and win_x < screen_3.xx) {
         in_screen  := 3
-        screen_x   := screen_3_x   ,  screen_y := screen_3_y
-        screen_w   := screen_3_w   ,  screen_h := screen_3_h
-        screen_xx  := screen_3_xx  , screen_yy := screen_3_yy/2
-        screen_dpi := screen_3_dpi
+        screen_x   := screen_3.x   ,  screen_y := screen_3.y
+        screen_w   := screen_3.w   ,  screen_h := screen_3.h
+        screen_xx  := screen_3.xx  , screen_yy := screen_3.yy/2
+        screen_dpi := screen_3.dpi
     }
 
     result := {}
@@ -293,12 +293,6 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
     if (not win_id) {
         HelpText("No WinId")
     }
-    if (not offset) {
-        offset:=3
-    }
-    if (not step) {
-        step:=False
-    }
     
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         Return 
@@ -375,7 +369,7 @@ ResizeWindows(command, direction)
         }
     }
 
-    WinMove, ahk_id %win_id%,  , %win_x%, %win_y%, %win_w%, %win_h%
+    SetWindows(win_id, win_x, win_y, win_w, win_h)
 }
 
 
@@ -410,7 +404,7 @@ MoveWindowsUDLR(direction)
         win_x := win_x + step
     }
 
-    WinMove, ahk_id %win_id%,  , %win_x%, %win_y%
+    SetWindows(win_id, win_x, win_y, win_w, win_h)
 }
 
 
@@ -447,13 +441,6 @@ MoveWindowsToCenter(silent=False)
     ; HelpText(xx "|" yy "|" ww "|" hh)
 
     SetWindows(win_id, xx, yy, ww, hh)   
-
-    if (win_process_name="PyCharm") {
-        xx := xx - 3
-        ww := ww + 6 + 1
-        SetWindows(win_id, xx, yy, ww, hh, 0)   
-        Return
-    }
 
     if (win_x=xx and win_y=yy) {
         Return
@@ -514,8 +501,8 @@ MoveWindowsToMainMini(command)
 
     xx := screen_x + (screen_w - ww)/2
     yy := screen_y + (screen_h - hh)/2
-    
-    WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
+
+    SetWindows(win_id, xx, yy, ww, hh)
 
     Sleep, 1000
     HelpText()
@@ -568,17 +555,18 @@ MoveWindowsToDefaultPosition(select="Default")
     ww := win_config[3]
     hh := win_config[4]
 
-    SetWindows(win_id, xx, yy, ww, hh)
-    
+    offset := 3
     if (win_process_name="PyCharm") {
         ;边框问题
-        xx := xx - 3
-        ww := ww + 6
-        SetWindows(win_id, xx, yy, ww, hh, 0)
-    } else {
-        ; 多屏幕切换时 部分软件需要多次操作
-        SetWindows(win_id, xx, yy, ww, hh)
+        offset := 0
+        ww := ww + 1
+        xx := xx - 1
     }
+    
+    SetWindows(win_id, xx, yy, ww, hh, offset)
+
+    ; 多屏幕切换时 部分软件需要多次操作
+    SetWindows(win_id, xx, yy, ww, hh, offset)
 
     ; HelpText("MoveWindowsToDefaultPosition", "center_down", "screen1", 1000)
 }

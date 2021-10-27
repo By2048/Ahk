@@ -12,8 +12,8 @@ DefaultProgress()
 {
     w:=150*2
     h:=15*2
-    x:=screen_1_w/2-w/2
-    y:=screen_1_h/2-h/2
+    x:=screen_1.w/2-w/2
+    y:=screen_1.h/2-h/2
     w:=w/2
     h:=h/2
     
@@ -56,17 +56,17 @@ InitConfig()
         content .= "`n"
     }
     
-    w := Init_W * screen_1_dpi
-    h := Init_H * screen_1_dpi
-    x := screen_3_x + screen_3_w/2 - w/2    
-    y := screen_3_y + screen_3_h/3 - h/2
+    w := Init_W * screen_1.dpi
+    h := Init_H * screen_1.dpi
+    x := screen_3.x + screen_3.w/2 - w/2    
+    y := screen_3.y + screen_3.h/3 - h/2
     
     if (screen_count=1) {
-        x := screen_1_x + screen_1_w/2 - w/2    
-        y := screen_1_y + screen_1_h/2 - h/2
+        x := screen_1.x + screen_1.w/2 - w/2    
+        y := screen_1.y + screen_1.h/2 - h/2
     }
     
-    w := w / screen_1_dpi
+    w := w / screen_1.dpi
 
     Gui, font, s19, Source Code Pro
     Gui, Add, Text, w%w% +Center +Border, Ahk Config
