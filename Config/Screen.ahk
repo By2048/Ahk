@@ -21,21 +21,28 @@ if (screen_count=1) {
     SysGet, Monitor3, Monitor, 2
 } else if (screen_count=3) {
     SysGet, Monitor1, Monitor, 1
-    SysGet, Monitor2, Monitor, 3
-    SysGet, Monitor3, Monitor, 2
+    SysGet, Monitor2, Monitor, 2
+    SysGet, Monitor3, Monitor, 3
 }
 
 screen_1.dpi := 1
 screen_2.dpi := 1
 screen_3.dpi := 1
 
-if (A_ComputerName="WINDOWS" and A_UserName="AM" and screen_count=3) {
-    screen_1.dpi := 2
-    screen_2.dpi := 1.5
-    screen_3.dpi := 1
+if (A_ComputerName="Windows" and screen_count=3) {
+    if (A_UserName="AM") {
+        screen_1.dpi := 2
+        screen_2.dpi := 1.5
+        screen_3.dpi := 1
+    }
+    if (A_UserName="Administrator") {
+        screen_1.dpi := 2
+        screen_2.dpi := 1.5
+        screen_3.dpi := 1
+    }
 }
 
-if (A_ComputerName="WINSERVER" and A_UserName="Administrator" and screen_count=3) {
+if (A_ComputerName="WinServer" and A_UserName="Administrator" and screen_count=3) {
     screen_1.dpi := 2
     screen_2.dpi := 1.5
     screen_3.dpi := 1
