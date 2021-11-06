@@ -153,7 +153,8 @@ Windows_Position_Default["Chrome__修改书签"] := [CenterX(), CenterY(), win_w
 
 win_w := 2662
 win_h := 1600
-Windows_Position_Default["v2rayN"] := [CenterX("screen_2"), CenterY("screen_2"), win_w, win_h]
+Windows_Position_Default["v2rayN"] := [CenterX("screen_1"), CenterY("screen_1"), win_w, win_h]
+Windows_Position_Backup["v2rayN"]  := [CenterX("screen_2"), CenterY("screen_2"), win_w, win_h]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

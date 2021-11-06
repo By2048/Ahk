@@ -37,7 +37,7 @@ win_h := 1500
 Windows_Position_Default["PyCharm__设置"]            := [CenterX(), CenterY(), win_w, win_h]
 Windows_Position_Default["PyCharm__添加Python解释器"] := [CenterX(), CenterY(), win_w, win_h]
 Windows_Position_Default["PyCharm__TODO"]            := [CenterX(), CenterY(), win_w, win_h]
-Windows_Position_Default["PyCharm__问题"]             := [CenterX(), CenterY(), win_w, win_h]
+Windows_Position_Default["PyCharm__问题"]            := [CenterX(), CenterY(), win_w, win_h]
 Windows_Position_Default["PyCharm__远程主机"]         := [CenterX(), CenterY(), win_w, win_h]
 
 win_w := 2000
