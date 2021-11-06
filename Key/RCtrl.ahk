@@ -12,10 +12,10 @@
 
 
 
->^q::Run D:\#URI\PC.qdr
->^w::RunNormalUser("D:\#URI\WeChat.lnk")
->^e::Run D:\#URI\Everything.lnk
->^r::RunNormalUser("D:\#URI\QuiteRSS.lnk")
+>^q::Run D:\#Lnk\PC.qdr
+>^w::RunNormalUser("D:\#Lnk\WeChat.lnk")
+>^e::Run D:\#Lnk\Everything.lnk
+>^r::RunNormalUser("D:\#Lnk\QuiteRSS.lnk")
 >^t::
     Process, Exist, TIM.exe
     if (ErrorLevel) {
@@ -29,15 +29,15 @@ Return
     if (ErrorLevel) {
         TrayIcon_Button("v2rayN.exe", "L")
     } else {
-        Run D:\#URI\v2rayN.lnk
+        Run D:\#Lnk\v2rayN.lnk
     }
 Return
 >^p::RunNormalUser(WT " -d T:\")
 >^+p::Run %WT% -d T:\
 
->^a::Run D:\#URI\MuMu.lnk
->^s::Run D:\#URI\Sandboxie.lnk
->^f::Run D:\#URI\FreeFileSync.lnk
+>^a::Run D:\#Lnk\MuMu.lnk
+>^s::Run D:\#Lnk\Sandboxie.lnk
+>^f::Run D:\#Lnk\FreeFileSync.lnk
 >^g::
     win_x:=160, win_y:=60, win_w:=1600, win_h:=960
     command := Format("{} --new-window", Chrome)
@@ -47,26 +47,26 @@ Return
 Return
 >^h::Run %Ahk% D:\AutoHotkey\WindowSpy.ahk
 >^j::
-    Run D:\#URI\JetBrains\Toolbox.lnk
+    Run D:\#Lnk\JetBrains\Toolbox.lnk
     Sleep 100
     MoveWindowsToCenter(True)
 Return
 >^k::KeyboardGUI()
 
->^x::RunNormalUser("D:\#URI\Xshell.lnk")
->^c::RunNormalUser("D:\#URI\音乐.lnk") 
+>^x::RunNormalUser("D:\#Lnk\Xshell.lnk")
+>^c::RunNormalUser("D:\#Lnk\音乐.lnk") 
 >^v::RunNormalUser(VSCode " E:\Config\Windows.code-workspace")
 >^+v::Run %VSCode% E:\Config\Windows.code-workspace
 >^b::Run E:\Book\
->^n::Run D:\#URI\Notepad++.lnk
->^m::RunNormalUser("D:\#URI\PotPlayer.lnk")
+>^n::Run D:\#Lnk\Notepad++.lnk
+>^m::RunNormalUser("D:\#Lnk\PotPlayer.lnk")
 
 >^+Delete::
     command := Format("{} /c {} /f /im shellexperiencehost.exe", CMD, TaskKill)
     Run, %command%, , Hide
     command := Format("{} /c {} /f /im MicrosoftEdge.exe", CMD, TaskKill)
     Run, %command%, , Hide
-    Run, D:\#URI\Dexpot.lnk
+    Run, D:\#Lnk\Dexpot.lnk
 Return
 >^Delete::
     command := Format("{1} /c {2} /f /im explorer.exe", CMD, TaskKill)
@@ -77,13 +77,13 @@ Return
 Return
 
 >^Esc::Run Taskmgr.exe ;任务管理器
->^+Esc::Run D:\#URI\HRSword.lnk
+>^+Esc::Run D:\#Lnk\HRSword.lnk
 >^PrintScreen::Screenshot_Activate_Software()
 
 >^[::RunNormalUser(VSCode " E:\Config\Note.code-workspace")
 >^]::RunNormalUser(VSCode " E:\Config\Ahk.code-workspace")
 
->^\::Run D:\#URI\Whiteboard.lnk
+>^\::Run D:\#Lnk\Whiteboard.lnk
 
 >^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}:: ;回收站
 >^.::Run Explorer.exe
@@ -124,7 +124,7 @@ timer:
         } else if (CheckWindowsActive("Maye")) {
             Send {Esc}
         } else {
-            Run D:\#URI\Maye.lnk
+            Run D:\#Lnk\Maye.lnk
         }
     } else if (cnt=2) {
         HelpImage(A_WorkingDir "\Image\RCtrl.png")

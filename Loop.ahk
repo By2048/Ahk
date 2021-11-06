@@ -13,6 +13,7 @@ loop_ignore_process_name.Push( "LOL_TX"            )
 loop_ignore_process_name.Push( "LOL_Client"        )
 loop_ignore_process_name.Push( "LOL_Game"          )
 loop_ignore_process_name.Push( "GetWindowText"     )
+loop_ignore_process_name.Push( "ThunderMini"       )
 
 Loop {
 
