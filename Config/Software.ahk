@@ -4,14 +4,14 @@
 ; 可执行文件
 global AHK          := "D:\AutoHotkey\AutoHotkey.exe"
 global VSCode       := "D:\VSCode\Code.exe"
-global WT           := "C:\Users\AM\AppData\Local\Microsoft\WindowsApps\wt.exe"
+global WT           := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
 global CMD          := "C:\Windows\System32\cmd.exe"
 global TaskKill     := "C:\Windows\SysWOW64\taskkill.exe"
 global Python       := "D:\Python\_python_\Scripts\python.exe"
-global HuntAndPeck  := "D:\Bin\HuntAndPeck\hap.exe"
+global HuntAndPeck  := "D:\HuntAndPeck\hap.exe"
 global Chrome       := "C:\Program Files\Google\Chrome\Application\chrome.exe"
-global Scrcpy       := "D:\Bin\Scrcpy\scrcpy.exe"
-global ADB          := "D:\Bin\platform-tools\adb.exe"
+global Scrcpy       := "D:\Scrcpy\scrcpy.exe"
+global ADB          := "D:\Adb\adb.exe"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
