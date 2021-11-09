@@ -12,7 +12,7 @@
 
 
 
->^q::Run D:\#Lnk\PC.qdr
+>^q::Run E:\Config\PC.qdr
 >^w::RunNormalUser("D:\#Lnk\WeChat.lnk")
 >^e::Run D:\#Lnk\Everything.lnk
 >^r::RunNormalUser("D:\#Lnk\QuiteRSS.lnk")

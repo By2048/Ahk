@@ -58,6 +58,8 @@ if %command%==start (
     echo  start .\Key\RShift.ahk
     start %AHK% .\Key\RWin.ahk      start
     echo  start .\Key\RWin.ahk
+    start %AHK% .\Key\Space.ahk     start
+    echo  start .\Key\Space.ahk
     @REM =================================
     start %AHK% .\Software\All.ahk  start
     echo  start .\Software\All.ahk
@@ -93,6 +95,8 @@ if %command%==stop (
     echo  stop  .\Key\RShift.ahk
     start %AHK% .\Key\RWin.ahk      stop
     echo  stop  .\Key\RWin.ahk
+    start %AHK% .\Key\Space.ahk     stop
+    echo  stop  .\Key\Space.ahk
     @REM =================================
     start %AHK% .\Software\All.ahk  stop
     echo  stop  .\Software\All.ahk  

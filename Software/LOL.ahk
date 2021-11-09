@@ -1,6 +1,4 @@
 ﻿
-
-
 #if ( CheckWindowsActive("LOL_Game") )
 
 	; 装备

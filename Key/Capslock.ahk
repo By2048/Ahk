@@ -9,24 +9,7 @@
 #SingleInstance Force
 #NoTrayIcon
 
-Capslock &  p::MouseMoveDC( 0, -5)
-Capslock & `;::MouseMoveDC( 0,  5)
-Capslock &  l::MouseMoveDC(-5,  0)
-Capslock &  '::MouseMoveDC( 5,  0)
 
-Capslock & w::MouseMoveDC(  0, -50)
-Capslock & s::MouseMoveDC(  0,  50)
-Capslock & a::MouseMoveDC(-50,   0)
-Capslock & d::MouseMoveDC( 50,   0)
-
-Capslock &    Up::MouseMoveDC(   0, -100)
-Capslock &  Down::MouseMoveDC(   0,  100)
-Capslock &  Left::MouseMoveDC(-100,    0)
-Capslock & Right::MouseMoveDC( 100,    0)
-
-Capslock &   Tab::LButton
-Capslock & Space::MButton
-Capslock & Shift::RButton
 
 ;切换到显示器中心 
 $CapsLock::
