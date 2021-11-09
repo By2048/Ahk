@@ -43,7 +43,6 @@ IsGame()
 {   
     game_process_name := []
     game_process_name.Push( "LOL_TX"     )
-    game_process_name.Push( "LOL_Client" )
     game_process_name.Push( "LOL_Game"   )
 
     WinGet, process_name, ProcessName, A

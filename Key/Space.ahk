@@ -9,7 +9,10 @@
 #SingleInstance Force
 #NoTrayIcon
 
+
+
 $Space::Space
+; ~Space::Space
 
 Space &  p::MouseMoveDC( 0, -5)
 Space & `;::MouseMoveDC( 0,  5)
@@ -25,6 +28,9 @@ Space &    Up::MouseMoveDC(   0, -100)
 Space &  Down::MouseMoveDC(   0,  100)
 Space &  Left::MouseMoveDC(-100,    0)
 Space & Right::MouseMoveDC( 100,    0)
+
+Space & LAlt::LButton
+Space & RAlt::RButton
 
 Space &      Tab::RButton
 Space & Capslock::MButton

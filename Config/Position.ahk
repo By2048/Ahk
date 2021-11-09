@@ -124,7 +124,7 @@ Windows_Position_Backup["PotPlayer"] := [CenterX("screen_2"), CenterY("screen_2"
 win_w := 1000
 win_h := 1500
 win_x := 30
-Windows_Position_Default["PotPlayer__播放列表"] := [CenterX(), win_y, win_w, win_h]
+Windows_Position_Default["PotPlayer__播放列表"] := [win_x, CenterY(), win_w, win_h]
 
 win_w := 2020
 win_h := 300

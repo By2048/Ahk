@@ -1,4 +1,27 @@
 ﻿
+#if ( CheckWindowsActive("LOL_Client") )
+
+	; 结算界面查看资料
+	`::
+		CoordMode, Mouse, Window
+	    MouseGetPos, x, y
+		MouseClick, Right, x, y
+		Sleep 100
+		xx := x + 50
+		yy := y + 30
+		MouseClick, Left, xx, yy
+		MouseMove, x, y, 0
+	Return
+
+	; 返回
+	Esc::
+		MouseGetPos, x, y
+		MouseClick, Left, 2045, 153
+		MouseMove, x, y, 0
+	Return
+
+#if
+
 #if ( CheckWindowsActive("LOL_Game") )
 
 	; 装备
