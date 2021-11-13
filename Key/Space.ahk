@@ -10,7 +10,7 @@
 #NoTrayIcon
 
 ; $Space::Space
-~Space::Space
+~Space::Send {Space}
 
 Space &  p::MouseMoveDC( 0, -5)
 Space & `;::MouseMoveDC( 0,  5)
