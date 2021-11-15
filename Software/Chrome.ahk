@@ -158,8 +158,8 @@
     Return
 
     ;打印 高级打印  
-    ^p::Return
-    ^+p::Return
+    <^p::Return
+    <^+p::Return
     !p::Send ^p
     !+p::Send ^+p
 
