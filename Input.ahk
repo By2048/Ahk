@@ -21,4 +21,4 @@ Return
     SendInput %result%
 Return
 
-#Include %A_WorkingDir%\Input.Ignore.ahk
+#Include %A_WorkingDir%\Input.Private.ahk

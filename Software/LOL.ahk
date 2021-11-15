@@ -36,7 +36,7 @@
 	; 撤销
 	; 1279,1666,
 
-	#include %A_WorkingDir%\Software\LOL.Ignore.ahk
+	#include %A_WorkingDir%\Software\LOL.Private.ahk
 	
 	; 截图
 	F12::Return

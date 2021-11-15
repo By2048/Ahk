@@ -156,6 +156,10 @@ win_h := 1600
 Windows_Position_Default["v2rayN"] := [CenterX("screen_1"), CenterY("screen_1"), win_w, win_h]
 Windows_Position_Backup["v2rayN"]  := [CenterX("screen_2"), CenterY("screen_2"), win_w, win_h]
 
+; win_w := 1500
+; win_h := 1500
+; Windows_Position_Default["VMWare_#32770_硬件"] := [CenterX(), CenterY(), win_w, win_h]
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 win_w := screen_1.w * 5/6
