@@ -33,8 +33,8 @@
 >#p::Send ^!p ;歌词
 
 ; Snipaste
->#PrintScreen::Send ^!{PrintScreen}
->#Pause::Send ^!{Pause}
+; >#PrintScreen::Send ^!{PrintScreen}
+; >#Pause::Send ^!{Pause}
 
 
 

@@ -9,8 +9,10 @@
 #SingleInstance Force
 #NoTrayIcon
 
-; $Space::Space
-~Space::Send {Space}
+; $Space::
+
+~Space::
+Return
 
 Space &  p::MouseMoveDC( 0, -5)
 Space & `;::MouseMoveDC( 0,  5)
