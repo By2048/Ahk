@@ -10,22 +10,22 @@ global init_config_show_status := False
 ; 项目启动时创建的居中进度条 
 DefaultProgress()
 {
-    w:=150*2
-    h:=15*2
-    x:=screen_1.w/2-w/2
-    y:=screen_1.h/2-h/2
-    w:=w/2
-    h:=h/2
-    
+    w := 150*2
+    h := 15*2
+    x := screen_1.w/2 - w/2
+    y := screen_1.h/2 - h/2
+
+    w := w/2
+    h := h/2
     Progress, b w%w% h%h% x%x% y%y% cbBlack p0
     
-    index:=0
+    index := 0
     Loop {
-        Progress, %index%
-        sleep 50
-        index:=index+10
-        if (index>=100) {
-            Progress, Off
+        Progress %index%
+        Sleep 50
+        index := index + 10
+        if (index >= 100) {
+            Progress Off
             break
         }
     }
