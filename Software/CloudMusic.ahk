@@ -4,7 +4,7 @@
     /::
         MoveWindowsToDefaultPosition()
         Sleep, 300
-        MouseClickAndResetting(74,1608,"Window")
+        MouseClickAndResetting(74, 1608 ,"Window")
     Return
 
     \::Send !\
@@ -63,6 +63,11 @@
         Send !]
         Sleep 300
         MouseClickAndResetting(1076,1584,"Window",3)
+    Return
+
+    Esc::
+    RAlt::
+        MouseClickAndResetting(1703, 485, "Window")
     Return
 
 #if

@@ -96,6 +96,14 @@ win_h := screen_3.h/2 * 5/6
 win_y := screen_3.y   + 100
 Windows_Position_Backup["FDM"] := [CenterX("screen_3"), win_y, win_w, win_h]
 
+win_w := 1400
+win_h := 1050
+Windows_Position_Default["Thunder__新建任务面板"] := [CenterX(), CenterY(), win_w, win_h]
+
+win_w := 3000
+win_h := 1500
+Windows_Position_Default["Calibre"] := [CenterX(), CenterY(), win_w, win_h]
+
 win_x := 176
 win_y := 10
 win_w := 3488
