@@ -148,6 +148,8 @@ GetActiveWindowsInfo()
     result.win_text           := win_text
     result.win_x              := win_x
     result.win_y              := win_y
+    result.win_xx             := win_x + win_w
+    result.win_yy             := win_y + win_h
     result.win_w              := win_w
     result.win_h              := win_h
     result.in_screen          := in_screen
