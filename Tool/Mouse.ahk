@@ -6,12 +6,12 @@
 
 
 
-MouseMoveDC(xright, ydown)
+MouseMoveDC(x_right, y_down)
 {
     CoordMode, Mouse, Screen
     MouseGetPos, x, y
-    xx:=x+xright
-    yy:=y+ydown
+    xx := x + x_right
+    yy := y + y_down
     DllCall("SetCursorPos", "int", xx, "int", yy) ;多显示器环境中更好
 }
 
@@ -23,7 +23,7 @@ MousueTool()
     MouseGetPos, x1, y1
     CoordMode, Mouse, Window
     MouseGetPos, x2, y2
-    Clipboard := Format("Screen {} {}`nWindow {} {}", x1,y1, x2,y2)
+    Clipboard := Format("`nScreen {} {}`nWindow {} {}`n", x1,y1, x2,y2)
 }
 
 

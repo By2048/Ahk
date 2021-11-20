@@ -47,7 +47,7 @@ Return
 Return
 >^h::Run %Ahk% D:\AutoHotkey\WindowSpy.ahk
 >^j::
-    Run D:\#Lnk\JetBrains\Toolbox.lnk
+    Run D:\#Lnk\JetBrains.lnk
     Sleep 100
     MoveWindowsToCenter(True)
 Return
