@@ -31,9 +31,10 @@ Windows_Position_Default["PyCharm__Python解释器"] := [CenterX(), CenterY(), w
 
 win_w := 1600
 win_h := 1500
-Windows_Position_Default["PyCharm__提交变更"] := [CenterX(), CenterY(), win_w, win_h]
-Windows_Position_Default["PyCharm__查找"]    := [CenterX(), CenterY(), win_w, win_h]
-Windows_Position_Default["PyCharm__检查"]    := [CenterX(), CenterY(), win_w, win_h]
+Windows_Position_Default["PyCharm__提交变更"]     := [CenterX(), CenterY(), win_w, win_h]
+Windows_Position_Default["PyCharm__查找"]        := [CenterX(), CenterY(), win_w, win_h]
+Windows_Position_Default["PyCharm__检查"]        := [CenterX(), CenterY(), win_w, win_h]
+Windows_Position_Default["PyCharm__将提交推送到"] := [CenterX(), CenterY(), win_w, win_h]
 
 
 

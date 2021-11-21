@@ -154,6 +154,7 @@ Return
     win_process_name := result.win_process_name
     if (win_process_name="LOL_Client") {
         Run, .\Setup.bat Stop_Game, %A_WorkingDir%, Hide
+        Return
     }
     if (IsDesktops() or IsGame()) {
         Return
