@@ -149,11 +149,15 @@ Return
 
 ; 结束应用
 <#BackSpace::
+    result := GetActiveWindowsInfo()
+    win_id := result.win_id
+    win_process_name := result.win_process_name
+    if (win_process_name="LOL_Client") {
+        Run, .\Setup.bat Stop_Game, %A_WorkingDir%, Hide
+    }
     if (IsDesktops() or IsGame()) {
         Return
     }
-    result := GetActiveWindowsInfo()
-    win_id := result.win_id
     WinClose, ahk_id %win_id%
 Return
 

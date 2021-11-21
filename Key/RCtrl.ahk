@@ -1,8 +1,8 @@
 ﻿
 #include %A_WorkingDir%\Config\All.ahk
+#include %A_WorkingDir%\Tool\Base.ahk
 #Include %A_WorkingDir%\Other\Keyboard.ahk
 #include %A_WorkingDir%\Lib\TrayIcon.ahk
-#include %A_WorkingDir%\Tool\Base.ahk
 #include %A_WorkingDir%\Tool\Init.ahk
 #include %A_WorkingDir%\Tool\Other.ahk
 #include %A_WorkingDir%\Tool\Windows.ahk

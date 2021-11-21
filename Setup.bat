@@ -44,10 +44,20 @@ if not exist %input_private_ahk% (
 
 set command=%1
 
+@REM 运行游戏时结束Space.ahk
+if "%command%"=="Stop_Space" (
+    start %AHK% .\Key\Space.ahk Stop
+    echo.
+    echo  Stop .\Key\Space.ahk
+    exit
+)
+
 @REM 直接运行脚本 Start_Ahk.bat / Setup.bat
 if "%command%"=="" (
-    set command=start
+    set command=Start
     start %AHK% .\Setup.ahk
+    echo.
+    echo  Start .\Setup.ahk
 )
 
 @REM ============================================
@@ -92,6 +102,8 @@ if exist %test_ahk% (
 )
 @REM ============================================
 
+
 ping -n 2 127.0.0.1 > nul
 
 exit
+
