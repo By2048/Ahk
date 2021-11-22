@@ -109,8 +109,8 @@ Return
 <#Delete::Return
 
 ; 设置默认位置
-<#\::MoveWindowsToDefaultPosition("Default")
-<#+\::MoveWindowsToDefaultPosition("Backup")
+<#\::MoveWindowsToDefaultPosition()
+<#+\::MoveWindowsToBackupPosition()
 
 
 LWin & RShift::

@@ -513,7 +513,7 @@ MoveWindowsToMainMini(command)
 
 ; 将窗口移动到软件设置的默认位置
 ; return | None
-MoveWindowsToDefaultPosition(select="Default")
+MoveWindowsToXXXPosition(select="Default")
 {
     result := GetActiveWindowsInfo()
     
@@ -565,9 +565,14 @@ MoveWindowsToDefaultPosition(select="Default")
     }
     
     SetWindows(win_id, xx, yy, ww, hh, offset)
-
     ; 多屏幕切换时 部分软件需要多次操作
     SetWindows(win_id, xx, yy, ww, hh, offset)
-
-    ; HelpText("MoveWindowsToDefaultPosition", "center_down", "screen1", 1000)
+}
+MoveWindowsToDefaultPosition()
+{
+    MoveWindowsToXXXPosition("Default")
+}
+MoveWindowsToBackupPosition()
+{
+    MoveWindowsToXXXPosition("Backup")
 }

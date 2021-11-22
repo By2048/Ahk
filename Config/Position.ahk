@@ -50,10 +50,23 @@ win_w := 900
 win_h := 1500
 Windows_Position_Default["_#32770_浏览文件夹"] := [CenterX(), CenterY(), win_w, win_h]
 
+win_w := 2000
+win_h := 1500
+Windows_Position_Default["_#32770_打开"]    := [CenterX(), CenterY(), win_w, win_h]
+Windows_Position_Default["_#32770_打开文件"] := [CenterX(), CenterY(), win_w, win_h]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 win_w := 1000
 win_h := 1500
 ; 开启关闭 Windows 功能
 Windows_Position_Default["OptionalFeatures_NativeHWNDHost"] := [CenterX(), CenterY(), win_w, win_h]
+
+win_w := 2200
+win_h := 1600
+; 设置
+Windows_Position_Default["ApplicationFrameHost_ApplicationFrameWindow"] := [CenterX(), CenterY(), win_w, win_h]
+
 
 win_w := screen_3.w   -6-6
 win_h := screen_3.h/2 -6-6
