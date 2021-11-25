@@ -35,7 +35,7 @@ Return
 >^p::RunNormalUser(WT " -d T:\")
 >^+p::Run %WT% -d T:\
 
->^a::Run D:\#Lnk\MuMu.lnk
+>^a::Run D:\#Lnk\Android.lnk
 >^s::Run D:\#Lnk\Sandboxie.lnk
 >^f::Run D:\#Lnk\FreeFileSync.lnk
 >^g::

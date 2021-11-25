@@ -49,20 +49,20 @@ Screenshot(screens="screen1",keep_path="backup")
     }
 
     if (screens="screen1") {
-        x:=screen_1.x
-        y:=screen_1.y
-        w:=screen_1.w
-        h:=screen_1.h
+        x:=Screen1.x
+        y:=Screen1.y
+        w:=Screen1.w
+        h:=Screen1.h
     } else if (screens="screen2") {
-        x:=screen_2.x/screen_1.dpi
-        y:=screen_2.y/screen_1.dpi
-        w:=screen_2.w*screen_2.dpi/screen_1.dpi
-        h:=screen_2.h*screen_2.dpi/screen_1.dpi
+        x:=Screen2.x/Screen1.dpi
+        y:=Screen2.y/Screen1.dpi
+        w:=Screen2.w*Screen2.dpi/Screen1.dpi
+        h:=Screen2.h*Screen2.dpi/Screen1.dpi
     } else if (screens="screen3") {
-        x:=screen_3.x/screen_1.dpi
-        y:=screen_3.y/screen_1.dpi
-        w:=screen_3.w*screen_3.dpi/screen_1.dpi
-        h:=screen_3.h*screen_3.dpi/screen_1.dpi
+        x:=Screen3.x/Screen1.dpi
+        y:=Screen3.y/Screen1.dpi
+        w:=Screen3.w*Screen3.dpi/Screen1.dpi
+        h:=Screen3.h*Screen3.dpi/Screen1.dpi
     }
 
     x:=Round(x)
@@ -100,7 +100,7 @@ Screenshot_Quick()
 {
     FormatTime, name, _, yyyy-MM-dd HH-mm-ss
     file := Snipaste_Screenshot_Path_Tmp "\" name ".png"
-    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, screen_1.x, screen_1.y, screen_1.w, screen_1.h, file)
+    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, Screen1.x, Screen1.y, Screen1.w, Screen1.h, file)
     Run %cmd%
     SetTimer, delete_snipaste_auto_save_file, -1000
 }
@@ -143,16 +143,16 @@ Screenshot_Activate_Software()
 Snipaste(image="",screens="screen1")
 {
     image_size := GetImageSize(image)
-    image_w    := image_size[1]
-    image_h    := image_size[2]
+    image_w    := image_size["w"]
+    image_h    := image_size["h"]
 
-    if (screens="screen1" or screens="screen_1") {
-        x := screen_1.x + screen_1.w/2 - image_w/2
-        y := screen_1.y + screen_1.h/2 - image_h/2
+    if (screens="screen1" or screens="Screen1") {
+        x := Screen1.x + Screen1.w/2 - image_w/2
+        y := Screen1.y + Screen1.h/2 - image_h/2
     }
-    if (screens="screen2" or screens="screen_2") {
-        x := screen_2.x + screen_2.w/2 - image_w/2
-        y := screen_2.y + screen_2.h/2 - image_h/2
+    if (screens="screen2" or screens="Screen2") {
+        x := Screen2.x + Screen2.w/2 - image_w/2
+        y := Screen2.y + Screen2.h/2 - image_h/2
     }
     x := Round(x)
     y := Round(y)

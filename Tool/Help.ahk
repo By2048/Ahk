@@ -15,12 +15,12 @@ HelpImage(image="")
         GlobalBoolSet("help_image_show_status", False)
     } else {
         size := GetImageSize(image)
-        w := size[1] / screen_1.dpi
-        h := size[2] / screen_1.dpi
-        x := A_ScreenWidth/2  - w/2
-        y := A_ScreenHeight/2 - h/2
+        w := size["w"] / Screen1.dpi
+        h := size["h"] / Screen1.dpi
+        x := Screen1.w/2 - w/2
+        y := Screen1.h/2 - h/2
         Gui, Destroy
-        Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
+        Gui, +DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
         Gui, Margin, 1, 1
         Gui, Add, Picture, +Border W%w% H%h%, %image%
         Gui, Show, Center NA
@@ -50,20 +50,20 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
         font_hight := font_hight * n_count
     }
 
-    if (screens="screen1" or screens="screen_1") {
-        screen_x   := screen_1.x  , screen_y  := screen_1.y
-        screen_xx  := screen_1.xx , screen_yy := screen_1.yy
-        screen_w   := screen_1.w  , screen_h  := screen_1.h
-    } else if (screens="screen2" or screens="screen_2") {
-        screen_x   := screen_2.x  , screen_y  := screen_2.y
-        screen_xx  := screen_2.xx , screen_yy := screen_2.yy
-        screen_w   := screen_2.w  , screen_h  := screen_2.h
-    } else if (screens="screen3" or screens="screen_3") {
-        screen_x   := screen_3.x   , screen_y  := screen_3.y
-        screen_xx  := screen_3.xx  , screen_yy := screen_3.yy/2
-        screen_w   := screen_3.w   , screen_h  := screen_3.h/2
+    if (screens="screen1" or screens="Screen1") {
+        screen_x   := Screen1.x  , screen_y  := Screen1.y
+        screen_xx  := Screen1.xx , screen_yy := Screen1.yy
+        screen_w   := Screen1.w  , screen_h  := Screen1.h
+    } else if (screens="screen2" or screens="Screen2") {
+        screen_x   := Screen2.x  , screen_y  := Screen2.y
+        screen_xx  := Screen2.xx , screen_yy := Screen2.yy
+        screen_w   := Screen2.w  , screen_h  := Screen2.h
+    } else if (screens="screen3" or screens="Screen3") {
+        screen_x   := Screen3.x   , screen_y  := Screen3.y
+        screen_xx  := Screen3.xx  , screen_yy := Screen3.yy/2
+        screen_w   := Screen3.w   , screen_h  := Screen3.h/2
     }
-    screen_dpi := screen_1.dpi
+    screen_dpi := Screen1.dpi
 
     zh_cn_count := ZH_CN(data)
     data_count := StrLen(data)

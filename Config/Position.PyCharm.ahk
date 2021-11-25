@@ -1,8 +1,8 @@
 ﻿
 win_x := 60 
 win_y := 30
-win_w := screen_1.w - win_x*2
-win_h := screen_1.h - win_y*2
+win_w := Screen1.w - win_x*2
+win_h := Screen1.h - win_y*2
 Windows_Position_Default["PyCharm"] := [win_x, win_y, win_w, win_h]
 Windows_Position_Default["PyCharm__更改"] := [win_x, win_y, win_w, win_h]
 

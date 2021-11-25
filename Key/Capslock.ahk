@@ -17,10 +17,10 @@ $CapsLock::
     MouseGetPos, x, y
 
     ; 屏幕中心
-    x1 := screen_1.x + screen_1.w/2
-    y1 := screen_1.y + screen_1.h/2
-    x2 := screen_2.x + screen_2.w/2
-    y2 := screen_2.y + screen_2.h/2
+    x1 := Screen1.x + Screen1.w/2
+    y1 := Screen1.y + Screen1.h/2
+    x2 := Screen2.x + Screen2.w/2
+    y2 := Screen2.y + Screen2.h/2
 
     offset := 300 
     

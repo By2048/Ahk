@@ -1,12 +1,30 @@
 ﻿
 
+#if ( CheckWindowsActive( "" , "#32770" , "属性"    ) )
+
+    >!\::
+        Send ^{Tab 4}
+        Sleep 500
+        Send !i
+        Sleep 500
+        Send !r
+        Sleep 500
+        Send !a
+        Sleep 500
+        Send {Enter}
+    Return
+
+#if
+
+
 #if ( CheckWindowsActive( "" , "#32770" , "打开"    ) )
 #if ( CheckWindowsActive( "" , "#32770" , "打开文件" ) )
+#if ( CheckWindowsActive( "" , "#32770" , "更改图标" ) )
 
-    <#\::
+    <!\::
 
 
-    ; https://wyagd001.github.io/zh-cn/docs/commands/OnMessage.htm#SendString
+        ; https://wyagd001.github.io/zh-cn/docs/commands/OnMessage.htm#SendString
 
         MoveWindowsToDefaultPosition()
         Sleep 500
@@ -19,8 +37,6 @@
 
         ControlGet, curCtrlHwnd, Hwnd, , %control_id%, ahk_id %win_id%
         ControlGetPos cX, cY, cW, cH, , ahk_id %curCtrlHwnd%
-        ControlGetText, ctrlTxt, , ahk_id %curCtrlHwnd%
-
 
         x := cX - 3
         y := cY + 3

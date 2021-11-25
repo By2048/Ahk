@@ -80,13 +80,13 @@ show_image()
 
     image      := get_image()
     image_size := GetImageSize(image)
-    image_w    := image_size[1]
-    image_h    := image_size[2]
-    image_x    := screen_1.w/2 - image_w/2
-    image_y    := screen_1.h/2 - image_h/2
+    image_w    := image_size["w"]
+    image_h    := image_size["h"]
+    image_x    := Screen1.w/2 - image_w/2
+    image_y    := Screen1.h/2 - image_h/2
 
-    image_w := image_w/screen_1.dpi
-    image_h := image_h/screen_1.dpi
+    image_w := image_w/Screen1.dpi
+    image_h := image_h/Screen1.dpi
     
     Gui, Destroy
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption

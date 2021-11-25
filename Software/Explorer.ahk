@@ -22,6 +22,16 @@
 
 
 
+#if ( CheckWindowsActive( "Explorer" , "#32770" ) )
+    ^Tab::Return
+    ^+Tab::Return
+    !Tab::Send ^{Tab}
+    !+Tab::Send ^+{Tab}
+    !CapsLock::Send !{F4}
+#if
+
+
+
 #if ( CheckWindowsActive("Explorer") )
 
     ; Ctrl+F 选择搜索框

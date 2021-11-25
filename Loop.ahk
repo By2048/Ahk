@@ -86,8 +86,8 @@ Loop {
             ;     win_w  := result.win_w
             ;     win_h  := result.win_h
             ; }
-            xx := screen_3.x + screen_3.w/2 - win_w/2
-            yy := screen_3.y + screen_3.h/4 - win_h/2
+            xx := Screen3.x + Screen3.w/2 - win_w/2
+            yy := Screen3.y + Screen3.h/4 - win_h/2
             SetWindows(win_id, xx, yy, win_w, win_h)
             Continue
         }
@@ -95,8 +95,8 @@ Loop {
 
     ; Windows标准对话框
     if (win_class = "#32770") {
-        xx := screen_1.x + screen_1.w/2 - win_w/2
-        yy := screen_1.y + screen_1.h/2 - win_h/2
+        xx := Screen1.x + Screen1.w/2 - win_w/2
+        yy := Screen1.y + Screen1.h/2 - win_h/2
         offset := 70
         SetWindows(win_id, xx, yy, win_w, win_h, offset)
         Continue

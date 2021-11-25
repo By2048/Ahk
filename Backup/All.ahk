@@ -82,11 +82,7 @@ FileMove, T:\vscode.png, T:\VSCode.png
 
 Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ; 回收站
 
-size:=GetImageSize(image)
-w:=size[1]
-h:=size[2]
-x:=A_ScreenWidth/2-w/2
-y:=A_ScreenHeight/2-h/2
+
 
 SplashImage, %image%, X%x% Y%y% H%h% W%w% B1   ;  全屏幕居中
 SplashImage, %image%, B1  ; 去除任务栏屏幕居中
@@ -198,32 +194,32 @@ WinWaitClose
 
 
 
-Space:: 
-    CoordMode, Mouse, Window
-    CoordMode, Pixel, Window
-    x_origin:=0
-    y_origin:=0
-    x_find:=0
-    y_find:=0
-    MouseGetPos, x_origin, y_origin
-    image:="E:\Sync\Ahk\Image\Software\CloudMusicCloseDetail.png"
-    size:=GetImageSize(image)
-    w:=size[1]
-    h:=size[2]
-    CoordMode, Pixel, Screen
-    ImageSearch, x_find, y_find, 0, 0, A_ScreenWidth, A_ScreenHeight, %image%
-    MsgBox, %x_find% | %y_find%
-    MsgBox, %A_ScreenWidth% | %A_ScreenHeight%
-    if (x_find and y_find) {
-        x_find:=x_find+w/2
-        y_find:=y_find+h/2
-        MouseClick, Left, x_find, y_find, 1, 0
-    } else {
-        MouseClick, Left, 57, 1765, 1, 0
-    }
-    CoordMode, Pixel, Window
-    MouseMove x_origin, y_origin, 0
-Return
+; Space:: 
+;     CoordMode, Mouse, Window
+;     CoordMode, Pixel, Window
+;     x_origin:=0
+;     y_origin:=0
+;     x_find:=0
+;     y_find:=0
+;     MouseGetPos, x_origin, y_origin
+;     image:="E:\Sync\Ahk\Image\Software\CloudMusicCloseDetail.png"
+;     size:=GetImageSize(image)
+;     w:=size[1]
+;     h:=size[2]
+;     CoordMode, Pixel, Screen
+;     ImageSearch, x_find, y_find, 0, 0, A_ScreenWidth, A_ScreenHeight, %image%
+;     MsgBox, %x_find% | %y_find%
+;     MsgBox, %A_ScreenWidth% | %A_ScreenHeight%
+;     if (x_find and y_find) {
+;         x_find:=x_find+w/2
+;         y_find:=y_find+h/2
+;         MouseClick, Left, x_find, y_find, 1, 0
+;     } else {
+;         MouseClick, Left, 57, 1765, 1, 0
+;     }
+;     CoordMode, Pixel, Window
+;     MouseMove x_origin, y_origin, 0
+; Return
 
 
 

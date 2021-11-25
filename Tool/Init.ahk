@@ -10,10 +10,10 @@ global init_config_show_status := False
 ; 项目启动时创建的居中进度条 
 DefaultProgress()
 {
-    w := 150*2
-    h := 15*2
-    x := screen_1.w/2 - w/2
-    y := screen_1.h/2 - h/2
+    w := 150 * 2
+    h := 15  * 2
+    x := Screen1.w/2 - w/2
+    y := Screen1.h/2 - h/2
 
     w := w/2
     h := h/2
@@ -39,6 +39,7 @@ InitConfig()
     CoordMode, Pixel, Screen
     CoordMode, Mouse, Screen
 
+    global Init
     global init_config_show_status
 
     if (init_config_show_status=True) {
@@ -47,35 +48,42 @@ InitConfig()
         Return
     }
 
-    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
-    Gui, Margin, 3, 3
+    Gui, +DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
 
     content := "`n"
-    for index, value in Init_Config {
+    for index, value in Init["config"] {
         content .= value
         content .= "`n"
     }
     
-    w := Init_W * screen_1.dpi
-    h := Init_H * screen_1.dpi
-    x := screen_3.x + screen_3.w/2 - w/2    
-    y := screen_3.y + screen_3.h/3 - h/2
-    
-    if (screen_count=1) {
-        x := screen_1.x + screen_1.w/2 - w/2    
-        y := screen_1.y + screen_1.h/2 - h/2
-    }
-    
-    w := w / screen_1.dpi
+    w := Init["width"]
+    h := Init["height"]
 
-    Gui, font, s19, Source Code Pro
-    Gui, Add, Text, w%w% +Center +Border, Ahk Config
+    ; Windows Dip 自动处理问题
+    w_dpi := w * Screen1.dpi
+    h_dpi := h * Screen1.dpi
+    
+    if (Screen_Count<=2) {
+        x := Screen1.x + Screen1.w/2 - w_dpi/2
+        y := Screen1.y + Screen1.h/2 - h_dpi/2
+    }
+
+    if (Screen_Count=3) {
+        x := Screen3.x + Screen3.w/2 - w_dpi/2
+        y := Screen3.y + Screen3.h/3 - w_dpi/2
+    }
+
+    Gui, font, s20, Source Code Pro
+    Gui, Margin, 0, 30
+    Gui, Add, Text, w%w% +Center -Border, Ahk Config
+
 
     global init_config_show_status
-    if (init_config_show_status=False) {
+    if (init_config_show_status = False) {
+        Gui, Margin, 0, 0
         Gui, font, s15, Source Code Pro
         Gui, Add, Text, w%w% -Center -Border, %content%
-        Gui, Show, x%x% y%y% NA
-        init_config_show_status:=True
+        Gui, Show, X%x% Y%y% W%w% H%h% NA
+        init_config_show_status := True
     }
 }

@@ -51,8 +51,8 @@ MouseClickImage(image, trans="")
     MouseGetPos, x_origin, y_origin
     
     image_size := GetImageSize(image)
-    image_w    := image_size[1]
-    image_h    := image_size[2]
+    image_w    := image_size["w"]
+    image_h    := image_size["h"]
 
     WinGetPos, win_x, win_y, win_w, win_h, A
 
@@ -86,8 +86,8 @@ MouseClickImage(image, trans="")
 MouseClickImageXYWH(x1,y1,x2,y2,image,key="Left",trans="")
 {
     image_size := GetImageSize(image)
-    image_w    := image_size[1]
-    image_h    := image_size[2]
+    image_w    := image_size["w"]
+    image_h    := image_size["h"]
 
     x_find := 0
     y_find := 0

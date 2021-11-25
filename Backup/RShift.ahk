@@ -7,9 +7,9 @@
 ; ; w := 200
 ; w := image_w
 ; h := 62
-; x := screen_1.w/2 - w/2
-; ; y := screen_1.h - h - 5 ; 屏幕底部
-; y := screen_1.h/2 + image_h/2 + 3 ; 图片底部
+; x := Screen1.w/2 - w/2
+; ; y := Screen1.h - h - 5 ; 屏幕底部
+; y := Screen1.h/2 + image_h/2 + 3 ; 图片底部
 ; w := w/2
 ; h := h/2
 ; Progress, b fs19 zh0 X%x% Y%y% W%w% H%h%, %hotkeys_index%/%hotkeys_total%

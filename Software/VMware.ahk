@@ -59,7 +59,7 @@
         xx := x  + 50
         MouseClickDrag, Left, x, y, xx, yy, 1
 
-        MouseMove, screen_1.w/2, screen_1.h/2
+        MouseMove, Screen1.w/2, Screen1.h/2
 
     Return
 

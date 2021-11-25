@@ -33,20 +33,21 @@ GetFileInfo(path)
 ; 获取图片大小
 GetImageSize(path)
 {
-    result := GetFileInfo(path)
+    info := GetFileInfo(path)
 
-    if (not result) {
-        result := [ -1 , -1 ]
-        Return result
+    if (not file_info) {
+        width  := -1
+        height := -1
     }
 
-    width  := result["宽度"]
-    height := result["高度"]
-    
+    width  := info["宽度"]
+    height := info["高度"]
     width  := StrReplace(width,  " 像素", "")
     height := StrReplace(height, " 像素", "")
 
-    result := [ width , height ]
+    result := { "w" : width , "h" : height }
+    result["width"]  := result["w"]
+    result["height"] := result["h"]
 
-    Return result
+    return result
 }

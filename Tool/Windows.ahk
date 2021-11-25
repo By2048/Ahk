@@ -14,9 +14,9 @@ IsDesktops()
     WinGetClass, win_class, A
     if (win_class="WorkerW") {
         HelpText("Desktop", "center_down", "screen1", 1000)
-        Return True
+        return True
     } else {
-        Return False
+        return False
     }
 }
 
@@ -50,10 +50,10 @@ IsGame()
     for index, value in game_process_name {
         if (value = process_name) {
             HelpText("Game", "center_down", "screen3", 1000)
-            Return True
+            return True
         }
     }
-    Return False
+    return False
 }
 
 
@@ -79,23 +79,23 @@ CheckWindowsActive(_process_name_="", _class_="", _title_="")
     if (StrLen(_process_name_)>0) {
         if (win_process_name != _process_name_) {
             result := False
-            Return result
+            return result
         }
     }
     if (StrLen(_class_)>0) {
         if (win_class != _class_) {
             result := False
-            Return result
+            return result
         }
     }
     if (StrLen(_title_)>0) {
         If (not InStr(win_title, _title_)) {
             result := False
-            Return result
+            return result
         }
     }
 
-    Return result
+    return result
 }
 
 
@@ -115,24 +115,24 @@ GetActiveWindowsInfo()
 	WinGetPos,   win_x, win_y, win_w, win_h,              ahk_id %win_id%
     
     in_screen := 1, screen_x :=0, screen_y := 0, screen_xx := 0, screen_yy := 0
-    if (win_x >= screen_1.x and win_x < screen_1.xx) {
+    if (win_x >= Screen1.x and win_x < Screen1.xx) {
         in_screen  := 1
-        screen_x   := screen_1.x   ,  screen_y := screen_1.y
-        screen_w   := screen_1.w   ,  screen_h := screen_1.h
-        screen_xx  := screen_1.xx  , screen_yy := screen_1.yy
-        screen_dpi := screen_1.dpi
-    } else if (win_x >= screen_2.x and win_x < screen_2.xx) {
+        screen_x   := Screen1.x   ,  screen_y := Screen1.y
+        screen_w   := Screen1.w   ,  screen_h := Screen1.h
+        screen_xx  := Screen1.xx  , screen_yy := Screen1.yy
+        screen_dpi := Screen1.dpi
+    } else if (win_x >= Screen2.x and win_x < Screen2.xx) {
         in_screen  := 2
-        screen_x   := screen_2.x   ,  screen_y := screen_2.y
-        screen_w   := screen_2.w   ,  screen_h := screen_2.h
-        screen_xx  := screen_2.xx  , screen_yy := screen_2.yy
-        screen_dpi := screen_2.dpi
-    } else if (win_x >= screen_3.x and win_x < screen_3.xx) {
+        screen_x   := Screen2.x   ,  screen_y := Screen2.y
+        screen_w   := Screen2.w   ,  screen_h := Screen2.h
+        screen_xx  := Screen2.xx  , screen_yy := Screen2.yy
+        screen_dpi := Screen2.dpi
+    } else if (win_x >= Screen3.x and win_x < Screen3.xx) {
         in_screen  := 3
-        screen_x   := screen_3.x   ,  screen_y := screen_3.y
-        screen_w   := screen_3.w   ,  screen_h := screen_3.h
-        screen_xx  := screen_3.xx  , screen_yy := screen_3.yy/2
-        screen_dpi := screen_3.dpi
+        screen_x   := Screen3.x   ,  screen_y := Screen3.y
+        screen_w   := Screen3.w   ,  screen_h := Screen3.h
+        screen_xx  := Screen3.xx  , screen_yy := Screen3.yy/2
+        screen_dpi := Screen3.dpi
     }
 
     result := {}
@@ -161,7 +161,10 @@ GetActiveWindowsInfo()
     result.screen_w           := screen_w
     result.screen_h           := screen_h
 
-    Return result
+    global Windows_Cache 
+    Windows_Cache := result
+
+    return result
 }
 
 
@@ -527,14 +530,14 @@ MoveWindowsToXXXPosition(select="Default")
     ; 按下Win键，此时在最上层激活的是Search(SearchApp)
     ; 而需要处理的是 StartMenu(StartMenuExperienceHost)
     if (win_process_name="Search") {
-        if (system_type="WinServer") {
+        if (System_Type="WinServer") {
             Process, Close, SearchUI.exe
             Sleep, 100
             WinActivate, ShellExperienceHost.exe
             Sleep, 300
             WinGet, win_id, ID, A
         }
-        if (system_type="Win10") {
+        if (System_Type="Win10") {
             Process, Close, SearchApp.exe
             Sleep, 100
             WinActivate, StartMenuExperienceHost.exe

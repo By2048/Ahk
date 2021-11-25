@@ -4,80 +4,95 @@
 
 ; 在 Input.ahk Private.ahk 中定义的快捷输入
 
-global Init_W := 750
-global Init_H := 900
+global Init := {}
 
-global Init_Config := []
+Init["width"]  := 750
+Init["height"] := 950
+Init["config"] := []
 
-NewLine()
+
+
+AddInitLine()
 {
-    global Init_Config    
+    global Init
     line := ""
-    length := Init_W/10
-    Loop, %length% {
+    length := Init["width"] / 10
+    Loop %length% {
         line := line "-"
     }
-    Init_Config.Push(line)
+    Init["config"].Push(line)
 }
 
-NewLine()
 
-Init_Config.Push( Format(" A_WorkingDir | {1}\ ", A_WorkingDir)                    )
 
-NewLine()
-if (screen_count>=1) {
-    _format_ := " [1] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
-    _value_  := []
-    _value_.Push( screen_1.x, screen_1.y, screen_1.xx, screen_1.yy )
-    _value_.Push( screen_1.dpi, screen_1.w, screen_1.h             )
-    Init_Config.Push( Format( _format_, _value_*) )
+GetInitConfig()
+{
+
+    global Init
+
+    AddInitLine()
+    Init["config"].Push( " A_WorkingDir | "  A_WorkingDir )
+    AddInitLine()
+    
+    if (Screen_Count>=1) {
+        _format_ := " [1] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
+        _value_  := []
+        _value_.Push( Screen1.x, Screen1.y, Screen1.xx, Screen1.yy )
+        _value_.Push( Screen1.dpi, Screen1.w, Screen1.h             )
+        Init["config"].Push( Format( _format_, _value_*) )
+    }
+    if (Screen_Count>=2) {
+        _format_ := " [2] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
+        _value_  := []
+        _value_.Push( Screen2.x, Screen2.y, Screen2.xx, Screen2.yy )
+        _value_.Push( Screen2.dpi, Screen2.w, Screen2.h             )
+        Init["config"].Push( Format( _format_, _value_*) )
+    }
+    if (Screen_Count>=3) {
+        _format_ := " [3] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
+        _value_  := []
+        _value_.Push( Screen3.x, Screen3.y, Screen3.xx, Screen3.yy )
+        _value_.Push( Screen3.dpi, Screen3.w, Screen3.h             )
+        Init["config"].Push( Format( _format_, _value_*) )
+    }
+    AddInitLine()
+
+    Init["config"].Push( Format("     Snipaste | {1} " , Snipaste_EXE)                    )
+    Init["config"].Push( Format("    Auto_Save | {1} " , Snipaste_Auto_Save_File)         )
+    Init["config"].Push( Format("  Path_Backup | {1} " , Snipaste_Screenshot_Path_Backup) )
+    Init["config"].Push( Format("     Path_Tmp | {1} " , Snipaste_Screenshot_Path_Tmp)    )
+    AddInitLine()
+
+    ; Init["config"].Push( Format("          WT | {1}" , WT)                                )
+    ; Init["config"].Push( Format("      Chrome | {1}" , Chrome)                            )
+    Init["config"].Push( Format("         CMD | {1}" , CMD)                               )
+    Init["config"].Push( Format("    TaskKill | {1}" , TaskKill)                          )
+    Init["config"].Push( Format("         Ahk | {1}" , Ahk)                               )
+    Init["config"].Push( Format("      Python | {1}" , Python)                            )
+    Init["config"].Push( Format(" HuntAndPeck | {1}" , HuntAndPeck)                       )
+    AddInitLine()
+
+    Init["config"].Push( Format(" JQB | {1} ", JQB_Phone)                                  )
+    Init["config"].Push( Format(" JQB | {1} ", JQB_Windows)                                  )
+    AddInitLine()
+
+    Init["config"].Push( " [date]         [time]         [datetime]                    "  )
+    AddInitLine()
+
+    Init["config"].Push( " 使用方式 \***\                                               "  )
+    Init["config"].Push( " phone          qq             qq1            qq2            "  )
+    Init["config"].Push( " qmail          qmail1         qmail2         gmail          "  )
+    Init["config"].Push( " pwd            aly            sfz                           "  )
+    AddInitLine()
+    Init["config"].Push( " py  py3  py.exe  py3.exe  gitx  pipjx  `-  `#  `;           "  )
+    AddInitLine()
+    Init["config"].Push( " nicotv         bi.free        bi.join        bi.getname     "  )
+    Init["config"].Push( " rename         history        screen         camera         "  )
+    Init["config"].Push( " scrcpy         update-icon    host           ssh            "  )
+    AddInitLine()
+
 }
-if (screen_count>=2) {
-    _format_ := " [2] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
-    _value_  := []
-    _value_.Push( screen_2.x, screen_2.y, screen_2.xx, screen_2.yy )
-    _value_.Push( screen_2.dpi, screen_2.w, screen_2.h             )
-    Init_Config.Push( Format( _format_, _value_*) )
-}
-if (screen_count>=3) {
-    _format_ := " [3] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
-    _value_  := []
-    _value_.Push( screen_3.x, screen_3.y, screen_3.xx, screen_3.yy )
-    _value_.Push( screen_3.dpi, screen_3.w, screen_3.h             )
-    Init_Config.Push( Format( _format_, _value_*) )
-}
-NewLine()
 
-Init_Config.Push( Format("     Snipaste | {1} " , Snipaste_EXE)                    )
-Init_Config.Push( Format("    Auto_Save | {1} " , Snipaste_Auto_Save_File)         )
-Init_Config.Push( Format("  Path_Backup | {1} " , Snipaste_Screenshot_Path_Backup) )
-Init_Config.Push( Format("     Path_Tmp | {1} " , Snipaste_Screenshot_Path_Tmp)    )
-NewLine()
 
-Init_Config.Push( Format("          WT | {1}" , WT)                                )
-Init_Config.Push( Format("      Chrome | {1}" , Chrome)                            )
-Init_Config.Push( Format("         CMD | {1}" , CMD)                               )
-Init_Config.Push( Format("    TaskKill | {1}" , TaskKill)                          )
-Init_Config.Push( Format("         Ahk | {1}" , Ahk)                               )
-Init_Config.Push( Format("      Python | {1}" , Python)                            )
-Init_Config.Push( Format(" HuntAndPeck | {1}" , HuntAndPeck)                       )
-NewLine()
 
-Init_Config.Push( Format(" JQB | {1} ", JQB_Phone)                                  )
-Init_Config.Push( Format(" JQB | {1} ", JQB_Windows)                                  )
-NewLine()
-
-Init_Config.Push( " [date]         [time]         [datetime]                    "  )
-NewLine()
-
-Init_Config.Push( " 使用方式 \***\                                               "  )
-Init_Config.Push( " phone          qq             qq1            qq2            "  )
-Init_Config.Push( " qmail          qmail1         qmail2         gmail          "  )
-Init_Config.Push( " pwd            aly            sfz                           "  )
-NewLine()
-Init_Config.Push( " py  py3  py.exe  py3.exe  gitx  pipjx  `-  `#  `;           "  )
-NewLine()
-Init_Config.Push( " nicotv         bi.free        bi.join        bi.getname     "  )
-Init_Config.Push( " rename         history        screen         camera         "  )
-Init_Config.Push( " scrcpy         update-icon    host           ssh            "  )
-NewLine()
+GetInitConfig()
