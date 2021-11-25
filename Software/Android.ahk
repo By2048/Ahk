@@ -214,58 +214,58 @@
 
     ; 兵种选择
     ~e::
-        global software_android_rshift_current
-        software_android_rshift_current:=0
+        global Software_Android_Rshift_Current
+        Software_Android_Rshift_Current:=0
     Return
     ~1::
-        global software_android_rshift_current
-        software_android_rshift_current:=1
+        global Software_Android_Rshift_Current
+        Software_Android_Rshift_Current:=1
     Return
     ~2::
-        global software_android_rshift_current
-        software_android_rshift_current:=2
+        global Software_Android_Rshift_Current
+        Software_Android_Rshift_Current:=2
     Return
     ~3::
-        global software_android_rshift_current
-        software_android_rshift_current:=3
+        global Software_Android_Rshift_Current
+        Software_Android_Rshift_Current:=3
     Return
     ~4::
-        global software_android_rshift_current
-        software_android_rshift_current:=4
+        global Software_Android_Rshift_Current
+        Software_Android_Rshift_Current:=4
     Return
     ~5::
-        global software_android_rshift_current
-        software_android_rshift_current:=5
+        global Software_Android_Rshift_Current
+        Software_Android_Rshift_Current:=5
     Return
     ~6::
-        global software_android_rshift_current
-        software_android_rshift_current:=6
+        global Software_Android_Rshift_Current
+        Software_Android_Rshift_Current:=6
     Return
     ~7::
-        global software_android_rshift_current
-        software_android_rshift_current:=7
+        global Software_Android_Rshift_Current
+        Software_Android_Rshift_Current:=7
     Return
 
     ; 按顺序切换兵种 6-1
     LShift::
-        global software_android_rshift_loop
-        global software_android_rshift_current
-        if (software_android_rshift_current=0) {
-            next_index:=software_android_rshift_loop.MaxIndex()
-            software_android_rshift_current:=software_android_rshift_loop[next_index]
-            Send %software_android_rshift_current%
+        global Software_Android_Rshift_Loop
+        global Software_Android_Rshift_Current
+        if (Software_Android_Rshift_Current=0) {
+            next_index:=Software_Android_Rshift_Loop.MaxIndex()
+            Software_Android_Rshift_Current:=Software_Android_Rshift_Loop[next_index]
+            Send %Software_Android_Rshift_Current%
             Return
         } else {
-            for index,value in software_android_rshift_loop {
-                if (value=software_android_rshift_current) {
+            for index,value in Software_Android_Rshift_Loop {
+                if (value=Software_Android_Rshift_Current) {
                     if (index=1) {
-                        next_index:=software_android_rshift_loop.MaxIndex()
-                        software_android_rshift_current:=software_android_rshift_loop[next_index]
-                        Send %software_android_rshift_current%
+                        next_index:=Software_Android_Rshift_Loop.MaxIndex()
+                        Software_Android_Rshift_Current:=Software_Android_Rshift_Loop[next_index]
+                        Send %Software_Android_Rshift_Current%
                         Return
                     } else {
-                        software_android_rshift_current:=software_android_rshift_loop[index-1]
-                        Send %software_android_rshift_current%
+                        Software_Android_Rshift_Current:=Software_Android_Rshift_Loop[index-1]
+                        Send %Software_Android_Rshift_Current%
                         Return
                     }
                 }
@@ -275,22 +275,22 @@
 
     ; 按顺序切换兵种 1-6
     LAlt::
-        global software_android_rshift_loop
-        global software_android_rshift_current
-        if (software_android_rshift_current=0) {
-            software_android_rshift_current:=1
-            Send %software_android_rshift_current%
+        global Software_Android_Rshift_Loop
+        global Software_Android_Rshift_Current
+        if (Software_Android_Rshift_Current=0) {
+            Software_Android_Rshift_Current:=1
+            Send %Software_Android_Rshift_Current%
             Return
         } else {
-            for index,value in software_android_rshift_loop {
-                if (value=software_android_rshift_current) {
-                    if (index=software_android_rshift_loop.MaxIndex()) {
-                        software_android_rshift_current:=1
-                        Send %software_android_rshift_current%
+            for index,value in Software_Android_Rshift_Loop {
+                if (value=Software_Android_Rshift_Current) {
+                    if (index=Software_Android_Rshift_Loop.MaxIndex()) {
+                        Software_Android_Rshift_Current:=1
+                        Send %Software_Android_Rshift_Current%
                         Return
                     } else {
-                        software_android_rshift_current:=software_android_rshift_loop[index+1]
-                        Send %software_android_rshift_current%
+                        Software_Android_Rshift_Current:=Software_Android_Rshift_Loop[index+1]
+                        Send %Software_Android_Rshift_Current%
                         Return
                     }
                 }

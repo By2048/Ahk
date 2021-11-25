@@ -73,32 +73,27 @@ Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"     ] ) ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Software\Android.ahk
-global software_android_rshift_loop    := [ 1, 2, 3, 4, 5, 6, 7 ]
-global software_android_rshift_current := 0
+global Software_Android_Rshift_Loop    := [ 1, 2, 3, 4, 5, 6, 7 ]
+global Software_Android_Rshift_Current := 0
 
 ; Software\LOL.ahk
-global lol_x  := 0
-global lol_y  := 0
-global lol_x1 := 55
-global lol_y1 := 400
-global lol_x2 := 55
-global lol_y2 := 550
-global lol_x3 := 55
-global lol_y3 := 710
-global lol_x4 := 55
-global lol_y4 := 880
+global Software_LOL := []
+Software_LOL[1] := [ 55 , 400]
+Software_LOL[2] := [ 55 , 550]
+Software_LOL[3] := [ 55 , 710]
+Software_LOL[4] := [ 55 , 880]
 
 ; Software\CloudMusic.ahk
-global cloud_music_volume := -1
+global Software_Cloud_Music_Volume := -1
 
 ; Software\WPS.ahk
 ; WPS Sheet 图片截图 [1]System [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
 ; [sheet, start[x], end[y], multi_line, image_file]
-global WPS_Hotkeys_Image := []
-WPS_Hotkeys_Image.Push( "3 A1 J31 0 E:\Project\Ahk\Image\RShift\Windows.png"         )
-WPS_Hotkeys_Image.Push( "4 A1 J21 0 E:\Project\Ahk\Image\RCtrl.png"                  )
-WPS_Hotkeys_Image.Push( "6 A1 K20 0 E:\Project\Ahk\Image\RShift\PyCharm-Fxx.png"     )
-WPS_Hotkeys_Image.Push( "6 L1 U31 0 E:\Project\Ahk\Image\RShift\PyCharm.png"         )
-WPS_Hotkeys_Image.Push( "8 A1 G27 0 E:\Project\Ahk\Image\RShift\Xshell.png"          )
-WPS_Hotkeys_Image.Push( "9 A1 I41 6 E:\Project\Ahk\Image\RShift\Chrome.png"          )
-WPS_Hotkeys_Image.Push( "9 J1 P26 2 E:\Project\Ahk\Image\RShift\Chrome-Bilibili.png" )
+global Software_WPS_Hotkeys_Image := []
+Software_WPS_Hotkeys_Image.Push( "3 A1 J31 0 E:\Project\Ahk\Image\RShift\Windows.png"         )
+Software_WPS_Hotkeys_Image.Push( "4 A1 J21 0 E:\Project\Ahk\Image\RCtrl.png"                  )
+Software_WPS_Hotkeys_Image.Push( "6 A1 K20 0 E:\Project\Ahk\Image\RShift\PyCharm-Fxx.png"     )
+Software_WPS_Hotkeys_Image.Push( "6 L1 U31 0 E:\Project\Ahk\Image\RShift\PyCharm.png"         )
+Software_WPS_Hotkeys_Image.Push( "8 A1 G27 0 E:\Project\Ahk\Image\RShift\Xshell.png"          )
+Software_WPS_Hotkeys_Image.Push( "9 A1 I41 6 E:\Project\Ahk\Image\RShift\Chrome.png"          )
+Software_WPS_Hotkeys_Image.Push( "9 J1 P26 2 E:\Project\Ahk\Image\RShift\Chrome-Bilibili.png" )

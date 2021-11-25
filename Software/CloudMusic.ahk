@@ -13,34 +13,34 @@
     ]::Send !]
 
     =::
-        global cloud_music_volume
-        if (cloud_music_volume = -1){
+        global Software_Cloud_Music_Volume
+        if (Software_Cloud_Music_Volume = -1){
             Send !{- 10}
             Send !{= 5}
-            cloud_music_volume := 5
+            Software_Cloud_Music_Volume := 5
         } else {
             Send !=
-            cloud_music_volume := cloud_music_volume + 1
+            Software_Cloud_Music_Volume := Software_Cloud_Music_Volume + 1
         }
-        if (cloud_music_volume >= 10) {
-            cloud_music_volume := 10
+        if (Software_Cloud_Music_Volume >= 10) {
+            Software_Cloud_Music_Volume := 10
         }
-        HelpText(cloud_music_volume , "center_down" ,   , 200)
+        HelpText(Software_Cloud_Music_Volume , "center_down" ,   , 200)
     Return
     -::
-        global cloud_music_volume
-        if (cloud_music_volume = -1){
+        global Software_Cloud_Music_Volume
+        if (Software_Cloud_Music_Volume = -1){
             Send !{- 10}
             Send !{= 5}
-            cloud_music_volume := 5
+            Software_Cloud_Music_Volume := 5
         } else {
             Send !-
-            cloud_music_volume := cloud_music_volume - 1
+            Software_Cloud_Music_Volume := Software_Cloud_Music_Volume - 1
         }
-        if (cloud_music_volume <= 0) {
-            cloud_music_volume := 0
+        if (Software_Cloud_Music_Volume <= 0) {
+            Software_Cloud_Music_Volume := 0
         }
-        HelpText(cloud_music_volume , "center_down" ,   , 200)
+        HelpText(Software_Cloud_Music_Volume , "center_down" ,   , 200)
     Return
 
     ; 列表上一首
