@@ -18,21 +18,21 @@ global WW, WH, WX, WY
 
 ; screen | Screen1 Screen2 Screen3
 Center(screen="") {
-    global win_w, win_h
+    global WW, WH
     if (not screen) {
         screen := "Screen1"
     }
     if (screen="Screen1" or screen="screen_1") {
-        win_x := Screen1.x + Screen1.w/2 - win_w/2
-        win_y := Screen1.y + Screen1.h/2 - win_h/2
+        WX := Screen1.x + Screen1.w/2 - WW/2
+        WY := Screen1.y + Screen1.h/2 - WH/2
     } else if (screen="Screen2" or screen="screen_2") {
-        win_x := Screen2.x + Screen2.w/2 - win_w/2
-        win_y := Screen2.y + Screen2.h/2 - win_h/2
+        WX := Screen2.x + Screen2.w/2 - WW/2
+        WY := Screen2.y + Screen2.h/2 - WH/2
     } else if (screen="Screen3" or screen="screen_3") {
-        win_x := Screen3.x + Screen3.w/2 - win_w/2
-        win_y := Screen3.y + Screen3.h/2 - win_h/2
+        WX := Screen3.x + Screen3.w/2 - WW/2
+        WY := Screen3.y + Screen3.h/2 - WH/2
     }
-    return [win_x , win_y]
+    return [WX , WY]
 }
 
 CenterX(screen="") {
@@ -46,156 +46,156 @@ CenterY(screen="") {
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-win_w := 900
-win_h := 1500
-Windows_Position_Default["_#32770_浏览文件夹"] := [CenterX(), CenterY(), win_w, win_h]
-Windows_Position_Default["_#32770_浏览计算机"] := [CenterX(), CenterY(), win_w, win_h]
+WW := 900
+WH := 1500
+Windows_Position_Default["_#32770_浏览文件夹"] := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["_#32770_浏览计算机"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := 2000
-win_h := 1500
-Windows_Position_Default["_#32770_打开"]    := [CenterX(), CenterY(), win_w, win_h]
-Windows_Position_Default["_#32770_打开文件"] := [CenterX(), CenterY(), win_w, win_h]
+WW := 2000
+WH := 1500
+Windows_Position_Default["_#32770_打开"]    := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["_#32770_打开文件"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := 1500
-win_h := 1500
-Windows_Position_Default["_#32770_编辑环境变量"] := [CenterX(), CenterY(), win_w, win_h]
+WW := 1500
+WH := 1500
+Windows_Position_Default["_#32770_编辑环境变量"] := [CenterX(), CenterY(), WW, WH]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-win_w := 1000
-win_h := 1500
+WW := 1000
+WH := 1500
 ; 开启关闭 Windows 功能
-Windows_Position_Default["OptionalFeatures_NativeHWNDHost"] := [CenterX(), CenterY(), win_w, win_h]
+Windows_Position_Default["OptionalFeatures_NativeHWNDHost"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := 2400
-win_h := 1600
+WW := 2400
+WH := 1600
 ; 设置
-Windows_Position_Default["ApplicationFrameHost_ApplicationFrameWindow"] := [CenterX(), CenterY(), win_w, win_h]
+Windows_Position_Default["ApplicationFrameHost_ApplicationFrameWindow"] := [CenterX(), CenterY(), WW, WH]
 
 
-win_w := Screen3.w   -6-6
-win_h := Screen3.h/2 -6-6
-win_x := Screen3.x   + 6
-win_y := Screen3.y   + 6
-Windows_Position_Default["TaskMGR"] := [win_x, win_y, win_w, win_h]
+WW := Screen3.w   -6-6
+WH := Screen3.h/2 -6-6
+WX := Screen3.x   + 6
+WY := Screen3.y   + 6
+Windows_Position_Default["TaskMGR"] := [WX, WY, WW, WH]
 
-win_w := 2150
-win_h := 1250
-Windows_Position_Default["Start"] := [CenterX(), CenterY(), win_w, win_h]
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-win_x := 10
-win_y := 10
-win_w := Screen1.w/2 -10-10 +100
-win_h := Screen1.h   -10-10
-Windows_Position_Default["TIM"] := [win_x, win_y, win_w, win_h]
-
-win_x := 10
-win_y := 10
-win_w := Screen1.w/2 -10-10 +100
-win_h := Screen1.h   -10-10
-Windows_Position_Default["DingDing"] := [win_x, win_y, win_w, win_h]
-
-win_x := Screen1.w/2 +10    +100
-win_y := 10 + 14
-win_w := Screen1.w/2 -10-10 -100
-win_h := Screen1.h   -10-10 -14-14
-Windows_Position_Default["WeChat"] := [win_x, win_y, win_w, win_h]
+WW := 2150
+WH := 1250
+Windows_Position_Default["Start"] := [CenterX(), CenterY(), WW, WH]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-win_w := 2000
-win_h := 1500
-Windows_Position_Default["FDM"] := [CenterX(), CenterY(), win_w, win_h]
+WX := 10
+WY := 10
+WW := Screen1.w/2 -10-10 +100
+WH := Screen1.h   -10-10
+Windows_Position_Default["TIM"] := [WX, WY, WW, WH]
 
-win_w := Screen3.w   * 8/9
-win_h := Screen3.h/2 * 5/6
-win_y := Screen3.y   + 100
-Windows_Position_Backup["FDM"] := [CenterX("screen_3"), win_y, win_w, win_h]
+WX := 10
+WY := 10
+WW := Screen1.w/2 -10-10 +100
+WH := Screen1.h   -10-10
+Windows_Position_Default["DingDing"] := [WX, WY, WW, WH]
 
-win_w := 1400
-win_h := 1050
-Windows_Position_Default["Thunder__新建任务面板"] := [CenterX(), CenterY(), win_w, win_h]
+WX := Screen1.w/2 +10    +100
+WY := 10 + 14
+WW := Screen1.w/2 -10-10 -100
+WH := Screen1.h   -10-10 -14-14
+Windows_Position_Default["WeChat"] := [WX, WY, WW, WH]
 
-win_w := 3000
-win_h := 1500
-Windows_Position_Default["Calibre"] := [CenterX(), CenterY(), win_w, win_h]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-win_x := 176
-win_y := 10
-win_w := 3488
-win_h := 2140
-Windows_Position_Default["Android"] := [win_x, win_y, win_w, win_h]
+WW := 2000
+WH := 1500
+Windows_Position_Default["FDM"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := 473
-win_h := 210
-win_x := Screen1.w - win_w - 10
-win_y := Screen1.h - win_h - 10
+WW := Screen3.w   * 8/9
+WH := Screen3.h/2 * 5/6
+WY := Screen3.y   + 100
+Windows_Position_Backup["FDM"] := [CenterX("screen_3"), WY, WW, WH]
+
+WW := 1400
+WH := 1050
+Windows_Position_Default["Thunder__新建任务面板"] := [CenterX(), CenterY(), WW, WH]
+
+WW := 3000
+WH := 1500
+Windows_Position_Default["Calibre"] := [CenterX(), CenterY(), WW, WH]
+
+WX := 176
+WY := 10
+WW := 3488
+WH := 2140
+Windows_Position_Default["Android"] := [WX, WY, WW, WH]
+
+WW := 473
+WH := 210
+WX := Screen1.w - WW - 10
+WY := Screen1.h - WH - 10
 ; 火绒U盘工具
-Windows_Position_Default["HipsTray_HRUSBTRAY"] := [win_x, win_y, win_w, win_h]
+Windows_Position_Default["HipsTray_HRUSBTRAY"] := [WX, WY, WW, WH]
 
-win_w := Screen1.w * 4/6
-win_h := Screen1.h * 7/9
-Windows_Position_Default["CloudMusic"] := [CenterX(), CenterY(), win_w, win_h]
+WW := Screen1.w * 4/6
+WH := Screen1.h * 7/9
+Windows_Position_Default["CloudMusic"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := Screen1.w * 4/6
-win_h := Screen1.h * 4/6
-Windows_Position_Default["PotPlayer"] := [CenterX(), CenterY(), win_w, win_h]
+WW := Screen1.w * 4/6
+WH := Screen1.h * 4/6
+Windows_Position_Default["PotPlayer"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := Screen2.w * 4/6
-win_h := Screen2.h * 4/6
-Windows_Position_Backup["PotPlayer"] := [CenterX("screen_2"), CenterY("screen_2"), win_w, win_h]
+WW := Screen2.w * 4/6
+WH := Screen2.h * 4/6
+Windows_Position_Backup["PotPlayer"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 
-win_w := 1000
-win_h := 1500
-win_x := 30
-Windows_Position_Default["PotPlayer__播放列表"] := [win_x, CenterY(), win_w, win_h]
+WW := 1000
+WH := 1500
+WX := 30
+Windows_Position_Default["PotPlayer__播放列表"] := [WX, CenterY(), WW, WH]
 
-win_w := 2020
-win_h := 300
-win_y := 2020
-Windows_Position_Default["CloudMusic_DesktopLyrics"] := [CenterX("screen_3"), win_y, win_w, win_h]
+WW := 2020
+WH := 300
+WY := 2020
+Windows_Position_Default["CloudMusic_DesktopLyrics"] := [CenterX("screen_3"), WY, WW, WH]
 
-win_w := 2500
-win_h := 1500
-Windows_Position_Default["Sandboxie"] := [CenterX(), CenterY(), win_w, win_h]
+WW := 2500
+WH := 1500
+Windows_Position_Default["Sandboxie"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := 2000
-win_h := 1500
-Windows_Position_Default["7-Zip"] := [CenterX(), CenterY(), win_w, win_h]
+WW := 2000
+WH := 1500
+Windows_Position_Default["7-Zip"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := Screen1.w * 5/6
-win_h := Screen1.h * 8/9
-Windows_Position_Default["Chrome"] := [CenterX(), CenterY(), win_w, win_h]
+WW := Screen1.w * 5/6
+WH := Screen1.h * 8/9
+Windows_Position_Default["Chrome"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := Screen2.w * 5/6
-win_h := Screen2.h * 8/9
-Windows_Position_Backup["Chrome"] := [CenterX("screen_2"), CenterY("screen_2"), win_w, win_h]
+WW := Screen2.w * 5/6
+WH := Screen2.h * 8/9
+Windows_Position_Backup["Chrome"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 
-win_w := 900
-win_h := 1500
-Windows_Position_Default["Chrome__修改书签"] := [CenterX(), CenterY(), win_w, win_h]
+WW := 900
+WH := 1500
+Windows_Position_Default["Chrome__修改书签"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := 2662
-win_h := 1600
-Windows_Position_Default["v2rayN"] := [CenterX("screen_1"), CenterY("screen_1"), win_w, win_h]
-Windows_Position_Backup["v2rayN"]  := [CenterX("screen_2"), CenterY("screen_2"), win_w, win_h]
+WW := 2662
+WH := 1600
+Windows_Position_Default["v2rayN"] := [CenterX("screen_1"), CenterY("screen_1"), WW, WH]
+Windows_Position_Backup["v2rayN"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 
-; win_w := 1500
-; win_h := 1500
-; Windows_Position_Default["VMWare_#32770_硬件"] := [CenterX(), CenterY(), win_w, win_h]
+; WW := 1500
+; WH := 1500
+; Windows_Position_Default["VMWare_#32770_硬件"] := [CenterX(), CenterY(), WW, WH]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-win_w := Screen1.w * 5/6
-win_h := Screen1.h * 8/9
-Windows_Position_Default["VSCode"] := [CenterX(), CenterY(), win_w, win_h]
+WW := Screen1.w * 5/6
+WH := Screen1.h * 8/9
+Windows_Position_Default["VSCode"] := [CenterX(), CenterY(), WW, WH]
 
-win_w := Screen2.w * 5/6
-win_h := Screen2.h * 8/9
-Windows_Position_Backup["VSCode"] := [CenterX("screen_2"), CenterY("screen_2"), win_w, win_h]
+WW := Screen2.w * 5/6
+WH := Screen2.h * 8/9
+Windows_Position_Backup["VSCode"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 
-win_w := Screen1.w * 45/60
-win_h := Screen1.h * 75/90
-Windows_Position_Default["Notepad++"] := [CenterX(), CenterY(), win_w, win_h]
+WW := Screen1.w * 45/60
+WH := Screen1.h * 75/90
+Windows_Position_Default["Notepad++"] := [CenterX(), CenterY(), WW, WH]
