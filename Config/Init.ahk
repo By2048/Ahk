@@ -1,6 +1,6 @@
 ﻿
-#include %A_WorkingDir%\Config\Screen.ahk
-#include %A_WorkingDir%\Config\Software.ahk
+#Include %A_WorkingDir%\Config\Screen.ahk
+#Include %A_WorkingDir%\Config\Software.ahk
 
 ; 在 Input.ahk Private.ahk 中定义的快捷输入
 

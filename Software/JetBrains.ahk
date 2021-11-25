@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("JetBrains") )
+#If ( CheckWindowsActive("JetBrains") )
 
     ^Tab::Return
     ^+Tab::Return
@@ -24,5 +24,5 @@
     ^q::Return
     #BackSpace::Send ^q
 
-#if
+#If
     

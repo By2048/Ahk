@@ -1,7 +1,7 @@
 ﻿
 ; https://support.google.com/chrome/answer/157179
 
-#if ( CheckWindowsActive("Chrome") )
+#If ( CheckWindowsActive("Chrome") )
 
     ;帮助
     F1::Return
@@ -200,11 +200,11 @@
     ; >!w::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\W.png")
     ; >!n::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\N.png")
 
-#if
+#If
 
 
 
-#if ( CheckWindowsActive("Chrome" , "" , "修改书签") )
+#If ( CheckWindowsActive("Chrome" , "" , "修改书签") )
 
     ; 收藏
     Enter::Send {Tab 4}{Enter}
@@ -217,4 +217,4 @@
         Send {Enter}
     Return
 
-#if
+#If

@@ -1,5 +1,5 @@
 ﻿
-#include %A_WorkingDir%\Tool\Change.ahk
+#Include %A_WorkingDir%\Tool\Change.ahk
 
 
 
@@ -39,5 +39,5 @@ ZH_CN(data)
             result:=result+1
         }
 	}
-    Return result
+    return result
 }

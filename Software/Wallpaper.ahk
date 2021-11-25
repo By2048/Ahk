@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("Wallpaper") )
+#If ( CheckWindowsActive("Wallpaper") )
 
 	F10::Return
 	CapsLock::Send {F10}

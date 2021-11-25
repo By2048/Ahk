@@ -1,5 +1,5 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Config\All.ahk
 
 
 
@@ -7,12 +7,12 @@
 Bool(value)
 {
     if (value="True") {
-        Return True
+        return True
     }
     if (value="False") {
-        Return False
+        return False
     }
-    Return value
+    return value
 }
 
 
@@ -25,7 +25,7 @@ ListToStr(data)
         result .= value . "|"
     }
     result := RTrim(result,"|")
-    Return result
+    return result
 }
 
 
@@ -57,5 +57,5 @@ ProcessNameFormat(process_name)
             Break
         }
     }
-    Return process_name
+    return process_name
 }

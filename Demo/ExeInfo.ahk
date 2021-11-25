@@ -17,6 +17,6 @@
             properties.=A_Index." ".objFolder.GetDetailsOf(objFolder.Items, A_Index).":`t ".propertyitem."`n"
         }
         msgbox %properties%
-    Return
+    return
 
-Return
+return

@@ -1,5 +1,5 @@
 ﻿
-#if CheckWindowsActive("WPS")
+#If CheckWindowsActive("WPS")
 
     ;无框线
     >![::
@@ -76,4 +76,4 @@
     !Tab::Send ^{PgDn}
     !+Tab::Send ^{PgUp}
 
-#if
+#If

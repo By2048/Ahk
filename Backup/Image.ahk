@@ -1,5 +1,5 @@
 ﻿
-#include %A_WorkingDir%\Lib\Gdip_All.ahk
+#Include %A_WorkingDir%\Lib\Gdip_All.ahk
 
 
 

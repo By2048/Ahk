@@ -15,7 +15,7 @@ ExcelGetXYSpace(x, y)
     y_1:=Asc(y_1)
     y_2:=y_2+0
 
-    Return [y_1-x_1, y_2-x_2]
+    return [y_1-x_1, y_2-x_2]
 }
 
 
@@ -93,7 +93,7 @@ ExcelSelectXToY(excel_x, excel_y, multi_line)
 SnipasteClipboardToImageFile(image_file)
 {
     if (not FileExist(Snipaste_EXE)) {
-        Return
+        return
     }
 
     CoordMode, Mouse, Screen

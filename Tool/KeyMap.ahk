@@ -1,9 +1,9 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\File.ahk
-#include %A_WorkingDir%\Tool\Windows.ahk
-#include %A_WorkingDir%\Tool\Change.ahk
-#include %A_WorkingDir%\Tool\Help.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\File.ahk
+#Include %A_WorkingDir%\Tool\Windows.ahk
+#Include %A_WorkingDir%\Tool\Change.ahk
+#Include %A_WorkingDir%\Tool\Help.ahk
 
 
 
@@ -21,7 +21,7 @@ show_hide_key_config()
                 Break
             }
         }
-        Return
+        return
     }
 
     result := GetActiveWindowsInfo()
@@ -30,7 +30,7 @@ show_hide_key_config()
     key_map_cfg := GetActiveWindowsConfig(Key_Map_Config)
     
     if (key_map_cfg.MaxIndex()=0) {
-        Return False
+        return False
     }
 
     CoordMode, ToolTip, Window
@@ -43,5 +43,5 @@ show_hide_key_config()
     
     key_map_show_status:=True
 
-    Return True
+    return True
 }

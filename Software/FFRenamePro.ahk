@@ -1,5 +1,5 @@
 
-#if ( CheckWindowsActive("FFRenamePro") )
+#If ( CheckWindowsActive("FFRenamePro") )
 
     Esc::
         Send {Esc}
@@ -80,16 +80,16 @@
     ; 查看用户自定义元变量<USER0>~<USER9>
     F12::Return
 
-#if
+#If
 
 ; 文件名编辑器
-; #if ( CheckWindowsActive("FFRenamePro" , "TFileNameEditorForm") )
-; #if
+; #If ( CheckWindowsActive("FFRenamePro" , "TFileNameEditorForm") )
+; #If
 
 ; 参数设置
-; #if ( CheckWindowsActive("FFRenamePro" , "TConfigForm") )
-; #if
+; #If ( CheckWindowsActive("FFRenamePro" , "TConfigForm") )
+; #If
 
 ; 批量更名完成
-; #if ( CheckWindowsActive("FFRenamePro" , "TGoRenameOKForm") )
-; #if
+; #If ( CheckWindowsActive("FFRenamePro" , "TGoRenameOKForm") )
+; #If

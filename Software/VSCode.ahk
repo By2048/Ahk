@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("VSCode") )
+#If ( CheckWindowsActive("VSCode") )
 
     ; 软件设置{f1}
     LAlt & RAlt::Send {F13}
@@ -37,10 +37,10 @@
     Return
 
     ; if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<500) {
-#if
+#If
 
 
-#if ( CheckWindowsActive( "VSCode" , "" , ".md" ) )
+#If ( CheckWindowsActive( "VSCode" , "" , ".md" ) )
 
     !\::
         result    := GetActiveWindowsInfo()
@@ -51,4 +51,4 @@
         HelpText(win_title, "center_down",  , 1000)
     Return
 
-#if
+#If

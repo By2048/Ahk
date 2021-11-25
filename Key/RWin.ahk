@@ -1,11 +1,11 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\Base.ahk
-#include %A_WorkingDir%\Tool\Init.ahk
-#include %A_WorkingDir%\Tool\Help.ahk
-#include %A_WorkingDir%\Tool\Mouse.ahk
-#include %A_WorkingDir%\Tool\Other.ahk
-#include %A_WorkingDir%\Tool\Windows.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\Base.ahk
+#Include %A_WorkingDir%\Tool\Init.ahk
+#Include %A_WorkingDir%\Tool\Help.ahk
+#Include %A_WorkingDir%\Tool\Mouse.ahk
+#Include %A_WorkingDir%\Tool\Other.ahk
+#Include %A_WorkingDir%\Tool\Windows.ahk
 
 #SingleInstance Force
 #NoTrayIcon
@@ -44,14 +44,14 @@ $RWin::
     } else {
         cnt++
     }
-    SetTimer, timer, -500
+    SetTimer, Timer, -500
 return
 
 
 
 >#,::
     if (IsDesktops() or IsMaxMin() or IsGame()) {
-        Return 
+        return 
     }
     global windows_resize_small
     windows_resize_small:=True
@@ -60,7 +60,7 @@ Return
 
 >#.::
     if (IsDesktops() or IsMaxMin() or IsGame()) {
-        Return 
+        return 
     }
     global windows_resize_big
     windows_resize_big:=True
@@ -69,7 +69,7 @@ Return
 
 >#/::
     if (IsDesktops() or IsMaxMin() or IsGame()) {
-        Return 
+        return 
     }
     global windows_move
     windows_move:=True    
@@ -88,7 +88,7 @@ global windows_resize_small:=False
 
 
 
-timer:
+Timer:
     global windows_move
     global windows_resize_big
     global windows_resize_small
@@ -97,7 +97,7 @@ timer:
         windows_resize_small:=False
         windows_resize_big:=False
         HelpText()
-        Return
+        return
     }
     ; if (cnt=1) {
     ;     MouseGetPos,  ,  , win_id
@@ -118,23 +118,23 @@ return
 
 
 
-#if (windows_move=True)
+#If (windows_move=True)
     Up::MoveWindowsUDLR("Up")
     Down::MoveWindowsUDLR("Down")
     Left::MoveWindowsUDLR("Left")
     Right::MoveWindowsUDLR("Right")
-#if
+#If
 
-#if (windows_resize_big=True)
+#If (windows_resize_big=True)
     Up::ResizeWindows("Big","Up")
     Down::ResizeWindows("Big","Down")
     Left::ResizeWindows("Big","Left")
     Right::ResizeWindows("Big","Right")
-#if
+#If
 
-#if (windows_resize_small=True)
+#If (windows_resize_small=True)
     Up::ResizeWindows("Small","Up")
     Down::ResizeWindows("Small","Down")
     Left::ResizeWindows("Small","Left")
     Right::ResizeWindows("Small","Right")
-#if
+#If

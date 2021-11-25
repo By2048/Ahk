@@ -1,6 +1,6 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\Change.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\Change.ahk
 
 
 
@@ -45,7 +45,7 @@ InitConfig()
     if (init_config_show_status=True) {
         init_config_show_status:=False
         Gui, Destroy
-        Return
+        return
     }
 
     Gui, +DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption

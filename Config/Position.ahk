@@ -37,11 +37,11 @@ Center(screen="") {
 
 CenterX(screen="") {
     result := Center(screen)
-    Return result[1]
+    return result[1]
 }
 CenterY(screen="") {
     result := Center(screen)
-    Return result[2]
+    return result[2]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

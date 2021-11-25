@@ -19,8 +19,8 @@ GlobalBoolGet(key)
     global INI
     IniRead, value, %INI%, Bool, %key%
     if (value = "True") {
-        Return True
+        return True
     } else if (value = "False") {
-        Return False
+        return False
     }
 }

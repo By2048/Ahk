@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("Android", "", "部落冲突") )
+#If ( CheckWindowsActive("Android", "", "部落冲突") )
 
     ; 选择兵种
     ^1::Return
@@ -382,4 +382,4 @@
     !q::Return
     PrintScreen::Send !q
 
-#if
+#If

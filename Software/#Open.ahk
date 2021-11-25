@@ -1,6 +1,6 @@
 ﻿
 
-#if ( CheckWindowsActive( "" , "#32770" , "属性"    ) )
+#If ( CheckWindowsActive( "" , "#32770" , "属性"    ) )
 
     >!\::
         Send ^{Tab 4}
@@ -14,12 +14,12 @@
         Send {Enter}
     Return
 
-#if
+#If
 
 
-#if ( CheckWindowsActive( "" , "#32770" , "打开"    ) )
-#if ( CheckWindowsActive( "" , "#32770" , "打开文件" ) )
-#if ( CheckWindowsActive( "" , "#32770" , "更改图标" ) )
+#If ( CheckWindowsActive( "" , "#32770" , "打开"    ) )
+#If ( CheckWindowsActive( "" , "#32770" , "打开文件" ) )
+#If ( CheckWindowsActive( "" , "#32770" , "更改图标" ) )
 
     <!\::
 
@@ -81,4 +81,4 @@
     Return
 
 
-#if
+#If

@@ -1,9 +1,9 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\File.ahk
-#include %A_WorkingDir%\Tool\Windows.ahk
-#include %A_WorkingDir%\Tool\Change.ahk
-#include %A_WorkingDir%\Tool\Help.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\File.ahk
+#Include %A_WorkingDir%\Tool\Windows.ahk
+#Include %A_WorkingDir%\Tool\Change.ahk
+#Include %A_WorkingDir%\Tool\Help.ahk
 
 
 
@@ -15,7 +15,7 @@ RunNormalUser(command)
 
     if (A_UserName="Administrator") {
         Run %command%
-        Return
+        return
     }
 
     if (StrLen(PC_USERNAME)=0 and StrLen(PC_PASSWORD)=0) {
@@ -35,16 +35,16 @@ RunNormalUser(command)
 Screenshot(screens="screen1",keep_path="backup")
 {
     if (not FileExist(Snipaste_EXE)) {
-        Return
+        return
     }
     if (keep_path="backup") {
         if (not FileExist(Snipaste_Screenshot_Path_Backup)) {
-            Return
+            return
         }
     }
     if (keep_path="tmp") {
         if (not FileExist(Snipaste_Screenshot_Path_Tmp)) {
-            Return
+            return
         }
     }
 
@@ -78,7 +78,7 @@ Screenshot(screens="screen1",keep_path="backup")
     }
 
     if (not screenshot_keep_path) {
-        Return
+        return
     }
 
     screens_name:=StrReplace(screens,"screen")
@@ -111,7 +111,7 @@ Screenshot_Quick()
 Screenshot_Activate_Software()
 {
     if (not FileExist(Snipaste_EXE)) {
-        Return
+        return
     }
 
     result := GetActiveWindowsInfo()
@@ -167,7 +167,7 @@ Snipaste(image="",screens="screen1")
 delete_snipaste_auto_save_file()
 {
     if (not FileExist(Snipaste_Auto_Save_File)) {
-        Return
+        return
     }
     last_file := ""
     Loop, Files, %Snipaste_Auto_Save_File%

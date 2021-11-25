@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("SumatraPDF") )
+#If ( CheckWindowsActive("SumatraPDF") )
 
     ; 重命名
     F2::Return
@@ -122,4 +122,4 @@
     !Right::Return
     ]::Send !{Right}
 
-#if
+#If

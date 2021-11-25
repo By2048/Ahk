@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("Q-Dir") )
+#If ( CheckWindowsActive("Q-Dir") )
 
     ;全屏
     F11::Return
@@ -54,7 +54,7 @@
     ^w::Return
     !CapsLock::Send ^w
 
-#if
+#If
 
 
 

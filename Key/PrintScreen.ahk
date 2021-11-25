@@ -1,5 +1,5 @@
 ﻿
-#include %A_WorkingDir%\Tool\Base.ahk
+#Include %A_WorkingDir%\Tool\Base.ahk
 
 #SingleInstance Force
 #NoTrayIcon
@@ -10,14 +10,14 @@ $PrintScreen::
     } else {
         cnt++
     }
-    SetTimer, timer, -500
+    SetTimer, Timer, -500
 Return
 
-timer:
+Timer:
     if (cnt=1) {
         Send {PrintScreen}
     } else if (cnt=2) {
         Send {Pause}
     }
     cnt:=0
-return
+Return

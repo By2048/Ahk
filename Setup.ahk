@@ -1,7 +1,7 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\Init.ahk
-#include %A_WorkingDir%\Tool\Help.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\Init.ahk
+#Include %A_WorkingDir%\Tool\Help.ahk
 
 #SingleInstance Force
 
@@ -13,11 +13,11 @@ LWin & RWin::
     Run, .\Setup.bat Start, %A_WorkingDir%, Hide
     Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Run.png
     Reload
-Return
+return
 
 ; 停止脚本
 RWin & LWin::
     Run, .\Setup.bat Stop, %A_WorkingDir%, Hide
     Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Error.png
     HelpText("`nClose All Script`n", "center_down", "screen3")
-Return
+return

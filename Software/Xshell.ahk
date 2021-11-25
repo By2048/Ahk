@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("Xshell") )
+#If ( CheckWindowsActive("Xshell") )
 
     ^F1::Return
     ^F2::Return
@@ -40,4 +40,4 @@
     ^+\::Return
     !+CapsLock::Send ^+\
 
-#if
+#If

@@ -1,4 +1,4 @@
-﻿#include %A_WorkingDir%\Tool\Help.ahk
+﻿#Include %A_WorkingDir%\Tool\Help.ahk
 
 #SingleInstance Force
 #NoTrayIcon

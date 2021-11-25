@@ -1,8 +1,8 @@
 ﻿
-#include %A_WorkingDir%\Tool\Help.ahk
-#include %A_WorkingDir%\Tool\Windows.ahk
-#include %A_WorkingDir%\Tool\Other.ahk
-#include %A_WorkingDir%\Tool\File.ahk
+#Include %A_WorkingDir%\Tool\Help.ahk
+#Include %A_WorkingDir%\Tool\Windows.ahk
+#Include %A_WorkingDir%\Tool\Other.ahk
+#Include %A_WorkingDir%\Tool\File.ahk
 
 
 

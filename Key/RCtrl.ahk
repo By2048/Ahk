@@ -1,11 +1,11 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\Base.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\Base.ahk
 #Include %A_WorkingDir%\Other\Keyboard.ahk
-#include %A_WorkingDir%\Lib\TrayIcon.ahk
-#include %A_WorkingDir%\Tool\Init.ahk
-#include %A_WorkingDir%\Tool\Other.ahk
-#include %A_WorkingDir%\Tool\Windows.ahk
+#Include %A_WorkingDir%\Lib\TrayIcon.ahk
+#Include %A_WorkingDir%\Tool\Init.ahk
+#Include %A_WorkingDir%\Tool\Other.ahk
+#Include %A_WorkingDir%\Tool\Windows.ahk
 
 #SingleInstance Force
 #NoTrayIcon
@@ -114,7 +114,7 @@ $RCtrl::
         cnt++
     }
     SetTimer, timer, -500
-return
+Return
 
 timer:
     help_image_show_status := GlobalBoolGet("help_image_show_status")
@@ -130,4 +130,4 @@ timer:
         HelpImage(A_WorkingDir "\Image\RCtrl.png")
     }
     cnt:=0
-return
+Return

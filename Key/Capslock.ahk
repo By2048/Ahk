@@ -1,10 +1,10 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\Base.ahk
-#include %A_WorkingDir%\Tool\Help.ahk
-#include %A_WorkingDir%\Tool\Mouse.ahk
-#include %A_WorkingDir%\Tool\Other.ahk
-#include %A_WorkingDir%\Tool\Windows.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\Base.ahk
+#Include %A_WorkingDir%\Tool\Help.ahk
+#Include %A_WorkingDir%\Tool\Mouse.ahk
+#Include %A_WorkingDir%\Tool\Other.ahk
+#Include %A_WorkingDir%\Tool\Windows.ahk
 
 #SingleInstance Force
 #NoTrayIcon
@@ -45,7 +45,7 @@ $CapsLock::
     result := GetActiveWindowsInfo()
 	win_process_name := result.win_process_name
     ; HelpText(win_process_name, "center_down", "screen1", 500)
-return
+Return
 
 ;关闭大写锁定
 CapsLock Up::

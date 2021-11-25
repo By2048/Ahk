@@ -1,10 +1,10 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\Base.ahk
-#include %A_WorkingDir%\Tool\Init.ahk
-#include %A_WorkingDir%\Tool\File.ahk
-#include %A_WorkingDir%\Tool\Other.ahk
-#include %A_WorkingDir%\Tool\Windows.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\Base.ahk
+#Include %A_WorkingDir%\Tool\Init.ahk
+#Include %A_WorkingDir%\Tool\File.ahk
+#Include %A_WorkingDir%\Tool\Other.ahk
+#Include %A_WorkingDir%\Tool\Windows.ahk
 
 #SingleInstance Force
 #NoTrayIcon
@@ -53,7 +53,7 @@ get_image()
     
     ; PyCharm计算界面不处理
     If (win_process_name="PyCharm" and win_title="Evaluate") {
-        Return
+        return
     }
 
     hotkeys_images := GetActiveWindowsConfig(Process_Hotkeys_Image)
@@ -152,19 +152,19 @@ change(np="")
 
 ~RShift::
     if (IsGame()) {
-        Return
+        return
     }
     if (not cnt) {
         cnt:=1
     } else {
         cnt++
     }
-    SetTimer, timer, -500
+    SetTimer, Timer, -500
 return
 
 
 
-timer:
+Timer:
     if (cnt=1) {
         hide_image()
     } else if (cnt=2) {
@@ -177,7 +177,7 @@ return
 
 
 
-#if (hotkeys_show_status=True)
+#If (hotkeys_show_status=True)
     [::change("privious")
     ]::change("next")
     Esc::hide_image()
@@ -189,4 +189,4 @@ return
         Snipaste(image, "screen1")
         SetTimer, hide_image, -300
     Return
-#if
+#If

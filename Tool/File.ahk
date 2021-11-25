@@ -25,7 +25,7 @@ GetFileInfo(path)
         }
     }
 
-    Return result
+    return result
 }
 
 

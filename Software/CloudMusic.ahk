@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("CloudMusic", "OrpheusBrowserHost") )
+#If ( CheckWindowsActive("CloudMusic", "OrpheusBrowserHost") )
 
     /::
         MoveWindowsToDefaultPosition()
@@ -70,7 +70,7 @@
         MouseClickAndResetting(1703, 485, "Window")
     Return
 
-#if
+#If
 
 ; Space:: 
 ;     CoordMode, Mouse, Window

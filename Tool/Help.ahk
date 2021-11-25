@@ -1,8 +1,8 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\Change.ahk
-#include %A_WorkingDir%\Tool\File.ahk
-#include %A_WorkingDir%\Tool\Language.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\Change.ahk
+#Include %A_WorkingDir%\Tool\File.ahk
+#Include %A_WorkingDir%\Tool\Language.ahk
 
 
 
@@ -39,7 +39,7 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     if (not data and data != 0) {
         GlobalBoolSet("help_text_show_status", False)
         Gui, Destroy
-        Return
+        return
     }
 
     font_size  := 25

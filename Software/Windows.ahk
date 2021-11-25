@@ -1,6 +1,6 @@
 ﻿
 ; 设置
-#if ( CheckWindowsActive( "ApplicationFrameHost" , "ApplicationFrameWindow" , "设置" ) )
+#If ( CheckWindowsActive( "ApplicationFrameHost" , "ApplicationFrameWindow" , "设置" ) )
 
     ;点击返回
     Esc::
@@ -10,18 +10,18 @@
         MouseMove x, y, 0
     Return
 
-#if
+#If
 
 
 ; 编辑环境变量
-#if ( CheckWindowsActive( "systempropertiesadvanced" ) )
+#If ( CheckWindowsActive( "systempropertiesadvanced" ) )
     PgUp::Send !u
     PgDn::Send !o
-#if
+#If
 
 
 ; 任务管理器
-#if ( CheckWindowsActive( "TaskMGR" ) )
+#If ( CheckWindowsActive( "TaskMGR" ) )
     
     ; 切换标签页
     ^Tab::Return
@@ -32,4 +32,4 @@
 
     !CapsLock::Send !{F4}
 
-#if
+#If

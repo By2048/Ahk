@@ -1,38 +1,38 @@
 ﻿
-#if ( CheckWindowsActive("Explorer" , "#32770" , "删除多个项目") )
+#If ( CheckWindowsActive("Explorer" , "#32770" , "删除多个项目") )
     !y::Return
     !n::Return
-#if
+#If
 
 
 
-#if ( CheckWindowsActive("Explorer" , "OperationStatusWindow" , "删除文件") )
+#If ( CheckWindowsActive("Explorer" , "OperationStatusWindow" , "删除文件") )
     !y::Return
     !n::Return
     \::Send !a
-#if
+#If
 
 
 
 ; 任务栏滚动鼠标调整音量
-#if ( CheckWindowsActive("Explorer" , "Shell_TrayWnd") )
+#If ( CheckWindowsActive("Explorer" , "Shell_TrayWnd") )
     WheelUp::Send {Volume_Up}
     WheelDown::Send {Volume_Down}
-#if
+#If
 
 
 
-#if ( CheckWindowsActive( "Explorer" , "#32770" ) )
+#If ( CheckWindowsActive( "Explorer" , "#32770" ) )
     ^Tab::Return
     ^+Tab::Return
     !Tab::Send ^{Tab}
     !+Tab::Send ^+{Tab}
     !CapsLock::Send !{F4}
-#if
+#If
 
 
 
-#if ( CheckWindowsActive("Explorer") )
+#If ( CheckWindowsActive("Explorer") )
 
     ; Ctrl+F 选择搜索框
     ; Alt+D 选择地址栏
@@ -116,4 +116,4 @@
     ^WheelUp::Return
     ^WheelDown::Return
 
-#if
+#If

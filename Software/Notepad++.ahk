@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("Notepad++") )
+#If ( CheckWindowsActive("Notepad++") )
 
     ^F1::Return
     ^F2::Return
@@ -39,6 +39,6 @@
     ; Tmp
     F12::MouseClickAndResetting(601,1157,"Window")
 
-#if
+#If
 
 

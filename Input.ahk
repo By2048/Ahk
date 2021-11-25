@@ -1,6 +1,6 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\Base.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\Base.ahk
 
 #NoTrayIcon
 #SingleInstance Force
@@ -9,16 +9,16 @@
 ::[date]::
     FormatTime, result, _, [yyyy-MM-dd]
     SendInput %result%
-Return
+return
 
 ::[time]::
     FormatTime, result, _, [H:mm]
     SendInput %result%
-Return
+return
 
 ::[datetime]::
     FormatTime, result, _, [yyyy-MM-dd H-mm]
     SendInput %result%
-Return
+return
 
 #Include %A_WorkingDir%\Input.Private.ahk

@@ -1,10 +1,10 @@
 ﻿
 
-#if ( CheckWindowsActive("Postman") )
+#If ( CheckWindowsActive("Postman") )
 
     ; rename
     ^e::Return
     ^r::Send ^e
 
-#if
+#If
 

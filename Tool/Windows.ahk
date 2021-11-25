@@ -1,9 +1,9 @@
 ﻿
-#include %A_WorkingDir%\Config\All.ahk
-#include %A_WorkingDir%\Tool\Mouse.ahk
-#include %A_WorkingDir%\Tool\File.ahk
-#include %A_WorkingDir%\Tool\Change.ahk
-#include %A_WorkingDir%\Tool\Language.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\Mouse.ahk
+#Include %A_WorkingDir%\Tool\File.ahk
+#Include %A_WorkingDir%\Tool\Change.ahk
+#Include %A_WorkingDir%\Tool\Language.ahk
 
 
 
@@ -299,7 +299,7 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
     }
     
     if (IsDesktops() or IsMaxMin() or IsGame()) {
-        Return 
+        return 
     }
 
     WinGetPos, x, y, w, h, ahk_id %win_id%
@@ -330,7 +330,7 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 ResizeWindows(command, direction)
 {
     if (IsDesktops() or IsMaxMin() or IsGame()) {
-        Return 
+        return 
     }
 
     SetWinDelay, 1
@@ -384,7 +384,7 @@ ResizeWindows(command, direction)
 MoveWindowsUDLR(direction)
 {    
     if (IsDesktops() or IsMaxMin() or IsGame()) {
-        Return 
+        return 
     }
 
     SetWinDelay, 1
@@ -418,7 +418,7 @@ MoveWindowsUDLR(direction)
 MoveWindowsToCenter(silent=False)
 {
     if (IsDesktops() or IsMaxMin() or IsGame()) {
-        Return 
+        return 
     }
 
     result := GetActiveWindowsInfo()
@@ -447,7 +447,7 @@ MoveWindowsToCenter(silent=False)
     SetWindows(win_id, xx, yy, ww, hh)   
 
     if (win_x=xx and win_y=yy) {
-        Return
+        return
     }
     
     SetWindows(win_id, xx, yy, ww, hh, 0)
@@ -465,7 +465,7 @@ MoveWindowsToCenter(silent=False)
 MoveWindowsToMainMini(command)
 {   
     if ( IsDesktops() or IsMaxMin() or IsGame() ) {
-        Return
+        return
     }
 
     result           := GetActiveWindowsInfo()

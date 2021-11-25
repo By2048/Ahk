@@ -1,6 +1,6 @@
 ﻿
 
-#if ( CheckWindowsActive("Geek") )
+#If ( CheckWindowsActive("Geek") )
 
     Enter::Return
 
@@ -12,4 +12,4 @@
     ^e::Return
     ^w::Return
 
-#if
+#If

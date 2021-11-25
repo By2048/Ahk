@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("FSViewer") )
+#If ( CheckWindowsActive("FSViewer") )
 
     ; \:: ;移动到收藏
     ;     Send m
@@ -20,4 +20,4 @@
 
     [::Send {Left}
 
-#if
+#If

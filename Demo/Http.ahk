@@ -6,11 +6,11 @@ F11::
     whr.WaitForResponse()
     version := whr.ResponseText
     MsgBox, % version
-Return
+return
 
 
 F12::
     UrlDownloadToFile, http://ahkscript.org/logos/ahk_logo.png, T:\test.png
-Return
+return
 
 

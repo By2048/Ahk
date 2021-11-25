@@ -1,5 +1,5 @@
 ﻿
-#if ( CheckWindowsActive("LOL_Client") )
+#If ( CheckWindowsActive("LOL_Client") )
 
 	; 结算界面查看资料
 	`::
@@ -20,9 +20,9 @@
 		MouseMove, x, y, 0
 	Return
 
-#if
+#If
 
-#if ( CheckWindowsActive("LOL_Game") )
+#If ( CheckWindowsActive("LOL_Game") )
 
 	; 装备
 	; 2167,2005,
@@ -36,7 +36,7 @@
 	; 撤销
 	; 1279,1666,
 
-	#include %A_WorkingDir%\Software\LOL.Private.ahk
+	#Include %A_WorkingDir%\Software\LOL.Private.ahk
 	
 	; 截图
 	F12::Return
