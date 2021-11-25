@@ -1,76 +1,86 @@
 ﻿
-; 屏幕数量
-global screen_count := 1
-
 ; 初始化系统屏幕相关信息
-SysGet, screen_count, MonitorCount
+
+; 屏幕数量
+global Screen_Count := 1
+SysGet, Screen_Count, MonitorCount
 
 ; 屏幕信息
-global screen_1 := {}
-global screen_2 := {}
-global screen_3 := {}
+global Screen1 := {}
+global Screen2 := {}
+global Screen3 := {}
 
-; 系统实际的屏幕设置 [2][1][3]
-if (screen_count=1) {
-    SysGet, Monitor1, Monitor, 1
-    SysGet, Monitor2, Monitor, 1
-    SysGet, Monitor3, Monitor, 1
-} else if (screen_count=2) {
-    SysGet, Monitor1, Monitor, 1
-    SysGet, Monitor2, Monitor, 2
-    SysGet, Monitor3, Monitor, 2
-} else if (screen_count=3) {
-    SysGet, Monitor1, Monitor, 1
-    SysGet, Monitor2, Monitor, 2
-    SysGet, Monitor3, Monitor, 3
-}
+Screen1.dpi := 1
+Screen2.dpi := 1
+Screen3.dpi := 1
 
-screen_1.dpi := 1
-screen_2.dpi := 1
-screen_3.dpi := 1
-
-if (A_ComputerName="Windows" and screen_count=3) {
-    if (A_UserName="AM") {
-        screen_1.dpi := 2
-        screen_2.dpi := 1.5
-        screen_3.dpi := 1
-    }
-    if (A_UserName="Administrator") {
-        screen_1.dpi := 2
-        screen_2.dpi := 1.5
-        screen_3.dpi := 1
+if (A_ComputerName="Windows" and Screen_Count=3) {
+    if (A_UserName="AM" or A_UserName="Administrator") {
+        Screen1.dpi := 2
+        Screen2.dpi := 1.5
+        Screen3.dpi := 1
     }
 }
 
-if (A_ComputerName="WinServer" and A_UserName="Administrator" and screen_count=3) {
-    screen_1.dpi := 2
-    screen_2.dpi := 1.5
-    screen_3.dpi := 1
+if (A_ComputerName="WinServer" and A_UserName="Administrator" and Screen_Count=3) {
+    Screen1.dpi := 2
+    Screen2.dpi := 1.5
+    Screen3.dpi := 1
 }
 
-screen_1.index := 1
-screen_1.name  := "screen_1"
-screen_1.x     := Monitor1Left   + 0
-screen_1.y     := Monitor1Top    + 0
-screen_1.xx    := Monitor1Right  + 0
-screen_1.yy    := Monitor1Bottom + 0
-screen_1.w     := screen_1.xx    - screen_1.x
-screen_1.h     := screen_1.yy    - screen_1.y
 
-screen_2.index := 2
-screen_2.name  := "screen_2"
-screen_2.x     := Monitor2Left   + 0
-screen_2.y     := Monitor2Top    + 0
-screen_2.xx    := Monitor2Right  + 0
-screen_2.yy    := Monitor2Bottom + 0
-screen_2.w     := screen_2.xx    - screen_2.x
-screen_2.h     := screen_2.yy    - screen_2.y
 
-screen_3.index := 3
-screen_3.name  := "screen_3"
-screen_3.x     := Monitor3Left   + 0
-screen_3.y     := Monitor3Top    + 0
-screen_3.xx    := Monitor3Right  + 0
-screen_3.yy    := Monitor3Bottom + 0
-screen_3.w     := screen_3.xx    - screen_3.x
-screen_3.h     := screen_3.yy    - screen_3.y
+InitScreen()
+{
+    global Screen_Count, Screen1, Screen2, Screen3
+    
+    ; 系统实际的屏幕设置 [2][1][3]
+    if (Screen_Count=1) {
+        SysGet, Monitor1, Monitor, 1
+        SysGet, Monitor2, Monitor, 1
+        SysGet, Monitor3, Monitor, 1
+    } else if (Screen_Count=2) {
+        SysGet, Monitor1, Monitor, 1
+        SysGet, Monitor2, Monitor, 2
+        SysGet, Monitor3, Monitor, 2
+    } else if (Screen_Count=3) {
+        SysGet, Monitor1, Monitor, 1
+        SysGet, Monitor2, Monitor, 2
+        SysGet, Monitor3, Monitor, 3
+    }
+
+    Screen1.index := 1
+    Screen1.name  := "Screen1"
+    Screen1.x     := Monitor1Left   + 0
+    Screen1.y     := Monitor1Top    + 0
+    Screen1.xx    := Monitor1Right  + 0
+    Screen1.yy    := Monitor1Bottom + 0
+    Screen1.w     := Screen1.xx    - Screen1.x
+    Screen1.h     := Screen1.yy    - Screen1.y
+
+    Screen2.index := 2
+    Screen2.name  := "Screen2"
+    Screen2.x     := Monitor2Left   + 0
+    Screen2.y     := Monitor2Top    + 0
+    Screen2.xx    := Monitor2Right  + 0
+    Screen2.yy    := Monitor2Bottom + 0
+    Screen2.w     := Screen2.xx    - Screen2.x
+    Screen2.h     := Screen2.yy    - Screen2.y
+
+    Screen3.index := 3
+    Screen3.name  := "Screen3"
+    Screen3.x     := Monitor3Left   + 0
+    Screen3.y     := Monitor3Top    + 0
+    Screen3.xx    := Monitor3Right  + 0
+    Screen3.yy    := Monitor3Bottom + 0
+    Screen3.w     := Screen3.xx    - Screen3.x
+    Screen3.h     := Screen3.yy    - Screen3.y
+
+}
+
+InitScreen()
+
+Screen1.str   := Screen1.w "*" Screen1.h " " Screen1.dpi
+Screen2.str   := Screen2.w "*" Screen2.h " " Screen2.dpi
+Screen3.str   := Screen3.w "*" Screen3.h " " Screen3.dpi
+
