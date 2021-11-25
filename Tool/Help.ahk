@@ -50,15 +50,15 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
         font_hight := font_hight * n_count
     }
 
-    if (screens="screen1" or screens="Screen1") {
+    if (screens="screen1" or screens="Screen1" or screens="screen_1") {
         screen_x   := Screen1.x  , screen_y  := Screen1.y
         screen_xx  := Screen1.xx , screen_yy := Screen1.yy
         screen_w   := Screen1.w  , screen_h  := Screen1.h
-    } else if (screens="screen2" or screens="Screen2") {
+    } else if (screens="screen2" or screens="Screen2" or screens="screen_2") {
         screen_x   := Screen2.x  , screen_y  := Screen2.y
         screen_xx  := Screen2.xx , screen_yy := Screen2.yy
         screen_w   := Screen2.w  , screen_h  := Screen2.h
-    } else if (screens="screen3" or screens="Screen3") {
+    } else if (screens="screen3" or screens="Screen3" or screens="screen_3") {
         screen_x   := Screen3.x   , screen_y  := Screen3.y
         screen_xx  := Screen3.xx  , screen_yy := Screen3.yy/2
         screen_w   := Screen3.w   , screen_h  := Screen3.h/2
@@ -66,7 +66,7 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     screen_dpi := Screen1.dpi
 
     zh_cn_count := ZH_CN(data)
-    data_count := StrLen(data)
+    data_count  := StrLen(data)
     if (data_count < 6) {
         data_count := 6
     }
@@ -78,24 +78,23 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     text_w := gui_w
 
     if (xy="right_down") {
-        gui_x:=screen_xx-gui_w-5
-        gui_y:=screen_yy-gui_h-5
+        gui_x := screen_xx - gui_w - 5
+        gui_y := screen_yy - gui_h - 5
     } else if (xy="center") {
-        gui_x:=screen_x+screen_w/2-gui_w/2
-        gui_y:=screen_y+screen_h/2-gui_h/2
+        gui_x := screen_x + screen_w/2 - gui_w/2
+        gui_y := screen_y + screen_h/2 - gui_h/2
     } else if (xy="center_up") {
-        gui_x:=screen_x+screen_w/2-gui_w/2
-        gui_y:=screen_y+5
+        gui_x := screen_x + screen_w/2 - gui_w/2
+        gui_y :=s creen_y + 5
     } else if (xy="center_down") {
-        gui_x:=screen_x+screen_w/2-gui_w/2
-        gui_y:=screen_yy-gui_h-5
+        gui_x := screen_x  + screen_w/2 - gui_w/2
+        gui_y := screen_yy - gui_h-5
     }
 
-    gui_w := gui_w/screen_dpi
-    gui_h := gui_h/screen_dpi
-    text_w := text_w/screen_dpi
-    text_h := text_h/screen_dpi
-
+    gui_w  := gui_w  / screen_dpi
+    gui_h  := gui_h  / screen_dpi
+    text_w := text_w / screen_dpi
+    text_h := text_h / screen_dpi
 
     Gui, Destroy
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
