@@ -65,7 +65,7 @@ IsGame()
 ; 检测当前激活的应用是否满足参数条件
 ; _process_name_ | 进程名（转换后的
 ; _class_        | 进程Class
-; _title_        | 软件标题
+; _title_        | 软件标题 Q Q|W|E
 ; return         | True \ False
 CheckWindowsActive(_process_name_="", _class_="", _title_="")
 {
@@ -89,9 +89,20 @@ CheckWindowsActive(_process_name_="", _class_="", _title_="")
         }
     }
     if (StrLen(_title_)>0) {
-        If (not InStr(win_title, _title_)) {
-            result := False
-            return result
+        if (InStr(_title_, "|")) {
+            title_check := False
+            title_split := StrSplit(_title_, "|")
+            for index, value in title_split {
+                if (InStr(win_title, value)) {
+                    title_check := True
+                }
+            }
+            result := title_check
+        } else {
+            if (not InStr(win_title, _title_)) {
+                result := False
+                return result
+            }
         }
     }
 
@@ -114,7 +125,7 @@ GetActiveWindowsInfo()
 	WinGetText,                    win_text,              ahk_id %win_id%
 	WinGetPos,   win_x, win_y, win_w, win_h,              ahk_id %win_id%
     
-    in_screen := 1, screen_x :=0, screen_y := 0, screen_xx := 0, screen_yy := 0
+    in_screen := 1, screen_x := 0, screen_y := 0, screen_xx := 0, screen_yy := 0
     if (win_x >= Screen1.x and win_x < Screen1.xx) {
         in_screen  := 1
         screen_x   := Screen1.x   ,  screen_y := Screen1.y

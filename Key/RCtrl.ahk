@@ -113,10 +113,10 @@ $RCtrl::
     } else {
         cnt++
     }
-    SetTimer, timer, -500
+    SetTimer, Timer, -500
 Return
 
-timer:
+Timer:
     help_image_show_status := GlobalBoolGet("help_image_show_status")
     if (cnt=1) {
         if (help_image_show_status=True) {
@@ -127,7 +127,8 @@ timer:
             Run D:\#Lnk\Maye.lnk
         }
     } else if (cnt=2) {
-        HelpImage(A_WorkingDir "\Image\RCtrl.png")
+        image := A_WorkingDir "\Image\RCtrl.png"
+        HelpImage(image)
     }
     cnt:=0
 Return

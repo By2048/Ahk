@@ -17,12 +17,9 @@
 #If
 
 
-#If ( CheckWindowsActive( "" , "#32770" , "打开"    ) )
-#If ( CheckWindowsActive( "" , "#32770" , "打开文件" ) )
-#If ( CheckWindowsActive( "" , "#32770" , "更改图标" ) )
+#If ( CheckWindowsActive( "" , "#32770" , "打开|打开文件|更改图标" ) )
 
     <!\::
-
 
         ; https://wyagd001.github.io/zh-cn/docs/commands/OnMessage.htm#SendString
 
@@ -74,7 +71,6 @@
         SendInput 200
 
         Send {Enter}
-
 
         MouseMove, x_origin, y_origin, 0
 
