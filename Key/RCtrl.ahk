@@ -46,6 +46,7 @@ Return
     Run, %command%
 Return
 >^h::Run %Ahk% D:\AutoHotkey\WindowSpy.ahk
+>^+h::Run %Ahk% E:\GitX\AhkSpy\AhkSpy.ahk
 >^j::
     Run D:\#Lnk\JetBrains.lnk
     Sleep 100
@@ -57,7 +58,6 @@ Return
 >^c::RunNormalUser("D:\#Lnk\音乐.lnk") 
 >^v::RunNormalUser(VSCode " E:\Config\Windows.code-workspace")
 >^+v::Run %VSCode% E:\Config\Windows.code-workspace
->^b::Run E:\Book\
 >^n::Run D:\#Lnk\Notepad++.lnk
 >^m::RunNormalUser("D:\#Lnk\PotPlayer.lnk")
 

@@ -12,7 +12,7 @@
 #Include %A_WorkingDir%\Tool\Windows.ahk
 #Include %A_WorkingDir%\Tool\KeyMap.ahk
 
-#Include %A_WorkingDir%\Software\#Open.ahk
+#Include %A_WorkingDir%\Software\#32770.ahk
 #Include %A_WorkingDir%\Software\Android.ahk
 #Include %A_WorkingDir%\Software\Chrome.ahk
 #Include %A_WorkingDir%\Software\CloudMusic.ahk

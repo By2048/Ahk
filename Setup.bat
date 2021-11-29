@@ -95,12 +95,6 @@ echo  %command% .\Loop.ahk
 start %AHK%     .\Input.ahk           %command%
 echo  %command% .\Input.ahk
 @REM ============================================
-echo.
-if exist %test_ahk% (
-    start %AHK%     .\Test.ahk        %command%
-    echo  %command% .\Test.ahk
-)
-@REM ============================================
 
 
 ping -n 2 127.0.0.1 > nul

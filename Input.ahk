@@ -9,16 +9,16 @@
 ::[date]::
     FormatTime, result, _, [yyyy-MM-dd]
     SendInput %result%
-return
+Return
 
 ::[time]::
     FormatTime, result, _, [H:mm]
     SendInput %result%
-return
+Return
 
 ::[datetime]::
     FormatTime, result, _, [yyyy-MM-dd H-mm]
     SendInput %result%
-return
+Return
 
 #Include %A_WorkingDir%\Input.Private.ahk

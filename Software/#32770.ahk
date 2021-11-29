@@ -3,6 +3,7 @@
 #If ( CheckWindowsActive( "" , "#32770" , "属性"    ) )
 
     >!\::
+        ; 修改文件图标
         Send ^{Tab 4}
         Sleep 500
         Send !i
@@ -17,7 +18,7 @@
 #If
 
 
-#If ( CheckWindowsActive( "" , "#32770" , "打开|打开文件|更改图标" ) )
+#If ( CheckWindowsActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为" ) )
 
     <!\::
 
@@ -26,7 +27,10 @@
         MoveWindowsToDefaultPosition()
         Sleep 500
 
-
+        global Windows_Cache
+        result := Windows_Cache
+        
+        
         CoordMode, Mouse, Window
         MouseGetPos, x_origin, y_origin, win_id, control_id
 

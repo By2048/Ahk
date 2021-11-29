@@ -12,8 +12,7 @@
 IsDesktops()
 {
     WinGetClass, win_class, A
-    if (win_class="WorkerW") {
-        HelpText("Desktop", "center_down", "screen1", 1000)
+    if (win_class = "WorkerW") {
         return True
     } else {
         return False
@@ -28,7 +27,6 @@ IsMaxMin()
 {
     WinGet, win_min_max, MinMax, A
     if (win_min_max) {
-        HelpText("Max\Min", "center_down", "screen1", 1000)
         return True
     } else {
         return False
@@ -115,17 +113,21 @@ CheckWindowsActive(_process_name_="", _class_="", _title_="")
 ; result | {} 应用信息
 GetActiveWindowsInfo()
 {
-    WinGet,                          win_id, ID,          A
-    WinGet,                         win_pid, ID,          ahk_id %win_id%
-    WinGet,                     win_min_max, MinMax,      ahk_id %win_id%
-	WinGet,                win_process_name, ProcessName, ahk_id %win_id%
-	WinGet,                 win_transparent, Transparent, ahk_id %win_id%
-    WinGetClass,                  win_class,              ahk_id %win_id%
-	WinGetTitle,                  win_title,              ahk_id %win_id%
-	WinGetText,                    win_text,              ahk_id %win_id%
-	WinGetPos,   win_x, win_y, win_w, win_h,              ahk_id %win_id%
+    WinGet,                          win_id, ID,              A
+    WinGet,                         win_pid, PID,             ahk_id %win_id%
+    WinGet,                     win_min_max, MinMax,          ahk_id %win_id%
+	WinGet,                win_process_name, ProcessName,     ahk_id %win_id%
+	WinGet,                 win_transparent, Transparent,     ahk_id %win_id%
+    WinGet,               win_controls_name, ControlList,     ahk_id %win_id%
+	WinGet,                 win_controls_id, ControlListHwnd, ahk_id %win_id%
+    WinGetClass,                  win_class,                  ahk_id %win_id%
+	WinGetTitle,                  win_title,                  ahk_id %win_id%
+	WinGetText,                    win_text,                  ahk_id %win_id%
+	WinGetPos,   win_x, win_y, win_w, win_h,                  ahk_id %win_id%
     
-    in_screen := 1, screen_x := 0, screen_y := 0, screen_xx := 0, screen_yy := 0
+    in_screen := 1
+    screen_x  := 0, screen_y  := 0
+    screen_xx := 0, screen_yy := 0
     if (win_x >= Screen1.x and win_x < Screen1.xx) {
         in_screen  := 1
         screen_x   := Screen1.x   ,  screen_y := Screen1.y
@@ -147,6 +149,36 @@ GetActiveWindowsInfo()
     }
 
     result := {}
+
+    win_controls      := {}
+    win_controls_id   := StrSplit(win_controls_id,   "`n")
+    win_controls_name := StrSplit(win_controls_name, "`n")
+
+    length_id    := win_controls_id.Length()
+    length_name  := win_controls_name.Length()
+    if (length_id = length_name) {
+        length := length_id
+        loop %length% {
+            k := win_controls_name[A_Index]
+            v := win_controls_id[A_Index]
+            win_controls[k] := { "id" : v }
+        }
+    }
+
+    for control_name, control_info in win_controls {
+        control_id := control_info["id"]
+        ControlGetPos x, y, w, h, %control_name%, ahk_id %win_id%
+        ControlGetText, control_text, %control_name%, ahk_id %win_id%
+        control_info["x"]    := x
+        control_info["y"]    := y
+        control_info["w"]    := w
+        control_info["h"]    := h
+        control_info["xx"]   := x + w
+        control_info["yy"]   := y + h
+        control_info["text"] := control_text
+    }
+
+    result.win_controls := win_controls
 
     result.win_id             := win_id
     result.win_pid            := win_pid
@@ -309,6 +341,10 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
         HelpText("No WinId")
     }
     
+    if (IsMaxMin()) {
+        WinRestore, ahk_id %win_id%,
+    }
+
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         return 
     }

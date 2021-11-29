@@ -54,6 +54,7 @@ Windows_Position_Default["_#32770_浏览计算机"] := [CenterX(), CenterY(), WW
 WW := 2000
 WH := 1500
 Windows_Position_Default["_#32770_打开"]    := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["_#32770_另存为"]   := [CenterX(), CenterY(), WW, WH]
 Windows_Position_Default["_#32770_打开文件"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 1500
