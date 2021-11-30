@@ -116,4 +116,62 @@
     ^WheelUp::Return
     ^WheelDown::Return
 
+
+
+    <#\::
+
+        MoveWindowsToDefaultPosition()
+
+        global Windows_Cache
+
+        oWin := JEE_ExpWinGetObj(win_id)
+        JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
+        if (Windows_Cache["win_title"]="D:\") {
+            vListAbbrev := "nam,com,dat"
+        } else {
+            vListAbbrev := "nam,dat,siz"
+        }
+        vList := JEE_ExpColAbbrevToName(vListAbbrev, ",")
+        JEE_ICMSetColumns(icm, vList, ",")
+
+        oWin := JEE_ExpWinGetObj(win_id)
+        JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
+        JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 1200)
+        JEE_ICMSetColumnWidth(icm, "System.ItemDate", 250)
+        JEE_ICMSetColumnWidth(icm, "System.Comment", 250)
+        JEE_ICMSetColumnWidth(icm, "System.Size", 250)
+
+        isp := isb := isv := ifv2 := icm := ""
+        
+        CoordMode, Mouse, Window
+
+        MouseGetPos, x_origin, y_origin
+        result := GetActiveWindowsInfo("Window")
+
+        win_id := result["win_id"]
+        win_xx := result["win_xx"]
+
+        control_info := result["win_controls"]["DirectUIHWND3"]
+        x  := control_info.x
+        y  := control_info.y
+        w  := control_info.w
+        h  := control_info.h
+        xx := control_info.xx
+        yy := control_info.yy
+
+        line_width := 14
+        offset     := 3
+        max_left   := 600 + line_width
+        max_right  := win_xx - 600 + line_width
+
+        check_width := result["win_controls"]["SysTreeView321"]["w"]
+        if ( Abs(check_width-600) > 3 ) {
+            MouseClickDrag, Left, x-offset,  (yy-y)/2, max_left+offset,  (yy-y)/2, 1
+            MouseClickDrag, Left, xx+offset, (yy-y)/2, max_right-offset, (yy-y)/2, 1
+            MouseMove, x_origin, y_origin
+        }
+
+    Return
+
+
 #If

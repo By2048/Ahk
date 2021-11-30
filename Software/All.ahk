@@ -1,5 +1,8 @@
 ﻿
 #Include %A_WorkingDir%\Config\All.ahk
+
+#Include %A_WorkingDir%\Lib\JEE.ahk
+
 #Include %A_WorkingDir%\Tool\Base.ahk
 #Include %A_WorkingDir%\Tool\Change.ahk
 #Include %A_WorkingDir%\Tool\File.ahk

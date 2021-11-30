@@ -109,10 +109,28 @@ CheckWindowsActive(_process_name_="", _class_="", _title_="")
 
 
 
+; 获取窗口大小
+GetClientSize(hWnd, ByRef w := "", ByRef h := "")
+{
+	VarSetCapacity(rect, 16)
+	DllCall("GetClientRect", "ptr", hWnd, "ptr", &rect)
+	w := NumGet(rect, 8, "int")
+	h := NumGet(rect, 12, "int")
+}
+
+
+
 ; 获取激活窗口的所在屏幕的信息以及窗口信息
 ; result | {} 应用信息
-GetActiveWindowsInfo()
+GetActiveWindowsInfo(coord_mode="Screen")
 {
+    if (coord_mode="Window") {
+        CoordMode, Mouse, Window
+    }
+    if (coord_mode="Screen") {
+        CoordMode, Mouse, Screen
+    }
+
     WinGet,                          win_id, ID,              A
     WinGet,                         win_pid, PID,             ahk_id %win_id%
     WinGet,                     win_min_max, MinMax,          ahk_id %win_id%
@@ -125,6 +143,12 @@ GetActiveWindowsInfo()
 	WinGetText,                    win_text,                  ahk_id %win_id%
 	WinGetPos,   win_x, win_y, win_w, win_h,                  ahk_id %win_id%
     
+    if (coord_mode="Window") {
+        win_x := 0
+        win_y := 0
+        GetClientSize(win_id, win_w, win_h)
+    }
+
     in_screen := 1
     screen_x  := 0, screen_y  := 0
     screen_xx := 0, screen_yy := 0
@@ -176,9 +200,8 @@ GetActiveWindowsInfo()
         control_info["xx"]   := x + w
         control_info["yy"]   := y + h
         control_info["text"] := control_text
+        control_info["___"]  := w . "|" . h
     }
-
-    result.win_controls := win_controls
 
     result.win_id             := win_id
     result.win_pid            := win_pid
@@ -203,6 +226,8 @@ GetActiveWindowsInfo()
     result.screen_yy          := screen_yy
     result.screen_w           := screen_w
     result.screen_h           := screen_h
+    result.win_controls       := win_controls
+    result.coord_mode         := coord_mode
 
     global Windows_Cache 
     Windows_Cache := result

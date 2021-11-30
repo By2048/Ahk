@@ -84,6 +84,11 @@ WW := 2150
 WH := 1250
 Windows_Position_Default["Start"] := [CenterX(), CenterY(), WW, WH]
 
+; 树 | 名称1200 日期250 大小250 备注250 | 预览
+WW := 3000
+WH := 1900
+Windows_Position_Default["Explorer"] := [CenterX(), CenterY(), WW, WH]
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 WX := 10
