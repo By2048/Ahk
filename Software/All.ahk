@@ -32,6 +32,7 @@
 #Include %A_WorkingDir%\Software\Snipaste.ahk
 #Include %A_WorkingDir%\Software\SumatraPDF.ahk
 #Include %A_WorkingDir%\Software\TIM.ahk
+#Include %A_WorkingDir%\Software\v2rayN.ahk
 #Include %A_WorkingDir%\Software\VMware.ahk
 #Include %A_WorkingDir%\Software\VSCode.ahk
 #Include %A_WorkingDir%\Software\Wallpaper.ahk
