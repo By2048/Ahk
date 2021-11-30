@@ -124,7 +124,7 @@
 
         global Windows_Cache
 
-        oWin := JEE_ExpWinGetObj(win_id)
+        oWin := JEE_ExpWinGetObj(Windows_Cache["win_id"])
         JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
         if (Windows_Cache["win_title"]="D:\") {
             vListAbbrev := "nam,com,dat"

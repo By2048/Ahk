@@ -20,55 +20,45 @@
 
 #If ( CheckWindowsActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为" ) )
 
-    <!\::
-
-        ; https://wyagd001.github.io/zh-cn/docs/commands/OnMessage.htm#SendString
+    <#\::
 
         MoveWindowsToDefaultPosition()
-        Sleep 500
 
-        global Windows_Cache
-        result := Windows_Cache
-        
-        
         CoordMode, Mouse, Window
-        MouseGetPos, x_origin, y_origin, win_id, control_id
 
-        ; actWin := WinExist("A")
+        MouseGetPos, x_origin, y_origin
+        result := GetActiveWindowsInfo("Window")
 
-        ControlGet, curCtrlHwnd, Hwnd, , %control_id%, ahk_id %win_id%
-        ControlGetPos cX, cY, cW, cH, , ahk_id %curCtrlHwnd%
+        control_info := result["win_controls"]["DirectUIHWND2"]
+        x  := control_info.x
+        y  := control_info.y
+        w  := control_info.w
+        h  := control_info.h
+        xx := control_info.xx
+        yy := control_info.yy
 
-        x := cX - 3
-        y := cY + 3
+        line_width := 18
 
-        xx := 500 - 10
-        yy := y
-
-        MouseClickDrag, Left, x, y, xx, yy, 1
-
-        Sleep 100
-
-        x := cX + 30
-        y := cY + 30
-        MouseMove, x, y, 0
+        MouseClickDrag, Left, x-3, y+3, 500+line_width-50, y, 1
 
         ; 调整列宽 分组依据 更多
-
-        ; Send {AppsKey}
+        MouseMove, x+30, y+30, 0
         Send {RButton}
         Send {p}{m}
         Sleep 300
 
+        ; 名称
         Send !t
         Send !w
         SendInput 990
 
+        ; 修改日期
         Send !t
         Send {Down}
         Send !w
         SendInput 250
 
+        ; 大小
         Send !t
         Send {Down}
         Send !w
