@@ -89,6 +89,10 @@ WW := 3000
 WH := 1900
 Windows_Position_Default["Explorer"] := [CenterX(), CenterY(), WW, WH]
 
+WW := 3300
+WH := 2000
+Windows_Position_Default["Q-Dir"] := [CenterX(), CenterY(), WW, WH]
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 WX := 10
@@ -127,6 +131,10 @@ Windows_Position_Default["Thunder__新建任务面板"] := [CenterX(), CenterY()
 WW := 3000
 WH := 1500
 Windows_Position_Default["Calibre"] := [CenterX(), CenterY(), WW, WH]
+
+WW := 2300
+WH := 1700
+Windows_Position_Default["Everything"] := [CenterX(), CenterY(), WW, WH]
 
 WX := 176
 WY := 10

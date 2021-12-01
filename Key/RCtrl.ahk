@@ -13,8 +13,8 @@
 
 
 >^q::Run E:\Config\PC.qdr
->^w::RunNormalUser("D:\#Lnk\WeChat.lnk")
 >^e::Run D:\#Lnk\Everything.lnk
+>^w::RunNormalUser("D:\#Lnk\WeChat.lnk")
 >^r::RunNormalUser("D:\#Lnk\QuiteRSS.lnk")
 >^t::
     Process, Exist, TIM.exe

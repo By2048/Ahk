@@ -20,6 +20,7 @@
 #Include %A_WorkingDir%\Software\Chrome.ahk
 #Include %A_WorkingDir%\Software\CloudMusic.ahk
 #Include %A_WorkingDir%\Software\DingDing.ahk
+#Include %A_WorkingDir%\Software\Everything.ahk
 #Include %A_WorkingDir%\Software\Explorer.ahk
 #Include %A_WorkingDir%\Software\FFRenamePro.ahk
 #Include %A_WorkingDir%\Software\FSViewer.ahk
