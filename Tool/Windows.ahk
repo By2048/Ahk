@@ -555,9 +555,23 @@ MoveWindowsToMainMini(command)
         screen_h := screen_h / 2
     }
 
+    position_check := False
+
     position_default := Windows_Position_Default[win_process_name]
-    position_backup  := Windows_Position_Backup[win_process_name]
-    if (position.Length() or position_backup.Length()) {
+    if (command="main" and position_default.Length()) {
+        position_check := True
+        MoveWindowsToDefaultPosition()
+        Return
+    }
+
+    position_backup := Windows_Position_Backup[win_process_name]
+    if (command="mini" and position_backup.Length()) {
+        position_check := True
+        MoveWindowsToBackupPosition()
+        Return
+    }
+
+    if (position_check) {
         HelpText("Windows_Position Not NULL", "center_down", "screen_1", 500)
         Return
     }

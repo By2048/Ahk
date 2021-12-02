@@ -166,9 +166,9 @@
 
         check_width := result["win_controls"]["SysTreeView321"]["w"]
         if ( Abs(check_width-600) > 3 ) {
-            MouseClickDrag, Left, x-offset,  (yy-y)/2, max_left+offset,  (yy-y)/2, 1
-            MouseClickDrag, Left, xx+offset, (yy-y)/2, max_right-offset, (yy-y)/2, 1
-            MouseMove, x_origin, y_origin
+            MouseClickDrag, Left, x-offset,  (yy-y)/2, max_left+offset,  (yy-y)/2, 0
+            MouseClickDrag, Left, xx+offset, (yy-y)/2, max_right-offset, (yy-y)/2, 0
+            MouseMove, x_origin, y_origin, 0
         }
 
     Return
