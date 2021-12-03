@@ -5,18 +5,18 @@
 	`::
 		CoordMode, Mouse, Window
 	    MouseGetPos, x, y
-		MouseClick, Right, x, y
+		MouseClick, Right, x, y, 1, 0
 		Sleep 100
 		xx := x + 50
 		yy := y + 30
-		MouseClick, Left, xx, yy
+		MouseClick, Left, xx, yy, 1, 0
 		MouseMove, x, y, 0
 	Return
 
 	; 返回
 	Esc::
 		MouseGetPos, x, y
-		MouseClick, Left, 2045, 153
+		MouseClick, Left, 2045, 153, 1, 0
 		MouseMove, x, y, 0
 	Return
 
