@@ -54,6 +54,27 @@
     ^w::Return
     !CapsLock::Send ^w
 
+    <#\::
+        CoordMode, Mouse, Window
+
+        MouseGetPos, x_origin, y_origin, win_id, control_name, A
+
+        result := GetActiveWindowsInfo("Window")
+        cinfo := result["win_controls"]["#327702"]
+        MoveControlUDLR(cinfo,  , 900)
+
+        result := GetActiveWindowsInfo("Window")
+        cinfo := result["win_controls"]["#327702"]
+        MoveControlUDLR(cinfo,  ,  , 700)
+
+        result := GetActiveWindowsInfo("Window")
+        cinfo := result["win_controls"]["#327702"]
+        MoveControlUDLR(cinfo,  ,  ,  , cinfo.x + 1010)
+
+        MouseMove, x_origin, y_origin, 0
+    Return
+
+
 #If
 
 

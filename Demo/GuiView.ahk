@@ -43,7 +43,6 @@ F12::
             y:=y+3 + 10
             w:=w-6 
             h:=h-6
-            ; g_c_name := 
             Gui, Add, Text, vG%A_Index% X%x% Y%y% W%w% H%h% +Center +Border, %name%
             Gui, Submit
         }

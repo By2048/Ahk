@@ -65,10 +65,7 @@
         MouseClickAndResetting(1076,1584,"Window",3)
     Return
 
-    Esc::
-    RAlt::
-        MouseClickAndResetting(1703, 485, "Window")
-    Return
+    Esc::MouseClickAndResetting(1703, 485, "Window")
 
 #If
 
