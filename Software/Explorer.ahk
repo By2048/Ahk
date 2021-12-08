@@ -126,20 +126,29 @@
 
         oWin := JEE_ExpWinGetObj(Windows_Cache["win_id"])
         JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
+
         if (Windows_Cache["win_title"]="D:\") {
             vListAbbrev := "nam,com,dat"
+            vList := JEE_ExpColAbbrevToName(vListAbbrev, ",")
+            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 1250)
+            JEE_ICMSetColumnWidth(icm, "System.Comment", 250)
+            JEE_ICMSetColumnWidth(icm, "System.ItemDate", 250)
+        } else if (windows_cache["win_title"]="回收站") {
+            vList := "System.ItemNameDisplay,System.Recycle.DeletedFrom,System.Recycle.DateDeleted,System.Size"
+            JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
+            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 650)
+            JEE_ICMSetColumnWidth(icm, "System.Recycle.DeletedFrom", 600)
+            JEE_ICMSetColumnWidth(icm, "System.Recycle.DateDeleted", 250)
+            JEE_ICMSetColumnWidth(icm, "System.Size", 200)
         } else {
             vListAbbrev := "nam,dat,siz"
+            vList := JEE_ExpColAbbrevToName(vListAbbrev, ",")
+            JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
+            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 1250)
+            JEE_ICMSetColumnWidth(icm, "System.ItemDate", 250)
+            JEE_ICMSetColumnWidth(icm, "System.Size", 200)
         }
-        vList := JEE_ExpColAbbrevToName(vListAbbrev, ",")
         JEE_ICMSetColumns(icm, vList, ",")
-
-        oWin := JEE_ExpWinGetObj(win_id)
-        JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
-        JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 1200)
-        JEE_ICMSetColumnWidth(icm, "System.ItemDate", 250)
-        JEE_ICMSetColumnWidth(icm, "System.Comment", 250)
-        JEE_ICMSetColumnWidth(icm, "System.Size", 250)
 
         isp := isb := isv := ifv2 := icm := ""
         

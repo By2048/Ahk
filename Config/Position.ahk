@@ -115,6 +115,10 @@ Windows_Position_Default["WeChat"] := [WX, WY, WW, WH]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+WW := 3000
+WH := 1500
+Windows_Position_Default["BitComet"] := [CenterX(), CenterY(), WW, WH]
+
 WW := 2000
 WH := 1500
 Windows_Position_Default["FDM"] := [CenterX(), CenterY(), WW, WH]
