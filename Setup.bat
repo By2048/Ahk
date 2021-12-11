@@ -6,6 +6,10 @@ mode 40,25
 
 @REM ============================================
 
+setlocal
+
+@REM ============================================
+
 set AHK=D:\AutoHotkey\AutoHotkey.exe
 
 set folder=%~dp0
@@ -96,8 +100,10 @@ start %AHK%     .\Input.ahk           %command%
 echo  %command% .\Input.ahk
 @REM ============================================
 
+endlocal
+
+@REM ============================================
 
 ping -n 2 127.0.0.1 > nul
 
 exit
-
