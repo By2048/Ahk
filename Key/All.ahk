@@ -51,10 +51,12 @@
 #^F4::return ;关闭当前虚拟桌面
 #^Left::return ;向左切换虚拟桌面
 #^Right::return ;向右切换虚拟桌面
-#,::Return ; 透明窗口显示桌面
+#,::Return ;透明窗口显示桌面
 
 #Home::Return
 #End::Return
+
+!+PrintScreen::Return ;高对比度 Alt+LShift+PrintScreen
 
 ; PowerToys Run
 ^!r::Return
