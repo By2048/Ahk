@@ -57,6 +57,9 @@
     ;  1 #3277010->SysTreeView325   2 #327702->SysListView321   4 #327706->SysListView323
     ;  1 ^                          3 #327704->SysListView322   4 ^
     <#\::
+
+        MoveWindowsToDefaultPosition()
+
         CoordMode, Mouse, Window
 
         MouseGetPos, x_origin, y_origin, win_id, control_name, A

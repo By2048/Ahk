@@ -21,7 +21,7 @@
     !/::Send ^d
 
     ; 打印
-    ^p:Return
+    ^p::Return
     !p::Send ^p
     
     ; 另存为

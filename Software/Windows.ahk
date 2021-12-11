@@ -33,3 +33,14 @@
     !CapsLock::Send !{F4}
 
 #If
+
+
+; 远程桌面
+#If ( CheckWindowsActive("Mstsc") )
+
+    CapsLock::
+        WinActivate, ahk_exe Explorer.EXE
+    Return
+
+#If
+    

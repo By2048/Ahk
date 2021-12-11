@@ -1,5 +1,5 @@
 ﻿
-#If CheckWindowsActive("WPS")
+#If ( CheckWindowsActive("WPS") )
 
     ;无框线
     >![::

@@ -130,8 +130,8 @@
         if (Windows_Cache["win_title"]="D:\") {
             vListAbbrev := "nam,com,dat"
             vList := JEE_ExpColAbbrevToName(vListAbbrev, ",")
-            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 1250)
-            JEE_ICMSetColumnWidth(icm, "System.Comment", 250)
+            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 1000)
+            JEE_ICMSetColumnWidth(icm, "System.Comment", 450)
             JEE_ICMSetColumnWidth(icm, "System.ItemDate", 250)
         } else if (windows_cache["win_title"]="回收站") {
             vList := "System.ItemNameDisplay,System.Recycle.DeletedFrom,System.Recycle.DateDeleted,System.Size"
