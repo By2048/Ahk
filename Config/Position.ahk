@@ -89,7 +89,7 @@ WW := 3000
 WH := 1900
 Windows_Position_Default["Explorer"] := [CenterX(), CenterY(), WW, WH]
 
-WW := 3300
+WW := (650 + 20) + ((200+180+120)*2 + 50) + ((500+120+90)*2 + 50) + 50
 WH := 2000
 Windows_Position_Default["Q-Dir"] := [CenterX(), CenterY(), WW, WH]
 

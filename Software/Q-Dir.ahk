@@ -53,32 +53,43 @@
     ; 关闭活动窗口
     ^w::Return
     !CapsLock::Send ^w
-
+    
+    ;  DPI设置 系统增强
     ;  1 #3277010->SysTreeView325   2 #327702->SysListView321   4 #327706->SysListView323
     ;  1 ^                          3 #327704->SysListView322   4 ^
+    ;    650                          500 * dpi                   500+120+90 * dpi
     <#\::
-
         MoveWindowsToDefaultPosition()
 
         CoordMode, Mouse, Window
-
         MouseGetPos, x_origin, y_origin, win_id, control_name, A
 
-        result := GetActiveWindowsInfo("Window")
-        cinfo := result["win_controls"]["#327702"]
-        MoveControlUDLR(cinfo,  , 900)
+        cup    := 0
+        cdown  := 0
+        cleft  := 0
+        cright := 0
+        offset := 4 * Screen1.dpi
 
         result := GetActiveWindowsInfo("Window")
-        cinfo := result["win_controls"]["#327702"]
-        MoveControlUDLR(cinfo,  ,  , 700)
+        cinfo  := result["win_controls"]["#327702"]
+        cdown  := 800
+        MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
+        cdown  := 0
 
         result := GetActiveWindowsInfo("Window")
-        cinfo := result["win_controls"]["#327702"]
-        MoveControlUDLR(cinfo,  ,  ,  , cinfo.x + 1010)
+        cinfo  := result["win_controls"]["#327702"]
+        cleft  := 650 + 21
+        MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
+        cleft  := 0
+
+        result := GetActiveWindowsInfo("Window")
+        cinfo  := result["win_controls"]["#327702"]
+        cright := cinfo.x + 1000 + 50
+        MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
+        cright := 0
 
         MouseMove, x_origin, y_origin, 0
     Return
-
 
 #If
 

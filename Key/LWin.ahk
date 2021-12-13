@@ -95,7 +95,7 @@ Return
 Return
 
 ; 切换Windows默认标题栏
-<#Pause::
+<#Delete::
     WS_CAPTION := 0xC00000
     WinGet, _style_ , Style, A
     WinSet, Style, ^%WS_CAPTION%, A
@@ -106,7 +106,6 @@ Return
     }
 Return
 
-<#Delete::Return
 
 ; 设置默认位置
 <#\::MoveWindowsToDefaultPosition()

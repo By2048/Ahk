@@ -181,7 +181,7 @@ return
     [::change("privious")
     ]::change("next")
     Esc::hide_image()
-    Pause::
+    PrintScreen::
         global hotkeys_index
         global hotkeys_images
         image := hotkeys_images[hotkeys_index]

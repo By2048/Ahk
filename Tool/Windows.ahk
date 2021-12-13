@@ -490,39 +490,39 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
 {
     xy := 0 , x_start := 0 , y_start := 0 , x_end := 0 , y_end := 0
 
-    if (cup) {
+    if (cup>0) {
         x_start := cinfo.x + cinfo.w/2
         y_start := cinfo.y - offset
         x_end   := x_start
         y_end   := cup
-        xy      := y_end - y_start
+        xy      := y_end   - y_start
     }
 
-    if (cdown) {
+    if (cdown>0) {
         x_start := cinfo.xx - cinfo.w/2
         y_start := cinfo.yy + offset
         x_end   := x_start
         y_end   := cdown
-        xy      := y_end - y_start
+        xy      := y_end    - y_start
     }
 
-    if (cleft) {
+    if (cleft>0) {
         x_start := cinfo.x - offset
         y_start := cinfo.y + cinfo.h/2
         x_end   := cleft
         y_end   := y_start
-        xy      := x_end - x_start
+        xy      := x_end   - x_start
     }
 
-    if (cright) {
+    if (cright>0) {
         x_start := cinfo.xx + offset
         y_start := cinfo.yy - cinfo.h/2
         x_end   := cright
         y_end   := y_start
-        xy      := x_end - x_start
+        xy      := x_end    - x_start
     }
 
-    if (Abs(xy) < 3) {
+    if (Abs(xy)<3) {
         return
     }
 

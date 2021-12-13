@@ -60,5 +60,3 @@
 
 ; PowerToys Run
 ^!r::Return
-
-+BackSpace::Send {Delete}
