@@ -24,6 +24,7 @@
 #Include %A_WorkingDir%\Software\Everything.ahk
 #Include %A_WorkingDir%\Software\Explorer.ahk
 #Include %A_WorkingDir%\Software\FFRenamePro.ahk
+#Include %A_WorkingDir%\Software\FreeFileSync.ahk
 #Include %A_WorkingDir%\Software\FSViewer.ahk
 #Include %A_WorkingDir%\Software\Geek.ahk
 #Include %A_WorkingDir%\Software\JetBrains.ahk
