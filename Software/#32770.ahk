@@ -39,7 +39,10 @@
 
         line_width := 18
 
-        MouseClickDrag, Left, x-3, y+3, 500+line_width-50, y, 1
+        xx := 500 + line_width - 50
+        yy := y
+
+        MouseClickDrag, Left, x-3, y+3, xx, yy, 1
 
         ; 调整列宽 分组依据 更多
         MouseMove, x+30, y+30, 0

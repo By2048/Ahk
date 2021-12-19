@@ -28,7 +28,7 @@ MousueTool()
 
 
 
-MouseClickAndResetting(x, y, move_type="Screen",click_count=1)
+MouseClickAndResetting(x, y, move_type="Screen", click_count=1)
 {
     if (move_type="Screen") {
         CoordMode, Mouse, Screen
@@ -83,7 +83,7 @@ MouseClickImage(image, trans="")
 
 
 
-MouseClickImageXYWH(x1,y1,x2,y2,image,key="Left",trans="")
+MouseClickImageXYWH(x1, y1, x2, y2, image, key="Left", trans="")
 {
     image_size := GetImageSize(image)
     image_w    := image_size["w"]

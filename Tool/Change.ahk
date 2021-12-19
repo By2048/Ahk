@@ -46,6 +46,7 @@ ToBase(n, b)
 ; 软件进程名转换 code.exe -> VSCode
 ProcessNameFormat(process_name)
 {
+    result       := process_name
     process_name := RTrim(process_name, "exe")
     process_name := RTrim(process_name, "EXE")
     process_name := RTrim(process_name, ".")
@@ -53,9 +54,26 @@ ProcessNameFormat(process_name)
         name_old := value[1]
         name_new := value[2]
         if (process_name = name_old) {
-            process_name := name_new
-            Break
+            result := name_new
+            break
         }
     }
-    return process_name
+    return result
+}
+
+
+; 软件进程名转换 VSCode -> code.exe
+ProcessNameOrigin(process_name)
+{
+    result := process_name
+    for index, value in Windows_Process_Name {
+        name_old := value[1]
+        name_new := value[2]
+        if (process_name = name_new) {
+            result := name_old
+            break
+        }
+    }
+    result := result . ".exe"
+    return result
 }

@@ -15,8 +15,8 @@
 
     Enter::^c
 
-    BackSpace::Esc
-    Delete::Pause
+    BackSpace::Send {Esc}
+    Delete::Send {Pause}
 
     [::,
     ]::.

@@ -38,17 +38,20 @@ Return
 >^a::Run D:\#Lnk\Android.lnk
 >^s::Run D:\#Lnk\Sandboxie.lnk
 >^f::Run D:\#Lnk\FreeFileSync.lnk
->^g::
-    win_x:=160, win_y:=60, win_w:=1600, win_h:=960
-    command := Format("{} --new-window", Chrome)
-    command := Format("{} --window-position={},{}", command,win_x,win_y)
-    command := Format("{} --window-size={},{}", command,win_w,win_h)
-    Run, %command%
-Return
+>^g::Run, Chrome.bat, %A_WorkingDir%, Hide
 >^h::Run %Ahk% D:\AutoHotkey\WindowSpy.ahk
 >^+h::Run %Ahk% E:\GitX\AhkSpy\AhkSpy.ahk
 >^j::
     Run D:\#Lnk\JetBrains.lnk
+    exe := ProcessNameOrigin("JetBrains")
+    WinActivate, ahk_exe %exe%
+    Sleep 100
+    MoveWindowsToCenter(True)
+Return
+>^+j::
+    exe := ProcessNameOrigin("JetBrains")
+    Process, Close, %exe%
+    Run D:\#Lnk\JetBrains-Origin.lnk
     Sleep 100
     MoveWindowsToCenter(True)
 Return
@@ -85,8 +88,8 @@ Return
 
 >^\::Run D:\#Lnk\Whiteboard.lnk
 
->^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}:: ;回收站
->^.::Run ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;我的电脑
+>^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e} ;回收站
+>^.::Run ::{20d04fe0-3aea-1069-a2d8-08002b30309d} ;我的电脑
 >^/::Run T:\\
 
 >^Up::Return

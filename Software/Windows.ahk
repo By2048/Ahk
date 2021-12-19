@@ -36,11 +36,10 @@
 
 
 ; 远程桌面
-#If ( CheckWindowsActive("Mstsc") )
+#If ( CheckWindowsActive( "Mstsc" ) )
 
-    CapsLock::
+    $CapsLock::
         WinActivate, ahk_exe Explorer.EXE
     Return
 
 #If
-    
