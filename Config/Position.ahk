@@ -157,6 +157,14 @@ WW := Screen1.w * 4/6
 WH := Screen1.h * 7/9
 Windows_Position_Default["CloudMusic"] := [CenterX(), CenterY(), WW, WH]
 
+WW := 3000
+WH := 1800
+Windows_Position_Default["FreeFileSync"] := [CenterX(), CenterY(), WW, WH]
+
+WW := 1500
+WH := 1800
+Windows_Position_Default["FreeFileSync__同步设置"] := [CenterX(), CenterY(), WW, WH]
+
 WW := Screen1.w * 4/6
 WH := Screen1.h * 4/6
 Windows_Position_Default["PotPlayer"] := [CenterX(), CenterY(), WW, WH]
@@ -170,9 +178,9 @@ WH := 1500
 WX := 30
 Windows_Position_Default["PotPlayer__播放列表"] := [WX, CenterY(), WW, WH]
 
-WW := 2020
+WW := 1400
 WH := 300
-WY := 2020
+WY := 300
 Windows_Position_Default["CloudMusic_DesktopLyrics"] := [CenterX("screen_3"), WY, WW, WH]
 
 WW := 2500
@@ -181,7 +189,11 @@ Windows_Position_Default["Sandboxie"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 2000
 WH := 1500
-Windows_Position_Default["7-Zip"] := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["Zip"] := [CenterX(), CenterY(), WW, WH]
+
+WW := 1500
+WH := 1500
+Windows_Position_Default["Geek"] := [CenterX(), CenterY(), WW, WH]
 
 WW := Screen1.w * 5/6
 WH := Screen1.h * 8/9
@@ -195,7 +207,7 @@ WW := 900
 WH := 1500
 Windows_Position_Default["Chrome__修改书签"] := [CenterX(), CenterY(), WW, WH]
 
-WW := 2662
+WW := 2700
 WH := 1600
 Windows_Position_Default["v2rayN"] := [CenterX("screen_1"), CenterY("screen_1"), WW, WH]
 Windows_Position_Backup["v2rayN"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
