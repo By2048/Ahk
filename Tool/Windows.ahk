@@ -363,7 +363,7 @@ SetWindowsTransparent(change=0)
 SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
 {
     if (not win_id) {
-        HelpText("No WinId")
+        HelpText("No WinId",  ,  , 1000)
     }
     
     if (IsMaxMin()) {
@@ -374,13 +374,24 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
         return 
     }
 
-    WinGetPos, x, y, w, h, ahk_id %win_id%
-    
+    x := Windows_Cache["win_x"]
+    y := Windows_Cache["win_y"]
+    w := Windows_Cache["win_w"]
+    h := Windows_Cache["win_h"]
+
     if (ww=0 or not ww) { 
         ww:=w
     }
     if (hh=0 or not hh) { 
         hh:=h
+    }
+
+    if (Windows_Cache["win_process_name"]=="PyCharm") { ;边框问题
+        if ( Mod(Windows_Cache["win_w"], 2) == 0 ) {
+            offset := 0
+            ww := ww + 1
+            xx := xx - 1
+        }
     }
 
     if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
@@ -570,8 +581,13 @@ MoveWindowsToCenter(silent=False)
     
     SetWindows(win_id, xx, yy, ww, hh, 0)
 
+    if (Windows_Cache["win_process_name"]="PyCharm") {
+        return
+    }
+
     if (not silent) {
         HelpText("Move To Center",  ,  , 1000)
+        return
     }
 }
 
@@ -698,17 +714,9 @@ MoveWindowsToXXXPosition(select="Default")
     ww := win_config[3]
     hh := win_config[4]
 
-    offset := 3
-    if (win_process_name="PyCharm") {
-        ;边框问题
-        offset := 0
-        ww := ww + 1
-        xx := xx - 1
-    }
-    
-    SetWindows(win_id, xx, yy, ww, hh, offset)
+    SetWindows(win_id, xx, yy, ww, hh)
     ; 多屏幕切换时 部分软件需要多次操作
-    SetWindows(win_id, xx, yy, ww, hh, offset)
+    SetWindows(win_id, xx, yy, ww, hh)
 }
 MoveWindowsToDefaultPosition()
 {
