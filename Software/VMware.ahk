@@ -23,10 +23,11 @@
     ; 映射或断开虚拟磁盘连接
     >!\::
         Send {AltDown}{f}{m}{AltUp}
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 0, 150, SysListView321, A
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 1, 200, SysListView321, A
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 2, 600, SysListView321, A
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 3, 200, SysListView321, A
+        win_id := Windows_Cache["win_id"]
+        SendMessage, %LVM_SETCOLUMNWIDTH%, 0, 150, SysListView321, ahk_id %win_id%
+        SendMessage, %LVM_SETCOLUMNWIDTH%, 1, 200, SysListView321, ahk_id %win_id%
+        SendMessage, %LVM_SETCOLUMNWIDTH%, 2, 600, SysListView321, ahk_id %win_id%
+        SendMessage, %LVM_SETCOLUMNWIDTH%, 3, 200, SysListView321, ahk_id %win_id%
     Return
 
 #If
