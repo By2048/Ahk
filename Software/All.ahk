@@ -47,6 +47,7 @@
 #Include %A_WorkingDir%\Software\WindowsTerminal.Ahk
 #Include %A_WorkingDir%\Software\Wps.ahk
 #Include %A_WorkingDir%\Software\Xshell.ahk
+#Include %A_WorkingDir%\Software\Zip.ahk
 
 #SingleInstance Force
 #NoTrayIcon

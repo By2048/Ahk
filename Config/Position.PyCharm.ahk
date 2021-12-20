@@ -46,11 +46,12 @@ Windows_Position_Default["PyCharm__指定检查范围"] := [CenterX(), CenterY()
 
 WW := 2000
 WH := 1500
-Windows_Position_Default["PyCharm__设置"]            := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__添加Python解释器"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__TODO"]            := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__问题"]            := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__远程主机"]         := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__设置"]             := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__添加Python解释器"]  := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__TODO"]             := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__问题"]             := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__远程主机"]          := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__可用软件包"]        := [CenterX(), CenterY(), WW, WH]
 
 
 
@@ -63,6 +64,8 @@ Windows_Position_Default["PyCharm__运行/调试配置"] := [CenterX(), CenterY(
 WW := 2300
 WH := 1700
 Windows_Position_Default["PyCharm__评估"] := [CenterX(), CenterY(), WW, WH]
+
+
 
 WW := 2800
 WH := 1750

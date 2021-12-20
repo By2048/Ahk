@@ -187,8 +187,8 @@ WW := 2500
 WH := 1500
 Windows_Position_Default["Sandboxie"] := [CenterX(), CenterY(), WW, WH]
 
-WW := 2000
-WH := 1500
+WW := 1800
+WH := 1400
 Windows_Position_Default["Zip"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 1500

@@ -379,15 +379,15 @@ SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
     w := Windows_Cache["win_w"]
     h := Windows_Cache["win_h"]
 
-    if (ww=0 or not ww) { 
-        ww:=w
+    if (ww==0 or not ww) { 
+        ww := w
     }
-    if (hh=0 or not hh) { 
-        hh:=h
+    if (hh==0 or not hh) { 
+        hh := h
     }
 
-    if (Windows_Cache["win_process_name"]=="PyCharm") { ;边框问题
-        if ( Mod(Windows_Cache["win_w"], 2) == 0 ) {
+    if (Windows_Cache["win_process_name"] == "PyCharm") { ;边框问题
+        if (Mod(Windows_Cache["win_w"], 2) == 0) {
             offset := 0
             ww := ww + 1
             xx := xx - 1
