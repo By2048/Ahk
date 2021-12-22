@@ -42,4 +42,7 @@
         WinActivate, ahk_exe Explorer.EXE
     Return
 
+    ; 显示链接栏
+    ^!Home::Return
+
 #If

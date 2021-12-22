@@ -50,7 +50,7 @@ InitConfig()
 
     Gui, +DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
 
-    content := "`n"
+    content := ""
     for index, value in Init["config"] {
         content .= value
         content .= "`n"
@@ -68,20 +68,19 @@ InitConfig()
         y := Screen1.y + Screen1.h/2 - h_dpi/2
     }
 
-    if (Screen_Count=3) {
+    if (Screen_Count==3) {
         x := Screen3.x + Screen3.w/2 - w_dpi/2
         y := Screen3.y + Screen3.h/3 - w_dpi/2
     }
 
-    Gui, font, s20, Source Code Pro
-    Gui, Margin, 0, 30
+    Gui, Font, s25, "Source Code Pro"
+    Gui, Margin, 0, 3
     Gui, Add, Text, w%w% +Center -Border, Ahk Config
 
-
     global init_config_show_status
-    if (init_config_show_status = False) {
+    if (init_config_show_status == False) {
         Gui, Margin, 0, 0
-        Gui, font, s15, Source Code Pro
+        Gui, font, s15, "Source Code Pro"
         Gui, Add, Text, w%w% -Center -Border, %content%
         Gui, Show, X%x% Y%y% W%w% H%h% NA
         init_config_show_status := True

@@ -1,10 +1,9 @@
 ﻿
-#If ( CheckWindowsActive("Q-Dir") )
+#If ( CheckWindowsActive( "Q-Dir" ) )
 
     ;全屏
     F11::Return
     <#Enter::Send {F11}
-
 
     ; 退出
     !F4::Return
@@ -46,8 +45,8 @@
     ^+Tab::Return
     !+Tab::Send ^+{Tab}
 
-    f2::Return
-    ^r::Send {f2}
+    F2::Return
+    ^r::Send {F2}
 
     ; Error
     ; 关闭活动窗口

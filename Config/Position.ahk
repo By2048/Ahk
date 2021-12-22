@@ -157,6 +157,11 @@ WW := Screen1.w * 4/6
 WH := Screen1.h * 7/9
 Windows_Position_Default["CloudMusic"] := [CenterX(), CenterY(), WW, WH]
 
+WW := 1400
+WH := 250
+WY := 300
+Windows_Position_Default["CloudMusic_DesktopLyrics"] := [CenterX("screen_3"), WY, WW, WH]
+
 WW := 3000
 WH := 1800
 Windows_Position_Default["FreeFileSync"] := [CenterX(), CenterY(), WW, WH]
@@ -177,11 +182,6 @@ WW := 1000
 WH := 1500
 WX := 30
 Windows_Position_Default["PotPlayer__播放列表"] := [WX, CenterY(), WW, WH]
-
-WW := 1400
-WH := 300
-WY := 300
-Windows_Position_Default["CloudMusic_DesktopLyrics"] := [CenterX("screen_3"), WY, WW, WH]
 
 WW := 2500
 WH := 1500
