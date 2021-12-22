@@ -77,8 +77,8 @@ Return
 Return
 
 
-RWin & RCtrl::MoveWindowsToMainMini("main")
-RWin & RAlt::MoveWindowsToMainMini("mini")
+RWin & RCtrl::MoveWindowsToMainMini("Main")
+RWin & RAlt::MoveWindowsToMainMini("Mini")
 
 
 

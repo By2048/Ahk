@@ -12,7 +12,7 @@
 IsDesktops()
 {
     WinGetClass, win_class, A
-    if (win_class = "WorkerW") {
+    if (win_class == "WorkerW") {
         return True
     } else {
         return False
@@ -46,7 +46,7 @@ IsGame()
     WinGet, process_name, ProcessName, A
     process_name := ProcessNameFormat(process_name)
     for index, value in game_process_name {
-        if (value = process_name) {
+        if (value == process_name) {
             HelpText("Game", "center_down", "screen3", 1000)
             return True
         }
@@ -110,7 +110,7 @@ CheckWindowsActive(_process_name_="", _class_="", _title_="")
 
 
 ; 获取窗口大小
-GetClientSize(hWnd, ByRef w := "", ByRef h := "")
+GetClientSize(hWnd, ByRef w="", ByRef h="")
 {
 	VarSetCapacity(rect, 16)
 	DllCall("GetClientRect", "ptr", hWnd, "ptr", &rect)
@@ -143,7 +143,7 @@ GetActiveWindowsInfo(coord_mode="Screen")
 	WinGetText,                    win_text,                  ahk_id %win_id%
 	WinGetPos,   win_x, win_y, win_w, win_h,                  ahk_id %win_id%
     
-    if (coord_mode="Window") {
+    if (coord_mode=="Window") {
         win_x := 0
         win_y := 0
         GetClientSize(win_id, win_w, win_h)
@@ -180,7 +180,7 @@ GetActiveWindowsInfo(coord_mode="Screen")
 
     length_id    := win_controls_id.Length()
     length_name  := win_controls_name.Length()
-    if (length_id = length_name) {
+    if (length_id == length_name) {
         length := length_id
         loop %length% {
             k := win_controls_name[A_Index]
@@ -286,7 +286,7 @@ GetActiveWindowsConfig(Config_Data)
         }
 
         if (StrLen(_process_name_) > 0) {
-            if (win_process_name = _process_name_) {
+            if (win_process_name == _process_name_) {
                 match_cnt := match_cnt + 2
             } else if (InStr(win_process_name, _process_name_)) {
                 match_cnt := match_cnt + 1
@@ -296,7 +296,7 @@ GetActiveWindowsConfig(Config_Data)
         }
 
         if (StrLen(_class_) > 0) {
-            if (win_class = _class_) {
+            if (win_class == _class_) {
                 match_cnt := match_cnt + 2
             } else if (InStr(win_class, _class_)) {
                 match_cnt := match_cnt + 1
@@ -306,7 +306,7 @@ GetActiveWindowsConfig(Config_Data)
         }
 
         if (StrLen(_title_) > 0) {
-            if (win_title = _title_) {
+            if (win_title == _title_) {
                 match_cnt := match_cnt + 2
             } else if (InStr(win_title, _title_)) {
                 match_cnt := match_cnt + 1
@@ -337,18 +337,18 @@ SetWindowsTransparent(change=0)
     result := GetActiveWindowsInfo()
     win_id := result.win_id
     win_transparent := result.win_transparent
-    if (change>0) {
-        if (win_transparent+change>=255) {
-            win_transparent:=255
+    if (change > 0) {
+        if (win_transparent + change >= 255) {
+            win_transparent := 255
         } else {
-            win_transparent:=win_transparent+change
+            win_transparent := win_transparent+change
         }
         WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
-    } else if (change<0) {
-        if (win_transparent+change<=55) {
-            win_transparent:=55
+    } else if (change < 0) {
+        if (win_transparent + change <= 55) {
+            win_transparent := 55
         } else {
-            win_transparent:=win_transparent+change
+            win_transparent := win_transparent+change
         }
         WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
     }
@@ -428,30 +428,30 @@ ResizeWindows(command, direction)
 
     step := 10
 
-    if (command="Big") {
-        if (direction="Up") {
+    if (command=="Big") {
+        if (direction=="Up") {
             win_y := win_y - step
             win_h := win_h + step
-        } else if (direction="Down") {
+        } else if (direction=="Down") {
             win_h := win_h + step
-        } else if (direction="Left") {
+        } else if (direction=="Left") {
             win_x := win_x - step
             win_w := win_w + step
-        } else if (direction="Right") {
+        } else if (direction=="Right") {
             win_w := win_w + step
         }
     }
 
-    if (command="Small") {
-        if (direction="Up") {
+    if (command=="Small") {
+        if (direction=="Up") {
             win_y := win_y + step
             win_h := win_h - step
-        } else if (direction="Down") {
+        } else if (direction=="Down") {
             win_h := win_h - step
-        } else if (direction="Left") {
+        } else if (direction=="Left") {
             win_x := win_x + step
             win_w := win_w - step
-        } else if (direction="Right") {
+        } else if (direction=="Right") {
             win_w := win_w - step
         }
     }
@@ -481,13 +481,13 @@ MoveWindowsUDLR(direction)
     win_h  := result.win_h
 
     step := 10
-    if (direction="Up") {
+    if (direction=="Up") {
         win_y := win_y - step
-    } else if (direction="Down") {
+    } else if (direction=="Down") {
         win_y := win_y + step
-    } else if (direction="Left") {
+    } else if (direction=="Left") {
         win_x := win_x - step
-    } else if (direction="Right") {
+    } else if (direction=="Right") {
         win_x := win_x + step
     }
 
@@ -575,7 +575,7 @@ MoveWindowsToCenter(silent=False)
 
     SetWindows(win_id, xx, yy, ww, hh)   
 
-    if (win_x=xx and win_y=yy) {
+    if (win_x==xx and win_y==yy) {
         return
     }
     
@@ -613,46 +613,46 @@ MoveWindowsToMainMini(command)
     screen_w         := result.screen_w
     screen_h         := result.screen_h
 
-    if (in_screen=3) {
+    if (in_screen == 3) {
         screen_h := screen_h / 2
     }
 
-    position_check := False
+    ; position_check := False
 
-    position_default := Windows_Position_Default[win_process_name]
-    if (command="main" and position_default.Length()) {
-        position_check := True
-        MoveWindowsToDefaultPosition()
-        Return
-    }
+    ; position_default := Windows_Position_Default[win_process_name]
+    ; if (command == "Main" and position_default.Length()) {
+    ;     position_check := True
+    ;     MoveWindowsToDefaultPosition()
+    ;     Return
+    ; }
 
-    position_backup := Windows_Position_Backup[win_process_name]
-    if (command="mini" and position_backup.Length()) {
-        position_check := True
-        MoveWindowsToBackupPosition()
-        Return
-    }
+    ; position_backup := Windows_Position_Backup[win_process_name]
+    ; if (command == "Mini" and position_backup.Length()) {
+    ;     position_check := True
+    ;     MoveWindowsToBackupPosition()
+    ;     Return
+    ; }
 
-    if (position_check) {
-        HelpText("Windows_Position Not NULL", "center_down", "screen_1", 500)
-        Return
-    }
+    ; if (position_check) {
+    ;     HelpText("Windows_Position Not NULL", "center_down", "screen_1", 500)
+    ;     Return
+    ; }
 
     mini := Windows_MM["Default"][1]
     main := Windows_MM["Default"][2]
 
     for key, value in Windows_MM {
-        if (key = win_process_name) {
+        if (key == win_process_name) {
             mini := value[1]
             main := value[2]
         }
     }
 
-    if (command="main") {
+    if (command=="Main") {
         HelpText("Windows Main Size")
         ww := screen_w * main[1]
         hh := screen_h * main[2]
-    } else if (command="mini") {
+    } else if (command=="Mini") {
         HelpText("Windows Mini Size")
         ww := screen_w * mini[1]
         hh := screen_h * mini[2]
@@ -684,7 +684,7 @@ MoveWindowsToXXXPosition(select="Default")
     ; 开始菜单在屏幕上居中 兼容处理
     ; 按下Win键，此时在最上层激活的是Search(SearchApp)
     ; 而需要处理的是 StartMenu(StartMenuExperienceHost)
-    if (win_process_name="Search") {
+    if (win_process_name=="Search") {
         if (System_Type="WinServer") {
             Process, Close, SearchUI.exe
             Sleep, 100
@@ -692,7 +692,7 @@ MoveWindowsToXXXPosition(select="Default")
             Sleep, 300
             WinGet, win_id, ID, A
         }
-        if (System_Type="Win10") {
+        if (System_Type=="Win10") {
             Process, Close, SearchApp.exe
             Sleep, 100
             WinActivate, StartMenuExperienceHost.exe
@@ -701,9 +701,9 @@ MoveWindowsToXXXPosition(select="Default")
         }
     }
 
-    if (select="Default") {
+    if (select=="Default") {
         win_config := GetActiveWindowsConfig(Windows_Position_Default)
-    } else if (select="Backup") {
+    } else if (select=="Backup") {
         win_config := GetActiveWindowsConfig(Windows_Position_Backup)
     } else {
         win_config := GetActiveWindowsConfig(Windows_Position_Default)
