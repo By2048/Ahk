@@ -81,6 +81,30 @@ RWin & RCtrl::MoveWindowsToMainMini("Main")
 RWin & RAlt::MoveWindowsToMainMini("Mini")
 
 
+; 移动窗口
+RWin & LButton::
+    SetWinDelay, 30
+    MouseGetPos, mouse_x1, mouse_y1, win_id
+    WinGet, win_min_max, MinMax, ahk_id %win_id%
+    if (win_min_max) {
+        return
+    }
+    WinGetPos, win_x1, win_y1, win_w1, win_h1, ahk_id %win_id%
+    Loop {
+        GetKeyState, left_button, LButton, P
+        if (left_button="U") {
+            break
+        }
+        MouseGetPos, mouse_x2, mouse_y2, win_id
+        move_x := mouse_x2 - mouse_x1
+        move_y := mouse_y2 - mouse_y1
+        win_x2 := win_x1 + move_x
+        win_y2 := win_y1 + move_y
+        WinMove, ahk_id %win_id%,  , %win_x2%, %win_y2%
+    }
+Return
+
+
 
 global windows_move:=False
 global windows_resize_big:=False
