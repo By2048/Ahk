@@ -1,5 +1,4 @@
 ﻿
-
 #If ( CheckWindowsActive("Geek") )
 
     Enter::Return
@@ -14,10 +13,12 @@
 
     <#\::
         MoveWindowsToDefaultPosition()
-        win_id := Windows_Cache["win_id"]
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 0, 1030, SysListView321, ahk_id %win_id%
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 1,  150, SysListView321, ahk_id %win_id%
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 2,  250, SysListView321, ahk_id %win_id%
+        _id    := Windows_Cache["win_id"]
+        _name  := "SysListView321"
+        _width := { 1 : 1030   ; 名称
+                  , 2 : 150    ; 大小
+                  , 3 : 250  } ; 安装时间
+        SetColumnWidth(_id, _name, _width)
     Return
 
 #If

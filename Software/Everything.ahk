@@ -3,17 +3,14 @@
 
     <#\::
         MoveWindowsToDefaultPosition()
-        global Windows_Cache
-        win_id        := Windows_Cache["win_id"]
-        control_name  := "SysListView321"
-        control_value := { 1 : 900
-                         , 2 : 850
-                         , 3 : 200
-                         , 4 : 250 }
-        for key, value in control_value {
-            key := key - 1
-            SendMessage, %LVM_SETCOLUMNWIDTH%, %key%, %value%, %control_name%, ahk_id %win_id%    
-        }
+
+        _id    := Windows_Cache["win_id"]
+        _name  := "SysListView321"
+        _width := { 1 : 900   ; 名称
+                  , 2 : 850   ; 路径
+                  , 3 : 230   ; 大小
+                  , 4 : 250 } ; 修改时间
+        SetColumnWidth(_id, _name, _width)
     Return
 
 #If

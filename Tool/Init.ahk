@@ -39,11 +39,13 @@ InitConfig()
     CoordMode, Pixel, Screen
     CoordMode, Mouse, Screen
 
+    HelpText()
+
     global Init
     global init_config_show_status
 
-    if (init_config_show_status=True) {
-        init_config_show_status:=False
+    if (init_config_show_status == True) {
+        init_config_show_status := False
         Gui, Destroy
         return
     }
@@ -63,12 +65,12 @@ InitConfig()
     w_dpi := w * Screen1.dpi
     h_dpi := h * Screen1.dpi
     
-    if (Screen_Count<=2) {
+    if (Screen_Count <= 2) {
         x := Screen1.x + Screen1.w/2 - w_dpi/2
         y := Screen1.y + Screen1.h/2 - h_dpi/2
     }
 
-    if (Screen_Count==3) {
+    if (Screen_Count == 3) {
         x := Screen3.x + Screen3.w/2 - w_dpi/2
         y := Screen3.y + Screen3.h/3 - w_dpi/2
     }

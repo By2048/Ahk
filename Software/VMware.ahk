@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive("VMware") )
+#If ( CheckWindowsActive( "VMware" ) )
 
     ; 新建虚拟机
     ^n::Return
@@ -21,13 +21,17 @@
     ^p::Return
 
     ; 映射或断开虚拟磁盘连接
-    >!\::
-        Send {AltDown}{f}{m}{AltUp}
-        win_id := Windows_Cache["win_id"]
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 0, 150, SysListView321, ahk_id %win_id%
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 1, 200, SysListView321, ahk_id %win_id%
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 2, 600, SysListView321, ahk_id %win_id%
-        SendMessage, %LVM_SETCOLUMNWIDTH%, 3, 200, SysListView321, ahk_id %win_id%
+    >!/::
+        Send {Alt Down}{f}{m}{Alt Up}
+        MoveWindowsToCenter(True)
+        Sleep 100
+        _id    := Windows_Cache["win_id"]
+        _name  := "SysListView321"
+        _width := { 1 : 150   ;驱动器
+                  , 2 : 200   ;名称
+                  , 3 : 600   ;文件夹
+                  , 4 : 200 } ;最大大小
+        SetColumnWidth(_id, _name, _width)
     Return
 
 #If

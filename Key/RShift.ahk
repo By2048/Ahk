@@ -11,6 +11,8 @@
 
 
 
+global help_cnt := 0
+
 global hotkeys_show_status  := False ; 是否正在显示图片
 global hotkeys_images       := []    ; 显示的图片组
 global hotkeys_index        := 1     ; 显示图片的序号
@@ -18,24 +20,26 @@ global hotkeys_total        := 1     ; 显示图片组的数量
 global hotkeys_title        := ""    ; 激活的应用窗口标题
 global hotkeys_process_name := ""    ; 激活的应用
 
-global Process_Hotkeys_Image := {} ; 快捷键图片对应关系
-Process_Hotkeys_Image[ "default"                 ] := [ "Windows.png"                    ]
-Process_Hotkeys_Image[ "Explorer_CabinetWClass"  ] := [ "Explorer.png"                   ]
-Process_Hotkeys_Image[ "Explorer_WorkerW"        ] := [ "Windows.png"                    ]
-Process_Hotkeys_Image[ "VSCode"                  ] := [ "VSCode-Fxx.png", "VSCode.png"   ]
-Process_Hotkeys_Image[ "Xshell"                  ] := [ "Xshell.png"                     ]
-Process_Hotkeys_Image[ "SumatraPDF"              ] := [ "SumatraPDF.png"                 ]
-Process_Hotkeys_Image[ "PyCharm"                 ] := [ "PyCharm-Fxx.png", "PyCharm.png" ]
-Process_Hotkeys_Image[ "QuiteRSS"                ] := [ "QuiteRSS.png"                   ]
-Process_Hotkeys_Image[ "Chrome"                  ] := [ "Chrome.png"                     ]
-Process_Hotkeys_Image[ "Chrome__Bilibili"        ] := [ "Chrome-Bilibili.png"            ]
-Process_Hotkeys_Image[ "PotPlayer"               ] := [ "PotPlayer.png"                  ]
-Process_Hotkeys_Image[ "CloudMusic"              ] := [ "CloudMusic.png"                 ]
+; 快捷键图片对应关系
+global Process_Hotkeys_Image := { "-" : [ "---------------------------------" ]
+    , "Default"                       : [ "Windows.png"                       ]
+    , "Explorer_CabinetWClass"        : [ "Explorer.png"                      ]
+    , "Explorer_WorkerW"              : [ "Windows.png"                       ]
+    , "VSCode"                        : [ "VSCode-Fxx.png", "VSCode.png"      ]
+    , "Xshell"                        : [ "Xshell.png"                        ]
+    , "SumatraPDF"                    : [ "SumatraPDF.png"                    ]
+    , "PyCharm"                       : [ "PyCharm-Fxx.png", "PyCharm.png"    ]
+    , "QuiteRSS"                      : [ "QuiteRSS.png"                      ]
+    , "Chrome"                        : [ "Chrome.png"                        ]
+    , "Chrome__Bilibili"              : [ "Chrome-Bilibili.png"               ]
+    , "PotPlayer"                     : [ "PotPlayer.png"                     ]
+    , "CloudMusic"                    : [ "CloudMusic.png"                    ]
+    , "+"                             : [ "+++++++++++++++++++++++++++++++++" ] } 
 
 
 
 ; 获取需要展示的图片
-get_image() 
+GetShiftImage() 
 {
     global hotkeys_index
     global hotkeys_total
@@ -52,7 +56,7 @@ get_image()
     }
     
     ; PyCharm计算界面不处理
-    If (win_process_name="PyCharm" and win_title="Evaluate") {
+    If (win_process_name=="PyCharm" and win_title=="Evaluate") {
         return
     }
 
@@ -73,20 +77,20 @@ get_image()
 
 
 
-show_image()
+ShowShiftImage()
 {
     global hotkeys_show_status
     global hotkeys_process_name
 
-    image      := get_image()
+    image      := GetShiftImage()
     image_size := GetImageSize(image)
     image_w    := image_size["w"]
     image_h    := image_size["h"]
     image_x    := Screen1.w/2 - image_w/2
     image_y    := Screen1.h/2 - image_h/2
 
-    image_w := image_w/Screen1.dpi
-    image_h := image_h/Screen1.dpi
+    image_w := image_w / Screen1.dpi
+    image_h := image_h / Screen1.dpi
     
     Gui, Destroy
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
@@ -96,22 +100,22 @@ show_image()
     hotkeys_show_status := True
 
     ; 页面索引
-    if (hotkeys_total>1) {
-        Gui, font, s15, Cascadia Code
+    if (hotkeys_total > 1) {
+        Gui, font, s15, "Cascadia Code"
         Gui, Add, Text, w%image_w% +Center +Border, %hotkeys_index%/%hotkeys_total%
     }
 
     Gui, Show, Center NA
 
     ; 关闭因双击Shift打开的快速搜索界面
-    If (hotkeys_process_name="PyCharm") {
+    if (hotkeys_process_name == "PyCharm") {
         Send {Esc}
     }
 }
 
 
 
-hide_image()
+HideShiftImage()
 {
     global hotkeys_show_status
     global hotkeys_index
@@ -133,60 +137,59 @@ hide_image()
 
 
 ; 展示图片切换上一个下一个
-change(np="")
+ChangeShiftImage(np="")
 {
     global hotkeys_index
-
-    if (hotkeys_total=1) {
+    if (hotkeys_total == 1) {
         return
     }
-    if (np="next") {
+    if (np == "+") {
         hotkeys_index := hotkeys_index + 1
-    } else if (np="privious") {
+    } else if (np == "-") {
         hotkeys_index := hotkeys_index - 1
     }
-    show_image()
+    ShowShiftImage()
 }
 
 
 
 ~RShift::
+    global help_cnt
     if (IsGame()) {
         return
     }
-    if (not cnt) {
-        cnt:=1
-    } else {
-        cnt++
-    }
-    SetTimer, Timer, -500
-return
+    help_cnt := help_cnt + 1
+    HelpText("RShift " . help_cnt, "center", "screen_3")
+    SetTimer, Timer, -333
+Return
 
 
 
 Timer:
-    if (cnt=1) {
-        hide_image()
-    } else if (cnt=2) {
-        show_image()
-    } else if (cnt=3) {
+    global help_cnt
+    if (help_cnt == 1) {
+        HideShiftImage()
+        HelpText()
+    } else if (help_cnt == 2) {
+        ShowShiftImage()
+    } else if (help_cnt == 3) {
         InitConfig()
     }
-    cnt:=0
-return
+    help_cnt := 0
+Return
 
 
 
-#If (hotkeys_show_status=True)
-    [::change("privious")
-    ]::change("next")
-    Esc::hide_image()
+#If ( hotkeys_show_status == True )
+    [::ChangeShiftImage("-")
+    ]::ChangeShiftImage("+")
+    Esc::HideShiftImage()
     PrintScreen::
         global hotkeys_index
         global hotkeys_images
         image := hotkeys_images[hotkeys_index]
-        image := A_WorkingDir "\Image\RShift\" image
+        image := A_WorkingDir . "\Image\RShift\" . image
         Snipaste(image, "screen1")
-        SetTimer, hide_image, -300
+        SetTimer, HideShiftImage, -300
     Return
 #If

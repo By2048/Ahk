@@ -124,10 +124,10 @@ GetClientSize(hWnd, ByRef w="", ByRef h="")
 ; result | {} 应用信息
 GetActiveWindowsInfo(coord_mode="Screen")
 {
-    if (coord_mode="Window") {
+    if (coord_mode=="Window") {
         CoordMode, Mouse, Window
     }
-    if (coord_mode="Screen") {
+    if (coord_mode=="Screen") {
         CoordMode, Mouse, Screen
     }
 
@@ -725,4 +725,14 @@ MoveWindowsToDefaultPosition()
 MoveWindowsToBackupPosition()
 {
     MoveWindowsToXXXPosition("Backup")
+}
+
+
+
+SetColumnWidth(win_id, control_name, control_width)
+{
+    for key, value in control_width {
+        key := key - 1
+        SendMessage, %LVM_SETCOLUMNWIDTH%, %key%, %value%, %control_name%, ahk_id %win_id%    
+    }
 }
