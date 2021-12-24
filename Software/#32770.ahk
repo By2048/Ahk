@@ -1,23 +1,4 @@
 ﻿
-
-#If ( CheckWindowsActive( "" , "#32770" , "属性"    ) )
-
-    >!\::
-        ; 修改文件图标
-        Send ^{Tab 4}
-        Sleep 500
-        Send !i
-        Sleep 500
-        Send !r
-        Sleep 500
-        Send !a
-        Sleep 500
-        Send {Enter}
-    Return
-
-#If
-
-
 #If ( CheckWindowsActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为" ) )
 
     <#\::
@@ -72,6 +53,5 @@
         MouseMove, x_origin, y_origin, 0
 
     Return
-
 
 #If

@@ -152,10 +152,10 @@
             Send q
             Sleep 300
             Send w
-            Sleep 1000
+            Sleep 3000
 
             Send 2
-            Sleep 1000
+            Sleep 500
             MouseClick, Left, 117, 890
             Sleep 500
             

@@ -1,7 +1,24 @@
 ﻿
-#If ( CheckWindowsActive("Explorer" , "#32770" , "删除多个项目") )
+#If ( CheckWindowsActive( "Explorer" , "#32770" , "删除多个项目" ) )
     !y::Return
     !n::Return
+#If
+
+
+
+#If ( CheckWindowsActive( "Explorer" , "#32770" , "属性" ) )
+    >!\::
+        ; 修改文件图标
+        Send ^{Tab 4}
+        Sleep 500
+        Send !i
+        Sleep 500
+        Send !r
+        Sleep 500
+        Send !a
+        Sleep 500
+        Send {Enter}
+    Return
 #If
 
 
