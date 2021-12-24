@@ -11,7 +11,7 @@
 
 
 
-global help_cnt := 0
+global rshift_cnt := 0
 
 global hotkeys_show_status  := False ; 是否正在显示图片
 global hotkeys_images       := []    ; 显示的图片组
@@ -154,28 +154,28 @@ ChangeShiftImage(np="")
 
 
 ~RShift::
-    global help_cnt
+    global rshift_cnt
     if (IsGame()) {
         return
     }
-    help_cnt := help_cnt + 1
-    HelpText("RShift " . help_cnt, "center", "screen_3")
+    rshift_cnt := rshift_cnt + 1
+    HelpText("RShift " . rshift_cnt, "center", "screen_3")
     SetTimer, Timer, -333
 Return
 
 
 
 Timer:
-    global help_cnt
-    if (help_cnt == 1) {
+    global rshift_cnt
+    if (rshift_cnt == 1) {
         HideShiftImage()
         HelpText()
-    } else if (help_cnt == 2) {
+    } else if (rshift_cnt == 2) {
         ShowShiftImage()
-    } else if (help_cnt == 3) {
+    } else if (rshift_cnt == 3) {
         InitConfig()
     }
-    help_cnt := 0
+    rshift_cnt := 0
 Return
 
 

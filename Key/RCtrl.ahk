@@ -10,7 +10,7 @@
 #SingleInstance Force
 #NoTrayIcon
 
-
+Global rctrl_cnt := 0
 
 >^q::Run E:\Config\PC.qdr
 >^e::Run D:\#Lnk\Everything.lnk
@@ -111,27 +111,26 @@ RCtrl & RAlt::
 Return
 
 $RCtrl::
-    if (not cnt) {
-        cnt:=1
-    } else {
-        cnt++
-    }
-    SetTimer, Timer, -500
+    global rctrl_cnt
+    rctrl_cnt := rctrl_cnt + 1
+    HelpText("RCtrl " . rctrl_cnt, "center", "screen_3")
+    SetTimer, Timer, -333
 Return
 
 Timer:
+    global rctrl_cnt
     help_image_show_status := GlobalBoolGet("help_image_show_status")
-    if (cnt=1) {
-        if (help_image_show_status=True) {
+    if (rctrl_cnt==1) {
+        HelpText()
+        if (help_image_show_status==True) {
             HelpImage()
         } else if (CheckWindowsActive("Maye")) {
             Send {Esc}
         } else {
             Run D:\#Lnk\Maye.lnk
         }
-    } else if (cnt=2) {
-        image := A_WorkingDir "\Image\RCtrl.png"
-        HelpImage(image)
+    } else if (rctrl_cnt==2) {
+        HelpImage(A_WorkingDir "\Image\RCtrl.png")
     }
-    cnt:=0
+    rctrl_cnt := 0
 Return

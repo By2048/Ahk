@@ -9,8 +9,7 @@
 ; 显示图片
 HelpImage(image="")
 {   
-    global INI
-    if (image="") {
+    if (image == "") {
         Gui, Destroy
         GlobalBoolSet("help_image_show_status", False)
     } else {
@@ -50,15 +49,20 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
         font_hight := font_hight * n_count
     }
 
-    if (screens="screen1" or screens="Screen1" or screens="screen_1") {
+    screens := StrReplace(screens, "Screen", "screen")
+    screens := StrReplace(screens, "_1", "1")
+    screens := StrReplace(screens, "_2", "2")
+    screens := StrReplace(screens, "_3", "3")
+
+    if (screens == "screen1") {
         screen_x   := Screen1.x  , screen_y  := Screen1.y
         screen_xx  := Screen1.xx , screen_yy := Screen1.yy
         screen_w   := Screen1.w  , screen_h  := Screen1.h
-    } else if (screens="screen2" or screens="Screen2" or screens="screen_2") {
+    } else if (screens == "screen2") {
         screen_x   := Screen2.x  , screen_y  := Screen2.y
         screen_xx  := Screen2.xx , screen_yy := Screen2.yy
         screen_w   := Screen2.w  , screen_h  := Screen2.h
-    } else if (screens="screen3" or screens="Screen3" or screens="screen_3") {
+    } else if (screens == "screen3") {
         screen_x   := Screen3.x   , screen_y  := Screen3.y
         screen_xx  := Screen3.xx  , screen_yy := Screen3.yy/2
         screen_w   := Screen3.w   , screen_h  := Screen3.h/2
@@ -77,16 +81,16 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     gui_h  := gui_h + 10
     text_w := gui_w
 
-    if (xy="right_down") {
+    if (xy=="right_down") {
         gui_x := screen_xx - gui_w - 5
         gui_y := screen_yy - gui_h - 5
-    } else if (xy="center") {
+    } else if (xy=="center") {
         gui_x := screen_x + screen_w/2 - gui_w/2
         gui_y := screen_y + screen_h/2 - gui_h/2
-    } else if (xy="center_up") {
+    } else if (xy=="center_up") {
         gui_x := screen_x + screen_w/2 - gui_w/2
-        gui_y :=s creen_y + 5
-    } else if (xy="center_down") {
+        gui_y := screen_y + 5
+    } else if (xy=="center_down") {
         gui_x := screen_x  + screen_w/2 - gui_w/2
         gui_y := screen_yy - gui_h-5
     }
@@ -104,7 +108,7 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     Gui, Show, x%gui_x% y%gui_y% w%gui_w% h%gui_h% NA
     GlobalBoolSet("help_text_show_status", True)
 
-    if (sleep_time>0) {
+    if (sleep_time > 0) {
         Sleep, %sleep_time%
         Gui, Destroy
         GlobalBoolSet("help_text_show_status", False)
