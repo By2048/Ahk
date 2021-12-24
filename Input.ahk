@@ -12,13 +12,17 @@
 Return
 
 ::[time]::
-    FormatTime, result, _, [H:mm]
+    FormatTime, result, _, [HH-mm-ss]
     SendInput %result%
 Return
 
 ::[datetime]::
-    FormatTime, result, _, [yyyy-MM-dd H-mm]
+    FormatTime, result, _, [yyyy-MM-dd HH-mm-ss]
     SendInput %result%
+Return
+
+::[chrome]::
+    SendInput %chrome%
 Return
 
 #Include %A_WorkingDir%\Input.Private.ahk

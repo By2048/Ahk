@@ -19,7 +19,7 @@ AddInitLine()
     line := ""
     length := Init["width"] / 10
     Loop %length% {
-        line := line "-"
+        line := line . "-"
     }
     Init["config"].Push(line)
 }
@@ -75,17 +75,16 @@ GetInitConfig()
     Init["config"].Push( Format(" JQB | {1} ", JQB_Windows)                                )
     AddInitLine()
 
-    Init["config"].Push( " [date]         [time]         [datetime]                    "  )
+    Init["config"].Push( " [date]         [time]         [datetime]    [chrome]        " )
     AddInitLine()
 
-    Init["config"].Push( " 使用方式 \***\                                               " )
     Init["config"].Push( " phone          qq             qq1            qq2            " )
     Init["config"].Push( " qmail          qmail1         qmail2         gmail          " )
     Init["config"].Push( " pwd            aly            sfz            3              " )
-    AddInitLine()
+    Init["config"].Push( "                                                             " )
     Init["config"].Push( " py             py.exe         pipjx          \              " )
     Init["config"].Push( " `-              `#              `;                          " )
-    AddInitLine()
+    Init["config"].Push( "                                                             " )
     Init["config"].Push( " scrcpy                                                      " )
     AddInitLine()
 

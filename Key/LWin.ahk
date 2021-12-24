@@ -42,10 +42,10 @@ return
 ; 复制文件路径
 <#c::	
     Send ^c
-    data = %clipboard%
-    clipboard = %data%
+    data := clipboard
+    clipboard := data
     FileDelete %JQB_Windows%
-    file:=FileOpen(JQB_Windows, "w", "UTF-8")
+    file := FileOpen(JQB_Windows, "w", "UTF-8")
     file.Write(data)
     file.Close()
     HelpText(data, "center_down",  , 1000)
