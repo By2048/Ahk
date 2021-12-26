@@ -40,7 +40,7 @@ Return
 >^f::Run D:\#Lnk\FreeFileSync.lnk
 >^g::Run, Chrome.bat, %A_WorkingDir%, Hide
 >^h::Run %Ahk% D:\AutoHotkey\WindowSpy.ahk
->^+h::Run %Ahk% E:\GitX\AhkSpy\AhkSpy.ahk
+>^+h::Run E:\GitX\AhkSpy\AhkSpy.exe
 >^j::
     Run D:\#Lnk\JetBrains.lnk
     exe := ProcessNameOrigin("JetBrains")

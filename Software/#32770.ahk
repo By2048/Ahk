@@ -9,46 +9,58 @@
 
         MouseGetPos, x_origin, y_origin
         result := GetActiveWindowsInfo("Window")
+        win_id := result.win_id
 
-        control_info := result["win_controls"]["DirectUIHWND2"]
-        x  := control_info.x
-        y  := control_info.y
-        w  := control_info.w
-        h  := control_info.h
-        xx := control_info.xx
-        yy := control_info.yy
+        cname  := "Address Band Root1"
+        cinfo  := result["win_controls"][cname]
+        cx     := cinfo.x
+        cy     := cinfo.y
+        cw     := 1200
+        ch     := cinfo.h
+        ControlMove, %cname%, %cx%, %cy%, %cw%, %ch%, ahk_id %win_id%
+        
+        cname  := "UniversalSearchBand1"
+        cinfo  := result["win_controls"][cname]
+        cx     := 1450
+        cy     := cinfo.y
+        cw     := cinfo.w + ( cinfo.x - cx )
+        ch     := cinfo.h
+        ControlMove, %cname%, %cx%, %cy%, %cw%, %ch%, ahk_id %win_id%
 
-        line_width := 18
+        cinfo  := result["win_controls"]["DirectUIHWND2"]
+        offset := 1
+        cleft  := 393
+        MoveControlUDLR(cinfo,  ,  , cleft,  , offset)
 
-        xx := 500 + line_width - 50
-        yy := y
-
-        MouseClickDrag, Left, x-3, y+3, xx, yy, 1
+        ; 平铺模式
+        x := cinfo.x + 10
+        y := cinfo.y + 10
+        MouseClick, Right, x, y, 1, 0
+        Send {v}{s}
 
         ; 调整列宽 分组依据 更多
-        MouseMove, x+30, y+30, 0
-        Send {RButton}
-        Send {p}{m}
-        Sleep 300
+        ; MouseClick, Right, x+30, y+30, 1, 0
+        ; Send {p}{m}
+        ; Sleep 300
 
         ; 名称
-        Send !t
-        Send !w
-        SendInput 990
+        ; Send !t
+        ; Send !w
+        ; SendInput 990
 
         ; 修改日期
-        Send !t
-        Send {Down}
-        Send !w
-        SendInput 250
+        ; Send !t
+        ; Send {Down}
+        ; Send !w
+        ; SendInput 250
 
         ; 大小
-        Send !t
-        Send {Down}
-        Send !w
-        SendInput 200
+        ; Send !t
+        ; Send {Down}
+        ; Send !w
+        ; SendInput 200
 
-        Send {Enter}
+        ; Send {Enter}
 
         MouseMove, x_origin, y_origin, 0
 

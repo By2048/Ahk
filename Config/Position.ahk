@@ -51,7 +51,7 @@ WH := 1500
 Windows_Position_Default["_#32770_浏览文件夹"] := [CenterX(), CenterY(), WW, WH]
 Windows_Position_Default["_#32770_浏览计算机"] := [CenterX(), CenterY(), WW, WH]
 
-WW := 2000
+WW := 2020
 WH := 1500
 Windows_Position_Default["_#32770_打开"]    := [CenterX(), CenterY(), WW, WH]
 Windows_Position_Default["_#32770_另存为"]   := [CenterX(), CenterY(), WW, WH]
@@ -127,6 +127,10 @@ WW := Screen3.w   * 8/9
 WH := Screen3.h/2 * 5/6
 WY := Screen3.y   + 100
 Windows_Position_Backup["FDM"] := [CenterX("screen_3"), WY, WW, WH]
+
+WW := 2500
+WH := 1600
+Windows_Position_Default["Thunder"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 1400
 WH := 1050
