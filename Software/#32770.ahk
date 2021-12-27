@@ -33,8 +33,8 @@
         MoveControlUDLR(cinfo,  ,  , cleft,  , offset)
 
         ; 平铺模式
-        x := cinfo.x + 10
-        y := cinfo.y + 10
+        x := cinfo.x  + 10
+        y := cinfo.yy - 10
         MouseClick, Right, x, y, 1, 0
         Send {v}{s}
 

@@ -32,7 +32,7 @@ RunNormalUser(command)
 ; 屏幕截图
 ; screens   | screen1 screen2 screen3
 ; keep_path | backup tmp
-Screenshot(screens="screen1",keep_path="backup")
+ScreenShot(screens="screen1", keep_path="backup")
 {
     if (not FileExist(Snipaste_EXE)) {
         return
@@ -48,17 +48,17 @@ Screenshot(screens="screen1",keep_path="backup")
         }
     }
 
-    if (screens="screen1") {
+    if (screens=="screen1") {
         x:=Screen1.x
         y:=Screen1.y
         w:=Screen1.w
         h:=Screen1.h
-    } else if (screens="screen2") {
+    } else if (screens=="screen2") {
         x:=Screen2.x/Screen1.dpi
         y:=Screen2.y/Screen1.dpi
         w:=Screen2.w*Screen2.dpi/Screen1.dpi
         h:=Screen2.h*Screen2.dpi/Screen1.dpi
-    } else if (screens="screen3") {
+    } else if (screens=="screen3") {
         x:=Screen3.x/Screen1.dpi
         y:=Screen3.y/Screen1.dpi
         w:=Screen3.w*Screen3.dpi/Screen1.dpi
