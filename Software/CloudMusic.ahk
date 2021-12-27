@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive("CloudMusic", "OrpheusBrowserHost") )
+#If ( CheckWindowsActive( "CloudMusic" , "OrpheusBrowserHost" ) )
 
     /::
         MoveWindowsToDefaultPosition()

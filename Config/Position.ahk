@@ -1,4 +1,6 @@
 ﻿
+#Include %A_WorkingDir%\Tool\Change.ahk
+
 ; Key
 ; [process_name]
 ; [process_name]_[class]
@@ -11,37 +13,36 @@
 ; Value
 ; 设置一些软件默认位置 [x,y,w,h]
 
-global Windows_Position_Default := {}
-global Windows_Position_Backup  := {}
-global WW, WH, WX, WY
+Global Windows_Position_Default := {}
+Global Windows_Position_Backup  := {}
+Global WW, WH, WX, WY
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; screen | Screen1 Screen2 Screen3
-Center(screen="") {
+Center(screen:="") {
     global WW, WH
     if (not screen) {
-        screen := "Screen1"
+        screen := "screen1"
     }
-    if (screen="Screen1" or screen="screen_1") {
+    screen := ChangeScreenName(screen)
+    if (screen=="screen1") {
         WX := Screen1.x + Screen1.w/2 - WW/2
         WY := Screen1.y + Screen1.h/2 - WH/2
-    } else if (screen="Screen2" or screen="screen_2") {
+    } else if (screen=="screen2") {
         WX := Screen2.x + Screen2.w/2 - WW/2
         WY := Screen2.y + Screen2.h/2 - WH/2
-    } else if (screen="Screen3" or screen="screen_3") {
+    } else if (screen=="screen3") {
         WX := Screen3.x + Screen3.w/2 - WW/2
         WY := Screen3.y + Screen3.h/2 - WH/2
     }
     return [WX , WY]
 }
-
-CenterX(screen="") {
-    result := Center(screen)
-    return result[1]
+CenterX(screen:="") {
+    return Center(screen)[1]
 }
-CenterY(screen="") {
-    result := Center(screen)
-    return result[2]
+CenterY(screen:="") {
+    return Center(screen)[2]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

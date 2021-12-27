@@ -49,10 +49,7 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
         font_hight := font_hight * n_count
     }
 
-    screens := StrReplace(screens, "Screen", "screen")
-    screens := StrReplace(screens, "_1", "1")
-    screens := StrReplace(screens, "_2", "2")
-    screens := StrReplace(screens, "_3", "3")
+    screens := ChangeScreenName(screens)
 
     if (screens == "screen1") {
         screen_x   := Screen1.x  , screen_y  := Screen1.y

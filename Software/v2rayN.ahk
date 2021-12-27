@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive("v2rayN") )
+#If ( CheckWindowsActive( "v2rayN" ) )
 
     ; 更新订阅
     !\::

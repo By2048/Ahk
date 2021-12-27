@@ -65,7 +65,7 @@ IsGame()
 ; _class_        | 进程Class
 ; _title_        | 软件标题 Q Q|W|E
 ; return         | True \ False
-CheckWindowsActive(_process_name_="", _class_="", _title_="")
+CheckWindowsActive(_process_name_:="", _class_:="", _title_:="")
 {
     result           := GetActiveWindowsInfo()
     win_process_name := result.win_process_name
@@ -110,7 +110,7 @@ CheckWindowsActive(_process_name_="", _class_="", _title_="")
 
 
 ; 获取窗口大小
-GetClientSize(hWnd, ByRef w="", ByRef h="")
+GetClientSize(hWnd, ByRef w:="", ByRef h:="")
 {
 	VarSetCapacity(rect, 16)
 	DllCall("GetClientRect", "ptr", hWnd, "ptr", &rect)
@@ -122,7 +122,7 @@ GetClientSize(hWnd, ByRef w="", ByRef h="")
 
 ; 获取激活窗口的所在屏幕的信息以及窗口信息
 ; result | {} 应用信息
-GetActiveWindowsInfo(coord_mode="Screen")
+GetActiveWindowsInfo(coord_mode:="Screen")
 {
     if (coord_mode=="Window") {
         CoordMode, Mouse, Window
@@ -332,7 +332,7 @@ GetActiveWindowsConfig(Config_Data)
 
 
 ; 修改窗口透明度
-SetWindowsTransparent(change=0)
+SetWindowsTransparent(change:=0)
 {
     result := GetActiveWindowsInfo()
     win_id := result.win_id
@@ -360,7 +360,7 @@ SetWindowsTransparent(change=0)
 ; offset | 在一定误差内不进行窗口移动
 ; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
 ; return | None
-SetWindows(win_id, xx=0, yy=0, ww=0, hh=0, offset=3, step=False)
+SetWindows(win_id, xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
 {
     if (not win_id) {
         HelpText("No WinId",  ,  , 1000)
@@ -544,7 +544,7 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
 
 ; 窗口移动到屏幕中心
 ; return | None
-MoveWindowsToCenter(silent=False)
+MoveWindowsToCenter(silent:=False)
 {
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         return 
@@ -671,7 +671,7 @@ MoveWindowsToMainMini(command)
 
 ; 将窗口移动到软件设置的默认位置
 ; return | None
-MoveWindowsToXXXPosition(select="Default")
+MoveWindowsToPosition(config:="")
 {
     result := GetActiveWindowsInfo()
     
@@ -701,30 +701,23 @@ MoveWindowsToXXXPosition(select="Default")
         }
     }
 
-    if (select=="Default") {
-        win_config := GetActiveWindowsConfig(Windows_Position_Default)
-    } else if (select=="Backup") {
-        win_config := GetActiveWindowsConfig(Windows_Position_Backup)
-    } else {
-        win_config := GetActiveWindowsConfig(Windows_Position_Default)
-    }
-
-    xx := win_config[1]
-    yy := win_config[2]
-    ww := win_config[3]
-    hh := win_config[4]
-
-    SetWindows(win_id, xx, yy, ww, hh)
+    x := config[1]
+    y := config[2]
+    w := config[3]
+    h := config[4]
+    SetWindows(win_id, x, y, w, h)
     ; 多屏幕切换时 部分软件需要多次操作
-    SetWindows(win_id, xx, yy, ww, hh)
+    SetWindows(win_id, x, y, w, h)
 }
 MoveWindowsToDefaultPosition()
 {
-    MoveWindowsToXXXPosition("Default")
+    config := GetActiveWindowsConfig(Windows_Position_Default)
+    MoveWindowsToPosition(config)
 }
 MoveWindowsToBackupPosition()
 {
-    MoveWindowsToXXXPosition("Backup")
+    config := GetActiveWindowsConfig(Windows_Position_Backup)
+    MoveWindowsToPosition(config)
 }
 
 
