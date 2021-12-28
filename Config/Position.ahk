@@ -85,9 +85,9 @@ WW := 2150
 WH := 1250
 Windows_Position_Default["Start"] := [CenterX(), CenterY(), WW, WH]
 
-; 树 | 名称1200 日期250 大小250 备注250 | 预览
-WW := 3000
-WH := 1900
+; 树 | 名称999 日期250 大小250 备注250 | 预览
+WW := 2800
+WH := 1800
 Windows_Position_Default["Explorer"] := [CenterX(), CenterY(), WW, WH]
 
 WW := (650 + 20) + ((200+180+120)*2 + 50) + ((500+120+90)*2 + 50) + 50

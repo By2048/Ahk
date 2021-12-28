@@ -139,47 +139,43 @@
 
         MoveWindowsToDefaultPosition()
 
-        global Windows_Cache
-
         oWin := JEE_ExpWinGetObj(Windows_Cache["win_id"])
         JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
 
-        if (Windows_Cache["win_title"]="D:\") {
+        if (Windows_Cache["win_title"]=="D:\") {
             vList := "System.ItemNameDisplay,System.Comment,System.ItemDate"
-            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 1000)
-            JEE_ICMSetColumnWidth(icm, "System.Comment", 450)
-            JEE_ICMSetColumnWidth(icm, "System.ItemDate", 250)
-        } else if (windows_cache["win_title"]="回收站") {
+            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 800)
+            JEE_ICMSetColumnWidth(icm, "System.Comment",         400)
+            JEE_ICMSetColumnWidth(icm, "System.ItemDate",        250)
+        } else if (windows_cache["win_title"]=="回收站") {
             vList := "System.ItemNameDisplay,System.Recycle.DeletedFrom,System.Recycle.DateDeleted,System.Size"
-            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 650)
-            JEE_ICMSetColumnWidth(icm, "System.Recycle.DeletedFrom", 600)
+            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay",     500)
+            JEE_ICMSetColumnWidth(icm, "System.Recycle.DeletedFrom", 500)
             JEE_ICMSetColumnWidth(icm, "System.Recycle.DateDeleted", 250)
-            JEE_ICMSetColumnWidth(icm, "System.Size", 200)
+            JEE_ICMSetColumnWidth(icm, "System.Size",                200)
         } else {
             vList := "System.ItemNameDisplay,System.ItemDate,System.Size"
-            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 1250)
-            JEE_ICMSetColumnWidth(icm, "System.ItemDate", 250)
-            JEE_ICMSetColumnWidth(icm, "System.Size", 200)
+            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 999)
+            JEE_ICMSetColumnWidth(icm, "System.ItemDate",        250)
+            JEE_ICMSetColumnWidth(icm, "System.Size",            200)
         }
         JEE_ICMSetColumns(icm, vList, ",")
 
         isp := isb := isv := ifv2 := icm := ""
         
         CoordMode, Mouse, Window
-
         MouseGetPos, x_origin, y_origin
-        result := GetActiveWindowsInfo("Window")
 
+        result := GetActiveWindowsInfo("Window")
         win_id := result["win_id"]
         win_xx := result["win_xx"]
-
-        control_info := result["win_controls"]["DirectUIHWND3"]
-        x  := control_info.x
-        y  := control_info.y
-        w  := control_info.w
-        h  := control_info.h
-        xx := control_info.xx
-        yy := control_info.yy
+        cinfo  := result["win_controls"]["DirectUIHWND3"]
+        x      := cinfo.x
+        y      := cinfo.y
+        w      := cinfo.w
+        h      := cinfo.h
+        xx     := cinfo.xx
+        yy     := cinfo.yy
 
         line_width := 14
         offset     := 3
