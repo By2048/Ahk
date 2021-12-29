@@ -101,7 +101,6 @@
     ^F1::Return
     !\::Send ^{F1}
 
-
     ; 切换
     ; 排序方式
     ; 前进|返回|历史
@@ -120,6 +119,9 @@
 
     ; 属性对话框 !{Enter}
 
+    ; 删除
+    ^d::Return
+
     ; Ctrl+E 选择搜索框
     ^e::Return
 
@@ -133,15 +135,13 @@
     ^WheelUp::Return
     ^WheelDown::Return
 
-
-
     <#\::
 
         MoveWindowsToDefaultPosition()
 
+
         oWin := JEE_ExpWinGetObj(Windows_Cache["win_id"])
         JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
-
         if (Windows_Cache["win_title"]=="D:\") {
             vList := "System.ItemNameDisplay,System.Comment,System.ItemDate"
             JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 800)
@@ -160,9 +160,9 @@
             JEE_ICMSetColumnWidth(icm, "System.Size",            200)
         }
         JEE_ICMSetColumns(icm, vList, ",")
-
         isp := isb := isv := ifv2 := icm := ""
         
+
         CoordMode, Mouse, Window
         MouseGetPos, x_origin, y_origin
 
@@ -177,17 +177,19 @@
         xx     := cinfo.xx
         yy     := cinfo.yy
 
-        line_width := 14
-        offset     := 3
-        max_left   := 600 + line_width
-        max_right  := win_xx - 600 + line_width
+        left_length  := 425
+        right_length := 600
+        line_width   := 14
+        offset       := 3
 
         check_width := result["win_controls"]["SysTreeView321"]["w"]
-        if ( Abs(check_width-600) > 3 ) {
+        if ( Abs(check_width - left_length) > 3 ) {
+            max_left := left_length + line_width
             MouseClickDrag, Left, x-offset,  (yy-y)/2, max_left+offset,  (yy-y)/2, 0
+            max_right := win_xx - right_length + line_width
             MouseClickDrag, Left, xx+offset, (yy-y)/2, max_right-offset, (yy-y)/2, 0
-            MouseMove, x_origin, y_origin, 0
         }
+        MouseMove, x_origin, y_origin, 0
 
     Return
 

@@ -1,5 +1,30 @@
 ﻿
-#If ( CheckWindowsActive("Android", "", "部落冲突") )
+#If ( CheckWindowsActive( "Android" , "" , "部落冲突" ) )
+    
+	#Include %A_WorkingDir%\Software\Android.COC.Private.ahk
+
+    ; 全屏
+    F11::Return
+    #Enter::Send {F11}
+
+    ; 切换键鼠提示 
+    ; F12
+
+    ; 切换标签
+    ^Tab::Return
+    ^+Tab::Return
+    !Tab::Send ^{Tab}
+    !+Tab::Send ^+{Tab}
+
+    ; 键鼠
+    !1::Return
+
+    ; 手柄
+    !3::Return
+
+    ; 截屏
+    !q::Return
+    PrintScreen::Send !q
 
     ; 选择兵种
     ^1::Return
@@ -12,32 +37,6 @@
     ^8::Return
     ^9::Return
     ^0::Return
-
-    ; Space::
-    ;     CoordMode, Mouse, Window
-    ;     MouseGetPos, xx, yy
-        
-    ;     Send {2}
-    ;     Sleep 100
-    ;     MouseClick, Left, %xx%, %yy%
-    ;     Sleep 100
-        
-    ;     Send {3}
-    ;     Sleep 100
-    ;     MouseClick, Left, %xx%, %yy%
-    ;     Sleep 100
-
-    ;     Send {4}
-    ;     Sleep 100
-    ;     MouseClick, Left, %xx%, %yy%
-    ;     Sleep 100
-
-    ;     Send {2}
-    ;     Send {3}
-    ;     Send {4}
-    ; Return
-
-    ; Space::Send {LButton 7}
 
     `::Send {LButton}
     
@@ -121,7 +120,7 @@
 
         y:=0
         Loop, 4 {
-            y:=y+300
+            y := y + 300
             MouseClick, Left, 300, %y%
             Sleep 100
             MouseClick, Left, 1700, %y%
@@ -146,9 +145,7 @@
     ; 降杯
     0::
         CoordMode, Mouse, Window
-
         Loop, 10 {
-
             Send q
             Sleep 300
             Send w
@@ -165,9 +162,7 @@
             Sleep 1000
             Send d
             Sleep 3000
-
         }
-
     Return
 
     ; 退出
@@ -358,28 +353,5 @@
         Sleep 100
         MouseMove %x_origin%, %y_origin%, 0
     Return
-
-    ; 全屏
-    F11::Return
-    #Enter::Send {F11}
-
-    ; 切换键鼠提示 
-    ; F12
-
-    ; 切换标签
-    ^Tab::Return
-    ^+Tab::Return
-    !Tab::Send ^{Tab}
-    !+Tab::Send ^+{Tab}
-
-    ; 键鼠
-    !1::Return
-
-    ; 手柄
-    !3::Return
-
-    ; 截屏
-    !q::Return
-    PrintScreen::Send !q
 
 #If

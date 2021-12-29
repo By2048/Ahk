@@ -47,74 +47,9 @@ CenterY(screen:="") {
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-WW := 900
-WH := 1500
-Windows_Position_Default["_#32770_浏览文件夹"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["_#32770_浏览计算机"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 2020
-WH := 1500
-Windows_Position_Default["_#32770_打开"]    := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["_#32770_另存为"]   := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["_#32770_打开文件"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 1500
-WH := 1500
-Windows_Position_Default["_#32770_编辑环境变量"] := [CenterX(), CenterY(), WW, WH]
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-WW := 1000
-WH := 1500
-; 开启关闭 Windows 功能
-Windows_Position_Default["OptionalFeatures_NativeHWNDHost"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 2400
-WH := 1600
-; 设置
-Windows_Position_Default["ApplicationFrameHost_ApplicationFrameWindow"] := [CenterX(), CenterY(), WW, WH]
-
-
-WW := Screen3.w   -6-6
-WH := Screen3.h/2 -6-6
-WX := Screen3.x   + 6
-WY := Screen3.y   + 6
-Windows_Position_Default["TaskMGR"] := [WX, WY, WW, WH]
-
-WW := 2150
-WH := 1250
-Windows_Position_Default["Start"] := [CenterX(), CenterY(), WW, WH]
-
-; 树 | 名称999 日期250 大小250 备注250 | 预览
-WW := 2800
-WH := 1800
-Windows_Position_Default["Explorer"] := [CenterX(), CenterY(), WW, WH]
-
 WW := (650 + 20) + ((200+180+120)*2 + 50) + ((500+120+90)*2 + 50) + 50
 WH := 2000
 Windows_Position_Default["Q-Dir"] := [CenterX(), CenterY(), WW, WH]
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-WX := 10
-WY := 10
-WW := Screen1.w/2 -10-10 +100
-WH := Screen1.h   -10-10
-Windows_Position_Default["TIM"] := [WX, WY, WW, WH]
-
-WX := 10
-WY := 10
-WW := Screen1.w/2 -10-10 +100
-WH := Screen1.h   -10-10
-Windows_Position_Default["DingDing"] := [WX, WY, WW, WH]
-
-WX := Screen1.w/2 +10    +100
-WY := 10 + 14
-WW := Screen1.w/2 -10-10 -100
-WH := Screen1.h   -10-10 -14-14
-Windows_Position_Default["WeChat"] := [WX, WY, WW, WH]
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 WW := 3000
 WH := 1500
@@ -158,8 +93,8 @@ WY := Screen1.h - WH - 10
 ; 火绒U盘工具
 Windows_Position_Default["HipsTray_HRUSBTRAY"] := [WX, WY, WW, WH]
 
-WW := Screen1.w * 4/6
-WH := Screen1.h * 7/9
+WW := 2500
+WH := 1700
 Windows_Position_Default["CloudMusic"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 1400
@@ -200,12 +135,12 @@ WW := 1500
 WH := 1500
 Windows_Position_Default["Geek"] := [CenterX(), CenterY(), WW, WH]
 
-WW := Screen1.w * 5/6
-WH := Screen1.h * 8/9
+WW := 3300
+WH := 2000
 Windows_Position_Default["Chrome"] := [CenterX(), CenterY(), WW, WH]
 
-WW := Screen2.w * 5/6
-WH := Screen2.h * 8/9
+WW := 3000
+WH := 1800
 Windows_Position_Backup["Chrome"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 
 WW := 900
@@ -217,20 +152,10 @@ WH := 1600
 Windows_Position_Default["v2rayN"] := [CenterX("screen_1"), CenterY("screen_1"), WW, WH]
 Windows_Position_Backup["v2rayN"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 
-; WW := 1500
-; WH := 1500
-; Windows_Position_Default["VMWare_#32770_硬件"] := [CenterX(), CenterY(), WW, WH]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+#Include %A_WorkingDir%\Config\Position.Chat.ahk
+#Include %A_WorkingDir%\Config\Position.IDE.ahk
+#Include %A_WorkingDir%\Config\Position.Windows.ahk
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-WW := Screen1.w * 5/6
-WH := Screen1.h * 8/9
-Windows_Position_Default["VSCode"] := [CenterX(), CenterY(), WW, WH]
-
-WW := Screen2.w * 5/6
-WH := Screen2.h * 8/9
-Windows_Position_Backup["VSCode"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
-
-WW := Screen1.w * 45/60
-WH := Screen1.h * 75/90
-Windows_Position_Default["Notepad++"] := [CenterX(), CenterY(), WW, WH]
