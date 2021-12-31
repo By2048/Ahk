@@ -1,20 +1,29 @@
 ﻿
-#If ( CheckWindowsActive( "Android" , "" , "部落冲突" ) )
-    
-	#Include %A_WorkingDir%\Software\Android.COC.Private.ahk
+#If ( CheckWindowsActive( "Android" ) )
 
     ; 全屏
     F11::Return
     #Enter::Send {F11}
 
     ; 切换键鼠提示 
-    ; F12
+    ; F12::Return
 
     ; 切换标签
     ^Tab::Return
     ^+Tab::Return
     !Tab::Send ^{Tab}
     !+Tab::Send ^+{Tab}
+
+    ^1::Return
+    ^2::Return
+    ^3::Return
+    ^4::Return
+    ^5::Return
+    ^6::Return
+    ^7::Return
+    ^8::Return
+    ^9::Return
+    ^0::Return
 
     ; 键鼠
     !1::Return
@@ -26,17 +35,13 @@
     !q::Return
     PrintScreen::Send !q
 
-    ; 选择兵种
-    ^1::Return
-    ^2::Return
-    ^3::Return
-    ^4::Return
-    ^5::Return
-    ^6::Return
-    ^7::Return
-    ^8::Return
-    ^9::Return
-    ^0::Return
+#If
+
+
+
+#If ( CheckWindowsActive( "Android" , "" , "部落冲突" ) )
+    
+	#Include %A_WorkingDir%\Software\Android.COC.Private.ahk
 
     `::Send {LButton}
     
