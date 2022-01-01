@@ -4,15 +4,13 @@
 
 /Test/*.ahk
 
-*Private.ahk
+/Config/Global.ini
+/Config/Private.ahk
 
-/Config/Private.ahk 
 /Test.ahk
 /Debug.ahk
-
 /Test.bat
-
 /desktop.ini
-
 /~$Hotkey.xlsx
 
+*Private.ahk
