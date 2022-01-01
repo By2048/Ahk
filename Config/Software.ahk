@@ -2,16 +2,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 可执行文件
-global AHK          := "D:\AutoHotkey\AutoHotkey.exe"
-global VSCode       := "D:\VSCode\Code.exe"
-global WT           := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
-global CMD          := "C:\Windows\System32\cmd.exe"
-global TaskKill     := "C:\Windows\SysWOW64\taskkill.exe"
-global Python       := "D:\Python\#\Scripts\python.exe"
-global HuntAndPeck  := "D:\HuntAndPeck\hap.exe"
-global Chrome       := "C:\Program Files\Google\Chrome\Application\chrome.exe"
-global Scrcpy       := "D:\Scrcpy\scrcpy.exe"
-global ADB          := "D:\Adb\adb.exe"
+global AutoHotkey              := "D:\AutoHotkey\AutoHotkey.exe"
+global AutoHotkeyDpiSoftware   := "D:\AutoHotkey\AutoHotkeyDpiSoftware.exe"
+global AutoHotkeyDpiSystem     := "D:\AutoHotkey\AutoHotkeyDpiSystem.exe"
+global AutoHotkeyDpiSystemPlus := "D:\AutoHotkey\AutoHotkeyDpiSystemPlus.exe"
+
+global VSCode            := "D:\VSCode\Code.exe"
+global WT                := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
+global CMD               := "C:\Windows\System32\cmd.exe"
+global TaskKill          := "C:\Windows\SysWOW64\taskkill.exe"
+global Python            := "D:\Python\#\Scripts\python.exe"
+global HuntAndPeck       := "D:\HuntAndPeck\hap.exe"
+global Chrome            := "C:\Program Files\Google\Chrome\Application\chrome.exe"
+global Scrcpy            := "D:\Scrcpy\scrcpy.exe"
+global ADB               := "D:\Adb\adb.exe"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

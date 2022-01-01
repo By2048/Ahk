@@ -24,3 +24,23 @@ GlobalBoolGet(key)
         return False
     }
 }
+
+GlobalValueSet(section, key, value)
+{
+    global INI
+    IniWrite, %value%, %INI%, %section%, %key%
+}
+
+GlobalValueGet(section, key, type:="Str")
+{
+    global INI
+    IniRead, value, %INI%, %section%, %key%
+    if (type == "Str") {
+        value := value
+    } else if (type == "Int") {
+        value := value + 0
+    } else if (type == "Float") {
+        value := value + 0
+    }
+    return value
+}

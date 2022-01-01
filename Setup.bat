@@ -1,5 +1,6 @@
 
 @Title [Ahk]
+
 @Echo off
 
 Mode 40,25
@@ -10,26 +11,43 @@ SetLocal
 
 @REM ============================================
 
-Set AHK=D:\AutoHotkey\AutoHotkey.exe
-
 Set folder=%~dp0
 Set folder=%folder:\\=\%
 
-Set test_ahk=%folder%\Test.ahk
-Set test_ahk=%test_ahk:\\=\%
+@REM ============================================
+
+Set Global_Ini=%folder%\Config\Global.ini
+Set Global_Ini=%Global_Ini:\\=\%
+
+Del   %Global_Ini%
+Echo  ; Ahk Global Config ; > %Global_Ini%
+
+@REM ============================================
+
+Set AutoHotkey=D:\AutoHotkey\AutoHotkey.exe
+Set AutoHotkeyDpiSoftware=D:\AutoHotkey\AutoHotkeyDpiSoftware.exe
+Set AutoHotkeyDpiSystem=D:\AutoHotkey\AutoHotkeyDpiSystem.exe
+Set AutoHotkeyDpiSystemPlus=D:\AutoHotkey\AutoHotkeyDpiSystemPlus.exe
+Set Dpi_Ahk=%folder%\Dpi.ahk
+Set Dpi_Ahk=%Dpi_Ahk:\\=\%
+
+CD  /d  %folder%
+
+%AutoHotkey%               %Dpi_Ahk%  
+%AutoHotkeyDpiSoftware%    %Dpi_Ahk%  Dpi.Software
+%AutoHotkeyDpiSystem%      %Dpi_Ahk%  Dpi.System
+%AutoHotkeyDpiSystemPlus%  %Dpi_Ahk%  Dpi.SystemPlus
+
+@REM ============================================
+
 Set input_private_ahk=%folder%\Input.Private.ahk
 Set input_private_ahk=%input_private_ahk:\\=\%
-
 Set config_private_ahk=%folder%\Config\Private.ahk
 Set config_private_ahk=%config_private_ahk:\\=\%
-
 Set android_coc_private_ahk=%folder%\Software\Android.COC.Private.ahk
 Set android_coc_private_ahk=%android_coc_private_ahk:\\=\%
 Set lol_private_ahk=%folder%\Software\LOL.Private.ahk
 Set lol_private_ahk=%lol_private_ahk:\\=\%
-
-
-@REM ============================================
 
 If Not Exist %input_private_ahk% (
     Echo Create %input_private_ahk%
@@ -52,6 +70,8 @@ If Not Exist %lol_private_ahk% (
 
 CD  /d  %folder%
 
+Set AHK=D:\AutoHotkey\AutoHotkey.exe
+
 Set command=%1
 
 @REM 运行游戏时结束Space.ahk
@@ -71,6 +91,7 @@ If "%command%"=="" (
 )
 
 @REM ============================================
+
 Echo.
 Start %AHK%     .\Key\All.ahk         %command%
 Echo  %command% .\Key\All.ahk
@@ -90,20 +111,18 @@ Start %AHK%     .\Key\RWin.ahk        %command%
 Echo  %command% .\Key\RWin.ahk
 Start %AHK%     .\Key\Space.ahk       %command%
 Echo  %command% .\Key\Space.ahk
-@REM ============================================
 Echo.
 Start %AHK%     .\Software\All.ahk    %command%
 Echo  %command% .\Software\All.ahk
-@REM ============================================
 Echo.
 Start %AHK%     .\Other\Dexpot.ahk    %command%
 Echo  %command% .\Other\Dexpot.ahk
-@REM ============================================
 Echo.
 Start %AHK%     .\Loop.ahk            %command%
 Echo  %command% .\Loop.ahk
 Start %AHK%     .\Input.ahk           %command%
 Echo  %command% .\Input.ahk
+
 @REM ============================================
 
 EndLocal

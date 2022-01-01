@@ -49,26 +49,26 @@ ScreenShot(screens="screen1", keep_path="backup")
     }
 
     if (screens=="screen1") {
-        x:=Screen1.x
-        y:=Screen1.y
-        w:=Screen1.w
-        h:=Screen1.h
-    } else if (screens=="screen2") {
-        x:=Screen2.x/Screen1.dpi
-        y:=Screen2.y/Screen1.dpi
-        w:=Screen2.w*Screen2.dpi/Screen1.dpi
-        h:=Screen2.h*Screen2.dpi/Screen1.dpi
+        x := GlobalValueGet("Screen1.Dpi.Software", "x")
+        y := GlobalValueGet("Screen1.Dpi.Software", "y")
+        w := GlobalValueGet("Screen1.Dpi.Software", "w")
+        h := GlobalValueGet("Screen1.Dpi.Software", "h")
+    } else if (screens=="screen2") {    
+        x := GlobalValueGet("Screen2.Dpi.Software", "x")
+        y := GlobalValueGet("Screen2.Dpi.Software", "y")
+        w := GlobalValueGet("Screen2.Dpi.Software", "w")
+        h := GlobalValueGet("Screen2.Dpi.Software", "h")
     } else if (screens=="screen3") {
-        x:=Screen3.x/Screen1.dpi
-        y:=Screen3.y/Screen1.dpi
-        w:=Screen3.w*Screen3.dpi/Screen1.dpi
-        h:=Screen3.h*Screen3.dpi/Screen1.dpi
+        x := GlobalValueGet("Screen3.Dpi.Software", "x")
+        y := GlobalValueGet("Screen3.Dpi.Software", "y")
+        w := GlobalValueGet("Screen3.Dpi.Software", "w")
+        h := GlobalValueGet("Screen3.Dpi.Software", "h")
     }
 
-    x:=Round(x)
-    y:=Round(y)
-    w:=Round(w)
-    h:=Round(h)
+    x := Round(x)
+    y := Round(y)
+    w := Round(w)
+    h := Round(h)
 
     screenshot_keep_path := ""
     if (keep_path="backup") {
