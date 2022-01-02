@@ -1,17 +1,12 @@
 ﻿
 ; 初始化系统屏幕相关信息
 
-; 屏幕数量
-; global Screen_Count := 1
-; SysGet, Screen_Count, MonitorCount
+Global Screen_Count
+Global Screen1 := {}
+Global Screen2 := {}
+Global Screen3 := {}
 
-global Screen_Count
 Screen_Count := GlobalValueGet("Screen", "Count")
-
-; 屏幕信息
-global Screen1 := {}
-global Screen2 := {}
-global Screen3 := {}
 
 Screen1.index := GlobalValueGet("Screen1", "index")
 Screen1.name  := GlobalValueGet("Screen1", "name" )

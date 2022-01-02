@@ -581,7 +581,7 @@ MoveWindowsToCenter(silent:=False)
     
     SetWindows(win_id, xx, yy, ww, hh, 0)
 
-    if (Windows_Cache["win_process_name"]="PyCharm") {
+    if (Windows_Cache["win_process_name"]=="PyCharm") {
         return
     }
 

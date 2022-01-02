@@ -20,8 +20,7 @@ Global WW, WH, WX, WY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; screen | Screen1 Screen2 Screen3
-Center(screen:="") {
-    global WW, WH
+Center(screen := "") {
     if (not screen) {
         screen := "screen1"
     }
@@ -44,10 +43,10 @@ Center(screen:="") {
     }
     return [WX , WY]
 }
-CenterX(screen:="") {
+CenterX(screen := "") {
     return Center(screen)[1]
 }
-CenterY(screen:="") {
+CenterY(screen := "") {
     return Center(screen)[2]
 }
 
@@ -64,11 +63,6 @@ Windows_Position_Default["BitComet"] := [CenterX(), CenterY(), WW, WH]
 WW := 2000
 WH := 1500
 Windows_Position_Default["FDM"] := [CenterX(), CenterY(), WW, WH]
-
-WW := Screen3.w   * 8/9
-WH := Screen3.h/2 * 5/6
-WY := Screen3.y   + 100
-Windows_Position_Backup["FDM"] := [CenterX("screen_3"), WY, WW, WH]
 
 WW := 2500
 WH := 1600
@@ -103,10 +97,11 @@ WW := 2500
 WH := 1700
 Windows_Position_Default["CloudMusic"] := [CenterX(), CenterY(), WW, WH]
 
-WW := 1400
+WW := -30
 WH := 250
-WY := 300
-Windows_Position_Default["CloudMusic_DesktopLyrics"] := [CenterX("screen_3"), WY, WW, WH]
+WX := CenterX("screen_3")
+WY := CenterY("screen_3")
+Windows_Position_Default["CloudMusic_DesktopLyrics"] := [WX, WY, WW, WH]
 
 WW := 3000
 WH := 1800
@@ -126,8 +121,9 @@ Windows_Position_Backup["PotPlayer"] := [CenterX("screen_2"), CenterY("screen_2"
 
 WW := 1000
 WH := 1500
-WX := 30
-Windows_Position_Default["PotPlayer__播放列表"] := [WX, CenterY(), WW, WH]
+WY := CenterY()
+WX := 10
+Windows_Position_Default["PotPlayer__播放列表"] := [WX, WY, WW, WH]
 
 WW := 2500
 WH := 1500
