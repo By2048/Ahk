@@ -152,7 +152,7 @@ Return
     win_id := result.win_id
     win_process_name := result.win_process_name
     if (InStr(win_process_name,"LOL")) {
-        Run, .\Setup.bat Stop_Space, %A_WorkingDir%, Hide
+        Run, .\Setup.bat StopSpace, %A_WorkingDir%, Hide
         HelpText("`n Stop Space `n", "center", "screen3")
         Return
     }
