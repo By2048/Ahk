@@ -1,7 +1,7 @@
 
 @Title [Ahk]
 
-@Echo off
+@Echo Off
 
 Mode 40,25
 
@@ -12,24 +12,21 @@ SetLocal
 @REM ============================================
 
 Set folder=%~dp0
-Set folder=%folder:\\=\%
 
 @REM ============================================
 
 Set Global_Ini=%folder%\Config\Global.ini
-Set Global_Ini=%Global_Ini:\\=\%
 
 Del   %Global_Ini%
 Echo  ; Ahk Global Config ; > %Global_Ini%
 
 @REM ============================================
 
-Set AutoHotkey=D:\AutoHotkey\AutoHotkey.exe
-Set AutoHotkeyDpiSoftware=D:\AutoHotkey\AutoHotkeyDpiSoftware.exe
-Set AutoHotkeyDpiSystem=D:\AutoHotkey\AutoHotkeyDpiSystem.exe
+Set              AutoHotkey=D:\AutoHotkey\AutoHotkey.exe
+Set   AutoHotkeyDpiSoftware=D:\AutoHotkey\AutoHotkeyDpiSoftware.exe
+Set     AutoHotkeyDpiSystem=D:\AutoHotkey\AutoHotkeyDpiSystem.exe
 Set AutoHotkeyDpiSystemPlus=D:\AutoHotkey\AutoHotkeyDpiSystemPlus.exe
-Set Dpi_Ahk=%folder%\Dpi.ahk
-Set Dpi_Ahk=%Dpi_Ahk:\\=\%
+Set                 Dpi_Ahk=%folder%\Dpi.ahk
 
 CD  /d  %folder%
 
@@ -40,14 +37,10 @@ CD  /d  %folder%
 
 @REM ============================================
 
-Set input_private_ahk=%folder%\Input.Private.ahk
-Set input_private_ahk=%input_private_ahk:\\=\%
-Set config_private_ahk=%folder%\Config\Private.ahk
-Set config_private_ahk=%config_private_ahk:\\=\%
+Set       input_private_ahk=%folder%\Input.Private.ahk
+Set      config_private_ahk=%folder%\Config\Private.ahk
 Set android_coc_private_ahk=%folder%\Software\Android.COC.Private.ahk
-Set android_coc_private_ahk=%android_coc_private_ahk:\\=\%
-Set lol_private_ahk=%folder%\Software\LOL.Private.ahk
-Set lol_private_ahk=%lol_private_ahk:\\=\%
+Set         lol_private_ahk=%folder%\Software\LOL.Private.ahk
 
 If Not Exist %input_private_ahk% (
     Echo Create %input_private_ahk%
@@ -78,16 +71,16 @@ Set command=%1
 If "%command%"=="Stop_Space" (
     Start %AHK% .\Key\Space.ahk Stop
     Echo.
-    Echo Stop .\Key\Space.ahk
+    Echo  Stop .\Key\Space.ahk
     Exit
 )
 
-@REM 直接运行脚本 Start_Ahk.bat / Setup.bat
+@REM 直接启动
 If "%command%"=="" (
     Set command=Start
     Start %AHK% .\Setup.ahk
     Echo.
-    Echo Start .\Setup.ahk
+    Echo  Start .\Setup.ahk
 )
 
 @REM ============================================
