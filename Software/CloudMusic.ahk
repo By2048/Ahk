@@ -3,8 +3,8 @@
 
     /::
         MoveWindowsToDefaultPosition()
-        Sleep, 300
-        MouseClickAndResetting(74, 1608 ,"Window")
+        Sleep 300
+        MouseClickAndResetting(60, 1611 ,"Window")
     Return
 
     \::Send !\
@@ -29,7 +29,7 @@
     Return
     -::
         global Software_Cloud_Music_Volume
-        if (Software_Cloud_Music_Volume = -1){
+        if (Software_Cloud_Music_Volume == -1){
             Send !{- 10}
             Send !{= 5}
             Software_Cloud_Music_Volume := 5
@@ -47,22 +47,22 @@
     PgUp::
         MoveWindowsToDefaultPosition()
         Sleep 300
-        MouseClickAndResetting(1076,1584,"Window")
+        MouseClickAndResetting(1044, 1600, "Window")
         Sleep 300
         Send ![
         Sleep 300
-        MouseClickAndResetting(1076,1584,"Window",3)
+        MouseClickAndResetting(1044, 1600, "Window", 3)
     Return
 
     ; 列表下一首
-    PgDn::
+    PgDn::  
         MoveWindowsToDefaultPosition()
         Sleep 300
-        MouseClickAndResetting(1076,1584,"Window")
-        Sleep 300
+        MouseClickAndResetting(1044, 1600, "Window")
+        Sleep 300   
         Send !]
         Sleep 300
-        MouseClickAndResetting(1076,1584,"Window",3)
+        MouseClickAndResetting(1044, 1600, "Window", 3)
     Return
 
     Esc::MouseClickAndResetting(1703, 485, "Window")
