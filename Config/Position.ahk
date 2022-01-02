@@ -26,13 +26,19 @@ Center(screen:="") {
         screen := "screen1"
     }
     screen := ChangeScreenName(screen)
-    if (screen=="screen1") {
+    if (screen == "screen1") {
+        WW := WW < 0 ? Screen1.w + WW : WW
+        WH := WH < 0 ? Screen1.h + WH : WH
         WX := Screen1.x + Screen1.w/2 - WW/2
         WY := Screen1.y + Screen1.h/2 - WH/2
-    } else if (screen=="screen2") {
+    } else if (screen == "screen2") {
+        WW := WW < 0 ? Screen2.w + WW : WW
+        WH := WH < 0 ? Screen2.h + WH : WH
         WX := Screen2.x + Screen2.w/2 - WW/2
         WY := Screen2.y + Screen2.h/2 - WH/2
-    } else if (screen=="screen3") {
+    } else if (screen == "screen3") {
+        WW := WW < 0 ? Screen3.w + WW : WW
+        WH := WH < 0 ? Screen3.h + WH : WH
         WX := Screen3.x + Screen3.w/2 - WW/2
         WY := Screen3.y + Screen3.h/2 - WH/2
     }

@@ -13,12 +13,10 @@ Windows_Position_Default["Notepad++"] := [CenterX(), CenterY(), WW, WH]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-WX := 60 
-WY := 30
-WW := Screen1.w - WX*2
-WH := Screen1.h - WY*2
-Windows_Position_Default["PyCharm"]      := [WX, WY, WW, WH]
-Windows_Position_Default["PyCharm__更改"] := [WX, WY, WW, WH]
+WW := -50
+WH := -50
+Windows_Position_Default["PyCharm"]      := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__更改"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 900 
 WH := 1500

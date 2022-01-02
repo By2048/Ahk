@@ -28,7 +28,7 @@ WW := Screen3.w   -6-6
 WH := Screen3.h/2 -6-6
 WX := Screen3.x   + 6
 WY := Screen3.y   + 6
-Windows_Position_Default["TaskMGR"] := [WX, WY, WW, WH]
+Windows_Position_Backup["TaskMGR"] := [WX, WY, WW, WH]
 
 WW := 2150
 WH := 1250
@@ -38,7 +38,5 @@ Windows_Position_Default["Start"] := [CenterX(), CenterY(), WW, WH]
 ; 回收站  | 树 427 | 名称500  原位置500  删除日期250  大小200  | 预览 600
 ; 其他   | 树 427 | 名称999   日期250    大小200              | 预览 600
 WW := 2570
-; WW := 1970
-; WW := 2070
 WH := 1700
 Windows_Position_Default["Explorer"] := [CenterX(), CenterY(), WW, WH]
