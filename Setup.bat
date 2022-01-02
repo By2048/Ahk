@@ -11,14 +11,14 @@ SetLocal
 
 @REM ============================================
 
-Set folder=%~dp0
+Set Folder=%~dp0
 
 @REM ============================================
 
-Set Global_Ini=%folder%\Config\Global.ini
+Set Global.ini=%Folder%\Config\Global.ini
 
-Del   %Global_Ini%
-Echo  ; Ahk Global Config ; > %Global_Ini%
+Del   %Global.ini%
+Echo  ; Ahk Global Config ; > %Global.ini%
 
 @REM ============================================
 
@@ -26,58 +26,73 @@ Set              AutoHotkey=D:\AutoHotkey\AutoHotkey.exe
 Set   AutoHotkeyDpiSoftware=D:\AutoHotkey\AutoHotkeyDpiSoftware.exe
 Set     AutoHotkeyDpiSystem=D:\AutoHotkey\AutoHotkeyDpiSystem.exe
 Set AutoHotkeyDpiSystemPlus=D:\AutoHotkey\AutoHotkeyDpiSystemPlus.exe
-Set                 Dpi_Ahk=%folder%\Dpi.ahk
+Set                 Dpi.ahk=%Folder%\Dpi.ahk
 
-CD  /d  %folder%
+CD  /d  %Folder%
 
-%AutoHotkey%               %Dpi_Ahk%  
-%AutoHotkeyDpiSoftware%    %Dpi_Ahk%  Dpi.Software
-%AutoHotkeyDpiSystem%      %Dpi_Ahk%  Dpi.System
-%AutoHotkeyDpiSystemPlus%  %Dpi_Ahk%  Dpi.SystemPlus
-
-@REM ============================================
-
-Set       input_private_ahk=%folder%\Input.Private.ahk
-Set      config_private_ahk=%folder%\Config\Private.ahk
-Set android_coc_private_ahk=%folder%\Software\Android.COC.Private.ahk
-Set         lol_private_ahk=%folder%\Software\LOL.Private.ahk
-
-If Not Exist %input_private_ahk% (
-    Echo Create %input_private_ahk%
-    Echo ;Private File; > %input_private_ahk%
-)
-If Not Exist %config_private_ahk% (
-    Echo Create %config_private_ahk%
-    Echo ;Private File; > %config_private_ahk%
-)
-If Not Exist %android_coc_private_ahk% (
-    Echo Create %android_coc_private_ahk%
-    Echo ;Private File; > %android_coc_private_ahk%
-)
-If Not Exist %lol_private_ahk% (
-    Echo Create %lol_private_ahk%
-    Echo ;Private File; > %lol_private_ahk%
-)
+%AutoHotkey%               %Dpi.ahk%  
+%AutoHotkeyDpiSoftware%    %Dpi.ahk%  Dpi.Software
+%AutoHotkeyDpiSystem%      %Dpi.ahk%  Dpi.System
+%AutoHotkeyDpiSystemPlus%  %Dpi.ahk%  Dpi.SystemPlus
 
 @REM ============================================
 
-CD  /d  %folder%
+Set       Input.Private.ahk=%Folder%\Input.Private.ahk
+Set             Private.ahk=%Folder%\Config\Private.ahk
+Set Android.COC.Private.ahk=%Folder%\Software\Android.COC.Private.ahk
+Set         LOL.Private.ahk=%Folder%\Software\LOL.Private.ahk
+
+If Not Exist %Input.Private.ahk% (
+    Echo Create %Input.Private.ahk%
+    Echo ; Private File ; > %Input.Private.ahk%
+)
+If Not Exist %Private.ahk% (
+    Echo Create %Private.ahk%
+    Echo ; Private File ; > %Private.ahk%
+)
+If Not Exist %Android.COC.Private.ahk% (
+    Echo Create %Android.COC.Private.ahk%
+    Echo ; Private File ; > %Android.COC.Private.ahk%
+)
+If Not Exist %LOL.Private.ahk% (
+    Echo Create %LOL.Private.ahk%
+    Echo ; Private File ; > %LOL.Private.ahk%
+)
+
+@REM ============================================
+
+CD  /d  %Folder%
 
 Set AHK=D:\AutoHotkey\AutoHotkey.exe
 
-Set command=%1
+Set Command=%1
 
 @REM 运行游戏时结束Space.ahk
-If "%command%"=="Stop_Space" (
+If "%Command%"=="StopSpace" (
     Start %AHK% .\Key\Space.ahk Stop
     Echo.
     Echo  Stop .\Key\Space.ahk
     Exit
 )
 
+If "%Command%"=="ForceStop" (
+    @Echo Off
+    TaskKill  /f /im  AutoHotkey.exe
+    @Echo On
+    Exit
+)
+
+If "%Command%"=="ForceStart" (
+    @Echo Off
+    TaskKill  /f /im  AutoHotkey.exe
+    Exit
+    @Echo On
+    Set Command=
+)
+
 @REM 直接启动
-If "%command%"=="" (
-    Set command=Start
+If "%Command%"=="" (
+    Set Command=Start
     Start %AHK% .\Setup.ahk
     Echo.
     Echo  Start .\Setup.ahk
@@ -86,35 +101,35 @@ If "%command%"=="" (
 @REM ============================================
 
 Echo.
-Start %AHK%     .\Key\All.ahk         %command%
-Echo  %command% .\Key\All.ahk
-Start %AHK%     .\Key\Capslock.ahk    %command%
-Echo  %command% .\Key\Capslock.ahk
-Start %AHK%     .\Key\LWin.ahk        %command%
-Echo  %command% .\Key\LWin.ahk
-Start %AHK%     .\Key\PrintScreen.ahk %command%
-Echo  %command% .\Key\PrintScreen.ahk
-Start %AHK%     .\Key\RAlt.ahk        %command%
-Echo  %command% .\Key\RAlt.ahk
-Start %AHK%     .\Key\RCtrl.ahk       %command%
-Echo  %command% .\Key\RCtrl.ahk
-Start %AHK%     .\Key\RShift.ahk      %command%
-Echo  %command% .\Key\RShift.ahk
-Start %AHK%     .\Key\RWin.ahk        %command%
-Echo  %command% .\Key\RWin.ahk
-Start %AHK%     .\Key\Space.ahk       %command%
-Echo  %command% .\Key\Space.ahk
+Start %AHK%     .\Key\All.ahk         %Command%
+Echo  %Command% .\Key\All.ahk
+Start %AHK%     .\Key\Capslock.ahk    %Command%
+Echo  %Command% .\Key\Capslock.ahk
+Start %AHK%     .\Key\LWin.ahk        %Command%
+Echo  %Command% .\Key\LWin.ahk
+Start %AHK%     .\Key\PrintScreen.ahk %Command%
+Echo  %Command% .\Key\PrintScreen.ahk
+Start %AHK%     .\Key\RAlt.ahk        %Command%
+Echo  %Command% .\Key\RAlt.ahk
+Start %AHK%     .\Key\RCtrl.ahk       %Command%
+Echo  %Command% .\Key\RCtrl.ahk
+Start %AHK%     .\Key\RShift.ahk      %Command%
+Echo  %Command% .\Key\RShift.ahk
+Start %AHK%     .\Key\RWin.ahk        %Command%
+Echo  %Command% .\Key\RWin.ahk
+Start %AHK%     .\Key\Space.ahk       %Command%
+Echo  %Command% .\Key\Space.ahk
 Echo.
-Start %AHK%     .\Software\All.ahk    %command%
-Echo  %command% .\Software\All.ahk
+Start %AHK%     .\Software\All.ahk    %Command%
+Echo  %Command% .\Software\All.ahk
 Echo.
-Start %AHK%     .\Other\Dexpot.ahk    %command%
-Echo  %command% .\Other\Dexpot.ahk
+Start %AHK%     .\Other\Dexpot.ahk    %Command%
+Echo  %Command% .\Other\Dexpot.ahk
 Echo.
-Start %AHK%     .\Loop.ahk            %command%
-Echo  %command% .\Loop.ahk
-Start %AHK%     .\Input.ahk           %command%
-Echo  %command% .\Input.ahk
+Start %AHK%     .\Loop.ahk            %Command%
+Echo  %Command% .\Loop.ahk
+Start %AHK%     .\Input.ahk           %Command%
+Echo  %Command% .\Input.ahk
 
 @REM ============================================
 

@@ -9,15 +9,28 @@ Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Run.png
 
 ; 启动脚本
 LWin & RWin::
-    DefaultProgress()
-    Run, .\Setup.bat Start, %A_WorkingDir%, Hide
     Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Run.png
-    Reload
-return
+    if (GetKeyState("LShift", "P")) {
+        Run, Setup.bat ForceStart, %A_WorkingDir%, Hide
+        DefaultProgress()
+    } else {
+        Run, Setup.bat Start, %A_WorkingDir%, Hide
+        DefaultProgress()
+        Reload
+    }
+Return
 
 ; 停止脚本
 RWin & LWin::
-    Run, .\Setup.bat Stop, %A_WorkingDir%, Hide
     Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Error.png
-    HelpText("`nClose All Script`n", "center_down", "screen3")
-return
+    if (GetKeyState("RShift", "P")) {
+        Run, Setup.bat ForceStop, %A_WorkingDir%, Hide
+    } else {
+        Run, Setup.bat Stop, %A_WorkingDir%, Hide
+    }
+    if (Screen_Count == 3) {
+        HelpText("`nClose All Script`n", "center_down", "screen3")
+    } else {
+        HelpText("Close All Script", "right_down")
+    }
+Return
