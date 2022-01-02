@@ -183,6 +183,7 @@
     !f::Return
     !e::Return
     !/::!e
+    !,::send !d
 
     ;网页缩放
     ^WheelUp::Return

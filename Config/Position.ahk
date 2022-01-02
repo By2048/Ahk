@@ -86,10 +86,10 @@ WW := 3488
 WH := 2140
 Windows_Position_Default["Android"] := [WX, WY, WW, WH]
 
-WW := 473
-WH := 210
-WX := Screen1.w - WW - 10
-WY := Screen1.h - WH - 10
+WW := 0
+WH := 0
+WX := -10
+WY := -10
 ; 火绒U盘工具
 Windows_Position_Default["HipsTray_HRUSBTRAY"] := [WX, WY, WW, WH]
 

@@ -679,24 +679,34 @@ MoveWindowsToPosition(config:="")
     win_class        := result.win_class
     win_title        := result.win_title
     win_process_name := result.win_process_name
+    win_x            := result.win_x
+    win_y            := result.win_y
+    win_w            := result.win_w
+    win_h            := result.win_h
+    screen_x         := result.screen_x
+    screen_y         := result.screen_y
+    screen_xx        := result.screen_xx
+    screen_yy        := result.screen_yy
+    screen_w         := result.screen_w
+    screen_h         := result.screen_h
 
-    ; Win10
+    ; Win10 \ WinServer
     ; 开始菜单在屏幕上居中 兼容处理
     ; 按下Win键，此时在最上层激活的是Search(SearchApp)
     ; 而需要处理的是 StartMenu(StartMenuExperienceHost)
-    if (win_process_name=="Search") {
-        if (System_Type="WinServer") {
+    if (win_process_name == "Search") {
+        if (System_Type == "WinServer") {
             Process, Close, SearchUI.exe
-            Sleep, 100
+            Sleep 100
             WinActivate, ShellExperienceHost.exe
-            Sleep, 300
+            Sleep 300
             WinGet, win_id, ID, A
         }
-        if (System_Type=="Win10") {
+        if (System_Type == "Win10") {
             Process, Close, SearchApp.exe
-            Sleep, 100
+            Sleep 100
             WinActivate, StartMenuExperienceHost.exe
-            Sleep, 300
+            Sleep 300
             WinGet, win_id, ID, A
         }
     }
@@ -705,6 +715,27 @@ MoveWindowsToPosition(config:="")
     y := config[2]
     w := config[3]
     h := config[4]
+
+    ; 处理相对参数下的窗口位置
+    if (w == 0 or h ==0) {
+        if (w == 0) {
+            w := win_w
+        }
+        if (h == 0) {
+            h := win_h
+        }
+        if (x >= 0) {
+            x := x
+        } else {
+            x := screen_xx + x - win_w
+        }
+        if (y >=0) {
+            y := y
+        } else {
+            y := screen_yy + y - win_h
+        }
+    }
+
     SetWindows(win_id, x, y, w, h)
     ; 多屏幕切换时 部分软件需要多次操作
     SetWindows(win_id, x, y, w, h)
