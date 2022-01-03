@@ -8,6 +8,10 @@
 #SingleInstance Force
 #NoTrayIcon
 
+
+Global Windows_Theme := "Default"
+
+
 ; 显示隐藏任务栏
 <#8:: 
     if (!WinExist("ahk_class Shell_TrayWnd")) {
@@ -111,10 +115,25 @@ Return
 <#\::MoveWindowsToDefaultPosition()
 <#+\::MoveWindowsToBackupPosition()
 
-
-LWin & RShift::
+LWin & AppsKey::
+    global Windows_Theme
     lshift_state := GetKeyState("LShift")
     if (lshift_state) {
+        hcblack_theme := "C:\Windows\Resources\Ease of Access Themes\hcblack.theme"
+        default_theme := "C:\Users\Administrator\AppData\Local\Microsoft\Windows\Themes\Default.theme"
+        if (Windows_Theme=="HCBlack") {
+            Run %default_theme%
+            Windows_Theme := "Default"
+            HelpText("Windows Theme Default", "center", "screen3", 1000)
+        } else if (Windows_Theme=="Default") {
+            Run %hcblack_theme%
+            Windows_Theme := "HCBlack"
+            HelpText("Windows Theme HCBlack", "center", "screen3", 1000)
+        }
+        exe := ProcessNameOrigin("WindowsSettings")
+        WinWait, ahk_exe %exe%
+        WinClose, ahk_exe %exe%
+    } else {
         ; 系统主题
         path        := "HKEY_CURRENT_USER"
         config      := "Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
@@ -128,21 +147,24 @@ LWin & RShift::
             Regwrite, REG_DWORD, %path%, %config%, %key%, 0
             HelpText("`n Dark `n", "center", "screen1", 1000)
         }
-    } else { 
-        ; 手动设置代理
-        path        := "HKEY_CURRENT_USER"
-        config      := "Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-        key         := "ProxyEnable"
-        path_config := Format("{}\{}", path, config)
-        RegRead, proxy_enable, %path_config%, %key%
-        if (proxy_enable = "0") {
-            Regwrite, REG_DWORD, %path%, %config%, %key%, 1
-            HelpText("Proxy ON", "center_down", "screen1", 1000)
-        } else if (proxy_enable = "1") {
-            Regwrite, REG_DWORD, %path%, %config%, %key%, 0
-            HelpText("Proxy OFF", "center_down", "screen1", 500)
-            HelpText("`n Proxy OFF `n", "center", "screen3")
-        }
+    }
+
+Return
+
+LWin & RShift::
+    ; 手动设置代理
+    path        := "HKEY_CURRENT_USER"
+    config      := "Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+    key         := "ProxyEnable"
+    path_config := Format("{}\{}", path, config)
+    RegRead, proxy_enable, %path_config%, %key%
+    if (proxy_enable = "0") {
+        Regwrite, REG_DWORD, %path%, %config%, %key%, 1
+        HelpText("Proxy ON", "center_down", "screen1", 1000)
+    } else if (proxy_enable = "1") {
+        Regwrite, REG_DWORD, %path%, %config%, %key%, 0
+        HelpText("Proxy OFF", "center_down", "screen1", 500)
+        HelpText("`n Proxy OFF `n", "center", "screen3")
     }
 Return
 
