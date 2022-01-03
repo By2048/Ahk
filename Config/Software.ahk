@@ -64,7 +64,8 @@ Windows_Process_Name.Push( [ "steam"                   , "Steam"           ] )
 Windows_Process_Name.Push( [ "NemuPlayer"              , "Android"         ] )
 Windows_Process_Name.Push( [ "ui32"                    , "Wallpaper"       ] )
 Windows_Process_Name.Push( [ "-----------------------" , "---------------" ] )
-Windows_Process_Name.Push( [ "mstsc"                   , "Mstsc"           ] ) ;远程桌面
+Windows_Process_Name.Push( [ "mstsc"                   , "RemoteDesktop"   ] ) ;远程桌面
+Windows_Process_Name.Push( [ "ApplicationFrameHost"    , "WindowsSettings" ] ) ;设置界面
 Windows_Process_Name.Push( [ "taskmgr"                 , "TaskMGR"         ] ) ;任务管理器
 Windows_Process_Name.Push( [ "explorer"                , "Explorer"        ] ) ;资源管理器
 Windows_Process_Name.Push( [ "SearchApp"               , "Search"          ] ) ;搜索

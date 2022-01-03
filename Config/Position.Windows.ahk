@@ -22,7 +22,7 @@ Windows_Position_Default["OptionalFeatures_NativeHWNDHost"] := [CenterX(), Cente
 WW := 2400
 WH := 1600
 ; 设置
-Windows_Position_Default["ApplicationFrameHost_ApplicationFrameWindow"] := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["WindowsSettings_ApplicationFrameWindow"] := [CenterX(), CenterY(), WW, WH]
 
 WW := Screen3.w   -6-6
 WH := Screen3.h/2 -6-6
