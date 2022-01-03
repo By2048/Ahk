@@ -85,7 +85,6 @@ If "%Command%"=="ForceStop" (
 If "%Command%"=="ForceStart" (
     @Echo Off
     TaskKill  /f /im  AutoHotkey.exe
-    Exit
     @Echo On
     Set Command=
 )
