@@ -1,6 +1,6 @@
 ﻿
 ; 设置
-#If ( CheckWindowsActive( "ApplicationFrameHost" , "ApplicationFrameWindow" , "设置" ) )
+#If ( CheckWindowsActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" ) )
 
     ;点击返回
     Esc::
@@ -36,7 +36,7 @@
 
 
 ; 远程桌面
-#If ( CheckWindowsActive( "Mstsc" ) )
+#If ( CheckWindowsActive( "RemoteDesktop" ) )
 
     $CapsLock::
         WinActivate, ahk_exe Explorer.EXE
