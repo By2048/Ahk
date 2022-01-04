@@ -81,7 +81,7 @@ Return
 
 >^Esc::Run Taskmgr.exe ;任务管理器
 >^+Esc::Run D:\#Lnk\HRSword.lnk
->^PrintScreen::Screenshot_Activate_Software()
+>^PrintScreen::ScreenshotActivateSoftware()
 
 >^[::RunNormalUser(VSCode " E:\Config\Note.code-workspace")
 >^]::RunNormalUser(VSCode " E:\Config\Ahk.code-workspace")

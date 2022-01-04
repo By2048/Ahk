@@ -90,25 +90,25 @@ ScreenShot(screens="screen1", keep_path="backup")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, x, y, w, h, file)
     Run %cmd%
 
-    SetTimer, delete_snipaste_auto_save_file, -1000
+    SetTimer, DeleteSnipasteAutoSaveFile, -1000
 }
 
 
 
 ; 游戏截图
-Screenshot_Quick()
+ScreenshotQuick()
 {
     FormatTime, name, _, yyyy-MM-dd HH-mm-ss
     file := Snipaste_Screenshot_Path_Tmp "\" name ".png"
     cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, Screen1.x, Screen1.y, Screen1.w, Screen1.h, file)
     Run %cmd%
-    SetTimer, delete_snipaste_auto_save_file, -1000
+    SetTimer, DeleteSnipasteAutoSaveFile, -1000
 }
 
 
 
 ; 软件设置界面截图保存
-Screenshot_Activate_Software()
+ScreenshotActivateSoftware()
 {
     if (not FileExist(Snipaste_EXE)) {
         return
@@ -129,7 +129,7 @@ Screenshot_Activate_Software()
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, win_x, win_y, win_w, win_h, file)
     Run %cmd%
 
-    SetTimer, delete_snipaste_auto_save_file, -1000
+    SetTimer, DeleteSnipasteAutoSaveFile, -1000
     
     ; 修复文件名大小写问题
     Sleep, 1000
@@ -164,7 +164,7 @@ Snipaste(image="",screens="screen1")
 
 
 ; 删除软件自动保存的文件
-delete_snipaste_auto_save_file()
+DeleteSnipasteAutoSaveFile()
 {
     if (not FileExist(Snipaste_Auto_Save_File)) {
         return
