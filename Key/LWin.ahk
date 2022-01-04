@@ -173,14 +173,32 @@ Return
     result := GetActiveWindowsInfo()
     win_id := result.win_id
     win_process_name := result.win_process_name
-    if (InStr(win_process_name,"LOL")) {
-        Run, .\Setup.bat StopSpace, %A_WorkingDir%, Hide
+
+    ; 远程桌面切换到Windows时 结束远程桌面
+    if (win_process_name == "Explorer") {
+        windows_previous_process_name := GlobalValueGet("Windows", "Previous_Process_Name")
+        remote_desktop_switch_check := GlobalBoolGet("Remote_Desktop_Switch_Check")
+        if (windows_previous_process_name == "RemoteDesktop") {
+            if (remote_desktop_switch_check == True) {
+                exe := ProcessNameOrigin("RemoteDesktop")
+                Process, Close, %exe%
+                GlobalValueSet("Windows", "Previous_Process_Name", "")
+                GlobalBoolSet("Remote_Desktop_Switch_Check", False)
+                Return
+            }
+        }
+    }
+
+    if (InStr(win_process_name, "LOL")) {
+        Run, Setup.bat StopSpace, %A_WorkingDir%, Hide
         HelpText("`n Stop Space `n", "center", "screen3")
         Return
     }
+
     if (IsDesktops() or IsGame()) {
         Return
     }
+
     WinClose, ahk_id %win_id%
 Return
 
