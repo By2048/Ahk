@@ -1,12 +1,7 @@
- Adb        Ahk        Aria2      FFmpeg     FFplay     
- FFprobe    Git        Go         Java       Py         
- Python     Zip        
-
- PyCharm    Notepad    Chrome     VSCode     
-
- Script     PyEnv      GitX       MuMu       Rename     
- Nicotv     Bi-Free    Bi-Join    Bi-GetName 
- Update-Folder         
-
- Ahk-Reload Ahk-Start  Ahk-Stop   Delete-Share          
+ Ahk-Reload Ahk-Start  Ahk-Stop   Adb        Ahk        
+ Aria2      FFmpeg     FFplay     FFprobe    Git        
+ Go         Java       Py         Python     Zip        
+ Notepad    Chrome     VSCode     Script     PyEnv      
+ GitX       MuMu       Rename     Nicotv     Bi-Free    
+ Bi-Join    Bi-GetName Windows    Delete-Share          
  Backup-Disk-Tree      JetBrains-Toolbox-Update

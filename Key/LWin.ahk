@@ -19,13 +19,13 @@ Global Windows_Theme := "Default"
     } else {
         WinHide, ahk_class Shell_TrayWnd
     }
-return
+Return
 
 ; Twinkle Tray 调节显示器亮度
 <#9::#^!9   ; 主显示器 +
 <#0::#^!0   ; 主显示器 -
-<#+9::#^!+9 ; 所有显示器 -
-<#+0::#^!+0 ; 所有显示器 -
+<#+9::#^!+9 ; 副显示器 -
+<#+0::#^!+0 ; 副显示器 -
 
 ;声音
 <#=::Volume_Up

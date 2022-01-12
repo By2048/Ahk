@@ -83,10 +83,10 @@ global Software_Android_Rshift_Current := 0
 
 ; Software\LOL.ahk
 global Software_LOL := []
-Software_LOL[1] := [ 55 , 400]
-Software_LOL[2] := [ 55 , 550]
-Software_LOL[3] := [ 55 , 710]
-Software_LOL[4] := [ 55 , 880]
+Software_LOL[1] := [ 55 , 400 ]
+Software_LOL[2] := [ 55 , 550 ]
+Software_LOL[3] := [ 55 , 710 ]
+Software_LOL[4] := [ 55 , 880 ]
 
 ; Software\CloudMusic.ahk
 global Software_Cloud_Music_Volume := -1
