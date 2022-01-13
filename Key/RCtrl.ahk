@@ -58,7 +58,7 @@ Return
 >^k::KeyboardGUI()
 
 >^x::RunNormalUser("D:\#Lnk\Xshell.lnk")
->^c::RunNormalUser("D:\#Lnk\音乐.lnk") 
+>^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk") 
 >^v::RunNormalUser(VSCode " E:\Config\Windows.code-workspace")
 >^+v::Run %VSCode% E:\Config\Windows.code-workspace
 >^n::Run D:\#Lnk\Notepad++.lnk

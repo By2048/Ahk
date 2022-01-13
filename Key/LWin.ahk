@@ -22,6 +22,7 @@ Global Windows_Theme := "Default"
 Return
 
 ; Twinkle Tray 调节显示器亮度
+; WinActivate, ahk_exe Twinkle Tray.exe
 <#9::#^!9   ; 主显示器 +
 <#0::#^!0   ; 主显示器 -
 <#+9::#^!+9 ; 副显示器 -

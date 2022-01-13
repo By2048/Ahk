@@ -51,3 +51,7 @@
 
 #SingleInstance Force
 #NoTrayIcon
+
+; #If ( CheckWindowsActive( "" ) )
+; 
+; #If
