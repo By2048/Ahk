@@ -112,10 +112,10 @@ CheckWindowsActive(_process_name_:="", _class_:="", _title_:="")
 ; 获取窗口大小
 GetClientSize(hWnd, ByRef w:="", ByRef h:="")
 {
-	VarSetCapacity(rect, 16)
-	DllCall("GetClientRect", "ptr", hWnd, "ptr", &rect)
-	w := NumGet(rect, 8, "int")
-	h := NumGet(rect, 12, "int")
+    VarSetCapacity(rect, 16)
+    DllCall("GetClientRect", "ptr", hWnd, "ptr", &rect)
+    w := NumGet(rect, 8, "int")
+    h := NumGet(rect, 12, "int")
 }
 
 
@@ -134,14 +134,14 @@ GetActiveWindowsInfo(coord_mode:="Screen")
     WinGet,                          win_id, ID,              A
     WinGet,                         win_pid, PID,             ahk_id %win_id%
     WinGet,                     win_min_max, MinMax,          ahk_id %win_id%
-	WinGet,                win_process_name, ProcessName,     ahk_id %win_id%
-	WinGet,                 win_transparent, Transparent,     ahk_id %win_id%
+    WinGet,                win_process_name, ProcessName,     ahk_id %win_id%
+    WinGet,                 win_transparent, Transparent,     ahk_id %win_id%
     WinGet,               win_controls_name, ControlList,     ahk_id %win_id%
-	WinGet,                 win_controls_id, ControlListHwnd, ahk_id %win_id%
+    WinGet,                 win_controls_id, ControlListHwnd, ahk_id %win_id%
     WinGetClass,                  win_class,                  ahk_id %win_id%
-	WinGetTitle,                  win_title,                  ahk_id %win_id%
-	WinGetText,                    win_text,                  ahk_id %win_id%
-	WinGetPos,   win_x, win_y, win_w, win_h,                  ahk_id %win_id%
+    WinGetTitle,                  win_title,                  ahk_id %win_id%
+    WinGetText,                    win_text,                  ahk_id %win_id%
+    WinGetPos,   win_x, win_y, win_w, win_h,                  ahk_id %win_id%
     
     if (coord_mode=="Window") {
         win_x := 0

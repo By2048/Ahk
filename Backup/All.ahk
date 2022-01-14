@@ -8,12 +8,12 @@ Reload
 ExitApp
 
 /*
-#	Win
-!	Alt
-^	Ctrl
-+	Shift
-<	左
->	右
+#    Win
+!    Alt
+^    Ctrl
++    Shift
+<    左
+>    右
 */
 
 ~Delete::Send {Delete}
@@ -113,8 +113,8 @@ WinSet, Style, ^0xC00000, A
 ;enable 'lock workstation' (and enable Win+L hotkey):
 RegRead, vIsDisabled, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation
 if vIsDisabled
-	try RunWait, % "*RunAs " A_ComSpec " /c REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableLockWorkstation /t REG_DWORD /d 0 /f",, Hide ;enable Win+L
-	;RegWrite, REG_DWORD, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation, 0 ;enable Win+L
+    try RunWait, % "*RunAs " A_ComSpec " /c REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableLockWorkstation /t REG_DWORD /d 0 /f",, Hide ;enable Win+L
+    ;RegWrite, REG_DWORD, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation, 0 ;enable Win+L
 
 ;lock workstation:
 DllCall("user32\LockWorkStation")
@@ -122,8 +122,8 @@ DllCall("user32\LockWorkStation")
 ;disable 'lock workstation' (and disable Win+L hotkey):
 RegRead, vIsDisabled, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation
 if !vIsDisabled
-	try RunWait, % "*RunAs " A_ComSpec " /c REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableLockWorkstation /t REG_DWORD /d 1 /f",, Hide ;disable Win+L
-	;RegWrite, REG_DWORD, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation, 1 ;disable Win+L
+    try RunWait, % "*RunAs " A_ComSpec " /c REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableLockWorkstation /t REG_DWORD /d 1 /f",, Hide ;disable Win+L
+    ;RegWrite, REG_DWORD, HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System, DisableLockWorkstation, 1 ;disable Win+L
 return
 
 
@@ -296,6 +296,6 @@ Gui, Show, Center
 
 ; run
 ; 更新 ms-settings:windowsupdate
-; 备份	ms-settings:backup
-; 针对开发人员	ms-settings:developers
+; 备份    ms-settings:backup
+; 针对开发人员    ms-settings:developers
 

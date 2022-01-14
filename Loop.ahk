@@ -22,12 +22,12 @@ Loop {
     result           := GetActiveWindowsInfo()
     win_id           := result.win_id
     win_min_max      := result.win_min_max
-	win_process_name := result.win_process_name
-	win_transparent  := result.win_transparent
+    win_process_name := result.win_process_name
+    win_transparent  := result.win_transparent
     win_class        := result.win_class
-	win_title        := result.win_title
-	win_text         := result.win_text
-	win_x            := result.win_x
+    win_title        := result.win_title
+    win_text         := result.win_text
+    win_x            := result.win_x
     win_y            := result.win_y
     win_w            := result.win_w
     win_h            := result.win_h

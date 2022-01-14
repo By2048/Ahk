@@ -45,7 +45,7 @@ Return
 <#'::Run %HuntAndPeck% /hint ;当前应用
 
 ; 复制文件路径
-<#c::	
+<#c::
     Send ^c
     data := clipboard
     clipboard := data

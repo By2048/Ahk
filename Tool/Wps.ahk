@@ -104,7 +104,7 @@ SnipasteClipboardToImageFile(image_file)
     Sleep 500
 
     ; 打开设置界面
-	; WinGetPos, x, y, w, h, A
+    ; WinGetPos, x, y, w, h, A
     ; xx:=x+50
     ; yy:=y+50
     ; MouseMove, %xx%, %yy%
@@ -125,7 +125,7 @@ SnipasteClipboardToImageFile(image_file)
     Send !s
     Sleep 500
 
-	WinGetTitle, win_title, A
+    WinGetTitle, win_title, A
     if (win_title="确认另存为") {
         Send !y
         Sleep, 500

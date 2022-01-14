@@ -50,7 +50,7 @@ ChangeScreenName(screen)
 ToBase(n, b)
 {   
     result := ( n < b ? "" : ToBase(n//b, b) ) . ( ( d:=Mod(n,b) ) < 10 ? d : Chr(d+55) )
-	return result
+    return result
 }
 
 

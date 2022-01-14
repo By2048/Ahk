@@ -43,7 +43,7 @@ $CapsLock::
 
     ; 显示激活的应用名
     result := GetActiveWindowsInfo()
-	win_process_name := result.win_process_name
+    win_process_name := result.win_process_name
     ; HelpText(win_process_name, "center_down", "screen1", 500)
 Return
 
