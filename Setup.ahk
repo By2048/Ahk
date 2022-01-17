@@ -12,12 +12,11 @@ LWin & RWin::
     Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Run.png
     if (GetKeyState("LShift", "P")) {
         Run, Setup.bat ForceStart, %A_WorkingDir%, Hide
-        DefaultProgress()
     } else {
         Run, Setup.bat Start, %A_WorkingDir%, Hide
-        DefaultProgress()
-        Reload
     }
+    DefaultProgress()
+    Reload
 Return
 
 ; 停止脚本

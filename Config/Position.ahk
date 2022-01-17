@@ -135,6 +135,10 @@ WW := 2500
 WH := 1500
 Windows_Position_Default["Sandboxie"] := [CenterX(), CenterY(), WW, WH]
 
+WW := 2500
+WH := 1600
+Windows_Position_Default["VMware"] := [CenterX(), CenterY(), WW, WH]
+
 WW := 1800
 WH := 1400
 Windows_Position_Default["Zip"] := [CenterX(), CenterY(), WW, WH]
