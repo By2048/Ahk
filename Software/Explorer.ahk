@@ -7,9 +7,9 @@
 
 
 #If ( CheckWindowsActive( "Explorer" , "#32770" , "属性" ) )
-    >!\::
+    !F12::
         ; 修改文件图标
-        Send ^{Tab 4}
+        Send ^+{Tab}
         Sleep 500
         Send !i
         Sleep 500
@@ -138,30 +138,15 @@
     <#\::
 
         MoveWindowsToDefaultPosition()
-
-
-        oWin := JEE_ExpWinGetObj(Windows_Cache["win_id"])
-        JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
-        if (Windows_Cache["win_title"]=="D:\") {
-            vList := "System.ItemNameDisplay,System.Comment,System.ItemDate"
-            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 800)
-            JEE_ICMSetColumnWidth(icm, "System.Comment",         400)
-            JEE_ICMSetColumnWidth(icm, "System.ItemDate",        250)
-        } else if (windows_cache["win_title"]=="回收站") {
-            vList := "System.ItemNameDisplay,System.Recycle.DeletedFrom,System.Recycle.DateDeleted,System.Size"
-            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay",     500)
-            JEE_ICMSetColumnWidth(icm, "System.Recycle.DeletedFrom", 500)
-            JEE_ICMSetColumnWidth(icm, "System.Recycle.DateDeleted", 250)
-            JEE_ICMSetColumnWidth(icm, "System.Size",                200)
-        } else {
-            vList := "System.ItemNameDisplay,System.ItemDate,System.Size"
-            JEE_ICMSetColumnWidth(icm, "System.ItemNameDisplay", 999)
-            JEE_ICMSetColumnWidth(icm, "System.ItemDate",        250)
-            JEE_ICMSetColumnWidth(icm, "System.Size",            200)
-        }
-        JEE_ICMSetColumns(icm, vList, ",")
-        isp := isb := isv := ifv2 := icm := ""
         
+
+        win_title := Windows_Cache["win_title"]
+        config := Explorer_Config[win_title]
+        if (not config) {
+            config := Explorer_Config["Default"]
+        }
+        SetExplorertColumns(win_id, config)
+
 
         CoordMode, Mouse, Window
         MouseGetPos, x_origin, y_origin

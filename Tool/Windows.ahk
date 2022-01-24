@@ -1,5 +1,6 @@
 ﻿
 #Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Lib\JEE.ahk
 #Include %A_WorkingDir%\Tool\Mouse.ahk
 #Include %A_WorkingDir%\Tool\File.ahk
 #Include %A_WorkingDir%\Tool\Change.ahk
@@ -753,10 +754,33 @@ MoveWindowsToBackupPosition()
 
 
 
+; 软件中列宽
 SetColumnWidth(win_id, control_name, control_width)
 {
     for key, value in control_width {
         key := key - 1
         SendMessage, %LVM_SETCOLUMNWIDTH%, %key%, %value%, %control_name%, ahk_id %win_id%    
     }
+}
+
+
+
+; 设置指定列+列宽
+SetExplorertColumns(win_id, config) 
+{
+    oWin := JEE_ExpWinGetObj(win_id)
+    JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
+
+    columns := ""
+    step    := ","
+    for index, value in config {
+        column := value[1]
+        width  := value[2]
+        columns := columns . column . step
+        JEE_ICMSetColumnWidth(icm, column, width)
+    }
+    columns := SubStr(columns, 1, -1)
+    JEE_ICMSetColumns(icm, columns, step)
+
+    isp := isb := isv := ifv2 := icm := ""
 }
