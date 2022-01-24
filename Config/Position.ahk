@@ -98,7 +98,7 @@ WH := 1700
 Windows_Position_Default["CloudMusic"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 3000
-WH := 400
+WH := 300
 WX := CenterX("screen_2")
 WY := Screen2.yy - WH - 100
 Windows_Position_Default["CloudMusic_DesktopLyrics"] := [WX, WY, WW, WH]

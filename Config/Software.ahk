@@ -89,7 +89,10 @@ Software_LOL[3] := [ 55 , 710 ]
 Software_LOL[4] := [ 55 , 880 ]
 
 ; Software\CloudMusic.ahk
-global Software_Cloud_Music_Volume := -1
+Global Software_Cloud_Music_Volume := -1
+
+; Software\Wallpaper.ahk
+Global Software_Wallpaper_State := -1
 
 ; Software\WPS.ahk
 ; WPS Sheet 图片截图 [1]System [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
@@ -102,3 +105,10 @@ Software_WPS_Hotkeys_Image.Push( "6 L1 U31 0 E:\Project\Ahk\Image\RShift\PyCharm
 Software_WPS_Hotkeys_Image.Push( "8 A1 G27 0 E:\Project\Ahk\Image\RShift\Xshell.png"          )
 Software_WPS_Hotkeys_Image.Push( "9 A1 I41 6 E:\Project\Ahk\Image\RShift\Chrome.png"          )
 Software_WPS_Hotkeys_Image.Push( "9 J1 P26 2 E:\Project\Ahk\Image\RShift\Chrome-Bilibili.png" )
+
+
+;-----------------------------------------------------------------------------
+
+#Include %A_WorkingDir%\Config\Software.Explorer.ahk
+
+;-----------------------------------------------------------------------------
