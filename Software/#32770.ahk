@@ -33,6 +33,7 @@
         MoveControlUDLR(cinfo,  ,  , cleft,  , offset)
 
         ; 平铺模式
+        cinfo := result["win_controls"]["DirectUIHWND2"]
         x := cinfo.x  + 10
         y := cinfo.yy - 10
         MouseClick, Right, x, y, 1, 0

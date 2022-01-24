@@ -89,8 +89,6 @@ ScreenShot(screens="screen1", keep_path="backup")
     file := StrReplace(file,"\\","\")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, x, y, w, h, file)
     Run %cmd%
-
-    SetTimer, DeleteSnipasteAutoSaveFile, -1000
 }
 
 
@@ -102,7 +100,6 @@ ScreenshotQuick()
     file := Snipaste_Screenshot_Path_Tmp "\" name ".png"
     cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, Screen1.x, Screen1.y, Screen1.w, Screen1.h, file)
     Run %cmd%
-    SetTimer, DeleteSnipasteAutoSaveFile, -1000
 }
 
 
@@ -129,8 +126,6 @@ ScreenshotActivateSoftware()
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, win_x, win_y, win_w, win_h, file)
     Run %cmd%
 
-    SetTimer, DeleteSnipasteAutoSaveFile, -1000
-    
     ; 修复文件名大小写问题
     Sleep, 1000
     file_lower := Format("{:L}",file)

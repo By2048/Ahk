@@ -50,7 +50,6 @@
             WinHide, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
         }
     Return
-        ; Sleep, 300
 
     !PgUp::
         x1 := 750

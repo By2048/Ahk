@@ -1,8 +1,6 @@
 ﻿
 #Include %A_WorkingDir%\Config\All.ahk
 
-#Include %A_WorkingDir%\Lib\JEE.ahk
-
 #Include %A_WorkingDir%\Tool\Base.ahk
 #Include %A_WorkingDir%\Tool\Change.ahk
 #Include %A_WorkingDir%\Tool\File.ahk
@@ -31,6 +29,7 @@
 #Include %A_WorkingDir%\Software\LOL.ahk
 #Include %A_WorkingDir%\Software\Maye.ahk
 #Include %A_WorkingDir%\Software\Notepad++.ahk
+#Include %A_WorkingDir%\Software\Obsidian.ahk
 #Include %A_WorkingDir%\Software\Postman.ahk
 #Include %A_WorkingDir%\Software\PotPlayer.ahk
 #Include %A_WorkingDir%\Software\PyCharm.ahk
