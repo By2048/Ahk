@@ -29,8 +29,8 @@ EN() {
 ; 获取中文字符数量
 ZH_CN(data)
 {
-    start_code:=ToBase(0x4e00,10)
-    end_code:=ToBase(0x9fa5,10)
+    start_code := ToBase(0x4e00 , 10)
+    end_code := ToBase(0x9fa5 , 10)
     data:=StrSplit(data)
     result:=0
     for index, value in data {

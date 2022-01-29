@@ -80,11 +80,9 @@ WW := 2300
 WH := 1700
 Windows_Position_Default["Everything"] := [CenterX(), CenterY(), WW, WH]
 
-WX := 176
-WY := 10
-WW := 3488
-WH := 2140
-Windows_Position_Default["Android"] := [WX, WY, WW, WH]
+WW := 3440
+WH := 2110
+Windows_Position_Default["Android"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 0
 WH := 0

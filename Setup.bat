@@ -85,6 +85,7 @@ If "%Command%"=="ForceStop" (
 If "%Command%"=="ForceStart" (
     @Echo Off
     TaskKill  /f /im  AutoHotkey.exe
+    Ping -n 1 127.0.0.1 > nul
     @Echo On
     Set Command=
 )

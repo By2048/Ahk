@@ -34,6 +34,7 @@ Return
 Return
 >^p::RunNormalUser(WT " -d T:\")
 >^+p::Run %WT% -d T:\
+>^l::Run C:\Program Files\Logitech\LogiOptions\LogiOptions.exe
 
 >^a::Run D:\#Lnk\Android.lnk
 >^s::Run D:\#Lnk\Sandboxie.lnk
