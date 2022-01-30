@@ -163,7 +163,8 @@ Global WM_SYSKEYDOWN                := 0x0104
 Global WM_SYSKEYUP                  := 0x0105
 Global WM_SYSCHAR                   := 0x0106
 Global WM_SYSDEADCHAR               := 0x0107
-Global WM_UNICHAR / WM_KEYLAST      := 0x0109
+Global WM_KEYLAST                   := 0x0109
+Global WM_UNICHAR                   := 0x0109
 Global WM_WNT_CONVERTREQUESTEX      := 0x0109
 Global WM_CONVERTREQUEST            := 0x010a
 Global WM_CONVERTRESULT             := 0x010b
@@ -257,7 +258,7 @@ Global WM_NCMOUSEHOVER              := 0x02a0
 Global WM_MOUSEHOVER                := 0x02a1
 Global WM_NCMOUSELEAVE              := 0x02a2
 Global WM_MOUSELEAVE                := 0x02a3
-Global WM_CUT                        0x0300
+Global WM_CUT                       := 0x0300
 Global WM_COPY                      := 0x0301
 Global WM_PASTE                     := 0x0302
 Global WM_CLEAR                     := 0x0303
@@ -288,7 +289,7 @@ Global WM_RCRESULT                  := 0x0381
 Global WM_HOOKRCRESULT              := 0x0382
 Global WM_GLOBALRCCHANGE            := 0x0383
 Global WM_PENMISCINFO               := 0x0383
-Global WM_SKB                        0x0384
+Global WM_SKB                       := 0x0384
 Global WM_HEDITCTL                  := 0x0385
 Global WM_PENCTL                    := 0x0385
 Global WM_PENMISC                   := 0x0386
