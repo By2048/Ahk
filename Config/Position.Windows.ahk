@@ -24,11 +24,15 @@ WH := 1600
 ; 设置
 Windows_Position_Default["WindowsSettings_ApplicationFrameWindow"] := [CenterX(), CenterY(), WW, WH]
 
-WW := Screen3.w   -6-6
-WH := Screen3.h/2 -6-6
-WX := Screen3.x   + 6
-WY := Screen3.y   + 6
-Windows_Position_Backup["TaskMGR"] := [WX, WY, WW, WH]
+; WW := Screen3.w   -6-6
+; WH := Screen3.h/2 -6-6
+; WX := Screen3.x   + 6
+; WY := Screen3.y   + 6
+; Windows_Position_Backup["TaskMGR"] := [WX, WY, WW, WH]
+
+WW := 2200
+WH := 1600
+Windows_Position_Default["TaskMGR"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 2150
 WH := 1250
@@ -40,3 +44,8 @@ Windows_Position_Default["Start"] := [CenterX(), CenterY(), WW, WH]
 WW := 2570
 WH := 1700
 Windows_Position_Default["Explorer"] := [CenterX(), CenterY(), WW, WH]
+
+; 资源监视器
+WW := 3000
+WH := 1800
+Windows_Position_Default["SystemMonitor"] := [CenterX(), CenterY(), WW, WH]

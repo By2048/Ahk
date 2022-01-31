@@ -47,15 +47,14 @@ Windows_Process_Name.Push( [ "DingTalk"                , "DingDing"        ] )
 Windows_Process_Name.Push( [ "geek64"                  , "Geek"            ] )
 Windows_Process_Name.Push( [ "SandMan"                 , "Sandboxie"       ] )
 Windows_Process_Name.Push( [ "calibre"                 , "Calibre"         ] )
-
-Windows_Process_Name.Push( [ "-----------------------" , "---------------" ] )
+Windows_Process_Name.Push( [ "11111111111111111111111" , "---------------" ] )
 Windows_Process_Name.Push( [ "cloudmusic"              , "CloudMusic"      ] )
 Windows_Process_Name.Push( [ "wps"                     , "WPS"             ] )
 Windows_Process_Name.Push( [ "fdm"                     , "FDM"             ] )
 Windows_Process_Name.Push( [ "PotPlayerMini64"         , "PotPlayer"       ] )
 Windows_Process_Name.Push( [ "FreeFileSync_x64"        , "FreeFileSync"    ] )
 Windows_Process_Name.Push( [ "7zFM"                    , "Zip"             ] )
-Windows_Process_Name.Push( [ "-----------------------" , "---------------" ] )
+Windows_Process_Name.Push( [ "22222222222222222222222" , "---------------" ] )
 Windows_Process_Name.Push( [ "TenSafe"                 , "LOL_TX"          ] )
 Windows_Process_Name.Push( [ "TenSafe_1"               , "LOL_TX"          ] )
 Windows_Process_Name.Push( [ "LeagueClientUx"          , "LOL_Client"      ] )
@@ -63,8 +62,9 @@ Windows_Process_Name.Push( [ "League of Legends"       , "LOL_Game"        ] )
 Windows_Process_Name.Push( [ "steam"                   , "Steam"           ] )
 Windows_Process_Name.Push( [ "NemuPlayer"              , "Android"         ] )
 Windows_Process_Name.Push( [ "ui32"                    , "Wallpaper"       ] )
-Windows_Process_Name.Push( [ "-----------------------" , "---------------" ] )
+Windows_Process_Name.Push( [ "33333333333333333333333" , "---------------" ] )
 Windows_Process_Name.Push( [ "mstsc"                   , "RemoteDesktop"   ] ) ;远程桌面
+Windows_Process_Name.Push( [ "perfmon"                 , "SystemMonitor"   ] ) ;资源监视器
 Windows_Process_Name.Push( [ "ApplicationFrameHost"    , "WindowsSettings" ] ) ;设置界面
 Windows_Process_Name.Push( [ "taskmgr"                 , "TaskMGR"         ] ) ;任务管理器
 Windows_Process_Name.Push( [ "explorer"                , "Explorer"        ] ) ;资源管理器
@@ -72,7 +72,7 @@ Windows_Process_Name.Push( [ "SearchApp"               , "Search"          ] ) ;
 Windows_Process_Name.Push( [ "SearchUI"                , "Search"          ] ) ;搜索
 Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "ShellExperienceHost"     , "Start"           ] ) ;开始菜单
-Windows_Process_Name.Push( [ "-----------------------" , "---------------" ] )
+Windows_Process_Name.Push( [ "44444444444444444444444" , "---------------" ] )
 Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"     ] ) ;同花顺
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
