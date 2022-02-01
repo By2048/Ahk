@@ -5,9 +5,6 @@
 
         MoveWindowsToDefaultPosition()
 
-        CoordMode, Mouse, Window
-
-        MouseGetPos, x_origin, y_origin
         result := GetActiveWindowsInfo("Window")
         win_id := result.win_id
 
@@ -36,7 +33,7 @@
         cinfo := result["win_controls"]["DirectUIHWND2"]
         x := cinfo.x  + 10
         y := cinfo.yy - 10
-        MouseClick, Right, x, y, 1, 0
+        MouseClick, Right, %x%, %y%, 1, 0
         Send {v}{s}
 
         ; 调整列宽 分组依据 更多
@@ -62,9 +59,6 @@
         ; SendInput 200
 
         ; Send {Enter}
-
-        MouseMove, x_origin, y_origin, 0
-
     Return
 
 #If

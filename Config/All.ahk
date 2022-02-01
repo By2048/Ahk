@@ -1,52 +1,41 @@
 ﻿
-#Include %A_WorkingDir%\Config\Init.ahk
-#Include %A_WorkingDir%\Config\KeyMap.ahk
-#Include %A_WorkingDir%\Config\Message.ahk
-#Include %A_WorkingDir%\Config\Position.ahk
-#Include %A_WorkingDir%\Config\Private.ahk
-#Include %A_WorkingDir%\Config\Screen.ahk
-#Include %A_WorkingDir%\Config\Software.ahk
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 设定系统类型 Win10 | WinServer 
-
 Global System_Type := "Win10"
-if (A_ComputerName="Windows") {
+if (A_ComputerName = "Windows") {
     System_Type := "Win10"
 }
-if (A_ComputerName="WinServer") {
+if (A_ComputerName = "WinServer") {
     System_Type := "WinServer"
 }
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
-Global Windows_Cache = {}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 全局配置文件
 Global INI := A_WorkingDir . "\Config\Global.ini"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; 可执行文件
+; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
+Global Windows_Cache = {}
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; 一些可执行文件路径
 Global AutoHotkey              := "D:\AutoHotkey\AutoHotkey.exe"
 Global AutoHotkeyDpiSoftware   := "D:\AutoHotkey\AutoHotkeyDpiSoftware.exe"
 Global AutoHotkeyDpiSystem     := "D:\AutoHotkey\AutoHotkeyDpiSystem.exe"
 Global AutoHotkeyDpiSystemPlus := "D:\AutoHotkey\AutoHotkeyDpiSystemPlus.exe"
 
-Global VSCode            := "D:\VSCode\Code.exe"
-Global WT                := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
-Global CMD               := "C:\Windows\System32\cmd.exe"
-Global TaskKill          := "C:\Windows\SysWOW64\taskkill.exe"
-Global Python            := "D:\Python\#\Scripts\python.exe"
-Global HuntAndPeck       := "D:\HuntAndPeck\hap.exe"
-Global Chrome            := "C:\Program Files\Google\Chrome\Application\chrome.exe"
-Global Scrcpy            := "D:\Scrcpy\scrcpy.exe"
-Global ADB               := "D:\Adb\adb.exe"
+Global ADB         := "D:\Adb\adb.exe"
+Global CMD         := "C:\Windows\System32\cmd.exe"
+Global Chrome      := "C:\Program Files\Google\Chrome\Application\chrome.exe"
+Global VSCode      := "D:\VSCode\Code.exe"
+Global WT          := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
+Global TaskKill    := "C:\Windows\SysWOW64\taskkill.exe"
+Global Python      := "D:\Python\#\Scripts\python.exe"
+Global HuntAndPeck := "D:\HuntAndPeck\hap.exe"
+Global Scrcpy      := "D:\Scrcpy\scrcpy.exe"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 截图软件配置
-
 Global Snipaste_EXE                    := "D:\Snipaste\Snipaste.exe"
 Global Snipaste_Auto_Save_File         := "D:\Snipaste\#\*.png"
 Global Snipaste_Screenshot_Path_Backup := "P:\Screen\"
@@ -54,13 +43,11 @@ Global Snipaste_Screenshot_Path_Tmp    := "T:\"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 手机<->电脑 剪切板文件
-
 Global JQB_Phone   := "T:\\JQB_Phone"
 Global JQB_Windows := "T:\\JQB_Windows"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; 软件自定义名字替换
-
 Global Windows_Process_Name := []
 Windows_Process_Name.Push( [ "code"                    , "VSCode"          ] )
 Windows_Process_Name.Push( [ "GetWindowText_x64"       , "GetWindowText"   ] )
@@ -109,3 +96,11 @@ Global Windows_MM := {}
 Windows_MM["Default"]      := [   [ 3/5 , 3/4 ] , [ 5/6 , 8/9 ]   ]
 Windows_MM["PotPlayer"]    := [   [ 0.6 , 0.6 ] , [ 0.8 , 0.8 ]   ]
 Windows_MM["FreeFileSync"] := [   [ 0.6 , 0.6 ] , [ 0.7 , 0.8 ]   ]
+
+#Include %A_WorkingDir%\Config\Init.ahk
+#Include %A_WorkingDir%\Config\KeyMap.ahk
+#Include %A_WorkingDir%\Config\Message.ahk
+#Include %A_WorkingDir%\Config\Position.ahk
+#Include %A_WorkingDir%\Config\Private.ahk
+#Include %A_WorkingDir%\Config\Screen.ahk
+#Include %A_WorkingDir%\Config\Software.ahk

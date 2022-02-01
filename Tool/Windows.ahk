@@ -497,9 +497,12 @@ MoveWindowsUDLR(direction)
 
 
 
-; 修改控件位置
+; 修改控件位置 CoordMode : Window
 MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6) 
 {
+    CoordMode, Mouse, Window
+    MouseGetPos, x_origin, y_origin
+
     xy := 0 , x_start := 0 , y_start := 0 , x_end := 0 , y_end := 0
 
     if (cup>0) {
@@ -539,6 +542,7 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
     }
 
     MouseClickDrag, Left, x_start, y_start, x_end, y_end, 0
+    MouseMove, x_origin, y_origin, 0
 }
 
 
@@ -757,9 +761,10 @@ MoveWindowsToBackupPosition()
 ; 软件中列宽
 SetColumnWidth(win_id, control_name, control_width)
 {
+    msg := Message.LVM_SETCOLUMNWIDTH
     for key, value in control_width {
         key := key - 1
-        SendMessage, %LVM_SETCOLUMNWIDTH%, %key%, %value%, %control_name%, ahk_id %win_id%    
+        SendMessage, %msg%, %key%, %value%, %control_name%, ahk_id %win_id%    
     }
 }
 

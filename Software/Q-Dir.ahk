@@ -60,9 +60,6 @@
     <#\::
         MoveWindowsToDefaultPosition()
 
-        CoordMode, Mouse, Window
-        MouseGetPos, x_origin, y_origin, win_id, control_name, A
-
         cup    := 0
         cdown  := 0
         cleft  := 0
@@ -86,8 +83,6 @@
         cright := cinfo.x + 1000 + 50
         MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
         cright := 0
-
-        MouseMove, x_origin, y_origin, 0
     Return
 
 #If
