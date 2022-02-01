@@ -93,6 +93,7 @@ Global Software_Cloud_Music_Volume := -1
 
 ; Software\Wallpaper.ahk
 Global Software_Wallpaper_State := -1
+Global Software_Wallpaper_Theme := "Black"
 
 ; Software\WPS.ahk
 ; WPS Sheet 图片截图 [1]System [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome

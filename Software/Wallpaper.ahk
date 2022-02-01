@@ -33,51 +33,56 @@
     ; 在资源管理器中打开
     !\::
         MouseClick, Right
-        ClickImage(A_WorkingDir . "\Image\Software\Wallpaper\Open.png")
+        ClickImage(A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "Open.png")
     Return
 
     ; 预览
     !PrintScreen::
-        Global Software_Wallpaper_State
-        wallpaper_exe   := ProcessNameOrigin("Wallpaper")   
-        wallpaper_class := "WPEUI"
-        if (Software_Wallpaper_State == -1) {
-            Software_Wallpaper_State := 1
-            WinShow, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
-        } else if (Software_Wallpaper_State == 0) {
-            WinShow, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
-        } else if (Software_Wallpaper_State == 1) {
-            WinHide, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
-        }
+        Send {F10}
+        ; Global Software_Wallpaper_State
+        ; wallpaper_exe   := ProcessNameOrigin("Wallpaper")   
+        ; wallpaper_class := "WPEUI"
+        ; if (Software_Wallpaper_State == -1) {
+        ;     Software_Wallpaper_State := 1
+        ;     ; WinShow, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
+        ; } else if (Software_Wallpaper_State == 0) {
+        ;     WinShow, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
+        ; } else if (Software_Wallpaper_State == 1) {
+        ;     WinHide, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
+        ; }
     Return
 
     !PgUp::
         x1 := 750
         y1 := 1666
-        x2 := x1 + 1111
-        y2 := y1 + 66
-        image := A_WorkingDir . "\Image\Software\Wallpaper\PgUp.png"
+        w  := 1111
+        h  := 99
+        x2 := x1 + w
+        y2 := y1 + h
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "PgUp.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image)
     Return
     !PgDn::
         x1 := 750
         y1 := 1666
-        x2 := x1 + 1111
-        y2 := y1 + 66
-        image := A_WorkingDir . "\Image\Software\Wallpaper\PgDn.png"
+        w  := 1111
+        h  := 99
+        x2 := x1 + w
+        y2 := y1 + h
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "PgDn.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image)
     Return
 
     ; 订阅
     ![::
         MouseClick, Right
-        ClickImage(A_WorkingDir . "\Image\Software\Wallpaper\Download.png")
+        ClickImage(A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "Download.png")
     Return
 
     ; 取消订阅
     !]::
         MouseClick, Right
-        ClickImage(A_WorkingDir . "\Image\Software\Wallpaper\Delete.png")
+        ClickImage(A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "Delete.png")
         Sleep 100
         Send {Enter}
     Return
