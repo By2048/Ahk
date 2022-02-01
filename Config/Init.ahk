@@ -4,7 +4,7 @@
 
 ; 在 Input.ahk Private.ahk 中定义的快捷输入
 
-global Init := {}
+Global Init := {}
 
 Init["width"]  := 650
 Init["height"] := 900

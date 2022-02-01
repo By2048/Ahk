@@ -1,5 +1,5 @@
 ﻿
-#Include %A_WorkingDir%\Config\Global.ahk
+#Include %A_WorkingDir%\Tool\Global.ahk
 
 ; 初始化系统屏幕相关信息
 
@@ -9,9 +9,9 @@ SysGet, Screen_Count, MonitorCount
 GlobalValueSet("Screen", "Count", Screen_Count)
 
 ; 屏幕信息
-global Screen1 := {}
-global Screen2 := {}
-global Screen3 := {}
+Global Screen1 := {}
+Global Screen2 := {}
+Global Screen3 := {}
 
 InitScreen()
 {

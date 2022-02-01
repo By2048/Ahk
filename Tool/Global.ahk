@@ -1,7 +1,5 @@
 ﻿
-; 不同进程之间传递变量
-
-INI := A_WorkingDir "\Config\Global.ini"
+; 不同进程之间传递变量 \ 通过读写INI文件
 
 GlobalBoolSet(key, value)
 {

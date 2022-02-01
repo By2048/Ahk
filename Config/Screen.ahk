@@ -1,4 +1,6 @@
 ﻿
+#Include %A_WorkingDir%\Tool\Global.ahk
+
 ; 初始化系统屏幕相关信息
 
 Global Screen_Count
