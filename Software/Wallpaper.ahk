@@ -33,7 +33,8 @@
     ; 在资源管理器中打开
     !\::
         MouseClick, Right
-        ClickImage(A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "Open.png")
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\Open.png"
+        ClickImage(image)
     Return
 
     ; 预览
@@ -53,13 +54,13 @@
     Return
 
     !PgUp::
-        x1 := 750
+        x1 := 666
         y1 := 1666
-        w  := 1111
+        w  := 1991
         h  := 99
         x2 := x1 + w
         y2 := y1 + h
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "PgUp.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\PgUp.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image)
     Return
     !PgDn::
@@ -69,20 +70,22 @@
         h  := 99
         x2 := x1 + w
         y2 := y1 + h
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "PgDn.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\PgDn.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image)
     Return
 
     ; 订阅
     ![::
         MouseClick, Right
-        ClickImage(A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "Download.png")
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\Download.png"
+        ClickImage(image)
     Return
 
     ; 取消订阅
     !]::
         MouseClick, Right
-        ClickImage(A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "Delete.png")
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\Delete.png"
+        ClickImage(image)
         Sleep 100
         Send {Enter}
     Return
