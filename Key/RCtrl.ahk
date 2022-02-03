@@ -10,20 +10,20 @@
 #SingleInstance Force
 #NoTrayIcon
 
-Global rctrl_cnt := 0
+
 
 >^q::Run E:\Config\PC.qdr
 >^e::Run D:\#Lnk\Everything.lnk
 >^w::RunNormalUser("D:\#Lnk\WeChat.lnk")
 >^r::RunNormalUser("D:\#Lnk\QuiteRSS.lnk")
->^t::
-    Process, Exist, TIM.exe
-    if (ErrorLevel) {
-        TrayIcon_Button("TIM.exe", "L")
-    } else {
-        RunNormalUser("D:\TIM\Bin\TIM.exe")
-    }
-Return
+; >^t::
+;     Process, Exist, TIM.exe
+;     if (ErrorLevel) {
+;         TrayIcon_Button("TIM.exe", "L")
+;     } else {
+;         RunNormalUser("D:\TIM\Bin\TIM.exe")
+;     }
+; Return
 >^y::
     Process, Exist, v2rayN.exe
     if (ErrorLevel) {
@@ -86,11 +86,10 @@ Return
 
 >^[::RunNormalUser(VSCode " E:\Config\Note.code-workspace")
 >^]::RunNormalUser(VSCode " E:\Config\Ahk.code-workspace")
-
 >^\::Run D:\#Lnk\Whiteboard.lnk
 
->^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e} ;回收站
->^.::Run ::{20d04fe0-3aea-1069-a2d8-08002b30309d} ;我的电脑
+>^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}:: ;回收站
+>^.::Run ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;我的电脑
 >^/::Run T:\\
 
 >^Up::Return
@@ -98,18 +97,16 @@ Return
 >^Left::Return
 >^Right::Return
 
-RCtrl & Enter::Run E:\Backup\All.xlsx
-
-RCtrl & RWin::
-    if (not IsDesktops()) {
-        Send ^w
-    }
-Return
-
+RCtrl & Enter::Run E:\Doc\All.xlsx
+RCtrl & RWin::Send ^w
 RCtrl & RAlt::
     ZH()
     HelpText("ZH","center","screen1",1000)
 Return
+
+
+
+Global rctrl_cnt := 0
 
 $RCtrl::
     global rctrl_cnt

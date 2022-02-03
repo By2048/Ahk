@@ -162,7 +162,7 @@ WH := 1600
 Windows_Position_Default["v2rayN"] := [CenterX("screen_1"), CenterY("screen_1"), WW, WH]
 Windows_Position_Backup["v2rayN"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 #Include %A_WorkingDir%\Config\Position.Chat.ahk
 #Include %A_WorkingDir%\Config\Position.IDE.ahk

@@ -5,22 +5,22 @@
 
 Mode 40,25
 
-@REM ============================================
+@REM ======================================================================
 
 SetLocal
 
-@REM ============================================
+@REM ======================================================================
 
 Set Folder=%~dp0
 
-@REM ============================================
+@REM ======================================================================
 
 Set Global.ini=%Folder%\Config\Global.ini
 
 Del   %Global.ini%
 Echo  ; Ahk Global Config ; > %Global.ini%
 
-@REM ============================================
+@REM ======================================================================
 
 Set              AutoHotkey=D:\AutoHotkey\AutoHotkey.exe
 Set   AutoHotkeyDpiSoftware=D:\AutoHotkey\AutoHotkeyDpiSoftware.exe
@@ -35,7 +35,7 @@ CD  /d  %Folder%
 %AutoHotkeyDpiSystem%      %Dpi.ahk%  Dpi.System
 %AutoHotkeyDpiSystemPlus%  %Dpi.ahk%  Dpi.SystemPlus
 
-@REM ============================================
+@REM ======================================================================
 
 Set       Input.Private.ahk=%Folder%\Input.Private.ahk
 Set             Private.ahk=%Folder%\Config\Private.ahk
@@ -59,7 +59,7 @@ If Not Exist %LOL.Private.ahk% (
     Echo ; Private File ; > %LOL.Private.ahk%
 )
 
-@REM ============================================
+@REM ======================================================================
 
 CD  /d  %Folder%
 
@@ -98,7 +98,7 @@ If "%Command%"=="" (
     Echo  Start .\Setup.ahk
 )
 
-@REM ============================================
+@REM ======================================================================
 
 Echo.
 Start %AHK%     .\Key\All.ahk         %Command%
@@ -131,11 +131,11 @@ Echo  %Command% .\Loop.ahk
 Start %AHK%     .\Input.ahk           %Command%
 Echo  %Command% .\Input.ahk
 
-@REM ============================================
+@REM ======================================================================
 
 EndLocal
 
-@REM ============================================
+@REM ======================================================================
 
 Ping -n 2 127.0.0.1 > nul
 
