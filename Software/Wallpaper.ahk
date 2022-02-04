@@ -37,20 +37,24 @@
         ClickImage(image)
     Return
 
+    ; wallpaper_exe   := ProcessNameOrigin("Wallpaper")   
+    ; wallpaper_class := "WPEUI"
+    ; WinShow, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
+    ; WinHide, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
+
     ; 预览
     !PrintScreen::
-        Send {F10}
-        ; Global Software_Wallpaper_State
-        ; wallpaper_exe   := ProcessNameOrigin("Wallpaper")   
-        ; wallpaper_class := "WPEUI"
-        ; if (Software_Wallpaper_State == -1) {
-        ;     Software_Wallpaper_State := 1
-        ;     ; WinShow, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
-        ; } else if (Software_Wallpaper_State == 0) {
-        ;     WinShow, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
-        ; } else if (Software_Wallpaper_State == 1) {
-        ;     WinHide, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
-        ; }
+        global Software_Wallpaper_State
+        if (Software_Wallpaper_State == -1) {
+            Software_Wallpaper_State := 0
+        }
+        if (Software_Wallpaper_State == 0) {
+            SetWindowsTransparent("Min")
+            Software_Wallpaper_State := 1
+        } else if (Software_Wallpaper_State == 1) {
+            SetWindowsTransparent("Max")
+            Software_Wallpaper_State := 0
+        }
     Return
 
     !PgUp::
