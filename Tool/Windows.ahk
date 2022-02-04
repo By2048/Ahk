@@ -329,15 +329,24 @@ GetActiveWindowsConfig(Config_Data)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
 ; 修改窗口透明度
+
 SetWindowsTransparent(change:=0)
 {
     result := GetActiveWindowsInfo()
     win_id := result.win_id
     win_transparent := result.win_transparent
+
+    if (change == "Max") {
+        win_transparent := 255
+        WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
+        Return
+    } else if (change == "Min") {
+        win_transparent := 0
+        WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
+        Return
+    }
+
     if (change > 0) {
         if (win_transparent + change >= 255) {
             win_transparent := 255
