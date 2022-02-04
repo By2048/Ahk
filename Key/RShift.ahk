@@ -11,17 +11,15 @@
 
 
 
-global rshift_cnt := 0
-
-global hotkeys_show_status  := False ; 是否正在显示图片
-global hotkeys_images       := []    ; 显示的图片组
-global hotkeys_index        := 1     ; 显示图片的序号
-global hotkeys_total        := 1     ; 显示图片组的数量
-global hotkeys_title        := ""    ; 激活的应用窗口标题
-global hotkeys_process_name := ""    ; 激活的应用
+Global hotkeys_show_status  := False ; 是否正在显示图片
+Global hotkeys_images       := []    ; 显示的图片组
+Global hotkeys_index        := 1     ; 显示图片的序号
+Global hotkeys_total        := 1     ; 显示图片组的数量
+Global hotkeys_title        := ""    ; 激活的应用窗口标题
+Global hotkeys_process_name := ""    ; 激活的应用
 
 ; 快捷键图片对应关系
-global Process_Hotkeys_Image := { "-" : [ "---------------------------------" ]
+Global Process_Hotkeys_Image := { "-" : [ "---------------------------------" ]
     , "Default"                       : [ "Windows.png"                       ]
     , "Explorer_CabinetWClass"        : [ "Explorer.png"                      ]
     , "Explorer_WorkerW"              : [ "Windows.png"                       ]
@@ -154,28 +152,29 @@ ChangeShiftImage(np="")
 
 
 ~RShift::
-    global rshift_cnt
     if (IsGame()) {
         return
     }
-    rshift_cnt := rshift_cnt + 1
-    HelpText("RShift " . rshift_cnt, "center", "screen_3")
+    if (cnt > 0) {
+        cnt += 1
+        HelpText("RShift " . cnt, "center", "screen_3")
+        return
+    } else {
+        cnt := 1
+        HelpText("RShift " . cnt, "center", "screen_3")
+    }
     SetTimer, Timer, -333
 Return
-
-
-
 Timer:
-    global rshift_cnt
-    if (rshift_cnt == 1) {
+    if (cnt == 1) {
         HideShiftImage()
         HelpText()
-    } else if (rshift_cnt == 2) {
+    } else if (cnt == 2) {
         ShowShiftImage()
-    } else if (rshift_cnt == 3) {
+    } else if (cnt == 3) {
         InitConfig()
     }
-    rshift_cnt := 0
+    cnt := 0
 Return
 
 

@@ -106,19 +106,20 @@ Return
 
 
 
-Global rctrl_cnt := 0
-
 $RCtrl::
-    global rctrl_cnt
-    rctrl_cnt := rctrl_cnt + 1
-    HelpText("RCtrl " . rctrl_cnt, "center", "screen_3")
+    if (cnt > 0) {
+        cnt += 1
+        HelpText("RCtrl " . cnt, "center", "screen_3")
+        return
+    } else {
+        cnt := 1
+        HelpText("RCtrl " . cnt, "center", "screen_3")
+    }
     SetTimer, Timer, -333
 Return
-
 Timer:
-    global rctrl_cnt
     help_image_show_status := GlobalBoolGet("help_image_show_status")
-    if (rctrl_cnt==1) {
+    if (cnt == 1) {
         HelpText()
         if (help_image_show_status==True) {
             HelpImage()
@@ -127,8 +128,8 @@ Timer:
         } else {
             Run D:\#Lnk\Maye.lnk
         }
-    } else if (rctrl_cnt==2) {
+    } else if (cnt == 2) {
         HelpImage(A_WorkingDir "\Image\RCtrl.png")
     }
-    rctrl_cnt := 0
+    cnt := 0
 Return

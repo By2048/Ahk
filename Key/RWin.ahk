@@ -10,7 +10,6 @@
 #SingleInstance Force
 #NoTrayIcon
 
-
 ; RWin 
 ; 快捷键 (Ctrl Alt 系统全局) (Shift 功能反转)
 ; 窗口位置大小调整
@@ -36,19 +35,6 @@
 ; >#PrintScreen::Send ^!{PrintScreen}
 ; >#Pause::Send ^!{Pause}
 
-
-
-$RWin::
-    if (not cnt) {
-        cnt:=1
-    } else {
-        cnt++
-    }
-    SetTimer, Timer, -500
-Return
-
-
-
 ; 移动窗口
 RWin & LButton::
     SetWinDelay, 30
@@ -71,8 +57,6 @@ RWin & LButton::
         WinMove, ahk_id %win_id%,  , %win_x2%, %win_y2%
     }
 Return
-
-
 
 >#,::
     if (IsDesktops() or IsMaxMin() or IsGame()) {
@@ -101,63 +85,58 @@ Return
     HelpText("Move Windows")
 Return
 
-
 RWin & RCtrl::MoveWindowsToMainMini("Main")
 RWin & RAlt::MoveWindowsToMainMini("Mini")
 
+Global windows_move:=False
+Global windows_resize_big:=False
+Global windows_resize_small:=False
 
-
-global windows_move:=False
-global windows_resize_big:=False
-global windows_resize_small:=False
-
-
-
+$RWin::
+    if (cnt > 0) {
+        cnt += 1
+        return
+    } else {
+        cnt := 1
+    }
+    SetTimer, Timer, -500
+Return
 Timer:
     global windows_move
     global windows_resize_big
     global windows_resize_small
-    if (windows_move=True or windows_resize_big=True or windows_resize_small=True) {
+    if (windows_move==True or windows_resize_big==True or windows_resize_small==True) {
         windows_move:=False
         windows_resize_small:=False
         windows_resize_big:=False
         HelpText()
         return
     }
-    ; if (cnt=1) {
-    ;     MouseGetPos,  ,  , win_id
-    ;     WinActivate, ahk_id %win_id%
-    ;     result := GetActiveWindowsInfo()
-    ;     process_name := result.win_process_name
-    ;     HelpText(process_name, "center_down", "screen1",1000)
-    ; } 
-    if (cnt=1) {
+    if (cnt == 1) {
         MoveWindowsToCenter()
-    } else if (cnt=2) {
+    } else if (cnt == 2) {
         MoveWindowsToDefaultPosition()
-    } else if (cnt=3) {
+    } else if (cnt == 3) {
         MoveWindowsToBackupPosition()
     }
-    cnt:=0
-return
+    cnt := 0
+Return
 
-
-
-#If (windows_move=True)
+#If (windows_move==True)
     Up::MoveWindowsUDLR("Up")
     Down::MoveWindowsUDLR("Down")
     Left::MoveWindowsUDLR("Left")
     Right::MoveWindowsUDLR("Right")
 #If
 
-#If (windows_resize_big=True)
+#If (windows_resize_big==True)
     Up::ResizeWindows("Big","Up")
     Down::ResizeWindows("Big","Down")
     Left::ResizeWindows("Big","Left")
     Right::ResizeWindows("Big","Right")
 #If
 
-#If (windows_resize_small=True)
+#If (windows_resize_small==True)
     Up::ResizeWindows("Small","Up")
     Down::ResizeWindows("Small","Down")
     Left::ResizeWindows("Small","Left")
