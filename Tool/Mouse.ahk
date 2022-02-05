@@ -83,10 +83,17 @@ MouseClickImage(image, trans="")
 
 
 
-MouseClickImageXYWH(x1, y1, x2, y2, image, key="Left", trans="")
+MouseClickImageXYWH(x1, y1, x2, y2, image, mode="Window", key="Left", trans="")
 {
-    CoordMode, Mouse, Window
-    CoordMode, Pixel, Window
+    if (mode=="Window") {
+        CoordMode, Mouse, Window
+        CoordMode, Pixel, Window
+    }
+    if (mode=="Screen") {
+        CoordMode, Mouse, Screen
+        CoordMode, Pixel, Screen
+    }
+    
     MouseGetPos, x_origin, y_origin
 
     image_size := GetImageSize(image)

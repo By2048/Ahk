@@ -84,6 +84,10 @@ WW := 3440
 WH := 2110
 Windows_Position_Default["Android"] := [CenterX(), CenterY(), WW, WH]
 
+WW := 3388
+WH := 2000
+Windows_Position_Default["Wallpaper"] := [CenterX(), CenterY(), WW, WH]
+
 WW := 0
 WH := 0
 WX := -10

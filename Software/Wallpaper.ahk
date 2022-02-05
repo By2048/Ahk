@@ -9,22 +9,7 @@
         y1 := y_origin - 400
         x2 := x_origin + 80
         y2 := y_origin + 800
-        MouseClickImageXYWH(x1, y1, x2, y2, image)
-        ; result := False
-        ; if (not result) {
-        ;     x1 := x_origin
-        ;     y1 := y_origin
-        ;     x2 := x_origin + 80
-        ;     y2 := y_origin + 200
-        ;     result := MouseClickImageXYWH(x1, y1, x2, y2, image)
-        ; }
-        ; if (not result) {
-        ;     x1 := x_origin
-        ;     y1 := y_origin - 400
-        ;     x2 := x_origin + 80
-        ;     y2 := y_origin + 800
-        ;     result := MouseClickImageXYWH(x1, y1, x2, y2, image)
-        ; }
+        MouseClickImageXYWH(x1, y1, x2, y2, image, "Window")
     }
 
     F10::Return
@@ -58,24 +43,24 @@
     Return
 
     !PgUp::
-        x1 := 666
-        y1 := 1666
-        w  := 1991
-        h  := 99
-        x2 := x1 + w
-        y2 := y1 + h
+        win_w := Windows_Position_Default["Wallpaper"][3]
+        win_h := Windows_Position_Default["Wallpaper"][4]
+        x1    := win_w * 1/6
+        y1    := win_h * 91/100
+        x2    := x1    + 2000
+        y2    := y1    + 99
         image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\PgUp.png"
-        MouseClickImageXYWH(x1, y1, x2, y2, image)
+        MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen")
     Return
     !PgDn::
-        x1 := 750
-        y1 := 1666
-        w  := 1111
-        h  := 99
-        x2 := x1 + w
-        y2 := y1 + h
+        win_w := Windows_Position_Default["Wallpaper"][3]
+        win_h := Windows_Position_Default["Wallpaper"][4]
+        x1    := win_w * 1/6
+        y1    := win_h * 91/100
+        x2    := x1    + 2000
+        y2    := y1    + 99
         image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\PgDn.png"
-        MouseClickImageXYWH(x1, y1, x2, y2, image)
+        MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen")
     Return
 
     ; 订阅
