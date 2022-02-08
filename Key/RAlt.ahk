@@ -17,7 +17,7 @@
 >!F7::Send {F19}
 >!F8::Send {F20}
 
->!F9::Send {F21}
+ >!F9::Send {F21}
 >!F10::Send {F22}
 >!F11::Send {F23}
 >!F12::Send {F24}

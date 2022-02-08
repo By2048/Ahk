@@ -46,21 +46,27 @@
         win_w := Windows_Position_Default["Wallpaper"][3]
         win_h := Windows_Position_Default["Wallpaper"][4]
         x1    := win_w * 1/6
-        y1    := win_h * 91/100
+        y1    := win_h * 90/100
         x2    := x1    + 2000
-        y2    := y1    + 99
+        y2    := y1    + 100
         image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\PgUp.png"
-        MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen")
+        MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
     Return
     !PgDn::
         win_w := Windows_Position_Default["Wallpaper"][3]
         win_h := Windows_Position_Default["Wallpaper"][4]
         x1    := win_w * 1/6
-        y1    := win_h * 91/100
+        y1    := win_h * 90/100
         x2    := x1    + 2000
-        y2    := y1    + 99
+        y2    := y1    + 100
         image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\PgDn.png"
-        MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen")
+        MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
+        ; Gui, -DPIScale +Disabled +Owner -SysMenu -Caption
+        ; Gui, +Border
+        ; Gui, Margin, 0, 0
+        ; Gui, Show, X%x1% Y%y1% W2000 H99
+        ; WinGet, win_id, ID, A 
+        ; WinSet, TransColor, F1ECED 100, ahk_id %win_id%
     Return
 
     ; 订阅

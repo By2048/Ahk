@@ -24,26 +24,13 @@
 
 #If ( CheckWindowsActive("LOL_Game") )
 
-    ; 装备
-    ; 2167,2005,
-    ; 2231,2008,
-    ; 2297,2015,
-    ; 
-    ; 2171,2073,
-    ; 2236,2073,
-    ; 2299,2073,
-
-    ; 撤销
-    ; 1279,1666,
-
     #Include %A_WorkingDir%\Software\LOL.Private.ahk
     
     ; 截图
     F12::Return
+    PrintScreen::Screenshot("screen1" , "tmp")
 
-    PrintScreen::Screenshot("screen1","tmp")
-
-    ]::
+    ![::
         EN()
         Send {Enter}
         Sleep 300
@@ -53,7 +40,7 @@
         ZH()
     Return
 
-    [::
+    !]::
         EN()
         Send {Enter}
         Sleep 300
@@ -63,7 +50,7 @@
         ZH()
     Return
 
-    \::
+    !\::
         EN()
         ; Send +{Enter}
         ; Sleep 300

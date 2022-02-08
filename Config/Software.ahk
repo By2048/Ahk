@@ -5,11 +5,13 @@ Global Software_Android_Rshift_Current := 0
 
 
 ; Software\LOL.ahk
-Global Software_LOL := []
-Software_LOL[1] := [ 55 , 400 ]
-Software_LOL[2] := [ 55 , 550 ]
-Software_LOL[3] := [ 55 , 710 ]
-Software_LOL[4] := [ 55 , 880 ]
+Global Software_LOL_XY        := []
+Global Software_LOL_Hero      := []
+Global Software_LOL_Equipment := []
+Software_LOL_Hero[1] := [ 55 , 400 ]
+Software_LOL_Hero[2] := [ 55 , 550 ]
+Software_LOL_Hero[3] := [ 55 , 710 ]
+Software_LOL_Hero[4] := [ 55 , 880 ]
 
 
 ; Software\CloudMusic.ahk

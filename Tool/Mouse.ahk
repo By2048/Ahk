@@ -83,7 +83,7 @@ MouseClickImage(image, trans="")
 
 
 
-MouseClickImageXYWH(x1, y1, x2, y2, image, mode="Window", key="Left", trans="")
+MouseClickImageXYWH(x1, y1, x2, y2, image, mode="Window", offset=30, key="Left", trans="")
 {
     if (mode=="Window") {
         CoordMode, Mouse, Window
@@ -104,9 +104,9 @@ MouseClickImageXYWH(x1, y1, x2, y2, image, mode="Window", key="Left", trans="")
     y_find := 0
 
     if (trans) {
-        ImageSearch, x_find, y_find, x1, y1, x2, y2, *30 *Trans%trans% %image%
+        ImageSearch, x_find, y_find, %x1%, %y1%, %x2%, %y2%, *%offset% *Trans%trans% %image%
     } else {
-        ImageSearch, x_find, y_find, x1, y1, x2, y2, *30 %image%
+        ImageSearch, x_find, y_find, %x1%, %y1%, %x2%, %y2%, *%offset% %image%
     }
 
     if (x_find and y_find) {
@@ -116,7 +116,8 @@ MouseClickImageXYWH(x1, y1, x2, y2, image, mode="Window", key="Left", trans="")
         MouseMove, %x_origin%, %y_origin%, 0
         return True
     } else {
-        HelpText("Not Find",  ,  , 1000)
+        HelpText("Not Find", "center_down", "screen1", 1000)
+        return False
     }
     
     return False

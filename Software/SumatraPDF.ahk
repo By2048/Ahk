@@ -16,57 +16,62 @@
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+    ; 打印
+    ; ^p::Return
+    ; !p::Send ^p
+    
+    ; 另存为
+    ; ^s::Return
+    ; !s::Send ^s
+
+    ; 全选
+    ; ^a::Return
+    ; !a::Send ^a
+
+    ; 复制选定范围
+    ; ^c::Return
+    ; !c::Send ^c
+    
+    ; 新建窗口
+    ; ^n::Return
+    ; !n::Send ^n
+
+    ; 查找
+    ; ^f::Return
+    ; !f::Send ^f
+
+    ; 打开
+    ; ^o::Return
+    ; !o::Send ^o
+
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    
     ; 属性
     ^d::Return
     !/::Send ^d
-
-    ; 打印
-    ^p::Return
-    !p::Send ^p
-    
-    ; 另存为
-    ^s::Return
-    !s::Send ^s
-
-    ; 打开
-    ^o::Return
-    !o::Send ^o
 
     ; 关闭 切换标签
     ^q::Return
     ^Tab::Return
     ^+Tab::Return
     !CapsLock::Send ^q
-    !Tab::Send ^Tab
-    !+Tab::Send ^+Tab
-
-    ; 新建窗口
-    ^n::Return
-    !n::Send ^n
+    !Tab::Send ^{Tab}
+    !+Tab::Send ^+{Tab}
 
     ; 关闭
     ^w::Return
     !w::Send ^w
-
-    ; 全选
-    ^a::Return
-    !a::Send ^a
-
-    ; 复制选定范围
-    ^c::Return
-    !c::Send ^c
-
-    ; 查找
-    ^f::Return
-    !f::Send ^f
 
     ; 向往页
     ^g::Return
     !g::Send ^g
 
     ; 添加到收藏
+    ; 显示收藏夹
     ^b::Return
-    !b::Send ^b
+    !d::Send {Ctrl Down}{b}{Ctrl Up}{Enter}
+    !+d::Send {Alt Down}{a}{Alt Up}{Down}{Enter}
+    !b::Send {Alt Down}{a}{Alt Up}{Up}{Up}{Enter}
 
     ; 符合页面
     ^0::Return
