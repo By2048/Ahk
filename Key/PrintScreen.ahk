@@ -5,19 +5,19 @@
 #NoTrayIcon
 
 $PrintScreen::
-    if (not cnt) {
-        cnt:=1
+    if (cnt > 0) {
+        cnt += 1
+        return
     } else {
-        cnt++
+        cnt := 1
     }
     SetTimer, Timer, -500
 Return
-
 Timer:
-    if (cnt=1) {
+    if (cnt == 1) {
         Send {PrintScreen}
-    } else if (cnt=2) {
+    } else if (cnt == 2) {
         Send {Pause}
     }
-    cnt:=0
+    cnt := 0
 Return

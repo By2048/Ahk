@@ -24,11 +24,11 @@
 
 RAlt & RWin::
     if (IsDesktops() or IsGame()) {
-        Return
+        return
     } else {
         Send !{F4}
     }
-return
+Return
 
 
 RAlt & RCtrl::
@@ -36,36 +36,23 @@ RAlt & RCtrl::
     HelpText("EN","center","screen1",1000)
 Return
 
-
 $RAlt::
     if (CheckWindowsActive("PyCharm")) {
         return
     }
     if (IsGame()) {
-        Return
+        return
     }
-    if (not cnt) {
-        cnt:=1
+    if (cnt > 0) {
+        cnt += 1
+        return
     } else {
-        cnt++
+        cnt := 1
     }
-    ;全局搜索框
-    SetTimer, timer, -500
-return
-
-
-global appskey_status := False
-
-timer:
-    global appskey_status
-    if (cnt=1) {
-        if (appskey_status=True) {
-            Send {Esc}
-            appskey_status := False
-        } else {
-            Send {AppsKey}
-            appskey_status := True
-        }
-    }
-    cnt:=0
-return
+    SetTimer, Timer, -500
+Return
+Timer:
+    ; if (cnt == 1) {
+    ; }
+    cnt := 0
+Return

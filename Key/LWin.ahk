@@ -54,20 +54,20 @@ Return
     file.Write(data)
     file.Close()
     HelpText(data, "center_down",  , 1000)
-return
+Return
 
 <#v::
-    data = %clipboard%
     if (FileExist(JQB_Phone)) {
         FileEncoding UTF-8
         Try {
             FileRead, Clipboard, %JQB_Phone%
+            Sleep 500
             FileDelete %JQB_Phone%
         }
         Send ^v
         HelpText(Clipboard, "center_down",  , 1000)
     } else {
-        HelpText(" No Data ", "center_down",  , 1000)
+        HelpText("No Data", "center_down",  , 1000)
     }
 Return
 
@@ -229,7 +229,7 @@ LWin & Tab::
     } else {
         Send {Alt Down}{Tab}
     }
-return
+Return
 #If (win_tab)
     global win_tab
     ~*LWin Up::
