@@ -36,7 +36,7 @@
         y     := cinfo.yy - 90
         MouseClick, Right, %x%, %y%, 1, 0
         Send {v}{s}
-        MouseMove, x_origin, y_origin, 0
+        MouseMove, %x_origin%, %y_origin%, 0
 
         ; 调整列宽 分组依据 更多
         ; MouseClick, Right, x+30, y+30, 1, 0
