@@ -1,27 +1,26 @@
 ﻿
-#Include %A_WorkingDir%\Config\All.ahk
-#Include %A_WorkingDir%\Tool\Base.ahk
+
 
 #NoTrayIcon
 #SingleInstance Force
 #Hotstring EndChars `t
 
-::[date]::
+::[Date]::
     FormatTime, result, _, [yyyy-MM-dd]
     SendInput %result%
 Return
 
-::[time]::
+::[Time]::
     FormatTime, result, _, [HH-mm-ss]
     SendInput %result%
 Return
 
-::[datetime]::
+::[DateTime]::
     FormatTime, result, _, [yyyy-MM-dd HH-mm-ss]
     SendInput %result%
 Return
 
-::[chrome]::
+::[Chrome]::
     SendInput %chrome%
 Return
 
