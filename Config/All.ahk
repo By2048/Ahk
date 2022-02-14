@@ -32,6 +32,7 @@ Global WT          := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApp
 Global TaskKill    := "C:\Windows\SysWOW64\taskkill.exe"
 Global Python      := "D:\Python\#\Scripts\python.exe"
 Global HuntAndPeck := "D:\HuntAndPeck\hap.exe"
+Global ScrcpyAdb   := "D:\Scrcpy\adb.exe"
 Global Scrcpy      := "D:\Scrcpy\scrcpy.exe"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -1,17 +1,15 @@
 ﻿
-#Include %A_WorkingDir%\Tool\Base.ahk
-#Include %A_WorkingDir%\Tool\Windows.ahk
-#Include %A_WorkingDir%\Tool\Other.ahk
-#Include %A_WorkingDir%\Tool\Language.ahk
-
 #SingleInstance Force
 #NoTrayIcon
+
+; https://support.microsoft.com/zh-cn/windows/windows-的键盘快捷方式-dcc61a57-8ff0-cffe-9796-cb9706c75eec#WindowsVersion=Windows_10
 
 ;切换窗口
 !Esc::Return
 !+Esc::Return
 
-!F4::Return ;关闭窗口
+;关闭窗口
+!F4::Return
 
 ;Switch between open apps.
 !Tab::Return
@@ -53,10 +51,11 @@
 #^Right::return ;向右切换虚拟桌面
 #,::Return ;透明窗口显示桌面
 
+; 最小化活动桌面窗口之外的所有窗口
 #Home::Return
-#End::Return
 
-!+PrintScreen::Return ;高对比度 Alt+LShift+PrintScreen
+; 高对比度 Alt+LShift+PrintScreen
+!+PrintScreen::Return ;
 
 ; PowerToys Run
 ^!r::Return
