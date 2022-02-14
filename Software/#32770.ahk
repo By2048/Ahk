@@ -30,11 +30,13 @@
         MoveControlUDLR(cinfo,  ,  , cleft,  , offset)
 
         ; 平铺模式
+        MouseGetPos, x_origin, y_origin
         cinfo := result["win_controls"]["DirectUIHWND2"]
-        x := cinfo.x  + 10
-        y := cinfo.yy - 10
+        x     := cinfo.x  + 10
+        y     := cinfo.yy - 90
         MouseClick, Right, %x%, %y%, 1, 0
         Send {v}{s}
+        MouseMove, x_origin, y_origin, 0
 
         ; 调整列宽 分组依据 更多
         ; MouseClick, Right, x+30, y+30, 1, 0
