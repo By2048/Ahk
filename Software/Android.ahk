@@ -214,58 +214,58 @@
 
     ; 兵种选择
     ~e::
-        global Software_Android_Rshift_Current
-        Software_Android_Rshift_Current:=0
+        global Android_Rshift_Current
+        Android_Rshift_Current:=0
     Return
     ~1::
-        global Software_Android_Rshift_Current
-        Software_Android_Rshift_Current:=1
+        global Android_Rshift_Current
+        Android_Rshift_Current:=1
     Return
     ~2::
-        global Software_Android_Rshift_Current
-        Software_Android_Rshift_Current:=2
+        global Android_Rshift_Current
+        Android_Rshift_Current:=2
     Return
     ~3::
-        global Software_Android_Rshift_Current
-        Software_Android_Rshift_Current:=3
+        global Android_Rshift_Current
+        Android_Rshift_Current:=3
     Return
     ~4::
-        global Software_Android_Rshift_Current
-        Software_Android_Rshift_Current:=4
+        global Android_Rshift_Current
+        Android_Rshift_Current:=4
     Return
     ~5::
-        global Software_Android_Rshift_Current
-        Software_Android_Rshift_Current:=5
+        global Android_Rshift_Current
+        Android_Rshift_Current:=5
     Return
     ~6::
-        global Software_Android_Rshift_Current
-        Software_Android_Rshift_Current:=6
+        global Android_Rshift_Current
+        Android_Rshift_Current:=6
     Return
     ~7::
-        global Software_Android_Rshift_Current
-        Software_Android_Rshift_Current:=7
+        global Android_Rshift_Current
+        Android_Rshift_Current:=7
     Return
 
     ; 按顺序切换兵种 6-1
     LShift::
-        global Software_Android_Rshift_Loop
-        global Software_Android_Rshift_Current
-        if (Software_Android_Rshift_Current=0) {
-            next_index:=Software_Android_Rshift_Loop.MaxIndex()
-            Software_Android_Rshift_Current:=Software_Android_Rshift_Loop[next_index]
-            Send %Software_Android_Rshift_Current%
+        global Android_Rshift_Loop
+        global Android_Rshift_Current
+        if (Android_Rshift_Current=0) {
+            next_index:=Android_Rshift_Loop.MaxIndex()
+            Android_Rshift_Current:=Android_Rshift_Loop[next_index]
+            Send %Android_Rshift_Current%
             Return
         } else {
-            for index,value in Software_Android_Rshift_Loop {
-                if (value=Software_Android_Rshift_Current) {
+            for index,value in Android_Rshift_Loop {
+                if (value=Android_Rshift_Current) {
                     if (index=1) {
-                        next_index:=Software_Android_Rshift_Loop.MaxIndex()
-                        Software_Android_Rshift_Current:=Software_Android_Rshift_Loop[next_index]
-                        Send %Software_Android_Rshift_Current%
+                        next_index:=Android_Rshift_Loop.MaxIndex()
+                        Android_Rshift_Current:=Android_Rshift_Loop[next_index]
+                        Send %Android_Rshift_Current%
                         Return
                     } else {
-                        Software_Android_Rshift_Current:=Software_Android_Rshift_Loop[index-1]
-                        Send %Software_Android_Rshift_Current%
+                        Android_Rshift_Current:=Android_Rshift_Loop[index-1]
+                        Send %Android_Rshift_Current%
                         Return
                     }
                 }
@@ -275,22 +275,22 @@
 
     ; 按顺序切换兵种 1-6
     LAlt::
-        global Software_Android_Rshift_Loop
-        global Software_Android_Rshift_Current
-        if (Software_Android_Rshift_Current=0) {
-            Software_Android_Rshift_Current:=1
-            Send %Software_Android_Rshift_Current%
+        global Android_Rshift_Loop
+        global Android_Rshift_Current
+        if (Android_Rshift_Current=0) {
+            Android_Rshift_Current:=1
+            Send %Android_Rshift_Current%
             Return
         } else {
-            for index,value in Software_Android_Rshift_Loop {
-                if (value=Software_Android_Rshift_Current) {
-                    if (index=Software_Android_Rshift_Loop.MaxIndex()) {
-                        Software_Android_Rshift_Current:=1
-                        Send %Software_Android_Rshift_Current%
+            for index,value in Android_Rshift_Loop {
+                if (value=Android_Rshift_Current) {
+                    if (index=Android_Rshift_Loop.MaxIndex()) {
+                        Android_Rshift_Current:=1
+                        Send %Android_Rshift_Current%
                         Return
                     } else {
-                        Software_Android_Rshift_Current:=Software_Android_Rshift_Loop[index+1]
-                        Send %Software_Android_Rshift_Current%
+                        Android_Rshift_Current:=Android_Rshift_Loop[index+1]
+                        Send %Android_Rshift_Current%
                         Return
                     }
                 }

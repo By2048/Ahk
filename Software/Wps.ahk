@@ -34,8 +34,8 @@
         Send #{Up}
 
         Sleep 1000
-        global Software_WPS_Hotkeys_Image
-        for index, value In Software_WPS_Hotkeys_Image {
+        global WPS_Hotkeys_Image
+        for index, value In WPS_Hotkeys_Image {
             value := StrReplace(value,"  "," ")
             value := StrReplace(value,"  "," ")
             value := StrReplace(value,"  "," ")

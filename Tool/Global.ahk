@@ -1,44 +1,35 @@
 ﻿
 ; 不同进程之间传递变量 \ 通过读写INI文件
 
-GlobalBoolSet(key, value)
+GlobalSet(_section_, _key_, _value_)
 {
-    global INI
-    if (value = True) {
+    Global INI
+    value := _value_
+    if (_value_ == True) {
         value := "True"
-    } else if (value = False) {
+    } else if (_value_ == False) {
         value := "False"
     }
-    IniWrite, %value%, %INI%, Bool, %key%
+    IniWrite, %_value_%, %INI%, %_section_%, %_key_%
 }
 
-GlobalBoolGet(key)
-{   
-    global INI
-    IniRead, value, %INI%, Bool, %key%
-    if (value = "True") {
-        return True
-    } else if (value = "False") {
-        return False
-    }
-}
-
-GlobalValueSet(section, key, value)
+GlobalGet(_section_, _key_, _type_:="Str")
 {
-    global INI
-    IniWrite, %value%, %INI%, %section%, %key%
-}
-
-GlobalValueGet(section, key, type:="Str")
-{
-    global INI
-    IniRead, value, %INI%, %section%, %key%
-    if (type == "Str") {
-        value := value
-    } else if (type == "Int") {
-        value := value + 0
-    } else if (type == "Float") {
-        value := value + 0
+    Global INI
+    IniRead, _value_, %INI%, %_section_%, %_key_%
+    value := _value_
+    if (_type_ == "Str") {
+        value := _value_
+    } else if (_type_ == "Int") {
+        value := _value_ + 0
+    } else if (_type_ == "Float") {
+        value := _value_ + 0
+    } else if (_type_ == "Bool") {
+        if (_value_ = "True") {
+            value := True
+        } else if (_value_ = "False") {
+            value := False
+        }
     }
     return value
 }

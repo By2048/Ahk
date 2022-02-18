@@ -11,7 +11,7 @@ HelpImage(image="")
 {   
     if (image == "") {
         Gui, Destroy
-        GlobalBoolSet("help_image_show_status", False)
+        GlobalSet("Status", "help_image_show_status", False)
     } else {
         size := GetImageSize(image)
         w := size["w"] / Screen1.dpi
@@ -23,20 +23,20 @@ HelpImage(image="")
         Gui, Margin, 1, 1
         Gui, Add, Picture, +Border W%w% H%h%, %image%
         Gui, Show, Center NA
-        GlobalBoolSet("help_image_show_status", True)
+        GlobalSet("Status", "help_image_show_status", True)
     }
 }
 
 
 
 ; 显示帮助文本
-HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
+HelpText(data="", xy="right_down", screen_name="screen1", sleep_time=0)
 {   
     CoordMode, Pixel, Screen
     CoordMode, Mouse, Screen
 
     if (not data and data != 0) {
-        GlobalBoolSet("help_text_show_status", False)
+        GlobalSet("Status", "help_text_show_status", False)
         Gui, Destroy
         return
     }
@@ -49,17 +49,17 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
         font_hight := font_hight * n_count
     }
 
-    screens := ChangeScreenName(screens)
+    screen_name := ChangeScreenName(screen_name)
 
-    if (screens == "screen1") {
+    if (screen_name == "screen1") {
         screen_x   := Screen1.x  , screen_y  := Screen1.y
         screen_xx  := Screen1.xx , screen_yy := Screen1.yy
         screen_w   := Screen1.w  , screen_h  := Screen1.h
-    } else if (screens == "screen2") {
+    } else if (screen_name == "screen2") {
         screen_x   := Screen2.x  , screen_y  := Screen2.y
         screen_xx  := Screen2.xx , screen_yy := Screen2.yy
         screen_w   := Screen2.w  , screen_h  := Screen2.h
-    } else if (screens == "screen3") {
+    } else if (screen_name == "screen3") {
         screen_x   := Screen3.x   , screen_y  := Screen3.y
         screen_xx  := Screen3.xx  , screen_yy := Screen3.yy/2
         screen_w   := Screen3.w   , screen_h  := Screen3.h/2
@@ -107,11 +107,11 @@ HelpText(data="", xy="right_down", screens="screen1", sleep_time=0)
     Gui, font, s%font_size%, Courier New
     Gui, Add, Text, x0 y7 w%text_w% h%text_h% +Center -Border, %data%
     Gui, Show, x%gui_x% y%gui_y% w%gui_w% h%gui_h% NA
-    GlobalBoolSet("help_text_show_status", True)
+    GlobalSet("Status", "help_text_show_status", True)
 
     if (sleep_time > 0) {
         Sleep, %sleep_time%
         Gui, Destroy
-        GlobalBoolSet("help_text_show_status", False)
+        GlobalSet("Status", "help_text_show_status", False)
     }
 }

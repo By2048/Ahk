@@ -5,67 +5,46 @@
 
 Mode 40,25
 
-@REM ======================================================================
-
 SetLocal
 
 @REM ======================================================================
 
-Set Folder=%~dp0
+Set      Folder=%~dp0
+Set  Config.ahk=%Folder%Config.ahk
+Set    Init.ahk=%Folder%Init.ahk
+Set  Screen.ahk=%Folder%Tool\Screen.ahk
 
 @REM ======================================================================
 
-Set Global.ini=%Folder%\Config\Global.ini
-
-Del   %Global.ini%
-Echo  ; Ahk Global Config ; > %Global.ini%
-
-@REM ======================================================================
-
-Set              AutoHotkey=D:\AutoHotkey\AutoHotkey.exe
-Set   AutoHotkeyDpiSoftware=D:\AutoHotkey\AutoHotkeyDpiSoftware.exe
-Set     AutoHotkeyDpiSystem=D:\AutoHotkey\AutoHotkeyDpiSystem.exe
-Set AutoHotkeyDpiSystemPlus=D:\AutoHotkey\AutoHotkeyDpiSystemPlus.exe
-Set                 Dpi.ahk=%Folder%\Dpi.ahk
-
-CD  /d  %Folder%
-
-%AutoHotkey%               %Dpi.ahk%  
-%AutoHotkeyDpiSoftware%    %Dpi.ahk%  Dpi.Software
-%AutoHotkeyDpiSystem%      %Dpi.ahk%  Dpi.System
-%AutoHotkeyDpiSystemPlus%  %Dpi.ahk%  Dpi.SystemPlus
-
-@REM ======================================================================
-
-Set       Input.Private.ahk=%Folder%\Input.Private.ahk
-Set             Private.ahk=%Folder%\Config\Private.ahk
-Set Android.COC.Private.ahk=%Folder%\Software\Android.COC.Private.ahk
-Set         LOL.Private.ahk=%Folder%\Software\LOL.Private.ahk
-
-If Not Exist %Input.Private.ahk% (
-    Echo Create %Input.Private.ahk%
-    Echo ; Private File ; > %Input.Private.ahk%
+@REM                       22                        -1
+@REM Global AutoHotkey := "D:\AutoHotkey\AutoHotkey.exe"
+For /f "delims=" %%A In ('FindStr ".*AutoHotkey.*" "Config.ahk"') Do Set AutoHotkey=%%A
+Set AutoHotkey=%AutoHotkey:~22,-1%
+If Not exist %AutoHotkey% (
+    Msg %username% /time:9 配置文件错误 \ 未设置脚本执行文件路径 Config.ahk\AutoHotkey
+    Exit
 )
-If Not Exist %Private.ahk% (
-    Echo Create %Private.ahk%
-    Echo ; Private File ; > %Private.ahk%
-)
-If Not Exist %Android.COC.Private.ahk% (
-    Echo Create %Android.COC.Private.ahk%
-    Echo ; Private File ; > %Android.COC.Private.ahk%
-)
-If Not Exist %LOL.Private.ahk% (
-    Echo Create %LOL.Private.ahk%
-    Echo ; Private File ; > %LOL.Private.ahk%
-)
+Set   AutoHotkeyDpiSoftware=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSoftware.exe%
+Set     AutoHotkeyDpiSystem=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystem.exe%
+Set AutoHotkeyDpiSystemPlus=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystemPlus.exe%
 
 @REM ======================================================================
 
 CD  /d  %Folder%
 
-Set AHK=D:\AutoHotkey\AutoHotkey.exe
+@REM ======================================================================
 
-Set Command=%1
+%AutoHotkey%  %Init.ahk%
+
+%AutoHotkey%               %Screen.ahk%  
+%AutoHotkeyDpiSoftware%    %Screen.ahk%  Software
+%AutoHotkeyDpiSystem%      %Screen.ahk%  System
+%AutoHotkeyDpiSystemPlus%  %Screen.ahk%  SystemPlus
+
+@REM ======================================================================
+
+Set  AHK=%AutoHotkey%
+Set  Command=%1
 
 @REM 运行游戏时结束Space.ahk
 If "%Command%"=="StopSpace" (
@@ -134,8 +113,6 @@ Echo  %Command% .\Input.ahk
 @REM ======================================================================
 
 EndLocal
-
-@REM ======================================================================
 
 Ping -n 2 127.0.0.1 > nul
 

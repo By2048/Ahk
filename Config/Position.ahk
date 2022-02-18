@@ -20,22 +20,22 @@ Global WW, WH, WX, WY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; screen | Screen1 Screen2 Screen3
-Center(screen := "") {
-    if (not screen) {
-        screen := "screen1"
+Center(screen_name := "") {
+    if (not screen_name) {
+        screen_name := "screen1"
     }
-    screen := ChangeScreenName(screen)
-    if (screen == "screen1") {
+    screen_name := ChangeScreenName(screen_name)
+    if (screen_name == "screen1") {
         WW := WW < 0 ? Screen1.w + WW : WW
         WH := WH < 0 ? Screen1.h + WH : WH
         WX := Screen1.x + Screen1.w/2 - WW/2
         WY := Screen1.y + Screen1.h/2 - WH/2
-    } else if (screen == "screen2") {
+    } else if (screen_name == "screen2") {
         WW := WW < 0 ? Screen2.w + WW : WW
         WH := WH < 0 ? Screen2.h + WH : WH
         WX := Screen2.x + Screen2.w/2 - WW/2
         WY := Screen2.y + Screen2.h/2 - WH/2
-    } else if (screen == "screen3") {
+    } else if (screen_name == "screen3") {
         WW := WW < 0 ? Screen3.w + WW : WW
         WH := WH < 0 ? Screen3.h + WH : WH
         WX := Screen3.x + Screen3.w/2 - WW/2
@@ -43,11 +43,11 @@ Center(screen := "") {
     }
     return [WX , WY]
 }
-CenterX(screen := "") {
-    return Center(screen)[1]
+CenterX(screen_name := "") {
+    return Center(screen_name)[1]
 }
-CenterY(screen := "") {
-    return Center(screen)[2]
+CenterY(screen_name := "") {
+    return Center(screen_name)[2]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -161,7 +161,7 @@ WW := 900
 WH := 1500
 Windows_Position_Default["Chrome__修改书签"] := [CenterX(), CenterY(), WW, WH]
 
-WW := 2700
+WW := 2800
 WH := 1600
 Windows_Position_Default["v2rayN"] := [CenterX("screen_1"), CenterY("screen_1"), WW, WH]
 Windows_Position_Backup["v2rayN"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]

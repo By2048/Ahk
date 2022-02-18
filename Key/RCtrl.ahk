@@ -118,7 +118,7 @@ $RCtrl::
     SetTimer, Timer, -333
 Return
 Timer:
-    help_image_show_status := GlobalBoolGet("help_image_show_status")
+    help_image_show_status := GlobalGet("Status", "help_image_show_status", "Bool")
     if (cnt == 1) {
         HelpText()
         if (help_image_show_status==True) {

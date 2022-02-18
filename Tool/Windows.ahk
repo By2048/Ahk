@@ -59,7 +59,41 @@ IsGame()
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; 软件进程名转换 code.exe -> VSCode
+ProcessNameFormat(process_name)
+{
+    process_name := RTrim(process_name, "exe")
+    process_name := RTrim(process_name, "EXE")
+    process_name := RTrim(process_name, ".")
+    result       := process_name
+    for index, value in Windows_Process_Name {
+        name_old := value[1]
+        name_new := value[2]
+        if (process_name = name_old) {
+            result := name_new
+            break
+        }
+    }
+    return result
+}
 
+; 软件进程名转换 VSCode -> code.exe
+ProcessNameOrigin(process_name)
+{
+    result := process_name
+    for index, value in Windows_Process_Name {
+        name_old := value[1]
+        name_new := value[2]
+        if (process_name = name_new) {
+            result := name_old
+            break
+        }
+    }
+    result := result . ".exe"
+    return result
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 检测当前激活的应用是否满足参数条件
 ; _process_name_ | 进程名（转换后的

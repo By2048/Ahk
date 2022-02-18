@@ -73,8 +73,8 @@
 
     $CapsLock::
         WinActivate, ahk_exe Explorer.exe
-        GlobalValueSet("Windows", "Previous_Process_Name", "RemoteDesktop")
-        GlobalBoolSet("Remote_Desktop_Switch_Check", True)
+        GlobalSet("Windows", "Previous_Process_Name", "RemoteDesktop")
+        GlobalSet("Status", "Remote_Desktop_Switch_Check", True)
     Return
 
     ; 显示链接栏

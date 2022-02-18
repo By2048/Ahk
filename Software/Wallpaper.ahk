@@ -18,7 +18,7 @@
     ; 在资源管理器中打开
     !\::
         MouseClick, Right
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\Open.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Wallpaper_Theme . "\Open.png"
         ClickImage(image)
     Return
 
@@ -29,16 +29,16 @@
 
     ; 预览
     !PrintScreen::
-        global Software_Wallpaper_State
-        if (Software_Wallpaper_State == -1) {
-            Software_Wallpaper_State := 0
+        global Wallpaper_State
+        if (Wallpaper_State == -1) {
+            Wallpaper_State := 0
         }
-        if (Software_Wallpaper_State == 0) {
+        if (Wallpaper_State == 0) {
             SetWindowsTransparent("Min")
-            Software_Wallpaper_State := 1
-        } else if (Software_Wallpaper_State == 1) {
+            Wallpaper_State := 1
+        } else if (Wallpaper_State == 1) {
             SetWindowsTransparent("Max")
-            Software_Wallpaper_State := 0
+            Wallpaper_State := 0
         }
     Return
 
@@ -49,7 +49,7 @@
         y1    := win_h * 90/100
         x2    := x1    + 2000
         y2    := y1    + 100
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\PgUp.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Wallpaper_Theme . "\PgUp.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
     Return
     !PgDn::
@@ -59,7 +59,7 @@
         y1    := win_h * 90/100
         x2    := x1    + 2000
         y2    := y1    + 100
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\PgDn.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Wallpaper_Theme . "\PgDn.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
         ; Gui, -DPIScale +Disabled +Owner -SysMenu -Caption
         ; Gui, +Border
@@ -72,14 +72,14 @@
     ; 订阅
     ![::
         MouseClick, Right
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\Download.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Wallpaper_Theme . "\Download.png"
         ClickImage(image)
     Return
 
     ; 取消订阅
     !]::
         MouseClick, Right
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Software_Wallpaper_Theme . "\Delete.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Wallpaper_Theme . "\Delete.png"
         ClickImage(image)
         Sleep 100
         Send {Enter}

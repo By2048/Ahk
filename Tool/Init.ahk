@@ -1,6 +1,7 @@
 ﻿
 #Include %A_WorkingDir%\Config\All.ahk
 #Include %A_WorkingDir%\Tool\Change.ahk
+#Include %A_WorkingDir%\Tool\Help.ahk
 
 
 

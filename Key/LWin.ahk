@@ -177,14 +177,14 @@ Return
 
     ; 远程桌面切换到Windows时 结束远程桌面
     if (win_process_name == "Explorer") {
-        windows_previous_process_name := GlobalValueGet("Windows", "Previous_Process_Name")
-        remote_desktop_switch_check := GlobalBoolGet("Remote_Desktop_Switch_Check")
+        windows_previous_process_name := GlobalGet("Windows", "Previous_Process_Name")
+        remote_desktop_switch_check := GlobalGet("Status", "Remote_Desktop_Switch_Check", "Bool")
         if (windows_previous_process_name == "RemoteDesktop") {
             if (remote_desktop_switch_check == True) {
                 exe := ProcessNameOrigin("RemoteDesktop")
                 Process, Close, %exe%
-                GlobalValueSet("Windows", "Previous_Process_Name", "")
-                GlobalBoolSet("Remote_Desktop_Switch_Check", False)
+                GlobalSet("Windows", "Previous_Process_Name", "")
+                GlobalSet("Status", "Remote_Desktop_Switch_Check", False)
                 Return
             }
         }
