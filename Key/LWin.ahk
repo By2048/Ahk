@@ -87,16 +87,16 @@ Return
 
 ; 屏幕截图 临时
 <#PrintScreen::
-    ScreenShot("screen1", "tmp")
-    ScreenShot("screen2", "tmp")
-    ScreenShot("screen3", "tmp")
+    ScreenShot("Screen1", "Tmp")
+    ScreenShot("Screen2", "Tmp")
+    ScreenShot("Screen3", "Tmp")
 Return
 
 ; 屏幕截图 长久
 <#+PrintScreen::
-    ScreenShot("screen1", "backup")
-    ScreenShot("screen2", "backup")
-    ScreenShot("screen3", "backup")
+    ScreenShot("Screen1", "Backup")
+    ScreenShot("Screen2", "Backup")
+    ScreenShot("Screen3", "Backup")
 Return
 
 ; 切换Windows默认标题栏

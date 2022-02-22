@@ -13,7 +13,6 @@
     ]::Send !]
 
     =::
-        global Cloud_Music_Volume
         if (Cloud_Music_Volume = -1){
             Send !{- 10}
             Send !{= 5}
@@ -28,7 +27,6 @@
         HelpText(Cloud_Music_Volume , "center_down" ,   , 200)
     Return
     -::
-        global Cloud_Music_Volume
         if (Cloud_Music_Volume == -1){
             Send !{- 10}
             Send !{= 5}

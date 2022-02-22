@@ -9,16 +9,16 @@
 
 RunNormalUser(command)
 {
-    if InStr(command,".lnk") {
+    if InStr(command, ".lnk") {
         command := Format("C:\Windows\Explorer.exe {}", command) 
     }
 
-    if (A_UserName="Administrator") {
+    if (A_UserName = "Administrator") {
         Run %command%
         return
     }
 
-    if (StrLen(PC_USERNAME)=0 and StrLen(PC_PASSWORD)=0) {
+    if (StrLen(PC_USERNAME) == 0 and StrLen(PC_PASSWORD) == 0) {
         HelpText(" PC_USERNAME/PC_PASSWORD - (./Private.ahk) ", "center_down",  , 3000)
     } else {
         RunAs, %PC_USERNAME%, %PC_PASSWORD%
@@ -32,37 +32,37 @@ RunNormalUser(command)
 ; 屏幕截图
 ; screens   | screen1 screen2 screen3
 ; keep_path | backup tmp
-ScreenShot(screens="screen1", keep_path="backup")
+ScreenShot(screen_name="screen1", keep_path="backup")
 {
     if (not FileExist(Snipaste_EXE)) {
         return
     }
-    if (keep_path = "backup") {
+    if (keep_path = "Backup") {
         if (not FileExist(Snipaste_Screenshot_Path_Backup)) {
             return
         }
     }
-    if (keep_path = "tmp") {
+    if (keep_path = "Tmp") {
         if (not FileExist(Snipaste_Screenshot_Path_Tmp)) {
             return
         }
     }
 
-    if (screens == "screen1") {
-        x := GlobalGet("Screen1.Dpi.Software", "x")
-        y := GlobalGet("Screen1.Dpi.Software", "y")
-        w := GlobalGet("Screen1.Dpi.Software", "w")
-        h := GlobalGet("Screen1.Dpi.Software", "h")
-    } else if (screens == "screen2") {    
-        x := GlobalGet("Screen2.Dpi.Software", "x")
-        y := GlobalGet("Screen2.Dpi.Software", "y")
-        w := GlobalGet("Screen2.Dpi.Software", "w")
-        h := GlobalGet("Screen2.Dpi.Software", "h")
-    } else if (screens == "screen3") {
-        x := GlobalGet("Screen3.Dpi.Software", "x")
-        y := GlobalGet("Screen3.Dpi.Software", "y")
-        w := GlobalGet("Screen3.Dpi.Software", "w")
-        h := GlobalGet("Screen3.Dpi.Software", "h")
+    if (screen_name = "screen1") {
+        x := Screens_Software.1.x
+        y := Screens_Software.1.y
+        w := Screens_Software.1.w
+        h := Screens_Software.1.h
+    } else if (screen_name = "screen2") {    
+        x := Screens_Software.2.x
+        y := Screens_Software.2.y
+        w := Screens_Software.2.w
+        h := Screens_Software.2.h
+    } else if (screen_name = "screen3") {
+        x := Screens_Software.3.x
+        y := Screens_Software.3.y
+        w := Screens_Software.3.w
+        h := Screens_Software.3.h
     }
 
     x := Round(x)
@@ -71,9 +71,9 @@ ScreenShot(screens="screen1", keep_path="backup")
     h := Round(h)
 
     screenshot_keep_path := ""
-    if (keep_path="backup") {
+    if (keep_path = "Backup") {
         screenshot_keep_path := Snipaste_Screenshot_Path_Backup
-    } else if (keep_path="tmp") {
+    } else if (keep_path = "Tmp") {
         screenshot_keep_path := Snipaste_Screenshot_Path_Tmp
     }
 
@@ -81,7 +81,7 @@ ScreenShot(screens="screen1", keep_path="backup")
         return
     }
 
-    screens_name:=StrReplace(screens,"screen")
+    screens_name := StrReplace(screen_name, "screen")
     name:="", file:="", cmd:=""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
     name := Format("{1}[{2}]",name,screens_name)

@@ -29,7 +29,6 @@
 
     ; 预览
     !PrintScreen::
-        global Wallpaper_State
         if (Wallpaper_State == -1) {
             Wallpaper_State := 0
         }

@@ -214,42 +214,32 @@
 
     ; 兵种选择
     ~e::
-        global Android_Rshift_Current
         Android_Rshift_Current:=0
     Return
     ~1::
-        global Android_Rshift_Current
         Android_Rshift_Current:=1
     Return
     ~2::
-        global Android_Rshift_Current
         Android_Rshift_Current:=2
     Return
     ~3::
-        global Android_Rshift_Current
         Android_Rshift_Current:=3
     Return
     ~4::
-        global Android_Rshift_Current
         Android_Rshift_Current:=4
     Return
     ~5::
-        global Android_Rshift_Current
         Android_Rshift_Current:=5
     Return
     ~6::
-        global Android_Rshift_Current
         Android_Rshift_Current:=6
     Return
     ~7::
-        global Android_Rshift_Current
         Android_Rshift_Current:=7
     Return
 
     ; 按顺序切换兵种 6-1
     LShift::
-        global Android_Rshift_Loop
-        global Android_Rshift_Current
         if (Android_Rshift_Current=0) {
             next_index:=Android_Rshift_Loop.MaxIndex()
             Android_Rshift_Current:=Android_Rshift_Loop[next_index]
@@ -275,8 +265,6 @@
 
     ; 按顺序切换兵种 1-6
     LAlt::
-        global Android_Rshift_Loop
-        global Android_Rshift_Current
         if (Android_Rshift_Current=0) {
             Android_Rshift_Current:=1
             Send %Android_Rshift_Current%

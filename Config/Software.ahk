@@ -60,21 +60,33 @@ Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"     ] ) ;
 Global Android_Rshift_Loop    := [ 1, 2, 3, 4, 5, 6, 7 ]
 Global Android_Rshift_Current := 0
 
+
 ; Software\LOL.ahk
-Global LOL_XY        := []
-Global LOL_Hero      := []
-Global LOL_Equipment := []
-LOL_Hero[1] := [ 55 , 400 ]
-LOL_Hero[2] := [ 55 , 550 ]
-LOL_Hero[3] := [ 55 , 710 ]
-LOL_Hero[4] := [ 55 , 880 ]
+Global LOL_X := 0
+Global LOL_Y := 0
+
+Global LOL_Hero := [ [ 55 , 400 ] 
+                   , [ 55 , 550 ] 
+                   , [ 55 , 710 ] 
+                   , [ 55 , 880 ] ]
+
+Global LOL_Mini_Map := { x  : 3110 ;	
+                       , y  : 1428 ;
+                       , w  : 724  ;
+                       , h  : 724  }
+
+LOL_Mini_Map.xx := LOL_Mini_Map.x + LOL_Mini_Map.w
+LOL_Mini_Map.yy := LOL_Mini_Map.y + LOL_Mini_Map.h
+
 
 ; Software\CloudMusic.ahk
 Global Cloud_Music_Volume := -1
 
+
 ; Software\Wallpaper.ahk
 Global Wallpaper_State := -1
 Global Wallpaper_Theme := "Black"
+
 
 ; Software\WPS.ahk
 ; WPS Sheet 图片截图 [1]System [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
@@ -87,6 +99,7 @@ WPS_Hotkeys_Image.Push( "6 L1 U31 0 E:\Project\Ahk\Image\RShift\PyCharm.png"    
 WPS_Hotkeys_Image.Push( "8 A1 G27 0 E:\Project\Ahk\Image\RShift\Xshell.png"          )
 WPS_Hotkeys_Image.Push( "9 A1 I41 6 E:\Project\Ahk\Image\RShift\Chrome.png"          )
 WPS_Hotkeys_Image.Push( "9 J1 P26 2 E:\Project\Ahk\Image\RShift\Chrome-Bilibili.png" )
+
 
 ; 文件管理器显示列设置
 Global Explorer_Config := {}

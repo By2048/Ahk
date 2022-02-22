@@ -14,6 +14,11 @@
 ~Space::
 Return
 
+Space & g::MouseMoveDC( 0, -1)
+Space & h::MouseMoveDC( 0,  1)
+Space & f::MouseMoveDC(-1,  0)
+Space & j::MouseMoveDC( 1,  0)
+
 Space &  p::MouseMoveDC( 0, -5)
 Space & `;::MouseMoveDC( 0,  5)
 Space &  l::MouseMoveDC(-5,  0)

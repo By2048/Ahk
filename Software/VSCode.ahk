@@ -26,7 +26,6 @@
 
     ;快速命令 
     >!Space::
-        ; global software_vscode_ralt
         ; if (software_vscode_ralt=True) {
         ;     software_vscode_ralt:=False
         ;     Send {Esc}
