@@ -50,12 +50,13 @@
 #^Left::return ;向左切换虚拟桌面
 #^Right::return ;向右切换虚拟桌面
 #,::Return ;透明窗口显示桌面
+#.::Return ;输入法表情界面
 
 ; 最小化活动桌面窗口之外的所有窗口
 #Home::Return
 
 ; 高对比度 Alt+LShift+PrintScreen
-!+PrintScreen::Return ;
+!+PrintScreen::Return
 
 ; PowerToys Run
 ^!r::Return

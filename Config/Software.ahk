@@ -42,6 +42,7 @@ Windows_Process_Name.Push( [ "League of Legends"       , "LOL_Game"        ] )
 Windows_Process_Name.Push( [ "steam"                   , "Steam"           ] )
 Windows_Process_Name.Push( [ "NemuPlayer"              , "Android"         ] )
 Windows_Process_Name.Push( [ "ui32"                    , "Wallpaper"       ] )
+Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"     ] ) ;同花顺
 Windows_Process_Name.Push( [ "33333333333333333333333" , "---------------" ] )
 Windows_Process_Name.Push( [ "mstsc"                   , "RemoteDesktop"   ] ) ;远程桌面
 Windows_Process_Name.Push( [ "perfmon"                 , "SystemMonitor"   ] ) ;资源监视器
@@ -53,7 +54,7 @@ Windows_Process_Name.Push( [ "SearchUI"                , "Search"          ] ) ;
 Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "ShellExperienceHost"     , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "44444444444444444444444" , "---------------" ] )
-Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"     ] ) ;同花顺
+Windows_Process_Name.Push( [ "NVIDIA Share"            , "GeForceTool"     ] ) ;截图工具
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Software\Android.ahk

@@ -17,13 +17,15 @@ MouseMoveDC(x_right, y_down)
 
 
 
-MousueTool()
+MouseTool()
 {
     CoordMode, Mouse, Screen
     MouseGetPos, x1, y1
     CoordMode, Mouse, Window
     MouseGetPos, x2, y2
-    Clipboard := Format("`nScreen {} {}`nWindow {} {}`n", x1,y1, x2,y2)
+    data := Format("Screen {} {}`nWindow {} {}", x1,y1, x2,y2)
+    Clipboard := data
+    HelpText("MouseTool", "center_down", "screen1", 500)
 }
 
 
