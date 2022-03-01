@@ -10,18 +10,18 @@ Windows_Position_Default["_#32770_打开"]    := [CenterX(), CenterY(), WW, WH]
 Windows_Position_Default["_#32770_另存为"]   := [CenterX(), CenterY(), WW, WH]
 Windows_Position_Default["_#32770_打开文件"] := [CenterX(), CenterY(), WW, WH]
 
-WW := 1500
+WW := 1000
 WH := 1500
 Windows_Position_Default["_#32770_编辑环境变量"] := [CenterX(), CenterY(), WW, WH]
 
+; 开启关闭 Windows 功能
 WW := 1000
 WH := 1500
-; 开启关闭 Windows 功能
 Windows_Position_Default["OptionalFeatures_NativeHWNDHost"] := [CenterX(), CenterY(), WW, WH]
 
+; 设置
 WW := 2400
 WH := 1600
-; 设置
 Windows_Position_Default["WindowsSettings_ApplicationFrameWindow"] := [CenterX(), CenterY(), WW, WH]
 
 ; WW := Screen3.w   -6-6

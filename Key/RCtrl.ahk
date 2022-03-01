@@ -86,7 +86,7 @@ Return
 
 >^[::RunNormalUser(VSCode " E:\Config\Note.code-workspace")
 >^]::RunNormalUser(VSCode " E:\Config\Ahk.code-workspace")
->^\::Run D:\#Lnk\Whiteboard.lnk
+>^\::Run D:\#Lnk\#AppStore\Whiteboard.lnk
 
 >^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}:: ;回收站
 >^.::Run ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;我的电脑
