@@ -1,7 +1,7 @@
 ﻿
 ; {"keys": "f13","command": {"action": "quakeMode"}}
 
-#If ( CheckWindowsActive("WindowsTerminal") )
+#If ( CheckWindowsActive( "Terminal" ) )
 
     ; 关闭窗格
     !CapsLock::Send {f13}

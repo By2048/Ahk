@@ -53,6 +53,7 @@ Windows_Process_Name.Push( [ "SearchApp"               , "Search"          ] ) ;
 Windows_Process_Name.Push( [ "SearchUI"                , "Search"          ] ) ;搜索
 Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "ShellExperienceHost"     , "Start"           ] ) ;开始菜单
+Windows_Process_Name.Push( [ "WindowsTerminal"         , "Terminal"        ] ) ;终端
 Windows_Process_Name.Push( [ "44444444444444444444444" , "---------------" ] )
 Windows_Process_Name.Push( [ "NVIDIA Share"            , "GeForceTool"     ] ) ;截图工具
 

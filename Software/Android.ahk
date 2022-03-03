@@ -8,6 +8,10 @@
     ; 切换键鼠提示 
     ; F12::Return
 
+    ; Mini模式
+    !g::Return
+    RAlt::Send !g
+
     ; 切换标签
     ^Tab::Return
     ^+Tab::Return

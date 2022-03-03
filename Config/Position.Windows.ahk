@@ -49,3 +49,8 @@ Windows_Position_Default["Explorer"] := [CenterX(), CenterY(), WW, WH]
 WW := 3000
 WH := 1800
 Windows_Position_Default["SystemMonitor"] := [CenterX(), CenterY(), WW, WH]
+
+; 终端 160*45 | 3132*1873
+WW := 3132
+WH := 1873
+Windows_Position_Default["Terminal"] := [CenterX(), CenterY(), WW, WH]
