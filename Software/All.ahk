@@ -57,7 +57,6 @@
 
 ; Geforce游戏内覆盖
 #If ( CheckWindowsActive( "GeForceTool" ) )
-    PrintScreen::Esc
 #If
 
 ; #If ( CheckWindowsActive( "" ) )

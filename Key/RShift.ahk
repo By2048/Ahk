@@ -182,8 +182,8 @@ Return
 #If ( hotkeys_show_status == True )
     [::ChangeShiftImage("-")
     ]::ChangeShiftImage("+")
-    Esc::HideShiftImage()
-    PrintScreen::
+    Insert::HideShiftImage()
+    Delete::
         global hotkeys_index
         global hotkeys_images
         image := hotkeys_images[hotkeys_index]

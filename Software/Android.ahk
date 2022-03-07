@@ -37,7 +37,7 @@
 
     ; 截屏
     !q::Return
-    PrintScreen::Send !q
+    Insert::Send !q
 
 #If
 

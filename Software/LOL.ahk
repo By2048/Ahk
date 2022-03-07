@@ -9,7 +9,7 @@
 
     #Include %A_WorkingDir%\Software\LOL.Client.Private.ahk
 
-    PrintScreen::Screenshot("Screen1" , "Tmp")
+    Insert::Screenshot("Screen1" , "Tmp")
 
 #If
 
@@ -20,7 +20,7 @@
     
     ; 截图
     F12::Return
-    PrintScreen::Screenshot("Screen1" , "Tmp")
+    Insert::Screenshot("Screen1" , "Tmp")
 
     ![::
         EN()

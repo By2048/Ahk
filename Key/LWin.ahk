@@ -86,14 +86,14 @@ Return
 ; <#WheelDown::SetWindowsTransparent(-10)
 
 ; 屏幕截图 临时
-<#PrintScreen::
+<#Insert::
     ScreenShot("Screen1", "Tmp")
     ScreenShot("Screen2", "Tmp")
     ScreenShot("Screen3", "Tmp")
 Return
 
 ; 屏幕截图 长久
-<#+PrintScreen::
+<#+Insert::
     ScreenShot("Screen1", "Backup")
     ScreenShot("Screen2", "Backup")
     ScreenShot("Screen3", "Backup")

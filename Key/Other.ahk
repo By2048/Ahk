@@ -5,6 +5,10 @@
 #NoTrayIcon
 
 
+
+; Insert::PrintScreen
+; Delete::Delete
+
 ~BackSpace::Return
 BackSpace & Insert::
     If (GetKeyState("Shift", "P")) {

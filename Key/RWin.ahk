@@ -32,8 +32,8 @@
 >#p::Send ^!p ;歌词
 
 ; 软件屏幕截图
->#PrintScreen::ScreenshotActivateSoftware("Tmp")
->#+PrintScreen::ScreenshotActivateSoftware("Backup")
+>#Insert::ScreenshotActivateSoftware("Tmp")
+>#+Insert::ScreenshotActivateSoftware("Backup")
 
 ; 移动窗口
 RWin & LButton::

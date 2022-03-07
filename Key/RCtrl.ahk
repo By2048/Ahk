@@ -82,7 +82,6 @@ Return
 
 >^Esc::Run Taskmgr.exe ;任务管理器
 >^+Esc::Run D:\#Lnk\HuoRongSword.lnk
->^PrintScreen::ScreenshotActivateSoftware()
 
 >^[::RunNormalUser(VSCode " E:\Config\Note.code-workspace")
 >^]::RunNormalUser(VSCode " E:\Config\Ahk.code-workspace")
