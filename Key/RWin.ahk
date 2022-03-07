@@ -31,9 +31,9 @@
 >#o::Send ^!o ;喜欢歌曲
 >#p::Send ^!p ;歌词
 
-; Snipaste
-; >#PrintScreen::Send ^!{PrintScreen}
-; >#Pause::Send ^!{Pause}
+; 软件屏幕截图
+>#PrintScreen::ScreenshotActivateSoftware("Tmp")
+>#+PrintScreen::ScreenshotActivateSoftware("Backup")
 
 ; 移动窗口
 RWin & LButton::

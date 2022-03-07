@@ -63,8 +63,6 @@
     >#Down::Send ^{F7}
     >#Up::Send ^{F8}
 
-    ; MoveWindowsToCenter(True)
-
 #If
 
 

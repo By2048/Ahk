@@ -35,10 +35,6 @@ Delete & Esc::
     Process, Close, %win_name%
 Return
 
-BackSpace::BackSpace
-BackSpace & PrintScreen::Send ^!{PrintScreen}
-
-
 \::Send \
 +\::Send |
 \ & BackSpace::

@@ -85,7 +85,7 @@ ScreenShot(screen_name="screen1", keep_path="backup")
     name:="", file:="", cmd:=""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
     name := Format("{1}[{2}]",name,screens_name)
-    file := screenshot_keep_path "\" name ".png"
+    file := screenshot_keep_path . "\" . name . ".png"
     file := StrReplace(file,"\\","\")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, x, y, w, h, file)
     Run %cmd%
@@ -93,22 +93,28 @@ ScreenShot(screen_name="screen1", keep_path="backup")
 
 
 
-; 游戏截图
-ScreenshotQuick()
-{
-    FormatTime, name, _, yyyy-MM-dd HH-mm-ss
-    file := Snipaste_Screenshot_Path_Tmp "\" name ".png"
-    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, Screen1.x, Screen1.y, Screen1.w, Screen1.h, file)
-    Run %cmd%
-}
-
-
-
 ; 软件设置界面截图保存
-ScreenshotActivateSoftware()
+ScreenshotActivateSoftware(keep_path="backup")
 {
     if (not FileExist(Snipaste_EXE)) {
         return
+    }
+    if (keep_path = "Backup") {
+        if (not FileExist(Snipaste_Screenshot_Path_Backup)) {
+            return
+        }
+    }
+    if (keep_path = "Tmp") {
+        if (not FileExist(Snipaste_Screenshot_Path_Tmp)) {
+            return
+        }
+    }
+
+    screenshot_keep_path := ""
+    if (keep_path = "Backup") {
+        screenshot_keep_path := Snipaste_Screenshot_Path_Backup
+    } else if (keep_path = "Tmp") {
+        screenshot_keep_path := Snipaste_Screenshot_Path_Tmp
     }
 
     result := GetActiveWindowsInfo()
@@ -120,16 +126,24 @@ ScreenshotActivateSoftware()
 
     name:="", file:="", cmd:=""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
-    name := Format("{2}[{1}]",win_process_name,name)
-    file := Snipaste_Screenshot_Path_Backup "\" name ".png"
-    file := StrReplace(file,"\\","\")
+    name := Format("[{1}]{2}", win_process_name, name)
+    file := screenshot_keep_path . "\" . name . ".png"
+    file := StrReplace(file, "\\", "\")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, win_x, win_y, win_w, win_h, file)
     Run %cmd%
 
-    ; 修复文件名大小写问题
-    Sleep, 1000
-    file_lower := Format("{:L}",file)
-    FileMove, %file_lower%, %file%
+    
+}
+
+
+
+; 游戏截图
+ScreenshotQuick()
+{
+    FormatTime, name, _, yyyy-MM-dd HH-mm-ss
+    file := Snipaste_Screenshot_Path_Tmp "\" name ".png"
+    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, Screen1.x, Screen1.y, Screen1.w, Screen1.h, file)
+    Run %cmd%
 }
 
 

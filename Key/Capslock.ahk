@@ -49,13 +49,6 @@ Return
 
 
 
-; 截取指定屏幕
-; CapsLock & PrintScreen::
-
-; Return
-
-
-
 ;关闭大写锁定
 CapsLock Up::
     SetCapsLockState, Off

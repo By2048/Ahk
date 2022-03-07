@@ -86,8 +86,8 @@ Start %AHK%     .\Key\Capslock.ahk    %Command%
 Echo  %Command% .\Key\Capslock.ahk
 Start %AHK%     .\Key\LWin.ahk        %Command%
 Echo  %Command% .\Key\LWin.ahk
-Start %AHK%     .\Key\PrintScreen.ahk %Command%
-Echo  %Command% .\Key\PrintScreen.ahk
+Start %AHK%     .\Key\Other.ahk       %Command%
+Echo  %Command% .\Key\Other.ahk
 Start %AHK%     .\Key\RAlt.ahk        %Command%
 Echo  %Command% .\Key\RAlt.ahk
 Start %AHK%     .\Key\RCtrl.ahk       %Command%
