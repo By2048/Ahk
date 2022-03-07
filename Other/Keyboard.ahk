@@ -12,7 +12,7 @@ global keyboard_x := 10
 global keyboard_y := 4
 global keyboard_h := 30
 
-global keyboard_line_1 := [["Esc"],["F1"],["F2"],["F3"],["F4"],["F5"],["F6"],["F7"],["F8"],["F9"],["F10"],["F11"],["F12"],["Print Screen"],["Pause Break"],["Delete"]]
+global keyboard_line_1 := [["Esc"],["F1"],["F2"],["F3"],["F4"],["F5"],["F6"],["F7"],["F8"],["F9"],["F10"],["F11"],["F12"],["Insert"],["Delete"],["Apps Key"]]
 global keyboard_line_2 := [["~ ``"],["! 1"],["@ 2"],["# 3"],["$ 4"],["% 5"],["^ 6"],["&& 7"],["* 8"],["( 9"],[") 0"],["_ -"],["+ ="],["BackSpace",2],["Home"]]
 global keyboard_line_3 := [["Tab",1.5],["Q"],["W"],["E"],["R"],["T"],["Y"],["U"],["I"],["O"],["P"],["{ ["],["} ]"],["| \",1.5],["Page Up"]]
 global keyboard_line_4 := [["CapsLock",1.75],["A"],["S"],["D"],["F"],["G"],["H"],["J"],["K"],["L"],[": `;"],[""" '"],["Enter",2.25],["Page Down"]]
@@ -57,8 +57,9 @@ KeyboardGUI()
     keyboard_y := 4
     keyboard_h := 30
 
-    if (keyboard_show_status=False) {
-        keyboard_show_status:=True
+    if (keyboard_show_status == False) {
+
+        keyboard_show_status := True
 
         Gui, Font, s%keyboard_font_size% %keyboard_font_style%, %keyboard_font_name%
         Gui, -Caption +E0x200 +ToolWindow
@@ -76,9 +77,9 @@ KeyboardGUI()
         ; 移动窗口到中下位置
         WinGet, win_id, ID, A 
         WinGetPos, x, y, w, h, A
-        x:=A_ScreenWidth/2-w/2
-        y:=A_ScreenHeight-h
-        WinMove, ahk_id %win_id%, , %x%, %y%
+        x := A_ScreenWidth/2 - w/2
+        y := A_ScreenHeight  - h
+        WinMove, ahk_id %win_id%,  , %x%, %y%
 
         keyboard_win_id:=win_id
 
@@ -90,7 +91,7 @@ KeyboardGUI()
         MouseGetPos,  ,  , win_id
         WinActivate, ahk_id %win_id%
     } else {
-        keyboard_show_status:=False
+        keyboard_show_status := False
         Gui Hide
         Gui Destroy 
     }
@@ -101,8 +102,8 @@ KeyboardGUI()
 KeyboardClick(keys)
 {
     global keyboard_win_id
-    keys:=StrReplace(keys, " ", "`n")
-    ControlClick, %keys%, ahk_id %keyboard_win_id%,  , LEFT, 1, D
+    keys := StrReplace(keys, " ", "`n")
+    ControlClick, %keys%, ahk_id %keyboard_win_id%,  , Left, 1, D
     Sleep, 100
-    ControlClick, %keys%, ahk_id %keyboard_win_id%,  , LEFT, 1, U
+    ControlClick, %keys%, ahk_id %keyboard_win_id%,  , Left, 1, U
 }
