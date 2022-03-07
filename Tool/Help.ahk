@@ -85,7 +85,12 @@ HelpText(data="", xy="right_down", screen_name="screen1", sleep_time=0)
     if (xy=="right_down") {
         gui_x := screen_xx - gui_w - 5
         gui_y := screen_yy - gui_h - 5
-    } else if (xy=="center") {
+    } else if (xy=="left_down") {
+        gui_x := screen_x  + 5
+        gui_y := screen_yy - gui_h - 5
+    }
+
+    if (xy=="center") {
         gui_x := screen_x + screen_w/2 - gui_w/2
         gui_y := screen_y + screen_h/2 - gui_h/2
     } else if (xy=="center_up") {
@@ -93,7 +98,7 @@ HelpText(data="", xy="right_down", screen_name="screen1", sleep_time=0)
         gui_y := screen_y + 5
     } else if (xy=="center_down") {
         gui_x := screen_x  + screen_w/2 - gui_w/2
-        gui_y := screen_yy - gui_h-5
+        gui_y := screen_yy - gui_h      - 5
     }
 
     gui_w  := gui_w  / screen_dpi

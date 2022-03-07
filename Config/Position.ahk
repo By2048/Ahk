@@ -98,6 +98,7 @@ Windows_Position_Default["HipsTray_HRUSBTRAY"] := [WX, WY, WW, WH]
 WW := 2500
 WH := 1700
 Windows_Position_Default["CloudMusic"] := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Backup["CloudMusic"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 
 WW := 3000
 WH := 300
