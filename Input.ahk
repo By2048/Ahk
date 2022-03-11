@@ -1,9 +1,8 @@
 ﻿
-
-
 #NoTrayIcon
 #SingleInstance Force
 #Hotstring EndChars `t
+
 
 ::[Date]::
     FormatTime, result, _, [yyyy-MM-dd]
@@ -20,8 +19,5 @@ Return
     SendInput %result%
 Return
 
-::[Chrome]::
-    SendInput %chrome%
-Return
 
 #Include %A_WorkingDir%\Input.Private.ahk

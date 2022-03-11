@@ -31,10 +31,6 @@
 >#o::Send ^!o ;喜欢歌曲
 >#p::Send ^!p ;歌词
 
-; 软件屏幕截图
->#Insert::ScreenshotActivateSoftware("Tmp")
->#+Insert::ScreenshotActivateSoftware("Backup")
-
 ; 移动窗口
 RWin & LButton::
     SetWinDelay, 30

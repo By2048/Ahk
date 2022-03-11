@@ -1,13 +1,14 @@
 ﻿
 #Include %A_WorkingDir%\Tool\Base.ahk
+#Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Tool\Other.ahk
 
 #SingleInstance Force
 #NoTrayIcon
 
-
-
-; Insert::PrintScreen
-; Delete::Delete
+; 软件屏幕截图
+<!Insert::ScreenshotActivateSoftware("Tmp")
+<!+Insert::ScreenshotActivateSoftware("Backup")
 
 ~BackSpace::Return
 BackSpace & Insert::
