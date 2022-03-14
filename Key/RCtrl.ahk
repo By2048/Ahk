@@ -75,7 +75,7 @@ Return
 >^Delete::
     command := Format("{1} /c {2} /f /im explorer.exe", CMD, TaskKill)
     RunWait, %command%
-    Sleep 5000
+    Sleep 1000
     command := Format("{1} /c start explorer.exe", CMD)
     RunWait, %command%
 Return

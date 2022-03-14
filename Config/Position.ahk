@@ -115,6 +115,7 @@ Windows_Position_Backup["CloudMusic_DesktopLyrics"] := [WX, WY, WW, WH]
 WW := 3000
 WH := 1800
 Windows_Position_Default["FreeFileSync"] := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Backup["FreeFileSync"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 
 WW := 1500
 WH := 1800

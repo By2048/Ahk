@@ -1,9 +1,8 @@
- Ahk-Reload Ahk-Start  Ahk-Stop   CMD        WT         
- TaskKill   Adb        Ahk        Aria2      FFmpeg     
- FFplay     FFprobe    Git        Go         Java       
- Py         Python     Zip        ScrcpyAdb  Scrcpy     
- HuntAndPeck           Notepad    Chrome     
- VSCode     Script     PyEnv      GitX       MuMu       
- Rename     Nicotv     Bi-Free    Bi-Join    Bi-GetName 
- Windows    Delete-Share          Backup-Disk-Tree      
+ Ahk-Reload Ahk-Start  Ahk-Stop   Adb        Ahk        
+ Aria2      FFmpeg     FFplay     FFprobe    Git        
+ Go         Java       Py         Python     Zip        
+ ScrcpyAdb  Scrcpy     HuntAndPeck           Notepad    
+ Chrome     VSCode     Script     PyEnv      GitX       
+ MuMu       Rename     Nicotv     Bi-Free    Bi-Join    
+ Bi-GetName Windows    Delete-Share          Backup-Disk-Tree      
  JetBrains-Toolbox-Update

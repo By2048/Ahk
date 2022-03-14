@@ -13,9 +13,28 @@
                   , 5 : 230 } ;修改时间
         SetColumnWidth(_id, _name, _width)
     Return
+
+
+
+    ; 注册表相关操作
+    !/::
+        ; Clear History
+        RegWrite, REG_BINARY, HKEY_CURRENT_USER, Software\7-Zip\FM, FolderHistory, 
+        RegWrite, REG_BINARY, HKEY_CURRENT_USER, Software\7-Zip\FM, CopyHistory,   
+
+        ; 默认列配置 Zip
+        ; 其他列配置 Rar
+        ; RegRead, default_columns_config, HKEY_CURRENT_USER\SOFTWARE\7-Zip\FM\Columns, 7-Zip.zip
+        ; RegWrite, REG_BINARY, HKEY_CURRENT_USER, SOFTWARE\7-Zip\FM\Columns\, 7-Zip.Rar, %default_columns_config%
+
+        HelpText("Clear History", "center_down", "screen1", 1000)
+    Return
     
+
+
     ; 选择所有
-    !+[::
+    !F11::
+        Sleep 500
         max_select := 19
         Loop, %max_select% {
             Send {RButton}
@@ -26,9 +45,10 @@
     Return
 
     ; 选择指定列
-    !+]::
-        all_select := [ 2 , 4 , 18 , 19 ]
-        for index , item in %all_select% {
+    !F12::
+        Sleep 500
+        all_select := [ 17, 18, 2, 4 ]
+        for index, item in all_select {
             Send {RButton}
             Sleep 300
             Send {Down %item%}

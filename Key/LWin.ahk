@@ -141,10 +141,10 @@ LWin & AppsKey::
         path_config := Format("{}\{}", path, config)
         RegRead, light_theme, %path_config%, %key%
         if (light_theme = "0") {
-            Regwrite, REG_DWORD, %path%, %config%, %key%, 1
+            RegWrite, REG_DWORD, %path%, %config%, %key%, 1
             HelpText("`n Light `n", "center", "screen1", 1000)
         } else if (light_theme = "1") {
-            Regwrite, REG_DWORD, %path%, %config%, %key%, 0
+            RegWrite, REG_DWORD, %path%, %config%, %key%, 0
             HelpText("`n Dark `n", "center", "screen1", 1000)
         }
     }

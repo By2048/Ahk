@@ -15,8 +15,10 @@
 
     Enter::^c
 
-    BackSpace::Esc
-    Delete::Pause
+    Insert::Send {PrintScreen}
+    Delete::Send {Pause}
+
+    BackSpace::Send {Esc}
 
     [::,
     ]::.
