@@ -37,6 +37,12 @@ CD  /d  %Folder%
 Set  AHK=%AutoHotkey%
 Set  Command=%1
 
+@REM Command | Start | Stop | ForceStop | ForceStart | StopSpace
+
+If "%Command%"=="" (
+    Set Command=Start
+)
+
 @REM 运行游戏时结束Space.ahk
 If "%Command%"=="StopSpace" (
     Start %AHK% .\Key\Space.ahk Stop
@@ -50,16 +56,6 @@ If "%Command%"=="ForceStop" (
     TaskKill  /f /im  AutoHotkey.exe
     @Echo On
     Exit
-)
-
-@REM ======================================================================
-
-@REM 直接启动
-If "%Command%"=="" (
-    Set Command=Start
-    Start %AHK% .\Setup.ahk
-    Echo.
-    Echo  Start .\Setup.ahk
 )
 
 If "%Command%"=="ForceStart" (
@@ -76,6 +72,9 @@ If "%Command%"=="Start" (
     %AutoHotkeyDpiSoftware%    %Screen.ahk%  Software
     %AutoHotkeyDpiSystem%      %Screen.ahk%  System
     %AutoHotkeyDpiSystemPlus%  %Screen.ahk%  SystemPlus
+    Start %AHK% .\Setup.ahk
+    Echo.
+    Echo  Start .\Setup.ahk
 )
 
 @REM ======================================================================
