@@ -11,6 +11,13 @@
 
 Global Windows_Theme := "Default"
 
+; WindowsTerminal quakeMode
+<#F12::
+    Send #{F12}
+    if ( CheckWindowsActive("Terminal") ) {
+        MoveWindowsToDefaultPosition()
+    }
+Return
 
 ; 显示隐藏任务栏
 <#8:: 
@@ -36,7 +43,7 @@ Return
 <#[::#+t
 <#]::#t
 
-<#,::Send #x ;系统菜单
+<#,::#x ;系统菜单
 <#.::Run control ;控制面板
 <#/::Run ms-settings: ;设置
 
@@ -71,9 +78,9 @@ Return
     }
 Return
 
-<#n::Send #k  ;打开“连接”快速操作
-<#m::Send #,  ;显示隐藏所有应用
-<#+m::Send #d ;切换隐藏所有应用界面
+<#n::#k  ;打开“连接”快速操作
+<#m::#,  ;显示隐藏所有应用
+<#+m::#d ;切换隐藏所有应用界面
 
 ; 窗口全屏
 <#Enter::Send ^!``
@@ -223,7 +230,7 @@ Global win_tab := False
 LWin & Tab::
     global win_tab
     win_tab := True
-    If (GetKeyState("Shift", "P")) {
+    if (GetKeyState("Shift", "P")) {
         Send {Alt Down}{Shift Down}{Tab}
     } else {
         Send {Alt Down}{Tab}
@@ -234,6 +241,5 @@ Return
     ~*LWin Up::
         Send {Shift Up}{Alt Up}
         win_tab := False
-    return
+    Return
 #If
-

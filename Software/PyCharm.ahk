@@ -63,6 +63,17 @@
     >#Down::Send ^{F7}
     >#Up::Send ^{F8}
 
+    ; 切换书签问题
+    !b::
+        if (not alt_b) {
+            alt_b := True
+            Send !b
+        } else {
+            alt_b := False
+            Send {Esc}
+        }
+    Return
+
 #If
 
 

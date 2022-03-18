@@ -20,7 +20,7 @@ Set  Screen.ahk=%Folder%Tool\Screen.ahk
 @REM Global AutoHotkey := "D:\AutoHotkey\AutoHotkey.exe"
 For /f "delims=" %%A In ('FindStr ".*AutoHotkey.*" "Config.ahk"') Do Set AutoHotkey=%%A
 Set AutoHotkey=%AutoHotkey:~22,-1%
-If Not exist %AutoHotkey% (
+If Not Exist %AutoHotkey% (
     Msg %username% /time:9 配置文件错误 \ 未设置脚本执行文件路径 Config.ahk\AutoHotkey
     Exit
 )
@@ -31,15 +31,6 @@ Set AutoHotkeyDpiSystemPlus=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystemPlus.e
 @REM ======================================================================
 
 CD  /d  %Folder%
-
-@REM ======================================================================
-
-%AutoHotkey%  %Init.ahk%
-
-%AutoHotkey%               %Screen.ahk%  
-%AutoHotkeyDpiSoftware%    %Screen.ahk%  Software
-%AutoHotkeyDpiSystem%      %Screen.ahk%  System
-%AutoHotkeyDpiSystemPlus%  %Screen.ahk%  SystemPlus
 
 @REM ======================================================================
 
@@ -61,13 +52,7 @@ If "%Command%"=="ForceStop" (
     Exit
 )
 
-If "%Command%"=="ForceStart" (
-    @Echo Off
-    TaskKill  /f /im  AutoHotkey.exe
-    Ping -n 1 127.0.0.1 > nul
-    @Echo On
-    Set Command=
-)
+@REM ======================================================================
 
 @REM 直接启动
 If "%Command%"=="" (
@@ -75,6 +60,22 @@ If "%Command%"=="" (
     Start %AHK% .\Setup.ahk
     Echo.
     Echo  Start .\Setup.ahk
+)
+
+If "%Command%"=="ForceStart" (
+    @Echo Off
+    TaskKill  /f /im  AutoHotkey.exe
+    Ping -n 1 127.0.0.1 > nul
+    @Echo On
+    Set Command=Start
+)
+
+If "%Command%"=="Start" (
+    %AutoHotkey%  %Init.ahk%
+    %AutoHotkey%               %Screen.ahk%  
+    %AutoHotkeyDpiSoftware%    %Screen.ahk%  Software
+    %AutoHotkeyDpiSystem%      %Screen.ahk%  System
+    %AutoHotkeyDpiSystemPlus%  %Screen.ahk%  SystemPlus
 )
 
 @REM ======================================================================

@@ -10,21 +10,21 @@
 <!Insert::ScreenshotActivateSoftware("Tmp")
 <!+Insert::ScreenshotActivateSoftware("Backup")
 
-~BackSpace::Return
-BackSpace & Insert::
-    If (GetKeyState("Shift", "P")) {
-        Send +{PrintScreen}
-    } Else {
-        Send {PrintScreen}
-    }
-Return
-BackSpace & Delete::
-    If (GetKeyState("Shift", "P")) {
-        Send +{Pause}
-    } Else {
-        Send {Pause}
-    }
-Return
+; ~BackSpace::Return
+; BackSpace & Insert::
+;     If (GetKeyState("Shift", "P")) {
+;         Send +{PrintScreen}
+;     } Else {
+;         Send {PrintScreen}
+;     }
+; Return
+; BackSpace & Delete::
+;     If (GetKeyState("Shift", "P")) {
+;         Send +{Pause}
+;     } Else {
+;         Send {Pause}
+;     }
+; Return
 
 
 ; $PrintScreen

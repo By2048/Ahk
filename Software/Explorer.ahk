@@ -31,10 +31,25 @@
 
 
 
-; 任务栏滚动鼠标调整音量
+; 任务栏
 #If ( CheckWindowsActive("Explorer" , "Shell_TrayWnd") )
-    WheelUp::Send {Volume_Up}
-    WheelDown::Send {Volume_Down}
+    WheelUp::Volume_Up
+    WheelDown::Volume_Down
+#If
+
+
+
+; 桌面
+#If ( CheckWindowsActive("Explorer" , "WorkerW") )
+
+    ; 切换输入焦点
+    F6::Return
+
+    F9::Run C:\\
+    F10::Run D:\\
+    F11::Run E:\\
+    F12::Run T:\\
+
 #If
 
 

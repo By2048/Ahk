@@ -1,6 +1,30 @@
 ﻿
 ; https://support.google.com/chrome/answer/157179
 
+#If ( CheckWindowsActive( "Chrome" , "" , "书签" ) )
+    F2::Return
+    ^r::Send {F2}
+#If
+
+
+
+#If ( CheckWindowsActive( "Chrome" , "" , "修改书签" ) )
+
+    ; 收藏
+    Enter::Send {Tab 4}{Enter}
+
+    ; 取消收藏
+    Esc::
+        Send {Esc}
+        Send ^d
+        Send {Tab 4}
+        Send {Enter}
+    Return
+
+#If
+
+
+
 #If ( CheckWindowsActive( "Chrome" ) )
 
     ;帮助
@@ -199,22 +223,5 @@
     ; >!z::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Z.png")
     ; >!w::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\W.png")
     ; >!n::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\N.png")
-
-#If
-
-
-
-#If ( CheckWindowsActive( "Chrome" , "" , "修改书签" ) )
-
-    ; 收藏
-    Enter::Send {Tab 4}{Enter}
-
-    ; 取消收藏
-    Esc::
-        Send {Esc}
-        Send ^d
-        Send {Tab 4}
-        Send {Enter}
-    Return
 
 #If

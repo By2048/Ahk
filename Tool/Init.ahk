@@ -11,22 +11,32 @@ global init_config_show_status := False
 ; 项目启动时创建的居中进度条 
 DefaultProgress()
 {
-    w := 150 * 2
-    h := 15  * 2
-    x := Screen1.w/2 - w/2
-    y := Screen1.h/2 - h/2
+    w := 330
+    h := 28
 
-    w := w/2
-    h := h/2
-    Progress, b w%w% h%h% x%x% y%y% cbBlack p0
-    
-    index := 0
+    w := w / Screen1.Dpi
+    h := h / Screen1.Dpi
+
+    Global InitProgress
+
+    Gui, Destroy
+    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
+    Gui, Margin, 1, 1
+    Gui, Add, Progress, W%w% H%h% cBlack vInitProgress, 0
+    Gui, Show, Center NA
+
+    move_current := 0
+    move_total   := 100
+    move_step    := 10
+    move_time    := 50
+
     Loop {
-        Progress %index%
-        Sleep 50
-        index := index + 10
-        if (index >= 100) {
-            Progress Off
+        move_current := move_current + move_step
+        GuiControl,  , InitProgress, %move_current%
+        Sleep %move_time%
+        if (move_current >= move_total) {
+            Sleep 100
+            Gui Destroy
             break
         }
     }
