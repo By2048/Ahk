@@ -72,7 +72,7 @@ Global LOL_Hero := [ [ 55 , 400 ]
                    , [ 55 , 710 ] 
                    , [ 55 , 880 ] ]
 
-Global LOL_Mini_Map := { x  : 3110 ;	
+Global LOL_Mini_Map := { x  : 3110 ;
                        , y  : 1428 ;
                        , w  : 724  ;
                        , h  : 724  }
