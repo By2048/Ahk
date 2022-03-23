@@ -17,11 +17,9 @@ SetDefaultKeyboard(LocaleID)
 }
 ZH() {
     SetDefaultKeyboard(0x0804)
-    Sleep 100
 }
 EN() {
     SetDefaultKeyboard(0x0409)
-    Sleep 100
 }
 
 

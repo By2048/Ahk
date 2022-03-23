@@ -41,15 +41,12 @@
 
 ; 桌面
 #If ( CheckWindowsActive("Explorer" , "WorkerW") )
-
     ; 切换输入焦点
-    F6::Return
-
-    F9::Run C:\\
-    F10::Run D:\\
-    F11::Run E:\\
-    F12::Run T:\\
-
+     F6::Return
+     F9::Run D:\\
+    F10::Run E:\\
+    F11::Run P:\\
+    F12::Run N:\\
 #If
 
 

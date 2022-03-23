@@ -11,8 +11,6 @@ WW := Screen1.w * 45/60
 WH := Screen1.h * 75/90
 Windows_Position_Default["Notepad++"] := [CenterX(), CenterY(), WW, WH]
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 WW := -50
 WH := -50
 Windows_Position_Default["PyCharm"]      := [CenterX(), CenterY(), WW, WH]
@@ -23,7 +21,7 @@ WH := 1500
 Windows_Position_Default["PyCharm__打开文件或项目"] := [CenterX(), CenterY(), WW, WH]
 Windows_Position_Default["PyCharm__回滚变更"]      := [CenterX(), CenterY(), WW, WH]
 Windows_Position_Default["PyCharm__选择路径"]      := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__选择"]          := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__选择"]         := [CenterX(), CenterY(), WW, WH]
 
 WW := 900 
 WH := 1300
@@ -72,12 +70,12 @@ Windows_Position_Backup["PyCharm__服务"]  := [CenterX("screen_2"), CenterY("sc
 
 WW := 3000
 WH := 1700
-Windows_Position_Default["PyCharm__终端"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["PyCharm__终端"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
+Windows_Position_Default["PyCharm__终端"]       := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Backup["PyCharm__终端"]        := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 Windows_Position_Default["PyCharm__Statistic"] := [CenterX(), CenterY(), WW, WH]
 Windows_Position_Backup["PyCharm__Statistic"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
-Windows_Position_Default["PyCharm__数据库"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["PyCharm__数据库"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
+Windows_Position_Default["PyCharm__数据库"]     := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Backup["PyCharm__数据库"]      := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
 
 WW := 3300
 WH := 1800

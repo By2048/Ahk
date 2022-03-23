@@ -31,9 +31,6 @@
 >#o::Send ^!o ;喜欢歌曲
 >#p::Send ^!p ;歌词
 
->#Insert::Send ^!{ScrollLock}
->#Delete::Send ^!+{ScrollLock}
-
 ; 移动窗口
 RWin & LButton::
     SetWinDelay, 30

@@ -25,6 +25,33 @@
 
 
 
+#If ( CheckWindowsActive( "Chrome" , "Chrome_WidgetWin_1" ) )
+    
+    Redirect(url) {
+        Send !d
+        SendInput {Raw}%url%
+        Send {Enter}
+    }
+
+     F1::Redirect("https://cn.bing.com/")
+     F2::Redirect("https://www.baidu.com/")
+     F3::Redirect("https://yandex.com/")
+     F4::Redirect("https://stackoverflow.com/")
+
+     F5::Redirect("https://wyagd001.github.io/zh-cn/docs/AutoHotkey.htm")
+     F6::Redirect("https://tool.oschina.net/uploads/apidocs/jquery/regexp.html")
+     F7::Redirect("https://www.jetbrains.com/help/pycharm/quick-start-guide.html")
+     F8::Redirect("https://docs.python.org/zh-cn/3/")
+
+     F9::Redirect("http://www.nicotv.me/dongman")
+    F10::Redirect("https://www.bd2020.com/movies/index.htm")
+    F11::Redirect("https://www.zhihu.com/hot")
+    F12::Redirect("https://t.bilibili.com/?tab=8")
+
+#If
+
+
+
 #If ( CheckWindowsActive( "Chrome" ) )
 
     ;帮助
