@@ -15,6 +15,9 @@ SetDefaultKeyboard(LocaleID)
     DllCall("SystemParametersInfo", "UInt", SPI_SETDEFAULTINPUTLANG, "UInt", 0, "UPtr", &Lan%LocaleID%, "UInt", SPIF_SENDWININICHANGE)
     PostMessage 0x50, 0, %Lan%,  , A
 }
+CN() {
+    SetDefaultKeyboard(0x0804)
+}
 ZH() {
     SetDefaultKeyboard(0x0804)
 }
