@@ -1,14 +1,14 @@
 ﻿
 ; https://support.google.com/chrome/answer/157179
 
-#If ( CheckWindowsActive( "Chrome" , "" , "书签" ) )
+#If ( CheckWindowsActive( "Chrome" , "Chrome_WidgetWin_1" , "书签" ) )
     F2::Return
     ^r::Send {F2}
 #If
 
 
 
-#If ( CheckWindowsActive( "Chrome" , "" , "修改书签" ) )
+#If ( CheckWindowsActive( "Chrome" , "Chrome_WidgetWin_1" , "修改书签" ) )
 
     ; 收藏
     Enter::Send {Tab 4}{Enter}
@@ -20,6 +20,12 @@
         Send {Tab 4}
         Send {Enter}
     Return
+
+#If
+
+
+
+#If ( CheckWindowsActive( "Chrome" , "Chrome_WidgetWin_1" , "DevTools" ) )
 
 #If
 

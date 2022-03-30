@@ -139,8 +139,8 @@ WY := CenterY()
 WX := 10
 Windows_Position_Default["PotPlayer__播放列表"] := [WX, WY, WW, WH]
 
-WW := 2500
-WH := 1500
+WW := 1700
+WH := 1300
 Windows_Position_Default["Sandboxie"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 2500
