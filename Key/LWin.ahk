@@ -167,10 +167,10 @@ LWin & RShift::
     RegRead, proxy_enable, %path_config%, %key%
     if (proxy_enable = "0") {
         Regwrite, REG_DWORD, %path%, %config%, %key%, 1
-        HelpText("Proxy ON", "center_down", "screen1", 1000)
+        HelpText("Proxy ON", "center", "screen1", 1000)
     } else if (proxy_enable = "1") {
         Regwrite, REG_DWORD, %path%, %config%, %key%, 0
-        HelpText("Proxy OFF", "center_down", "screen1", 500)
+        HelpText("Proxy OFF", "center", "screen1", 500)
         HelpText("`n Proxy OFF `n", "center", "screen3")
     }
 Return

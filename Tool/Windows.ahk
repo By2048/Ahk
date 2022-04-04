@@ -157,15 +157,9 @@ GetClientSize(hWnd, ByRef w:="", ByRef h:="")
 
 ; 获取激活窗口的所在屏幕的信息以及窗口信息
 ; result | {} 应用信息
-GetActiveWindowsInfo(coord_mode:="Screen")
+; mode   | Default AHK默认 \ Strict WindowsAPI修正
+GetActiveWindowsInfo(mode:="Default")
 {
-    if (coord_mode=="Window") {
-        CoordMode, Mouse, Window
-    }
-    if (coord_mode=="Screen") {
-        CoordMode, Mouse, Screen
-    }
-
     WinGet,                          win_id, ID,              A
     WinGet,                         win_pid, PID,             ahk_id %win_id%
     WinGet,                     win_min_max, MinMax,          ahk_id %win_id%
@@ -178,15 +172,26 @@ GetActiveWindowsInfo(coord_mode:="Screen")
     WinGetText,                    win_text,                  ahk_id %win_id%
     WinGetPos,   win_x, win_y, win_w, win_h,                  ahk_id %win_id%
     
-    if (coord_mode=="Window") {
-        win_x := 0
-        win_y := 0
-        GetClientSize(win_id, win_w, win_h)
+    ; if (mode == "Window") {
+    ;     win_x := 0
+    ;     win_y := 0
+    ;     GetClientSize(win_id, win_w, win_h)
+    ; }
+ 
+    ; 两种不同方式获取的窗口坐标存在差别
+    if (mode == "Strict") {
+        win_size_w := win_w
+        win_size_h := win_h
+        GetClientSize(win_id, win_size_w, win_size_h)
+        win_x := win_x + (win_w - win_size_w) / 2
+        win_y := win_y + (win_h - win_size_h) / 2
+        win_w := win_size_w
+        win_h := win_size_h
     }
 
     in_screen := 1
-    screen_x  := 0, screen_y  := 0
-    screen_xx := 0, screen_yy := 0
+    screen_x  := 0 , screen_y  := 0
+    screen_xx := 0 , screen_yy := 0
     if (win_x >= Screen1.x and win_x < Screen1.xx) {
         in_screen  := 1
         screen_x   := Screen1.x   ,  screen_y := Screen1.y
@@ -213,8 +218,8 @@ GetActiveWindowsInfo(coord_mode:="Screen")
     win_controls_id   := StrSplit(win_controls_id,   "`n")
     win_controls_name := StrSplit(win_controls_name, "`n")
 
-    length_id    := win_controls_id.Length()
-    length_name  := win_controls_name.Length()
+    length_id   := win_controls_id.Length()
+    length_name := win_controls_name.Length()
     if (length_id == length_name) {
         length := length_id
         loop %length% {
@@ -226,7 +231,7 @@ GetActiveWindowsInfo(coord_mode:="Screen")
 
     for control_name, control_info in win_controls {
         control_id := control_info["id"]
-        ControlGetPos x, y, w, h, %control_name%, ahk_id %win_id%
+        ControlGetPos,  x, y, w, h,   %control_name%, ahk_id %win_id%
         ControlGetText, control_text, %control_name%, ahk_id %win_id%
         control_info["x"]    := x
         control_info["y"]    := y
@@ -831,4 +836,80 @@ SetExplorertColumns(win_id, config)
     JEE_ICMSetColumns(icm, columns, step)
 
     isp := isb := isv := ifv2 := icm := ""
+}
+
+
+
+; 高亮激活的窗口
+HighlightActiveWindows(width:=9, _color_:="e51400", _time_:=300)
+{
+    info      := GetActiveWindowsInfo("Strict")
+    win_x     := info.win_x
+    win_y     := info.win_y
+    win_w     := info.win_w
+    win_h     := info.win_h
+    win_xx    := info.win_xx
+    win_yy    := info.win_yy
+    in_screen := info.in_screen
+
+    ; 最小化
+    if (info.win_min_max == -1) {
+        Return
+    }
+
+    gui_x  := win_x
+    gui_y  := win_y
+    gui_w  := win_w
+    gui_h  := win_h
+    gui_xx := win_xx
+    gui_yy := win_yy
+    Q := [ [ 0 , 0 ] , [ gui_w , 0 ] , [ gui_w , gui_h ] , [ 0 , gui_h ] , [ 0 , 0 ] ]
+    P := [ [ width , width ] , [ gui_w - width , width ] , [ gui_w - width , gui_h - width ] , [ width , gui_h - width ] , [ width , width ] ]
+
+    ; 窗口上下全屏 Win+Left|Right操作时
+    ; if (info.win_min_max == 0 and win_y == 0) {
+    ;     gui_x  := win_x - width
+    ;     gui_y  := win_y
+    ;     gui_w  := win_w + width * 2
+    ;     gui_h  := win_h
+    ;     gui_xx := gui_x + gui_w
+    ;     gui_yy := gui_y + gui_h 
+    ;     Q := [ [ 0 , 0 ] , [ gui_w , 0 ] , [ gui_w , gui_h ] , [ 0 , gui_h ] , [ 0 , 0 ] ]
+    ;     P := [ [ width , width ] , [ width + win_w , width ] , [ gui_w - width , gui_h - width ] , [ width , gui_h - width ] , [ width , width ] ]
+    ; }
+
+    Gui, New
+    Gui, Margin, 0, 0
+    Gui, +HWNDgui_id +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
+    Gui, Color, %_color_%
+    Gui, Show ,X%gui_x% Y%gui_y% W%gui_w% H%gui_h% NA
+
+    ; WinSet, TransParent, 100, ahk_id %gui_id%
+
+    qx1 := Q[1][1] , qy1 := Q[1][2]
+    qx2 := Q[2][1] , qy2 := Q[2][2]
+    qx3 := Q[3][1] , qy3 := Q[3][2]
+    qx4 := Q[4][1] , qy4 := Q[4][2]
+    qx5 := Q[5][1] , qy5 := Q[5][2]
+
+    px1 := P[1][1] , py1 := P[1][2]
+    px2 := P[2][1] , py2 := P[2][2]
+    px3 := P[3][1] , py3 := P[3][2]
+    px4 := P[4][1] , py4 := P[4][2]
+    px5 := P[5][1] , py5 := P[5][2]
+
+    WinSet, Region
+    , %qx1%-%qy1% %qx2%-%qy2% %qx3%-%qy3% %qx4%-%qy4% %qx5%-%qy5% %px1%-%py1% %px2%-%py2% %px3%-%py3% %px4%-%py4% %px5%-%py5% 
+    , ahk_id %gui_id%
+
+    global Highlight_Gui_Id
+    Highlight_Gui_Id := gui_id
+
+    SetTimer, CloseHighlightGui, -100
+
+    CloseHighlightGui:
+        global Highlight_Gui_Id
+        Sleep %_time_%
+        WinClose, ahk_id %Highlight_Gui_Id%
+    Return
 }

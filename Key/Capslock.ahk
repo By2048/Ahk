@@ -41,9 +41,12 @@ $CapsLock::
     MouseGetPos,  _,  _, win_id
     WinActivate, ahk_id %win_id%
 
+    ; 高亮窗口
+    HighlightActiveWindows( , , _time_:=300)
+
     ; 显示激活的应用名
-    result := GetActiveWindowsInfo()
-    win_process_name := result.win_process_name
+    ; config := GetActiveWindowsInfo()
+    ; win_process_name := result.win_process_name
     ; HelpText(win_process_name, "center_down", "screen1", 500)
 Return
 
