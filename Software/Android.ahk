@@ -51,6 +51,18 @@
     
     Tab::Send {LButton 4}
 
+    PgUp::
+        Send {m Down}
+        Send {.}
+        Send {m Up}
+    Return
+
+    PgDn::
+        Send {m Down}
+        Send {, 3}
+        Send {m Up}
+    Return
+
     ; 退出
     BackSpace::
         HelpText("BackSpace","center_down","screen_1")
@@ -97,48 +109,42 @@
 
     ; 兵种选择
     ~e::
-        Android_Rshift_Current:=0
-    Return
-    ~1::
-        Android_Rshift_Current:=1
-    Return
-    ~2::
-        Android_Rshift_Current:=2
-    Return
-    ~3::
-        Android_Rshift_Current:=3
-    Return
-    ~4::
-        Android_Rshift_Current:=4
-    Return
-    ~5::
-        Android_Rshift_Current:=5
-    Return
-    ~6::
-        Android_Rshift_Current:=6
-    Return
-    ~7::
-        Android_Rshift_Current:=7
+        Android_COC_Current := -1
     Return
 
-    ; 按顺序切换兵种 6-1
+    ~1::
+    ~2::
+    ~3::
+    ~4::
+    ~5::
+    ~6::
+    ~7::
+    ~8::
+    ~9::
+    ~0::
+        index := A_ThisHotkey
+        index := index + 0
+        Android_COC_Current := index
+    Return
+
+    ; 按顺序切换兵
     LShift::
-        if (Android_Rshift_Current=0) {
-            next_index:=Android_Rshift_Loop.MaxIndex()
-            Android_Rshift_Current:=Android_Rshift_Loop[next_index]
-            Send %Android_Rshift_Current%
+        if (Android_COC_Current = -1 ) {
+            next_index := Android_COC_Loop.MaxIndex()
+            Android_COC_Current := Android_COC_Loop[next_index]
+            Send %Android_COC_Current%
             Return
         } else {
-            for index,value in Android_Rshift_Loop {
-                if (value=Android_Rshift_Current) {
-                    if (index=1) {
-                        next_index:=Android_Rshift_Loop.MaxIndex()
-                        Android_Rshift_Current:=Android_Rshift_Loop[next_index]
-                        Send %Android_Rshift_Current%
+            for index, value in Android_COC_Loop {
+                if (value = Android_COC_Current) {
+                    if (index = 1) {
+                        next_index := Android_COC_Loop.MaxIndex()
+                        Android_COC_Current := Android_COC_Loop[next_index]
+                        Send %Android_COC_Current%
                         Return
                     } else {
-                        Android_Rshift_Current:=Android_Rshift_Loop[index-1]
-                        Send %Android_Rshift_Current%
+                        Android_COC_Current := Android_COC_Loop[index-1]
+                        Send %Android_COC_Current%
                         Return
                     }
                 }
@@ -148,20 +154,20 @@
 
     ; 按顺序切换兵种 1-6
     LAlt::
-        if (Android_Rshift_Current=0) {
-            Android_Rshift_Current:=1
-            Send %Android_Rshift_Current%
+        if (Android_COC_Current = -1) {
+            Android_COC_Current := 1
+            Send %Android_COC_Current%
             Return
         } else {
-            for index,value in Android_Rshift_Loop {
-                if (value=Android_Rshift_Current) {
-                    if (index=Android_Rshift_Loop.MaxIndex()) {
-                        Android_Rshift_Current:=1
-                        Send %Android_Rshift_Current%
+            for index, value in Android_COC_Loop {
+                if (value = Android_COC_Current) {
+                    if (index = Android_COC_Loop.MaxIndex()) {
+                        Android_COC_Current := 1
+                        Send %Android_COC_Current%
                         Return
                     } else {
-                        Android_Rshift_Current:=Android_Rshift_Loop[index+1]
-                        Send %Android_Rshift_Current%
+                        Android_COC_Current := Android_COC_Loop[index+1]
+                        Send %Android_COC_Current%
                         Return
                     }
                 }
@@ -175,7 +181,7 @@
         
         MouseGetPos, x_origin, y_origin
         
-        MouseClick, Left, 1759, 105
+        Send, p
         Sleep 100
         MouseClick, Left, 2049, 753
         Sleep 100
@@ -228,6 +234,11 @@
         MouseClick, Left, 3360, 190
         Sleep 100
         MouseMove %x_origin%, %y_origin%, 0
+    Return
+
+    ; 部署栏拖动
+    >!\::
+        MouseClickDrag, Left,  ,  , 500, 0, 11, R
     Return
 
 #If

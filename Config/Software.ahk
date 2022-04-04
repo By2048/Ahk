@@ -59,8 +59,8 @@ Windows_Process_Name.Push( [ "NVIDIA Share"            , "GeForceTool"     ] ) ;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Software\Android.ahk
-Global Android_Rshift_Loop    := [ 1, 2, 3, 4, 5, 6, 7 ]
-Global Android_Rshift_Current := 0
+Global Android_COC_Loop    := [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ]
+Global Android_COC_Current := -1
 
 
 ; Software\LOL.ahk
