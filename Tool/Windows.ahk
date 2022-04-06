@@ -857,6 +857,14 @@ HighlightActiveWindows(width:=9, _color_:="e51400", _time_:=300)
         Return
     }
 
+    if (not win_w or not win_h) {
+        Return
+    }
+
+    if (info.win_process_name == "Explorer" and info.win_class == "WorkerW") {
+        Return
+    }
+
     gui_x  := win_x
     gui_y  := win_y
     gui_w  := win_w
