@@ -11,6 +11,16 @@
 #NoTrayIcon
 
 
+~<^c::
+    ; data := Clipboard
+    ; data := "https://www.bilibili.com/video/BV16L4y1L7fK?spm_id_from=333.999.0.0"
+    ; cmd  := "D:\Python\#\Scripts\python.exe E:\Project\script\ahk\clipboard.py " . data
+    ; Run %cmd%
+
+    ; if (data.stea)
+    ; HelpText("123")
+Return
+
 
 >^q::Run E:\Config\PC.qdr
 >^e::Run D:\#Lnk\Everything.lnk
@@ -61,7 +71,7 @@ Return
 >^x::RunNormalUser("D:\#Lnk\Xshell.lnk")
 >^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk") 
 >^v::RunNormalUser(VSCode " E:\Config\Windows.code-workspace")
->^+v::Run %VSCode% E:\Config\Windows.code-workspace
+>^+v::Run %VSCode%
 >^n::Run D:\#Lnk\Notepad++.lnk
 >^m::RunNormalUser("D:\#Lnk\PotPlayer.lnk")
 
@@ -84,7 +94,7 @@ Return
 >^+Esc::Run D:\#Lnk\HuoRongSword.lnk
 
 >^[::RunNormalUser(VSCode " E:\Config\Note.code-workspace")
->^]::RunNormalUser(VSCode " E:\Config\Ahk.code-workspace")
+>^]::RunNormalUser(VSCode " E:\Config\Ahk.code-workspace" )
 >^\::Run D:\#Lnk\#AppStore\Whiteboard.lnk
 
 >^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}:: ;回收站

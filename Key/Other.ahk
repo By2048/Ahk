@@ -7,17 +7,19 @@
 #NoTrayIcon
 
 
+
+; Snipaste截图
 ; 软件屏幕截图
+
 <!Insert::ScreenshotActivateSoftware("Tmp")
-<!+Insert::ScreenshotActivateSoftware("Backup")
+<!Delete::ScreenshotActivateSoftware("Backup")
 
-
-; Snipaste 快捷键
-; https://wyagd001.github.io/zh-cn/docs/KeyList.htm#other
->#Insert::Send ^!{PrintScreen}
->#Delete::Send ^!{CtrlBreak}
 >+Insert::Send ^!+{PrintScreen}
 >+Delete::Send ^!+{CtrlBreak}
+
+>#Insert::Send ^!{PrintScreen}
+>#Delete::Send ^!{CtrlBreak}
+
 
 
 ; ~BackSpace::Return

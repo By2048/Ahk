@@ -80,35 +80,38 @@ If "%Command%"=="Start" (
 @REM ======================================================================
 
 Echo.
+Start %AHK%     .\Input.ahk           %Command%
+Echo  %Command% .\Input.ahk
+Start %AHK%     .\Loop.ahk            %Command%
+Echo  %Command% .\Loop.ahk
+Echo.
 Start %AHK%     .\Key\All.ahk         %Command%
 Echo  %Command% .\Key\All.ahk
-Start %AHK%     .\Key\Capslock.ahk    %Command%
-Echo  %Command% .\Key\Capslock.ahk
+Echo.
 Start %AHK%     .\Key\LWin.ahk        %Command%
 Echo  %Command% .\Key\LWin.ahk
-Start %AHK%     .\Key\Other.ahk       %Command%
-Echo  %Command% .\Key\Other.ahk
-Start %AHK%     .\Key\RAlt.ahk        %Command%
-Echo  %Command% .\Key\RAlt.ahk
-Start %AHK%     .\Key\RCtrl.ahk       %Command%
-Echo  %Command% .\Key\RCtrl.ahk
-Start %AHK%     .\Key\RShift.ahk      %Command%
-Echo  %Command% .\Key\RShift.ahk
 Start %AHK%     .\Key\RWin.ahk        %Command%
 Echo  %Command% .\Key\RWin.ahk
+Echo.
+Start %AHK%     .\Key\Ctrl.ahk        %Command%
+Echo  %Command% .\Key\Ctrl.ahk
+Start %AHK%     .\Key\Alt.ahk         %Command%
+Echo  %Command% .\Key\Alt.ahk
+Start %AHK%     .\Key\Shift.ahk       %Command%
+Echo  %Command% .\Key\Shift.ahk
+Echo.
 Start %AHK%     .\Key\Space.ahk       %Command%
 Echo  %Command% .\Key\Space.ahk
-Echo.
-Start %AHK%     .\Software\All.ahk    %Command%
-Echo  %Command% .\Software\All.ahk
+Start %AHK%     .\Key\Capslock.ahk    %Command%
+Echo  %Command% .\Key\Capslock.ahk
+Start %AHK%     .\Key\Other.ahk       %Command%
+Echo  %Command% .\Key\Other.ahk
 Echo.
 Start %AHK%     .\Other\Dexpot.ahk    %Command%
 Echo  %Command% .\Other\Dexpot.ahk
 Echo.
-Start %AHK%     .\Loop.ahk            %Command%
-Echo  %Command% .\Loop.ahk
-Start %AHK%     .\Input.ahk           %Command%
-Echo  %Command% .\Input.ahk
+Start %AHK%     .\Software\All.ahk    %Command%
+Echo  %Command% .\Software\All.ahk
 
 @REM ======================================================================
 
