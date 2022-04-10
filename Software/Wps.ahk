@@ -12,7 +12,7 @@
         MouseClick, left, 517, 240, 1, 0
 
         CoordMode, Mouse, Screen
-        MouseMove x_origin, y_origin, 0
+        MouseMove, x_origin, y_origin, 0
     Return
     
     ;粗框线
@@ -26,19 +26,21 @@
         MouseClick, left, 517, 240, 1, 0
 
         CoordMode, Mouse, Screen
-        MouseMove x_origin, y_origin, 0
+        MouseMove, x_origin, y_origin, 0
     Return
 
     ; ; Hotkeys快捷键保存图片
     >!\::
         Send #{Up}
 
+        HelpText("`nStart`n", "center", "screen3")
+
         Sleep 1000
         for index, value In WPS_Hotkeys_Image {
-            value := StrReplace(value,"  "," ")
-            value := StrReplace(value,"  "," ")
-            value := StrReplace(value,"  "," ")
-            value := StrSplit(value," ")
+            value := StrReplace(value, "  ", " ")
+            value := StrReplace(value, "  ", " ")
+            value := StrReplace(value, "  ", " ")
+            value := StrSplit(value, " ")
             
             sheet      := value[1]
             excel_x    := value[2]
@@ -69,7 +71,7 @@
             ExcelMoveToPosition("A1")
             Sleep 500
         }
-        HelpText("Over", "center", "screen1", 3000)
+        HelpText("`n Over `n", "center", "screen3", 3000)
     Return
 
     !Tab::Send ^{PgDn}

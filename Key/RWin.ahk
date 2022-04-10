@@ -18,6 +18,12 @@
 >#b::Return
 >#Tab::Return
 
+; Snipaste截图
+>#Insert::Send ^!{PrintScreen}
+>#Delete::Send ^!{CtrlBreak}
+>+Insert::Send ^!+{PrintScreen}
+>+Delete::Send ^!+{CtrlBreak}
+
 ; TIM
 >#`;::Send ^!; ;识图
 >#'::Send ^!' ;翻译

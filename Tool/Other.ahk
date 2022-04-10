@@ -32,33 +32,34 @@ RunNormalUser(command)
 ; 屏幕截图
 ; screens   | screen1 screen2 screen3
 ; keep_path | backup tmp
-ScreenShot(screen_name="screen1", keep_path="backup")
+ScreenShot(screen_name:="screen1", keep_path:="backup")
 {
     if (not FileExist(Snipaste_EXE)) {
         return
     }
-    if (keep_path = "Backup") {
+    if (keep_path == "Backup") {
         if (not FileExist(Snipaste_Screenshot_Path_Backup)) {
             return
         }
     }
-    if (keep_path = "Tmp") {
+    if (keep_path == "Tmp") {
         if (not FileExist(Snipaste_Screenshot_Path_Tmp)) {
             return
         }
     }
 
-    if (screen_name = "screen1") {
+    screen_name := ChangeScreenName(screen_name)
+    if (screen_name == "screen1") {
         x := Screens_Software.1.x
         y := Screens_Software.1.y
         w := Screens_Software.1.w
         h := Screens_Software.1.h
-    } else if (screen_name = "screen2") {    
+    } else if (screen_name == "screen2") {    
         x := Screens_Software.2.x
         y := Screens_Software.2.y
         w := Screens_Software.2.w
         h := Screens_Software.2.h
-    } else if (screen_name = "screen3") {
+    } else if (screen_name == "screen3") {
         x := Screens_Software.3.x
         y := Screens_Software.3.y
         w := Screens_Software.3.w
@@ -71,9 +72,9 @@ ScreenShot(screen_name="screen1", keep_path="backup")
     h := Round(h)
 
     screenshot_keep_path := ""
-    if (keep_path = "Backup") {
+    if (keep_path == "Backup") {
         screenshot_keep_path := Snipaste_Screenshot_Path_Backup
-    } else if (keep_path = "Tmp") {
+    } else if (keep_path == "Tmp") {
         screenshot_keep_path := Snipaste_Screenshot_Path_Tmp
     }
 
@@ -82,11 +83,11 @@ ScreenShot(screen_name="screen1", keep_path="backup")
     }
 
     screens_name := StrReplace(screen_name, "screen")
-    name:="", file:="", cmd:=""
+    name := "", file := "", cmd := ""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
-    name := Format("{1}[{2}]",name,screens_name)
+    name := Format("{1}[{2}]", name, screens_name)
     file := screenshot_keep_path . "\" . name . ".png"
-    file := StrReplace(file,"\\","\")
+    file := StrReplace(file, "\\", "\")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, x, y, w, h, file)
     Run %cmd%
 }
@@ -94,7 +95,7 @@ ScreenShot(screen_name="screen1", keep_path="backup")
 
 
 ; 软件设置界面截图保存
-ScreenshotActivateSoftware(keep_path="backup")
+ScreenshotActivateSoftware(keep_path:="backup")
 {
     if (not FileExist(Snipaste_EXE)) {
         return
@@ -149,17 +150,17 @@ ScreenshotQuick()
 
 
 ; 屏幕贴图
-Snipaste(image="",screens="screen1")
+Snipaste(image:="", screens:="screen1")
 {
     image_size := GetImageSize(image)
     image_w    := image_size["w"]
     image_h    := image_size["h"]
 
-    if (screens="screen1" or screens="Screen1") {
+    if (screens=="screen1" or screens=="Screen1") {
         x := Screen1.x + Screen1.w/2 - image_w/2
         y := Screen1.y + Screen1.h/2 - image_h/2
     }
-    if (screens="screen2" or screens="Screen2") {
+    if (screens=="screen2" or screens=="Screen2") {
         x := Screen2.x + Screen2.w/2 - image_w/2
         y := Screen2.y + Screen2.h/2 - image_h/2
     }

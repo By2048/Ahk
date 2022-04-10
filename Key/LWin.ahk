@@ -78,9 +78,9 @@ Return
     }
 Return
 
-<#n::#k  ;打开“连接”快速操作
-<#m::#,  ;显示隐藏所有应用
-<#+m::#d ;切换隐藏所有应用界面
+<#n::Send #k  ;打开“连接”快速操作
+<#m::Send #,  ;显示隐藏所有应用
+<#+m::Send #d ;切换隐藏所有应用界面
 
 ; 窗口全屏
 <#Enter::Send ^!``
@@ -165,12 +165,12 @@ LWin & RShift::
     key         := "ProxyEnable"
     path_config := Format("{}\{}", path, config)
     RegRead, proxy_enable, %path_config%, %key%
-    if (proxy_enable = "0") {
+    if (proxy_enable == "0") {
         Regwrite, REG_DWORD, %path%, %config%, %key%, 1
-        HelpText("Proxy ON", "center", "screen1", 1000)
-    } else if (proxy_enable = "1") {
+        HelpText("`n Proxy ON `n", "center", "screen1", 1000)
+    } else if (proxy_enable == "1") {
         Regwrite, REG_DWORD, %path%, %config%, %key%, 0
-        HelpText("Proxy OFF", "center", "screen1", 500)
+        HelpText("`n Proxy OFF `n", "center", "screen1", 500)
         HelpText("`n Proxy OFF `n", "center", "screen3")
     }
 Return

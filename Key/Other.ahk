@@ -10,17 +10,10 @@
 
 ; Snipaste截图
 ; 软件屏幕截图
-
-<!Insert::ScreenshotActivateSoftware("Tmp")
-<!Delete::ScreenshotActivateSoftware("Backup")
-
->+Insert::Send ^!+{PrintScreen}
->+Delete::Send ^!+{CtrlBreak}
-
->#Insert::Send ^!{PrintScreen}
->#Delete::Send ^!{CtrlBreak}
-
-
+>!Insert::ScreenshotActivateSoftware("Tmp")
+>!Delete::ScreenshotActivateSoftware("Backup")
+>^Insert::ScreenshotActivateSoftware("Tmp")
+>^Delete::ScreenshotActivateSoftware("Backup")
 
 ; ~BackSpace::Return
 ; BackSpace & Insert::

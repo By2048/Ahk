@@ -3,19 +3,19 @@
 
 ExcelGetXYSpace(x, y)
 {
-    x_1:=SubStr(x,1,1)
-    x_2:=SubStr(x,2)
+    x_1 := SubStr(x, 1, 1)
+    x_2 := SubStr(x, 2)
 
-    y_1:=SubStr(y,1,1)
-    y_2:=SubStr(y,2)
+    y_1 := SubStr(y, 1, 1)
+    y_2 := SubStr(y, 2)
 
-    x_1:=Asc(x_1)
-    x_2:=x_2+0
+    x_1 := Asc(x_1)
+    x_2 := x_2 + 0
 
-    y_1:=Asc(y_1)
-    y_2:=y_2+0
+    y_1 := Asc(y_1)
+    y_2 := y_2 + 0
 
-    return [y_1-x_1, y_2-x_2]
+    return [ y_1 - x_1 , y_2 - x_2 ]
 }
 
 
@@ -24,10 +24,10 @@ ExcelGetXYSpace(x, y)
 ExcelMoveToSheet(cnt)
 {
     Send ^{PgUp 30}
-    Sleep 1000
+    Sleep 900
 
-    cnt:=cnt-1
-    if (cnt>0) {
+    cnt := cnt - 1
+    if (cnt > 0) {
         Loop %cnt% {
             Send ^{PgDn}
             Sleep 500
@@ -40,20 +40,20 @@ ExcelMoveToSheet(cnt)
 ; 移动到position [A1]
 ExcelMoveToPosition(position)
 {
-    result:=ExcelGetXYSpace("A1",position)
-    move_x:=result[1]
-    move_y:=result[2]
+    result := ExcelGetXYSpace("A1", position)
+    move_x := result[1]
+    move_y := result[2]
 
     ; 移动到A1
     Send ^{Home}
     Sleep 200
 
-    if (move_x!=0) {
+    if (move_x != 0) {
         Send {Right %move_x%}
     }
     Sleep 200
 
-    if (move_y!=0) {
+    if (move_y != 0) {
         Send {Down %move_y%}
     }
     Sleep 200
@@ -66,19 +66,19 @@ ExcelMoveToPosition(position)
 ExcelSelectXToY(excel_x, excel_y, multi_line)
 {
     ExcelMoveToPosition(excel_x)
-    multi_line:=multi_line+0
-    result:=ExcelGetXYSpace(excel_x,excel_y)
-    move_x:=result[1]
-    move_y:=result[2]
-    move_y:=move_y-multi_line
+    multi_line := multi_line + 0
+    result := ExcelGetXYSpace(excel_x, excel_y)
+    move_x := result[1]
+    move_y := result[2]
+    move_y := move_y - multi_line
     Send {RShift Down}
-    if (move_x!=0) {
+    if (move_x != 0) {
         Loop, %move_x% {
             Send {Right}
             Sleep, 30
         }
     }
-    if (move_y!=0) {
+    if (move_y != 0) {
         Loop, %move_y% {
             Send {Down}
             Sleep, 30
@@ -135,5 +135,3 @@ SnipasteClipboardToImageFile(image_file)
     ; Send {LButton 2}
     Send {Esc}
 }
-
-

@@ -54,8 +54,8 @@ $RAlt::
     SetTimer, Timer, -500
 Return
 Timer:
-    if (cnt == 1) {
-        HighlightActiveWindows( , , _time_:=100)
-    }
+    ; if (cnt == 1) {
+        ; HighlightActiveWindows( , , _time_:=100)
+    ; }
     cnt := 0
 Return

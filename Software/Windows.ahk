@@ -75,6 +75,7 @@
         WinActivate, ahk_exe Explorer.exe
         GlobalSet("Windows", "Previous_Process_Name", "RemoteDesktop")
         GlobalSet("Status", "Remote_Desktop_Switch_Check", True)
+        HelpText("`n Windows `n", "center", "screen1", 300)
     Return
 
     ; 显示链接栏

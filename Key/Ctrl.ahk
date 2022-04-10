@@ -23,8 +23,8 @@ Return
 
 
 >^q::Run E:\Config\PC.qdr
+; >^w::RunNormalUser("D:\#Lnk\WeChat.lnk")
 >^e::Run D:\#Lnk\Everything.lnk
->^w::RunNormalUser("D:\#Lnk\WeChat.lnk")
 >^r::RunNormalUser("D:\#Lnk\QuiteRSS.lnk")
 ; >^t::
 ;     Process, Exist, TIM.exe
@@ -44,7 +44,6 @@ Return
 Return
 >^p::RunNormalUser(WT " -d T:\")
 >^+p::Run %WT% -d T:\
->^l::Run C:\Program Files\Logitech\LogiOptions\LogiOptions.exe
 
 >^a::Run D:\#Lnk\Android.lnk
 >^s::Run D:\#Lnk\Sandboxie.lnk
@@ -59,14 +58,8 @@ Return
     Sleep 300
     MoveWindowsToCenter(True)
 Return
->^+j::
-    exe := ProcessNameOrigin("JetBrains")
-    Process, Close, %exe%
-    Run D:\#Lnk\JetBrains-Origin.lnk
-    Sleep 100
-    MoveWindowsToCenter(True)
-Return
 >^k::KeyboardGUI()
+>^l::Run C:\Program Files\Logitech\LogiOptions\LogiOptions.exe
 
 >^x::RunNormalUser("D:\#Lnk\Xshell.lnk")
 >^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk") 
@@ -75,13 +68,6 @@ Return
 >^n::Run D:\#Lnk\Notepad++.lnk
 >^m::RunNormalUser("D:\#Lnk\PotPlayer.lnk")
 
->^+Delete::
-    command := Format("{} /c {} /f /im shellexperiencehost.exe", CMD, TaskKill)
-    Run, %command%, , Hide
-    command := Format("{} /c {} /f /im MicrosoftEdge.exe", CMD, TaskKill)
-    Run, %command%, , Hide
-    Run, D:\#Lnk\Dexpot.lnk
-Return
 >^Delete::
     command := Format("{1} /c {2} /f /im explorer.exe", CMD, TaskKill)
     RunWait, %command%
@@ -89,7 +75,6 @@ Return
     command := Format("{1} /c start explorer.exe", CMD)
     RunWait, %command%
 Return
-
 >^Esc::Run Taskmgr.exe ;任务管理器
 >^+Esc::Run D:\#Lnk\HuoRongSword.lnk
 
@@ -106,13 +91,13 @@ Return
 >^Left::Return
 >^Right::Return
 
+
 RCtrl & Enter::Run E:\Doc\All.xlsx
 RCtrl & RWin::Send ^w
 RCtrl & RAlt::
     ZH()
     HelpText("ZH","center","screen1",1000)
 Return
-
 
 
 $RCtrl::
