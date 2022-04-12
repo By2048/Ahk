@@ -252,6 +252,14 @@
     !-::Send ^{-}
     !=::Send ^{=}
 
+    ; 前进后退
+    ~Lbutton & RButton::
+        Send !{Right}
+    Return
+    ~RButton & Lbutton::
+        Send !{Left}
+    Return
+
     ; >!y::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Y.png")
     ; >!z::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Z.png")
     ; >!w::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\W.png")

@@ -12,8 +12,6 @@
 ; 软件屏幕截图
 >!Insert::ScreenshotActivateSoftware("Tmp")
 >!Delete::ScreenshotActivateSoftware("Backup")
->^Insert::ScreenshotActivateSoftware("Tmp")
->^Delete::ScreenshotActivateSoftware("Backup")
 
 ; ~BackSpace::Return
 ; BackSpace & Insert::

@@ -36,8 +36,16 @@ Return
 <#+0::#^!+0 ; 副显示器 -
 
 ;声音
-<#=::Volume_Up
-<#-::Volume_Down
+<#=::Send {Volume_Up}
+<#-::Send {Volume_Down}
+<#+=::
+    Send {Volume_Down 1}
+    SoundSet 50
+Return
+<#+-::
+    Send {Volume_Down 1}
+    SoundSet 25
+Return
 
 ;切换任务栏应用（预览
 <#[::#+t
