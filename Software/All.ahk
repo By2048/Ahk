@@ -15,50 +15,45 @@
 #Include %A_WorkingDir%\Tool\Windows.ahk
 #Include %A_WorkingDir%\Tool\KeyMap.ahk
 
-#Include %A_WorkingDir%\Software\#32770.ahk
-#Include %A_WorkingDir%\Software\Android.ahk
-#Include %A_WorkingDir%\Software\BitComet.ahk
-#Include %A_WorkingDir%\Software\Chrome.ahk
-#Include %A_WorkingDir%\Software\CloudMusic.ahk
-#Include %A_WorkingDir%\Software\DingDing.ahk
-#Include %A_WorkingDir%\Software\Everything.ahk
+#Include %A_WorkingDir%\Software\@.ahk
 #Include %A_WorkingDir%\Software\Explorer.ahk
-#Include %A_WorkingDir%\Software\FFRenamePro.ahk
-#Include %A_WorkingDir%\Software\FreeFileSync.ahk
-#Include %A_WorkingDir%\Software\FSViewer.ahk
-#Include %A_WorkingDir%\Software\Geek.ahk
-#Include %A_WorkingDir%\Software\JetBrains.ahk
-#Include %A_WorkingDir%\Software\LOL.ahk
-#Include %A_WorkingDir%\Software\Maye.ahk
-#Include %A_WorkingDir%\Software\Notepad++.ahk
-#Include %A_WorkingDir%\Software\Obsidian.ahk
-#Include %A_WorkingDir%\Software\Postman.ahk
-#Include %A_WorkingDir%\Software\PotPlayer.ahk
-#Include %A_WorkingDir%\Software\PyCharm.ahk
-#Include %A_WorkingDir%\Software\Q-Dir.ahk
-#Include %A_WorkingDir%\Software\Snipaste.ahk
-#Include %A_WorkingDir%\Software\SumatraPDF.ahk
-#Include %A_WorkingDir%\Software\TIM.ahk
-#Include %A_WorkingDir%\Software\v2rayN.ahk
-#Include %A_WorkingDir%\Software\VMware.ahk
-#Include %A_WorkingDir%\Software\VSCode.ahk
-#Include %A_WorkingDir%\Software\Wallpaper.ahk
-#Include %A_WorkingDir%\Software\WeChat.ahk
 #Include %A_WorkingDir%\Software\Windows.Ahk
-#Include %A_WorkingDir%\Software\WindowsTerminal.Ahk
-#Include %A_WorkingDir%\Software\Wps.ahk
-#Include %A_WorkingDir%\Software\Xshell.ahk
-#Include %A_WorkingDir%\Software\Zip.ahk
+
+#Include %A_WorkingDir%\Software\Chat\DingDing.ahk
+#Include %A_WorkingDir%\Software\Chat\TIM.ahk
+#Include %A_WorkingDir%\Software\Chat\WeChat.ahk
+
+#Include %A_WorkingDir%\Software\Game\Android.ahk
+#Include %A_WorkingDir%\Software\Game\LOL.ahk
+
+#Include %A_WorkingDir%\Software\Other\BitComet.ahk
+#Include %A_WorkingDir%\Software\Other\CloudMusic.ahk
+#Include %A_WorkingDir%\Software\Other\Everything.ahk
+#Include %A_WorkingDir%\Software\Other\FFRenamePro.ahk
+#Include %A_WorkingDir%\Software\Other\FreeFileSync.ahk
+#Include %A_WorkingDir%\Software\Other\FSViewer.ahk
+#Include %A_WorkingDir%\Software\Other\Geek.ahk
+#Include %A_WorkingDir%\Software\Other\Maye.ahk
+#Include %A_WorkingDir%\Software\Other\PotPlayer.ahk
+#Include %A_WorkingDir%\Software\Other\Q-Dir.ahk
+#Include %A_WorkingDir%\Software\Other\Snipaste.ahk
+#Include %A_WorkingDir%\Software\Other\SumatraPDF.ahk
+#Include %A_WorkingDir%\Software\Other\v2rayN.ahk
+#Include %A_WorkingDir%\Software\Other\VMware.ahk
+#Include %A_WorkingDir%\Software\Other\Wallpaper.ahk
+#Include %A_WorkingDir%\Software\Other\Wps.ahk
+#Include %A_WorkingDir%\Software\Other\Zip.ahk
+
+#Include %A_WorkingDir%\Software\Program\Chrome.ahk
+#Include %A_WorkingDir%\Software\Program\FireFox.ahk
+#Include %A_WorkingDir%\Software\Program\JetBrains.ahk
+#Include %A_WorkingDir%\Software\Program\Notepad++.ahk
+#Include %A_WorkingDir%\Software\Program\Obsidian.ahk
+#Include %A_WorkingDir%\Software\Program\Postman.ahk
+#Include %A_WorkingDir%\Software\Program\PyCharm.ahk
+#Include %A_WorkingDir%\Software\Program\VSCode.ahk
+#Include %A_WorkingDir%\Software\Program\WindowsTerminal.Ahk
+#Include %A_WorkingDir%\Software\Program\Xshell.ahk
 
 #SingleInstance Force
 #NoTrayIcon
-
-; ---------------------------------------------------------------------- ;
-
-; Geforce游戏内覆盖
-#If ( CheckWindowsActive( "GeForceTool" ) )
-#If
-
-; #If ( CheckWindowsActive( "" ) )
-; 
-; #If

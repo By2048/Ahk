@@ -7,7 +7,7 @@
 
 #If ( CheckWindowsActive("LOL_Client") )
 
-    #Include %A_WorkingDir%\Software\LOL.Client.Private.ahk
+    #Include %A_WorkingDir%\Software\Game\LOL.Client.Private.ahk
 
     Insert::Screenshot("Screen1" , "Tmp")
 
@@ -16,7 +16,7 @@
 
 #If ( CheckWindowsActive("LOL_Game") )
 
-    #Include %A_WorkingDir%\Software\LOL.Game.Private.ahk
+    #Include %A_WorkingDir%\Software\Game\LOL.Game.Private.ahk
     
     ; 截图
     F12::Return

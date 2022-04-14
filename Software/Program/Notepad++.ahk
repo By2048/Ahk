@@ -40,5 +40,3 @@
     F12::MouseClickAndResetting(601,1157,"Window")
 
 #If
-
-

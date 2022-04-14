@@ -45,7 +45,7 @@
 
 #If ( CheckWindowsActive( "Android" , "" , "部落冲突" ) )
     
-    #Include %A_WorkingDir%\Software\Android.COC.Private.ahk
+    #Include %A_WorkingDir%\Software\Game\Android.COC.Private.ahk
 
     `::Send {LButton}
     
