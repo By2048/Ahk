@@ -55,7 +55,7 @@ Return
     Run D:\#Lnk\JetBrains.lnk
     exe := ProcessNameOrigin("JetBrains")
     WinActivate, ahk_exe %exe%
-    Sleep 300
+    WinWaitActive, ahk_exe %exe%,  , 3
     MoveWindowsToCenter(True)
 Return
 >^k::KeyboardGUI()
