@@ -159,6 +159,10 @@ WW := 3300
 WH := 2000
 Windows_Position_Default["Chrome"] := [CenterX(), CenterY(), WW, WH]
 
+WW := 3300
+WH := 1800
+Windows_Position_Default["FFRenamePro"] := [CenterX(), CenterY(), WW, WH]
+
 WW := 3000
 WH := 1800
 Windows_Position_Backup["Chrome"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
