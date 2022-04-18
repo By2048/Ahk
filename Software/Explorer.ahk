@@ -150,7 +150,6 @@
     <#\::
 
         MoveWindowsToDefaultPosition()
-        
 
         win_title := Windows_Cache["win_title"]
         config := Explorer_Config[win_title]
@@ -158,7 +157,6 @@
             config := Explorer_Config["Default"]
         }
         SetExplorertColumns(win_id, config)
-
 
         CoordMode, Mouse, Window
         MouseGetPos, x_origin, y_origin
@@ -174,13 +172,14 @@
         xx     := cinfo.xx
         yy     := cinfo.yy
 
-        left_length  := 425
-        right_length := 600
+        ; 426对齐 548最小
+        left_length  := 426
+        right_length := 550
         line_width   := 14
         offset       := 3
 
         check_width := result["win_controls"]["SysTreeView321"]["w"]
-        if ( Abs(check_width - left_length) > 3 ) {
+        if ( Abs(check_width - left_length ) > 3 ) {
             max_left := left_length + line_width
             MouseClickDrag, Left, x-offset,  (yy-y)/2, max_left+offset,  (yy-y)/2, 0
             max_right := win_xx - right_length + line_width
