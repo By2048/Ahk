@@ -5,21 +5,34 @@
     !\::
         CoordMode, Mouse, Window
         MouseGetPos, x_origin, y_origin
-
         MouseClick, Left, 200, 85
-        Sleep 100
-
-        MouseClick, Left, 200, 177
-        Sleep 100
-
-        MouseMove, x_origin, y_origin, 0
+        Sleep 300
+        Send {Down 3}
+        Send {Enter}
+        MouseMove, %x_origin%, %y_origin%, 0
     Return
 
+    ; 更新Geo
+    !/::
+        CoordMode, Mouse, Window
+        MouseGetPos, x_origin, y_origin
+        MouseClick, Left, 686, 85
+        Sleep 300
+        Send {Down 4}
+        Send {Enter}
+        MouseMove, %x_origin%, %y_origin%, 0
+    Return
 
+    ; 关闭窗口
+    !CapsLock::
+        WinClose, A
+    Return
+
+    ; 默认位置
     <#\::
         MoveWindowsToDefaultPosition()
         _id    := Windows_Cache["win_id"]
-        _name  := "WindowsForms10.SysListView32.app.0.1e84ccb_r6_ad11"
+        _name  := "WindowsForms10.SysListView32.app.0.12ab327_r6_ad11"
         _width := {  1 : 40    ;y
                   ,  2 : 160   ;类型
                   ,  3 : 800   ;别名
