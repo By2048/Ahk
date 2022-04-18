@@ -25,7 +25,9 @@ Windows_Position_Default["PyCharm__选择"]         := [CenterX(), CenterY(), WW
 
 WW := 900 
 WH := 1300
-Windows_Position_Default["PyCharm__收藏夹"] := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__收藏夹"]   := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__设置同步"] := [CenterX(), CenterY(), WW, WH]
+Windows_Position_Default["PyCharm__插件同步"] := [CenterX(), CenterY(), WW, WH]
 
 WW := 1000
 WH := 1500
