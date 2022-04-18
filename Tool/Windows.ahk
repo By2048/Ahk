@@ -172,11 +172,11 @@ GetActiveWindowsInfo(mode:="Default")
     WinGetText,                    win_text,                  ahk_id %win_id%
     WinGetPos,   win_x, win_y, win_w, win_h,                  ahk_id %win_id%
     
-    ; if (mode == "Window") {
-    ;     win_x := 0
-    ;     win_y := 0
-    ;     GetClientSize(win_id, win_w, win_h)
-    ; }
+    if (mode == "Window") {
+        win_x := 0
+        win_y := 0
+        GetClientSize(win_id, win_w, win_h)
+    }
  
     ; 两种不同方式获取的窗口坐标存在差别
     if (mode == "Strict") {
