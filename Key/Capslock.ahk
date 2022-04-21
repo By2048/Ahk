@@ -55,4 +55,6 @@ Return
 ;关闭大写锁定
 CapsLock Up::
     SetCapsLockState, Off
+    SetNumLockState, Off
+    SetScrollLockState, Off
 Return
