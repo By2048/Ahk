@@ -34,9 +34,12 @@
 #If ( CheckWindowsActive( "Chrome" , "Chrome_WidgetWin_1" ) )
     
     Redirect(url) {
+        tmp := Clipboard
+        Clipboard := url
         Send !d
-        SendInput {Raw}%url%
+        Send ^v
         Send {Enter}
+        Clipboard := tmp
     }
 
      F1::Redirect("https://cn.bing.com/")
