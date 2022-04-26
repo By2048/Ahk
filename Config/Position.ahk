@@ -52,7 +52,7 @@ CenterY(screen_name := "") {
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-WW := (650 + 20) + ((200+180+120)*2 + 50) + ((500+120+90)*2 + 50) + 50
+WW := (650 + 20) + ((200+180+120)*2 + 50) + ((500+120+90)*2 + 50) + 30
 WH := 2000
 Windows_Position_Default["Q-Dir"] := [CenterX(), CenterY(), WW, WH]
 
@@ -106,15 +106,20 @@ Windows_Position_Backup["CloudMusic"]  := [CenterX("screen_2"), CenterY("screen_
 
 WW := 3000
 WH := 300
-WX := CenterX("screen_2")
-WY := Screen2.yy - WH - 100
+WX := CenterX("screen_1")
+WY := Screen1.yy - WH
 Windows_Position_Default["CloudMusic_DesktopLyrics"] := [WX, WY, WW, WH]
 
-WW := -30
-WH := 250
-WX := CenterX("screen_3")
-WY := CenterY("screen_3")
-Windows_Position_Backup["CloudMusic_DesktopLyrics"] := [WX, WY, WW, WH]
+; WW := -30
+; WH := 250
+; WX := CenterX("screen_3")
+; WY := CenterY("screen_3")
+
+WW := 3000
+WH := 300
+WX := CenterX("screen_2")
+WY := Screen2.yy - WH - 100
+Windows_Position_Backup["CloudMusic_DesktopLyrics"]  := [WX, WY, WW, WH]
 
 WW := 3000
 WH := 1800
