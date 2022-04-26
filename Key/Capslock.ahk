@@ -13,6 +13,14 @@
 
 ;切换到显示器中心 
 $CapsLock::
+
+    config := GetActiveWindowsInfo()
+    win_process_name := result.win_process_name
+
+    If (win_process_name in VSCode,PyCharm) {
+        Return
+    }
+
     CoordMode, Mouse, Screen
     MouseGetPos, x, y
 
@@ -44,10 +52,6 @@ $CapsLock::
     ; 高亮窗口
     HighlightActiveWindows( , , _time_:=300)
 
-    ; 显示激活的应用名
-    ; config := GetActiveWindowsInfo()
-    ; win_process_name := result.win_process_name
-    ; HelpText(win_process_name, "center_down", "screen1", 500)
 Return
 
 
