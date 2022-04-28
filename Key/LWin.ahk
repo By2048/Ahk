@@ -11,13 +11,6 @@
 
 Global Windows_Theme := "Default"
 
-; WindowsTerminal quakeMode
-<#F12::
-    Send #{F12}
-    if ( CheckWindowsActive("Terminal") ) {
-        MoveWindowsToDefaultPosition()
-    }
-Return
 
 ; 显示隐藏任务栏
 <#8:: 

@@ -15,6 +15,19 @@
 ; 窗口位置大小调整
 ; 结束窗口
 
+; WindowsTerminal quakeMode
+>#Space::
+    Send ^!t
+    _name_  := "Terminal"
+    _class_ := "CASCADIA_HOSTING_WINDOW_CLASS"
+    ; _exe_   := ProcessNameOrigin(_name_)
+    ; WinActivate, ahk_exe %_exe_% ahk_class %_class_%
+    ; WinWaitActive, ahk_exe %_exe_% ahk_class %_class_%
+    if (CheckWindowsActive(_name_, _class_)) {
+        MoveWindowsToDefaultPosition()
+    }
+Return
+
 >#b::Return
 >#Tab::Return
 

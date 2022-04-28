@@ -11,6 +11,8 @@
 #NoTrayIcon
 
 
+<^Space::Return
+
 ~<^c::
     ; data := Clipboard
     ; data := "https://www.bilibili.com/video/BV16L4y1L7fK?spm_id_from=333.999.0.0"
@@ -20,7 +22,6 @@
     ; if (data.stea)
     ; HelpText("123")
 Return
-
 
 >^q::Run E:\Config\PC.qdr
 ; >^w::RunNormalUser("D:\#Lnk\WeChat.lnk")
