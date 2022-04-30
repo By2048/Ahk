@@ -197,12 +197,6 @@ Return
         }
     }
 
-    if (InStr(win_process_name, "LOL")) {
-        Run, Setup.bat StopSpace, %A_WorkingDir%, Hide
-        HelpText("`n Stop Space `n", "center", "screen3")
-        Return
-    }
-
     if (IsDesktops() or IsGame()) {
         Return
     }
