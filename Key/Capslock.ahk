@@ -17,7 +17,8 @@ $CapsLock::
     config := GetActiveWindowsInfo()
     win_process_name := result.win_process_name
 
-    If (win_process_name in VSCode,PyCharm) {
+    ide := [ "VSCode" , "PyCharm" ]
+    If (win_process_name in ide) {
         Return
     }
 
