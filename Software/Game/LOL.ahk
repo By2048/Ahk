@@ -20,6 +20,21 @@ LOLSoftware()
         Run, Setup.bat StopSpace, %A_WorkingDir%, Hide
         HelpText("`n Stop Space `n", "center", "screen3")
     Return
+    LWin::Return
+    LWin & LCtrl::Return
+    LWin & LAlt::Return
+    #CapsLock::Return
+    #Esc::Return
+    #`::Return
+    #1::Return
+    #2::Return
+    #3::Return
+    #q::Return
+    #w::Return
+    #e::Return
+    #a::Return
+    #s::Return
+    #d::Return
 #If 
 
 
