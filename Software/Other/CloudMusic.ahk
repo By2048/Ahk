@@ -49,7 +49,7 @@
         Sleep 300
         Send ![
         Sleep 300
-        MouseClickAndResetting(1044, 1600, "Window", 3)
+        MouseClickAndResetting(1044, 1600, "Window", 4)
     Return
 
     ; 列表下一首
@@ -60,7 +60,7 @@
         Sleep 300   
         Send !]
         Sleep 300
-        MouseClickAndResetting(1044, 1600, "Window", 3)
+        MouseClickAndResetting(1044, 1600, "Window", 4)
     Return
 
     Esc::MouseClickAndResetting(1703, 485, "Window")
