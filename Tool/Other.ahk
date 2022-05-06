@@ -7,6 +7,7 @@
 
 
 
+; 运行模式设置
 RunNormalUser(command)
 {
     if InStr(command, ".lnk") {
@@ -25,6 +26,31 @@ RunNormalUser(command)
         Run, %command%
         RunAs
     }
+}
+
+
+
+; Windows终端启动设置
+WindowsTerminal(mode, folder="T:\\")
+{
+    name := "Terminal"
+    exe  := ProcessNameOrigin(name)
+    if ( WinActive("ahk_exe" exe) ) {
+        WinClose, A
+        Return
+    }
+
+    args := " "
+    if (mode == "fullscreen") {
+        args := "--fullscreen"
+    } else if (mode == "focus") {
+        args := "--focus"
+    }
+    args := args . " -d " . folder
+
+    Run %WT% %args%
+    WinWait, ahk_exe %exe%
+    WinActivate, ahk_exe %exe%
 }
 
 

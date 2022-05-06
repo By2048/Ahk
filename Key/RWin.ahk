@@ -15,24 +15,8 @@
 ; 窗口位置大小调整
 ; 结束窗口
 
-; WindowsTerminal quakeMode
->#Space::
-    ; Send ^!t
-    _name_  := "Terminal"
-    _exe_   := ProcessNameOrigin(_name_)
-    if ( WinActive("ahk_exe" _exe_) ) {
-        WinClose
-    } else {
-        Run %WT% --focus -d T:\
-        WinWait, ahk_exe %_exe_%
-        WinActivate, ahk_exe %_exe_%
-    }
-    ; if (CheckWindowsActive(_name_)) {
-    ; }
-    ; _class_ := "CASCADIA_HOSTING_WINDOW_CLASS"
-    ; WinActivate, ahk_exe %_exe_% ahk_class %_class_%
-    ; WinWaitActive, ahk_exe %_exe_% ahk_class %_class_%
-Return
+>#Space::WindowsTerminal("focus")
+>#+Space::WindowsTerminal("fullscreen")
 
 >#b::Return
 >#Tab::Return
