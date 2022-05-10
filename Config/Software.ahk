@@ -4,7 +4,7 @@
 Global ADB         := "D:\Adb\adb.exe"
 Global CMD         := "C:\Windows\System32\cmd.exe"
 Global Chrome      := "C:\Program Files\Google\Chrome\Application\chrome.exe"
-Global VSCode      := "D:\VSCode\Code.exe"
+Global VSCode      := "E:\Script\Software\VSCode.bat"
 Global WT          := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
 Global TaskKill    := "C:\Windows\SysWOW64\taskkill.exe"
 Global Python      := "D:\Python\#\Scripts\python.exe"

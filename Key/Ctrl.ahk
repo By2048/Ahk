@@ -64,8 +64,8 @@ Return
 
 >^x::RunNormalUser("D:\#Lnk\Xshell.lnk")
 >^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk") 
->^v::RunNormalUser(VSCode " E:\Config\Windows.code-workspace")
->^+v::Run %VSCode%
+>^v::Run %VSCode% " E:\Config\Windows.code-workspace",  , Hide
+>^+v::Run %VSCode%,  , Hide
 >^n::Run D:\#Lnk\Notepad++.lnk
 >^m::RunNormalUser("D:\#Lnk\PotPlayer.lnk")
 
@@ -79,8 +79,8 @@ Return
 >^Esc::Run Taskmgr.exe ;任务管理器
 >^+Esc::Run D:\#Lnk\HuoRongSword.lnk
 
->^[::RunNormalUser(VSCode " E:\Config\Note.code-workspace")
->^]::RunNormalUser(VSCode " E:\Config\Ahk.code-workspace" )
+>^[::Run, %VSCode% " E:\Config\Note.code-workspace",   , Hide
+>^]::Run, %VSCode% " E:\Config\Ahk.code-workspace",   , Hide
 >^\::Run D:\#Lnk\#AppStore\Whiteboard.lnk
 
 >^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}:: ;回收站
