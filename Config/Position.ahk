@@ -144,6 +144,10 @@ WY := CenterY()
 WX := 10
 Windows_Position_Default["PotPlayer__播放列表"] := [WX, WY, WW, WH]
 
+WY := CenterY("screen_2")
+WX := Screen2.xx - WW - 10
+Windows_Position_Backup["PotPlayer__播放列表"] := [WX, WY, WW, WH]
+
 WW := 1700
 WH := 1300
 Windows_Position_Default["Sandboxie"] := [CenterX(), CenterY(), WW, WH]
@@ -180,6 +184,10 @@ WW := 2800
 WH := 1600
 Windows_Position_Default["v2rayN"] := [CenterX("screen_1"), CenterY("screen_1"), WW, WH]
 Windows_Position_Backup["v2rayN"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
+
+WW := 2650
+WH := 1677
+Windows_Position_Default["Python__Anaconda"]:= [CenterX("screen_1"), CenterY("screen_1"), WW, WH]
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
