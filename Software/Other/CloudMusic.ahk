@@ -4,7 +4,7 @@
     /::
         MoveWindowsToDefaultPosition()
         Sleep 300
-        MouseClickAndResetting(60, 1611 ,"Window")
+        MouseClickAndResetting(60, 1611)
     Return
 
     \::Send !\
@@ -45,25 +45,25 @@
     PgUp::
         MoveWindowsToDefaultPosition()
         Sleep 300
-        MouseClickAndResetting(1044, 1600, "Window")
+        MouseClickAndResetting(1044, 1600)
         Sleep 300
         Send ![
         Sleep 300
-        MouseClickAndResetting(1044, 1600, "Window", 4)
+        MouseClickAndResetting(1044, 1600,  ,  ,4)
     Return
 
     ; 列表下一首
     PgDn::  
         MoveWindowsToDefaultPosition()
         Sleep 300
-        MouseClickAndResetting(1044, 1600, "Window")
+        MouseClickAndResetting(1044, 1600)
         Sleep 300   
         Send !]
         Sleep 300
-        MouseClickAndResetting(1044, 1600, "Window", 4)
+        MouseClickAndResetting(1044, 1600,  ,  ,4)
     Return
 
-    Esc::MouseClickAndResetting(1703, 485, "Window")
+    Esc::MouseClickAndResetting(1703, 485)
 
 #If
 

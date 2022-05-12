@@ -23,7 +23,7 @@
         ; win_id       := Windows_Cache["win_id"]
         ; control_name := "wxWindowNR49"  
         ; ControlClick, %control_name%, ahk_id %win_id%
-        MouseClickAndResetting(222, 666, "Window")
+        MouseClickAndResetting(222, 666)
     Return
 
 #If

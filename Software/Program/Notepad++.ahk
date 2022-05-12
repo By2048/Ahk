@@ -37,6 +37,6 @@
     RAlt & LAlt::Send {AppsKey}
 
     ; Tmp
-    F12::MouseClickAndResetting(601,1157,"Window")
+    F12::MouseClickAndResetting(601, 1157)
 
 #If

@@ -30,17 +30,17 @@ MouseTool()
 
 
 
-MouseClickAndResetting(x, y, move_type="Screen", click_count=1)
+MouseClickAndResetting(x, y, move_type:="Window", key="Left", click_count:=1, move_speed:=0)
 {
-    if (move_type="Screen") {
+    if (move_type == "Screen") {
         CoordMode, Mouse, Screen
     }
-    if (move_type="Window") {
+    if (move_type == "Window") {
         CoordMode, Mouse, Window
     }
     MouseGetPos, x_origin, y_origin
-    MouseClick, left, x, y, click_count, 0
-    MouseMove x_origin, y_origin, 0
+    MouseClick, %key%, %x%, %y%, %click_count%, %move_speed%
+    MouseMove %x_origin%, %y_origin%, %move_speed%
 }
 
 
