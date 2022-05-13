@@ -51,6 +51,8 @@ LOLSoftware()
     #+BackSpace::
         _exe_ := ProcessNameOrigin("LOL_Client")
         Run, Taskkill /F /IM %_exe_%
+        _exe_ := ProcessNameOrigin("JetBrains")
+        Run, Taskkill /F /IM %_exe_%
     Return
 #If
 
