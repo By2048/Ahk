@@ -50,12 +50,17 @@ Return
 >^s::Run D:\#Lnk\Sandboxie.lnk
 >^f::Run D:\#Lnk\FreeFileSync.lnk
 >^g::Run, Chrome.bat, %A_WorkingDir%, Hide
+>^+g::
+    Run, Chrome.bat, %A_WorkingDir%, Hide
+    exe := ProcessNameOrigin("Chrome")
+    WinWaitActive, ahk_exe %exe%,  , 3
+    MoveWindowsToBackupPosition()
+Return
 >^h::Run %Ahk% D:\AutoHotkey\WindowSpy.ahk
 >^+h::Run E:\GitX\AhkSpy\AhkSpy.exe
 >^j::
     Run D:\#Lnk\JetBrains.lnk
     exe := ProcessNameOrigin("JetBrains")
-    WinActivate, ahk_exe %exe%
     WinWaitActive, ahk_exe %exe%,  , 3
     MoveWindowsToCenter(True)
 Return
