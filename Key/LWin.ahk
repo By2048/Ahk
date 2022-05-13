@@ -214,7 +214,7 @@ Return
     _win_process_name_ := result._win_process_name_
     win_id := result.win_id
     Process, Close, %_win_process_name_%
-    if (win_process_name="CloudMusic") {
+    if (win_process_name == "CloudMusic") {
         Sleep 300
         Process, Close, CrashReporter.exe
     }
