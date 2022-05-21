@@ -261,6 +261,8 @@
     Return
     ~RButton & Lbutton::
         Send !{Left}
+        Sleep 200
+        Send {LButton}
     Return
 
     ; >!y::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Y.png")
