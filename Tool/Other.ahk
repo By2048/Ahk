@@ -243,3 +243,20 @@ CheckColor(color_base, color_compare, offse:=9)
     
     return False
 }
+
+
+
+; 发送字符串 忽略输入法
+SendData(data)
+{
+    WinGet, win_id, ID, A
+    ControlGetFocus, control_name, ahk_id %win_id%
+    if (control_name != "") 
+    {
+        ControlGet, control_id, Hwnd,  , %control_name%, ahk_id %win_id%
+    }
+    Loop, Parse, data
+    {
+		PostMessage, Message.WM_CHAR, Ord(A_LoopField), 1,  , ahk_id %win_id%
+    }
+}
