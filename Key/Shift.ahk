@@ -152,9 +152,6 @@ ChangeShiftImage(np="")
 
 
 ~RShift::
-    if (IsGame()) {
-        return
-    }
     if (cnt > 0) {
         cnt += 1
         HelpText("RShift " . cnt, "center", "screen_3")
