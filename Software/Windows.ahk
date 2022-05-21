@@ -1,6 +1,6 @@
 ﻿
 ; 编辑环境变量
-#If ( CheckWindowsActive( "systempropertiesadvanced" ) )
+#If CheckWindowsActive( "SystemPropertiesAdvanced" )
     PgUp::Send !u
     PgDn::Send !o
 #If
@@ -8,7 +8,7 @@
 
 
 ; 任务管理器
-#If ( CheckWindowsActive( "TaskMGR" ) )
+#If CheckWindowsActive( "TaskMGR" )
     
     ; 切换标签页
     ^Tab::Return
@@ -57,7 +57,7 @@
 
 
 ; 远程桌面
-#If ( CheckWindowsActive( "RemoteDesktop" ) )
+#If CheckWindowsActive( "RemoteDesktop" )
 
     $CapsLock::
         WinActivate, ahk_exe Explorer.exe
@@ -74,7 +74,7 @@
 
 
 ; 设置
-#If ( CheckWindowsActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" ) )
+#If CheckWindowsActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
 
     ;点击返回
     Esc::
@@ -89,7 +89,7 @@
 
 
 ; 打开的窗口
-#If ( CheckWindowsActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为" ) )
+#If CheckWindowsActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为" )
 
     <#\::
 
@@ -153,4 +153,20 @@
         ; Send {Enter}
     Return
 
+#If
+
+
+; 服务
+#If CheckWindowsActive( "MMC" , "" , "服务" )
+    <#\::
+        MoveWindowsToDefaultPosition()
+        _id    := Windows_Cache["win_id"]
+        _name  := "SysListView321"
+        _width := {    1 : 300   ;名称
+                    ,  2 : 470   ;描述
+                    ,  3 : 60    ;状态
+                    ,  4 : 110   ;启动类型
+                    ,  5 : 60  } ; 登录为
+        SetColumnWidth(_id, _name, _width)
+    Return
 #If
