@@ -42,8 +42,8 @@
     Return
 
     !PgUp::
-        win_w := Windows_Position_Default["Wallpaper"][3]
-        win_h := Windows_Position_Default["Wallpaper"][4]
+        win_w := WPD["Wallpaper"][3]
+        win_h := WPD["Wallpaper"][4]
         x1    := win_w * 1/6
         y1    := win_h * 90/100
         x2    := x1    + 2000
@@ -52,8 +52,8 @@
         MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
     Return
     !PgDn::
-        win_w := Windows_Position_Default["Wallpaper"][3]
-        win_h := Windows_Position_Default["Wallpaper"][4]
+        win_w := WPD["Wallpaper"][3]
+        win_h := WPD["Wallpaper"][4]
         x1    := win_w * 1/6
         y1    := win_h * 90/100
         x2    := x1    + 2000
