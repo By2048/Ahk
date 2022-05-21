@@ -1,18 +1,18 @@
 ﻿
-WX := 10
-WY := 10
-WW := Screen1.w/2 -10-10 +100
-WH := Screen1.h   -10-10
-Windows_Position_Default["TIM"] := [WX, WY, WW, WH]
+win_x := 10
+win_y := 10
+win_w := Screen1.w/2 -10-10 +100
+win_h := Screen1.h   -10-10
+WPD["TIM"] := [ win_x , win_y , win_w , win_h ]
 
-WX := 10
-WY := 10
-WW := Screen1.w/2 -10-10 +100
-WH := Screen1.h   -10-10
-Windows_Position_Default["DingDing"] := [WX, WY, WW, WH]
+win_x := 10
+win_y := 10
+win_w := Screen1.w/2 -10-10 +100
+win_h := Screen1.h   -10-10
+WPD["DingDing"] := [ win_x , win_y , win_w , win_h ]
 
-WX := Screen1.w/2 +10    +100
-WY := 10 + 14
-WW := Screen1.w/2 -10-10 -100
-WH := Screen1.h   -10-10 -14-14
-Windows_Position_Default["WeChat"] := [WX, WY, WW, WH]
+win_x := Screen1.w/2 +10    +100
+win_y := 10 + 14
+win_w := Screen1.w/2 -10-10 -100
+win_h := Screen1.h   -10-10 -14-14
+WPD["WeChat"] := [ win_x , win_y , win_w , win_h ]

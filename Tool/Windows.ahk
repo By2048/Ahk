@@ -672,14 +672,14 @@ MoveWindowsToMainMini(command)
 
     ; position_check := False
 
-    ; position_default := Windows_Position_Default[win_process_name]
+    ; position_default := WPD[win_process_name]
     ; if (command == "Main" and position_default.Length()) {
     ;     position_check := True
     ;     MoveWindowsToDefaultPosition()
     ;     Return
     ; }
 
-    ; position_backup := Windows_Position_Backup[win_process_name]
+    ; position_backup := WPB[win_process_name]
     ; if (command == "Mini" and position_backup.Length()) {
     ;     position_check := True
     ;     MoveWindowsToBackupPosition()
@@ -795,12 +795,12 @@ MoveWindowsToPosition(config:="")
 }
 MoveWindowsToDefaultPosition()
 {
-    config := GetActiveWindowsConfig(Windows_Position_Default)
+    config := GetActiveWindowsConfig(WPD)
     MoveWindowsToPosition(config)
 }
 MoveWindowsToBackupPosition()
 {
-    config := GetActiveWindowsConfig(Windows_Position_Backup)
+    config := GetActiveWindowsConfig(WPB)
     MoveWindowsToPosition(config)
 }
 

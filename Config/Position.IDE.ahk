@@ -1,87 +1,57 @@
 ﻿
-WW := Screen1.w * 5/6
-WH := Screen1.h * 8/9
-Windows_Position_Default["VSCode"] := [CenterX(), CenterY(), WW, WH]
+WPD["VSCode"] := Position(Screen1.w * 5/6 , Screen1.h * 8/9)
 
-WW := Screen2.w * 5/6
-WH := Screen2.h * 8/9
-Windows_Position_Backup["VSCode"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
+WPB["VSCode"] := Position(Screen2.w * 5/6 , Screen2.h * 8/9)
 
-WW := Screen1.w * 45/60
-WH := Screen1.h * 75/90
-Windows_Position_Default["Notepad++"] := [CenterX(), CenterY(), WW, WH]
+WPD["Notepad++"] := Position(Screen1.w * 45/60 , Screen1.h * 75/90)
 
-WW := -50
-WH := -50
-Windows_Position_Default["PyCharm"]      := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__更改"] := [CenterX(), CenterY(), WW, WH]
+WPD["PyCharm"]       := Position("[Center][1]" , "[Center][1]" , -50 , -50)
+WPD["PyCharm__更改"] := Position("[Center][1]" , "[Center][1]" , -50 , -50)
 
-WW := 900 
-WH := 1500
-Windows_Position_Default["PyCharm__打开文件或项目"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__回滚变更"]      := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__选择路径"]      := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__选择"]         := [CenterX(), CenterY(), WW, WH]
+WPD["PyCharm__打开文件或项目"] := Position(900 , 1500)
+WPD["PyCharm__回滚变更"]       := Position(900 , 1500)
+WPD["PyCharm__选择路径"]       := Position(900 , 1500)
+WPD["PyCharm__选择"]           := Position(900 , 1500)
 
-WW := 900 
-WH := 1300
-Windows_Position_Default["PyCharm__收藏夹"]   := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__设置同步"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__插件同步"] := [CenterX(), CenterY(), WW, WH]
+WPD["PyCharm__收藏夹"]   := Position(900 , 1300)
+WPD["PyCharm__设置同步"] := Position(900 , 1300)
+WPD["PyCharm__插件同步"] := Position(900 , 1300)
 
-WW := 1000
-WH := 1500
-Windows_Position_Default["PyCharm__Python解释器"] := [CenterX(), CenterY(), WW, WH]
+WPD["PyCharm__Python解释器"] := Position(1000 , 1500)
 
-WW := 1600
-WH := 1500
-Windows_Position_Default["PyCharm__提交变更"]    := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__查找"]        := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__检查"]        := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__将提交推送到"] := [CenterX(), CenterY(), WW, WH]
+WPD["PyCharm__提交变更"]     := Position(1600 , 1500)
+WPD["PyCharm__查找"]         := Position(1600 , 1500)
+WPD["PyCharm__检查"]         := Position(1600 , 1500)
+WPD["PyCharm__将提交推送到"] := Position(1600 , 1500)
 
-WW := 1500
-WH := 1000
-Windows_Position_Default["PyCharm__指定检查范围"] := [CenterX(), CenterY(), WW, WH]
+WPD["PyCharm__指定检查范围"] := Position(1500 , 1000)
 
-WW := 2000
-WH := 1500
-Windows_Position_Default["PyCharm__设置"]             := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__添加Python解释器"]  := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__TODO"]             := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__问题"]             := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__远程主机"]          := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Default["PyCharm__可用软件包"]        := [CenterX(), CenterY(), WW, WH]
+WPD["PyCharm__设置"]             := Position(2000 , 1500)
+WPD["PyCharm__添加Python解释器"] := Position(2000 , 1500)
+WPD["PyCharm__TODO"]             := Position(2000 , 1500)
+WPD["PyCharm__问题"]             := Position(2000 , 1500)
+WPD["PyCharm__远程主机"]         := Position(2000 , 1500)
+WPD["PyCharm__可用软件包"]       := Position(2000 , 1500)
 
-WW := 2000
-WH := 1750
-Windows_Position_Default["PyCharm__运行/调试配置"] := [CenterX(), CenterY(), WW, WH]
+WPD["PyCharm__运行/调试配置"] := Position(2000 , 1750)
 
-WW := 2300
-WH := 1700
-Windows_Position_Default["PyCharm__评估"] := [CenterX(), CenterY(), WW, WH]
+WPD["PyCharm__评估"] := Position(2300 , 1700)
 
-WW := 2800
-WH := 1750
-Windows_Position_Default["PyCharm__运行"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["PyCharm__运行"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
-Windows_Position_Default["PyCharm__调试"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["PyCharm__调试"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
-Windows_Position_Default["PyCharm__服务"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["PyCharm__服务"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
+WPD["PyCharm__运行"] := Position("[Center][1]" , "[Center][1]" , 2800 , 1750)
+WPB["PyCharm__运行"] := Position("[Center][2]" , "[Center][2]" , 2800 , 1750)
+WPD["PyCharm__调试"] := Position("[Center][1]" , "[Center][1]" , 2800 , 1750)
+WPB["PyCharm__调试"] := Position("[Center][2]" , "[Center][2]" , 2800 , 1750)
+WPD["PyCharm__服务"] := Position("[Center][1]" , "[Center][1]" , 2800 , 1750)
+WPB["PyCharm__服务"] := Position("[Center][2]" , "[Center][2]" , 2800 , 1750)
 
-WW := 3000
-WH := 1700
-Windows_Position_Default["PyCharm__终端"]       := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["PyCharm__终端"]        := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
-Windows_Position_Default["PyCharm__Statistic"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["PyCharm__Statistic"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
-Windows_Position_Default["PyCharm__数据库"]     := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["PyCharm__数据库"]      := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
+WPD["PyCharm__终端"]      := Position("[Center][1]" , "[Center][1]" , 3000 , 1700)
+WPB["PyCharm__终端"]      := Position("[Center][2]" , "[Center][2]" , 3000 , 1700)
+WPD["PyCharm__Statistic"] := Position("[Center][1]" , "[Center][1]" , 3000 , 1700)
+WPB["PyCharm__Statistic"] := Position("[Center][2]" , "[Center][2]" , 3000 , 1700)
+WPD["PyCharm__数据库"]    := Position("[Center][1]" , "[Center][1]" , 3000 , 1700)
+WPB["PyCharm__数据库"]    := Position("[Center][2]" , "[Center][2]" , 3000 , 1700)
 
-WW := 3300
-WH := 1800
-Windows_Position_Default["PyCharm__Python控制台"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["PyCharm__Python控制台"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
-Windows_Position_Default["PyCharm__Git"]         := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["PyCharm__Git"]          := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
+WPD["PyCharm__Python控制台"] := Position("[Center][1]" , "[Center][1]" , 3300 , 1800)
+WPB["PyCharm__Python控制台"] := Position("[Center][2]" , "[Center][2]" , 3300 , 1800)
+WPD["PyCharm__Git"]          := Position("[Center][1]" , "[Center][1]" , 3300 , 1800)
+WPB["PyCharm__Git"]          := Position("[Center][2]" , "[Center][2]" , 3300 , 1800)

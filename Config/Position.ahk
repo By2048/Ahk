@@ -13,181 +13,131 @@
 ; Value
 ; 设置一些软件默认位置 [x,y,w,h]
 
-Global Windows_Position_Default := {}
-Global Windows_Position_Backup  := {}
-Global WW, WH, WX, WY
+Global WPD := {} ; Windows_Position_Default
+Global WPB := {} ; Windows_Position_Backup
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; screen | Screen1 Screen2 Screen3
-Center(screen_name := "") {
-    if (not screen_name) {
-        screen_name := "screen1"
+Position(args*) {
+    if ( args.Length() == 2 ) {
+        x := "[Center][1]"
+        y := "[Center][1]"
+        w := args[1]
+        h := args[2]
     }
-    screen_name := ChangeScreenName(screen_name)
-    if (screen_name == "screen1") {
-        WW := WW < 0 ? Screen1.w + WW : WW
-        WH := WH < 0 ? Screen1.h + WH : WH
-        WX := Screen1.x + Screen1.w/2 - WW/2
-        WY := Screen1.y + Screen1.h/2 - WH/2
-    } else if (screen_name == "screen2") {
-        WW := WW < 0 ? Screen2.w + WW : WW
-        WH := WH < 0 ? Screen2.h + WH : WH
-        WX := Screen2.x + Screen2.w/2 - WW/2
-        WY := Screen2.y + Screen2.h/2 - WH/2
-    } else if (screen_name == "screen3") {
-        WW := WW < 0 ? Screen3.w + WW : WW
-        WH := WH < 0 ? Screen3.h + WH : WH
-        WX := Screen3.x + Screen3.w/2 - WW/2
-        WY := Screen3.y + Screen3.h/2 - WH/2
+    if ( args.Length() == 4 ) {
+        x := args[1]
+        y := args[2]
+        w := args[3]
+        h := args[4]
     }
-    return [WX , WY]
-}
-CenterX(screen_name := "") {
-    return Center(screen_name)[1]
-}
-CenterY(screen_name := "") {
-    return Center(screen_name)[2]
+
+    win_x := x
+    win_y := y
+    win_w := w
+    win_h := h
+
+    x := Format("{:L}", x)
+    y := Format("{:L}", y)
+
+    if ( InStr(x, "[1]") ) {
+        win_w := w < 0 ? Screen1.w + w : w
+        if ( InStr(x, "[center]" ) ) {
+            win_x := Screen1.x + Screen1.w/2 - win_w/2
+        }
+    }
+    if ( InStr(y, "[1]") ) {
+        win_h := h < 0 ? Screen1.h + h : h
+        if ( InStr(y, "[center]") ) {
+            win_y := Screen1.y + Screen1.h/2 - win_h/2
+        }
+    }
+
+    if ( InStr(x, "[2]") ) {
+        win_w := w < 0 ? Screen2.w + w : w
+        if ( InStr(x, "[center]") ) {
+            win_x := Screen2.x + Screen2.w/2 - win_w/2
+        }
+    }
+    if ( InStr(y, "[2]") ) {
+        win_h := h < 0 ? Screen2.h + h : h
+        if ( InStr(y, "[center]") ) {
+            win_y := Screen2.y + Screen2.h/2 - win_h/2
+        }
+    }
+
+    if ( InStr(x, "[3]") ) {
+        win_w := w < 0 ? Screen3.w + w : w
+        if ( InStr(x, "[center]") ) {
+            win_x := Screen3.x + Screen3.w/2 - win_w/2
+        }
+    }
+    if ( InStr(y, "[3]") ) {
+        win_h := h < 0 ? Screen3.h + h : h
+        if ( InStr(y, "[center]") ) {
+            win_y := Screen3.y + Screen3.h/2 - win_h/2
+        }
+    }
+
+    win_x := Round(win_x)
+    win_y := Round(win_y)
+    win_w := Round(win_w)
+    win_h := Round(win_h)
+    return [ win_x , win_y , win_w , win_h ]
 }
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-WW := (650 + 20) + ((200+180+120)*2 + 50) + ((500+120+90)*2 + 50) + 30
-WH := 2000
-Windows_Position_Default["Q-Dir"] := [CenterX(), CenterY(), WW, WH]
+arg := ((650) + 20) + ((200+180+120)*2 + 50) + ((500+120+90)*2 + 50) + 30 
+WPD["Q-Dir"] := Position(arg, 1950)
 
-WW := 3000
-WH := 1500
-Windows_Position_Default["BitComet"] := [CenterX(), CenterY(), WW, WH]
+WPD["BitComet"]    := Position(3000 , 1500)
+WPD["qBittorrent"] := Position(3000 , 1500)
+WPD["FDM"]         := Position(2000 , 1500)
+WPD["Calibre"]     := Position(3000 , 1500)
+WPD["Everything"]  := Position(2300 , 1700)
+WPD["Android"]     := Position(3440 , 2110)
+WPD["Wallpaper"]   := Position(3388 , 2000)
+WPD["Sandboxie"]   := Position(1700 , 1300)  
+WPD["VMware"]      := Position(2500 , 1600)
+WPD["Zip"]         := Position(1800 , 1400)
+WPD["Geek"]        := Position(1500 , 1500)
+WPD["FFRenamePro"] := Position(3300 , 1800)
 
-WW := 3000
-WH := 1500
-Windows_Position_Default["qBittorrent"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 2000
-WH := 1500
-Windows_Position_Default["FDM"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 2500
-WH := 1600
-Windows_Position_Default["Thunder"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 1400
-WH := 1050
-Windows_Position_Default["Thunder__新建任务面板"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 3000
-WH := 1500
-Windows_Position_Default["Calibre"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 2300
-WH := 1700
-Windows_Position_Default["Everything"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 3440
-WH := 2110
-Windows_Position_Default["Android"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 3388
-WH := 2000
-Windows_Position_Default["Wallpaper"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 0
-WH := 0
-WX := -10
-WY := -10
 ; 火绒U盘工具
-Windows_Position_Default["HipsTray_HRUSBTRAY"] := [WX, WY, WW, WH]
+WPD["HipsTray_HRUSBTRAY"] := Position(-10, -10, 0, 0)  
 
-WW := 2500
-WH := 1700
-Windows_Position_Default["CloudMusic"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["CloudMusic"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
+WPD["CloudMusic"] := Position(2500,1700)
+WPB["CloudMusic"] := Position("[Center][2]", "[Center][2]", 2500, 1700)
+win_w := 3000
+win_h := 300
+win_x := Screen1.x  + Screen1.w/2 - win_w/2
+win_y := Screen1.yy - win_h       - 10
+WPD["CloudMusic_DesktopLyrics"] := Position(win_x, win_y, win_w, win_h)
+win_x := Screen2.x  + Screen2.w/2 - win_w/2
+win_y := Screen2.yy - win_h       - 10
+WPB["CloudMusic_DesktopLyrics"]  :=  Position(win_x, win_y, win_w, win_h)
 
-WW := 3000
-WH := 300
-WX := CenterX("screen_1")
-WY := Screen1.yy - WH
-Windows_Position_Default["CloudMusic_DesktopLyrics"] := [WX, WY, WW, WH]
+WPD["FreeFileSync"] := Position(3000, 1800)
+WPB["FreeFileSync"] := Position("[Center][2]" ,"[Center][2]", 3000, 1800)
+WPD["FreeFileSync__同步设置"] := Position(1500, 1800)
 
-; WW := -30
-; WH := 250
-; WX := CenterX("screen_3")
-; WY := CenterY("screen_3")
+WPD["PotPlayer"] := Position(Screen1.w * 4/6 , Screen1.h * 4/6)
+WPB["PotPlayer"] := Position("[Center][2]", "[Center][2]", Screen2.w * 4/6, Screen2.h * 4/6 )
+WPD["PotPlayer__播放列表"] := Position(10, "[Center][1]", 1000, 1500)
+WPB["PotPlayer__播放列表"]  := Position(Screen2.xx - 1000 - 10, "[Center][2]", 1000, 1500)
 
-WW := 3000
-WH := 300
-WX := CenterX("screen_2")
-WY := Screen2.yy - WH - 100
-Windows_Position_Backup["CloudMusic_DesktopLyrics"]  := [WX, WY, WW, WH]
+WPD["Chrome"] := Position("[Center][1]" ,"[Center][1]", 3300, 2000)
+WPB["Chrome"] := Position("[Center][2]" ,"[Center][2]", 3000, 1800)
+WPD["Chrome__修改书签"] := Position(900, 1500)
 
-WW := 3000
-WH := 1800
-Windows_Position_Default["FreeFileSync"] := [CenterX(), CenterY(), WW, WH]
-Windows_Position_Backup["FreeFileSync"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
+WPD["v2rayN"] := Position("[Center][1]" ,"[Center][1]", 2800, 1600)
+WPB["v2rayN"] := Position("[Center][1]" ,"[Center][1]", 2800, 1600)
 
-WW := 1500
-WH := 1800
-Windows_Position_Default["FreeFileSync__同步设置"] := [CenterX(), CenterY(), WW, WH]
+WPD["Python__Anaconda"] := Position(2650, 1677)
 
-WW := Screen1.w * 4/6
-WH := Screen1.h * 4/6
-Windows_Position_Default["PotPlayer"] := [CenterX(), CenterY(), WW, WH]
-
-WW := Screen2.w * 4/6
-WH := Screen2.h * 4/6
-Windows_Position_Backup["PotPlayer"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
-
-WW := 1000
-WH := 1500
-WY := CenterY()
-WX := 10
-Windows_Position_Default["PotPlayer__播放列表"] := [WX, WY, WW, WH]
-
-WY := CenterY("screen_2")
-WX := Screen2.xx - WW - 10
-Windows_Position_Backup["PotPlayer__播放列表"] := [WX, WY, WW, WH]
-
-WW := 1700
-WH := 1300
-Windows_Position_Default["Sandboxie"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 2500
-WH := 1600
-Windows_Position_Default["VMware"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 1800
-WH := 1400
-Windows_Position_Default["Zip"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 1500
-WH := 1500
-Windows_Position_Default["Geek"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 3300
-WH := 2000
-Windows_Position_Default["Chrome"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 3300
-WH := 1800
-Windows_Position_Default["FFRenamePro"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 3000
-WH := 1800
-Windows_Position_Backup["Chrome"] := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
-
-WW := 900
-WH := 1500
-Windows_Position_Default["Chrome__修改书签"] := [CenterX(), CenterY(), WW, WH]
-
-WW := 2800
-WH := 1600
-Windows_Position_Default["v2rayN"] := [CenterX("screen_1"), CenterY("screen_1"), WW, WH]
-Windows_Position_Backup["v2rayN"]  := [CenterX("screen_2"), CenterY("screen_2"), WW, WH]
-
-WW := 2650
-WH := 1677
-Windows_Position_Default["Python__Anaconda"]:= [CenterX("screen_1"), CenterY("screen_1"), WW, WH]
+WPD["Thunder"]             := Position(2500, 1600)
+WPD["Thunder__新建任务面板"] := Position(1400, 1050)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
