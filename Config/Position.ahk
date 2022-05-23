@@ -13,8 +13,13 @@
 ; Value
 ; 设置一些软件默认位置 [x,y,w,h]
 
+Global Windows_Position := {}
+
 Global WPD := {} ; Windows_Position_Default
 Global WPB := {} ; Windows_Position_Backup
+
+Windows_Position["Default"] := WPD
+Windows_Position["Backup" ] := WPB
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -24,6 +29,12 @@ Position(args*) {
         y := "[Center][1]"
         w := args[1]
         h := args[2]
+    }
+    if ( args.Length() == 3 ) {
+        x := args[1]
+        y := args[1]
+        w := args[2]
+        h := args[3]
     }
     if ( args.Length() == 4 ) {
         x := args[1]
@@ -108,7 +119,7 @@ WPD["FFRenamePro"] := Position(3300 , 1800)
 WPD["HipsTray_HRUSBTRAY"] := Position(-10, -10, 0, 0)  
 
 WPD["CloudMusic"] := Position(2500,1700)
-WPB["CloudMusic"] := Position("[Center][2]", "[Center][2]", 2500, 1700)
+WPB["CloudMusic"] := Position("[Center][2]", 2500, 1700)
 win_w := 3000
 win_h := 300
 win_x := Screen1.x  + Screen1.w/2 - win_w/2
@@ -116,23 +127,23 @@ win_y := Screen1.yy - win_h       - 10
 WPD["CloudMusic_DesktopLyrics"] := Position(win_x, win_y, win_w, win_h)
 win_x := Screen2.x  + Screen2.w/2 - win_w/2
 win_y := Screen2.yy - win_h       - 10
-WPB["CloudMusic_DesktopLyrics"]  :=  Position(win_x, win_y, win_w, win_h)
+WPB["CloudMusic_DesktopLyrics"] := Position(win_x, win_y, win_w, win_h)
 
-WPD["FreeFileSync"] := Position(3000, 1800)
-WPB["FreeFileSync"] := Position("[Center][2]" ,"[Center][2]", 3000, 1800)
+WPD["FreeFileSync"]          := Position(3000, 1800)
+WPB["FreeFileSync"]          := Position("[Center][2]", 3000, 1800)
 WPD["FreeFileSync__同步设置"] := Position(1500, 1800)
 
-WPD["PotPlayer"] := Position(Screen1.w * 4/6 , Screen1.h * 4/6)
-WPB["PotPlayer"] := Position("[Center][2]", "[Center][2]", Screen2.w * 4/6, Screen2.h * 4/6 )
+WPD["PotPlayer"]          := Position(Screen1.w * 4/6 , Screen1.h * 4/6)
+WPB["PotPlayer"]          := Position("[Center][2]", Screen2.w * 4/6, Screen2.h * 4/6 )
 WPD["PotPlayer__播放列表"] := Position(10, "[Center][1]", 1000, 1500)
-WPB["PotPlayer__播放列表"]  := Position(Screen2.xx - 1000 - 10, "[Center][2]", 1000, 1500)
+WPB["PotPlayer__播放列表"] := Position(Screen2.xx - 1000 - 10, "[Center][2]", 1000, 1500)
 
-WPD["Chrome"] := Position("[Center][1]" ,"[Center][1]", 3300, 2000)
-WPB["Chrome"] := Position("[Center][2]" ,"[Center][2]", 3000, 1800)
+WPD["Chrome"]          := Position("[Center][1]", 3300, 2000)
+WPB["Chrome"]          := Position("[Center][2]", 3000, 1800)
 WPD["Chrome__修改书签"] := Position(900, 1500)
 
-WPD["v2rayN"] := Position("[Center][1]" ,"[Center][1]", 2800, 1600)
-WPB["v2rayN"] := Position("[Center][1]" ,"[Center][1]", 2800, 1600)
+WPD["v2rayN"] := Position("[Center][1]", 2800, 1600)
+WPB["v2rayN"] := Position("[Center][1]", 2800, 1600)
 
 WPD["Python__Anaconda"] := Position(2650, 1677)
 
