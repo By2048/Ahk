@@ -75,9 +75,8 @@ MouseClickImage(image, trans="")
     if (x_find and y_find) {
         x_find := x_find + image_w/2
         y_find := y_find + image_h/2
-        MouseMove, x_find, y_find, 0
-        ; MouseClick, Left, x_find, y_find, 1, 0
-        ; MouseMove x_origin, y_origin, 0
+        MouseClick, Left, %x_find%, %y_find%, 1, 0
+        MouseMove %x_origin%, %y_origin%, 0
     } else {
         HelpText("Not Find",  ,  , 1000)
     }
