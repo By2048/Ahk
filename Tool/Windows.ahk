@@ -607,6 +607,7 @@ MoveWindowsToCenter(silent:=False)
 
     win_id := result.win_id
     win_process_name := result.win_process_name
+    in_screen := result.in_screen
 
     win_x := result.win_x
     win_y := result.win_y
@@ -639,7 +640,7 @@ MoveWindowsToCenter(silent:=False)
     }
 
     if (not silent) {
-        HelpText("Move To Center",  ,  , 1000)
+        HelpText("Center", "center_down", "screen"in_screen , 1000)
         return
     }
 }
@@ -673,11 +674,11 @@ MoveWindowsToMainMini(command)
     main := Windows_Main_Mini[2]
 
     if (command=="Main") {
-        HelpText("Windows Main", "center_down")
+        HelpText("Windows Main", "center_down", "screen"in_screen)
         ww := screen_w * main[1]
         hh := screen_h * main[2]
     } else if (command=="Mini") {
-        HelpText("Windows Mini", "center_down")
+        HelpText("Windows Mini", "center_down", "screen"in_screen)
         ww := screen_w * mini[1]
         hh := screen_h * mini[2]
     }
