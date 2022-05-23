@@ -4,12 +4,13 @@
     <#\::
         MoveWindowsToDefaultPosition()
 
+        win_id := Windows_Cache["win_id"]
+
         result   := GetActiveWindowsInfo("Window")
         cinfo    := result["win_controls"]["SysListView321"]
         max_left := 336
         MoveControlUDLR(cinfo,  ,  , max_left,  , 3)
 
-        win_id        := Windows_Cache["win_id"]
         control_name  := "SysListView321"   
         control_value := {  1 : 1200   ;名称
                          ,  2 : 130    ;大小
@@ -24,7 +25,17 @@
                          , 11 : 100  } ;分享率
         SetColumnWidth(win_id, control_name, control_value)
 
-        win_id        := Windows_Cache["win_id"]
+        control_name  := "SysListView322"   
+        control_value := {  1 : 150    ;下载任务
+                         ,  2 : 1200   ;名称
+                         ,  3 : 200    ;大小
+                         ,  4 : 200    ;原数据已获取
+                         ,  5 : 100    ;评论
+                         ,  6 : 200    ;发布日期
+                         ,  7 : 200    ;添加日期
+                         ,  8 : 350  } ;私有种子
+        SetColumnWidth(win_id, control_name, control_value)
+
         control_name  := "SysListView3212" ;统计
         max_width     := Windows_Cache["win_controls"][control_name]["w"]
         w_1           := 400
