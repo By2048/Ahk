@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive("VSCode") )
+#If CheckWindowsActive("VSCode")
 
     ; 软件设置{f1}
     LAlt & RAlt::Send {F13}
@@ -21,8 +21,15 @@
     !F4::Send !{F16}
     !+F4::Send !+{F16}
 
+    ^j::
+        Send ^c
+        data := Clipboard
+        Clipboard := StrReplace(Clipboard, "`r`n")
+        Send ^v
+        Clipboard := data
+    Return
 
-    ; f1-f19 正常
+    ; F1-F19 正常
 
     ;快速命令 
     >!Space::
@@ -39,7 +46,7 @@
 #If
 
 
-#If ( CheckWindowsActive( "VSCode" , "" , ".md" ) )
+#If CheckWindowsActive("VSCode", "", ".md")
 
     !\::
         result    := GetActiveWindowsInfo()
@@ -50,4 +57,18 @@
         HelpText(win_title, "center_down",  , 1000)
     Return
 
+#If
+
+
+#If CheckWindowsActive("VSCode", "", ".ahk")
+    CapsLock::
+        backup := Clipboard
+        Send ^+{Left}
+        Send ^{c}
+        code := Clipboard
+        code := StrReplace(code, "；", "`;")
+        code := StrReplace(code, "。", "." )
+        SendData(code)
+        Clipboard := backup
+    Return
 #If

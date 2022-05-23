@@ -1,5 +1,17 @@
 ﻿
-#If ( CheckWindowsActive("PyCharm") )
+#If CheckWindowsActive("PyCharm")
+
+    ; 设置
+    ~^!s::
+        ; Sleep 100
+        WinWaitActive, 设置
+        MoveWindowsToCenter(True)
+    Return
+
+#If
+
+
+#If CheckWindowsActive("PyCharm")
     
      ^F1::Return
      ^F2::Return
@@ -26,6 +38,19 @@
     ^+F10::Return
     ^+F11::Return
     ^+F12::Return
+
+    ; Default Keymap
+    ; ^[::Send ^{w}+{Tab}^+{w}
+    ; ^]::Send ^{w}{Tab}^+{w}
+    
+    ; ^[::
+    ;     Send {Home}
+    ;     Send +{End}
+    ;     Send +{Tab}
+    ;     Send {End}
+    ;     ; Send ^{w}+{Tab}^+{w}
+    ; Return
+    ; ^]::Send ^{w}{Tab}^+{w}
 
     ; 右键菜单{AppsKey}
     RAlt & LAlt::Send {AppsKey}
@@ -78,7 +103,7 @@
 
 
 
-#If ( CheckWindowsActive("PyCharm" , "SunAwtDialog") )
+#If CheckWindowsActive("PyCharm" , "SunAwtDialog")
   
     title := [ "终端" , "运行" , "调试" ]
 
@@ -103,19 +128,19 @@
 
 
 
-#If ( CheckWindowsActive("PyCharm" , "" , "admin.py") )
+#If CheckWindowsActive("PyCharm" , "" , "admin.py")
     :*:\sd\::short_description
 #If
 
 
 
-#If ( CheckWindowsActive("PyCharm" , "SunAwtDialog" , "Python 控制台") )
+#If CheckWindowsActive("PyCharm" , "SunAwtDialog" , "Python 控制台")
 
     ; ReRun
-    !BackSpace::MouseClickAndResetting(34, 92, "Window")
+    !BackSpace::MouseClickAndResetting(34, 92)
 
     ; StopConsole
-    !+BackSpace::MouseClickAndResetting(34, 142, "Window")
+    !+BackSpace::MouseClickAndResetting(34, 142)
 
     <#'::show_hide_key_config()
 
@@ -123,7 +148,7 @@
 
 
 
-#If ( CheckWindowsActive("PyCharm" , "SunAwtDialog" , "Python Console History") )
+#If CheckWindowsActive("PyCharm" , "SunAwtDialog" , "Python Console History")
 
     ; 历史记录返回 \ 与书签冲突
     !\::Send {Esc}
