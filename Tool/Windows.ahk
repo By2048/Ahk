@@ -669,54 +669,23 @@ MoveWindowsToMainMini(command)
     if (in_screen == 3) {
         screen_h := screen_h / 2
     }
-
-    ; position_check := False
-
-    ; position_default := WPD[win_process_name]
-    ; if (command == "Main" and position_default.Length()) {
-    ;     position_check := True
-    ;     MoveWindowsToDefaultPosition()
-    ;     Return
-    ; }
-
-    ; position_backup := WPB[win_process_name]
-    ; if (command == "Mini" and position_backup.Length()) {
-    ;     position_check := True
-    ;     MoveWindowsToBackupPosition()
-    ;     Return
-    ; }
-
-    ; if (position_check) {
-    ;     HelpText("Windows_Position Not NULL", "center_down", "screen_1", 500)
-    ;     Return
-    ; }
-
-    mini := Windows_MM["Default"][1]
-    main := Windows_MM["Default"][2]
-
-    for key, value in Windows_MM {
-        if (key == win_process_name) {
-            mini := value[1]
-            main := value[2]
-        }
-    }
+    mini := Windows_Main_Mini[1]
+    main := Windows_Main_Mini[2]
 
     if (command=="Main") {
-        HelpText("Windows Main Size")
+        HelpText("Windows Main", "center_down")
         ww := screen_w * main[1]
         hh := screen_h * main[2]
     } else if (command=="Mini") {
-        HelpText("Windows Mini Size")
+        HelpText("Windows Mini", "center_down")
         ww := screen_w * mini[1]
         hh := screen_h * mini[2]
     }
-
     xx := screen_x + (screen_w - ww)/2
     yy := screen_y + (screen_h - hh)/2
 
     SetWindows(win_id, xx, yy, ww, hh)
-
-    Sleep, 1000
+    Sleep 500
     HelpText()
 }
 
