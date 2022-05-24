@@ -12,8 +12,18 @@
 Global Windows_Theme := "Default"
 
 
+; 环境编辑器
+<#7::
+    Run sysdm.cpl
+    WinWaitActive, ahk_exe SystemPropertiesComputerName.exe,  , 3
+    MoveWindowsToCenter(True)
+    Send ^{Tab 2}
+    Send !n
+    MoveWindowsToDefaultPosition()
+Return
+
 ; 显示隐藏任务栏
-<#8:: 
+<#8::
     if (!WinExist("ahk_class Shell_TrayWnd")) {
         WinShow, ahk_class Shell_TrayWnd
     } else {

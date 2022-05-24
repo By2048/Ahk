@@ -21,16 +21,17 @@
 ;Use the arrow keys to switch between all open apps.
 ^!Tab::Return 
 
-^Esc::Return ;开始菜单
+^Esc::Return  ;开始菜单
 ^+Esc::Return ;任务管理器
 
-#a::Return ;打开操作中心
-#s::Return ;打开搜索
+#a::Return  ;打开操作中心
+#s::Return  ;打开搜索
 #+s::Return ;获取部分屏幕ReturnReturn
-#w::Return ;打开WindwsInk
-#x::Return ;系统菜单
-#k::Return ;打开“连接”快速操作
-#m::Return ;最小化所有窗口
+#w::Return  ;打开WindwsInk
+#x::Return  ;系统菜单
+#h::Return  ;听写
+#k::Return  ;打开“连接”快速操作
+#m::Return  ;最小化所有窗口
 
 #F1::Return ;系统帮助
 #PrintScreen::Return ;不明
@@ -48,10 +49,11 @@
 #Tab::Return 
 #+Tab::Return
 
-#^d::Return ;创建虚拟桌面
-#^F4::Return ;关闭当前虚拟桌面
-#^Left::Return ;向左切换虚拟桌面
+#^d::Return     ;创建虚拟桌面
+#^F4::Return    ;关闭当前虚拟桌面
+#^Left::Return  ;向左切换虚拟桌面
 #^Right::Return ;向右切换虚拟桌面
+
 #,::Return ;透明窗口显示桌面
 #.::Return ;输入法表情界面
 
