@@ -157,7 +157,7 @@ GetClientSize(hWnd, ByRef w:="", ByRef h:="")
 
 ; 获取激活窗口的所在屏幕的信息以及窗口信息
 ; result | {} 应用信息
-; mode   | Default AHK默认 \ Strict WindowsAPI修正
+; mode   | Default AHK默认 \ Strict|Window API修正
 GetActiveWindowsInfo(mode:="Default")
 {
     WinGet,                          win_id, ID,              A
