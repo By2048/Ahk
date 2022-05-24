@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive( "Zip" ) )
+#If CheckWindowsActive("7-Zip")
 
     <#\::
         MoveWindowsToDefaultPosition()
@@ -15,7 +15,6 @@
     Return
 
 
-
     ; 注册表相关操作
     !/::
         ; Clear History
@@ -29,7 +28,6 @@
 
         HelpText("Clear History", "center_down", "screen1", 1000)
     Return
-    
 
 
     ; 选择所有
@@ -43,6 +41,7 @@
             Send {Enter}
         }
     Return
+
 
     ; 选择指定列
     !F12::

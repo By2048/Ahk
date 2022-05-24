@@ -49,6 +49,13 @@ Loop {
         }
     }
 
+    if (win_process_name == "7-Zip") {
+        if (win_class == "#32770" and win_title == "浏览文件夹") {
+            MoveWindowsToDefaultPosition()
+            Continue
+        }
+    }
+
     ; Windows系统文件操作
     if (win_class == "#32770" or win_class == "OperationStatusWindow") {
         if (InStr(win_title, "属性")) {

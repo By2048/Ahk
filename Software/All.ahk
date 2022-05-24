@@ -26,6 +26,7 @@
 #Include %A_WorkingDir%\Software\Game\Android.ahk
 #Include %A_WorkingDir%\Software\Game\LOL.ahk
 
+#Include %A_WorkingDir%\Software\Other\7-Zip.ahk
 #Include %A_WorkingDir%\Software\Other\BitComet.ahk
 #Include %A_WorkingDir%\Software\Other\CloudMusic.ahk
 #Include %A_WorkingDir%\Software\Other\Everything.ahk
@@ -42,7 +43,6 @@
 #Include %A_WorkingDir%\Software\Other\VMware.ahk
 #Include %A_WorkingDir%\Software\Other\Wallpaper.ahk
 #Include %A_WorkingDir%\Software\Other\Wps.ahk
-#Include %A_WorkingDir%\Software\Other\Zip.ahk
 
 #Include %A_WorkingDir%\Software\Program\Chrome.ahk
 #Include %A_WorkingDir%\Software\Program\FireFox.ahk
