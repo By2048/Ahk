@@ -65,11 +65,11 @@ Return
     MoveWindowsToCenter(True)
 Return
 >^k::KeyboardGUI()
->^l::Run C:\Program Files\Logitech\LogiOptions\LogiOptions.exe
+>^l::Run "C:\Program Files\LogiOptionsPlus\logioptionsplus.exe"
 
 >^x::RunNormalUser("D:\#Lnk\Xshell.lnk")
 >^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk") 
->^v::Run %VSCode% " E:\Config\Windows.code-workspace",  , Hide
+>^v::Run %VSCode% " E:\Config\VSCode\Windows.code-workspace",  , Hide
 >^+v::Run %VSCode%,  , Hide
 >^n::Run D:\#Lnk\Notepad++.lnk
 >^m::RunNormalUser("D:\#Lnk\PotPlayer.lnk")
@@ -84,8 +84,8 @@ Return
 >^Esc::Run Taskmgr.exe ;任务管理器
 >^+Esc::Run D:\#Lnk\HuoRongSword.lnk
 
->^[::Run, %VSCode% " E:\Config\Note.code-workspace",   , Hide
->^]::Run, %VSCode% " E:\Config\Ahk.code-workspace",   , Hide
+>^[::Run, %VSCode% " E:\Config\VSCode\Note.code-workspace",   , Hide
+>^]::Run, %VSCode% " E:\Config\VSCode\Ahk.code-workspace",   , Hide
 >^\::Run D:\#Lnk\#AppStore\Whiteboard.lnk
 
 >^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}:: ;回收站
