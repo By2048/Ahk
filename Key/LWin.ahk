@@ -31,12 +31,35 @@ Return
     }
 Return
 
-; Twinkle Tray 调节显示器亮度
-; WinActivate, ahk_exe Twinkle Tray.exe
-<#9::#^!9   ; 主显示器 +
-<#0::#^!0   ; 主显示器 -
-<#+9::#^!+9 ; 副显示器 -
-<#+0::#^!+0 ; 副显示器 -
+<#9::  ;主显示器 -
+<#0::  ;主显示器 +
+<#+9:: ;副显示器 -
+<#+0:: ;副显示器 +
+    WinGet, previous_win_id, ID, A
+    switch A_ThisHotkey {
+        case "<#+9": Send #^!+9
+        case "<#+0": Send #^!+0
+        case "<#9" : Send #^!9
+        case "<#0" : Send #^!0
+    }
+    exe := "Twinkle Tray.exe"
+    win_id := WinExist("ahk_exe" exe)
+    WinGetPos, win_x, win_y, win_w, win_h, ahk_id %win_id%
+    x := 1814 , y := 942 , w := 212 , h := 276 ; Screen1 Center
+    if (Abs(win_x-x)<3 and Abs(win_y-y)<3 and Abs(win_w-w)<3 and Abs(win_h-h)<3) {
+        Return
+    }
+    WinActivate, ahk_exe %exe%
+    WinMove, ahk_exe %exe%,  , %x%, %y%, %w%, %h%
+Return
+<#9 Up::
+<#0 Up::
+<#+9 Up::
+<#+0 Up::
+    global previous_win_id
+    WinActivate, ahk_id %previous_win_id%
+Return
+
 
 ;声音
 <#=::Send {Volume_Up}
