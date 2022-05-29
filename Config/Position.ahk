@@ -149,6 +149,8 @@ WPD["Python__Anaconda"] := Position(2650, 1677)
 
 WPD["Thunder"]             := Position(2500, 1600)
 WPD["Thunder__新建任务面板"] := Position(1400, 1050)
+WPD["Thunder__迅雷播放组件"] := Position("[Center][1]", 1920, 1080)
+WPB["Thunder__迅雷播放组件"] := Position("[Center][2]", 1920, 1080)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

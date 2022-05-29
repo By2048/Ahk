@@ -7,4 +7,5 @@
  VSCode     Script     PyEnv      GitX       MuMu       
  Rename     Nicotv     Bi-Free    Bi-Join    Bi-GetName 
  Windows    Delete-Share          Backup-Disk-Tree      
- JetBrains-Toolbox-Update
+ JetBrains-Toolbox-Update         Rename.Config         
+ Rename.Tmp

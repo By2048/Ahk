@@ -159,11 +159,13 @@
     ^7::Return
     ^8::Return
     ^9::Return
+
     ^Tab::Return
     ^+Tab::Return
+    +Tab::Return
+
     !Tab::Send ^{Tab}
     !+Tab::Send ^+{Tab}
-    +Tab::Send ^+{Tab}
     !Home::Send ^1
     !End::Send ^9
 
@@ -173,8 +175,8 @@
     ;滚动
     ^PgUp::Return
     ^PgDn::Return
-    !PgUp::WheelUp
-    !PgDn::WheelDown
+    !PgUp::Send {WheelUp}
+    !PgDn::Send {WheelDown}
 
     ;切换书签栏显示隐藏状态
     ^+b::Return

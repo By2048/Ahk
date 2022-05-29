@@ -279,7 +279,7 @@ GetActiveWindowsInfo(mode:="Default")
 
 ; 获取当前激活的应用配置文件信息
 ; Config_Data | Config中定义的配置信息
-; return | win_config
+; return      | win_config
 GetActiveWindowsConfig(Config_Data)
 {
     ; 1 A
