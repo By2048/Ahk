@@ -3,7 +3,11 @@
 
 @Echo Off
 
-Mode 40,25
+Mode 40,27
+
+CD  /d  %~dp0
+
+Echo  =========== %CD% ===========
 
 SetLocal
 
