@@ -22,7 +22,7 @@ Set  Screen.ahk=%Folder%Tool\Screen.ahk
 
 @REM                       22                        -1
 @REM Global AutoHotkey := "D:\AutoHotkey\AutoHotkey.exe"
-For /f "delims=" %%A In ('FindStr ".*AutoHotkey.*" "Config.ahk"') Do Set AutoHotkey=%%A
+For /f "delims=" %%A In ('FindStr ".*AutoHotkey.exe" "Config.ahk"') Do Set AutoHotkey=%%A
 Set AutoHotkey=%AutoHotkey:~22,-1%
 If Not Exist %AutoHotkey% (
     Msg %username% /time:9 配置文件错误 \ 未设置脚本执行文件路径 Config.ahk\AutoHotkey
