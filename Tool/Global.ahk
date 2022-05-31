@@ -1,35 +1,38 @@
 ﻿
-; 不同进程之间传递变量 \ 通过读写INI文件
+; 不同进程之间传递变量 \ 通过读写注册表
 
-GlobalSet(_section_, _key_, _value_)
+GlobalSet(section:="", key:="", value:="")
 {
-    Global INI
-    value := _value_
-    if (_value_ == True) {
-        value := "True"
-    } else if (_value_ == False) {
-        value := "False"
+    path   := 
+    paths  := StrSplit(Reg_Path, "\", "", 2)
+    _type_ := "REG_SZ"
+    _root_ := paths[1]
+    _path_ := paths[2]
+    if (section != "" ) {
+        _path_ := _path_ . "\" . section
     }
-    IniWrite, %_value_%, %INI%, %_section_%, %_key_%
+    RegWrite, %_type_%, %_root_%, %_path_%, %key%, %value%
 }
 
-GlobalGet(_section_, _key_, _type_:="Str")
+GlobalGet(section:="", key:="", type:="Str")
 {
-    Global INI
-    IniRead, _value_, %INI%, %_section_%, %_key_%
-    value := _value_
-    if (_type_ == "Str") {
-        value := _value_
-    } else if (_type_ == "Int") {
-        value := _value_ + 0
-    } else if (_type_ == "Float") {
-        value := _value_ + 0
-    } else if (_type_ == "Bool") {
-        if (_value_ = "True") {
-            value := True
-        } else if (_value_ = "False") {
-            value := False
+    path := Reg_Path
+    if (section != "" ) {
+        path := path . "\" . section
+    }
+    RegRead, result, %path%, %key%
+    if (type == "Str") {
+        result := result
+    } else if (type == "Int") {
+        result := result + 0
+    } else if (type == "List") {
+        result := StrSplit(result, "|")
+    } else if (type == "Bool") {
+        if (result = "True") {
+            result := True
+        } else if (result = "False") {
+            result := False
         }
     }
-    return value
+    return result
 }
