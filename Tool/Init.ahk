@@ -14,8 +14,8 @@ DefaultProgress()
     w := 330
     h := 28
 
-    w := w / Screen1.Dpi
-    h := h / Screen1.Dpi
+    w := w / Screens.1.Dpi
+    h := h / Screens.1.Dpi
 
     Global InitProgress
 
@@ -73,17 +73,17 @@ InitConfig()
     h := Init["height"]
 
     ; Windows Dip 自动处理问题
-    w_dpi := w * Screen1.dpi
-    h_dpi := h * Screen1.dpi
+    w_dpi := w * Screens.1.dpi
+    h_dpi := h * Screens.1.dpi
     
     if (Screen_Count <= 2) {
-        x := Screen1.x + Screen1.w/2 - w_dpi/2
-        y := Screen1.y + Screen1.h/2 - h_dpi/2
+        x := Screens.1.x + Screens.1.w/2 - w_dpi/2
+        y := Screens.1.y + Screens.1.h/2 - h_dpi/2
     }
 
     if (Screen_Count == 3) {
-        x := Screen3.x + Screen3.w/2 - w_dpi/2
-        y := Screen3.y + Screen3.h/3 - w_dpi/2
+        x := Screens.3.x + Screens.3.w/2 - w_dpi/2
+        y := Screens.3.y + Screens.3.h/3 - w_dpi/2
     }
 
     Gui, Font, s25, "Source Code Pro"

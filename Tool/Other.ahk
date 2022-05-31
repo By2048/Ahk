@@ -74,23 +74,19 @@ ScreenShot(screen_name:="screen1", keep_path:="backup")
         }
     }
 
-    screen_name := ChangeScreenName(screen_name)
-    if (screen_name == "screen1") {
-        x := Screens_Software.1.x
-        y := Screens_Software.1.y
-        w := Screens_Software.1.w
-        h := Screens_Software.1.h
-    } else if (screen_name == "screen2") {    
-        x := Screens_Software.2.x
-        y := Screens_Software.2.y
-        w := Screens_Software.2.w
-        h := Screens_Software.2.h
-    } else if (screen_name == "screen3") {
-        x := Screens_Software.3.x
-        y := Screens_Software.3.y
-        w := Screens_Software.3.w
-        h := Screens_Software.3.h
+    screen_id := ScreenNameToId(screen_name)
+    if (screen_id == "1") {
+        screen := Screens.Software.1
+    } else if (screen_id == "2") {
+        screen := Screens.Software.2
+    } else if (screen_id == "3") {
+        screen := Screens.Software.3
     }
+
+    x := screen.x
+    y := screen.y
+    w := screen.w
+    h := screen.h
 
     x := Round(x)
     y := Round(y)
@@ -169,7 +165,7 @@ ScreenshotQuick()
 {
     FormatTime, name, _, yyyy-MM-dd HH-mm-ss
     file := Snipaste_Screenshot_Path_Tmp "\" name ".png"
-    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, Screen1.x, Screen1.y, Screen1.w, Screen1.h, file)
+    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, Screens.1.x, Screens.1.y, Screens.1.w, Screens.1.h, file)
     Run %cmd%
 }
 
@@ -183,12 +179,12 @@ Snipaste(image:="", screens:="screen1")
     image_h    := image_size["h"]
 
     if (screens=="screen1" or screens=="Screen1") {
-        x := Screen1.x + Screen1.w/2 - image_w/2
-        y := Screen1.y + Screen1.h/2 - image_h/2
+        x := Screens.1.x + Screens.1.w/2 - image_w/2
+        y := Screens.1.y + Screens.1.h/2 - image_h/2
     }
     if (screens=="screen2" or screens=="Screen2") {
-        x := Screen2.x + Screen2.w/2 - image_w/2
-        y := Screen2.y + Screen2.h/2 - image_h/2
+        x := Screens.2.x + Screens.2.w/2 - image_w/2
+        y := Screens.2.y + Screens.2.h/2 - image_h/2
     }
     x := Round(x)
     y := Round(y)

@@ -192,24 +192,24 @@ GetActiveWindowsInfo(mode:="Default")
     in_screen := 1
     screen_x  := 0 , screen_y  := 0
     screen_xx := 0 , screen_yy := 0
-    if (win_x >= Screen1.x and win_x < Screen1.xx) {
+    if (win_x >= Screens.1.x and win_x < Screens.1.xx) {
         in_screen  := 1
-        screen_x   := Screen1.x   ,  screen_y := Screen1.y
-        screen_w   := Screen1.w   ,  screen_h := Screen1.h
-        screen_xx  := Screen1.xx  , screen_yy := Screen1.yy
-        screen_dpi := Screen1.dpi
-    } else if (win_x >= Screen2.x and win_x < Screen2.xx) {
+        screen_x   := Screens.1.x   ,  screen_y := Screens.1.y
+        screen_w   := Screens.1.w   ,  screen_h := Screens.1.h
+        screen_xx  := Screens.1.xx  , screen_yy := Screens.1.yy
+        screen_dpi := Screens.1.dpi
+    } else if (win_x >= Screens.2.x and win_x < Screens.2.xx) {
         in_screen  := 2
-        screen_x   := Screen2.x   ,  screen_y := Screen2.y
-        screen_w   := Screen2.w   ,  screen_h := Screen2.h
-        screen_xx  := Screen2.xx  , screen_yy := Screen2.yy
-        screen_dpi := Screen2.dpi
-    } else if (win_x >= Screen3.x and win_x < Screen3.xx) {
+        screen_x   := Screens.2.x   ,  screen_y := Screens.2.y
+        screen_w   := Screens.2.w   ,  screen_h := Screens.2.h
+        screen_xx  := Screens.2.xx  , screen_yy := Screens.2.yy
+        screen_dpi := Screens.2.dpi
+    } else if (win_x >= Screens.3.x and win_x < Screens.3.xx) {
         in_screen  := 3
-        screen_x   := Screen3.x   ,  screen_y := Screen3.y
-        screen_w   := Screen3.w   ,  screen_h := Screen3.h
-        screen_xx  := Screen3.xx  , screen_yy := Screen3.yy/2
-        screen_dpi := Screen3.dpi
+        screen_x   := Screens.3.x   ,  screen_y := Screens.3.y
+        screen_w   := Screens.3.w   ,  screen_h := Screens.3.h
+        screen_xx  := Screens.3.xx  , screen_yy := Screens.3.yy/2
+        screen_dpi := Screens.3.dpi
     }
 
     result := {}
@@ -368,8 +368,8 @@ GetActiveWindowsConfig(Config_Data)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; 修改窗口透明度
 
+; 修改窗口透明度
 SetWindowsTransparent(change:=0)
 {
     result := GetActiveWindowsInfo()

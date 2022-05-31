@@ -84,11 +84,11 @@ ShowShiftImage()
     image_size := GetImageSize(image)
     image_w    := image_size["w"]
     image_h    := image_size["h"]
-    image_x    := Screen1.w/2 - image_w/2
-    image_y    := Screen1.h/2 - image_h/2
+    image_x    := Screens.1.w/2 - image_w/2
+    image_y    := Screens.1.h/2 - image_h/2
 
-    image_w := image_w / Screen1.dpi
-    image_h := image_h / Screen1.dpi
+    image_w := image_w / Screens.1.dpi
+    image_h := image_h / Screens.1.dpi
     
     Gui, Destroy
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption

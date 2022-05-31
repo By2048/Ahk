@@ -84,13 +84,13 @@ Loop {
             ;     win_w  := result.win_w
             ;     win_h  := result.win_h
             ; }
-            xx := Screen3.x + Screen3.w/2 - win_w/2
-            yy := Screen3.y + Screen3.h/4 - win_h/2
+            xx := Screens.3.x + Screens.3.w/2 - win_w/2
+            yy := Screens.3.y + Screens.3.h/4 - win_h/2
             SetWindows(win_id, xx, yy, win_w, win_h)
             Continue
         }
-        xx := Screen1.x + Screen1.w/2 - win_w/2
-        yy := Screen1.y + Screen1.h/2 - win_h/2
+        xx := Screens.1.x + Screens.1.w/2 - win_w/2
+        yy := Screens.1.y + Screens.1.h/2 - win_h/2
         SetWindows(win_id, xx, yy, win_w, win_h)
         Continue
     }

@@ -64,7 +64,7 @@
         cdown  := 0
         cleft  := 0
         cright := 0
-        offset := 4 * Screen1.dpi
+        offset := 4 * Screens.1.dpi
 
         result := GetActiveWindowsInfo("Window")
         cinfo  := result["win_controls"]["#327702"]

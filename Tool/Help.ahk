@@ -7,17 +7,18 @@
 
 
 ; 显示图片
-HelpImage(image="")
+HelpImage(image:="")
 {   
     if (image == "") {
         Gui, Destroy
         GlobalSet("Status", "help_image_show_status", False)
     } else {
-        size := GetImageSize(image)
-        w := size["w"] / Screen1.dpi
-        h := size["h"] / Screen1.dpi
-        x := Screen1.w/2 - w/2
-        y := Screen1.h/2 - h/2
+        size   := GetImageSize(image)
+        screen := Screens.1
+        w := size["w"] / screen.dpi
+        h := size["h"] / Screen.dpi
+        x := screen.w/2 - w/2
+        y := screen.h/2 - h/2
         Gui, Destroy
         Gui, +DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
         Gui, Margin, 1, 1
@@ -30,7 +31,7 @@ HelpImage(image="")
 
 
 ; 显示帮助文本
-HelpText(data="", xy="right_down", screen_name="screen1", sleep_time=0)
+HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 {   
     CoordMode, Pixel, Screen
     CoordMode, Mouse, Screen
@@ -49,28 +50,30 @@ HelpText(data="", xy="right_down", screen_name="screen1", sleep_time=0)
         font_hight := font_hight * n_count
     }
 
-    screen_name := ChangeScreenName(screen_name)
-
-    if (screen_name == "screen1") {
-        screen_x   := Screen1.x  , screen_y  := Screen1.y
-        screen_xx  := Screen1.xx , screen_yy := Screen1.yy
-        screen_w   := Screen1.w  , screen_h  := Screen1.h
-    } else if (screen_name == "screen2") {
-        screen_x   := Screen2.x  , screen_y  := Screen2.y
-        screen_xx  := Screen2.xx , screen_yy := Screen2.yy
-        screen_w   := Screen2.w  , screen_h  := Screen2.h
-    } else if (screen_name == "screen3") {
-        screen_x   := Screen3.x   , screen_y  := Screen3.y
-        screen_xx  := Screen3.xx  , screen_yy := Screen3.yy/2
-        screen_w   := Screen3.w   , screen_h  := Screen3.h/2
+    screen_id     := ScreenNameToId(screen_name)
+    screen_config := {}
+    if (screen_id == "1") {
+        screen_config := Screens.1
+    } else if (screen_id == "2") {
+        screen_config := Screens.2
+    } else if (screen_id == "3") {
+        screen_config := Screens.3
     }
-    screen_dpi := Screen1.dpi
+    screen_id  := screen_config.id
+    screen_dpi := screen_config.dpi
+    screen_x   := screen_config.x
+    screen_y   := screen_config.y
+    screen_w   := screen_config.w
+    screen_h   := screen_config.h
+    screen_xx  := screen_config.xx
+    screen_yy  := screen_config.yy
 
     zh_cn_count := ZH_CN(data)
     data_count  := StrLen(data)
     if (data_count < 6) {
         data_count := 6
     }
+
     gui_w := ( data_count + zh_cn_count ) * font_size * screen_dpi
     gui_h := font_hight
 
@@ -82,21 +85,21 @@ HelpText(data="", xy="right_down", screen_name="screen1", sleep_time=0)
     xy := StrReplace(xy, "+", "_")
     xy := StrReplace(xy, "-", "_")
 
-    if (xy=="right_down") {
+    if (xy == "right_down") {
         gui_x := screen_xx - gui_w - 5
         gui_y := screen_yy - gui_h - 5
-    } else if (xy=="left_down") {
+    } else if (xy == "left_down") {
         gui_x := screen_x  + 5
         gui_y := screen_yy - gui_h - 5
     }
 
-    if (xy=="center") {
+    if (xy == "center") {
         gui_x := screen_x + screen_w/2 - gui_w/2
         gui_y := screen_y + screen_h/2 - gui_h/2
-    } else if (xy=="center_up") {
+    } else if (xy == "center_up") {
         gui_x := screen_x + screen_w/2 - gui_w/2
         gui_y := screen_y + 5
-    } else if (xy=="center_down") {
+    } else if (xy == "center_down") {
         gui_x := screen_x  + screen_w/2 - gui_w/2
         gui_y := screen_yy - gui_h      - 5
     }

@@ -38,22 +38,22 @@ GetInitConfig()
     ; if (Screen_Count>=1) {
     ;     _format_ := " [1] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
     ;     _value_  := []
-    ;     _value_.Push( Screen1.x, Screen1.y, Screen1.xx, Screen1.yy )
-    ;     _value_.Push( Screen1.dpi, Screen1.w, Screen1.h             )
+    ;     _value_.Push( Screens.1.x, Screens.1.y, Screens.1.xx, Screens.1.yy )
+    ;     _value_.Push( Screens.1.dpi, Screens.1.w, Screens.1.h             )
     ;     Init["config"].Push( Format( _format_, _value_*) )
     ; }
     ; if (Screen_Count>=2) {
     ;     _format_ := " [2] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
     ;     _value_  := []
-    ;     _value_.Push( Screen2.x, Screen2.y, Screen2.xx, Screen2.yy )
-    ;     _value_.Push( Screen2.dpi, Screen2.w, Screen2.h             )
+    ;     _value_.Push( Screens.2.x, Screens.2.y, Screens.2.xx, Screens.2.yy )
+    ;     _value_.Push( Screens.2.dpi, Screens.2.w, Screens.2.h             )
     ;     Init["config"].Push( Format( _format_, _value_*) )
     ; }
     ; if (Screen_Count>=3) {
     ;     _format_ := " [3] xy|dpi|wh | {1:5} {2:5} {3:5} {4:5}|{5:4}| {6}*{7}"
     ;     _value_  := []
-    ;     _value_.Push( Screen3.x, Screen3.y, Screen3.xx, Screen3.yy )
-    ;     _value_.Push( Screen3.dpi, Screen3.w, Screen3.h             )
+    ;     _value_.Push( Screens.3.x, Screens.3.y, Screens.3.xx, Screens.3.yy )
+    ;     _value_.Push( Screens.3.dpi, Screens.3.w, Screens.3.h             )
     ;     Init["config"].Push( Format( _format_, _value_*) )
     ; }
     ; AddInitLine()

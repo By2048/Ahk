@@ -25,13 +25,12 @@ ListToStr(data)
 
 
 ; 屏幕参数名转换
-ChangeScreenName(screen_name)
+ScreenNameToId(screen_name)
 {
-    screen_name := StrReplace(screen_name, "Screen", "screen")
-    screen_name := StrReplace(screen_name, "_1", "1")
-    screen_name := StrReplace(screen_name, "_2", "2")
-    screen_name := StrReplace(screen_name, "_3", "3")
-    return screen_name
+    screen_id := StrReplace(screen_name, "Screen", "")
+    screen_id := StrReplace(screen_id  , "screen", "")
+    screen_id := StrReplace(screen_id  , "_"     , "")
+    return screen_id
 }
 
 

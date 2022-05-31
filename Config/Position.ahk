@@ -52,41 +52,41 @@ Position(args*) {
     y := Format("{:L}", y)
 
     if ( InStr(x, "[1]") ) {
-        win_w := w < 0 ? Screen1.w + w : w
+        win_w := w < 0 ? Screens.1.w + w : w
         if ( InStr(x, "[center]" ) ) {
-            win_x := Screen1.x + Screen1.w/2 - win_w/2
+            win_x := Screens.1.x + Screens.1.w/2 - win_w/2
         }
     }
     if ( InStr(y, "[1]") ) {
-        win_h := h < 0 ? Screen1.h + h : h
+        win_h := h < 0 ? Screens.1.h + h : h
         if ( InStr(y, "[center]") ) {
-            win_y := Screen1.y + Screen1.h/2 - win_h/2
+            win_y := Screens.1.y + Screens.1.h/2 - win_h/2
         }
     }
 
     if ( InStr(x, "[2]") ) {
-        win_w := w < 0 ? Screen2.w + w : w
+        win_w := w < 0 ? Screens.2.w + w : w
         if ( InStr(x, "[center]") ) {
-            win_x := Screen2.x + Screen2.w/2 - win_w/2
+            win_x := Screens.2.x + Screens.2.w/2 - win_w/2
         }
     }
     if ( InStr(y, "[2]") ) {
-        win_h := h < 0 ? Screen2.h + h : h
+        win_h := h < 0 ? Screens.2.h + h : h
         if ( InStr(y, "[center]") ) {
-            win_y := Screen2.y + Screen2.h/2 - win_h/2
+            win_y := Screens.2.y + Screens.2.h/2 - win_h/2
         }
     }
 
     if ( InStr(x, "[3]") ) {
-        win_w := w < 0 ? Screen3.w + w : w
+        win_w := w < 0 ? Screens.3.w + w : w
         if ( InStr(x, "[center]") ) {
-            win_x := Screen3.x + Screen3.w/2 - win_w/2
+            win_x := Screens.3.x + Screens.3.w/2 - win_w/2
         }
     }
     if ( InStr(y, "[3]") ) {
-        win_h := h < 0 ? Screen3.h + h : h
+        win_h := h < 0 ? Screens.3.h + h : h
         if ( InStr(y, "[center]") ) {
-            win_y := Screen3.y + Screen3.h/2 - win_h/2
+            win_y := Screens.3.y + Screens.3.h/2 - win_h/2
         }
     }
 
@@ -122,21 +122,21 @@ WPD["CloudMusic"] := Position(2500,1700)
 WPB["CloudMusic"] := Position("[Center][2]", 2500, 1700)
 win_w := 3000
 win_h := 250
-win_x := Screen1.x  + Screen1.w/2 - win_w/2
-win_y := Screen1.yy - win_h       - 10
+win_x := Screens.1.x  + Screens.1.w/2 - win_w/2
+win_y := Screens.1.yy - win_h       - 10
 WPD["CloudMusic_DesktopLyrics"] := Position(win_x, win_y, win_w, win_h)
-win_x := Screen2.x  + Screen2.w/2 - win_w/2
-win_y := Screen2.yy - win_h       - 10
+win_x := Screens.2.x  + Screens.2.w/2 - win_w/2
+win_y := Screens.2.yy - win_h       - 10
 WPB["CloudMusic_DesktopLyrics"] := Position(win_x, win_y, win_w, win_h)
 
 WPD["FreeFileSync"]          := Position(3000, 1800)
 WPB["FreeFileSync"]          := Position("[Center][2]", 3000, 1800)
 WPD["FreeFileSync__同步设置"] := Position(1500, 1800)
 
-WPD["PotPlayer"]          := Position(Screen1.w * 4/6 , Screen1.h * 4/6)
-WPB["PotPlayer"]          := Position("[Center][2]", Screen2.w * 4/6, Screen2.h * 4/6 )
+WPD["PotPlayer"]          := Position(Screens.1.w * 4/6 , Screens.1.h * 4/6)
+WPB["PotPlayer"]          := Position("[Center][2]", Screens.2.w * 4/6, Screens.2.h * 4/6 )
 WPD["PotPlayer__播放列表"] := Position(10, "[Center][1]", 1000, 1500)
-WPB["PotPlayer__播放列表"] := Position(Screen2.xx - 1000 - 10, "[Center][2]", 1000, 1500)
+WPB["PotPlayer__播放列表"] := Position(Screens.2.xx - 1000 - 10, "[Center][2]", 1000, 1500)
 
 WPD["Chrome"]          := Position("[Center][1]", 3300, 2000)
 WPB["Chrome"]          := Position("[Center][2]", 3000, 1800)
