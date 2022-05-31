@@ -3,36 +3,27 @@
 
 ; 初始化系统屏幕相关信息
 
-Global Screens            := {}
-Global Screens_Software   := {}
-Global Screens_System     := {}
-Global Screens_SystemPlus := {}
+Global Screens := {}
 
-Global Screen1, Screen2, Screen3, Screen4, Screen5
+Screens["Keys"] := { "Dpi"  : ["Default", "Software", "System", "SystemPlus"]       ;
+                   , "Attr" : ["id", "name", "dpi", "x", "y", "w", "h", "xx", "yy"] }
 
-Global Screens_Dpi_Keys   := [ "Software", "System", "SystemPlus", "" ]
-; 与Tool\Screen.ahk中属性同步
-Global Screens_Attr_Keys  := [ "index", "name", "dpi", "x", "y", "w", "h", "xx", "yy", "str" ]
+Screens["Count"] := GlobalGet("Screen", "Count", "Int" )
+Screens["ID"]    := GlobalGet("Screen", "ID"   , "List")
+Screens["Dpi"]   := GlobalGet("Screen", "Dpi"  , "List")
 
-For _, dpi In Screens_Dpi_Keys {
-    screen_var_name := dpi ? "Screens_" . dpi : "Screens"
-    if (screen_var_name.Count() == Screen_Count) {
-        continue
-    } else {
-        %screen_var_name% := {}
-    }
-    index := 0
-    Loop %Screen_Count% {
-        index := A_Index
-        Screen%index% := {}
-        if (dpi) {
-            section_name  := "Screen" . index . "." . dpi
-        } else {
-            section_name  := "Screen" . index
+For index_dpi, key_dpi In Screens["Keys"]["Dpi"] {
+    Screens[key_dpi] := {}
+    Loop, % Screens["Count"] {
+        screen_id := A_Index
+        Screens[key_dpi][screen_id] := {}
+        For index_attr, key_attr In Screens["Keys"]["Attr"] {
+            data := GlobalGet(Format("Screen\{}\{}", key_dpi, screen_id), key_attr)
+            Screens[key_dpi][screen_id][key_attr] := data
         }
-        for _, key in Screens_Attr_Keys {
-            Screen%index%[key] := GlobalGet(section_name, key) 
-        }
-        %screen_var_name%[index] := Screen%index%
     }
+}
+
+Loop, % Screens["Count"] {
+    Screens[A_Index] := Screens["Default"][A_Index]
 }
