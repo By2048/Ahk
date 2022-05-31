@@ -1,9 +1,11 @@
 ﻿
+#Include %A_WorkingDir%\Config\Base.ahk
+
 ; 不同进程之间传递变量 \ 通过读写注册表
 
 GlobalSet(section:="", key:="", value:="")
 {
-    path   := 
+    path   := Reg_Path
     paths  := StrSplit(Reg_Path, "\", "", 2)
     _type_ := "REG_SZ"
     _root_ := paths[1]
