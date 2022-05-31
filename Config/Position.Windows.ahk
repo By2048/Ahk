@@ -37,3 +37,6 @@ WPD["SystemMonitor"] := Position(3000 , 1800)
 
 ; 终端 160*45 | 3132*1873
 WPD["Terminal"] := Position(3132 , 1873)
+
+; 编辑环境变量
+WPD["SystemPropertiesComputerNam_#32770_环境变量"] := Position(2000, 1500)

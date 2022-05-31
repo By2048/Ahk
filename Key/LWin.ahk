@@ -19,7 +19,6 @@ Global Windows_Theme := "Default"
     MoveWindowsToCenter(True)
     Send ^{Tab 2}
     Send !n
-    MoveWindowsToDefaultPosition()
 Return
 
 ; 显示隐藏任务栏

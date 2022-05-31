@@ -1,8 +1,14 @@
 ﻿
 ; 编辑环境变量
-#If CheckWindowsActive( "SystemPropertiesAdvanced" )
+#If CheckWindowsActive( "SystemPropertiesComputerName" )
     PgUp::Send !u
     PgDn::Send !o
+    <#\::
+        MoveWindowsToDefaultPosition()
+        _id := Windows_Cache["win_id"]
+        SetColumnWidth( _id, "SysListView321", { 1 : 200 , 2 : 1650 } ) ;用户变量
+        SetColumnWidth( _id, "SysListView322", { 1 : 370 , 2 : 1450 } ) ;系统变量
+    Return
 #If
 
 
