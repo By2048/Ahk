@@ -11,9 +11,9 @@ AutoHotkey := "D:\AutoHotkey\AutoHotkey.exe"
 ;           | 1,          2,          3
 ;           | Screen1.Id  Screen2.Id  Screen3.Id
 ; 屏幕DPI   | 
-Screen_Count := 3
-Screen_ID    := [ 1 , 2   , 3 ]
-Screen_Dpi   := [ 2 , 1.5 , 1 ]
+Screens_Count := 3
+Screens_Id    := [ 1 , 2   , 3   ]
+Screens_Dpi   := [ 2 , 1.5 , 1.5 ]
 
 ; 系统类型 | Win10 \ WinServer
 System_Type := "Win10"
