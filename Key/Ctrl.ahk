@@ -75,7 +75,6 @@ Return
 >^m::RunNormalUser("D:\#Lnk\PotPlayer.lnk")
 
 >^Delete::
-    EnvUpdate
     command := Format("{1} /c {2} /f /im explorer.exe", CMD, TaskKill)
     RunWait, %command%
     Sleep 1000
