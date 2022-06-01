@@ -24,5 +24,6 @@ Global Windows_Main_Mini := [ [ 3/5 , 3/4 ] , [ 5/6 , 8/9 ] ]
 
 
 ; HelpText Font Config
+Global Font_Dpi  := 2
 Global Font_Size := 25
 Global Font_Type := "Courier New"

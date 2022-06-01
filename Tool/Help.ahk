@@ -70,10 +70,8 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     total_count := StrLen(data)
     total_count := total_count > 6 ? total_count : 6
 
-    global Font_Size, Font_Type
-    font_type  := Font_Type
-    font_size  := Font_Size
-    font_width := (total_count + zh_cn_count) * font_size * screen_dpi 
+    Global Font_Size, Font_Type, Font_Dpi
+    font_width := (total_count + zh_cn_count) * Font_Size * Font_Dpi
 
     text_x := text_y := 1
     text_w := font_width
@@ -82,7 +80,7 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     Gui, Destroy
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
     Gui, Margin, 0, 0
-    Gui, font, s%font_size%, %font_type%
+    Gui, font, s%Font_Size%, %Font_Type%
     Gui, Add, Text, +Center -Border vTextMain x%text_x% y%text_y% w%text_w%, %data%
 
     GuiControlGet, TMC, Pos, TextMain
