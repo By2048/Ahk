@@ -11,6 +11,7 @@ Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Run.png
 LWin & RWin::
     Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Run.png
     if (GetKeyState("LShift", "P")) {
+        RegDelete, %Reg_Path%
         Run, Setup.bat ForceStart, %A_WorkingDir%, Hide
     } else {
         Run, Setup.bat Start, %A_WorkingDir%, Hide
@@ -23,6 +24,7 @@ Return
 RWin & LWin::
     Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Error.png
     if (GetKeyState("RShift", "P")) {
+        RegDelete, %Reg_Path%
         Run, Setup.bat ForceStop, %A_WorkingDir%, Hide
     } else {
         Run, Setup.bat Stop, %A_WorkingDir%, Hide
