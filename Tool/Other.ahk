@@ -172,17 +172,19 @@ ScreenshotQuick()
 
 
 ; 屏幕贴图
-Snipaste(image:="", screens:="screen1")
+Snipaste(image:="", screen:="screen1")
 {
     image_size := GetImageSize(image)
     image_w    := image_size["w"]
     image_h    := image_size["h"]
 
-    if (screens=="screen1" or screens=="Screen1") {
-        x := Screens.1.x + Screens.1.w/2 - image_w/2
-        y := Screens.1.y + Screens.1.h/2 - image_h/2
+    screen_id := ScreenNameToId(screen)
+
+    if (screen_id == "1") {
+        x := Screens.1.x + (Screens.1.w - image_w) / 2
+        y := Screens.1.y + (Screens.1.h - image_h) / 2
     }
-    if (screens=="screen2" or screens=="Screen2") {
+    if (screen_id == "2") {
         x := Screens.2.x + Screens.2.w/2 - image_w/2
         y := Screens.2.y + Screens.2.h/2 - image_h/2
     }

@@ -185,7 +185,7 @@ Return
         global hotkeys_images
         image := hotkeys_images[hotkeys_index]
         image := A_WorkingDir . "\Image\RShift\" . image
-        Snipaste(image, "screen1")
+        Snipaste(image, "Screen1")
         SetTimer, HideShiftImage, -300
     Return
 #If
