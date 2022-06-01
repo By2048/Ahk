@@ -42,14 +42,6 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
         return
     }
 
-    font_size  := 25
-    font_hight := font_size * 3
-    
-    n_count := StrSplit(data, "`n").MaxIndex() 
-    if (n_count > 1) {
-        font_hight := font_hight * n_count
-    }
-
     screen_id     := ScreenNameToId(screen_name)
     screen_config := {}
     if (screen_id == "1") {
@@ -67,54 +59,63 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     screen_h   := screen_config.h
     screen_xx  := screen_config.xx
     screen_yy  := screen_config.yy
-
-    zh_cn_count := ZH_CN(data)
-    data_count  := StrLen(data)
-    if (data_count < 6) {
-        data_count := 6
+    
+    ; 屏幕3 只使用上半部分
+    if (screen_id == "3") {
+        screen_h  := screen_h  / 2
+        screen_yy := screen_yy / 2
     }
+    
+    zh_cn_count := ZH_CN(data)
+    total_count := StrLen(data)
+    total_count := total_count > 6 ? total_count : 6
 
-    gui_w := ( data_count + zh_cn_count ) * font_size * screen_dpi
-    gui_h := font_hight
+    global Font_Size, Font_Type
+    font_type  := Font_Type
+    font_size  := Font_Size
+    font_width := (total_count + zh_cn_count) * font_size * screen_dpi 
 
-    text_h := gui_h
-    gui_h  := gui_h + 10
-    text_w := gui_w
+    text_x := text_y := 1
+    text_w := font_width
+
+    Global TextMain
+    Gui, Destroy
+    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
+    Gui, Margin, 0, 0
+    Gui, font, s%font_size%, %font_type%
+    Gui, Add, Text, +Center -Border vTextMain x%text_x% y%text_y% w%text_w%, %data%
+
+    GuiControlGet, TMC, Pos, TextMain
+    text_x := TMCX
+    text_y := TMCY
+    text_w := TMCW
+    text_h := TMCH
+
+    gui_w := text_w
+    gui_h := text_h
 
     xy := StrReplace(xy, "|", "_")
     xy := StrReplace(xy, "+", "_")
     xy := StrReplace(xy, "-", "_")
-
     if (xy == "right_down") {
         gui_x := screen_xx - gui_w - 5
         gui_y := screen_yy - gui_h - 5
     } else if (xy == "left_down") {
         gui_x := screen_x  + 5
         gui_y := screen_yy - gui_h - 5
-    }
-
-    if (xy == "center") {
-        gui_x := screen_x + screen_w/2 - gui_w/2
-        gui_y := screen_y + screen_h/2 - gui_h/2
+    } else if (xy == "center") {
+        gui_x := screen_x + (screen_w - gui_w) / 2
+        gui_y := screen_y + (screen_h - gui_h) / 2
     } else if (xy == "center_up") {
-        gui_x := screen_x + screen_w/2 - gui_w/2
+        gui_x := screen_x + (screen_w - gui_w) / 2
         gui_y := screen_y + 5
     } else if (xy == "center_down") {
-        gui_x := screen_x  + screen_w/2 - gui_w/2
-        gui_y := screen_yy - gui_h      - 5
+        gui_x := screen_x  + (screen_w - gui_w) / 2
+        gui_y := screen_yy - gui_h - 5
     }
 
-    gui_w  := gui_w  / screen_dpi
-    gui_h  := gui_h  / screen_dpi
-    text_w := text_w / screen_dpi
-    text_h := text_h / screen_dpi
+    Gui, Show, NA x%gui_x% y%gui_y% w%gui_w% h%gui_h%
 
-    Gui, Destroy
-    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
-    Gui, Margin, 0, 0
-    Gui, font, s%font_size%, Courier New
-    Gui, Add, Text, x0 y7 w%text_w% h%text_h% +Center -Border, %data%
-    Gui, Show, x%gui_x% y%gui_y% w%gui_w% h%gui_h% NA
     GlobalSet("Status", "help_text_show_status", True)
 
     if (sleep_time > 0) {
