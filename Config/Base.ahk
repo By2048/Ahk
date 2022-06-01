@@ -21,3 +21,8 @@ Global JQB_Windows := "T:\\JQB_Windows"
 
 ; 设置软件大小比例 [ Mini , Main ]
 Global Windows_Main_Mini := [ [ 3/5 , 3/4 ] , [ 5/6 , 8/9 ] ]
+
+
+; HelpText Font Config
+Global Font_Size := 25
+Global Font_Type := "Courier New"
