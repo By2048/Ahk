@@ -81,7 +81,7 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
     Gui, Margin, 0, 0
     Gui, font, s%Font_Size%, %Font_Type%
-    Gui, Add, Text, +Center -Border vTextMain x%text_x% y%text_y% w%text_w%, %data%
+    Gui, Add, Text, +Center +Border vTextMain x%text_x% y%text_y% w%text_w%, %data%
 
     GuiControlGet, TMC, Pos, TextMain
     text_x := TMCX
@@ -89,8 +89,14 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     text_w := TMCW
     text_h := TMCH
 
-    gui_w := text_w
-    gui_h := text_h
+    text_x := 1
+    text_y := 1
+    text_w := text_w
+    text_h := text_h
+    GuiControl, Move, TextMain, x%text_x% y%text_y% w%text_w% h%text_h%
+
+    gui_w := text_w + 2
+    gui_h := text_h + 2
 
     xy := StrReplace(xy, "|", "_")
     xy := StrReplace(xy, "+", "_")
