@@ -162,6 +162,7 @@
 #If
 
 
+
 ; 服务
 #If CheckWindowsActive( "MMC" , "" , "服务" )
     <#\::
@@ -174,5 +175,45 @@
                     ,  4 : 110   ;启动类型
                     ,  5 : 60  } ; 登录为
         SetColumnWidth(_id, _name, _width)
+    Return
+#If
+
+
+
+; 注册表
+#If CheckWindowsActive("RegEdit")
+    <#\::
+        MouseGetPos, x_origin, y_origin
+
+        MoveWindowsToDefaultPosition()
+        _id    := Windows_Cache["win_id"]
+        _name  := "SysListView321"
+        _width := {   1 : 370     ;名称
+                    , 2 : 230     ;类型
+                    , 3 : 1170  } ;数值
+        SetColumnWidth(_id, _name, _width)
+
+        max_left := 650
+        offset   := 9
+
+        control_config := Windows_Cache["win_controls"]["SysTreeView321"]
+        move_steps     := control_config.w - max_left
+        if ( Abs(move_steps) < 9 ) {
+            return
+        }
+        ; Send {Alt Down}{v}{Alt Up}{l} ;Error Wondows Lock
+        Send {Alt Down}{v}{Alt Up}{Down}{Enter}
+        SetKeyDelay -1
+        if (move_steps > 0) {
+            times := move_steps / 2
+            Send {Left %times%}
+        } else {
+            times := Abs(move_steps) / 2
+            Send {Right %times%}
+        }
+        SetKeyDelay 0
+        Send {Esc}
+
+        MouseMove, %x_origin%, %y_origin%
     Return
 #If

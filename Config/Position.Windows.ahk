@@ -23,6 +23,9 @@ WPD["MMC"] := Position(2300 , 1600)
 ; 画图
 WPD["MsPaint"] := Position(2345 , 1679)
 
+; 注册表
+WPD["RegEdit"] := Position(2500 , 1600)
+
 ; 设置
 WPD["WindowsSettings_ApplicationFrameWindow"] := Position(2400 , 1600)
 
