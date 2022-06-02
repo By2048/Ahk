@@ -1,8 +1,4 @@
 ﻿
-; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
-Global Windows_Cache := {}
-
-
 ; 截图软件配置
 Global Snipaste_EXE                    := "D:\Snipaste\Snipaste.exe"
 Global Snipaste_Auto_Save_File         := "D:\Snipaste\#\*.png"
@@ -27,3 +23,11 @@ Global Windows_Main_Mini := [ [ 3/5 , 3/4 ] , [ 5/6 , 8/9 ] ]
 Global Font_Dpi  := 2
 Global Font_Size := 25
 Global Font_Type := "Courier New"
+
+
+; 全局共享的属性
+Global window := {} ; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
+Global status := {} ; 各种状态信息
+
+Global Screens := {} ;所有屏幕相关信息
+Global Screen  := {} ;主窗口信息

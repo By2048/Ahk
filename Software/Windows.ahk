@@ -5,7 +5,7 @@
     PgDn::Send !o
     <#\::
         MoveWindowsToDefaultPosition()
-        _id := Windows_Cache["win_id"]
+        _id := window.win_id
         SetColumnWidth( _id, "SysListView321", { 1 : 200 , 2 : 1650 } ) ;用户变量
         SetColumnWidth( _id, "SysListView322", { 1 : 370 , 2 : 1450 } ) ;系统变量
     Return
@@ -29,7 +29,7 @@
     <#\::
         ; result := GetActiveWindowsInfo()
         MoveWindowsToDefaultPosition()
-        _id    := Windows_Cache["win_id"]
+        _id    := window.win_id
 
         _name  := "SysListView321" ;详细信息
         _width := {  1 : 470   ;名称
@@ -167,7 +167,7 @@
 #If CheckWindowsActive( "MMC" , "" , "服务" )
     <#\::
         MoveWindowsToDefaultPosition()
-        _id    := Windows_Cache["win_id"]
+        _id    := window.win_id
         _name  := "SysListView321"
         _width := {    1 : 300   ;名称
                     ,  2 : 470   ;描述
@@ -186,7 +186,7 @@
         MouseGetPos, x_origin, y_origin
 
         MoveWindowsToDefaultPosition()
-        _id    := Windows_Cache["win_id"]
+        _id    := window.win_id
         _name  := "SysListView321"
         _width := {   1 : 370     ;名称
                     , 2 : 230     ;类型
@@ -196,7 +196,7 @@
         max_left := 650
         offset   := 9
 
-        control_config := Windows_Cache["win_controls"]["SysTreeView321"]
+        control_config := window["win_controls"]["SysTreeView321"]
         move_steps     := control_config.w - max_left
         if ( Abs(move_steps) < 9 ) {
             return

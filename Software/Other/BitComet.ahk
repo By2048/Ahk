@@ -4,7 +4,7 @@
     <#\::
         MoveWindowsToDefaultPosition()
 
-        win_id := Windows_Cache["win_id"]
+        win_id := window.win_id
 
         result   := GetActiveWindowsInfo("Window")
         cinfo    := result["win_controls"]["SysListView321"]
@@ -37,7 +37,7 @@
         SetColumnWidth(win_id, control_name, control_value)
 
         control_name  := "SysListView3212" ;统计
-        max_width     := Windows_Cache["win_controls"][control_name]["w"]
+        max_width     := window["win_controls"][control_name]["w"]
         w_1           := 400
         w_2           := max_width - w_1 - 50
         control_value := {  1 : w_1    ;项目

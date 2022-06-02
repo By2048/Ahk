@@ -4,7 +4,7 @@
     <#\::
         MoveWindowsToDefaultPosition()
         
-        _id    := Windows_Cache["win_id"]
+        _id    := window.win_id
         _name  := "SysListView321"
         _width := { 1 : 999   ;名称
                   , 3 : 150   ;文件夹

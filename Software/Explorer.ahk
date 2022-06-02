@@ -151,7 +151,7 @@
 
         MoveWindowsToDefaultPosition()
 
-        win_title := Windows_Cache["win_title"]
+        win_title := window.win_title
         config := Explorer_Config[win_title]
         if (not config) {
             config := Explorer_Config["Default"]

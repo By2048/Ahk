@@ -20,7 +20,7 @@
 
     >+\::
         ; 动态创建的组件 未固定control_name
-        ; win_id       := Windows_Cache["win_id"]
+        ; win_id       := window["win_id"]
         ; control_name := "wxWindowNR49"  
         ; ControlClick, %control_name%, ahk_id %win_id%
         MouseClickAndResetting(222, 666)

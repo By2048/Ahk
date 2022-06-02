@@ -31,7 +31,7 @@
 #If ( CheckWindowsActive( "VMware" , "#32770" , "扫描虚拟机向导" ) )
     RWin::
         MoveWindowsToCenter(True)
-        _id    := Windows_Cache["win_id"]
+        _id    := window.win_id
         _name  := "SysListView321"
         _width := {   1 : 200    ;虚拟机名称
                     , 2 : 1000 } ;路径
@@ -43,7 +43,7 @@
 #If ( CheckWindowsActive( "VMware" , "#32770" , "映射或断开虚拟磁盘连接" ) )
     RWin::
         MoveWindowsToCenter(True)
-        _id    := Windows_Cache["win_id"]
+        _id    := window.win_id
         _name  := "SysListView321"
         _width := {   1 : 150   ;驱动器
                     , 2 : 200   ;名称

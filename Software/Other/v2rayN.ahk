@@ -31,7 +31,7 @@
     ; 默认位置
     <#\::
         MoveWindowsToDefaultPosition()
-        _id    := Windows_Cache["win_id"]
+        _id    := window.win_id
         _name  := "WindowsForms10.SysListView32.app.0.12ab327_r6_ad11"
         _width := {  1 : 40    ;y
                   ,  2 : 160   ;类型

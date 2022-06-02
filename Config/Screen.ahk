@@ -1,9 +1,8 @@
 ﻿
+#Include %A_WorkingDir%\Config\Base.ahk
 #Include %A_WorkingDir%\Tool\Global.ahk
 
-; 初始化系统屏幕相关信息
-Global Screens := {} ;所有屏幕相关信息
-Global Screen  := {} ;主屏幕信息
+Global Screens, Screen
 
 Screens["Keys"] := { "Dpi"  : ["Default", "Software", "System", "SystemPlus"]       ;
                    , "Attr" : ["id", "name", "dpi", "x", "y", "w", "h", "xx", "yy"] }
@@ -24,7 +23,7 @@ For index_dpi, key_dpi In Screens["Keys"]["Dpi"] {
     }
 }
 
-Screen := Screens["Default"][1]
+screen := Screens["Default"][1]
 
 ; 方便调用设置的快捷变量 Screens.1
 Loop, % Screens["Count"] {

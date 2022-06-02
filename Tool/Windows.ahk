@@ -269,8 +269,7 @@ GetActiveWindowsInfo(mode:="Default")
     result.win_controls       := win_controls
     result.coord_mode         := coord_mode
 
-    global Windows_Cache 
-    Windows_Cache := result
+    window := result
 
     return result
 }
@@ -423,10 +422,10 @@ SetWindows(win_id, xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
         return 
     }
 
-    x := Windows_Cache["win_x"]
-    y := Windows_Cache["win_y"]
-    w := Windows_Cache["win_w"]
-    h := Windows_Cache["win_h"]
+    x := window["win_x"]
+    y := window["win_y"]
+    w := window["win_w"]
+    h := window["win_h"]
 
     if (ww==0 or not ww) { 
         ww := w
@@ -435,8 +434,8 @@ SetWindows(win_id, xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
         hh := h
     }
 
-    if (Windows_Cache["win_process_name"] == "PyCharm") { ;边框问题
-        if (Mod(Windows_Cache["win_w"], 2) == 0) {
+    if (window["win_process_name"] == "PyCharm") { ;边框问题
+        if (Mod(window["win_w"], 2) == 0) {
             offset := 0
             ww := ww + 1
             xx := xx - 1
@@ -635,7 +634,7 @@ MoveWindowsToCenter(silent:=False)
     
     SetWindows(win_id, xx, yy, ww, hh, 0)
 
-    if (Windows_Cache["win_process_name"]=="PyCharm") {
+    if (window["win_process_name"]=="PyCharm") {
         return
     }
 
