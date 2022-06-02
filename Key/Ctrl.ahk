@@ -54,7 +54,7 @@ Return
     Run, Chrome.bat, %A_WorkingDir%, Hide
     exe := ProcessNameOrigin("Chrome")
     WinWaitActive, ahk_exe %exe%,  , 3
-    MoveWindowsToBackupPosition()
+    MoveWindowToBackupPosition()
 Return
 >^h::Run %Ahk% D:\AutoHotkey\WindowSpy.ahk
 >^+h::Run E:\GitX\AhkSpy\AhkSpy.exe
@@ -62,7 +62,7 @@ Return
     Run D:\#Lnk\JetBrains.lnk
     exe := ProcessNameOrigin("JetBrains")
     WinWaitActive, ahk_exe %exe%,  , 3
-    MoveWindowsToCenter(True)
+    MoveWindowToCenter(True)
 Return
 >^k::KeyboardGUI()
 >^l::Run "C:\Program Files\LogiOptionsPlus\logioptionsplus.exe"
@@ -123,7 +123,7 @@ Timer:
         HelpText()
         if (help_image_show_status==True) {
             HelpImage()
-        } else if (CheckWindowsActive("Maye")) {
+        } else if (CheckWindowActive("Maye")) {
             Send {Esc}
         } else {
             Run D:\#Lnk\Maye.lnk

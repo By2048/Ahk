@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive( "v2rayN" ) )
+#If ( CheckWindowActive( "v2rayN" ) )
 
     ; 更新订阅
     !\::
@@ -30,7 +30,7 @@
 
     ; 默认位置
     <#\::
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
         _id    := window.win_id
         _name  := "WindowsForms10.SysListView32.app.0.12ab327_r6_ad11"
         _width := {  1 : 40    ;y

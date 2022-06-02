@@ -1,5 +1,5 @@
 ﻿
-#If CheckWindowsActive("VSCode")
+#If CheckWindowActive("VSCode")
 
     ; 软件设置{f1}
     LAlt & RAlt::Send {F13}
@@ -46,10 +46,10 @@
 #If
 
 
-#If CheckWindowsActive("VSCode", "", ".md")
+#If CheckWindowActive("VSCode", "", ".md")
 
     !\::
-        result    := GetActiveWindowsInfo()
+        result    := GetActiveWindowInfo()
         win_title := result.win_title
         script    := "E:/Project/script/note/setup.py"
         command   := Format("{} {} {}", Python, script, win_title)
@@ -60,7 +60,7 @@
 #If
 
 
-#If CheckWindowsActive("VSCode", "", ".ahk")
+#If CheckWindowActive("VSCode", "", ".ahk")
     CapsLock::
         backup := Clipboard
         Send ^+{Left}

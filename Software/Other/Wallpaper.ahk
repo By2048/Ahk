@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive( "Wallpaper" ) )
+#If ( CheckWindowActive( "Wallpaper" ) )
 
     ClickImage(image)
     {
@@ -33,10 +33,10 @@
             Wallpaper_State := 0
         }
         if (Wallpaper_State == 0) {
-            SetWindowsTransparent("Min")
+            SetWindowTransparent("Min")
             Wallpaper_State := 1
         } else if (Wallpaper_State == 1) {
-            SetWindowsTransparent("Max")
+            SetWindowTransparent("Max")
             Wallpaper_State := 0
         }
     Return

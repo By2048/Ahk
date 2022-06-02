@@ -1,8 +1,8 @@
 ﻿
-#If ( CheckWindowsActive( "CloudMusic" , "OrpheusBrowserHost" ) )
+#If ( CheckWindowActive( "CloudMusic" , "OrpheusBrowserHost" ) )
 
     /::
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
         Sleep 300
         MouseClickAndResetting(60, 1611)
     Return
@@ -43,7 +43,7 @@
 
     ; 列表上一首
     PgUp::
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
         Sleep 300
         MouseClickAndResetting(1044, 1600)
         Sleep 300
@@ -54,7 +54,7 @@
 
     ; 列表下一首
     PgDn::  
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
         Sleep 300
         MouseClickAndResetting(1044, 1600)
         Sleep 300   

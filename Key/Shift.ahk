@@ -48,7 +48,7 @@ GetShiftImage()
     global Process_Hotkeys_Image
 
     if (not hotkeys_process_name) {
-        result           := GetActiveWindowsInfo()
+        result           := GetActiveWindowInfo()
         win_process_name := result.win_process_name
         win_title        := result.win_title
     }
@@ -58,7 +58,7 @@ GetShiftImage()
         return
     }
 
-    hotkeys_images := GetActiveWindowsConfig(Process_Hotkeys_Image)
+    hotkeys_images := GetActiveWindowConfig(Process_Hotkeys_Image)
     hotkeys_total  := hotkeys_images.MaxIndex()
 
     if (hotkeys_index>hotkeys_total) {

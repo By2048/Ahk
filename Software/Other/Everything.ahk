@@ -1,8 +1,8 @@
 ﻿
-#If ( CheckWindowsActive("Everything") )
+#If ( CheckWindowActive("Everything") )
 
     <#\::
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
 
         _id    := window.win_id
         _name  := "SysListView321"

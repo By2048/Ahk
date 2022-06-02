@@ -39,7 +39,7 @@ Return
 
 
 $RAlt::
-    if (CheckWindowsActive("PyCharm")) {
+    if (CheckWindowActive("PyCharm")) {
         return
     }
     if (IsGame()) {
@@ -55,7 +55,7 @@ $RAlt::
 Return
 Timer:
     ; if (cnt == 1) {
-        ; HighlightActiveWindows( , , _time_:=100)
+        ; HighlightActiveWindow( , , _time_:=100)
     ; }
     cnt := 0
 Return

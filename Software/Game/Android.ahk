@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive( "Android" ) )
+#If ( CheckWindowActive( "Android" ) )
 
     ; 全屏
     F11::Return
@@ -43,7 +43,7 @@
 
 
 
-#If ( CheckWindowsActive( "Android" , "" , "部落冲突" ) )
+#If ( CheckWindowActive( "Android" , "" , "部落冲突" ) )
     
     #Include %A_WorkingDir%\Software\Game\Android.COC.Private.ahk
 

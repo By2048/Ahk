@@ -1,8 +1,8 @@
 ﻿
-#If CheckWindowsActive("7-Zip")
+#If CheckWindowActive("7-Zip")
 
     <#\::
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
         
         _id    := window.win_id
         _name  := "SysListView321"

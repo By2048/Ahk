@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive( "Q-Dir" ) )
+#If ( CheckWindowActive( "Q-Dir" ) )
 
     ;全屏
     F11::Return
@@ -58,7 +58,7 @@
     ;  1 ^                          3 #327704->SysListView322   4 ^
     ;    650                          500 * dpi                   500+120+90 * dpi
     <#\::
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
 
         cup    := 0
         cdown  := 0
@@ -66,19 +66,19 @@
         cright := 0
         offset := 4 * Screens.1.dpi
 
-        result := GetActiveWindowsInfo("Window")
+        result := GetActiveWindowInfo("Window")
         cinfo  := result["win_controls"]["#327702"]
         cdown  := 800
         MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
         cdown  := 0
 
-        result := GetActiveWindowsInfo("Window")
+        result := GetActiveWindowInfo("Window")
         cinfo  := result["win_controls"]["#327702"]
         cleft  := 650 + 21
         MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
         cleft  := 0
 
-        result := GetActiveWindowsInfo("Window")
+        result := GetActiveWindowInfo("Window")
         cinfo  := result["win_controls"]["#327702"]
         cright := cinfo.x + 1000 + 50
         MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)

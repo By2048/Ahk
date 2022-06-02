@@ -90,8 +90,8 @@ Return
     HelpText("Move Windows")
 Return
 
-RWin & RCtrl::MoveWindowsToMainMini("Main")
-RWin & RAlt::MoveWindowsToMainMini("Mini")
+RWin & RCtrl::MoveWindowToMainMini("Main")
+RWin & RAlt::MoveWindowToMainMini("Mini")
 
 Global windows_move:=False
 Global windows_resize_big:=False
@@ -118,32 +118,32 @@ Timer:
         return
     }
     if (cnt == 1) {
-        MoveWindowsToCenter()
+        MoveWindowToCenter()
     } else if (cnt == 2) {
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
     } else if (cnt == 3) {
-        MoveWindowsToBackupPosition()
+        MoveWindowToBackupPosition()
     }
     cnt := 0
 Return
 
 #If (windows_move==True)
-    Up::MoveWindowsUDLR("Up")
-    Down::MoveWindowsUDLR("Down")
-    Left::MoveWindowsUDLR("Left")
-    Right::MoveWindowsUDLR("Right")
+    Up::MoveWindowUDLR("Up")
+    Down::MoveWindowUDLR("Down")
+    Left::MoveWindowUDLR("Left")
+    Right::MoveWindowUDLR("Right")
 #If
 
 #If (windows_resize_big==True)
-    Up::ResizeWindows("Big","Up")
-    Down::ResizeWindows("Big","Down")
-    Left::ResizeWindows("Big","Left")
-    Right::ResizeWindows("Big","Right")
+    Up::ResizeWindow("Big","Up")
+    Down::ResizeWindow("Big","Down")
+    Left::ResizeWindow("Big","Left")
+    Right::ResizeWindow("Big","Right")
 #If
 
 #If (windows_resize_small==True)
-    Up::ResizeWindows("Small","Up")
-    Down::ResizeWindows("Small","Down")
-    Left::ResizeWindows("Small","Left")
-    Right::ResizeWindows("Small","Right")
+    Up::ResizeWindow("Small","Up")
+    Down::ResizeWindow("Small","Down")
+    Left::ResizeWindow("Small","Left")
+    Right::ResizeWindow("Small","Right")
 #If

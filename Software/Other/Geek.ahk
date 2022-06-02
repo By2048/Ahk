@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive( "Geek" ) )
+#If ( CheckWindowActive( "Geek" ) )
 
     Enter::Return
 
@@ -12,7 +12,7 @@
     ^w::Return
 
     <#\::
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
         _id    := window.win_id
         _name  := "SysListView321"
         _width := { 1 : 1030   ; 名称

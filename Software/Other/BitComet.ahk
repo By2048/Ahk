@@ -1,12 +1,12 @@
 ﻿
-#If ( CheckWindowsActive("BitComet") )
+#If ( CheckWindowActive("BitComet") )
 
     <#\::
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
 
         win_id := window.win_id
 
-        result   := GetActiveWindowsInfo("Window")
+        result   := GetActiveWindowInfo("Window")
         cinfo    := result["win_controls"]["SysListView321"]
         max_left := 336
         MoveControlUDLR(cinfo,  ,  , max_left,  , 3)

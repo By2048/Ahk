@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive( "FreeFileSync" ) )
+#If ( CheckWindowActive( "FreeFileSync" ) )
 
     F1::Return
     F2::Return
@@ -30,13 +30,13 @@
 
 
 
-#If ( CheckWindowsActive( "FreeFileSync" , "" , "同步设置" ) )
+#If ( CheckWindowActive( "FreeFileSync" , "" , "同步设置" ) )
 
     <#\::
 
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
 
-        result := GetActiveWindowsInfo()
+        result := GetActiveWindowInfo()
         win_id := result.win_id
 
         ;       Edit10

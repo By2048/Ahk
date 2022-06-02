@@ -6,9 +6,9 @@
 
 LOLSoftware()
 {
-    r1 := CheckWindowsActive("Client",  , "英雄联盟")
-    r2 := CheckWindowsActive("LOL_Client")
-    r3 := CheckWindowsActive("LOL_Game")
+    r1 := CheckWindowActive("Client",  , "英雄联盟")
+    r2 := CheckWindowActive("LOL_Client")
+    r3 := CheckWindowActive("LOL_Game")
     result := r1 or r2 or r3
     return result
 }
@@ -39,13 +39,13 @@ LOLSoftware()
 
 
 
-#If ( CheckWindowsActive("Client",  , "英雄联盟")  )
+#If ( CheckWindowActive("Client",  , "英雄联盟")  )
     #+BackSpace::Run, Taskkill /F /IM Client.exe
 #If
 
 
 
-#If ( CheckWindowsActive("LOL_Client") )
+#If ( CheckWindowActive("LOL_Client") )
     #Include %A_WorkingDir%\Software\Game\LOL.Client.Private.ahk
     Insert::Screenshot("Screen1" , "Tmp")
     #+BackSpace::
@@ -58,7 +58,7 @@ LOLSoftware()
 
 
 
-#If ( CheckWindowsActive("LOL_Game") )
+#If ( CheckWindowActive("LOL_Game") )
     #Include %A_WorkingDir%\Software\Game\LOL.Game.Private.ahk
     ; 截图
     F12::Return

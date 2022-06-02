@@ -1,4 +1,4 @@
 ﻿
-#If ( CheckWindowsActive( "FireFox" ) )
+#If ( CheckWindowActive( "FireFox" ) )
 
 #If

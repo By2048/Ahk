@@ -1,9 +1,9 @@
 ﻿
 ; Geforce游戏内覆盖
-#If ( CheckWindowsActive( "GeForceTool" ) )
+#If ( CheckWindowActive( "GeForceTool" ) )
 #If
 
 
-; #If ( CheckWindowsActive( "" ) )
+; #If ( CheckWindowActive( "" ) )
 ; 
 ; #If

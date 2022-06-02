@@ -1,6 +1,6 @@
 ﻿
 
-#If ( CheckWindowsActive("DingDing") )
+#If ( CheckWindowActive("DingDing") )
 
     ; 发送消息
     ^Enter::Return

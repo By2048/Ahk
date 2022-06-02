@@ -100,9 +100,9 @@ ProcessNameOrigin(process_name)
 ; _class_        | 进程Class
 ; _title_        | 软件标题 Q Q|W|E
 ; return         | True \ False
-CheckWindowsActive(_process_name_:="", _class_:="", _title_:="")
+CheckWindowActive(_process_name_:="", _class_:="", _title_:="")
 {
-    result           := GetActiveWindowsInfo()
+    result           := GetActiveWindowInfo()
     win_process_name := result.win_process_name
     win_class        := result.win_class
     win_title        := result.win_title
@@ -158,7 +158,7 @@ GetClientSize(hWnd, ByRef w:="", ByRef h:="")
 ; 获取激活窗口的所在屏幕的信息以及窗口信息
 ; result | {} 应用信息
 ; mode   | Default AHK默认 \ Strict|Window API修正
-GetActiveWindowsInfo(mode:="Default")
+GetActiveWindowInfo(mode:="Default")
 {
     WinGet,                          win_id, ID,              A
     WinGet,                         win_pid, PID,             ahk_id %win_id%
@@ -279,7 +279,7 @@ GetActiveWindowsInfo(mode:="Default")
 ; 获取当前激活的应用配置文件信息
 ; Config_Data | Config中定义的配置信息
 ; return      | win_config
-GetActiveWindowsConfig(Config_Data)
+GetActiveWindowConfig(Config_Data)
 {
     ; 1 A
     ; 2 A_B
@@ -289,7 +289,7 @@ GetActiveWindowsConfig(Config_Data)
     ; 3 _B_C
     ; 3 __C
 
-    result           := GetActiveWindowsInfo()
+    result           := GetActiveWindowInfo()
     win_process_name := result.win_process_name
     win_class        := result.win_class
     win_title        := result.win_title
@@ -369,9 +369,9 @@ GetActiveWindowsConfig(Config_Data)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 修改窗口透明度
-SetWindowsTransparent(change:=0)
+SetWindowTransparent(change:=0)
 {
-    result := GetActiveWindowsInfo()
+    result := GetActiveWindowInfo()
     win_id := result.win_id
     win_transparent := result.win_transparent
 
@@ -408,7 +408,7 @@ SetWindowsTransparent(change:=0)
 ; offset | 在一定误差内不进行窗口移动
 ; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
 ; return | None
-SetWindows(win_id, xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
+SetWindow(win_id, xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
 {
     if (not win_id) {
         HelpText("No WinId",  ,  , 1000)
@@ -458,7 +458,7 @@ SetWindows(win_id, xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
 ; status    | Big \ Small
 ; direction | Up \ Down \ Left \ Right
 ; return    | None
-ResizeWindows(command, direction)
+ResizeWindow(command, direction)
 {
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         return 
@@ -467,7 +467,7 @@ ResizeWindows(command, direction)
     SetWinDelay, 1
     CoordMode, Mouse
 
-    result := GetActiveWindowsInfo()
+    result := GetActiveWindowInfo()
     win_id := result.win_id
     win_x  := result.win_x
     win_y  := result.win_y
@@ -504,7 +504,7 @@ ResizeWindows(command, direction)
         }
     }
 
-    SetWindows(win_id, win_x, win_y, win_w, win_h)
+    SetWindow(win_id, win_x, win_y, win_w, win_h)
 }
 
 
@@ -512,7 +512,7 @@ ResizeWindows(command, direction)
 ; 窗口上下左右移动
 ; direction | Up \ Down \ Left \ Right
 ; return    | None
-MoveWindowsUDLR(direction)
+MoveWindowUDLR(direction)
 {    
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         return 
@@ -521,7 +521,7 @@ MoveWindowsUDLR(direction)
     SetWinDelay, 1
     CoordMode, Mouse
 
-    result := GetActiveWindowsInfo()
+    result := GetActiveWindowInfo()
     win_id := result.win_id
     win_x  := result.win_x
     win_y  := result.win_y
@@ -539,7 +539,7 @@ MoveWindowsUDLR(direction)
         win_x := win_x + step
     }
 
-    SetWindows(win_id, win_x, win_y, win_w, win_h)
+    SetWindow(win_id, win_x, win_y, win_w, win_h)
 }
 
 
@@ -596,13 +596,13 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
 
 ; 窗口移动到屏幕中心
 ; return | None
-MoveWindowsToCenter(silent:=False)
+MoveWindowToCenter(silent:=False)
 {
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         return 
     }
 
-    result := GetActiveWindowsInfo()
+    result := GetActiveWindowInfo()
 
     win_id := result.win_id
     win_process_name := result.win_process_name
@@ -626,13 +626,13 @@ MoveWindowsToCenter(silent:=False)
     ; HelpText(xx yy ww hh)
     ; HelpText(xx "|" yy "|" ww "|" hh)
 
-    SetWindows(win_id, xx, yy, ww, hh)   
+    SetWindow(win_id, xx, yy, ww, hh)   
 
     if (win_x==xx and win_y==yy) {
         return
     }
     
-    SetWindows(win_id, xx, yy, ww, hh, 0)
+    SetWindow(win_id, xx, yy, ww, hh, 0)
 
     if (window["win_process_name"]=="PyCharm") {
         return
@@ -649,13 +649,13 @@ MoveWindowsToCenter(silent:=False)
 ; 调整窗口为Main\Mini 并居中
 ; command | Main 或者 Mini
 ; return  | None
-MoveWindowsToMainMini(command)
+MoveWindowToMainMini(command)
 {   
     if ( IsDesktops() or IsMaxMin() or IsGame() ) {
         return
     }
 
-    result           := GetActiveWindowsInfo()
+    result           := GetActiveWindowInfo()
     win_id           := result.win_id
     win_process_name := result.win_process_name
     win_class        := result.win_class
@@ -684,7 +684,7 @@ MoveWindowsToMainMini(command)
     xx := screen_x + (screen_w - ww)/2
     yy := screen_y + (screen_h - hh)/2
 
-    SetWindows(win_id, xx, yy, ww, hh)
+    SetWindow(win_id, xx, yy, ww, hh)
     Sleep 500
     HelpText()
 }
@@ -693,9 +693,9 @@ MoveWindowsToMainMini(command)
 
 ; 将窗口移动到软件设置的默认位置
 ; return | None
-MoveWindowsToPosition(config:="")
+MoveWindowToPosition(config:="")
 {
-    result := GetActiveWindowsInfo()
+    result := GetActiveWindowInfo()
     
     win_id           := result.win_id
     win_class        := result.win_class
@@ -758,19 +758,19 @@ MoveWindowsToPosition(config:="")
         }
     }
 
-    SetWindows(win_id, x, y, w, h)
+    SetWindow(win_id, x, y, w, h)
     ; 多屏幕切换时 部分软件需要多次操作
-    SetWindows(win_id, x, y, w, h)
+    SetWindow(win_id, x, y, w, h)
 }
-MoveWindowsToDefaultPosition()
+MoveWindowToDefaultPosition()
 {
-    config := GetActiveWindowsConfig(WPD)
-    MoveWindowsToPosition(config)
+    config := GetActiveWindowConfig(WPD)
+    MoveWindowToPosition(config)
 }
-MoveWindowsToBackupPosition()
+MoveWindowToBackupPosition()
 {
-    config := GetActiveWindowsConfig(WPB)
-    MoveWindowsToPosition(config)
+    config := GetActiveWindowConfig(WPB)
+    MoveWindowToPosition(config)
 }
 
 
@@ -810,9 +810,9 @@ SetExplorertColumns(win_id, config)
 
 
 ; 高亮激活的窗口
-HighlightActiveWindows(width:=9, _color_:="e51400", _time_:=300)
+HighlightActiveWindow(width:=9, _color_:="e51400", _time_:=300)
 {
-    info      := GetActiveWindowsInfo("Strict")
+    info      := GetActiveWindowInfo("Strict")
     win_x     := info.win_x
     win_y     := info.win_y
     win_w     := info.win_w

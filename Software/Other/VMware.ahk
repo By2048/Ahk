@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive( "VMware" ) )
+#If ( CheckWindowActive( "VMware" ) )
 
     ; 新建虚拟机
     ^n::Return
@@ -28,9 +28,9 @@
 #If
 
 
-#If ( CheckWindowsActive( "VMware" , "#32770" , "扫描虚拟机向导" ) )
+#If ( CheckWindowActive( "VMware" , "#32770" , "扫描虚拟机向导" ) )
     RWin::
-        MoveWindowsToCenter(True)
+        MoveWindowToCenter(True)
         _id    := window.win_id
         _name  := "SysListView321"
         _width := {   1 : 200    ;虚拟机名称
@@ -40,9 +40,9 @@
 #If
 
 
-#If ( CheckWindowsActive( "VMware" , "#32770" , "映射或断开虚拟磁盘连接" ) )
+#If ( CheckWindowActive( "VMware" , "#32770" , "映射或断开虚拟磁盘连接" ) )
     RWin::
-        MoveWindowsToCenter(True)
+        MoveWindowToCenter(True)
         _id    := window.win_id
         _name  := "SysListView321"
         _width := {   1 : 150   ;驱动器

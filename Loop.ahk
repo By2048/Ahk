@@ -23,7 +23,7 @@ Loop {
 
     Sleep 1000
 
-    result           := GetActiveWindowsInfo()
+    result           := GetActiveWindowInfo()
     win_id           := result.win_id
     win_min_max      := result.win_min_max
     win_process_name := result.win_process_name
@@ -51,7 +51,7 @@ Loop {
 
     if (win_process_name == "7-Zip") {
         if (win_class == "#32770" and win_title == "浏览文件夹") {
-            MoveWindowsToDefaultPosition()
+            MoveWindowToDefaultPosition()
             Continue
         }
     }
@@ -61,7 +61,7 @@ Loop {
         if (InStr(win_title, "属性")) {
             xx := screen_x + screen_w/2 - win_w/2
             yy := screen_y + screen_h/2 - win_h/2
-            SetWindows(win_id, xx, yy, win_w, win_h)
+            SetWindow(win_id, xx, yy, win_w, win_h)
             Continue
         }
         if (InStr(win_title, "删除") or InStr(win_title, "替换") or InStr(win_title, "跳过")) {
@@ -70,7 +70,7 @@ Loop {
             }
             xx := screen_x + screen_w/2 - win_w/2
             yy := screen_y + screen_h/2 - win_h/2
-            SetWindows(win_id, xx, yy, win_w, win_h)
+            SetWindow(win_id, xx, yy, win_w, win_h)
             Continue
         }
         if (InStr(win_title, "已完成")) {
@@ -79,19 +79,19 @@ Loop {
             ; if (in_screen = 1) {
             ;     Send #+{Right}
             ;     Sleep 100
-            ;     result := GetActiveWindowsInfo()
+            ;     result := GetActiveWindowInfo()
             ;     win_id := result.win_id
             ;     win_w  := result.win_w
             ;     win_h  := result.win_h
             ; }
             xx := Screens.3.x + Screens.3.w/2 - win_w/2
             yy := Screens.3.y + Screens.3.h/4 - win_h/2
-            SetWindows(win_id, xx, yy, win_w, win_h)
+            SetWindow(win_id, xx, yy, win_w, win_h)
             Continue
         }
         xx := Screens.1.x + Screens.1.w/2 - win_w/2
         yy := Screens.1.y + Screens.1.h/2 - win_h/2
-        SetWindows(win_id, xx, yy, win_w, win_h)
+        SetWindow(win_id, xx, yy, win_w, win_h)
         Continue
     }
 

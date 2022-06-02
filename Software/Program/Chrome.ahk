@@ -1,14 +1,14 @@
 ﻿
 ; https://support.google.com/chrome/answer/157179
 
-#If ( CheckWindowsActive( "Chrome" , "Chrome_WidgetWin_1" , "书签" ) )
+#If ( CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "书签" ) )
     F2::Return
     ^r::Send {F2}
 #If
 
 
 
-#If ( CheckWindowsActive( "Chrome" , "Chrome_WidgetWin_1" , "修改书签" ) )
+#If ( CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "修改书签" ) )
 
     ; 收藏
     Enter::Send {Tab 4}{Enter}
@@ -25,13 +25,13 @@
 
 
 
-#If ( CheckWindowsActive( "Chrome" , "Chrome_WidgetWin_1" , "DevTools" ) )
+#If ( CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "DevTools" ) )
 
 #If
 
 
 
-#If ( CheckWindowsActive( "Chrome" , "Chrome_WidgetWin_1" ) )
+#If ( CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" ) )
     
     Redirect(url) {
         tmp := Clipboard
@@ -61,7 +61,7 @@
 
 
 
-#If ( CheckWindowsActive( "Chrome" ) )
+#If ( CheckWindowActive( "Chrome" ) )
 
     ;帮助
     F1::Return
@@ -210,7 +210,7 @@
         Send ^d
         Send {Tab 2}
         Send {Enter}
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
     Return
     !+d::
         Send ^d

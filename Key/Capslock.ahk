@@ -14,7 +14,7 @@
 ;切换到显示器中心 
 $CapsLock::
 
-    config := GetActiveWindowsInfo()
+    config := GetActiveWindowInfo()
     win_process_name := result.win_process_name
 
     ide := [ "VSCode" , "PyCharm" ]
@@ -51,7 +51,7 @@ $CapsLock::
     WinActivate, ahk_id %win_id%
 
     ; 高亮窗口
-    HighlightActiveWindows( , , _time_:=300)
+    HighlightActiveWindow( , , _time_:=300)
 
 Return
 

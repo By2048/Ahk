@@ -1,12 +1,12 @@
 ﻿
-#If ( CheckWindowsActive( "Explorer" , "#32770" , "删除多个项目" ) )
+#If ( CheckWindowActive( "Explorer" , "#32770" , "删除多个项目" ) )
     !y::Return
     !n::Return
 #If
 
 
 
-#If ( CheckWindowsActive( "Explorer" , "#32770" , "属性" ) )
+#If ( CheckWindowActive( "Explorer" , "#32770" , "属性" ) )
     !F12::
         ; 修改文件图标
         Send ^+{Tab}
@@ -23,7 +23,7 @@
 
 
 
-#If ( CheckWindowsActive("Explorer" , "OperationStatusWindow" , "删除文件") )
+#If ( CheckWindowActive("Explorer" , "OperationStatusWindow" , "删除文件") )
     !y::Return
     !n::Return
     \::Send !a
@@ -32,7 +32,7 @@
 
 
 ; 任务栏
-#If ( CheckWindowsActive("Explorer" , "Shell_TrayWnd") )
+#If ( CheckWindowActive("Explorer" , "Shell_TrayWnd") )
     WheelUp::Volume_Up
     WheelDown::Volume_Down
 #If
@@ -40,7 +40,7 @@
 
 
 ; 桌面
-#If ( CheckWindowsActive("Explorer" , "WorkerW") )
+#If ( CheckWindowActive("Explorer" , "WorkerW") )
     ; 切换输入焦点
      F6::Return
      F9::Run D:\\
@@ -51,7 +51,7 @@
 
 
 
-#If ( CheckWindowsActive( "Explorer" , "#32770" ) )
+#If ( CheckWindowActive( "Explorer" , "#32770" ) )
     ^Tab::Return
     ^+Tab::Return
     !Tab::Send ^{Tab}
@@ -61,7 +61,7 @@
 
 
 
-#If ( CheckWindowsActive("Explorer") )
+#If ( CheckWindowActive("Explorer") )
 
     ; Ctrl+F 选择搜索框
     ; Alt+D 选择地址栏
@@ -149,7 +149,7 @@
 
     <#\::
 
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
 
         win_title := window.win_title
         config := Explorer_Config[win_title]
@@ -161,7 +161,7 @@
         CoordMode, Mouse, Window
         MouseGetPos, x_origin, y_origin
 
-        result := GetActiveWindowsInfo("Window")
+        result := GetActiveWindowInfo("Window")
         win_id := result["win_id"]
         win_xx := result["win_xx"]
         cinfo  := result["win_controls"]["DirectUIHWND3"]

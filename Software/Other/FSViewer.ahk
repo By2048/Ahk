@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive("FSViewer") )
+#If ( CheckWindowActive("FSViewer") )
 
     ; \:: ;移动到收藏
     ;     Send m

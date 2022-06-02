@@ -1,10 +1,10 @@
 ﻿
 ; 编辑环境变量
-#If CheckWindowsActive( "SystemPropertiesComputerName" )
+#If CheckWindowActive( "SystemPropertiesComputerName" )
     PgUp::Send !u
     PgDn::Send !o
     <#\::
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
         _id := window.win_id
         SetColumnWidth( _id, "SysListView321", { 1 : 200 , 2 : 1650 } ) ;用户变量
         SetColumnWidth( _id, "SysListView322", { 1 : 370 , 2 : 1450 } ) ;系统变量
@@ -14,7 +14,7 @@
 
 
 ; 任务管理器
-#If CheckWindowsActive( "TaskMGR" )
+#If CheckWindowActive( "TaskMGR" )
     
     ; 切换标签页
     ^Tab::Return
@@ -27,8 +27,8 @@
 
 
     <#\::
-        ; result := GetActiveWindowsInfo()
-        MoveWindowsToDefaultPosition()
+        ; result := GetActiveWindowInfo()
+        MoveWindowToDefaultPosition()
         _id    := window.win_id
 
         _name  := "SysListView321" ;详细信息
@@ -63,7 +63,7 @@
 
 
 ; 远程桌面
-#If CheckWindowsActive( "RemoteDesktop" )
+#If CheckWindowActive( "RemoteDesktop" )
 
     $CapsLock::
         WinActivate, ahk_exe Explorer.exe
@@ -80,7 +80,7 @@
 
 
 ; 设置
-#If CheckWindowsActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
+#If CheckWindowActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
 
     ;点击返回
     Esc::
@@ -95,13 +95,13 @@
 
 
 ; 打开的窗口
-#If CheckWindowsActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为" )
+#If CheckWindowActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为" )
 
     <#\::
 
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
 
-        result := GetActiveWindowsInfo("Window")
+        result := GetActiveWindowInfo("Window")
         win_id := result.win_id
 
         cname  := "Address Band Root1"
@@ -164,9 +164,9 @@
 
 
 ; 服务
-#If CheckWindowsActive( "MMC" , "" , "服务" )
+#If CheckWindowActive( "MMC" , "" , "服务" )
     <#\::
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
         _id    := window.win_id
         _name  := "SysListView321"
         _width := {    1 : 300   ;名称
@@ -181,11 +181,11 @@
 
 
 ; 注册表
-#If CheckWindowsActive("RegEdit")
+#If CheckWindowActive("RegEdit")
     <#\::
         MouseGetPos, x_origin, y_origin
 
-        MoveWindowsToDefaultPosition()
+        MoveWindowToDefaultPosition()
         _id    := window.win_id
         _name  := "SysListView321"
         _width := {   1 : 370     ;名称

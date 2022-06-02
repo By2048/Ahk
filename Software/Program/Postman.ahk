@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive("Postman") )
+#If ( CheckWindowActive("Postman") )
 
     ; rename
     ^e::Return

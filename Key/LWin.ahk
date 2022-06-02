@@ -16,7 +16,7 @@ Global Windows_Theme := "Default"
 <#7::
     Run sysdm.cpl
     WinWaitActive, ahk_exe SystemPropertiesComputerName.exe,  , 3
-    MoveWindowsToCenter(True)
+    MoveWindowToCenter(True)
     Send ^{Tab 2}
     Send !n
 Return
@@ -122,8 +122,8 @@ Return
 <#+Enter::Send ^!+``
 
 ; 修改窗口透明度
-; <#WheelUp::SetWindowsTransparent(10)
-; <#WheelDown::SetWindowsTransparent(-10)
+; <#WheelUp::SetWindowTransparent(10)
+; <#WheelDown::SetWindowTransparent(-10)
 
 ; 屏幕截图 临时
 <#Insert::
@@ -152,8 +152,8 @@ Return
 Return
 
 ; 设置默认位置
-<#\::MoveWindowsToDefaultPosition()
-<#+\::MoveWindowsToBackupPosition()
+<#\::MoveWindowToDefaultPosition()
+<#+\::MoveWindowToBackupPosition()
 
 LWin & AppsKey::
     global Windows_Theme
@@ -210,7 +210,7 @@ Return
 
 ; 结束应用
 <#BackSpace::
-    result := GetActiveWindowsInfo()
+    result := GetActiveWindowInfo()
     win_id := result.win_id
     win_process_name := result.win_process_name
 
@@ -241,7 +241,7 @@ Return
     if (IsDesktops() or IsGame()) {
         Return
     }
-    result := GetActiveWindowsInfo()
+    result := GetActiveWindowInfo()
     win_process_name := result.win_process_name
     _win_process_name_ := result._win_process_name_
     win_id := result.win_id

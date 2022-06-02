@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowsActive( "Snipaste" ) )
+#If ( CheckWindowActive( "Snipaste" ) )
     
     !1::^1
     !2::^2
