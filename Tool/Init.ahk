@@ -4,9 +4,7 @@
 #Include %A_WorkingDir%\Tool\Help.ahk
 
 
-
-global init_config_show_status := False
-
+Global init_config_show_status := False
 
 ; 项目启动时创建的居中进度条 
 DefaultProgress()
@@ -14,28 +12,26 @@ DefaultProgress()
     w := 330
     h := 28
 
-    w := w / Screens.1.Dpi
-    h := h / Screens.1.Dpi
-
     Global InitProgress
 
     Gui, Destroy
-    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
+    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
     Gui, Margin, 1, 1
-    Gui, Add, Progress, W%w% H%h% cBlack vInitProgress, 0
+    Gui, Add, Progress, vInitProgress cBlack w%w% h%h%, 0
     Gui, Show, Center NA
 
     move_current := 0
     move_total   := 100
     move_step    := 10
-    move_time    := 50
+    move_sleep   := 30
 
-    Loop {
+    Loop
+    {
         move_current := move_current + move_step
         GuiControl,  , InitProgress, %move_current%
-        Sleep %move_time%
+        Sleep %move_sleep%
         if (move_current >= move_total) {
-            Sleep 100
+            Sleep %move_sleep%
             Gui Destroy
             break
         }
@@ -52,16 +48,11 @@ InitConfig()
 
     HelpText()
 
-    global Init
-    global init_config_show_status
-
     if (init_config_show_status == True) {
         init_config_show_status := False
         Gui, Destroy
         return
     }
-
-    Gui, +DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
 
     content := ""
     for index, value in Init["config"] {
@@ -69,28 +60,21 @@ InitConfig()
         content .= "`n"
     }
     
-    w := Init["width"]
-    h := Init["height"]
-
-    ; Windows Dip 自动处理问题
-    w_dpi := w * Screens.1.dpi
-    h_dpi := h * Screens.1.dpi
-    
-    if (Screen_Count <= 2) {
-        x := Screens.1.x + Screens.1.w/2 - w_dpi/2
-        y := Screens.1.y + Screens.1.h/2 - h_dpi/2
+    ; 使用主屏幕的Dpi
+    w := Init["width"]  * Screen.dpi
+    h := Init["height"] * Screen.dpi
+    if (Screens.Count == 1) {
+        x := Screens.1.x + Screens.1.w/2 - w/2
+        y := Screens.1.y + Screens.1.h/2 - h/2
+    } else if (Screens.Count == 3) {
+        x := Screens.3.x + Screens.3.w/2 - w/2
+        y := Screens.3.y + Screens.3.h/3 - w/2
     }
 
-    if (Screen_Count == 3) {
-        x := Screens.3.x + Screens.3.w/2 - w_dpi/2
-        y := Screens.3.y + Screens.3.h/3 - w_dpi/2
-    }
-
+    Gui, +DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
     Gui, Font, s25, "Source Code Pro"
     Gui, Margin, 0, 3
-    Gui, Add, Text, w%w% +Center -Border, Ahk Config
-
-    global init_config_show_status
+    Gui, Add, Text, +Center -Border w%w%, Ahk Config
     if (init_config_show_status == False) {
         Gui, Margin, 0, 0
         Gui, font, s15, "Source Code Pro"
