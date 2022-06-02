@@ -23,7 +23,7 @@ For index_dpi, key_dpi In Screens["Keys"]["Dpi"] {
     }
 }
 
-screen := Screens["Default"][1]
+Screen := Screens["Default"][1]
 
 ; 方便调用设置的快捷变量 Screens.1
 Loop, % Screens["Count"] {

@@ -102,26 +102,26 @@ ProcessNameOrigin(process_name)
 ; return         | True \ False
 CheckWindowActive(_process_name_:="", _class_:="", _title_:="")
 {
-    result           := GetActiveWindowInfo()
-    win_process_name := result.win_process_name
-    win_class        := result.win_class
-    win_title        := result.win_title
+    window           := GetActiveWindowInfo()
+    win_process_name := window.process_name
+    win_class        := window.class
+    win_title        := window.title
 
     result := True
 
-    if (StrLen(_process_name_)>0) {
+    if (StrLen(_process_name_) > 0) {
         if (win_process_name != _process_name_) {
             result := False
             return result
         }
     }
-    if (StrLen(_class_)>0) {
+    if (StrLen(_class_) > 0) {
         if (win_class != _class_) {
             result := False
             return result
         }
     }
-    if (StrLen(_title_)>0) {
+    if (StrLen(_title_) > 0) {
         if (InStr(_title_, "|")) {
             title_check := False
             title_split := StrSplit(_title_, "|")
@@ -163,10 +163,10 @@ GetActiveWindowInfo(mode:="Default")
     WinGet,                          win_id, ID,              A
     WinGet,                         win_pid, PID,             ahk_id %win_id%
     WinGet,                     win_min_max, MinMax,          ahk_id %win_id%
-    WinGet,                win_process_name, ProcessName,     ahk_id %win_id%
+    WinGet,                 win_process_exe, ProcessName,     ahk_id %win_id%
     WinGet,                 win_transparent, Transparent,     ahk_id %win_id%
-    WinGet,               win_controls_name, ControlList,     ahk_id %win_id%
     WinGet,                 win_controls_id, ControlListHwnd, ahk_id %win_id%
+    WinGet,               win_controls_name, ControlList,     ahk_id %win_id%
     WinGetClass,                  win_class,                  ahk_id %win_id%
     WinGetTitle,                  win_title,                  ahk_id %win_id%
     WinGetText,                    win_text,                  ahk_id %win_id%
@@ -189,29 +189,6 @@ GetActiveWindowInfo(mode:="Default")
         win_h := win_size_h
     }
 
-    in_screen := 1
-    screen_x  := 0 , screen_y  := 0
-    screen_xx := 0 , screen_yy := 0
-    if (win_x >= Screens.1.x and win_x < Screens.1.xx) {
-        in_screen  := 1
-        screen_x   := Screens.1.x   ,  screen_y := Screens.1.y
-        screen_w   := Screens.1.w   ,  screen_h := Screens.1.h
-        screen_xx  := Screens.1.xx  , screen_yy := Screens.1.yy
-        screen_dpi := Screens.1.dpi
-    } else if (win_x >= Screens.2.x and win_x < Screens.2.xx) {
-        in_screen  := 2
-        screen_x   := Screens.2.x   ,  screen_y := Screens.2.y
-        screen_w   := Screens.2.w   ,  screen_h := Screens.2.h
-        screen_xx  := Screens.2.xx  , screen_yy := Screens.2.yy
-        screen_dpi := Screens.2.dpi
-    } else if (win_x >= Screens.3.x and win_x < Screens.3.xx) {
-        in_screen  := 3
-        screen_x   := Screens.3.x   ,  screen_y := Screens.3.y
-        screen_w   := Screens.3.w   ,  screen_h := Screens.3.h
-        screen_xx  := Screens.3.xx  , screen_yy := Screens.3.yy/2
-        screen_dpi := Screens.3.dpi
-    }
-
     result := {}
 
     win_controls      := {}
@@ -220,57 +197,50 @@ GetActiveWindowInfo(mode:="Default")
 
     length_id   := win_controls_id.Length()
     length_name := win_controls_name.Length()
-    if (length_id == length_name) {
-        length := length_id
-        loop %length% {
-            k := win_controls_name[A_Index]
-            v := win_controls_id[A_Index]
-            win_controls[k] := { "id" : v }
+    length      := Min(length_id, length_name)
+    loop %length% {
+        k := win_controls_name[A_Index]
+        v := win_controls_id[A_Index]
+        win_controls[k] := { "id" : v }
+    }
+
+    for control_name, control_args in win_controls {
+        ControlGetPos,  x, y, w, h,   %control_name%, ahk_id %win_id%
+        ControlGetText, control_text, %control_name%, ahk_id %win_id%
+        control_args["x"]    := x
+        control_args["y"]    := y
+        control_args["w"]    := w
+        control_args["h"]    := h
+        control_args["xx"]   := x + w
+        control_args["yy"]   := y + h
+        control_args["text"] := control_text
+    }
+
+    result.id           := win_id
+    result.pid          := win_pid
+    result.min_max      := win_min_max
+    result.transparent  := win_transparent
+    result.process_exe  := win_process_exe
+    result.process_name := ProcessNameFormat(win_process_exe)
+    result.class        := win_class
+    result.title        := win_title
+    result.text         := win_text
+    result.x            := win_x
+    result.y            := win_y
+    result.w            := win_w
+    result.h            := win_h
+    result.xx           := win_x + win_w
+    result.yy           := win_y + win_h
+    result.controls     := win_controls
+
+    loop, % Screens.Count {
+        if (win_x >= Screens[A_Index]["x"] and win_x < Screens[A_Index]["xx"]) {
+            result["screen"] := Screens[A_Index]
+            break
         }
     }
 
-    for control_name, control_info in win_controls {
-        control_id := control_info["id"]
-        ControlGetPos,  x, y, w, h,   %control_name%, ahk_id %win_id%
-        ControlGetText, control_text, %control_name%, ahk_id %win_id%
-        control_info["x"]    := x
-        control_info["y"]    := y
-        control_info["w"]    := w
-        control_info["h"]    := h
-        control_info["xx"]   := x + w
-        control_info["yy"]   := y + h
-        control_info["text"] := control_text
-        control_info["___"]  := w . "|" . h
-    }
-
-    result.win_id             := win_id
-    result.win_pid            := win_pid
-    result.win_min_max        := win_min_max
-    result._win_process_name_ := win_process_name
-    result.win_process_name   := ProcessNameFormat(win_process_name)
-    result.win_transparent    := win_transparent
-    result.win_class          := win_class
-    result.win_title          := win_title
-    result.win_text           := win_text
-    result.win_x              := win_x
-    result.win_y              := win_y
-    result.win_xx             := win_x + win_w
-    result.win_yy             := win_y + win_h
-    result.win_w              := win_w
-    result.win_h              := win_h
-    result.in_screen          := in_screen
-    result.screen_dpi         := screen_dpi
-    result.screen_x           := screen_x
-    result.screen_y           := screen_y
-    result.screen_xx          := screen_xx
-    result.screen_yy          := screen_yy
-    result.screen_w           := screen_w
-    result.screen_h           := screen_h
-    result.win_controls       := win_controls
-    result.coord_mode         := coord_mode
-
     window := result
-
     return result
 }
 
@@ -290,9 +260,9 @@ GetActiveWindowConfig(Config_Data)
     ; 3 __C
 
     result           := GetActiveWindowInfo()
-    win_process_name := result.win_process_name
-    win_class        := result.win_class
-    win_title        := result.win_title
+    win_process_name := result.process_name
+    win_class        := result.class
+    win_title        := result.title
 
     _process_name_ := ""
     _class_        := ""
@@ -303,7 +273,7 @@ GetActiveWindowConfig(Config_Data)
 
     win_title := StrReplace(win_title, " ", "")
 
-    win_config := Config_Data["default"]
+    win_config := Config_Data["Default"]
 
     for config_key, config_value in Config_Data {
 
@@ -372,8 +342,8 @@ GetActiveWindowConfig(Config_Data)
 SetWindowTransparent(change:=0)
 {
     result := GetActiveWindowInfo()
-    win_id := result.win_id
-    win_transparent := result.win_transparent
+    win_id := result.id
+    win_transparent := result.transparent
 
     if (change == "Max") {
         win_transparent := 255
@@ -389,14 +359,14 @@ SetWindowTransparent(change:=0)
         if (win_transparent + change >= 255) {
             win_transparent := 255
         } else {
-            win_transparent := win_transparent+change
+            win_transparent := win_transparent + change
         }
         WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
     } else if (change < 0) {
         if (win_transparent + change <= 55) {
             win_transparent := 55
         } else {
-            win_transparent := win_transparent+change
+            win_transparent := win_transparent + change
         }
         WinSet, Transparent, %win_transparent%, ahk_id %win_id% 
     }
@@ -422,10 +392,10 @@ SetWindow(win_id, xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
         return 
     }
 
-    x := window["win_x"]
-    y := window["win_y"]
-    w := window["win_w"]
-    h := window["win_h"]
+    x := window.x
+    y := window.y
+    w := window.w
+    h := window.h
 
     if (ww==0 or not ww) { 
         ww := w
@@ -434,8 +404,8 @@ SetWindow(win_id, xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
         hh := h
     }
 
-    if (window["win_process_name"] == "PyCharm") { ;边框问题
-        if (Mod(window["win_w"], 2) == 0) {
+    if (window.process_name == "PyCharm") { ;边框问题
+        if (Mod(window.w, 2) == 0) {
             offset := 0
             ww := ww + 1
             xx := xx - 1
@@ -468,11 +438,11 @@ ResizeWindow(command, direction)
     CoordMode, Mouse
 
     result := GetActiveWindowInfo()
-    win_id := result.win_id
-    win_x  := result.win_x
-    win_y  := result.win_y
-    win_w  := result.win_w
-    win_h  := result.win_h
+    win_id := result.id
+    win_x  := result.x
+    win_y  := result.y
+    win_w  := result.w
+    win_h  := result.h
 
     step := 10
 
@@ -519,14 +489,13 @@ MoveWindowUDLR(direction)
     }
 
     SetWinDelay, 1
-    CoordMode, Mouse
 
     result := GetActiveWindowInfo()
-    win_id := result.win_id
-    win_x  := result.win_x
-    win_y  := result.win_y
-    win_w  := result.win_w
-    win_h  := result.win_h
+    win_id := result.id
+    win_x  := result.x
+    win_y  := result.y
+    win_w  := result.w
+    win_h  := result.h
 
     step := 10
     if (direction=="Up") {
@@ -604,28 +573,25 @@ MoveWindowToCenter(silent:=False)
 
     result := GetActiveWindowInfo()
 
-    win_id := result.win_id
-    win_process_name := result.win_process_name
-    in_screen := result.in_screen
+    win_id := result.id
+    win_process_name := result.process_name
+    screen_id := result.screen.id
 
-    win_x := result.win_x
-    win_y := result.win_y
-    win_w := result.win_w
-    win_h := result.win_h
+    win_x := result.x
+    win_y := result.y
+    win_w := result.w
+    win_h := result.h
 
-    screen_x := result.screen_x
-    screen_y := result.screen_y
-    screen_w := result.screen_w
-    screen_h := result.screen_h
+    screen_x := result.screen.x
+    screen_y := result.screen.y
+    screen_w := result.screen.w
+    screen_h := result.screen.h
 
     xx := screen_x + screen_w/2 - win_w/2
     yy := screen_y + screen_h/2 - win_h/2
     ww := win_w
     hh := win_h
     
-    ; HelpText(xx yy ww hh)
-    ; HelpText(xx "|" yy "|" ww "|" hh)
-
     SetWindow(win_id, xx, yy, ww, hh)   
 
     if (win_x==xx and win_y==yy) {
@@ -634,12 +600,12 @@ MoveWindowToCenter(silent:=False)
     
     SetWindow(win_id, xx, yy, ww, hh, 0)
 
-    if (window["win_process_name"]=="PyCharm") {
+    if (window.process_name == "PyCharm") {
         return
     }
 
     if (not silent) {
-        HelpText("Center", "center_down", "screen"in_screen , 1000)
+        HelpText("Center", "center_down", "screen"screen_id , 1000)
         return
     }
 }
@@ -656,28 +622,28 @@ MoveWindowToMainMini(command)
     }
 
     result           := GetActiveWindowInfo()
-    win_id           := result.win_id
-    win_process_name := result.win_process_name
-    win_class        := result.win_class
-    win_title        := result.win_title
-    in_screen        := result.in_screen
-    screen_x         := result.screen_x
-    screen_y         := result.screen_y
-    screen_w         := result.screen_w
-    screen_h         := result.screen_h
+    win_id           := result.id
+    win_process_name := result.process_name
+    win_class        := result.class
+    win_title        := result.title
+    screen_id        := result.screen.id
+    screen_x         := result.screen.x
+    screen_y         := result.screen.y
+    screen_w         := result.screen.w
+    screen_h         := result.screen.h
 
-    if (in_screen == 3) {
+    if (screen_id == 3) {
         screen_h := screen_h / 2
     }
     mini := Windows_Main_Mini[1]
     main := Windows_Main_Mini[2]
 
-    if (command=="Main") {
-        HelpText("Windows Main", "center_down", "screen"in_screen)
+    if (command == "Main") {
+        HelpText("Windows Main", "center_down", "screen"screen_id)
         ww := screen_w * main[1]
         hh := screen_h * main[2]
-    } else if (command=="Mini") {
-        HelpText("Windows Mini", "center_down", "screen"in_screen)
+    } else if (command == "Mini") {
+        HelpText("Windows Mini", "center_down", "screen"screen_id)
         ww := screen_w * mini[1]
         hh := screen_h * mini[2]
     }
@@ -685,6 +651,7 @@ MoveWindowToMainMini(command)
     yy := screen_y + (screen_h - hh)/2
 
     SetWindow(win_id, xx, yy, ww, hh)
+
     Sleep 500
     HelpText()
 }
@@ -697,14 +664,14 @@ MoveWindowToPosition(config:="")
 {
     result := GetActiveWindowInfo()
     
-    win_id           := result.win_id
-    win_class        := result.win_class
-    win_title        := result.win_title
-    win_process_name := result.win_process_name
-    win_x            := result.win_x
-    win_y            := result.win_y
-    win_w            := result.win_w
-    win_h            := result.win_h
+    win_id           := result.id
+    win_class        := result.class
+    win_title        := result.title
+    win_process_name := result.process_name
+    win_x            := result.x
+    win_y            := result.y
+    win_w            := result.w
+    win_h            := result.h
     screen_x         := result.screen_x
     screen_y         := result.screen_y
     screen_xx        := result.screen_xx
@@ -812,17 +779,16 @@ SetExplorertColumns(win_id, config)
 ; 高亮激活的窗口
 HighlightActiveWindow(width:=9, _color_:="e51400", _time_:=300)
 {
-    info      := GetActiveWindowInfo("Strict")
-    win_x     := info.win_x
-    win_y     := info.win_y
-    win_w     := info.win_w
-    win_h     := info.win_h
-    win_xx    := info.win_xx
-    win_yy    := info.win_yy
-    in_screen := info.in_screen
+    info   := GetActiveWindowInfo("Strict")
+    win_x  := info.x
+    win_y  := info.y
+    win_w  := info.w
+    win_h  := info.h
+    win_xx := info.xx
+    win_yy := info.yy
 
     ; 最小化
-    if (info.win_min_max == -1) {
+    if (info.min_max == -1) {
         Return
     }
 
@@ -830,7 +796,7 @@ HighlightActiveWindow(width:=9, _color_:="e51400", _time_:=300)
         Return
     }
 
-    if (info.win_process_name == "Explorer" and info.win_class == "WorkerW") {
+    if (info.process_name == "Explorer" and info.class == "WorkerW") {
         Return
     }
 
