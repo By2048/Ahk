@@ -1,17 +1,17 @@
 ﻿
-#If CheckWindowsActive("PyCharm")
+#If CheckWindowActive("PyCharm")
 
     ; 设置
     ~^!s::
         ; Sleep 100
         WinWaitActive, 设置
-        MoveWindowsToCenter(True)
+        MoveWindowToCenter(True)
     Return
 
 #If
 
 
-#If CheckWindowsActive("PyCharm")
+#If CheckWindowActive("PyCharm")
     
      ^F1::Return
      ^F2::Return
@@ -103,7 +103,7 @@
 
 
 
-#If CheckWindowsActive("PyCharm" , "SunAwtDialog")
+#If CheckWindowActive("PyCharm" , "SunAwtDialog")
   
     title := [ "终端" , "运行" , "调试" ]
 
@@ -128,13 +128,13 @@
 
 
 
-#If CheckWindowsActive("PyCharm" , "" , "admin.py")
+#If CheckWindowActive("PyCharm" , "" , "admin.py")
     :*:\sd\::short_description
 #If
 
 
 
-#If CheckWindowsActive("PyCharm" , "SunAwtDialog" , "Python 控制台")
+#If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python 控制台")
 
     ; ReRun
     !BackSpace::MouseClickAndResetting(34, 92)
@@ -148,7 +148,7 @@
 
 
 
-#If CheckWindowsActive("PyCharm" , "SunAwtDialog" , "Python Console History")
+#If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python Console History")
 
     ; 历史记录返回 \ 与书签冲突
     !\::Send {Esc}

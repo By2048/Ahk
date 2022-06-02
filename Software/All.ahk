@@ -12,7 +12,7 @@
 #Include %A_WorkingDir%\Tool\Help.ahk
 #Include %A_WorkingDir%\Tool\Mouse.ahk
 #Include %A_WorkingDir%\Tool\Other.ahk
-#Include %A_WorkingDir%\Tool\Windows.ahk
+#Include %A_WorkingDir%\Tool\Window.ahk
 #Include %A_WorkingDir%\Tool\KeyMap.ahk
 
 #Include %A_WorkingDir%\Software\@.ahk

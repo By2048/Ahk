@@ -5,7 +5,7 @@
 #Include %A_WorkingDir%\Lib\TrayIcon.ahk
 #Include %A_WorkingDir%\Tool\Init.ahk
 #Include %A_WorkingDir%\Tool\Other.ahk
-#Include %A_WorkingDir%\Tool\Windows.ahk
+#Include %A_WorkingDir%\Tool\Window.ahk
 
 #SingleInstance Force
 #NoTrayIcon
