@@ -14,11 +14,11 @@
 ;切换到显示器中心 
 $CapsLock::
 
-    config := GetActiveWindowInfo()
-    win_process_name := result.win_process_name
+    window := GetActiveWindowInfo()
+    win_process_name := window.process_name
 
-    ide := [ "VSCode" , "PyCharm" ]
-    If (win_process_name in ide) {
+    ides := [ "VSCode" , "PyCharm" ]
+    If (win_process_name in ides) {
         Return
     }
 

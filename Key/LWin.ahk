@@ -211,8 +211,8 @@ Return
 ; 结束应用
 <#BackSpace::
     result := GetActiveWindowInfo()
-    win_id := result.win_id
-    win_process_name := result.win_process_name
+    win_id := result.id
+    win_process_name := result.process_name
 
     ; 远程桌面切换到Windows时 结束远程桌面
     if (win_process_name == "Explorer") {
@@ -242,14 +242,8 @@ Return
         Return
     }
     result := GetActiveWindowInfo()
-    win_process_name := result.win_process_name
-    _win_process_name_ := result._win_process_name_
-    win_id := result.win_id
-    Process, Close, %_win_process_name_%
-    if (win_process_name == "CloudMusic") {
-        Sleep 300
-        Process, Close, CrashReporter.exe
-    }
+    win_process_exe := result.process_exe
+    Process, Close, %process_exe%
 Return
 
 ; 切换应用

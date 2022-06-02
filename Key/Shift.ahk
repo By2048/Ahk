@@ -49,8 +49,8 @@ GetShiftImage()
 
     if (not hotkeys_process_name) {
         result           := GetActiveWindowInfo()
-        win_process_name := result.win_process_name
-        win_title        := result.win_title
+        win_process_name := result.process_name
+        win_title        := result.title
     }
     
     ; PyCharm计算界面不处理
