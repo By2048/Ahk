@@ -61,8 +61,16 @@ Return
 >^j::
     Run D:\#Lnk\JetBrains.lnk
     exe := ProcessNameOrigin("JetBrains")
-    WinWaitActive, ahk_exe %exe%,  , 3
-    MoveWindowToCenter(True)
+    Loop 9 {
+        WinActivate, ahk_exe %exe%
+        if WinActive("ahk_exe " . exe) {
+            HelpText(A_Index)
+            MoveWindowToCenter(True)
+            break
+        } else {
+            Sleep 10
+        }
+    }
 Return
 >^k::KeyboardGUI()
 >^l::Run "C:\Program Files\LogiOptionsPlus\logioptionsplus.exe"
