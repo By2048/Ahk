@@ -25,7 +25,7 @@ show_hide_key_config()
     }
 
     result := GetActiveWindowInfo()
-    win_process_name := result.win_process_name
+    win_process_name := result.process_name
     
     key_map_cfg := GetActiveWindowConfig(Key_Map_Config)
     

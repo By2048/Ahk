@@ -141,11 +141,11 @@ ScreenshotActivateSoftware(keep_path:="backup")
     }
 
     result := GetActiveWindowInfo()
-    win_process_name := result.win_process_name
-    win_x := result.win_x
-    win_y := result.win_y
-    win_w := result.win_w
-    win_h := result.win_h
+    win_process_name := result.process_name
+    win_x := result.x
+    win_y := result.y
+    win_w := result.w
+    win_h := result.h
 
     name:="", file:="", cmd:=""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
@@ -154,8 +154,6 @@ ScreenshotActivateSoftware(keep_path:="backup")
     file := StrReplace(file, "\\", "\")
     cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, win_x, win_y, win_w, win_h, file)
     Run %cmd%
-
-    
 }
 
 

@@ -36,8 +36,8 @@
 
         MoveWindowToDefaultPosition()
 
-        result := GetActiveWindowInfo()
-        win_id := result.win_id
+        window := GetActiveWindowInfo()
+        win_id := window.id
 
         ;       Edit10
         ; Static35   SysLink5
@@ -48,25 +48,25 @@
         control_3_name := "Static35"
         control_4_name := "SysLink5"
 
-        x1 := result["win_controls"][control_1_name]["x"]
-        y1 := result["win_controls"][control_1_name]["y"]
-        w1 := result["win_controls"][control_1_name]["w"]
-        h1 := result["win_controls"][control_1_name]["h"]
+        x1 := window["controls"][control_1_name]["x"]
+        y1 := window["controls"][control_1_name]["y"]
+        w1 := window["controls"][control_1_name]["w"]
+        h1 := window["controls"][control_1_name]["h"]
 
-        x2 := result["win_controls"][control_2_name]["x"]
-        y2 := result["win_controls"][control_2_name]["y"]
-        w2 := result["win_controls"][control_2_name]["w"]
-        h2 := result["win_controls"][control_2_name]["h"]
+        x2 := window["controls"][control_2_name]["x"]
+        y2 := window["controls"][control_2_name]["y"]
+        w2 := window["controls"][control_2_name]["w"]
+        h2 := window["controls"][control_2_name]["h"]
 
-        x3 := result["win_controls"][control_3_name]["x"]
-        y3 := result["win_controls"][control_3_name]["y"]
-        w3 := result["win_controls"][control_3_name]["w"]
-        h3 := result["win_controls"][control_3_name]["h"]
+        x3 := window["controls"][control_3_name]["x"]
+        y3 := window["controls"][control_3_name]["y"]
+        w3 := window["controls"][control_3_name]["w"]
+        h3 := window["controls"][control_3_name]["h"]
 
-        x4 := result["win_controls"][control_4_name]["x"]
-        y4 := result["win_controls"][control_4_name]["y"]
-        w4 := result["win_controls"][control_4_name]["w"]
-        h4 := result["win_controls"][control_4_name]["h"]
+        x4 := window["controls"][control_4_name]["x"]
+        y4 := window["controls"][control_4_name]["y"]
+        w4 := window["controls"][control_4_name]["w"]
+        h4 := window["controls"][control_4_name]["h"]
 
         offset := 700
 

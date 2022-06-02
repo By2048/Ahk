@@ -1,12 +1,12 @@
 ﻿
-#If ( CheckWindowActive( "Explorer" , "#32770" , "删除多个项目" ) )
+#If CheckWindowActive( "Explorer" , "#32770" , "删除多个项目" )
     !y::Return
     !n::Return
 #If
 
 
 
-#If ( CheckWindowActive( "Explorer" , "#32770" , "属性" ) )
+#If CheckWindowActive( "Explorer" , "#32770" , "属性" )
     !F12::
         ; 修改文件图标
         Send ^+{Tab}
@@ -23,7 +23,7 @@
 
 
 
-#If ( CheckWindowActive("Explorer" , "OperationStatusWindow" , "删除文件") )
+#If CheckWindowActive("Explorer" , "OperationStatusWindow" , "删除文件")
     !y::Return
     !n::Return
     \::Send !a
@@ -32,7 +32,7 @@
 
 
 ; 任务栏
-#If ( CheckWindowActive("Explorer" , "Shell_TrayWnd") )
+#If CheckWindowActive("Explorer" , "Shell_TrayWnd")
     WheelUp::Volume_Up
     WheelDown::Volume_Down
 #If
@@ -40,7 +40,7 @@
 
 
 ; 桌面
-#If ( CheckWindowActive("Explorer" , "WorkerW") )
+#If CheckWindowActive("Explorer" , "WorkerW")
     ; 切换输入焦点
      F6::Return
      F9::Run D:\\
@@ -51,7 +51,7 @@
 
 
 
-#If ( CheckWindowActive( "Explorer" , "#32770" ) )
+#If CheckWindowActive( "Explorer" , "#32770" )
     ^Tab::Return
     ^+Tab::Return
     !Tab::Send ^{Tab}
@@ -61,7 +61,7 @@
 
 
 
-#If ( CheckWindowActive("Explorer") )
+#If CheckWindowActive("Explorer")
 
     ; Ctrl+F 选择搜索框
     ; Alt+D 选择地址栏
@@ -151,7 +151,7 @@
 
         MoveWindowToDefaultPosition()
 
-        win_title := window.win_title
+        win_title := window.title
         config := Explorer_Config[win_title]
         if (not config) {
             config := Explorer_Config["Default"]
@@ -162,9 +162,9 @@
         MouseGetPos, x_origin, y_origin
 
         result := GetActiveWindowInfo("Window")
-        win_id := result["win_id"]
-        win_xx := result["win_xx"]
-        cinfo  := result["win_controls"]["DirectUIHWND3"]
+        win_id := result.id
+        win_xx := result.xx
+        cinfo  := result["controls"]["DirectUIHWND3"]
         x      := cinfo.x
         y      := cinfo.y
         w      := cinfo.w
@@ -178,7 +178,7 @@
         line_width   := 14
         offset       := 3
 
-        check_width := result["win_controls"]["SysTreeView321"]["w"]
+        check_width := result["controls"]["SysTreeView321"]["w"]
         if ( Abs(check_width - left_length ) > 3 ) {
             max_left := left_length + line_width
             MouseClickDrag, Left, x-offset,  (yy-y)/2, max_left+offset,  (yy-y)/2, 0
@@ -188,6 +188,5 @@
         MouseMove, x_origin, y_origin, 0
 
     Return
-
 
 #If

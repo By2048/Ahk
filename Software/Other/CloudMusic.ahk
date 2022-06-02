@@ -1,5 +1,11 @@
 ﻿
-#If ( CheckWindowActive( "CloudMusic" , "OrpheusBrowserHost" ) )
+#If CheckWindowActive( "CloudMusic" , "OrpheusBrowserHost" )
+
+    <#BackSpace::
+        Process, Close, CrashReporter.exe
+        Sleep 300
+        Process, Close, CloudMusic.exe
+    Return
 
     /::
         MoveWindowToDefaultPosition()

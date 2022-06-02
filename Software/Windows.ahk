@@ -5,7 +5,7 @@
     PgDn::Send !o
     <#\::
         MoveWindowToDefaultPosition()
-        _id := window.win_id
+        _id := window.id
         SetColumnWidth( _id, "SysListView321", { 1 : 200 , 2 : 1650 } ) ;用户变量
         SetColumnWidth( _id, "SysListView322", { 1 : 370 , 2 : 1450 } ) ;系统变量
     Return
@@ -27,9 +27,8 @@
 
 
     <#\::
-        ; result := GetActiveWindowInfo()
         MoveWindowToDefaultPosition()
-        _id    := window.win_id
+        _id    := window.id
 
         _name  := "SysListView321" ;详细信息
         _width := {  1 : 470   ;名称
@@ -105,7 +104,7 @@
         win_id := result.win_id
 
         cname  := "Address Band Root1"
-        cinfo  := result["win_controls"][cname]
+        cinfo  := result["controls"][cname]
         cx     := cinfo.x
         cy     := cinfo.y
         cw     := 1200
@@ -113,21 +112,21 @@
         ControlMove, %cname%, %cx%, %cy%, %cw%, %ch%, ahk_id %win_id%
         
         cname  := "UniversalSearchBand1"
-        cinfo  := result["win_controls"][cname]
+        cinfo  := result["controls"][cname]
         cx     := 1450
         cy     := cinfo.y
         cw     := cinfo.w + ( cinfo.x - cx )
         ch     := cinfo.h
         ControlMove, %cname%, %cx%, %cy%, %cw%, %ch%, ahk_id %win_id%
 
-        cinfo  := result["win_controls"]["DirectUIHWND2"]
+        cinfo  := result["controls"]["DirectUIHWND2"]
         offset := 1
         cleft  := 393
         MoveControlUDLR(cinfo,  ,  , cleft,  , offset)
 
         ; 平铺模式
         MouseGetPos, x_origin, y_origin
-        cinfo := result["win_controls"]["DirectUIHWND2"]
+        cinfo := result["controls"]["DirectUIHWND2"]
         x     := cinfo.x  + 10
         y     := cinfo.yy - 90
         MouseClick, Right, %x%, %y%, 1, 0
@@ -167,7 +166,7 @@
 #If CheckWindowActive( "MMC" , "" , "服务" )
     <#\::
         MoveWindowToDefaultPosition()
-        _id    := window.win_id
+        _id    := window.id
         _name  := "SysListView321"
         _width := {    1 : 300   ;名称
                     ,  2 : 470   ;描述
@@ -186,7 +185,7 @@
         MouseGetPos, x_origin, y_origin
 
         MoveWindowToDefaultPosition()
-        _id    := window.win_id
+        _id    := window.id
         _name  := "SysListView321"
         _width := {   1 : 370     ;名称
                     , 2 : 230     ;类型
@@ -196,7 +195,7 @@
         max_left := 650
         offset   := 9
 
-        control_config := window["win_controls"]["SysTreeView321"]
+        control_config := window["controls"]["SysTreeView321"]
         move_steps     := control_config.w - max_left
         if ( Abs(move_steps) < 9 ) {
             return

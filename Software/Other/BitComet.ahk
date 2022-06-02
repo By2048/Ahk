@@ -1,13 +1,13 @@
 ﻿
-#If ( CheckWindowActive("BitComet") )
+#If CheckWindowActive("BitComet")
 
     <#\::
         MoveWindowToDefaultPosition()
 
-        win_id := window.win_id
+        win_id := window.id
 
         result   := GetActiveWindowInfo("Window")
-        cinfo    := result["win_controls"]["SysListView321"]
+        cinfo    := result["controls"]["SysListView321"]
         max_left := 336
         MoveControlUDLR(cinfo,  ,  , max_left,  , 3)
 
@@ -37,7 +37,7 @@
         SetColumnWidth(win_id, control_name, control_value)
 
         control_name  := "SysListView3212" ;统计
-        max_width     := window["win_controls"][control_name]["w"]
+        max_width     := window["controls"][control_name]["w"]
         w_1           := 400
         w_2           := max_width - w_1 - 50
         control_value := {  1 : w_1    ;项目

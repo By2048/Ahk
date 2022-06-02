@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowActive( "Q-Dir" ) )
+#If CheckWindowActive( "Q-Dir" )
 
     ;全屏
     F11::Return
@@ -67,19 +67,19 @@
         offset := 4 * Screens.1.dpi
 
         result := GetActiveWindowInfo("Window")
-        cinfo  := result["win_controls"]["#327702"]
+        cinfo  := result["controls"]["#327702"]
         cdown  := 800
         MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
         cdown  := 0
 
         result := GetActiveWindowInfo("Window")
-        cinfo  := result["win_controls"]["#327702"]
+        cinfo  := result["controls"]["#327702"]
         cleft  := 650 + 21
         MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
         cleft  := 0
 
         result := GetActiveWindowInfo("Window")
-        cinfo  := result["win_controls"]["#327702"]
+        cinfo  := result["controls"]["#327702"]
         cright := cinfo.x + 1000 + 50
         MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
         cright := 0

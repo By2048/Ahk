@@ -50,7 +50,7 @@
 
     !\::
         result    := GetActiveWindowInfo()
-        win_title := result.win_title
+        win_title := result.title
         script    := "E:/Project/script/note/setup.py"
         command   := Format("{} {} {}", Python, script, win_title)
         Run, %command%
