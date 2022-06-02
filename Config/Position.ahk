@@ -156,6 +156,6 @@ WPB["Thunder__迅雷播放组件"] := Position("[Center][2]", 1920, 1080)
 
 #Include %A_WorkingDir%\Config\Position.Chat.ahk
 #Include %A_WorkingDir%\Config\Position.IDE.ahk
-#Include %A_WorkingDir%\Config\Position.Window.ahk
+#Include %A_WorkingDir%\Config\Position.Windows.ahk
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
