@@ -15,8 +15,8 @@
 ; 窗口位置大小调整
 ; 结束窗口
 
->#Space::WindowsTerminal("focus")
->#+Space::WindowsTerminal("fullscreen")
+>#Space::WindowsTerminal("Focus")
+>#+Space::WindowsTerminal("Full")
 
 >#b::Return
 >#Tab::Return
@@ -39,6 +39,9 @@
 >#-::Send ^!- ;音量-
 >#o::Send ^!o ;喜欢歌曲
 >#p::Send ^!p ;歌词
+
+RWin & RCtrl::MoveWindowToMainMini("Main")
+RWin & RAlt::MoveWindowToMainMini("Mini")
 
 ; 移动窗口
 RWin & LButton::
@@ -89,9 +92,6 @@ Return
     windows_move:=True    
     HelpText("Move Windows")
 Return
-
-RWin & RCtrl::MoveWindowToMainMini("Main")
-RWin & RAlt::MoveWindowToMainMini("Mini")
 
 Global windows_move:=False
 Global windows_resize_big:=False

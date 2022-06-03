@@ -10,7 +10,7 @@
 ; 运行模式设置
 RunNormalUser(command)
 {
-    if InStr(command, ".lnk") {
+    if ( InStr(command, ".lnk") ) {
         command := Format("C:\Windows\Explorer.exe {}", command) 
     }
 
@@ -31,7 +31,7 @@ RunNormalUser(command)
 
 
 ; Windows终端启动设置
-WindowsTerminal(mode, folder="T:\\")
+WindowsTerminal(mode:="Focus", folder:="T:\\")
 {
     name := "Terminal"
     exe  := ProcessNameOrigin(name)
@@ -39,16 +39,14 @@ WindowsTerminal(mode, folder="T:\\")
         WinClose, A
         Return
     }
-
     args := " "
-    if (mode == "fullscreen") {
+    if (mode == "Full") {
         args := "--fullscreen"
-    } else if (mode == "focus") {
+    } else if (mode == "Focus") {
         args := "--focus"
     }
     args := args . " -d " . folder
-
-    Run %WT% %args%
+    Run, %WT% %args%
     WinWait, ahk_exe %exe%
     WinActivate, ahk_exe %exe%
 }

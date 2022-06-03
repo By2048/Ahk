@@ -63,11 +63,10 @@ Return
     exe := ProcessNameOrigin("JetBrains")
     Loop 9 {
         WinActivate, ahk_exe %exe%
-        if WinActive("ahk_exe " . exe) {
-            HelpText(A_Index)
+        If WinActive("ahk_exe " . exe) {
             MoveWindowToCenter(True)
-            break
-        } else {
+            Break
+        } Else {
             Sleep 10
         }
     }
