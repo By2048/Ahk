@@ -24,10 +24,11 @@ show_hide_key_config()
         return
     }
 
-    result := GetActiveWindowInfo()
-    win_process_name := result.process_name
+    GetActiveWindowInfo()
     
-    key_map_cfg := GetActiveWindowConfig(Key_Map_Config)
+    win_process_name := window.process_name
+    
+    key_map_cfg := GetWindowConfig(Key_Map_Config)
     
     if (key_map_cfg.MaxIndex()=0) {
         return False
