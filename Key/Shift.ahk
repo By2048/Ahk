@@ -47,18 +47,19 @@ GetShiftImage()
 
     global Process_Hotkeys_Image
 
+    GetActiveWindowInfo()
+
     if (not hotkeys_process_name) {
-        result           := GetActiveWindowInfo()
-        win_process_name := result.process_name
-        win_title        := result.title
+        win_process_name := window.process_name
+        win_title        := window.title
     }
     
     ; PyCharm计算界面不处理
-    If (win_process_name=="PyCharm" and win_title=="Evaluate") {
+    If (win_process_name == "PyCharm" and win_title == "Evaluate") {
         return
     }
 
-    hotkeys_images := GetActiveWindowConfig(Process_Hotkeys_Image)
+    hotkeys_images := GetWindowConfig(Process_Hotkeys_Image)
     hotkeys_total  := hotkeys_images.MaxIndex()
 
     if (hotkeys_index>hotkeys_total) {
@@ -84,14 +85,11 @@ ShowShiftImage()
     image_size := GetImageSize(image)
     image_w    := image_size["w"]
     image_h    := image_size["h"]
-    image_x    := Screens.1.w/2 - image_w/2
-    image_y    := Screens.1.h/2 - image_h/2
+    image_x    := Screen.w/2 - image_w/2
+    image_y    := Screen.h/2 - image_h/2
 
-    image_w := image_w / Screens.1.dpi
-    image_h := image_h / Screens.1.dpi
-    
     Gui, Destroy
-    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
+    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
     Gui, Margin, 1, 1
     Gui, Add, Picture, w%image_w% h%image_h%, %image%
 

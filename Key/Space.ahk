@@ -32,5 +32,5 @@
 Space & RAlt::Send {RButton}
 
 ~Space &      Tab::Send {RButton}
-~Space & Capslock::Send {MButton}
+~Space & CapsLock::Send {MButton}
 ~Space &    Shift::Send {LButton}
