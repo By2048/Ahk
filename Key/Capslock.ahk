@@ -14,34 +14,66 @@
 ;切换到显示器中心 
 $CapsLock::
 
-    window := GetActiveWindowInfo()
+    CoordMode, Mouse, Screen
+    MouseGetPos, x_current, y_current
+
+    GetActiveWindowInfo()
     win_process_name := window.process_name
 
     ides := [ "VSCode" , "PyCharm" ]
-    If (win_process_name in ides) {
-        Return
+    for index, name in ides {
+        if (win_process_name == name) {
+            return
+        }
     }
 
-    CoordMode, Mouse, Screen
-    MouseGetPos, x, y
+    offset    := 300
+    x_default := Screen.x + Screen.w/2
+    y_default := Screen.y + Screen.h/2
 
-    ; 屏幕中心
+    ; 屏幕1中心
     x1 := Screens.1.x + Screens.1.w/2
     y1 := Screens.1.y + Screens.1.h/2
+    
+    ; 屏幕2中心
     x2 := Screens.2.x + Screens.2.w/2
     y2 := Screens.2.y + Screens.2.h/2
 
-    offset := 300 
-    
-    xx := 0
-    yy := 0
+    ; 新位置
+    xx := x_default
+    yy := y_default
 
-    if ( Abs(x-x1)>offset or Abs(y-y1)>offset ) {
-        xx := x1
-        yy := y1
-    } else if ( Abs(x-x2)>offset or Abs(y-y2)>offset ) {
-        xx := x2
-        yy := y2
+    ; 在屏幕1
+    if (     x_current >= Screens.1.x and x_current <= Screens.1.xx
+         and y_current >= Screens.1.y and y_current <= Screens.1.yy )
+    {
+        ; 不在在屏幕1中心
+        if ( x_current != x1 and y_current != y1 ) {
+            xx := x1
+            yy := y1
+        } else {
+            xx := x2
+            yy := y2
+        }
+    }
+
+    ; 在屏幕2
+    if (    x_current >= Screens.2.x and x_current <= Screens.2.xx
+        and y_current >= Screens.2.y and y_current <= Screens.2.yy ) 
+    {
+        ; 不在在屏幕2中心
+        if ( x_current != x2 and y_current != y2 ) {
+            xx := x2
+            yy := y2
+        } else {
+            xx := x1
+            yy := y1
+        }
+    }
+
+    ; 忽略一定的差异
+    if ( Abs(xx - x_current) < offset and Abs(yy - y_current) < offset ) {
+        return
     }
 
     DllCall("SetCursorPos", "int", xx, "int", yy)
@@ -51,7 +83,7 @@ $CapsLock::
     WinActivate, ahk_id %win_id%
 
     ; 高亮窗口
-    HighlightActiveWindow( , , _time_:=300)
+    HighlightActiveWindow(  ,  , _time_:=300)
 
 Return
 

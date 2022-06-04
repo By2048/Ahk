@@ -106,8 +106,8 @@ Echo  %Command% .\Key\Shift.ahk
 Echo.
 Start %AHK%     .\Key\Space.ahk       %Command%
 Echo  %Command% .\Key\Space.ahk
-Start %AHK%     .\Key\Capslock.ahk    %Command%
-Echo  %Command% .\Key\Capslock.ahk
+Start %AHK%     .\Key\CapsLock.ahk    %Command%
+Echo  %Command% .\Key\CapsLock.ahk
 Start %AHK%     .\Key\Other.ahk       %Command%
 Echo  %Command% .\Key\Other.ahk
 Echo.
