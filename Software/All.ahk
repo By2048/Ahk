@@ -1,10 +1,13 @@
 ﻿
 #Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Config\Software.ahk
 
 #Include %A_WorkingDir%\Lib\Json.ahk
 
 #Include %A_WorkingDir%\Tool\Base.ahk
 #Include %A_WorkingDir%\Tool\Change.ahk
+#Include %A_WorkingDir%\Tool\Check.ahk
+#Include %A_WorkingDir%\Tool\Control.ahk
 #Include %A_WorkingDir%\Tool\File.ahk
 #Include %A_WorkingDir%\Tool\Init.ahk
 #Include %A_WorkingDir%\Tool\Language.ahk
