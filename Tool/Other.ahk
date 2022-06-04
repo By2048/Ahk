@@ -261,12 +261,14 @@ SendData(data)
 ; 文本转字典
 GetColumnConfig(args*)
 {
-    if (not arg1 or not arg2) {
-        return
-    }
     arg1 := args[1]
     arg2 := args[2]
     arg3 := args[3]
+
+    if (not arg1 or not arg2) {
+        return
+    }
+
     arg1 := Trim(arg1)
     arg2 := Trim(arg2)
     arg3 := Trim(arg3)
@@ -276,15 +278,18 @@ GetColumnConfig(args*)
     arg1 := StrSplit(arg1, " ")
     arg2 := StrSplit(arg2, " ")
     arg3 := StrSplit(arg3, " ")
+
     if (arg1.Length() != arg2.Length()) {
         return
     }
     length := arg1.Length()
+
     result := {}
     loop, % length {
-        key   := arg1[A_Index]
-        value := arg2[A_Index]
+        key   := arg1[A_Index] + 0
+        value := arg2[A_Index] + 0
         result[key] := value
     }
+
     return result
 }

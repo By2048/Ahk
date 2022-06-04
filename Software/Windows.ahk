@@ -5,9 +5,8 @@
     PgDn::Send !o
     <#\::
         MoveWindowToDefaultPosition()
-        _id := window.id
-        SetColumnWidth( _id, "SysListView321", { 1 : 200 , 2 : 1650 } ) ;用户变量
-        SetColumnWidth( _id, "SysListView322", { 1 : 370 , 2 : 1450 } ) ;系统变量
+        SetColumnWidth( "SysListView321", { 1 : 200 , 2 : 1650 } ) ;用户变量
+        SetColumnWidth( "SysListView322", { 1 : 370 , 2 : 1450 } ) ;系统变量
     Return
 #If
 
@@ -28,7 +27,6 @@
 
     <#\::
         MoveWindowToDefaultPosition()
-        _id    := window.id
 
         _name  := "SysListView321" ;详细信息
         _width := {  1 : 470   ;名称
@@ -46,7 +44,7 @@
                   , 12 : 80    ;平台
                   , 13 : 180   ;DPI 感知
                   , -1 : 0   } ;组
-        SetColumnWidth(_id, _name, _width)
+        SetColumnWidth(_name, _width)
 
         _name  := "SysListView322" ;服务
         _width := {  1 : 600   ;名称
@@ -54,7 +52,7 @@
                   ,  4 : 130   ;状态
                   ,  3 : 700   ;描述
                   ,  5 : 600 } ;组
-        SetColumnWidth(_id, _name, _width)
+        SetColumnWidth(_name, _width)
     Return
 
 #If
@@ -166,14 +164,13 @@
 #If CheckWindowActive( "MMC" , "" , "服务" )
     <#\::
         MoveWindowToDefaultPosition()
-        _id    := window.id
         _name  := "SysListView321"
         _width := {    1 : 300   ;名称
                     ,  2 : 470   ;描述
                     ,  3 : 60    ;状态
                     ,  4 : 110   ;启动类型
                     ,  5 : 60  } ; 登录为
-        SetColumnWidth(_id, _name, _width)
+        SetColumnWidth(_name, _width)
     Return
 #If
 
@@ -185,12 +182,11 @@
         MouseGetPos, x_origin, y_origin
 
         MoveWindowToDefaultPosition()
-        _id    := window.id
         _name  := "SysListView321"
         _width := {   1 : 370     ;名称
                     , 2 : 230     ;类型
                     , 3 : 1170  } ;数值
-        SetColumnWidth(_id, _name, _width)
+        SetColumnWidth(_name, _width)
 
         max_left := 650
         offset   := 9

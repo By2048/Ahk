@@ -1,8 +1,9 @@
 ﻿
 ; 软件中列宽
-SetColumnWidth(win_id, control_name, control_width)
+SetColumnWidth(control_name, control_width)
 {
-    msg := Message.LVM_SETCOLUMNWIDTH
+    win_id := window.id
+    msg    := Message.LVM_SETCOLUMNWIDTH
     for key, value in control_width {
         key := key - 1
         SendMessage, %msg%, %key%, %value%, %control_name%, ahk_id %win_id%    
@@ -12,8 +13,9 @@ SetColumnWidth(win_id, control_name, control_width)
 
 
 ; 设置指定列+列宽
-SetExplorertColumns(win_id, config) 
+SetExplorertColumns(config) 
 {
+    win_id := window.id
     oWin := JEE_ExpWinGetObj(win_id)
     JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
 

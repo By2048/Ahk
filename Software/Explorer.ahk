@@ -156,7 +156,7 @@
         if (not config) {
             config := Explorer_Config["Default"]
         }
-        SetExplorertColumns(win_id, config)
+        SetExplorertColumns(config)
 
         CoordMode, Mouse, Window
         MouseGetPos, x_origin, y_origin

@@ -31,7 +31,6 @@
     ; 默认位置
     <#\::
         MoveWindowToDefaultPosition()
-        _id    := window.id
         _name  := "WindowsForms10.SysListView32.app.0.12ab327_r6_ad11"
         _width := {  1 : 40    ;y
                   ,  2 : 160   ;类型
@@ -47,7 +46,7 @@
                   , 12 : 135   ;今日上传
                   , 13 : 135   ;总下载
                   , 14 : 135 } ;总上传
-        SetColumnWidth(_id, _name, _width)
+        SetColumnWidth(_name, _width)
     Return
 
 #If

@@ -13,12 +13,11 @@
 
     <#\::
         MoveWindowToDefaultPosition()
-        _id    := window.id
         _name  := "SysListView321"
         _width := { 1 : 1030   ; 名称
                   , 2 : 150    ; 大小
                   , 3 : 250  } ; 安装时间
-        SetColumnWidth(_id, _name, _width)
+        SetColumnWidth(_name, _width)
     Return
 
 #If
