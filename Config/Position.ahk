@@ -104,7 +104,6 @@ WPD["Q-Dir"] := Position(arg, 1950)
 
 WPD["BitComet"]    := Position(3000 , 1500)
 WPD["qBittorrent"] := Position(3000 , 1500)
-WPD["FDM"]         := Position(2000 , 1500)
 WPD["Calibre"]     := Position(3000 , 1500)
 WPD["Everything"]  := Position(2300 , 1700)
 WPD["Android"]     := Position(3440 , 2110)
@@ -114,6 +113,9 @@ WPD["VMware"]      := Position(2500 , 1600)
 WPD["Zip"]         := Position(1800 , 1400)
 WPD["Geek"]        := Position(1500 , 1500)
 WPD["FFRenamePro"] := Position(3300 , 1800)
+
+WPD["FDM"]         := Position("[Center][1]" , 2000 , 1500)
+WPD["FDM__%"]      := Position("[Center][3]" , 1300 , 1200)
 
 ; 火绒U盘工具
 WPD["HipsTray_HRUSBTRAY"] := Position(-10, -10, 0, 0)  

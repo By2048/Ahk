@@ -6,4 +6,3 @@
 #Include %A_WorkingDir%\Config\Message.ahk
 #Include %A_WorkingDir%\Config\Position.ahk
 #Include %A_WorkingDir%\Config\Private.ahk
-#Include %A_WorkingDir%\Config\Software.ahk
