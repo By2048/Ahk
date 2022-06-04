@@ -1,5 +1,6 @@
 ﻿
 #Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Config\Software.Exe.ahk
 #Include %A_WorkingDir%\Tool\File.ahk
 #Include %A_WorkingDir%\Tool\Window.ahk
 #Include %A_WorkingDir%\Tool\Change.ahk
@@ -253,4 +254,37 @@ SendData(data)
     {
 		PostMessage, Message.WM_CHAR, Ord(A_LoopField), 1,  , ahk_id %win_id%
     }
+}
+
+
+
+; 文本转字典
+GetColumnConfig(args*)
+{
+    if (not arg1 or not arg2) {
+        return
+    }
+    arg1 := args[1]
+    arg2 := args[2]
+    arg3 := args[3]
+    arg1 := Trim(arg1)
+    arg2 := Trim(arg2)
+    arg3 := Trim(arg3)
+    arg1 := RegExReplace(arg1, "\s+", " ")
+    arg2 := RegExReplace(arg2, "\s+", " ")
+    arg3 := RegExReplace(arg3, "\s+", " ")
+    arg1 := StrSplit(arg1, " ")
+    arg2 := StrSplit(arg2, " ")
+    arg3 := StrSplit(arg3, " ")
+    if (arg1.Length() != arg2.Length()) {
+        return
+    }
+    length := arg1.Length()
+    result := {}
+    loop, % length {
+        key   := arg1[A_Index]
+        value := arg2[A_Index]
+        result[key] := value
+    }
+    return result
 }

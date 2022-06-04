@@ -4,147 +4,13 @@
 #Include %A_WorkingDir%\Tool\Mouse.ahk
 #Include %A_WorkingDir%\Tool\File.ahk
 #Include %A_WorkingDir%\Tool\Change.ahk
+#Include %A_WorkingDir%\Tool\Check.ahk
+#Include %A_WorkingDir%\Tool\Help.ahk
 #Include %A_WorkingDir%\Tool\Language.ahk
 
 
 
-; 判断是否在桌面
-; return | True \ False
-IsDesktops()
-{
-    WinGetClass, win_class, A
-    if (win_class == "WorkerW") {
-        return True
-    } else {
-        return False
-    }
-}
-
-
-
-; 判断软件是否全屏\最小化
-; return | True \ False
-IsMaxMin()
-{
-    WinGet, win_min_max, MinMax, A
-    if (win_min_max) {
-        return True
-    } else {
-        return False
-    }
-}
-
-
-
-; 判断当前激活的应用是否为游戏
-; return | True \ False
-IsGame()
-{   
-    game_process_name := []
-    game_process_name.Push( "LOL_TX"     )
-    game_process_name.Push( "LOL_Game"   )
-
-    WinGet, process_name, ProcessName, A
-    process_name := ProcessNameFormat(process_name)
-    for index, value in game_process_name {
-        if (value == process_name) {
-            HelpText("Game", "center_down", "screen3", 1000)
-            return True
-        }
-    }
-    return False
-}
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; 软件进程名转换 code.exe -> VSCode
-ProcessNameFormat(process_name)
-{
-    process_name := RTrim(process_name, "exe")
-    process_name := RTrim(process_name, "EXE")
-    process_name := RTrim(process_name, ".")
-    result       := process_name
-    for index, value in Windows_Process_Name {
-        name_old := value[1]
-        name_new := value[2]
-        if (process_name = name_old) {
-            result := name_new
-            break
-        }
-    }
-    return result
-}
-
-; 软件进程名转换 VSCode -> code.exe
-ProcessNameOrigin(process_name)
-{
-    result := process_name
-    for index, value in Windows_Process_Name {
-        name_old := value[1]
-        name_new := value[2]
-        if (process_name = name_new) {
-            result := name_old
-            break
-        }
-    }
-    result := result . ".exe"
-    return result
-}
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; 检测当前激活的应用是否满足参数条件
-; _process_name_ | 进程名（转换后的
-; _class_        | 进程Class
-; _title_        | 软件标题 Q Q|W|E
-; return         | True \ False
-CheckWindowActive(_process_name_:="", _class_:="", _title_:="")
-{
-    window           := GetActiveWindowInfo()
-    win_process_name := window.process_name
-    win_class        := window.class
-    win_title        := window.title
-
-    result := True
-
-    if (StrLen(_process_name_) > 0) {
-        if (win_process_name != _process_name_) {
-            result := False
-            return result
-        }
-    }
-    if (StrLen(_class_) > 0) {
-        if (win_class != _class_) {
-            result := False
-            return result
-        }
-    }
-    if (StrLen(_title_) > 0) {
-        if (InStr(_title_, "|")) {
-            title_check := False
-            title_split := StrSplit(_title_, "|")
-            for index, value in title_split {
-                if (InStr(win_title, value)) {
-                    title_check := True
-                }
-            }
-            result := title_check
-        } else {
-            if (not InStr(win_title, _title_)) {
-                result := False
-                return result
-            }
-        }
-    }
-
-    return result
-}
-
-
-
-; 获取窗口大小
+; Dll获取窗口大小
 GetClientSize(hWnd, ByRef w:="", ByRef h:="")
 {
     VarSetCapacity(rect, 16)
@@ -155,101 +21,10 @@ GetClientSize(hWnd, ByRef w:="", ByRef h:="")
 
 
 
-; 获取激活窗口的所在屏幕的信息以及窗口信息
-; result | {} 应用信息
-; mode   | Default AHK默认 \ Strict|Window API修正
-GetActiveWindowInfo(mode:="Default")
-{
-    WinGet,                          win_id, ID,              A
-    WinGet,                         win_pid, PID,             ahk_id %win_id%
-    WinGet,                     win_min_max, MinMax,          ahk_id %win_id%
-    WinGet,                 win_process_exe, ProcessName,     ahk_id %win_id%
-    WinGet,                 win_transparent, Transparent,     ahk_id %win_id%
-    WinGet,                 win_controls_id, ControlListHwnd, ahk_id %win_id%
-    WinGet,               win_controls_name, ControlList,     ahk_id %win_id%
-    WinGetClass,                  win_class,                  ahk_id %win_id%
-    WinGetTitle,                  win_title,                  ahk_id %win_id%
-    WinGetText,                    win_text,                  ahk_id %win_id%
-    WinGetPos,   win_x, win_y, win_w, win_h,                  ahk_id %win_id%
-    
-    if (mode == "Window") {
-        win_x := 0
-        win_y := 0
-        GetClientSize(win_id, win_w, win_h)
-    }
- 
-    ; 两种不同方式获取的窗口坐标存在差别
-    if (mode == "Strict") {
-        win_size_w := win_w
-        win_size_h := win_h
-        GetClientSize(win_id, win_size_w, win_size_h)
-        win_x := win_x + (win_w - win_size_w) / 2
-        win_y := win_y + (win_h - win_size_h) / 2
-        win_w := win_size_w
-        win_h := win_size_h
-    }
-
-    result := {}
-
-    win_controls      := {}
-    win_controls_id   := StrSplit(win_controls_id,   "`n")
-    win_controls_name := StrSplit(win_controls_name, "`n")
-
-    length_id   := win_controls_id.Length()
-    length_name := win_controls_name.Length()
-    length      := Min(length_id, length_name)
-    loop %length% {
-        k := win_controls_name[A_Index]
-        v := win_controls_id[A_Index]
-        win_controls[k] := { "id" : v }
-    }
-
-    for control_name, control_args in win_controls {
-        ControlGetPos,  x, y, w, h,   %control_name%, ahk_id %win_id%
-        ControlGetText, control_text, %control_name%, ahk_id %win_id%
-        control_args["x"]    := x
-        control_args["y"]    := y
-        control_args["w"]    := w
-        control_args["h"]    := h
-        control_args["xx"]   := x + w
-        control_args["yy"]   := y + h
-        control_args["text"] := control_text
-    }
-
-    result.id           := win_id
-    result.pid          := win_pid
-    result.min_max      := win_min_max
-    result.transparent  := win_transparent
-    result.process_exe  := win_process_exe
-    result.process_name := ProcessNameFormat(win_process_exe)
-    result.class        := win_class
-    result.title        := win_title
-    result.text         := win_text
-    result.x            := win_x
-    result.y            := win_y
-    result.w            := win_w
-    result.h            := win_h
-    result.xx           := win_x + win_w
-    result.yy           := win_y + win_h
-    result.controls     := win_controls
-
-    loop, % Screens.Count {
-        if (win_x >= Screens[A_Index]["x"] and win_x < Screens[A_Index]["xx"]) {
-            result["screen"] := Screens[A_Index]
-            break
-        }
-    }
-
-    window := result
-    return result
-}
-
-
-
 ; 获取当前激活的应用配置文件信息
 ; Config_Data | Config中定义的配置信息
 ; return      | win_config
-GetActiveWindowConfig(Config_Data)
+GetWindowConfig(CFG)
 {
     ; 1 A
     ; 2 A_B
@@ -259,23 +34,22 @@ GetActiveWindowConfig(Config_Data)
     ; 3 _B_C
     ; 3 __C
 
-    result           := GetActiveWindowInfo()
-    win_process_name := result.process_name
-    win_class        := result.class
-    win_title        := result.title
+    win_process_name := window.process_name
+    win_class        := window.class
+    win_title        := window.title
+    
+    win_title := StrReplace(win_title, " ", "")
 
     _process_name_ := ""
     _class_        := ""
     _title_        := ""
     
-    match_count    := 0  ;满足的条件数
     win_config     := [] ;参数
+    win_config     := CFG["Default"]
 
-    win_title := StrReplace(win_title, " ", "")
+    match_count := 0  ;满足的条件数
 
-    win_config := Config_Data["Default"]
-
-    for config_key, config_value in Config_Data {
+    for config_key, config_value in CFG {
 
         config_items := StrSplit(config_key, "_")
         max_index    := config_items.MaxIndex()
@@ -294,33 +68,28 @@ GetActiveWindowConfig(Config_Data)
             _title_ := config_items[3]
         }
 
+        ; 123 456 789
         if (StrLen(_process_name_) > 0) {
             if (win_process_name == _process_name_) {
-                match_cnt := match_cnt + 2
+                match_cnt := match_cnt + 9
             } else if (InStr(win_process_name, _process_name_)) {
-                match_cnt := match_cnt + 1
-            } else {
-                match_cnt := match_cnt - 1
+                match_cnt := match_cnt + 8
             }
         }
 
         if (StrLen(_class_) > 0) {
             if (win_class == _class_) {
-                match_cnt := match_cnt + 2
+                match_cnt := match_cnt + 6
             } else if (InStr(win_class, _class_)) {
-                match_cnt := match_cnt + 1
-            } else {
-                match_cnt := match_cnt - 1
+                match_cnt := match_cnt + 5
             }
         }
 
         if (StrLen(_title_) > 0) {
             if (win_title == _title_) {
-                match_cnt := match_cnt + 2
+                match_cnt := match_cnt + 3
             } else if (InStr(win_title, _title_)) {
-                match_cnt := match_cnt + 1
-            } else {
-                match_cnt := match_cnt - 1
+                match_cnt := match_cnt + 2
             }
         }
 
@@ -336,14 +105,111 @@ GetActiveWindowConfig(Config_Data)
 
 
 
+; 获取激活窗口的所在屏幕的信息以及窗口信息 使用全局变量window共享
+; result | {} 应用信息
+; mode   | Default AHK默认 \ Strict|Window API修正
+GetActiveWindowInfo(mode:="Default")
+{
+    WinGet,                          win_id, ID,              A
+    WinGet,                         win_pid, PID,             ahk_id %win_id%
+    WinGet,                     win_min_max, MinMax,          ahk_id %win_id%
+    WinGet,                 win_process_exe, ProcessName,     ahk_id %win_id%
+    WinGet,                 win_transparent, Transparent,     ahk_id %win_id%
+    WinGet,                 win_controls_id, ControlListHwnd, ahk_id %win_id%
+    WinGet,               win_controls_name, ControlList,     ahk_id %win_id%
+    WinGetClass,                  win_class,                  ahk_id %win_id%
+    WinGetTitle,                  win_title,                  ahk_id %win_id%
+    WinGetText,                    win_text,                  ahk_id %win_id%
+    WinGetPos,   win_x, win_y, win_w, win_h,                  ahk_id %win_id%
+
+    ; 基础信息
+    window.id           := win_id
+    window.pid          := win_pid
+    window.min_max      := win_min_max
+    window.transparent  := win_transparent
+    window.process_exe  := win_process_exe
+    window.process_name := ProcessNameFormat(win_process_exe)
+    window.class        := win_class
+    window.title        := win_title
+    window.text         := win_text
+
+    ; 窗口位置
+    ; 两种不同方式获取的窗口坐标存在差别
+    if (mode == "Window") {
+        win_x := 0
+        win_y := 0
+        GetClientSize(win_id, win_w, win_h)
+    }
+    if (mode == "Strict") {
+        win_size_w := win_w
+        win_size_h := win_h
+        GetClientSize(win_id, win_size_w, win_size_h)
+        win_x := win_x + (win_w - win_size_w) / 2
+        win_y := win_y + (win_h - win_size_h) / 2
+        win_w := win_size_w
+        win_h := win_size_h
+    }
+    window.x            := win_x
+    window.y            := win_y
+    window.w            := win_w
+    window.h            := win_h
+    window.xx           := win_x + win_w
+    window.yy           := win_y + win_h
+
+    ; 控件信息
+    win_controls      := {}
+    win_controls_id   := StrSplit(win_controls_id,   "`n")
+    win_controls_name := StrSplit(win_controls_name, "`n")
+    length_id   := win_controls_id.Length()
+    length_name := win_controls_name.Length()
+    length      := Min(length_id, length_name)
+    loop %length% {
+        k := win_controls_name[A_Index]
+        v := win_controls_id[A_Index]
+        win_controls[k] := { "id" : v }
+    }
+    for control_name, control_args in win_controls {
+        ControlGetPos,  x, y, w, h,   %control_name%, ahk_id %win_id%
+        ControlGetText, control_text, %control_name%, ahk_id %win_id%
+        control_args["x"]    := x
+        control_args["y"]    := y
+        control_args["w"]    := w
+        control_args["h"]    := h
+        control_args["xx"]   := x + w
+        control_args["yy"]   := y + h
+        control_args["text"] := control_text
+    }
+    window.controls     := win_controls
+    
+    ; 窗口所在屏幕信息
+    win_screen := {}
+    loop, % Screens.Count {
+        if (win_x >= Screens[A_Index]["x"] and win_x < Screens[A_Index]["xx"]) {
+            win_screen := Screens[A_Index]
+            break
+        }
+    }
+    window.screen       := win_screen
+
+    ; 窗口位置 默认1 默认2
+    win_position         := { "default" : {} , "backup" : {} }
+    win_position_default := GetWindowConfig(WPD)
+    win_position_backup  := GetWindowConfig(WPB)
+    win_position.default := win_position_default
+    win_position.backup  := win_position_backup
+    window.position      := win_position
+}
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 修改窗口透明度
 SetWindowTransparent(change:=0)
 {
-    result := GetActiveWindowInfo()
-    win_id := result.id
-    win_transparent := result.transparent
+    GetActiveWindowInfo()
+    win_id := window.id
+    win_transparent := window.transparent
 
     if (change == "Max") {
         win_transparent := 255
@@ -378,14 +244,14 @@ SetWindowTransparent(change:=0)
 ; offset | 在一定误差内不进行窗口移动
 ; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
 ; return | None
-SetWindow(win_id, xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
+SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
 {
+    win_id := window.id
+    win_process_name := window.process_name
+    win_min_max := window.min_max
+
     if (not win_id) {
         HelpText("No WinId",  ,  , 1000)
-    }
-    
-    if (IsMaxMin()) {
-        WinRestore, ahk_id %win_id%,
     }
 
     if (IsDesktops() or IsMaxMin() or IsGame()) {
@@ -404,7 +270,7 @@ SetWindow(win_id, xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
         hh := h
     }
 
-    if (window.process_name == "PyCharm") { ;边框问题
+    if (win_process_name == "PyCharm") { ;边框问题
         if (Mod(window.w, 2) == 0) {
             offset := 0
             ww := ww + 1
@@ -437,44 +303,43 @@ ResizeWindow(command, direction)
     SetWinDelay, 1
     CoordMode, Mouse
 
-    result := GetActiveWindowInfo()
-    win_id := result.id
-    win_x  := result.x
-    win_y  := result.y
-    win_w  := result.w
-    win_h  := result.h
+    GetActiveWindowInfo()
+
+    win_id := window.id
+    win_x  := window.x
+    win_y  := window.y
+    win_w  := window.w
+    win_h  := window.h
 
     step := 10
 
-    if (command=="Big") {
-        if (direction=="Up") {
+    if (command == "Big") {
+        if (direction == "Up") {
             win_y := win_y - step
             win_h := win_h + step
-        } else if (direction=="Down") {
+        } else if (direction == "Down") {
             win_h := win_h + step
-        } else if (direction=="Left") {
+        } else if (direction == "Left") {
             win_x := win_x - step
             win_w := win_w + step
-        } else if (direction=="Right") {
+        } else if (direction == "Right") {
             win_w := win_w + step
         }
-    }
-
-    if (command=="Small") {
-        if (direction=="Up") {
+    } else if (command == "Small") {
+        if (direction == "Up") {
             win_y := win_y + step
             win_h := win_h - step
-        } else if (direction=="Down") {
+        } else if (direction == "Down") {
             win_h := win_h - step
-        } else if (direction=="Left") {
+        } else if (direction == "Left") {
             win_x := win_x + step
             win_w := win_w - step
-        } else if (direction=="Right") {
+        } else if (direction == "Right") {
             win_w := win_w - step
         }
     }
 
-    SetWindow(win_id, win_x, win_y, win_w, win_h)
+    SetWindow(win_x, win_y, win_w, win_h)
 }
 
 
@@ -490,25 +355,26 @@ MoveWindowUDLR(direction)
 
     SetWinDelay, 1
 
-    result := GetActiveWindowInfo()
-    win_id := result.id
-    win_x  := result.x
-    win_y  := result.y
-    win_w  := result.w
-    win_h  := result.h
+    GetActiveWindowInfo()
+
+    win_id := window.id
+    win_x  := window.x
+    win_y  := window.y
+    win_w  := window.w
+    win_h  := window.h
 
     step := 10
-    if (direction=="Up") {
+    if (direction == "Up") {
         win_y := win_y - step
-    } else if (direction=="Down") {
+    } else if (direction == "Down") {
         win_y := win_y + step
-    } else if (direction=="Left") {
+    } else if (direction == "Left") {
         win_x := win_x - step
-    } else if (direction=="Right") {
+    } else if (direction == "Right") {
         win_x := win_x + step
     }
 
-    SetWindow(win_id, win_x, win_y, win_w, win_h)
+    SetWindow(win_x, win_y, win_w, win_h)
 }
 
 
@@ -521,7 +387,7 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
 
     xy := 0 , x_start := 0 , y_start := 0 , x_end := 0 , y_end := 0
 
-    if (cup>0) {
+    if (cup > 0) {
         x_start := cinfo.x + cinfo.w/2
         y_start := cinfo.y - offset
         x_end   := x_start
@@ -529,7 +395,7 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
         xy      := y_end   - y_start
     }
 
-    if (cdown>0) {
+    if (cdown > 0) {
         x_start := cinfo.xx - cinfo.w/2
         y_start := cinfo.yy + offset
         x_end   := x_start
@@ -537,7 +403,7 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
         xy      := y_end    - y_start
     }
 
-    if (cleft>0) {
+    if (cleft > 0) {
         x_start := cinfo.x - offset
         y_start := cinfo.y + cinfo.h/2
         x_end   := cleft
@@ -545,7 +411,7 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
         xy      := x_end   - x_start
     }
 
-    if (cright>0) {
+    if (cright > 0) {
         x_start := cinfo.xx + offset
         y_start := cinfo.yy - cinfo.h/2
         x_end   := cright
@@ -553,12 +419,12 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
         xy      := x_end    - x_start
     }
 
-    if (Abs(xy)<3) {
+    if (Abs(xy) < 3) {
         return
     }
 
-    MouseClickDrag, Left, x_start, y_start, x_end, y_end, 0
-    MouseMove, x_origin, y_origin, 0
+    MouseClickDrag, Left, %x_start%, %y_start%, %x_end%, %y_end%, 0
+    MouseMove, %x_origin%, %y_origin%, 0
 }
 
 
@@ -567,46 +433,35 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
 ; return | None
 MoveWindowToCenter(silent:=False)
 {
+    GetActiveWindowInfo()
+
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         return 
     }
 
-    result := GetActiveWindowInfo()
+    win_id := window.id
+    win_process_name := window.process_name
 
-    win_id := result.id
-    win_process_name := result.process_name
-    screen_id := result.screen.id
+    win_x := window.x
+    win_y := window.y
+    win_w := window.w
+    win_h := window.h
 
-    win_x := result.x
-    win_y := result.y
-    win_w := result.w
-    win_h := result.h
-
-    screen_x := result.screen.x
-    screen_y := result.screen.y
-    screen_w := result.screen.w
-    screen_h := result.screen.h
-
+    screen_id := window.screen.id
+    screen_x  := window.screen.x
+    screen_y  := window.screen.y
+    
+    screen_w  := window.screen.w
+    screen_h  := window.screen.h
+ 
     xx := screen_x + screen_w/2 - win_w/2
     yy := screen_y + screen_h/2 - win_h/2
     ww := win_w
     hh := win_h
+    SetWindow(xx, yy, ww, hh)
     
-    SetWindow(win_id, xx, yy, ww, hh)   
-
-    if (win_x==xx and win_y==yy) {
-        return
-    }
-    
-    SetWindow(win_id, xx, yy, ww, hh, 0)
-
-    if (window.process_name == "PyCharm") {
-        return
-    }
-
     if (not silent) {
         HelpText("Center", "center_down", "screen"screen_id , 1000)
-        return
     }
 }
 
@@ -621,16 +476,17 @@ MoveWindowToMainMini(command)
         return
     }
 
-    result           := GetActiveWindowInfo()
-    win_id           := result.id
-    win_process_name := result.process_name
-    win_class        := result.class
-    win_title        := result.title
-    screen_id        := result.screen.id
-    screen_x         := result.screen.x
-    screen_y         := result.screen.y
-    screen_w         := result.screen.w
-    screen_h         := result.screen.h
+    GetActiveWindowInfo()
+
+    win_id           := window.id
+    win_process_name := window.process_name
+    win_class        := window.class
+    win_title        := window.title
+    screen_id        := window.screen.id
+    screen_x         := window.screen.x
+    screen_y         := window.screen.y
+    screen_w         := window.screen.w
+    screen_h         := window.screen.h
 
     if (screen_id == 3) {
         screen_h := screen_h / 2
@@ -650,7 +506,7 @@ MoveWindowToMainMini(command)
     xx := screen_x + (screen_w - ww)/2
     yy := screen_y + (screen_h - hh)/2
 
-    SetWindow(win_id, xx, yy, ww, hh)
+    SetWindow(xx, yy, ww, hh)
 
     Sleep 500
     HelpText()
@@ -660,24 +516,24 @@ MoveWindowToMainMini(command)
 
 ; 将窗口移动到软件设置的默认位置
 ; return | None
-MoveWindowToPosition(config:="")
+MoveWindowToPosition(position:="Default")
 {
-    result := GetActiveWindowInfo()
-    
-    win_id           := result.id
-    win_class        := result.class
-    win_title        := result.title
-    win_process_name := result.process_name
-    win_x            := result.x
-    win_y            := result.y
-    win_w            := result.w
-    win_h            := result.h
-    screen_x         := result.screen_x
-    screen_y         := result.screen_y
-    screen_xx        := result.screen_xx
-    screen_yy        := result.screen_yy
-    screen_w         := result.screen_w
-    screen_h         := result.screen_h
+    GetActiveWindowInfo()
+
+    win_id           := window.id
+    win_class        := window.class
+    win_title        := window.title
+    win_process_name := window.process_name
+    win_x            := window.x
+    win_y            := window.y
+    win_w            := window.w
+    win_h            := window.h
+    screen_x         := window.screen.x
+    screen_y         := window.screen.y
+    screen_w         := window.screen.w
+    screen_h         := window.screen.h
+    screen_xx        := window.screen.xx
+    screen_yy        := window.screen.yy
 
     ; Win10 \ WinServer
     ; 开始菜单在屏幕上居中 兼容处理
@@ -700,10 +556,19 @@ MoveWindowToPosition(config:="")
         }
     }
 
-    x := config[1]
-    y := config[2]
-    w := config[3]
-    h := config[4]
+    if (position == "Default") {
+        x := window.position.default[1]
+        y := window.position.default[2]
+        w := window.position.default[3]
+        h := window.position.default[4]
+    } else if (position == "Backup") {
+        x := window.position.backup[1]
+        y := window.position.backup[2]
+        w := window.position.backup[3]
+        h := window.position.backup[4]
+    } else {
+        Return
+    }
 
     ; 处理相对参数下的窗口位置
     if (w == 0 or h ==0) {
@@ -725,53 +590,15 @@ MoveWindowToPosition(config:="")
         }
     }
 
-    SetWindow(win_id, x, y, w, h)
+    SetWindow(x, y, w, h)
     ; 多屏幕切换时 部分软件需要多次操作
-    SetWindow(win_id, x, y, w, h)
+    SetWindow(x, y, w, h)
 }
-MoveWindowToDefaultPosition()
-{
-    config := GetActiveWindowConfig(WPD)
-    MoveWindowToPosition(config)
-}
-MoveWindowToBackupPosition()
-{
-    config := GetActiveWindowConfig(WPB)
-    MoveWindowToPosition(config)
-}
-
-
-
-; 软件中列宽
-SetColumnWidth(win_id, control_name, control_width)
-{
-    msg := Message.LVM_SETCOLUMNWIDTH
-    for key, value in control_width {
-        key := key - 1
-        SendMessage, %msg%, %key%, %value%, %control_name%, ahk_id %win_id%    
-    }
-}
-
-
-
-; 设置指定列+列宽
-SetExplorertColumns(win_id, config) 
-{
-    oWin := JEE_ExpWinGetObj(win_id)
-    JEE_ExpGetInterfaces(oWin, isp, isb, isv, ifv2, icm)
-
-    columns := ""
-    step    := ","
-    for index, value in config {
-        column := value[1]
-        width  := value[2]
-        columns := columns . column . step
-        JEE_ICMSetColumnWidth(icm, column, width)
-    }
-    columns := SubStr(columns, 1, -1)
-    JEE_ICMSetColumns(icm, columns, step)
-
-    isp := isb := isv := ifv2 := icm := ""
+MoveWindowToDefaultPosition() {
+    MoveWindowToPosition("Default")
+} 
+MoveWindowToBackupPosition()  { 
+    MoveWindowToPosition("Backup")
 }
 
 
@@ -779,16 +606,20 @@ SetExplorertColumns(win_id, config)
 ; 高亮激活的窗口
 HighlightActiveWindow(width:=9, _color_:="e51400", _time_:=300)
 {
-    info   := GetActiveWindowInfo("Strict")
-    win_x  := info.x
-    win_y  := info.y
-    win_w  := info.w
-    win_h  := info.h
-    win_xx := info.xx
-    win_yy := info.yy
+    GetActiveWindowInfo("Strict")
+
+    win_x            := window.x
+    win_y            := window.y
+    win_w            := window.w
+    win_h            := window.h
+    win_xx           := window.xx
+    win_yy           := window.yy
+    win_class        := window.class
+    win_min_max      := window.min_max
+    win_process_name := window.process_name
 
     ; 最小化
-    if (info.min_max == -1) {
+    if (win_min_max == -1) {
         Return
     }
 
@@ -796,7 +627,7 @@ HighlightActiveWindow(width:=9, _color_:="e51400", _time_:=300)
         Return
     }
 
-    if (info.process_name == "Explorer" and info.class == "WorkerW") {
+    if (win_process_name == "Explorer" and win_class == "WorkerW") {
         Return
     }
 
@@ -806,8 +637,18 @@ HighlightActiveWindow(width:=9, _color_:="e51400", _time_:=300)
     gui_h  := win_h
     gui_xx := win_xx
     gui_yy := win_yy
-    Q := [ [ 0 , 0 ] , [ gui_w , 0 ] , [ gui_w , gui_h ] , [ 0 , gui_h ] , [ 0 , 0 ] ]
-    P := [ [ width , width ] , [ gui_w - width , width ] , [ gui_w - width , gui_h - width ] , [ width , gui_h - width ] , [ width , width ] ]
+
+    Q := [ [ 0     , 0     ] 
+         , [ gui_w , 0     ] 
+         , [ gui_w , gui_h ] 
+         , [ 0     , gui_h ] 
+         , [ 0     , 0     ] ]
+
+    P := [ [ width         , width         ] 
+         , [ gui_w - width , width         ] 
+         , [ gui_w - width , gui_h - width ] 
+         , [ width         , gui_h - width ] 
+         , [ width         , width         ] ]
 
     ; 窗口上下全屏 Win+Left|Right操作时
     ; if (info.win_min_max == 0 and win_y == 0) {
