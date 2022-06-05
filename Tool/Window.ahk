@@ -254,8 +254,12 @@ SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
         HelpText("No WinId",  ,  , 1000)
     }
 
-    if (IsDesktops() or IsMaxMin() or IsGame()) {
-        return 
+    if (win_min_max) {
+        WinRestore, ahk_id %win_id%
+    }
+
+    if (IsDesktops() or IsGame()) {
+        return
     }
 
     x := window.x

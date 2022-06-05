@@ -108,9 +108,6 @@ $RWin::
     SetTimer, Timer, -500
 Return
 Timer:
-    global windows_move
-    global windows_resize_big
-    global windows_resize_small
     if (windows_move==True or windows_resize_big==True or windows_resize_small==True) {
         windows_move:=False
         windows_resize_small:=False

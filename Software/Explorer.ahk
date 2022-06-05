@@ -161,10 +161,10 @@
         CoordMode, Mouse, Window
         MouseGetPos, x_origin, y_origin
 
-        result := GetActiveWindowInfo("Window")
-        win_id := result.id
-        win_xx := result.xx
-        cinfo  := result["controls"]["DirectUIHWND3"]
+        GetActiveWindowInfo("Window")
+        win_id := window.id
+        win_xx := window.xx
+        cinfo  := window["controls"]["DirectUIHWND3"]
         x      := cinfo.x
         y      := cinfo.y
         w      := cinfo.w
@@ -178,7 +178,7 @@
         line_width   := 14
         offset       := 3
 
-        check_width := result["controls"]["SysTreeView321"]["w"]
+        check_width := window["controls"]["SysTreeView321"]["w"]
         if ( Abs(check_width - left_length ) > 3 ) {
             max_left := left_length + line_width
             MouseClickDrag, Left, x-offset,  (yy-y)/2, max_left+offset,  (yy-y)/2, 0
