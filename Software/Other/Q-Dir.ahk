@@ -66,20 +66,20 @@
         cright := 0
         offset := 4 * Screens.1.dpi
 
-        result := GetActiveWindowInfo("Window")
-        cinfo  := result["controls"]["#327702"]
+        GetActiveWindowInfo("Window")
+        cinfo  := window["controls"]["#327702"]
         cdown  := 800
         MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
         cdown  := 0
 
-        result := GetActiveWindowInfo("Window")
-        cinfo  := result["controls"]["#327702"]
+        GetActiveWindowInfo("Window")
+        cinfo  := window["controls"]["#327702"]
         cleft  := 650 + 21
         MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
         cleft  := 0
 
-        result := GetActiveWindowInfo("Window")
-        cinfo  := result["controls"]["#327702"]
+        GetActiveWindowInfo("Window")
+        cinfo  := window["controls"]["#327702"]
         cright := cinfo.x + 1000 + 50
         MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
         cright := 0
