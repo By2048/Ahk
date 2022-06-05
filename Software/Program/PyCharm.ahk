@@ -11,33 +11,69 @@
 #If
 
 
+#If ( CheckWindowActive("PyCharm") And DoubleShift == True )
+    ~LShift::
+        Send {Esc}
+        ; HelpText("AppsKey")
+        Global DoubleShift := False
+    Return
+#If
+
+
 #If CheckWindowActive("PyCharm")
     
-     ^F1::Return
-     ^F2::Return
-     ^F3::Return
-     ^F4::Return
-     ^F5::Return
-     ^F6::Return
-     ^F7::Return
-     ^F8::Return
-     ^F9::Return
-    ^F10::Return
-    ^F11::Return
-    ^F12::Return
+    #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
+    #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
 
-     ^+F1::Return
-     ^+F2::Return
-     ^+F3::Return
-     ^+F4::Return
-     ^+F5::Return
-     ^+F6::Return
-     ^+F7::Return
-     ^+F8::Return
-     ^+F9::Return
-    ^+F10::Return
-    ^+F11::Return
-    ^+F12::Return
+    CenterHideWindow(win_w:=0, win_h:=0) {
+        win_id    := 0
+        max_count := 99
+        rule      := "ahk_exe pycharm64.exe ahk_class SunAwtWindow"
+        Loop {
+            total := A_Index
+            win_id := WinExist(rule)
+            if (win_id) {
+                WinActivate, ahk_id %win_id%
+                break
+            }
+            if (A_Index >= max_count) {
+                break
+            }
+            Sleep, 10
+        }
+        WinGetPos, x, y, w, h, ahk_id %win_id%
+        if (win_w and win_h) {
+            config := Position(win_w, win_h)
+        } else {
+            config := Position(w, h)
+        }
+        xx := config[1]
+        yy := config[2]
+        ww := config[3]
+        hh := config[4] 
+        WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
+    }
+
+    ~LShift::
+        if (cnt > 0) {
+            cnt += 1
+            return
+        } else {
+            cnt := 1
+        }
+        SetTimer, LTimer, -500
+    Return
+    LTimer:
+        if (cnt == 2) {
+            Global DoubleShift := True
+            CenterHideWindow(1500, 1500)
+        }
+        cnt := 0
+    Return
+
+    ~^+g::
+        CenterHideWindow()
+    Return
 
     ; Default Keymap
     ; ^[::Send ^{w}+{Tab}^+{w}
