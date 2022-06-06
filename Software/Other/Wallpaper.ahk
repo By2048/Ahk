@@ -28,7 +28,7 @@
     ; WinHide, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
 
     ; 预览
-    !PrintScreen::
+    !p::
         if (Wallpaper_State == -1) {
             Wallpaper_State := 0
         }

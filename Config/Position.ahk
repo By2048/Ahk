@@ -139,6 +139,7 @@ WPD["PotPlayer"]          := Position(Screens.1.w * 4/6 , Screens.1.h * 4/6)
 WPB["PotPlayer"]          := Position("[Center][2]", Screens.2.w * 4/6, Screens.2.h * 4/6 )
 WPD["PotPlayer__播放列表"] := Position(10, "[Center][1]", 1000, 1500)
 WPB["PotPlayer__播放列表"] := Position(Screens.2.xx - 1000 - 10, "[Center][2]", 1000, 1500)
+WPD["PotPlayer_#32770"]   := Position(2020 , 1500)
 
 WPD["Chrome"]          := Position("[Center][1]", 3300, 2000)
 WPB["Chrome"]          := Position("[Center][2]", 3000, 1800)

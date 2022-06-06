@@ -18,10 +18,6 @@
 #Include %A_WorkingDir%\Tool\KeyMap.ahk
 #Include %A_WorkingDir%\Tool\Wps.ahk
 
-#Include %A_WorkingDir%\Software\@.ahk
-#Include %A_WorkingDir%\Software\Explorer.ahk
-#Include %A_WorkingDir%\Software\Windows.Ahk
-
 #Include %A_WorkingDir%\Software\Chat\DingDing.ahk
 #Include %A_WorkingDir%\Software\Chat\TIM.ahk
 #Include %A_WorkingDir%\Software\Chat\WeChat.ahk
@@ -57,6 +53,10 @@
 #Include %A_WorkingDir%\Software\Program\VSCode.ahk
 #Include %A_WorkingDir%\Software\Program\WindowsTerminal.Ahk
 #Include %A_WorkingDir%\Software\Program\Xshell.ahk
+
+#Include %A_WorkingDir%\Software\@.ahk
+#Include %A_WorkingDir%\Software\Explorer.ahk
+#Include %A_WorkingDir%\Software\Windows.Ahk
 
 #SingleInstance Force
 #NoTrayIcon

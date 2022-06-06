@@ -97,12 +97,13 @@
     <#\::
 
         MoveWindowToDefaultPosition()
+        
+        GetActiveWindowInfo("Window")
 
-        result := GetActiveWindowInfo("Window")
-        win_id := result.win_id
+        win_id := window.win_id
 
         cname  := "Address Band Root1"
-        cinfo  := result["controls"][cname]
+        cinfo  := window["controls"][cname]
         cx     := cinfo.x
         cy     := cinfo.y
         cw     := 1200
@@ -110,21 +111,21 @@
         ControlMove, %cname%, %cx%, %cy%, %cw%, %ch%, ahk_id %win_id%
         
         cname  := "UniversalSearchBand1"
-        cinfo  := result["controls"][cname]
+        cinfo  := window["controls"][cname]
         cx     := 1450
         cy     := cinfo.y
         cw     := cinfo.w + ( cinfo.x - cx )
         ch     := cinfo.h
         ControlMove, %cname%, %cx%, %cy%, %cw%, %ch%, ahk_id %win_id%
 
-        cinfo  := result["controls"]["DirectUIHWND2"]
+        cinfo  := window["controls"]["DirectUIHWND2"]
         offset := 1
         cleft  := 393
         MoveControlUDLR(cinfo,  ,  , cleft,  , offset)
 
         ; 平铺模式
         MouseGetPos, x_origin, y_origin
-        cinfo := result["controls"]["DirectUIHWND2"]
+        cinfo := window["controls"]["DirectUIHWND2"]
         x     := cinfo.x  + 10
         y     := cinfo.yy - 90
         MouseClick, Right, %x%, %y%, 1, 0
