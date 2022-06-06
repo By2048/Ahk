@@ -2,47 +2,50 @@
 #If CheckWindowActive("BitComet")
 
     <#\::
+    
         MoveWindowToDefaultPosition()
 
-        win_id := window.id
-
-        result   := GetActiveWindowInfo("Window")
-        cinfo    := result["controls"]["SysListView321"]
+        ; 左边栏大小
+        cinfo    := window["controls"]["SysListView321"]
         max_left := 336
         MoveControlUDLR(cinfo,  ,  , max_left,  , 3)
+        
+        ; 主界面
+        _1 := " 1    2    3    4       5       6       7       8    9        10      11    "
+        _2 := " 1160 170  100 150      150     155     155     150  200      120     100    "
+        _3 := " 名称 大小  进度 下载大小 上传大小 下载速度  上传速度 需时  种子/用户 长效种子 分享率  "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView321" , config)
 
-        control_name  := "SysListView321"   
-        control_value := {  1 : 1160   ;名称
-                         ,  2 : 170    ;大小
-                         ,  3 : 100    ;进度
-                         ,  4 : 150    ;下载大小
-                         ,  5 : 150    ;上传大小
-                         ,  6 : 155    ;下载速度
-                         ,  7 : 155    ;上传速度
-                         ,  8 : 150    ;需时
-                         ,  9 : 200    ;种子/用户
-                         , 10 : 120    ;长效种子
-                         , 11 : 100  } ;分享率
-        SetColumnWidth(win_id, control_name, control_value)
+        ; 种子存档
+        ; _1 := " 1       2     3    4          5     6       7        8       "
+        ; _2 := " 150     1200  200  200        100   200     200      350     "
+        ; _3 := " 下载任务 名称   大小 原数据已获取 评论  发布日期  添加日期  私有种子 "
+        ; config := GetColumnConfig(_1, _2, _3)
+        ; SetColumnWidth("SysListView322", config)
 
-        control_name  := "SysListView322"   
-        control_value := {  1 : 150    ;下载任务
-                         ,  2 : 1200   ;名称
-                         ,  3 : 200    ;大小
-                         ,  4 : 200    ;原数据已获取
-                         ,  5 : 100    ;评论
-                         ,  6 : 200    ;发布日期
-                         ,  7 : 200    ;添加日期
-                         ,  8 : 350  } ;私有种子
-        SetColumnWidth(win_id, control_name, control_value)
+        ; 文件 未点击 | 点击
+        _1 := " 1       2    3    4        5     6      7         8       9      "
+        _2 := " 1200    100  130  150      200   170    200       200     200    "
+        _3 := " 文件名称 预览  进度 下载优先级 大小  长效种子 ED2K链接  分块序号 调试信息 "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView328", config)
 
-        control_name  := "SysListView3212" ;统计
-        max_width     := window["controls"][control_name]["w"]
-        w_1           := 400
-        w_2           := max_width - w_1 - 50
-        control_value := {  1 : w_1    ;项目
-                         ,  2 : w_2  } ;值
-        SetColumnWidth(win_id, control_name, control_value)
+        ; 服务器
+        _1 := " 1            2    3   4       5   6      7       8      9    "
+        _2 := " 700          90   100 150     100 100    120     120    1100 "
+        _3 := " Tracker服务器 日志 重试 剩余时间 种子 下载中 全部用户 下载完成 状态  "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView325", config)
+
+        ; 任务日志
+        config := {  1 : 330  ,  2 : 2250 }   ;时间 | 信息
+        SetColumnWidth("SysListView328", config)
+
+        ; 统计
+        config := { 1 : 450  ,  2 : 2100 }  ;项目 | 值
+        SetColumnWidth("SysListView3213", config)
+
     Return
 
 #If
