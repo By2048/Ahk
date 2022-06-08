@@ -72,7 +72,7 @@ Return
     }
 Return
 >^k::KeyboardGUI()
->^l::Run "C:\Program Files\LogiOptionsPlus\logioptionsplus.exe"
+>^l::Run "C:\Program Files\Logitech\LogiOptions\LogiOptions.exe"
 
 >^x::RunNormalUser("D:\#Lnk\Xshell.lnk")
 >^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk") 

@@ -1,26 +1,5 @@
 ﻿
 #If CheckWindowActive("PyCharm")
-
-    ; 设置
-    ~^!s::
-        ; Sleep 100
-        WinWaitActive, 设置
-        MoveWindowToCenter(True)
-    Return
-
-#If
-
-
-#If ( CheckWindowActive("PyCharm") And DoubleShift == True )
-    ~LShift::
-        Send {Esc}
-        ; HelpText("AppsKey")
-        Global DoubleShift := False
-    Return
-#If
-
-
-#If CheckWindowActive("PyCharm")
     
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
@@ -71,9 +50,15 @@
         cnt := 0
     Return
 
-    ~^+g::
-        CenterHideWindow()
+    ; 设置
+    ~^!s::
+        ; Sleep 100
+        WinWaitActive, 设置
+        MoveWindowToCenter(True)
     Return
+
+    ~^+g::CenterHideWindow()
+    ~!o::CenterHideWindow(1700, 1500)
 
     ; Default Keymap
     ; ^[::Send ^{w}+{Tab}^+{w}
@@ -90,12 +75,16 @@
 
     ; 右键菜单{AppsKey}
     RAlt & LAlt::Send {AppsKey}
+    
+    ; 软件设置{f1}
+    LAlt & RAlt::
+        Send {F13}
+        WinWaitActive, 设置
+        MoveWindowToCenter(True)
+    Return
 
     !Esc::Send ^{F1}
     !+Esc::Send ^+{F1}
-
-    ; 软件设置{f1}
-    LAlt & RAlt::Send {F13}
 
     ; 切换正 切换逆 关闭 重新打开 标签页
     <!Tab::Send !{F14}
@@ -117,12 +106,10 @@
     <#Enter::Send {F23}
     <#+Enter::Send {F24}
 
-    ; ^`::Send {F24}
-
     >#Left::Send ^{F5}
     >#Right::Send ^{F6}
-    >#Down::Send ^{F7}
-    >#Up::Send ^{F8}
+    >#Up::Send ^{F7}
+    >#Down::Send ^{F8}
 
     ; 切换书签问题
     !b::
@@ -135,6 +122,14 @@
         }
     Return
 
+#If
+
+
+#If ( CheckWindowActive("PyCharm") And DoubleShift == True )
+    ~RShift::
+        Send {Esc}
+        Global DoubleShift := False
+    Return
 #If
 
 
