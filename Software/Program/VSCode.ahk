@@ -61,6 +61,7 @@
 
 
 #If CheckWindowActive("VSCode", "", ".ahk")
+
     CapsLock::
         backup := Clipboard
         Send ^+{Left}
@@ -71,4 +72,28 @@
         SendData(code)
         Clipboard := backup
     Return
+
+    AppsKey::
+        FileEncoding UTF-8-RAW
+
+        path := "D:\VSCodeData\User\settings.json"
+        FileRead, config, %path%
+
+        default_mode := "        // ""editor.fontFamily"": ""Source Code Pro , 楷体""`r`n"
+        default_mode .= "        ""editor.fontFamily"": ""Cascadia Code , 楷体"""
+
+        equal_mode := "        ""editor.fontFamily"": ""Source Code Pro , 楷体""`r`n"
+        equal_mode .= "        // ""editor.fontFamily"": ""Cascadia Code , 楷体"""
+
+        ; 非等宽
+        if ( InStr(config, default_mode) ) {
+            config := StrReplace(config, default_mode, equal_mode)
+        } else if ( InStr(config, equal_mode) ) {
+            config := StrReplace(config, equal_mode, default_mode)
+        }
+
+        FileDelete, %path%
+        FileAppend, %config%, %path%
+    Return
+
 #If
