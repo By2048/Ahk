@@ -56,6 +56,10 @@ Loop {
         }
     }
 
+    if (win_process_name == "EXCEL" and win_class == "NUIDialog") {
+        MoveWindowToCenter(True)
+    }
+
     ; Windows系统文件操作
     if (win_class == "#32770" or win_class == "OperationStatusWindow") {
         if (InStr(win_title, "属性")) {

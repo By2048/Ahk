@@ -3,13 +3,11 @@
 
     <#\::
         MoveWindowToDefaultPosition()
-
-        _name  := "SysListView321"
-        _width := { 1 : 900   ; 名称
-                  , 2 : 900   ; 路径
-                  , 3 : 190   ; 大小
-                  , 4 : 250 } ; 修改时间
-        SetColumnWidth(_name, _width)
+        _1 := " 1    2     3    4        "
+        _2 := " 900  900   190  250      "
+        _3 := " 名称  路径  大小  修改时间  "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView321", config)
     Return
 
 #If

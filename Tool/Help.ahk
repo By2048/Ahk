@@ -78,7 +78,7 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 
     Global TextMain
     Gui, Destroy
-    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
+    Gui, +AlwaysOnTop +Disabled +Owner +HwndGuiId -SysMenu -Caption -DPIScale
     Gui, Margin, 0, 0
     Gui, font, s%Font_Size%, %Font_Type%
     Gui, Add, Text, +Center +Border vTextMain x%text_x% y%text_y% w%text_w%, %data%
@@ -119,6 +119,10 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     }
 
     Gui, Show, NA x%gui_x% y%gui_y% w%gui_w% h%gui_h%
+
+    ; 透明度 追上层
+    ; keyboard_transcolor := "F1ECED"
+    ; WinSet, TransColor, %keyboard_transcolor% 100, ahk_id %GuiId%
 
     GlobalSet("Status", "help_text_show_status", True)
 

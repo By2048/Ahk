@@ -8,14 +8,20 @@ WPD["Notepad++"] := Position(Screens.1.w * 45/60 , Screens.1.h * 75/90)
 WPD["PyCharm"]      := Position("[Center][1]" , -50 , -50)
 WPD["PyCharm__更改"] := Position("[Center][1]" , -50 , -50)
 
+w := 900
+h := 600
+x := Screens.1.xx  - w - 150
+y := Screens.1.yy  - h - 190
+WPD["PyCharm_SunAwtDialog_通知"] := [x, y, w, h]
+
 WPD["PyCharm__收藏夹"]   := Position(900 , 1300)
 WPD["PyCharm__设置同步"] := Position(900 , 1300)
 WPD["PyCharm__插件同步"] := Position(900 , 1300)
 
 WPD["PyCharm__打开文件或项目"] := Position(900 , 1500)
-WPD["PyCharm__回滚变更"]       := Position(900 , 1500)
-WPD["PyCharm__选择路径"]       := Position(900 , 1500)
-WPD["PyCharm__选择"]           := Position(900 , 1500)
+WPD["PyCharm__回滚变更"]      := Position(900 , 1500)
+WPD["PyCharm__选择路径"]      := Position(900 , 1500)
+WPD["PyCharm__选择"]         := Position(900 , 1500)
 
 WPD["PyCharm__Python解释器"] := Position(1000 , 1500)
 

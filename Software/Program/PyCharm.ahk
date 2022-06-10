@@ -58,6 +58,7 @@
     Return
 
     ~^+g::CenterHideWindow()
+    ~^o::CenterHideWindow()
     ~!o::CenterHideWindow(1700, 1500)
 
     ; Default Keymap

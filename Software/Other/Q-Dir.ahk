@@ -60,29 +60,19 @@
     <#\::
         MoveWindowToDefaultPosition()
 
-        cup    := 0
-        cdown  := 0
-        cleft  := 0
-        cright := 0
-        offset := 4 * Screens.1.dpi
-
-        GetActiveWindowInfo("Window")
-        cinfo  := window["controls"]["#327702"]
-        cdown  := 800
-        MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
-        cdown  := 0
-
-        GetActiveWindowInfo("Window")
         cinfo  := window["controls"]["#327702"]
         cleft  := 650 + 21
-        MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
-        cleft  := 0
+        MoveControlUDLR(cinfo, , , cleft)
 
-        GetActiveWindowInfo("Window")
+        GetActiveWindowInfo()
+
+        cinfo  := window["controls"]["#327702"]
+        cdown  := 800
+        MoveControlUDLR(cinfo, , cdown)
+        
         cinfo  := window["controls"]["#327702"]
         cright := cinfo.x + 1000 + 50
-        MoveControlUDLR(cinfo, cup, cdown, cleft, cright, offset)
-        cright := 0
+        MoveControlUDLR(cinfo, , , , cright)
     Return
 
 #If
@@ -91,10 +81,6 @@
 
 
 /*
-
-
-
-
      
 [CTRL+X]         切
 [CTRL+C]         复制
@@ -128,7 +114,6 @@
 [F8]         显示我的电脑菜单。
 [F11]         全屏：开/关
 [ESC键]         全屏：关闭
-     
      
 [ATL+S]         聚焦地址
 [ALT + L]         屏幕放大。
@@ -165,7 +150,5 @@
 树视图      :         简单和四重。
 预览      :         允许快速预览。
 便携的      :         从 2.77 开始是 Q-Dir 便携式。
-
-
 
 */
