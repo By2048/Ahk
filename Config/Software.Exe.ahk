@@ -45,6 +45,7 @@ Windows_Process_Name.Push( [ "ui32"                    , "Wallpaper"       ] )
 Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"     ] ) ;同花顺
 Windows_Process_Name.Push( [ "33333333333333333333333" , "---------------" ] )
 Windows_Process_Name.Push( [ "mstsc"                   , "RemoteDesktop"   ] ) ;远程桌面
+Windows_Process_Name.Push( [ "regedit"                 , "RegEdit"         ] ) 
 Windows_Process_Name.Push( [ "perfmon"                 , "SystemMonitor"   ] ) ;资源监视器
 Windows_Process_Name.Push( [ "ApplicationFrameHost"    , "WindowsSettings" ] ) ;设置界面
 Windows_Process_Name.Push( [ "taskmgr"                 , "TaskMGR"         ] ) ;任务管理器

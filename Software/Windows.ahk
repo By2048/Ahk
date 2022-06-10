@@ -183,13 +183,12 @@
         MouseGetPos, x_origin, y_origin
 
         MoveWindowToDefaultPosition()
-        _name  := "SysListView321"
-        _width := {   1 : 370     ;名称
-                    , 2 : 230     ;类型
-                    , 3 : 1170  } ;数值
+        name  := "SysListView321"
+        ; 名称 类型 数值
+        width := { 1 : 500 , 2 : 230 , 3 : 1000 }
         SetColumnWidth(_name, _width)
 
-        max_left := 650
+        max_left := 700
         offset   := 9
 
         control_config := window["controls"]["SysTreeView321"]
@@ -197,7 +196,6 @@
         if ( Abs(move_steps) < 9 ) {
             return
         }
-        ; Send {Alt Down}{v}{Alt Up}{l} ;Error Wondows Lock
         Send {Alt Down}{v}{Alt Up}{Down}{Enter}
         SetKeyDelay -1
         if (move_steps > 0) {
