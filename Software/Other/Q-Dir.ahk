@@ -61,18 +61,18 @@
         MoveWindowToDefaultPosition()
 
         cinfo  := window["controls"]["#327702"]
-        cleft  := 650 + 21
+        cleft  := 650
         MoveControlUDLR(cinfo, , , cleft)
 
         GetActiveWindowInfo()
 
         cinfo  := window["controls"]["#327702"]
+        cright := cinfo.x + (200+180+120)*2+50
+        MoveControlUDLR(cinfo, , , , cright)
+
+        cinfo  := window["controls"]["#327702"]
         cdown  := 800
         MoveControlUDLR(cinfo, , cdown)
-        
-        cinfo  := window["controls"]["#327702"]
-        cright := cinfo.x + 1000 + 50
-        MoveControlUDLR(cinfo, , , , cright)
     Return
 
 #If

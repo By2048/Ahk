@@ -57,6 +57,9 @@
         MoveWindowToCenter(True)
     Return
 
+    ~^n::CenterHideWindow()
+    ~^+n::CenterHideWindow()
+    ~^g::CenterHideWindow()
     ~^+g::CenterHideWindow()
     ~^o::CenterHideWindow()
     ~!o::CenterHideWindow(1700, 1500)
@@ -111,6 +114,18 @@
     >#Right::Send ^{F6}
     >#Up::Send ^{F7}
     >#Down::Send ^{F8}
+
+    AppsKey::
+        ; x , y
+        ; 13,13     -12,13
+        ; 13,13     
+        x := 0
+        y := 13
+        w := 3840 + 1
+        h := 2147
+        WinGet, win_id, ID, A
+        WinMove, ahk_id %win_id%,  , %x%, %y%, %w%, %h%
+    Return
 
     ; 切换书签问题
     !b::

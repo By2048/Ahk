@@ -1,12 +1,17 @@
 ﻿
-WPD["VSCode"] := Position(Screens.1.w * 5/6 , Screens.1.h * 8/9)
+WPD["VSCode"] := Position(-50  , -50 )
+WPB["VSCode"] := Position(2200 , 1700)
 
-WPB["VSCode"] := Position(Screens.2.w * 5/6 , Screens.2.h * 8/9)
+; ----------------------------------------------------------------------------------------------- ;
 
 WPD["Notepad++"] := Position(Screens.1.w * 45/60 , Screens.1.h * 75/90)
 
-WPD["PyCharm"]       := Position("[Center][1]" , -50 , -50)
-WPD["PyCharm__更改"] := Position("[Center][1]" , -50 , -50)
+; ----------------------------------------------------------------------------------------------- ;
+
+WPD["PyCharm"] := [ 0 , 13 , 3840+1 , 2147 ]
+WPB["PyCharm"] := Position(-50 , -50)
+
+WPD["PyCharm__更改"] := Position(-50 , -50)
 
 w := 900
 h := 600

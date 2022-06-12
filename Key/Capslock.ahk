@@ -88,6 +88,17 @@ $CapsLock::
 Return
 
 
+; 屏幕1中心
+CapsLock & Space::
+    xx := Screen.x + Screen.w/2
+    yy := Screen.y + Screen.h/2
+    DllCall("SetCursorPos", "int", xx, "int", yy)
+    MouseGetPos,  _,  _, win_id
+    WinActivate, ahk_id %win_id%
+    HighlightActiveWindow(  ,  , _time_:=300)
+Return
+
+
 
 ;关闭大写锁定
 CapsLock Up::
