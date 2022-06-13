@@ -71,25 +71,25 @@ GetWindowConfig(CFG)
         ; 123 456 789
         if (StrLen(_process_name_) > 0) {
             if (win_process_name == _process_name_) {
-                match_cnt := match_cnt + 9
+                match_cnt := match_cnt + 2
             } else if (InStr(win_process_name, _process_name_)) {
-                match_cnt := match_cnt + 8
+                match_cnt := match_cnt + 1
             }
         }
 
         if (StrLen(_class_) > 0) {
             if (win_class == _class_) {
-                match_cnt := match_cnt + 6
+                match_cnt := match_cnt + 2
             } else if (InStr(win_class, _class_)) {
-                match_cnt := match_cnt + 5
+                match_cnt := match_cnt + 1
             }
         }
 
         if (StrLen(_title_) > 0) {
             if (win_title == _title_) {
-                match_cnt := match_cnt + 3
-            } else if (InStr(win_title, _title_)) {
                 match_cnt := match_cnt + 2
+            } else if (InStr(win_title, _title_)) {
+                match_cnt := match_cnt + 1
             }
         }
 
@@ -267,19 +267,18 @@ SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
     w := window.w
     h := window.h
 
-    if (ww==0 or not ww) { 
+    if (ww == 0 or not ww) { 
         ww := w
     }
-    if (hh==0 or not hh) { 
+    if (hh == 0 or not hh) { 
         hh := h
     }
 
-    if (win_process_name == "PyCharm") { ;边框问题
-        if (Mod(window.w, 2) == 0) {
-            offset := 0
-            ww := ww + 1
-            xx := xx - 1
-        }
+    ; 修复边框问题 边框为偶数时 右侧边框线缺失
+    if (win_process_name == "PyCharm" and Mod(ww, 2) == 0) {
+        offset := 0
+        ww := ww + 1
+        xx := xx - 1
     }
 
     if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
