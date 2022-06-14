@@ -11,10 +11,10 @@
 #If CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "修改书签" )
 
     ; 收藏
-    Enter::Send {Tab 4}{Enter}
+    !Enter::Send {Tab 4}{Enter}
 
     ; 取消收藏
-    Esc::
+    !Esc::
         Send {Esc}
         Send ^d
         Send {Tab 4}

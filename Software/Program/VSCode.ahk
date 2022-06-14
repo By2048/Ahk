@@ -68,12 +68,13 @@
         Send ^{c}
         code := Clipboard
         code := StrReplace(code, "；", "`;")
+        code := StrReplace(code, "，", ",")
         code := StrReplace(code, "。", "." )
         SendData(code)
         Clipboard := backup
     Return
 
-    AppsKey::
+    CapsLock & AppsKey::
         FileEncoding UTF-8-RAW
 
         path := "D:\VSCodeData\User\settings.json"
@@ -94,6 +95,10 @@
 
         FileDelete, %path%
         FileAppend, %config%, %path%
+    Return
+
+    CapsLock Up::
+        SetCapsLockState, Off
     Return
 
 #If

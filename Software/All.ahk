@@ -16,7 +16,7 @@
 #Include %A_WorkingDir%\Tool\Window.ahk
 #Include %A_WorkingDir%\Tool\Control.ahk
 #Include %A_WorkingDir%\Tool\KeyMap.ahk
-#Include %A_WorkingDir%\Tool\Wps.ahk
+#Include %A_WorkingDir%\Tool\Office.ahk
 
 #Include %A_WorkingDir%\Software\Chat\DingDing.ahk
 #Include %A_WorkingDir%\Software\Chat\TIM.ahk
@@ -24,6 +24,8 @@
 
 #Include %A_WorkingDir%\Software\Game\Android.ahk
 #Include %A_WorkingDir%\Software\Game\LOL.ahk
+
+#Include %A_WorkingDir%\Software\Office\Excel.ahk
 
 #Include %A_WorkingDir%\Software\Other\7-Zip.ahk
 #Include %A_WorkingDir%\Software\Other\BitComet.ahk
@@ -41,7 +43,6 @@
 #Include %A_WorkingDir%\Software\Other\v2rayN.ahk
 #Include %A_WorkingDir%\Software\Other\VMware.ahk
 #Include %A_WorkingDir%\Software\Other\Wallpaper.ahk
-#Include %A_WorkingDir%\Software\Other\Wps.ahk
 
 #Include %A_WorkingDir%\Software\Program\Chrome.ahk
 #Include %A_WorkingDir%\Software\Program\FireFox.ahk

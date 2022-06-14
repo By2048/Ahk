@@ -9,7 +9,7 @@ WPD["Notepad++"] := Position(Screens.1.w * 45/60 , Screens.1.h * 75/90)
 ; ----------------------------------------------------------------------------------------------- ;
 
 WPD["PyCharm"] := [ 0 , 13 , 3840+1 , 2147 ]
-WPB["PyCharm"] := Position(-50 , -50)
+WPB["PyCharm"] := Position(2300, 1800)
 
 WPD["PyCharm__[更改]"] := Position(-100 , -100)
 

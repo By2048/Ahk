@@ -189,8 +189,6 @@
     ; StopConsole
     !+BackSpace::MouseClickAndResetting(34, 142)
 
-    <#'::show_hide_key_config()
-
 #If
 
 

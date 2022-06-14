@@ -7,18 +7,17 @@
 
 
 
-show_hide_key_config()
-{
-    global key_map_show_status
+Global key_map_show_status
 
-    if (key_map_show_status=True) {
-        key_map_show_status:=False
-        index:=1
-        Loop {
-            ToolTip,  ,  ,  , %index%
-            index:=index+1
-            if (index>20) {
-                Break
+
+show_hide_key_map()
+{
+    if (key_map_show_status == True) {
+        key_map_show_status := False
+        loop {
+            ToolTip,  ,  ,  , %A_Index%
+            if (A_Index >= 20) {
+                break
             }
         }
         return
@@ -28,10 +27,10 @@ show_hide_key_config()
     
     win_process_name := window.process_name
     
-    key_map_cfg := GetWindowConfig(Key_Map_Config)
+    key_map_cfg := GetWindowConfig(Key_Map)
     
-    if (key_map_cfg.MaxIndex()=0) {
-        return False
+    if (key_map_cfg.MaxIndex() == 0) {
+        return
     }
 
     CoordMode, ToolTip, Window
@@ -42,7 +41,6 @@ show_hide_key_config()
         ToolTip, %key%, %x%, %y%, %index%
     }
     
-    key_map_show_status:=True
-
-    return True
+    key_map_show_status := True
+    return
 }
