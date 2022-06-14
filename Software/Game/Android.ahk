@@ -122,22 +122,22 @@
     ~8::
     ~9::
     ~0::
-        index := A_ThisHotkey
+        index := StrReplace(A_ThisHotkey, "~", "") 
         index := index + 0
         Android_COC_Current := index
     Return
 
     ; 按顺序切换兵
     LShift::
-        if (Android_COC_Current = -1 ) {
+        if (Android_COC_Current == -1 ) {
             next_index := Android_COC_Loop.MaxIndex()
             Android_COC_Current := Android_COC_Loop[next_index]
             Send %Android_COC_Current%
             Return
         } else {
             for index, value in Android_COC_Loop {
-                if (value = Android_COC_Current) {
-                    if (index = 1) {
+                if (value == Android_COC_Current) {
+                    if (index == 1) {
                         next_index := Android_COC_Loop.MaxIndex()
                         Android_COC_Current := Android_COC_Loop[next_index]
                         Send %Android_COC_Current%
@@ -154,7 +154,7 @@
 
     ; 按顺序切换兵种 1-6
     LAlt::
-        if (Android_COC_Current = -1) {
+        if (Android_COC_Current == -1) {
             Android_COC_Current := 1
             Send %Android_COC_Current%
             Return

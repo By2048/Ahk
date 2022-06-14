@@ -40,8 +40,9 @@ WPD["Explorer"] := Position(2520 , 1700)
 ; 资源监视器
 WPD["SystemMonitor"] := Position(3000 , 1800)
 
-; 终端 160*45 | 3132*1873
-WPD["Terminal"] := Position(3132 , 1873)
+; 终端
+WPD["Terminal"] := Position("[Center][1]" , 3200 , 1900)
+WPB["Terminal"] := Position("[Center][2]" , 3200 , 1800)
 
 ; 编辑环境变量
 WPD["SystemPropertiesComputerNam_#32770_环境变量"] := Position(2000, 1500)
