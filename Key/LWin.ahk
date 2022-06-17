@@ -50,12 +50,13 @@ Return
     }
     WinActivate, ahk_exe %exe%
     WinMove, ahk_exe %exe%,  , %x%, %y%, %w%, %h%
+    WinSet, AlwaysOnTop, On, ahk_exe %exe%
 Return
 <#9 Up::
 <#0 Up::
 <#+9 Up::
 <#+0 Up::
-    global previous_win_id
+    Global previous_win_id
     WinActivate, ahk_id %previous_win_id%
 Return
 
