@@ -183,10 +183,10 @@
         MouseGetPos, x_origin, y_origin
 
         MoveWindowToDefaultPosition()
+
         name  := "SysListView321"
-        ; 名称 类型 数值
-        width := { 1 : 500 , 2 : 230 , 3 : 1000 }
-        SetColumnWidth(_name, _width)
+        width := { 1 : 500 , 2 : 230 , 3 : 1000 } ; 名称 类型 数据
+        SetColumnWidth(name, width)
 
         max_left := 700
         offset   := 9
