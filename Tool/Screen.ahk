@@ -1,5 +1,5 @@
 ﻿
-#Include %A_WorkingDir%\Config.ahk
+#Include %A_WorkingDir%\Config\Base.ahk
 #Include %A_WorkingDir%\Tool\Global.ahk
 #Include %A_WorkingDir%\Tool\Change.ahk
 

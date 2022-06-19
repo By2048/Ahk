@@ -59,16 +59,16 @@ WindowsTerminal(mode:="Focus", folder:="T:\\")
 ; keep_path | backup tmp
 ScreenShot(screen_name:="screen1", keep_path:="backup")
 {
-    if (not FileExist(Snipaste_EXE)) {
+    if (not FileExist(Snipaste.Exe)) {
         return
     }
     if (keep_path == "Backup") {
-        if (not FileExist(Snipaste_Screenshot_Path_Backup)) {
+        if (not FileExist(Snipaste.Screenshot_Path_Backup)) {
             return
         }
     }
     if (keep_path == "Tmp") {
-        if (not FileExist(Snipaste_Screenshot_Path_Tmp)) {
+        if (not FileExist(Snipaste.Screenshot_Path_Tmp)) {
             return
         }
     }
@@ -94,9 +94,9 @@ ScreenShot(screen_name:="screen1", keep_path:="backup")
 
     screenshot_keep_path := ""
     if (keep_path == "Backup") {
-        screenshot_keep_path := Snipaste_Screenshot_Path_Backup
+        screenshot_keep_path := Snipaste.Screenshot_Path_Backup
     } else if (keep_path == "Tmp") {
-        screenshot_keep_path := Snipaste_Screenshot_Path_Tmp
+        screenshot_keep_path := Snipaste.Screenshot_Path_Tmp
     }
 
     if (not screenshot_keep_path) {
@@ -109,7 +109,7 @@ ScreenShot(screen_name:="screen1", keep_path:="backup")
     name := Format("{1}[{2}]", name, screens_name)
     file := screenshot_keep_path . "\" . name . ".png"
     file := StrReplace(file, "\\", "\")
-    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, x, y, w, h, file)
+    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste.Exe, x, y, w, h, file)
     Run %cmd%
 }
 
@@ -118,25 +118,25 @@ ScreenShot(screen_name:="screen1", keep_path:="backup")
 ; 软件设置界面截图保存
 ScreenshotActivateSoftware(keep_path:="backup")
 {
-    if (not FileExist(Snipaste_EXE)) {
+    if (not FileExist(Snipaste.Exe)) {
         return
     }
     if (keep_path = "Backup") {
-        if (not FileExist(Snipaste_Screenshot_Path_Backup)) {
+        if (not FileExist(Snipaste.Screenshot_Path_Backup)) {
             return
         }
     }
     if (keep_path = "Tmp") {
-        if (not FileExist(Snipaste_Screenshot_Path_Tmp)) {
+        if (not FileExist(Snipaste.Screenshot_Path_Tmp)) {
             return
         }
     }
 
     screenshot_keep_path := ""
     if (keep_path = "Backup") {
-        screenshot_keep_path := Snipaste_Screenshot_Path_Backup
+        screenshot_keep_path := Snipaste.Screenshot_Path_Backup
     } else if (keep_path = "Tmp") {
-        screenshot_keep_path := Snipaste_Screenshot_Path_Tmp
+        screenshot_keep_path := Snipaste.Screenshot_Path_Tmp
     }
 
     result := GetActiveWindowInfo()
@@ -151,7 +151,7 @@ ScreenshotActivateSoftware(keep_path:="backup")
     name := Format("[{1}]{2}", win_process_name, name)
     file := screenshot_keep_path . "\" . name . ".png"
     file := StrReplace(file, "\\", "\")
-    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste_EXE, win_x, win_y, win_w, win_h, file)
+    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste.Exe, win_x, win_y, win_w, win_h, file)
     Run %cmd%
 }
 
@@ -161,8 +161,8 @@ ScreenshotActivateSoftware(keep_path:="backup")
 ScreenshotQuick()
 {
     FormatTime, name, _, yyyy-MM-dd HH-mm-ss
-    file := Snipaste_Screenshot_Path_Tmp "\" name ".png"
-    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste_EXE, Screens.1.x, Screens.1.y, Screens.1.w, Screens.1.h, file)
+    file := Snipaste.Screenshot_Path_Tmp "\" name ".png"
+    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste.Exe, Screen.x, Screen.y, Screen.w, Screen.h, file)
     Run %cmd%
 }
 
@@ -188,7 +188,7 @@ Snipaste(image:="", screen:="screen1")
     x := Round(x)
     y := Round(y)
 
-    cmd := Format("{1} paste --files {} --pos {} {}", Snipaste_EXE, image, x, y)
+    cmd := Format("{1} paste --files {} --pos {} {}", Snipaste.Exe, image, x, y)
     Run %cmd%
 }
 
@@ -197,11 +197,11 @@ Snipaste(image:="", screen:="screen1")
 ; 删除软件自动保存的文件
 DeleteSnipasteAutoSaveFile()
 {
-    if (not FileExist(Snipaste_Auto_Save_File)) {
+    if (not FileExist(Snipaste.Auto_Save_File)) {
         return
     }
     last_file := ""
-    Loop, Files, %Snipaste_Auto_Save_File%
+    Loop, Files, % Snipaste.Auto_Save_File
     {
         last_file := A_LoopFileFullPath
     }

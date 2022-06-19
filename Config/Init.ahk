@@ -57,10 +57,10 @@ GetInitConfig()
     ; }
     ; AddInitLine()
 
-    Init["config"].Push( Format("     Snipaste | {1} " , Snipaste_EXE)                    )
-    Init["config"].Push( Format("    Auto_Save | {1} " , Snipaste_Auto_Save_File)         )
-    Init["config"].Push( Format("  Path_Backup | {1} " , Snipaste_Screenshot_Path_Backup) )
-    Init["config"].Push( Format("     Path_Tmp | {1} " , Snipaste_Screenshot_Path_Tmp)    )
+    Init["config"].Push( Format("     Snipaste | {1} " , Snipaste.Exe)                    )
+    Init["config"].Push( Format("    Auto_Save | {1} " , Snipaste.Auto_Save_File)         )
+    Init["config"].Push( Format("  Path_Backup | {1} " , Snipaste.Screenshot_Path_Backup) )
+    Init["config"].Push( Format("     Path_Tmp | {1} " , Snipaste.Screenshot_Path_Tmp)    )
     AddInitLine()
 
     Init["config"].Push( Format("         CMD | {1}" , CMD)                               )
@@ -70,8 +70,8 @@ GetInitConfig()
     Init["config"].Push( Format(" HuntAndPeck | {1}" , HuntAndPeck)                       )
     AddInitLine()
 
-    Init["config"].Push( Format(" JQB | {1} ", JQB_Phone)                                  )
-    Init["config"].Push( Format(" JQB | {1} ", JQB_Windows)                                )
+    Init["config"].Push( Format(" JQB | {1} ", JQB.Phone)                                  )
+    Init["config"].Push( Format(" JQB | {1} ", JQB.Windows)                                )
     AddInitLine()
 
     Init["config"].Push( " [date]         [time]         [datetime]    [chrome]        " )

@@ -14,7 +14,8 @@ WPD["_#32770_另存为"]   := Position(2020 , 1500)
 WPD["_#32770_打开文件"] := Position(2020 , 1500)
 
 ; 开始菜单
-WPD["Start"] := Position(2150 , 1250)
+; WPD["Start"] := Position(2150 , 1250)
+WPD["Start"] := Position(650 , 800)
 
 ; 任务管理器
 WPD["TaskMGR"] := Position(2200 , 1600)

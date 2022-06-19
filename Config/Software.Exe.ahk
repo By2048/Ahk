@@ -38,6 +38,7 @@ Windows_Process_Name.Push( [ "fdm"                     , "FDM"             ] )
 Windows_Process_Name.Push( [ "PotPlayerMini64"         , "PotPlayer"       ] )
 Windows_Process_Name.Push( [ "FreeFileSync_x64"        , "FreeFileSync"    ] )
 Windows_Process_Name.Push( [ "7zFM"                    , "7-Zip"           ] )
+Windows_Process_Name.Push( [ "NVIDIA Share"            , "GeForceTool"     ] ) ;截图工具
 Windows_Process_Name.Push( [ "22222222222222222222222" , "---------------" ] )
 Windows_Process_Name.Push( [ "TenSafe"                 , "LOL_TX"          ] )
 Windows_Process_Name.Push( [ "TenSafe_1"               , "LOL_TX"          ] )
@@ -49,7 +50,7 @@ Windows_Process_Name.Push( [ "ui32"                    , "Wallpaper"       ] )
 Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"     ] ) ;同花顺
 Windows_Process_Name.Push( [ "33333333333333333333333" , "---------------" ] )
 Windows_Process_Name.Push( [ "mstsc"                   , "RemoteDesktop"   ] ) ;远程桌面
-Windows_Process_Name.Push( [ "regedit"                 , "RegEdit"         ] ) 
+Windows_Process_Name.Push( [ "regedit"                 , "RegEdit"         ] ) ;注册表编辑器
 Windows_Process_Name.Push( [ "perfmon"                 , "SystemMonitor"   ] ) ;资源监视器
 Windows_Process_Name.Push( [ "ApplicationFrameHost"    , "WindowsSettings" ] ) ;设置界面
 Windows_Process_Name.Push( [ "taskmgr"                 , "TaskMGR"         ] ) ;任务管理器
@@ -59,5 +60,3 @@ Windows_Process_Name.Push( [ "SearchUI"                , "Search"          ] ) ;
 Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "ShellExperienceHost"     , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "WindowsTerminal"         , "Terminal"        ] ) ;终端
-Windows_Process_Name.Push( [ "44444444444444444444444" , "---------------" ] )
-Windows_Process_Name.Push( [ "NVIDIA Share"            , "GeForceTool"     ] ) ;截图工具

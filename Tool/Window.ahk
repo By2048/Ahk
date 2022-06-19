@@ -538,24 +538,25 @@ MoveWindowToPosition(position:="Default")
     screen_xx        := window.screen.xx
     screen_yy        := window.screen.yy
 
+
     ; Win10 \ WinServer
     ; 开始菜单在屏幕上居中 兼容处理
     ; 按下Win键，此时在最上层激活的是Search(SearchApp)
     ; 而需要处理的是 StartMenu(StartMenuExperienceHost)
     if (win_process_name == "Search") {
+        ; Global System_Type
         if (System_Type == "WinServer") {
             Process, Close, SearchUI.exe
             Sleep 100
             WinActivate, ShellExperienceHost.exe
             Sleep 300
-            WinGet, win_id, ID, A
-        }
-        if (System_Type == "Win10") {
+            GetActiveWindowInfo()
+        } else if (System_Type == "Win10") {
             Process, Close, SearchApp.exe
             Sleep 100
             WinActivate, StartMenuExperienceHost.exe
             Sleep 300
-            WinGet, win_id, ID, A
+            GetActiveWindowInfo()
         }
     }
 

@@ -89,20 +89,20 @@ Return
     Send ^c
     data := clipboard
     clipboard := data
-    FileDelete %JQB_Windows%
-    file := FileOpen(JQB_Windows, "w", "UTF-8")
+    FileDelete % JQB.Windows
+    file := FileOpen(JQB.Windows, "w", "UTF-8")
     file.Write(data)
     file.Close()
     HelpText(data, "center_down",  , 1000)
 Return
 
 <#v::
-    if (FileExist(JQB_Phone)) {
+    if (FileExist(JQB.Phone)) {
         FileEncoding UTF-8
         Try {
-            FileRead, Clipboard, %JQB_Phone%
+            FileRead, Clipboard, % JQB.Phone
             Sleep 500
-            FileDelete %JQB_Phone%
+            FileDelete % JQB.Phone
         }
         Send ^v
         HelpText(Clipboard, "center_down",  , 1000)
