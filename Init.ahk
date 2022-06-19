@@ -3,8 +3,8 @@
 
 ; -------------------------------------------------------------------------------------------------
 ; 私有配置文件填补
-FILES := {      "Input" : A_WorkingDir . "\Input.Private.ahk"                     ;
-         ,     "Confog" : A_WorkingDir . "\Config\Private.ahk"                    ;
+FILES := {     "Confog" : A_WorkingDir . "\Config\Private.ahk"                    ;
+         ,      "Input" : A_WorkingDir . "\Other\Input.Private.ahk"               ;
          ,        "COC" : A_WorkingDir . "\Software\Game\Android.COC.Private.ahk" ;
          , "LOL.Client" : A_WorkingDir . "\Software\Game\LOL.Client.Private.ahk"  ;
          ,   "LOL.Game" : A_WorkingDir . "\Software\Game\LOL.Game.Private.ahk"    }
