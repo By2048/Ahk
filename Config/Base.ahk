@@ -31,9 +31,9 @@ Global JQB := { "Phone"   : "T:\\JQB_Phone"   ;
 Global Windows_Main_Mini := [ [ 3/5 , 3/4 ] , [ 5/6 , 8/9 ] ]
 
 ; HelpText 配置
-Global Font_Dpi  := 2
-Global Font_Size := 25
-Global Font_Type := "Courier New"
+Global Font := { "Dpi"  : 2             ; 
+               , "Size" : 25            ; 
+               , "Type" : "Courier New" }
 
 ; 屏幕信息
 Global Screens := {} ;所有屏幕相关信息
