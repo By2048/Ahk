@@ -14,18 +14,18 @@ SetLocal
 @REM ======================================================================
 
 Set      Folder=%~dp0
-Set  Config.ahk=%Folder%Config.ahk
 Set    Init.ahk=%Folder%Init.ahk
+Set  Config.ahk=%Folder%Config\Base.ahk
 Set  Screen.ahk=%Folder%Tool\Screen.ahk
 
 @REM ======================================================================
 
-@REM                15                        -1
-@REM AutoHotkey := "D:\AutoHotkey\AutoHotkey.exe"
-For /f "delims=" %%A In ('FindStr ".*AutoHotkey.exe" "Config.ahk"') Do Set AutoHotkey=%%A
-Set AutoHotkey=%AutoHotkey:~15,-1%
+@REM                22                 -1
+@REM AutoHotkey := "D:\Xxx\AutoHotkey.exe"
+For /f "delims=" %%A In ('FindStr ".*AutoHotkey.exe" %Config.ahk%') Do Set AutoHotkey=%%A
+Set AutoHotkey=%AutoHotkey:~22,-1%
 If Not Exist %AutoHotkey% (
-    Msg %username% /time:9 é…ç½®æ–‡ä»¶é”™è¯¯ \ æœªè®¾ç½®è„šæœ¬æ‰§è¡Œæ–‡ä»¶è·¯å¾„ Config.ahk\AutoHotkey
+    Msg %username% /time:9 ÅäÖÃÎÄ¼ş´íÎó \ Î´ÉèÖÃ½Å±¾Ö´ĞĞÎÄ¼şÂ·¾¶ Config.ahk\AutoHotkey
     Exit
 )
 Set   AutoHotkeyDpiSoftware=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSoftware.exe%
@@ -47,7 +47,7 @@ If "%Command%"=="" (
     Set Command=Start
 )
 
-@REM è¿è¡Œæ¸¸æˆæ—¶ç»“æŸSpace.ahk
+@REM ÔËĞĞÓÎÏ·Ê±½áÊøSpace.ahk
 If "%Command%"=="StopSpace" (
     Start %AHK% .\Key\Space.ahk Stop
     Echo.
