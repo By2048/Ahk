@@ -5,7 +5,9 @@
 
 #SingleInstance Force
 
+; Menu, Tray, NoStandard
 Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Run.png
+Menu, Tray, Tip , [Ahk]
 
 ; 启动脚本
 LWin & RWin::
