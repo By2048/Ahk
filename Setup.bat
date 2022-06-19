@@ -84,11 +84,6 @@ If "%Command%"=="Start" (
 @REM ======================================================================
 
 Echo.
-Start %AHK%     .\Input.ahk           %Command%
-Echo  %Command% .\Input.ahk
-Start %AHK%     .\Loop.ahk            %Command%
-Echo  %Command% .\Loop.ahk
-Echo.
 Start %AHK%     .\Key\All.ahk         %Command%
 Echo  %Command% .\Key\All.ahk
 Echo.
@@ -111,6 +106,10 @@ Echo  %Command% .\Key\CapsLock.ahk
 Start %AHK%     .\Key\Other.ahk       %Command%
 Echo  %Command% .\Key\Other.ahk
 Echo.
+Start %AHK%     .\Other\Input.ahk     %Command%
+Echo  %Command% .\Other\Input.ahk
+Start %AHK%     .\Other\Loop.ahk      %Command%
+Echo  %Command% .\Other\Loop.ahk
 Start %AHK%     .\Other\Dexpot.ahk    %Command%
 Echo  %Command% .\Other\Dexpot.ahk
 Echo.
