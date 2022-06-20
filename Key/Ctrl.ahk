@@ -1,5 +1,6 @@
 ﻿
 #Include %A_WorkingDir%\Config\All.ahk
+#Include %A_WorkingDir%\Config\Software.ahk
 #Include %A_WorkingDir%\Lib\TrayIcon.ahk
 #Include %A_WorkingDir%\Tool\Base.ahk
 #Include %A_WorkingDir%\Tool\Keyboard.ahk

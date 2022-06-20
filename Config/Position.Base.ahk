@@ -1,4 +1,6 @@
 ﻿
+
+WPD["Q-Dir__MiniBrowserOK"] := Position(2100, 1700)
 arg := (650) + ((200+180+120)*2+50) + ((500+120+90)*2+50) + 20
 WPD["Q-Dir"] := Position(arg, 1950)
 

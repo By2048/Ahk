@@ -1,4 +1,29 @@
 ﻿
+#If CheckWindowActive( "Q-Dir" , "ATL*" )
+    ;  DPI设置 系统增强
+    ;  1 #3277010->SysTreeView325   2 #327702->SysListView321   4 #327706->SysListView323
+    ;  1 ^                          3 #327704->SysListView322   4 ^
+    ;    650                          500 * dpi                   500+120+90 * dpi
+    <#\::
+        MoveWindowToDefaultPosition()
+
+        cinfo  := window["controls"]["#327702"]
+        cleft  := 650
+        MoveControlUDLR(cinfo,  ,  , cleft)
+
+        GetActiveWindowInfo()
+
+        cinfo  := window["controls"]["#327702"]
+        cright := cinfo.x + (200+180+120)*2+50
+        MoveControlUDLR(cinfo,  ,  ,  , cright)
+
+        cinfo  := window["controls"]["#327702"]
+        cdown  := 800
+        MoveControlUDLR(cinfo,  , cdown)
+    Return
+#If
+
+
 #If CheckWindowActive( "Q-Dir" )
 
     ; 重命名
@@ -75,27 +100,5 @@
     ; 将项目移动到
     !v::Return
     !m::Return
-    
-    ;  DPI设置 系统增强
-    ;  1 #3277010->SysTreeView325   2 #327702->SysListView321   4 #327706->SysListView323
-    ;  1 ^                          3 #327704->SysListView322   4 ^
-    ;    650                          500 * dpi                   500+120+90 * dpi
-    <#\::
-        MoveWindowToDefaultPosition()
-
-        cinfo  := window["controls"]["#327702"]
-        cleft  := 650
-        MoveControlUDLR(cinfo, , , cleft)
-
-        GetActiveWindowInfo()
-
-        cinfo  := window["controls"]["#327702"]
-        cright := cinfo.x + (200+180+120)*2+50
-        MoveControlUDLR(cinfo, , , , cright)
-
-        cinfo  := window["controls"]["#327702"]
-        cdown  := 800
-        MoveControlUDLR(cinfo, , cdown)
-    Return
 
 #If
