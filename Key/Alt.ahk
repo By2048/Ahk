@@ -2,12 +2,11 @@
 #Include %A_WorkingDir%\Config\All.ahk
 #Include %A_WorkingDir%\Tool\Base.ahk
 #Include %A_WorkingDir%\Tool\Help.ahk
+#Include %A_WorkingDir%\Tool\Other.ahk
 #Include %A_WorkingDir%\Tool\Window.ahk
 
 #SingleInstance Force
 #NoTrayIcon
-
-
 
 
  >!F1::Send {F13}
@@ -22,6 +21,10 @@
 >!F10::Send {F22}
 >!F11::Send {F23}
 >!F12::Send {F24}
+
+
+>!Insert::ScreenshotActivateSoftware("Tmp")
+>!Delete::ScreenshotActivateSoftware("Backup")
 
 
 RAlt & RWin::
