@@ -59,37 +59,46 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
     win_class   := window.class
     win_title   := window.title
 
-    result := True
-
     if (StrLen(_process_) > 0) {
-        if (win_process != _process_) {
-            result := False
-            return result
+        if (InStr(_process_, "*")) {
+            _process_ := StrReplace(_process_, "*", "")
+            if (!InStr(win_process, _process_)) {
+                return False
+            }   
+        } else {
+            if (win_process != _process_) {
+                return False
+            }
         }
     }
+
     if (StrLen(_class_) > 0) {
-        if (win_class != _class_) {
-            result := False
-            return result
+        if (InStr(_class_, "*")) {
+            _class_ := StrReplace(_class_, "*", "")
+            if (!InStr(win_class, _class_)) {
+                return False
+            }   
+        } else {
+            if (win_class != _class_) {
+                return False
+            }
         }
     }
+
     if (StrLen(_title_) > 0) {
         if (InStr(_title_, "|")) {
-            title_check := False
-            title_split := StrSplit(_title_, "|")
-            for index, value in title_split {
+            titles := StrSplit(_title_, "|")
+            for index, value in titles {
                 if (InStr(win_title, value)) {
-                    title_check := True
+                    return True
                 }
             }
-            result := title_check
         } else {
             if (not InStr(win_title, _title_)) {
-                result := False
-                return result
+                return False
             }
         }
     }
 
-    return result
+    return True
 }
