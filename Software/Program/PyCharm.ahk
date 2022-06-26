@@ -57,6 +57,17 @@
         MoveWindowToCenter(True)
     Return
 
+    
+    $F11::
+        GetActiveWindowInfo()
+        title := window.title
+        if (title == "评估") {
+            Send {Esc}
+        } else {
+            Send {F11}
+        }
+    Return
+
     ~^n::CenterHideWindow()
     ~^+n::CenterHideWindow()
     ~^g::CenterHideWindow()
