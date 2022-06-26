@@ -1,8 +1,23 @@
 ﻿
+#If CheckWindowActive("BitComet", "#32770", "新建BT任务")
+    <#\::
+        WPD["BitComet_#32770_新建BT任务"] := Position(2000 , 1300)
+        MoveWindowToDefaultPosition()
+        ; 主界面
+        _1 := " 1    2    3   "
+        _2 := " 1600 150  100 "
+        _3 := " 名称 大小  %   "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView321" , config)
+    Return
+#If
+
+
 #If CheckWindowActive("BitComet")
 
     <#\::
     
+        WPD["BitComet"] := Position(3000 , 1500)
         MoveWindowToDefaultPosition()
 
         ; 左边栏大小
@@ -10,9 +25,9 @@
         max_left := 336
         MoveControlUDLR(cinfo,  ,  , max_left,  , 3)
         
-        ; 主界面
+        ; 主界
         _1 := " 1    2    3    4       5       6       7       8    9        10      11    "
-        _2 := " 1160 170  100 150      150     155     155     150  200      120     100    "
+        _2 := " 1100 250  100 150      150     155     155     150  200      120     100    "
         _3 := " 名称 大小  进度 下载大小 上传大小 下载速度  上传速度 需时  种子/用户 长效种子 分享率  "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)

@@ -1,10 +1,20 @@
 ﻿
+#If CheckWindowActive( "Q-Dir" , "" , "MiniBrowserOK" )
+    <#\::
+        WPD["Q-Dir__MiniBrowserOK"] := Position(2100, 1700)
+        MoveWindowToDefaultPosition()
+    Return
+#If
+
+
 #If CheckWindowActive( "Q-Dir" , "ATL*" )
     ;  DPI设置 系统增强
     ;  1 #3277010->SysTreeView325   2 #327702->SysListView321   4 #327706->SysListView323
     ;  1 ^                          3 #327704->SysListView322   4 ^
     ;    650                          500 * dpi                   500+120+90 * dpi
     <#\::
+        arg := (650) + ((200+180+120)*2+50) + ((500+120+90)*2+50) + 20
+        WPD["Q-Dir"] := Position(arg, 1950)
         MoveWindowToDefaultPosition()
 
         cinfo  := window["controls"]["#327702"]
@@ -18,13 +28,14 @@
         MoveControlUDLR(cinfo,  ,  ,  , cright)
 
         cinfo  := window["controls"]["#327702"]
-        cdown  := 800
+        cdown  := 735
         MoveControlUDLR(cinfo,  , cdown)
     Return
 #If
 
 
 #If CheckWindowActive( "Q-Dir" )
+
 
     ; 重命名
     F2::Return
@@ -69,8 +80,8 @@
 
     ; 重新启动
     !F11::Return
-
     ; 切换树状列表
+
     ; 预览
     ^e::Return
     ![::Send ^e
