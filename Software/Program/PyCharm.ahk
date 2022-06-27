@@ -65,6 +65,8 @@
             Send {Esc}
         } else {
             Send {F11}
+            WinWaitActive, 评估
+            MoveWindowToCenter(True)
         }
     Return
 
