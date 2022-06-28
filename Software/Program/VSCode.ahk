@@ -74,7 +74,7 @@
         Clipboard := backup
     Return
 
-    CapsLock & AppsKey::
+    CapsLock & Enter::
         FileEncoding UTF-8-RAW
 
         path := "D:\VSCodeData\User\settings.json"
@@ -96,7 +96,6 @@
         FileDelete, %path%
         FileAppend, %config%, %path%
     Return
-
     CapsLock Up::
         SetCapsLockState, Off
     Return
