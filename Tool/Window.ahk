@@ -108,19 +108,22 @@ GetWindowConfig(CFG)
 ; 获取激活窗口的所在屏幕的信息以及窗口信息 使用全局变量window共享
 ; result | {} 应用信息
 ; mode   | Default AHK默认 \ Strict|Window API修正
-GetActiveWindowInfo(mode:="Default", cache:=True)
+GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
 {
     WinGet, win_id, ID, A
 
     ; 缓存数据
     if (cache == True) {
-        cache_time   := window.cache.time
         cache_win_id := window.cache.win_id
+        cache_expire := window.cache.expire
         if (cache_time and cache_win_id) {
-            if (A_TickCount - cache_time < Cache_Ex_Time and cache_win_id == win_id) {
+            if (cache_win_id == win_id and cache_expire - A_TickCount > 0) {
                 return
             }
         }
+    }
+    if (expire == "Auto" or expire <= 0) {
+        expire := Cache_Expire_Time
     }
 
     WinGet,                         win_pid, PID,             ahk_id %win_id%
@@ -201,7 +204,7 @@ GetActiveWindowInfo(mode:="Default", cache:=True)
             break
         }
     }
-    window.screen       := win_screen
+    window.screen := win_screen
 
     ; 窗口位置 默认1 默认2
     win_position         := { "default" : {} , "backup" : {} }
@@ -213,8 +216,8 @@ GetActiveWindowInfo(mode:="Default", cache:=True)
     
     ; 最后一次获取的信息缓存时间
     window.cache        := {}
-    window.cache.time   := A_TickCount
     window.cache.win_id := win_id
+    window.cache.expire := A_TickCount + expire
 }
 
 
@@ -369,13 +372,12 @@ ResizeWindow(command, direction)
 ; return    | None
 MoveWindowUDLR(direction)
 {    
+    SetWinDelay, 1
+
+    GetActiveWindowInfo("Default", True, 1000 * 5)
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         return 
     }
-
-    SetWinDelay, 1
-
-    GetActiveWindowInfo()
 
     win_id := window.id
     win_x  := window.x

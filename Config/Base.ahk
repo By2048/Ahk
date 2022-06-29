@@ -40,7 +40,7 @@ Global Screens := {} ;所有屏幕相关信息
 Global Screen  := {} ;主窗口信息
 
 ; 缓存过期时间
-Global Cache_Ex_Time := 500
+Global Cache_Expire_Time := 500
 
 ; 全局共享的属性 | 临时 + 动态更新
 Global window := {} ; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
