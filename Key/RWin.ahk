@@ -28,6 +28,12 @@
 >+Insert::Send ^!+{PrintScreen}
 >+Delete::Send ^!+{CtrlBreak}
 
+; 窗口大小调整
+>#Left:: Send ^!{Numpad4}
+>#Right::Send ^!{Numpad6}
+>#Up::   Send ^!{Numpad8}
+>#Down:: Send ^!{Numpad2}
+
 ; TIM
 >#`;::Send ^!; ;识图
 >#'::Send ^!' ;翻译
