@@ -116,10 +116,9 @@ Return
 <#+m::Send #d ;切换隐藏所有应用界面
 
 ; 窗口全屏
-<#Enter::Send ^!``
-
+<#Enter::Send ^!{Numpad0}
 ; 窗口全屏选项
-<#+Enter::Send ^!+``
+<#+Enter::Send ^!+{Numpad0}
 
 ; 修改窗口透明度
 ; <#WheelUp::SetWindowTransparent(10)
