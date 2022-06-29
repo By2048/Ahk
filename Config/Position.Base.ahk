@@ -7,7 +7,6 @@ WPD["Wallpaper"]   := Position(3388 , 2000)
 WPD["Sandboxie"]   := Position(2500 , 1300)  
 WPD["VMware"]      := Position(2500 , 1600)
 WPD["Zip"]         := Position(1800 , 1400)
-WPD["Geek"]        := Position(1500 , 1500)
 WPD["FFRenamePro"] := Position(3300 , 1800)
 
 WPD["FDM"]         := Position("[Center][1]" , 2000 , 1500)

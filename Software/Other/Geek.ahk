@@ -12,6 +12,7 @@
     ^w::Return
 
     <#\::
+        WPD["Geek"] := Position(1500 , 1500)
         MoveWindowToDefaultPosition()
         _name  := "SysListView321"
         _width := { 1 : 1030   ; 名称
