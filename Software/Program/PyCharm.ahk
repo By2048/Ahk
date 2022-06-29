@@ -33,6 +33,8 @@
         WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
     }
 
+    RWin::Return
+
     ~LShift::
         if (cnt > 0) {
             cnt += 1
@@ -117,16 +119,16 @@
     LAlt & RShift::Send {F17}
     RShift & LAlt::Send {F18}
 
-    ; 窗口全屏 选项
-    F23::Return
-    F24::Return
-    <#Enter::Send {F23}
-    <#+Enter::Send {F24}
+    ; 窗口全屏
+    ~<#+Enter::
+        CenterHideWindow()
+    Return
 
-    >#Left::Send ^{F5}
-    >#Right::Send ^{F6}
-    >#Up::Send ^{F7}
-    >#Down::Send ^{F8}
+    ; 窗口大小调整
+    >#Left:: Send ^!{Numpad4}
+    >#Right::Send ^!{Numpad6}
+    >#Up::   Send ^!{Numpad8}
+    >#Down:: Send ^!{Numpad2}
 
     ; 切换书签问题
     !b::
