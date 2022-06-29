@@ -71,17 +71,17 @@ GetWindowConfig(CFG)
         ; 123 456 789
         if (StrLen(_process_name_) > 0) {
             if (win_process_name == _process_name_) {
-                match_cnt := match_cnt + 2
+                match_cnt := match_cnt + 8
             } else if (InStr(win_process_name, _process_name_)) {
-                match_cnt := match_cnt + 1
+                match_cnt := match_cnt + 7
             }
         }
 
         if (StrLen(_class_) > 0) {
             if (win_class == _class_) {
-                match_cnt := match_cnt + 2
+                match_cnt := match_cnt + 5
             } else if (InStr(win_class, _class_)) {
-                match_cnt := match_cnt + 1
+                match_cnt := match_cnt + 4
             }
         }
 
