@@ -110,8 +110,8 @@
     <!+CapsLock::Send !+{F15}
 
     ; 特殊按键覆盖{f4}
-    !F4::Send !{F16}
-    !+F4::Send !+{F16}
+    <!F4::Send !{F16}
+    <!+F4::Send !+{F16}
 
     ; 横向 竖向 拆分
     LAlt & RShift::Send {F17}
