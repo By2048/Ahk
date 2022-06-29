@@ -110,7 +110,17 @@ GetWindowConfig(CFG)
 ; mode   | Default AHK默认 \ Strict|Window API修正
 GetActiveWindowInfo(mode:="Default")
 {
-    WinGet,                          win_id, ID,              A
+    WinGet, win_id, ID, A
+
+    ; 缓存数据
+    cache_time   := window.cache.time
+    cache_win_id := window.cache.win_id
+    if (cache_time and cache_win_id) {
+        if (A_TickCount - cache_time < 999 and cache_win_id == win_id) {
+            return
+        }
+    }
+
     WinGet,                         win_pid, PID,             ahk_id %win_id%
     WinGet,                     win_min_max, MinMax,          ahk_id %win_id%
     WinGet,                 win_process_exe, ProcessName,     ahk_id %win_id%
@@ -198,6 +208,11 @@ GetActiveWindowInfo(mode:="Default")
     win_position.default := win_position_default
     win_position.backup  := win_position_backup
     window.position      := win_position
+    
+    ; 最后一次获取的信息缓存时间
+    window.cache        := {}
+    window.cache.time   := A_TickCount
+    window.cache.win_id := win_id
 }
 
 
