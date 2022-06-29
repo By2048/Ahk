@@ -108,16 +108,18 @@ GetWindowConfig(CFG)
 ; 获取激活窗口的所在屏幕的信息以及窗口信息 使用全局变量window共享
 ; result | {} 应用信息
 ; mode   | Default AHK默认 \ Strict|Window API修正
-GetActiveWindowInfo(mode:="Default")
+GetActiveWindowInfo(mode:="Default", cache:=True)
 {
     WinGet, win_id, ID, A
 
     ; 缓存数据
-    cache_time   := window.cache.time
-    cache_win_id := window.cache.win_id
-    if (cache_time and cache_win_id) {
-        if (A_TickCount - cache_time < 999 and cache_win_id == win_id) {
-            return
+    if (cache == True) {
+        cache_time   := window.cache.time
+        cache_win_id := window.cache.win_id
+        if (cache_time and cache_win_id) {
+            if (A_TickCount - cache_time < Cache_Ex_Time and cache_win_id == win_id) {
+                return
+            }
         }
     }
 
