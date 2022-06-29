@@ -191,20 +191,43 @@ LWin & AppsKey::
 
 Return
 
+; 设置代理
 LWin & RShift::
-    ; 手动设置代理
     path        := "HKEY_CURRENT_USER"
     config      := "Software\Microsoft\Windows\CurrentVersion\Internet Settings"
     key         := "ProxyEnable"
     path_config := Format("{}\{}", path, config)
-    RegRead, proxy_enable, %path_config%, %key%
-    if (proxy_enable == "0") {
+    
+    lshift_state := GetKeyState("LShift", "P")
+    RegRead, proxy_state, %path_config%, %key%
+
+    if (lshift_state == "1") {
+        if (proxy_state == "1") {
+            Process, Exist, v2rayN.exe
+            win_pid := ErrorLevel
+            Process, Close, %win_pid%
+        } else if (proxy_state == "0") {
+            Run D:\#Lnk\v2rayN.lnk
+        }
+    } 
+    
+    if (proxy_state == "0") {
         Regwrite, REG_DWORD, %path%, %config%, %key%, 1
-        HelpText("`n Proxy ON `n", "center", "screen1", 1000)
-    } else if (proxy_enable == "1") {
+        if (lshift_state) {
+            content := "`n Proxy On Force`n"
+        } else {
+            content := "`n Proxy On `n"
+        }
+        HelpText(content, "center", "screen1", 1000)
+    } else if (proxy_state == "1") {
         Regwrite, REG_DWORD, %path%, %config%, %key%, 0
-        HelpText("`n Proxy OFF `n", "center", "screen1", 500)
-        HelpText("`n Proxy OFF `n", "center", "screen3")
+        if (lshift_state) {
+            content := "`n Proxy Off Force`n"
+        } else {
+            content := "`n Proxy Off `n"
+        }
+        HelpText(content, "center", "screen1", 500)
+        HelpText(content, "center", "screen3")
     }
 Return
 
