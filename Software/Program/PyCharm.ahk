@@ -33,8 +33,6 @@
         WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
     }
 
-    RWin::Return
-
     ~LShift::
         if (cnt > 0) {
             cnt += 1

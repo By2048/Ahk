@@ -1,5 +1,6 @@
 ﻿
 WPD["qBittorrent"] := Position(3000 , 1500)
+WPD["Maye"]        := Position(1175 , 1100)
 WPD["Calibre"]     := Position(3000 , 1500)
 WPD["Everything"]  := Position(2300 , 1700)
 WPD["Android"]     := Position(3440 , 2110)
