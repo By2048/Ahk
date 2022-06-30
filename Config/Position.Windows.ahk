@@ -32,12 +32,6 @@ WPD["RegEdit"] := Position(2500 , 1600)
 ; 设置
 WPD["WindowsSettings_ApplicationFrameWindow"] := Position(2400 , 1600)
 
-
-; D:\\   | 树 426 | 名称800  备注400    日期250             | 预览 550
-; 回收站  | 树 426 | 名称500  原位置500  删除日期250  大小200  | 预览 550
-; 其他    | 树 426 | 名称999   日期250    大小200            | 预览 550
-WPD["Explorer"] := Position(2520 , 1700)
-
 ; 资源监视器
 WPD["SystemMonitor"] := Position(3000 , 1800)
 

@@ -149,6 +149,10 @@
 
     <#\::
 
+        ; D:\\   | 树 426 | 名称800  备注400    日期250             | 预览 550
+        ; 回收站  | 树 426 | 名称500  原位置500  删除日期250  大小200  | 预览 550
+        ; 其他    | 树 426 | 名称999   日期250    大小200            | 预览 550
+        WPD["Explorer"] := Position(2520 , 1700)
         MoveWindowToDefaultPosition()
 
         win_title := window.title
