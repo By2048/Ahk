@@ -104,21 +104,26 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     xy := StrReplace(xy, "|", "_")
     xy := StrReplace(xy, "+", "_")
     xy := StrReplace(xy, "-", "_")
-    if (xy == "right_down") {
-        gui_x := screen_xx - gui_w - 5
-        gui_y := screen_yy - gui_h - 5
-    } else if (xy == "left_down") {
-        gui_x := screen_x  + 5
-        gui_y := screen_yy - gui_h - 5
-    } else if (xy == "center") {
-        gui_x := screen_x + (screen_w - gui_w) / 2
-        gui_y := screen_y + (screen_h - gui_h) / 2
-    } else if (xy == "center_up") {
-        gui_x := screen_x + (screen_w - gui_w) / 2
-        gui_y := screen_y + 5
-    } else if (xy == "center_down") {
-        gui_x := screen_x  + (screen_w - gui_w) / 2
-        gui_y := screen_yy - gui_h - 5
+
+    switch xy {
+        case "right_down":
+            gui_x := screen_xx - gui_w - 5
+            gui_y := screen_yy - gui_h - 5
+        case "left_down":
+            gui_x := screen_x  + 5
+            gui_y := screen_yy - gui_h - 5
+        case "center":
+            gui_x := screen_x + (screen_w - gui_w) / 2
+            gui_y := screen_y + (screen_h - gui_h) / 2
+        case "center_up":
+            gui_x := screen_x + (screen_w - gui_w) / 2
+            gui_y := screen_y + 5
+        case "center_down":
+            gui_x := screen_x  + (screen_w - gui_w) / 2
+            gui_y := screen_yy - gui_h - 5
+        default:
+            gui_x := screen_x  + (screen_w - gui_w) / 2
+            gui_y := screen_yy - gui_h - 5
     }
 
     Gui, Show, NA x%gui_x% y%gui_y% w%gui_w% h%gui_h%
