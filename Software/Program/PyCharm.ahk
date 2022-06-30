@@ -1,4 +1,65 @@
 ﻿
+#If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python 控制台")
+
+    ; ReRun
+    !BackSpace::MouseClickAndResetting(34, 92)
+
+    ; StopConsole
+    !+BackSpace::MouseClickAndResetting(34, 142)
+
+#If
+
+
+
+#If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python Console History")
+
+    ; 历史记录返回 \ 与书签冲突
+    !\::Send {Esc}
+
+#If 
+
+
+
+#If CheckWindowActive("PyCharm" , "SunAwtDialog")
+  
+    title := [ "终端" , "运行" , "调试" ]
+
+    ; ~RAlt::
+    ;     result := GetActiveWindowsInfo()
+    ;     win_title := result.win_title
+
+    ;     if (win_title In title) {
+    ;         WinSet, Transparent, 30, A
+    ;     }
+    ; Return
+
+    ; ~RAlt Up::
+    ;     result := GetActiveWindowsInfo()
+    ;     win_title := result.win_title
+    ;     if (win_title In title) {
+    ;         WinSet, Transparent, 255, A
+    ;     }
+    ; Return
+ 
+#If
+
+
+
+#If CheckWindowActive("PyCharm" , "" , "admin.py")
+    :*:\sd\::short_description
+#If
+
+
+
+#If ( CheckWindowActive("PyCharm") And DoubleShift == True )
+    LShift::
+        Send {Esc}
+        Global DoubleShift := False
+    Return
+#If
+
+
+
 #If CheckWindowActive("PyCharm")
     
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
@@ -32,6 +93,7 @@
         hh := config[4] 
         WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
     }
+
 
     ~LShift::
         if (cnt > 0) {
@@ -134,63 +196,3 @@
     Return
 
 #If
-
-
-#If ( CheckWindowActive("PyCharm") And DoubleShift == True )
-    ~RShift::
-        Send {Esc}
-        Global DoubleShift := False
-    Return
-#If
-
-
-
-#If CheckWindowActive("PyCharm" , "SunAwtDialog")
-  
-    title := [ "终端" , "运行" , "调试" ]
-
-    ; ~RAlt::
-    ;     result := GetActiveWindowsInfo()
-    ;     win_title := result.win_title
-
-    ;     if (win_title In title) {
-    ;         WinSet, Transparent, 30, A
-    ;     }
-    ; Return
-
-    ; ~RAlt Up::
-    ;     result := GetActiveWindowsInfo()
-    ;     win_title := result.win_title
-    ;     if (win_title In title) {
-    ;         WinSet, Transparent, 255, A
-    ;     }
-    ; Return
- 
-#If
-
-
-
-#If CheckWindowActive("PyCharm" , "" , "admin.py")
-    :*:\sd\::short_description
-#If
-
-
-
-#If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python 控制台")
-
-    ; ReRun
-    !BackSpace::MouseClickAndResetting(34, 92)
-
-    ; StopConsole
-    !+BackSpace::MouseClickAndResetting(34, 142)
-
-#If
-
-
-
-#If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python Console History")
-
-    ; 历史记录返回 \ 与书签冲突
-    !\::Send {Esc}
-
-#If 
