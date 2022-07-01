@@ -116,9 +116,15 @@ Return
 <#+m::Send #d ;切换隐藏所有应用界面
 
 ; 窗口全屏
-<#Enter::Send ^!{NumLock}
+<#Enter::
+    Send ^!{NumLock}
+    SetNumLockState, Off
+Return
 ; 窗口全屏选项
-<#+Enter::Send ^!+{NumLock}
+<#+Enter::
+    Send ^!+{NumLock}
+    SetNumLockState, Off
+Return
 
 ; 修改窗口透明度
 ; <#WheelUp::SetWindowTransparent(10)

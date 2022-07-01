@@ -23,8 +23,14 @@
 >!F12::Send {F24}
 
 
-LAlt & RAlt::Send ^{ScrollLock}
-RAlt & LAlt::Send !{ScrollLock}
+LAlt & RAlt::
+    Send ^{ScrollLock}
+    SetScrollLockState, Off
+Return
+RAlt & LAlt::
+    Send !{ScrollLock}
+    SetScrollLockState, Off
+Return
 
 
 >!Insert::ScreenshotActivateSoftware("Tmp")
