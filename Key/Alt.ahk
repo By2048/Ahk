@@ -23,6 +23,10 @@
 >!F12::Send {F24}
 
 
+LAlt & RAlt::Send ^{ScrollLock}
+RAlt & LAlt::Send !{ScrollLock}
+
+
 >!Insert::ScreenshotActivateSoftware("Tmp")
 >!Delete::ScreenshotActivateSoftware("Backup")
 
