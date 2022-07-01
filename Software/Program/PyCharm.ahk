@@ -94,7 +94,6 @@
         WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
     }
 
-
     ~LShift::
         if (cnt > 0) {
             cnt += 1
@@ -112,13 +111,16 @@
         cnt := 0
     Return
 
+    ~AppsKey::
+        CenterHideWindow()
+    Return
+
     ; 设置
     ~^!s::
         ; Sleep 100
         WinWaitActive, 设置
         MoveWindowToCenter(True)
     Return
-
     
     $F11::
         GetActiveWindowInfo()
@@ -132,12 +134,29 @@
         }
     Return
 
+    ; 切换书签问题
+    !b::
+        if (not alt_b) {
+            alt_b := True
+            Send !b
+        } else {
+            alt_b := False
+            Send {Esc}
+        }
+    Return
+
     ~^n::CenterHideWindow()
     ~^+n::CenterHideWindow()
-    ~^g::CenterHideWindow()
-    ~^+g::CenterHideWindow()
+
     ~^o::CenterHideWindow()
     ~!o::CenterHideWindow(1700, 1500)
+
+    ~^+e::CenterHideWindow(666, 1500)
+
+    ~^+g::
+    ~!+\::
+        CenterHideWindow()
+    Return
 
     ; Default Keymap
     ; ^[::Send ^{w}+{Tab}^+{w}
@@ -152,16 +171,6 @@
     ; Return
     ; ^]::Send ^{w}{Tab}^+{w}
 
-    ; 右键菜单{AppsKey}
-    RAlt & LAlt::Send {AppsKey}
-    
-    ; 软件设置{f1}
-    LAlt & RAlt::
-        Send {F13}
-        WinWaitActive, 设置
-        MoveWindowToCenter(True)
-    Return
-
     !Esc::Send ^{F1}
     !+Esc::Send ^+{F1}
 
@@ -175,24 +184,26 @@
     <!F4::Send !{F16}
     <!+F4::Send !+{F16}
 
-    ; 横向 竖向 拆分
-    LAlt & RShift::Send {F17}
-    RShift & LAlt::Send {F18}
+    ; 右Alt
+    >![::Send !{Numpad4}
+    >!]::Send !{Numpad6}
+    >!\::Send !{Numpad5}
 
-    ; 窗口全屏
+    ~<#Enter::Return
     ~<#+Enter::
         CenterHideWindow()
     Return
 
-    ; 切换书签问题
-    !b::
-        if (not alt_b) {
-            alt_b := True
-            Send !b
-        } else {
-            alt_b := False
-            Send {Esc}
-        }
+    LAlt & RAlt::
+        Send ^{ScrollLock}
+        SetScrollLockState, Off
+        WinWaitActive, 设置
+        MoveWindowToCenter(True)
+    Return
+    RAlt & LAlt::
+        Send !{ScrollLock}
+        SetScrollLockState, Off
+        CenterHideWindow()
     Return
 
 #If
