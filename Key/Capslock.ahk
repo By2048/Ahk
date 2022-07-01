@@ -12,20 +12,13 @@
 
 
 ;切换到显示器中心 
-$CapsLock::
+CapsLock::
 
     CoordMode, Mouse, Screen
     MouseGetPos, x_current, y_current
 
     GetActiveWindowInfo()
     win_process_name := window.process_name
-
-    ides := [ "VSCode" , "PyCharm" ]
-    for index, name in ides {
-        if (win_process_name == name) {
-            return
-        }
-    }
 
     offset    := 300
     x_default := Screen.x + Screen.w/2
@@ -97,7 +90,6 @@ CapsLock & Space::
     WinActivate, ahk_id %win_id%
     HighlightActiveWindow(  ,  , _time_:=300)
 Return
-
 
 
 ;关闭大写锁定

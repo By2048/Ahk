@@ -1,51 +1,4 @@
 ﻿
-#If CheckWindowActive("VSCode")
-
-    ; 软件设置{f1}
-    LAlt & RAlt::Send {F13}
-
-    ; 右键菜单{AppsKey}
-    RAlt & LAlt::Send {AppsKey}
-
-    ; 切换标签页{f2}
-    !Tab::Send !{F14}
-    !+Tab::Send !+{F14}
-
-    ; 关闭标签页{f3}
-    !CapsLock::Send !{F15}
-    !+CapsLock::Send !+{F15}
-
-    ; 特殊按键覆盖{f4}
-    ^F4::Return
-    ^+F4::Return
-    !F4::Send !{F16}
-    !+F4::Send !+{F16}
-
-    <^j::
-        Send ^c
-        data := Clipboard
-        Clipboard := StrReplace(Clipboard, "`r`n")
-        Send ^v
-        Clipboard := data
-    Return
-
-    ; F1-F19 正常
-
-    ;快速命令 
-    >!Space::
-        ; if (software_vscode_ralt=True) {
-        ;     software_vscode_ralt:=False
-        ;     Send {Esc}
-        ; } else {
-        ;     software_vscode_ralt:=True
-        ; }
-        Send {f17}
-    Return
-
-    ; if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<500) {
-#If
-
-
 #If CheckWindowActive("VSCode", "", ".md")
 
     !\::
@@ -96,8 +49,49 @@
         FileDelete, %path%
         FileAppend, %config%, %path%
     Return
-    CapsLock Up::
-        SetCapsLockState, Off
+
+#If
+
+
+#If CheckWindowActive("VSCode")
+
+    ; 软件设置{f1}
+    LAlt & RAlt::Send {F13}
+
+    ; 右键菜单{AppsKey}
+    RAlt & LAlt::Send {AppsKey}
+
+    ; 切换标签页{f2}
+    !Tab::Send !{F14}
+    !+Tab::Send !+{F14}
+
+    ; 关闭标签页{f3}
+    !CapsLock::Send !{F15}
+    !+CapsLock::Send !+{F15}
+
+    ; 特殊按键覆盖{f4}
+    ^F4::Return
+    ^+F4::Return
+    !F4::Send !{F16}
+    !+F4::Send !+{F16}
+
+    <^j::
+        Send ^c
+        data := Clipboard
+        Clipboard := StrReplace(Clipboard, "`r`n")
+        Send ^v
+        Clipboard := data
+    Return
+
+    ;快速命令 
+    >!Space::
+        ; if (software_vscode_ralt=True) {
+        ;     software_vscode_ralt:=False
+        ;     Send {Esc}
+        ; } else {
+        ;     software_vscode_ralt:=True
+        ; }
+        Send {f17}
     Return
 
 #If
