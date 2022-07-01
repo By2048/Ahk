@@ -24,15 +24,18 @@ GetClientSize(hWnd, ByRef w:="", ByRef h:="")
 ; 获取当前激活的应用配置文件信息
 ; Config_Data | Config中定义的配置信息
 ; return      | win_config
+; 1 A
+; 2 A_B
+; 2 _B
+; 3 A_B_C
+; 3 A__C
+; 3 _B_C
+; 3 __C
+; 进程名权重 3
+; Class权重  2
+; 标题权重   2 
 GetWindowConfig(CFG)
 {
-    ; 1 A
-    ; 2 A_B
-    ; 2 _B
-    ; 3 A_B_C
-    ; 3 A__C
-    ; 3 _B_C
-    ; 3 __C
 
     win_process_name := window.process_name
     win_class        := window.class
@@ -71,17 +74,17 @@ GetWindowConfig(CFG)
         ; 123 456 789
         if (StrLen(_process_name_) > 0) {
             if (win_process_name == _process_name_) {
-                match_cnt := match_cnt + 8
+                match_cnt := match_cnt + 3
             } else if (InStr(win_process_name, _process_name_)) {
-                match_cnt := match_cnt + 7
+                match_cnt := match_cnt + 2
             }
         }
 
         if (StrLen(_class_) > 0) {
             if (win_class == _class_) {
-                match_cnt := match_cnt + 5
+                match_cnt := match_cnt + 2
             } else if (InStr(win_class, _class_)) {
-                match_cnt := match_cnt + 4
+                match_cnt := match_cnt + 1
             }
         }
 
