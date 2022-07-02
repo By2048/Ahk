@@ -198,33 +198,39 @@ Return
 
 ; 设置代理
 LWin & RShift::
-    lshift_state := GetKeyState("LShift", "P")
-    ; v2rayN开关
-    if (lshift_state == "1") {
-        Process, Exist, v2rayN.exe
-        win_pid := ErrorLevel
-        if (win_pid) {
-            Process, Close, %win_pid%
-            HelpText("`n v2rayN Close `n", "center", "screen3")
-        } else {
-            Run D:\#Lnk\v2rayN.lnk
-            HelpText("`n v2rayN Start `n", "center", "screen1", 500)
-        }
-        return
-    }
-    ; Windows代理开关
     path        := "HKEY_CURRENT_USER"
     config      := "Software\Microsoft\Windows\CurrentVersion\Internet Settings"
     key         := "ProxyEnable"
     path_config := Format("{}\{}", path, config)
     RegRead, proxy_state, %path_config%, %key%
-    if (proxy_state == "0") {
-        Regwrite, REG_DWORD, %path%, %config%, %key%, 1
-        HelpText("`n Proxy On `n", "center", "screen1", 500)
-    } else if (proxy_state == "1") {
-        Regwrite, REG_DWORD, %path%, %config%, %key%, 0
-        HelpText("`n Proxy Off `n", "center", "screen1", 500)
-        HelpText("`n Proxy Off `n", "center", "screen3")
+
+    Process, Exist, v2rayN.exe
+    win_pid := ErrorLevel
+
+    lshift_state := GetKeyState("LShift", "P")
+
+    if (lshift_state == "1") {
+         ; v2rayN开关
+        if (win_pid) {
+            Process, Close, %win_pid%
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 0
+            HelpText("`n v2rayN Close `n", "center", "screen1", 500)
+            HelpText("`n v2rayN Close `n", "center", "screen3")
+        } else {
+            Run D:\#Lnk\v2rayN.lnk
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 1
+            HelpText("`n v2rayN Start `n", "center", "screen1", 500)
+        }
+    } else {
+        ; Windows代理开关
+        if (proxy_state == "0") {
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 1
+            HelpText("`n Proxy On `n", "center", "screen1", 500)
+        } else if (proxy_state == "1") {
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 0
+            HelpText("`n Proxy Off `n", "center", "screen1", 500)
+            HelpText("`n Proxy Off `n", "center", "screen3")
+        }
     }
 Return
 
