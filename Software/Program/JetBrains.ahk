@@ -24,7 +24,7 @@
     !Up::Send ^+{Up}
     !Down::Send ^+{Down}
     
-    #BackSpace::Send ^q
+    !BackSpace::Send ^q
 
 #If
     
