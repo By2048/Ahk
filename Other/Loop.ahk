@@ -56,7 +56,7 @@ Loop {
         }
     }
 
-    if (win_process_name == "EXCEL" and win_class == "NUIDialog") {
+    if (win_process_name == "Excel" and win_class == "NUIDialog") {
         MoveWindowToCenter(True)
     }
 

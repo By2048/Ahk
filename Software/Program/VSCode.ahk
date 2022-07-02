@@ -55,12 +55,6 @@
 
 #If CheckWindowActive("VSCode")
 
-    ; 软件设置{f1}
-    LAlt & RAlt::Send {F13}
-
-    ; 右键菜单{AppsKey}
-    RAlt & LAlt::Send {AppsKey}
-
     ; 切换标签页{f2}
     !Tab::Send !{F14}
     !+Tab::Send !+{F14}
