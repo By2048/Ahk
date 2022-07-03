@@ -97,11 +97,12 @@
     Return
 
     ;切换输入焦点
-    F6::Return 
+    F6::Return
 
     ; 显示Alt快捷键帮助
     F10::Return
     RAlt::Send {F10}
+    RAlt & RWin::Send !{F4}
 
     ; 全屏
     F11::Return
