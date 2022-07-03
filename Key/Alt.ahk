@@ -22,6 +22,23 @@
 >!F11::Send {F23}
 >!F12::Send {F24}
 
+>!0::Send {Numpad0}
+>!1::Send {Numpad1}
+>!2::Send {Numpad2}
+>!3::Send {Numpad3}
+>!4::Send {Numpad4}
+>!5::Send {Numpad5}
+>!6::Send {Numpad6}
+>!7::Send {Numpad7}
+>!8::Send {Numpad8}
+>!9::Send {Numpad9}
+>!`::Send {NumpadDot}
+>!=::Send {NumpadAdd}
+>!-::Send {NumpadSub}
+>!+=::Send {NumpadMult}
+>!+-::Send {NumpadDiv}
+>!Enter::Send {NumpadEnter}
+
 
 LAlt & RAlt::
     Send ^{ScrollLock}

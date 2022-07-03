@@ -1,4 +1,12 @@
 ﻿
+#If CheckWindowActive("Explorer" , "OperationStatusWindow" , "删除文件")
+    !y::Return
+    !n::Return
+    \::Send !a
+#If
+
+
+
 #If CheckWindowActive( "Explorer" , "#32770" , "删除多个项目" )
     !y::Return
     !n::Return
@@ -23,30 +31,23 @@
 
 
 
-#If CheckWindowActive("Explorer" , "OperationStatusWindow" , "删除文件")
-    !y::Return
-    !n::Return
-    \::Send !a
-#If
-
-
-
 ; 任务栏
 #If CheckWindowActive("Explorer" , "Shell_TrayWnd")
-    WheelUp::Volume_Up
-    WheelDown::Volume_Down
+    \::Send {F6}
+    WheelUp::Send {Volume_Up}
+    WheelDown::Send {Volume_Down}
 #If
 
 
 
 ; 桌面
 #If CheckWindowActive("Explorer" , "WorkerW")
-    ; 切换输入焦点
-     F6::Return
-     F9::Run D:\\
+    \::Send {F6}
+    F9::Run D:\\
     F10::Run E:\\
     F11::Run P:\\
     F12::Run N:\\
+    >!Space::Run D:\#Lnk\Everything.lnk
 #If
 
 
@@ -95,8 +96,12 @@
         Send \
     Return
 
+    ;切换输入焦点
+    F6::Return 
+
     ; 显示Alt快捷键帮助
     F10::Return
+    RAlt::Send {F10}
 
     ; 全屏
     F11::Return
