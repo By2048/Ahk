@@ -50,10 +50,34 @@
         FileAppend, %config%, %path%
     Return
 
+    CapsLock Up::
+        SetCapsLockState, Off
+    Return
+
 #If
 
 
 #If CheckWindowActive("VSCode")
+
+    ~LShift::
+        if (cnt > 0) {
+            cnt += 1
+            return
+        } else {
+            cnt := 1
+        }
+        SetTimer, VSCodeTimer, -500
+    Return
+    VSCodeTimer:
+        if (cnt == 1 and DoubleShift == True) {
+            Global DoubleShift := False
+            Send {Esc}
+        } if (cnt == 2) {
+            Global DoubleShift := True
+            Send ^!{Space}
+        } 
+        cnt := 0
+    Return
 
     ; 切换标签页{f2}
     !Tab::Send !{F14}
@@ -79,13 +103,13 @@
 
     ;快速命令 
     >!Space::
-        ; if (software_vscode_ralt=True) {
-        ;     software_vscode_ralt:=False
-        ;     Send {Esc}
-        ; } else {
-        ;     software_vscode_ralt:=True
-        ; }
-        Send {f17}
+        if (vscode_alt_space == True) {
+            vscode_alt_space := False
+            Send {Esc}
+        } else {
+            vscode_alt_space := True
+            Send ^!{Space}
+        } 
     Return
 
 #If
