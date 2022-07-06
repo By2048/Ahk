@@ -1,4 +1,8 @@
 ﻿
+#Include %A_WorkingDir%\Software\Program\PyCharm.Tool.ahk
+
+
+
 #If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python 控制台")
 
     ; ReRun
@@ -51,11 +55,17 @@
 
 
 
-#If ( CheckWindowActive("PyCharm") And DoubleShift == True )
-    LShift::
+#If ( CheckWindowActive("PyCharm") And ActivateTools == True )
+
+    \::
         Send {Esc}
-        Global DoubleShift := False
     Return
+
+    ~Enter::
+        Sleep 66
+        CenterHideWindow( 0, 0, 1400 + 350, 0)
+    Return
+
 #If
 
 
@@ -65,62 +75,6 @@
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
 
-    CenterHideWindow(win_w:=0, win_h:=0) {
-        win_id    := 0
-        max_count := 99
-        rule      := "ahk_exe pycharm64.exe ahk_class SunAwtWindow"
-        Loop {
-            total := A_Index
-            win_id := WinExist(rule)
-            if (win_id) {
-                WinActivate, ahk_id %win_id%
-                break
-            }
-            if (A_Index >= max_count) {
-                break
-            }
-            Sleep, 10
-        }
-        WinGetPos, x, y, w, h, ahk_id %win_id%
-        if (win_w and win_h) {
-            config := Position(win_w, win_h)
-        } else {
-            config := Position(w, h)
-        }
-        xx := config[1]
-        yy := config[2]
-        ww := config[3]
-        hh := config[4] 
-        WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
-    }
-
-    ~LShift::
-        if (cnt > 0) {
-            cnt += 1
-            return
-        } else {
-            cnt := 1
-        }
-        SetTimer, LTimer, -500
-    Return
-    LTimer:
-        if (cnt == 2) {
-            Global DoubleShift := True
-            CenterHideWindow(1500, 1500)
-        }
-        cnt := 0
-    Return
-
-    ~AppsKey::
-        CenterHideWindow()
-    Return
-
-    ; 设置
-    ~^!s::
-        ; Sleep 100
-        WinWaitActive, 设置
-        MoveWindowToCenter(True)
-    Return
     
     $F11::
         GetActiveWindowInfo()
@@ -134,6 +88,103 @@
         }
     Return
 
+    ~LShift::
+        if (cnt > 0) {
+            cnt += 1
+            return
+        } else {
+            cnt := 1
+        }
+        SetTimer, PyCharmTimer, -500
+    Return
+    PyCharmTimer:
+        if (cnt == 1) {
+            Send {Esc}
+        } else if (cnt == 2) {
+            ; Global DoubleShift := True
+            CenterHideWindow(1500, 1500)
+        }
+        cnt := 0
+    Return
+
+    CapsLock::Return
+    CapsLock Up::SetCapsLockState, Off
+
+    CapsLock & BackSpace::
+        Global ActivateEditorTool
+        if (ActivateEditorTool == True) {
+            Send {Esc}
+            ActivateEditorTool := False
+        } else {
+            Send ^!{BackSpace}
+            CenterHideWindow(1000, 1500)
+            ActivateEditorTool := True
+        }
+    Return
+
+    ^!\::Return
+    CapsLock & \::
+        Global CodeTool
+        if (CodeTool == True) {
+            Send {Esc}
+            CodeTool := False
+        } else {
+            Send ^!\
+            CenterHideWindow()
+            CodeTool := True
+        }
+    Return
+
+    ^!Enter::Return
+    CapsLock & Enter::
+        Global ActivateTools
+        if (ActivateTools == True) {
+            Send {Esc}
+            ActivateTools := False
+        } else {
+            Send ^!{Enter}
+            ActivateTools := True
+            CenterHideWindow( 0, 0, 1400, 0)
+        }
+    Return
+    
+    ^!b::Return
+    CapsLock & RShift::
+        Global Bookmark
+        if (Bookmark == True) {
+            Send {Esc}
+            Bookmark := False
+        } else {
+            Send ^!b
+            ; CenterHideWindow(3000, 1700)
+            Bookmark := True
+        }
+    Return
+
+    ~^n::CenterHideWindow()
+    ~^+n::CenterHideWindow()
+    ~^o::CenterHideWindow()
+    ~!o::CenterHideWindow(1700, 1500)
+    ~^+e::CenterHideWindow(666, 1500)
+    ~^+g::CenterHideWindow()
+    
+    ~<#Enter::Return
+    ~<#+Enter::
+        CenterHideWindow()
+    Return
+
+    LAlt & RAlt::
+        Send ^{ScrollLock}
+        SetScrollLockState, Off
+        WinWaitActive, 设置
+        MoveWindowToCenter(True)
+    Return
+    RAlt & LAlt::
+        Send !{ScrollLock}
+        SetScrollLockState, Off
+        CenterHideWindow()
+    Return
+    
     ; 切换书签问题
     !b::
         if (not alt_b) {
@@ -143,19 +194,6 @@
             alt_b := False
             Send {Esc}
         }
-    Return
-
-    ~^n::CenterHideWindow()
-    ~^+n::CenterHideWindow()
-
-    ~^o::CenterHideWindow()
-    ~!o::CenterHideWindow(1700, 1500)
-
-    ~^+e::CenterHideWindow(666, 1500)
-
-    ~^+g::
-    ~!+\::
-        CenterHideWindow()
     Return
 
     ; Default Keymap
@@ -188,22 +226,5 @@
     >![::Send !{Numpad4}
     >!]::Send !{Numpad6}
     >!\::Send !{Numpad5}
-
-    ~<#Enter::Return
-    ~<#+Enter::
-        CenterHideWindow()
-    Return
-
-    LAlt & RAlt::
-        Send ^{ScrollLock}
-        SetScrollLockState, Off
-        WinWaitActive, 设置
-        MoveWindowToCenter(True)
-    Return
-    RAlt & LAlt::
-        Send !{ScrollLock}
-        SetScrollLockState, Off
-        CenterHideWindow()
-    Return
 
 #If
