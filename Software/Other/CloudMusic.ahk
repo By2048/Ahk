@@ -69,7 +69,10 @@
         MouseClickAndResetting(1044, 1600,  ,  ,4)
     Return
 
-    Esc::MouseClickAndResetting(1703, 485)
+    Esc::
+        Send {Esc}
+        MouseClickAndResetting(1671, 497)
+    Return
 
 #If
 
