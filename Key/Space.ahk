@@ -29,7 +29,7 @@
 ~Space & Right::MouseMoveDC( 100,    0)
 
 ~Space & LAlt::Send {LButton}
-Space & RAlt::Send {RButton}
+~Space & RAlt::Send {RButton}
 
 ~Space &      Tab::Send {RButton}
 ~Space & CapsLock::Send {MButton}
