@@ -108,8 +108,11 @@
     Return
 
     CapsLock::Return
+    CapsLock & LShift::Return
+    CapsLock & CapsLock::Return
     CapsLock Up::SetCapsLockState, Off
 
+    ^!BackSpace::Return
     CapsLock & BackSpace::
         Global ActivateEditorTool
         if (ActivateEditorTool == True) {
@@ -123,15 +126,20 @@
     Return
 
     ^!\::Return
+    ^!+\::Return
     CapsLock & \::
         Global CodeTool
         if (CodeTool == True) {
             Send {Esc}
             CodeTool := False
         } else {
-            Send ^!\
-            CenterHideWindow()
+            if (GetKeyState("LShift", "P")) {
+                Send ^!+\
+            } else {
+                Send ^!\
+            }
             CodeTool := True
+            CenterHideWindow()
         }
     Return
 
@@ -156,8 +164,8 @@
             Bookmark := False
         } else {
             Send ^!b
-            ; CenterHideWindow(3000, 1700)
             Bookmark := True
+            CenterHideWindow(3000, 1700)
         }
     Return
 
@@ -165,7 +173,7 @@
     ~^+n::CenterHideWindow()
     ~^o::CenterHideWindow()
     ~!o::CenterHideWindow(1700, 1500)
-    ~^+e::CenterHideWindow(666, 1500)
+    ~^+e::CenterHideWindow(666, 1300)
     ~^+g::CenterHideWindow()
     
     ~<#Enter::Return
