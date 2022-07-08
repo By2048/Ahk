@@ -98,10 +98,11 @@
         SetTimer, PyCharmTimer, -500
     Return
     PyCharmTimer:
-        if (cnt == 1) {
+        if (cnt == 1 and DoubleShift == True) {
             Send {Esc}
+            DoubleShift := False
         } else if (cnt == 2) {
-            ; Global DoubleShift := True
+            DoubleShift := True
             CenterHideWindow(1500, 1500)
         }
         cnt := 0
@@ -112,15 +113,26 @@
     CapsLock & CapsLock::Return
     CapsLock Up::SetCapsLockState, Off
 
+    ~!CapsLock Up::
+    ~!+CapsLock Up::
+        SetCapsLockState, Off
+    Return
+
     ^!BackSpace::Return
+    ^!+BackSpace::Return
     CapsLock & BackSpace::
         Global ActivateEditorTool
         if (ActivateEditorTool == True) {
             Send {Esc}
             ActivateEditorTool := False
         } else {
-            Send ^!{BackSpace}
-            CenterHideWindow(1000, 1500)
+            if (GetKeyState("LShift", "P")) {
+                Send ^!+{BackSpace}
+                CenterHideWindow(1000, 1500)
+            } else {
+                Send ^!{BackSpace}
+                CenterHideWindow()
+            }
             ActivateEditorTool := True
         }
     Return
@@ -220,17 +232,15 @@
     !Esc::Send ^{F1}
     !+Esc::Send ^+{F1}
 
-    ; 切换正 切换逆 关闭 重新打开 标签页
-    <!Tab::Send !{F14}
-    <!+Tab::Send !+{F14}
-    <!CapsLock::Send !{F15}
-    <!+CapsLock::Send !+{F15}
-
-    ; 特殊按键覆盖{f4}
+    ;特殊按键覆盖F4
     <!F4::Send !{F16}
     <!+F4::Send !+{F16}
 
-    ; 右Alt
+    ;切换标签页
+    <!Tab::Send !{F14}
+    <!+Tab::Send !+{F14}
+
+    ;右Alt
     >![::Send !{Numpad4}
     >!]::Send !{Numpad6}
     >!\::Send !{Numpad5}

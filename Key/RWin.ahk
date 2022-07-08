@@ -39,13 +39,13 @@
 >#'::Send ^!' ;翻译
 
 ; CloudMusic
->#\::Send ^!\ ;播放/暂停
->#[::Send ^![ ;上一首
->#]::Send ^!] ;下一首
->#=::Send ^!= ;音量+
->#-::Send ^!- ;音量-
->#o::Send ^!o ;喜欢歌曲
->#p::Send ^!p ;歌词
+>#\::Send #^!\ ;播放/暂停
+>#[::Send #^![ ;上一首
+>#]::Send #^!] ;下一首
+>#=::Send #^!= ;音量+
+>#-::Send #^!- ;音量-
+>#o::Send #^!o ;喜欢歌曲
+>#p::Send #^!p ;歌词
 
 RWin & RCtrl::MoveWindowToMainMini("Main")
 RWin & RAlt::MoveWindowToMainMini("Mini")
