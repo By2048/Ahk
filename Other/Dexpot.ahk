@@ -1,5 +1,4 @@
 ﻿
-#Include %A_WorkingDir%\Config\All.ahk
 #Include %A_WorkingDir%\Tool\Base.ahk
 
 #SingleInstance Force
@@ -18,15 +17,6 @@
 ; 兼容处理
 ;   使用 f1-f9 替换 123 qwe asd
 
-; <#1::#^!F1
-; <#2::#^!F2
-; <#3::#^!F3
-; <#q::#^!F4
-; <#w::#^!F5
-; <#e::#^!F6
-; <#a::#^!F7
-; <#s::#^!F8
-; <#d::#^!F9
 <#1::#^!F13
 <#2::#^!F14
 <#3::#^!F15
@@ -37,15 +27,6 @@
 <#s::#^!F20
 <#d::#^!F21
 
-; <#+1::#^!+F1
-; <#+2::#^!+F2
-; <#+3::#^!+F3
-; <#+q::#^!+F4
-; <#+w::#^!+F5
-; <#+e::#^!+F6
-; <#+a::#^!+F7
-; <#+s::#^!+F8
-; <#+d::#^!+F9
 <#+1::#^!+F13
 <#+2::#^!+F14
 <#+3::#^!+F15
@@ -57,16 +38,13 @@
 <#+d::#^!+F21
 
 ; 窗口目录 
-; LWin & LAlt::#^!F10
-LWin & LAlt::#^!F22
+LWin & LAlt::Send #^!{F22}
 
 ; 全屏预览
-; LWin & LCtrl::#^!f11
-LWin & LCtrl::#^!F23
+LWin & LCtrl::Send #^!{F23}
 
 ;  上一个桌面
 #CapsLock::
-    ; Send #{CapsLock}
     Send #^!{F24}
     SetCapsLockState Off
 Return
