@@ -24,7 +24,10 @@
 !+PrintScreen::Return 
 
 ;使用方向键键切换打开的窗口
-^!Tab::Return 
+^!Tab::Return
+
+^!Home::Return ;远程桌面显示状态栏
+^!End::Return  ;向远程桌面发送 Ctrl+Alt+Delete
 
 ^Esc::Return  ;开始菜单
 ^+Esc::Return ;任务管理器
