@@ -155,6 +155,14 @@ Return
         HelpText("Windows Title Hide",  ,  , 1000)
     }
 Return
+; 重启文件管理器
+<#+Delete::
+    command := Format("{1} /c {2} /f /im explorer.exe", CMD, TaskKill)
+    RunWait, %command%
+    Sleep 1000
+    command := Format("{1} /c start explorer.exe", CMD)
+    RunWait, %command%
+Return
 
 ; 设置默认位置
 <#\::MoveWindowToDefaultPosition()

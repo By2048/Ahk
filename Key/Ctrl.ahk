@@ -82,13 +82,7 @@ Return
 >^n::Run D:\#Lnk\Notepad++.lnk
 >^m::RunNormalUser("D:\#Lnk\PotPlayer.lnk")
 
->^Delete::
-    command := Format("{1} /c {2} /f /im explorer.exe", CMD, TaskKill)
-    RunWait, %command%
-    Sleep 1000
-    command := Format("{1} /c start explorer.exe", CMD)
-    RunWait, %command%
-Return
+
 >^Esc::Run Taskmgr.exe ;任务管理器
 >^+Esc::Run D:\#Lnk\HuoRongSword.lnk
 
