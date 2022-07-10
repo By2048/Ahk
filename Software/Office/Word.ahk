@@ -1,3 +1,4 @@
-﻿#SingleInstance, Force
-SendMode Input
-SetWorkingDir, %A_ScriptDir%
+﻿
+#If CheckWindowActive("Word")
+
+#If
