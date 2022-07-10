@@ -10,6 +10,10 @@ WPD["VMware"]      := Position(2500 , 1600)
 WPD["Zip"]         := Position(1800 , 1400)
 WPD["FFRenamePro"] := Position(3300 , 1800)
 
+WPD["Word"]  := Position(3300 , 2000)
+WPD["Excel"] := Position(3300 , 2000)
+WPD["PPT"]   := Position(3300 , 2000)
+
 WPD["FDM"]         := Position("[Center][1]" , 2000 , 1500)
 WPD["FDM__%"]      := Position("[Center][3]" , 1300 , 1200)
 
