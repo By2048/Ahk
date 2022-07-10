@@ -164,7 +164,7 @@
         } else {
             Send ^!{Enter}
             ActivateTools := True
-            CenterHideWindow( 0, 0, 1400, 0)
+            CenterHideWindow( 0, 0, 1300, 0)
         }
     Return
     
