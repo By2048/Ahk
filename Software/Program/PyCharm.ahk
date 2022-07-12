@@ -68,6 +68,31 @@
 
 #If
 
+#If ( CheckWindowActive("PyCharm") And DoubleShift == True )
+
+    ~Esc::
+        DoubleShift := False
+    Return
+    ~CapsLock::
+    ~RShift::
+        Send {Esc}
+        DoubleShift := False
+    Return
+    RWin::
+        CenterHideWindow(1700, 1500)
+    Return    
+
+#If
+
+
+
+#If ( CheckWindowActive("PyCharm") And FloatTool == True )
+    ~Enter::
+        Sleep 66
+        ActivateHideWindow()
+    Return
+#If
+
 
 
 #If CheckWindowActive("PyCharm")
@@ -98,12 +123,8 @@
         SetTimer, PyCharmTimer, -500
     Return
     PyCharmTimer:
-        if (cnt == 1 and DoubleShift == True) {
-            Send {Esc}
-            DoubleShift := False
-        } else if (cnt == 2) {
+        if (cnt == 2) {
             DoubleShift := True
-            CenterHideWindow(1500, 1500)
         }
         cnt := 0
     Return
@@ -178,6 +199,45 @@
             Send ^!b
             Bookmark := True
             CenterHideWindow(3000, 1700)
+        }
+    Return
+
+    ^!,::Return
+    CapsLock & ,::
+        Global FloatActivateTool
+        if (ActivateTool == True) {
+            Send {Esc}
+            ActivateTool := False
+        } else {
+            Send ^!,
+            ActivateTool := True
+            CenterHideWindow()
+        }
+    Return
+
+    ^!.::Return
+    CapsLock & .::
+        Global EditTool
+        if (EditTool == True) {
+            Send {Esc}
+            EditTool := False
+        } else {
+            Send ^!.
+            EditTool := True
+            CenterHideWindow()
+        }
+    Return
+
+    ^!/::Return
+    CapsLock & /::
+        Global FloatTool
+        if (FloatTool == True) {
+            Send {Esc}
+            FloatTool := False
+        } else {
+            Send ^!/
+            FloatTool := True
+            CenterHideWindow()
         }
     Return
 

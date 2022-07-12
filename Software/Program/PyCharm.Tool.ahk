@@ -40,3 +40,11 @@ CenterHideWindow(win_w:=0, win_h:=0, win_x:=0, win_y:=0)
     hh := config[4]
     WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
 }
+
+
+
+ActivateHideWindow()
+{
+    rule := "ahk_exe pycharm64.exe ahk_class SunAwtWindow"
+    WinActivate %rule%
+}
