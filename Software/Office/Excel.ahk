@@ -1,80 +1,79 @@
 ﻿
+#If CheckWindowActive("Excel", "", "名称管理器")
+    <#\::
+        WPD["Excel__名称管理器"] := Position(1500, 900)
+        MoveWindowToDefaultPosition()
+        ; 服务器
+        _1 := " 1    2    3        4    5   "
+        _2 := " 300  260  600      150  100 "
+        _3 := " 名称 数值 引用位置 范围 批注"
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView321", config)
+    Return
+#If
+
+
 #If CheckWindowActive("Excel")
 
+    !`::MouseClickAndResetting(202,363)
+
     ;无框线
-    >![::
-        CoordMode, Mouse, Screen
-        MouseGetPos, x_origin, y_origin
-
-        CoordMode, Mouse, Window
-        MouseClick, left, 548, 240, 1, 0
-        Send N
-        MouseClick, left, 517, 240, 1, 0
-
-        CoordMode, Mouse, Screen
-        MouseMove, x_origin, y_origin, 0
-    Return
+    >![::Send !{4}{n}
     
     ;粗框线
-    >!]::
-        CoordMode, Mouse, Screen
-        MouseGetPos, x_origin, y_origin
+    >!]::Send !{4}{t}
 
-        CoordMode, Mouse, Window
-        MouseClick, left, 548, 240, 1, 0
-        Send T
-        MouseClick, left, 517, 240, 1, 0
+    F3::Return  ;粘贴名称
+    
+    ^F3::Return ;名称管理器
+    <![::Send {F3}
 
-        CoordMode, Mouse, Screen
-        MouseMove, x_origin, y_origin, 0
-    Return
+    F5::Return  ;定位
+    <!]::Send {F5}
 
     ; ; Hotkeys快捷键保存图片
-    >!\::
-        Send #{Up}
+    ; >!\::
+    ;     Send #{Up}
 
-        HelpText("`nStart`n", "center", "screen3")
+    ;     HelpText("`nStart`n", "center", "screen3")
 
-        Sleep 1000
-        for index, value In Excel_Hotkeys_Image {
-            value := StrReplace(value, "  ", " ")
-            value := StrReplace(value, "  ", " ")
-            value := StrReplace(value, "  ", " ")
-            value := StrSplit(value, " ")
+    ;     Sleep 1000
+    ;     for index, value In Excel_Hotkeys_Image {
+    ;         value := StrReplace(value, "  ", " ")
+    ;         value := StrReplace(value, "  ", " ")
+    ;         value := StrReplace(value, "  ", " ")
+    ;         value := StrSplit(value, " ")
             
-            sheet      := value[1]
-            excel_x    := value[2]
-            excel_y    := value[3]
-            multi_line := value[4]
-            image_file := value[5]
+    ;         sheet      := value[1]
+    ;         excel_x    := value[2]
+    ;         excel_y    := value[3]
+    ;         multi_line := value[4]
+    ;         image_file := value[5]
             
-            ExcelMoveToSheet(sheet)
-            Sleep 500
+    ;         ExcelMoveToSheet(sheet)
+    ;         Sleep 500
 
-            ExcelMoveToPosition("A1")
-            Sleep 500
+    ;         ExcelMoveToPosition("A1")
+    ;         Sleep 500
 
-            ExcelSelectXToY(excel_x, excel_y, multi_line)
-            Sleep 1000
+    ;         ExcelSelectXToY(excel_x, excel_y, multi_line)
+    ;         Sleep 1000
 
-            Send ^c
-            Sleep 1000
+    ;         Send ^c
+    ;         Sleep 1000
 
-            SnipasteClipboardToImageFile(image_file)
-            Sleep 500
+    ;         SnipasteClipboardToImageFile(image_file)
+    ;         Sleep 500
 
-            Send {Esc}
-            Sleep 1000
-            Send ^{Home}
-            Sleep 1000
+    ;         Send {Esc}
+    ;         Sleep 1000
+    ;         Send ^{Home}
+    ;         Sleep 1000
 
-            ExcelMoveToPosition("A1")
-            Sleep 500
-        }
-        HelpText("`n Over `n", "center", "screen3", 3000)
-    Return
-
-    !Tab::Send ^{PgDn}
-    !+Tab::Send ^{PgUp}
+    ;         ExcelMoveToPosition("A1")
+    ;         Sleep 500
+    ;     }
+    ;     HelpText("`n Over `n", "center", "screen3", 3000)
+    ; Return
 
 #If
