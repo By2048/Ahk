@@ -8,4 +8,6 @@
 
     !CapsLock::Send !{F4}
 
+    <#Enter::Send !{Enter}
+
 #If
