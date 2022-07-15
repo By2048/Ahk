@@ -244,9 +244,9 @@ Return
 
 ; 结束应用
 <#BackSpace::
-    result := GetActiveWindowInfo()
-    win_id := result.id
-    win_process_name := result.process_name
+    GetActiveWindowInfo()
+    win_id := window.id
+    win_process_name := window.process_name
 
     ; 远程桌面切换到Windows时 结束远程桌面
     if (win_process_name == "Explorer") {
@@ -275,9 +275,11 @@ Return
     if (IsDesktops() or IsGame()) {
         Return
     }
-    result := GetActiveWindowInfo()
-    win_process_exe := result.process_exe
-    Process, Close, %process_exe%
+    GetActiveWindowInfo()
+    win_pid := window.pid
+    Process, Close, %pid%
+    ; win_process_exe := window.process_exe
+    ; Process, Close, %process_exe%
 Return
 
 ; 切换应用
