@@ -1,4 +1,22 @@
 ﻿
+CapsLockRedirect:
+    key := StrReplace(A_ThisHotkey, "CapsLock & ", "")
+    key_shift := GetKeyState("LShift", "P")
+    if (capslock_activate == True) {
+        Send {Esc}
+        capslock_activate := False
+    } else {
+        if (key_shift) {
+            Send ^!+{%key%}
+        } else {
+            Send ^!{%key%}
+        }
+        capslock_activate := True
+    }
+Return
+
+
+
 CenterHideWindow(win_w:=0, win_h:=0, win_x:=0, win_y:=0)
 {
     win_id    := 0
