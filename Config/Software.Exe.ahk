@@ -46,6 +46,7 @@ Windows_Process_Name.Push( [ "LeagueClientUx"          , "LOL_Client"      ] )
 Windows_Process_Name.Push( [ "League of Legends"       , "LOL_Game"        ] )
 Windows_Process_Name.Push( [ "steam"                   , "Steam"           ] )
 Windows_Process_Name.Push( [ "NemuPlayer"              , "Android"         ] )
+Windows_Process_Name.Push( [ "哔哩哔哩"                 , "BiliBili"        ] )
 Windows_Process_Name.Push( [ "ui32"                    , "Wallpaper"       ] )
 Windows_Process_Name.Push( [ "happ"                    , "TongHuaShun"     ] ) ;同花顺
 Windows_Process_Name.Push( [ "33333333333333333333333" , "---------------" ] )

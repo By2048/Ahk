@@ -9,6 +9,7 @@ WPD["Sandboxie"]   := Position(2500 , 1300)
 WPD["VMware"]      := Position(2500 , 1600)
 WPD["Zip"]         := Position(1800 , 1400)
 WPD["FFRenamePro"] := Position(3300 , 1800)
+WPD["BiliBili"]    := Position(2500 , 1650)
 
 WPD["Word"]  := Position(3300 , 2000)
 WPD["Excel"] := Position(3300 , 2000)
