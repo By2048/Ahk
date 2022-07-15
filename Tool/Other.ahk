@@ -139,12 +139,12 @@ ScreenshotActivateSoftware(keep_path:="backup")
         screenshot_keep_path := Snipaste.Screenshot_Path_Tmp
     }
 
-    result := GetActiveWindowInfo()
-    win_process_name := result.process_name
-    win_x := result.x
-    win_y := result.y
-    win_w := result.w
-    win_h := result.h
+    GetActiveWindowInfo()
+    win_process_name := window.process_name
+    win_x := window.x
+    win_y := window.y
+    win_w := window.w
+    win_h := window.h
 
     name:="", file:="", cmd:=""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
