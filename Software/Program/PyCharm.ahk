@@ -71,14 +71,20 @@
     Return    
 #If
 
-#If ( CheckWindowActive("PyCharm") And RedirectEsc == True )
+#If ( CheckWindowActive("PyCharm") And EscRedirect == True )
     ~Esc::
-        RedirectEsc := False
+        EscRedirect := False
+        EscCount := 0
         capslock_activate := False
     Return
     CapsLock::
         Send {Esc}
-        RedirectEsc := False
+        if (EscCount > 0) {
+            ec := EscCount - 1
+            Send {Esc %ec%}
+            EscCount := 0
+        }
+        EscRedirect := False
         capslock_activate := False
     Return
 #If
@@ -88,16 +94,15 @@
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
     
-    $F11::
+    ~F11::
         GetActiveWindowInfo()
         title := window.title
         if (title == "评估") {
             Send {Esc}
-        } else {
-            Send {F11}
-            WinWaitActive, 评估
-            MoveWindowToCenter(True)
         }
+        ; Send {F11}
+        ; WinWaitActive, 评估
+        ; MoveWindowToCenter(True)
     Return
     
     ~Esc::
@@ -130,22 +135,36 @@
     CapsLock & LShift::Return
     CapsLock & Tab::Return
 
-    ; ^!`::Return
-    ; CapsLock & `::
-    ;     if (capslock_activate == True) {
-    ;         Send {Esc}
-    ;         capslock_activate := False
-    ;     } else {
-    ;         Send ^!``
-    ;         capslock_activate := True
-    ;         CenterHideWindow()
-    ;     }
-    ; Return
+    ^!`::Return
+    CapsLock & `::
+        if (capslock_activate == True) {
+            Send {Esc}
+            capslock_activate := False
+        } else {
+            Send ^!``
+            capslock_activate := True
+            CenterHideWindow()
+        }
+    Return
+
+    ^!p::Return
+    CapsLock & p::
+        EscRedirect := True
+        EscCount := 2
+        if (capslock_activate == True) {
+            Send {Esc}
+            Send {Esc}
+            capslock_activate := False
+        } else {
+            Send ^!p
+            capslock_activate := True
+        }
+    Return
 
     ^!BackSpace::Return
     ^!+BackSpace::Return
     CapsLock & BackSpace::
-        RedirectEsc := True
+        EscRedirect := True
         if (capslock_activate == True) {
             Send {Esc}
             capslock_activate := False
@@ -164,31 +183,31 @@
     ^!\::Return
     ^!+\::Return
     CapsLock & \::
-        RedirectEsc := True
+        EscRedirect := True
         key_shift := GetKeyState("LShift", "P")
-        key_tab := GetKeyState("Tab", "P")
         if (capslock_activate == False) {
             if (key_shift == True) {
                 Send ^!+\
             } else {
                 Send ^!\
-                ; CenterHideWindow(3000, 1700)
+                CenterHideWindow(3000, 1700)
             }
             capslock_activate := True
         } else {
             if (key_shift == True) {
                 Send ^!+\
+                capslock_activate := False
+                CenterHideWindow()
             } else {
                 Send {Esc}
+                capslock_activate := False
             }
-            capslock_activate := False
-            CenterHideWindow()
         }
     Return
 
     ^!Enter::Return
     CapsLock & Enter::
-        RedirectEsc := True
+        EscRedirect := True
         if (MainTools == True) {
             Send {Esc}
             MainTools := False
@@ -213,7 +232,7 @@
 
     ^!,::Return
     CapsLock & ,::
-        RedirectEsc := True
+        EscRedirect := True
         if (capslock_activate == True) {
             Send {Esc}
             capslock_activate := False
@@ -226,7 +245,7 @@
 
     ^!.::Return
     CapsLock & .::
-        RedirectEsc := True
+        EscRedirect := True
         if (capslock_activate == True) {
             Send {Esc}
             capslock_activate := False
@@ -239,7 +258,7 @@
 
     ^!/::Return
     CapsLock & /::
-        RedirectEsc := True
+        EscRedirect := True
         if (capslock_activate == True) {
             Send {Esc}
             FloatTool := False

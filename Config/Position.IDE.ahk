@@ -37,10 +37,10 @@ WPD["PyCharm__TODO"]             := Position(2000 , 1500)
 WPD["PyCharm__远程主机"]         := Position(2000 , 1500)
 WPD["PyCharm__可用软件包"]       := Position(2000 , 1500)
 WPD["PyCharm__添加Python解释器"] := Position(2000 , 1500)
+WPD["PyCharm__断点"]             := Position(2000 , 1500)
+WPD["PyCharm__评估"]             := Position(2000 , 1500)
 
 WPD["PyCharm__运行/调试配置"] := Position(2000 , 1750)
-
-WPD["PyCharm__评估"] := Position(2300 , 1700)
 
 WPD["PyCharm__运行"] := Position("[Center][1]" , 2800 , 1750)
 WPB["PyCharm__运行"] := Position("[Center][2]" , 2800 , 1750)
