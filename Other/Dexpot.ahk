@@ -44,8 +44,9 @@ LWin & LAlt::Send #^!{F22}
 LWin & LCtrl::Send #^!{F23}
 
 ;  上一个桌面
-#CapsLock::
-    Send #^!{F24}
+#CapsLock::Send #^!{F24}
+
+CapsLock Up::
     SetCapsLockState Off
 Return
 
