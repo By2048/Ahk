@@ -37,13 +37,10 @@
  
 #If
 
-#If ( CheckWindowActive("PyCharm") And MainTools == True )
-    \::
-        Send {Esc}
-    Return
+#If ( CheckWindowActive("PyCharm") And OffsetTool == True )
     ~Enter::
         Sleep 66
-        CenterHideWindow( 0, 0, 1400 + 350, 0)
+        CenterHideWindow( 0, 0, OffsetToolLeft + OffsetToolWidth, 0 )
     Return
 #If
 
@@ -75,7 +72,7 @@
     ~Esc::
         EscRedirect := False
         EscCount := 0
-        capslock_activate := False
+        CapsLockActivate := False
     Return
     CapsLock::
         Send {Esc}
@@ -85,7 +82,7 @@
             EscCount := 0
         }
         EscRedirect := False
-        capslock_activate := False
+        CapsLockActivate := False
     Return
 #If
 
@@ -106,7 +103,7 @@
     Return
     
     ~Esc::
-        capslock_activate := False
+        CapsLockActivate := False
     Return
 
     ~LShift::
@@ -137,12 +134,12 @@
 
     ^!`::Return
     CapsLock & `::
-        if (capslock_activate == True) {
+        if (CapsLockActivate == True) {
             Send {Esc}
-            capslock_activate := False
+            CapsLockActivate := False
         } else {
             Send ^!``
-            capslock_activate := True
+            CapsLockActivate := True
             CenterHideWindow()
         }
     Return
@@ -151,13 +148,13 @@
     CapsLock & p::
         EscRedirect := True
         EscCount := 2
-        if (capslock_activate == True) {
+        if (CapsLockActivate == True) {
             Send {Esc}
             Send {Esc}
-            capslock_activate := False
+            CapsLockActivate := False
         } else {
             Send ^!p
-            capslock_activate := True
+            CapsLockActivate := True
         }
     Return
 
@@ -165,9 +162,9 @@
     ^!+BackSpace::Return
     CapsLock & BackSpace::
         EscRedirect := True
-        if (capslock_activate == True) {
+        if (CapsLockActivate == True) {
             Send {Esc}
-            capslock_activate := False
+            CapsLockActivate := False
         } else {
             if (GetKeyState("LShift", "P")) {
                 Send ^!+{BackSpace}
@@ -176,7 +173,7 @@
                 Send ^!{BackSpace}
                 CenterHideWindow()
             }
-            capslock_activate := True
+            CapsLockActivate := True
         }
     Return
 
@@ -185,22 +182,22 @@
     CapsLock & \::
         EscRedirect := True
         key_shift := GetKeyState("LShift", "P")
-        if (capslock_activate == False) {
+        if (CapsLockActivate == False) {
             if (key_shift == True) {
                 Send ^!+\
             } else {
                 Send ^!\
                 CenterHideWindow(3000, 1700)
             }
-            capslock_activate := True
+            CapsLockActivate := True
         } else {
             if (key_shift == True) {
                 Send ^!+\
-                capslock_activate := False
+                CapsLockActivate := False
                 CenterHideWindow()
             } else {
                 Send {Esc}
-                capslock_activate := False
+                CapsLockActivate := False
             }
         }
     Return
@@ -208,37 +205,46 @@
     ^!Enter::Return
     CapsLock & Enter::
         EscRedirect := True
-        if (MainTools == True) {
+        if (CapsLockActivate == True) {
             Send {Esc}
-            MainTools := False
+            OffsetTool := False
+            CapsLockActivate := False
         } else {
             Send ^!{Enter}
-            MainTools := True
-            CenterHideWindow( 0, 0, 1300, 0)
+            CapsLockActivate := True
+            OffsetTool := True
+            OffsetToolLeft := 1300
+            OffsetToolWidth := 450
+            CenterHideWindow(0, 0, OffsetToolLeft, 0)
         }
     Return
 
     ^!Numpad5::Return
     CapsLock & RShift::
-        if (capslock_activate == True) {
+        EscRedirect := True
+        if (CapsLockActivate == True) {
             Send {Esc}
-            capslock_activate := False
+            OffsetTool := False
+            CapsLockActivate := False
         } else {
             Send ^!{Numpad5}
-            capslock_activate := True
-            CenterHideWindow()
+            CapsLockActivate := True
+            OffsetTool := True
+            OffsetToolLeft := 1300
+            OffsetToolWidth := 500
+            CenterHideWindow(0, 0, OffsetToolLeft, 0)
         }
     Return
 
     ^!,::Return
     CapsLock & ,::
         EscRedirect := True
-        if (capslock_activate == True) {
+        if (CapsLockActivate == True) {
             Send {Esc}
-            capslock_activate := False
+            CapsLockActivate := False
         } else {
             Send ^!,
-            capslock_activate := True
+            CapsLockActivate := True
             CenterHideWindow()
         }
     Return
@@ -246,12 +252,12 @@
     ^!.::Return
     CapsLock & .::
         EscRedirect := True
-        if (capslock_activate == True) {
+        if (CapsLockActivate == True) {
             Send {Esc}
-            capslock_activate := False
+            CapsLockActivate := False
         } else {
             Send ^!.
-            capslock_activate := True
+            CapsLockActivate := True
             CenterHideWindow()
         }
     Return
@@ -259,14 +265,14 @@
     ^!/::Return
     CapsLock & /::
         EscRedirect := True
-        if (capslock_activate == True) {
+        if (CapsLockActivate == True) {
             Send {Esc}
             FloatTool := False
-            capslock_activate := False
+            CapsLockActivate := False
         } else {
             Send ^!/
             FloatTool := True
-            capslock_activate := True
+            CapsLockActivate := True
             CenterHideWindow()
         }
     Return

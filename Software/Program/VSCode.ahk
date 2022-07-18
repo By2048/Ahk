@@ -66,7 +66,7 @@
         } else {
             cnt := 1
         }
-        SetTimer, VSCodeTimer, -500
+        SetTimer, VSCodeTimer, -150
     Return
     VSCodeTimer:
         if (cnt == 1 and DoubleShift == True) {
