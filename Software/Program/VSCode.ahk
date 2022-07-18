@@ -93,7 +93,7 @@
     !F4::Send !{F16}
     !+F4::Send !+{F16}
 
-    <^j::
+    >^j::
         Send ^c
         data := Clipboard
         Clipboard := StrReplace(Clipboard, "`r`n")

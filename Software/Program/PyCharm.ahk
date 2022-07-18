@@ -132,6 +132,7 @@
     CapsLock & LShift::Return
     CapsLock & Tab::Return
 
+
     ^!`::Return
     CapsLock & `::
         if (CapsLockActivate == True) {
@@ -213,7 +214,7 @@
             Send ^!{Enter}
             CapsLockActivate := True
             OffsetTool := True
-            OffsetToolLeft := 1300
+            OffsetToolLeft := 1400
             OffsetToolWidth := 450
             CenterHideWindow(0, 0, OffsetToolLeft, 0)
         }
@@ -221,7 +222,6 @@
 
     ^!Numpad5::Return
     CapsLock & RShift::
-        EscRedirect := True
         if (CapsLockActivate == True) {
             Send {Esc}
             OffsetTool := False
@@ -230,7 +230,7 @@
             Send ^!{Numpad5}
             CapsLockActivate := True
             OffsetTool := True
-            OffsetToolLeft := 1300
+            OffsetToolLeft := 1450
             OffsetToolWidth := 500
             CenterHideWindow(0, 0, OffsetToolLeft, 0)
         }
@@ -313,16 +313,19 @@
     ; ^[::Send ^{w}+{Tab}^+{w}
     ; ^]::Send ^{w}{Tab}^+{w}
 
-    !Esc::Send ^{F1}
-    !+Esc::Send ^+{F1}
+    ; !Esc::Send ^{F1}
+    ; !+Esc::Send ^+{F1}
 
     ;特殊按键覆盖F4
     <!F4::Send !{F16}
     <!+F4::Send !+{F16}
 
     ;切换标签页
-    <!Tab::Send !{F14}
-    <!+Tab::Send !+{F14}
+    ^Tab::Return
+    ^+Tab::Return
+    <!Tab::Send ^{Tab}
+    <+Tab::Send ^+{Tab}
+    <!+Tab::Send ^+{Tab}
 
     ;右Alt
     >![::Send !{Numpad4}
