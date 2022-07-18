@@ -49,7 +49,7 @@
         FloatTool := False
     Return
     ~Enter::
-        Sleep 66
+        Sleep 99
         ActivateHideWindow()
     Return
 #If
@@ -64,7 +64,7 @@
         DoubleShift := False
     Return
     RWin::
-        CenterHideWindow(1600, 1500)
+        CenterHideWindow(1500, 1500)
     Return    
 #If
 
@@ -131,7 +131,6 @@
     
     CapsLock & LShift::Return
     CapsLock & Tab::Return
-
 
     ^!`::Return
     CapsLock & `::
@@ -277,9 +276,11 @@
         }
     Return
 
+    ;项目 结构
     CapsLock & [::Send ^![
     CapsLock & ]::Send ^!]
-    ; 窗口大小调整
+
+    ;窗口大小调整
     CapsLock & Left:: Send ^!{Left}
     CapsLock & Right::Send ^!{Right}
     CapsLock & Up::   Send ^!{Up}
@@ -291,7 +292,7 @@
     ~!o::CenterHideWindow(1700, 1500)
     ~^+e::CenterHideWindow(666, 1300)
     ~^+g::CenterHideWindow()
-    
+
     ~<#Enter::Return
     ~<#+Enter::
         CenterHideWindow()
@@ -309,7 +310,7 @@
         CenterHideWindow()
     Return
 
-    ; 代码左右移动
+    ;代码左右移动
     ; ^[::Send ^{w}+{Tab}^+{w}
     ; ^]::Send ^{w}{Tab}^+{w}
 
