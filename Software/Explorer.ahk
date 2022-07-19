@@ -5,14 +5,10 @@
     \::Send !a
 #If
 
-
-
 #If CheckWindowActive( "Explorer" , "#32770" , "删除多个项目" )
     !y::Return
     !n::Return
 #If
-
-
 
 #If CheckWindowActive( "Explorer" , "#32770" , "属性" )
     !F12::
@@ -29,29 +25,6 @@
     Return
 #If
 
-
-
-; 任务栏
-#If CheckWindowActive("Explorer" , "Shell_TrayWnd")
-    \::Send {F6}
-    WheelUp::Send {Volume_Up}
-    WheelDown::Send {Volume_Down}
-#If
-
-
-
-; 桌面
-#If CheckWindowActive("Explorer" , "WorkerW")
-    \::Send {F6}
-    F9::Run D:\\
-    F10::Run E:\\
-    F11::Run P:\\
-    F12::Run N:\\
-    >!Space::Run D:\#Lnk\Everything.lnk
-#If
-
-
-
 #If CheckWindowActive( "Explorer" , "#32770" )
     ^Tab::Return
     ^+Tab::Return
@@ -60,7 +33,20 @@
     !CapsLock::Send !{F4}
 #If
 
+; 任务栏
+#If CheckWindowActive("Explorer" , "Shell_TrayWnd")
+    WheelUp::Send {Volume_Up}
+    WheelDown::Send {Volume_Down}
+#If
 
+; 桌面
+#If CheckWindowActive("Explorer" , "WorkerW")
+    F9::Run D:\\
+    F10::Run E:\\
+    F11::Run P:\\
+    F12::Run N:\\
+    >!Space::Run D:\#Lnk\Everything.lnk
+#If
 
 #If CheckWindowActive("Explorer")
 
@@ -91,13 +77,17 @@
 
     ; 刷新
     F5::Return
-    \::
-        Send {F5}
-        Send \
-    Return
+    /::Send {F5}
 
     ;切换输入焦点
     F6::Return
+    \::
+        Send {F6}
+        WinGetClass, win_class, A
+        if (win_class == "WorkerW") { ;桌面
+            HelpText("Desktop", "Center", "Screen1", 300)
+        }
+    Return
 
     ; 显示Alt快捷键帮助
     F10::Return
