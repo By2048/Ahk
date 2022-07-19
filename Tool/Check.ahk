@@ -65,10 +65,8 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
             if (!InStr(win_process, _process_)) {
                 return False
             }   
-        } else {
-            if (win_process != _process_) {
-                return False
-            }
+        } else if (win_process != _process_) {
+            return False
         }
     }
 
@@ -78,24 +76,16 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
             if (!InStr(win_class, _class_)) {
                 return False
             }   
-        } else {
-            if (win_class != _class_) {
-                return False
-            }
+        } else if (win_class != _class_) {
+            return False
         }
     }
 
     if (StrLen(_title_) > 0) {
-        if (InStr(_title_, "|")) {
-            titles := StrSplit(_title_, "|")
-            for index, value in titles {
-                if (InStr(win_title, value)) {
-                    return True
-                }
-            }
-        } else {
-            if (not InStr(win_title, _title_)) {
-                return False
+        titles := StrSplit(_title_, "|")
+        for index, value in titles {
+            if (InStr(win_title, value)) {
+                return True
             }
         }
     }
