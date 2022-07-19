@@ -106,6 +106,10 @@
         CapsLockActivate := False
     Return
 
+    ~RWin::
+        CenterHideWindow()
+    Return
+
     ~LShift::
         if (cnt > 0) {
             cnt += 1
@@ -300,13 +304,18 @@
 
     LAlt & RAlt::
         Send ^{ScrollLock}
+        SetCapsLockState, Off
         SetScrollLockState, Off
         WinWaitActive, 设置
-        MoveWindowToCenter(True)
+        WinGetTitle, win_title, A
+        if (win_title == "设置") {
+            MoveWindowToCenter(True)
+        }
     Return
     RAlt & LAlt::
         Send !{ScrollLock}
         SetScrollLockState, Off
+        SetCapsLockState, Off
         CenterHideWindow()
     Return
 
