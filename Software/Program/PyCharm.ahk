@@ -40,7 +40,38 @@
 #If ( CheckWindowActive("PyCharm") And OffsetTool == True )
     ~Enter::
         Sleep 66
-        CenterHideWindow( 0, 0, OffsetToolLeft + OffsetToolWidth, 0 )
+        if (not EnterCount or EnterCount == 0) {
+            EnterCount := 1
+        } else {
+            EnterCount := EnterCount + 1
+        }
+        if (EnterCount == 1) {
+            CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
+            config := GetHideWindowConfig()
+            OffsetToolWidth := config[4]
+            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + 10
+        } else if (EnterCount == 2) {
+            CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
+            config := GetHideWindowConfig()
+            OffsetToolWidth := config[4]
+            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + 10
+        } else {
+            EnterCount := 0
+            OffsetToolTotalWidth := 0
+        }
+    Return
+    Esc::
+    CapsLock::
+        EnterCount := EnterCount - 1
+        OffsetToolTotalWidth := OffsetToolTotalWidth - OffsetToolWidth - 10
+        Send {Esc}
+        if (EnterCount < 0) {
+            EnterCount := 0
+            OffsetTool := False
+            OffsetToolWidth := 0
+            OffsetToolTotalWidth := 0
+            Send {Esc}
+        }
     Return
 #If
 
@@ -86,11 +117,14 @@
     Return
 #If
 
+; #If ( CheckWindowActive("PyCharm") And xx == xx )
+; #If
+
 #If CheckWindowActive("PyCharm")
     
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
-    
+
     ~F11::
         GetActiveWindowInfo()
         title := window.title
@@ -135,6 +169,19 @@
     
     CapsLock & LShift::Return
     CapsLock & Tab::Return
+
+    AppsKey & Esc::
+        OffsetTool := False     
+        OffsetToolWidth := 0
+        OffsetToolTotalWidth := 0
+        OffsetToolWidth := 0
+
+        FloatTool := False     
+        DoubleShift := False     
+        EscRedirect := False     
+        CapsLockActivate := False     
+        HelpText("Reset Args", "Center", "Screen1", 500)
+    Return
 
     ^!`::Return
     CapsLock & `::
@@ -217,9 +264,11 @@
             Send ^!{Enter}
             CapsLockActivate := True
             OffsetTool := True
-            OffsetToolLeft := 1400
-            OffsetToolWidth := 450
-            CenterHideWindow(0, 0, OffsetToolLeft, 0)
+            OffsetToolLeft := 1000
+            CenterHideWindow(OffsetToolLeft)
+            config := GetHideWindowConfig()
+            OffsetToolWidth := config[4]
+            OffsetToolTotalWidth := OffsetToolWidth + 10
         }
     Return
 
@@ -235,7 +284,7 @@
             OffsetTool := True
             OffsetToolLeft := 1450
             OffsetToolWidth := 500
-            CenterHideWindow(0, 0, OffsetToolLeft, 0)
+            CenterHideWindow(OffsetToolLeft)
         }
     Return
 
@@ -296,6 +345,10 @@
     ~!o::CenterHideWindow(1700, 1500)
     ~^+e::CenterHideWindow(666, 1300)
     ~^+g::CenterHideWindow()
+    ~!a::
+        EscRedirect := True
+        CenterHideWindow(2244, 1600)
+    Return
 
     ~<#Enter::Return
     ~<#+Enter::
@@ -334,11 +387,6 @@
     ^Tab::Return
     ^+Tab::Return
     <!Tab::Send ^{Tab}
-    <+Tab::Send ^+{Tab}
     <!+Tab::Send ^+{Tab}
-
-    ;右Alt
-    >![::Send !{Numpad4}
-    >!]::Send !{Numpad6}
 
 #If
