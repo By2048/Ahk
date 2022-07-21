@@ -16,15 +16,13 @@ CapsLockRedirect:
 Return
 
 
-
-CenterHideWindow(win_w:=0, win_h:=0, win_x:=0, win_y:=0)
+ActivateHideWindow()
 {
-    win_id    := 0
-    max_count := 99
-    rule      := "ahk_exe pycharm64.exe ahk_class SunAwtWindow"
-
+    time_sleep := 10
+    max_count  := 99
+    rule       := "ahk_exe pycharm64.exe ahk_class SunAwtWindow"
+    win_id     := 0x0
     Loop {
-        total := A_Index
         win_id := WinExist(rule)
         if (win_id) {
             WinActivate, ahk_id %win_id%
@@ -33,36 +31,60 @@ CenterHideWindow(win_w:=0, win_h:=0, win_x:=0, win_y:=0)
         if (A_Index >= max_count) {
             break
         }
-        Sleep, 10
+        Sleep, %time_sleep%
     }
+    return win_id
+}
+
+
+GetHideWindowConfig()
+{
+    win_id := ActivateHideWindow()
+    config := [ 0, 0, 0, 0 ] ; x y w h
     WinGetPos, x, y, w, h, ahk_id %win_id%
+    config := [ win_id, x , y , w , h ]
+    return config
+}
 
-    config := [x, y, w, h]
-    if (win_w and win_h) {
-        ; 指定宽度居中
-        config := Position(win_w, win_h)
-    } else {
-        ; 原始宽度居中
-        config := Position(w, h)
+
+CenterHideWindow(args*)
+{
+    hwc := GetHideWindowConfig()
+    win_id := hwc[1]
+    hwc_x := hwc[2]
+    hwc_y := hwc[3]
+    hwc_w := hwc[4]
+    hwc_h := hwc[5]
+
+    if (args.Length() == 0) {
+        win_w := hwc_w
+        win_h := hwc_h
+        win_x := Screen.x + Screen.w/2 - win_w/2
+        win_y := Screen.y + Screen.h/2 - win_h/2
     }
-    if (win_x) {
-        config[1] := win_x
+    if (args.Length() == 1) {
+        win_w := hwc_w
+        win_h := hwc_h
+        win_x := args[1]
+        win_y := Screen.y + Screen.h/2 - win_h/2
     }
-    if (win_y) {
-        config[2] := win_y
+    if (args.Length() == 2) {
+        win_w := args[1]
+        win_h := args[2]
+        win_x := Screen.x + Screen.w/2 - win_w/2
+        win_y := Screen.y + Screen.h/2 - win_h/2
+    }
+    if (args.Length() == 4) {
+        win_x := hwc_x
+        win_y := hwc_y
+        win_w := hwc_w
+        win_h := hwc_h
     }
 
+    config := [win_x, win_y, win_w, win_h]
     xx := config[1]
     yy := config[2]
     ww := config[3]
     hh := config[4]
     WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
-}
-
-
-
-ActivateHideWindow()
-{
-    rule := "ahk_exe pycharm64.exe ahk_class SunAwtWindow"
-    WinActivate %rule%
 }
