@@ -19,7 +19,7 @@ Return
 ActivateHideWindow()
 {
     time_sleep := 10
-    max_count  := 99
+    max_count  := 66
     rule       := "ahk_exe pycharm64.exe ahk_class SunAwtWindow"
     win_id     := 0x0
     Loop {

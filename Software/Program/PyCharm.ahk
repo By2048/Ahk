@@ -12,29 +12,19 @@
 #If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python Console History")
     ; 历史记录返回 \ 与书签冲突
     !\::Send {Esc}
-#If 
+#If
 
-#If CheckWindowActive("PyCharm" , "SunAwtDialog")
-  
-    title := [ "终端" , "运行" , "调试" ]
-
-    ; ~RAlt::
-    ;     GetActiveWindowsInfo()
-    ;     win_title := window.win_title
-
-    ;     if (win_title In title) {
-    ;         WinSet, Transparent, 30, A
-    ;     }
-    ; Return
-
-    ; ~RAlt Up::
-    ;     GetActiveWindowsInfo()
-    ;     win_title := window.win_title
-    ;     if (win_title In title) {
-    ;         WinSet, Transparent, 255, A
-    ;     }
-    ; Return
- 
+#If CheckWindowActive("PyCharm" , "SunAwtDialog", "终端|运行|调试")
+    ~RAlt::
+        if (not hide_status or hide_status == False) {
+            WinSet, Transparent, 99, A
+            hide_status := True
+        }
+    Return
+    ~RAlt Up::
+        WinSet, Transparent, 255, A
+        hide_status := False
+    Return
 #If
 
 #If ( CheckWindowActive("PyCharm") And OffsetTool == True )
@@ -96,7 +86,7 @@
     Return
     RWin::
         CenterHideWindow(1500, 1500)
-    Return    
+    Return
 #If
 
 #If ( CheckWindowActive("PyCharm") And EscRedirect == True )
@@ -121,7 +111,7 @@
 ; #If
 
 #If CheckWindowActive("PyCharm")
-    
+
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
 
@@ -135,13 +125,9 @@
         ; WinWaitActive, 评估
         ; MoveWindowToCenter(True)
     Return
-    
+
     ~Esc::
         CapsLockActivate := False
-    Return
-
-    ~RWin::
-        CenterHideWindow()
     Return
 
     ~LShift::
@@ -160,26 +146,35 @@
         cnt := 0
     Return
 
+    $RWin::
+        WinGetPos, x, y, w, h, A
+        if (x < 0 and y == 0 ) { ;已经全屏
+        } else {
+            MoveWindowToCenter(True)
+        }
+        CenterHideWindow()
+    Return
+
     $CapsLock::Return
     $CapsLock Up::
         SetCapsLockState, Off
         SetNumLockState, Off
         SetScrollLockState, Off
     Return
-    
+
     CapsLock & LShift::Return
     CapsLock & Tab::Return
 
     AppsKey & Esc::
-        OffsetTool := False     
+        OffsetTool := False
         OffsetToolWidth := 0
         OffsetToolTotalWidth := 0
         OffsetToolWidth := 0
 
-        FloatTool := False     
-        DoubleShift := False     
-        EscRedirect := False     
-        CapsLockActivate := False     
+        FloatTool := False
+        DoubleShift := False
+        EscRedirect := False
+        CapsLockActivate := False
         HelpText("Reset Args", "Center", "Screen1", 500)
     Return
 
