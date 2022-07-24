@@ -81,7 +81,7 @@ Return
         return 
     }
     global windows_resize_small
-    windows_resize_small:=True
+    windows_resize_small := True
     HelpText("Windows Resize Small")
 Return
 
@@ -90,7 +90,7 @@ Return
         return 
     }
     global windows_resize_big
-    windows_resize_big:=True
+    windows_resize_big := True
     HelpText("Windows Resize Big")
 Return
 
@@ -99,13 +99,51 @@ Return
         return 
     }
     global windows_move
-    windows_move:=True    
+    windows_move := True
     HelpText("Move Windows")
 Return
 
 Global windows_move:=False
 Global windows_resize_big:=False
 Global windows_resize_small:=False
+
+; 设置代理
+RWin & RShift::
+    path        := "HKEY_CURRENT_USER"
+    config      := "Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+    key         := "ProxyEnable"
+    path_config := Format("{}\{}", path, config)
+    RegRead, proxy_state, %path_config%, %key%
+
+    Process, Exist, v2rayN.exe
+    win_pid := ErrorLevel
+
+    lshift_state := GetKeyState("LShift", "P")
+
+    if (lshift_state == "1") {
+         ; v2rayN开关
+        if (win_pid) {
+            Process, Close, %win_pid%
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 0
+            HelpText("`n v2rayN Close `n", "center", "screen1", 500)
+            HelpText("`n v2rayN Close `n", "center", "screen3")
+        } else {
+            Run D:\#Lnk\v2rayN.lnk
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 1
+            HelpText("`n v2rayN Start `n", "center", "screen1", 500)
+        }
+    } else {
+        ; Windows代理开关
+        if (proxy_state == "0") {
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 1
+            HelpText("`n Proxy On `n", "center", "screen1", 500)
+        } else if (proxy_state == "1") {
+            Regwrite, REG_DWORD, %path%, %config%, %key%, 0
+            HelpText("`n Proxy Off `n", "center", "screen1", 500)
+            HelpText("`n Proxy Off `n", "center", "screen3")
+        }
+    }
+Return
 
 $RWin::
     if (cnt > 0) {
@@ -125,6 +163,9 @@ Timer:
         return
     }
     if (cnt == 1) {
+        windows_move := False
+        windows_resize_big := False
+        windows_resize_small := False
         MoveWindowToCenter()
     } else if (cnt == 2) {
         MoveWindowToDefaultPosition()
@@ -134,23 +175,23 @@ Timer:
     cnt := 0
 Return
 
-#If (windows_move==True)
-    Up::MoveWindowUDLR("Up")
-    Down::MoveWindowUDLR("Down")
-    Left::MoveWindowUDLR("Left")
+#If ( windows_move == True )
+    Up::   MoveWindowUDLR("Up"   )
+    Down:: MoveWindowUDLR("Down" )
+    Left:: MoveWindowUDLR("Left" )
     Right::MoveWindowUDLR("Right")
 #If
 
-#If (windows_resize_big==True)
-    Up::ResizeWindow("Big","Up")
-    Down::ResizeWindow("Big","Down")
-    Left::ResizeWindow("Big","Left")
-    Right::ResizeWindow("Big","Right")
+#If ( windows_resize_big == True )
+    Up::   ResizeWindow("Big", "Up"   )
+    Down:: ResizeWindow("Big", "Down" )
+    Left:: ResizeWindow("Big", "Left" )
+    Right::ResizeWindow("Big", "Right")
 #If
 
-#If (windows_resize_small==True)
-    Up::ResizeWindow("Small","Up")
-    Down::ResizeWindow("Small","Down")
-    Left::ResizeWindow("Small","Left")
-    Right::ResizeWindow("Small","Right")
+#If ( windows_resize_small == True )
+    Up::   ResizeWindow("Small", "Up"   )
+    Down:: ResizeWindow("Small", "Down" )
+    Left:: ResizeWindow("Small", "Left" )
+    Right::ResizeWindow("Small", "Right")
 #If
