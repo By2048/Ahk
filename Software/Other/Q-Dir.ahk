@@ -1,7 +1,7 @@
 ﻿
-#If CheckWindowActive( "Q-Dir" , "" , "MiniBrowserOK" )
+#If CheckWindowActive( "Q-Dir" , "#32770" , "MiniBrowserOK" )
     <#\::
-        WPD["Q-Dir__MiniBrowserOK"] := Position(2100, 1700)
+        WPD["Q-Dir_#32770_MiniBrowserOK"] := Position(2100, 1700)
         MoveWindowToDefaultPosition()
     Return
 #If
@@ -35,7 +35,6 @@
 
 
 #If CheckWindowActive( "Q-Dir" )
-
 
     ; 重命名
     F2::Return
