@@ -36,10 +36,10 @@ Return
 <#+0:: ;副显示器 +
     WinGet, previous_win_id, ID, A
     Switch A_ThisHotkey {
-        Case "<#+9" : Send #^!+9
-        Case "<#+0" : Send #^!+0
         Case "<#9"  : Send #^!9
         Case "<#0"  : Send #^!0
+        Case "<#+9" : Send #^!+9
+        Case "<#+0" : Send #^!+0
     }
     exe    := "Twinkle Tray.exe"
     win_id := WinExist("ahk_exe" exe)
@@ -155,6 +155,7 @@ Return
         HelpText("Windows Title Hide",  ,  , 1000)
     }
 Return
+
 ; 重启文件管理器
 <#+Delete::
     command := Format("{1} /c {2} /f /im explorer.exe", CMD, TaskKill)

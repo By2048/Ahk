@@ -11,6 +11,9 @@ WPD["Zip"]         := Position(1800 , 1400)
 WPD["FFRenamePro"] := Position(3300 , 1800)
 WPD["BiliBili"]    := Position(2500 , 1650)
 
+WPD["Scrcpy"] := Position(        1032, 2064)
+WPB["Scrcpy"] := Position(48, 48, 1032, 2064)
+
 WPD["Word"]  := Position(3300 , 2000)
 WPD["Excel"] := Position(3300 , 2000)
 WPD["PPT"]   := Position(3300 , 2000)

@@ -15,13 +15,13 @@
 #If
 
 #If CheckWindowActive("PyCharm" , "SunAwtDialog", "终端|运行|调试")
-    ~RAlt::
+    ~CapsLock::
         if (not hide_status or hide_status == False) {
             WinSet, Transparent, 99, A
             hide_status := True
         }
     Return
-    ~RAlt Up::
+    ~CapsLock Up::
         WinSet, Transparent, 255, A
         hide_status := False
     Return
