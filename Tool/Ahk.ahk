@@ -19,3 +19,25 @@ Encoding_To_UTF8BOM()
     Sleep 100
     Send ^s
 }
+
+
+
+; 从代码注释中读取配置
+ReadConfig(file, slice, replace:="    `; ")
+{
+    data  := ""
+    start := slice[1]
+    stop  := slice[2]
+    Loop, Read, %file%
+    {
+        line := StrReplace(A_LoopReadLine, replace, "") 
+        if (A_Index >= start and A_Index <= stop) {
+            if (A_Index != stop) {
+                data := data . line . "`n"
+            } else {
+                data := data . line
+            }
+        }
+    }
+    return data
+}
