@@ -39,12 +39,12 @@
             CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
             config := GetHideWindowConfig()
             OffsetToolWidth := config[4]
-            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + 10
+            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + 9
         } else if (EnterCount == 2) {
             CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
             config := GetHideWindowConfig()
             OffsetToolWidth := config[4]
-            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + 10
+            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + 9
         } else {
             EnterCount := 0
             OffsetToolTotalWidth := 0
@@ -53,7 +53,7 @@
     Esc::
     CapsLock::
         EnterCount := EnterCount - 1
-        OffsetToolTotalWidth := OffsetToolTotalWidth - OffsetToolWidth - 10
+        OffsetToolTotalWidth := OffsetToolTotalWidth - OffsetToolWidth - 9
         Send {Esc}
         if (EnterCount < 0) {
             EnterCount := 0
@@ -116,14 +116,10 @@
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
 
     ~F11::
-        GetActiveWindowInfo()
-        title := window.title
-        if (title == "评估") {
+        WinGetTitle, win_title, A
+        if (win_title == "评估") {
             Send {Esc}
         }
-        ; Send {F11}
-        ; WinWaitActive, 评估
-        ; MoveWindowToCenter(True)
     Return
 
     ~Esc::
