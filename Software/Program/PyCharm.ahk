@@ -9,11 +9,6 @@
     !+BackSpace::MouseClickAndResetting(34, 142)
 #If
 
-#If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python Console History")
-    ; 历史记录返回 \ 与书签冲突
-    !\::Send {Esc}
-#If
-
 #If CheckWindowActive("PyCharm" , "SunAwtDialog", "终端|运行|调试")
     ~CapsLock::
         if (not hide_status or hide_status == False) {
@@ -27,6 +22,19 @@
     Return
 #If
 
+;浮动工具栏
+#If ( CheckWindowActive("PyCharm") And FloatTool == True )
+    ~Esc::
+    ~CapsLock::
+        FloatTool := False
+    Return
+    ~Enter::
+        Sleep 99
+        ActivateHideWindow()
+    Return
+#If
+
+;浮动工具栏 偏移位置
 #If ( CheckWindowActive("PyCharm") And OffsetTool == True )
     ~Enter::
         Sleep 66
@@ -37,14 +45,14 @@
         }
         if (EnterCount == 1) {
             CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
-            config := GetHideWindowConfig()
-            OffsetToolWidth := config[4]
-            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + 9
+            C := GetHideWindowConfig()
+            OffsetToolWidth := C[4]
+            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + OffsetToolSpace
         } else if (EnterCount == 2) {
             CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
-            config := GetHideWindowConfig()
-            OffsetToolWidth := config[4]
-            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + 9
+            C := GetHideWindowConfig()
+            OffsetToolWidth := C[4]
+            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + OffsetToolSpace
         } else {
             EnterCount := 0
             OffsetToolTotalWidth := 0
@@ -53,7 +61,7 @@
     Esc::
     CapsLock::
         EnterCount := EnterCount - 1
-        OffsetToolTotalWidth := OffsetToolTotalWidth - OffsetToolWidth - 9
+        OffsetToolTotalWidth := OffsetToolTotalWidth - OffsetToolWidth - OffsetToolSpace
         Send {Esc}
         if (EnterCount < 0) {
             EnterCount := 0
@@ -62,16 +70,6 @@
             OffsetToolTotalWidth := 0
             Send {Esc}
         }
-    Return
-#If
-
-#If ( CheckWindowActive("PyCharm") And FloatTool == True )
-    ~Esc::
-        FloatTool := False
-    Return
-    ~Enter::
-        Sleep 99
-        ActivateHideWindow()
     Return
 #If
 
@@ -106,9 +104,6 @@
         CapsLockActivate := False
     Return
 #If
-
-; #If ( CheckWindowActive("PyCharm") And xx == xx )
-; #If
 
 #If CheckWindowActive("PyCharm")
 
@@ -256,10 +251,11 @@
             CapsLockActivate := True
             OffsetTool := True
             OffsetToolLeft := 1000
+            OffsetToolSpace := 5
             CenterHideWindow(OffsetToolLeft)
-            config := GetHideWindowConfig()
-            OffsetToolWidth := config[4]
-            OffsetToolTotalWidth := OffsetToolWidth + 10
+            C := GetHideWindowConfig()
+            OffsetToolWidth := C[4]
+            OffsetToolTotalWidth := OffsetToolWidth + OffsetToolSpace
         }
     Return
 
