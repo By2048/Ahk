@@ -100,6 +100,22 @@
     ^+j::Return
     !\::Send {F12}
 
+    CapsLock::
+        Send !d
+        Send ^c
+        data := Clipboard
+        if (InStr(data, "www.google.com/search?q")) {
+            keyword := RegExReplace(data, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
+            url := "https://cn.bing.com/search?q=" . keyword
+            Clipboard := url
+            Send ^v
+            Send {Enter}
+        } else {
+            Send {F6 3}
+        }
+        SetCapsLockState, Off
+    Return
+
     ;任务管理
     ^Esc::Return
     !Esc::Send +{Esc}
@@ -206,8 +222,8 @@
     !j::Send ^j
 
     ;收藏 取消收藏
-    ^d::Return  ;原本是定位地址栏
-    ^+d::Return ;为所有页面添加标签
+    ^d::Return 
+    ^+d::Return
     !d::
         Send ^d
         Send {Tab 2}
