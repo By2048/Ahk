@@ -64,7 +64,7 @@ RWin & LButton::
     WinGetPos, win_x1, win_y1, win_w1, win_h1, ahk_id %win_id%
     Loop {
         GetKeyState, left_button, LButton, P
-        if (left_button="U") {
+        if (left_button == "U") {
             break
         }
         MouseGetPos, mouse_x2, mouse_y2, win_id
@@ -103,9 +103,9 @@ Return
     HelpText("Move Windows")
 Return
 
-Global windows_move:=False
-Global windows_resize_big:=False
-Global windows_resize_small:=False
+Global windows_move         := False
+Global windows_resize_big   := False
+Global windows_resize_small := False
 
 ; 设置代理
 RWin & RShift::
@@ -155,17 +155,16 @@ $RWin::
     SetTimer, Timer, -500
 Return
 Timer:
-    if (windows_move==True or windows_resize_big==True or windows_resize_small==True) {
-        windows_move:=False
-        windows_resize_small:=False
-        windows_resize_big:=False
+    if (   windows_move == True 
+        or windows_resize_big == True
+        or windows_resize_small == True ) {
+        windows_move := False
+        windows_resize_big := False
+        windows_resize_small := False
         HelpText()
         return
     }
     if (cnt == 1) {
-        windows_move := False
-        windows_resize_big := False
-        windows_resize_small := False
         MoveWindowToCenter()
     } else if (cnt == 2) {
         MoveWindowToDefaultPosition()

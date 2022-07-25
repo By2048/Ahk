@@ -26,11 +26,11 @@ WPD["PyCharm__选择"]           := Position(900 , 1500)
 WPD["PyCharm__Python解释器"] := Position(1000 , 1500)
 
 WPD["PyCharm__指定检查范围"] := Position(1500 , 1000)
+WPD["PyCharm__将提交推送到"] := Position(1500 , 1000)
 
 WPD["PyCharm__查找"]         := Position(1600 , 1500)
 WPD["PyCharm__检查"]         := Position(1600 , 1500)
 WPD["PyCharm__提交变更"]     := Position(1600 , 1500)
-WPD["PyCharm__将提交推送到"] := Position(1600 , 1500)
 
 WPD["PyCharm__设置"]             := Position(2000 , 1500)
 WPD["PyCharm__问题"]             := Position(2000 , 1500)
