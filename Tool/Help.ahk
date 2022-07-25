@@ -100,6 +100,8 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 
     gui_w := text_w + 2
     gui_h := text_h + 2
+    gui_x := 0
+    gui_y := 0
 
     xy := StrReplace(xy, "|", "_")
     xy := StrReplace(xy, "+", "_")
