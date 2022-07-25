@@ -38,37 +38,27 @@
 #If ( CheckWindowActive("PyCharm") And OffsetTool == True )
     ~Enter::
         Sleep 66
-        if (not EnterCount or EnterCount == 0) {
-            EnterCount := 1
-        } else {
-            EnterCount := EnterCount + 1
-        }
-        if (EnterCount == 1) {
-            CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
-            C := GetHideWindowConfig()
-            OffsetToolWidth := C[4]
-            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + OffsetToolSpace
-        } else if (EnterCount == 2) {
-            CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
-            C := GetHideWindowConfig()
-            OffsetToolWidth := C[4]
-            OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + OffsetToolSpace
-        } else {
-            EnterCount := 0
-            OffsetToolTotalWidth := 0
-        }
+        EnterCount := EnterCount + 1
+        CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
+        C := GetHideWindowConfig()
+        OffsetToolWidth := C[4]
+        OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + OffsetToolSpace
     Return
     Esc::
     CapsLock::
         EnterCount := EnterCount - 1
         OffsetToolTotalWidth := OffsetToolTotalWidth - OffsetToolWidth - OffsetToolSpace
         Send {Esc}
-        if (EnterCount < 0) {
-            EnterCount := 0
+        if (EnterCount == 0) {
+            C := GetHideWindowConfig()
+            OffsetToolWidth := C[4]
+            OffsetToolTotalWidth := OffsetToolWidth + OffsetToolSpace
+        } else if (EnterCount < 0) {
             OffsetTool := False
             OffsetToolWidth := 0
             OffsetToolTotalWidth := 0
-            Send {Esc}
+            OffsetToolSpace := 0
+            CapsLockActivate := False
         }
     Return
 #If
@@ -137,13 +127,18 @@
         cnt := 0
     Return
 
-    $RWin::
+    ~RWin::
         WinGetPos, x, y, w, h, A
-        if (x < 0 and y == 0 ) { ;已经全屏
+        win_id := ActivateHideWindow()
+        if (win_id) {
+            CenterHideWindow()
         } else {
-            MoveWindowToCenter(True)
+            if (x < 0 and y == 0 ) { ;已经全屏
+                
+            } else {
+                MoveWindowToCenter(True)
+            }
         }
-        CenterHideWindow()
     Return
 
     $CapsLock::Return
@@ -248,8 +243,9 @@
             CapsLockActivate := False
         } else {
             Send ^!{Enter}
-            CapsLockActivate := True
             OffsetTool := True
+            CapsLockActivate := True
+            EnterCount := 0
             OffsetToolLeft := 1000
             OffsetToolSpace := 5
             CenterHideWindow(OffsetToolLeft)
@@ -317,8 +313,14 @@
     Return
 
     ;项目 结构
-    CapsLock & [::Send ^![
-    CapsLock & ]::Send ^!]
+    CapsLock & [::
+        Send ^![
+        EscRedirect := True
+    Return
+    CapsLock & ]::
+        Send ^!]
+        EscRedirect := True
+    Return
 
     ;窗口大小调整
     CapsLock & Left:: Send ^!{Left}

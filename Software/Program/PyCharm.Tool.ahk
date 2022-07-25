@@ -87,4 +87,6 @@ CenterHideWindow(args*)
     ww := config[3]
     hh := config[4]
     WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
+    
+    return win_id
 }
