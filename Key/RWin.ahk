@@ -164,6 +164,13 @@ Timer:
         HelpText()
         return
     }
+    if (cnt > 0) {
+        ignore_function := GlobalGet("Status", "ignore_function", "Bool")
+        if (ignore_function) {
+            GlobalSet("Status", "ignore_function", False)
+            return
+        }
+    }
     if (cnt == 1) {
         MoveWindowToCenter()
     } else if (cnt == 2) {

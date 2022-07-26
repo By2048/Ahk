@@ -139,6 +139,7 @@
                 MoveWindowToCenter(True)
             }
         }
+        GlobalSet("Status", "ignore_function", True)
     Return
 
     $CapsLock::Return
@@ -176,6 +177,7 @@
         }
     Return
 
+    ; 跳转到导航栏
     ^!p::Return
     CapsLock & p::
         EscRedirect := True
@@ -190,6 +192,7 @@
         }
     Return
 
+    ; 编辑 编辑器操作
     ^!BackSpace::Return
     ^!+BackSpace::Return
     CapsLock & BackSpace::
@@ -209,6 +212,7 @@
         }
     Return
 
+    ; 书签 Bookmark
     ^!\::Return
     ^!+\::Return
     CapsLock & \::
@@ -234,6 +238,7 @@
         }
     Return
 
+    ; 主菜单
     ^!Enter::Return
     CapsLock & Enter::
         EscRedirect := True
@@ -255,22 +260,20 @@
         }
     Return
 
+    ; 代码
     ^!Numpad5::Return
     CapsLock & RShift::
         if (CapsLockActivate == True) {
             Send {Esc}
-            OffsetTool := False
             CapsLockActivate := False
         } else {
             Send ^!{Numpad5}
             CapsLockActivate := True
-            OffsetTool := True
-            OffsetToolLeft := 1450
-            OffsetToolWidth := 500
-            CenterHideWindow(OffsetToolLeft)
+            CenterHideWindow()
         }
     Return
 
+    ; 切换器操作
     ^!,::Return
     CapsLock & ,::
         EscRedirect := True
@@ -284,6 +287,7 @@
         }
     Return
 
+    ; 活动工具窗口
     ^!.::Return
     CapsLock & .::
         EscRedirect := True
@@ -297,6 +301,7 @@
         }
     Return
 
+    ; 编辑器选项卡
     ^!/::Return
     CapsLock & /::
         EscRedirect := True
