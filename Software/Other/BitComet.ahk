@@ -33,11 +33,11 @@
         SetColumnWidth("SysListView321" , config)
 
         ; 种子存档
-        ; _1 := " 1       2     3    4          5     6       7        8       "
-        ; _2 := " 150     1200  200  200        100   200     200      350     "
-        ; _3 := " 下载任务 名称   大小 原数据已获取 评论  发布日期  添加日期  私有种子 "
-        ; config := GetColumnConfig(_1, _2, _3)
-        ; SetColumnWidth("SysListView322", config)
+        _1 := " 1       2     3    4          5     6       7        8       "
+        _2 := " 150     1200  200  200        100   200     200      350     "
+        _3 := " 下载任务 名称   大小 原数据已获取 评论  发布日期  添加日期  私有种子 "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView322", config)
 
         ; 文件 未点击 | 点击
         _1 := " 1       2    3    4        5     6      7         8       9      "
@@ -57,9 +57,18 @@
         config := {  1 : 330  ,  2 : 2250 }   ;时间 | 信息
         SetColumnWidth("SysListView328", config)
 
+        ; ----------------------------------------------------------------------
+
+        ; 用户
+        ; _1 := " 1    2        3        4       5   6      7       8      9    "
+        ; _2 := " 700  90       100      150     100 100    120     120    1100 "
+        ; _3 := " IP   远程端口 监听端口 剩余时间 种子 下载中 全部用户 下载完成 状态  "
+        ; config := GetColumnConfig(_1, _2, _3)
+        ; SetColumnWidth("SysListView3217", config)
+
         ; 统计
-        config := { 1 : 450  ,  2 : 2100 }  ;项目 | 值
-        SetColumnWidth("SysListView3213", config)
+        ; config := { 1 : 450  ,  2 : 2100 }  ;项目 | 值
+        ; SetColumnWidth("SysListView3218", config)
 
     Return
 

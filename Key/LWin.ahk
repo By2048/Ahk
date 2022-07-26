@@ -198,9 +198,9 @@ LWin & RShift::
     WinGet, _style_ , Style, A
     WinSet, Style, ^%WS_CAPTION%, A
     if (not (_style_ & WS_CAPTION)) {
-        HelpText("Windows Title Show",  ,  , 1000)
+        HelpText("`n Windows Title Show `n", "Center", "Screen1", 500)
     } else {
-        HelpText("Windows Title Hide",  ,  , 1000)
+        HelpText("`n Windows Title Hide `n", "Center", "Screen1", 500)
     }
 Return
 
