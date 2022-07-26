@@ -30,18 +30,19 @@
     Return
     ~Enter::
         Sleep 99
-        ActivateHideWindow()
+        C := GetHideWindowConfig()
+        win_id := C.id
+        WinActivate, ahk_id %win_id%
     Return
 #If
 
 ;浮动工具栏 偏移位置
 #If ( CheckWindowActive("PyCharm") And OffsetTool == True )
-    ~Enter::
-        Sleep 66
+    Enter::
+        Send {Enter}
         EnterCount := EnterCount + 1
-        CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
-        C := GetHideWindowConfig()
-        OffsetToolWidth := C[4]
+        config := CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
+        OffsetToolWidth := config.w
         OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + OffsetToolSpace
     Return
     Esc::
@@ -50,8 +51,8 @@
         OffsetToolTotalWidth := OffsetToolTotalWidth - OffsetToolWidth - OffsetToolSpace
         Send {Esc}
         if (EnterCount == 0) {
-            C := GetHideWindowConfig()
-            OffsetToolWidth := C[4]
+            config := GetHideWindowConfig()
+            OffsetToolWidth := config.w
             OffsetToolTotalWidth := OffsetToolWidth + OffsetToolSpace
         } else if (EnterCount < 0) {
             OffsetTool := False
@@ -64,17 +65,12 @@
 #If
 
 #If ( CheckWindowActive("PyCharm") And DoubleShift == True )
-    ~Esc::
-        DoubleShift := False
-    Return
-    ~CapsLock::
-    ~RShift::
+    Esc::
+    CapsLock::
         Send {Esc}
         DoubleShift := False
     Return
-    RWin::
-        CenterHideWindow(1500, 1500)
-    Return
+    RWin::CenterHideWindow(1500, 1500)
 #If
 
 #If ( CheckWindowActive("PyCharm") And EscRedirect == True )
@@ -129,12 +125,13 @@
 
     ~RWin::
         WinGetPos, x, y, w, h, A
-        win_id := ActivateHideWindow()
+        config := GetHideWindowConfig()
+        win_id := config.id
         if (win_id) {
             CenterHideWindow()
         } else {
             if (x < 0 and y == 0 ) { ;已经全屏
-                
+                return
             } else {
                 MoveWindowToCenter(True)
             }
@@ -142,7 +139,9 @@
         GlobalSet("Status", "ignore_function", True)
     Return
 
-    $CapsLock::Return
+    $CapsLock::
+        Send {Esc}
+    Return
     $CapsLock Up::
         SetCapsLockState, Off
         SetNumLockState, Off
@@ -253,9 +252,8 @@
             EnterCount := 0
             OffsetToolLeft := 1000
             OffsetToolSpace := 5
-            CenterHideWindow(OffsetToolLeft)
-            C := GetHideWindowConfig()
-            OffsetToolWidth := C[4]
+            config := CenterHideWindow(OffsetToolLeft)
+            OffsetToolWidth := config.w
             OffsetToolTotalWidth := OffsetToolWidth + OffsetToolSpace
         }
     Return
@@ -336,7 +334,7 @@
     ~^n::CenterHideWindow()
     ~^+n::CenterHideWindow()
     ~^o::CenterHideWindow()
-    ~!o::CenterHideWindow(1700, 1500)
+    ~!o::CenterHideWindow(1900, 1700)
     ~^+e::CenterHideWindow(666, 1300)
     ~^+g::CenterHideWindow()
     ~!a::
