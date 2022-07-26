@@ -151,7 +151,10 @@
     CapsLock & LShift::Return
     CapsLock & Tab::Return
 
-    AppsKey & Esc::
+    ~AppsKey::
+        CenterHideWindow()
+    Return
+    ~AppsKey & Esc::
         OffsetTool := False
         OffsetToolWidth := 0
         OffsetToolTotalWidth := 0
