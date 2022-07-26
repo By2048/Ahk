@@ -63,3 +63,18 @@
 #^F4::Return    ;关闭当前虚拟桌面
 #^Left::Return  ;向左切换虚拟桌面
 #^Right::Return ;向右切换虚拟桌面
+
+;切换到激活的应用
+#1::Return
+#2::Return
+#3::Return
+#4::Return
+#5::Return
+#6::Return
+#7::Return
+#8::Return
+#9::Return
+
+;屏幕缩放
+#=::Return
+#-::Return
