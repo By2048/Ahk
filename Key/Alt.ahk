@@ -50,10 +50,6 @@ RAlt & LAlt::
 Return
 
 
->!Insert::ScreenshotActivateSoftware("Tmp")
->!Delete::ScreenshotActivateSoftware("Backup")
-
-
 RAlt & RWin::
     if (IsDesktops() or IsGame()) {
         return
