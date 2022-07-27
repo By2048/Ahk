@@ -16,6 +16,19 @@ CapsLockRedirect:
 Return
 
 
+FloatToolSwitch(Key, rule)
+{
+    WinGetTitle, win_title, A
+    if (win_title == rule) {
+        Send {Esc}
+    } else {
+        Send %key%
+        WinWaitActive, %rule%
+        MoveWindowToCenter(True)
+    }
+}
+
+
 GetHideWindowConfig()
 {
     check_rule  := "ahk_exe pycharm64.exe ahk_class SunAwtWindow"
@@ -46,7 +59,6 @@ GetHideWindowConfig()
 
     return result
 }
-
 
 
 CenterHideWindow(position*)

@@ -138,6 +138,20 @@
         GlobalSet("Status", "ignore_function", True)
     Return
 
+    ~AppsKey::
+        CenterHideWindow()
+    Return
+    ~AppsKey Up::
+        OffsetTool := False
+        OffsetToolWidth := 0
+        OffsetToolTotalWidth := 0
+        OffsetToolWidth := 0
+        FloatTool := False
+        DoubleShift := False
+        EscRedirect := False
+        CapsLockActivate := False
+    Return
+
     $CapsLock::
         Send {Esc}
     Return
@@ -147,25 +161,45 @@
         SetScrollLockState, Off
     Return
 
+    ~^n::CenterHideWindow()
+    ~^+n::CenterHideWindow()
+    ~^o::CenterHideWindow()
+    ~!o::CenterHideWindow(1900, 1700)
+    ~^+e::CenterHideWindow(666, 1300)
+    ~^+g::CenterHideWindow()
+    ~!a::
+        EscRedirect := True
+        CenterHideWindow(2244, 1600)
+    Return
+    ~<#Enter::Return
+    ~<#+Enter::
+        CenterHideWindow()
+    Return
+    
+    !F1::FloatToolSwitch("!{F1}", "运行/调试配置")
+    !F2::FloatToolSwitch("!{F2}", "断点")
+
+    ;代码左右移动
+    ; ^[::Send ^{w}+{Tab}^+{w}
+    ; ^]::Send ^{w}{Tab}^+{w}
+
+    ; !Esc::Send ^{F1}
+    ; !+Esc::Send ^+{F1}
+
+    ;特殊按键覆盖F4
+    <!F4::Send !{F16}
+    <!+F4::Send !+{F16}
+
+    ;切换标签页
+    ^Tab::Return
+    ^+Tab::Return
+    <!Tab::Send ^{Tab}
+    <!+Tab::Send ^+{Tab}
+
     CapsLock & LShift::Return
     CapsLock & Tab::Return
 
-    ~AppsKey::
-        CenterHideWindow()
-    Return
-    ~AppsKey & Esc::
-        OffsetTool := False
-        OffsetToolWidth := 0
-        OffsetToolTotalWidth := 0
-        OffsetToolWidth := 0
-
-        FloatTool := False
-        DoubleShift := False
-        EscRedirect := False
-        CapsLockActivate := False
-        HelpText("Reset Args", "Center", "Screen1", 500)
-    Return
-
+    ; 书签描述符
     ^!`::Return
     CapsLock & `::
         if (CapsLockActivate == True) {
@@ -317,7 +351,7 @@
         }
     Return
 
-    ;项目 结构
+    ; 项目 结构
     CapsLock & [::
         Send ^![
         EscRedirect := True
@@ -327,28 +361,13 @@
         EscRedirect := True
     Return
 
-    ;窗口大小调整
+    ; 窗口大小调整
     CapsLock & Left:: Send ^!{Left}
     CapsLock & Right::Send ^!{Right}
     CapsLock & Up::   Send ^!{Up}
     CapsLock & Down:: Send ^!{Down}
-
-    ~^n::CenterHideWindow()
-    ~^+n::CenterHideWindow()
-    ~^o::CenterHideWindow()
-    ~!o::CenterHideWindow(1900, 1700)
-    ~^+e::CenterHideWindow(666, 1300)
-    ~^+g::CenterHideWindow()
-    ~!a::
-        EscRedirect := True
-        CenterHideWindow(2244, 1600)
-    Return
-
-    ~<#Enter::Return
-    ~<#+Enter::
-        CenterHideWindow()
-    Return
-
+    
+    ; 设置
     LAlt & RAlt::
         Send ^{ScrollLock}
         SetCapsLockState, Off
@@ -359,28 +378,12 @@
             MoveWindowToCenter(True)
         }
     Return
+    ; 切换
     RAlt & LAlt::
         Send !{ScrollLock}
         SetScrollLockState, Off
         SetCapsLockState, Off
         CenterHideWindow()
     Return
-
-    ;代码左右移动
-    ; ^[::Send ^{w}+{Tab}^+{w}
-    ; ^]::Send ^{w}{Tab}^+{w}
-
-    ; !Esc::Send ^{F1}
-    ; !+Esc::Send ^+{F1}
-
-    ;特殊按键覆盖F4
-    <!F4::Send !{F16}
-    <!+F4::Send !+{F16}
-
-    ;切换标签页
-    ^Tab::Return
-    ^+Tab::Return
-    <!Tab::Send ^{Tab}
-    <!+Tab::Send ^+{Tab}
 
 #If
