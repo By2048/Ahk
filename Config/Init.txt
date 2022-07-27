@@ -5,7 +5,7 @@
  Python     Py         Zip        ScrcpyAdb  Scrcpy     
  HuntAndPeck           Notepad    Chrome     
  VSCode     Script     PyEnv      GitX       MuMu       
- Rename     Nicotv     Bi-Get-Name           Bi-Free    
- Bi-Join    Windows    Delete-Share          Backup-Disk-Tree      
- JetBrains-Toolbox-Update         Rename.Config         
- Rename.Tmp
+ Bi-Get-Name           Bi-Free    Bi-Join    
+ Rename     Nicotv     Windows    Delete-Share          
+ Backup-Disk-Tree      JetBrains-Toolbox-Update         
+ Rename.Config         Rename.Tmp
