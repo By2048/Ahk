@@ -13,6 +13,7 @@ WPD["PyCharm"] := [ -16 , 0 , 3868 , 2173 ] ;修正边框下的全屏
 WPB["PyCharm"] := Position(2300, 1800)
 
 WPD["PyCharm__[更改]"] := Position(-100 , -100)
+WPD["PyCharm__[变更]"] := Position(-100 , -100)
 
 WPD["PyCharm__收藏夹"]   := Position(900 , 1300)
 WPD["PyCharm__设置同步"] := Position(900 , 1300)
