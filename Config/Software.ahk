@@ -10,6 +10,7 @@ Global Python      := "D:\Python\#\Scripts\python.exe"
 Global HuntAndPeck := "D:\HuntAndPeck\hap.exe"
 Global ScrcpyAdb   := "D:\Scrcpy\adb.exe"
 Global Scrcpy      := "D:\Scrcpy\scrcpy.exe"
+Global Snipaste    := "D:\Snipaste\Snipaste.exe"
 
 
 ; 软件自定义名字替换
@@ -62,5 +63,6 @@ Windows_Process_Name.Push( [ "SearchUI"                , "Search"          ] ) ;
 Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "ShellExperienceHost"     , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "WindowsTerminal"         , "Terminal"        ] ) ;终端
+
 
 #Include %A_WorkingDir%\Config\Software.Config.ahk

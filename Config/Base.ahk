@@ -14,12 +14,6 @@ Global Screens_Dpi   := [ 2 , 1.5 , 1.5 ]
 ; 系统类型 | Win10 \ WinServer 
 Global System_Type := "Win10"
 
-; 截图软件配置
-Global Snipaste := { "Exe"                    : "D:\Snipaste\Snipaste.exe" ;
-                   , "Auto_Save_File"         : "D:\Snipaste\#\*.png"      ;  
-                   , "Screenshot_Path_Backup" : "P:\Screen\"               ;
-                   , "Screenshot_Path_Tmp"    : "T:\"                      }
-
 ; 注册表信息保存位置
 Global Reg_Path := "HKEY_CURRENT_USER\SOFTWARE\AutoHotkey"
 
