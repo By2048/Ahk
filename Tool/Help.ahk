@@ -104,25 +104,26 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     gui_y := 0
 
     xy := Format("{:L}", xy)
-    xy := StrReplace(xy, "|", "_")
-    xy := StrReplace(xy, "+", "_")
-    xy := StrReplace(xy, "-", "_")
+    xy := StrReplace(xy, "|", "")
+    xy := StrReplace(xy, "+", "")
+    xy := StrReplace(xy, "-", "")
+    xy := StrReplace(xy, "_", "")
 
     switch xy {
-        case "right_down":
-            gui_x := screen_xx - gui_w - 5
-            gui_y := screen_yy - gui_h - 5
-        case "left_down":
-            gui_x := screen_x  + 5
-            gui_y := screen_yy - gui_h - 5
         case "center":
             gui_x := screen_x + (screen_w - gui_w) / 2
             gui_y := screen_y + (screen_h - gui_h) / 2
-        case "center_up":
+        case "centerup":
             gui_x := screen_x + (screen_w - gui_w) / 2
             gui_y := screen_y + 5
-        case "center_down":
+        case "centerdown":
             gui_x := screen_x  + (screen_w - gui_w) / 2
+            gui_y := screen_yy - gui_h - 5
+        case "rightdown":
+            gui_x := screen_xx - gui_w - 5
+            gui_y := screen_yy - gui_h - 5
+        case "leftdown":
+            gui_x := screen_x  + 5
             gui_y := screen_yy - gui_h - 5
         default:
             gui_x := screen_x  + (screen_w - gui_w) / 2

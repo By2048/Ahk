@@ -486,7 +486,7 @@ MoveWindowToCenter(silent:=False)
     SetWindow(xx, yy, ww, hh)
     
     if (not silent) {
-        HelpText("Center", "center_down", "screen"screen_id , 1000)
+        HelpText("Center", "center_down", "screen"screen_id, 1000)
     }
 }
 
