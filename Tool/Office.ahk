@@ -92,14 +92,14 @@ ExcelSelectXToY(excel_x, excel_y, multi_line)
 ; Snipaste贴图自动保存
 SnipasteClipboardToImageFile(image_file)
 {
-    if (not FileExist(Snipaste.Exe)) {
+    if (not FileExist(Snipaste)) {
         return
     }
 
     CoordMode, Mouse, Screen
 
     ; 贴图
-    cmd := Format("{1} paste --clipboard", Snipaste.Exe)
+    cmd := Format("{1} paste --clipboard", Snipaste)
     Run %cmd%
     Sleep 500
 
