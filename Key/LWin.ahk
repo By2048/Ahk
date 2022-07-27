@@ -130,27 +130,18 @@ Return
 ; <#WheelUp::SetWindowTransparent(10)
 ; <#WheelDown::SetWindowTransparent(-10)
 
-; 屏幕截图 临时
-<#Insert::
-    ScreenShot("Screen1", "Tmp")
-    ScreenShot("Screen2", "Tmp")
-    ScreenShot("Screen3", "Tmp")
-Return
+;屏幕截图 临时
+<#Insert::ScreenShot("Screen1", "T:\")
 ;屏幕截图 长久
 <#+Insert::
-    ScreenShot("Screen1", "Backup")
-    ScreenShot("Screen2", "Backup")
-    ScreenShot("Screen3", "Backup")
+    ScreenShot("Screen1", "P:\Screen\")
+    ScreenShot("Screen2", "P:\Screen\")
+    ScreenShot("Screen3", "P:\Screen\")
 Return
-
-;重启文件管理器
-<#Delete::
-    command := Format("{1} /c {2} /f /im explorer.exe", CMD, TaskKill)
-    RunWait, %command%
-    Sleep 1000
-    command := Format("{1} /c start explorer.exe", CMD)
-    RunWait, %command%
-Return
+;软件截图 临时
+<#Delete::ScreenshotActivateSoftware("T:\")
+;软件截图 长久
+<#+Delete::ScreenshotActivateSoftware("P:\Screen\")
 
 ;设置默认位置
 <#\::MoveWindowToDefaultPosition()

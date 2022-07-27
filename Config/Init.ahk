@@ -1,6 +1,6 @@
 ﻿
 #Include %A_WorkingDir%\Config\Screen.ahk
-#Include %A_WorkingDir%\Tool\Ahk.ahk
+#Include %A_WorkingDir%\Tool\Other.ahk
 
 ; 在 Input.ahk Private.ahk 中定义的快捷输入
 
@@ -31,17 +31,17 @@ GetInitConfig()
     Init["config"].Push( Format(" JQB          | {1}    {2}", JQB.Phone, JQB.Windows)                                  )
 
     AddInitLine()
-    ;  | [Date]  [Time]  [DateTime]                                  |
-    ;  |-------------------------------------------------------------|
-    ;  | Phone   | Gmail    | PWD     | Aly      |         |         |
-    ;  | QQ      | QQ1      | QQ2     | QMail    | QMail1  | QMail2  |
-    ;  | FXY     | ShengRi  | SFZ     | HuJi     | DiZhi   |         |
-    ;  | \       | py       | py.exe  | pip.exe  | yg      | pipjx   | 
-    ;  | -       | #        |         |          |         |         |
-    ;  | LOL-RM  | Scrcpy   |         |          |         |         |
+    ; | [Date]  [Time]  [DateTime]                                  |
+    ; |-------------------------------------------------------------|
+    ; | Phone   | Gmail    | PWD     | Aly      |         |         |
+    ; | QQ      | QQ1      | QQ2     | QMail    | QMail1  | QMail2  |
+    ; | FXY     | ShengRi  | SFZ     | HuJi     | DiZhi   |         |
+    ; | \       | py       | py.exe  | pip.exe  | yg      | pipjx   | 
+    ; | -       | #        |         |          |         |         |
+    ; | LOL-RM  | Scrcpy   |         |          |         |         |
     file  := A_LineFile
     slice := [ A_LineNumber - 9 , A_LineNumber - 2 ]
-    data  := ReadConfig(file, slice, "    `; ")
+    data  := ReadConfig(file, slice, "    `;")
     Init["config"].Push(data)
 
     AddInitLine()

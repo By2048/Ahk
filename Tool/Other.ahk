@@ -88,6 +88,8 @@ ScreenShot(screen_name:="Screen1", keep_path:="")
     Run %cmd%
 }
 
+
+
 ; 软件设置界面截图保存
 ScreenshotActivateSoftware(keep_path:="")
 {
@@ -115,7 +117,6 @@ ScreenshotActivateSoftware(keep_path:="")
 
 
 
-
 ; 屏幕贴图
 Snipaste(image:="", screen:="screen1")
 {
@@ -139,7 +140,6 @@ Snipaste(image:="", screen:="screen1")
     cmd := Format("{1} paste --files {} --pos {} {}", Snipaste, image, x, y)
     Run %cmd%
 }
-
 
 
 
