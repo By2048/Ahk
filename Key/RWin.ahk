@@ -16,8 +16,8 @@
 ; 窗口位置大小调整
 ; 结束窗口
 
->#Space::WindowsTerminal("Focus")
->#+Space::WindowsTerminal("Full")
+>#Space::WindowsTerminal("Focus", "T:\\")
+>#+Space::WindowsTerminal("Full", "T:\\")
 
 >#b::Return
 >#Tab::Return
