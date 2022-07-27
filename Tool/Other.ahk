@@ -13,12 +13,10 @@ RunNormalUser(command)
     if ( InStr(command, ".lnk") ) {
         command := Format("C:\Windows\Explorer.exe {}", command) 
     }
-
     if (A_UserName = "Administrator") {
         Run %command%
         return
     }
-
     if (StrLen(PC_USERNAME) == 0 and StrLen(PC_PASSWORD) == 0) {
         HelpText(" PC_USERNAME/PC_PASSWORD - (./Private.ahk) ", "center_down",  , 3000)
     } else {
@@ -31,7 +29,7 @@ RunNormalUser(command)
 
 
 ; Windows终端启动设置
-WindowsTerminal(mode:="Focus", folder:="T:\\")
+WindowsTerminal(mode:="Focus", folder:="")
 {
     name := "Terminal"
     exe  := ProcessNameOrigin(name)
@@ -55,87 +53,49 @@ WindowsTerminal(mode:="Focus", folder:="T:\\")
 
 ; 屏幕截图
 ; screens   | screen1 screen2 screen3
-; keep_path | backup tmp
-ScreenShot(screen_name:="screen1", keep_path:="backup")
+; keep_path | T:\ P:\Screen\
+ScreenShot(screen_name:="Screen1", keep_path:="")
 {
-    if (not FileExist(Snipaste.Exe)) {
+    if (not FileExist(Snipaste)) {
+        HelpText(Snipaste, "Center", "Screen1", 500)
+    }
+    if (not FileExist(keep_path)) {
         return
-    }
-    if (keep_path == "Backup") {
-        if (not FileExist(Snipaste.Screenshot_Path_Backup)) {
-            return
-        }
-    }
-    if (keep_path == "Tmp") {
-        if (not FileExist(Snipaste.Screenshot_Path_Tmp)) {
-            return
-        }
     }
 
     screen_id := ScreenNameToId(screen_name)
     if (screen_id == "1") {
-        screen := Screens.Software.1
+        screen_config := Screens.Software.1
     } else if (screen_id == "2") {
-        screen := Screens.Software.2
+        screen_config := Screens.Software.2
     } else if (screen_id == "3") {
-        screen := Screens.Software.3
+        screen_config := Screens.Software.3
     }
-
-    x := screen.x
-    y := screen.y
-    w := screen.w
-    h := screen.h
-
+    x := screen_config.x
+    y := screen_config.y
+    w := screen_config.w
+    h := screen_config.h
     x := Round(x)
     y := Round(y)
     w := Round(w)
     h := Round(h)
 
-    screenshot_keep_path := ""
-    if (keep_path == "Backup") {
-        screenshot_keep_path := Snipaste.Screenshot_Path_Backup
-    } else if (keep_path == "Tmp") {
-        screenshot_keep_path := Snipaste.Screenshot_Path_Tmp
-    }
-
-    if (not screenshot_keep_path) {
-        return
-    }
-
-    screens_name := StrReplace(screen_name, "screen")
     name := "", file := "", cmd := ""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
-    name := Format("{1}[{2}]", name, screens_name)
-    file := screenshot_keep_path . "\" . name . ".png"
-    file := StrReplace(file, "\\", "\")
-    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste.Exe, x, y, w, h, file)
+    name := Format("{1}[{2}]", name, screen_id)
+    file := keep_path . name . ".png"
+    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste, x, y, w, h, file)
     Run %cmd%
 }
 
-
-
 ; 软件设置界面截图保存
-ScreenshotActivateSoftware(keep_path:="backup")
+ScreenshotActivateSoftware(keep_path:="")
 {
-    if (not FileExist(Snipaste.Exe)) {
+    if (not FileExist(Snipaste)) {
         return
     }
-    if (keep_path = "Backup") {
-        if (not FileExist(Snipaste.Screenshot_Path_Backup)) {
-            return
-        }
-    }
-    if (keep_path = "Tmp") {
-        if (not FileExist(Snipaste.Screenshot_Path_Tmp)) {
-            return
-        }
-    }
-
-    screenshot_keep_path := ""
-    if (keep_path = "Backup") {
-        screenshot_keep_path := Snipaste.Screenshot_Path_Backup
-    } else if (keep_path = "Tmp") {
-        screenshot_keep_path := Snipaste.Screenshot_Path_Tmp
+    if (not FileExist(keep_path)) {
+        return
     }
 
     GetActiveWindowInfo()
@@ -145,25 +105,14 @@ ScreenshotActivateSoftware(keep_path:="backup")
     win_w := window.w
     win_h := window.h
 
-    name:="", file:="", cmd:=""
+    name := "", file := "", cmd := ""
     FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
-    name := Format("[{1}]{2}", win_process_name, name)
-    file := screenshot_keep_path . "\" . name . ".png"
-    file := StrReplace(file, "\\", "\")
-    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste.Exe, win_x, win_y, win_w, win_h, file)
+    name := Format("{1}[{2}]", name, win_process_name)
+    file := keep_path . name . ".png"
+    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste, win_x, win_y, win_w, win_h, file)
     Run %cmd%
 }
 
-
-
-; 游戏截图
-ScreenshotQuick()
-{
-    FormatTime, name, _, yyyy-MM-dd HH-mm-ss
-    file := Snipaste.Screenshot_Path_Tmp "\" name ".png"
-    cmd := Format("{1} snip --area {2} {3} {4} {5} -o ""{6}""", Snipaste.Exe, Screen.x, Screen.y, Screen.w, Screen.h, file)
-    Run %cmd%
-}
 
 
 
@@ -187,25 +136,10 @@ Snipaste(image:="", screen:="screen1")
     x := Round(x)
     y := Round(y)
 
-    cmd := Format("{1} paste --files {} --pos {} {}", Snipaste.Exe, image, x, y)
+    cmd := Format("{1} paste --files {} --pos {} {}", Snipaste, image, x, y)
     Run %cmd%
 }
 
-
-
-; 删除软件自动保存的文件
-DeleteSnipasteAutoSaveFile()
-{
-    if (not FileExist(Snipaste.Auto_Save_File)) {
-        return
-    }
-    last_file := ""
-    Loop, Files, % Snipaste.Auto_Save_File
-    {
-        last_file := A_LoopFileFullPath
-    }
-    FileDelete %last_file%
-}
 
 
 
@@ -291,4 +225,26 @@ GetColumnConfig(args*)
     }
 
     return result
+}
+
+
+
+; 从代码注释中读取配置
+ReadConfig(file, slice, replace:="    `; ")
+{
+    data  := ""
+    start := slice[1]
+    stop  := slice[2]
+    Loop, Read, %file%
+    {
+        line := StrReplace(A_LoopReadLine, replace, "") 
+        if (A_Index >= start and A_Index <= stop) {
+            if (A_Index != stop) {
+                data := data . line . "`n"
+            } else {
+                data := data . line
+            }
+        }
+    }
+    return data
 }
