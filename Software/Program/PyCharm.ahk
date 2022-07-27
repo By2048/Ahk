@@ -125,16 +125,15 @@
 
     ~RWin::
         WinGetPos, x, y, w, h, A
+        if (x < 0 and y == 0 ) { ;已经全屏
+            return
+        } else {
+            MoveWindowToCenter(True)
+        }
         config := GetHideWindowConfig()
         win_id := config.id
         if (win_id) {
             CenterHideWindow()
-        } else {
-            if (x < 0 and y == 0 ) { ;已经全屏
-                return
-            } else {
-                MoveWindowToCenter(True)
-            }
         }
         GlobalSet("Status", "ignore_function", True)
     Return
