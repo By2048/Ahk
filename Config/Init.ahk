@@ -6,6 +6,7 @@
 
 Global Init := {}
 
+Init["setup"]  := False
 Init["width"]  := 650
 Init["height"] := 900
 Init["config"] := []
@@ -26,6 +27,13 @@ AddInitLine()
 
 GetInitConfig()
 {
+    check := Init["setup"]
+    if (check) {
+        Return
+    } else {
+        Init["setup"] := True
+    }
+
     AddInitLine()
     Init["config"].Push( Format(" A_WorkingDir | {1}" , A_WorkingDir ) )
     Init["config"].Push( Format(" JQB          | {1}    {2}", JQB.Phone, JQB.Windows)                                  )
@@ -49,8 +57,5 @@ GetInitConfig()
     FileRead, init_file_config, %init_file%
     Init["config"].Push( init_file_config )
 
-    AddInitLine()    
+    AddInitLine()
 }
-
-
-GetInitConfig()
