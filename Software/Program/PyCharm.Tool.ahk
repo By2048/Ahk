@@ -32,8 +32,8 @@ FloatToolSwitch(Key, rule)
 GetHideWindowConfig()
 {
     check_rule  := "ahk_exe pycharm64.exe ahk_class SunAwtWindow"
-    check_sleep := 10
-    check_count := 66
+    check_sleep := 30
+    check_count := 22
 
     win_id := 0x0
     Loop {
