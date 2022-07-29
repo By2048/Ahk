@@ -65,9 +65,6 @@ Return
 
 
 $RAlt::
-    if (CheckWindowActive("PyCharm")) {
-        return
-    }
     if (IsGame()) {
         return
     }
@@ -80,8 +77,12 @@ $RAlt::
     SetTimer, Timer, -500
 Return
 Timer:
-    ; if (cnt == 1) {
-        ; HighlightActiveWindow( , , _time_:=100)
-    ; }
+    if (cnt == 1) {
+        GetActiveWindowInfo()
+        process_name := window.process_name
+        HelpText("`n" process_name "`n", "Center", "Screen1")
+        HighlightActiveWindow(500)
+        HelpText()
+    }
     cnt := 0
 Return
