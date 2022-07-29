@@ -9,9 +9,6 @@
 #NoTrayIcon
 
 
-Global Windows_Theme := "Default"
-
-
 ; 环境编辑器
 <#7::
     Run sysdm.cpl
@@ -58,7 +55,6 @@ Return
 <#+0 Up::
     WinActivate, ahk_id %previous_win_id%
 Return
-
 
 ;声音
 <#=::Send {Volume_Up}
@@ -126,7 +122,7 @@ Return
     SetNumLockState, Off
 Return
 
-;修改窗口透明度
+; 修改窗口透明度
 ; <#WheelUp::SetWindowTransparent(10)
 ; <#WheelDown::SetWindowTransparent(-10)
 
@@ -142,58 +138,6 @@ Return
 <#Delete::ScreenshotActivateSoftware("T:\")
 ;软件截图 长久
 <#+Delete::ScreenshotActivateSoftware("P:\Screen\")
-
-;设置默认位置
-<#\::MoveWindowToDefaultPosition()
-<#+\::MoveWindowToBackupPosition()
-
-LWin & AppsKey::
-    global Windows_Theme
-    lshift_state := GetKeyState("LShift")
-    if (lshift_state) {
-        hcblack_theme := "C:\Windows\Resources\Ease of Access Themes\hcblack.theme"
-        default_theme := "C:\Users\Administrator\AppData\Local\Microsoft\Windows\Themes\Default.theme"
-        if (Windows_Theme=="HCBlack") {
-            Run %default_theme%
-            Windows_Theme := "Default"
-            HelpText("Windows Theme Default", "center", "screen3", 1000)
-        } else if (Windows_Theme=="Default") {
-            Run %hcblack_theme%
-            Windows_Theme := "HCBlack"
-            HelpText("Windows Theme HCBlack", "center", "screen3", 1000)
-        }
-        exe := ProcessNameOrigin("WindowsSettings")
-        WinWait, ahk_exe %exe%
-        WinClose, ahk_exe %exe%
-    } else {
-        ; 系统主题
-        path        := "HKEY_CURRENT_USER"
-        config      := "Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-        key         := "AppsUseLightTheme"
-        path_config := Format("{}\{}", path, config)
-        RegRead, light_theme, %path_config%, %key%
-        if (light_theme = "0") {
-            RegWrite, REG_DWORD, %path%, %config%, %key%, 1
-            HelpText("`n Light `n", "center", "screen1", 1000)
-        } else if (light_theme = "1") {
-            RegWrite, REG_DWORD, %path%, %config%, %key%, 0
-            HelpText("`n Dark `n", "center", "screen1", 1000)
-        }
-    }
-
-Return
-
-;切换Windows默认标题栏
-LWin & RShift::
-    WS_CAPTION := 0xC00000
-    WinGet, _style_ , Style, A
-    WinSet, Style, ^%WS_CAPTION%, A
-    if (not (_style_ & WS_CAPTION)) {
-        HelpText("`n Windows Title Show `n", "Center", "Screen1", 500)
-    } else {
-        HelpText("`n Windows Title Hide `n", "Center", "Screen1", 500)
-    }
-Return
 
 ;结束应用
 <#BackSpace::
@@ -222,7 +166,6 @@ Return
 
     WinClose, ahk_id %win_id%
 Return
-
 ;结束进程
 <#+BackSpace::
     if (IsDesktops() or IsGame()) {
@@ -233,6 +176,62 @@ Return
     Process, Close, %pid%
     ; win_process_exe := window.process_exe
     ; Process, Close, %process_exe%
+Return
+
+;设置默认位置
+<#\::MoveWindowToDefaultPosition()
+<#+\::MoveWindowToBackupPosition()
+
+Global Windows_Theme := "Default"
+LWin & RShift::
+    lshift_state := GetKeyState("LShift")
+    if (lshift_state) {
+        hcblack_theme := "C:\Windows\Resources\Ease of Access Themes\hcblack.theme"
+        default_theme := "C:\Users\Administrator\AppData\Local\Microsoft\Windows\Themes\Default.theme"
+        if (Windows_Theme == "HCBlack") {
+            Run %default_theme%
+            Windows_Theme := "Default"
+            HelpText("Windows Theme Default", "center", "screen3", 1000)
+        } else if (Windows_Theme == "Default") {
+            Run %hcblack_theme%
+            Windows_Theme := "HCBlack"
+            HelpText("Windows Theme HCBlack", "center", "screen3", 1000)
+        }
+        exe := ProcessNameOrigin("WindowsSettings")
+        WinWait, ahk_exe %exe%
+        WinClose, ahk_exe %exe%
+    } else {
+        ; 系统主题
+        path        := "HKEY_CURRENT_USER"
+        config      := "Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+        key         := "AppsUseLightTheme"
+        path_config := Format("{}\{}", path, config)
+        RegRead, light_theme, %path_config%, %key%
+        if (light_theme == "0") {
+            RegWrite, REG_DWORD, %path%, %config%, %key%, 1
+            HelpText("`n Light `n", "center", "screen1", 1000)
+        } else if (light_theme == "1") {
+            RegWrite, REG_DWORD, %path%, %config%, %key%, 0
+            HelpText("`n Dark `n", "center", "screen1", 1000)
+        }
+    }
+Return
+
+;切换Windows默认标题栏
+LWin & RAlt::
+    WS_CAPTION := 0xC00000
+    WinGet, _style_ , Style, A
+    WinSet, Style, ^%WS_CAPTION%, A
+    if (not (_style_ & WS_CAPTION)) {
+        HelpText("`n Windows Title Show `n", "Center", "Screen1", 500)
+    } else {
+        HelpText("`n Windows Title Hide `n", "Center", "Screen1", 500)
+    }
+Return
+
+; 激活桌面
+LWin & RCtrl::
+    WinActivate, ahk_exe Explorer.exe ahk_class WorkerW
 Return
 
 ;切换应用
