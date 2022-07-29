@@ -76,7 +76,7 @@ CapsLock::
     WinActivate, ahk_id %win_id%
 
     ; 高亮窗口
-    HighlightActiveWindow(  ,  , _time_:=300)
+    HighlightActiveWindow(300)
 
 Return
 
@@ -88,7 +88,7 @@ CapsLock & Space::
     DllCall("SetCursorPos", "int", xx, "int", yy)
     MouseGetPos,  _,  _, win_id
     WinActivate, ahk_id %win_id%
-    HighlightActiveWindow(  ,  , _time_:=300)
+    HighlightActiveWindow(300)
 Return
 
 
