@@ -85,7 +85,7 @@
         Send {F6}
         WinGetClass, win_class, A
         if (win_class == "WorkerW") { ;桌面
-            HelpText("Desktop", "Center", "Screen1", 300)
+            HelpText("`nDesktop`n", "Center", "Screen1", 300)
         }
     Return
 
