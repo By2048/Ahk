@@ -36,8 +36,12 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     CoordMode, Pixel, Screen
     CoordMode, Mouse, Screen
 
-    if (not data and data != 0) {
+    Global HelpText_Gui_Id
+    if (not data) {
         GlobalSet("Status", "help_text_show_status", False)
+        if (HelpText_Gui_Id) {
+            WinClose, ahk_id %HelpText_Gui_Id%
+        }
         Gui, Destroy
         return
     }
@@ -81,7 +85,7 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 
     Global TextMain
     Gui, Destroy
-    Gui, +AlwaysOnTop +Disabled +Owner +HwndGuiId -SysMenu -Caption -DPIScale
+    Gui, +HwndHelpText_Gui_Id +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
     Gui, Margin, 0, 0
     Gui, font, s%font_size%, %font_type%
     Gui, Add, Text, +Center +Border vTextMain x%text_x% y%text_y% w%text_w%, %data%
@@ -132,9 +136,9 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 
     Gui, Show, NA x%gui_x% y%gui_y% w%gui_w% h%gui_h%
 
-    ; 透明度 追上层
+    ; 透明度 最上层
     ; keyboard_transcolor := "F1ECED"
-    ; WinSet, TransColor, %keyboard_transcolor% 100, ahk_id %GuiId%
+    ; WinSet, TransColor, %keyboard_transcolor% 100, ahk_id %HelpText_Gui_Id%
 
     GlobalSet("Status", "help_text_show_status", True)
 
@@ -143,4 +147,10 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
         Gui, Destroy
         GlobalSet("Status", "help_text_show_status", False)
     }
+    ; SetTimer, CloseHelpGui, -1
+    ; CloseHelpGui:
+    ;     Sleep %sleep_time%
+    ;     WinClose, ahk_id %HelpText_Gui_Id%
+    ;     GlobalSet("Status", "help_text_show_status", False)
+    ; Return
 }
