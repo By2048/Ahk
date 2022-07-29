@@ -630,7 +630,7 @@ MoveWindowToBackupPosition()  {
 
 
 ; 高亮激活的窗口
-HighlightActiveWindow(width:=9, _color_:="e51400", _time_:=300)
+HighlightActiveWindow(time:=300, width:=9, color:="e51400")
 {
     GetActiveWindowInfo("Strict")
 
@@ -690,11 +690,9 @@ HighlightActiveWindow(width:=9, _color_:="e51400", _time_:=300)
 
     Gui, New
     Gui, Margin, 0, 0
-    Gui, +HWNDgui_id +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
-    Gui, Color, %_color_%
+    Gui, +HWNDHighlight_Gui_Id +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
+    Gui, Color, %color%
     Gui, Show ,X%gui_x% Y%gui_y% W%gui_w% H%gui_h% NA
-
-    ; WinSet, TransParent, 100, ahk_id %gui_id%
 
     qx1 := Q[1][1] , qy1 := Q[1][2]
     qx2 := Q[2][1] , qy2 := Q[2][2]
@@ -708,18 +706,14 @@ HighlightActiveWindow(width:=9, _color_:="e51400", _time_:=300)
     px4 := P[4][1] , py4 := P[4][2]
     px5 := P[5][1] , py5 := P[5][2]
 
+    ; WinSet, TransParent, 100, ahk_id %Highlight_Gui_Id%
     WinSet, Region
     , %qx1%-%qy1% %qx2%-%qy2% %qx3%-%qy3% %qx4%-%qy4% %qx5%-%qy5% %px1%-%py1% %px2%-%py2% %px3%-%py3% %px4%-%py4% %px5%-%py5% 
-    , ahk_id %gui_id%
+    , ahk_id %Highlight_Gui_Id%
 
-    global Highlight_Gui_Id
-    Highlight_Gui_Id := gui_id
-
-    SetTimer, CloseHighlightGui, -100
-
+    SetTimer, CloseHighlightGui, -1
     CloseHighlightGui:
-        global Highlight_Gui_Id
-        Sleep %_time_%
+        Sleep %time%
         WinClose, ahk_id %Highlight_Gui_Id%
     Return
 }
