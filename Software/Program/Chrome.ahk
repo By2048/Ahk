@@ -132,13 +132,23 @@
     ^t::Return
     !t::Send ^t
 
-    ;新窗口
+    ; 新窗口
     ; ^n::Return
     ; !n::Send ^n
 
-    ;新隐私窗口
+    ; 新隐私窗口
     ; ^+n::Return
     ; !+n::Send ^+n
+
+    ;保存
+    ; ^s::Return
+    ; !s::Send ^s
+
+    ;定位
+    ; ^g::Return
+    ; !g::Send ^g
+    ; ^+g::Return
+    ; !+g::Send ^+g
     
     ;关闭窗口
     ^w::Return    
@@ -242,15 +252,6 @@
     !p::Send ^p
     !+p::Send ^+p
 
-    ;保存
-    ^s::Return
-    !s::Send ^s
-
-    ;定位
-    ^g::Return
-    !g::Send ^g
-    ^+g::Return
-    !+g::Send ^+g
 
     ; 反馈
     !+i::Return

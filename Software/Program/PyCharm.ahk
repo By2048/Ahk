@@ -273,24 +273,36 @@
         }
     Return
 
-    ; 主菜单
+    ; 主菜单 工具窗口
     ^!Enter::Return
+    ^!+Enter::Return
     CapsLock & Enter::
         EscRedirect := True
+        key_shift := GetKeyState("LShift", "P")
         if (CapsLockActivate == True) {
             Send {Esc}
-            OffsetTool := False
+            if (key_shift) {
+                OffsetTool := False
+            } else{
+                FloatTool := False  
+            }
             CapsLockActivate := False
         } else {
-            Send ^!{Enter}
-            OffsetTool := True
+            if (key_shift) {
+                Send ^!+{Enter}
+                OffsetTool := True
+                EnterCount := 0
+                OffsetToolLeft := 1000
+                OffsetToolSpace := 5
+                config := CenterHideWindow(OffsetToolLeft)
+                OffsetToolWidth := config.w
+                OffsetToolTotalWidth := OffsetToolWidth + OffsetToolSpace
+            } else {
+                Send ^!{Enter}
+                FloatTool := True
+                CenterHideWindow()
+            }
             CapsLockActivate := True
-            EnterCount := 0
-            OffsetToolLeft := 1000
-            OffsetToolSpace := 5
-            config := CenterHideWindow(OffsetToolLeft)
-            OffsetToolWidth := config.w
-            OffsetToolTotalWidth := OffsetToolWidth + OffsetToolSpace
         }
     Return
 

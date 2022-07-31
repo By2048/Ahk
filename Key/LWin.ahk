@@ -232,6 +232,7 @@ Return
 ; 激活桌面
 LWin & RCtrl::
     WinActivate, ahk_exe Explorer.exe ahk_class WorkerW
+    HelpText("`nDesktop`n", "Center", "Screen1", 300)
 Return
 
 ;切换应用
