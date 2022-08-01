@@ -9,6 +9,30 @@
 #NoTrayIcon
 
 
+$RAlt::
+    if (IsGame()) {
+        return
+    }
+    if (cnt > 0) {
+        cnt += 1
+        return
+    } else {
+        cnt := 1
+    }
+    SetTimer, Timer, -500
+Return
+Timer:
+    if (cnt == 2) {
+        GetActiveWindowInfo()
+        process_name := window.process_name
+        HelpText("`n" process_name "`n", "CenterDown", "Screen1")
+        HighlightActiveWindow(500)
+        HelpText()
+    }
+    cnt := 0
+Return
+
+
  >!F1::Send {F13}
  >!F2::Send {F14}
  >!F3::Send {F15}
@@ -40,16 +64,6 @@
 >!Enter::Send {NumpadEnter}
 
 
-LAlt & RAlt::
-    Send ^{ScrollLock}
-    SetScrollLockState, Off
-Return
-RAlt & LAlt::
-    Send !{ScrollLock}
-    SetScrollLockState, Off
-Return
-
-
 RAlt & RWin::
     if (IsDesktops() or IsGame()) {
         return
@@ -57,32 +71,7 @@ RAlt & RWin::
         Send !{F4}
     }
 Return
-
 RAlt & RCtrl::
     EN()
     HelpText("EN","center","screen1",1000)
-Return
-
-
-$RAlt::
-    if (IsGame()) {
-        return
-    }
-    if (cnt > 0) {
-        cnt += 1
-        return
-    } else {
-        cnt := 1
-    }
-    SetTimer, Timer, -500
-Return
-Timer:
-    if (cnt == 1) {
-        GetActiveWindowInfo()
-        process_name := window.process_name
-        HelpText("`n" process_name "`n", "Center", "Screen1")
-        HighlightActiveWindow(500)
-        HelpText()
-    }
-    cnt := 0
 Return
