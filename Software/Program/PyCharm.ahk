@@ -3,13 +3,13 @@
 
 #If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python 控制台")
     ;ReRun
-    !BackSpace::MouseClickAndResetting(34, 92)
+    +BackSpace::MouseClickAndResetting(34, 92)
 
     ;StopConsole
-    !+BackSpace::MouseClickAndResetting(34, 142)
+    !BackSpace::MouseClickAndResetting(34, 142)
 #If
 
-#If CheckWindowActive("PyCharm" , "SunAwtDialog", "终端|运行|调试")
+#If CheckWindowActive("PyCharm", "SunAwtDialog", "终端|运行|调试")
     ~CapsLock::
         if (not hide_status or hide_status == False) {
             WinSet, Transparent, 99, A
@@ -19,16 +19,21 @@
     ~CapsLock Up::
         WinSet, Transparent, 255, A
         hide_status := False
+        SetCapsLockState, Off
     Return
 #If
 
-;浮动工具栏
+; 浮动工具栏
 #If ( CheckWindowActive("PyCharm") And FloatTool == True )
-    ~Esc::
-    ~CapsLock::
+    $Esc::
+    $CapsLock::
+        Send {Esc}
         FloatTool := False
+        CapsLockActivate := False
+        SetCapsLockState, Off
     Return
-    ~Enter::
+    $Enter::
+        Send {Enter}
         Sleep 99
         C := GetHideWindowConfig()
         win_id := C.id
@@ -36,7 +41,7 @@
     Return
 #If
 
-;浮动工具栏 偏移位置
+; 浮动工具栏 偏移位置
 #If ( CheckWindowActive("PyCharm") And OffsetTool == True )
     Enter::
         Send {Enter}
@@ -74,7 +79,8 @@
 #If
 
 #If ( CheckWindowActive("PyCharm") And EscRedirect == True )
-    ~Esc::
+    Esc::
+        Send {Esc}
         EscRedirect := False
         EscCount := 0
         CapsLockActivate := False
@@ -210,6 +216,7 @@
             CapsLockActivate := True
             CenterHideWindow()
         }
+        SetCapsLockState, AlwaysOff
     Return
 
     ; 跳转到导航栏
@@ -225,6 +232,7 @@
             Send ^!p
             CapsLockActivate := True
         }
+        SetCapsLockState, AlwaysOff
     Return
 
     ; 编辑 编辑器操作
@@ -245,6 +253,7 @@
             }
             CapsLockActivate := True
         }
+        SetCapsLockState, AlwaysOff
     Return
 
     ; 书签 Bookmark
@@ -271,6 +280,7 @@
                 CapsLockActivate := False
             }
         }
+        SetCapsLockState, AlwaysOff
     Return
 
     ; 主菜单 工具窗口
@@ -304,6 +314,7 @@
             }
             CapsLockActivate := True
         }
+        SetCapsLockState, AlwaysOff
     Return
 
     ; 代码
@@ -317,6 +328,7 @@
             CapsLockActivate := True
             CenterHideWindow()
         }
+        SetCapsLockState, AlwaysOff
     Return
 
     ; 切换器操作
@@ -331,6 +343,7 @@
             CapsLockActivate := True
             CenterHideWindow()
         }
+        SetCapsLockState, AlwaysOff
     Return
 
     ; 活动工具窗口
@@ -345,6 +358,7 @@
             CapsLockActivate := True
             CenterHideWindow()
         }
+        SetCapsLockState, AlwaysOff
     Return
 
     ; 编辑器选项卡
@@ -361,16 +375,19 @@
             CapsLockActivate := True
             CenterHideWindow()
         }
+        SetCapsLockState, AlwaysOff
     Return
 
     ; 项目 结构
     CapsLock & [::
         Send ^![
         EscRedirect := True
+        SetCapsLockState, AlwaysOff
     Return
     CapsLock & ]::
         Send ^!]
         EscRedirect := True
+        SetCapsLockState, AlwaysOff
     Return
 
     ; 窗口大小调整
