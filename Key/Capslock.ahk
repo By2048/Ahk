@@ -10,9 +10,8 @@
 #NoTrayIcon
 
 
-
 ;切换到显示器中心 
-CapsLock::
+$CapsLock::
 
     CoordMode, Mouse, Screen
     MouseGetPos, x_current, y_current
@@ -81,6 +80,14 @@ CapsLock::
 Return
 
 
+; 关闭大写锁定
+$CapsLock Up::
+    SetCapsLockState, Off
+    SetNumLockState, Off
+    SetScrollLockState, Off
+Return
+
+
 ; 屏幕1中心
 CapsLock & Space::
     xx := Screen.x + Screen.w/2
@@ -89,12 +96,4 @@ CapsLock & Space::
     MouseGetPos,  _,  _, win_id
     WinActivate, ahk_id %win_id%
     HighlightActiveWindow(300)
-Return
-
-
-;关闭大写锁定
-CapsLock Up::
-    SetCapsLockState, Off
-    SetNumLockState, Off
-    SetScrollLockState, Off
 Return
