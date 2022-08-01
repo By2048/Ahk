@@ -83,10 +83,14 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
 
     if (StrLen(_title_) > 0) {
         titles := StrSplit(_title_, "|")
+        check  := False
         for index, value in titles {
             if (InStr(win_title, value)) {
-                return True
+                check := True
             }
+        }
+        if (not check) {
+            return False
         }
     }
 
