@@ -158,13 +158,8 @@
         CapsLockActivate := False
     Return
 
-    $CapsLock::
-        Send {Esc}
-    Return
-    $CapsLock Up::
+    ~*CapsLock::
         SetCapsLockState, Off
-        SetNumLockState, Off
-        SetScrollLockState, Off
     Return
 
     ~^n::CenterHideWindow()
@@ -216,7 +211,6 @@
             CapsLockActivate := True
             CenterHideWindow()
         }
-        SetCapsLockState, AlwaysOff
     Return
 
     ; 跳转到导航栏
@@ -232,7 +226,6 @@
             Send ^!p
             CapsLockActivate := True
         }
-        SetCapsLockState, AlwaysOff
     Return
 
     ; 编辑 编辑器操作
@@ -253,7 +246,6 @@
             }
             CapsLockActivate := True
         }
-        SetCapsLockState, AlwaysOff
     Return
 
     ; 书签 Bookmark
@@ -280,7 +272,6 @@
                 CapsLockActivate := False
             }
         }
-        SetCapsLockState, AlwaysOff
     Return
 
     ; 主菜单 工具窗口
@@ -314,7 +305,6 @@
             }
             CapsLockActivate := True
         }
-        SetCapsLockState, AlwaysOff
     Return
 
     ; 代码
@@ -328,7 +318,6 @@
             CapsLockActivate := True
             CenterHideWindow()
         }
-        SetCapsLockState, AlwaysOff
     Return
 
     ; 切换器操作
@@ -343,7 +332,6 @@
             CapsLockActivate := True
             CenterHideWindow()
         }
-        SetCapsLockState, AlwaysOff
     Return
 
     ; 活动工具窗口
@@ -358,7 +346,6 @@
             CapsLockActivate := True
             CenterHideWindow()
         }
-        SetCapsLockState, AlwaysOff
     Return
 
     ; 编辑器选项卡
@@ -375,19 +362,16 @@
             CapsLockActivate := True
             CenterHideWindow()
         }
-        SetCapsLockState, AlwaysOff
     Return
 
     ; 项目 结构
     CapsLock & [::
         Send ^![
         EscRedirect := True
-        SetCapsLockState, AlwaysOff
     Return
     CapsLock & ]::
         Send ^!]
         EscRedirect := True
-        SetCapsLockState, AlwaysOff
     Return
 
     ; 窗口大小调整
