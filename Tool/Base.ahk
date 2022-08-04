@@ -1,10 +1,10 @@
 ﻿
-for Arg_Index, Arg_Value in A_Args {
-    if (Arg_Value == "Start" or Arg_Value == "Reload") {
+For Arg_Index, Arg_Value In A_Args {
+    If (Arg_Value == "Start" Or Arg_Value == "Reload") {
         Reload
-    } else if (Arg_Value == "Stop" or Arg_Value == "Exit") {
+    } Else If (Arg_Value == "Stop" Or Arg_Value == "Exit") {
         ExitApp
-    } else if (Arg_Value == "Pause") {
+    } Else If (Arg_Value == "Pause") {
         Pause
     }
 }
