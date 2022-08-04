@@ -102,10 +102,6 @@ Return
 
 RCtrl & Enter::Run E:\Doc\All.xlsx
 RCtrl & RWin::Send ^w
-RCtrl & RAlt::
-    ZH()
-    HelpText("ZH","center","screen1",1000)
-Return
 
 
 $RCtrl::

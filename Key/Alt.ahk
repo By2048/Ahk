@@ -71,7 +71,3 @@ RAlt & RWin::
         Send !{F4}
     }
 Return
-RAlt & RCtrl::
-    EN()
-    HelpText("EN","center","screen1",1000)
-Return
