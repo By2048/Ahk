@@ -261,9 +261,9 @@ Return
 ; 输入法管理
 LCtrl & LWin::
     ZH()
-    HelpText("`n ZH_CN `n", "Center", "Screen1", 1000)
+    HelpText("`n ZH_CN `n", "Center", "Screen1", 300)
 Return
 LAlt & LWin::
     EN()
-    HelpText("`n  EN  `n", "Center", "Screen1", 1000)
+    HelpText("`n  EN  `n", "Center", "Screen1", 300)
 Return
