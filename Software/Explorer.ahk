@@ -70,24 +70,55 @@
     ; 重命名
     F2::Return
     ^r::Send {F2}
-
-    ; 状态栏历史
-    F4::Return
-    !/::Send {F4}
-
-    ; 刷新
-    F5::Return
-    /::Send {F5}
+    
+    ; ----------------------------------------------------------------------
 
     ;切换输入焦点
     F6::Return
-    \::
-        Send {F6}
-        WinGetClass, win_class, A
-        if (win_class == "WorkerW") { ;桌面
-            HelpText("`nDesktop`n", "Center", "Screen1", 300)
+    +F6::Return
+    /::
+    +/::
+        if (A_ThisHotkey == "/") {
+            Send {F6}
         }
+        if (A_ThisHotkey == "+/") {
+            Send +{F6}
+        }
+        WinGetClass, win_class, A
+        ControlGetFocus, control_name, A
+        ControlGetText, control_text, %control_name%, A 
+        if (win_class == "WorkerW") { ;桌面
+            HelpText("`nDesktop`n", "Center", "Screen1", 100)
+        }
+        if (control_name == "ToolbarWindow321" and control_text == "导航按钮") {
+            HelpText("`n导航按钮`n", "Center", "Screen1")
+        }
+        if (control_name == "SysTreeView321" and control_text == "树视图") {
+            HelpText("`n树视图`n", "Center", "Screen1")
+        }
+        if (control_name == "DirectUIHWND3") {
+            HelpText("`n文件目录`n", "Center", "Screen1")
+        }
+        if (control_name == "DirectUIHWND2") {
+            HelpText("`n切换显示`n", "Center", "Screen1")
+        }
+        Sleep 100
+        HelpText()
     Return
+
+    ; 功能区展开缩放
+    ^F1::Return
+    !/::Send ^{F1}
+
+    ; 刷新
+    F5::Return
+    \::Send {F5}
+
+    ; 状态栏历史
+    F4::Return
+    !\::Send {F4}
+
+    ; ----------------------------------------------------------------------
 
     ; 显示Alt快捷键帮助
     F10::Return
@@ -104,10 +135,6 @@
     ; Alt+向左键 查看上一个文件夹
     ; Alt+向右键 查看下一个文件夹
     ; Alt+向上键 查看该文件夹所在的文件夹
-
-    ; 功能区展开缩放
-    ^F1::Return
-    !\::Send ^{F1}
 
     ; 切换
     ; 排序方式
