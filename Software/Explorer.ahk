@@ -102,7 +102,7 @@
         if (control_name == "DirectUIHWND2") {
             HelpText("`n切换显示`n", "Center", "Screen1")
         }
-        Sleep 100
+        Sleep 300
         HelpText()
     Return
 
@@ -158,7 +158,7 @@
     ^d::Return
 
     ; Ctrl+E 选择搜索框
-    ^e::Return
+    <^e::Return
 
     ; Ctrl+N 打开新窗口
     ; Ctrl+Shift+N 创建新文件夹

@@ -61,4 +61,5 @@ Explorer_Config["Recover"]  := [ [ "System.ItemNameDisplay"     , 500 ]
     
 Explorer_Config["D:\"]       := Explorer_Config["Software"]
 Explorer_Config["D:\Python"] := Explorer_Config["Software"]
+Explorer_Config["D:\Go"]     := Explorer_Config["Software"]
 Explorer_Config["回收站"]    := Explorer_Config["Recover"]
