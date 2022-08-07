@@ -93,6 +93,17 @@
     !F4::Send !{F16}
     !+F4::Send !+{F16}
 
+    ;窗口全屏
+    <#Enter::
+        Send ^!{NumLock}
+        SetNumLockState, Off
+    Return
+    ;窗口全屏选项
+    <#+Enter::
+        Send ^!+{NumLock}
+        SetNumLockState, Off
+    Return
+
     >^j::
         Send ^c
         data := Clipboard

@@ -11,8 +11,8 @@
 #If
 
 #If CheckWindowActive( "Explorer" , "#32770" , "属性" )
-    !F12::
-        ; 修改文件图标
+    ; 修改文件图标
+    \::
         Send ^+{Tab}
         Sleep 500
         Send !i

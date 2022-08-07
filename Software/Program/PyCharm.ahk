@@ -164,6 +164,7 @@
 
     ~^n::CenterHideWindow()
     ~^+n::CenterHideWindow()
+    ~!i::CenterHideWindow(900, 1000)
     ~^o::CenterHideWindow()
     ~!o::CenterHideWindow(1900, 1700)
     ~^+e::CenterHideWindow(666, 1300)
@@ -172,11 +173,35 @@
         EscRedirect := True
         CenterHideWindow(2244, 1600)
     Return
-    ~<#Enter::Return
-    ~<#+Enter::
-        CenterHideWindow()
+
+    ;窗口全屏
+    <#Enter::
+        Send ^!{NumLock}
+        SetNumLockState, Off
     Return
-    
+    ;窗口全屏选项
+    <#+Enter::
+        if (key_status) {
+            Send {Esc}
+            key_status := False
+            EscRedirect := False
+        } else {
+            Send ^!+{NumLock}
+            key_status := True
+            EscRedirect := True
+            CenterHideWindow()
+        }
+        SetNumLockState, Off
+    Return
+
+    <#\::
+        WinGetPos, x, y, w, h, A
+        if (x < 0 and y == 0 ) {
+            return
+        } 
+        MoveWindowToDefaultPosition()
+    Return
+
     !F1::FloatToolSwitch("!{F1}", "运行/调试配置")
     !F2::FloatToolSwitch("!{F2}", "断点")
 
