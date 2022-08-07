@@ -47,11 +47,9 @@ LOLSoftware()
 
 #If ( CheckWindowActive("LOL_Client") )
     #Include %A_WorkingDir%\Software\Game\LOL.Client.Private.ahk
-    Insert::Screenshot("Screen1" , "Tmp")
+    Insert::ScreenShot("Screen1", "T:\")
     #+BackSpace::
         _exe_ := ProcessNameOrigin("LOL_Client")
-        Run, Taskkill /F /IM %_exe_%
-        _exe_ := ProcessNameOrigin("JetBrains")
         Run, Taskkill /F /IM %_exe_%
     Return
 #If
@@ -90,19 +88,6 @@ LOLSoftware()
 
     !\::
         EN()
-        ; Send +{Enter}
-        ; Sleep 300
-        ; Send ======================
-        ; Send {Enter}
-        ; Send +{Enter}
-        ; Sleep 300
-        ; Send = 已屏蔽所有人聊天和信号 =
-        ; Send {Enter}
-        ; Send +{Enter}
-        ; Sleep 300
-        ; Send ======================
-        ; Send {Enter}
-        ; Sleep 300
         Send {Enter}
         Sleep 300
         SendInput /mute all
