@@ -224,6 +224,7 @@
         xx     := cinfo.xx
         yy     := cinfo.yy
 
+        ; 左右信息栏信息
         ; 426对齐 548最小
         left_length  := 426
         right_length := 550
