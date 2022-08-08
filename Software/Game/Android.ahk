@@ -47,6 +47,12 @@
     
     #Include %A_WorkingDir%\Software\Game\Android.COC.Private.ahk
 
+    Init_Coc_Args:
+        Global Android_COC_Loop := [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ]
+    Return
+
+    F12::ListVars
+
     `::Send {LButton}
     
     Tab::Send {LButton 4}
@@ -66,11 +72,11 @@
     ; 退出
     BackSpace::
         HelpText("BackSpace","center_down","screen_1")
-        Send A
+        Send a
         Sleep 100
-        Send S
+        Send s
         Sleep 2000
-        Send D
+        Send d
         Sleep 3000
         Send \
         Sleep 500
@@ -127,49 +133,51 @@
         Android_COC_Current := index
     Return
 
-    ; 按顺序切换兵
-    LShift::
-        if (Android_COC_Current == -1 ) {
-            next_index := Android_COC_Loop.MaxIndex()
-            Android_COC_Current := Android_COC_Loop[next_index]
+    ; 按顺序切换兵种 1-6
+    LAlt::
+        GoSub Init_Coc_Args
+        Global Android_COC_Current
+        if (not Android_COC_Current) {
+            Android_COC_Current := 1
             Send %Android_COC_Current%
             Return
-        } else {
-            for index, value in Android_COC_Loop {
-                if (value == Android_COC_Current) {
-                    if (index == 1) {
-                        next_index := Android_COC_Loop.MaxIndex()
-                        Android_COC_Current := Android_COC_Loop[next_index]
-                        Send %Android_COC_Current%
-                        Return
-                    } else {
-                        Android_COC_Current := Android_COC_Loop[index-1]
-                        Send %Android_COC_Current%
-                        Return
-                    }
+        }
+        for index, value in Android_COC_Loop {
+            if (value == Android_COC_Current) {
+                if (index == Android_COC_Loop.MaxIndex()) {
+                    Android_COC_Current := 1
+                    Send %Android_COC_Current%
+                    Return
+                } else {
+                    Android_COC_Current := Android_COC_Loop[index + 1]
+                    Send %Android_COC_Current%
+                    Return
                 }
             }
         }
     Return
 
-    ; 按顺序切换兵种 1-6
-    LAlt::
-        if (Android_COC_Current == -1) {
-            Android_COC_Current := 1
+    ; 按顺序切换兵
+    LShift::
+        GoSub Init_Coc_Args
+        Global Android_COC_Current
+        if (not Android_COC_Current) {
+            next_index := Android_COC_Loop.MaxIndex()
+            Android_COC_Current := Android_COC_Loop[next_index]
             Send %Android_COC_Current%
             Return
-        } else {
-            for index, value in Android_COC_Loop {
-                if (value = Android_COC_Current) {
-                    if (index = Android_COC_Loop.MaxIndex()) {
-                        Android_COC_Current := 1
-                        Send %Android_COC_Current%
-                        Return
-                    } else {
-                        Android_COC_Current := Android_COC_Loop[index+1]
-                        Send %Android_COC_Current%
-                        Return
-                    }
+        }
+        for index, value in Android_COC_Loop {
+            if (value == Android_COC_Current) {
+                if (index == 1) {
+                    next_index := Android_COC_Loop.MaxIndex()
+                    Android_COC_Current := Android_COC_Loop[next_index]
+                    Send %Android_COC_Current%
+                    Return
+                } else {
+                    Android_COC_Current := Android_COC_Loop[index - 1]
+                    Send %Android_COC_Current%
+                    Return
                 }
             }
         }

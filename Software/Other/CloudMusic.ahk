@@ -14,38 +14,40 @@
     Return
 
     \::Send !\
-
     [::Send ![
     ]::Send !]
+    =::!=
+    -::!-
 
-    =::
-        if (Cloud_Music_Volume = -1){
-            Send !{- 10}
-            Send !{= 5}
-            Cloud_Music_Volume := 5
-        } else {
-            Send !=
-            Cloud_Music_Volume := Cloud_Music_Volume + 1
-        }
-        if (Cloud_Music_Volume >= 10) {
-            Cloud_Music_Volume := 10
-        }
-        HelpText(Cloud_Music_Volume , "center_down" ,   , 200)
-    Return
-    -::
-        if (Cloud_Music_Volume == -1){
-            Send !{- 10}
-            Send !{= 5}
-            Cloud_Music_Volume := 5
-        } else {
-            Send !-
-            Cloud_Music_Volume := Cloud_Music_Volume - 1
-        }
-        if (Cloud_Music_Volume <= 0) {
-            Cloud_Music_Volume := 0
-        }
-        HelpText(Cloud_Music_Volume , "center_down" ,   , 200)
-    Return
+    ; Global Cloud_Music_Volume := -1
+    ; =::
+    ;     Global Cloud_Music_Volume
+    ;     if (Cloud_Music_Volume == -1 or not Cloud_Music_Volume){
+    ;         Send !{- 10}
+    ;         Send !{= 5}
+    ;         Cloud_Music_Volume := 5
+    ;     }
+    ;     Send !=
+    ;     Cloud_Music_Volume := Cloud_Music_Volume + 1
+    ;     if (Cloud_Music_Volume >= 10) {
+    ;         Cloud_Music_Volume := 10
+    ;     }
+    ;     HelpText(Cloud_Music_Volume , "center_down" ,   , 200)
+    ; Return
+    ; -::
+    ;     Global Cloud_Music_Volume
+    ;     if (Cloud_Music_Volume == -1 or not Cloud_Music_Volume){
+    ;         Send !{- 10}
+    ;         Send !{= 5}
+    ;         Cloud_Music_Volume := 5
+    ;     }
+    ;     Send !-
+    ;     Cloud_Music_Volume := Cloud_Music_Volume - 1
+    ;     if (Cloud_Music_Volume <= 0) {
+    ;         Cloud_Music_Volume := 0
+    ;     }
+    ;     HelpText(Cloud_Music_Volume , "center_down" ,   , 200)
+    ; Return
 
     ; 列表上一首
     PgUp::

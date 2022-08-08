@@ -18,7 +18,7 @@
     ; 在资源管理器中打开
     !\::
         MouseClick, Right
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Wallpaper_Theme . "\Open.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\Black\Open.png"
         ClickImage(image)
     Return
 
@@ -29,7 +29,7 @@
 
     ; 预览
     !p::
-        if (Wallpaper_State == -1) {
+        if (not Wallpaper_State) {
             Wallpaper_State := 0
         }
         if (Wallpaper_State == 0) {
@@ -48,7 +48,7 @@
         y1    := win_h * 90/100
         x2    := x1    + 2000
         y2    := y1    + 100
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Wallpaper_Theme . "\PgUp.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\Black\PgUp.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
     Return
     !PgDn::
@@ -58,7 +58,7 @@
         y1    := win_h * 90/100
         x2    := x1    + 2000
         y2    := y1    + 100
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Wallpaper_Theme . "\PgDn.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\Black\PgDn.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
         ; Gui, -DPIScale +Disabled +Owner -SysMenu -Caption
         ; Gui, +Border
@@ -71,14 +71,14 @@
     ; 订阅
     ![::
         MouseClick, Right
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Wallpaper_Theme . "\Download.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\Black\Download.png"
         ClickImage(image)
     Return
 
     ; 取消订阅
     !]::
         MouseClick, Right
-        image := A_WorkingDir . "\Image\Software\Wallpaper\" . Wallpaper_Theme . "\Delete.png"
+        image := A_WorkingDir . "\Image\Software\Wallpaper\Black\Delete.png"
         ClickImage(image)
         Sleep 100
         Send {Enter}
