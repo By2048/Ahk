@@ -1,5 +1,5 @@
 ﻿
-#If CheckWindowActive("Explorer" , "OperationStatusWindow" , "删除文件")
+#If CheckWindowActive( "Explorer" , "OperationStatusWindow" , "删除文件" )
     !y::Return
     !n::Return
     \::Send !a
@@ -34,13 +34,13 @@
 #If
 
 ; 任务栏
-#If CheckWindowActive("Explorer" , "Shell_TrayWnd")
+#If CheckWindowActive( "Explorer" , "Shell_TrayWnd" )
     WheelUp::Send {Volume_Up}
     WheelDown::Send {Volume_Down}
 #If
 
 ; 桌面
-#If CheckWindowActive("Explorer" , "WorkerW")
+#If CheckWindowActive( "Explorer" , "WorkerW" )
     F9::Run D:\\
     F10::Run E:\\
     F11::Run P:\\
@@ -48,7 +48,7 @@
     >!Space::Run D:\#Lnk\Everything.lnk
 #If
 
-#If CheckWindowActive("Explorer")
+#If CheckWindowActive( "Explorer" )
 
     ; Ctrl+F 选择搜索框
     ; Alt+D 选择地址栏
