@@ -171,6 +171,7 @@
     ^WheelDown::Return
 
     <#\::
+    <#+\::
 
         ; D:\\   | 树 426 | 名称800  备注400    日期250             | 预览 550
         ; 回收站  | 树 426 | 名称500  原位置500  删除日期250  大小200  | 预览 550
@@ -178,10 +179,34 @@
         WPD["Explorer"] := Position(2520 , 1700)
         MoveWindowToDefaultPosition()
 
+        EC := { "List"     : [ [ "System.ItemNameDisplay"     , 1450 ] ] 
+              , "Default"  : [ [ "System.ItemNameDisplay"     , 999  ]
+                             , [ "System.ItemDate"            , 250  ]
+                             , [ "System.Size"                , 200  ] ]
+              , "Software" : [ [ "System.ItemNameDisplay"     , 800  ]
+                             , [ "System.Comment"             , 400  ]
+                             , [ "System.ItemDate"            , 250  ] ]
+              , "Recover"  : [ [ "System.ItemNameDisplay"     , 500  ]
+                             , [ "System.Recycle.DeletedFrom" , 500  ]
+                             , [ "System.Recycle.DateDeleted" , 250  ]
+                             , [ "System.Size"                , 200  ] ] }
+
+        EC["D:\"]       := EC["Software"]
+        EC["D:\Python"] := EC["Software"]
+        EC["D:\Go"]     := EC["Software"]
+        EC["D:\Java"]   := EC["Software"]
+        EC["回收站"]    := EC["Recover"]
+
         win_title := window.title
-        config := Explorer_Config[win_title]
+        config := EC[win_title]
         if (not config) {
-            config := Explorer_Config["Default"]
+            if (A_ThisHotkey == "<#+\") {
+                config := EC["List"]
+            } else if (A_ThisHotkey == "<#\") {
+                config := EC["Default"]
+            } else {
+                config := EC["Default"]
+            }
         }
         SetExplorertColumns(config)
 

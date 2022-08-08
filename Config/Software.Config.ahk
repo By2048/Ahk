@@ -42,25 +42,3 @@ Excel_Hotkeys_Image.Push( "3 A1 G22 0 E:\Project\Ahk\Image\RCtrl.png"           
 ; Excel_Hotkeys_Image.Push( "8 A1 G27 0 E:\Project\Ahk\Image\RShift\Xshell.png"          )
 ; Excel_Hotkeys_Image.Push( "9 A1 I41 6 E:\Project\Ahk\Image\RShift\Chrome.png"          )
 ; Excel_Hotkeys_Image.Push( "9 J1 P26 2 E:\Project\Ahk\Image\RShift\Chrome-Bilibili.png" )
-
-
-; 文件管理器显示列设置
-Global Explorer_Config := {}
-Explorer_Config["Default"]  := [ [ "System.ItemNameDisplay" , 999 ]
-                               , [ "System.ItemDate"        , 250 ]
-                               , [ "System.Size"            , 200 ] ]
-
-Explorer_Config["Software"] := [ [ "System.ItemNameDisplay" , 800 ]
-                                , [ "System.Comment"         , 400 ]
-                                , [ "System.ItemDate"        , 250 ] ]
-
-Explorer_Config["Recover"]  := [ [ "System.ItemNameDisplay"     , 500 ]
-                               , [ "System.Recycle.DeletedFrom" , 500 ]
-                               , [ "System.Recycle.DateDeleted" , 250 ]
-                               , [ "System.Size"                , 200 ] ]
-    
-Explorer_Config["D:\"]       := Explorer_Config["Software"]
-Explorer_Config["D:\Python"] := Explorer_Config["Software"]
-Explorer_Config["D:\Go"]     := Explorer_Config["Software"]
-Explorer_Config["D:\Java"]   := Explorer_Config["Software"]
-Explorer_Config["回收站"]    := Explorer_Config["Recover"]
