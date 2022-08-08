@@ -63,6 +63,3 @@ Windows_Process_Name.Push( [ "SearchUI"                , "Search"          ] ) ;
 Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "ShellExperienceHost"     , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "WindowsTerminal"         , "Terminal"        ] ) ;终端
-
-
-#Include %A_WorkingDir%\Config\Software.Config.ahk
