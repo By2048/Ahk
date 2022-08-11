@@ -136,7 +136,7 @@
     Esc::
         CoordMode, Mouse, Window
         MouseGetPos, x, y
-        MouseClick, Left, 50, 30
+        MouseClick, Left, 50, 30, 1, 0
         MouseMove x, y, 0
     Return
 

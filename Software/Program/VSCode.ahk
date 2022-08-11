@@ -59,6 +59,10 @@
 
 #If CheckWindowActive("VSCode")
 
+    ~*CapsLock::
+        SetCapsLockState, Off
+    Return
+
     ~LShift::
         if (cnt > 0) {
             cnt += 1
@@ -122,5 +126,11 @@
             Send ^!{Space}
         } 
     Return
+
+    ; 窗口大小调整
+    CapsLock & Left:: Send ^!{Left}
+    CapsLock & Right::Send ^!{Right}
+    CapsLock & Up::   Send ^!{Up}
+    CapsLock & Down:: Send ^!{Down}
 
 #If
