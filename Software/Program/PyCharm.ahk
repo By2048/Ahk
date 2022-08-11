@@ -102,15 +102,51 @@
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
 
+    ~Esc::
+        CapsLockActivate := False
+    Return
+    
+    ~AppsKey::
+        CenterHideWindow()
+    Return
+    ~AppsKey Up::
+        OffsetTool := False
+        OffsetToolWidth := 0
+        OffsetToolTotalWidth := 0
+        OffsetToolWidth := 0
+        FloatTool := False
+        DoubleShift := False
+        EscRedirect := False
+        CapsLockActivate := False
+    Return
+
+    ; 断点 | 临时断点
+    $F2::
+        if (cnt > 0) {
+            cnt += 1
+            return
+        } else {
+            cnt := 1
+        }
+        SetTimer, F2Timer, -300
+    Return
+    F2Timer:
+        if (cnt == 1) {
+            Send {F2}
+        } else if (cnt == 2) {
+            Send !{F2}
+            WinWaitActive 断点
+            Send !{r}
+            Send {Enter}
+        }
+        cnt := 0
+    Return
+
     ~F11::
         WinGetTitle, win_title, A
         if (win_title == "评估") {
             Send {Esc}
         }
-    Return
-
-    ~Esc::
-        CapsLockActivate := False
     Return
 
     ~LShift::
@@ -142,20 +178,6 @@
             CenterHideWindow()
         }
         GlobalSet("Status", "ignore_function", True)
-    Return
-
-    ~AppsKey::
-        CenterHideWindow()
-    Return
-    ~AppsKey Up::
-        OffsetTool := False
-        OffsetToolWidth := 0
-        OffsetToolTotalWidth := 0
-        OffsetToolWidth := 0
-        FloatTool := False
-        DoubleShift := False
-        EscRedirect := False
-        CapsLockActivate := False
     Return
 
     #Include %A_WorkingDir%\Software\Program\PyCharm.CapsLock.ahk
