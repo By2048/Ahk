@@ -2,12 +2,12 @@
 #If CheckWindowActive("VSCode", "", ".md")
 
     !\::
-        result    := GetActiveWindowInfo()
-        win_title := result.title
+        GetActiveWindowInfo()
+        win_title := window.title
         script    := "E:/Project/script/note/setup.py"
         command   := Format("{} {} {}", Python, script, win_title)
         Run, %command%
-        HelpText(win_title, "center_down",  , 1000)
+        HelpText(win_title, "CenterDown", "ScreenMain" , 1000)
     Return
 
 #If
