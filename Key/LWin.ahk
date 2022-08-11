@@ -72,6 +72,9 @@ Return
 <#[::#+t
 <#]::#t
 
+;插入表情
+<#j::#`;
+
 <#,::#x ;系统菜单
 <#.::Run control ;控制面板
 <#/::Run ms-settings: ;设置
