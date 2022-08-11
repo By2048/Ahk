@@ -1,18 +1,23 @@
 ﻿
+#If ( CheckWindowActive("XshellCore", "#32770", "自定义按键对应") )
+    <#\::
+        _name  := "SysListView321"
+        _width := {  1 : 300   ;组合键
+                  ,  2 : 150   ;类型
+                  ,  3 : 400   ;操作
+                  ,  4 : 200 } ;参数
+        SetColumnWidth(_name, _width)
+    Return
+#If
+
+
+
 #If ( CheckWindowActive("Xshell") )
 
-    ^F1::Return
-    ^F2::Return
-    ^F3::Return
-    ^F4::Return
-    ^F5::Return
-    ^F6::Return
-    ^F7::Return
-    ^F8::Return
-    ^F9::Return
-    ^F10::Return
-    ^F11::Return
-    ^F12::Return
+    #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
+
+    <#Enter::Send ^!{F12}
+    <#+Enter::Send ^!+{F12}
 
     ;下一个选项卡
     ^]::Return
