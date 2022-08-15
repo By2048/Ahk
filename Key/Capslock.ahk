@@ -97,3 +97,15 @@ CapsLock & Space::
     WinActivate, ahk_id %win_id%
     HighlightActiveWindow(300)
 Return
+
+
+; 快速输入数字
+CapsLock & j::Send 1
+CapsLock & k::Send 2
+CapsLock & l::Send 3
+CapsLock & u::Send 4
+CapsLock & i::Send 5
+CapsLock & o::Send 6
+CapsLock & 7::Send 7
+CapsLock & 8::Send 8
+CapsLock & 9::Send 9
