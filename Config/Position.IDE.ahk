@@ -20,6 +20,8 @@ WPD["PyCharm__设置同步"] := Position(900 , 1300)
 WPD["PyCharm__插件同步"] := Position(900 , 1300)
 WPD["PyCharm__回滚变更"] := Position(900 , 1300)
 
+WPD["PyCharm__浏览图标"]       := Position(900 , 1500)
+WPD["PyCharm__导航栏工具栏"]   := Position(900 , 1500)
 WPD["PyCharm__打开文件或项目"] := Position(900 , 1500)
 WPD["PyCharm__选择路径"]       := Position(900 , 1500)
 WPD["PyCharm__选择"]           := Position(900 , 1500)
