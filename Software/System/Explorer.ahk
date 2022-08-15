@@ -179,9 +179,11 @@
         WPD["Explorer"] := Position(2520 , 1700)
         MoveWindowToDefaultPosition()
 
-        EC := { "List"     : [ [ "System.ItemNameDisplay"     , 1450 ] ] 
+        EC := { "File"     : [ [ "System.ItemNameDisplay"     , 1450 ] ] 
               , "Default"  : [ [ "System.ItemNameDisplay"     , 999  ]
                              , [ "System.ItemDate"            , 250  ]
+                             , [ "System.Size"                , 200  ] ]
+              , "List"     : [ [ "System.ItemNameDisplay"     , 1250 ]
                              , [ "System.Size"                , 200  ] ]
               , "Software" : [ [ "System.ItemNameDisplay"     , 800  ]
                              , [ "System.Comment"             , 400  ]
@@ -196,18 +198,19 @@
         EC["D:\Go"]     := EC["Software"]
         EC["D:\Java"]   := EC["Software"]
         EC["回收站"]    := EC["Recover"]
+        EC["T:\"]       := EC["List"]
 
         win_title := window.title
+
         config := EC[win_title]
         if (not config) {
             if (A_ThisHotkey == "<#+\") {
-                config := EC["List"]
+                config := EC["File"]
             } else if (A_ThisHotkey == "<#\") {
-                config := EC["Default"]
-            } else {
                 config := EC["Default"]
             }
         }
+        
         SetExplorertColumns(config)
 
         CoordMode, Mouse, Window

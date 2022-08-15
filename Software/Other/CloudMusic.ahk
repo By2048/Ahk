@@ -16,8 +16,8 @@
     \::Send !\
     [::Send ![
     ]::Send !]
-    =::!=
-    -::!-
+    =::Send !=
+    -::Send !-
 
     ; Global Cloud_Music_Volume := -1
     ; =::
