@@ -1,10 +1,11 @@
 ﻿
-CapsLockRedirect:
+CapsLockRedirect()
+{
     key := StrReplace(A_ThisHotkey, "CapsLock & ", "")
     key_shift := GetKeyState("LShift", "P")
     if (CapsLockActivate == True) {
         Send {Esc}
-        capslock_activate := False
+        CapsLockActivate := False
     } else {
         if (key_shift) {
             Send ^!+{%key%}
@@ -13,7 +14,7 @@ CapsLockRedirect:
         }
         CapsLockActivate := True
     }
-Return
+}
 
 
 FloatToolSwitch(Key, rule)

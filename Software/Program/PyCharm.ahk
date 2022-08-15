@@ -1,7 +1,7 @@
 ﻿
 #Include %A_WorkingDir%\Software\Program\PyCharm.Tool.ahk
 
-#If CheckWindowActive("PyCharm" , "SunAwtDialog" , "Python 控制台")
+#If CheckWindowActive("PyCharm", "SunAwtDialog", "Python 控制台")
     ;ReRun
     +BackSpace::MouseClickAndResetting(34, 92)
 
