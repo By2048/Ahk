@@ -2,6 +2,44 @@
 ; 打开的窗口
 #If CheckWindowActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为" )
 
+    ; 帮助
+    F1::Return
+
+    ; 重命名
+    F2::Return
+    ^r::Send {F2}
+
+    ; 搜索
+    F3::Return
+    ^e::Return
+    ^f::Return
+
+    ; 下拉列表 展开
+    F4::Return
+
+    ; 下拉列表 输入
+    ^l::Return
+
+    ; 打开桌面位置
+    ^n::Return
+
+    ; 刷新
+    F5::Return
+    \::Send {F5}
+
+    ; 输入文件名 默认
+    ; 切换焦点 在输入框
+    F6::Return
+
+    ; 删除
+    ^d::Return
+
+    ; 快速切换
+    <![::ControlFocus, SysTreeView321, A
+    <!]::ControlFocus, DirectUIHWND2,  A
+    <!\::ControlFocus, Edit1,          A
+
+    ; 默认位置
     <#\::
 
         MoveWindowToDefaultPosition()
