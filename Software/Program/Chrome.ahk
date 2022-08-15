@@ -98,7 +98,23 @@
     ;开发者模式
     F12::Return
     ^+j::Return
-    !\::Send {F12}
+    <^AppsKey::Send {F12}
+
+    ; 书签第一个
+    <!\::
+    <!+\::
+        shift_status := GetKeyState("Shift", "P")
+        if (not alt_oem) {
+            alt_oem := True
+            Send {F6 3}
+            if (shift_status) {
+                Send {Left}
+            }
+        } else {
+            alt_oem := False
+            Send {F6}
+        }
+    Return
 
     CapsLock::
         Send !d
@@ -163,7 +179,15 @@
 
     ;将焦点放置在Chrome工具栏中的第一项上
     !+t::Return
-    ![::Send !+t
+    ![::
+        if (not alt_shift_t) {
+            alt_shift_t := True
+            Send !+t
+        } else {
+            alt_shift_t := False
+            Send {Esc}
+        }
+    Return
 
     ;将焦点放置在Chrome工具栏中最右侧的那一项上
     F10::Return
@@ -264,7 +288,16 @@
     !f::Return
     !e::Return
     !/::!e
-    !,::send !d
+    
+    !Space::
+        if (not alt_space) {
+            alt_space := True
+            Send {F6 3}
+        } else {
+            alt_space := False
+            Send !d
+        }
+    Return
 
     ;网页缩放
     ^WheelUp::Return
