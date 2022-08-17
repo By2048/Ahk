@@ -1,9 +1,14 @@
 ﻿
-; Geforce游戏内覆盖
-; #If CheckWindowActive( "GeForceTool" )
-; #If
-
-
-; #If CheckWindowActive( "" )
-; 
-; #If
+#If ( EscRedirect == True )
+    Esc::
+    CapsLock::
+        Send {Esc}
+        if (EscCount > 0) {
+            ec := EscCount - 1
+            Send {Esc %ec%}
+        }
+        EscCount := 0
+        EscRedirect := False
+        CapsLockActivate := False
+    Return
+#If

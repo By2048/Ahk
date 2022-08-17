@@ -78,24 +78,6 @@
     RWin::CenterHideWindow(1500, 1500)
 #If
 
-#If ( CheckWindowActive("PyCharm") And EscRedirect == True )
-    Esc::
-        Send {Esc}
-        EscRedirect := False
-        EscCount := 0
-        CapsLockActivate := False
-    Return
-    CapsLock::
-        Send {Esc}
-        if (EscCount > 0) {
-            ec := EscCount - 1
-            Send {Esc %ec%}
-            EscCount := 0
-        }
-        EscRedirect := False
-        CapsLockActivate := False
-    Return
-#If
 
 #If CheckWindowActive("PyCharm")
 
@@ -184,9 +166,15 @@
 
     ~^n::CenterHideWindow()
     ~^+n::CenterHideWindow()
-    ~!i::CenterHideWindow(900, 1000)
-    ~^o::CenterHideWindow()
-    ~!o::CenterHideWindow(1900, 1700)
+    ~!i::CenterHideWindow(1000, 1000)
+    ~^o::
+        EscRedirect := True
+        CenterHideWindow()
+    Return
+    ~!o::
+        EscRedirect := True
+        CenterHideWindow(1900, 1700)
+    Return
     ~^+e::CenterHideWindow(666, 1300)
     ~^+g::CenterHideWindow()
     ~!a::
@@ -216,9 +204,9 @@
 
     <#\::
         WinGetPos, x, y, w, h, A
-        if (x < 0 and y == 0 ) {
+        if (x <= 0 and y == 0 ) {
             return
-        } 
+        }
         MoveWindowToDefaultPosition()
     Return
 
