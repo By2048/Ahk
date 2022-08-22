@@ -116,7 +116,17 @@
 
     ; 状态栏历史
     F4::Return
-    !\::Send {F4}
+    >!Space::Send {F4}
+
+    !\::
+        ControlGetFocus, control_name, A
+        if (control_name == "SysTreeView321" ) {
+            ControlFocus, DirectUIHWND3,  A
+        }
+        if (control_name == "DirectUIHWND3" ) {
+            ControlFocus, SysTreeView321, A
+        }
+    Return
 
     ; ----------------------------------------------------------------------
 

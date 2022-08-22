@@ -34,10 +34,19 @@
     ; 删除
     ^d::Return
 
+    ; 文件名修改框
+    <!/::ControlFocus, Edit1,          A
+
     ; 快速切换
-    <![::ControlFocus, SysTreeView321, A
-    <!]::ControlFocus, DirectUIHWND2,  A
-    <!\::ControlFocus, Edit1,          A
+    !\::
+        ControlGetFocus, control_name, A
+        if (control_name == "SysTreeView321" ) {
+            ControlFocus, DirectUIHWND2,  A
+        }
+        if (control_name == "DirectUIHWND2" ) {
+            ControlFocus, SysTreeView321, A
+        }
+    Return
 
     ; 默认位置
     <#\::
