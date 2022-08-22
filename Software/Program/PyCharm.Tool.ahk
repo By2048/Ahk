@@ -103,3 +103,16 @@ CenterHideWindow(position*)
     result["h"]  := win_h
     return result
 }
+
+; 后台任务默认位置
+PositionBackGroundTask()
+{
+    C := GetHideWindowConfig()
+    win_id := C.id
+    win_w := 800
+    win_h := 600
+    win_x := Screen.xx - win_w - 100
+    win_y := Screen.yy - win_h - 150
+    WinActivate, ahk_id %win_id%
+    WinMove, ahk_id %win_id%, _, %win_x%, %win_y%, %win_w%, %win_h%
+}

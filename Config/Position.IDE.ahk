@@ -35,6 +35,8 @@ WPD["PyCharm__查找"]         := Position(1600 , 1500)
 WPD["PyCharm__检查"]         := Position(1600 , 1500)
 WPD["PyCharm__提交变更"]     := Position(1600 , 1500)
 
+WPD["PyCharm__插件更新"] := Position(2000 , 1300)
+
 WPD["PyCharm__设置"]             := Position(2000 , 1500)
 WPD["PyCharm__问题"]             := Position(2000 , 1500)
 WPD["PyCharm__TODO"]             := Position(2000 , 1500)

@@ -45,7 +45,7 @@ MouseClickAndResetting(x, y, move_type:="Window", key:="Left", click_count:=1, m
 
 
 
-MouseClickImage(image, trans="")
+MouseClickImage(image, trans:="")
 {
     CoordMode, Pixel, Window
     CoordMode, Mouse, Window
@@ -84,13 +84,13 @@ MouseClickImage(image, trans="")
 
 
 
-MouseClickImageXYWH(x1, y1, x2, y2, image, mode="Window", offset=30, key="Left", trans="")
+MouseClickImageXYWH(x1, y1, x2, y2, image, mode:="Window", offset:=30, key:="Left", trans:="")
 {
-    if (mode=="Window") {
+    if (mode == "Window") {
         CoordMode, Mouse, Window
         CoordMode, Pixel, Window
     }
-    if (mode=="Screen") {
+    if (mode == "Screen") {
         CoordMode, Mouse, Screen
         CoordMode, Pixel, Screen
     }
@@ -116,9 +116,6 @@ MouseClickImageXYWH(x1, y1, x2, y2, image, mode="Window", offset=30, key="Left",
         MouseClick, %key%, %x_find%, %y_find%, 1, 0
         MouseMove, %x_origin%, %y_origin%, 0
         return True
-    } else {
-        HelpText("Not Find", "center_down", "screen1", 1000)
-        return False
     }
     
     return False

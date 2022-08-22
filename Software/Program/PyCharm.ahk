@@ -84,6 +84,10 @@
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
 
+    >!F12::
+        PositionBackGroundTask()
+    Return
+
     ~Esc::
         CapsLockActivate := False
     Return

@@ -18,8 +18,6 @@
     Insert::Send #^!{PrintScreen}
     Delete::Send #^!{CtrlBreak}
 
-    BackSpace::Send {Esc}
-
     [::,
     ]::.
 
