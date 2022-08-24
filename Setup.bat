@@ -80,7 +80,7 @@ If "%Command%"=="ForceStart" (
 
 If "%Command%"=="Start" (
     %AutoHotkey%  %Init.ahk%
-    %AutoHotkey%               %Screen.ahk%  
+    %AutoHotkey%               %Screen.ahk%
     %AutoHotkeyDpiSoftware%    %Screen.ahk%  Software
     %AutoHotkeyDpiSystem%      %Screen.ahk%  System
     %AutoHotkeyDpiSystemPlus%  %Screen.ahk%  SystemPlus
