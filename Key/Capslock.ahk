@@ -10,7 +10,7 @@
 #NoTrayIcon
 
 
-;切换到显示器中心 
+;切换到显示器中心
 $CapsLock::
 
     CoordMode, Mouse, Screen
@@ -26,7 +26,7 @@ $CapsLock::
     ; 屏幕1中心
     x1 := Screens.1.x + Screens.1.w/2
     y1 := Screens.1.y + Screens.1.h/2
-    
+
     ; 屏幕2中心
     x2 := Screens.2.x + Screens.2.w/2
     y2 := Screens.2.y + Screens.2.h/2
@@ -51,7 +51,7 @@ $CapsLock::
 
     ; 在屏幕2
     if (    x_current >= Screens.2.x and x_current <= Screens.2.xx
-        and y_current >= Screens.2.y and y_current <= Screens.2.yy ) 
+        and y_current >= Screens.2.y and y_current <= Screens.2.yy )
     {
         ; 不在在屏幕2中心
         if ( x_current != x2 and y_current != y2 ) {
@@ -69,7 +69,7 @@ $CapsLock::
     }
 
     DllCall("SetCursorPos", "int", xx, "int", yy)
-    
+
     ; 激活鼠标下的窗口
     MouseGetPos,  _,  _, win_id
     WinActivate, ahk_id %win_id%
