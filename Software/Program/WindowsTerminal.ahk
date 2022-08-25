@@ -1,7 +1,7 @@
 ﻿
 ; {"keys": "f13","command": {"action": "quakeMode"}}
 
-#If ( CheckWindowActive( "Terminal" ) )
+#If CheckWindowActive( "Terminal" )
 
     ; 关闭窗格
     !CapsLock::Send {f13}
@@ -25,7 +25,7 @@
 
     ;结束运行
     !BackSpace::Send ^c
-    
+
     ;复制
     ^F1::Return
     ^c::Send ^{F1}
@@ -36,11 +36,11 @@
 
     ; 滚动至历史记录底部
     ; 滚动至历史记录顶部
-    ^+Home::Return  
+    ^+Home::Return
     !Home::Send ^+{Home}
     ^+End::Return
     !End::Send ^+{End}
-    
+
     ; 全屏
     <#Enter::Send {F14}
 
