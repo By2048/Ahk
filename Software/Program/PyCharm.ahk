@@ -1,6 +1,7 @@
 ﻿
 #Include %A_WorkingDir%\Software\Program\PyCharm.Tool.ahk
 
+
 #If CheckWindowActive("PyCharm", "SunAwtDialog", "Python 控制台")
     ;ReRun
     +BackSpace::MouseClickAndResetting(34, 92)
@@ -8,6 +9,7 @@
     ;StopConsole
     !BackSpace::MouseClickAndResetting(34, 142)
 #If
+
 
 #If CheckWindowActive("PyCharm", "SunAwtDialog", "终端|运行|调试")
     ~CapsLock::
@@ -22,6 +24,7 @@
         SetCapsLockState, Off
     Return
 #If
+
 
 ; 浮动工具栏
 #If ( CheckWindowActive("PyCharm") And FloatTool == True )
@@ -40,6 +43,7 @@
         WinActivate, ahk_id %win_id%
     Return
 #If
+
 
 ; 浮动工具栏 偏移位置
 #If ( CheckWindowActive("PyCharm") And OffsetTool == True )
@@ -69,6 +73,7 @@
     Return
 #If
 
+
 #If ( CheckWindowActive("PyCharm") And DoubleShift == True )
     Esc::
     CapsLock::
@@ -91,7 +96,7 @@
     ~Esc::
         CapsLockActivate := False
     Return
-    
+
     ~AppsKey::
         CenterHideWindow()
     Return

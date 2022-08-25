@@ -1,14 +1,32 @@
 ﻿
-~*CapsLock::
+*CapsLock::
+Return
+*CapsLock Up::
     SetCapsLockState, Off
 Return
 
-CapsLock & LShift::Return
-CapsLock & Tab::Return
+~CapsLock & LShift::Return
+~CapsLock & Tab::Return
+
+; 项目 结构
+~CapsLock & [::
+    Send ^![
+    EscRedirect := True
+Return
+~CapsLock & ]::
+    Send ^!]
+    EscRedirect := True
+Return
+
+; 窗口大小调整
+~CapsLock & Left:: Send ^!{Left}
+~CapsLock & Right::Send ^!{Right}
+~CapsLock & Up::   Send ^!{Up}
+~CapsLock & Down:: Send ^!{Down}
 
 ; 书签描述符
 ^!`::Return
-CapsLock & `::
+~CapsLock & `::
     if (CapsLockActivate == True) {
         Send {Esc}
         CapsLockActivate := False
@@ -21,11 +39,11 @@ Return
 
 ; 迷你地图
 ^!o::Return
-CapsLock & o::Send ^!o
+~CapsLock & o::Send ^!o
 
 ; 跳转到导航栏
 ^!p::Return
-CapsLock & p::
+~CapsLock & p::
     EscRedirect := True
     EscCount := 2
     if (CapsLockActivate == True) {
@@ -41,7 +59,7 @@ Return
 ; 编辑 编辑器操作
 ^!BackSpace::Return
 ^!+BackSpace::Return
-CapsLock & BackSpace::
+~CapsLock & BackSpace::
     EscRedirect := True
     if (CapsLockActivate == True) {
         Send {Esc}
@@ -61,7 +79,7 @@ Return
 ; 书签 Bookmark
 ^!\::Return
 ^!+\::Return
-CapsLock & \::
+~CapsLock & \::
     EscRedirect := True
     key_shift := GetKeyState("LShift", "P")
     if (CapsLockActivate == False) {
@@ -87,7 +105,7 @@ Return
 ; 主菜单 工具窗口
 ^!Enter::Return
 ^!+Enter::Return
-CapsLock & Enter::
+~CapsLock & Enter::
     EscRedirect := True
     key_shift := GetKeyState("LShift", "P")
     if (CapsLockActivate == True) {
@@ -95,7 +113,7 @@ CapsLock & Enter::
         if (key_shift) {
             OffsetTool := False
         } else{
-            FloatTool := False  
+            FloatTool := False
         }
         CapsLockActivate := False
     } else {
@@ -119,7 +137,7 @@ Return
 
 ; 代码
 ^!Numpad5::Return
-CapsLock & RShift::
+~CapsLock & RShift::
     if (CapsLockActivate == True) {
         Send {Esc}
         CapsLockActivate := False
@@ -132,7 +150,7 @@ Return
 
 ; 切换器操作
 ^!,::Return
-CapsLock & ,::
+~CapsLock & ,::
     EscRedirect := True
     if (CapsLockActivate == True) {
         Send {Esc}
@@ -146,7 +164,7 @@ Return
 
 ; 活动工具窗口
 ^!.::Return
-CapsLock & .::
+~CapsLock & .::
     EscRedirect := True
     if (CapsLockActivate == True) {
         Send {Esc}
@@ -160,7 +178,7 @@ Return
 
 ; 编辑器选项卡
 ^!/::Return
-CapsLock & /::
+~CapsLock & /::
     EscRedirect := True
     if (CapsLockActivate == True) {
         Send {Esc}
@@ -173,19 +191,3 @@ CapsLock & /::
         CenterHideWindow()
     }
 Return
-
-; 项目 结构
-CapsLock & [::
-    Send ^![
-    EscRedirect := True
-Return
-CapsLock & ]::
-    Send ^!]
-    EscRedirect := True
-Return
-
-; 窗口大小调整
-CapsLock & Left:: Send ^!{Left}
-CapsLock & Right::Send ^!{Right}
-CapsLock & Up::   Send ^!{Up}
-CapsLock & Down:: Send ^!{Down}
