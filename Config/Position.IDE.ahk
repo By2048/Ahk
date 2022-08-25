@@ -19,6 +19,7 @@ WPD["PyCharm__收藏夹"]   := Position(900 , 1300)
 WPD["PyCharm__设置同步"] := Position(900 , 1300)
 WPD["PyCharm__插件同步"] := Position(900 , 1300)
 WPD["PyCharm__回滚变更"] := Position(900 , 1300)
+WPD["PyCharm__注册新文件类型关联"] := Position(900 , 1300)
 
 WPD["PyCharm__浏览图标"]       := Position(900 , 1500)
 WPD["PyCharm__导航栏工具栏"]   := Position(900 , 1500)
@@ -31,10 +32,9 @@ WPD["PyCharm__Python解释器"] := Position(1000 , 1500)
 WPD["PyCharm__指定检查范围"] := Position(1500 , 1000)
 WPD["PyCharm__将提交推送到"] := Position(1500 , 1000)
 
-WPD["PyCharm__查找"]         := Position(1600 , 1500)
-WPD["PyCharm__检查"]         := Position(1600 , 1500)
-WPD["PyCharm__提交变更"]     := Position(1600 , 1500)
-
+WPD["PyCharm__查找"]     := Position(1600 , 1500)
+WPD["PyCharm__检查"]     := Position(1600 , 1500)
+WPD["PyCharm__提交变更"] := Position(1600 , 1500)
 WPD["PyCharm__插件更新"] := Position(2000 , 1300)
 
 WPD["PyCharm__设置"]             := Position(2000 , 1500)
@@ -44,6 +44,7 @@ WPD["PyCharm__远程主机"]         := Position(2000 , 1500)
 WPD["PyCharm__可用软件包"]       := Position(2000 , 1500)
 WPD["PyCharm__添加Python解释器"] := Position(2000 , 1500)
 WPD["PyCharm__评估"]             := Position(2000 , 1500)
+WPD["PyCharm__Python解释器"]     := Position(2000 , 1500)
 
 WPD["PyCharm__运行/调试配置"] := Position(2000 , 1750)
 
