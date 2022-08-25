@@ -11,7 +11,7 @@
 ; 默认
 ;   切换  #^!   123 qwe asd
 ;   移动  #^!+  123 qwe asd
-; Windows系统占用了 
+; Windows系统占用了
 ;   #^!+d  onedrive.exe
 ;   #^!+w  onenote.exe
 ; 兼容处理
@@ -37,7 +37,7 @@
 <#+s::#^!+F20
 <#+d::#^!+F21
 
-; 窗口目录 
+; 窗口目录
 LWin & LAlt::Send #^!{F22}
 
 ; 全屏预览
@@ -52,6 +52,6 @@ Return
 
 ; #Esc    卷起
 ; #+Esc   最小化到系统托盘
-; #`      DexTab任务切换器 
+; #`      DexTab任务切换器
 ; #PgUp   窗口透明度增加
 ; #PgDn   窗口透明度减少
