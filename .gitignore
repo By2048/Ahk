@@ -13,4 +13,5 @@
 /desktop.ini
 /~$Hotkey.xlsx
 
-*Private.ahk
+*.Private.ahk
+*.Test.ahk
