@@ -1,4 +1,18 @@
 ﻿
+#If CheckWindowActive( "EnableLoopback" )
+    <#\::
+        WPD["EnableLoopback"] := Position(2000 , 1300)
+        MoveWindowToDefaultPosition()
+        _1 := " 1   2   3   4   5   6   7   "
+        _2 := " 600 300 200 300 150 200 160 "
+        _3 := " -   -   -   -   -   -   -   "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("WindowsForms10.SysListView32.app.0.141b42a_r6_ad11" , config)
+    Return
+#If
+
+
+
 #If CheckWindowActive( "v2rayN" )
 
     ; 更新订阅
