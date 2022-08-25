@@ -32,7 +32,7 @@
 
 
 #If CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" )
-    
+
     Redirect(url) {
         tmp := Clipboard
         Clipboard := url
@@ -65,7 +65,7 @@
 
     ;帮助
     F1::Return
-    
+
     ;重命名
     F2::Return
 
@@ -82,13 +82,13 @@
     !+r::Send ^+r
 
     ;切换焦点
-    F6::Return 
-    +F6::Return 
+    F6::Return
+    +F6::Return
     !`::Send {F6}
     +`::Send +{F6}
 
     ;光标浏览模式
-    F7::Return 
+    F7::Return
     !i::Send {F7}{Enter}
 
     ;全屏
@@ -165,15 +165,15 @@
     ; !g::Send ^g
     ; ^+g::Return
     ; !+g::Send ^+g
-    
+
     ;关闭窗口
-    ^w::Return    
+    ^w::Return
     ^F4::Return
     !CapsLock::
         Send ^w
         SetCapsLockState off
     Return
-    
+
     ;关闭所有窗口
     ^+w::Return
 
@@ -239,9 +239,9 @@
     ;书签管理页面
     ^+o::Return
     !b::Send ^+o
-    
+
     ;切换用户
-    ^+m::Return 
+    ^+m::Return
 
     ;使用Google搜索
     ^k::Return
@@ -256,7 +256,7 @@
     !j::Send ^j
 
     ;收藏 取消收藏
-    ^d::Return 
+    ^d::Return
     ^+d::Return
     !d::
         Send ^d
@@ -270,7 +270,7 @@
         Send {Enter}
     Return
 
-    ;打印 高级打印  
+    ;打印 高级打印
     <^p::Return
     <^+p::Return
     !p::Send ^p
@@ -288,14 +288,14 @@
     !f::Return
     !e::Return
     !/::!e
-    
+
     !Space::
         if (not alt_space) {
             alt_space := True
-            Send {F6 3}
+            Send !d
         } else {
             alt_space := False
-            Send !d
+            Send {F6 3}
         }
     Return
 
