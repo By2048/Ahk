@@ -4,8 +4,8 @@
  FFplay     FFprobe    Git        Go         Java       
  Python     Py         Zip        ScrcpyAdb  Scrcpy     
  HuntAndPeck           Notepad    Chrome     
- VSCode     Script     PyEnv      GitX       MuMu       
- Bi-Get-Name           Bi-Free    Bi-Join    
- Rename     Nicotv     Windows    Delete-Share          
+ VSCode     Script     PyEnv      GitX       GitIDE     
+ GitPy      MuMu       Bi-Get-Name           Bi-Free    
+ Bi-Join    Rename     Nicotv     Windows    Delete-Share          
  Backup-Disk-Tree      JetBrains-Toolbox-Update         
  Rename.Config         Rename.Tmp
