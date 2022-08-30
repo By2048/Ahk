@@ -10,8 +10,53 @@
 #NoTrayIcon
 
 
-Global Hotkeys_Images := {} ; 软件图片对应关系
 
+>+`;::Send :
+>+'::Send "
+
+
+
+$RShift::
+    if (cnt > 0) {
+        cnt += 1
+        HelpText("RShift " . cnt, "center", "screen_3")
+        return
+    } else {
+        cnt := 1
+        HelpText("RShift " . cnt, "center", "screen_3")
+    }
+    SetTimer, Timer, -333
+Return
+Timer:
+    if (cnt == 1) {
+        HideShiftImage()
+        HelpText()
+    } else if (cnt == 2) {
+        ShowShiftImage()
+    } else if (cnt == 3) {
+        GetInitConfig()
+        InitConfig()
+    }
+    cnt := 0
+Return
+
+
+
+#If ( hotkeys_show_status == True )
+    [::ChangeShiftImage("-")
+    ]::ChangeShiftImage("+")
+    Insert::HideShiftImage()
+    Delete::
+        image := hotkeys_current[hotkeys_index]
+        image := A_WorkingDir . "\Image\RShift\" . image
+        Snipaste(image, "Screen1")
+        SetTimer, HideShiftImage, -300
+    Return
+#If
+
+
+
+Global Hotkeys_Images       := {}    ; 软件图片对应关系
 Global hotkeys_show_status  := False ; 是否正在显示图片
 Global hotkeys_current      := []    ; 当前显示的图片组
 Global hotkeys_index        := 1     ; 显示图片的序号
@@ -56,21 +101,21 @@ InitImageConfig()
 
 
 ; 获取需要展示的图片
-GetShiftImage() 
+GetShiftImage()
 {
     GetActiveWindowInfo()
     InitImageConfig()
-    
+
     win_process_name := window.process_name
     win_title        := window.title
-    
-    hotkeys_current := GetWindowConfig(Hotkeys_Images)
-    hotkeys_total  := hotkeys_current.MaxIndex()
 
-    if (hotkeys_index>hotkeys_total) {
+    hotkeys_current := GetWindowConfig(Hotkeys_Images)
+    hotkeys_total   := hotkeys_current.MaxIndex()
+
+    if (hotkeys_index > hotkeys_total) {
         hotkeys_index := 1
-    } 
-    if (hotkeys_index<=0) {
+    }
+    if (hotkeys_index <= 0) {
         hotkeys_index := hotkeys_total
     }
 
@@ -110,10 +155,10 @@ ShowShiftImage()
 HideShiftImage()
 {
     Gui, Destroy
-    hotkeys_show_status  := False
-    hotkeys_index        := 1 
-    hotkeys_total        := 1
-    hotkeys_current       := []
+    hotkeys_show_status := False
+    hotkeys_index       := 1
+    hotkeys_total       := 1
+    hotkeys_current     := []
 }
 
 
@@ -131,43 +176,3 @@ ChangeShiftImage(np:="")
     }
     ShowShiftImage()
 }
-
-
-
-$RShift::
-    if (cnt > 0) {
-        cnt += 1
-        HelpText("RShift " . cnt, "center", "screen_3")
-        return
-    } else {
-        cnt := 1
-        HelpText("RShift " . cnt, "center", "screen_3")
-    }
-    SetTimer, Timer, -333
-Return
-Timer:
-    if (cnt == 1) {
-        HideShiftImage()
-        HelpText()
-    } else if (cnt == 2) {
-        ShowShiftImage()
-    } else if (cnt == 3) {
-        GetInitConfig()
-        InitConfig()
-    }
-    cnt := 0
-Return
-
-
-
-#If ( hotkeys_show_status == True )
-    [::ChangeShiftImage("-")
-    ]::ChangeShiftImage("+")
-    Insert::HideShiftImage()
-    Delete::
-        image := hotkeys_current[hotkeys_index]
-        image := A_WorkingDir . "\Image\RShift\" . image
-        Snipaste(image, "Screen1")
-        SetTimer, HideShiftImage, -300
-    Return
-#If
