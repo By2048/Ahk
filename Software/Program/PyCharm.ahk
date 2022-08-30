@@ -100,16 +100,6 @@
     ~AppsKey::
         CenterHideWindow()
     Return
-    ~AppsKey Up::
-        OffsetTool := False
-        OffsetToolWidth := 0
-        OffsetToolTotalWidth := 0
-        OffsetToolWidth := 0
-        FloatTool := False
-        DoubleShift := False
-        EscRedirect := False
-        CapsLockActivate := False
-    Return
 
     ; 断点 | 临时断点
     $F2::

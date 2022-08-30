@@ -71,6 +71,6 @@ WPB["PyCharm__Git"]          := Position("[Center][2]" , 3300 , 1800)
 
 w := 900
 h := 600
-x := Screen.xx - w - 80
-y := Screen.yy - h - 140
+x := Screen.xx - w - 70
+y := Screen.yy - h - 120
 WPD["PyCharm__通知"] := [x, y, w, h]
