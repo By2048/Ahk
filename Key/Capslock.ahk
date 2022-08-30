@@ -109,3 +109,6 @@ CapsLock & o::Send 6
 CapsLock & 7::Send 7
 CapsLock & 8::Send 8
 CapsLock & 9::Send 9
+CapsLock & m::Send 0
+CapsLock & ,::Send 00
+CapsLock & .::Send .
