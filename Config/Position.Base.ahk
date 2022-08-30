@@ -5,7 +5,7 @@ WPD["Calibre"]     := Position(3000 , 1500)
 WPD["Everything"]  := Position(2300 , 1700)
 WPD["Android"]     := Position(3440 , 2110)
 WPD["Wallpaper"]   := Position(3388 , 2000)
-WPD["Sandboxie"]   := Position(2500 , 1300)  
+WPD["Sandboxie"]   := Position(2500 , 1300)
 WPD["VMware"]      := Position(2500 , 1600)
 WPD["Zip"]         := Position(1800 , 1400)
 WPD["FFRenamePro"] := Position(3300 , 1800)
@@ -18,11 +18,11 @@ WPD["Word"]  := Position(3300 , 2000)
 WPD["Excel"] := Position(3300 , 2000)
 WPD["PPT"]   := Position(3300 , 2000)
 
-WPD["FDM"]         := Position("[Center][1]" , 2000 , 1500)
-WPD["FDM__%"]      := Position("[Center][3]" , 1300 , 1200)
+WPD["FDM"]    := Position("[Center][1]" , 2000 , 1500)
+WPD["FDM__%"] := Position("[Center][3]" , 1300 , 1200)
 
 ; 火绒U盘工具
-WPD["HipsTray_HRUSBTRAY"] := Position(-10, -10, 0, 0)  
+WPD["HipsTray_HRUSBTRAY"] := Position(-10, -10, 0, 0)
 
 WPD["CloudMusic"] := Position(2500,1700)
 WPB["CloudMusic"] := Position("[Center][2]", 2500, 1700)
@@ -35,7 +35,7 @@ win_x := Screens.2.x  + Screens.2.w/2 - win_w/2
 win_y := Screens.2.yy - win_h       - 10
 WPB["CloudMusic_DesktopLyrics"] := Position(win_x, win_y, win_w, win_h)
 
-WPD["FreeFileSync"]           := Position(3000, 1800)
+WPD["FreeFileSync"]           := Position(3000, 1600)
 WPB["FreeFileSync"]           := Position("[Center][2]", 3000, 1800)
 WPD["FreeFileSync__同步设置"] := Position(1500, 1800)
 
