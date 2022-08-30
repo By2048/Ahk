@@ -15,7 +15,7 @@
 
 #If CheckWindowActive("VSCode", "", ".ahk")
 
-    CapsLock::
+    CapsLock & LShift::
         backup := Clipboard
         Send ^+{Left}
         Send ^{c}
@@ -73,13 +73,10 @@
         SetTimer, VSCodeTimer, -150
     Return
     VSCodeTimer:
-        if (cnt == 1 and DoubleShift == True) {
-            Global DoubleShift := False
-            Send {Esc}
-        } if (cnt == 2) {
-            Global DoubleShift := True
+        if (cnt == 2) {
             Send ^!{Space}
-        } 
+            EscRedirect == True
+        }
         cnt := 0
     Return
 
@@ -116,15 +113,9 @@
         Clipboard := data
     Return
 
-    ;快速命令 
+    ;快速命令
     >!Space::
-        if (vscode_alt_space == True) {
-            vscode_alt_space := False
-            Send {Esc}
-        } else {
-            vscode_alt_space := True
-            Send ^!{Space}
-        } 
+        Send ^!{Space}
     Return
 
     ; 窗口大小调整
