@@ -1,6 +1,6 @@
 ﻿
 ; 打开的窗口
-#If CheckWindowActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为" )
+#If CheckWindowActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为|浏览" )
 
     ; 帮助
     F1::Return
@@ -52,7 +52,7 @@
     <#\::
 
         MoveWindowToDefaultPosition()
-        
+
         GetActiveWindowInfo("Window")
 
         ; 左侧信息栏
@@ -114,7 +114,7 @@
 
 ; 任务管理器
 #If CheckWindowActive( "TaskMGR" )
-    
+
     ; 切换标签页
     ^Tab::Return
     !Tab::Send ^{Tab}
