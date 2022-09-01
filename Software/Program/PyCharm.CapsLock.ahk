@@ -1,5 +1,5 @@
 ﻿
-; *CapsLock::Return
+*CapsLock::Return
 *CapsLock Up::
     SetCapsLockState, Off
 Return
