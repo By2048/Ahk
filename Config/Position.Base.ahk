@@ -35,8 +35,8 @@ win_x := Screens.2.x  + Screens.2.w/2 - win_w/2
 win_y := Screens.2.yy - win_h       - 10
 WPB["CloudMusic_DesktopLyrics"] := Position(win_x, win_y, win_w, win_h)
 
-WPD["FreeFileSync"]           := Position(3000, 1600)
-WPB["FreeFileSync"]           := Position("[Center][2]", 3000, 1800)
+WPD["FreeFileSync"]           := Position(2500, 1600)
+WPB["FreeFileSync"]           := Position("[Center][2]", 2500, 1600)
 WPD["FreeFileSync__同步设置"] := Position(1500, 1800)
 
 WPD["PotPlayer"]           := Position(Screens.1.w * 4/6 , Screens.1.h * 4/6)

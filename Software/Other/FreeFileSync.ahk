@@ -78,10 +78,10 @@
     #Include %A_WorkingDir%\Software\#\Fxx\F1_F12.ahk
 
     ; 开始比较
-    !BackSpace::Send {F5}
+    !\::Send {F5}
 
     ; 同步设置
-    !\::Send {F7}
+    !AppsKey::Send {F7}
 
     ; 开始同步
     !Enter::Send {F9}

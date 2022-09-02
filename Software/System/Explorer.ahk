@@ -70,7 +70,7 @@
     ; 重命名
     F2::Return
     ^r::Send {F2}
-    
+
     ; ----------------------------------------------------------------------
 
     ;切换输入焦点
@@ -86,7 +86,7 @@
         }
         WinGetClass, win_class, A
         ControlGetFocus, control_name, A
-        ControlGetText, control_text, %control_name%, A 
+        ControlGetText, control_text, %control_name%, A
         if (win_class == "WorkerW") { ;桌面
             HelpText("`nDesktop`n", "Center", "Screen1", 100)
         }
@@ -175,7 +175,7 @@
     ; Ctrl+N -> Ctrl+Shift+N
     ^+n::Return
     <^n::Send ^+n
-    
+
     ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
     ^WheelUp::Return
     ^WheelDown::Return
@@ -189,7 +189,7 @@
         WPD["Explorer"] := Position(2520 , 1700)
         MoveWindowToDefaultPosition()
 
-        EC := { "File"     : [ [ "System.ItemNameDisplay"     , 1450 ] ] 
+        EC := { "File"     : [ [ "System.ItemNameDisplay"     , 1450 ] ]
               , "Default"  : [ [ "System.ItemNameDisplay"     , 999  ]
                              , [ "System.ItemDate"            , 250  ]
                              , [ "System.Size"                , 200  ] ]
@@ -220,7 +220,7 @@
                 config := EC["Default"]
             }
         }
-        
+
         SetExplorertColumns(config)
 
         CoordMode, Mouse, Window
