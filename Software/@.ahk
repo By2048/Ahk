@@ -1,14 +1,13 @@
 ﻿
 #If ( EscRedirect == True )
-    Esc::
-    CapsLock::
+    $Esc::
+    $CapsLock::
         Send {Esc}
         if (EscCount > 0) {
             ec := EscCount - 1
             Send {Esc %ec%}
+            EscCount := 0
         }
-        EscCount := 0
         EscRedirect := False
-        CapsLockActivate := False
     Return
 #If
