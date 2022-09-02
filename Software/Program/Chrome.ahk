@@ -116,10 +116,6 @@
         }
     Return
 
-    *CapsLock Up::
-        SetCapsLockState, Off
-    Return
-
     ~CapsLock & LShift::
         Send !d
         Send ^c
