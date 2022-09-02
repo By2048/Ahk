@@ -104,6 +104,7 @@ CenterHideWindow(position*)
     return result
 }
 
+
 ; 后台任务默认位置
 PositionBackGroundTask()
 {

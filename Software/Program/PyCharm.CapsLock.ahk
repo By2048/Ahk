@@ -106,21 +106,17 @@ Return
 ^!Enter::Return
 ^!+Enter::Return
 ~CapsLock & Enter::
-    EscRedirect := True
-    key_shift := GetKeyState("LShift", "P")
     if (CapsLockActivate == True) {
         Send {Esc}
-        if (key_shift) {
-            OffsetTool := False
-        } else{
-            FloatTool := False
-        }
+        OffsetTool := False
+        FloatTool := False
         CapsLockActivate := False
     } else {
+        key_shift := GetKeyState("LShift", "P")
         if (key_shift) {
             Send ^!+{Enter}
-            OffsetTool := True
             EnterCount := 0
+            OffsetTool := True
             OffsetToolLeft := 1000
             OffsetToolSpace := 5
             config := CenterHideWindow(OffsetToolLeft)

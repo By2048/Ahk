@@ -26,6 +26,16 @@
 #If
 
 
+#If ( CheckWindowActive("PyCharm") And DoubleShift == True )
+    Esc::
+    CapsLock::
+        Send {Esc}
+        DoubleShift := False
+    Return
+    RWin::CenterHideWindow(1500, 1500)
+#If
+
+
 ; 浮动工具栏
 #If ( CheckWindowActive("PyCharm") And FloatTool == True )
     $Esc::
@@ -47,40 +57,29 @@
 
 ; 浮动工具栏 偏移位置
 #If ( CheckWindowActive("PyCharm") And OffsetTool == True )
-    Enter::
+    $Enter::
         Send {Enter}
         EnterCount := EnterCount + 1
         config := CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
         OffsetToolWidth := config.w
         OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + OffsetToolSpace
     Return
-    Esc::
-    CapsLock::
+    $CapsLock::
+        Send {Esc}
         EnterCount := EnterCount - 1
         OffsetToolTotalWidth := OffsetToolTotalWidth - OffsetToolWidth - OffsetToolSpace
-        Send {Esc}
-        if (EnterCount == 0) {
-            config := GetHideWindowConfig()
-            OffsetToolWidth := config.w
-            OffsetToolTotalWidth := OffsetToolWidth + OffsetToolSpace
-        } else if (EnterCount < 0) {
+        if (EnterCount == -1) {
             OffsetTool := False
             OffsetToolWidth := 0
             OffsetToolTotalWidth := 0
             OffsetToolSpace := 0
             CapsLockActivate := False
+        } else {
+            config := GetHideWindowConfig()
+            OffsetToolWidth := config.w
+            OffsetToolTotalWidth := OffsetToolWidth + OffsetToolSpace
         }
     Return
-#If
-
-
-#If ( CheckWindowActive("PyCharm") And DoubleShift == True )
-    Esc::
-    CapsLock::
-        Send {Esc}
-        DoubleShift := False
-    Return
-    RWin::CenterHideWindow(1500, 1500)
 #If
 
 
