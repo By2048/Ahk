@@ -37,18 +37,17 @@
 <#+s::#^!+F20
 <#+d::#^!+F21
 
+;  上一个桌面
+#CapsLock::
+    Send #^!{F24}
+    SetCapsLockState Off
+Return
+
 ; 窗口目录
 LWin & LAlt::Send #^!{F22}
 
 ; 全屏预览
 LWin & LCtrl::Send #^!{F23}
-
-;  上一个桌面
-#CapsLock::Send #^!{F24}
-
-CapsLock Up::
-    SetCapsLockState Off
-Return
 
 ; #Esc    卷起
 ; #+Esc   最小化到系统托盘
