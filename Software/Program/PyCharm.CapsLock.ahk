@@ -1,6 +1,7 @@
 ﻿
-*CapsLock::Return
-*CapsLock Up::
+~*CapsLock::
+Return
+~*CapsLock Up::
     SetCapsLockState, Off
 Return
 

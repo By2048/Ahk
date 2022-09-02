@@ -97,7 +97,8 @@
         CapsLockActivate := False
     Return
 
-    ~AppsKey::
+    $AppsKey::
+        Send {AppsKey}
         CenterHideWindow()
     Return
 
@@ -109,7 +110,7 @@
         } else {
             cnt := 1
         }
-        SetTimer, F2Timer, -300
+        SetTimer, F2Timer, -200
     Return
     F2Timer:
         if (cnt == 1) {
@@ -223,16 +224,19 @@
     <!F4::Send !{F16}
     <!+F4::Send !+{F16}
 
-    ;切换标签页
+    ;标签页管理
     ^Tab::Return
-    ^+Tab::Return
     <!Tab::Send ^{Tab}
+    ^+Tab::Return
     <!+Tab::Send ^+{Tab}
+    ^CapsLock::Return
+    !CapsLock::Send ^{CapsLock}
+    ^+CapsLock::Return
+    !+CapsLock::Send ^+{CapsLock}
 
     ; 设置
     LAlt & RAlt::
         Send ^{ScrollLock}
-        SetCapsLockState, Off
         SetScrollLockState, Off
         WinWaitActive, 设置
         WinGetTitle, win_title, A
@@ -244,7 +248,6 @@
     RAlt & LAlt::
         Send !{ScrollLock}
         SetScrollLockState, Off
-        SetCapsLockState, Off
         CenterHideWindow()
     Return
 
