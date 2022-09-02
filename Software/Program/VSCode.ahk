@@ -75,7 +75,7 @@
     VSCodeTimer:
         if (cnt == 2) {
             Send ^!{Space}
-            EscRedirect == True
+            EscRedirect := True
         }
         cnt := 0
     Return
