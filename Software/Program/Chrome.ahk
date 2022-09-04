@@ -42,26 +42,30 @@
         Clipboard := tmp
     }
 
-     F1::Redirect("https://cn.bing.com/")
-     F2::Redirect("https://www.baidu.com/")
-     F3::Redirect("https://yandex.com/")
-     F4::Redirect("https://stackoverflow.com/")
+     !F1::Redirect("https://cn.bing.com/")
+     !F2::Redirect("https://www.baidu.com/")
+     !F3::Redirect("https://yandex.com/")
+     !F4::Redirect("https://stackoverflow.com/")
 
-     F5::Redirect("https://wyagd001.github.io/zh-cn/docs/AutoHotkey.htm")
-     F6::Redirect("https://tool.oschina.net/uploads/apidocs/jquery/regexp.html")
-     F7::Redirect("https://www.jetbrains.com/help/pycharm/quick-start-guide.html")
-     F8::Redirect("https://docs.python.org/zh-cn/3/")
+     !F5::Redirect("https://wyagd001.github.io/zh-cn/docs/AutoHotkey.htm")
+     !F6::Redirect("https://tool.oschina.net/uploads/apidocs/jquery/regexp.html")
+     !F7::Redirect("https://www.jetbrains.com/help/pycharm/quick-start-guide.html")
+     !F8::Redirect("https://docs.python.org/zh-cn/3/")
 
-     F9::Redirect("http://www.nicotv.me/dongman")
-    F10::Redirect("https://www.bd2020.com/movies/index.htm")
-    F11::Redirect("https://www.zhihu.com/hot")
-    F12::Redirect("https://t.bilibili.com/?tab=8")
+     !F9::Redirect("http://www.nicotv.me/dongman")
+    !F10::Redirect("https://www.bd2020.com/movies/index.htm")
+    !F11::Redirect("https://www.zhihu.com/hot")
+    !F12::Redirect("https://t.bilibili.com/?tab=8")
 
 #If
 
 
 
 #If CheckWindowActive( "Chrome" )
+
+    LAlt::Return
+
+    RAlt::Send {F10}
 
     ;帮助
     F1::Return
@@ -104,33 +108,56 @@
     <!\::
     <!+\::
         shift_status := GetKeyState("Shift", "P")
-        if (not alt_oem) {
-            alt_oem := True
-            Send {F6 3}
-            if (shift_status) {
-                Send {Left}
-            }
-        } else {
-            alt_oem := False
-            Send {F6}
+        Send {F6 3}
+        if (shift_status) {
+            Send {Left}
         }
     Return
 
-    ~CapsLock & LShift::
-        Send !d
-        Send ^c
-        data := Clipboard
-        if (InStr(data, "www.google.com/search?q")) {
-            keyword := RegExReplace(data, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
-            url := "https://cn.bing.com/search?q=" . keyword
-            Clipboard := url
-            Send ^v
-            Send {Enter}
+    CapsLock::Send {F10 2}
+
+    ~LShift::
+        if (cnt > 0) {
+            cnt += 1
+            return
         } else {
-            Send {F6 3}
+            cnt := 1
         }
-        SetCapsLockState, Off
+        SetTimer, ChromeTimer, -300
     Return
+    ChromeTimer:
+        if (cnt == 2) {
+            Send !d
+            Send ^c
+            data := Clipboard
+            if (InStr(data, "www.google.com/search?q")) {
+                keyword := RegExReplace(data, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
+                url := "https://cn.bing.com/search?q=" . keyword
+                Clipboard := url
+                Send ^v
+                Send {Enter}
+            } else {
+                Send {F6 3}
+            }
+        }
+        cnt := 0
+    Return
+
+    ; CapsLock & LShift::
+    ;     Send !d
+    ;     Send ^c
+    ;     data := Clipboard
+    ;     if (InStr(data, "www.google.com/search?q")) {
+    ;         keyword := RegExReplace(data, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
+    ;         url := "https://cn.bing.com/search?q=" . keyword
+    ;         Clipboard := url
+    ;         Send ^v
+    ;         Send {Enter}
+    ;     } else {
+    ;         Send {F6 3}
+    ;     }
+    ;     SetCapsLockState, Off
+    ; Return
 
     ;任务管理
     ^Esc::Return
@@ -216,19 +243,19 @@
     ^+Tab::Return
     +Tab::Return
 
+    ;主页
+    !BackSpace::Send !{Home}
+
     !Tab::Send ^{Tab}
     !+Tab::Send ^+{Tab}
     !Home::Send ^1
     !End::Send ^9
 
-    ;主页
-    !BackSpace::Send !{Home}
-
     ;滚动
     ^PgUp::Return
     ^PgDn::Return
-    !PgUp::Send {WheelUp}
-    !PgDn::Send {WheelDown}
+    !PgUp::Send ^+{Tab}
+    !PgDn::Send ^{Tab}
 
     ;切换书签栏显示隐藏状态
     ^+b::Return
