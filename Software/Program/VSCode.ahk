@@ -114,9 +114,8 @@
     Return
 
     ;快速命令
-    >!Space::
-        Send ^!{Space}
-    Return
+    <!Space::Send ^![
+    >!Space::Send ^!]
 
     ; 窗口大小调整
     CapsLock & Left:: Send ^!{Left}

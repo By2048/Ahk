@@ -114,7 +114,10 @@
         }
     Return
 
-    CapsLock::Send {F10 2}
+    CapsLock::
+        Send {F10 2}
+        SetCapsLockState Off
+    Return
 
     ~LShift::
         if (cnt > 0) {
@@ -142,22 +145,6 @@
         }
         cnt := 0
     Return
-
-    ; CapsLock & LShift::
-    ;     Send !d
-    ;     Send ^c
-    ;     data := Clipboard
-    ;     if (InStr(data, "www.google.com/search?q")) {
-    ;         keyword := RegExReplace(data, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
-    ;         url := "https://cn.bing.com/search?q=" . keyword
-    ;         Clipboard := url
-    ;         Send ^v
-    ;         Send {Enter}
-    ;     } else {
-    ;         Send {F6 3}
-    ;     }
-    ;     SetCapsLockState, Off
-    ; Return
 
     ;任务管理
     ^Esc::Return
