@@ -25,9 +25,9 @@ Timer:
     if (cnt == 2) {
         GetActiveWindowInfo()
         process_name := window.process_name
-        HelpText("`n" process_name "`n", "CenterDown", "Screen1")
+        ; HelpText("`n" process_name "`n", "CenterDown", "Screen1")
         HighlightActiveWindow(500)
-        HelpText()
+        ; HelpText()
     }
     cnt := 0
 Return

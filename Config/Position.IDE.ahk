@@ -49,7 +49,7 @@ WPD["PyCharm__添加Python解释器"] := Position(2000 , 1500)
 WPD["PyCharm__评估"]             := Position(2000 , 1500)
 WPD["PyCharm__Python解释器"]     := Position(2000 , 1500)
 
-WPD["PyCharm__运行/调试配置"] := Position(2000 , 1800)
+WPD["PyCharm__运行/调试配置"] := Position(1555 , 1777)
 
 WPD["PyCharm__断点"] := Position(2800 , 1500)
 
