@@ -24,11 +24,11 @@ show_hide_key_map()
     }
 
     GetActiveWindowInfo()
-    
+
     win_process_name := window.process_name
-    
+
     key_map_cfg := GetWindowConfig(Key_Map)
-    
+
     if (key_map_cfg.MaxIndex() == 0) {
         return
     }
@@ -40,7 +40,7 @@ show_hide_key_map()
         key := config[3]
         ToolTip, %key%, %x%, %y%, %index%
     }
-    
+
     key_map_show_status := True
     return
 }

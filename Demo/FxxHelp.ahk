@@ -46,8 +46,8 @@ Fxx()
     title:="fxx_help_info"
     ; Progress, b zh0 fs18 c11 CWC0C0C0 ws1000 x%x% y%y% w%w% h%h%, %content%,  , %title%, "Source Code Pro"
     Progress, zh0 fs18 c11 CWC0C0C0 ws1000 x%x% y%y% w%w% h%h%, %content%,  , %title%, "Source Code Pro"
-    
-    ; WinSet, TransColor, %keyboard_transcolor% 220, ahk_id %k_ID%      
+
+    ; WinSet, TransColor, %keyboard_transcolor% 220, ahk_id %k_ID%
     WinSet, TransColor, F1ECED 25, %title%
 
 }

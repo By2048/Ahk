@@ -14,14 +14,14 @@
 !+Esc::Return
 
 ;关闭窗口
-!F4::Return 
+!F4::Return
 
 ;切换打开的窗口
 !Tab::Return
 !+Tab::Return
 
 ;高对比度 LAlt LShift PrintScreen 依次按下
-!+PrintScreen::Return 
+!+PrintScreen::Return
 
 ;使用方向键键切换打开的窗口
 ^!Tab::Return
@@ -56,7 +56,7 @@
 #+t::Return
 
 ;打开任务视图
-#Tab::Return 
+#Tab::Return
 #+Tab::Return
 
 #^d::Return     ;创建虚拟桌面

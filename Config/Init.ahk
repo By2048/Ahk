@@ -44,7 +44,7 @@ GetInitConfig()
     ; | Phone   | Gmail    | PWD     | Aly      |         |         |
     ; | QQ      | QQ1      | QQ2     | QMail    | QMail1  | QMail2  |
     ; | FXY     | ShengRi  | SFZ     | HuJi     | DiZhi   |         |
-    ; | \       | py       | py.exe  | pip.exe  | yg      | pipjx   | 
+    ; | \       | py       | py.exe  | pip.exe  | yg      | pipjx   |
     ; | -       | #        |         |          |         |         |
     ; | LOL-RM  | Scrcpy   |         |          |         |         |
     file  := A_LineFile

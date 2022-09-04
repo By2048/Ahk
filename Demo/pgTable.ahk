@@ -39,7 +39,7 @@ F12::
 	;{ Reading table from clipboard
 	input := Trim(Clipboard, " `t`r`n")
 	;}
-	
+
 	;{ Convert the input table into an array
 	inputArray := []
 	Loop, Parse, input, `n	; Per line parsing of input.
@@ -49,7 +49,7 @@ F12::
 			inputArray[A_Index, rows] := RTrim(A_LoopField, "`r`n")	; Have to cut away `r`n from the right edge of cells, since every row's last cell has them.
 	}
 	;}
-	
+
 	;{ Transform a table into a text table with pseudo-graphics
 	columns := inputArray.MaxIndex()
 	topBorder := bottomBorder := output := rowSeparator := ""
@@ -110,7 +110,7 @@ F12::
 				cellLeftSpacing += thisColMaxWidth - thisCellWidth
 			Else If (textAlign = "-1")	; Left text alignment
 				cellRightSpacing += thisColMaxWidth - thisCellWidth
-			Else If (thisColMaxWidth - thisCellWidth)	; 
+			Else If (thisColMaxWidth - thisCellWidth)	;
 			{
 				cellLeftSpacing += Ceil((thisColMaxWidth - thisCellWidth) / 2)
 				cellRightSpacing += Floor((thisColMaxWidth - thisCellWidth) / 2)
@@ -127,7 +127,7 @@ F12::
 	}
 	output := topBorder output bottomBorder
 	;}
-	
+
 	;{ Store the pseudo-graphics table into clipboard
 	Clipboard := output
 	ClipWait

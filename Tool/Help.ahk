@@ -8,7 +8,7 @@
 
 ; 显示图片
 HelpImage(image:="")
-{   
+{
     if (image == "") {
         Gui, Destroy
         GlobalSet("Status", "help_image_show_status", False)
@@ -32,7 +32,7 @@ HelpImage(image:="")
 
 ; 显示帮助文本
 HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
-{   
+{
     CoordMode, Pixel, Screen
     CoordMode, Mouse, Screen
 
@@ -63,13 +63,13 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     screen_h   := screen_config.h
     screen_xx  := screen_config.xx
     screen_yy  := screen_config.yy
-    
+
     ; 屏幕3 只使用上半部分
     if (screen_id == "3") {
         screen_h  := screen_h  / 2
         screen_yy := screen_yy / 2
     }
-    
+
     zh_cn_count := ZH_CN(data)
     total_count := StrLen(data)
     total_count := total_count > 6 ? total_count : 6

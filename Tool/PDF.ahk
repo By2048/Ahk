@@ -1,6 +1,6 @@
 ﻿#Include %A_WorkingDir%\Tool\Help.ahk
 
-PDF_Main() 
+PDF_Main()
 {
     CoordMode, Mouse, Windows
 

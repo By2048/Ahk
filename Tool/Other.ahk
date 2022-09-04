@@ -11,7 +11,7 @@
 RunNormalUser(command)
 {
     if ( InStr(command, ".lnk") ) {
-        command := Format("C:\Windows\Explorer.exe {}", command) 
+        command := Format("C:\Windows\Explorer.exe {}", command)
     }
     if (A_UserName = "Administrator") {
         Run %command%
@@ -143,12 +143,12 @@ Snipaste(image:="", screen:="screen1")
 
 
 
-; 比较颜色区别 
+; 比较颜色区别
 ; F0F0F0 | 60ABF0
 CheckColor(color_base, color_compare, offse:=9)
 {
     color_base_red   := SubStr(color_base, 1, 2)
-    color_base_green := SubStr(color_base, 3, 2) 
+    color_base_green := SubStr(color_base, 3, 2)
     color_base_blue  := SubStr(color_base, 5, 2)
     color_base_red   := ToBase("0x" . color_base_red,   10)
     color_base_green := ToBase("0x" . color_base_green, 10)
@@ -168,7 +168,7 @@ CheckColor(color_base, color_compare, offse:=9)
             }
         }
     }
-    
+
     return False
 }
 
@@ -179,7 +179,7 @@ SendData(data)
 {
     WinGet, win_id, ID, A
     ControlGetFocus, control_name, ahk_id %win_id%
-    if (control_name != "") 
+    if (control_name != "")
     {
         ControlGet, control_id, Hwnd,  , %control_name%, ahk_id %win_id%
     }
@@ -237,7 +237,7 @@ ReadConfig(file, slice, replace:="    `; ")
     stop  := slice[2]
     Loop, Read, %file%
     {
-        line := StrReplace(A_LoopReadLine, replace, "") 
+        line := StrReplace(A_LoopReadLine, replace, "")
         if (A_Index >= start and A_Index <= stop) {
             if (A_Index != stop) {
                 data := data . line . "`n"

@@ -32,7 +32,7 @@ ExcelMoveToSheet(cnt)
             Send ^{PgDn}
             Sleep 500
         }
-    }   
+    }
 }
 
 
@@ -109,7 +109,7 @@ SnipasteClipboardToImageFile(image_file)
     ; yy:=y+50
     ; MouseMove, %xx%, %yy%
     ; Send {RButton}
-    
+
     Send {AppsKey}
     Sleep, 500
 

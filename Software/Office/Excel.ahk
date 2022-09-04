@@ -30,12 +30,12 @@
 
     ;无框线
     >![::Send !{4}{n}
-    
+
     ;粗框线
     >!]::Send !{4}{t}
 
     F3::Return  ;粘贴名称
-    
+
     ^F3::Return ;名称管理器
     <![::Send {F3}
 
@@ -54,13 +54,13 @@
     ;         value := StrReplace(value, "  ", " ")
     ;         value := StrReplace(value, "  ", " ")
     ;         value := StrSplit(value, " ")
-            
+
     ;         sheet      := value[1]
     ;         excel_x    := value[2]
     ;         excel_y    := value[3]
     ;         multi_line := value[4]
     ;         image_file := value[5]
-            
+
     ;         ExcelMoveToSheet(sheet)
     ;         Sleep 500
 

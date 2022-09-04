@@ -39,10 +39,10 @@ ButtonStart:
         Seconds := Round(Mod(TimeLeft,60))
         If TimeLeft >= 0
         {
-            GuiControl,, Edit1, %Minutes%    
+            GuiControl,, Edit1, %Minutes%
             GuiControl,, Edit2, %Seconds%
-            }  
-        GuiControl,, MyProgress, %ProgressBar%    
+            }
+        GuiControl,, MyProgress, %ProgressBar%
         If (A_TickCount >= Stoptime)
         {
             Break
@@ -50,7 +50,7 @@ ButtonStart:
     }
 
     SoundBeep,,300
-    ComObjCreate("SAPI.SpVoice").Speak("Your eggs are ready!")     
+    ComObjCreate("SAPI.SpVoice").Speak("Your eggs are ready!")
     MsgBox, 4096, Egg Timer, Your eggs are ready!
 
 Return

@@ -9,8 +9,8 @@ GetFileInfo(path)
     SplitPath, path , _file_, _folder_
 
     shell  := ComObjCreate("Shell.Application")
-    folder := shell.NameSpace(_folder_)    
-    file   := folder.ParseName(_file_) 
+    folder := shell.NameSpace(_folder_)
+    file   := folder.ParseName(_file_)
 
     result := {}
 
@@ -18,7 +18,7 @@ GetFileInfo(path)
         detail_key   := folder.GetDetailsOf(folder.Items, A_Index)
         detail_value := folder.GetDetailsOf(file, A_Index)
         ; \u200e chr(8206) in detail_value (Windows WTF)
-        item := Chr(8206) 
+        item := Chr(8206)
         detail_value := StrReplace(detail_value, item, "")
         if (detail_key!="" and detail_value!="") {
             result[detail_key] := detail_value

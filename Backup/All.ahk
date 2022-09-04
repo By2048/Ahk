@@ -57,17 +57,17 @@ return
 
 
 ;脚本高优先级
-Process, Priority,,high 
+Process, Priority,,high
 
 ;窗口标题模糊匹配
-SetTitleMatchMode 2 
+SetTitleMatchMode 2
 
 ; 不显示任何菜单
-Menu, Tray, NoStandard 
+Menu, Tray, NoStandard
 
 
 ; if (not A_IsAdmin) {
-;     Run *RunAs %A_ScriptFullPath% 
+;     Run *RunAs %A_ScriptFullPath%
 ;     ExitApp
 ; }
 
@@ -103,7 +103,7 @@ WinSet, Style, ^0xC00000, A
 
 ;Ctrl+Win+Alt+L
 ;lock workstation (note: requires 2 'run as admin' registry writes)
-^#!l:: 
+^#!l::
 
 
 ;enable 'lock workstation' (and enable Win+L hotkey):
@@ -139,7 +139,7 @@ content := StrReplace(content," ","  ")
 if (A_ThisHotkey=A_PriorHotkey && A_TimeSincePriorHotkey<300){
 }
 
-SetCapsLockState % !GetKeyState("CapsLock", "T") 
+SetCapsLockState % !GetKeyState("CapsLock", "T")
 
 
  Shift::
@@ -160,7 +160,7 @@ timer:
 
     }
 return
-          
+
 
 
 
@@ -190,7 +190,7 @@ WinWaitClose
 
 
 
-; Space:: 
+; Space::
 ;     CoordMode, Mouse, Window
 ;     CoordMode, Pixel, Window
 ;     x_origin:=0

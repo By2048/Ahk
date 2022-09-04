@@ -76,7 +76,7 @@ Return
 >^l::Run "C:\Program Files\Logitech\LogiOptions\LogiOptions.exe"
 
 >^x::RunNormalUser("D:\#Lnk\Xshell.lnk")
->^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk") 
+>^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk")
 >^v::Run %VSCode% " E:\Config\VSCode\Windows.code-workspace",  , Hide
 >^+v::Run %VSCode%,  , Hide
 >^n::Run D:\#Lnk\Notepad++.lnk

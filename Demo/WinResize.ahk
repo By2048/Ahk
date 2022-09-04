@@ -48,7 +48,7 @@ RWin & RButton::
         KDE_WinLeft := 1
     Else
         KDE_WinLeft := -1
-    
+
     If (KDE_Y1 < KDE_WinY1 + KDE_WinH / 2)
         KDE_WinUp := 1
     Else

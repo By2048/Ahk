@@ -1,10 +1,10 @@
 ﻿
-; 正在使用的键盘界面效果 
+; 正在使用的键盘界面效果
 
 global keyboard_show_status := False
 global keyboard_font_size   := 5
-global keyboard_font_name   := "Verdana"  
-global keyboard_font_style  := "Bold"   
+global keyboard_font_name   := "Verdana"
+global keyboard_font_style  := "Bold"
 global keyboard_transcolor  := "F1ECED"
 global keyboard_win_id      := ""
 
@@ -21,7 +21,7 @@ global keyboard_line_6 := [["LCtrl",1.25],["LWin",1.25],["LAlt",1.25],["Space",5
 
 
 
-KeyboardLine(data) 
+KeyboardLine(data)
 {
     global keyboard_x, keyboard_y, keyboard_h
 
@@ -52,7 +52,7 @@ KeyboardGUI()
     global keyboard_show_status
     global keyboard_win_id
     global keyboard_x, keyboard_y, keyboard_h
-    
+
     keyboard_x := 10
     keyboard_y := 4
     keyboard_h := 30
@@ -71,11 +71,11 @@ KeyboardGUI()
         KeyboardLine(keyboard_line_4)
         KeyboardLine(keyboard_line_5)
         KeyboardLine(keyboard_line_6)
-        
+
         Gui, Show
 
         ; 移动窗口到中下位置
-        WinGet, win_id, ID, A 
+        WinGet, win_id, ID, A
         WinGetPos, x, y, w, h, A
         x := A_ScreenWidth/2 - w/2
         y := A_ScreenHeight  - h
@@ -93,7 +93,7 @@ KeyboardGUI()
     } else {
         keyboard_show_status := False
         Gui Hide
-        Gui Destroy 
+        Gui Destroy
     }
 }
 

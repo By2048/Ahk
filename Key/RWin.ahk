@@ -11,7 +11,7 @@
 #SingleInstance Force
 #NoTrayIcon
 
-; RWin 
+; RWin
 ; 快捷键 (Ctrl Alt 系统全局) (Shift 功能反转)
 ; 窗口位置大小调整
 ; 结束窗口
@@ -78,7 +78,7 @@ Return
 
 >#,::
     if (IsDesktops() or IsMaxMin() or IsGame()) {
-        return 
+        return
     }
     global windows_resize_small
     windows_resize_small := True
@@ -87,7 +87,7 @@ Return
 
 >#.::
     if (IsDesktops() or IsMaxMin() or IsGame()) {
-        return 
+        return
     }
     global windows_resize_big
     windows_resize_big := True
@@ -96,7 +96,7 @@ Return
 
 >#/::
     if (IsDesktops() or IsMaxMin() or IsGame()) {
-        return 
+        return
     }
     global windows_move
     windows_move := True
@@ -155,7 +155,7 @@ $RWin::
     SetTimer, Timer, -500
 Return
 Timer:
-    if (   windows_move == True 
+    if (   windows_move == True
         or windows_resize_big == True
         or windows_resize_small == True ) {
         windows_move := False

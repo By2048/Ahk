@@ -51,7 +51,7 @@ MouseClickImage(image, trans:="")
     CoordMode, Mouse, Window
 
     MouseGetPos, x_origin, y_origin
-    
+
     image_size := GetImageSize(image)
     image_w    := image_size["w"]
     image_h    := image_size["h"]
@@ -65,7 +65,7 @@ MouseClickImage(image, trans:="")
 
     x_find := 0
     y_find := 0
-    
+
     if (trans) {
         ImageSearch, x_find, y_find, x1, y1, x2, y2, *30 *Trans%trans% %image%
     } else {
@@ -94,7 +94,7 @@ MouseClickImageXYWH(x1, y1, x2, y2, image, mode:="Window", offset:=30, key:="Lef
         CoordMode, Mouse, Screen
         CoordMode, Pixel, Screen
     }
-    
+
     MouseGetPos, x_origin, y_origin
 
     image_size := GetImageSize(image)
@@ -117,6 +117,6 @@ MouseClickImageXYWH(x1, y1, x2, y2, image, mode:="Window", offset:=30, key:="Lef
         MouseMove, %x_origin%, %y_origin%, 0
         return True
     }
-    
+
     return False
 }

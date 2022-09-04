@@ -21,7 +21,7 @@
 
     ;下一个选项卡
     ^]::Return
-    !Tab::Send ^] 
+    !Tab::Send ^]
 
     ;上一个选项卡
     ^[::Return
@@ -29,11 +29,11 @@
 
     ;结束运行
     !BackSpace::Send ^c
-    
+
     ;复制
     ^c::Send ^{F1}
 
-    ;清屏 
+    ;清屏
     ^/::Return
     !Esc::Send ^/
 

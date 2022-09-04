@@ -30,7 +30,7 @@ keymaps["VSCode"].Push([[47,316], "!F12"])
 
 show_pos()
 {
-    MouseGetPos, xpos, ypos 
+    MouseGetPos, xpos, ypos
     data := xpos "|" ypos
     HelpText(data,"center", ,3000)
 }
@@ -78,7 +78,7 @@ show_key_help()
 
         help_image_w:=StrLen(key)*11*2
         help_image_h:=44
-        
+
         x:=windows_x+postion_x-help_image_w/2
         y:=windows_y+postion_y-help_image_h/2
 
@@ -124,9 +124,9 @@ return
 
 
 timer:
-    if (cnt=1) {   
+    if (cnt=1) {
         hide_key_help()
-    } 
+    }
     if (cnt=2) {
         show_key_help()
     }

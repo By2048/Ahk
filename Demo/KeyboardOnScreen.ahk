@@ -1,6 +1,6 @@
 ﻿; 屏幕键盘(需要 XP/2k/NT) -- 作者 Jon
 ; https://www.autohotkey.com
-; 此脚本会在屏幕的底部创建一个模拟键盘来实时显示您按下的按键. 
+; 此脚本会在屏幕的底部创建一个模拟键盘来实时显示您按下的按键.
 ; 我写这个是为了帮我学习盲打(来适应不去看键盘).
 ; 在脚本的顶部可以自定义屏幕键盘的大小.
 ; 还有, 您可以双击托盘图标来显示或隐藏键盘.
@@ -21,7 +21,7 @@ k_MenuItemShow = Show on-screen &keyboard
 ; To have the keyboard appear on a monitor other than the primary, specify
 ; a number such as 2 for the following variable.  Leave it blank to use
 ; the primary:
-k_Monitor = 
+k_Monitor =
 
 ;---- End of configuration section.  Don't change anything below this point
 ; unless you want to alter the basic nature of the script.

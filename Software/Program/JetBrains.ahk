@@ -13,7 +13,7 @@
     ^h::Return
     ^+Up::Return
     ^+Down::Return
-    
+
     AppsKey::Send ^,
 
     !+\::Send ^r
@@ -23,11 +23,11 @@
 
     !Up::Send ^+{Up}
     !Down::Send ^+{Down}
-    
+
     !BackSpace::Send ^q
 
 #If
-    
+
 
 ; https://www.jetbrains.com/toolbox-app/faq/#keyboard-navigation
 
