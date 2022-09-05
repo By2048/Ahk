@@ -63,9 +63,7 @@
 
 #If CheckWindowActive( "Chrome" )
 
-    LAlt::Return
-
-    RAlt::Send {F10}
+    LAlt::Send {F10}
 
     ;帮助
     F1::Return
@@ -129,19 +127,34 @@
         SetTimer, ChromeTimer, -300
     Return
     ChromeTimer:
-        if (cnt == 2) {
-            Send !d
-            Send ^c
-            data := Clipboard
-            if (InStr(data, "www.google.com/search?q")) {
-                keyword := RegExReplace(data, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
-                url := "https://cn.bing.com/search?q=" . keyword
-                Clipboard := url
-                Send ^v
-                Send {Enter}
-            } else {
-                Send {F6 3}
-            }
+        if (cnt != 2) {
+            Return
+        }
+        Send !d
+        Send ^c
+
+        url_origin := Clipboard
+        url_result := ""
+
+        ; www.google.com/search?q=xxxxxxxx
+        url_check := "www.google.com/search?q="
+        if (InStr(url_origin, url_check)) {
+            keyword := RegExReplace(url_origin, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
+            url_result := url_check . keyword
+        }
+        ; https://www.zhihu.com/question/xxxxxxxx/answer/xxxxxxxx
+        url_check := "https://www.zhihu.com/question/"
+        if (InStr(url_origin, url_check)) {
+            qid := RegExReplace(url_origin, "(http.*)(/question/)(\d+)(/answer/)(\d+)", "$3")
+            url_result := url_check . qid
+        }
+
+        if (url_result) {
+            Clipboard := url_result
+            Send ^v
+            Send {Enter}
+        } else {
+            Send {F6 3}
         }
         cnt := 0
     Return
