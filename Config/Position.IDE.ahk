@@ -28,6 +28,7 @@ WPD["PyCharm__选择路径"]       := Position(900 , 1500)
 WPD["PyCharm__选择"]           := Position(900 , 1500)
 
 WPD["PyCharm__Python解释器"] := Position(1000 , 1500)
+WPD["PyCharm__书签"] := Position(1000 , 1500)
 
 WPD["PyCharm__编辑配置设置"] := Position(1300 , 1600)
 

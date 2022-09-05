@@ -11,6 +11,13 @@
 #If
 
 
+#If CheckWindowActive("PyCharm", "SunAwtDialog", "书签")
+    $CapsLock::
+        Send ^{CapsLock}
+    Return
+#If
+
+
 #If CheckWindowActive("PyCharm", "SunAwtDialog", "终端|运行|调试")
     ~CapsLock::
         if (not hide_status or hide_status == False) {

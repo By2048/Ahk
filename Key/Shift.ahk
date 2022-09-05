@@ -66,9 +66,12 @@ Global hotkeys_total        := 1     ; 显示图片组的数量
 
 InitImageConfig()
 {
+    Global Hotkeys_Images
     check_total := Hotkeys_Images.Count()
     if (check_total) {
         return
+    } else {
+        Hotkeys_Images := {}
     }
     ; 快捷键图片对应关系
     ; Default                : Windows.png
