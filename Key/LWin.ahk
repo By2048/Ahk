@@ -122,14 +122,14 @@ Return
 <#Insert::ScreenShot("Screen1", "T:\")
 ;屏幕截图 长久
 <#+Insert::
-    ScreenShot("Screen1", "P:\Screen\")
-    ScreenShot("Screen2", "P:\Screen\")
-    ScreenShot("Screen3", "P:\Screen\")
+    ScreenShot("Screen1", "F:\Image\Screen\")
+    ScreenShot("Screen2", "F:\Image\Screen\")
+    ScreenShot("Screen3", "F:\Image\Screen\")
 Return
 ;软件截图 临时
 <#Delete::ScreenshotActivateSoftware("T:\")
 ;软件截图 长久
-<#+Delete::ScreenshotActivateSoftware("P:\Screen\")
+<#+Delete::ScreenshotActivateSoftware("F:\Image\Screen\")
 
 ;结束应用
 <#BackSpace::

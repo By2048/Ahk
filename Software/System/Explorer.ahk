@@ -43,7 +43,7 @@
 #If CheckWindowActive( "Explorer" , "WorkerW" )
     F9::Run D:\\
     F10::Run E:\\
-    F11::Run P:\\
+    F11::Run F:\\
     F12::Run N:\\
     >!Space::Run D:\#Lnk\Everything.lnk
 #If

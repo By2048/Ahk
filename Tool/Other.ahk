@@ -53,7 +53,7 @@ WindowsTerminal(mode:="Focus", folder:="")
 
 ; 屏幕截图
 ; screens   | screen1 screen2 screen3
-; keep_path | T:\ P:\Screen\
+; keep_path | T:\  F:\Image\Screen\
 ScreenShot(screen_name:="Screen1", keep_path:="")
 {
     if (not FileExist(Snipaste)) {
