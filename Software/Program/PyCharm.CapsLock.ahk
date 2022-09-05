@@ -187,3 +187,18 @@ Return
         CenterHideWindow()
     }
 Return
+
+; Git工具
+^!g::Return
+~CapsLock & g::
+    if (CapsLockActivate == True) {
+        Send {Esc}
+        FloatTool := False
+        CapsLockActivate := False
+    } else {
+        Send ^!g
+        FloatTool := True
+        CapsLockActivate := True
+        CenterHideWindow()
+    }
+Return

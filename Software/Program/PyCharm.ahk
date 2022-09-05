@@ -181,8 +181,6 @@
         EscRedirect := True
         CenterHideWindow(1900, 1700)
     Return
-    ~^+e::CenterHideWindow(666, 1300)
-    ~^+g::CenterHideWindow()
     ~!a::
         EscRedirect := True
         CenterHideWindow(2244, 1600)
@@ -239,6 +237,12 @@
     !CapsLock::Send ^{CapsLock}
     ^+CapsLock::Return
     !+CapsLock::Send ^+{CapsLock}
+
+    ;代码左右移动
+    >!NumPad4::Return
+    >!NumPad6::Return
+    >![::Send !{NumPad4}
+    >!]::Send !{NumPad6}
 
     ; 设置
     LAlt & RAlt::
