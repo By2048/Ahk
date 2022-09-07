@@ -48,6 +48,7 @@ Return
 >^+p::Run %WT% -d T:\
 
 >^a::Run D:\#Lnk\Android.lnk
+>^+a::Run D:\#Lnk\AndroidX.lnk
 >^s::Run D:\#Lnk\Sandboxie.lnk
 >^f::Run D:\#Lnk\FreeFileSync.lnk
 >^g::Run, Chrome.bat, %A_WorkingDir%, Hide

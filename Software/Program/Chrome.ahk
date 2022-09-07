@@ -128,6 +128,7 @@
     Return
     ChromeTimer:
         if (cnt != 2) {
+            cnt := 0
             Return
         }
         Send !d
@@ -140,13 +141,14 @@
         url_check := "www.google.com/search?q="
         if (InStr(url_origin, url_check)) {
             keyword := RegExReplace(url_origin, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
-            url_result := url_check . keyword
+            url_result := "https://cn.bing.com/search?q=" . keyword
         }
+
         ; https://www.zhihu.com/question/xxxxxxxx/answer/xxxxxxxx
         url_check := "https://www.zhihu.com/question/"
         if (InStr(url_origin, url_check)) {
             qid := RegExReplace(url_origin, "(http.*)(/question/)(\d+)(/answer/)(\d+)", "$3")
-            url_result := url_check . qid
+            url_result := "https://www.zhihu.com/question/" . qid
         }
 
         if (url_result) {
