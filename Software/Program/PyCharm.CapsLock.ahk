@@ -31,14 +31,10 @@ Return
 ; 书签描述符
 ^!`::Return
 ~CapsLock & `::
-    if (CapsLockActivate == True) {
-        Send {Esc}
-        CapsLockActivate := False
-    } else {
-        Send ^!``
-        CapsLockActivate := True
-        CenterHideWindow()
-    }
+    Send ^!``
+    CapsLockActivate := True
+    EscRedirect := True
+    CenterHideWindow()
 Return
 
 ; 迷你地图
@@ -48,16 +44,10 @@ Return
 ; 跳转到导航栏
 ^!p::Return
 ~CapsLock & p::
+    Send ^!p
+    CapsLockActivate := True
     EscRedirect := True
     EscCount := 2
-    if (CapsLockActivate == True) {
-        Send {Esc}
-        Send {Esc}
-        CapsLockActivate := False
-    } else {
-        Send ^!p
-        CapsLockActivate := True
-    }
 Return
 
 ; Git工具
@@ -160,54 +150,35 @@ Return
 ; 代码
 ^!Numpad5::Return
 ~CapsLock & RShift::
-    if (CapsLockActivate == True) {
-        Send {Esc}
-        CapsLockActivate := False
-    } else {
-        Send ^!{Numpad5}
-        CapsLockActivate := True
-        CenterHideWindow()
-    }
+    Send ^!{Numpad5}
+    CapsLockActivate := True
+    EscRedirect := True
+    CenterHideWindow()
 Return
 
 ; 外观
 ^!,::Return
 ~CapsLock & ,::
+    Send ^!,
+    CapsLockActivate := True
     EscRedirect := True
-    if (CapsLockActivate == True) {
-        Send {Esc}
-        CapsLockActivate := False
-    } else {
-        Send ^!,
-        CapsLockActivate := True
-        CenterHideWindow()
-    }
+    CenterHideWindow()
 Return
 
 ;窗口
 ^!.::Return
 ~CapsLock & .::
+    Send ^!.
+    CapsLockActivate := False
     EscRedirect := True
-    if (CapsLockActivate == True) {
-        Send {Esc}
-        CapsLockActivate := False
-    } else {
-        Send ^!.
-        CapsLockActivate := True
-        CenterHideWindow()
-    }
+    CenterHideWindow()
 Return
 
 ;活动编辑器
 ^!/::Return
 ~CapsLock & /::
+    Send ^!/
+    CapsLockActivate := True
     EscRedirect := True
-    if (CapsLockActivate == True) {
-        Send {Esc}
-        CapsLockActivate := False
-    } else {
-        Send ^!/
-        CapsLockActivate := True
-        CenterHideWindow()
-    }
+    CenterHideWindow()
 Return
