@@ -30,6 +30,8 @@ WPD["PyCharm__选择"]           := Position(900 , 1500)
 WPD["PyCharm__Python解释器"] := Position(1000 , 1500)
 WPD["PyCharm__书签"] := Position(1000 , 1500)
 
+WPD["PyCharm__编辑宏"] := Position(1300 , 1000)
+
 WPD["PyCharm__编辑配置设置"] := Position(1300 , 1600)
 
 WPD["PyCharm__指定检查范围"] := Position(1500 , 1000)
