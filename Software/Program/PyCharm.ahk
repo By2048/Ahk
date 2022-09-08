@@ -19,13 +19,13 @@
 
 
 #If CheckWindowActive("PyCharm", "SunAwtDialog", "终端|运行|调试")
-    ~CapsLock::
+    ~RAlt::
         if (not hide_status or hide_status == False) {
             WinSet, Transparent, 99, A
             hide_status := True
         }
     Return
-    ~CapsLock Up::
+    ~RAlt Up::
         WinSet, Transparent, 255, A
         hide_status := False
         SetCapsLockState, Off
@@ -170,6 +170,7 @@
 
     #Include %A_WorkingDir%\Software\Program\PyCharm.CapsLock.ahk
 
+    ~!+\::CenterHideWindow()
     ~^n::CenterHideWindow()
     ~^+n::CenterHideWindow()
     ~!i::CenterHideWindow(1000, 1000)
@@ -191,18 +192,9 @@
         Send ^!{NumLock}
         SetNumLockState, Off
     Return
-    ;窗口全屏选项
+    ;Zen模式
     <#+Enter::
-        if (key_status) {
-            Send {Esc}
-            key_status := False
-            EscRedirect := False
-        } else {
-            Send ^!+{NumLock}
-            key_status := True
-            EscRedirect := True
-            CenterHideWindow()
-        }
+        Send ^!+{NumLock}
         SetNumLockState, Off
     Return
 
@@ -238,11 +230,23 @@
     ^+CapsLock::Return
     !+CapsLock::Send ^+{CapsLock}
 
-    ;代码左右移动
-    >!NumPad4::Return
-    >!NumPad6::Return
-    >![::Send !{NumPad4}
-    >!]::Send !{NumPad6}
+    ; >!NumPad4::Return
+    ; >!NumPad5::Return
+    ; >!NumPad6::Return
+    ; >![::Send !{NumPad4}
+    ; >!\::Send !{NumPad5}
+    ; >!]::Send !{NumPad6}
+
+    ; 代码注释
+    ; ^\::Return
+    ; ^+\::Return
+    ~LAlt & RShift::
+        if (GetKeyState("LShift", "P")) {
+            Send ^z
+        } else {
+            Send ^\
+        }
+    Return
 
     ; 设置
     LAlt & RAlt::

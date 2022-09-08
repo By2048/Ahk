@@ -2,11 +2,15 @@
 ~*CapsLock::
 Return
 ~*CapsLock Up::
+    CapsLockActivate := False
     SetCapsLockState, Off
 Return
 
-~CapsLock & LShift::Return
-~CapsLock & Tab::Return
+; 聚焦 编辑器|工具
+^!NumpadDiv::Return
+^!NumpadMult::Return
+~CapsLock & Tab::Send ^!{NumpadDiv}
+~CapsLock & LShift::Send ^!{NumpadMult}
 
 ; 项目 结构
 ~CapsLock & [::
@@ -53,6 +57,28 @@ Return
     } else {
         Send ^!p
         CapsLockActivate := True
+    }
+Return
+
+; Git工具
+^!g::Return
+~CapsLock & g::
+    key_shift := GetKeyState("LShift", "P")
+    if (CapsLockActivate == True) {
+        Send {Esc}
+        FloatTool := False
+        CapsLockActivate := False
+    } else {
+        if (key_shift == True) {
+            Send ^!+g
+            FloatTool := True
+            CenterHideWindow()
+        } else {
+            Send ^!g
+            FloatTool := True
+            CapsLockActivate := True
+            CenterHideWindow()
+        }
     }
 Return
 
@@ -144,7 +170,7 @@ Return
     }
 Return
 
-; 切换器操作
+; 外观
 ^!,::Return
 ~CapsLock & ,::
     EscRedirect := True
@@ -158,7 +184,7 @@ Return
     }
 Return
 
-; 活动工具窗口
+;窗口
 ^!.::Return
 ~CapsLock & .::
     EscRedirect := True
@@ -172,32 +198,15 @@ Return
     }
 Return
 
-; 编辑器选项卡
+;活动编辑器
 ^!/::Return
 ~CapsLock & /::
     EscRedirect := True
     if (CapsLockActivate == True) {
         Send {Esc}
-        FloatTool := False
         CapsLockActivate := False
     } else {
         Send ^!/
-        FloatTool := True
-        CapsLockActivate := True
-        CenterHideWindow()
-    }
-Return
-
-; Git工具
-^!g::Return
-~CapsLock & g::
-    if (CapsLockActivate == True) {
-        Send {Esc}
-        FloatTool := False
-        CapsLockActivate := False
-    } else {
-        Send ^!g
-        FloatTool := True
         CapsLockActivate := True
         CenterHideWindow()
     }
