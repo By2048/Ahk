@@ -229,11 +229,11 @@ Return
 
 ;切换应用
 Global win_tab := False
-Global win_tab_shift := False
+Global win_shift_tab := False
 LWin & Tab::
     win_tab := True
     If (GetKeyState("Shift", "P")) {
-        win_tab_shift := True
+        win_shift_tab := True
         Send {Alt Down}{Shift Down}{Tab}
     } Else {
         Send {Alt Down}{Tab}
@@ -243,9 +243,9 @@ Return
     If (win_tab == True) {
         Send {Alt Up}
         win_tab := False
-        If (win_tab_shift == True) {
+        If (win_shift_tab == True) {
             Send {Shift Up}
-            win_tab_shift := False
+            win_shift_tab := False
         }
     }
 Return
