@@ -182,3 +182,21 @@ Return
     EscRedirect := True
     CenterHideWindow()
 Return
+
+; 活动工具窗口
+^!;::Return
+~CapsLock & `;::
+    Send ^!;
+    CapsLockActivate := True
+    EscRedirect := True
+    CenterHideWindow()
+Return
+
+; 编辑器选项卡
+^!'::Return
+~CapsLock & '::
+    Send ^!'
+    CapsLockActivate := True
+    EscRedirect := True
+    CenterHideWindow()
+Return
