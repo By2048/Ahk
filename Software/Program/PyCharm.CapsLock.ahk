@@ -14,11 +14,19 @@ Return
 
 ; 项目 结构
 ~CapsLock & [::
-    Send ^![
+    if (GetKeyState("LShift", "P")) {
+        Send ^!+[
+    } else {
+        Send ^![
+    }
     EscRedirect := True
 Return
 ~CapsLock & ]::
-    Send ^!]
+    if (GetKeyState("LShift", "P")) {
+        Send ^!+]
+    } else {
+        Send ^!]
+    }
     EscRedirect := True
 Return
 
@@ -53,13 +61,12 @@ Return
 ; Git工具
 ^!g::Return
 ~CapsLock & g::
-    key_shift := GetKeyState("LShift", "P")
     if (CapsLockActivate == True) {
         Send {Esc}
         FloatTool := False
         CapsLockActivate := False
     } else {
-        if (key_shift == True) {
+        if (GetKeyState("LShift", "P")) {
             Send ^!+g
             FloatTool := True
             CenterHideWindow()
@@ -92,29 +99,24 @@ Return
     }
 Return
 
-; 书签 Bookmark
+; 书签 | 最近编辑
 ^!\::Return
 ^!+\::Return
 ~CapsLock & \::
     EscRedirect := True
-    key_shift := GetKeyState("LShift", "P")
-    if (CapsLockActivate == False) {
-        if (key_shift == True) {
-            Send ^!+\
-        } else {
-            Send ^!\
-            CenterHideWindow(3000, 1700)
-        }
+    if (GetKeyState("LShift", "P")) {
+        Send ^!+\
+        CenterHideWindow(2200, 1700)
         CapsLockActivate := True
+        Return
+    }
+    if (not CapsLockActivate) {
+        Send ^!\
+        CapsLockActivate := True
+        CenterHideWindow(3000, 1700)
     } else {
-        if (key_shift == True) {
-            Send ^!+\
-            CapsLockActivate := False
-            CenterHideWindow()
-        } else {
-            Send {Esc}
-            CapsLockActivate := False
-        }
+        Send {Esc}
+        CapsLockActivate := False
     }
 Return
 
@@ -128,8 +130,8 @@ Return
         FloatTool := False
         CapsLockActivate := False
     } else {
-        key_shift := GetKeyState("LShift", "P")
-        if (key_shift) {
+        lshift := GetKeyState("LShift", "P")
+        if (lshift) {
             Send ^!+{Enter}
             EnterCount := 0
             OffsetTool := True

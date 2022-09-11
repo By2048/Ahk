@@ -178,10 +178,6 @@
         EscRedirect := True
         CenterHideWindow()
     Return
-    ~!o::
-        EscRedirect := True
-        CenterHideWindow(1900, 1700)
-    Return
     ~!a::
         EscRedirect := True
         CenterHideWindow(2244, 1600)
@@ -190,12 +186,12 @@
     ;窗口全屏
     <#Enter::
         Send ^!{NumLock}
-        SetNumLockState, Off
+        SetNumLockState Off
     Return
     ;Zen模式
     <#+Enter::
         Send ^!+{NumLock}
-        SetNumLockState, Off
+        SetNumLockState Off
     Return
 
     <#\::
