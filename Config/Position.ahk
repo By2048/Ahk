@@ -23,7 +23,8 @@ Windows_Position["Backup" ] := WPB
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-Position(args*) {
+Position(args*)
+{
     if ( args.Length() == 2 ) {
         x := "[Center][1]"
         y := "[Center][1]"

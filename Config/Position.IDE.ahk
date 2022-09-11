@@ -34,8 +34,12 @@ WPD["PyCharm__编辑宏"] := Position(1300 , 1000)
 
 WPD["PyCharm__编辑配置设置"] := Position(1300 , 1600)
 
+WPD["PyCharm__拉取请求"] := Position(2333, "[Center][1]", 1333 , 1666)
+
 WPD["PyCharm__指定检查范围"] := Position(1500 , 1000)
 WPD["PyCharm__将提交推送到"] := Position(1500 , 1000)
+
+WPD["PyCharm__运行/调试配置"] := Position(1666 , 1777)
 
 WPD["PyCharm__查找"]     := Position(1600 , 1500)
 WPD["PyCharm__检查"]     := Position(1600 , 1500)
@@ -51,8 +55,7 @@ WPD["PyCharm__可用软件包"]       := Position(2000 , 1500)
 WPD["PyCharm__添加Python解释器"] := Position(2000 , 1500)
 WPD["PyCharm__评估"]             := Position(2000 , 1500)
 WPD["PyCharm__Python解释器"]     := Position(2000 , 1500)
-
-WPD["PyCharm__运行/调试配置"] := Position(1555 , 1777)
+WPD["PyCharm__端点"]             := Position(2000 , 1500)
 
 WPD["PyCharm__断点"] := Position(2800 , 1500)
 
