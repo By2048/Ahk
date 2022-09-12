@@ -61,30 +61,43 @@
     Return
 #If
 
-
-; 浮动工具栏 偏移位置
-#If ( CheckWindowActive("PyCharm") And OffsetTool == True )
+; 主菜单处理
+#If ( CheckWindowActive("PyCharm") And EnterTool == True )
     $Enter::
         Send {Enter}
-        EnterCount := EnterCount + 1
-        config := CenterHideWindow(OffsetToolLeft + OffsetToolTotalWidth)
-        OffsetToolWidth := config.w
-        OffsetToolTotalWidth := OffsetToolTotalWidth + OffsetToolWidth + OffsetToolSpace
+        c := GetHideWindowConfig()
+        EnterToolConfig.Push(c)
+        max_length := EnterToolConfig.Length()
+        move_space := c.w / 2
+        for index, cfg in EnterToolConfig {
+            cid := cfg.id
+            cx  := cfg.x
+            cy  := cfg.y
+            cw  := cfg.w
+            ch  := cfg.h
+            cx  := cx - move_space
+            cy  := Screen.y + Screen.h/2 - ch/2
+            cfg.x := cx
+            cfg.y := cy
+            cx  := cx - (max_length - index) * EnterToolSpace
+            WinMove, ahk_id %cid%,  , %cx%, %cy%, %cw%, %ch%
+        }
     Return
+    $Esc::
     $CapsLock::
         Send {Esc}
-        EnterCount := EnterCount - 1
-        OffsetToolTotalWidth := OffsetToolTotalWidth - OffsetToolWidth - OffsetToolSpace
-        if (EnterCount == -1) {
-            OffsetTool := False
-            OffsetToolWidth := 0
-            OffsetToolTotalWidth := 0
-            OffsetToolSpace := 0
-            CapsLockActivate := False
-        } else {
-            config := GetHideWindowConfig()
-            OffsetToolWidth := config.w
-            OffsetToolTotalWidth := OffsetToolWidth + OffsetToolSpace
+        c := EnterToolConfig.Pop()
+        move_space := c.w / 2
+        for index, cfg in EnterToolConfig {
+            cid := cfg.id
+            cx  := cfg.x
+            cy  := cfg.y
+            cw  := cfg.w
+            ch  := cfg.h
+            cx  := cx + move_space
+            cfg.x := cx
+            cx  := cx + index * EnterToolSpace
+            WinMove, ahk_id %cid%,  , %cx%, %cy%, %cw%, %ch%
         }
     Return
 #If
@@ -209,8 +222,8 @@
         MoveWindowToDefaultPosition()
     Return
 
-    !F1::FloatToolSwitch("!{F1}", "运行/调试配置")
-    !F2::FloatToolSwitch("!{F2}", "断点")
+    !F1::ToolSwitch("!{F1}", "运行/调试配置")
+    !F2::ToolSwitch("!{F2}", "断点")
 
     ;代码左右移动
     ; ^[::Send ^{w}+{Tab}^+{w}

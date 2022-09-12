@@ -126,20 +126,17 @@ Return
 ~CapsLock & Enter::
     if (CapsLockActivate == True) {
         Send {Esc}
-        OffsetTool := False
         FloatTool := False
         CapsLockActivate := False
     } else {
         lshift := GetKeyState("LShift", "P")
         if (lshift) {
             Send ^!+{Enter}
-            EnterCount := 0
-            OffsetTool := True
-            OffsetToolLeft := 1000
-            OffsetToolSpace := 5
-            config := CenterHideWindow(OffsetToolLeft)
-            OffsetToolWidth := config.w
-            OffsetToolTotalWidth := OffsetToolWidth + OffsetToolSpace
+            EnterTool := True
+            EnterToolConfig := []
+            EnterToolSpace := 10
+            c := CenterHideWindow()
+            EnterToolConfig.Push(c)
         } else {
             Send ^!{Enter}
             FloatTool := True

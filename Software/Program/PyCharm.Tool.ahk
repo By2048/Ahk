@@ -17,7 +17,7 @@ CapsLockRedirect()
 }
 
 
-FloatToolSwitch(Key, rule)
+ToolSwitch(Key, rule)
 {
     WinGetTitle, win_title, A
     if (win_title == rule) {
