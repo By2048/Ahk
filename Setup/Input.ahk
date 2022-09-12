@@ -26,4 +26,4 @@ Return
 :*:\#::{# 80}
 
 
-#Include %A_WorkingDir%\Other\Input.Private.ahk
+#Include %A_WorkingDir%\Setup\Input.Private.ahk

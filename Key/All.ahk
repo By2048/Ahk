@@ -1,13 +1,8 @@
 ﻿
-#SingleInstance Force
-#NoTrayIcon
-
-
 ; https://superuser.com/questions/1455857/how-to-disable-office-key-keyboard-shortcut-opening-office-app\
 ; Win+Ctrl+Alt+Shift OfficeKey
 ; REG ADD HKCU\Software\Classes\ms-officeapp\Shell\Open\Command /t REG_SZ /d rundll32
 ; https://support.microsoft.com/zh-cn/windows/windows-的键盘快捷方式-dcc61a57-8ff0-cffe-9796-cb9706c75eec#WindowsVersion=Windows_10
-
 
 ;切换窗口
 !Esc::Return

@@ -1,14 +1,4 @@
 ﻿
-#Include %A_WorkingDir%\Config\All.ahk
-#Include %A_WorkingDir%\Tool\Base.ahk
-#Include %A_WorkingDir%\Tool\Help.ahk
-#Include %A_WorkingDir%\Tool\Other.ahk
-#Include %A_WorkingDir%\Tool\Window.ahk
-
-#SingleInstance Force
-#NoTrayIcon
-
-
 ; 环境编辑器
 <#7::
     Run sysdm.cpl

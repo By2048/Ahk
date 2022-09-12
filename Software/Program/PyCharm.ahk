@@ -170,6 +170,13 @@
 
     #Include %A_WorkingDir%\Software\Program\PyCharm.CapsLock.ahk
 
+    ~!+`::
+        WinWaitActive, 书签描述
+        WinGetTitle, win_title, A
+        if (win_title == "书签描述") {
+            MoveWindowToCenter(True)
+        }
+    Return
     ~!+\::CenterHideWindow()
     ~^n::CenterHideWindow()
     ~^+n::CenterHideWindow()

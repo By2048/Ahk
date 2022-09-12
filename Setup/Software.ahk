@@ -17,7 +17,7 @@
 #Include %A_WorkingDir%\Tool\KeyMap.ahk
 #Include %A_WorkingDir%\Tool\Office.ahk
 
-#Include %A_WorkingDir%\Software\@.ahk
+#Include %A_WorkingDir%\Software\Args.ahk
 
 #Include %A_WorkingDir%\Software\Chat\DingDing.ahk
 #Include %A_WorkingDir%\Software\Chat\TIM.ahk

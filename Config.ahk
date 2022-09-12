@@ -1,5 +1,5 @@
 ﻿
-; AutoHotkey路径  Setup.bat中解析取[22,-1]内的值
+; AutoHotkey路径,Setup.bat中解析取[22,-1]内的值
 Global AutoHotkey := "D:\AutoHotkey\AutoHotkey.exe"
 
 ; 屏幕数量   | 1 \ 2 \ 3
@@ -33,9 +33,9 @@ Global Font := { "Dpi"  : 2             ;
 Global Screens := {} ;所有屏幕相关信息
 Global Screen  := {} ;主窗口信息
 
-; 缓存过期时间
+; 缓存过期时间 毫秒
 Global Cache_Expire_Time := 500
 
-; 全局共享的属性 | 临时 + 动态更新
+; 全局共享的属性
 Global window := {} ; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
 Global status := {} ; 各种状态信息

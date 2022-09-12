@@ -1,16 +1,4 @@
 ﻿
-#Include %A_WorkingDir%\Config\All.ahk
-#Include %A_WorkingDir%\Tool\Base.ahk
-#Include %A_WorkingDir%\Tool\Change.ahk
-#Include %A_WorkingDir%\Tool\Init.ahk
-#Include %A_WorkingDir%\Tool\Help.ahk
-#Include %A_WorkingDir%\Tool\Mouse.ahk
-#Include %A_WorkingDir%\Tool\Other.ahk
-#Include %A_WorkingDir%\Tool\Window.ahk
-
-#SingleInstance Force
-#NoTrayIcon
-
 ; RWin
 ; 快捷键 (Ctrl Alt 系统全局) (Shift 功能反转)
 ; 窗口位置大小调整
@@ -156,9 +144,9 @@ $RWin::
     } else {
         cnt := 1
     }
-    SetTimer, Timer, -500
+    SetTimer, WinTimer, -500
 Return
-Timer:
+WinTimer:
     if (   windows_move == True
         or windows_resize_big == True
         or windows_resize_small == True ) {

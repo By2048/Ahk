@@ -1,19 +1,6 @@
 ﻿
-#Include %A_WorkingDir%\Config\All.ahk
-#Include %A_WorkingDir%\Tool\Base.ahk
-#Include %A_WorkingDir%\Tool\Init.ahk
-#Include %A_WorkingDir%\Tool\File.ahk
-#Include %A_WorkingDir%\Tool\Other.ahk
-#Include %A_WorkingDir%\Tool\Window.ahk
-
-#SingleInstance Force
-#NoTrayIcon
-
-
-
 >+`;::Send :
 >+'::Send "
-
 
 
 $RShift::
@@ -25,9 +12,9 @@ $RShift::
         cnt := 1
         HelpText("RShift " . cnt, "center", "screen_3")
     }
-    SetTimer, Timer, -333
+    SetTimer, ShiftTimer, -333
 Return
-Timer:
+ShiftTimer:
     if (cnt == 1) {
         HideShiftImage()
         HelpText()
@@ -39,7 +26,6 @@ Timer:
     }
     cnt := 0
 Return
-
 
 
 #If ( hotkeys_show_status == True )
@@ -55,13 +41,11 @@ Return
 #If
 
 
-
 Global Hotkeys_Images       := {}    ; 软件图片对应关系
 Global hotkeys_show_status  := False ; 是否正在显示图片
 Global hotkeys_current      := []    ; 当前显示的图片组
 Global hotkeys_index        := 1     ; 显示图片的序号
 Global hotkeys_total        := 1     ; 显示图片组的数量
-
 
 
 InitImageConfig()
@@ -102,7 +86,6 @@ InitImageConfig()
 }
 
 
-
 ; 获取需要展示的图片
 GetShiftImage()
 {
@@ -126,7 +109,6 @@ GetShiftImage()
     result := A_WorkingDir "\Image\RShift\" result
     return result
 }
-
 
 
 ShowShiftImage()
@@ -154,7 +136,6 @@ ShowShiftImage()
 }
 
 
-
 HideShiftImage()
 {
     Gui, Destroy
@@ -163,7 +144,6 @@ HideShiftImage()
     hotkeys_total       := 1
     hotkeys_current     := []
 }
-
 
 
 ; 展示图片切换上一个下一个

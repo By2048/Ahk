@@ -1,11 +1,4 @@
 ﻿
-#Include %A_WorkingDir%\Tool\Base.ahk
-#Include %A_WorkingDir%\Tool\Mouse.ahk
-
-#SingleInstance Force
-#NoTrayIcon
-
-
 ~Space::Return
 
 ~Space & w::MouseMoveDC(  0, -50)

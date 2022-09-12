@@ -1,14 +1,4 @@
 ﻿
-#Include %A_WorkingDir%\Config\All.ahk
-#Include %A_WorkingDir%\Tool\Base.ahk
-#Include %A_WorkingDir%\Tool\Help.ahk
-#Include %A_WorkingDir%\Tool\Other.ahk
-#Include %A_WorkingDir%\Tool\Window.ahk
-
-#SingleInstance Force
-#NoTrayIcon
-
-
 $RAlt::
     if (IsGame()) {
         return
@@ -19,9 +9,9 @@ $RAlt::
     } else {
         cnt := 1
     }
-    SetTimer, Timer, -500
+    SetTimer, AltTimer, -500
 Return
-Timer:
+AltTimer:
     if (cnt == 2) {
         GetActiveWindowInfo()
         process_name := window.process_name

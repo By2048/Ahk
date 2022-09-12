@@ -1,5 +1,5 @@
 ﻿
-#Include %A_WorkingDir%\Config\Base.ahk
+#Include %A_WorkingDir%\Config.ahk
 #Include %A_WorkingDir%\Config\Screen.ahk
 #Include %A_WorkingDir%\Config\Init.ahk
 #Include %A_WorkingDir%\Config\KeyMap.ahk

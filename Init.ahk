@@ -1,10 +1,10 @@
 ﻿
-#Include %A_WorkingDir%\Config\Base.ahk
+#Include %A_WorkingDir%\Config.ahk
 
 ; -------------------------------------------------------------------------------------------------
 ; 私有配置文件填补
 FILES := {     "Confog" : A_WorkingDir . "\Config\Private.ahk"                    ;
-         ,      "Input" : A_WorkingDir . "\Other\Input.Private.ahk"               ;
+         ,      "Input" : A_WorkingDir . "\Setup\Input.Private.ahk"               ;
          ,        "COC" : A_WorkingDir . "\Software\Game\Android.COC.Private.ahk" ;
          , "LOL.Client" : A_WorkingDir . "\Software\Game\LOL.Client.Private.ahk"  ;
          ,   "LOL.Game" : A_WorkingDir . "\Software\Game\LOL.Game.Private.ahk"    }

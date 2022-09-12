@@ -16,11 +16,7 @@ LOLSoftware()
 
 
 #If ( LOLSoftware() )
-    #BackSpace::
-        Run, Setup.bat StopSpace, %A_WorkingDir%, Hide
-        HelpText("`n Stop Space `n", "center", "screen3")
-    Return
-    #Include %A_WorkingDir%\Other\Dexpot.Ignore.ahk
+    #Include %A_WorkingDir%\Setup\Dexpot.Ignore.ahk
 #If
 
 

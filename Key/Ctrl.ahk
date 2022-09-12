@@ -1,17 +1,4 @@
 ﻿
-#Include %A_WorkingDir%\Config\All.ahk
-#Include %A_WorkingDir%\Config\Software.ahk
-#Include %A_WorkingDir%\Lib\TrayIcon.ahk
-#Include %A_WorkingDir%\Tool\Base.ahk
-#Include %A_WorkingDir%\Tool\Keyboard.ahk
-#Include %A_WorkingDir%\Tool\Init.ahk
-#Include %A_WorkingDir%\Tool\Other.ahk
-#Include %A_WorkingDir%\Tool\Window.ahk
-
-#SingleInstance Force
-#NoTrayIcon
-
-
 <^Space::Return
 
 ~<^c::
@@ -114,9 +101,9 @@ $RCtrl::
         cnt := 1
         HelpText("RCtrl " . cnt, "center", "screen_3")
     }
-    SetTimer, Timer, -333
+    SetTimer, CtrlTimer, -333
 Return
-Timer:
+CtrlTimer:
     help_image_show_status := GlobalGet("Status", "help_image_show_status", "Bool")
     if (cnt == 1) {
         HelpText()
