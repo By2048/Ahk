@@ -14,4 +14,5 @@
 /~$Hotkey.xlsx
 
 *.Private.ahk
+*.Backup.ahk
 *.Test.ahk
