@@ -41,13 +41,10 @@ IsMaxMin()
 ; return | True \ False
 IsGame()
 {
-    win_process_name  := window.process_name
-    game_process_name := []
-    game_process_name.Push( "LOL_TX"     )
-    game_process_name.Push( "LOL_Game"   )
-    for index, value in game_process_name {
-        if (value == process_name) {
-            HelpText("Game", "center_down", "screen3", 1000)
+    GetActiveWindowInfo()
+    win_process_name := window.process_name
+    for index, value in Games_Process_Name {
+        if (value == win_process_name) {
             return True
         }
     }
