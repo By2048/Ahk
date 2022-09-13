@@ -1,5 +1,11 @@
 ﻿
 ~*CapsLock::
+    Send {Esc}
+    if (EscCount > 0) {
+        ec := EscCount - 1
+        Send {Esc %ec%}
+        EscCount := 0
+    }
 Return
 ~*CapsLock Up::
     CapsLockActivate := False
@@ -19,7 +25,6 @@ Return
     } else {
         Send ^![
     }
-    EscRedirect := True
 Return
 ~CapsLock & ]::
     if (GetKeyState("LShift", "P")) {
@@ -27,7 +32,6 @@ Return
     } else {
         Send ^!]
     }
-    EscRedirect := True
 Return
 
 ; 窗口大小调整
@@ -41,20 +45,20 @@ Return
 ~CapsLock & `::
     Send ^!``
     CapsLockActivate := True
-    EscRedirect := True
     CenterHideWindow()
 Return
 
 ; 迷你地图
 ^!o::Return
-~CapsLock & o::Send ^!o
+~CapsLock & o::
+    Send ^!o
+Return
 
 ; 跳转到导航栏
 ^!p::Return
 ~CapsLock & p::
     Send ^!p
     CapsLockActivate := True
-    EscRedirect := True
     EscCount := 2
 Return
 
@@ -83,7 +87,6 @@ Return
 ^!BackSpace::Return
 ^!+BackSpace::Return
 ~CapsLock & BackSpace::
-    EscRedirect := True
     if (CapsLockActivate == True) {
         Send {Esc}
         CapsLockActivate := False
@@ -103,7 +106,6 @@ Return
 ^!\::Return
 ^!+\::Return
 ~CapsLock & \::
-    EscRedirect := True
     if (GetKeyState("LShift", "P")) {
         Send ^!+\
         CenterHideWindow(2200, 1700)
@@ -132,11 +134,7 @@ Return
         lshift := GetKeyState("LShift", "P")
         if (lshift) {
             Send ^!+{Enter}
-            EnterTool := True
-            EnterToolConfig := []
-            EnterToolSpace := 10
-            c := CenterHideWindow()
-            EnterToolConfig.Push(c)
+            GoSub CenterHideTools
         } else {
             Send ^!{Enter}
             FloatTool := True
@@ -151,7 +149,6 @@ Return
 ~CapsLock & RShift::
     Send ^!{Numpad5}
     CapsLockActivate := True
-    EscRedirect := True
     CenterHideWindow()
 Return
 
@@ -160,7 +157,6 @@ Return
 ~CapsLock & ,::
     Send ^!,
     CapsLockActivate := True
-    EscRedirect := True
     CenterHideWindow()
 Return
 
@@ -168,9 +164,8 @@ Return
 ^!.::Return
 ~CapsLock & .::
     Send ^!.
-    CapsLockActivate := False
-    EscRedirect := True
-    CenterHideWindow()
+    CapsLockActivate := True
+    GoSub CenterHideTools
 Return
 
 ;活动编辑器
@@ -178,7 +173,6 @@ Return
 ~CapsLock & /::
     Send ^!/
     CapsLockActivate := True
-    EscRedirect := True
     CenterHideWindow()
 Return
 
@@ -187,7 +181,6 @@ Return
 ~CapsLock & `;::
     Send ^!;
     CapsLockActivate := True
-    EscRedirect := True
     CenterHideWindow()
 Return
 
@@ -196,6 +189,5 @@ Return
 ~CapsLock & '::
     Send ^!'
     CapsLockActivate := True
-    EscRedirect := True
     CenterHideWindow()
 Return

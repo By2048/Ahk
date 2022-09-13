@@ -43,6 +43,26 @@
 #If
 
 
+;AppsKey Esc 一次性返回问题修复
+#If ( CheckWindowActive("PyCharm") And AppsKeyRedirect == True )
+    $Enter::
+        Send {Enter}
+        AppsKeyEnterCount := AppsKeyEnterCount + 1
+    Return
+    $Esc::
+    $CapsLock::
+        if (AppsKeyEnterCount > 1) {
+            Send {Left}
+            AppsKeyEnterCount := AppsKeyEnterCount - 1
+        } else if (AppsKeyEnterCount == 1) {
+            Send {Esc}
+            AppsKeyRedirect := False
+            AppsKeyEnterCount := 0
+        }
+    Return
+#If
+
+
 ; 浮动工具栏
 #If ( CheckWindowActive("PyCharm") And FloatTool == True )
     $Esc::
@@ -61,15 +81,16 @@
     Return
 #If
 
+
 ; 主菜单处理
-#If ( CheckWindowActive("PyCharm") And EnterTool == True )
+#If ( CheckWindowActive("PyCharm") And CenterTools == True )
     $Enter::
         Send {Enter}
         c := GetHideWindowConfig()
-        EnterToolConfig.Push(c)
-        max_length := EnterToolConfig.Length()
+        CenterToolsConfig.Push(c)
+        max_length := CenterToolsConfig.Length()
         move_space := c.w / 2
-        for index, cfg in EnterToolConfig {
+        for index, cfg in CenterToolsConfig {
             cid := cfg.id
             cx  := cfg.x
             cy  := cfg.y
@@ -79,16 +100,20 @@
             cy  := Screen.y + Screen.h/2 - ch/2
             cfg.x := cx
             cfg.y := cy
-            cx  := cx - (max_length - index) * EnterToolSpace
+            cx  := cx - (max_length - index) * CenterToolsSpace
             WinMove, ahk_id %cid%,  , %cx%, %cy%, %cw%, %ch%
         }
     Return
     $Esc::
     $CapsLock::
-        Send {Esc}
-        c := EnterToolConfig.Pop()
+        if (AppsKeyRedirect) {
+            Send {Left}
+        } else {
+            Send {Esc}
+        }
+        c := CenterToolsConfig.Pop()
         move_space := c.w / 2
-        for index, cfg in EnterToolConfig {
+        for index, cfg in CenterToolsConfig {
             cid := cfg.id
             cx  := cfg.x
             cy  := cfg.y
@@ -96,8 +121,13 @@
             ch  := cfg.h
             cx  := cx + move_space
             cfg.x := cx
-            cx  := cx + index * EnterToolSpace
+            cx  := cx + index * CenterToolsSpace
             WinMove, ahk_id %cid%,  , %cx%, %cy%, %cw%, %ch%
+        }
+        l := CenterToolsConfig.Length()
+        if (CenterToolsConfig.Length() == 0) {
+            CenterTools := False
+            AppsKeyRedirect := False
         }
     Return
 #If
@@ -118,6 +148,8 @@
 
     $AppsKey::
         Send {AppsKey}
+        AppsKeyRedirect := True
+        AppsKeyEnterCount := 1
         CenterHideWindow()
     Return
 

@@ -117,3 +117,12 @@ PositionBackGroundTask()
     WinActivate, ahk_id %win_id%
     WinMove, ahk_id %win_id%, _, %win_x%, %win_y%, %win_w%, %win_h%
 }
+
+
+CenterHideTools:
+    CenterTools := True
+    CenterToolsConfig := []
+    CenterToolsSpace := 10
+    c := CenterHideWindow()
+    CenterToolsConfig.Push(c)
+Return
