@@ -18,6 +18,7 @@ Set     Init.ahk=.\Init.ahk
 Set   Screen.ahk=.\Tool\Screen.ahk
 Set     Base.ahk=.\Setup\Base.ahk
 Set   Dexpot.ahk=.\Setup\Dexpot.ahk
+Set     Game.ahk=.\Setup\Game.ahk
 Set    Input.ahk=.\Setup\Input.ahk
 Set      Key.ahk=.\Setup\Key.ahk
 Set     Loop.ahk=.\Setup\Loop.ahk
@@ -48,6 +49,18 @@ If "%Command%"=="" (
     Set Command=Start
 )
 
+If "%Command%"=="GameMode" (
+    Start  %AHK%  %Key.ahk%       Stop
+    Start  %AHK%  %Input.ahk%     Stop
+    Start  %AHK%  %Loop.ahk%      Stop
+    Start  %AHK%  %Dexpot.ahk%    Stop
+    Start  %AHK%  %Software.ahk%  Stop
+    Start  %AHK%  %Game.ahk%      Start
+    Exit
+)
+
+Start  %AHK%  %Game.ahk%  Stop
+
 If "%Command%"=="ForceStop" (
     @Echo Off
     TaskKill  /f /im  AutoHotkey.exe
@@ -72,6 +85,7 @@ If "%Command%"=="Start" (
     Start  %AHK%  %Base.ahk%
     Echo.
     Echo   Start  %Base.ahk%
+    Echo.
 )
 ::#endregion
 
@@ -79,12 +93,12 @@ If "%Command%"=="Start" (
 Echo.
 Start  %AHK%      %Key.ahk%      %Command%
 Echo   %Command%  %Key.ahk%
+Start  %AHK%      %Dexpot.ahk%    %Command%
+Echo   %Command%  %Dexpot.ahk%
 Start  %AHK%      %Input.ahk%     %Command%
 Echo   %Command%  %Input.ahk%
 Start  %AHK%      %Loop.ahk%      %Command%
 Echo   %Command%  %Loop.ahk%
-Start  %AHK%      %Dexpot.ahk%    %Command%
-Echo   %Command%  %Dexpot.ahk%
 Start  %AHK%      %Software.ahk%  %Command%
 Echo   %Command%  %Software.ahk%
 Echo.
