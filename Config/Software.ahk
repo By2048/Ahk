@@ -63,3 +63,10 @@ Windows_Process_Name.Push( [ "SearchUI"                , "Search"          ] ) ;
 Windows_Process_Name.Push( [ "StartMenuExperienceHost" , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "ShellExperienceHost"     , "Start"           ] ) ;开始菜单
 Windows_Process_Name.Push( [ "WindowsTerminal"         , "Terminal"        ] ) ;终端
+
+
+; 游戏进程
+Global Games_Process_Name := []
+Games_Process_Name.Push( "LOL_TX"     )
+Games_Process_Name.Push( "LOL_Client" )
+Games_Process_Name.Push( "LOL_Game"   )

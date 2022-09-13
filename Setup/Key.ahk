@@ -17,7 +17,6 @@
 #Include %A_WorkingDir%\Tool\Window.ahk
 #Include %A_WorkingDir%\Tool\Control.ahk
 #Include %A_WorkingDir%\Tool\KeyMap.ahk
-#Include %A_WorkingDir%\Tool\Office.ahk
 #Include %A_WorkingDir%\Tool\Keyboard.ahk
 
 #Include %A_WorkingDir%\Key\All.ahk

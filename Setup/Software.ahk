@@ -17,18 +17,17 @@
 #Include %A_WorkingDir%\Tool\KeyMap.ahk
 #Include %A_WorkingDir%\Tool\Office.ahk
 
-#Include %A_WorkingDir%\Software\Args.ahk
+#Include %A_WorkingDir%\Software\Arg.ahk
+#Include %A_WorkingDir%\Software\Game.ahk
 
 #Include %A_WorkingDir%\Software\Chat\DingDing.ahk
 #Include %A_WorkingDir%\Software\Chat\TIM.ahk
 #Include %A_WorkingDir%\Software\Chat\WeChat.ahk
 
-#Include %A_WorkingDir%\Software\Game\Android.ahk
-#Include %A_WorkingDir%\Software\Game\LOL.ahk
-
 #Include %A_WorkingDir%\Software\Office\Excel.ahk
 
 #Include %A_WorkingDir%\Software\Other\7-Zip.ahk
+#Include %A_WorkingDir%\Software\Other\Android.ahk
 #Include %A_WorkingDir%\Software\Other\BitComet.ahk
 #Include %A_WorkingDir%\Software\Other\CloudMusic.ahk
 #Include %A_WorkingDir%\Software\Other\Everything.ahk

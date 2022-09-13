@@ -4,21 +4,22 @@
 ; 小地图 | 77
 ; 商店   | 77
 
-LOLSoftware()
-{
-    r1 := CheckWindowActive("Client",  , "英雄联盟")
-    r2 := CheckWindowActive("LOL_Client")
-    r3 := CheckWindowActive("LOL_Game")
-    result := r1 or r2 or r3
-    return result
-}
 
+; LOLSoftware()
+; {
+;     r1 := CheckWindowActive("Client",  , "英雄联盟")
+;     r2 := CheckWindowActive("LOL_Client")
+;     r3 := CheckWindowActive("LOL_Game")
+;     result := r1 or r2 or r3
+;     return result
+; }
 
-
-#If ( LOLSoftware() )
-    #Include %A_WorkingDir%\Setup\Dexpot.Ignore.ahk
-#If
-
+; #If ( LOLSoftware() )
+;     #BackSpace::
+;         Run, Setup.bat GameMode, %A_WorkingDir%, Hide
+;         HelpText("`n GameMode `n", "Center", "Screen3")
+;     Return
+; #If
 
 
 #If ( CheckWindowActive("Client",  , "英雄联盟")  )
@@ -26,10 +27,9 @@ LOLSoftware()
 #If
 
 
-
 #If ( CheckWindowActive("LOL_Client") )
-    #Include %A_WorkingDir%\Software\Game\LOL.Client.Private.ahk
-    Insert::ScreenShot("Screen1", "T:\")
+    #Include %A_WorkingDir%\Game\LOL.Client.Private.ahk
+    Insert::ScreenShot("Screen", "T:\")
     #+BackSpace::
         _exe_ := ProcessNameOrigin("LOL_Client")
         Run, Taskkill /F /IM %_exe_%
@@ -37,12 +37,11 @@ LOLSoftware()
 #If
 
 
-
 #If ( CheckWindowActive("LOL_Game") )
-    #Include %A_WorkingDir%\Software\Game\LOL.Game.Private.ahk
+    #Include %A_WorkingDir%\Game\LOL.Game.Private.ahk
     ; 截图
     F12::Return
-    Insert::Screenshot("Screen1" , "Tmp")
+    Insert::Screenshot("Screen" , "T:\")
     #+BackSpace::
         _exe_ := ProcessNameOrigin("LOL_Game")
         Run, Taskkill /F /IM %_exe_%
