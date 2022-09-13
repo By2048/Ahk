@@ -1,13 +1,27 @@
 ﻿
+#If CheckWindowActive( "7-Zip" ,  , ".iso" )
+    <#\::
+        MoveWindowToDefaultPosition()
+        _name  := "SysListView321"
+        _width := { 1 : 999   ;名称
+                  , 2 : 200   ;大小
+                  , 3 : 230   ;修改时间
+                  , 4 : 150   ;文件
+                  , 5 : 150 } ;文件夹
+        SetColumnWidth(_name, _width)
+    Return
+#If
+
+
 #If CheckWindowActive("7-Zip")
 
     <#\::
         MoveWindowToDefaultPosition()
-        
+
         _name  := "SysListView321"
         _width := { 1 : 999   ;名称
-                  , 3 : 150   ;文件夹
                   , 2 : 150   ;文件
+                  , 3 : 150   ;文件夹
                   , 4 : 200   ;大小
                   , 5 : 230 } ;修改时间
         SetColumnWidth(_name, _width)
@@ -17,8 +31,8 @@
     ; 注册表相关操作
     !/::
         ; Clear History
-        RegWrite, REG_BINARY, HKEY_CURRENT_USER, Software\7-Zip\FM, FolderHistory, 
-        RegWrite, REG_BINARY, HKEY_CURRENT_USER, Software\7-Zip\FM, CopyHistory,   
+        RegWrite, REG_BINARY, HKEY_CURRENT_USER, Software\7-Zip\FM, FolderHistory,
+        RegWrite, REG_BINARY, HKEY_CURRENT_USER, Software\7-Zip\FM, CopyHistory,
 
         ; 默认列配置 Zip
         ; 其他列配置 Rar

@@ -1,21 +1,20 @@
 ﻿
-; --------------------------------------------------------------------------------
-
 #AppsKey::Run Taskmgr.exe
 
 RAlt::EN()
 RCtrl::CN()
 
-; --------------------------------------------------------------------------------
+#Tab::Send !{Tab}
+#+Tab::Send !+{Tab}
 
 ^Esc::Return
 ^+Esc::Return
 
+LWin::Return
+RWin::Return
+
 !Tab::Return
 !+Tab::Return
-
-#Tab::Return
-#+Tab::Return
 
 #Esc::Return
 #+Esc::Return
@@ -84,7 +83,9 @@ RCtrl::CN()
 #.::Return
 #/::Return
 
+#Insert::Return
 #Delete::Return
+
 #Home::Return
 #End::Return
 #PgUp::Return
