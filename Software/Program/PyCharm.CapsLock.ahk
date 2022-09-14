@@ -48,6 +48,12 @@ Return
     CenterHideWindow()
 Return
 
+; 在Explorer中显示
+^!e::Return
+~CapsLock & e::
+    Send ^!e
+Return
+
 ; 迷你地图
 ^!o::Return
 ~CapsLock & o::

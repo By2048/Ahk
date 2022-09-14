@@ -104,6 +104,11 @@
             WinMove, ahk_id %cid%,  , %cx%, %cy%, %cw%, %ch%
         }
     Return
+    $+Enter::
+        Send {Enter}
+        CenterHideWindow()
+        CenterTools := False
+    Return
     $Esc::
     $CapsLock::
         if (AppsKeyRedirect) {
@@ -173,6 +178,10 @@
             Send {Enter}
         }
         cnt := 0
+    Return
+
+    ~F9::
+        CenterHideWindow()
     Return
 
     ~F11::
