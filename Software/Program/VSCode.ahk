@@ -37,7 +37,7 @@
     CapsLock & Enter::
         FileEncoding UTF-8-RAW
 
-        path := "D:\VSCodeData\User\settings.json"
+        path := "D:\VSCodeUser\User\settings.json"
         FileRead, config, %path%
 
         default_mode := "        // ""editor.fontFamily"": ""Source Code Pro , 楷体""`r`n"

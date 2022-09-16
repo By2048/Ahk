@@ -67,7 +67,6 @@ Return
 >^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk")
 >^v::Run %VSCode% " E:\Config\VSCode\Windows.code-workspace",  , Hide
 >^+v::Run %VSCode%,  , Hide
->^n::Run D:\#Lnk\Notepad++.lnk
 >^m::RunNormalUser("D:\#Lnk\PotPlayer.lnk")
 
 
