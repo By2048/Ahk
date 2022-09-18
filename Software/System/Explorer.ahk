@@ -1,4 +1,12 @@
 ﻿
+; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
+#If CheckWindowActive( "Explorer" , "CabinetWClass" , "防火墙\允许的应用" )
+    Delete::
+        Send !m
+        Send !y
+    Return
+#If
+
 #If CheckWindowActive( "Explorer" , "OperationStatusWindow" , "删除文件" )
     !y::Return
     !n::Return
