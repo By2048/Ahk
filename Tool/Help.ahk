@@ -46,7 +46,11 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
         return
     }
 
-    screen_id     := ScreenNameToId(screen_name)
+    Global Screens_Count
+    screen_id := ScreenNameToId(screen_name)
+    screen_id := screen_id > Screens_Count ? screen_id - 1 : screen_id
+    screen_id := screen_id > Screens_Count ? screen_id - 1 : screen_id
+
     screen_config := {}
     if (screen_id == "1") {
         screen_config := Screens.1
