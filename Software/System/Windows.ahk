@@ -98,6 +98,16 @@
 #If
 
 
+; Windows 安全中心警报
+#If CheckWindowActive( "" , "#32770" , "安全中心警报" )
+    Enter::
+        Control, Check,  , Button4, A
+        Control, Check,  , Button5, A
+        Sleep 100
+        Send !a
+    Return
+#If
+
 
 ; 编辑环境变量
 #If CheckWindowActive( "SystemPropertiesComputerName" )
