@@ -21,11 +21,7 @@ LWin & RWin::
     } else {
         Run, Setup.bat Start, %A_WorkingDir%, Hide
     }
-    if (Screens.Count == 3) {
-        HelpText("`nReload All Script`n", "center_down", "screen3", 1000)
-    } else {
-        HelpText("Reload All Script", "right_down")
-    }
+    HelpText("`nReload All Script`n", "Center", "Screen" . Screens_Count, 1000)
 Return
 
 ; 停止脚本
@@ -37,9 +33,9 @@ RWin & LWin::
     } else {
         Run, Setup.bat Stop, %A_WorkingDir%, Hide
     }
-    if (Screens.Count == 3) {
-        HelpText("`nClose All Script`n", "center_down", "screen3")
+    if (Screens.Count > 1) {
+        HelpText("`nClose All Script`n", "Center", "Screen" . Screens_Count)
     } else {
-        HelpText("Close All Script", "right_down")
+        HelpText("Close All Script", "Right|Down")
     }
 Return
