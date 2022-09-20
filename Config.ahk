@@ -12,8 +12,8 @@ Global AutoHotkey := "D:\AutoHotkey\AutoHotkey.exe"
 ; Global Screens_Dpi   := [ 2 , 1.5 , 1.5 ]
 ; --------------------------------------------------------------------------------
 Global Screens_Count := 2
-Global Screens_Id    := [ 1   , 2 ]
-Global Screens_Dpi   := [ 1.5 , 1 ]
+Global Screens_Id    := [ 2   , 1   ]
+Global Screens_Dpi   := [ 1.5 , 1.5 ]
 
 ; 系统类型 | Win10 \ WinServer
 Global System_Type := "Win10"
