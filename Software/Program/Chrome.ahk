@@ -60,6 +60,19 @@
 #If
 
 
+#If ( CheckWindowActive( "Chrome" ) And Expand == True )
+    Tab::
+        Send {Right 3}
+    Return
+    LShift::
+        Send {Left 3}
+    Return
+    CapsLock::
+        Send {F10 2}
+        Expand := False
+    Return
+#If
+
 
 #If CheckWindowActive( "Chrome" )
 
@@ -305,7 +318,6 @@
     !p::Send ^p
     !+p::Send ^+p
 
-
     ; 反馈
     !+i::Return
 
@@ -346,6 +358,13 @@
         Send !{Left}
         Sleep 250
         Send {Esc}
+    Return
+
+    LAlt & RShift::
+        Send {F10}
+        Send {Left 4}
+        Send {Down 3}
+        Expand := True
     Return
 
     ; >!y::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Y.png")
