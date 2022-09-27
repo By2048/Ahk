@@ -7,13 +7,17 @@ Global AutoHotkey := "D:\AutoHotkey\AutoHotkey.exe"
 ;           | 1,          2,          3
 ;           | Screen1.Id  Screen2.Id  Screen3.Id
 ; 屏幕DPI   |
+Global Screens_Count := 1
+Global Screens_Id    := [ 1   ]
+Global Screens_Dpi   := [ 1.5 ]
+; --------------------------------------------------------------------------------
+; Global Screens_Count := 2
+; Global Screens_Id    := [ 1   , 2   ]
+; Global Screens_Dpi   := [ 1.5 , 1.5 ]
+; --------------------------------------------------------------------------------
 ; Global Screens_Count := 3
 ; Global Screens_Id    := [ 1 , 2   , 3   ]
 ; Global Screens_Dpi   := [ 2 , 1.5 , 1.5 ]
-; --------------------------------------------------------------------------------
-Global Screens_Count := 2
-Global Screens_Id    := [ 2   , 1   ]
-Global Screens_Dpi   := [ 1.5 , 1.5 ]
 
 ; 系统类型 | Win10 \ WinServer
 Global System_Type := "Win10"
@@ -33,13 +37,5 @@ Global Font := { "Dpi"  : 2             ;
                , "Size" : 25            ;
                , "Type" : "Courier New" }
 
-; 屏幕信息
-Global Screens := {} ;所有屏幕相关信息
-Global Screen  := {} ;主窗口信息
 
-; 缓存过期时间 毫秒
-Global Cache_Expire_Time := 500
-
-; 全局共享的属性
-Global window := {} ; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
-Global status := {} ; 各种状态信息
+#Include %A_WorkingDir%\Config.Private.ahk
