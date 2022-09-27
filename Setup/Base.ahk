@@ -33,9 +33,9 @@ RWin & LWin::
     } else {
         Run, Setup.bat Stop, %A_WorkingDir%, Hide
     }
-    if (Screens.Count > 1) {
+    if (Screens.Count == 1) {
+        HelpText("`nClose All Script`n", "Center", "Screen", 1000)
+    } else if (Screens.Count > 1) {
         HelpText("`nClose All Script`n", "Center", "Screen" . Screens_Count)
-    } else {
-        HelpText("Close All Script", "Right|Down")
     }
 Return
