@@ -25,8 +25,8 @@ InitScreens(dpi_mode:="Default")
         screen.y    := ConfigTop    + 0
         screen.xx   := ConfigRight  + 0
         screen.yy   := ConfigBottom + 0
-        screen.w    := Screen.xx - Screen.x
-        screen.h    := Screen.yy - Screen.y
+        screen.w    := screen.xx - screen.x
+        screen.h    := screen.yy - screen.y
         For key, value In screen {
             section := Format("Screens\{}\{}", dpi_mode, screen_index)
             GlobalSet(section, key, value)
