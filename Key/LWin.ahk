@@ -90,13 +90,12 @@ Return
         FileEncoding UTF-8
         Try {
             FileRead, Clipboard, % JQB.Phone
-            Sleep 500
-            FileDelete % JQB.Phone
         }
         Send ^v
-        HelpText(Clipboard, "center_down",  , 1000)
+        HelpText(Clipboard, "Center",  , 333)
+        FileDelete % JQB.Phone
     } else {
-        HelpText("No Data", "center_down",  , 1000)
+        HelpText("No Data", "Center",  , 333)
     }
 Return
 

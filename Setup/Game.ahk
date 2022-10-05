@@ -9,7 +9,7 @@
 #Include %A_WorkingDir%\Tool\Other.ahk
 #Include %A_WorkingDir%\Tool\Language.ahk
 
-HelpText("`n Game Mode `n", "Center", "Screen3")
+HelpText("`n Game Mode `n", "Center", "Screen3", 500)
 
 #Include %A_WorkingDir%\Game\Windows.ahk
 #Include %A_WorkingDir%\Game\LOL.ahk
