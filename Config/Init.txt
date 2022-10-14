@@ -5,7 +5,7 @@
  Python     Py         Zip        ScrcpyAdb  Scrcpy     
  HuntAndPeck           Notepad    Chrome     
  VSCode     Script     PyEnv      GitX       GitIDE     
- GitPy      GitOther   MuMu       Bi-Get-Name           
+ GitPy      GitOther   GitAll     MuMu       Bi-Get-Name           
  Bi-Free    Bi-Join    Rename     Nicotv     Windows    
  Delete-Share          Backup-Disk-Tree      
  JetBrains-Toolbox-Update         Rename.Config         
