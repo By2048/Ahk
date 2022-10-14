@@ -116,23 +116,27 @@ RWin & RShift::
          ; v2rayN开关
         if (win_pid) {
             Process, Close, %win_pid%
-            Regwrite, REG_DWORD, %path%, %config%, %key%, 0
-            HelpText("`n v2rayN Close `n", "center", "screen1", 500)
-            HelpText("`n v2rayN Close `n", "center", "screen3")
+            RegWrite, REG_DWORD, %path%, %config%, %key%, 0
+            HelpText("`n v2rayN Close `n", "Center", "Screen1", 500)
+            if (Screen_Count == 3) {
+                HelpText("`n v2rayN Close `n", "Center", "Screen3")
+            }
         } else {
             Run D:\#Lnk\v2rayN.lnk
-            Regwrite, REG_DWORD, %path%, %config%, %key%, 1
-            HelpText("`n v2rayN Start `n", "center", "screen1", 500)
+            RegWrite, REG_DWORD, %path%, %config%, %key%, 1
+            HelpText("`n v2rayN Start `n", "Center", "Screen1", 500)
         }
     } else {
         ; Windows代理开关
         if (proxy_state == "0") {
-            Regwrite, REG_DWORD, %path%, %config%, %key%, 1
-            HelpText("`n Proxy On `n", "center", "screen1", 500)
+            RegWrite, REG_DWORD, %path%, %config%, %key%, 1
+            HelpText("`n Proxy On `n", "Center", "Screen1", 500)
         } else if (proxy_state == "1") {
-            Regwrite, REG_DWORD, %path%, %config%, %key%, 0
-            HelpText("`n Proxy Off `n", "center", "screen1", 500)
-            HelpText("`n Proxy Off `n", "center", "screen3")
+            RegWrite, REG_DWORD, %path%, %config%, %key%, 0
+            HelpText("`n Proxy Off `n", "Center", "Screen1", 500)
+            if (Screen_Count == 3) {
+                HelpText("`n Proxy Off `n", "Center", "Screen3")
+            }
         }
     }
 Return
