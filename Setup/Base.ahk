@@ -5,9 +5,12 @@
 
 #SingleInstance Force
 
-; Menu, Tray, NoStandard
 Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Ahk_Run.png
 Menu, Tray, Tip , [Ahk]
+
+
+~LWin::Return
+$RWin::Return
 
 ; 启动脚本
 LWin & RWin::
@@ -17,11 +20,11 @@ LWin & RWin::
         RegDelete, %Reg_Path%
         Run, Setup.bat ForceStart, %A_WorkingDir%, Hide
         EnvUpdate
-        Reload
     } else {
         Run, Setup.bat Start, %A_WorkingDir%, Hide
     }
     HelpText("`nReload All Script`n", "Center", "Screen" . Screens_Count, 1000)
+    Reload
 Return
 
 ; 停止脚本
