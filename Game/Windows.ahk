@@ -10,8 +10,14 @@ RCtrl::CN()
 ^Esc::Return
 ^+Esc::Return
 
-=::Send {Volume_Up}
--::Send {Volume_Down}
+>#9::Send #^!9
+>#0::Send #^!0
+>#=::Send {Volume_Up}
+>#-::Send {Volume_Down}
+
+^Space::Return
+!Space::Return
+#Space::Return
 
 ; LWin::Return
 ; RWin::Return
