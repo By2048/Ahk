@@ -3,7 +3,8 @@
 
 ; -------------------------------------------------------------------------------------------------
 ; 私有配置文件填补
-FILES := {     "Confog" : A_WorkingDir . "\Config.Private.ahk"                     ;
+FILES := {          "@" : A_WorkingDir . "\@.ahk"                                  ;
+         ,     "Confog" : A_WorkingDir . "\Config.Private.ahk"                     ;
          ,      "Input" : A_WorkingDir . "\Setup\Input.Private.ahk"                ;
          , "LOL.Client" : A_WorkingDir . "\Game\LOL.Client.Private.ahk"            ;
          ,   "LOL.Game" : A_WorkingDir . "\Game\LOL.Game.Private.ahk"              ;
