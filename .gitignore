@@ -1,18 +1,15 @@
 
+*.Private.ahk
+*.Backup.ahk
+*.Test.ahk
+
 /.vscode/
 /.idea/
 
 /Test/*.ahk
 
-/Config/Global.ini
-/Config/Private.ahk
-
+/@.ahk
 /Test.ahk
-/Debug.ahk
 /Test.bat
+/Debug.ahk
 /desktop.ini
-/~$Hotkey.xlsx
-
-*.Private.ahk
-*.Backup.ahk
-*.Test.ahk
