@@ -13,6 +13,7 @@ SetLocal
 
 ::#region Init Ahk Files
 Set       Folder=%~dp0
+Set        @.ahk=.\@.ahk
 Set   Config.ahk=.\Config.ahk
 Set     Init.ahk=.\Init.ahk
 Set   Screen.ahk=.\Tool\Screen.ahk
@@ -91,7 +92,7 @@ If "%Command%"=="Start" (
 
 ::#region AutoHotkey Run Script
 Echo.
-Start  %AHK%      %Key.ahk%      %Command%
+Start  %AHK%      %Key.ahk%       %Command%
 Echo   %Command%  %Key.ahk%
 Start  %AHK%      %Dexpot.ahk%    %Command%
 Echo   %Command%  %Dexpot.ahk%
@@ -101,6 +102,9 @@ Start  %AHK%      %Loop.ahk%      %Command%
 Echo   %Command%  %Loop.ahk%
 Start  %AHK%      %Software.ahk%  %Command%
 Echo   %Command%  %Software.ahk%
+Echo.
+Start  %AHK%      %@.ahk%         %Command%
+Echo   %Command%  %@.ahk%
 Echo.
 ::#endregion
 
