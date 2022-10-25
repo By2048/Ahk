@@ -100,7 +100,7 @@
     F6::Return
     +F6::Return
     !`::Send {F6}
-    +`::Send +{F6}
+    ^`::Send +{F6}
 
     ;光标浏览模式
     F7::Return
