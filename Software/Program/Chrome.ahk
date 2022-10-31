@@ -179,8 +179,16 @@
     !Esc::Send +{Esc}
 
     ;删除联想
+    ;删除搜索历史记录
     +Delete::Return
-    !Delete::Send +{Delete}
+    ; !Delete::Send +{Delete}
+    !Delete::
+        Send {Esc}
+        Send {LButton}
+        Send {Down}
+        Send +{Delete 9}
+        Send {Esc}
+    Return
 
     ;清理浏览记录
     ^+Delete::Return
