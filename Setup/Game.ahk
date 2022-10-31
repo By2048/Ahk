@@ -1,4 +1,9 @@
 ﻿
+#SingleInstance Force
+
+Menu, Tray, Icon, %A_WorkingDir%\Image\Icon\Game.png
+Menu, Tray, Tip , [Ahk]
+
 #Include %A_WorkingDir%\Config\All.ahk
 
 #Include %A_WorkingDir%\Tool\Base.ahk
@@ -13,6 +18,3 @@ HelpText("`n Game Mode `n", "Center", "Screen3", 500)
 
 #Include %A_WorkingDir%\Game\Windows.ahk
 #Include %A_WorkingDir%\Game\LOL.ahk
-
-#NoTrayIcon
-#SingleInstance Force
