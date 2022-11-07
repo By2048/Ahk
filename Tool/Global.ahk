@@ -16,7 +16,7 @@ GlobalSet(section:="", key:="", value:="")
     RegWrite, %_type_%, %_root_%, %_path_%, %key%, %value%
 }
 
-GlobalGet(section:="", key:="", type:="Str")
+GlobalGet(section:="", key:="", type:="Str", split:="|")
 {
     path := Reg_Path
     if (section != "" ) {
@@ -28,7 +28,7 @@ GlobalGet(section:="", key:="", type:="Str")
     } else if (type == "Int") {
         result := result + 0
     } else if (type == "List") {
-        result := StrSplit(result, "|")
+        result := StrSplit(result, split)
     } else if (type == "Bool") {
         if (result = "True") {
             result := True
