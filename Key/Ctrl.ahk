@@ -38,13 +38,6 @@ Return
 >^+a::Run D:\#Lnk\AndroidX.lnk
 >^s::Run D:\#Lnk\Sandboxie.lnk
 >^f::Run D:\#Lnk\FreeFileSync.lnk
->^g::Run, Chrome.bat, %A_WorkingDir%, Hide
->^+g::
-    Run, Chrome.bat, %A_WorkingDir%, Hide
-    exe := ProcessNameOrigin("Chrome")
-    WinWaitActive, ahk_exe %exe%,  , 3
-    MoveWindowToBackupPosition()
-Return
 >^h::Run %Ahk% D:\AutoHotkey\WindowSpy.ahk
 >^+h::Run E:\GitX\AhkSpy\AhkSpy.exe
 >^j::
@@ -77,9 +70,17 @@ Return
 >^]::Run, %VSCode% " E:\Config\VSCode\Ahk.code-workspace",   , Hide
 >^\::Run D:\#Lnk\#AppStore\Whiteboard.lnk
 
+;          {20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;我的电脑
 >^,::Run ::{645ff040-5081-101b-9f08-00aa002f954e}:: ;回收站
->^.::Run ::{20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;我的电脑
->^/::Run T:\\
+>^.::Run T:\\
+>^/::Run, Chrome.bat, %A_WorkingDir%, Hide
+>^+/::
+    Run, Chrome.bat, %A_WorkingDir%, Hide
+    exe := ProcessNameOrigin("Chrome")
+    WinWaitActive, ahk_exe %exe%,  , 3
+    MoveWindowToBackupPosition()
+Return
+
 
 >^Up::Return
 >^Down::Return
