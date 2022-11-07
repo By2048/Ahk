@@ -35,7 +35,7 @@ Global Screen_1K := { "Dpi" : 1.5 , "Name" : "辅助显示器（竖屏模式）"
 ; --------------------------------------------------------------------------------
 Global Screens_Count  := 1
 Global Screens_Id     := [ 1  ]
-Global Screens_Detail := [ 2K ]
+Global Screens_Detail := [ Screen_2K ]
 ; --------------------------------------------------------------------------------
 ; Global Screens_Count  := 2
 ; Global Screens_Id     := [ 1         , 2         ]
