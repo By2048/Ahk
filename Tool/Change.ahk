@@ -14,13 +14,13 @@ Bool(value)
 
 
 ; 数组格式化成字符串输出
-ListToStr(data)
+ListToStr(data, step:="|")
 {
     result := ""
     for index, value in data {
-        result .= value . "|"
+        result .= value . step
     }
-    result := RTrim(result , "|")
+    result := RTrim(result , step)
     return result
 }
 
@@ -90,5 +90,25 @@ ProcessNameOrigin(process_name)
         }
     }
     result := result . ".exe"
+    return result
+}
+
+
+
+; A -> B
+DpiArgs(from:="", to:="", args*)
+{
+    if (from == to) {
+        return args
+    }
+    if (not args.Length()) {
+        return args
+    }
+    scale  := from / to
+    result := []
+    for index, arg in args {
+        arg := arg / scale
+        result.Push(arg / scale)
+    }
     return result
 }
