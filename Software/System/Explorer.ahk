@@ -49,10 +49,18 @@
 
 ; 桌面
 #If CheckWindowActive( "Explorer" , "WorkerW" )
-    F9::Run D:\\
-    F10::Run E:\\
-    F11::Run F:\\
-    F12::Run N:\\
+    F1::Run D:\
+    F2::Run E:\
+    F3::Run F:\
+    F4::Run N:\
+    F5::Return
+    F6::Return
+    F7::Return
+    F8::Return
+    F9::Return
+    F10::Run, %VSCode% "-n" "E:\Config\Windows.yaml",  , Hide
+    F11::Run E:\Project\Demo\
+    F12::Run E:\Project\Ahk\
     >!Space::Run D:\#Lnk\Everything.lnk
 #If
 
