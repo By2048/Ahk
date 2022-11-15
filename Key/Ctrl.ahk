@@ -54,7 +54,8 @@ Return
     }
 Return
 >^k::KeyboardGUI()
->^l::Run "C:\Program Files\Logitech\LogiOptions\LogiOptions.exe"
+; >^l::Run "C:\Program Files\Logitech\LogiOptions\LogiOptions.exe"
+>^l::Run "C:\Program Files\LogiOptionsPlus\LogiOptionsPlus.exe"
 
 >^x::RunNormalUser("D:\#Lnk\Xshell.lnk")
 >^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk")
@@ -66,8 +67,8 @@ Return
 >^Esc::Run Taskmgr.exe ;任务管理器
 >^+Esc::Run D:\#Lnk\HuoRongSword.lnk
 
->^[::Run, %VSCode% " E:\Config\VSCode\Note.code-workspace",   , Hide
->^]::Run, %VSCode% " E:\Config\VSCode\Ahk.code-workspace",   , Hide
+>^[::Run, %VSCode% "E:\Config\VSCode\Note.code-workspace",   , Hide
+>^]::Run, %VSCode% "E:\Config\VSCode\Ahk.code-workspace",   , Hide
 >^\::Run D:\#Lnk\#AppStore\Whiteboard.lnk
 
 ;          {20d04fe0-3aea-1069-a2d8-08002b30309d}:: ;我的电脑
