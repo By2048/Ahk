@@ -137,20 +137,6 @@
     ;     }
     ; Return
 
-    ; 删除护盾
-    Delete::
-        CoordMode, Mouse, Window
-        MouseGetPos, x_origin, y_origin
-        Send, p
-        Sleep 100
-        MouseClick, Left, 2049, 753
-        Sleep 100
-        MouseClick, Left, 1988, 1246
-        Sleep 100
-        MouseMove %x_origin%, %y_origin%, 0
-        Send /
-    Return
-
     ;阵形1
     F1::
     F2::
@@ -170,6 +156,34 @@
         Send {Esc}
         Sleep 100
         MouseMove x_origin, y_origin, 0
+    Return
+
+    ; 删除兵种
+    F5::
+        CoordMode, Mouse, Window
+        MouseGetPos, x_origin, y_origin
+        MouseClick, Left, 588,  484, 1, 0
+        MouseClick, Left, 855,  482, 1, 0
+        MouseClick, Left, 1127, 484, 1, 0
+        MouseClick, Left, 1395, 484, 1, 0
+        MouseClick, Left, 1665, 484, 1, 0
+        MouseClick, Left, 1934, 484, 1, 0
+        MouseMove %x_origin%, %y_origin%, 0
+        Send /
+    Return
+
+    ; 删除护盾
+    F8::
+        CoordMode, Mouse, Window
+        MouseGetPos, x_origin, y_origin
+        Send p
+        Sleep 100
+        MouseClick, Left, 1409, 505
+        Sleep 100
+        MouseClick, Left, 1379, 848
+        Sleep 100
+        MouseMove %x_origin%, %y_origin%, 0
+        Send /
     Return
 
     ; 部署栏拖动
