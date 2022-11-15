@@ -1,6 +1,5 @@
 ﻿
 #Include %A_WorkingDir%\Config.ahk
-#Include %A_WorkingDir%\Global.ahk
 #Include %A_WorkingDir%\Tool\Global.ahk
 
 Global Screens, Screen
@@ -8,9 +7,8 @@ Global Screens, Screen
 Screens["Keys"] := { "Dpi"  : ["Default", "Software", "System", "SystemPlus"]       ;
                    , "Attr" : ["id", "name", "dpi", "x", "y", "w", "h", "xx", "yy"] }
 
-Screens["Count"] := GlobalGet("Screens", "Count", "Int" )
 Screens["ID"]    := GlobalGet("Screens", "ID"   , "List")
-Screens["Dpi"]   := GlobalGet("Screens", "Dpi"  , "List")
+Screens["Count"] := GlobalGet("Screens", "Count", "Int" )
 
 For index_dpi, key_dpi In Screens["Keys"]["Dpi"] {
     Screens[key_dpi] := {}
