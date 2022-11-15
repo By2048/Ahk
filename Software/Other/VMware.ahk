@@ -1,4 +1,9 @@
 ﻿
+; 虚拟网络编辑器
+#If CheckWindowActive( "VMNetCfg" , "#32770" )
+#If
+
+
 #If CheckWindowActive( "VMware" , "#32770" , "扫描虚拟机向导" )
     RWin::
         MoveWindowToCenter(True)
@@ -8,7 +13,6 @@
         SetColumnWidth(_name, _width)
     Return
 #If
-
 
 
 #If CheckWindowActive( "VMware" )
