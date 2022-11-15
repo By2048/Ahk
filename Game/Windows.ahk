@@ -1,6 +1,9 @@
 ﻿
+
+#Enter::Run, Chrome.bat, %A_WorkingDir%, Hide
 #AppsKey::Run Taskmgr.exe
 
+RWin::Return
 RAlt::EN()
 RCtrl::CN()
 
