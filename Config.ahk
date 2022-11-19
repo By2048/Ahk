@@ -29,9 +29,12 @@ Global PC_PASSWORD := "xxx"
 ;           | 1,          2,          3
 ;           | Screen1.Id  Screen2.Id  Screen3.Id
 ; 屏幕信息   |
-Global Screen_4K := { "Dpi" : 2   , "Name" : "4K显示器"             }
-Global Screen_2K := { "Dpi" : 1.5 , "Name" : "主显示器"             }
-Global Screen_1K := { "Dpi" : 1.5 , "Name" : "辅助显示器（竖屏模式）" }
+Global Screen_4K := { "Dpi" : 2   , "Width" : 3840 , "Hight": 2160 , "Name" : "4K显示器"       }
+Global Screen_2K := { "Dpi" : 1.5 , "Width" : 2560 , "Hight": 1440 , "Name" : "2K显示器"       }
+Global Screen_1K := { "Dpi" : 1.5 , "Width" : 1080 , "Hight": 1920 , "Name" : "辅助显示器 竖屏" }
+Global 4K := 4k := Screen_4K
+Global 2K := 2k := Screen_2K
+Global 1K := 1k := Screen_1K
 ; --------------------------------------------------------------------------------
 Global Screens_Count  := 1
 Global Screens_Id     := [ 1  ]
