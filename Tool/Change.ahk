@@ -133,31 +133,21 @@ Position(args*)
 }
 
 
-Position4K(args*)
+Position4K(width, height)
 {
-    if ( args.Length() == 2 ) {
-        w := args[1]
-        h := args[2]
-        x := 4K.Width/2 - w/2
-        y := 4K.Hight/2 - h/2
-    }
-    if ( args.Length() == 4 ) {
-        x := args[1]
-        y := args[2]
-        w := args[3]
-        h := args[4]
-    }
     scale := 4K.Dpi / Screen.dpi
+    x := 4K.Width/2 - width/2
+    y := 4K.Hight/2 - height/2
     if ( scale != 1 ) {
-        win_x := x / scale / scale
-        win_y := y / scale / scale
-        win_w := w / scale
-        win_h := h / scale
+        win_w := width  / scale
+        win_h := height / scale
+        win_x := Screen.w/2 - win_w/2
+        win_y := Screen.h/2 - win_h/2
     } else {
         win_x := x
         win_y := y
-        win_w := w
-        win_h := h
+        win_w := width
+        win_h := height
     }
     win_x := Round(win_x)
     win_y := Round(win_y)
