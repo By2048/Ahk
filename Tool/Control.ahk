@@ -1,12 +1,27 @@
 ﻿
 ; 软件中列宽
-SetColumnWidth(control_name, control_width)
+SetColumnWidth(control_name, control_width, from:="", to:="")
 {
     win_id := window.id
-    msg    := Message.LVM_SETCOLUMNWIDTH
-    for key, value in control_width {
-        key := key - 1
-        SendMessage, %msg%, %key%, %value%, %control_name%, ahk_id %win_id%
+    if (not win_id) {
+        return
+    }
+    dpi_from := from["Dpi"]
+    dpi_to   := to["Dpi"]
+    scale    := dpi_from / dpi_to
+    change   := False
+    if (dpi_from and dpi_to){
+        if (scale != 1) {
+            change := True
+        }
+    }
+    msg := Message.LVM_SETCOLUMNWIDTH
+    for index, width in control_width {
+        index := index - 1
+        if (change) {
+            width := width / scale
+        }
+        SendMessage, %msg%, %index%, %width%, %control_name%, ahk_id %win_id%
     }
 }
 
