@@ -183,6 +183,7 @@
         MouseClick, Left, 1379, 848
         Sleep 100
         MouseMove %x_origin%, %y_origin%, 0
+        Sleep 100
         Send /
     Return
 
