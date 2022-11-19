@@ -56,6 +56,149 @@ ToBase(n, b)
 }
 
 
+; 屏幕坐标参数转换
+Position(args*)
+{
+    if ( args.Length() == 2 ) {
+        x := "[Center][1]"
+        y := "[Center][1]"
+        w := args[1]
+        h := args[2]
+    }
+    if ( args.Length() == 3 ) {
+        x := args[1]
+        y := args[1]
+        w := args[2]
+        h := args[3]
+    }
+    if ( args.Length() == 4 ) {
+        x := args[1]
+        y := args[2]
+        w := args[3]
+        h := args[4]
+    }
+
+    win_x := x
+    win_y := y
+    win_w := w
+    win_h := h
+
+    x := Format("{:L}", x)
+    y := Format("{:L}", y)
+
+    if ( InStr(x, "[1]") ) {
+        win_w := w < 0 ? Screens.1.w + w : w
+        if ( InStr(x, "[center]" ) ) {
+            win_x := Screens.1.x + Screens.1.w/2 - win_w/2
+        }
+    }
+    if ( InStr(y, "[1]") ) {
+        win_h := h < 0 ? Screens.1.h + h : h
+        if ( InStr(y, "[center]") ) {
+            win_y := Screens.1.y + Screens.1.h/2 - win_h/2
+        }
+    }
+
+    if ( InStr(x, "[2]") ) {
+        win_w := w < 0 ? Screens.2.w + w : w
+        if ( InStr(x, "[center]") ) {
+            win_x := Screens.2.x + Screens.2.w/2 - win_w/2
+        }
+    }
+    if ( InStr(y, "[2]") ) {
+        win_h := h < 0 ? Screens.2.h + h : h
+        if ( InStr(y, "[center]") ) {
+            win_y := Screens.2.y + Screens.2.h/2 - win_h/2
+        }
+    }
+
+    if ( InStr(x, "[3]") ) {
+        win_w := w < 0 ? Screens.3.w + w : w
+        if ( InStr(x, "[center]") ) {
+            win_x := Screens.3.x + Screens.3.w/2 - win_w/2
+        }
+    }
+    if ( InStr(y, "[3]") ) {
+        win_h := h < 0 ? Screens.3.h + h : h
+        if ( InStr(y, "[center]") ) {
+            win_y := Screens.3.y + Screens.3.h/2 - win_h/2
+        }
+    }
+
+    win_x := Round(win_x)
+    win_y := Round(win_y)
+    win_w := Round(win_w)
+    win_h := Round(win_h)
+    return [ win_x , win_y , win_w , win_h ]
+}
+
+
+Position4K(args*)
+{
+    if ( args.Length() == 2 ) {
+        w := args[1]
+        h := args[2]
+        x := 4K.Width/2 - w/2
+        y := 4K.Hight/2 - h/2
+    }
+    if ( args.Length() == 4 ) {
+        x := args[1]
+        y := args[2]
+        w := args[3]
+        h := args[4]
+    }
+    scale := 4K.Dpi / Screen.dpi
+    if ( scale != 1 ) {
+        win_x := x / scale / scale
+        win_y := y / scale / scale
+        win_w := w / scale
+        win_h := h / scale
+    } else {
+        win_x := x
+        win_y := y
+        win_w := w
+        win_h := h
+    }
+    win_x := Round(win_x)
+    win_y := Round(win_y)
+    win_w := Round(win_w)
+    win_h := Round(win_h)
+    return [ win_x , win_y , win_w , win_h ]
+}
+
+
+
+PositionDpiChange(A, B, args*)
+{
+    if (not args.Length()) {
+        return args
+    }
+    dpi_from := A["Dpi"]
+    dpi_to   := B["Dpi"]
+    scale    := dpi_from / dpi_to
+    offset   := 15
+    if (scale == 1) {
+        return args
+    }
+    x := args[1]
+    y := args[2]
+    w := args[3]
+    h := args[4]
+    if (x < offset ) {
+        x := x
+    } else {
+        x := x / scale / scale
+    }
+    if (y < offset ) {
+        y := y
+    } else {
+        y := y / scale / scale
+    }
+    w := w / scale
+    h := h / scale
+    return [ x, y, w, h ]
+}
+
 
 ; 软件进程名转换 code.exe -> VSCode
 ProcessNameFormat(process_name)
