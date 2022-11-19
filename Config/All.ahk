@@ -14,5 +14,5 @@ Global status := {}
 #Include %A_WorkingDir%\Config\Init.ahk
 #Include %A_WorkingDir%\Config\KeyMap.ahk
 #Include %A_WorkingDir%\Config\Message.ahk
-#Include %A_WorkingDir%\Config\Position.ahk
 #Include %A_WorkingDir%\Config\Software.ahk
+#Include %A_WorkingDir%\Config\Position\All.ahk
