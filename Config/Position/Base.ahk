@@ -49,8 +49,7 @@ WPD["Chrome"]           := Position("[Center][1]", 3300, 2000)
 WPB["Chrome"]           := Position("[Center][2]", 3000, 1800)
 WPD["Chrome__修改书签"] := Position(900, 1500)
 
-; WPD["v2rayN"] := Position("[Center][1]", 2800, 1600)
-; WPB["v2rayN"] := Position("[Center][1]", 2800, 1600)
+WPD["v2rayN"] := Position4K(2800, 1600)
 
 WPD["Python__Anaconda"] := Position(2650, 1677)
 

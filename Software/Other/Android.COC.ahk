@@ -162,25 +162,46 @@
     F5::
         CoordMode, Mouse, Window
         MouseGetPos, x_origin, y_origin
-        MouseClick, Left, 588,  484, 1, 0
-        MouseClick, Left, 855,  482, 1, 0
-        MouseClick, Left, 1127, 484, 1, 0
-        MouseClick, Left, 1395, 484, 1, 0
-        MouseClick, Left, 1665, 484, 1, 0
-        MouseClick, Left, 1934, 484, 1, 0
+        RemoveArm1K() {
+            MouseClick, Left, 432,  363, 1, 0
+            MouseClick, Left, 627,  363, 1, 0
+            MouseClick, Left, 825,  363, 1, 0
+            MouseClick, Left, 1021, 363, 1, 0
+            MouseClick, Left, 1219, 363, 1, 0
+            MouseClick, Left, 1419, 363, 1, 0
+        }
+        RemoveArm2K() {
+            MouseClick, Left, 588,  484, 1, 0
+            MouseClick, Left, 855,  482, 1, 0
+            MouseClick, Left, 1127, 484, 1, 0
+            MouseClick, Left, 1395, 484, 1, 0
+            MouseClick, Left, 1665, 484, 1, 0
+            MouseClick, Left, 1934, 484, 1, 0
+        }
+        RemoveArm1K()
+        Sleep 100
         MouseMove %x_origin%, %y_origin%, 0
         Send /
     Return
 
     ; 删除护盾
     F8::
+        Send /
         CoordMode, Mouse, Window
         MouseGetPos, x_origin, y_origin
         Send p
         Sleep 100
-        MouseClick, Left, 1409, 505
-        Sleep 100
-        MouseClick, Left, 1379, 848
+        RemoveShield2K() {
+            MouseClick, Left, 1409, 505
+            Sleep 100
+            MouseClick, Left, 1379, 848
+        }
+        RemoveShield1K() {
+            MouseClick, Left, 1034, 379
+            Sleep 100
+            MouseClick, Left, 1008, 631
+        }
+        RemoveShield1K()
         Sleep 100
         MouseMove %x_origin%, %y_origin%, 0
         Sleep 100

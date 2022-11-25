@@ -45,12 +45,12 @@
     ; 默认位置
     <#\::
         MoveWindowToDefaultPosition()
-        _1 := " 1  2    3    4    5    6        7        8          9    10   11       12       13     14     "
-        _2 := " 40 160  800  350  100  200      150      140        100  130  135      135      135    135    "
-        _3 := " y  类型 别名 地址 端口 加密方式 传输协议 传输层安全 订阅 测试 今日下载 今日上传 总下载 总上传 "
+        _1 := " 1  2    3    4    5    6        7        8          9    10       11       12       13     14     "
+        _2 := " 50 120  800  350  100  130      150      150        120  170      135      140      140    140    "
+        _3 := " y  类型 别名 地址 端口 加密方式 传输协议 传输层安全 订阅 测试结果 今日下载 今日上传 总下载 总上传 "
         name   := "WindowsForms10.SysListView32.app.0.12ab327_r6_ad11"
         config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth(name, config)
+        SetColumnWidth(name, config, 4K, 1K)
     Return
 
 #If

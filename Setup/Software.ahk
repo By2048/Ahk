@@ -47,6 +47,7 @@
 #Include %A_WorkingDir%\Software\Program\Chrome.ahk
 #Include %A_WorkingDir%\Software\Program\FireFox.ahk
 #Include %A_WorkingDir%\Software\Program\JetBrains.ahk
+#Include %A_WorkingDir%\Software\Program\Navicat.ahk
 #Include %A_WorkingDir%\Software\Program\Notepad++.ahk
 #Include %A_WorkingDir%\Software\Program\Obsidian.ahk
 #Include %A_WorkingDir%\Software\Program\Postman.ahk
