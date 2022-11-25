@@ -12,10 +12,13 @@ Global Font := { "Dpi"  : 2  , "Size" : 25 , "Type" : "Courier New" }
 Global Windows_Main_Mini := [ [ 3/5 , 3/4 ] , [ 5/6 , 8/9 ] ]
 
 ; 缓存过期时间 毫秒
-Global Cache_Expire_Time := 500
+Global Cache_Expire_Time := 666
 
 ; 系统类型 | Win10 \ WinServer
 Global System_Type := "Win10"
+
+; 全局调试模式
+Global Debug := False
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
