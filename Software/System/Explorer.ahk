@@ -45,8 +45,14 @@
 #If CheckWindowActive( "Explorer" , "Shell_TrayWnd" )
     PgUp::Send {Volume_Up}
     PgDn::Send {Volume_Down}
-    Home::Send {Volume_Up 10}
-    End::Send {Volume_Down 10}
+    =::
+    Home::
+        Send {Volume_Up 5}
+    Return
+    -::
+    End::
+        Send {Volume_Down 5}
+    Return
 #If
 
 ; 桌面
