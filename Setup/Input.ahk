@@ -22,8 +22,8 @@ Return
     SendInput %result%
 Return
 
-:*:\-::{- 80}
-:*:\#::{# 80}
+:*:\---::{- 80}
+:*:\###::{# 80}
 
 
 #Include %A_WorkingDir%\Setup\Input.Private.ahk
