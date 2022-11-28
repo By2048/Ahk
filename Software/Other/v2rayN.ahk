@@ -17,24 +17,18 @@
 
     ; 更新订阅
     !\::
-        CoordMode, Mouse, Window
-        MouseGetPos, x_origin, y_origin
-        MouseClick, Left, 200, 85
-        Sleep 300
+        ControlFocus, WindowsForms10.Window.8.app.0.12ab327_r6_ad115, A
+        Send {Right 2}
         Send {Down 2}
         Send {Enter}
-        MouseMove, %x_origin%, %y_origin%, 0
     Return
 
     ; 更新Geo
     !/::
-        CoordMode, Mouse, Window
-        MouseGetPos, x_origin, y_origin
-        MouseClick, Left, 686, 85
-        Sleep 300
-        Send {Down 4}
+        ControlFocus, WindowsForms10.Window.8.app.0.12ab327_r6_ad115, A
+        Send {Right 6}
+        Send {Up 2}
         Send {Enter}
-        MouseMove, %x_origin%, %y_origin%, 0
     Return
 
     ; 关闭窗口

@@ -29,6 +29,15 @@ ChromeTimer:
         url_result := "https://cn.bing.com/search?q=" . keyword
     }
 
+    ; https://t.bilibili.com/?tab=all
+    ; https://t.bilibili.com/?tab=video
+    if (InStr(url_origin, "t.bilibili.com/?tab=all")) {
+        url_result := StrReplace(url_origin, "all", "video")
+    }
+    if (InStr(url_origin, "t.bilibili.com/?tab=video")) {
+        url_result := StrReplace(url_origin, "video", "all")
+    }
+
     ; 2 -> 1
     ; 1 -> 3 -> 1
     ; 1 https://www.zhihu.com/question/xxx

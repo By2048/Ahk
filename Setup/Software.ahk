@@ -35,6 +35,7 @@
 #Include %A_WorkingDir%\Software\Other\FreeFileSync.ahk
 #Include %A_WorkingDir%\Software\Other\FSViewer.ahk
 #Include %A_WorkingDir%\Software\Other\Geek.ahk
+#Include %A_WorkingDir%\Software\Other\GeForceTool.ahk
 #Include %A_WorkingDir%\Software\Other\Maye.ahk
 #Include %A_WorkingDir%\Software\Other\PotPlayer.ahk
 #Include %A_WorkingDir%\Software\Other\Q-Dir.ahk
