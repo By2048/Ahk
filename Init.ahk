@@ -71,6 +71,8 @@ InitScreens(dpi_mode:="Default")
         screen.h    := screen.yy - screen.y
         screen.dpi  := Screens_Detail[screen_index]["Dpi"]
         screen.name := Screens_Detail[screen_index]["Name"]
+        screen.width  := screen.w
+        screen.height := screen.h
         For key, value In screen {
             section := Format("Screens\{}\{}", dpi_mode, screen_index)
             GlobalSet(section, key, value)
