@@ -4,8 +4,9 @@
 
 Global Screens, Screen
 
-Screens["Keys"] := { "Dpi"  : ["Default", "Software", "System", "SystemPlus"]       ;
-                   , "Attr" : ["id", "name", "dpi", "x", "y", "w", "h", "xx", "yy"] }
+Screens["Keys"] := { "Dpi"  : [ "Default", "Software", "System", "SystemPlus" ]
+                   , "Attr" : [ "id", "name", "dpi"
+                              , "x", "y", "w", "h", "width", "height" , "xx", "yy" ] }
 
 Screens["ID"]    := GlobalGet("Screens", "ID"   , "List")
 Screens["Count"] := GlobalGet("Screens", "Count", "Int" )
