@@ -16,7 +16,6 @@ Set       Folder=%~dp0
 Set        @.ahk=.\@.ahk
 Set   Config.ahk=.\Config.ahk
 Set     Init.ahk=.\Init.ahk
-Set   Screen.ahk=.\Tool\Screen.ahk
 Set     Base.ahk=.\Setup\Base.ahk
 Set   Dexpot.ahk=.\Setup\Dexpot.ahk
 Set     Game.ahk=.\Setup\Game.ahk
@@ -78,13 +77,14 @@ If "%Command%"=="ForceStart" (
 )
 
 If "%Command%"=="Start" (
-    %AutoHotkey%  %Init.ahk%
-    %AutoHotkey%               %Screen.ahk%
-    %AutoHotkeyDpiSoftware%    %Screen.ahk%  Software
-    %AutoHotkeyDpiSystem%      %Screen.ahk%  System
-    %AutoHotkeyDpiSystemPlus%  %Screen.ahk%  SystemPlus
-    Start  %AHK%  %Base.ahk%
+    %AutoHotkey%  %Init.ahk%  Ahks
+    %AutoHotkey%  %Init.ahk%  Files
+    %AutoHotkey%               %Init.ahk%  ScreenDefault
+    %AutoHotkeyDpiSoftware%    %Init.ahk%  ScreenSoftware
+    %AutoHotkeyDpiSystem%      %Init.ahk%  ScreenSystem
+    %AutoHotkeyDpiSystemPlus%  %Init.ahk%  ScreenSystemPlus
     Echo.
+    Start  %AHK%  %Base.ahk%
     Echo   Start  %Base.ahk%
     Echo.
 )
