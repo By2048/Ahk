@@ -44,7 +44,7 @@
         _3 := " y  类型 别名 地址 端口 加密方式 传输协议 传输层安全 订阅 测试结果 今日下载 今日上传 总下载 总上传 "
         name   := "WindowsForms10.SysListView32.app.0.12ab327_r6_ad11"
         config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth(name, config, 4K, 1K)
+        SetColumnWidth(name, config, 4K, 2K)
     Return
 
 #If
