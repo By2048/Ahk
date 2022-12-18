@@ -206,33 +206,69 @@
 
     <#\::
     <#+\::
+        ; 4K
+            ; 2520  1700
+            ; D:\\   | 树 426 | 名称800  备注400    日期250             | 预览 550
+            ; 回收站  | 树 426 | 名称500  原位置500  删除日期250  大小200  | 预览 550
+            ; 其他    | 树 426 | 名称999   日期250    大小200            | 预览 550
+        ; 2K
+            ; 1890	1275
+            ; D:\\   | 树 426 | 名称800  备注400    日期250             | 预览 550
+            ; 回收站  | 树 426 | 名称500  原位置500  删除日期250  大小200  | 预览 550
+            ; 其他    | 树 426 | 名称999   日期250    大小200            | 预览 550
 
-        ; D:\\   | 树 426 | 名称800  备注400    日期250             | 预览 550
-        ; 回收站  | 树 426 | 名称500  原位置500  删除日期250  大小200  | 预览 550
-        ; 其他    | 树 426 | 名称999   日期250    大小200            | 预览 550
-        WPD["Explorer"] := Position(2520 , 1700)
-        MoveWindowToDefaultPosition()
+        if ("4K" in Screen.Name) {
+            total_width  := 2520
+            total_height := 1700
+            left_length  := 426
+            right_length := 550
+            line_width   := 14
+            EC := { "File"     : [ [ "System.ItemNameDisplay"     , 1450 ] ]
+                  , "Default"  : [ [ "System.ItemNameDisplay"     , 999  ]
+                                 , [ "System.ItemDate"            , 250  ]
+                                 , [ "System.Size"                , 200  ] ]
+                  , "List"     : [ [ "System.ItemNameDisplay"     , 1250 ]
+                                 , [ "System.Size"                , 200  ] ]
+                  , "Software" : [ [ "System.ItemNameDisplay"     , 800  ]
+                                 , [ "System.Comment"             , 400  ]
+                                 , [ "System.ItemDate"            , 250  ] ]
+                  , "Recover"  : [ [ "System.ItemNameDisplay"     , 500  ]
+                                 , [ "System.Recycle.DeletedFrom" , 500  ]
+                                 , [ "System.Recycle.DateDeleted" , 250  ]
+                                 , [ "System.Size"                , 200  ] ] }
+        }
+        if ("2K" in Screen.Name) {
+            total_width  := 1940
+            total_height := 1250
+            left_length  := 310
+            right_length := 378
+            line_width   := 14
+            EC := { "File"     : [ [ "System.ItemNameDisplay"     , 1133 ] ]
+                  , "Default"  : [ [ "System.ItemNameDisplay"     , 800  ]
+                                 , [ "System.ItemDate"            , 200  ]
+                                 , [ "System.Size"                , 100  ] ]
+                  , "List"     : [ [ "System.ItemNameDisplay"     , 999 ]
+                                 , [ "System.Size"                , 100  ] ]
+                  , "Software" : [ [ "System.ItemNameDisplay"     , 450  ]
+                                 , [ "System.Comment"             , 480  ]
+                                 , [ "System.ItemDate"            , 200  ] ]
+                  , "Recover"  : [ [ "System.ItemNameDisplay"     , 420  ]
+                                 , [ "System.Recycle.DeletedFrom" , 400  ]
+                                 , [ "System.Recycle.DateDeleted" , 180  ]
+                                 , [ "System.Size"                , 100  ] ] }
+        }
 
-        EC := { "File"     : [ [ "System.ItemNameDisplay"     , 1450 ] ]
-              , "Default"  : [ [ "System.ItemNameDisplay"     , 999  ]
-                             , [ "System.ItemDate"            , 250  ]
-                             , [ "System.Size"                , 200  ] ]
-              , "List"     : [ [ "System.ItemNameDisplay"     , 1250 ]
-                             , [ "System.Size"                , 200  ] ]
-              , "Software" : [ [ "System.ItemNameDisplay"     , 800  ]
-                             , [ "System.Comment"             , 400  ]
-                             , [ "System.ItemDate"            , 250  ] ]
-              , "Recover"  : [ [ "System.ItemNameDisplay"     , 500  ]
-                             , [ "System.Recycle.DeletedFrom" , 500  ]
-                             , [ "System.Recycle.DateDeleted" , 250  ]
-                             , [ "System.Size"                , 200  ] ] }
+        offset := 9
 
         EC["D:\"]       := EC["Software"]
         EC["D:\Python"] := EC["Software"]
         EC["D:\Go"]     := EC["Software"]
         EC["D:\Java"]   := EC["Software"]
-        EC["回收站"]    := EC["Recover"]
+        EC["回收站"]     := EC["Recover"]
         EC["T:\"]       := EC["List"]
+
+        WPD["Explorer"] := Position(total_width , total_height)
+        MoveWindowToDefaultPosition()
 
         win_title := window.title
 
@@ -261,15 +297,8 @@
         xx     := cinfo.xx
         yy     := cinfo.yy
 
-        ; 左右信息栏信息
-        ; 426对齐 548最小
-        left_length  := 426
-        right_length := 550
-        line_width   := 14
-        offset       := 3
-
         check_width := window["controls"]["SysTreeView321"]["w"]
-        if ( Abs(check_width - left_length ) > 3 ) {
+        if ( Abs(check_width - left_length ) > offset ) {
             max_left := left_length + line_width
             MouseClickDrag, Left, x-offset,  (yy-y)/2, max_left+offset,  (yy-y)/2, 0
             max_right := win_xx - right_length + line_width
