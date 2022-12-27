@@ -223,6 +223,7 @@
             left_length  := 426
             right_length := 550
             line_width   := 14
+            offset       := 9
             EC := { "File"     : [ [ "System.ItemNameDisplay"     , 1450 ] ]
                   , "Default"  : [ [ "System.ItemNameDisplay"     , 999  ]
                                  , [ "System.ItemDate"            , 250  ]
@@ -238,27 +239,29 @@
                                  , [ "System.Size"                , 200  ] ] }
         }
         if ("2K" in Screen.Name) {
-            total_width  := 1940
+            total_width  := 1929
             total_height := 1250
-            left_length  := 310
+            left_length  := 305
             right_length := 378
             line_width   := 14
+            offset       := 5
             EC := { "File"     : [ [ "System.ItemNameDisplay"     , 1133 ] ]
                   , "Default"  : [ [ "System.ItemNameDisplay"     , 800  ]
-                                 , [ "System.ItemDate"            , 200  ]
-                                 , [ "System.Size"                , 100  ] ]
-                  , "List"     : [ [ "System.ItemNameDisplay"     , 999 ]
-                                 , [ "System.Size"                , 100  ] ]
-                  , "Software" : [ [ "System.ItemNameDisplay"     , 450  ]
-                                 , [ "System.Comment"             , 480  ]
-                                 , [ "System.ItemDate"            , 200  ] ]
+                                 , [ "System.ItemDate"            , 180  ]
+                                 , [ "System.Size"                , 140  ] ]
+                  , "List"     : [ [ "System.ItemNameDisplay"     , 980 ]
+                                 , [ "System.Size"                , 140  ] ]
+                  , "Software" : [ [ "System.ItemNameDisplay"     , 510  ]
+                                 , [ "System.Comment"             , 430  ]
+                                 , [ "System.ItemDate"            , 180  ] ]
                   , "Recover"  : [ [ "System.ItemNameDisplay"     , 420  ]
                                  , [ "System.Recycle.DeletedFrom" , 400  ]
                                  , [ "System.Recycle.DateDeleted" , 180  ]
-                                 , [ "System.Size"                , 100  ] ] }
+                                 , [ "System.Size"                , 140  ] ] }
         }
 
-        offset := 9
+        WPD["Explorer"] := Position(total_width , total_height)
+        MoveWindowToDefaultPosition()
 
         EC["D:\"]       := EC["Software"]
         EC["D:\Python"] := EC["Software"]
@@ -267,11 +270,7 @@
         EC["回收站"]     := EC["Recover"]
         EC["T:\"]       := EC["List"]
 
-        WPD["Explorer"] := Position(total_width , total_height)
-        MoveWindowToDefaultPosition()
-
         win_title := window.title
-
         config := EC[win_title]
         if (not config) {
             if (A_ThisHotkey == "<#+\") {
@@ -280,7 +279,6 @@
                 config := EC["Default"]
             }
         }
-
         SetExplorertColumns(config)
 
         CoordMode, Mouse, Window
@@ -296,9 +294,9 @@
         h      := cinfo.h
         xx     := cinfo.xx
         yy     := cinfo.yy
-
+        CoordMode, Mouse, Window
         check_width := window["controls"]["SysTreeView321"]["w"]
-        if ( Abs(check_width - left_length ) > offset ) {
+        if ( Abs(check_width - left_length ) > offset * 2 ) {
             max_left := left_length + line_width
             MouseClickDrag, Left, x-offset,  (yy-y)/2, max_left+offset,  (yy-y)/2, 0
             max_right := win_xx - right_length + line_width
