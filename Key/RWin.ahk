@@ -35,12 +35,10 @@
 ; >#o::Send #^!o ;喜欢歌曲
 ; >#p::Send #^!p ;歌词
 
-; PowerToys ORC 快捷键屏蔽
->#o::Return
-
 >#\::Send {Media_Play_Pause}
 >#[::Send {Media_Prev}
 >#]::Send {Media_Next}
+>#p::Send ^!p ;添加收藏
 
 RWin & RCtrl::MoveWindowToMainMini("Main")
 RWin & RAlt::MoveWindowToMainMini("Mini")
