@@ -357,13 +357,6 @@ SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
         hh := h
     }
 
-    ; 修复边框问题 边框为偶数时 右侧边框线缺失
-    if (win_process_name == "PyCharm" and Mod(ww, 2) == 0) {
-        offset := 0
-        ww := ww + 1
-        xx := xx - 1
-    }
-
     if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
         if (step) {
             WinMove, ahk_id %win_id%,  , %xx%, %yy%,     ,
@@ -688,7 +681,7 @@ MoveWindowToPosition(position:="Default")
         w := window.position.backup[3]
         h := window.position.backup[4]
     } else {
-        Return
+        return
     }
 
     ; 处理相对参数下的窗口位置
@@ -711,8 +704,6 @@ MoveWindowToPosition(position:="Default")
         }
     }
 
-    SetWindow(x, y, w, h)
-    ; 多屏幕切换时 部分软件需要多次操作
     SetWindow(x, y, w, h)
 }
 MoveWindowToDefaultPosition() {
