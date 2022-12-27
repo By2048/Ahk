@@ -28,13 +28,13 @@ Return
         Case "<#+9" : Send #^!+9
         Case "<#+0" : Send #^!+0
     }
-    exe    := "Twinkle Tray.exe"
-    win_id := WinExist("ahk_exe" exe)
+    win_exe := "Twinkle Tray.exe"
+    win_id  := WinExist("ahk_exe" win_exe)
     WinGetPos, win_x, win_y, win_w, win_h, ahk_id %win_id%
-    x := 1814 , y := 942 , w := 212 , h := 276 ; Screen1 Center
-    if (Abs(win_x-x)<3 and Abs(win_y-y)<3 and Abs(win_w-w)<3 and Abs(win_h-h)<3) {
-        Return
-    }
+    x := Screen.x + Screen.w/2 - win_w/2
+    y := Screen.y + Screen.h/2 - win_h/2
+    w := win_w
+    h := win_h
     WinActivate, ahk_id %win_id%
     WinMove, ahk_id %win_id%,  , %x%, %y%, %w%, %h%
     WinSet, AlwaysOnTop, On, ahk_id %win_id%
@@ -125,7 +125,6 @@ Return
     GetActiveWindowInfo()
     win_id := window.id
     win_process_name := window.process_name
-
     ; 远程桌面切换到Windows时 结束远程桌面
     if (win_process_name == "Explorer") {
         windows_previous_process_name := GlobalGet("Windows", "Previous_Process_Name")
@@ -140,11 +139,9 @@ Return
             }
         }
     }
-
     if (IsDesktops() or IsGame()) {
         Return
     }
-
     WinClose, ahk_id %win_id%
 Return
 ;结束进程
