@@ -1,4 +1,15 @@
 ﻿
+^CapsLock::Return
+^+CapsLock::Return
+$!CapsLock::
+    Send ^{CapsLock}
+    SetCapsLockState, Off
+Return
+$!+CapsLock::
+    Send ^+{CapsLock}
+    SetCapsLockState, Off
+Return
+
 ~*CapsLock::
     Send {Esc}
     if (EscCount > 0) {
@@ -182,7 +193,7 @@ Return
     CenterHideWindow()
 Return
 
-; 活动工具窗口
+; 快速列表 上下文
 ^!;::Return
 ~CapsLock & `;::
     Send ^!;
@@ -190,7 +201,7 @@ Return
     CenterHideWindow()
 Return
 
-; 编辑器选项卡
+; 快速列表 选项卡
 ^!'::Return
 ~CapsLock & '::
     Send ^!'

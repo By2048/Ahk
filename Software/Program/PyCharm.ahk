@@ -209,7 +209,7 @@
 
     ~RWin::
         WinGetPos, x, y, w, h, A
-        if (x < 0 and y == 0 ) { ;已经全屏
+        if (x <= 0 or y <= 0 ) { ;已经全屏
             return
         } else {
             MoveWindowToCenter(True)
@@ -221,8 +221,6 @@
         }
         GlobalSet("Status", "ignore_function", True)
     Return
-
-    #Include %A_WorkingDir%\Software\Program\PyCharm.CapsLock.ahk
 
     ~!+`::
         WinWaitActive, 书签描述
@@ -282,10 +280,10 @@
     <!Tab::Send ^{Tab}
     ^+Tab::Return
     <!+Tab::Send ^+{Tab}
-    ^CapsLock::Return
-    !CapsLock::Send ^{CapsLock}
-    ^+CapsLock::Return
-    !+CapsLock::Send ^+{CapsLock}
+
+
+    #Include %A_WorkingDir%\Software\Program\PyCharm.CapsLock.ahk
+
 
     ; >!NumPad4::Return
     ; >!NumPad5::Return
