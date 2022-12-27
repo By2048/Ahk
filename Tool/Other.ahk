@@ -194,33 +194,33 @@ SendData(data)
 ; 文本转字典
 GetColumnConfig(args*)
 {
-    arg1 := args[1]
-    arg2 := args[2]
-    arg3 := args[3]
+    arg_index := args[1]
+    arg_name  := args[2]
+    arg_width := args[3]
 
-    if (not arg1 or not arg2) {
+    if (not arg_index or not arg_width) {
         return
     }
 
-    arg1 := Trim(arg1)
-    arg2 := Trim(arg2)
-    arg3 := Trim(arg3)
-    arg1 := RegExReplace(arg1, "\s+", " ")
-    arg2 := RegExReplace(arg2, "\s+", " ")
-    arg3 := RegExReplace(arg3, "\s+", " ")
-    arg1 := StrSplit(arg1, " ")
-    arg2 := StrSplit(arg2, " ")
-    arg3 := StrSplit(arg3, " ")
+    arg_index := Trim(arg_index)
+    arg_width := Trim(arg_width)
+    arg_name  := Trim(arg_name)
+    arg_index := RegExReplace(arg_index, "\s+", " ")
+    arg_width := RegExReplace(arg_width, "\s+", " ")
+    arg_name  := RegExReplace(arg_name, "\s+", " ")
+    arg_index := StrSplit(arg_index, " ")
+    arg_width := StrSplit(arg_width, " ")
+    arg_name  := StrSplit(arg_name, " ")
 
-    if (arg1.Length() != arg2.Length()) {
+    if (arg_index.Length() != arg_width.Length()) {
         return
     }
-    length := arg1.Length()
 
     result := {}
+    length := arg_index.Length()
     loop, % length {
-        key   := arg1[A_Index] + 0
-        value := arg2[A_Index] + 0
+        key   := arg_index[A_Index] + 0
+        value := arg_width[A_Index] + 0
         result[key] := value
     }
 
