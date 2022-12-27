@@ -212,7 +212,7 @@
     >!\::
         Send {LButton Down}
         MouseMove, -150, 0, 11, R
-        MouseMove,  500, 0, 11, R
+        MouseMove,  250, 0, 11, R
         Send {LButton Up}
     Return
 

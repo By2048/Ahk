@@ -8,7 +8,7 @@
                   , 3 : 230   ;修改时间
                   , 4 : 150   ;文件
                   , 5 : 150 } ;文件夹
-        SetColumnWidth(_name, _width)
+        SetColumnWidth(_name, _width, 4K, 2K)
     Return
 #If
 
@@ -24,7 +24,7 @@
                   , 3 : 150   ;文件夹
                   , 4 : 200   ;大小
                   , 5 : 230 } ;修改时间
-        SetColumnWidth(_name, _width)
+        SetColumnWidth(_name, _width, 4K, 2K)
     Return
 
 

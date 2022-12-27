@@ -5,8 +5,8 @@
         MoveWindowToDefaultPosition()
         ; 服务器
         _1 := " 1    2    3        4    5   "
-        _2 := " 300  260  600      150  100 "
-        _3 := " 名称 数值 引用位置 范围 批注"
+        _2 := " 名称 数值 引用位置 范围 批注"
+        _3 := " 300  260  600      150  100 "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321", config)
     Return

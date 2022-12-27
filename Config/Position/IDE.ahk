@@ -8,9 +8,13 @@ WPD["Notepad++"] := Position(Screens.1.w * 45/60 , Screens.1.h * 75/90)
 
 ; ----------------------------------------------------------------------------------------------- ;
 
-; WPB["PyCharm"] := Position(2300, 1800)
-WPD["PyCharm"] := [ -16 ,  0 ,     3868 , 2173 ] ;修正边框下的全屏
-WPB["PyCharm"] := [ 0   , 13 , 3840 + 1 , 2147 ] ;小边距
+If ("4K" in Screen.Name) {
+    WPD["PyCharm"] := [ -16 ,  0 , 3868 , 2173 ]
+    WPB["PyCharm"] := [ 0   , 13 , 3841 , 2147 ]
+}
+If ("2K" in Screen.Name) {
+    WPD["PyCharm"] := [ -13 , 0  , 2584, 1451]
+}
 
 WPD["PyCharm__[更改]"] := Position(-100 , -100)
 WPD["PyCharm__[变更]"] := Position(-100 , -100)

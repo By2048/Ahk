@@ -1,7 +1,7 @@
 ﻿
 #If CheckWindowActive( "Q-Dir" , "#32770" , "MiniBrowserOK" )
     <#\::
-        WPD["Q-Dir_#32770_MiniBrowserOK"] := Position(2100, 1700)
+        WPD["Q-Dir_#32770_MiniBrowserOK"] := Position4K(2100, 1700)
         MoveWindowToDefaultPosition()
     Return
 #If
@@ -49,7 +49,7 @@
     ; 状态栏历史
     F4::Return
     !/::Send {F4}
-    
+
     ; 刷新
     F5::Return
     \::
@@ -72,7 +72,7 @@
 
     ; 显示所选项目的快捷菜单。
     +F10::Return
-    
+
     ;全屏
     F11::Return
     <#Enter::Send {F11}
