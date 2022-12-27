@@ -58,7 +58,10 @@
         ; 左侧信息栏
         cinfo  := window["controls"]["DirectUIHWND2"]
         offset := 1
-        cleft  := 393
+        ; cleft  := 393
+        cleft    := 300
+        offset_x := 9
+        offset_y := -30
         MoveControlUDLR(cinfo,  ,  , cleft,  , offset)
 
         ; 设置平铺模式
@@ -226,9 +229,9 @@
 
         name  := "SysListView321"
         width := { 1 : 500 , 2 : 230 , 3 : 1000 } ; 名称 类型 数据
-        SetColumnWidth(name, width)
+        SetColumnWidth(name, width, 4K, 2K)
 
-        max_left := 700
+        max_left := 500
         offset   := 9
 
         control_config := window["controls"]["SysTreeView321"]
