@@ -118,8 +118,8 @@
     PgDn::Send !o
     <#\::
         MoveWindowToDefaultPosition()
-        SetColumnWidth( "SysListView321", { 1 : 200 , 2 : 1650 } ) ;用户变量
-        SetColumnWidth( "SysListView322", { 1 : 370 , 2 : 1450 } ) ;系统变量
+        SetColumnWidth( "SysListView321", { 1 : 150 , 2 : 1200 } ) ;用户变量
+        SetColumnWidth( "SysListView322", { 1 : 200 , 2 : 1150 } ) ;系统变量
     Return
 #If
 
