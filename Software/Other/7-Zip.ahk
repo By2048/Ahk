@@ -1,35 +1,21 @@
 ﻿
-#If CheckWindowActive( "7-Zip" ,  , ".iso" )
-    <#\::
-        MoveWindowToDefaultPosition()
-        _name  := "SysListView321"
-        _width := { 1 : 999   ;名称
-                  , 2 : 200   ;大小
-                  , 3 : 230   ;修改时间
-                  , 4 : 150   ;文件
-                  , 5 : 150 } ;文件夹
-        SetColumnWidth(_name, _width, 4K, 2K)
-    Return
-#If
-
-
 #If CheckWindowActive("7-Zip")
 
     <#\::
         MoveWindowToDefaultPosition()
-
-        _name  := "SysListView321"
-        _width := { 1 : 999   ;名称
-                  , 2 : 150   ;文件
-                  , 3 : 150   ;文件夹
-                  , 4 : 200   ;大小
-                  , 5 : 230 } ;修改时间
-        SetColumnWidth(_name, _width, 4K, 2K)
+        index := " 1      2     3       4      5        "
+        name  := " 名称   文件   文件夹   大小   修改时间   "
+        ; 4K
+        ; width := " 999    150   150     200    250      "
+        ; 2K
+        width := " 770    100   100     150    200      "
+        config := GetColumnConfig(index, name, width)
+        SetColumnWidth("SysListView321" , config)
     Return
 
 
     ; 注册表相关操作
-    !/::
+    >!\::
         ; Clear History
         RegWrite, REG_BINARY, HKEY_CURRENT_USER, Software\7-Zip\FM, FolderHistory,
         RegWrite, REG_BINARY, HKEY_CURRENT_USER, Software\7-Zip\FM, CopyHistory,
@@ -39,12 +25,12 @@
         ; RegRead, default_columns_config, HKEY_CURRENT_USER\SOFTWARE\7-Zip\FM\Columns, 7-Zip.zip
         ; RegWrite, REG_BINARY, HKEY_CURRENT_USER, SOFTWARE\7-Zip\FM\Columns\, 7-Zip.Rar, %default_columns_config%
 
-        HelpText("Clear History", "center_down", "screen1", 1000)
+        HelpText("`nClear History`n", "Center", "Screen1", 1000)
     Return
 
 
     ; 选择所有
-    !F11::
+    >![::
         Sleep 500
         max_select := 19
         Loop, %max_select% {
@@ -57,7 +43,7 @@
 
 
     ; 选择指定列
-    !F12::
+    >!]::
         Sleep 500
         all_select := [ 17, 18, 2, 4 ]
         for index, item in all_select {
