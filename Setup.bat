@@ -28,8 +28,8 @@ Set Software.ahk=.\Setup\Software.ahk
 CD  /d  %Folder%
 
 ::#region Init Ahk Exe
-@REM                22                 -1
-@REM AutoHotkey := "D:\Xxx\AutoHotkey.exe"
+@REM                22                    -1
+@REM AutoHotkey := "D:\Xxx\Xx\AutoHotkey.exe"
 For /f "delims=" %%A In ('FindStr ".*AutoHotkey.exe" %Config.ahk%') Do Set AutoHotkey=%%A
 Set AutoHotkey=%AutoHotkey:~22,-1%
 If Not Exist %AutoHotkey% (
