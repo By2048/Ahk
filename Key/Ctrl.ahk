@@ -58,11 +58,11 @@ Return
 >^l::Run "C:\Program Files\LogiOptionsPlus\LogiOptionsPlus.exe"
 
 >^x::RunNormalUser("D:\#Lnk\Xshell.lnk")
->^c::RunNormalUser("D:\#Lnk\CloudMusic.lnk")
 >^v::Run %VSCode% " E:\Config\VSCode\Windows.code-workspace",  , Hide
 >^+v::Run %VSCode%,  , Hide
 >^m::RunNormalUser("D:\#Lnk\PotPlayer.lnk")
-
+>^n::RunNormalUser("D:\#Lnk\CloudMusic.lnk")
+>^+n::RunNormalUser("D:\#Lnk\QQMusic.lnk")
 
 >^Esc::Run Taskmgr.exe ;任务管理器
 >^+Esc::Run D:\#Lnk\HuoRongSword.lnk
