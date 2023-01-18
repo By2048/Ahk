@@ -1,7 +1,8 @@
 ﻿
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
     <#\::{
-        WPD["BitComet_#32770_新建BT任务"] := Position4K(1700 , 1300)
+        global WPD
+        WPD["BitComet_#32770_新建BT任务"] := Position4K(1800 , 1300)
         MoveWindowToDefaultPosition()
         ; 主界面
         _1 := " 1    2    3   "
@@ -27,7 +28,7 @@
             total_height := 1130
             max_left := 265
         }
-
+        global WPD
         WPD["BitComet"] := Position(total_width , total_height)
         MoveWindowToDefaultPosition()
 
@@ -39,7 +40,7 @@
         SetColumnWidth("SysListView321" , config, Screen_4K, Screen_2K)
 
         ; 左边栏大小
-        cinfo := window["controls"]["SysListView321"]
+        cinfo := window.controls.SysListView321
         MoveControlUDLR(cinfo,  ,  , max_left,  , 3)
 
         ; 种子存档
