@@ -1,13 +1,13 @@
 ﻿
-#If CheckWindowActive("PotPlayer")
+#HotIf CheckWindowActive("PotPlayer")
 
     ; 2倍数播放
-    >!2::Send {c 10}
+    >!2::Send "{c 10}"
 
-    >+Delete::Send +{Delete}
+    >+Delete::Send "+{Delete}"
 
-    !CapsLock::Send !{F4}
+    !CapsLock::Send "!{F4}"
 
-    <#Enter::Send !{Enter}
+    <#Enter::Send "!{Enter}"
 
-#If
+#HotIf

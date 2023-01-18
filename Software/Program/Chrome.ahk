@@ -1,44 +1,44 @@
 ﻿
 ; https://support.google.com/chrome/answer/157179
 
-#If CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "书签" )
+#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "书签" )
     F2::Return
-    ^r::Send {F2}
-#If
+    ^r::Send "{F2}"
+#HotIf
 
 
 
-#If CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "修改书签" )
+#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "修改书签" )
 
     ; 收藏
-    !Enter::Send {Tab 4}{Enter}
+    !Enter::Send "{Tab 4}{Enter}"
 
     ; 取消收藏
-    !Esc::
-        Send {Esc}
-        Send ^d
-        Send {Tab 4}
-        Send {Enter}
-    Return
+    !Esc::{
+        Send "{Esc}"
+        Send "^d"
+        Send "{Tab 4}"
+        Send "{Enter}"
+    }
 
-#If
-
-
-
-#If CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "DevTools" )
-
-#If
+#HotIf
 
 
 
-#If CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" )
+#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "DevTools" )
+
+#HotIf
+
+
+
+#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" )
 
     Redirect(url) {
         tmp := Clipboard
         Clipboard := url
-        Send !d
-        Send ^v
-        Send {Enter}
+        Send "!d"
+        Send "^v"
+        Send "{Enter}"
         Clipboard := tmp
     }
 
@@ -57,28 +57,31 @@
     !F11::Redirect("https://www.zhihu.com/hot")
     !F12::Redirect("https://t.bilibili.com/?tab=8")
 
-#If
+#HotIf
 
 
-#If ( CheckWindowActive( "Chrome" ) And Expand == True )
-    Tab::
-        Send {Right 3}
-    Return
-    LShift::
-        Send {Left 3}
-    Return
-    CapsLock::
-        Send {F10 2}
+Expand := False
+
+#HotIf ( CheckWindowActive( "Chrome" ) And Expand == True )
+    Tab::{
+        Send "{Right 3}"
+    }
+    LShift::{
+        Send "{Left 3}"
+    }
+    CapsLock::{
+        global Expand
+        Send "{F10 2}"
         Expand := False
-    Return
-#If
+    }
+#HotIf
 
 
-#If CheckWindowActive( "Chrome" )
+#HotIf CheckWindowActive( "Chrome" )
 
-    #Include %A_WorkingDir%\Software\Program\Chrome.LShift.ahk
+    #Include %A_InitialWorkingDir%\Software\Program\Chrome.LShift.ahk
 
-    LAlt::Send {F10}
+    LAlt::Send "{F10}"
 
     ;帮助
     F1::Return
@@ -95,66 +98,66 @@
     +F5::Return
     ^r::Return
     ^+r::Return
-    !r::Send ^r
-    !+r::Send ^+r
+    !r::Send "^r"
+    !+r::Send "^+r"
 
     ;切换焦点
     F6::Return
     +F6::Return
-    !`::Send {F6}
-    ^`::Send +{F6}
+    !`::Send "{F6}"
+    ^`::Send "+{F6}"
 
     ;光标浏览模式
     F7::Return
-    !i::Send {F7}{Enter}
+    !i::Send "{F7}{Enter}"
 
     ;全屏
     F11::Return
-    #Enter::Send {F11}
+    #Enter::Send "{F11}"
 
     ;开发者模式
     F12::Return
     ^+j::Return
-    <^AppsKey::Send {F12}
+    <^AppsKey::Send "{F12}"
 
     ; 书签第一个
     <!\::
-    <!+\::
+    <!+\::{
         shift_status := GetKeyState("Shift", "P")
-        Send {F6 3}
+        Send "{F6 3}"
         if (shift_status) {
-            Send {Left}
+            Send "{Left}"
         }
-    Return
+    }
 
-    CapsLock::
-        Send {F10 2}
-        SetCapsLockState Off
-    Return
+    CapsLock::{
+        Send "{F10 2}"
+        SetCapsLockState "Off"
+    }
 
     ;任务管理
     ^Esc::Return
-    !Esc::Send +{Esc}
+    !Esc::Send "+{Esc}"
 
     ;删除联想
     ;删除搜索历史记录
     +Delete::Return
     ; !Delete::Send +{Delete}
-    !Delete::
-        Send {Esc}
-        Send {LButton}
-        Send {Down}
-        Send +{Delete 9}
-        Send {Esc}
-    Return
+    !Delete::{
+        Send "{Esc}"
+        Send "{LButton}"
+        Send "{Down}"
+        Send "+{Delete 9}"
+        Send "{Esc}"
+    }
 
     ;清理浏览记录
     ^+Delete::Return
-    !+Delete::Send ^+{Delete}
+    !+Delete::Send "^+{Delete}"
 
     ;新标签页
     ^t::Return
-    !t::Send ^t
+    !t::Send "^t"
 
     ; 新窗口
     ; ^n::Return
@@ -177,37 +180,37 @@
     ;关闭窗口
     ^w::Return
     ^F4::Return
-    !CapsLock::
-        Send ^w
-        SetCapsLockState off
-    Return
+    !CapsLock::{
+        Send "^w"
+        SetCapsLockState "Off"
+    }
 
     ;关闭所有窗口
     ^+w::Return
 
     ;将焦点放置在Chrome工具栏中的第一项上
     !+t::Return
-    ![::
+    ![::{
         if (not alt_shift_t) {
             alt_shift_t := True
-            Send !+t
+            Send "!+t"
         } else {
             alt_shift_t := False
-            Send {Esc}
+            Send "{Esc}"
         }
-    Return
+    }
 
     ;将焦点放置在Chrome工具栏中最右侧的那一项上
     F10::Return
-    !]::Send {F10}
+    !]::Send "{F10}"
 
     ;重新打开标签页
     ^+t::Return
     +CapsLock::
-    !+CapsLock::
-        Send ^+t
-        SetCapsLockState off
-    Return
+    !+CapsLock::{
+        Send "^+t"
+        SetCapsLockState "Off"
+    }
 
     ;切换标签页
     ^1::Return
@@ -225,28 +228,28 @@
     +Tab::Return
 
     ;主页
-    !BackSpace::Send !{Home}
+    !BackSpace::Send "!{Home}"
 
-    !Tab::Send ^{Tab}
-    !+Tab::Send ^+{Tab}
-    !Home::Send ^1
-    !End::Send ^9
+    !Tab::Send "^{Tab}"
+    !+Tab::Send "^+{Tab}"
+    !Home::Send "^1"
+    !End::Send "^9"
 
     ;滚动
     ^PgUp::Return
     ^PgDn::Return
-    !PgUp::Send ^+{Tab}
-    !PgDn::Send ^{Tab}
+    !PgUp::Send "^+{Tab}"
+    !PgDn::Send "^{Tab}"
 
     ;切换书签栏显示隐藏状态
     ^+b::Return
-    !v::Send ^+b
+    !v::Send "^+b"
 
     ;打开文件 ^o
 
     ;书签管理页面
     ^+o::Return
-    !b::Send ^+o
+    !b::Send "^+o"
 
     ;切换用户
     ^+m::Return
@@ -257,54 +260,55 @@
 
     ;历史记录
     ^h::Return
-    !h::Send ^h
+    !h::Send "^h"
 
     ;下载页面
     ^j::Return
-    !j::Send ^j
+    !j::Send "^j"
 
     ;收藏 取消收藏
     ^d::Return
     ^+d::Return
-    !d::
-        Send ^d
-        Send {Tab 2}
-        Send {Enter}
+    !d::{
+        Send "^d"
+        Send "{Tab 2}"
+        Send "{Enter}"
         MoveWindowToDefaultPosition()
-    Return
-    !+d::
-        Send ^d
-        Send {Tab 4}
-        Send {Enter}
-    Return
+    }
+    !+d::{
+        Send "^d"
+        Send "{Tab 4}"
+        Send "{Enter}"
+    }
 
     ;打印 高级打印
     <^p::Return
     <^+p::Return
-    !p::Send ^p
-    !+p::Send ^+p
+    !p::Send "^p"
+    !+p::Send "^+p"
 
     ; 反馈
     !+i::Return
 
     ;查看源码
     ^u::Return
-    !u::Send ^u
+    !u::Send "^u"
 
     ;打开Chrome菜单
     !f::Return
     !e::Return
     !/::!e
 
-    !Space::
+    !Space::{
+        global alt_space
         if (not alt_space) {
             alt_space := True
-            Send !d
+            Send "!d"
         } else {
             alt_space := False
-            Send {F6 3}
+            Send "{F6 3}"
         }
-    Return
+    }
 
     ;网页缩放
     ^WheelUp::Return
@@ -312,30 +316,31 @@
     ^0::Return
     ^-::Return
     ^=::Return
-    !0::Send ^0
-    !-::Send ^{-}
-    !=::Send ^{=}
+    !0::Send "^0"
+    !-::Send "^{-}"
+    !=::Send "^{=}"
 
     ; 前进后退
-    ~Lbutton & RButton::
-        Send !{Right}
-    Return
-    ~RButton & Lbutton::
-        Send !{Left}
+    ~Lbutton & RButton::{
+        Send "!{Right}"
+    }
+    ~RButton & Lbutton::{
+        Send "!{Left}"
         Sleep 250
-        Send {Esc}
-    Return
+        Send "{Esc}"
+    }
 
-    LAlt & RShift::
-        Send {F10}
-        Send {Left 4}
-        Send {Down 3}
+    LAlt & RShift::{
+        global Expand
+        Send "{F10}"
+        Send "{Left 4}"
+        Send "{Down 3}"
         Expand := True
-    Return
+    }
 
     ; >!y::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Y.png")
     ; >!z::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Z.png")
     ; >!w::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\W.png")
     ; >!n::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\N.png")
 
-#If
+#HotIf

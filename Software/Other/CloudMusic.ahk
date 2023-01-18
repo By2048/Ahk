@@ -1,23 +1,23 @@
 ﻿
-#If CheckWindowActive( "CloudMusic" , "OrpheusBrowserHost" )
+#HotIf CheckWindowActive( "CloudMusic" , "OrpheusBrowserHost" )
 
-    <#BackSpace::
-        Process, Close, CrashReporter.exe
+    <#BackSpace::{
+        ProcessClose "CrashReporter.exe"
         Sleep 300
-        Process, Close, CloudMusic.exe
-    Return
+        ProcessClose "CloudMusic.exe"
+    }
 
-    /::
+    /::{
         MoveWindowToDefaultPosition()
         Sleep 300
         MouseClickAndResetting(60, 1611)
-    Return
+    }
 
-    \::Send !\
-    [::Send ![
-    ]::Send !]
-    =::Send !=
-    -::Send !-
+    \::Send "!\"
+    [::Send "!["
+    ]::Send "!]"
+    =::Send "!="
+    -::Send "!-"
 
     ; Global Cloud_Music_Volume := -1
     ; =::
@@ -50,35 +50,35 @@
     ; Return
 
     ; 列表上一首
-    PgUp::
+    PgUp::{
         MoveWindowToDefaultPosition()
         Sleep 300
         MouseClickAndResetting(1044, 1600)
         Sleep 300
-        Send ![
+        Send "!["
         Sleep 300
         MouseClickAndResetting(1044, 1600,  ,  ,4)
-    Return
+    }
 
     ; 列表下一首
-    PgDn::  
+    PgDn::{
         MoveWindowToDefaultPosition()
         Sleep 300
         MouseClickAndResetting(1044, 1600)
-        Sleep 300   
-        Send !]
+        Sleep 300
+        Send "!]"
         Sleep 300
         MouseClickAndResetting(1044, 1600,  ,  ,4)
-    Return
+    }
 
-    Esc::
-        Send {Esc}
+    Esc::{
+        Send "{Esc}"
         MouseClickAndResetting(1671, 497)
-    Return
+    }
 
-#If
+#HotIf
 
-; Space:: 
+; Space::
 ;     CoordMode, Mouse, Window
 ;     CoordMode, Pixel, Window
 ;     x_origin:=0
@@ -88,7 +88,7 @@
 
 ;     MouseGetPos, x_origin, y_origin
 
-;     image=%A_WorkingDir%\Image\Software\CloudMusic_CloseDetail.png
+;     image=%A_InitialWorkingDir%\Image\Software\CloudMusic_CloseDetail.png
 ;     size:=GetImageSize(image)
 ;     w:=size[1]
 ;     h:=size[2]

@@ -1,6 +1,6 @@
 ﻿
-#If CheckWindowActive( "GeForceTool" )
+#HotIf CheckWindowActive( "GeForceTool" )
 
-    Esc::Send ^!{Insert}
+    Esc::Send "^!{Insert}"
 
-#If
+#HotIf

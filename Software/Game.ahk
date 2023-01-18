@@ -1,7 +1,7 @@
 ﻿
-#If ( IsGame() )
-    #BackSpace::
-        Run, Setup.bat GameMode, %A_WorkingDir%, Hide
+#HotIf ( IsGame() )
+    #BackSpace::{
+        Run "Setup.bat GameMode", A_InitialWorkingDir, "Hide"
         ; HelpText("`n Game Mode `n", "Center", "Screen3")
-    Return
-#If
+    }
+#HotIf

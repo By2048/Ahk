@@ -1,4 +1,6 @@
 ﻿
+#Include %A_InitialWorkingDir%\Tool\Global.ahk
+
 ; RWin
 ; 快捷键 (Ctrl Alt 系统全局) (Shift 功能反转)
 ; 窗口位置大小调整
@@ -11,20 +13,20 @@
 >#Tab::Return
 
 ; Snipaste截图
->#Insert::#^!PrintScreen
->#+Insert::#^!+PrintScreen
->#Delete::#^!CtrlBreak
->#+Delete::#^!+CtrlBreak
+>#Insert::^!PrintScreen
+>#+Insert::^!+PrintScreen
+>#Delete::^!CtrlBreak
+>#+Delete::^!+CtrlBreak
 
 ; 窗口大小调整
->#Left:: Send ^!{Numpad4}
->#Right::Send ^!{Numpad6}
->#Up::   Send ^!{Numpad8}
->#Down:: Send ^!{Numpad2}
+>#Left:: Send "^!{Numpad4}"
+>#Right::Send "^!{Numpad6}"
+>#Up::   Send "^!{Numpad8}"
+>#Down:: Send "^!{Numpad2}"
 
 ; TIM
->#`;::Send ^!; ;识图
->#'::Send ^!' ;翻译
+>#`;::Send "^!;" ;识图
+>#'::Send "^!'"  ;翻译
 
 ; CloudMusic
 ; >#\::Send #^!\ ;播放/暂停
@@ -35,120 +37,90 @@
 ; >#o::Send #^!o ;喜欢歌曲
 ; >#p::Send #^!p ;歌词
 
->#\::Send {Media_Play_Pause}
->#[::Send {Media_Prev}
->#]::Send {Media_Next}
->#p::Send ^!p ;添加收藏
+; 通用媒体按键
+>#\::Send "{Media_Play_Pause}"
+>#[::Send "{Media_Prev}"
+>#]::Send "{Media_Next}"
+>#p::Send "^!p" ;添加收藏
 
 RWin & RCtrl::MoveWindowToMainMini("Main")
 RWin & RAlt::MoveWindowToMainMini("Mini")
 
 ; 移动窗口
-; RWin & LButton::
-;     SetWinDelay, 30
-;     MouseGetPos, mouse_x1, mouse_y1, win_id
-;     WinGet, win_min_max, MinMax, ahk_id %win_id%
+; RWin & LButton::{
+;     SetWinDelay 30
+;     MouseGetPos &mouse_x1, &mouse_y1, &win_id
+;     WinGetMinMax &win_min_max, "ahk_id" . win_id
 ;     if (win_min_max) {
 ;         return
 ;     }
-;     WinGetPos, win_x1, win_y1, win_w1, win_h1, ahk_id %win_id%
-;     Loop {
-;         GetKeyState, left_button, LButton, P
+;     WinGetPos &win_x1, &win_y1, &win_w1, &win_h1, "ahk_id" . win_id
+;     loop {
+;         left_button := GetKeyState("LButton", "P")
 ;         if (left_button == "U") {
 ;             break
 ;         }
-;         MouseGetPos, mouse_x2, mouse_y2, win_id
+;         MouseGetPos &mouse_x2, &mouse_y2, &win_id
 ;         move_x := mouse_x2 - mouse_x1
 ;         move_y := mouse_y2 - mouse_y1
 ;         win_x2 := win_x1 + move_x
 ;         win_y2 := win_y1 + move_y
-;         WinMove, ahk_id %win_id%,  , %win_x2%, %win_y2%
+;         WinMove  , win_x2, win_y2, "ahk_id" . win_id
 ;     }
-; Return
-
->#,::
-    if (IsDesktops() or IsMaxMin() or IsGame()) {
-        return
-    }
-    global windows_resize_small
-    windows_resize_small := True
-    HelpText("Windows Resize Small")
-Return
-
->#.::
-    if (IsDesktops() or IsMaxMin() or IsGame()) {
-        return
-    }
-    global windows_resize_big
-    windows_resize_big := True
-    HelpText("Windows Resize Big")
-Return
-
->#/::
-    if (IsDesktops() or IsMaxMin() or IsGame()) {
-        return
-    }
-    global windows_move
-    windows_move := True
-    HelpText("Move Windows")
-Return
-
-Global windows_move         := False
-Global windows_resize_big   := False
-Global windows_resize_small := False
+; }
 
 ; 设置代理
-RWin & RShift::
-    path        := "HKEY_CURRENT_USER"
-    config      := "Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-    key         := "ProxyEnable"
-    path_config := Format("{}\{}", path, config)
-    RegRead, proxy_state, %path_config%, %key%
+RWin & RShift::{
+    path := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+    key  := "ProxyEnable"
 
-    Process, Exist, v2rayN.exe
-    win_pid := ErrorLevel
-
+    proxy_state  := RegRead(path, key, "")
+    win_pid      := ProcessExist("v2rayN.exe")
     lshift_state := GetKeyState("LShift", "P")
 
     if (lshift_state == "1") {
          ; v2rayN开关
         if (win_pid) {
-            Process, Close, %win_pid%
-            RegWrite, REG_DWORD, %path%, %config%, %key%, 0
+            ProcessClose win_pid
+            RegWrite 0, "REG_DWORD", path, key
             HelpText("`n v2rayN Close `n", "Center", "Screen1", 500)
-            if (Screen_Count == 3) {
-                HelpText("`n v2rayN Close `n", "Center", "Screen3")
-            }
+            HelpText("`n v2rayN Close `n", "Center", "Screen" . Screens.Count)
         } else {
-            Run D:\#Lnk\v2rayN.lnk
-            RegWrite, REG_DWORD, %path%, %config%, %key%, 1
+            Run "D:\#Lnk\v2rayN.lnk"
+            RegWrite 1, "REG_DWORD", path, key
             HelpText("`n v2rayN Start `n", "Center", "Screen1", 500)
         }
     } else {
         ; Windows代理开关
         if (proxy_state == "0") {
-            RegWrite, REG_DWORD, %path%, %config%, %key%, 1
+            RegWrite 1, "REG_DWORD", path, key
             HelpText("`n Proxy On `n", "Center", "Screen1", 500)
         } else if (proxy_state == "1") {
-            RegWrite, REG_DWORD, %path%, %config%, %key%, 0
+            RegWrite 0, "REG_DWORD", path, key
             HelpText("`n Proxy Off `n", "Center", "Screen1", 500)
-            if (Screen_Count == 3) {
-                HelpText("`n Proxy Off `n", "Center", "Screen3")
-            }
+            HelpText("`n Proxy Off `n", "Center", "Screen" . Screens.Count)
         }
     }
-Return
+}
 
-$RWin::
+; 右键RWin设置
+cnt := 0
+$RWin::{
+    global cnt
     if (cnt > 0) {
         cnt += 1
         return
     } else {
         cnt := 1
     }
-    SetTimer, WinTimer, -500
-Return
-WinTimer:
+    SetTimer RWinTimer, -500
+}
+
+windows_move         := False
+windows_resize_big   := False
+windows_resize_small := False
+RWinTimer() {
+    global cnt, windows_move, windows_resize_big, windows_resize_small
     if (   windows_move == True
         or windows_resize_big == True
         or windows_resize_small == True ) {
@@ -173,25 +145,56 @@ WinTimer:
         MoveWindowToBackupPosition()
     }
     cnt := 0
-Return
+}
 
-#If ( windows_move == True )
+
+>#,::{
+    GetActiveWindowInfo()
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
+        return
+    }
+    global windows_resize_small
+    windows_resize_small := True
+    HelpText("Windows Resize Small")
+}
+
+>#.::{
+    GetActiveWindowInfo()
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
+        return
+    }
+    global windows_resize_big
+    windows_resize_big := True
+    HelpText("Windows Resize Big")
+}
+
+>#/::{
+    GetActiveWindowInfo()
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
+        return
+    }
+    global windows_move
+    windows_move := True
+    HelpText("Move Windows")
+}
+
+#HotIf ( windows_move == True )
     Up::   MoveWindowUDLR("Up"   )
     Down:: MoveWindowUDLR("Down" )
     Left:: MoveWindowUDLR("Left" )
     Right::MoveWindowUDLR("Right")
-#If
+#HotIf
 
-#If ( windows_resize_big == True )
+#HotIf ( windows_resize_big == True )
     Up::   ResizeWindow("Big", "Up"   )
     Down:: ResizeWindow("Big", "Down" )
     Left:: ResizeWindow("Big", "Left" )
     Right::ResizeWindow("Big", "Right")
-#If
+#HotIf
 
-#If ( windows_resize_small == True )
+#HotIf ( windows_resize_small == True )
     Up::   ResizeWindow("Small", "Up"   )
     Down:: ResizeWindow("Small", "Down" )
     Left:: ResizeWindow("Small", "Left" )
     Right::ResizeWindow("Small", "Right")
-#If
+#HotIf

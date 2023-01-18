@@ -28,14 +28,15 @@ Set Software.ahk=.\Setup\Software.ahk
 CD  /d  %Folder%
 
 ::#region Init Ahk Exe
-@REM                22                    -1
+@REM                15                    -1
 @REM AutoHotkey := "D:\Xxx\Xx\AutoHotkey.exe"
 For /f "delims=" %%A In ('FindStr ".*AutoHotkey.exe" %Config.ahk%') Do Set AutoHotkey=%%A
-Set AutoHotkey=%AutoHotkey:~22,-1%
+Set AutoHotkey=%AutoHotkey:~15,-1%
 If Not Exist %AutoHotkey% (
     Msg %username% /time:9 配置文件错误 \ 未设置脚本执行文件路径 Config.ahk
     Exit
 )
+
 Set   AutoHotkeyDpiSoftware=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSoftware.exe%
 Set     AutoHotkeyDpiSystem=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystem.exe%
 Set AutoHotkeyDpiSystemPlus=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystemPlus.exe%
@@ -44,22 +45,9 @@ Set AutoHotkeyDpiSystemPlus=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystemPlus.e
 ::#region Run Command | Start | Stop | ForceStop | ForceStart
 Set  AHK=%AutoHotkey%
 Set  Command=%1
-
 If "%Command%"=="" (
     Set Command=Start
 )
-
-If "%Command%"=="GameMode" (
-    Start  %AHK%  %Key.ahk%       Stop
-    Start  %AHK%  %Input.ahk%     Stop
-    Start  %AHK%  %Loop.ahk%      Stop
-    Start  %AHK%  %Dexpot.ahk%    Stop
-    Start  %AHK%  %Software.ahk%  Stop
-    Start  %AHK%  %Game.ahk%      Start
-    Exit
-)
-
-Start  %AHK%  %Game.ahk%  Stop
 
 If "%Command%"=="ForceStop" (
     @Echo Off
@@ -78,6 +66,7 @@ If "%Command%"=="ForceStart" (
 
 If "%Command%"=="Start" (
     %AutoHotkey%  %Init.ahk%  Ahks
+    %AutoHotkey%  %Init.ahk%  Regs
     %AutoHotkey%  %Init.ahk%  Files
     %AutoHotkey%               %Init.ahk%  ScreenDefault
     %AutoHotkeyDpiSoftware%    %Init.ahk%  ScreenSoftware
@@ -87,6 +76,16 @@ If "%Command%"=="Start" (
     Start  %AHK%  %Base.ahk%
     Echo   Start  %Base.ahk%
     Echo.
+)
+
+If "%Command%"=="GameMode" (
+    Start  %AHK%  %Key.ahk%       Stop
+    Start  %AHK%  %Input.ahk%     Stop
+    Start  %AHK%  %Loop.ahk%      Stop
+    Start  %AHK%  %Dexpot.ahk%    Stop
+    Start  %AHK%  %Software.ahk%  Stop
+    Start  %AHK%  %Game.ahk%      Start
+    Exit
 )
 ::#endregion
 
@@ -107,6 +106,9 @@ Start  %AHK%      %@.ahk%         %Command%
 Echo   %Command%  %@.ahk%
 Echo.
 ::#endregion
+
+Start  %AHK%  %Game.ahk%  Stop
+Echo.
 
 EndLocal
 

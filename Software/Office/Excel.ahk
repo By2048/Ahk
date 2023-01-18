@@ -1,19 +1,19 @@
 ﻿
-#If CheckWindowActive("Excel", "", "名称管理器")
-    <#\::
+#HotIf CheckWindowActive("Excel", "", "名称管理器")
+    <#\::{
         WPD["Excel__名称管理器"] := Position(1500, 900)
         MoveWindowToDefaultPosition()
         ; 服务器
         _1 := " 1    2    3        4    5   "
-        _2 := " 名称 数值 引用位置 范围 批注"
+        _2 := " 名称  数值 引用位置  范围  批注 "
         _3 := " 300  260  600      150  100 "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321", config)
-    Return
-#If
+    }
+#HotIf
 
 
-#If CheckWindowActive("Excel")
+#HotIf CheckWindowActive("Excel")
 
     ; Excel Sheet 图片截图 [1]System [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
     ; [sheet, start[x], end[y], multi_line, image_file]
@@ -29,18 +29,18 @@
     !`::MouseClickAndResetting(202,363)
 
     ;无框线
-    >![::Send !{4}{n}
+    >![::Send "!{4}{n}"
 
     ;粗框线
-    >!]::Send !{4}{t}
+    >!]::Send "!{4}{t}"
 
     F3::Return  ;粘贴名称
 
     ^F3::Return ;名称管理器
-    <![::Send {F3}
+    <![::Send "{F3}"
 
     F5::Return  ;定位
-    <!]::Send {F5}
+    <!]::Send "{F5}"
 
     ; ; Hotkeys快捷键保存图片
     ; >!\::
@@ -87,4 +87,4 @@
     ;     HelpText("`n Over `n", "center", "screen3", 3000)
     ; Return
 
-#If
+#HotIf

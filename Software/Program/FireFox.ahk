@@ -1,4 +1,4 @@
 ﻿
-#If CheckWindowActive( "FireFox" )
+#HotIf CheckWindowActive( "FireFox" )
 
-#If
+#HotIf

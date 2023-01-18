@@ -1,5 +1,5 @@
 ﻿
-WPD["VSCode"] := Position(-60  , -30 )
+WPD["VSCode"] := Position(-60  , -30)
 
 ; WPB["VSCode"] := Position(2200 , 1700)
 
@@ -70,17 +70,17 @@ WPB["PyCharm__调试"] := Position("[Center][2]" , 2800 , 1750)
 WPD["PyCharm__服务"] := Position("[Center][1]" , 2800 , 1750)
 WPB["PyCharm__服务"] := Position("[Center][2]" , 2800 , 1750)
 
-WPD["PyCharm__终端"]      := Position("[Center][1]" , 3000 , 1700)
-WPB["PyCharm__终端"]      := Position("[Center][2]" , 3000 , 1700)
+WPD["PyCharm__终端"]       := Position("[Center][1]" , 3000 , 1700)
+WPB["PyCharm__终端"]       := Position("[Center][2]" , 3000 , 1700)
 WPD["PyCharm__Statistic"] := Position("[Center][1]" , 3000 , 1700)
 WPB["PyCharm__Statistic"] := Position("[Center][2]" , 3000 , 1700)
-WPD["PyCharm__数据库"]    := Position("[Center][1]" , 3000 , 1700)
-WPB["PyCharm__数据库"]    := Position("[Center][2]" , 3000 , 1700)
+WPD["PyCharm__数据库"]     := Position("[Center][1]" , 3000 , 1700)
+WPB["PyCharm__数据库"]     := Position("[Center][2]" , 3000 , 1700)
 
 WPD["PyCharm__Python控制台"] := Position("[Center][1]" , 3300 , 1800)
 WPB["PyCharm__Python控制台"] := Position("[Center][2]" , 3300 , 1800)
-WPD["PyCharm__Git"]          := Position("[Center][1]" , 3300 , 1800)
-WPB["PyCharm__Git"]          := Position("[Center][2]" , 3300 , 1800)
+WPD["PyCharm__Git"]         := Position("[Center][1]" , 3300 , 1800)
+WPB["PyCharm__Git"]         := Position("[Center][2]" , 3300 , 1800)
 
 w := 900
 h := 600

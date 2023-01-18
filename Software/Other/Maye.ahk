@@ -1,6 +1,6 @@
 ﻿
-#If ( CheckWindowActive("Maye") )
+#HotIf CheckWindowActive("Maye")
 
-    CapsLock::Send +{Tab}
+    CapsLock::Send "+{Tab}"
 
-#If
+#HotIf

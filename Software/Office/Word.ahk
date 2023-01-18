@@ -1,4 +1,4 @@
 ﻿
-#If CheckWindowActive("Word")
+#HotIf CheckWindowActive("Word")
 
-#If
+#HotIf

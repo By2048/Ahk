@@ -1,5 +1,5 @@
 ﻿
-#If CheckWindowActive("JetBrains")
+#HotIf CheckWindowActive("JetBrains")
 
     ^Tab::Return
     ^+Tab::Return
@@ -14,19 +14,19 @@
     ^+Up::Return
     ^+Down::Return
 
-    AppsKey::Send ^,
+    AppsKey::Send "^,"
 
-    !+\::Send ^r
+    !+\::Send "^r"
 
-    !Tab::Send ^{Tab}
-    !+Tab::Send ^+{Tab}
+    !Tab::Send "^{Tab}"
+    !+Tab::Send "^+{Tab}"
 
-    !Up::Send ^+{Up}
-    !Down::Send ^+{Down}
+    !Up::Send "^+{Up}"
+    !Down::Send "^+{Down}"
 
-    !BackSpace::Send ^q
+    !BackSpace::Send "^q"
 
-#If
+#HotIf
 
 
 ; https://www.jetbrains.com/toolbox-app/faq/#keyboard-navigation

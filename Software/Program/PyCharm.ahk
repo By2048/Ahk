@@ -1,94 +1,102 @@
 ﻿
-#Include %A_WorkingDir%\Software\Program\PyCharm.Tool.ahk
+#Include %A_InitialWorkingDir%\Software\Program\PyCharm.Tool.ahk
 
 
-#If CheckWindowActive("PyCharm", "SunAwtDialog", "Python 控制台")
+#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "Python 控制台")
     ;ReRun
     +BackSpace::MouseClickAndResetting(34, 92)
 
     ;StopConsole
     !BackSpace::MouseClickAndResetting(34, 142)
-#If
+#HotIf
 
 
-#If CheckWindowActive("PyCharm", "SunAwtDialog", "书签")
-    $CapsLock::
-        Send ^{CapsLock}
-    Return
-#If
+#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "书签")
+    $CapsLock::{
+        Send "^{CapsLock}"
+    }
+#HotIf
 
 
-#If CheckWindowActive("PyCharm", "SunAwtDialog", "终端|运行|调试")
-    ~RAlt::
+#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "终端|运行|调试")
+    ~RAlt::{
         if (not hide_status or hide_status == False) {
-            WinSet, Transparent, 99, A
+            WinSetTransparent 99, "A"
             hide_status := True
         }
-    Return
-    ~RAlt Up::
-        WinSet, Transparent, 255, A
+    }
+    ~RAlt Up::{
+        WinSetTransparent 255, "A"
         hide_status := False
-        SetCapsLockState, Off
-    Return
-#If
+        SetCapsLockState "Off"
+    }
+#HotIf
 
 
-#If ( CheckWindowActive("PyCharm") And DoubleShift == True )
+DoubleShift := False
+AppsKeyRedirect := False
+FloatTool := False
+CenterTools := False
+CenterToolsConfig := []
+CenterToolsSpace := 10
+
+
+#HotIf ( CheckWindowActive("PyCharm") And DoubleShift == True )
     Esc::
-    CapsLock::
-        Send {Esc}
+    CapsLock::{
+        Send "{Esc}"
         DoubleShift := False
-    Return
+    }
     RWin::CenterHideWindow(1500, 1500)
-#If
+#HotIf
 
 
 ;AppsKey Esc 一次性返回问题修复
-#If ( CheckWindowActive("PyCharm") And AppsKeyRedirect == True )
-    $Enter::
-        Send {Enter}
+#HotIf ( CheckWindowActive("PyCharm") And AppsKeyRedirect == True )
+    $Enter::{
+        Send "{Enter}"
         AppsKeyEnterCount := AppsKeyEnterCount + 1
-    Return
+    }
     $Esc::
-    $CapsLock::
+    $CapsLock::{
         if (AppsKeyEnterCount > 1) {
-            Send {Left}
+            Send "{Left}"
             AppsKeyEnterCount := AppsKeyEnterCount - 1
         } else if (AppsKeyEnterCount == 1) {
-            Send {Esc}
+            Send "{Esc}"
             AppsKeyRedirect := False
             AppsKeyEnterCount := 0
         }
-    Return
-#If
+    }
+#HotIf
 
 
 ; 浮动工具栏
-#If ( CheckWindowActive("PyCharm") And FloatTool == True )
+#HotIf ( CheckWindowActive("PyCharm") And FloatTool == True )
     $Esc::
-    $CapsLock::
-        Send {Esc}
+    $CapsLock::{
+        Send "{Esc}"
         FloatTool := False
         CapsLockActivate := False
-        SetCapsLockState, Off
-    Return
-    $Enter::
-        Send {Enter}
+        SetCapsLockState "Off"
+    }
+    $Enter::{
+        Send "{Enter}"
         Sleep 99
         C := GetHideWindowConfig()
         win_id := C.id
-        WinActivate, ahk_id %win_id%
-    Return
-#If
+        WinActivate "ahk_id" . win_id
+    }
+#HotIf
 
 
 ; 主菜单处理
-#If ( CheckWindowActive("PyCharm") And CenterTools == True )
-    $Enter::
-        Send {Enter}
+#HotIf ( CheckWindowActive("PyCharm") And CenterTools == True )
+    $Enter::{
+        Send "{Enter}"
         c := GetHideWindowConfig()
         CenterToolsConfig.Push(c)
-        max_length := CenterToolsConfig.Length()
+        max_length := CenterToolsConfig.Length
         move_space := c.w / 2
         for index, cfg in CenterToolsConfig {
             cid := cfg.id
@@ -101,20 +109,20 @@
             cfg.x := cx
             cfg.y := cy
             cx  := cx - (max_length - index) * CenterToolsSpace
-            WinMove, ahk_id %cid%,  , %cx%, %cy%, %cw%, %ch%
+            WinMove  cx, cy, cw, ch, "ahk_id" . cid
         }
-    Return
-    $+Enter::
-        Send {Enter}
+    }
+    $+Enter::{
+        Send "{Enter}"
         CenterHideWindow()
         CenterTools := False
-    Return
+    }
     $Esc::
-    $CapsLock::
+    $CapsLock::{
         if (AppsKeyRedirect) {
-            Send {Left}
+            Send "{Left}"
         } else {
-            Send {Esc}
+            Send "{Esc}"
         }
         c := CenterToolsConfig.Pop()
         move_space := c.w / 2
@@ -127,88 +135,88 @@
             cx  := cx + move_space
             cfg.x := cx
             cx  := cx + index * CenterToolsSpace
-            WinMove, ahk_id %cid%,  , %cx%, %cy%, %cw%, %ch%
+            WinMove  cx, cy, cw, ch, "ahk_id" . cid
         }
-        l := CenterToolsConfig.Length()
-        if (CenterToolsConfig.Length() == 0) {
+        l := CenterToolsConfig.Length
+        if (CenterToolsConfig.Length == 0) {
             CenterTools := False
             AppsKeyRedirect := False
         }
-    Return
-#If
+    }
+#HotIf
 
 
-#If CheckWindowActive("PyCharm")
+#HotIf CheckWindowActive("PyCharm")
 
-    #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
-    #Include %A_WorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
+    #Include %A_InitialWorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
+    #Include %A_InitialWorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
 
-    >!F12::
+    >!F12::{
         PositionBackGroundTask()
-    Return
+    }
 
-    ~Esc::
+    ~Esc::{
         CapsLockActivate := False
-    Return
+    }
 
-    $AppsKey::
-        Send {AppsKey}
+    $AppsKey::{
+        Send "{AppsKey}"
         AppsKeyRedirect := True
         AppsKeyEnterCount := 1
         CenterHideWindow()
-    Return
+    }
 
     ; 断点 | 临时断点
-    $F2::
+    $F2::{
         if (cnt > 0) {
             cnt += 1
             return
         } else {
             cnt := 1
         }
-        SetTimer, F2Timer, -200
-    Return
-    F2Timer:
+        SetTimer F2Timer, -200
+    }
+    F2Timer() {
         if (cnt == 1) {
-            Send {F2}
+            Send "{F2}"
         } else if (cnt == 2) {
-            Send !{F2}
-            WinWaitActive 断点
-            Send !{r}
-            Send {Enter}
+            Send "!{F2}"
+            WinWaitActive "断点"
+            Send "!{r}"
+            Send "{Enter}"
         }
         cnt := 0
-    Return
+    }
 
-    ~F9::
+    ~F9::{
         CenterHideWindow()
-    Return
+    }
 
-    ~F11::
-        WinGetTitle, win_title, A
+    ~F11::{
+        win_title := WinGetTitle("A")
         if (win_title == "评估") {
-            Send {Esc}
+            Send "{Esc}"
         }
-    Return
+    }
 
-    ~LShift::
+    ~LShift::{
         if (cnt > 0) {
             cnt += 1
             return
         } else {
             cnt := 1
         }
-        SetTimer, PyCharmTimer, -500
-    Return
-    PyCharmTimer:
+        SetTimer PyCharmTimer, -500
+    }
+    PyCharmTimer() {
         if (cnt == 2) {
             DoubleShift := True
         }
         cnt := 0
-    Return
+    }
 
-    ~RWin::
-        WinGetPos, x, y, w, h, A
+    ~RWin::{
+        WinGetPos &x, &y, &w, &h, "A"
         if (x <= 0 or y <= 0 ) { ;已经全屏
             return
         } else {
@@ -220,46 +228,46 @@
             CenterHideWindow()
         }
         GlobalSet("Status", "ignore_function", True)
-    Return
+    }
 
-    ~!+`::
-        WinWaitActive, 书签描述
-        WinGetTitle, win_title, A
+    ~!+`::{
+        WinWaitActive "书签描述"
+        win_title := WinGetTitle("A")
         if (win_title == "书签描述") {
             MoveWindowToCenter(True)
         }
-    Return
+    }
     ~!+\::CenterHideWindow()
     ~^n::CenterHideWindow()
     ~^+n::CenterHideWindow()
     ~!i::CenterHideWindow(1000, 1000)
-    ~^o::
+    ~^o::{
         EscRedirect := True
         CenterHideWindow()
-    Return
-    ~!a::
+    }
+    ~!a::{
         EscRedirect := True
         CenterHideWindow(2244, 1600)
-    Return
+    }
 
     ;窗口全屏
-    <#Enter::
-        Send ^!{NumLock}
-        SetNumLockState Off
-    Return
+    <#Enter::{
+        Send "^!{NumLock}"
+        SetNumLockState "Off"
+    }
     ;Zen模式
-    <#+Enter::
-        Send ^!+{NumLock}
-        SetNumLockState Off
-    Return
+    <#+Enter::{
+        Send "^!+{NumLock}"
+        SetNumLockState "Off"
+    }
 
-    <#\::
-        WinGetPos, x, y, w, h, A
+    <#\::{
+        WinGetPos &x, &y, &w, &h, "A"
         if (x <= 0 and y == 0 ) {
             return
         }
         MoveWindowToDefaultPosition()
-    Return
+    }
 
     !F1::ToolSwitch("!{F1}", "运行/调试配置")
     !F2::ToolSwitch("!{F2}", "断点")
@@ -272,17 +280,17 @@
     ; !+Esc::Send ^+{F1}
 
     ;特殊按键覆盖F4
-    <!F4::Send !{F16}
-    <!+F4::Send !+{F16}
+    <!F4::Send "!{F16}"
+    <!+F4::Send "!+{F16}"
 
     ;标签页管理
     ^Tab::Return
-    <!Tab::Send ^{Tab}
+    <!Tab::Send "^{Tab}"
     ^+Tab::Return
-    <!+Tab::Send ^+{Tab}
+    <!+Tab::Send "^+{Tab}"
 
 
-    #Include %A_WorkingDir%\Software\Program\PyCharm.CapsLock.ahk
+    #Include %A_InitialWorkingDir%\Software\Program\PyCharm.CapsLock.ahk
 
 
     ; >!NumPad4::Return
@@ -295,29 +303,29 @@
     ; 代码注释
     ; ^\::Return
     ; ^+\::Return
-    ~LAlt & RShift::
+    ~LAlt & RShift::{
         if (GetKeyState("LShift", "P")) {
-            Send ^z
+            Send "^z"
         } else {
-            Send ^\
+            Send "^\"
         }
-    Return
+    }
 
     ; 设置
-    LAlt & RAlt::
-        Send ^{ScrollLock}
-        SetScrollLockState, Off
-        WinWaitActive, 设置
-        WinGetTitle, win_title, A
+    LAlt & RAlt::{
+        Send "^{ScrollLock}"
+        SetScrollLockState "Off"
+        WinWaitActive "设置"
+        win_title := WinGetTitle("A")
         if (win_title == "设置") {
             MoveWindowToCenter(True)
         }
-    Return
+    }
     ; 切换
-    RAlt & LAlt::
-        Send !{ScrollLock}
-        SetScrollLockState, Off
+    RAlt & LAlt::{
+        Send "!{ScrollLock}"
+        SetScrollLockState "Off"
         CenterHideWindow()
-    Return
+    }
 
-#If
+#HotIf

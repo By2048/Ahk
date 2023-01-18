@@ -21,9 +21,9 @@
 ~Space &  Left::MouseMoveDC(-100,    0)
 ~Space & Right::MouseMoveDC( 100,    0)
 
-~Space & LAlt::Send {LButton}
-~Space & RAlt::Send {RButton}
+~Space & LAlt::Send "{LButton}"
+~Space & RAlt::Send "{RButton}"
 
-~Space &      Tab::Send {RButton}
-~Space & CapsLock::Send {MButton}
-~Space &    Shift::Send {LButton}
+~Space &      Tab::Send "{RButton}"
+~Space & CapsLock::Send "{MButton}"
+~Space &    Shift::Send "{LButton}"

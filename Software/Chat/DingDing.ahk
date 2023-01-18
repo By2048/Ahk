@@ -1,9 +1,9 @@
 ﻿
 
-#If ( CheckWindowActive("DingDing") )
+#HotIf CheckWindowActive("DingDing")
 
     ; 发送消息
     ^Enter::Return
-    !Enter::Send ^{Enter}
+    !Enter::Send "^{Enter}"
 
-#If
+#HotIf

@@ -1,5 +1,5 @@
 ﻿
-#Include %A_WorkingDir%\Tool\Base.ahk
+#Include %A_InitialWorkingDir%\Tool\Base.ahk
 
 #SingleInstance Force
 #NoTrayIcon
@@ -38,16 +38,16 @@
 <#+d::#^!+F21
 
 ; 窗口目录
-LWin & LAlt::Send #^!{F22}
+LWin & LAlt::Send "#^!{F22}"
 
 ; 全屏预览
-LWin & LCtrl::Send #^!{F23}
+LWin & LCtrl::Send "#^!{F23}"
 
 ;  上一个桌面
-#CapsLock::
-    Send #^!{F24}
-    SetCapsLockState Off
-Return
+#CapsLock::{
+    Send "#^!{F24}"
+    SetCapsLockState "Off"
+}
 
 ; #Esc    卷起
 ; #+Esc   最小化到系统托盘

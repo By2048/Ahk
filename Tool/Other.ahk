@@ -1,9 +1,9 @@
 ﻿
-#Include %A_WorkingDir%\Config\All.ahk
-#Include %A_WorkingDir%\Tool\File.ahk
-#Include %A_WorkingDir%\Tool\Window.ahk
-#Include %A_WorkingDir%\Tool\Change.ahk
-#Include %A_WorkingDir%\Tool\Help.ahk
+#Include %A_InitialWorkingDir%\Config\All.ahk
+#Include %A_InitialWorkingDir%\Tool\File.ahk
+#Include %A_InitialWorkingDir%\Tool\Window.ahk
+#Include %A_InitialWorkingDir%\Tool\Change.ahk
+#Include %A_InitialWorkingDir%\Tool\Help.ahk
 
 
 
@@ -14,14 +14,14 @@ RunNormalUser(command)
         command := Format("C:\Windows\Explorer.exe {}", command)
     }
     if (A_UserName = "Administrator") {
-        Run %command%
+        Run command
         return
     }
     if (StrLen(PC_USERNAME) == 0 and StrLen(PC_PASSWORD) == 0) {
         HelpText(" PC_USERNAME/PC_PASSWORD - (./Private.ahk) ", "center_down",  , 3000)
     } else {
-        RunAs, %PC_USERNAME%, %PC_PASSWORD%
-        Run, %command%
+        RunAs PC_USERNAME, PC_PASSWORD
+        Run command
         RunAs
     }
 }
@@ -32,21 +32,19 @@ RunNormalUser(command)
 WindowsTerminal(mode:="Focus", folder:="")
 {
     name := "Terminal"
-    exe  := ProcessNameOrigin(name)
+    exe  := Windows_Process_Name.Get(name)
     if ( WinActive("ahk_exe" exe) ) {
-        WinClose, A
-        Return
+        WinClose "A"
+        return
     }
-    args := " "
     if (mode == "Full") {
-        args := "--fullscreen"
+        mode := "--fullscreen"
     } else if (mode == "Focus") {
-        args := "--focus"
+        mode := "--focus"
     }
-    args := args . " -d " . folder
-    Run, %WT% %args%
-    WinWait, ahk_exe %exe%
-    WinActivate, ahk_exe %exe%
+    Run Format("{} {} -d {}", WT, mode, folder)
+    WinWait "ahk_exe" . exe
+    WinActivate "ahk_exe" . exe
 }
 
 
@@ -54,10 +52,10 @@ WindowsTerminal(mode:="Focus", folder:="")
 ; 屏幕截图
 ; screens   | screen1 screen2 screen3
 ; keep_path | T:\  F:\Image\Screen\
-ScreenShot(screen_name:="Screen1", keep_path:="")
+ScreenShot(screen_name:="Screen", keep_path:="")
 {
     if (not FileExist(Snipaste)) {
-        HelpText(Snipaste, "Center", "Screen1", 500)
+        HelpText(Snipaste, "Center", "Screen", 500)
     }
     if (not FileExist(keep_path)) {
         return
@@ -81,17 +79,19 @@ ScreenShot(screen_name:="Screen1", keep_path:="")
     h := Round(h)
 
     name := "", file := "", cmd := ""
-    FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
-    name := Format("{1}[{2}]", name, screen_id)
+    name := FormatTime(A_Now, "[yyyy-MM-dd][HH-mm-ss]")
+    if (screen_name != "Screen"){
+        name := Format("{1}[{2}]", name, screen_id)
+    }
     file := keep_path . name . ".png"
-    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste, x, y, w, h, file)
-    Run %cmd%
+    cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, x, y, w, h, file)
+    Run cmd
 }
 
 
 
 ; 软件设置界面截图保存
-ScreenshotActivateSoftware(keep_path:="")
+ScreenshotSoftware(keep_path:="")
 {
     if (not FileExist(Snipaste)) {
         return
@@ -108,21 +108,21 @@ ScreenshotActivateSoftware(keep_path:="")
     win_h := window.h
 
     name := "", file := "", cmd := ""
-    FormatTime, name,  , [yyyy-MM-dd][HH-mm-ss]
+    name := FormatTime(A_Now, "[yyyy-MM-dd][HH-mm-ss]")
     name := Format("{1}[{2}]", name, win_process_name)
     file := keep_path . name . ".png"
-    cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste, win_x, win_y, win_w, win_h, file)
-    Run %cmd%
+    cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, win_x, win_y, win_w, win_h, file)
+    Run cmd
 }
 
 
 
 ; 屏幕贴图
-Snipaste(image:="", screen:="screen1")
+SnipasteImage(image:="", screen:="screen1")
 {
     image_size := GetImageSize(image)
-    image_w    := image_size["w"]
-    image_h    := image_size["h"]
+    image_w    := image_size.w
+    image_h    := image_size.h
 
     screen_id := ScreenNameToId(screen)
 
@@ -138,7 +138,7 @@ Snipaste(image:="", screen:="screen1")
     y := Round(y)
 
     cmd := Format("{1} paste --files {} --pos {} {}", Snipaste, image, x, y)
-    Run %cmd%
+    Run cmd
 }
 
 
@@ -177,16 +177,16 @@ CheckColor(color_base, color_compare, offse:=9)
 ; 发送字符串 忽略输入法
 SendData(data)
 {
-    WinGet, win_id, ID, A
-    ControlGetFocus, control_name, ahk_id %win_id%
-    if (control_name != "")
-    {
-        ControlGet, control_id, Hwnd,  , %control_name%, ahk_id %win_id%
-    }
-    Loop, Parse, data
-    {
-		PostMessage, Message.WM_CHAR, Ord(A_LoopField), 1,  , ahk_id %win_id%
-    }
+    ; win_id := WinGetID("A")
+    ; ControlGetFocus, control_name, ahk_id %win_id%
+    ; if (control_name != "")
+    ; {
+    ;     ControlGet, control_id, Hwnd,  , %control_name%, ahk_id %win_id%
+    ; }
+    ; Loop, Parse, data
+    ; {
+	; 	PostMessage, Message.WM_CHAR, Ord(A_LoopField), 1,  , ahk_id %win_id%
+    ; }
 }
 
 
@@ -212,13 +212,13 @@ GetColumnConfig(args*)
     arg_width := StrSplit(arg_width, " ")
     arg_name  := StrSplit(arg_name, " ")
 
-    if (arg_index.Length() != arg_width.Length()) {
+    if (arg_index.Length != arg_width.Length) {
         return
     }
 
-    result := {}
-    length := arg_index.Length()
-    loop, % length {
+    result := Map()
+    length := arg_index.Length
+    loop length {
         key   := arg_index[A_Index] + 0
         value := arg_width[A_Index] + 0
         result[key] := value
@@ -235,7 +235,7 @@ ReadConfig(file, slice, replace:="    `; ")
     data  := ""
     start := slice[1]
     stop  := slice[2]
-    Loop, Read, %file%
+    loop read, file
     {
         line := StrReplace(A_LoopReadLine, replace, "")
         if (A_Index >= start and A_Index <= stop) {

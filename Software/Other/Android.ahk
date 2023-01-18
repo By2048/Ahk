@@ -1,22 +1,22 @@
 ﻿
-#If CheckWindowActive( "Android" )
+#HotIf CheckWindowActive( "Android" )
 
     ; 全屏
     F11::Return
-    #Enter::Send {F11}
+    #Enter::Send "{F11}"
 
     ; 切换键鼠提示
     ; F12::Return
 
     ; Mini模式
     !g::Return
-    RAlt::Send !g
+    RAlt::Send "!g"
 
     ; 切换标签
     ^Tab::Return
     ^+Tab::Return
-    !Tab::Send ^{Tab}
-    !+Tab::Send ^+{Tab}
+    !Tab::Send "^{Tab}"
+    !+Tab::Send "^+{Tab}"
 
     ^1::Return
     ^2::Return
@@ -37,8 +37,8 @@
 
     ; 截屏
     !q::Return
-    Insert::Send !q
+    Insert::Send "!q"
 
-#If
+#HotIf
 
-#Include %A_WorkingDir%\Software\Other\Android.COC.ahk
+; #Include %A_InitialWorkingDir%\Software\Other\Android.COC.ahk

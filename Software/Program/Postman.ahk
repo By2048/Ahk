@@ -1,8 +1,8 @@
 ﻿
-#If CheckWindowActive("Postman")
+#HotIf CheckWindowActive("Postman")
 
     ; Rename
     ^e::Return
-    ^r::Send ^e
+    ^r::Send "^e"
 
-#If
+#HotIf

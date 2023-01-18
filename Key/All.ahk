@@ -27,8 +27,8 @@
 
 ; #a::Return  ;打开操作中心
 ; #w::Return  ;打开WindwsInk
-; #s::Return  ;打开搜索
-; #+s::Return ;获取部分屏幕ReturnReturn
+#s::Return  ;打开搜索
+#+s::Return ;获取部分屏幕ReturnReturn
 #x::Return  ;系统菜单
 #h::Return  ;听写
 #k::Return  ;打开“连接”快速操作
@@ -51,6 +51,14 @@
 ; 打开任务视图
 ; #Tab::Return
 ; #+Tab::Return
+
+
+#^q::Return ;快速助手
+#^o::Return ;屏幕键盘
+#^n::Return ;讲述人
+#^m::Return ;放大镜
+#^s::Return ;语音识别
+#^f::Return ;查找计算机
 
 #^d::Return     ;创建虚拟桌面
 #^F4::Return    ;关闭当前虚拟桌面

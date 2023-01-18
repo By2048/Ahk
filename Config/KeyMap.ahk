@@ -1,6 +1,6 @@
 ﻿
 ; 在软件中显示快捷键帮助（相对坐标（控件左上角
-Global Key_Map := {}
+Key_Map := Map()
 
 Key_Map["PyCharm_SunAwtDialog_PythonConsole"] := []
 Key_Map["PyCharm_SunAwtDialog_PythonConsole"].Push( [ 14, 72,  "!BS"  ] )

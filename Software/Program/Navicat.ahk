@@ -1,9 +1,9 @@
 ﻿
-#If CheckWindowActive( "Navicat" )
+#HotIf CheckWindowActive( "Navicat" )
 
     ; ^r::Return
     ; ^+r::Return
     ; !Enter::Send ^r
     ; !+Enter::Send ^+r
 
-#If
+#HotIf

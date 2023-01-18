@@ -1,19 +1,15 @@
 ﻿
-#Include %A_WorkingDir%\Config.ahk
+#Include %A_InitialWorkingDir%\Config.ahk
 
 ; 不同进程之间传递变量 \ 通过读写注册表
 
 GlobalSet(section:="", key:="", value:="")
 {
-    path   := Reg_Path
-    paths  := StrSplit(Reg_Path, "\", "", 2)
-    _type_ := "REG_SZ"
-    _root_ := paths[1]
-    _path_ := paths[2]
+    path := Reg_Path
     if (section != "" ) {
-        _path_ := _path_ . "\" . section
+        path := path . "\" . section
     }
-    RegWrite, %_type_%, %_root_%, %_path_%, %key%, %value%
+    RegWrite(value, "REG_SZ", path, key )
 }
 
 GlobalGet(section:="", key:="", type:="Str", split:="|")
@@ -22,7 +18,17 @@ GlobalGet(section:="", key:="", type:="Str", split:="|")
     if (section != "" ) {
         path := path . "\" . section
     }
-    RegRead, result, %path%, %key%
+    default := ""
+    if (type == "Str") {
+        default := ""
+    } else if (type == "Int") {
+        default := 0
+    } else if (type == "List") {
+        default := []
+    } else if (type == "Bool") {
+        default := False
+    }
+    result := RegRead(path, key, default)
     if (type == "Str") {
         result := result
     } else if (type == "Int") {
@@ -30,9 +36,9 @@ GlobalGet(section:="", key:="", type:="Str", split:="|")
     } else if (type == "List") {
         result := StrSplit(result, split)
     } else if (type == "Bool") {
-        if (result = "True") {
+        if (result == "True") {
             result := True
-        } else if (result = "False") {
+        } else if (result == "False") {
             result := False
         }
     }

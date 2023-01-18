@@ -1,80 +1,105 @@
 ﻿
-#Include %A_WorkingDir%\Config.ahk
-#Include %A_WorkingDir%\Tool\Global.ahk
-#Include %A_WorkingDir%\Tool\Change.ahk
-
+#Include %A_InitialWorkingDir%\Config.ahk
+#Include %A_InitialWorkingDir%\Tool\Global.ahk
+#Include %A_InitialWorkingDir%\Tool\File.ahk
 
 ; -------------------------------------------------------------------------------------------------
 ; DPI相关设置处理
 ; 复制可执行程序 并且在系统中手动设置DPI设置
 InitAhks()
 {
-    ahks := { "AutoHotkeyDpiSoftware"   : StrReplace(AutoHotkey, "AutoHotkey.exe", "AutoHotkeyDpiSoftware.exe"  ) ;
-            , "AutoHotkeyDpiSystem"     : StrReplace(AutoHotkey, "AutoHotkey.exe", "AutoHotkeyDpiSystem.exe"    ) ;
-            , "AutoHotkeyDpiSystemPlus" : StrReplace(AutoHotkey, "AutoHotkey.exe", "AutoHotkeyDpiSystemPlus.exe") }
+    ahks := { AutoHotkeyDpiSoftware   : StrReplace(AutoHotkey, "AutoHotkey.exe", "AutoHotkeyDpiSoftware.exe"  ) ;
+            , AutoHotkeyDpiSystem     : StrReplace(AutoHotkey, "AutoHotkey.exe", "AutoHotkeyDpiSystem.exe"    ) ;
+            , AutoHotkeyDpiSystemPlus : StrReplace(AutoHotkey, "AutoHotkey.exe", "AutoHotkeyDpiSystemPlus.exe") }
 
-    for name, path In ahks {
+    for name, path In ahks.OwnProps() {
         if ( not FileExist(path) ) {
             if ( not FileExist(path) ) {
-                FileCopy, %AutoHotkey%, %path%
+                FileCopy AutoHotkey, path
             }
         }
     }
 }
 
+; -------------------------------------------------------------------------------------------------
+; 初始化注册表相关数据
+InitRegs()
+{
+    RegCreateKey Reg_Path
+    info := GetFileInfo(AutoHotkey)
+    keys := ["路径", "文件版本", "修改日期", "所有者"]
+    for key in keys {
+        value := info.%key%
+        RegWrite value, "REG_SZ", Reg_Path, key
+    }
+}
 
 ; -------------------------------------------------------------------------------------------------
 ; 私有配置文件填补
 InitFiles()
 {
-    files := {          "@" : A_WorkingDir . "\@.ahk"                                  ;
-             ,     "Confog" : A_WorkingDir . "\Config.Private.ahk"                     ;
-             ,      "Input" : A_WorkingDir . "\Setup\Input.Private.ahk"                ;
-             , "LOL.Client" : A_WorkingDir . "\Game\LOL.Client.Private.ahk"            ;
-             ,   "LOL.Game" : A_WorkingDir . "\Game\LOL.Game.Private.ahk"              ;
-             ,        "COC" : A_WorkingDir . "\Software\Other\Android.COC.Private.ahk" }
+    files := {      Other : A_WorkingDir . "\@.ahk"                                  ;
+             ,     Confog : A_WorkingDir . "\Config.Private.ahk"                     ;
+             ,      Input : A_WorkingDir . "\Setup\Input.Private.ahk"                ;
+             , LOL_Client : A_WorkingDir . "\Game\LOL.Client.Private.ahk"            ;
+             ,   LOL_Game : A_WorkingDir . "\Game\LOL.Game.Private.ahk"              ;
+             ,        COC : A_WorkingDir . "\Software\Other\Android.COC.Private.ahk" }
 
-    FileEncoding UTF-8-RAW
-    for name, path In files {
+    FileEncoding "UTF-8-RAW"
+    for name, path In files.OwnProps() {
         If ( not FileExist(path) ) {
-            FileAppend, "`; Private File `;", %path%
+            FileAppend "`; Private File `;", path
         }
     }
 }
 
+; -------------------------------------------------------------------------------------------------
+; 数组格式化成字符串输出
+ListToStr(data, step:="|")
+{
+    result := ""
+    for index, value in data {
+        result .= value . step
+    }
+    result := RTrim(result , step)
+    return result
+}
 
 ; -------------------------------------------------------------------------------------------------
 ; 初始化系统屏幕相关信息
 InitScreens(dpi_mode:="Default")
 {
+    local  screen, screen_count
+    global Screens_Id, Screens_Detail
+
     dpi_mode := StrReplace(dpi_mode, "Screen", "")
 
-    Global Screens_Count, Screens_Id, Screens_Detail
-    GlobalSet( "Screens", "Count", Screens_Count         )
-    GlobalSet( "Screens", "ID"   , ListToStr(Screens_Id) )
+    screen_count := Screens_Detail.Length
+    GlobalSet( "Screens", "Count", screen_count )
+
     screens_name := []
-    Loop %Screens_Count% {
-        screens_name.Push(Screens_Detail[A_Index]["Name"])
+    loop Screens_Detail.Length {
+        screens_name.Push(Screens_Detail[A_Index].Name)
     }
-    GlobalSet( "Screens", "Name" , ListToStr(screens_name) )
-    Loop %Screens_Count% {
-        screen := {}
-        screen_index := A_Index
-        screen_id    := Screens_Id[screen_index]
-        SysGet, Config, Monitor, %screen_id%
-        screen.id   := screen_id
-        screen.x    := ConfigLeft   + 0
-        screen.y    := ConfigTop    + 0
-        screen.xx   := ConfigRight  + 0
-        screen.yy   := ConfigBottom + 0
-        screen.w    := screen.xx - screen.x
-        screen.h    := screen.yy - screen.y
-        screen.dpi  := Screens_Detail[screen_index]["Dpi"]
-        screen.name := Screens_Detail[screen_index]["Name"]
+    GlobalSet( "Screens", "Name" , ListToStr(screens_name, " | ") )
+
+    loop screen_count {
+        screen        := {}
+        screen.id     := Screens_Id[A_Index]
+        screen.index  := A_Index
+        IsExisting    := MonitorGet(screen.id, &Left, &Top, &Right, &Bottom)
+        screen.x      := Left   + 0
+        screen.y      := Top    + 0
+        screen.xx     := Right  + 0
+        screen.yy     := Bottom + 0
+        screen.w      := screen.xx - screen.x
+        screen.h      := screen.yy - screen.y
+        screen.dpi    := Screens_Detail[screen.index].Dpi
+        screen.name   := Screens_Detail[screen.index].Name
         screen.width  := screen.w
         screen.height := screen.h
-        For key, value In screen {
-            section := Format("Screens\{}\{}", dpi_mode, screen_index)
+        for key, value in screen.OwnProps() {
+            section := Format("Screens\{}\{}", dpi_mode, screen.index)
             GlobalSet(section, key, value)
         }
     }
@@ -84,7 +109,7 @@ InitScreens(dpi_mode:="Default")
 ; -------------------------------------------------------------------------------------------------
 ; AutoHotkey.exe Init.ahk xxx
 
-If (A_Args.Length() < 1) {
+If (A_Args.Length < 1) {
     Exit
 }
 
@@ -94,6 +119,9 @@ If (Arg == "Ahks") {
 }
 If (Arg == "Files") {
     InitFiles()
+}
+If (Arg == "Regs") {
+    InitRegs()
 }
 If ( InStr( "ScreenDefault, ScreenSoftware, ScreenSystem, ScreenSystemPlus" , Arg ) ) {
     InitScreens(Arg)

@@ -18,11 +18,11 @@
 ; 切换多标签
 ^Tab::Return
 ^+Tab::Return
-!Tab::Send ^{Tab}
-!+Tab::Send ^+{Tab}
+!Tab::Send "^{Tab}"
+!+Tab::Send "^+{Tab}"
 
 ; 关闭标签 重新打开标签
-!CapsLock::Send !{F4}
+!CapsLock::Send "!{F4}"
 !+CapsLock::Return
 
 ; 软件设置 右键菜单

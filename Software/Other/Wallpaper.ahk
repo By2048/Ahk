@@ -1,10 +1,10 @@
 ﻿
-#If ( CheckWindowActive( "Wallpaper" ) )
+#HotIf ( CheckWindowActive( "Wallpaper" ) )
 
     ClickImage(image)
     {
-        CoordMode, Mouse, Window
-        MouseGetPos, x_origin, y_origin
+        CoordMode "Mouse", "Window"
+        MouseGetPos &x_origin, &y_origin
         x1 := x_origin
         y1 := y_origin - 400
         x2 := x_origin + 80
@@ -16,19 +16,19 @@
     ; LShift::Send {F10}
 
     ; 在资源管理器中打开
-    !\::
-        MouseClick, Right
+    !\::{
+        MouseClick "Right"
         image := A_WorkingDir . "\Image\Software\Wallpaper\Black\Open.png"
         ClickImage(image)
-    Return
+    }
 
-    ; wallpaper_exe   := ProcessNameOrigin("Wallpaper")   
+    ; wallpaper_exe   := Windows_Process_Name.Get("Wallpaper")
     ; wallpaper_class := "WPEUI"
     ; WinShow, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
     ; WinHide, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
 
     ; 预览
-    !p::
+    !p::{
         if (not Wallpaper_State) {
             Wallpaper_State := 0
         }
@@ -39,9 +39,9 @@
             SetWindowTransparent("Max")
             Wallpaper_State := 0
         }
-    Return
+    }
 
-    !PgUp::
+    !PgUp::{
         win_w := WPD["Wallpaper"][3]
         win_h := WPD["Wallpaper"][4]
         x1    := win_w * 1/6
@@ -50,8 +50,8 @@
         y2    := y1    + 100
         image := A_WorkingDir . "\Image\Software\Wallpaper\Black\PgUp.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
-    Return
-    !PgDn::
+    }
+    !PgDn::{
         win_w := WPD["Wallpaper"][3]
         win_h := WPD["Wallpaper"][4]
         x1    := win_w * 1/6
@@ -64,24 +64,24 @@
         ; Gui, +Border
         ; Gui, Margin, 0, 0
         ; Gui, Show, X%x1% Y%y1% W2000 H99
-        ; WinGet, win_id, ID, A 
+        ; WinGet, win_id, ID, A
         ; WinSet, TransColor, F1ECED 100, ahk_id %win_id%
-    Return
+    }
 
     ; 订阅
-    ![::
-        MouseClick, Right
+    ![::{
+        MouseClick "Right"
         image := A_WorkingDir . "\Image\Software\Wallpaper\Black\Download.png"
         ClickImage(image)
-    Return
+    }
 
     ; 取消订阅
-    !]::
-        MouseClick, Right
+    !]::{
+        MouseClick "Right"
         image := A_WorkingDir . "\Image\Software\Wallpaper\Black\Delete.png"
         ClickImage(image)
         Sleep 100
-        Send {Enter}
-    Return
+        Send "{Enter}"
+    }
 
-#If
+#HotIf

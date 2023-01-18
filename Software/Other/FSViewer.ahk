@@ -1,5 +1,5 @@
 ﻿
-#If ( CheckWindowActive("FSViewer") )
+#HotIf CheckWindowActive("FSViewer")
 
     ; \:: ;移动到收藏
     ;     Send m
@@ -10,14 +10,14 @@
     ; Return
 
     ;删除
-    /:: 
-        Send {Delete}
+    /::{
+        Send "{Delete}"
         Sleep 100
-        Send {Enter}
-    Return
+        Send "{Enter}"
+    }
 
-    ]::Send {Right}
+    ]::Send "{Right}"
 
-    [::Send {Left}
+    [::Send "{Left}"
 
-#If
+#HotIf

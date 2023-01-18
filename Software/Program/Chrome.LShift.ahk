@@ -1,24 +1,32 @@
 ﻿
-~LShift::
+cnt := 0
+~LShift::{
+    global cnt
     if (cnt > 0) {
         cnt += 1
         return
     } else {
         cnt := 1
     }
-    SetTimer, ChromeTimer, -300
-Return
+    SetTimer ChromeTimer, -300
+}
 
-ChromeTimer:
+
+ChromeTimer()
+{
+    global cnt
     if (cnt != 2) {
         cnt := 0
-        Return
+        return
     }
-    jqb := Clipboard
 
-    Send !d
-    Send ^c
-    url_origin := Clipboard
+    A_Clipboard := ""
+
+    Send "!d"
+    Send "^c"
+    ClipWait
+
+    url_origin := A_Clipboard
     url_result := ""
 
     ; google -> bing
@@ -56,12 +64,14 @@ ChromeTimer:
     }
 
     if (url_result) {
-        Clipboard := url_result
-        Send ^v
-        Send {Enter}
+        A_Clipboard := ""
+        A_Clipboard := url_result
+        ClipWait
+        Send "^v"
+        Send "{Enter}"
     } else {
-        Send {F10 2}
+        Send "{F10 2}"
     }
-    Clipboard := jqb
+    A_Clipboard := ""
     cnt := 0
-Return
+}

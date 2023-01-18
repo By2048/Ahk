@@ -1,6 +1,6 @@
 ﻿
-#If ( CheckWindowActive( "Snipaste" ) )
-    
+#HotIf CheckWindowActive( "Snipaste" )
+
     !1::^1
     !2::^2
     !3::^3
@@ -15,8 +15,8 @@
 
     Enter::^c
 
-    Insert::Send #^!{PrintScreen}
-    Delete::Send #^!{CtrlBreak}
+    Insert::Send "#^!{PrintScreen}"
+    Delete::Send "#^!{CtrlBreak}"
 
     [::,
     ]::.
@@ -24,4 +24,4 @@
     ^y::Return
     ^+z::^y
 
-#If
+#HotIf

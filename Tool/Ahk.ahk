@@ -2,20 +2,20 @@
 ; VSCode修改Ahk文件编码到UTF-8 WITH BOM
 Encoding_To_UTF8BOM()
 {
-    Send {f17}
+    Send "{F17}"
     Sleep 100
-    Send encoding
+    Send "encoding"
     Sleep 100
-    Send {Enter}
+    Send "{Enter}"
     Sleep 100
-    Send {Down}
+    Send "{Down}"
     Sleep 100
-    Send {Enter}
+    Send "{Enter}"
     Sleep 100
-    Send utf-8 with BOM
+    Send "utf-8 with bom"
     Sleep 100
-    Send {Down}
-    Send {Enter}
+    Send "{Down}"
+    Send "{Enter}"
     Sleep 100
-    Send ^s
+    Send "^s"
 }

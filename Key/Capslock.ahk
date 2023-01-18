@@ -1,9 +1,9 @@
 ﻿
 ;切换到显示器中心
-$CapsLock::
+$CapsLock::{
 
-    CoordMode, Mouse, Screen
-    MouseGetPos, x_current, y_current
+    CoordMode "Mouse", "Screen"
+    MouseGetPos &x_current, &y_current
 
     GetActiveWindowInfo()
     win_process_name := window.process_name
@@ -60,32 +60,32 @@ $CapsLock::
     DllCall("SetCursorPos", "int", xx, "int", yy)
 
     ; 激活鼠标下的窗口
-    MouseGetPos,  _,  _, win_id
-    WinActivate, ahk_id %win_id%
+    MouseGetPos  &_,  &_, &win_id
+    WinActivate "ahk_id" . win_id
 
     ; 高亮窗口
     HighlightActiveWindow(300)
 
-Return
+}
 
 
 ; 关闭大写锁定
-$CapsLock Up::
-    SetCapsLockState, Off
-    SetNumLockState, Off
-    SetScrollLockState, Off
-Return
+$CapsLock Up::{
+    SetCapsLockState "Off"
+    SetNumLockState "Off"
+    SetScrollLockState "Off"
+}
 
 
 ; 屏幕1中心
-CapsLock & Space::
+CapsLock & Space::{
     xx := Screen.x + Screen.w/2
     yy := Screen.y + Screen.h/2
     DllCall("SetCursorPos", "int", xx, "int", yy)
-    MouseGetPos,  _,  _, win_id
-    WinActivate, ahk_id %win_id%
+    MouseGetPos  &_,  &_, &win_id
+    WinActivate "ahk_id" . win_id
     HighlightActiveWindow(300)
-Return
+}
 
 
 ; 快速输入数字

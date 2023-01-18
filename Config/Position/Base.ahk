@@ -13,7 +13,6 @@ WPD["BiliBili"]    := Position4K(2500 , 1650)
 WPD["Zip"]         := Position(1380 , 1050)
 WPD["QQMusic"]     := Position(1800 , 1100)
 
-
 WPD["Scrcpy"] := Position(        1032, 2064)
 WPB["Scrcpy"] := Position(48, 48, 1032, 2064)
 
@@ -30,24 +29,24 @@ WPD["HipsTray_HRUSBTRAY"] := Position(-10, -10, 0, 0)
 WPD["CloudMusic"] := Position(2000 , 1200)
 win_w := 2333
 win_h := 190
-win_x := Screens.1.x  + Screens.1.w/2 - win_w/2
-win_y := Screens.1.yy - win_h       - 10
+win_x := Screen.x  + Screen.w/2 - win_w/2
+win_y := Screen.yy - win_h      - 10
 WPD["CloudMusic_DesktopLyrics"] := Position(win_x, win_y, win_w, win_h)
 
 WPD["FreeFileSync"]          := Position(2500, 1600)
 WPD["FreeFileSync__同步设置"] := Position(1500, 1800)
 
-WPD["PotPlayer"]           := Position(Screens.1.w * 4/6 , Screens.1.h * 4/6)
-WPB["PotPlayer"]           := Position("[Center][2]", Screens.2.w * 4/6, Screens.2.h * 4/6 )
+WPD["PotPlayer"]          := Position(Screen.w * 4/6 , Screen.h * 4/6)
 WPD["PotPlayer__播放列表"] := Position(10, "[Center][1]", 700, 1000)
+WPD["PotPlayer_#32770"]   := Position(2020 , 1500)
+WPB["PotPlayer"]          := Position("[Center][2]", Screens.2.w * 4/6, Screens.2.h * 4/6 )
 WPB["PotPlayer__播放列表"] := Position(Screens.2.xx - 1000 - 10, "[Center][2]", 1000, 1500)
-WPD["PotPlayer_#32770"]    := Position(2020 , 1500)
 
-If ("4K" in Screen.Name) {
+If (InStr(Screen.Name, "4K")) {
     WPD["Chrome"] := Position(3300, 2000)
     WPD["Chrome__修改书签"] := Position(900, 1500)
 }
-If ("2K" in Screen.Name) {
+If (InStr(Screen.Name, "2K")) {
     WPD["Chrome"] := Position(2500, 1400)
     WPD["Chrome__修改书签"] := Position(700, 1000)
 }

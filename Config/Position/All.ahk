@@ -1,5 +1,5 @@
 ﻿
-#Include %A_WorkingDir%\Tool\Change.ahk
+#Include %A_InitialWorkingDir%\Tool\Change.ahk
 
 ; Key
 ; [process_name]
@@ -13,18 +13,14 @@
 ; Value
 ; 设置一些软件默认位置 [x,y,w,h]
 
-Global Windows_Position := {}
-
 ; WPD Windows_Position_Default
 ; WPB Windows_Position_Backup
+Windows_Position_Default := Map()
+Windows_Position_Backup  := Map()
+WPD := Windows_Position_Default
+WPB := Windows_Position_Backup
 
-Global WPD := {}
-Global WPB := {}
-
-#Include %A_WorkingDir%\Config\Position\Base.ahk
-#Include %A_WorkingDir%\Config\Position\Chat.ahk
-#Include %A_WorkingDir%\Config\Position\IDE.ahk
-#Include %A_WorkingDir%\Config\Position\Windows.ahk
-
-Windows_Position["Default"] := WPD
-Windows_Position["Backup" ] := WPB
+#Include %A_InitialWorkingDir%\Config\Position\Base.ahk
+#Include %A_InitialWorkingDir%\Config\Position\Chat.ahk
+#Include %A_InitialWorkingDir%\Config\Position\IDE.ahk
+#Include %A_InitialWorkingDir%\Config\Position\Windows.ahk

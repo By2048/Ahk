@@ -4,13 +4,13 @@ CapsLockRedirect()
     key := StrReplace(A_ThisHotkey, "CapsLock & ", "")
     key_shift := GetKeyState("LShift", "P")
     if (CapsLockActivate == True) {
-        Send {Esc}
+        Send "{Esc}"
         CapsLockActivate := False
     } else {
         if (key_shift) {
-            Send ^!+{%key%}
+            Send Format("^!+{1}", key)
         } else {
-            Send ^!{%key%}
+            Send Format("^!{1}", key)
         }
         CapsLockActivate := True
     }
@@ -19,12 +19,12 @@ CapsLockRedirect()
 
 ToolSwitch(Key, rule)
 {
-    WinGetTitle, win_title, A
+    win_title := WinGetTitle("A")
     if (win_title == rule) {
-        Send {Esc}
+        Send "{Esc}"
     } else {
-        Send %key%
-        WinWaitActive, %rule%
+        Send key
+        WinWaitActive rule
         MoveWindowToCenter(True)
     }
 }
@@ -37,20 +37,20 @@ GetHideWindowConfig()
     check_count := 22
 
     win_id := 0x0
-    Loop {
+    loop {
         if (A_Index >= check_count) {
             break
         }
-        Sleep %check_sleep%
+        Sleep check_sleep
         win_id := WinExist(check_rule)
         if (win_id) {
             break
         }
     }
 
-    result := {}
+    result := Map()
     if (win_id) {
-        WinGetPos, win_x, win_y, win_w, win_h, ahk_id %win_id%
+        WinGetPos &win_x, &win_y, &win_w, &win_h, "ahk_id" . win_id
         result["id"] := win_id
         result["x"] := win_x
         result["y"] := win_y
@@ -64,38 +64,38 @@ GetHideWindowConfig()
 
 CenterHideWindow(position*)
 {
-    result := {}
+    result := Map()
     config := GetHideWindowConfig()
     win_id := config.id
     if (not win_id) {
         return result
     }
-    if (position.Length() == 0) {
+    if (position.Length == 0) {
         win_w := config.w
         win_h := config.h
         win_x := Screen.x + Screen.w/2 - win_w/2
         win_y := Screen.y + Screen.h/2 - win_h/2
     }
-    if (position.Length() == 1) {
+    if (position.Length == 1) {
         win_w := config.w
         win_h := config.h
         win_x := position[1]
         win_y := Screen.y + Screen.h/2 - win_h/2
     }
-    if (position.Length() == 2) {
+    if (position.Length == 2) {
         win_w := position[1]
         win_h := position[2]
         win_x := Screen.x + Screen.w/2 - win_w/2
         win_y := Screen.y + Screen.h/2 - win_h/2
     }
-    if (position.Length() == 4) {
+    if (position.Length == 4) {
         win_x := config.x
         win_y := config.y
         win_w := config.w
         win_h := config.h
     }
-    WinActivate, ahk_id %win_id%
-    WinMove, ahk_id %win_id%,  , %win_x%, %win_y%, %win_w%, %win_h%
+    WinActivate "ahk_id" . win_id
+    WinMove win_x, win_y, win_w, win_h, "ahk_id" . win_id
     result["id"] := win_id
     result["x"]  := win_x
     result["y"]  := win_y
@@ -114,15 +114,15 @@ PositionBackGroundTask()
     win_h := 600
     win_x := Screen.xx - win_w - 100
     win_y := Screen.yy - win_h - 150
-    WinActivate, ahk_id %win_id%
-    WinMove, ahk_id %win_id%, _, %win_x%, %win_y%, %win_w%, %win_h%
+    WinActivate "ahk_id" . win_id
+    WinMove win_x, win_y, win_w, win_h, "ahk_id" . win_id
 }
 
 
-CenterHideTools:
+CenterHideTools() {
     CenterTools := True
     CenterToolsConfig := []
     CenterToolsSpace := 10
     c := CenterHideWindow()
     CenterToolsConfig.Push(c)
-Return
+}

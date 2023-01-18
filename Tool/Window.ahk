@@ -1,183 +1,21 @@
 ﻿
-#Include %A_WorkingDir%\Config\All.ahk
-#Include %A_WorkingDir%\Lib\JEE.ahk
-#Include %A_WorkingDir%\Tool\Mouse.ahk
-#Include %A_WorkingDir%\Tool\File.ahk
-#Include %A_WorkingDir%\Tool\Change.ahk
-#Include %A_WorkingDir%\Tool\Help.ahk
-#Include %A_WorkingDir%\Tool\Language.ahk
-
-
-
-; 判断是否在桌面
-; return | True \ False
-IsDesktops()
-{
-    win_class := window.class
-    if (win_class == "WorkerW") {
-        return True
-    } else {
-        return False
-    }
-}
-
-
-
-; 判断软件是否全屏\最小化
-; return | True \ False
-IsMaxMin()
-{
-    win_min_max := window.min_max
-    if (win_min_max) {
-        return True
-    } else {
-        return False
-    }
-}
-
-
-
-; 判断当前激活的应用是否为游戏
-; return | True \ False
-IsGame()
-{
-    GetActiveWindowInfo()
-    win_process_name := window.process_name
-    for index, value in Games_Process_Name {
-        if (value == win_process_name) {
-            return True
-        }
-    }
-    return False
-}
+; #Include %A_InitialWorkingDir%\Config\All.ahk
+; #Include %A_InitialWorkingDir%\Lib\JEE.ahk
+; #Include %A_InitialWorkingDir%\Tool\Mouse.ahk
+; #Include %A_InitialWorkingDir%\Tool\File.ahk
+; #Include %A_InitialWorkingDir%\Tool\Change.ahk
+; #Include %A_InitialWorkingDir%\Tool\Help.ahk
+; #Include %A_InitialWorkingDir%\Tool\Language.ahk
 
 
 
 ; Dll获取窗口大小
-GetClientSize(hWnd, ByRef w:="", ByRef h:="")
+GetClientSize(win_id, &width:="", &height:="")
 {
-    VarSetCapacity(rect, 16)
-    DllCall("GetClientRect", "ptr", hWnd, "ptr", &rect)
-    w := NumGet(rect, 8, "int")
-    h := NumGet(rect, 12, "int")
-}
-
-
-
-
-; 获取激活窗口的所在屏幕的信息以及窗口信息 使用全局变量window共享
-; result | {} 应用信息
-; mode   | Default AHK默认 \ Strict|Window API修正
-GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
-{
-    WinGet, win_id, ID, A
-
-    ; 缓存数据
-    if (cache == True) {
-        cache_win_id := window.cache.win_id
-        cache_expire := window.cache.expire
-        if (cache_time and cache_win_id) {
-            if (cache_win_id == win_id and cache_expire - A_TickCount > 0) {
-                return
-            }
-        }
-    }
-    if (expire == "Auto" or expire <= 0) {
-        expire := Cache_Expire_Time
-    }
-
-    WinGet,                         win_pid, PID,             ahk_id %win_id%
-    WinGet,                     win_min_max, MinMax,          ahk_id %win_id%
-    WinGet,                 win_process_exe, ProcessName,     ahk_id %win_id%
-    WinGet,                 win_transparent, Transparent,     ahk_id %win_id%
-    WinGet,                 win_controls_id, ControlListHwnd, ahk_id %win_id%
-    WinGet,               win_controls_name, ControlList,     ahk_id %win_id%
-    WinGetClass,                  win_class,                  ahk_id %win_id%
-    WinGetTitle,                  win_title,                  ahk_id %win_id%
-    WinGetText,                    win_text,                  ahk_id %win_id%
-    WinGetPos,   win_x, win_y, win_w, win_h,                  ahk_id %win_id%
-
-    ; 基础信息
-    window.id           := win_id
-    window.pid          := win_pid
-    window.min_max      := win_min_max
-    window.transparent  := win_transparent
-    window.process_exe  := win_process_exe
-    window.process_name := ProcessNameFormat(win_process_exe)
-    window.class        := win_class
-    window.title        := win_title
-    window.text         := win_text
-
-    ; 窗口位置
-    ; 两种不同方式获取的窗口坐标存在差别
-    if (mode == "Window") {
-        win_x := 0
-        win_y := 0
-        GetClientSize(win_id, win_w, win_h)
-    }
-    if (mode == "Strict") {
-        win_size_w := win_w
-        win_size_h := win_h
-        GetClientSize(win_id, win_size_w, win_size_h)
-        win_x := win_x + (win_w - win_size_w) / 2
-        win_y := win_y + (win_h - win_size_h) / 2
-        win_w := win_size_w
-        win_h := win_size_h
-    }
-    window.x            := win_x
-    window.y            := win_y
-    window.w            := win_w
-    window.h            := win_h
-    window.xx           := win_x + win_w
-    window.yy           := win_y + win_h
-
-    ; 控件信息
-    win_controls      := {}
-    win_controls_id   := StrSplit(win_controls_id,   "`n")
-    win_controls_name := StrSplit(win_controls_name, "`n")
-    length_id   := win_controls_id.Length()
-    length_name := win_controls_name.Length()
-    length      := Min(length_id, length_name)
-    loop %length% {
-        k := win_controls_name[A_Index]
-        v := win_controls_id[A_Index]
-        win_controls[k] := { "id" : v }
-    }
-    for control_name, control_args in win_controls {
-        ControlGetPos,  x, y, w, h,   %control_name%, ahk_id %win_id%
-        ControlGetText, control_text, %control_name%, ahk_id %win_id%
-        control_args["x"]    := x
-        control_args["y"]    := y
-        control_args["w"]    := w
-        control_args["h"]    := h
-        control_args["xx"]   := x + w
-        control_args["yy"]   := y + h
-        control_args["text"] := control_text
-    }
-    window.controls     := win_controls
-
-    ; 窗口所在屏幕信息
-    win_screen := {}
-    loop, % Screens.Count {
-        if (win_x >= Screens[A_Index]["x"] and win_x < Screens[A_Index]["xx"]) {
-            win_screen := Screens[A_Index]
-            break
-        }
-    }
-    window.screen := win_screen
-
-    ; 窗口位置 默认1 默认2
-    win_position         := { "default" : {} , "backup" : {} }
-    win_position_default := GetWindowConfig(WPD)
-    win_position_backup  := GetWindowConfig(WPB)
-    win_position.default := win_position_default
-    win_position.backup  := win_position_backup
-    window.position      := win_position
-
-    ; 最后一次获取的信息缓存时间
-    window.cache        := {}
-    window.cache.win_id := win_id
-    window.cache.expire := A_TickCount + expire
+	config := Buffer(16)
+	DllCall("GetClientRect", "ptr", win_id, "ptr", config)
+	width  := NumGet(config,  8, "int")
+	height := NumGet(config, 12, "int")
 }
 
 
@@ -195,28 +33,24 @@ GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
 ; 进程名权重 3
 ; Class权重  2
 ; 标题权重   2
-GetWindowConfig(CFG)
+GetWindowConfig(window, config)
 {
-
     win_process_name := window.process_name
     win_class        := window.class
     win_title        := window.title
-
-    win_title := StrReplace(win_title, " ", "")
+    win_title        := StrReplace(win_title, " ", "")
 
     _process_name_ := ""
     _class_        := ""
     _title_        := ""
 
-    win_config     := [] ;参数
-    win_config     := CFG["Default"]
-
+    win_config  := [] ;参数
     match_count := 0  ;满足的条件数
 
-    for config_key, config_value in CFG {
+    for config_key, config_value in config {
 
         config_items := StrSplit(config_key, "_")
-        max_index    := config_items.MaxIndex()
+        max_index    := config_items.Length
         match_cnt    := 0
 
         _process_name_ := ""
@@ -266,6 +100,135 @@ GetWindowConfig(CFG)
 
     return win_config
 }
+
+
+
+; 获取激活窗口的所在屏幕的信息以及窗口信息 使用全局变量window共享
+; result | {} 应用信息
+; mode   | Default AHK默认 \ Strict|Window API修正
+GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
+{
+
+    try {
+        win_id := WinGetID("A")
+    } catch {
+        return
+    }
+
+    ; 缓存数据
+    if (cache == True) {
+        if (window.cache_id and window.cache_expire) {
+            if (window.cache_id == win_id and window.cache_expire - A_TickCount > 0) {
+                return
+            }
+        }
+    }
+    if (expire == "Auto" or expire <= 0) {
+        expire := Cache_Expire_Time
+    }
+
+    win_pid           := WinGetPID("ahk_id " . win_id)
+    win_process_exe   := WinGetProcessName("ahk_id " . win_id)
+    win_process_path  := WinGetProcessPath("ahk_id " . win_id)
+    win_min_max       := WinGetMinMax("ahk_id " . win_id)
+    win_transparent   := WinGetTransparent("ahk_id " . win_id)
+    win_controls_id   := WinGetControlsHwnd("ahk_id " . win_id)
+    win_controls_name := WinGetControls("ahk_id " . win_id)
+    win_class         := WinGetClass("ahk_id " . win_id)
+    win_title         := WinGetTitle("ahk_id " . win_id)
+    win_text          := WinGetText("ahk_id " . win_id)
+    WinGetPos &win_x, &win_y, &win_w, &win_h, "ahk_id " . win_id
+
+    win_process_name := RTrim(win_process_exe , "exe")
+    win_process_name := RTrim(win_process_name, "EXE")
+    win_process_name := RTrim(win_process_name, "."  )
+    win_process_name := Windows_Process_Name.Get(win_process_name, win_process_name)
+
+    ; 基础信息
+    window.id           := win_id
+    window.pid          := win_pid
+    window.min_max      := win_min_max
+    window.transparent  := win_transparent
+    window.process_exe  := win_process_exe
+    window.process_name := win_process_name
+    window.process_path := win_process_path
+    window.class        := win_class
+    window.title        := win_title
+    window.text         := win_text
+
+    ; 窗口位置
+    ; 两种不同方式获取的窗口坐标存在差别
+    if (mode == "Window") {
+        win_x := 0
+        win_y := 0
+        GetClientSize(win_id, win_w, win_h)
+    }
+    if (mode == "Strict") {
+        win_size_w := win_w
+        win_size_h := win_h
+        GetClientSize(win_id, &win_size_w, &win_size_h)
+        win_x := win_x + (win_w - win_size_w) / 2
+        win_y := win_y + (win_h - win_size_h) / 2
+        win_w := win_size_w
+        win_h := win_size_h
+    }
+
+    window.x  := win_x
+    window.y  := win_y
+    window.w  := win_w
+    window.h  := win_h
+    window.xx := win_x + win_w
+    window.yy := win_y + win_h
+
+    ; 控件信息
+    win_controls := {}
+    length := Min(win_controls_id.Length, win_controls_name.Length)
+    loop length {
+        k := win_controls_name[A_Index]
+        v := win_controls_id[A_Index]
+        win_controls.%k% := { id : v }
+    }
+    for control_name, control_args in win_controls.OwnProps() {
+        try {
+            ControlGetPos &x, &y,&w, &h, control_name, "ahk_id" . win_id
+            control_text := ControlGetText(control_name, "ahk_id" . win_id)
+        } catch error {
+            win_controls.DeleteProp(control_name)
+        } else {
+            win_controls.%control_name%.x    := x
+            win_controls.%control_name%.y    := y
+            win_controls.%control_name%.w    := w
+            win_controls.%control_name%.h    := h
+            win_controls.%control_name%.xx   := x + w
+            win_controls.%control_name%.yy   := y + h
+            win_controls.%control_name%.text := control_text
+        }
+    }
+    window.controls := win_controls
+
+    ; 窗口所在屏幕信息
+    win_screen := {}
+    loop Screens.Count {
+        if ( win_x + Window_Screen_Offset > Screens.%A_Index%.x ) {
+            if ( win_x - Screens.%A_Index%.xx < Window_Screen_Offset ) {
+                win_screen := Screens.%A_Index%
+                break
+            }
+        }
+    }
+    window.screen := win_screen
+
+    ; 窗口位置 默认1 默认2
+    win_position_default := GetWindowConfig(window, WPD)
+    win_position_backup  := GetWindowConfig(window, WPB)
+    window.position_default := win_position_default
+    window.position_backup  := win_position_backup
+
+    ; 最后一次获取的信息缓存时间
+    window.cache_id     := win_id
+    window.cache_expire := A_TickCount + expire
+}
+
 
 
 
@@ -322,6 +285,52 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
 
 
 
+; 判断是否在桌面
+; return | True \ False
+IsDesktops()
+{
+    GetActiveWindowInfo()
+    win_class := window.class
+    if (win_class == "WorkerW") {
+        return True
+    } else {
+        return False
+    }
+}
+
+
+
+; 判断软件是否全屏\最小化
+; return | True \ False
+IsMaxMin()
+{
+    GetActiveWindowInfo()
+    win_min_max := window.min_max
+    if (win_min_max) {
+        return True
+    } else {
+        return False
+    }
+}
+
+
+
+; 判断当前激活的应用是否为游戏
+; return | True \ False
+IsGame()
+{
+    GetActiveWindowInfo()
+    win_process_name := window.process_name
+    for index, value in Games_Process_Name {
+        if (value == win_process_name) {
+            return True
+        }
+    }
+    return False
+}
+
+
+
 
 ; 将窗口移动到指定位置
 ; offset | 在一定误差内不进行窗口移动
@@ -338,7 +347,7 @@ SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
     }
 
     if (win_min_max) {
-        WinRestore, ahk_id %win_id%
+        WinRestore "ahk_id" . win_id
     }
 
     if (IsDesktops() or IsGame()) {
@@ -359,10 +368,10 @@ SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
 
     if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
         if (step) {
-            WinMove, ahk_id %win_id%,  , %xx%, %yy%,     ,
-            WinMove, ahk_id %win_id%,  ,     ,     , %ww%, %hh%
+            WinMove xx, yy,   ,    , "ahk_id" . win_id
+            WinMove   ,   , ww,  hh, "ahk_id" . win_id
         } else {
-            WinMove, ahk_id %win_id%,  , %xx%, %yy%, %ww%, %hh%
+            WinMove xx, yy, ww,  hh, "ahk_id" . win_id
         }
     }
 }
@@ -378,12 +387,12 @@ SetWindowTransparent(change:=0)
 
     if (change == "Max") {
         win_transparent := 255
-        WinSet, Transparent, %win_transparent%, ahk_id %win_id%
-        Return
+        WinSetTransparent  win_transparent, "ahk_id" . win_id
+        return
     } else if (change == "Min") {
         win_transparent := 0
-        WinSet, Transparent, %win_transparent%, ahk_id %win_id%
-        Return
+        WinSetTransparent  win_transparent, "ahk_id" . win_id
+        return
     }
 
     if (change > 0) {
@@ -392,14 +401,14 @@ SetWindowTransparent(change:=0)
         } else {
             win_transparent := win_transparent + change
         }
-        WinSet, Transparent, %win_transparent%, ahk_id %win_id%
+        WinSetTransparent  win_transparent, "ahk_id" . win_id
     } else if (change < 0) {
         if (win_transparent + change <= 55) {
             win_transparent := 55
         } else {
             win_transparent := win_transparent + change
         }
-        WinSet, Transparent, %win_transparent%, ahk_id %win_id%
+        WinSetTransparent  win_transparent, "ahk_id" . win_id
     }
 }
 
@@ -410,22 +419,23 @@ SetWindowTransparent(change:=0)
 ; return    | None
 ResizeWindow(command, direction)
 {
+
+    SetWinDelay 1
+    CoordMode "Mouse", "Screen"
+
+    GetActiveWindowInfo()
+
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         return
     }
 
-    SetWinDelay, 1
-    CoordMode, Mouse
-
-    GetActiveWindowInfo()
+    step := 10
 
     win_id := window.id
     win_x  := window.x
     win_y  := window.y
     win_w  := window.w
     win_h  := window.h
-
-    step := 10
 
     if (command == "Big") {
         if (direction == "Up") {
@@ -463,9 +473,12 @@ ResizeWindow(command, direction)
 ; return    | None
 MoveWindowUDLR(direction)
 {
-    SetWinDelay, 1
+    SetWinDelay 1
+
+    step := 10
 
     GetActiveWindowInfo("Default", True, 1000 * 5)
+
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         return
     }
@@ -476,7 +489,6 @@ MoveWindowUDLR(direction)
     win_w  := window.w
     win_h  := window.h
 
-    step := 10
     if (direction == "Up") {
         win_y := win_y - step
     } else if (direction == "Down") {
@@ -495,8 +507,8 @@ MoveWindowUDLR(direction)
 ; 修改控件位置 CoordMode : Window
 MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
 {
-    CoordMode, Mouse, Window
-    MouseGetPos, x_origin, y_origin
+    CoordMode "Mouse", "Window"
+    MouseGetPos &x_origin, &y_origin
 
     xy := 0 , x_start := 0 , y_start := 0 , x_end := 0 , y_end := 0
 
@@ -536,8 +548,8 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
         return
     }
 
-    MouseClickDrag, Left, %x_start%, %y_start%, %x_end%, %y_end%, 0
-    MouseMove, %x_origin%, %y_origin%, 0
+    MouseClickDrag "Left", x_start, y_start, x_end, y_end, 0
+    MouseMove x_origin, y_origin, 0
 }
 
 
@@ -574,7 +586,7 @@ MoveWindowToCenter(silent:=False)
     SetWindow(xx, yy, ww, hh)
 
     if (not silent) {
-        HelpText("Center", "center_down", "screen"screen_id, 1000)
+        HelpText("Center", "center_down", "screen" . screen_id, 1000)
     }
 }
 
@@ -585,41 +597,35 @@ MoveWindowToCenter(silent:=False)
 ; return  | None
 MoveWindowToMainMini(command)
 {
+    GetActiveWindowInfo()
+
     if ( IsDesktops() or IsMaxMin() or IsGame() ) {
         return
     }
 
-    GetActiveWindowInfo()
+    win_id    := window.id
+    screen_id := window.screen.id
+    screen_x  := window.screen.x
+    screen_y  := window.screen.y
+    screen_w  := window.screen.w
+    screen_h  := window.screen.h
 
-    win_id           := window.id
-    win_process_name := window.process_name
-    win_class        := window.class
-    win_title        := window.title
-    screen_id        := window.screen.id
-    screen_x         := window.screen.x
-    screen_y         := window.screen.y
-    screen_w         := window.screen.w
-    screen_h         := window.screen.h
-
-    if (screen_id == 3) {
-        screen_h := screen_h / 2
-    }
-    mini := Windows_Main_Mini[1]
-    main := Windows_Main_Mini[2]
+    main := Windows_Main_Mini[1]
+    mini := Windows_Main_Mini[2]
 
     if (command == "Main") {
-        HelpText("Windows Main", "center_down", "screen"screen_id)
-        ww := screen_w * main[1]
-        hh := screen_h * main[2]
+        HelpText("Windows Main", "CenterDown", "Screen" . screen_id)
+        w := screen_w * main[1]
+        h := screen_h * main[2]
     } else if (command == "Mini") {
-        HelpText("Windows Mini", "center_down", "screen"screen_id)
-        ww := screen_w * mini[1]
-        hh := screen_h * mini[2]
+        HelpText("Windows Mini", "CenterDown", "Screen" . screen_id)
+        w := screen_w * mini[1]
+        h := screen_h * mini[2]
     }
-    xx := screen_x + (screen_w - ww)/2
-    yy := screen_y + (screen_h - hh)/2
+    x := screen_x + (screen_w - w)/2
+    y := screen_y + (screen_h - h)/2
 
-    SetWindow(xx, yy, ww, hh)
+    SetWindow(x, y, w, h)
 
     Sleep 500
     HelpText()
@@ -656,30 +662,36 @@ MoveWindowToPosition(position:="Default")
     if (win_process_name == "Search") {
         ; Global System_Type
         if (System_Type == "WinServer") {
-            Process, Close, SearchUI.exe
+            ProcessClose "SearchUI.exe"
             Sleep 100
-            WinActivate, ShellExperienceHost.exe
+            WinActivate "ShellExperienceHost.exe"
             Sleep 300
             GetActiveWindowInfo()
         } else if (System_Type == "Win10") {
-            Process, Close, SearchApp.exe
+            ProcessClose "SearchApp.exe"
             Sleep 100
-            WinActivate, StartMenuExperienceHost.exe
+            WinActivate "StartMenuExperienceHost.exe"
             Sleep 300
             GetActiveWindowInfo()
         }
     }
 
     if (position == "Default") {
-        x := window.position.default[1]
-        y := window.position.default[2]
-        w := window.position.default[3]
-        h := window.position.default[4]
+        if (window.position_default.Length != 4) {
+            return
+        }
+        x := window.position_default[1]
+        y := window.position_default[2]
+        w := window.position_default[3]
+        h := window.position_default[4]
     } else if (position == "Backup") {
-        x := window.position.backup[1]
-        y := window.position.backup[2]
-        w := window.position.backup[3]
-        h := window.position.backup[4]
+        if (window.position_backup.Length != 4) {
+            return
+        }
+        x := window.position_backup[1]
+        y := window.position_backup[2]
+        w := window.position_backup[3]
+        h := window.position_backup[4]
     } else {
         return
     }
@@ -718,7 +730,7 @@ MoveWindowToBackupPosition()  {
 ; 高亮激活的窗口
 HighlightActiveWindow(time:=300, width:=9, color:="e51400")
 {
-    GetActiveWindowInfo("Strict")
+    GetActiveWindowInfo("Strict", False)
 
     win_x            := window.x
     win_y            := window.y
@@ -732,15 +744,13 @@ HighlightActiveWindow(time:=300, width:=9, color:="e51400")
 
     ; 最小化
     if (win_min_max == -1) {
-        Return
+        return
     }
-
     if (not win_w or not win_h) {
-        Return
+        return
     }
-
     if (win_process_name == "Explorer" and win_class == "WorkerW") {
-        Return
+        return
     }
 
     gui_x  := win_x
@@ -750,17 +760,17 @@ HighlightActiveWindow(time:=300, width:=9, color:="e51400")
     gui_xx := win_xx
     gui_yy := win_yy
 
-    Q := [ [ 0     , 0     ]
-         , [ gui_w , 0     ]
-         , [ gui_w , gui_h ]
-         , [ 0     , gui_h ]
-         , [ 0     , 0     ] ]
+    pos_out := [  0     , 0      ,
+                  gui_w , 0      ,
+                  gui_w , gui_h  ,
+                  0     , gui_h  ,
+                  0     , 0      ]
 
-    P := [ [ width         , width         ]
-         , [ gui_w - width , width         ]
-         , [ gui_w - width , gui_h - width ]
-         , [ width         , gui_h - width ]
-         , [ width         , width         ] ]
+    pos_in  := [  width         , width          ,
+                  gui_w - width , width          ,
+                  gui_w - width , gui_h - width  ,
+                  width         , gui_h - width  ,
+                  width         , width          ]
 
     ; 窗口上下全屏 Win+Left|Right操作时
     ; if (info.win_min_max == 0 and win_y == 0) {
@@ -774,32 +784,28 @@ HighlightActiveWindow(time:=300, width:=9, color:="e51400")
     ;     P := [ [ width , width ] , [ width + win_w , width ] , [ gui_w - width , gui_h - width ] , [ width , gui_h - width ] , [ width , width ] ]
     ; }
 
-    Gui, New
-    Gui, Margin, 0, 0
-    Gui, +HWNDHighlight_Gui_Id +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
-    Gui, Color, %color%
-    Gui, Show ,X%gui_x% Y%gui_y% W%gui_w% H%gui_h% NA
+    G := Gui()
+    G.MarginX := 0
+    G.MarginY := 0
+    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
+    G.BackColor := color
+    ; Gui, +HWNDHighlight_Gui_Id
+    G.Show(Format("NA x{1} y{2} w{3} h{4}", gui_x, gui_y, gui_w, gui_h))
 
-    qx1 := Q[1][1] , qy1 := Q[1][2]
-    qx2 := Q[2][1] , qy2 := Q[2][2]
-    qx3 := Q[3][1] , qy3 := Q[3][2]
-    qx4 := Q[4][1] , qy4 := Q[4][2]
-    qx5 := Q[5][1] , qy5 := Q[5][2]
+    g_id := G.Hwnd
 
-    px1 := P[1][1] , py1 := P[1][2]
-    px2 := P[2][1] , py2 := P[2][2]
-    px3 := P[3][1] , py3 := P[3][2]
-    px4 := P[4][1] , py4 := P[4][2]
-    px5 := P[5][1] , py5 := P[5][2]
+    ; WinSetTransParent 100, "ahk_id" . g_id
+    config_out := Format("{}-{} {}-{} {}-{} {}-{} {}-{} ", pos_out*)
+    config_in  := Format("{}-{} {}-{} {}-{} {}-{} {}-{} ", pos_in* )
+    pos_config := config_out . config_in
 
-    ; WinSet, TransParent, 100, ahk_id %Highlight_Gui_Id%
-    WinSet, Region
-    , %qx1%-%qy1% %qx2%-%qy2% %qx3%-%qy3% %qx4%-%qy4% %qx5%-%qy5% %px1%-%py1% %px2%-%py2% %px3%-%py3% %px4%-%py4% %px5%-%py5%
-    , ahk_id %Highlight_Gui_Id%
+    WinSetRegion pos_config, "ahk_id" . g_id
 
-    SetTimer, CloseHighlightGui, -1
-    CloseHighlightGui:
-        Sleep %time%
-        WinClose, ahk_id %Highlight_Gui_Id%
-    Return
+    CloseHighlight() {
+        Sleep time
+        WinClose "ahk_id" . g_id
+    }
+    SetTimer CloseHighlight, -1
 }
+
+

@@ -56,12 +56,12 @@ Fxx()
 
 
 
-#If CheckWindowActive("Explorer")
+#HotIf CheckWindowActive("Explorer")
     F1::Run, D:\\
     F2::Run, E:\\
     F3::Run, F:\\
     F4::Run, R:\\
-#If
+#HotIf
 
 
 F12::Fxx()

@@ -1,56 +1,81 @@
 ﻿
-#Include %A_WorkingDir%\Config\All.ahk
-#Include %A_WorkingDir%\Tool\Change.ahk
-#Include %A_WorkingDir%\Tool\File.ahk
-#Include %A_WorkingDir%\Tool\Language.ahk
-
+#Include %A_InitialWorkingDir%\Config\All.ahk
+#Include %A_InitialWorkingDir%\Tool\Change.ahk
+#Include %A_InitialWorkingDir%\Tool\File.ahk
+#Include %A_InitialWorkingDir%\Tool\Language.ahk
 
 
 ; 显示图片
 HelpImage(image:="")
 {
-    if (image == "") {
-        Gui, Destroy
-        GlobalSet("Status", "help_image_show_status", False)
-    } else {
-        size   := GetImageSize(image)
-        screen := Screens.1
-        w := size["w"] / screen.dpi
-        h := size["h"] / Screen.dpi
-        x := screen.w/2 - w/2
-        y := screen.h/2 - h/2
-        Gui, Destroy
-        Gui, +DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption
-        Gui, Margin, 1, 1
-        Gui, Add, Picture, +Border W%w% H%h%, %image%
-        Gui, Show, Center NA
-        GlobalSet("Status", "help_image_show_status", True)
+    global G
+    try {
+        g_id := G.Hwnd
+    } catch error {
+        G := Gui()
     }
-}
 
+    if (not image) {
+        G.Destroy()
+        GlobalSet("Status", "help_image_show_status", False)
+        return
+    }
+
+    size := GetImageSize(image)
+    w := size.w / Screen.dpi
+    h := size.h / Screen.dpi
+    x := Screen.w/2 - w/2
+    y := Screen.h/2 - h/2
+
+    G.Opt("-DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
+    G.MarginX := 1
+    G.MarginY := 1
+    G.Add("Picture", Format("+Border w{1} h{2}", w, h), image)
+    G.Show("Center NA")
+    GlobalSet("Status", "help_image_show_status", True)
+}
 
 
 ; 显示帮助文本
 HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 {
-    CoordMode, Pixel, Screen
-    CoordMode, Mouse, Screen
+    CoordMode("Pixel", "Screen")
+    CoordMode("Mouse", "Screen")
 
-    Global HelpText_Gui_Id
+    global G
+    try {
+        g_id := G.Hwnd
+    } catch error {
+        G := Gui()
+        g_id := G.Hwnd
+    }
+
     if (not data) {
         GlobalSet("Status", "help_text_show_status", False)
-        if (HelpText_Gui_Id) {
-            WinClose, ahk_id %HelpText_Gui_Id%
-        }
-        Gui, Destroy
+        G.Destroy()
         return
     }
 
-    screen_id := ScreenNameToId(screen_name)
-    screen_id := screen_id > Screens_Count ? screen_id - 1 : screen_id
-    screen_id := screen_id > Screens_Count ? screen_id - 1 : screen_id
+    zh_cn_count := ZHCN_Count(data)
+    total_count := StrLen(data)
+    total_count := total_count > 6 ? total_count : 6
+
+    text_x := text_y := 1
+    text_w := (total_count + zh_cn_count) * Font.Size * Font.Dpi
+    text_h := 0
+
+    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
+    G.MarginX := 0
+    G.MarginY := 0
+    G.SetFont(Format("s{}", Font.Size), Font.Type)
+    xywh := Format("x{1} y{2} w{3}", text_x, text_y, text_w)
+    G.Add("Text", "+Center +Border vText " . xywh, data)
+    G["Text"].GetPos(&_, &_, &_, &text_h)
 
     screen_config := {}
+    screen_id := ScreenNameToId(screen_name)
+    screen_id := screen_id > Screens.Count ? screen_id - 1 : screen_id
+    screen_id := screen_id > Screens.Count ? screen_id - 1 : screen_id
     if (screen_id == "1") {
         screen_config := Screens.1
     } else if (screen_id == "2") {
@@ -66,56 +91,22 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     screen_h   := screen_config.h
     screen_xx  := screen_config.xx
     screen_yy  := screen_config.yy
-
     ; 屏幕3 只使用上半部分
     if (screen_id == "3") {
         screen_h  := screen_h  / 2
         screen_yy := screen_yy / 2
     }
 
-    zh_cn_count := ZH_CN(data)
-    total_count := StrLen(data)
-    total_count := total_count > 6 ? total_count : 6
-
-    font_size := Font.Size
-    font_type := Font.Type
-    font_dpi  := Font.Dpi
-
-    font_width := (total_count + zh_cn_count) * font_size * font_dpi
-
-    text_x := text_y := 1
-    text_w := font_width
-
-    Global TextMain
-    Gui, Destroy
-    Gui, +HwndHelpText_Gui_Id +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
-    Gui, Margin, 0, 0
-    Gui, font, s%font_size%, %font_type%
-    Gui, Add, Text, +Center +Border vTextMain x%text_x% y%text_y% w%text_w%, %data%
-
-    GuiControlGet, TMC, Pos, TextMain
-    text_x := TMCX
-    text_y := TMCY
-    text_w := TMCW
-    text_h := TMCH
-
-    text_x := 1
-    text_y := 1
-    text_w := text_w
-    text_h := text_h
-    GuiControl, Move, TextMain, x%text_x% y%text_y% w%text_w% h%text_h%
-
-    gui_w := text_w + 2
-    gui_h := text_h + 2
     gui_x := 0
     gui_y := 0
+    gui_w := text_w + 2
+    gui_h := text_h + 2
 
     xy := Format("{:L}", xy)
     xy := StrReplace(xy, "|", "")
     xy := StrReplace(xy, "+", "")
     xy := StrReplace(xy, "-", "")
     xy := StrReplace(xy, "_", "")
-
     switch xy {
         case "center":
             gui_x := screen_x + (screen_w - gui_w) / 2
@@ -137,23 +128,12 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
             gui_y := screen_yy - gui_h - 5
     }
 
-    Gui, Show, NA x%gui_x% y%gui_y% w%gui_w% h%gui_h%
-
-    ; 透明度 最上层
-    ; keyboard_transcolor := "F1ECED"
-    ; WinSet, TransColor, %keyboard_transcolor% 100, ahk_id %HelpText_Gui_Id%
-
+    G.Show(Format("NA x{1} y{2} w{3} h{4}", gui_x, gui_y, gui_w, gui_h))
     GlobalSet("Status", "help_text_show_status", True)
 
     if (sleep_time > 0) {
-        Sleep, %sleep_time%
-        Gui, Destroy
+        Sleep sleep_time
+        G.Destroy()
         GlobalSet("Status", "help_text_show_status", False)
     }
-    ; SetTimer, CloseHelpGui, -1
-    ; CloseHelpGui:
-    ;     Sleep %sleep_time%
-    ;     WinClose, ahk_id %HelpText_Gui_Id%
-    ;     GlobalSet("Status", "help_text_show_status", False)
-    ; Return
 }

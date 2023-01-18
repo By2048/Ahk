@@ -1,6 +1,6 @@
 ﻿
-#If CheckWindowActive("BitComet", "#32770", "新建BT任务")
-    <#\::
+#HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
+    <#\::{
         WPD["BitComet_#32770_新建BT任务"] := Position4K(1700 , 1300)
         MoveWindowToDefaultPosition()
         ; 主界面
@@ -8,21 +8,21 @@
         _2 := " 名称 大小  %   "
         _3 := " 1250 170  100 "
         config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth("SysListView321" , config, 4K, 2K)
-    Return
-#If
+        SetColumnWidth("SysListView321" , config, Screen_4K, Screen_2K)
+    }
+#HotIf
 
 
-#If CheckWindowActive("BitComet")
+#HotIf CheckWindowActive("BitComet")
 
-    <#\::
+    <#\::{
 
-        if ("4K" in Screen.Name) {
+        if (InStr(Screen.Name, "4K")) {
             total_width := 3000
             total_height := 1500
             max_left := 335
         }
-        if ("2K" in Screen.Name) {
+        if (InStr(Screen.Name, "2K")) {
             total_width := 2250
             total_height := 1130
             max_left := 265
@@ -36,7 +36,7 @@
         _2 := " 名称   文件夹  大小  进度   需时   下载速度  下载大小  剩余大小  上传速度  上传大小   种子/用户 长效种子  分享率  "
         _3 := " 650   250    250   100   159    160      150      150      160     150       220      120      100    "
         config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth("SysListView321" , config, 4K, 2K)
+        SetColumnWidth("SysListView321" , config, Screen_4K, Screen_2K)
 
         ; 左边栏大小
         cinfo := window["controls"]["SysListView321"]
@@ -54,7 +54,7 @@
         ; _2 := " 1200    100  130  150      200   170    200       200     200    "
         ; _3 := " 文件名称 预览  进度 下载优先级 大小  长效种子 ED2K链接  分块序号 调试信息 "
         ; config := GetColumnConfig(_1, _2, _3)
-        ; SetColumnWidth("SysListView322", config, 4K, 2K)
+        ; SetColumnWidth("SysListView322", config, Screen_4K, Screen_2K)
 
         ; 服务器
         ; _1 := " 1            2    3   4       5   6      7       8      9    "
@@ -83,6 +83,6 @@
         ; config := { 1 : 450  ,  2 : 2100 }  ;项目 | 值
         ; SetColumnWidth("SysListView3218", config)
 
-    Return
+    }
 
-#If
+#HotIf

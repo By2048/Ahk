@@ -1,21 +1,19 @@
 ﻿
-
-
 ExcelGetXYSpace(x, y)
 {
-    x_1 := SubStr(x, 1, 1)
-    x_2 := SubStr(x, 2)
+    x1 := SubStr(x, 1, 1)
+    x2 := SubStr(x, 2)
 
-    y_1 := SubStr(y, 1, 1)
-    y_2 := SubStr(y, 2)
+    y1 := SubStr(y, 1, 1)
+    y2 := SubStr(y, 2)
 
-    x_1 := Asc(x_1)
-    x_2 := x_2 + 0
+    x1 := Ord(x1)
+    x2 := x2 + 0
 
-    y_1 := Asc(y_1)
-    y_2 := y_2 + 0
+    y1 := Ord(y1)
+    y2 := y2 + 0
 
-    return [ y_1 - x_1 , y_2 - x_2 ]
+    return [ y1 - x1 , y2 - x2 ]
 }
 
 
@@ -23,13 +21,13 @@ ExcelGetXYSpace(x, y)
 ; 移动到指定Sheet
 ExcelMoveToSheet(cnt)
 {
-    Send ^{PgUp 30}
+    Send "^{PgUp 30}"
     Sleep 900
 
     cnt := cnt - 1
     if (cnt > 0) {
-        Loop %cnt% {
-            Send ^{PgDn}
+        Loop cnt {
+            Send "^{PgDn}"
             Sleep 500
         }
     }
@@ -45,16 +43,16 @@ ExcelMoveToPosition(position)
     move_y := result[2]
 
     ; 移动到A1
-    Send ^{Home}
+    Send "^{Home}"
     Sleep 200
 
     if (move_x != 0) {
-        Send {Right %move_x%}
+        Send Format("{Right {1}}", move_x)
     }
     Sleep 200
 
     if (move_y != 0) {
-        Send {Down %move_y%}
+        Send Format("{Down {1}}", move_y)
     }
     Sleep 200
 }
@@ -71,20 +69,20 @@ ExcelSelectXToY(excel_x, excel_y, multi_line)
     move_x := result[1]
     move_y := result[2]
     move_y := move_y - multi_line
-    Send {RShift Down}
+    Send "{RShift Down}"
     if (move_x != 0) {
-        Loop, %move_x% {
-            Send {Right}
-            Sleep, 30
+        Loop move_x {
+            Send "{Right}"
+            Sleep 30
         }
     }
     if (move_y != 0) {
-        Loop, %move_y% {
-            Send {Down}
-            Sleep, 30
+        Loop move_y {
+            Send "{Down}"
+            Sleep 30
         }
     }
-    Send {RShift UP}
+    Send "{RShift UP}"
 }
 
 
@@ -96,11 +94,10 @@ SnipasteClipboardToImageFile(image_file)
         return
     }
 
-    CoordMode, Mouse, Screen
+    CoordMode "Mouse", "Screen"
 
     ; 贴图
-    cmd := Format("{1} paste --clipboard", Snipaste)
-    Run %cmd%
+    Run Format("{1} paste --clipboard", Snipaste)
     Sleep 500
 
     ; 打开设置界面
@@ -110,28 +107,28 @@ SnipasteClipboardToImageFile(image_file)
     ; MouseMove, %xx%, %yy%
     ; Send {RButton}
 
-    Send {AppsKey}
-    Sleep, 500
+    Send "{AppsKey}"
+    Sleep 500
 
-    Send s
-    Sleep, 1000
+    Send "s"
+    Sleep 1000
 
     ; 设置文件名
-    Send !n
-    ControlSetText, Edit1, %image_file%, A
+    Send "!n"
+    ControlSetText "Edit1", image_file, "A"
     Sleep 500
 
     ; 保存文件
-    Send !s
+    Send "!s"
     Sleep 500
 
-    WinGetTitle, win_title, A
-    if (win_title="确认另存为") {
-        Send !y
-        Sleep, 500
+    win_title := WinGetTitle("A")
+    if (win_title == "确认另存为") {
+        Send "!y"
+        Sleep 500
     }
 
     ; 关闭贴图
     ; Send {LButton 2}
-    Send {Esc}
+    Send "{Esc}"
 }

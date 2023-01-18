@@ -1,20 +1,26 @@
 ﻿
->+`;::Send :
->+'::Send "
+#Include %A_InitialWorkingDir%\Tool\Gui.ahk
 
 
-$RShift::
+>+`;::Send ":"
+>+'::Send "`""
+
+
+cnt := 0
+$RShift::{
+    global cnt
     if (cnt > 0) {
         cnt += 1
-        HelpText("RShift " . cnt, "center", "screen_3")
+        ; HelpText("RShift " . cnt, "center", "screen_3")
         return
     } else {
         cnt := 1
-        HelpText("RShift " . cnt, "center", "screen_3")
+        ; HelpText("RShift " . cnt, "center", "screen_3")
     }
-    SetTimer, ShiftTimer, -333
-Return
-ShiftTimer:
+    SetTimer ShiftTimer, -333
+}
+ShiftTimer() {
+    global cnt
     if (cnt == 1) {
         HideShiftImage()
         HelpText()
@@ -22,40 +28,23 @@ ShiftTimer:
         ShowShiftImage()
     } else if (cnt == 3) {
         GetInitConfig()
-        InitConfig()
+        ShowInitConfig()
     }
     cnt := 0
-Return
+}
 
 
-#If ( hotkeys_show_status == True )
-    [::ChangeShiftImage("-")
-    ]::ChangeShiftImage("+")
-    Insert::HideShiftImage()
-    Delete::
-        image := hotkeys_current[hotkeys_index]
-        image := A_WorkingDir . "\Image\RShift\" . image
-        Snipaste(image, "Screen1")
-        SetTimer, HideShiftImage, -300
-    Return
-#If
 
-
-Global Hotkeys_Images       := {}    ; 软件图片对应关系
-Global hotkeys_show_status  := False ; 是否正在显示图片
-Global hotkeys_current      := []    ; 当前显示的图片组
-Global hotkeys_index        := 1     ; 显示图片的序号
-Global hotkeys_total        := 1     ; 显示图片组的数量
+hotkeys_images  := Map() ; 软件图片对应关系
+hotkeys_current := []    ; 当前显示的图片组
+hotkeys_index   := 0     ; 显示图片的序号
 
 
 InitImageConfig()
 {
-    Global Hotkeys_Images
-    check_total := Hotkeys_Images.Count()
-    if (check_total) {
+    global hotkeys_images
+    if (hotkeys_images.Count > 0) {
         return
-    } else {
-        Hotkeys_Images := {}
     }
     ; 快捷键图片对应关系
     ; Default                : Windows.png
@@ -70,10 +59,10 @@ InitImageConfig()
     ; Chrome__Bilibili       : ChromeBilibili.png
     ; PotPlayer              : PotPlayer.png
     ; CloudMusic             : CloudMusic.png
-    file := A_LineFile
+    file  := A_LineFile
     slice := [ A_LineNumber - 13 , A_LineNumber - 2 ]
-    data := ReadConfig(file, slice)
-    data := StrSplit(data, "`n")
+    data  := ReadConfig(file, slice)
+    data  := StrSplit(data, "`n")
     for index, item in data {
         item  := StrSplit(item, ":")
         key   := item[1]
@@ -81,7 +70,7 @@ InitImageConfig()
         key   := StrReplace(key, " ", "")
         value := StrReplace(value, " ", "")
         value := StrSplit(value, ",")
-        Hotkeys_Images[key] := value
+        hotkeys_images[key] := value
     }
 }
 
@@ -89,24 +78,23 @@ InitImageConfig()
 ; 获取需要展示的图片
 GetShiftImage()
 {
-    GetActiveWindowInfo()
     InitImageConfig()
+    GetActiveWindowInfo()
+
+    global hotkeys_images, hotkeys_current, hotkeys_index
 
     win_process_name := window.process_name
     win_title        := window.title
+    hotkeys_current  := GetWindowConfig(window, hotkeys_images)
 
-    hotkeys_current := GetWindowConfig(Hotkeys_Images)
-    hotkeys_total   := hotkeys_current.MaxIndex()
-
-    if (hotkeys_index > hotkeys_total) {
+    if (hotkeys_index > hotkeys_current.Length) {
         hotkeys_index := 1
-    }
-    if (hotkeys_index <= 0) {
-        hotkeys_index := hotkeys_total
+    } else if (hotkeys_index <= 0) {
+        hotkeys_index := hotkeys_current.Length
     }
 
     result := hotkeys_current[hotkeys_index]
-    result := A_WorkingDir "\Image\RShift\" result
+    result := A_WorkingDir . "\Image\RShift\" . result
     return result
 }
 
@@ -115,41 +103,49 @@ ShowShiftImage()
 {
     image      := GetShiftImage()
     image_size := GetImageSize(image)
-    image_w    := image_size["w"]
-    image_h    := image_size["h"]
-    image_x    := Screen.w/2 - image_w/2
-    image_y    := Screen.h/2 - image_h/2
+    image_w    := image_size.w
+    image_h    := image_size.h
+    image_x    := Screen.x + Screen.w/2 - image_w/2
+    image_y    := Screen.y + Screen.h/2 - image_h/2
 
-    Gui, Destroy
-    Gui, +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale
-    Gui, Margin, 1, 1
-    Gui, Add, Picture, w%image_w% h%image_h%, %image%
+    global G
+    global hotkeys_current, hotkeys_index
 
-    ; 页面索引
-    if (hotkeys_total > 1) {
-        Gui, font, s15, "Cascadia Code"
-        Gui, Add, Text, w%image_w% +Center +Border, %hotkeys_index%/%hotkeys_total%
+    try {
+        win_id := G.Hwnd
+        G.Destroy()
     }
 
-    Gui, Show, Center NA
-    hotkeys_show_status := True
+    G := Gui()
+    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
+    G.MarginX := 1
+    G.MarginY := 1
+    G.Add("Picture", Format("vPicture w{1} h{2}", image_w, image_h), image)
+
+    ; 页面索引
+    if (hotkeys_current.Length > 1) {
+        G.SetFont("s15", "Cascadia Code")
+        text := hotkeys_index . "/" . hotkeys_current.Length
+        G.Add("Text", Format("+Center +Border w{}", image_w), text)
+    }
+    G.Show("NA Center")
 }
 
 
 HideShiftImage()
 {
-    Gui, Destroy
-    hotkeys_show_status := False
-    hotkeys_index       := 1
-    hotkeys_total       := 1
-    hotkeys_current     := []
+    global G
+    G.Destroy()
+    hotkeys_index   := 0
+    hotkeys_current := []
 }
 
 
 ; 展示图片切换上一个下一个
 ChangeShiftImage(np:="")
 {
-    if (hotkeys_total == 1) {
+    global hotkeys_current, hotkeys_index
+    if (hotkeys_current.Length == 1) {
         return
     }
     if (np == "+") {
@@ -159,3 +155,17 @@ ChangeShiftImage(np:="")
     }
     ShowShiftImage()
 }
+
+
+#HotIf ( hotkeys_index != 0 )
+    [::ChangeShiftImage("-")
+    ]::ChangeShiftImage("+")
+    Insert::HideShiftImage()
+    Delete::{
+        global hotkeys_current, hotkeys_index
+        image := hotkeys_current[hotkeys_index]
+        image := A_WorkingDir . "\Image\RShift\" . image
+        SnipasteImage(image, "Screen")
+        SetTimer HideShiftImage, -300
+    }
+#HotIf

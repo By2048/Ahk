@@ -1,22 +1,22 @@
 ﻿
 
-#Enter::Run, Chrome.bat, %A_WorkingDir%, Hide
-#AppsKey::Run Taskmgr.exe
+#Enter::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
+#AppsKey::Run "Taskmgr.exe"
 
 RWin::Return
 RAlt::EN()
 RCtrl::CN()
 
-#Tab::Send !{Tab}
-#+Tab::Send !+{Tab}
+#Tab::Send "!{Tab}"
+#+Tab::Send "!+{Tab}"
 
 ^Esc::Return
 ^+Esc::Return
 
->#9::Send #^!9
->#0::Send #^!0
->#=::Send {Volume_Up}
->#-::Send {Volume_Down}
+>#9::Send "#^!9"
+>#0::Send "#^!0"
+>#=::Send "{Volume_Up}"
+>#-::Send "{Volume_Down}"
 
 ^Space::Return
 !Space::Return

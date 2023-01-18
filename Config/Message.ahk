@@ -2,7 +2,7 @@
 ; https://docs.microsoft.com/en-us/windows/win32/controls/lvm-setcolumnwidth
 ; https://wiki.winehq.org/List_Of_Windows_Messages
 
-Global Message := {}
+Message := {}
 
 Message.WM_NULL                        := 0x0000
 Message.WM_CREATE                      := 0x0001
