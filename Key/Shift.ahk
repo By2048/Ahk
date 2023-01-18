@@ -101,41 +101,45 @@ GetShiftImage()
 
 ShowShiftImage()
 {
-    image      := GetShiftImage()
+    image := GetShiftImage()
+    if (not image) {
+        return
+    }
+
     image_size := GetImageSize(image)
     image_w    := image_size.w
     image_h    := image_size.h
     image_x    := Screen.x + Screen.w/2 - image_w/2
     image_y    := Screen.y + Screen.h/2 - image_h/2
 
-    global G
+    global GSI
     global hotkeys_current, hotkeys_index
 
     try {
-        win_id := G.Hwnd
-        G.Destroy()
+        win_id := GSI.Hwnd
+        GSI.Destroy()
     }
 
-    G := Gui()
-    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
-    G.MarginX := 1
-    G.MarginY := 1
-    G.Add("Picture", Format("vPicture w{1} h{2}", image_w, image_h), image)
+    GSI := Gui()
+    GSI.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
+    GSI.MarginX := 1
+    GSI.MarginY := 1
+    GSI.Add("Picture", Format("vPicture w{1} h{2}", image_w, image_h), image)
 
     ; 页面索引
     if (hotkeys_current.Length > 1) {
-        G.SetFont("s15", "Cascadia Code")
+        GSI.SetFont("s15", "Cascadia Code")
         text := hotkeys_index . "/" . hotkeys_current.Length
-        G.Add("Text", Format("+Center +Border w{}", image_w), text)
+        GSI.Add("Text", Format("+Center +Border w{}", image_w), text)
     }
-    G.Show("NA Center")
+    GSI.Show("NA Center")
 }
 
 
 HideShiftImage()
 {
-    global G
-    G.Destroy()
+    global GSI
+    GSI.Destroy()
     hotkeys_index   := 0
     hotkeys_current := []
 }
