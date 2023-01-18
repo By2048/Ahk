@@ -18,7 +18,7 @@
     ; 在资源管理器中打开
     !\::{
         MouseClick "Right"
-        image := A_WorkingDir . "\Image\Software\Wallpaper\Black\Open.png"
+        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Open.png"
         ClickImage(image)
     }
 
@@ -48,7 +48,7 @@
         y1    := win_h * 90/100
         x2    := x1    + 2000
         y2    := y1    + 100
-        image := A_WorkingDir . "\Image\Software\Wallpaper\Black\PgUp.png"
+        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\PgUp.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
     }
     !PgDn::{
@@ -58,7 +58,7 @@
         y1    := win_h * 90/100
         x2    := x1    + 2000
         y2    := y1    + 100
-        image := A_WorkingDir . "\Image\Software\Wallpaper\Black\PgDn.png"
+        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\PgDn.png"
         MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
         ; Gui, -DPIScale +Disabled +Owner -SysMenu -Caption
         ; Gui, +Border
@@ -71,14 +71,14 @@
     ; 订阅
     ![::{
         MouseClick "Right"
-        image := A_WorkingDir . "\Image\Software\Wallpaper\Black\Download.png"
+        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Download.png"
         ClickImage(image)
     }
 
     ; 取消订阅
     !]::{
         MouseClick "Right"
-        image := A_WorkingDir . "\Image\Software\Wallpaper\Black\Delete.png"
+        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Delete.png"
         ClickImage(image)
         Sleep 100
         Send "{Enter}"

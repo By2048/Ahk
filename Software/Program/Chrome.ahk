@@ -338,9 +338,9 @@ Expand := False
         Expand := True
     }
 
-    ; >!y::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Y.png")
-    ; >!z::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\Z.png")
-    ; >!w::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\W.png")
-    ; >!n::MouseClickImage(A_WorkingDir "\Image\Software\Chrome\N.png")
+    ; >!y::MouseClickImage(A_InitialWorkingDir "\Image\Software\Chrome\Y.png")
+    ; >!z::MouseClickImage(A_InitialWorkingDir "\Image\Software\Chrome\Z.png")
+    ; >!w::MouseClickImage(A_InitialWorkingDir "\Image\Software\Chrome\W.png")
+    ; >!n::MouseClickImage(A_InitialWorkingDir "\Image\Software\Chrome\N.png")
 
 #HotIf

@@ -94,7 +94,7 @@ GetShiftImage()
     }
 
     result := hotkeys_current[hotkeys_index]
-    result := A_WorkingDir . "\Image\RShift\" . result
+    result := A_InitialWorkingDir . "\Image\RShift\" . result
     return result
 }
 
@@ -164,7 +164,7 @@ ChangeShiftImage(np:="")
     Delete::{
         global hotkeys_current, hotkeys_index
         image := hotkeys_current[hotkeys_index]
-        image := A_WorkingDir . "\Image\RShift\" . image
+        image := A_InitialWorkingDir . "\Image\RShift\" . image
         SnipasteImage(image, "Screen")
         SetTimer HideShiftImage, -300
     }

@@ -56,8 +56,8 @@
 >^l::Run "C:\Program Files\LogiOptionsPlus\LogiOptionsPlus.exe"
 
 >^x:: Run "D:\#Lnk\Xshell.lnk"
->^v::Run VSCode . " E:\Config\VSCode\Windows.code-workspace", A_WorkingDir, "Hide"
->^+v::Run VSCode, A_WorkingDir, "Hide"
+>^v::Run VSCode . " E:\Config\VSCode\Windows.code-workspace", A_InitialWorkingDir, "Hide"
+>^+v::Run VSCode, A_InitialWorkingDir, "Hide"
 >^m::Run "D:\#Lnk\PotPlayer.lnk"
 >^n::Run "D:\#Lnk\CloudMusic.lnk"
 >^+n::Run "D:\#Lnk\QQMusic.lnk"
@@ -65,16 +65,16 @@
 >^Esc::Run "Taskmgr.exe" ;任务管理器
 >^+Esc::Run "D:\#Lnk\HuoRongSword.lnk"
 
->^[::Run VSCode . " E:\Config\VSCode\Note.code-workspace", A_WorkingDir, "Hide"
->^]::Run VSCode . " E:\Config\VSCode\Ahk.code-workspace",  A_WorkingDir, "Hide"
+>^[::Run VSCode . " E:\Config\VSCode\Note.code-workspace", A_InitialWorkingDir, "Hide"
+>^]::Run VSCode . " E:\Config\VSCode\Ahk.code-workspace",  A_InitialWorkingDir, "Hide"
 >^\::Run "D:\#Lnk\#AppStore\Whiteboard.lnk"
 
 ;          {20d04fe0-3aea-1069-a2d8-08002b30309d}::   ;我的电脑
 >^,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
 >^.::Run "T:\\"
->^/::Run "Chrome.bat", A_WorkingDir, "Hide"
+>^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
 >^+/::{
-    Run "Chrome.bat", A_WorkingDir, "Hide"
+    Run "Chrome.bat", A_InitialWorkingDir, "Hide"
     exe := Windows_Process_Name.Get("Chrome")
     WinWaitActive "ahk_exe" . exe,  , 3
     MoveWindowToBackupPosition()
@@ -117,7 +117,7 @@ CtrlTimer() {
             Run "D:\#Lnk\Maye.lnk"
         }
     } else if (cnt == 2) {
-        HelpImage(A_WorkingDir . "\Image\RCtrl.png")
+        HelpImage(A_InitialWorkingDir . "\Image\RCtrl.png")
     }
     cnt := 0
 }

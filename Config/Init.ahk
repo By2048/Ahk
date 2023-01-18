@@ -24,8 +24,8 @@ GetInitConfig()
     }
 
     Init.config.Push(Init.new_line)
-    Init.config.Push( Format(" A_WorkingDir | {1}" , A_WorkingDir ) )
-    Init.config.Push( Format(" JQB          | {1}    {2}", JQB.Phone, JQB.Windows)                                  )
+    Init.config.Push( Format(" A_InitialWorkingDir | {1}" , A_InitialWorkingDir ) )
+    Init.config.Push( Format(" JQB                 | {1}    {2}", JQB.Phone, JQB.Windows)                                  )
 
     Init.config.Push(Init.new_line)
     ; | \Date  \Time  \DateTime  \Dism  \Sfc  -#/                   |

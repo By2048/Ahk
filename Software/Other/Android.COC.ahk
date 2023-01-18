@@ -217,8 +217,8 @@
     Return
 
     !q::
-        images := [ A_WorkingDir . "\Image\Software\COC\gbl.png"
-                  , A_WorkingDir . "\Image\Software\COC\gbl_small.png" ]
+        images := [ A_InitialWorkingDir . "\Image\Software\COC\gbl.png"
+                  , A_InitialWorkingDir . "\Image\Software\COC\gbl_small.png" ]
         CocSelect(images)
     Return
 

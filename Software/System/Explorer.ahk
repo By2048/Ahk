@@ -66,7 +66,7 @@
     F7::Return
     F8::Return
     F9::Return
-    F10::Run VSCode . " -n " "E:\Config\Windows.yaml", A_WorkingDir, "Hide"
+    F10::Run VSCode . " -n " "E:\Config\Windows.yaml", A_InitialWorkingDir, "Hide"
     F11::Run "E:\Project\Demo\"
     F12::Run "E:\Project\Ahk\"
     >!Space::Run "D:\#Lnk\Everything.lnk"
