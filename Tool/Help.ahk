@@ -8,15 +8,15 @@
 ; 显示图片
 HelpImage(image:="")
 {
-    global G
+    global GHI
     try {
-        g_id := G.Hwnd
+        win_id := GHI.Hwnd
     } catch error {
-        G := Gui()
+        GHI := Gui()
     }
 
     if (not image) {
-        G.Destroy()
+        GHI.Destroy()
         GlobalSet("Status", "help_image_show_status", False)
         return
     }
@@ -27,11 +27,11 @@ HelpImage(image:="")
     x := Screen.w/2 - w/2
     y := Screen.h/2 - h/2
 
-    G.Opt("-DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
-    G.MarginX := 1
-    G.MarginY := 1
-    G.Add("Picture", Format("+Border w{1} h{2}", w, h), image)
-    G.Show("Center NA")
+    GHI.Opt("-DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
+    GHI.MarginX := 1
+    GHI.MarginY := 1
+    GHI.Add("Picture", Format("+Border w{1} h{2}", w, h), image)
+    GHI.Show("Center NA")
     GlobalSet("Status", "help_image_show_status", True)
 }
 
@@ -39,20 +39,20 @@ HelpImage(image:="")
 ; 显示帮助文本
 HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 {
-    CoordMode("Pixel", "Screen")
-    CoordMode("Mouse", "Screen")
+    CoordMode "Pixel", "Screen"
+    CoordMode "Mouse", "Screen"
 
-    global G
+    global GHT
     try {
-        g_id := G.Hwnd
+        win_id := GHT.Hwnd
     } catch error {
-        G := Gui()
-        g_id := G.Hwnd
+        GHT := Gui()
+        win_id := GHT.Hwnd
     }
 
     if (not data) {
         GlobalSet("Status", "help_text_show_status", False)
-        G.Destroy()
+        GHT.Destroy()
         return
     }
 
@@ -64,13 +64,13 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     text_w := (total_count + zh_cn_count) * Font.Size * Font.Dpi
     text_h := 0
 
-    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
-    G.MarginX := 0
-    G.MarginY := 0
-    G.SetFont(Format("s{}", Font.Size), Font.Type)
+    GHT.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
+    GHT.MarginX := 0
+    GHT.MarginY := 0
+    GHT.SetFont(Format("s{}", Font.Size), Font.Type)
     xywh := Format("x{1} y{2} w{3}", text_x, text_y, text_w)
-    G.Add("Text", "+Center +Border vText " . xywh, data)
-    G["Text"].GetPos(&_, &_, &_, &text_h)
+    GHT.Add("Text", "+Center +Border vText " . xywh, data)
+    GHT["Text"].GetPos(&_, &_, &_, &text_h)
 
     screen_config := {}
     screen_id := ScreenNameToId(screen_name)
@@ -128,12 +128,12 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
             gui_y := screen_yy - gui_h - 5
     }
 
-    G.Show(Format("NA x{1} y{2} w{3} h{4}", gui_x, gui_y, gui_w, gui_h))
+    GHT.Show(Format("NA x{1} y{2} w{3} h{4}", gui_x, gui_y, gui_w, gui_h))
     GlobalSet("Status", "help_text_show_status", True)
 
     if (sleep_time > 0) {
         Sleep sleep_time
-        G.Destroy()
+        GHT.Destroy()
         GlobalSet("Status", "help_text_show_status", False)
     }
 }
