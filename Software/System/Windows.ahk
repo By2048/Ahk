@@ -62,17 +62,17 @@
         offset := 1
         ; cleft  := 393
         cleft    := 300
-        offset_x := 9
-        offset_y := -30
+        offset_x := 15
+        offset_y := 35
         MoveControlUDLR(cinfo,  ,  , cleft,  , offset)
 
         ; 设置平铺模式
         MouseGetPos &x_origin, &y_origin
         cinfo  := window.controls.DirectUIHWND2
-        x     := cinfo.x  + 10
-        y     := cinfo.yy - 30
+        x     := cinfo.x  + offset_x
+        y     := cinfo.yy + offset_y
         MouseClick "Right", x, y, 1, 0
-        Send "{v}{s}"
+        Send "vs"
         MouseMove x_origin, y_origin, 0
 
         ; 调整列宽 分组依据 更多
