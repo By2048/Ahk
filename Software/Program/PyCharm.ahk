@@ -33,32 +33,33 @@
 #HotIf
 
 
+; ----------------------------------------------------------------------------------------------- ;
+
+
 DoubleShift := False
-AppsKeyRedirect := False
-FloatTool := False
-CenterTools := False
-CenterToolsConfig := []
-CenterToolsSpace := 10
-
-
-#HotIf ( CheckWindowActive("PyCharm") And DoubleShift == True )
+#HotIf CheckWindowActive("PyCharm") And DoubleShift == True
     Esc::
     CapsLock::{
+        global DoubleShift
         Send "{Esc}"
         DoubleShift := False
     }
-    RWin::CenterHideWindow(1500, 1500)
+    RWin::CenterHideWindow(1000, 1000)
 #HotIf
 
 
 ;AppsKey Esc 一次性返回问题修复
-#HotIf ( CheckWindowActive("PyCharm") And AppsKeyRedirect == True )
+AppsKeyRedirect   := False
+AppsKeyEnterCount := 0
+#HotIf CheckWindowActive("PyCharm") And AppsKeyRedirect == True
     $Enter::{
+        global AppsKeyEnterCount
         Send "{Enter}"
         AppsKeyEnterCount := AppsKeyEnterCount + 1
     }
     $Esc::
     $CapsLock::{
+        global AppsKeyRedirect, AppsKeyEnterCount
         if (AppsKeyEnterCount > 1) {
             Send "{Left}"
             AppsKeyEnterCount := AppsKeyEnterCount - 1
@@ -72,9 +73,11 @@ CenterToolsSpace := 10
 
 
 ; 浮动工具栏
-#HotIf ( CheckWindowActive("PyCharm") And FloatTool == True )
+FloatTool := False
+#HotIf CheckWindowActive("PyCharm") And FloatTool == True
     $Esc::
     $CapsLock::{
+        global FloatTool, CapsLockActivate
         Send "{Esc}"
         FloatTool := False
         CapsLockActivate := False
@@ -83,21 +86,26 @@ CenterToolsSpace := 10
     $Enter::{
         Send "{Enter}"
         Sleep 99
-        C := GetHideWindowConfig()
-        win_id := C.id
-        WinActivate "ahk_id" . win_id
+        win := GetHideWindowConfig()
+        if (win.id) {
+            WinActivate "ahk_id " . win.id
+        }
     }
 #HotIf
 
 
 ; 主菜单处理
-#HotIf ( CheckWindowActive("PyCharm") And CenterTools == True )
+CenterTools := False
+CenterToolsConfig := []
+CenterToolsSpace := 10
+#HotIf CheckWindowActive("PyCharm") And CenterTools == True
     $Enter::{
+        global CenterTools, CenterToolsConfig, CenterToolsSpace
         Send "{Enter}"
-        c := GetHideWindowConfig()
-        CenterToolsConfig.Push(c)
+        win := GetHideWindowConfig()
+        CenterToolsConfig.Push(win)
         max_length := CenterToolsConfig.Length
-        move_space := c.w / 2
+        move_space := win.w / 2
         for index, cfg in CenterToolsConfig {
             cid := cfg.id
             cx  := cfg.x
@@ -109,16 +117,19 @@ CenterToolsSpace := 10
             cfg.x := cx
             cfg.y := cy
             cx  := cx - (max_length - index) * CenterToolsSpace
-            WinMove  cx, cy, cw, ch, "ahk_id" . cid
+            WinMove cx, cy, cw, ch, "ahk_id " . cid
         }
     }
     $+Enter::{
+        global CenterTools
         Send "{Enter}"
         CenterHideWindow()
         CenterTools := False
     }
     $Esc::
     $CapsLock::{
+        global AppsKeyRedirect
+        global CenterTools, CenterToolsConfig, CenterToolsSpace
         if (AppsKeyRedirect) {
             Send "{Left}"
         } else {
@@ -146,6 +157,7 @@ CenterToolsSpace := 10
 #HotIf
 
 
+CapsLockActivate := False
 #HotIf CheckWindowActive("PyCharm")
 
     #Include %A_InitialWorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
@@ -156,18 +168,22 @@ CenterToolsSpace := 10
     }
 
     ~Esc::{
+        global CapsLockActivate
         CapsLockActivate := False
     }
 
     $AppsKey::{
         Send "{AppsKey}"
+        global AppsKeyRedirect, AppsKeyEnterCount
         AppsKeyRedirect := True
         AppsKeyEnterCount := 1
         CenterHideWindow()
     }
 
     ; 断点 | 临时断点
+    cnt := 0
     $F2::{
+        global cnt
         if (cnt > 0) {
             cnt += 1
             return
@@ -177,6 +193,7 @@ CenterToolsSpace := 10
         SetTimer F2Timer, -200
     }
     F2Timer() {
+        global cnt
         if (cnt == 1) {
             Send "{F2}"
         } else if (cnt == 2) {
@@ -199,7 +216,9 @@ CenterToolsSpace := 10
         }
     }
 
+    cnt := 0
     ~LShift::{
+        global cnt
         if (cnt > 0) {
             cnt += 1
             return
@@ -209,6 +228,7 @@ CenterToolsSpace := 10
         SetTimer PyCharmTimer, -500
     }
     PyCharmTimer() {
+        global cnt, DoubleShift
         if (cnt == 2) {
             DoubleShift := True
         }
@@ -217,14 +237,13 @@ CenterToolsSpace := 10
 
     ~RWin::{
         WinGetPos &x, &y, &w, &h, "A"
-        if (x <= 0 or y <= 0 ) { ;已经全屏
+        if (x <= 0 or y <= 0 ) {
             return
         } else {
             MoveWindowToCenter(True)
         }
-        config := GetHideWindowConfig()
-        win_id := config.id
-        if (win_id) {
+        win := GetHideWindowConfig()
+        if (win.id) {
             CenterHideWindow()
         }
         GlobalSet("Status", "ignore_function", True)
@@ -242,12 +261,14 @@ CenterToolsSpace := 10
     ~^+n::CenterHideWindow()
     ~!i::CenterHideWindow(1000, 1000)
     ~^o::{
+        global EscRedirect
         EscRedirect := True
         CenterHideWindow()
     }
     ~!a::{
+        global EscRedirect
         EscRedirect := True
-        CenterHideWindow(2244, 1600)
+        CenterHideWindow(1600, 1000)
     }
 
     ;窗口全屏
@@ -285,8 +306,8 @@ CenterToolsSpace := 10
 
     ;标签页管理
     ^Tab::Return
-    <!Tab::Send "^{Tab}"
     ^+Tab::Return
+    <!Tab::Send "^{Tab}"
     <!+Tab::Send "^+{Tab}"
 
 

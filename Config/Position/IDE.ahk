@@ -43,7 +43,7 @@ WPD["PyCharm__拉取请求"] := Position(2333, "[Center][1]", 1333 , 1666)
 WPD["PyCharm__指定检查范围"] := Position(1500 , 1000)
 WPD["PyCharm__将提交推送到"] := Position(1500 , 1000)
 
-WPD["PyCharm__运行/调试配置"] := Position(1666 , 1777)
+WPD["PyCharm__运行/调试配置"] := Position4K(1600 , 1700)
 
 WPD["PyCharm__查找"]     := Position4K(1600 , 1500)
 WPD["PyCharm__检查"]     := Position4K(1600 , 1500)
@@ -61,26 +61,18 @@ WPD["PyCharm__评估"]             := Position4K(2000 , 1500)
 WPD["PyCharm__Python解释器"]     := Position4K(2000 , 1500)
 WPD["PyCharm__端点"]             := Position4K(2000 , 1500)
 
-WPD["PyCharm__断点"] := Position4K(2800 , 1500)
+WPD["PyCharm__断点"] := Position4K(2000 , 1500)
 
-WPD["PyCharm__运行"] := Position("[Center][1]" , 2800 , 1750)
-WPB["PyCharm__运行"] := Position("[Center][2]" , 2800 , 1750)
-WPD["PyCharm__调试"] := Position("[Center][1]" , 2800 , 1750)
-WPB["PyCharm__调试"] := Position("[Center][2]" , 2800 , 1750)
-WPD["PyCharm__服务"] := Position("[Center][1]" , 2800 , 1750)
-WPB["PyCharm__服务"] := Position("[Center][2]" , 2800 , 1750)
+WPD["PyCharm__运行"] := Position4K(2800 , 1750)
+WPD["PyCharm__调试"] := Position4K(2800 , 1750)
+WPD["PyCharm__服务"] := Position4K(2800 , 1750)
 
-WPD["PyCharm__终端"]       := Position("[Center][1]" , 3000 , 1700)
-WPB["PyCharm__终端"]       := Position("[Center][2]" , 3000 , 1700)
-WPD["PyCharm__Statistic"] := Position("[Center][1]" , 3000 , 1700)
-WPB["PyCharm__Statistic"] := Position("[Center][2]" , 3000 , 1700)
-WPD["PyCharm__数据库"]     := Position("[Center][1]" , 3000 , 1700)
-WPB["PyCharm__数据库"]     := Position("[Center][2]" , 3000 , 1700)
+WPD["PyCharm__终端"]       := Position4K(3000 , 1700)
+WPD["PyCharm__Statistic"] := Position4K(3000 , 1700)
+WPD["PyCharm__数据库"]     := Position4K(3000 , 1700)
 
-WPD["PyCharm__Python控制台"] := Position("[Center][1]" , 3300 , 1800)
-WPB["PyCharm__Python控制台"] := Position("[Center][2]" , 3300 , 1800)
-WPD["PyCharm__Git"]         := Position("[Center][1]" , 3300 , 1800)
-WPB["PyCharm__Git"]         := Position("[Center][2]" , 3300 , 1800)
+WPD["PyCharm__Python控制台"] := Position4K(3300 , 1800)
+WPD["PyCharm__Git"]         := Position4K(3300 , 1800)
 
 w := 900
 h := 600

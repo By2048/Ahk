@@ -1,4 +1,21 @@
 ﻿
+~*CapsLock::{
+    global EscCount
+    Send "{Esc}"
+    if (EscCount > 0) {
+        loop EscCount {
+            Send "{Esc}"
+            Sleep 30
+        }
+        EscCount := 0
+    }
+}
+~*CapsLock Up::{
+    global CapsLockActivate
+    CapsLockActivate := False
+    SetCapsLockState "Off"
+}
+
 ^CapsLock::Return
 ^+CapsLock::Return
 $!CapsLock::{
@@ -7,19 +24,6 @@ $!CapsLock::{
 }
 $!+CapsLock::{
     Send "^+{CapsLock}"
-    SetCapsLockState "Off"
-}
-
-~*CapsLock::{
-    Send "{Esc}"
-    if (EscCount > 0) {
-        ec := EscCount - 1
-        Send Format("{Esc {1}}", ec)
-        EscCount := 0
-    }
-}
-~*CapsLock Up::{
-    CapsLockActivate := False
     SetCapsLockState "Off"
 }
 
@@ -54,6 +58,7 @@ $!+CapsLock::{
 ; 书签描述符
 ^!`::Return
 ~CapsLock & `::{
+    global CapsLockActivate
     Send "^!``"
     CapsLockActivate := True
     CenterHideWindow()
@@ -62,6 +67,8 @@ $!+CapsLock::{
 ; 在Explorer中显示
 ^!e::Return
 ~CapsLock & e::{
+    global CapsLockActivate
+    CapsLockActivate := True
     Send "^!e"
 }
 
@@ -75,95 +82,101 @@ $!+CapsLock::{
 ^!p::Return
 ~CapsLock & p::{
     Send "^!p"
+    global CapsLockActivate, EscCount
     CapsLockActivate := True
     EscCount := 2
 }
 
 ; Git工具
 ^!g::Return
+^!+g::Return
 ~CapsLock & g::{
+    global CapsLockActivate, FloatTool
     if (CapsLockActivate == True) {
         Send "{Esc}"
         FloatTool := False
         CapsLockActivate := False
-    } else {
-        if (GetKeyState("LShift", "P")) {
-            Send "^!+g"
-            FloatTool := True
-            CenterHideWindow()
-        } else {
-            Send "^!g"
-            FloatTool := True
-            CapsLockActivate := True
-            CenterHideWindow()
-        }
+        return
     }
+    if (!GetKeyState("LShift", "P")) {
+        Send "^!g"
+    } else {
+        Send "^!+g"
+    }
+    CenterHideWindow()
+    FloatTool := True
+    CapsLockActivate := True
 }
 
 ; 编辑 编辑器操作
 ^!BackSpace::Return
 ^!+BackSpace::Return
 ~CapsLock & BackSpace::{
+    global CapsLockActivate
     if (CapsLockActivate == True) {
         Send "{Esc}"
         CapsLockActivate := False
-    } else {
-        if (GetKeyState("LShift", "P")) {
-            Send "^!+{BackSpace}"
-            CenterHideWindow(1000, 1500)
-        } else {
-            Send "^!{BackSpace}"
-            CenterHideWindow()
-        }
-        CapsLockActivate := True
+        return
     }
+    if (!GetKeyState("LShift", "P")) {
+        Send "^!{BackSpace}"
+        CenterHideWindow()
+    } else {
+        Send "^!+{BackSpace}"
+        CenterHideWindow(700, 1100)
+    }
+    CapsLockActivate := True
 }
 
 ; 书签 | 最近编辑
 ^!\::Return
 ^!+\::Return
 ~CapsLock & \::{
-    if (GetKeyState("LShift", "P")) {
-        Send "^!+\"
-        CenterHideWindow(2200, 1700)
-        CapsLockActivate := True
-        Return
-    }
-    if (not CapsLockActivate) {
-        Send "^!\"
-        CapsLockActivate := True
-        CenterHideWindow(3000, 1700)
-    } else {
+    global CapsLockActivate
+    if (CapsLockActivate) {
         Send "{Esc}"
         CapsLockActivate := False
+        return
     }
+    if (!GetKeyState("LShift", "P")) {
+        Send "^!\"
+        CenterHideWindow(1600, 1100)
+    } else {
+        Send "^!+\"
+        CenterHideWindow(1700, 1100)
+    }
+    CapsLockActivate := True
 }
 
 ; 主菜单 工具窗口
 ^!Enter::Return
 ^!+Enter::Return
 ~CapsLock & Enter::{
+    global CapsLockActivate
+    global CenterTools, CenterToolsConfig
     if (CapsLockActivate == True) {
         Send "{Esc}"
-        FloatTool := False
+        CenterTools := False
         CapsLockActivate := False
-    } else {
-        lshift := GetKeyState("LShift", "P")
-        if (lshift) {
-            Send "^!+{Enter}"
-            CenterHideTools()
-        } else {
-            Send "^!{Enter}"
-            FloatTool := True
-            CenterHideWindow()
-        }
-        CapsLockActivate := True
+        return
     }
+    if (!GetKeyState("LShift", "P")) {
+        Send "^!{Enter}"
+        CenterHideWindow()
+    } else {
+        Send "^!+{Enter}"
+        CenterTools := True
+        CenterToolsConfig := []
+        win := CenterHideWindow()
+        CenterToolsConfig.Push(win)
+    }
+    CapsLockActivate := True
 }
 
 ; 代码
 ^!Numpad5::Return
 ~CapsLock & RShift::{
+    global CapsLockActivate
     Send "^!{Numpad5}"
     CapsLockActivate := True
     CenterHideWindow()
@@ -172,6 +185,7 @@ $!+CapsLock::{
 ; 外观
 ^!,::Return
 ~CapsLock & ,::{
+    global CapsLockActivate
     Send "^!,"
     CapsLockActivate := True
     CenterHideWindow()
@@ -180,14 +194,18 @@ $!+CapsLock::{
 ;窗口
 ^!.::Return
 ~CapsLock & .::{
+    global CapsLockActivate
+    global CenterTools, CenterToolsConfig
     Send "^!."
     CapsLockActivate := True
-    CenterHideTools()
+    win := CenterHideWindow()
+    CenterToolsConfig.Push(win)
 }
 
 ;活动编辑器
 ^!/::Return
 ~CapsLock & /::{
+    global CapsLockActivate
     Send "^!/"
     CapsLockActivate := True
     CenterHideWindow()
@@ -196,6 +214,7 @@ $!+CapsLock::{
 ; 快速列表 上下文
 ^!;::Return
 ~CapsLock & `;::{
+    global CapsLockActivate
     Send "^!;"
     CapsLockActivate := True
     CenterHideWindow()
@@ -204,6 +223,7 @@ $!+CapsLock::{
 ; 快速列表 选项卡
 ^!'::Return
 ~CapsLock & '::{
+    global CapsLockActivate
     Send "^!'"
     CapsLockActivate := True
     CenterHideWindow()
