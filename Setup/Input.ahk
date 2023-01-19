@@ -19,9 +19,9 @@
     SendInput FormatTime(A_Now, "yyyy-MM-dd HH-mm-ss")
 }
 
-::\Dism::DISM.exe /Online /Cleanup-image /Restorehealth
+::\Dism::DISM /Online /Cleanup-image /Restorehealth
 
-::\Sfc::\sfc /scannow
+::\Sfc::sfc /scannow
 
 ::\---::{- 80}
 ::\###::{# 80}
