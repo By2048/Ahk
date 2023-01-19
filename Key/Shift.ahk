@@ -11,20 +11,21 @@ $RShift::{
     global cnt
     if (cnt > 0) {
         cnt += 1
-        ; HelpText("RShift " . cnt, "center", "screen_3")
+        HelpText("RShift " . cnt, "Center", "Screen" . Screens.Count)
         return
     } else {
         cnt := 1
-        ; HelpText("RShift " . cnt, "center", "screen_3")
+        HelpText("RShift " . cnt, "center", "Screen" . Screens.Count)
     }
     SetTimer ShiftTimer, -333
 }
 ShiftTimer() {
     global cnt
     if (cnt == 1) {
-        HideShiftImage()
         HelpText()
+        HideShiftImage()
     } else if (cnt == 2) {
+        HelpText()
         ShowShiftImage()
     } else if (cnt == 3) {
         GetInitConfig()
@@ -139,7 +140,9 @@ ShowShiftImage()
 HideShiftImage()
 {
     global GSI
-    GSI.Destroy()
+    try {
+        GSI.Destroy()
+    }
     hotkeys_index   := 0
     hotkeys_current := []
 }
