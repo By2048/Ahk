@@ -43,7 +43,7 @@
     Run "D:\#Lnk\JetBrains.lnk"
     exe := Windows_Process_Name.Get("JetBrains")
     loop 9 {
-        WinActivate "ahk_exe" . exe
+        WinActivate "ahk_exe " . exe
         if WinActive("ahk_exe " . exe) {
             MoveWindowToCenter(True)
             break
@@ -76,7 +76,7 @@
 >^+/::{
     Run "Chrome.bat", A_InitialWorkingDir, "Hide"
     exe := Windows_Process_Name.Get("Chrome")
-    WinWaitActive "ahk_exe" . exe,  , 3
+    WinWaitActive "ahk_exe " . exe,  , 3
     MoveWindowToBackupPosition()
 }
 
