@@ -77,28 +77,33 @@
 
 ; 复制文件路径
 <#c::{
+    global JQB
     A_Clipboard := ""
     Send "^c"
-    ClipWait 1
-    HelpText(A_Clipboard, "center_down", "screen", 1000)
+    ClipWait
+    A_Clipboard := A_Clipboard
+    HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
     FileDelete JQB.Windows
     file := FileOpen(JQB.Windows, "w", "UTF-8")
-    file.Write(data)
+    file.Write(A_Clipboard)
     file.Close()
 }
 
 <#v::{
+    global JQB
     FileEncoding "UTF-8"
-    if (FileExist(JQB.Phone)) {
-        Try {
-            FileRead  A_Clipboard, JQB.Phone
-        }
-        Send "^v"
-        HelpText(A_Clipboard, "Center", "Screen", 333)
-        FileDelete JQB.Phone
-    } else {
+    if (!FileExist(JQB.Phone)) {
         HelpText("No Data", "Center",  , 333)
+        return
     }
+    try {
+        A_Clipboard := ""
+        FileRead  A_Clipboard, JQB.Phone
+    }
+    A_Clipboard := A_Clipboard
+    Send "^v"
+    HelpText(A_Clipboard, "Center", "Screen", 333)
+    FileDelete JQB.Phone
 }
 
 <#n::{ ;打开“连接”快速操作
