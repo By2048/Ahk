@@ -30,8 +30,8 @@ $!+CapsLock::{
 ; 聚焦 编辑器|工具
 ^!NumpadDiv::Return
 ^!NumpadMult::Return
-~CapsLock & Tab::Send "^!{NumpadDiv}"
-~CapsLock & LShift::Send "^!{NumpadMult}"
+~CapsLock & LShift::Send "^!{NumpadDiv}"
+~CapsLock & Tab::Send "^!{NumpadMult}"
 
 ; 项目 结构
 ~CapsLock & [::{
@@ -143,7 +143,7 @@ $!+CapsLock::{
         CenterHideWindow(1600, 1100)
     } else {
         Send "^!+\"
-        CenterHideWindow(1700, 1100)
+        CenterHideWindow(1200, 1100)
     }
     CapsLockActivate := True
 }

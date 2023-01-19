@@ -10,10 +10,11 @@
 
 ; 显示隐藏任务栏
 <#8::{
-    if (!WinExist("ahk_class Shell_TrayWnd")) {
-        WinShow "ahk_class Shell_TrayWnd"
+    rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
+    if (!WinExist(rule)) {
+        WinShow rule
     } else {
-        WinHide "ahk_class Shell_TrayWnd"
+        WinHide rule
     }
 }
 
