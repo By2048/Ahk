@@ -43,7 +43,9 @@
     Run "D:\#Lnk\JetBrains.lnk"
     exe := Windows_Process_Name.Get("JetBrains")
     loop 9 {
-        WinActivate "ahk_exe " . exe
+        try {
+            WinActivate "ahk_exe " . exe
+        }
         if WinActive("ahk_exe " . exe) {
             MoveWindowToCenter(True)
             break
