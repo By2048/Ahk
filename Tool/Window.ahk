@@ -161,7 +161,7 @@ GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
     if (mode == "Window") {
         win_x := 0
         win_y := 0
-        GetClientSize(win_id, win_w, win_h)
+        GetClientSize(win_id, &win_w, &win_h)
     }
     if (mode == "Strict") {
         win_size_w := win_w
