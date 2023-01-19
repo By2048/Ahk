@@ -10,10 +10,9 @@ HelpImage(image:="")
 {
     global GHI
     try {
-        win_id := GHI.Hwnd
-    } catch error {
-        GHI := Gui()
+        GHI.Destroy()
     }
+    GHI := Gui()
 
     if (not image) {
         GHI.Destroy()
@@ -44,11 +43,9 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 
     global GHT
     try {
-        win_id := GHT.Hwnd
-    } catch error {
-        GHT := Gui()
-        win_id := GHT.Hwnd
+        GHT.Destroy()
     }
+    GHT := Gui()
 
     if (not data) {
         GlobalSet("Status", "help_text_show_status", False)
@@ -69,8 +66,8 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     GHT.MarginY := 0
     GHT.SetFont(Format("s{}", Font.Size), Font.Type)
     xywh := Format("x{1} y{2} w{3}", text_x, text_y, text_w)
-    GHT.Add("Text", "+Center +Border vText " . xywh, data)
-    GHT["Text"].GetPos(&_, &_, &_, &text_h)
+    GHT.Add("Text", "+Center +Border vTextContent " . xywh, data)
+    GHT["TextContent"].GetPos(&_, &_, &_, &text_h)
 
     screen_config := {}
     screen_id := ScreenNameToId(screen_name)
