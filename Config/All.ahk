@@ -1,8 +1,11 @@
 ﻿
 ; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
 window := {
-    cache_id     :  0 ,
-    cache_expire : -1 ,
+    cache : {
+        id     :  0 ,
+        title  : "" ,
+        expire : -1 ,
+    } ,
 
     id  : 0 ,
     pid : 0 ,

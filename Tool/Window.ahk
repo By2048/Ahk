@@ -108,17 +108,13 @@ GetWindowConfig(window, config)
 ; mode   | Default AHK默认 \ Strict|Window API修正
 GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
 {
-
-    try {
-        win_id := WinGetID("A")
-    } catch {
-        return
-    }
+    win_id    := WinGetID("A")
+    win_title := WinGetTitle("ahk_id " . win_id)
 
     ; 缓存数据
     if (cache == True) {
-        if (window.cache_id and window.cache_expire) {
-            if (window.cache_id == win_id and window.cache_expire - A_TickCount > 0) {
+        if (window.cache.id == win_id and window.cache.title == win_title) {
+            if (window.cache.expire - A_TickCount > 0) {
                 return
             }
         }
@@ -135,7 +131,7 @@ GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
     win_controls_id   := WinGetControlsHwnd("ahk_id " . win_id)
     win_controls_name := WinGetControls("ahk_id " . win_id)
     win_class         := WinGetClass("ahk_id " . win_id)
-    win_title         := WinGetTitle("ahk_id " . win_id)
+
     win_text          := WinGetText("ahk_id " . win_id)
     WinGetPos &win_x, &win_y, &win_w, &win_h, "ahk_id " . win_id
 
@@ -225,8 +221,9 @@ GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
     window.position_backup  := win_position_backup
 
     ; 最后一次获取的信息缓存时间
-    window.cache_id     := win_id
-    window.cache_expire := A_TickCount + expire
+    window.cache.id     := win_id
+    window.cache.title  := win_title
+    window.cache.expire := A_TickCount + expire
 }
 
 
