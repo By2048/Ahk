@@ -38,6 +38,6 @@ RWin & LWin::{
     if (Screens.Count == 1) {
         HelpText("`nClose All Script`n", "Center", "Screen", 1000)
     } else if (Screens.Count > 1) {
-        HelpText("`nClose All Script`n", "Center", "Screen" . Screens.Count)
+        HelpText("`nClose All Script`n", "Center", "Screen" . Screens.Count, 1000)
     }
 }

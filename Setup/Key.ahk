@@ -1,9 +1,5 @@
 ﻿
 #Include %A_InitialWorkingDir%\Config\All.ahk
-#Include %A_InitialWorkingDir%\Config\Software.ahk
-
-; #Include %A_InitialWorkingDir%\Lib\Json.ahk
-; #Include %A_InitialWorkingDir%\Lib\TrayIcon.ahk
 
 #Include %A_InitialWorkingDir%\Tool\Base.ahk
 #Include %A_InitialWorkingDir%\Tool\Change.ahk
@@ -27,7 +23,6 @@
 #Include %A_InitialWorkingDir%\Key\Shift.ahk
 #Include %A_InitialWorkingDir%\Key\Space.ahk
 #Include %A_InitialWorkingDir%\Key\CapsLock.ahk
-
 
 #SingleInstance Force
 #NoTrayIcon

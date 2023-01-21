@@ -1,6 +1,4 @@
 ﻿
-#Include %A_InitialWorkingDir%\Tool\Global.ahk
-
 ; RWin
 ; 快捷键 (Ctrl Alt 系统全局) (Shift 功能反转)
 ; 窗口位置大小调整
@@ -102,6 +100,7 @@ RWin & RShift::{
         }
     }
 }
+
 
 ; 右键RWin设置
 cnt := 0
