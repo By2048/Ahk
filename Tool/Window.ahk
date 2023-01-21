@@ -108,8 +108,12 @@ GetWindowConfig(window, config)
 ; mode   | Default AHK默认 \ Strict|Window API修正
 GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
 {
-    win_id    := WinGetID("A")
-    win_title := WinGetTitle("ahk_id " . win_id)
+    try {
+        win_id    := WinGetID("A")
+        win_title := WinGetTitle("ahk_id " . win_id)
+    } catch {
+        return
+    }
 
     ; 缓存数据
     if (cache == True) {

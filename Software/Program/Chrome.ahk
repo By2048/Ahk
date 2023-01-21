@@ -61,7 +61,6 @@
 
 
 Expand := False
-
 #HotIf ( CheckWindowActive( "Chrome" ) And Expand == True )
     Tab::{
         Send "{Right 3}"
@@ -190,7 +189,9 @@ Expand := False
 
     ;将焦点放置在Chrome工具栏中的第一项上
     !+t::Return
+    alt_shift_t := False
     ![::{
+        global alt_shift_t
         if (not alt_shift_t) {
             alt_shift_t := True
             Send "!+t"
@@ -299,6 +300,7 @@ Expand := False
     !e::Return
     !/::!e
 
+    alt_space := False
     !Space::{
         global alt_space
         if (not alt_space) {
