@@ -220,12 +220,13 @@
                  , "Recover"  , "ItemNameDisplay:420,"
                                 "Recycle.DeletedFrom:400,Recycle.DateDeleted:180,"
                                 "Size:150"   )
-        EC["D:\"]       := EC["Software"]
-        EC["D:\Python"] := EC["Software"]
-        EC["D:\Go"]     := EC["Software"]
-        EC["D:\Java"]   := EC["Software"]
-        EC["回收站"]     := EC["Recover"]
-        EC["T:\"]       := EC["List"]
+        EC["D:\"]           := EC["Software"]
+        EC["D:\AutoHotkey"] := EC["Software"]
+        EC["D:\Python"]     := EC["Software"]
+        EC["D:\Go"]         := EC["Software"]
+        EC["D:\Java"]       := EC["Software"]
+        EC["回收站"]         := EC["Recover"]
+        EC["T:\"]           := EC["List"]
 
         WPD["Explorer"] := Position(total_width , total_height)
         MoveWindowToDefaultPosition()
