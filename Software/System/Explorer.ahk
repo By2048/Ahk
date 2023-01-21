@@ -206,55 +206,20 @@
 
     <#\::
     <#+\::{
-        ; 4K
-            ; 2520  1700
-            ; D:\\   | 树 426 | 名称800  备注400    日期250             | 预览 550
-            ; 回收站  | 树 426 | 名称500  原位置500  删除日期250  大小200  | 预览 550
-            ; 其他    | 树 426 | 名称999   日期250    大小200            | 预览 550
-        ; 2K
-            ; 1890	1275
-            ; D:\\   | 树 426 | 名称800  备注400    日期250             | 预览 550
-            ; 回收站  | 树 426 | 名称500  原位置500  删除日期250  大小200  | 预览 550
-            ; 其他    | 树 426 | 名称999   日期250    大小200            | 预览 550
-
-        if ( InStr(Screen.Name, "4K") ) {
-            total_width  := 2520
-            total_height := 1700
-            left_length  := 426
-            right_length := 550
-            line_width   := 14
-            offset       := 9
-
-            EC := Map( "File"     , "ItemNameDisplay:1450"
-                     , "Default"  , "ItemNameDisplay:999,ItemDate:250,Size:200"
-                     , "List"     , "ItemNameDisplay:1250,Size:200"
-                     , "Software" , "ItemNameDisplay:800,Comment:400,ItemDate:250"
-                     , "Recover"  , "ItemNameDisplay:500,"
-                                    "Recycle.DeletedFrom:500,Recycle.DateDeleted:250,"
-                                    "Size:200" )
-        }
-
-        if ( InStr(Screen.Name, "2K") ) {
-            total_width  := 1929
-            total_height := 1250
-            left_length  := 305
-            right_length := 378
-            line_width   := 14
-            offset       := 5
-            EC := Map( "File"     , "ItemNameDisplay:1133"
-                     , "Default"  , "ItemNameDisplay:800,ItemDate:180,Size:140"
-                     , "List"     , "ItemNameDisplay:980,Size:140"
-                     , "Software" , "ItemNameDisplay:510,Comment:430,ItemDate:180"
-                     , "Recover"  , "ItemNameDisplay:420," .
-                                    "Recycle.DeletedFrom:400,Recycle.DateDeleted:180," .
-                                    "Size:140" )
-        }
-
-        WPD["Explorer"] := Position(total_width , total_height)
-        MoveWindowToDefaultPosition()
-
-        win_title := window.title
-
+        total_width  := 1960 ,
+        total_height := 1250
+        total_left  := 317
+        total_right := 411
+        offset_left  := -6
+        offset_right := 12
+        line_width   := 26
+        EC := Map( "File"     , "ItemNameDisplay:1150"
+                 , "List"     , "ItemNameDisplay:999,Size:150"
+                 , "Default"  , "ItemNameDisplay:800,ItemDate:200,Size:150"
+                 , "Software" , "ItemNameDisplay:550,Comment:400,ItemDate:200"
+                 , "Recover"  , "ItemNameDisplay:420,"
+                                "Recycle.DeletedFrom:400,Recycle.DateDeleted:180,"
+                                "Size:150"   )
         EC["D:\"]       := EC["Software"]
         EC["D:\Python"] := EC["Software"]
         EC["D:\Go"]     := EC["Software"]
@@ -262,16 +227,18 @@
         EC["回收站"]     := EC["Recover"]
         EC["T:\"]       := EC["List"]
 
+        WPD["Explorer"] := Position(total_width , total_height)
+        MoveWindowToDefaultPosition()
+
         config := ""
-        if EC.Has(win_title) {
-            config := EC[win_title]
-        }
-        if (not config) {
+        if (!EC.Has(window.title)) {
             if (A_ThisHotkey == "<#+\") {
                 config := EC["File"]
             } else if (A_ThisHotkey == "<#\") {
                 config := EC["Default"]
             }
+        } else {
+            config := EC[window.title]
         }
 
         command := Format("{1} {2} {3}"
@@ -280,29 +247,34 @@
                          , config )
         Run command
 
-        CoordMode "Mouse", "Window"
-        MouseGetPos &x_origin, &y_origin
-
         GetActiveWindowInfo("Window")
         win_id := window.id
         win_xx := window.xx
-        cinfo  := window.controls.DirectUIHWND3
-        x      := cinfo.x
-        y      := cinfo.y
-        w      := cinfo.w
-        h      := cinfo.h
-        xx     := cinfo.xx
-        yy     := cinfo.yy
+        content    := window.controls.DirectUIHWND3
+        content_x  := content.x
+        content_y  := content.y
+        content_w  := content.w
+        content_h  := content.h
+        content_xx := content.xx
+        content_yy := content.yy
+
         CoordMode "Mouse", "Window"
-        check_width := window.controls.SysTreeView321.w
-        if ( Abs(check_width - left_length ) > offset * 2 ) {
-            max_left := left_length + line_width
-            MouseClickDrag "Left", x-offset,  (yy-y)/2, max_left+offset,  (yy-y)/2, 0
-            max_right := win_xx - right_length + line_width
-            MouseClickDrag "Left", xx+offset, (yy-y)/2, max_right-offset, (yy-y)/2, 0
+        MouseGetPos &x_origin, &y_origin
+
+        tree_view_width := window.controls.SysTreeView321.w
+        if ( (tree_view_width - total_left) > Abs(offset_left) ) {
+            MouseClickDrag "Left"
+                           , content_x  - offset_left     , content_yy/2 - content_y/2
+                           , total_left - offset_left * 2 , content_yy/2 - content_y/2
+                           , 0
+        }
+        if ( (total_width - content_xx - total_right - line_width) > Abs(offset_right) ) {
+            MouseClickDrag "Left"
+                           , content_xx + offset_right                , content_yy/2 - content_y/2
+                           , total_width - total_right - offset_right , content_yy/2 - content_y/2
+                           , 0
         }
         MouseMove x_origin, y_origin, 0
-
     }
 
 #HotIf

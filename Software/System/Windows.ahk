@@ -50,54 +50,15 @@
 
     ; 默认位置
     <#\::{
-
         MoveWindowToDefaultPosition()
-
         GetActiveWindowInfo("Window")
-
-        ; 左侧信息栏
-
-        ; cinfo  := window.controls.GetOwnPropDesc("DirectUIHWND2").Value
-        cinfo  := window.controls.DirectUIHWND2
-        offset := 1
-        ; cleft  := 393
+        cinfo  := window.controls.DirectUIHWND2 ;左侧信息栏
+        offset := -6
         cleft    := 300
         offset_x := 15
         offset_y := 35
         MoveControlUDLR(cinfo,  ,  , cleft,  , offset)
-
-        ; 设置平铺模式
-        MouseGetPos &x_origin, &y_origin
-        cinfo  := window.controls.DirectUIHWND2
-        x     := cinfo.x  + offset_x
-        y     := cinfo.yy + offset_y
-        MouseClick "Right", x, y, 1, 0
-        Send "vs"
-        MouseMove x_origin, y_origin, 0
-
-        ; 调整列宽 分组依据 更多
-        ; MouseClick, Right, x+30, y+30, 1, 0
-        ; Send {p}{m}
-        ; Sleep 300
-
-        ; 名称
-        ; Send !t
-        ; Send !w
-        ; SendInput 990
-
-        ; 修改日期
-        ; Send !t
-        ; Send {Down}
-        ; Send !w
-        ; SendInput 250
-
-        ; 大小
-        ; Send !t
-        ; Send {Down}
-        ; Send !w
-        ; SendInput 200
-
-        ; Send {Enter}
+        Send "^!7" ;平铺模式
     }
 
 #HotIf
