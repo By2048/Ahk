@@ -127,17 +127,20 @@ GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
         expire := Cache_Expire_Time
     }
 
-    win_pid           := WinGetPID("ahk_id " . win_id)
-    win_process_exe   := WinGetProcessName("ahk_id " . win_id)
-    win_process_path  := WinGetProcessPath("ahk_id " . win_id)
-    win_min_max       := WinGetMinMax("ahk_id " . win_id)
-    win_transparent   := WinGetTransparent("ahk_id " . win_id)
-    win_controls_id   := WinGetControlsHwnd("ahk_id " . win_id)
-    win_controls_name := WinGetControls("ahk_id " . win_id)
-    win_class         := WinGetClass("ahk_id " . win_id)
-
-    win_text          := WinGetText("ahk_id " . win_id)
-    WinGetPos &win_x, &win_y, &win_w, &win_h, "ahk_id " . win_id
+    try {
+        win_pid           := WinGetPID("ahk_id " . win_id)
+        win_process_exe   := WinGetProcessName("ahk_id " . win_id)
+        win_process_path  := WinGetProcessPath("ahk_id " . win_id)
+        win_min_max       := WinGetMinMax("ahk_id " . win_id)
+        win_transparent   := WinGetTransparent("ahk_id " . win_id)
+        win_controls_id   := WinGetControlsHwnd("ahk_id " . win_id)
+        win_controls_name := WinGetControls("ahk_id " . win_id)
+        win_class         := WinGetClass("ahk_id " . win_id)
+        win_text          := WinGetText("ahk_id " . win_id)
+        WinGetPos &win_x, &win_y, &win_w, &win_h, "ahk_id " . win_id
+    } catch {
+        return
+    }
 
     win_process_name := RTrim(win_process_exe , "exe")
     win_process_name := RTrim(win_process_name, "EXE")

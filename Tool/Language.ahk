@@ -6,14 +6,20 @@
 ; https://www.voidtools.com/support/everything/language_ids/
 
 CN() {
-    PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0804,  , "A"
+    try {
+        PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0804,  , "A"
+    }
 }
 ZH() {
-    PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0804,  , "A"
+    try {
+        PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0804,  , "A"
+    }
 }
 
 EN() {
-    PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0409,  , "A"
+    try {
+        PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0409,  , "A"
+    }
 }
 
 ; 获取中文字符数量
