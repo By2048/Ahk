@@ -10,6 +10,9 @@ WPD["VMware"]      := Position4K(2500 , 1600)
 WPD["FFRenamePro"] := Position4K(3300 , 1800)
 WPD["BiliBili"]    := Position4K(2500 , 1650)
 
+WPD["Xshell"] := Position(2200 , 1200)
+WPD["Xftp"]   := Position(2200 , 1200)
+
 WPD["Zip"]         := Position(1380 , 1050)
 WPD["QQMusic"]     := Position(1800 , 1100)
 

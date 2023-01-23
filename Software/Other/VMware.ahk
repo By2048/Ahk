@@ -8,8 +8,8 @@
     RWin::{
         MoveWindowToCenter(True)
         _name  := "SysListView321"
-        _width := { 1 : 200    ;虚拟机名称
-                  , 2 : 1000 } ;路径
+        _width := Map( 1 , 200    ;虚拟机名称
+                     , 2 , 1000 ) ;路径
         SetColumnWidth(_name, _width)
     }
 #HotIf
@@ -47,10 +47,10 @@
         Sleep 300
         MoveWindowToCenter(True)
         _name  := "SysListView321"
-        _width := { 1 : 150   ;驱动器
-                  , 2 : 200   ;名称
-                  , 3 : 600   ;文件夹
-                  , 4 : 200 } ;最大大小
+        _width := Map( 1 , 150   ;驱动器
+                     , 2 , 200   ;名称
+                     , 3 , 600   ;文件夹
+                     , 4 , 200 ) ;最大大小
         SetColumnWidth(_name, _width)
     }
 
