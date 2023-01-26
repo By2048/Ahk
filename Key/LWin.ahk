@@ -84,7 +84,9 @@
     ClipWait
     A_Clipboard := A_Clipboard
     HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
-    FileDelete JQB.Windows
+    if (FileExist(JQB.Windows)) {
+        FileDelete JQB.Windows
+    }
     file := FileOpen(JQB.Windows, "w", "UTF-8")
     file.Write(A_Clipboard)
     file.Close()
