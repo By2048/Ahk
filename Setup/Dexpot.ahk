@@ -24,7 +24,14 @@
 <#w::#^!F17
 <#e::#^!F18
 <#a::#^!F19
-<#s::#^!F20
+<#s::{
+    Send "#^!{F20}"
+    Sleep 200
+    rule := "ahk_exe WindowsTerminal.exe ahk_class CASCADIA_HOSTING_WINDOW_CLASS"
+    if (WinExist(rule)) {
+        WinActivate rule
+    }
+}
 <#d::#^!F21
 
 <#+1::#^!+F13
