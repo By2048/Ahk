@@ -77,14 +77,21 @@
 #HotIf
 
 
+
 ; 编辑环境变量
-#HotIf CheckWindowActive( "SystemPropertiesComputerName" )
+#HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "编辑环境变量" )
     PgUp::Send "!u"
     PgDn::Send "!o"
+#HotIf
+
+#HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "环境变量" )
     <#\::{
         MoveWindowToDefaultPosition()
-        SetColumnWidth( "SysListView321", { 1 : 150 , 2 : 1200 } ) ;用户变量
-        SetColumnWidth( "SysListView322", { 1 : 200 , 2 : 1150 } ) ;系统变量
+        win_title := window.title
+        if (win_title == "环境变量") {
+            SetColumnWidth( "SysListView321", Map( 1,150 , 2,1200 ) ) ;用户变量
+            SetColumnWidth( "SysListView322", Map( 1,200 , 2,1150 ) ) ;系统变量
+        }
     }
 #HotIf
 
