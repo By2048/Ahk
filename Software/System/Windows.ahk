@@ -67,10 +67,8 @@
 ; Windows 安全中心警报
 #HotIf CheckWindowActive( "" , "#32770" , "安全中心警报" )
     Enter::{
-        ControlSetChecked "Button4", "A"
-        ControlSetChecked "Button5", "A"
-        ; Control, Check,  , Button4, A
-        ; Control, Check,  , Button5, A
+        ControlSetChecked True, "Button4", "A"
+        ControlSetChecked True, "Button5", "A"
         Sleep 100
         Send "!a"
     }
