@@ -1,8 +1,8 @@
  Ahk-Reload Ahk-Start  Ahk-Stop   CMD        PS         
  PowerShell WT         Terminal   WindowsTerminal       
  TaskKill   Adb        Ahk        Aria2      FFmpeg     
- FFplay     FFprobe    Git        Go         Lua        
- LuaC       LuaW       Java       Python     Py         
+ FFplay     FFprobe    Git        Go         GoFmt      
+ Lua        LuaC       LuaW       Java       Py         
  Zip        ScrcpyAdb  Scrcpy     HuntAndPeck           
  FFRename   Notepad    Chrome     VSCode     Script     
  PyEnv      GitX       GitIDE     GitPy      GitOther   
