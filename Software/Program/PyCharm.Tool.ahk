@@ -88,7 +88,7 @@ CenterHideWindow(position*) {
         win_h := win.h
     }
     WinActivate "ahk_id " . win.id
-    WinMove win_x, win_y, win_w, win_h, "ahk_id" . win.id
+    WinMove win_x, win_y, win_w, win_h, "ahk_id " . win.id
     result    := {}
     result.id := win.id
     result.x  := win_x

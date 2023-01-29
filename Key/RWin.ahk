@@ -48,11 +48,11 @@ RWin & RAlt::MoveWindowToMainMini("Mini")
 ; RWin & LButton::{
 ;     SetWinDelay 30
 ;     MouseGetPos &mouse_x1, &mouse_y1, &win_id
-;     WinGetMinMax &win_min_max, "ahk_id" . win_id
+;     WinGetMinMax &win_min_max, "ahk_id " . win_id
 ;     if (win_min_max) {
 ;         return
 ;     }
-;     WinGetPos &win_x1, &win_y1, &win_w1, &win_h1, "ahk_id" . win_id
+;     WinGetPos &win_x1, &win_y1, &win_w1, &win_h1, "ahk_id " . win_id
 ;     loop {
 ;         left_button := GetKeyState("LButton", "P")
 ;         if (left_button == "U") {
@@ -63,7 +63,7 @@ RWin & RAlt::MoveWindowToMainMini("Mini")
 ;         move_y := mouse_y2 - mouse_y1
 ;         win_x2 := win_x1 + move_x
 ;         win_y2 := win_y1 + move_y
-;         WinMove  , win_x2, win_y2, "ahk_id" . win_id
+;         WinMove  , win_x2, win_y2, "ahk_id " . win_id
 ;     }
 ; }
 

@@ -146,7 +146,7 @@ CenterToolsSpace := 10
             cx  := cx + move_space
             cfg.x := cx
             cx  := cx + index * CenterToolsSpace
-            WinMove  cx, cy, cw, ch, "ahk_id" . cid
+            WinMove cx, cy, cw, ch, "ahk_id " . cid
         }
         l := CenterToolsConfig.Length
         if (CenterToolsConfig.Length == 0) {

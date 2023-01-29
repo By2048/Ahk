@@ -193,8 +193,8 @@ GetActiveWindowInfo(mode:="Default", cache:=True, expire:="Auto")
     }
     for control_name, control_args in win_controls.OwnProps() {
         try {
-            ControlGetPos &x, &y,&w, &h, control_name, "ahk_id" . win_id
-            control_text := ControlGetText(control_name, "ahk_id" . win_id)
+            ControlGetPos &x, &y,&w, &h, control_name, "ahk_id " . win_id
+            control_text := ControlGetText(control_name, "ahk_id " . win_id)
         } catch error {
             win_controls.DeleteProp(control_name)
         } else {
@@ -351,7 +351,7 @@ SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
     }
 
     if (win_min_max) {
-        WinRestore "ahk_id" . win_id
+        WinRestore "ahk_id " . win_id
     }
 
     if (IsDesktops() or IsGame()) {
@@ -372,10 +372,10 @@ SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
 
     if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
         if (step) {
-            WinMove xx, yy,   ,    , "ahk_id" . win_id
-            WinMove   ,   , ww,  hh, "ahk_id" . win_id
+            WinMove xx, yy,   ,    , "ahk_id " . win_id
+            WinMove   ,   , ww,  hh, "ahk_id " . win_id
         } else {
-            WinMove xx, yy, ww,  hh, "ahk_id" . win_id
+            WinMove xx, yy, ww,  hh, "ahk_id " . win_id
         }
     }
 }
@@ -391,11 +391,11 @@ SetWindowTransparent(change:=0)
 
     if (change == "Max") {
         win_transparent := 255
-        WinSetTransparent  win_transparent, "ahk_id" . win_id
+        WinSetTransparent  win_transparent, "ahk_id " . win_id
         return
     } else if (change == "Min") {
         win_transparent := 0
-        WinSetTransparent  win_transparent, "ahk_id" . win_id
+        WinSetTransparent  win_transparent, "ahk_id " . win_id
         return
     }
 
@@ -405,14 +405,14 @@ SetWindowTransparent(change:=0)
         } else {
             win_transparent := win_transparent + change
         }
-        WinSetTransparent  win_transparent, "ahk_id" . win_id
+        WinSetTransparent  win_transparent, "ahk_id " . win_id
     } else if (change < 0) {
         if (win_transparent + change <= 55) {
             win_transparent := 55
         } else {
             win_transparent := win_transparent + change
         }
-        WinSetTransparent  win_transparent, "ahk_id" . win_id
+        WinSetTransparent  win_transparent, "ahk_id " . win_id
     }
 }
 
@@ -674,9 +674,11 @@ MoveWindowToPosition(position:="Default")
         } else if (System_Type == "Win10") {
             ProcessClose "SearchApp.exe"
             Sleep 100
-            WinActivate "StartMenuExperienceHost.exe"
-            Sleep 300
-            GetActiveWindowInfo()
+            try {
+                WinActivate "StartMenuExperienceHost.exe"
+                Sleep 300
+                GetActiveWindowInfo()
+            }
         }
     }
 
@@ -798,16 +800,16 @@ HighlightActiveWindow(time:=300, width:=9, color:="e51400")
 
     g_id := G.Hwnd
 
-    ; WinSetTransParent 100, "ahk_id" . g_id
+    ; WinSetTransParent 100, "ahk_id " . g_id
     config_out := Format("{}-{} {}-{} {}-{} {}-{} {}-{} ", pos_out*)
     config_in  := Format("{}-{} {}-{} {}-{} {}-{} {}-{} ", pos_in* )
     pos_config := config_out . config_in
 
-    WinSetRegion pos_config, "ahk_id" . g_id
+    WinSetRegion pos_config, "ahk_id " . g_id
 
     CloseHighlight() {
         Sleep time
-        WinClose "ahk_id" . g_id
+        WinClose "ahk_id " . g_id
     }
     SetTimer CloseHighlight, -1
 }

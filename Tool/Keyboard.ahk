@@ -84,19 +84,19 @@ KeyboardGUI()
         G.Show("NA")
 
         ; 移动窗口到中下位置
-        WinGetPos &x, &y, &w, &h, "ahk_id" . g_id
+        WinGetPos &x, &y, &w, &h, "ahk_id " . g_id
         x := A_ScreenWidth/2 - w/2
         y := A_ScreenHeight  - h   - 5
-        WinMove x, y, w, h, "ahk_id" . g_id
+        WinMove x, y, w, h, "ahk_id " . g_id
 
         ; 透明度 最上层
-        WinSetAlwaysOnTop 1, "ahk_id" . g_id
-        ; WinSetTransColor  keyboard_transcolor, "ahk_id" . win_id
-        ; WinSetTransparent 220, "ahk_id" . win_id
+        WinSetAlwaysOnTop 1, "ahk_id " . g_id
+        ; WinSetTransColor  keyboard_transcolor, "ahk_id " . win_id
+        ; WinSetTransparent 220, "ahk_id " . win_id
 
         ; 激活鼠标下的窗口
         ; MouseGetPos &_, &_, &_, &_, win_id
-        WinActivate "ahk_id" . last_win_id
+        WinActivate "ahk_id " . last_win_id
     } else {
         keyboard_show_status := False
         G.Destroy()

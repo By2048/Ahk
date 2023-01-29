@@ -33,7 +33,7 @@ WindowsTerminal(mode:="Focus", folder:="")
 {
     name := "Terminal"
     exe  := Windows_Process_Name.Get(name)
-    if ( WinActive("ahk_exe" exe) ) {
+    if ( WinActive("ahk_exe " . exe) ) {
         WinClose "A"
         return
     }
@@ -43,8 +43,8 @@ WindowsTerminal(mode:="Focus", folder:="")
         mode := "--focus"
     }
     Run Format("{} {} -d {}", WT, mode, folder)
-    WinWait "ahk_exe" . exe
-    WinActivate "ahk_exe" . exe
+    WinWait "ahk_exe " . exe
+    WinActivate "ahk_exe " . exe
 }
 
 

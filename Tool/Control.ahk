@@ -21,6 +21,6 @@ SetColumnWidth(control_name, control_width, screen_from:="", screen_to:="")
             width := width / scale
         }
         width := Round(width)
-        SendMessage msg, index, width, control_name, "ahk_id" . win_id
+        SendMessage msg, index, width, control_name, "ahk_id " . win_id
     }
 }

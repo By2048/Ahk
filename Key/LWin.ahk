@@ -13,9 +13,51 @@
     rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
     if (!WinExist(rule)) {
         WinShow rule
+        HelpText("`n显示任务栏`n", "Center", "Screen", 500)
     } else {
         WinHide rule
+        HelpText("`n隐藏任务栏`n", "Center", "Screen", 500)
     }
+}
+
+; 任务栏多屏移动
+<#+8::{
+    CoordMode "Mouse", "Screen"
+
+    rule := "ahk_exe Explorer.EXE ahk_class Shell_TrayWnd"
+    WinActivate rule
+    win_id := WinGetID("A")
+    WinGetPos &x, &y, &w, &h, "ahk_id " . win_id
+    if (x == 0 and w == 2560) {
+        MouseGetPos &x_origin, &y_origin
+        mouse_x  := w/2 - Screens.Software.1.w/6
+        mouse_y  := Screens.Software.1.yy - h/2
+        mouse_xx := Screens.Software.2.x + Screens.Software.2.w/2
+        mouse_yy := Screens.Software.2.yy - 33
+        MouseClickDrag "Left", mouse_x, mouse_y, mouse_xx, mouse_yy, 3
+        MouseMove x_origin, y_origin
+    }
+
+    Sleep 1000
+
+    WinActivate rule
+    win_id := WinGetID("A")
+    WinGetPos &x, &y, &w, &h, "ahk_id " . win_id
+    if (h < 100) {
+        MouseGetPos &x_origin, &y_origin
+        mouse_x  := x + w/2
+        mouse_y  := y
+        mouse_xx := mouse_x
+        mouse_yy := Screens.Software.2.yy - 160
+        DllCall("SetCursorPos", "int", mouse_x, "int", mouse_y)
+        Sleep 300
+        Click "Click Down"
+        Sleep 300
+        Click Format("Click Up {} {}", mouse_xx, mouse_yy)
+        MouseMove x_origin, y_origin
+        return
+    }
+    HelpText("`n任务栏位置无需调整`n", "Center", "Screen", 500)
 }
 
 <#9::   ;主显示器 -
@@ -31,22 +73,22 @@
         case "<#+0" : Send "#^!+0"
     }
     win_exe := "Twinkle Tray.exe"
-    win_id  := WinExist("ahk_exe" . win_exe)
-    WinGetPos &win_x, &win_y, &win_w, &win_h, "ahk_id" . win_id
+    win_id  := WinExist("ahk_exe " . win_exe)
+    WinGetPos &win_x, &win_y, &win_w, &win_h, "ahk_id " . win_id
     x := Screen.x + Screen.w/2 - win_w/2
     y := Screen.y + Screen.h/2 - win_h/2
     w := win_w
     h := win_h
-    WinActivate "ahk_id" . win_id
-    WinMove x, y, w, h, "ahk_id" . win_id
-    WinSetAlwaysOnTop 1, "ahk_id" . win_id
+    WinActivate "ahk_id " . win_id
+    WinMove x, y, w, h, "ahk_id " . win_id
+    WinSetAlwaysOnTop 1, "ahk_id " . win_id
 }
 <#9 Up::
 <#0 Up::
 <#+9 Up::
 <#+0 Up::{
     global previous_win_id
-    WinActivate "ahk_id" . previous_win_id
+    WinActivate "ahk_id " . previous_win_id
 }
 
 ;声音
@@ -152,7 +194,7 @@
             }
         }
     }
-    WinClose "ahk_id" . win_id
+    WinClose "ahk_id " . win_id
 }
 ; 结束进程
 <#+BackSpace::{
@@ -188,8 +230,8 @@ LWin & RShift::{
             HelpText("Windows Theme HCBlack", "Ccenter", "Screen", 1000)
         }
         exe := Windows_Process_Name.Get("WindowsSettings")
-        WinWait "ahk_exe" . exe
-        WinClose "ahk_exe" . exe
+        WinWait "ahk_exe " . exe
+        WinClose "ahk_exe " . exe
     } else {
         ; 系统亮暗
         path := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"

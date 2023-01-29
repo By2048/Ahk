@@ -61,7 +61,7 @@ $CapsLock::{
 
     ; 激活鼠标下的窗口
     MouseGetPos  &_,  &_, &win_id
-    WinActivate "ahk_id" . win_id
+    WinActivate "ahk_id " . win_id
 
     ; 高亮窗口
     HighlightActiveWindow(300)
@@ -83,7 +83,7 @@ CapsLock & Space::{
     yy := Screen.y + Screen.h/2
     DllCall("SetCursorPos", "int", xx, "int", yy)
     MouseGetPos  &_,  &_, &win_id
-    WinActivate "ahk_id" . win_id
+    WinActivate "ahk_id " . win_id
     HighlightActiveWindow(300)
 }
 
