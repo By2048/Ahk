@@ -1,4 +1,4 @@
-
+﻿
 ; #Include %A_InitialWorkingDir%\Config\All.ahk
 ; #Include %A_InitialWorkingDir%\Lib\JEE.ahk
 ; #Include %A_InitialWorkingDir%\Tool\Mouse.ahk
@@ -370,10 +370,14 @@ SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
 
     if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
         if (step) {
-            WinMove xx, yy,   ,    , "ahk_id " . win_id
-            WinMove   ,   , ww,  hh, "ahk_id " . win_id
+            try {
+                WinMove xx, yy,   ,    , "ahk_id " . win_id
+                WinMove   ,   , ww,  hh, "ahk_id " . win_id
+            }
         } else {
-            WinMove xx, yy, ww,  hh, "ahk_id " . win_id
+            try {
+                WinMove xx, yy, ww,  hh, "ahk_id " . win_id
+            }
         }
     }
 }
@@ -479,7 +483,7 @@ MoveWindowUDLR(direction)
 
     step := 10
 
-    GetActiveWindowInfo("Default", True, 1000 * 5)
+    GetActiveWindowInfo()
 
     if (IsDesktops() or IsMaxMin() or IsGame()) {
         return
@@ -516,7 +520,7 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
 
     if (cup > 0) {
         x_start := cinfo.x + cinfo.w/2
-        y_start := cinfo.y - offset
+        y_start := cinfo.y + offset
         x_end   := x_start
         y_end   := cup
         xy      := y_end   - y_start
@@ -531,7 +535,7 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
     }
 
     if (cleft > 0) {
-        x_start := cinfo.x - offset
+        x_start := cinfo.x + offset
         y_start := cinfo.y + cinfo.h/2
         x_end   := cleft
         y_end   := y_start
@@ -681,7 +685,7 @@ MoveWindowToPosition(position:="Default")
     }
 
     if (position == "Default") {
-        if (window.position_default.Length != 4) {
+        if (not window.position_default.Length) {
             return
         }
         x := window.position_default[1]
@@ -689,7 +693,7 @@ MoveWindowToPosition(position:="Default")
         w := window.position_default[3]
         h := window.position_default[4]
     } else if (position == "Backup") {
-        if (window.position_backup.Length != 4) {
+        if (not window.position_backup.Length) {
             return
         }
         x := window.position_backup[1]
@@ -734,7 +738,8 @@ MoveWindowToBackupPosition()  {
 ; 高亮激活的窗口
 HighlightActiveWindow(time:=300, width:=9, color:="e51400")
 {
-    GetActiveWindowInfo("Strict", False)
+    InitWindowArgs()
+    GetActiveWindowInfo("Strict")
 
     win_x            := window.x
     win_y            := window.y
