@@ -11,25 +11,45 @@
     ;  DPI设置 系统增强
     ;  1 #3277010->SysTreeView325   2 #327702->SysListView321   4 #327706->SysListView323
     ;  1 ^                          3 #327704->SysListView322   4 ^
-    ;    650                          500 * dpi                   500+120+90 * dpi
     <#\::{
-        arg := (650) + ((200+180+120)*2+50) + ((500+120+90)*2+50) + 20
-        WPD["Q-Dir"] := Position(arg, 1950)
+        _ := 0
+        dpi := Screen.Dpi
+        tree_width := 300
+        box_left   := 200 + 180 + 120
+        box_right  := 510 + 90
+        scroll_bar_width := 30
+        box_space := 3
+
+        box_space := box_space * dpi
+        scroll_bar_width := scroll_bar_width * dpi
+        total_width := (tree_width + box_left + box_right) * dpi
+        total_width := total_width + scroll_bar_width * 2 + box_space
+        total_height := Screen.height * 8/9
+        box_down := total_height * 2/5
+
+        WPD["Q-Dir"] := Position(total_width, total_height)
         MoveWindowToDefaultPosition()
 
-        cinfo  := window.controls.GetOwnPropDesc("#327702").Value
-        cleft  := 650
-        MoveControlUDLR(cinfo,  ,  , cleft)
+        InitWindowArgs()
+        GetActiveWindowInfo("Default")
+        info   := window.controls.GetOwnPropDesc("#327702").Value
+        left   := tree_width * dpi
+        offset := 9
+        MoveControlUDLR(info, _, _, left, _, offset)
 
-        GetActiveWindowInfo()
+        InitWindowArgs()
+        GetActiveWindowInfo("Default")
+        info   := window.controls.GetOwnPropDesc("#327702").Value
+        right  := info.x + box_left * Screen.Dpi + scroll_bar_width + box_space
+        offset := 16
+        MoveControlUDLR(info, _, _, _, right, offset)
 
-        cinfo  := window.controls.GetOwnPropDesc("#327702").Value
-        cright := cinfo.x + (200+180+120)*2+50
-        MoveControlUDLR(cinfo,  ,  ,  , cright)
-
-        cinfo  := window.controls.GetOwnPropDesc("#327702").Value
-        cdown  := 735
-        MoveControlUDLR(cinfo,  , cdown)
+        InitWindowArgs()
+        GetActiveWindowInfo("Default")
+        info   := window.controls.GetOwnPropDesc("#327702").Value
+        down   := box_down
+        offset := 50
+        MoveControlUDLR(info, _, down, _, _, offset)
     }
 #HotIf
 
