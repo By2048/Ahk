@@ -51,13 +51,12 @@
     ; 默认位置
     <#\::{
         MoveWindowToDefaultPosition()
+        InitWindowArgs()
         GetActiveWindowInfo("Window")
-        cinfo  := window.controls.DirectUIHWND2 ;左侧信息栏
-        offset := -6
-        cleft    := 300
-        offset_x := 15
-        offset_y := 35
-        MoveControlUDLR(cinfo,  ,  , cleft,  , offset)
+        info   := window.controls.DirectUIHWND2 ;左侧信息栏
+        offset := 6
+        left   := 300
+        MoveControlUDLR(info, 0, 0, left, 0, offset)
         Send "^!7" ;平铺模式
     }
 
