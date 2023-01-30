@@ -6,9 +6,11 @@ WPD["Everything"]  := Position4K(2300 , 1700)
 WPD["Android"]     := Position4K(3440 , 2110)
 WPD["Wallpaper"]   := Position4K(3388 , 2000)
 WPD["Sandboxie"]   := Position4K(2500 , 1300)
-WPD["VMware"]      := Position4K(2500 , 1600)
 WPD["FFRenamePro"] := Position4K(3300 , 1800)
 WPD["BiliBili"]    := Position4K(2500 , 1650)
+
+WPD["VMware"] := Position(1800 , 1200)
+WPD["VMware_#32770_浏览ISO映像"] := Position(1520 , 1100)
 
 WPD["Xshell"] := Position(2200 , 1200)
 WPD["Xftp"]   := Position(2200 , 1200)

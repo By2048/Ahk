@@ -2,14 +2,14 @@
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
     <#\::{
         global WPD
-        WPD["BitComet_#32770_新建BT任务"] := Position4K(1800 , 1300)
+        WPD["BitComet_#32770_新建BT任务"] := Position(1100, 900)
+        InitWindowArgs()
         MoveWindowToDefaultPosition()
-        ; 主界面
         _1 := " 1    2    3   "
         _2 := " 名称 大小  %   "
-        _3 := " 1250 170  100 "
+        _3 := " 800  100  70  "
         config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth("SysListView321" , config, Screen_4K, Screen_2K)
+        SetColumnWidth("SysListView321" , config)
     }
 #HotIf
 
@@ -41,7 +41,7 @@
 
         ; 左边栏大小
         cinfo := window.controls.SysListView321
-        MoveControlUDLR(cinfo,  ,  , max_left,  , 3)
+        MoveControlUDLR(cinfo, 0, 0, max_left, 0, 3)
 
         ; 种子存档
         ; _1 := " 1       2     3    4          5     6       7        8       "
