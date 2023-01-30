@@ -1,4 +1,4 @@
-﻿
+
 ; #Include %A_InitialWorkingDir%\Config\All.ahk
 ; #Include %A_InitialWorkingDir%\Lib\JEE.ahk
 ; #Include %A_InitialWorkingDir%\Tool\Mouse.ahk
@@ -47,53 +47,56 @@ GetWindowConfig(window, config)
     win_config  := [] ;参数
     match_count := 0  ;满足的条件数
 
-    for config_key, config_value in config {
+    for config_name, config_value in config {
 
-        config_items := StrSplit(config_key, "_")
-        max_index    := config_items.Length
-        match_cnt    := 0
-
-        _process_name_ := ""
-        _class_        := ""
-        _title_        := ""
-        if (max_index > 0) {
-            _process_name_ := config_items[1]
+        config_items        := StrSplit(config_name, "_")
+        config_process_name := ""
+        config_class        := ""
+        config_title        := ""
+        if (config_items.Length > 0) {
+            config_process_name := config_items[1]
         }
-        if (max_index > 1) {
-            _class_ := config_items[2]
+        if (config_items.Length > 1) {
+            config_class := config_items[2]
         }
-        if (max_index > 2) {
-            _title_ := config_items[3]
+        if (config_items.Length > 2) {
+            config_title := config_items[3]
         }
 
-        ; 123 456 789
-        if (StrLen(_process_name_) > 0) {
-            if (win_process_name == _process_name_) {
+        match_cnt := 0
+
+        if (StrLen(config_process_name) > 0) {
+            if (win_process_name == config_process_name) {
                 match_cnt := match_cnt + 3
-            } else if (InStr(win_process_name, _process_name_)) {
+            } else if (InStr(win_process_name, config_process_name)) {
                 match_cnt := match_cnt + 2
+            } else {
+                continue
             }
         }
 
-        if (StrLen(_class_) > 0) {
-            if (win_class == _class_) {
+        if (StrLen(config_class) > 0) {
+            if (win_class == config_class) {
                 match_cnt := match_cnt + 2
-            } else if (InStr(win_class, _class_)) {
+            } else if (InStr(win_class, config_class)) {
                 match_cnt := match_cnt + 1
+            } else {
+                continue
             }
         }
 
-        if (StrLen(_title_) > 0) {
-            if (win_title == _title_) {
+        if (StrLen(config_title) > 0) {
+            if (win_title == config_title) {
                 match_cnt := match_cnt + 2
-            } else if (InStr(win_title, _title_)) {
+            } else if (InStr(win_title, config_title)) {
                 match_cnt := match_cnt + 1
             }
         }
 
         if (match_cnt > match_count) {
             match_count := match_cnt
-            win_config  := config_value
+            win_config.Push(config_value*)
+            win_config.Push(config_name)
         }
 
     }
