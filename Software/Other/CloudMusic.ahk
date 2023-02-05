@@ -10,7 +10,7 @@
     /::{
         MoveWindowToDefaultPosition()
         Sleep 300
-        MouseClickAndResetting(60, 1611)
+        MouseClickAndResetting(53, 1137, "Window")
     }
 
     \::Send "!\"
@@ -73,7 +73,7 @@
 
     Esc::{
         Send "{Esc}"
-        MouseClickAndResetting(1671, 497)
+        MouseClickAndResetting(1317, 335, "Window")
     }
 
 #HotIf
