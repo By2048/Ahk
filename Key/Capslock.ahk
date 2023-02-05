@@ -8,6 +8,13 @@ $CapsLock::{
     GetActiveWindowInfo()
     win_process_name := window.process_name
 
+    ignore_process := [ "PyCharm" ]
+    for index, value in ignore_process {
+        if (win_process_name == value) {
+            return
+        }
+    }
+
     offset    := 300
     x_default := Screen.x + Screen.w/2
     y_default := Screen.y + Screen.h/2
