@@ -16,8 +16,7 @@
 #HotIf CheckWindowActive("VSCode", "", ".ahk")
 
     F1::{
-        command := Chrome . " --app=file:///E:/GitX/wyagd001.github.io/zh-cn/docs/AutoHotkey.htm"
-        Run command
+        Run Chrome . " --app=file:///E:/GitX/wyagd001.github.io/v2/docs/index.htm"
         Sleep 500
         Send "{Esc}"
     }
