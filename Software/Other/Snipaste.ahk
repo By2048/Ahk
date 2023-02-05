@@ -15,9 +15,8 @@
 
     Enter::^c
 
-    Insert::Send "#^!{PrintScreen}"
-    Delete::Send "#^!{CtrlBreak}"
-
+    Insert::Send "^s"
+    Delete::Send "^t"
     [::,
     ]::.
 
