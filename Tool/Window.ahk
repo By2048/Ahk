@@ -95,6 +95,7 @@ GetWindowConfig(window, config)
 
         if (match_cnt > match_count) {
             match_count := match_cnt
+            win_config := []
             win_config.Push(config_value*)
             win_config.Push(config_name)
         }
@@ -554,6 +555,8 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
         return
     }
 
+    ; MouseMove x_start, x_end
+    ; MouseMove x_end, y_end
     MouseClickDrag "Left", x_start, y_start, x_end, y_end, 0
     MouseMove x_origin, y_origin, 0
 }
