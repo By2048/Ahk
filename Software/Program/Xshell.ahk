@@ -14,8 +14,6 @@
 
 #HotIf CheckWindowActive("Xshell")
 
-    #Include %A_InitialWorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
-
     <#Enter::Send "^!{F12}"
     <#+Enter::Send "^!+{F12}"
 

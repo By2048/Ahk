@@ -75,8 +75,6 @@
 
 #HotIf CheckWindowActive( "FreeFileSync" )
 
-    #Include %A_InitialWorkingDir%\Software\#\Fxx\F1_F12.ahk
-
     ; 开始比较
     !\::Send "{F5}"
 
