@@ -46,7 +46,6 @@
 #Include %A_InitialWorkingDir%\Software\Program\FireFox.ahk
 #Include %A_InitialWorkingDir%\Software\Program\JetBrains.ahk
 #Include %A_InitialWorkingDir%\Software\Program\Navicat.ahk
-#Include %A_InitialWorkingDir%\Software\Program\Notepad++.ahk
 #Include %A_InitialWorkingDir%\Software\Program\Obsidian.ahk
 #Include %A_InitialWorkingDir%\Software\Program\Postman.ahk
 #Include %A_InitialWorkingDir%\Software\Program\PyCharm.ahk
