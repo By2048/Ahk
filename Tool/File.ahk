@@ -32,17 +32,20 @@ GetImageSize(path)
 {
     info := GetFileInfo(path)
     if (not info) {
-        width  := -1
-        height := -1
+        return
     }
-    width  := info.宽度
-    height := info.高度
-    width  := StrReplace(width,  " 像素", "")
-    height := StrReplace(height, " 像素", "")
+    try {
+        width  := info.宽度
+        height := info.高度
+        width  := StrReplace(width,  " 像素", "")
+        height := StrReplace(height, " 像素", "")
+    } catch {
+        return
+    }
     result := {}
     result.width  := width
     result.height := height
-    result.w      := width
-    result.h      := height
+    result.w      := result.width
+    result.h      := result.height
     return result
 }

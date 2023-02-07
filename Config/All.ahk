@@ -44,6 +44,9 @@ window := {}
 ; 各种状态信息
 status := {}
 
+; 辅助调试信息
+A_Debug := {}
+
 InitWindowArgs()
 InitStatusArgs()
 

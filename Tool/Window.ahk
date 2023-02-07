@@ -1,11 +1,10 @@
 ﻿
-; #Include %A_InitialWorkingDir%\Config\All.ahk
-; #Include %A_InitialWorkingDir%\Lib\JEE.ahk
-; #Include %A_InitialWorkingDir%\Tool\Mouse.ahk
-; #Include %A_InitialWorkingDir%\Tool\File.ahk
-; #Include %A_InitialWorkingDir%\Tool\Change.ahk
-; #Include %A_InitialWorkingDir%\Tool\Help.ahk
-; #Include %A_InitialWorkingDir%\Tool\Language.ahk
+#Include %A_InitialWorkingDir%\Config\All.ahk
+#Include %A_InitialWorkingDir%\Tool\Mouse.ahk
+#Include %A_InitialWorkingDir%\Tool\File.ahk
+#Include %A_InitialWorkingDir%\Tool\Change.ahk
+#Include %A_InitialWorkingDir%\Tool\Help.ahk
+#Include %A_InitialWorkingDir%\Tool\Language.ahk
 
 
 
@@ -97,7 +96,7 @@ GetWindowConfig(window, config)
             match_count := match_cnt
             win_config := []
             win_config.Push(config_value*)
-            win_config.Push(config_name)
+            A_Debug.window_config_name := config_name
         }
 
     }
