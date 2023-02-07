@@ -63,7 +63,7 @@ GetHideWindowConfig() {
 CenterHideWindow(position*) {
     win := GetHideWindowConfig()
     if (not win.id) {
-        return result
+        return
     }
     win_id := win.id
     if (position.Length == 0) {
@@ -106,6 +106,8 @@ PositionBackGroundTask() {
     win_h := 600
     win_x := Screen.xx - win_w - 100
     win_y := Screen.yy - win_h - 150
-    WinActivate "ahk_id " . win.id
-    WinMove win_x, win_y, win_w, win_h, "ahk_id " . win.id
+    try {
+        WinActivate "ahk_id " . win.id
+        WinMove win_x, win_y, win_w, win_h, "ahk_id " . win.id
+    }
 }

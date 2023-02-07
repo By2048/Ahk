@@ -160,12 +160,7 @@ CenterToolsSpace := 10
 CapsLockActivate := False
 #HotIf CheckWindowActive("PyCharm")
 
-    #Include %A_InitialWorkingDir%\Software\#\Fxx\F1_F12_Ctrl.ahk
-    #Include %A_InitialWorkingDir%\Software\#\Fxx\F1_F12_Ctrl_Shift.ahk
-
-    >!F12::{
-        PositionBackGroundTask()
-    }
+    #Include %A_InitialWorkingDir%\Software\Program\PyCharm.Fxx.ahk
 
     ~Esc::{
         global CapsLockActivate
@@ -177,43 +172,7 @@ CapsLockActivate := False
         global AppsKeyRedirect, AppsKeyEnterCount
         AppsKeyRedirect := True
         AppsKeyEnterCount := 1
-        CenterHideWindow()
-    }
-
-    ; 断点 | 临时断点
-    cnt := 0
-    $F2::{
-        global cnt
-        if (cnt > 0) {
-            cnt += 1
-            return
-        } else {
-            cnt := 1
-        }
-        SetTimer F2Timer, -200
-    }
-    F2Timer() {
-        global cnt
-        if (cnt == 1) {
-            Send "{F2}"
-        } else if (cnt == 2) {
-            Send "!{F2}"
-            WinWaitActive "断点"
-            Send "!{r}"
-            Send "{Enter}"
-        }
-        cnt := 0
-    }
-
-    ~F9::{
-        CenterHideWindow()
-    }
-
-    ~F11::{
-        win_title := WinGetTitle("A")
-        if (win_title == "评估") {
-            Send "{Esc}"
-        }
+        ; CenterHideWindow()
     }
 
     cnt := 0
@@ -256,20 +215,20 @@ CapsLockActivate := False
             MoveWindowToCenter(True)
         }
     }
-    ~!+\::CenterHideWindow()
-    ~^n::CenterHideWindow()
-    ~^+n::CenterHideWindow()
-    ~!i::CenterHideWindow(1000, 1000)
-    ~^o::{
-        global EscRedirect
-        EscRedirect := True
-        CenterHideWindow()
-    }
-    ~!a::{
-        global EscRedirect
-        EscRedirect := True
-        CenterHideWindow(1600, 1000)
-    }
+    ; ~!+\::CenterHideWindow()
+    ; ~^n::CenterHideWindow()
+    ; ~^+n::CenterHideWindow()
+    ; ~!i::CenterHideWindow(1000, 1000)
+    ; ~^o::{
+    ;     global EscRedirect
+    ;     EscRedirect := True
+    ;     CenterHideWindow()
+    ; }
+    ; ~!a::{
+    ;     global EscRedirect
+    ;     EscRedirect := True
+    ;     CenterHideWindow(1600, 1000)
+    ; }
 
     ;窗口全屏
     <#Enter::{
@@ -290,19 +249,10 @@ CapsLockActivate := False
         MoveWindowToDefaultPosition()
     }
 
-    !F1::ToolSwitch("!{F1}", "运行/调试配置")
-    !F2::ToolSwitch("!{F2}", "断点")
-
-    ;代码左右移动
-    ; ^[::Send ^{w}+{Tab}^+{w}
-    ; ^]::Send ^{w}{Tab}^+{w}
-
-    ; !Esc::Send ^{F1}
-    ; !+Esc::Send ^+{F1}
-
-    ;特殊按键覆盖F4
-    <!F4::Send "!{F16}"
-    <!+F4::Send "!+{F16}"
+    <!Esc::Send "!{F24}"
+    <!+Esc::Send "!+{F24}"
+    <^Esc::Send "^{F24}"
+    <^+Esc::Send "^+{F24}"
 
     ;标签页管理
     ^Tab::Return
@@ -310,16 +260,7 @@ CapsLockActivate := False
     <!Tab::Send "^{Tab}"
     <!+Tab::Send "^+{Tab}"
 
-
     #Include %A_InitialWorkingDir%\Software\Program\PyCharm.CapsLock.ahk
-
-
-    ; >!NumPad4::Return
-    ; >!NumPad5::Return
-    ; >!NumPad6::Return
-    ; >![::Send !{NumPad4}
-    ; >!\::Send !{NumPad5}
-    ; >!]::Send !{NumPad6}
 
     ; 代码注释
     ; ^\::Return
@@ -342,7 +283,7 @@ CapsLockActivate := False
             MoveWindowToCenter(True)
         }
     }
-    ; 切换
+    ; 快速切换
     RAlt & LAlt::{
         Send "!{ScrollLock}"
         SetScrollLockState "Off"

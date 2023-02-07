@@ -3,27 +3,24 @@
     global EscCount
     Send "{Esc}"
     if (EscCount > 0) {
-        loop EscCount {
+        loop EscCount -1 {
             Send "{Esc}"
             Sleep 30
         }
         EscCount := 0
     }
-}
-~*CapsLock Up::{
-    global CapsLockActivate
-    CapsLockActivate := False
     SetCapsLockState "Off"
 }
 
-^CapsLock::Return
-^+CapsLock::Return
-$!CapsLock::{
-    Send "^{CapsLock}"
+; ~*CapsLock Up::{
+;     global CapsLockActivate
+;     CapsLockActivate := False
+; }
+
+~!CapsLock::{
     SetCapsLockState "Off"
 }
-$!+CapsLock::{
-    Send "^+{CapsLock}"
+~!+CapsLock::{
     SetCapsLockState "Off"
 }
 
@@ -72,20 +69,18 @@ $!+CapsLock::{
     Send "^!e"
 }
 
-; 迷你地图
+; 跳转到导航栏
 ^!o::Return
 ~CapsLock & o::{
     Send "^!o"
-}
-
-; 跳转到导航栏
-^!p::Return
-~CapsLock & p::{
-    Send "^!p"
     global CapsLockActivate, EscCount
     CapsLockActivate := True
     EscCount := 2
 }
+
+; 最近的文件
+^!p::Return
+~CapsLock & p::Send "^!p"
 
 ; Git工具
 ^!g::Return
@@ -107,6 +102,10 @@ $!+CapsLock::{
     FloatTool := True
     CapsLockActivate := True
 }
+
+; 迷你地图
+^!m::Return
+~CapsLock & m::Send "^!m"
 
 ; 编辑 编辑器操作
 ^!BackSpace::Return
@@ -134,8 +133,12 @@ $!+CapsLock::{
 ~CapsLock & \::{
     global CapsLockActivate
     if (CapsLockActivate) {
-        Send "{Esc}"
-        CapsLockActivate := False
+        if (GetKeyState("LShift", "P")) {
+            Send "^!+\"
+        } else {
+            Send "{Esc}"
+            CapsLockActivate := False
+        }
         return
     }
     if (!GetKeyState("LShift", "P")) {
@@ -143,7 +146,7 @@ $!+CapsLock::{
         CenterHideWindow(1600, 1100)
     } else {
         Send "^!+\"
-        CenterHideWindow(1200, 1100)
+        CenterHideWindow(1500, 1100)
     }
     CapsLockActivate := True
 }
@@ -174,10 +177,15 @@ $!+CapsLock::{
 }
 
 ; 代码
+^!Numpad0::Return
 ^!Numpad5::Return
 ~CapsLock & RShift::{
     global CapsLockActivate
-    Send "^!{Numpad5}"
+    if (!GetKeyState("LShift", "P")) {
+        Send "^!{Numpad5}"
+    } else {
+        Send "^!{Numpad0}"
+    }
     CapsLockActivate := True
     CenterHideWindow()
 }
