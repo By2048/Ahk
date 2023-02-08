@@ -6,6 +6,8 @@
 /.vscode/
 /.idea/
 
+/Config/Script.txt
+
 /Test/*.ahk
 
 /@.ahk
