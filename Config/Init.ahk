@@ -10,7 +10,7 @@ Init.setup    := False
 Init.width    := 610
 Init.height   := 900
 Init.config   := []
-Init.file     := A_InitialWorkingDir . "\Config\Init.txt"
+Init.file     := A_InitialWorkingDir . "\Config\Command.txt"
 Init.new_line := "-----------------------------------------------------------------"
 
 
@@ -43,8 +43,9 @@ GetInitConfig()
 
     Init.config.Push(Init.new_line)
     init_file := Init.file
-    init_file_config := FileRead(init_file)
-    Init.config.Push( init_file_config )
-
+    if (FileExist(init_file)) {
+        init_file_config := FileRead(init_file)
+        Init.config.Push( init_file_config )
+    }
     Init.config.Push(Init.new_line)
 }
