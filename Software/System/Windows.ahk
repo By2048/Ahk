@@ -126,7 +126,7 @@
                      , 12 , 80    ;平台
                      , 13 , 180 ) ;DPI 感知
 
-        SetColumnWidth(_name, _width)
+        SetColumnWidth(_name, _width, Screen_4K, Screen_2K)
 
         _name  := "SysListView322" ;服务
         _width := Map( 1 , 600   ;名称
@@ -134,7 +134,7 @@
                      , 4 , 130   ;状态
                      , 3 , 700   ;描述
                      , 5 , 600 ) ;组
-        SetColumnWidth(_name, _width)
+        SetColumnWidth(_name, _width, Screen_4K, Screen_2K)
     }
 
 #HotIf
