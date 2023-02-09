@@ -11,10 +11,10 @@
 >#Tab::Return
 
 ; Snipaste截图
->#Insert::^!PrintScreen
->#+Insert::^!+PrintScreen
->#Delete::^!CtrlBreak
->#+Delete::^!+CtrlBreak
+>#Insert:: Send "^!{PrintScreen}"
+>#+Insert::Send "^!+{PrintScreen}"
+>#Delete:: Send "^!{CtrlBreak}"
+>#+Delete::Send "^!+{CtrlBreak}"
 
 ; 窗口大小调整
 >#Left:: Send "^!{Numpad4}"
@@ -24,7 +24,7 @@
 
 ; TIM
 >#`;::Send "^!;" ;识图
->#'::Send "^!'"  ;翻译
+>#':: Send "^!'" ;翻译
 
 ; CloudMusic
 ; >#\::Send #^!\ ;播放/暂停
@@ -42,7 +42,7 @@
 >#p::Send "^!p" ;添加收藏
 
 RWin & RCtrl::MoveWindowToMainMini("Main")
-RWin & RAlt::MoveWindowToMainMini("Mini")
+RWin & RAlt:: MoveWindowToMainMini("Mini")
 
 ; 移动窗口
 ; RWin & LButton::{
