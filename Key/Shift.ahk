@@ -82,6 +82,7 @@ GetShiftImage()
     InitImageConfig()
     GetActiveWindowInfo()
 
+    global window
     global hotkeys_images, hotkeys_current, hotkeys_index
 
     win_process_name := window.process_name
@@ -96,6 +97,7 @@ GetShiftImage()
 
     result := hotkeys_current[hotkeys_index]
     result := A_InitialWorkingDir . "\Image\RShift\" . result
+    A_Debug.rshift_image := result
     return result
 }
 
