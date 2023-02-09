@@ -59,7 +59,7 @@
 
 >^x:: Run "D:\#Lnk\Xshell.lnk"
 >^v::Run VSCode . " E:\Config\VSCode\Windows.code-workspace", A_InitialWorkingDir, "Hide"
->^+v::Run VSCode, A_InitialWorkingDir, "Hide"
+>^+v::Run VSCodeDefault, A_InitialWorkingDir, "Hide"
 >^m::Run "D:\#Lnk\PotPlayer.lnk"
 >^n::Run "D:\#Lnk\CloudMusic.lnk"
 >^+n::Run "D:\#Lnk\QQMusic.lnk"
@@ -71,7 +71,7 @@
 >^]::Run VSCode . " E:\Config\VSCode\Ahk.code-workspace",  A_InitialWorkingDir, "Hide"
 >^\::Run "D:\#Lnk\#AppStore\Whiteboard.lnk"
 
-;          {20d04fe0-3aea-1069-a2d8-08002b30309d}::   ;我的电脑
+;           {20d04fe0-3aea-1069-a2d8-08002b30309d}::   ;我的电脑
 >^,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
 >^.::Run "T:\\"
 >^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
