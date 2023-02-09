@@ -2,8 +2,8 @@
 #HotIf CheckWindowActive("7-Zip", "#32770", "属性")
 
     <#\::{
-        global WPD
         WPD["7-Zip_#32770_属性"] := Position(650, 900)
+        InitWindowArgs()
         MoveWindowToDefaultPosition()
         config := Map( 1 , 150
                      , 2 , 420 )

@@ -12,13 +12,14 @@
     ^w::Return
 
     <#\::{
-        WPD["Geek"] := Position4k(1500 , 1500)
+        WPD["Geek"] := Position(1100 , 1000)
+        InitWindowArgs()
         MoveWindowToDefaultPosition()
         _name  := "SysListView321"
-        _width := Map( 1 , 1030   ; 名称
-                     , 2 , 150    ; 大小
-                     , 3 , 250  ) ; 安装时间
-        SetColumnWidth(_name, _width, Screen_4K, Screen_2K)
+        _width := Map( 1 , 780   ; 名称
+                     , 2 , 120    ; 大小
+                     , 3 , 150  ) ; 安装时间
+        SetColumnWidth(_name, _width)
     }
 
 #HotIf

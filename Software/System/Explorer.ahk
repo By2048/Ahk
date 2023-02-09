@@ -229,6 +229,7 @@
         EC["T:\"]           := EC["List"]
 
         WPD["Explorer"] := Position(total_width , total_height)
+        InitWindowArgs()
         MoveWindowToDefaultPosition()
 
         config := ""

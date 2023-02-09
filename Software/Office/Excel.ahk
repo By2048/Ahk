@@ -2,6 +2,7 @@
 #HotIf CheckWindowActive("Excel", "", "名称管理器")
     <#\::{
         WPD["Excel__名称管理器"] := Position(1500, 900)
+        InitWindowArgs()
         MoveWindowToDefaultPosition()
         ; 服务器
         _1 := " 1    2    3        4    5   "

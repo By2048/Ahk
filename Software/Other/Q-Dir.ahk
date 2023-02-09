@@ -28,6 +28,7 @@
         box_down := total_height * 2/5
 
         WPD["Q-Dir"] := Position(total_width, total_height)
+        InitWindowArgs()
         MoveWindowToDefaultPosition()
 
         InitWindowArgs()

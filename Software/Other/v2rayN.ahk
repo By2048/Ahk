@@ -2,6 +2,7 @@
 #HotIf CheckWindowActive( "EnableLoopback" )
     <#\::{
         WPD["EnableLoopback"] := Position(2000 , 1300)
+        InitWindowArgs()
         MoveWindowToDefaultPosition()
         _1 := " 1   2   3   4   5   6   7   "
         _2 := " -   -   -   -   -   -   -   "
