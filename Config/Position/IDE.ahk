@@ -52,7 +52,9 @@ WPD["PyCharm__提交变更"] := Position4K(1600 , 1500)
 
 WPD["PyCharm__插件更新"] := Position4K(2000 , 1300)
 
-WPD["PyCharm__设置"]             := Position4K(2000 , 1500)
+WPD["PyCharm__设置"] := Position(1500 , 1100)
+WPB["PyCharm__设置"] := Position(1800 , 1100)
+
 WPD["PyCharm__问题"]             := Position4K(2000 , 1500)
 WPD["PyCharm__TODO"]             := Position4K(2000 , 1500)
 WPD["PyCharm__远程主机"]         := Position4K(2000 , 1500)

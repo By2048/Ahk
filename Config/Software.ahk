@@ -1,17 +1,18 @@
 ﻿
 ; 一些可执行文件路径
-AHKV1       := "D:\AutoHotkey\#\AutoHotkey.exe"
-ADB         := "D:\Adb\adb.exe"
-CMD         := "C:\Windows\System32\cmd.exe"
-Chrome      := "C:\Program Files\Google\Chrome\Application\chrome.exe"
-VSCode      := "E:\Script\Software\VSCode.bat"
-WT          := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
-TaskKill    := "C:\Windows\SysWOW64\taskkill.exe"
-Python      := "D:\Python\#\Scripts\python.exe"
-HuntAndPeck := "D:\HuntAndPeck\hap.exe"
-ScrcpyAdb   := "D:\Scrcpy\adb.exe"
-Scrcpy      := "D:\Scrcpy\scrcpy.exe"
-Snipaste    := "D:\Snipaste\Snipaste.exe"
+AHKV1         := "D:\AutoHotkey\#\AutoHotkey.exe"
+ADB           := "D:\Adb\adb.exe"
+CMD           := "C:\Windows\System32\cmd.exe"
+Chrome        := "C:\Program Files\Google\Chrome\Application\chrome.exe"
+VSCode        := "E:\Script\Software\VSCode.bat"
+VSCodeDefault := "E:\Script\Software\VSCodeDefault.bat"
+WT            := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
+TaskKill      := "C:\Windows\SysWOW64\taskkill.exe"
+Python        := "D:\Python\#\Scripts\python.exe"
+HuntAndPeck   := "D:\HuntAndPeck\hap.exe"
+ScrcpyAdb     := "D:\Scrcpy\adb.exe"
+Scrcpy        := "D:\Scrcpy\scrcpy.exe"
+Snipaste      := "D:\Snipaste\Snipaste.exe"
 
 
 ; 软件自定义名字替换
