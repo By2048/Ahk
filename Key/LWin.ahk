@@ -35,26 +35,24 @@
         mouse_xx := Screens.Software.2.x + Screens.Software.2.w/2
         mouse_yy := Screens.Software.2.yy - 33
         MouseClickDrag "Left", mouse_x, mouse_y, mouse_xx, mouse_yy, 3
-        MouseMove x_origin, y_origin
+        MouseMove x_origin, y_origin, 0
+        Sleep 999
     }
-
-    Sleep 1000
 
     WinActivate rule
     win_id := WinGetID("A")
     WinGetPos &x, &y, &w, &h, "ahk_id " . win_id
-    if (h < 100) {
+    total_width := 160
+    if (h < total_width) {
         MouseGetPos &x_origin, &y_origin
         mouse_x  := x + w/2
         mouse_y  := y
         mouse_xx := mouse_x
-        mouse_yy := Screens.Software.2.yy - 160
+        mouse_yy := Screens.Software.2.yy - total_width
         DllCall("SetCursorPos", "int", mouse_x, "int", mouse_y)
-        Sleep 300
         Click "Click Down"
-        Sleep 300
         Click Format("Click Up {} {}", mouse_xx, mouse_yy)
-        MouseMove x_origin, y_origin
+        MouseMove x_origin, y_origin, 0
         return
     }
     HelpText("`n任务栏位置无需调整`n", "Center", "Screen", 500)
@@ -169,7 +167,7 @@
     ScreenShot("Screen2", "F:\Image\Screen\")
 }
 ;软件截图 临时 | 长久
-<#Delete::ScreenshotSoftware("T:\")
+<#Delete:: ScreenshotSoftware("T:\")
 <#+Delete::ScreenshotSoftware("F:\Image\Screen\")
 
 ;结束应用
@@ -207,6 +205,7 @@
     ; win_process_exe := window.process_exe
     ; ProcessClose win_process_exe
 }
+
 
 ;设置默认位置
 <#\::MoveWindowToDefaultPosition()
