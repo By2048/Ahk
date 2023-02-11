@@ -9,10 +9,9 @@ EscCount := 0
         global EscRedirect, EscCount
         Send "{Esc}"
         if (EscCount > 0) {
-            ec := EscCount - 1
-            Send Format("Esc {}", ec)
+            Send Format("{Esc {1}}", EscCount - 1)
             EscCount := 0
+            EscRedirect := False
         }
-        EscRedirect := False
     }
 #HotIf
