@@ -41,27 +41,8 @@ WindowsTerminal(mode:="Focus", folder:="")
     rule := "ahk_exe WindowsTerminal.exe ahk_class CASCADIA_HOSTING_WINDOW_CLASS"
     title := "Administrator: PowerShell"
 
-    ; 激活切换为未激活
-    try {
-        win_process_name := WinGetProcessName("A")
-        if ( win_process_name == exe ) {
-            WinMinimize "A"
-            return
-        }
-    }
-
-    ; 已启动 切换激活
-    win_pid := ProcessExist(exe)
-    if (win_pid) {
-        WinWaitActive rule
-        return
-    }
-
     ; 启动
     Run Format("{} {} -d {}", WT, mode, folder)
-    if ( WinWait(rule, title, 3) ) {
-        WinActivate rule
-    }
 }
 
 
