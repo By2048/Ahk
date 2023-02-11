@@ -1,13 +1,12 @@
-﻿
+
+CapsLockToEscCount := 0
+
 ~*CapsLock::{
-    global EscCount
     Send "{Esc}"
-    if (EscCount > 0) {
-        loop EscCount -1 {
-            Send "{Esc}"
-            Sleep 30
-        }
-        EscCount := 0
+    global CapsLockToEscCount
+    if (CapsLockActivate != 0) {
+        Send Format("{Esc {1}}", CapsLockToEscCount - 1)
+        CapsLockToEscCount := 0
     }
     SetCapsLockState "Off"
 }
@@ -73,9 +72,10 @@
 ^!o::Return
 ~CapsLock & o::{
     Send "^!o"
-    global CapsLockActivate, EscCount
+    global CapsLockActivate
     CapsLockActivate := True
-    EscCount := 2
+    global CapsLockToEscCount
+    CapsLockToEscCount := 2
 }
 
 ; 最近的文件
