@@ -206,13 +206,12 @@
 
     <#\::
     <#+\::{
-        total_width  := 1960 ,
-        total_height := 1250
-        total_left  := 317
-        total_right := 411
-        offset_left  := -6
-        offset_right := 12
-        line_width   := 26
+        total_width := 1960 , total_height := 1250
+        total_left := 317  , offset_left := -6
+        total_right := 411 , offset_right := 12
+        input_check_width := 388 , input_move_width := 426 , input_offset := 4
+        line_width := 26
+
         EC := Map( "File"     , "ItemNameDisplay:1150"
                  , "List"     , "ItemNameDisplay:999,Size:150"
                  , "Default"  , "ItemNameDisplay:800,ItemDate:200,Size:150"
@@ -252,25 +251,45 @@
         GetActiveWindowInfo("Window")
         win_id := window.id
         win_xx := window.xx
-        content    := window.controls.DirectUIHWND3
-        content_x  := content.x
-        content_y  := content.y
-        content_w  := content.w
-        content_h  := content.h
-        content_xx := content.xx
-        content_yy := content.yy
+
+        info     := window.controls.DirectUIHWND1
+        input_x  := info.x
+        input_y  := info.y
+        input_w  := info.w
+        input_h  := info.h
+        input_xx := info.xx
+        input_yy := info.yy
+
+        info       := window.controls.DirectUIHWND3
+        content_x  := info.x
+        content_y  := info.y
+        content_w  := info.w
+        content_h  := info.h
+        content_xx := info.xx
+        content_yy := info.yy
+
+        info := window.controls.SysTreeView321
+        tree_width := info.w
 
         CoordMode "Mouse", "Window"
         MouseGetPos &x_origin, &y_origin
 
-        tree_view_width := window.controls.SysTreeView321.w
-        if ( (tree_view_width - total_left) > Abs(offset_left) ) {
+        ; 搜索框
+        if ( Abs(input_w - input_check_width) > Abs(input_offset) ) {
+            MouseClickDrag "Left"
+                           , input_x  + input_offset                        , input_y + input_h/2
+                           , total_width - input_move_width  + input_offset , input_y + input_h/2
+                           , 0
+        }
+        ; 左侧树状信息
+        if ( Abs(tree_width - total_left) > Abs(offset_left) ) {
             MouseClickDrag "Left"
                            , content_x  - offset_left     , content_yy/2 - content_y/2
                            , total_left - offset_left * 2 , content_yy/2 - content_y/2
                            , 0
         }
-        if ( (total_width - content_xx - total_right - line_width) > Abs(offset_right) ) {
+        ; 右侧预览
+        if ( Abs(total_width - content_xx - total_right - line_width) > Abs(offset_right) ) {
             MouseClickDrag "Left"
                            , content_xx + offset_right                , content_yy/2 - content_y/2
                            , total_width - total_right - offset_right , content_yy/2 - content_y/2
