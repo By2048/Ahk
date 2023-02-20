@@ -34,12 +34,12 @@
 #HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" )
 
     Redirect(url) {
-        tmp := Clipboard
-        Clipboard := url
+        tmp := A_Clipboard
+        A_Clipboard := url
         Send "!d"
         Send "^v"
         Send "{Enter}"
-        Clipboard := tmp
+        A_Clipboard := tmp
     }
 
      !F1::Redirect("https://cn.bing.com/")
@@ -47,13 +47,13 @@
      !F3::Redirect("https://yandex.com/")
      !F4::Redirect("https://stackoverflow.com/")
 
-     !F5::Redirect("https://wyagd001.github.io/zh-cn/docs/AutoHotkey.htm")
+     !F5::Redirect("https://wyagd001.github.io/v2/docs/")
      !F6::Redirect("https://tool.oschina.net/uploads/apidocs/jquery/regexp.html")
      !F7::Redirect("https://www.jetbrains.com/help/pycharm/quick-start-guide.html")
      !F8::Redirect("https://docs.python.org/zh-cn/3/")
 
-     !F9::Redirect("http://www.nicotv.me/dongman")
-    !F10::Redirect("https://www.bd2020.com/movies/index.htm")
+     !F9::Redirect("https://vcb-s.com")
+    !F10::Redirect("http://www.bd4399.com")
     !F11::Redirect("https://www.zhihu.com/hot")
     !F12::Redirect("https://t.bilibili.com/?tab=8")
 
