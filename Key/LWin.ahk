@@ -23,38 +23,36 @@
 ; 任务栏多屏移动
 <#+8::{
     CoordMode "Mouse", "Screen"
+    MouseGetPos &x_origin, &y_origin
 
     rule := "ahk_exe Explorer.EXE ahk_class Shell_TrayWnd"
     WinActivate rule
     win_id := WinGetID("A")
     WinGetPos &x, &y, &w, &h, "ahk_id " . win_id
     if (x == 0 and w == 2560) {
-        MouseGetPos &x_origin, &y_origin
         mouse_x  := w/2 - Screens.Software.1.w/6
         mouse_y  := Screens.Software.1.yy - h/2
         mouse_xx := Screens.Software.2.x + Screens.Software.2.w/2
         mouse_yy := Screens.Software.2.yy - 33
         MouseClickDrag "Left", mouse_x, mouse_y, mouse_xx, mouse_yy, 3
-        MouseMove x_origin, y_origin, 0
         Sleep 999
     }
 
     WinActivate rule
     win_id := WinGetID("A")
     WinGetPos &x, &y, &w, &h, "ahk_id " . win_id
-    total_width := 160
-    if (h < total_width) {
-        MouseGetPos &x_origin, &y_origin
+    total_height := 160
+    if (h < total_height) {
         mouse_x  := x + w/2
         mouse_y  := y
         mouse_xx := mouse_x
-        mouse_yy := Screens.Software.2.yy - total_width
+        mouse_yy := Screens.Software.2.yy - total_height
         DllCall("SetCursorPos", "int", mouse_x, "int", mouse_y)
         Click "Click Down"
         Click Format("Click Up {} {}", mouse_xx, mouse_yy)
-        MouseMove x_origin, y_origin, 0
-        return
     }
+
+    MouseMove x_origin, y_origin, 0
     HelpText("`n任务栏位置无需调整`n", "Center", "Screen", 500)
 }
 
