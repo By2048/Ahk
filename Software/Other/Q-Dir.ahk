@@ -14,43 +14,46 @@
     <#\::{
         _ := 0
         dpi := Screen.Dpi
-        tree_width := 300
-        box_left   := 200 + 180 + 120
-        box_right  := 510 + 90
-        scroll_bar_width := 30
-        box_space := 3
 
-        box_space := box_space * dpi
-        scroll_bar_width := scroll_bar_width * dpi
-        total_width := (tree_width + box_left + box_right) * dpi
-        total_width := total_width + scroll_bar_width * 2 + box_space
-        total_height := Screen.height * 8/9
-        box_down := total_height * 2/5
+        tree_width := 300
+        box_left   := 200 + 200 + 120
+        box_right  := 500 + 90
+
+        scroll_bar_width := 25 * 3
+        other_width      := 44
+
+        tree_width := tree_width * dpi
+        box_left   := box_left   * dpi
+        box_right  := box_right  * dpi
+
+        total_width  := tree_width + box_left + box_right + scroll_bar_width + other_width
+        total_height := Screen.height * 9/10
 
         WPD["Q-Dir"] := Position(total_width, total_height)
         InitWindowArgs()
         MoveWindowToDefaultPosition()
 
+        tree_width := tree_width + 17
+        box_left   := box_left   + 33
+        box_down   := total_height * 2/5 + 22
+
         InitWindowArgs()
         GetActiveWindowInfo("Default")
         info   := window.controls.GetOwnPropDesc("#327702").Value
-        left   := tree_width * dpi
         offset := 9
-        MoveControlUDLR(info, _, _, left, _, offset)
+        MoveControlUDLR(info, _, _, tree_width, _, offset)
 
         InitWindowArgs()
         GetActiveWindowInfo("Default")
         info   := window.controls.GetOwnPropDesc("#327702").Value
-        right  := info.x + box_left * Screen.Dpi + scroll_bar_width + box_space
         offset := 16
-        MoveControlUDLR(info, _, _, _, right, offset)
+        MoveControlUDLR(info, _, _, _, info.x + box_left, offset)
 
         InitWindowArgs()
         GetActiveWindowInfo("Default")
         info   := window.controls.GetOwnPropDesc("#327702").Value
-        down   := box_down
         offset := 50
-        MoveControlUDLR(info, _, down, _, _, offset)
+        MoveControlUDLR(info, _, box_down, _, _, offset)
     }
 #HotIf
 
