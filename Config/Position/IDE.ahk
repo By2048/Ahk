@@ -67,8 +67,15 @@ WPD["PyCharm__端点"]             := Position4K(2000 , 1500)
 WPD["PyCharm__断点"] := Position4K(2000 , 1500)
 
 WPD["PyCharm__运行"] := Position4K(2800 , 1750)
-WPD["PyCharm__调试"] := Position4K(2800 , 1750)
 WPD["PyCharm__服务"] := Position4K(2800 , 1750)
+
+WPD["PyCharm__调试"] := Position4K(2800 , 1750)
+
+x := Screens.2.x
+y := ( Screens.2.yy - Screens.2.y ) / 2  - 200
+w := Screens.2.w
+h := Screens.2.h / 2
+WPB["PyCharm__调试"] := [x, y, w, h]
 
 WPD["PyCharm__终端"]       := Position4K(3000 , 1700)
 WPD["PyCharm__Statistic"] := Position4K(3000 , 1700)

@@ -1,4 +1,4 @@
-
+﻿
 CapsLockToEscCount := 0
 
 ~*CapsLock::{
@@ -65,7 +65,11 @@ CapsLockToEscCount := 0
 ~CapsLock & e::{
     global CapsLockActivate
     CapsLockActivate := True
-    Send "^!e"
+    if (!GetKeyState("LShift", "P")) {
+        Send "^!e"
+    } else {
+        Send "^!+e"
+    }
 }
 
 ; 跳转到导航栏
@@ -80,7 +84,10 @@ CapsLockToEscCount := 0
 
 ; 最近的文件
 ^!p::Return
-~CapsLock & p::Send "^!p"
+~CapsLock & p::{
+    Send "^!p"
+    CenterHideWindow(999, 900)
+}
 
 ; Git工具
 ^!g::Return
