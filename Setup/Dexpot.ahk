@@ -17,32 +17,25 @@
 ; 兼容处理
 ;   使用 f1-f9 替换 123 qwe asd
 
-<#1::#^!F13
-<#2::#^!F14
-<#3::#^!F15
-<#q::#^!F16
-<#w::#^!F17
-<#e::#^!F18
-<#a::#^!F19
-<#s::{
-    Send "#^!{F20}"
-    Sleep 200
-    rule := "ahk_exe WindowsTerminal.exe ahk_class CASCADIA_HOSTING_WINDOW_CLASS"
-    if (WinExist(rule)) {
-        WinActivate rule
-    }
-}
-<#d::#^!F21
+<#1::Send "#^!{F13}"
+<#2::Send "#^!{F14}"
+<#3::Send "#^!{F15}"
+<#q::Send "#^!{F16}"
+<#w::Send "#^!{F17}"
+<#e::Send "#^!{F18}"
+<#a::Send "#^!{F19}"
+<#s::Send "#^!{F20}"
+<#d::Send "#^!{F21}"
 
-<#+1::#^!+F13
-<#+2::#^!+F14
-<#+3::#^!+F15
-<#+q::#^!+F16
-<#+w::#^!+F17
-<#+e::#^!+F18
-<#+a::#^!+F19
-<#+s::#^!+F20
-<#+d::#^!+F21
+<#+1::Send "#^!+{F13}"
+<#+2::Send "#^!+{F14}"
+<#+3::Send "#^!+{F15}"
+<#+q::Send "#^!+{F16}"
+<#+w::Send "#^!+{F17}"
+<#+e::Send "#^!+{F18}"
+<#+a::Send "#^!+{F19}"
+<#+s::Send "#^!+{F20}"
+<#+d::Send "#^!+{F21}"
 
 ; 窗口目录
 LWin & LAlt::Send "#^!{F22}"
