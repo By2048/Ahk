@@ -1,6 +1,5 @@
 ﻿
 WPD["qBittorrent"] := Position4K(3000 , 1500)
-WPD["Maye"]        := Position4K(1175 , 1100)
 WPD["Calibre"]     := Position4K(3000 , 1500)
 WPD["Everything"]  := Position4K(2300 , 1700)
 WPD["Android"]     := Position4K(3440 , 2110)
@@ -8,6 +7,8 @@ WPD["Wallpaper"]   := Position4K(3388 , 2000)
 WPD["Sandboxie"]   := Position4K(2500 , 1300)
 WPD["FFRenamePro"] := Position4K(3300 , 1800)
 WPD["BiliBili"]    := Position4K(2500 , 1650)
+
+WPD["Maye"] := Position(1172 , 1100)
 
 WPD["VMware"] := Position(1800 , 1200)
 WPD["VMware_#32770_浏览ISO映像"] := Position(1520 , 1100)
