@@ -116,12 +116,17 @@
 
 ; 复制文件路径
 <#c::{
-    global JQB
     A_Clipboard := ""
-    Send "^c"
-    ClipWait
-    A_Clipboard := A_Clipboard
-    HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
+    hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
+    for Win in ComObject("Shell.Application").Windows {
+        if (Win.hwnd == hwnd) {
+            A_Clipboard := ""
+            for item in Win.Document.SelectedItems {
+                A_Clipboard := A_Clipboard . "  " . item.path
+            }
+            HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
+        }
+    }
     if (FileExist(JQB.Windows)) {
         FileDelete JQB.Windows
     }
