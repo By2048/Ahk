@@ -12,29 +12,30 @@
     ;  1 #3277010->SysTreeView325   2 #327702->SysListView321   4 #327706->SysListView323
     ;  1 ^                          3 #327704->SysListView322   4 ^
     <#\::{
-        _ := 0
-        dpi := Screen.Dpi
-
+        ; 界面配置信息
+        _          := 0
         tree_width := 300
         box_left   := 200 + 200 + 120
         box_right  := 500 + 90
 
-        scroll_bar_width := 25 * 3
+        scroll_bar_width := 25
         other_width      := 44
 
-        tree_width := tree_width * dpi
-        box_left   := box_left   * dpi
-        box_right  := box_right  * dpi
+        tree_width := tree_width * Screen.Dpi
+        box_left   := box_left   * Screen.Dpi
+        box_right  := box_right  * Screen.Dpi
 
-        total_width  := tree_width + box_left + box_right + scroll_bar_width + other_width
+        total_width  := tree_width + box_left + box_right
+                        + scroll_bar_width * 3
+                        + other_width
         total_height := Screen.height * 9/10
 
         WPD["Q-Dir"] := Position(total_width, total_height)
         InitWindowArgs()
         MoveWindowToDefaultPosition()
 
-        tree_width := tree_width + 17
-        box_left   := box_left   + 33
+        tree_width := tree_width + 14
+        box_left   := box_left   + scroll_bar_width + 32
         box_down   := total_height * 2/5 + 22
 
         InitWindowArgs()
