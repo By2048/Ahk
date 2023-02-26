@@ -1,7 +1,6 @@
 ﻿
-
-#Enter::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
-#AppsKey::Run "Taskmgr.exe"
+>^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
+>^Esc::Run "Taskmgr.exe"
 
 RWin::Return
 RAlt::EN()
@@ -21,9 +20,6 @@ RCtrl::CN()
 ^Space::Return
 !Space::Return
 #Space::Return
-
-; LWin::Return
-; RWin::Return
 
 !Tab::Return
 !+Tab::Return
