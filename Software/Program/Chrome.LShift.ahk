@@ -37,6 +37,12 @@ ChromeTimer()
         url_result := "https://cn.bing.com/search?q=" . keyword
     }
 
+    ; learn.microsoft.com/en-us/windows/win32/shell/shellwindows
+    ; learn.microsoft.com/zh-cn/windows/win32/shell/shellwindows
+    if (InStr(url_origin, "learn.microsoft.com/en-us/")) {
+        url_result := StrReplace(url_origin, "/en-us/", "/zh-cn/")
+    }
+
     ; https://t.bilibili.com/?tab=all
     ; https://t.bilibili.com/?tab=video
     if (InStr(url_origin, "t.bilibili.com/?tab=all")) {
