@@ -11,6 +11,22 @@
 #HotIf
 
 
+#HotIf CheckWindowActive("XshellCore", "#32770", "会话")
+    <#\::{
+        width  := 1100
+        height := 660
+        WPD["XshellCore_#32770_会话"] := Position(width , height)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+        ; 主界面
+        index  := " 1    2    3    4    5     6    7        "
+        name   := " 名称 主机  端口  协议 用户名 说明  修改时间  "
+        width  := " 170  200  90   90   100   170   200     "
+        config := GetColumnConfig(index, name, width)
+        SetColumnWidth("SysListView321" , config)
+    }
+#HotIf
+
 
 #HotIf CheckWindowActive("Xshell")
 
