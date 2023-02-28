@@ -233,7 +233,6 @@ GetActiveWindowInfo(mode:="Default")
 
 
 
-
 ; 检测当前激活的应用是否满足参数条件
 ; _process_name_ | 进程名（转换后的
 ; _class_        | 进程Class
@@ -333,7 +332,6 @@ IsGame()
 
 
 
-
 ; 将窗口移动到指定位置
 ; offset | 在一定误差内不进行窗口移动
 ; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
@@ -417,6 +415,7 @@ SetWindowTransparent(change:=0)
         WinSetTransparent  win_transparent, "ahk_id " . win_id
     }
 }
+
 
 
 ; 调整窗口大小
@@ -820,3 +819,26 @@ HighlightActiveWindow(time:=300, width:=3, color:="e51400")
 }
 
 
+
+; 获取Explorer当前选择的项目
+GetExplorerSelect()
+{
+    hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
+    if (not hwnd) {
+        return Map()
+    }
+    for Win in ComObject("Shell.Application").Windows {
+        if (Win.hwnd == hwnd) {
+            ; a := Win.LocationName
+            ; b := Win.LocationURL
+            folder_path  := Win.Document.Folder.Self.Path
+            select_items := []
+            for item in Win.Document.SelectedItems {
+                select_items.Push(item.path)
+            }
+            result := Map( "folder" , folder_path
+                         , "select" , select_items )
+            return result
+        }
+    }
+}
