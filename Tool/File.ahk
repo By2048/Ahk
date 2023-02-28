@@ -1,4 +1,8 @@
 ﻿
+#Include %A_InitialWorkingDir%\Config\Software.ahk
+
+
+
 ; 获取Windows系统的文件信息
 GetFileInfo(path)
 {
@@ -48,4 +52,40 @@ GetImageSize(path)
     result.w      := result.width
     result.h      := result.height
     return result
+}
+
+
+; 获取文件的MD5
+GetMD5(file)
+{
+    command := Format("{} --zero  `"{}`" ", MD5Sum, file)
+    shell := ComObject("WScript.Shell")
+    data := shell.Exec(A_ComSpec . " /C " . command)
+    result := data.StdOut.ReadAll()
+    result := StrSplit(result, " ")
+    result := result[1]
+    return result
+}
+
+
+; 重命名为MD5
+RenameToMd5(file)
+{
+    ; 不存在
+    if (not FileExist(file)) {
+        return
+    }
+    ; 不是文件
+    if (FileGetAttrib(file) != "A") {
+        return
+    }
+    md5 := GetMD5(file)
+    if (not md5) {
+        return
+    }
+    try {
+        SplitPath file, &name, &dir, &ext, &name_no_ext, &drive
+        result := Format("{1}\{2}.{3}", dir, md5, ext)
+        FileMove file, result
+    }
 }

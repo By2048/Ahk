@@ -13,6 +13,7 @@ HuntAndPeck   := "D:\HuntAndPeck\hap.exe"
 ScrcpyAdb     := "D:\Scrcpy\adb.exe"
 Scrcpy        := "D:\Scrcpy\scrcpy.exe"
 Snipaste      := "D:\Snipaste\Snipaste.exe"
+MD5Sum        := "D:\Git\usr\bin\md5sum.exe"
 
 
 ; 软件自定义名字替换

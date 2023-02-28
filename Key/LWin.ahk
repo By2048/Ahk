@@ -152,7 +152,23 @@
     FileDelete JQB.Phone
 }
 
-<#n::{ ;打开“连接”快速操作
+; 文件重命名
+<#h::{
+    data := GetExplorerSelect()
+    if (not data) {
+        return
+    }
+    all_select := data["select"]
+    if (not all_select) {
+        return
+    }
+    for select_item in all_select {
+        RenameToMd5(select_item)
+    }
+}
+
+; 打开“连接”快速操作
+<#n::{
     Sleep 300
     Send "#k"
 }
