@@ -1,5 +1,5 @@
 
-#HotIf ( CheckWindowActive("FFRenamePro") )
+#HotIf CheckWindowActive("FFRenamePro")
 
     Esc::{
         Send "{Esc}"
@@ -79,6 +79,12 @@
 
     ; 查看用户自定义元变量<USER0>~<USER9>
     F12::Return
+
+    <#\::{
+        WPD["FFRenamePro"] := Position(2500 , 1400)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
 
 #HotIf
 

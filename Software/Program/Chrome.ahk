@@ -151,7 +151,7 @@ Expand := False
 
     ;清理浏览记录
     ^+Delete::Return
-    !+Delete::Send "^+{Delete}"
+    ^!Delete::Send "^+{Delete}"
 
     ;新标签页
     ^t::Return
@@ -273,6 +273,12 @@ Expand := False
         Send "^d"
         Send "{Tab 2}"
         Send "{Enter}"
+        if (InStr(Screen.Name, "4K")) {
+            WPD["Chrome__修改书签"] := Position(900, 1500)
+        } else if (InStr(Screen.Name, "2K")) {
+            WPD["Chrome__修改书签"] := Position(700, 1000)
+        }
+        InitWindowArgs()
         MoveWindowToDefaultPosition()
     }
     !+d::{
@@ -320,6 +326,16 @@ Expand := False
     !0::Send "^0"
     !-::Send "^{-}"
     !=::Send "^{=}"
+
+    <#\::{
+        if (InStr(Screen.Name, "4K")) {
+            WPD["Chrome"] := Position(3300, 2000)
+        } else if (InStr(Screen.Name, "2K")) {
+            WPD["Chrome"] := Position(2500, 1400)
+        }
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
 
     ; 前进后退
     ~Lbutton & RButton::{

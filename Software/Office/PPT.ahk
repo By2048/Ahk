@@ -1,8 +1,8 @@
 ﻿
-#HotIf CheckWindowActive("Word")
+#HotIf CheckWindowActive("PPT")
 
     <#\::{
-        WPD["Word"] := Position(-60  , -30)
+        WPD["PPT"] := Position(-60  , -30)
         InitWindowArgs()
         MoveWindowToDefaultPosition()
     }

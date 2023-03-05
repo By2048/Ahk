@@ -1,5 +1,5 @@
 ﻿
-#HotIf ( CheckWindowActive( "Wallpaper" ) )
+#HotIf CheckWindowActive( "Wallpaper" )
 
     ClickImage(image)
     {
@@ -82,6 +82,12 @@
         ClickImage(image)
         Sleep 100
         Send "{Enter}"
+    }
+
+    <#\::{
+        WPD["Wallpaper"] := Position(2345 , 1357)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
     }
 
 #HotIf

@@ -15,6 +15,15 @@
 #HotIf
 
 
+#HotIf CheckWindowActive( "VMware" , "#32770" , "浏览ISO映像" )
+    <#\::{
+        WPD["VMware_#32770_浏览ISO映像"] := Position(1520 , 1100)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive( "VMware" )
 
     ; 新建虚拟机
@@ -40,6 +49,12 @@
     ; 首选项
     ^p::Return
     AppsKey::Send "^p"
+
+    <#\::{
+        WPD["VMware"] := Position(1800 , 1200)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
 
     ; 映射或断开虚拟磁盘连接
     >!/::{

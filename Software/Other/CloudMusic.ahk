@@ -1,11 +1,20 @@
 ﻿
-#HotIf CheckWindowActive( "CloudMusic" , "OrpheusBrowserHost" )
+#HotIf CheckWindowActive( "CloudMusic" , "DesktopLyrics" )
 
-    <#BackSpace::{
-        ProcessClose "CrashReporter.exe"
-        Sleep 300
-        ProcessClose "CloudMusic.exe"
+    <#\::{
+        win_w := 2333
+        win_h := 190
+        win_x := Screen.x  + Screen.w/2 - win_w/2
+        win_y := Screen.yy - win_h      - 10
+        WPD["CloudMusic_DesktopLyrics"] := Position(win_x, win_y, win_w, win_h)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
     }
+
+#HotIf
+
+
+#HotIf CheckWindowActive( "CloudMusic" )
 
     /::{
         MoveWindowToDefaultPosition()
@@ -18,6 +27,18 @@
     ]::Send "!]"
     =::Send "!="
     -::Send "!-"
+
+    <#BackSpace::{
+        ProcessClose "CrashReporter.exe"
+        Sleep 300
+        ProcessClose "CloudMusic.exe"
+    }
+
+    <#\::{
+        WPD["CloudMusic"] := Position(2000 , 1200)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
 
     ; Global Cloud_Music_Volume := -1
     ; =::

@@ -1,9 +1,11 @@
 ﻿
-; #HotIf CheckWindowActive( "FreeFileSync" , "" , "同步设置" )
+#HotIf CheckWindowActive( "FreeFileSync" , "" , "同步设置" )
 
-;     <#\::
-
-;         MoveWindowToDefaultPosition()
+    <#\::{
+        WPD["FreeFileSync__同步设置"] := Position(1500, 1800)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
 
 ;         GetActiveWindowInfo()
 ;         win_id := window.id
@@ -67,10 +69,7 @@
 ;         control_name := control_4_name
 ;         ControlMove, %control_name%, %x%, %y%, %w%, %h%, ahk_id %win_id%
 
-;     Return
-
-; #HotIf
-
+#HotIf
 
 
 #HotIf CheckWindowActive( "FreeFileSync" )
@@ -84,6 +83,10 @@
     ; 开始同步
     !Enter::Send "{F9}"
 
-    <#\::MoveWindowToDefaultPosition()
+    <#\::{
+        WPD["FreeFileSync"] := Position(2500, 1600)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
 
 #HotIf

@@ -58,4 +58,24 @@ InitStatusArgs()
 #Include %A_InitialWorkingDir%\Config\KeyMap.ahk
 #Include %A_InitialWorkingDir%\Config\Message.ahk
 
-#Include %A_InitialWorkingDir%\Config\Position\All.ahk
+; Key
+; [process_name]
+; [process_name]_[class]
+; []_[class]
+; [process_name]_[title]
+; [process_name]_[class]_[title]
+; []_[class]_[title]
+; []_[]_[title]
+
+; Value
+; 设置一些软件默认位置 [x,y,w,h]
+
+; WPD Windows_Position_Default
+; WPB Windows_Position_Backup
+Windows_Position_Default := Map()
+Windows_Position_Backup  := Map()
+WPD := Windows_Position_Default
+WPB := Windows_Position_Backup
+
+#Include %A_InitialWorkingDir%\Config\Position.ahk
+#Include %A_InitialWorkingDir%\Config\Position.IDE.ahk

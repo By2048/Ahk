@@ -88,4 +88,10 @@
     ;     HelpText("`n Over `n", "center", "screen3", 3000)
     ; Return
 
+    <#\::{
+        WPD["Excel"] := Position(-60  , -30)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
+
 #HotIf

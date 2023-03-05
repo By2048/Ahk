@@ -35,4 +35,10 @@
         WinClose "A"
     }
 
+    <#\::{
+        WPD["v2rayN"] := Position(2100, 1200)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
+
 #HotIf

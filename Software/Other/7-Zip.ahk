@@ -16,11 +16,18 @@
 #HotIf CheckWindowActive("7-Zip")
 
     <#\::{
+        WPD["7-Zip"] := Position(1100 , 1000)
+        InitWindowArgs()
         MoveWindowToDefaultPosition()
-        index := " 1      2     3       4      5        "
-        name  := " 名称   文件   文件夹   大小   修改时间   "
-        width := " 770    100   100     150    200      "
-        ; width := " 999    150   150     200    250      "
+        index := " 1     3      2    4   "
+        name  := " 名称  文件夹  文件  大小 "
+        width := " 700   100    100  140 "
+        win_title := window.title
+        if (InStr(win_title, ".iso")) {
+            index := " 1     4      3    2   "
+            name  := " 名称  文件夹  文件  大小 "
+            width := " 700   100    100  140 "
+        }
         config := GetColumnConfig(index, name, width)
         SetColumnWidth("SysListView321", config)
     }

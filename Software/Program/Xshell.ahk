@@ -59,4 +59,19 @@
     ^+\::Return
     !+CapsLock::Send "^+\"
 
+    <#\::{
+        WPD["Xshell"] := Position(2200 , 1200)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
+
+#HotIf
+
+
+#HotIf CheckWindowActive("Xftp")
+    <#\::{
+        WPD["Xftp"] := Position(2200 , 1200)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
 #HotIf
