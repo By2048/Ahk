@@ -34,18 +34,17 @@
 #HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" )
 
     Redirect(url) {
-        tmp := A_Clipboard
         A_Clipboard := url
+        ClipWait
         Send "!d"
         Send "^v"
         Send "{Enter}"
-        A_Clipboard := tmp
     }
 
      !F1::Redirect("https://cn.bing.com/")
-     !F2::Redirect("https://www.baidu.com/")
-     !F3::Redirect("https://yandex.com/")
-     !F4::Redirect("https://stackoverflow.com/")
+     !F2::Redirect("https://www.deepl.com/zh/translator")
+     !F3::Redirect("https://translate.google.com/?sl=en&tl=zh-CN&op=translate")
+     !F4::Redirect("https://fanyi.baidu.com/")
 
      !F5::Redirect("https://wyagd001.github.io/v2/docs/")
      !F6::Redirect("https://tool.oschina.net/uploads/apidocs/jquery/regexp.html")
