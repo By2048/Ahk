@@ -11,6 +11,7 @@
 #Include %A_InitialWorkingDir%\Tool\Mouse.ahk
 #Include %A_InitialWorkingDir%\Tool\Other.ahk
 #Include %A_InitialWorkingDir%\Tool\Window.ahk
+#Include %A_InitialWorkingDir%\Tool\Explorer.ahk
 #Include %A_InitialWorkingDir%\Tool\Control.ahk
 #Include %A_InitialWorkingDir%\Tool\KeyMap.ahk
 #Include %A_InitialWorkingDir%\Tool\Keyboard.ahk
