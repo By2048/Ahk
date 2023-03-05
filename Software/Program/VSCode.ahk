@@ -78,7 +78,7 @@
         } else {
             cnt := 1
         }
-        SetTimer VSCodeTimer, -150
+        SetTimer VSCodeTimer, -500
     }
     VSCodeTimer() {
         global cnt, EscRedirect
