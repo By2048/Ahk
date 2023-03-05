@@ -145,7 +145,7 @@
 #HotIf CheckWindowActive( "RemoteDesktop" )
 
     $CapsLock::{
-        WinActivate "ahk_exe Explorer.exe"
+        WinActivate "ahk_exe Explorer.exe ahk_class WorkerW"
         GlobalSet("Windows", "Previous_Process_Name", "RemoteDesktop")
         GlobalSet("Status", "Remote_Desktop_Switch_Check", True)
         HelpText("`n Windows `n", "Center", "Screen", 300)
