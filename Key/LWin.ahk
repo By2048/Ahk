@@ -21,40 +21,7 @@
 }
 
 ; 任务栏多屏移动
-<#+8::{
-    CoordMode "Mouse", "Screen"
-    MouseGetPos &x_origin, &y_origin
-
-    rule := "ahk_exe Explorer.EXE ahk_class Shell_TrayWnd"
-    WinActivate rule
-    win_id := WinGetID("A")
-    WinGetPos &x, &y, &w, &h, "ahk_id " . win_id
-    if (x == 0 and w == 2560) {
-        mouse_x  := w/2 - Screens.Software.1.w/6
-        mouse_y  := Screens.Software.1.yy - h/2
-        mouse_xx := Screens.Software.2.x + Screens.Software.2.w/2
-        mouse_yy := Screens.Software.2.yy - 33
-        MouseClickDrag "Left", mouse_x, mouse_y, mouse_xx, mouse_yy, 3
-        Sleep 999
-    }
-
-    WinActivate rule
-    win_id := WinGetID("A")
-    WinGetPos &x, &y, &w, &h, "ahk_id " . win_id
-    total_height := 160
-    if (h < total_height) {
-        mouse_x  := x + w/2
-        mouse_y  := y
-        mouse_xx := mouse_x
-        mouse_yy := Screens.Software.2.yy - total_height
-        DllCall("SetCursorPos", "int", mouse_x, "int", mouse_y)
-        Click "Click Down"
-        Click Format("Click Up {} {}", mouse_xx, mouse_yy)
-    }
-
-    MouseMove x_origin, y_origin, 0
-    HelpText("`n任务栏位置无需调整`n", "Center", "Screen", 500)
-}
+<#+8::MoveExplorerTray()
 
 <#9::   ;主显示器 -
 <#0::   ;主显示器 +
@@ -192,9 +159,6 @@
 ;结束应用
 <#BackSpace::{
     GetActiveWindowInfo()
-    if (IsDesktops() or IsGame()) {
-        return
-    }
     win_id := window.id
     win_process_name := window.process_name
     ; 远程桌面切换到Windows时 结束远程桌面
@@ -210,6 +174,9 @@
                 return
             }
         }
+    }
+    if (IsDesktops() or IsGame()) {
+        return
     }
     WinClose "ahk_id " . win_id
 }

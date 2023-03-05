@@ -817,28 +817,3 @@ HighlightActiveWindow(time:=300, width:=3, color:="e51400")
     }
     SetTimer CloseHighlight, -1
 }
-
-
-
-; 获取Explorer当前选择的项目
-GetExplorerSelect()
-{
-    hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if (not hwnd) {
-        return Map()
-    }
-    for Win in ComObject("Shell.Application").Windows {
-        if (Win.hwnd == hwnd) {
-            ; a := Win.LocationName
-            ; b := Win.LocationURL
-            folder_path  := Win.Document.Folder.Self.Path
-            select_items := []
-            for item in Win.Document.SelectedItems {
-                select_items.Push(item.path)
-            }
-            result := Map( "folder" , folder_path
-                         , "select" , select_items )
-            return result
-        }
-    }
-}
