@@ -53,6 +53,7 @@
     End::{
         Send "{Volume_Down 5}"
     }
+    AppsKey::MoveExplorerTray()
 #HotIf
 
 ; 桌面
