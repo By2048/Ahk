@@ -72,7 +72,7 @@ WPD["PyCharm__服务"] := Position4K(2800 , 1750)
 WPD["PyCharm__调试"] := Position4K(2800 , 1750)
 
 x := Screens.2.x
-y := ( Screens.2.yy - Screens.2.y ) / 2  - 200
+y := ( Screens.2.yy - Screens.2.y ) / 2  - 100
 w := Screens.2.w
 h := Screens.2.h / 2
 WPB["PyCharm__调试"] := [x, y, w, h]
