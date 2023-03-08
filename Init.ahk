@@ -38,12 +38,9 @@ InitRegs()
 ; 私有配置文件填补
 InitFiles()
 {
-    files := {      Other : A_InitialWorkingDir . "\@.ahk"                                  ;
-             ,     Confog : A_InitialWorkingDir . "\Config.Private.ahk"                     ;
-             ,      Input : A_InitialWorkingDir . "\Setup\Input.Private.ahk"                ;
-             , LOL_Client : A_InitialWorkingDir . "\Game\LOL.Client.Private.ahk"            ;
-             ,   LOL_Game : A_InitialWorkingDir . "\Game\LOL.Game.Private.ahk"              ;
-             ,        COC : A_InitialWorkingDir . "\Software\Other\Android.COC.Private.ahk" }
+    files := {   Other : A_InitialWorkingDir . "\@.ahk"                    ;
+             ,  Confog : A_InitialWorkingDir . "\Config.Private.ahk"       ;
+             ,   Input : A_InitialWorkingDir . "\Setup\Input.Private.ahk"  }
 
     FileEncoding "UTF-8-RAW"
     for name, path In files.OwnProps() {
