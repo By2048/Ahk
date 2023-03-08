@@ -16,14 +16,16 @@
 #Include %A_InitialWorkingDir%\Tool\Office.ahk
 
 #Include %A_InitialWorkingDir%\Software\Arg.ahk
-#Include %A_InitialWorkingDir%\Software\Game.ahk
-
 #Include %A_InitialWorkingDir%\Software\Chat.ahk
+#Include %A_InitialWorkingDir%\Software\Explorer.ahk
+#Include %A_InitialWorkingDir%\Software\Game.ahk
 #Include %A_InitialWorkingDir%\Software\Office.ahk
+#Include %A_InitialWorkingDir%\Software\Windows.Ahk
 
 #Include %A_InitialWorkingDir%\Software\Other\7-Zip.ahk
 #Include %A_InitialWorkingDir%\Software\Other\Android.ahk
 #Include %A_InitialWorkingDir%\Software\Other\BitComet.ahk
+#Include %A_InitialWorkingDir%\Software\Other\Chrome.ahk
 #Include %A_InitialWorkingDir%\Software\Other\CloudMusic.ahk
 #Include %A_InitialWorkingDir%\Software\Other\Everything.ahk
 #Include %A_InitialWorkingDir%\Software\Other\FFRenamePro.ahk
@@ -40,7 +42,6 @@
 #Include %A_InitialWorkingDir%\Software\Other\VMware.ahk
 #Include %A_InitialWorkingDir%\Software\Other\Wallpaper.ahk
 
-#Include %A_InitialWorkingDir%\Software\Program\Chrome.ahk
 #Include %A_InitialWorkingDir%\Software\Program\FireFox.ahk
 #Include %A_InitialWorkingDir%\Software\Program\JetBrains.ahk
 #Include %A_InitialWorkingDir%\Software\Program\Navicat.ahk
@@ -50,10 +51,6 @@
 #Include %A_InitialWorkingDir%\Software\Program\VSCode.ahk
 #Include %A_InitialWorkingDir%\Software\Program\WindowsTerminal.Ahk
 #Include %A_InitialWorkingDir%\Software\Program\Xshell.ahk
-
-#Include %A_InitialWorkingDir%\Software\System\Explorer.ahk
-#Include %A_InitialWorkingDir%\Software\System\Windows.Ahk
-
 
 #SingleInstance Force
 #NoTrayIcon
