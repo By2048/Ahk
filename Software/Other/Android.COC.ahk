@@ -1,7 +1,7 @@
 ﻿
 #HotIf CheckWindowActive( "Android" , "" , "部落冲突" )
 
-    #Include %A_InitialWorkingDir%\Software\Other\Android.COC.Private.ahk
+    #Include *i %A_InitialWorkingDir%\Software\Other\Android.COC.Private.ahk
 
     Init_Coc_Args:
         Global Android_COC_Loop := [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ]
