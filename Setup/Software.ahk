@@ -18,11 +18,8 @@
 #Include %A_InitialWorkingDir%\Software\Arg.ahk
 #Include %A_InitialWorkingDir%\Software\Game.ahk
 
-#Include %A_InitialWorkingDir%\Software\Chat\DingDing.ahk
-#Include %A_InitialWorkingDir%\Software\Chat\TIM.ahk
-#Include %A_InitialWorkingDir%\Software\Chat\WeChat.ahk
-
-#Include %A_InitialWorkingDir%\Software\Office\Excel.ahk
+#Include %A_InitialWorkingDir%\Software\Chat.ahk
+#Include %A_InitialWorkingDir%\Software\Office.ahk
 
 #Include %A_InitialWorkingDir%\Software\Other\7-Zip.ahk
 #Include %A_InitialWorkingDir%\Software\Other\Android.ahk

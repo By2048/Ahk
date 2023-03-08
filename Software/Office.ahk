@@ -14,6 +14,7 @@
 #HotIf
 
 
+
 #HotIf CheckWindowActive("Excel")
 
     ; Excel Sheet 图片截图 [1]System [3]Windows [4]RCtrl [6]PyCharm [7]VScode [8]Xshell [9]Chrome
@@ -90,6 +91,30 @@
 
     <#\::{
         WPD["Excel"] := Position(-60  , -30)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
+
+#HotIf
+
+
+
+#HotIf CheckWindowActive("PPT")
+
+    <#\::{
+        WPD["PPT"] := Position(-60  , -30)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
+
+#HotIf
+
+
+
+#HotIf CheckWindowActive("Word")
+
+    <#\::{
+        WPD["Word"] := Position(-60  , -30)
         InitWindowArgs()
         MoveWindowToDefaultPosition()
     }
