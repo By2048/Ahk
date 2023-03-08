@@ -29,6 +29,7 @@
 #Include %A_InitialWorkingDir%\Software\Other\CloudMusic.ahk
 #Include %A_InitialWorkingDir%\Software\Other\Everything.ahk
 #Include %A_InitialWorkingDir%\Software\Other\FFRenamePro.ahk
+#Include %A_InitialWorkingDir%\Software\Other\FireFox.ahk
 #Include %A_InitialWorkingDir%\Software\Other\FreeFileSync.ahk
 #Include %A_InitialWorkingDir%\Software\Other\FSViewer.ahk
 #Include %A_InitialWorkingDir%\Software\Other\Geek.ahk
@@ -42,7 +43,6 @@
 #Include %A_InitialWorkingDir%\Software\Other\VMware.ahk
 #Include %A_InitialWorkingDir%\Software\Other\Wallpaper.ahk
 
-#Include %A_InitialWorkingDir%\Software\Program\FireFox.ahk
 #Include %A_InitialWorkingDir%\Software\Program\JetBrains.ahk
 #Include %A_InitialWorkingDir%\Software\Program\Navicat.ahk
 #Include %A_InitialWorkingDir%\Software\Program\Obsidian.ahk
