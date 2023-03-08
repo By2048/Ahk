@@ -1,5 +1,4 @@
 ﻿
-
 EscRedirect := False
 EscCount := 0
 
@@ -13,5 +12,12 @@ EscCount := 0
             EscCount := 0
             EscRedirect := False
         }
+    }
+#HotIf
+
+
+#HotIf IsGame()
+    #BackSpace::{
+        Run "Setup.bat GameMode", A_InitialWorkingDir, "Hide"
     }
 #HotIf

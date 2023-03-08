@@ -15,10 +15,9 @@
 #Include %A_InitialWorkingDir%\Tool\KeyMap.ahk
 #Include %A_InitialWorkingDir%\Tool\Office.ahk
 
-#Include %A_InitialWorkingDir%\Software\Arg.ahk
 #Include %A_InitialWorkingDir%\Software\Chat.ahk
 #Include %A_InitialWorkingDir%\Software\Explorer.ahk
-#Include %A_InitialWorkingDir%\Software\Game.ahk
+#Include %A_InitialWorkingDir%\Software\Function.ahk
 #Include %A_InitialWorkingDir%\Software\Office.ahk
 #Include %A_InitialWorkingDir%\Software\Windows.Ahk
 
