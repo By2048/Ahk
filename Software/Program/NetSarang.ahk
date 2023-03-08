@@ -1,4 +1,13 @@
 ﻿
+#HotIf CheckWindowActive("Xftp")
+    <#\::{
+        WPD["Xftp"] := Position(2200 , 1200)
+        InitWindowArgs()
+        MoveWindowToDefaultPosition()
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive("XshellCore", "#32770", "自定义按键对应")
     <#\::{
         _name  := "SysListView321"
@@ -29,9 +38,6 @@
 
 
 #HotIf CheckWindowActive("Xshell")
-
-    <#Enter::Send "^!{F12}"
-    <#+Enter::Send "^!+{F12}"
 
     ;下一个选项卡
     ^]::Return
@@ -65,13 +71,7 @@
         MoveWindowToDefaultPosition()
     }
 
-#HotIf
+    <#Enter::Send "^!{F12}"
+    <#+Enter::Send "^!+{F12}"
 
-
-#HotIf CheckWindowActive("Xftp")
-    <#\::{
-        WPD["Xftp"] := Position(2200 , 1200)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
-    }
 #HotIf
