@@ -42,4 +42,4 @@ Screens_Detail := [ Screen_2K ]
 JQB := { Phone   : A_InitialWorkingDir . "\JQB_Phone"   ;
        , Windows : A_InitialWorkingDir . "\JQB_Windows" }
 
-#Include %A_InitialWorkingDir%\Config.Private.ahk
+#Include *i %A_InitialWorkingDir%\Config.Private.ahk

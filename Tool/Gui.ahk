@@ -1,7 +1,7 @@
 ﻿
-#Include %A_InitialWorkingDir%\Config\All.ahk
-#Include %A_InitialWorkingDir%\Tool\Change.ahk
-#Include %A_InitialWorkingDir%\Tool\Help.ahk
+#Include *i %A_InitialWorkingDir%\Config\All.ahk
+#Include *i %A_InitialWorkingDir%\Tool\Change.ahk
+#Include *i %A_InitialWorkingDir%\Tool\Help.ahk
 
 
 ; 项目启动时创建的居中进度条
@@ -51,8 +51,6 @@ ShowInitConfig()
     }
 
     if (status.init_config == True) {
-        status.init_config := False
-        GIC.Destroy()
         return
     }
 
@@ -82,5 +80,16 @@ ShowInitConfig()
         GIC.Add("Text", Format("-Center -Border w{}", w), content)
         GIC.Show(Format("NA x{} y{} w{} h{}", x, y, w, h))
         status.init_config := True
+    }
+}
+
+
+HideInitConfig()
+{
+    global GIC
+    if (status.init_config == True) {
+        status.init_config := False
+        GIC.Destroy()
+        return
     }
 }

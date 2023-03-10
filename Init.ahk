@@ -1,7 +1,7 @@
 ﻿
-#Include %A_InitialWorkingDir%\Config.ahk
-#Include %A_InitialWorkingDir%\Tool\Global.ahk
-#Include %A_InitialWorkingDir%\Tool\File.ahk
+#Include *i %A_InitialWorkingDir%\Config.ahk
+#Include *i %A_InitialWorkingDir%\Tool\Global.ahk
+#Include *i %A_InitialWorkingDir%\Tool\File.ahk
 
 ; -------------------------------------------------------------------------------------------------
 ; DPI相关设置处理

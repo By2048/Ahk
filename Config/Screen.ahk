@@ -1,6 +1,6 @@
 ﻿
-#Include %A_InitialWorkingDir%\Config.ahk
-#Include %A_InitialWorkingDir%\Tool\Global.ahk
+#Include *i %A_InitialWorkingDir%\Config.ahk
+#Include *i %A_InitialWorkingDir%\Tool\Global.ahk
 
 ; 屏幕信息
 Screens := {} ;所有屏幕相关信息

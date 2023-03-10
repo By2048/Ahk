@@ -1,5 +1,5 @@
 ﻿
-#Include %A_InitialWorkingDir%\Tool\Change.ahk
+#Include *i %A_InitialWorkingDir%\Tool\Change.ahk
 
 WPD["qBittorrent"] := Position4K(3000 , 1500)
 WPD["Calibre"]     := Position4K(3000 , 1500)

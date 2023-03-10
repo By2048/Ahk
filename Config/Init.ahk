@@ -1,7 +1,7 @@
 ﻿
-#Include %A_InitialWorkingDir%\Config\Screen.ahk
-#Include %A_InitialWorkingDir%\Config\Software.ahk
-#Include %A_InitialWorkingDir%\Tool\Other.ahk
+#Include *i %A_InitialWorkingDir%\Config\Screen.ahk
+#Include *i %A_InitialWorkingDir%\Config\Software.ahk
+#Include *i %A_InitialWorkingDir%\Tool\Other.ahk
 
 
 Init := {}
@@ -10,7 +10,7 @@ Init.setup    := False
 Init.width    := 610
 Init.height   := 900
 Init.config   := []
-Init.file     := A_InitialWorkingDir . "\Config\Command.txt"
+Init.file     := A_InitialWorkingDir . "\Config\Script.txt"
 Init.new_line := "-----------------------------------------------------------------"
 
 

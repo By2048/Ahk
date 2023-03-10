@@ -1,5 +1,5 @@
 ﻿
-#Include %A_InitialWorkingDir%\Tool\Help.ahk
+#Include *i %A_InitialWorkingDir%\Tool\Help.ahk
 
 PDF_Main()
 {

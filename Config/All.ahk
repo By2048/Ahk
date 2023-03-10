@@ -50,13 +50,13 @@ A_Debug := {}
 InitWindowArgs()
 InitStatusArgs()
 
-#Include %A_InitialWorkingDir%\Config.ahk
-#Include %A_InitialWorkingDir%\Config\Screen.ahk
-#Include %A_InitialWorkingDir%\Config\Software.ahk
+#Include *i %A_InitialWorkingDir%\Config.ahk
+#Include *i %A_InitialWorkingDir%\Config\Screen.ahk
+#Include *i %A_InitialWorkingDir%\Config\Software.ahk
 
-#Include %A_InitialWorkingDir%\Config\Init.ahk
-#Include %A_InitialWorkingDir%\Config\KeyMap.ahk
-#Include %A_InitialWorkingDir%\Config\Message.ahk
+#Include *i %A_InitialWorkingDir%\Config\Init.ahk
+#Include *i %A_InitialWorkingDir%\Config\KeyMap.ahk
+#Include *i %A_InitialWorkingDir%\Config\Message.ahk
 
 ; Key
 ; [process_name]
@@ -77,5 +77,5 @@ Windows_Position_Backup  := Map()
 WPD := Windows_Position_Default
 WPB := Windows_Position_Backup
 
-#Include %A_InitialWorkingDir%\Config\Position.ahk
-#Include %A_InitialWorkingDir%\Config\Position.IDE.ahk
+#Include *i %A_InitialWorkingDir%\Config\Position.ahk
+#Include *i %A_InitialWorkingDir%\Config\Position.IDE.ahk
