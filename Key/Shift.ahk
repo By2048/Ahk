@@ -1,5 +1,5 @@
 ﻿
-#Include %A_InitialWorkingDir%\Tool\Gui.ahk
+#Include *i %A_InitialWorkingDir%\Tool\Gui.ahk
 
 
 >+`;::Send ":"
@@ -24,6 +24,7 @@ ShiftTimer() {
     if (cnt == 1) {
         HelpText()
         HideShiftImage()
+        HideInitConfig()
     } else if (cnt == 2) {
         HelpText()
         ShowShiftImage()
