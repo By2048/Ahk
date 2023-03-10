@@ -3,74 +3,74 @@
 
     #Include *i %A_InitialWorkingDir%\Software\Other\Android.COC.Private.ahk
 
-    Init_Coc_Args:
-        Global Android_COC_Loop := [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ]
-    Return
+    ; Init_Coc_Args:
+    ;     Global Android_COC_Loop := [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ]
+    ; Return
 
-    `::Send {LButton}
+    `::Send "{LButton}"
 
-    Tab::Send {LButton 4}
+    Tab::Send "{LButton 4}"
 
-    PgUp::
-        Send {m Down}
-        Send {.}
-        Send {m Up}
-    Return
+    PgUp::{
+        Send "{m Down}"
+        Send "."
+        Send "{m Up}"
+    }
 
-    PgDn::
-        Send {m Down}
-        Send {, 3}
-        Send {m Up}
-    Return
+    PgDn::{
+        Send "{m Down}"
+        Send "{, 3}"
+        Send "{m Up}"
+    }
 
     ; 退出
-    BackSpace::
+    BackSpace::{
         HelpText("BackSpace","center_down","screen_1")
-        Send a
+        Send "a"
         Sleep 100
-        Send s
+        Send "s"
         Sleep 2000
-        Send d
+        Send "d"
         Sleep 3000
-        Send \
+        Send "\"
         Sleep 500
         HelpText()
-    Return
+    }
 
     ; 补兵
-    CapsLock::
+    CapsLock::{
         HelpText("CapsLock", "center_down", "screen_1")
 
-        Send a
+        Send "a"
         Sleep 100
-        Send s
+        Send "s"
         Sleep 1000
-        Send d
+        Send "d"
         Sleep 3000
 
-        Send \
-        Sleep, 100
-
-        Send z
-        Sleep 100
-        Send x
-        Sleep 100
-        Send c
+        Send "\"
         Sleep 100
 
-        Send \
+        Send "z"
+        Sleep 100
+        Send "x"
+        Sleep 100
+        Send "c"
+        Sleep 100
+
+        Send "\"
         Sleep 500
 
         HelpText()
-    Return
-    CapsLock Up::
+    }
+    CapsLock Up::{
         SetCapsLockState "Off"
-    Return
+    }
 
     ; 兵种选择
-    ~e::
+    ~e::{
         Android_COC_Current := -1
-    Return
+    }
 
     ~1::
     ~2::
@@ -81,11 +81,11 @@
     ~7::
     ~8::
     ~9::
-    ~0::
+    ~0::{
         index := StrReplace(A_ThisHotkey, "~", "")
         index := index + 0
         Android_COC_Current := index
-    Return
+    }
 
     ; 按顺序切换兵种 1-6
     ; LAlt::
@@ -140,86 +140,89 @@
     ;阵形1
     F1::
     F2::
-    F3::
-        CoordMode, Mouse, Window
-        MouseGetPos, x_origin, y_origin
-        MouseClick, Left, 2321, 950
+    F3::{
+
+        CoordMode "Mouse", "Window"
+        MouseGetPos &x_origin, &y_origin
+        MouseClick "Left", 2321, 950
         Sleep 300
         Switch A_ThisHotkey {
-            Case "F1" : MouseClick, Left, 477,  758
-            Case "F2" : MouseClick, Left, 1196, 759
-            Case "F3" : MouseClick, Left, 1915, 752
+            Case "F1" : MouseClick "Left", 477,  758
+            Case "F2" : MouseClick "Left", 1196, 759
+            Case "F3" : MouseClick "Left", 1915, 752
         }
         Sleep 500
-        MouseClick, Left, 1566, 1300
+        MouseClick "Left", 1566, 1300
         Sleep 500
-        Send {Esc}
+        Send "{Esc}"
         Sleep 100
         MouseMove x_origin, y_origin, 0
-    Return
+    }
 
     ; 删除兵种
-    F5::
-        CoordMode, Mouse, Window
-        MouseGetPos, x_origin, y_origin
+    F5::{
+
+        CoordMode "Mouse", "Window"
+        MouseGetPos &x_origin, &y_origin
         RemoveArm1K() {
-            MouseClick, Left, 432,  363, 1, 0
-            MouseClick, Left, 627,  363, 1, 0
-            MouseClick, Left, 825,  363, 1, 0
-            MouseClick, Left, 1021, 363, 1, 0
-            MouseClick, Left, 1219, 363, 1, 0
-            MouseClick, Left, 1419, 363, 1, 0
+            MouseClick "Left", 432,  363, 1, 0
+            MouseClick "Left", 627,  363, 1, 0
+            MouseClick "Left", 825,  363, 1, 0
+            MouseClick "Left", 1021, 363, 1, 0
+            MouseClick "Left", 1219, 363, 1, 0
+            MouseClick "Left", 1419, 363, 1, 0
         }
         RemoveArm2K() {
-            MouseClick, Left, 588,  484, 1, 0
-            MouseClick, Left, 855,  482, 1, 0
-            MouseClick, Left, 1127, 484, 1, 0
-            MouseClick, Left, 1395, 484, 1, 0
-            MouseClick, Left, 1665, 484, 1, 0
-            MouseClick, Left, 1934, 484, 1, 0
+            MouseClick "Left", 588,  484, 1, 0
+            MouseClick "Left", 855,  482, 1, 0
+            MouseClick "Left", 1127, 484, 1, 0
+            MouseClick "Left", 1395, 484, 1, 0
+            MouseClick "Left", 1665, 484, 1, 0
+            MouseClick "Left", 1934, 484, 1, 0
         }
         RemoveArm1K()
         Sleep 100
-        MouseMove %x_origin%, %y_origin%, 0
-        Send /
-    Return
+        MouseMove x_origin, y_origin, 0
+        Send "/"
+    }
 
     ; 删除护盾
-    F8::
-        Send /
-        CoordMode, Mouse, Window
-        MouseGetPos, x_origin, y_origin
-        Send p
+    F8::{
+
+        Send "/"
+        CoordMode "Mouse", "Window"
+        MouseGetPos &x_origin, &y_origin
+        Send "p"
         Sleep 100
         RemoveShield2K() {
-            MouseClick, Left, 1409, 505
+            MouseClick "Left", 1409, 505
             Sleep 100
-            MouseClick, Left, 1379, 848
+            MouseClick "Left", 1379, 848
         }
         RemoveShield1K() {
-            MouseClick, Left, 1034, 379
+            MouseClick "Left", 1034, 379
             Sleep 100
-            MouseClick, Left, 1008, 631
+            MouseClick "Left", 1008, 631
         }
         RemoveShield1K()
         Sleep 100
-        MouseMove %x_origin%, %y_origin%, 0
+        MouseMove x_origin, y_origin, 0
         Sleep 100
-        Send /
-    Return
+        Send "/"
+    }
 
     ; 部署栏拖动
-    >!\::
-        Send {LButton Down}
-        MouseMove, -150, 0, 11, R
-        MouseMove,  250, 0, 11, R
-        Send {LButton Up}
-    Return
+    >!\::{
+        Send "{LButton Down}"
+        MouseMove -150, 0, 11, "R"
+        MouseMove  250, 0, 11, "R"
+        Send "{LButton Up}"
+    }
 
-    !q::
+    !q::{
         images := [ A_InitialWorkingDir . "\Image\Software\COC\gbl.png"
                   , A_InitialWorkingDir . "\Image\Software\COC\gbl_small.png" ]
         CocSelect(images)
-    Return
+    }
 
 #HotIf
