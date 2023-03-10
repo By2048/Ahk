@@ -81,25 +81,34 @@
 <#;::Run HuntAndPeck . " /tray" ;任务栏
 <#'::Run HuntAndPeck . " /hint" ;当前应用
 
-; 复制文件路径
+; 复制文件
 <#c::{
     A_Clipboard := ""
-    hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    for Win in ComObject("Shell.Application").Windows {
-        if (Win.hwnd == hwnd) {
-            A_Clipboard := ""
-            for item in Win.Document.SelectedItems {
-                A_Clipboard := A_Clipboard . "  " . item.path
-            }
-            HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
-        }
-    }
+    Send "^c"
+    ClipWait
+    HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
     if (FileExist(JQB.Windows)) {
         FileDelete JQB.Windows
     }
     file := FileOpen(JQB.Windows, "w", "UTF-8")
     file.Write(A_Clipboard)
     file.Close()
+}
+
+; 复制文件路径
+<#+c::{
+    hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
+    if (not hwnd) {
+        return
+    }
+    for Win in ComObject("Shell.Application").Windows {
+        if (Win.hwnd == hwnd) {
+            for item in Win.Document.SelectedItems {
+                A_Clipboard := A_Clipboard . "`n" . item.path
+            }
+            HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
+        }
+    }
 }
 
 <#v::{
