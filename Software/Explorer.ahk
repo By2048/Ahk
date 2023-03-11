@@ -230,7 +230,35 @@
 
         WPD["Explorer"] := Position(total_width , total_height)
         InitWindowArgs()
+
+        GetActiveWindowInfo()
+        origin_x := window.x
+        origin_y := window.y
+        origin_w := window.w
+        origin_h := window.h
+
         MoveWindowToDefaultPosition()
+
+        InitWindowArgs()
+        GetActiveWindowInfo()
+        current_x := window.x
+        current_y := window.y
+        current_w := window.w
+        current_h := window.h
+
+        CoordMode "Mouse", "Window"
+        MouseGetPos &x_origin, &y_origin
+
+        ; 通过鼠标移动移动窗口,通过此操作Window可以在下次启动时使用修改后的位置
+        if (   origin_x != current_x
+            or origin_y != current_y
+            or origin_w != current_w
+            or origin_h != current_h ) {
+            offset := -10
+            MouseMove current_w/2, current_h + offset, 0
+            MouseClickDrag "Left", 0, 0, 0, -30, 0, "R"
+            MouseClickDrag "Left", 0, 0, 0,  30, 0, "R"
+        }
 
         config := ""
         if (!EC.Has(window.title)) {
@@ -271,9 +299,6 @@
 
         info := window.controls.SysTreeView321
         tree_width := info.w
-
-        CoordMode "Mouse", "Window"
-        MouseGetPos &x_origin, &y_origin
 
         ; 搜索框
         if ( Abs(input_w - input_check_width) > Abs(input_offset) ) {
