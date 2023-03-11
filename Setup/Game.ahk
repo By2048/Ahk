@@ -14,7 +14,7 @@ A_IconTip := "[ Game Mode ]"
 #Include %A_InitialWorkingDir%\Tool\Other.ahk
 #Include %A_InitialWorkingDir%\Tool\Language.ahk
 
-HelpText("`n Game Mode `n", "Center", "Screen", 500)
+HelpText("`n Game Mode `n", "Center", "Screen", 1000)
 
 #Include %A_InitialWorkingDir%\Game\Windows.ahk
 #Include %A_InitialWorkingDir%\Game\LOL.ahk

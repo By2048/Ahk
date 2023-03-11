@@ -661,7 +661,6 @@ MoveWindowToPosition(position:="Default")
     screen_xx        := window.screen.xx
     screen_yy        := window.screen.yy
 
-
     ; Win10 \ WinServer
     ; 开始菜单在屏幕上居中 兼容处理
     ; 按下Win键，此时在最上层激活的是Search(SearchApp)
