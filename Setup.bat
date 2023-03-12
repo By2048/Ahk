@@ -3,7 +3,7 @@
 
 @Echo Off
 
-Mode 35,20
+Mode 35,13
 
 CD  /d  %~dp0
 
