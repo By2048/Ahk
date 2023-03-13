@@ -104,7 +104,8 @@ RWin & RShift::{
 
 ; 右键RWin设置
 cnt := 0
-$RWin::{
+~RWin::{
+    Send "{Blind}{vkFF}"
     global cnt
     if (cnt > 0) {
         cnt += 1
