@@ -579,21 +579,21 @@ MoveWindowToCenter(silent:=False)
     win_w := window.w
     win_h := window.h
 
-    screen_id := window.screen.id
-    screen_x  := window.screen.x
-    screen_y  := window.screen.y
-
-    screen_w  := window.screen.w
-    screen_h  := window.screen.h
+    screen_x := window.screen.x
+    screen_y := window.screen.y
+    screen_w := window.screen.w
+    screen_h := window.screen.h
+    screen_index := window.screen.index
 
     xx := screen_x + screen_w/2 - win_w/2
     yy := screen_y + screen_h/2 - win_h/2
     ww := win_w
     hh := win_h
+
     SetWindow(xx, yy, ww, hh)
 
     if (not silent) {
-        HelpText("Center", "center_down", "screen" . screen_id, 1000)
+        HelpText("Center", "CenterDown", "Screen" . screen_index, 1000)
     }
 }
 
@@ -610,22 +610,22 @@ MoveWindowToMainMini(command)
         return
     }
 
-    win_id    := window.id
-    screen_id := window.screen.id
-    screen_x  := window.screen.x
-    screen_y  := window.screen.y
-    screen_w  := window.screen.w
-    screen_h  := window.screen.h
+    win_id := window.id
+    screen_x := window.screen.x
+    screen_y := window.screen.y
+    screen_w := window.screen.w
+    screen_h := window.screen.h
+    screen_index := window.screen.id
 
     main := Windows_Main_Mini[1]
     mini := Windows_Main_Mini[2]
 
     if (command == "Main") {
-        HelpText("Windows Main", "CenterDown", "Screen" . screen_id)
+        HelpText("Windows Main", "CenterDown", "Screen" . screen_index)
         w := screen_w * main[1]
         h := screen_h * main[2]
     } else if (command == "Mini") {
-        HelpText("Windows Mini", "CenterDown", "Screen" . screen_id)
+        HelpText("Windows Mini", "CenterDown", "Screen" . screen_index)
         w := screen_w * mini[1]
         h := screen_h * mini[2]
     }
