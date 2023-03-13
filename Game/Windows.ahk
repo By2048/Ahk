@@ -1,35 +1,34 @@
 ﻿
->^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
->^Esc::Run "Taskmgr.exe"
-
-RWin::Return
 RAlt::EN()
 RCtrl::CN()
 
-#Tab::Send "!{Tab}"
-#+Tab::Send "!+{Tab}"
+<#Tab::Send "!{Tab}"
+<#+Tab::Send "!+{Tab}"
 
-^Esc::Return
-^+Esc::Return
+>^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
+>^Esc::Run "Taskmgr.exe"
 
 >#9::Send "#^!9"
 >#0::Send "#^!0"
 >#=::Send "{Volume_Up}"
 >#-::Send "{Volume_Down}"
 
+; ------------------------------------------------- ;
+
+^Esc::Return
+^+Esc::Return
+
 ^Space::Return
 !Space::Return
-#Space::Return
 
 !Tab::Return
 !+Tab::Return
 
+; ------------------------------------------------- ;
+
+RWin::Return
+
 #Esc::Return
-#+Esc::Return
-
-#CapsLock::Return
-#+CapsLock::Return
-
 #F1::Return
 #F2::Return
 #F3::Return
@@ -86,13 +85,23 @@ RCtrl::CN()
 
 #[::Return
 #]::Return
+#\::Return
 
 #,::Return
 #.::Return
 #/::Return
 
+#Tab::Return
+#+Tab::Return
+#Enter::Return
+#+Enter::Return
+#CapsLock::Return
+#+CapsLock::Return
+
+#Space::Return
 #Insert::Return
 #Delete::Return
+#AppsKey::Return
 
 #Home::Return
 #End::Return
