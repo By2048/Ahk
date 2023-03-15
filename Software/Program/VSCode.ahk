@@ -65,10 +65,6 @@
 
 #HotIf CheckWindowActive("VSCode")
 
-    ~*CapsLock::{
-        SetCapsLockState "Off"
-    }
-
     cnt := 0
     ~LShift::{
         global cnt
@@ -126,6 +122,15 @@
     ;快速命令
     <!Space::Send "^!["
     >!Space::Send "^!]"
+
+    ~*CapsLock::{
+        SetCapsLockState "Off"
+    }
+
+    ^![::Return
+    ^!]::Return
+    CapsLock & [::Send "!^["
+    CapsLock & ]::Send "!^]"
 
     ; 窗口大小调整
     CapsLock & Left:: Send "^!{Left}"

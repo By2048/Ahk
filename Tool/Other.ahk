@@ -228,7 +228,7 @@ GetColumnConfig(args*)
 
 
 ; 从代码注释中读取配置
-ReadConfig(file, slice, replace:="    `; ")
+ReadConfig(file, slice, replace:="`; ")
 {
     data  := ""
     start := slice[1]
