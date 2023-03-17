@@ -736,7 +736,7 @@ MoveWindowToBackupPosition()  {
 
 
 ; 高亮激活的窗口
-HighlightActiveWindow(time:=300, width:=3, color:="e51400")
+HighlightActiveWindow(time:=300, width:=4, color:="e51400")
 {
     InitWindowArgs()
     GetActiveWindowInfo("Strict")

@@ -94,6 +94,7 @@
 
     Esc::{
         Send "{Esc}"
+        Sleep 300
         MouseClickAndResetting(1317, 335, "Window")
     }
 
