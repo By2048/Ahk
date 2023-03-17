@@ -134,6 +134,9 @@
     if (not data) {
         return
     }
+    if (not data.Length) {
+        return
+    }
     all_select := data["select"]
     if (not all_select) {
         return
@@ -201,94 +204,133 @@
     ; ProcessClose win_process_exe
 }
 
-
 ;设置默认位置
 <#\::MoveWindowToDefaultPosition()
 <#+\::MoveWindowToBackupPosition()
 
-; 切换系统 主题|亮暗
-Windows_Theme := "Default"
-LWin & RShift::{
-    lshift_state := GetKeyState("LShift")
-    if (lshift_state) {
-        ; 系统主题
-        hcblack_theme := "C:\Windows\Resources\Ease of Access Themes\hcblack.theme"
-        default_theme := "C:\Users\Administrator\AppData\Local\Microsoft\Windows\Themes\Default.theme"
-        if (Windows_Theme == "HCBlack") {
-            Run default_theme
-            Windows_Theme := "Default"
-            HelpText("Windows Theme Default", "Center", "Screen", 1000)
-        } else if (Windows_Theme == "Default") {
-            Run hcblack_theme
-            Windows_Theme := "HCBlack"
-            HelpText("Windows Theme HCBlack", "Ccenter", "Screen", 1000)
-        }
-        exe := Windows_Process_Name.Get("WindowsSettings")
-        WinWait "ahk_exe " . exe
-        WinClose "ahk_exe " . exe
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; 通用媒体按键
+>#\::Send "{Media_Play_Pause}"
+>#[::Send "{Media_Prev}"
+>#]::Send "{Media_Next}"
+>#p::Send "^!p" ;添加收藏
+
+>#Space::WindowsTerminal("Focus", "T:\\")
+>#+Space::WindowsTerminal("Full", "T:\\")
+
+>#b::Return
+>#Tab::Return
+
+; Snipaste截图
+>#Insert:: Send "^!{PrintScreen}"
+>#+Insert::Send "^!+{PrintScreen}"
+>#Delete:: Send "^!{CtrlBreak}"
+>#+Delete::Send "^!+{CtrlBreak}"
+
+; 窗口大小调整
+>#Left:: Send "^!{Numpad4}"
+>#Right::Send "^!{Numpad6}"
+>#Up::   Send "^!{Numpad8}"
+>#Down:: Send "^!{Numpad2}"
+
+; TIM
+>#`;::Send "^!;" ;识图
+>#':: Send "^!'" ;翻译
+
+
+; 右键RWin设置
+cnt := 0
+$RWin::{
+    Send "{Blind}{vkFF}"
+    global cnt
+    if (cnt > 0) {
+        cnt += 1
+        return
     } else {
-        ; 系统亮暗
-        path := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-        key  := "AppsUseLightTheme"
-        light_theme := RegRead(path, key, "")
-        if (light_theme == "0") {
-            RegWrite 1, "REG_DWORD", path, key
-            HelpText("`n Light `n", "Center", "Screen1", 1000)
-        } else if (light_theme == "1") {
-            RegWrite 0, "REG_DWORD", path, key
-            HelpText("`n Dark `n", "Center", "Screen1", 1000)
-        }
+        cnt := 1
     }
+    SetTimer RWinTimer, -500
 }
 
-;切换Windows默认标题栏
-LWin & RAlt::{
-    WS_CAPTION := 0xC00000
-    style := WinGetStyle("A")
-    WinSetStyle Format("^{}", WS_CAPTION), "A"
-    if (not (style & WS_CAPTION)) {
-        HelpText("`n Windows Title Show `n", "Center", "Screen1", 500)
-    } else {
-        HelpText("`n Windows Title Hide `n", "Center", "Screen1", 500)
+windows_move         := False
+windows_resize_big   := False
+windows_resize_small := False
+RWinTimer() {
+    global cnt, windows_move, windows_resize_big, windows_resize_small
+    if (   windows_move == True
+        or windows_resize_big == True
+        or windows_resize_small == True ) {
+        windows_move := False
+        windows_resize_big := False
+        windows_resize_small := False
+        HelpText()
+        return
     }
-}
-
-; 激活桌面
-LWin & RCtrl::{
-    WinActivate "ahk_exe Explorer.exe ahk_class WorkerW"
-    HelpText("`nDesktop`n", "Center", "Screen1", 300)
-}
-
-;切换应用
-win_tab := win_shift_tab := False
-LWin & Tab::{
-    global win_tab, win_shift_tab
-    win_tab := True
-    if (GetKeyState("Shift", "P")) {
-        win_shift_tab := True
-        Send "{Alt Down}{Shift Down}{Tab}"
-    } else {
-        Send "{Alt Down}{Tab}"
-    }
-}
-~*LWin Up::{
-    global win_tab, win_shift_tab
-    if (win_tab == True) {
-        Send "{Alt Up}"
-        win_tab := False
-        if (win_shift_tab == True) {
-            Send "{Shift Up}"
-            win_shift_tab := False
+    if (cnt > 0) {
+        ignore_function := GlobalGet("Status", "ignore_function", "Bool")
+        if (ignore_function) {
+            GlobalSet("Status", "ignore_function", False)
+            return
         }
     }
+    if (cnt == 1) {
+        MoveWindowToCenter()
+    } else if (cnt == 2) {
+        MoveWindowToDefaultPosition()
+    } else if (cnt == 3) {
+        MoveWindowToBackupPosition()
+    }
+    cnt := 0
 }
 
-; 输入法管理
-LCtrl & LWin::{
-    ZH()
-    HelpText("`n ZH_CN `n", "Center", "Screen", 300)
+>#,::{
+    GetActiveWindowInfo()
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
+        return
+    }
+    global windows_resize_small
+    windows_resize_small := True
+    HelpText("Windows Resize Small")
 }
-LAlt & LWin::{
-    EN()
-    HelpText("`n  EN  `n", "Center", "Screen", 300)
+
+>#.::{
+    GetActiveWindowInfo()
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
+        return
+    }
+    global windows_resize_big
+    windows_resize_big := True
+    HelpText("Windows Resize Big")
 }
+
+>#/::{
+    GetActiveWindowInfo()
+    if (IsDesktops() or IsMaxMin() or IsGame()) {
+        return
+    }
+    global windows_move
+    windows_move := True
+    HelpText("Move Windows")
+}
+
+#HotIf ( windows_move == True )
+    Up::   MoveWindowUDLR("Up"   )
+    Down:: MoveWindowUDLR("Down" )
+    Left:: MoveWindowUDLR("Left" )
+    Right::MoveWindowUDLR("Right")
+#HotIf
+
+#HotIf ( windows_resize_big == True )
+    Up::   ResizeWindow("Big", "Up"   )
+    Down:: ResizeWindow("Big", "Down" )
+    Left:: ResizeWindow("Big", "Left" )
+    Right::ResizeWindow("Big", "Right")
+#HotIf
+
+#HotIf ( windows_resize_small == True )
+    Up::   ResizeWindow("Small", "Up"   )
+    Down:: ResizeWindow("Small", "Down" )
+    Left:: ResizeWindow("Small", "Left" )
+    Right::ResizeWindow("Small", "Right")
+#HotIf

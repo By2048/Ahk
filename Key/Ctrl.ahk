@@ -82,16 +82,10 @@
     MoveWindowToBackupPosition()
 }
 
-
 >^Up::Return
 >^Down::Return
 >^Left::Return
 >^Right::Return
-
-
-RCtrl & Enter::Run "E:\Doc\All.xlsx"
-RCtrl & RWin::Send "^w"
-
 
 cnt := 0
 $RCtrl::{

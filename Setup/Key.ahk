@@ -16,14 +16,14 @@
 #Include %A_InitialWorkingDir%\Tool\KeyMap.ahk
 #Include %A_InitialWorkingDir%\Tool\Keyboard.ahk
 
-#Include %A_InitialWorkingDir%\Key\All.ahk
-#Include %A_InitialWorkingDir%\Key\LWin.ahk
-#Include %A_InitialWorkingDir%\Key\RWin.ahk
+#Include %A_InitialWorkingDir%\Key\Ignore.ahk
+#Include %A_InitialWorkingDir%\Key\Win.ahk
 #Include %A_InitialWorkingDir%\Key\Ctrl.ahk
 #Include %A_InitialWorkingDir%\Key\Alt.ahk
 #Include %A_InitialWorkingDir%\Key\Shift.ahk
 #Include %A_InitialWorkingDir%\Key\Space.ahk
 #Include %A_InitialWorkingDir%\Key\CapsLock.ahk
+#Include %A_InitialWorkingDir%\Key\Other.ahk
 
 #SingleInstance Force
 #NoTrayIcon
