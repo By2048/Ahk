@@ -59,10 +59,8 @@ LAlt & LWin::{
 
 
 LCtrl & LAlt::{
-    MsgBox "123"
 }
 LAlt & LCtrl::{
-    MsgBox "123"
 }
 
 
