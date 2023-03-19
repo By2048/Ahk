@@ -1,7 +1,183 @@
 ﻿
 #HotIf CheckWindowActive( "Android" , "" , "部落冲突" )
 
-    #Include *i %A_InitialWorkingDir%\Software\Other\Android.COC.Private.ahk
+    Space::{
+        SetKeyDelay 100
+        ; Sleep 100
+        ; Send {3}{Click}
+        ; Send {4}{Click}
+        ; Send {5}{Click}
+        ; Send {6}{Click}
+        ; Send {7}{Click}
+        ; Sleep 100
+        SetKeyDelay -1
+    }
+
+    -::{
+        Send "z"
+        Sleep 300
+        ; 气球
+        MouseClick "Left", 1359, 348, 1, 0
+        Sleep 300
+        MouseClick "Left", 1722, 1244, 9, 0
+        Sleep 300
+        Send "\"
+    }
+
+    =::{
+        Send "z"
+        Sleep 300
+        ; 法术
+        MouseClick "Left", 1633, 322, 1, 0
+        Sleep 300
+        MouseClick "Left", 934, 1217, 1, 0
+        Sleep 300
+        MouseClickDrag "Left", 2845, 614, 1213, 602, 9
+        Sleep 300
+        Send "\"
+    }
+
+    b::{
+        Send "{7}{LButton}{7}"
+        Sleep 1000
+        Send "{1}{LButton 6}"
+    }
+
+    CocSelect(images)
+    {
+        CoordMode "Mouse", "Window"
+        CoordMode "Pixel", "Window"
+        MouseGetPos &x_origin, &y_origin
+        x1 := 200
+        y1 := 1740
+        x2 := 3200
+        y2 := 2000
+        for index, image in images {
+            image_size := GetImageSize(image)
+            image_w    := image_size["w"]
+            image_h    := image_size["h"]
+            ImageSearch x_find, y_find, x1, y1, x2, y2, image
+            if (x_find and y_find) {
+                x_find := x_find + image_w/2
+                y_find := y_find + image_h/2
+                MouseClick "Left", x_find, y_find, 1, 0
+                MouseMove x_origin, y_origin, 0
+                break
+            }
+        }
+    }
+
+    Activity() {
+        CoordMode "Mouse", "Window"
+        xy := "598,1866|777,1872|955,1873|1137,1881|1327,1872|1507,1868|1684,1872"
+        cc := "6       |2       |2      | 3       | 1        | 15      | 1       "
+        xy := StrSplit(xy, "|")
+        cc := StrSplit(cc, " ")
+        data := []
+        for index, item in xy {
+            item := StrSplit(item, ",")
+            x := item[1]
+            y := item[2]
+            c := cc[index]
+            data.Push( [ x , y, c ] )
+        }
+        MouseGetPos &x_origin, &y_origin
+        for index, item in data {
+            x := item[1]
+            y := item[2]
+            c := item[3]
+            MouseClick "Left", x, y, 1, 0
+            Sleep 300
+            MouseClick "Left", x_origin, y_origin, c, 0
+        }
+    }
+
+    ; 降杯
+    DownItem() {
+        HelpText("降杯", "center_down", "screen_1")
+
+        CoordMode "Mouse", "Window"
+
+        Send "Q"
+        Sleep 500
+        Send "\"
+        Sleep 500
+
+        Send "Q"
+        Sleep 500
+        Send "R"
+        Sleep 5000
+
+        Send "0"
+        Sleep 500
+        Send "\"
+        Sleep 500
+
+        y := 0
+        Loop 4 {
+            y := y + 300
+            MouseClick "Left", 300, y
+            Sleep 100
+            MouseClick "Left", 1700, y
+            Sleep 100
+            MouseClick "Left", 2800, y
+            Sleep 100
+        }
+
+        Send "A"
+        Sleep 500
+        Send "S"
+        Sleep 500
+        Send "D"
+        Sleep 3000
+
+        Send "\"
+
+        Sleep 500
+        HelpText()
+    }
+
+
+    ScreenShort() {
+        x := 340
+        y := 290
+        w := 270
+        h := 237
+        file := "D:\#\coc.png"
+        cmd  := Format("{1} snip --area {2} {3} {4} {5} -o {6}", Snipaste, x, y, w, h, file)
+        Run cmd
+    }
+
+    ORC() {
+        file := "D:\#\coc.png"
+        url := "http://127.0.0.1:1331/coc/" . file
+        whr := ComObject("WinHttp.WinHttpRequest.5.1")
+        whr.Open("GET", url, True)
+        whr.Send()
+        whr.WaitForResponse()
+        response := whr.ResponseText
+        ; result := JSON.Parse(response)
+        result := {}
+        return result
+    }
+
+    SearchSleep() {
+        CoordMode "Pixel", "Screen"
+        color_x       := 295
+        color_y       := 1603
+        color_compare := "F95D62"
+        color_offset  := 5
+        Loop {
+            color_base := PixelGetColor(color_x, color_y, "RGB")
+            color_base := SubStr(color_base, 3)
+            if ( CheckColor(color_base, color_compare, color_offset) ) {
+                break
+            } else {
+                Sleep 333
+            }
+        }
+    }
+
 
     ; Init_Coc_Args:
     ;     Global Android_COC_Loop := [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ]
