@@ -1,20 +1,27 @@
 ﻿
 #Include *i %A_InitialWorkingDir%\Tool\Change.ahk
 
+WPD["_#32770"]           := Position4K(2030 , 1500)
+WPD["_#32770_浏览"]       := Position4K(2030 , 1500)
+WPD["_#32770_打开"]       := Position4K(2030 , 1500)
+WPD["_#32770_另存为"]     := Position4K(2030 , 1500)
+WPD["_#32770_打开文件"]    := Position4K(2030 , 1500)
+WPD["_#32770_选择文件夹"]  := Position4K(2030 , 1500)
+WPD["_#32770_浏览文件夹"]  := Position4K(900 , 1500)
+WPD["_#32770_浏览计算机"]   := Position4K(900 , 1500)
+WPD["_#32770_编辑环境变量"] := Position4K(1000 , 1500)
+
 WPD["qBittorrent"] := Position4K(3000 , 1500)
 WPD["Calibre"]     := Position4K(3000 , 1500)
 WPD["Sandboxie"]   := Position4K(2500 , 1300)
 WPD["BiliBili"]    := Position4K(2500 , 1650)
 
-WPD["Maye"] := Position(1172 , 1100)
-
-WPD["QQMusic"]     := Position(1800 , 1100)
+WPD["Maye"]    := Position(1172 , 1100)
+WPD["QQMusic"] := Position(1800 , 1100)
+WPD["FDM"]     := Position(1600 , 1100)
 
 WPD["Scrcpy"] := Position(        1032, 2064)
 WPB["Scrcpy"] := Position(48, 48, 1032, 2064)
-
-WPD["FDM"]    := Position("[Center][1]" , 2000 , 1500)
-WPD["FDM__%"] := Position("[Center][3]" , 1300 , 1200)
 
 ; 火绒U盘工具
 WPD["HipsTray_HRUSBTRAY"] := Position(-10, -10, 0, 0)
@@ -25,21 +32,8 @@ WPD["Thunder"]             := Position4K(2500, 1600)
 WPD["Thunder__新建任务面板"] := Position4K(1400, 1050)
 WPD["Thunder__迅雷播放组件"] := Position4K(1920, 1080)
 
-;----------------------------------------------------------;
-
-WPD["_#32770_浏览文件夹"] := Position4K(900 , 1500)
-WPD["_#32770_浏览计算机"] := Position4K(900 , 1500)
-
 ; 开启关闭 Windows 功能
 WPD["OptionalFeatures_NativeHWNDHost"] := Position(800 , 1000)
-WPD["_#32770_编辑环境变量"] := Position4K(1000 , 1500)
-
-WPD["_#32770"]          := Position4K(2030 , 1500)
-WPD["_#32770_浏览"]      := Position4K(2030 , 1500)
-WPD["_#32770_打开"]      := Position4K(2030 , 1500)
-WPD["_#32770_另存为"]    := Position4K(2030 , 1500)
-WPD["_#32770_打开文件"]   := Position4K(2030 , 1500)
-WPD["_#32770_选择文件夹"] := Position4K(2030 , 1500)
 
 ; 开始菜单
 WPD["Start"] := Position4K(650 , 800)
