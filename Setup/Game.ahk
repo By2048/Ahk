@@ -9,11 +9,14 @@
 #Include %A_InitialWorkingDir%\Tool\Other.ahk
 #Include %A_InitialWorkingDir%\Tool\Language.ahk
 
-#Include %A_InitialWorkingDir%\Game\Windows.ahk
-#Include %A_InitialWorkingDir%\Game\LOL.ahk
+#Include %A_InitialWorkingDir%\Key\Game.ahk
+
+#Include %A_InitialWorkingDir%\Software\Game\LOL.ahk
 
 #SingleInstance Force
+
 TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Game.png")
+
 A_IconTip := "[ Game Mode ]"
 
 HelpText("`n Game Mode `n", "Center", "Screen", 1000)

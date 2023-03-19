@@ -2,9 +2,6 @@
 RAlt::EN()
 RCtrl::CN()
 
-<#Tab::Send "!{Tab}"
-<#+Tab::Send "!+{Tab}"
-
 >^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
 >^Esc::Run "Taskmgr.exe"
 
@@ -12,6 +9,8 @@ RCtrl::CN()
 >#0::Send "#^!0"
 >#=::Send "{Volume_Up}"
 >#-::Send "{Volume_Down}"
+
+LWin & Tab::AltTab
 
 ; ------------------------------------------------- ;
 
