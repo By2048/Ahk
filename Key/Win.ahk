@@ -134,7 +134,7 @@
     if (not data) {
         return
     }
-    if (not data.Length) {
+    if (not data.Count) {
         return
     }
     all_select := data["select"]
