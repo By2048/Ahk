@@ -1,7 +1,7 @@
 ﻿
-#Include *i %A_InitialWorkingDir%\Config\Screen.ahk
-#Include *i %A_InitialWorkingDir%\Config\Software.ahk
-#Include *i %A_InitialWorkingDir%\Tool\Other.ahk
+#Include *i .\Screen.ahk
+#Include *i .\Software.ahk
+#Include *i ..\Tool\Other.ahk
 
 
 Init := {}

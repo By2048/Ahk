@@ -1,5 +1,5 @@
 ﻿
-#Include *i %A_InitialWorkingDir%\Tool\Change.ahk
+#Include *i ..\Tool\Change.ahk
 
 WPD["_#32770"]           := Position4K(2030 , 1500)
 WPD["_#32770_浏览"]       := Position4K(2030 , 1500)

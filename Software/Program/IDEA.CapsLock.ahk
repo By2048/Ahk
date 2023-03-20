@@ -13,6 +13,6 @@
         SetNumLockState "Off"
     }
 
-    #Include *i %A_InitialWorkingDir%\Software\Program\IDEA.CapsLock.ahk
+    #Include *i IDEA.CapsLock.ahk
 
 #HotIf

@@ -1,5 +1,5 @@
 ﻿
-#Include *i %A_InitialWorkingDir%\Config\Software.ahk
+#Include *i ..\Config\Software.ahk
 
 
 

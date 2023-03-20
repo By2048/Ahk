@@ -80,7 +80,7 @@ Expand := False
 
 #HotIf CheckWindowActive( "Chrome" )
 
-    #Include *i %A_InitialWorkingDir%\Software\Other\Chrome.LShift.ahk
+    #Include *i Chrome.LShift.ahk
 
     LAlt::Send "{F10}"
 

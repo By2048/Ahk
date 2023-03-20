@@ -1,6 +1,6 @@
 ﻿
-#Include *i %A_InitialWorkingDir%\Config\Message.ahk
-#Include *i %A_InitialWorkingDir%\Tool\Change.ahk
+#Include *i ..\Config\Message.ahk
+#Include *i ..\Tool\Change.ahk
 
 ; 切换默认输入法
 ; https://www.voidtools.com/support/everything/language_ids/

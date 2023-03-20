@@ -1,8 +1,8 @@
 ﻿
-#Include %A_InitialWorkingDir%\Config\All.ahk
-#Include %A_InitialWorkingDir%\Tool\Base.ahk
-#Include %A_InitialWorkingDir%\Tool\Help.ahk
-#Include %A_InitialWorkingDir%\Tool\Window.ahk
+#Include ..\Config\All.ahk
+#Include ..\Tool\Base.ahk
+#Include ..\Tool\Help.ahk
+#Include ..\Tool\Window.ahk
 
 #SingleInstance Force
 #NoTrayIcon

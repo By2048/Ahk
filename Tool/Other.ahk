@@ -1,9 +1,9 @@
 ﻿
-#Include *i %A_InitialWorkingDir%\Config\All.ahk
-#Include *i %A_InitialWorkingDir%\Tool\File.ahk
-#Include *i %A_InitialWorkingDir%\Tool\Window.ahk
-#Include *i %A_InitialWorkingDir%\Tool\Change.ahk
-#Include *i %A_InitialWorkingDir%\Tool\Help.ahk
+#Include *i ..\Config\All.ahk
+#Include *i ..\Tool\File.ahk
+#Include *i ..\Tool\Window.ahk
+#Include *i ..\Tool\Change.ahk
+#Include *i ..\Tool\Help.ahk
 
 
 

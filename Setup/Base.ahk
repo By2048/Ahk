@@ -1,7 +1,7 @@
 ﻿
-#Include %A_InitialWorkingDir%\Config\All.ahk
-#Include %A_InitialWorkingDir%\Tool\Gui.ahk
-#Include %A_InitialWorkingDir%\Tool\Help.ahk
+#Include ..\Config\All.ahk
+#Include ..\Tool\Gui.ahk
+#Include ..\Tool\Help.ahk
 
 #SingleInstance Force
 TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Run.png")

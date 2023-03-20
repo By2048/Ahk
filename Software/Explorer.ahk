@@ -224,7 +224,8 @@
         EC["D:\"]   := EC["Software"]
         EC["回收站"] := EC["Recover"]
         EC["T:\"]   := EC["List"]
-        #Include *i %A_InitialWorkingDir%\Software\Explorer.Private.ahk
+
+        #Include *i Explorer.Private.ahk
 
         WPD["Explorer"] := Position(total_width , total_height)
         InitWindowArgs()

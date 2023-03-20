@@ -1,7 +1,4 @@
 ﻿
-#Include *i %A_InitialWorkingDir%\Tool\Gui.ahk
-
-
 >+`;::Send ":"
 >+'::Send "`""
 

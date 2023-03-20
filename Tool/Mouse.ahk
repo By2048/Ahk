@@ -1,8 +1,8 @@
 ﻿
-#Include *i %A_InitialWorkingDir%\Tool\Help.ahk
-#Include *i %A_InitialWorkingDir%\Tool\Window.ahk
-#Include *i %A_InitialWorkingDir%\Tool\Other.ahk
-#Include *i %A_InitialWorkingDir%\Tool\File.ahk
+#Include *i ..\Tool\Help.ahk
+#Include *i ..\Tool\Window.ahk
+#Include *i ..\Tool\Other.ahk
+#Include *i ..\Tool\File.ahk
 
 
 

@@ -1,5 +1,5 @@
 ﻿
-#Include %A_InitialWorkingDir%\Tool\Base.ahk
+#Include ..\Tool\Base.ahk
 
 #SingleInstance Force
 #NoTrayIcon

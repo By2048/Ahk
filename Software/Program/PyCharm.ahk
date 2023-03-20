@@ -1,5 +1,5 @@
 ﻿
-#Include *i %A_InitialWorkingDir%\Software\Program\PyCharm.Tool.ahk
+#Include *i PyCharm.Tool.ahk
 
 
 #HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "评估")
@@ -165,7 +165,7 @@ CenterToolsSpace := 10
 CapsLockActivate := False
 #HotIf CheckWindowActive("PyCharm")
 
-    #Include *i %A_InitialWorkingDir%\Software\Program\PyCharm.Fxx.ahk
+    #Include *i PyCharm.Fxx.ahk
 
     ~Esc::{
         global CapsLockActivate
@@ -265,7 +265,7 @@ CapsLockActivate := False
     <!Tab::Send "^{Tab}"
     <!+Tab::Send "^+{Tab}"
 
-    #Include *i %A_InitialWorkingDir%\Software\Program\PyCharm.CapsLock.ahk
+    #Include *i PyCharm.CapsLock.ahk
 
     ; 代码注释
     ; ^\::Return

@@ -28,7 +28,7 @@
 
 
 #HotIf ( CheckWindowActive("LOL_Client") )
-    #Include *i %A_InitialWorkingDir%\Game\LOL.Client.Private.ahk
+    #Include *i LOL.Client.Private.ahk
     Insert::ScreenShot("Screen", "T:\")
     #+BackSpace::{
         exe := Windows_Process_Name.Get("LOL_Client")
@@ -38,7 +38,7 @@
 
 
 #HotIf ( CheckWindowActive("LOL_Game") )
-    #Include *i %A_InitialWorkingDir%\Game\LOL.Game.Private.ahk
+    #Include *i LOL.Game.Private.ahk
     ; 截图
     F12::Return
     Insert::Screenshot("Screen" , "T:\")

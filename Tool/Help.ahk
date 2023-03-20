@@ -1,8 +1,8 @@
 ﻿
-#Include *i %A_InitialWorkingDir%\Config\All.ahk
-#Include *i %A_InitialWorkingDir%\Tool\Change.ahk
-#Include *i %A_InitialWorkingDir%\Tool\File.ahk
-#Include *i %A_InitialWorkingDir%\Tool\Language.ahk
+#Include *i ..\Config\All.ahk
+#Include *i ..\Tool\Change.ahk
+#Include *i ..\Tool\File.ahk
+#Include *i ..\Tool\Language.ahk
 
 
 ; 显示图片

@@ -1,5 +1,5 @@
 ﻿
-#Include *i %A_InitialWorkingDir%\Config.ahk
+#Include *i ..\Config.ahk
 
 ; 不同进程之间传递变量 \ 通过读写注册表
 

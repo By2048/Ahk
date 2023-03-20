@@ -47,4 +47,4 @@
 
 #HotIf
 
-#Include *i %A_InitialWorkingDir%\Software\Other\Android.COC.Private.ahk
+#Include *i Android.COC.Private.ahk

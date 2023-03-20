@@ -1,6 +1,6 @@
 ﻿
-#Include %A_InitialWorkingDir%\Config\All.ahk
-#Include %A_InitialWorkingDir%\Tool\Base.ahk
+#Include ..\Config\All.ahk
+#Include ..\Tool\Base.ahk
 
 #NoTrayIcon
 #SingleInstance Force
@@ -30,4 +30,4 @@
 
 
 
-#Include %A_InitialWorkingDir%\Setup\Input.Private.ahk
+#Include Input.Private.ahk
