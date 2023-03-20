@@ -1,11 +1,9 @@
 ﻿
-#Include E:\Project\Ahk\
-
-#Include Config.ahk
-#Include Config\Screen.ahk
-#Include Config\Software.ahk
-#Include Tool\Global.ahk
-#Include Tool\File.ahk
+#Include ..\Config.ahk
+#Include ..\Config\Screen.ahk
+#Include ..\Config\Software.ahk
+#Include ..\Tool\Global.ahk
+#Include ..\Tool\File.ahk
 
 #SingleInstance Force
 
@@ -19,7 +17,8 @@ image := LTrim(image, ".\")
 image := A_InitialWorkingDir . image
 
 size := GetImageSize(image)
-
+image_w := size.w
+image_h := size.h
 If (size.w > Screen.w) {
     image_w := "-1"
     image_h := size.h
