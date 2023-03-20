@@ -29,14 +29,29 @@ If (A_Args.Length != 1) {
 image := A_Args[1]
 image := LTrim(image, ".\")
 image := A_InitialWorkingDir . image
+
 size := GetImageSize(image)
 image_w := size.w
 image_h := size.h
 
-x := Screen.x + (Screen.w - image_w) / 2
-y := Screen.y + (Screen.h - image_h) / 2
-x := Round(x)
-y := Round(y)
+If (image_w > Screen.w) {
+    w := "-1"
+    h := image_h
+}
+If (image_h > Screen.h) {
+    w := image_w
+    h := "-1"
+}
+If (image_w > Screen.w and image_h > Screen.h) {
+    w := Screen.w
+    h := "-1"
+}
 
-cmd := Format("{1} paste --files {} --pos {} {}", Snipaste, image, x, y)
-Run cmd
+G := Gui()
+G.Opt("-DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
+G.MarginX := 1
+G.MarginY := 1
+G.Add("Picture", Format("+Border w{1} h{2}", w, h), image)
+G.Show("Center NA")
+
+RShift::ExitApp
