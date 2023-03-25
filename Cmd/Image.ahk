@@ -33,8 +33,11 @@ If (size.h > Screen.h) {
     image_w := "-1"
 }
 If (size.w > Screen.w and size.h > Screen.h) {
-    image_w := Screen.w * scale
-    image_h := "-1"
+    scale_w := size.w / Screen.w
+    scale_h := size.h / Screen.h
+    scale_max := 1 / Max(scale_w, scale_h)
+    image_w := size.w * scale_max * scale
+    image_h := size.h * scale_max * scale
 }
 
 G := Gui()
@@ -44,4 +47,8 @@ G.MarginY := 1
 G.Add("Picture", Format("+Border w{1} h{2}", image_w, image_h), image)
 G.Show("Center NA")
 
-RShift::ExitApp
+\::
+Enter::
+RShift::{
+    ExitApp
+}
