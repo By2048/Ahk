@@ -13,22 +13,27 @@ If (A_Args.Length != 1) {
 }
 
 image := A_Args[1]
-image := LTrim(image, ".\")
-image := A_InitialWorkingDir . image
+
+If (Not InStr(image, ":")) {
+    image := LTrim(image, ".\")
+    image := A_InitialWorkingDir . "\" . image
+}
+
+scale := 0.98
 
 size := GetImageSize(image)
 image_w := size.w
 image_h := size.h
 If (size.w > Screen.w) {
-    image_w := "-1"
-    image_h := size.h
-}
-If (size.h > Screen.h) {
-    image_w := size.w
+    image_w := Screen.w * scale
     image_h := "-1"
 }
+If (size.h > Screen.h) {
+    image_h := Screen.h * scale
+    image_w := "-1"
+}
 If (size.w > Screen.w and size.h > Screen.h) {
-    image_w := Screen.w * 0.97
+    image_w := Screen.w * scale
     image_h := "-1"
 }
 
