@@ -31,10 +31,19 @@ ChromeTimer()
 
     ; google -> bing
     ; google.com/search?q=Xxx
-    ; cn.bing.com/search?q==Xxx
+    ; cn.bing.com/search?q=Xxx
     if (InStr(url_origin, "google.com/search?q=")) {
         keyword := RegExReplace(url_origin, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
         url_result := "https://cn.bing.com/search?q=" . keyword
+    }
+
+    ; bing -> baidu
+    ; cn.bing.com/search?q=Xxx
+    ; baidu.com/s?wd=Xxx
+    if (InStr(url_origin, "cn.bing.com/search?q=")) {
+        ; https://cn.bing.com/search?q=test
+        keyword := RegExReplace(url_origin, "(http.*)(search\?q\=)(.*?)", "$3")
+        url_result := "https://www.baidu.com/s?wd=" . keyword
     }
 
     ; learn.microsoft.com/en-us/windows/win32/shell/shellwindows
