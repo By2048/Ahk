@@ -280,24 +280,36 @@
         win_id := window.id
         win_xx := window.xx
 
-        info     := window.controls.DirectUIHWND1
-        input_x  := info.x
-        input_y  := info.y
-        input_w  := info.w
-        input_h  := info.h
-        input_xx := info.xx
-        input_yy := info.yy
+        try {
+            info := window.controls.DirectUIHWND1
+            input_x  := info.x
+            input_y  := info.y
+            input_w  := info.w
+            input_h  := info.h
+            input_xx := info.xx
+            input_yy := info.yy
+        } catch {
+            return
+        }
 
-        info       := window.controls.DirectUIHWND3
-        content_x  := info.x
-        content_y  := info.y
-        content_w  := info.w
-        content_h  := info.h
-        content_xx := info.xx
-        content_yy := info.yy
+        try {
+            info := window.controls.DirectUIHWND3
+            content_x  := info.x
+            content_y  := info.y
+            content_w  := info.w
+            content_h  := info.h
+            content_xx := info.xx
+            content_yy := info.yy
+        } catch {
+            return
+        }
 
-        info := window.controls.SysTreeView321
-        tree_width := info.w
+        try {
+            info := window.controls.SysTreeView321
+            tree_width := info.w
+        } catch {
+            return
+        }
 
         ; 搜索框
         if ( Abs(input_w - input_check_width) > Abs(input_offset) ) {
