@@ -41,3 +41,9 @@ RWin & LWin::{
         HelpText("`nClose All Script`n", "Center", "Screen" . Screens.Count, 1000)
     }
 }
+
+; 显示窗口
+LAlt & RAlt::Return
+
+; 隐藏窗口
+RAlt & LAlt::Return
