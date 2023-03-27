@@ -34,10 +34,10 @@ ShiftTimer() {
 
 
 
-hotkeys_images  := Map() ; 软件图片对应关系
-hotkeys_current := []    ; 当前显示的图片组
-hotkeys_index   := 0     ; 显示图片的序号
-
+hotkeys_images      := Map() ; 软件图片对应关系
+hotkeys_current     := []    ; 当前显示的图片组
+hotkeys_index       := 0     ; 显示图片的序号
+hotkeys_show_status := False
 
 InitImageConfig()
 {
@@ -115,6 +115,7 @@ ShowShiftImage()
 
     global GSI
     global hotkeys_current, hotkeys_index
+    global hotkeys_show_status
 
     try {
         win_id := GSI.Hwnd
@@ -134,6 +135,7 @@ ShowShiftImage()
         GSI.Add("Text", Format("+Center +Border w{}", image_w), text)
     }
     GSI.Show("NA Center")
+    hotkeys_show_status := True
 }
 
 
@@ -141,11 +143,13 @@ HideShiftImage()
 {
     global GSI
     global hotkeys_index, hotkeys_current
+    global hotkeys_show_status
     try {
         GSI.Destroy()
     }
-    hotkeys_index   := -1
-    hotkeys_current := []
+    hotkeys_index       := 0
+    hotkeys_current     := []
+    hotkeys_show_status := False
 }
 
 
@@ -165,7 +169,7 @@ ChangeShiftImage(np:="")
 }
 
 
-#HotIf ( hotkeys_index != -1 )
+#HotIf ( hotkeys_show_status == True )
     [::ChangeShiftImage("-")
     ]::ChangeShiftImage("+")
     Insert::HideShiftImage()
