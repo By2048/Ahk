@@ -1,9 +1,7 @@
 ﻿
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
     <#\::{
-        WPD["BitComet_#32770_新建BT任务"] := Position(1300, 900)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(1300, 900))
         _1 := " 1    2    3   "
         _2 := " 名称 大小  %   "
         _3 := " 999  100  70  "
@@ -21,9 +19,7 @@
         max_left := 265
         offset := 9
 
-        WPD["BitComet"] := Position(total_width , total_height)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(total_width , total_height))
 
         GetActiveWindowInfo()
 

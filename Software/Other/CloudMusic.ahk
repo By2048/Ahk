@@ -6,9 +6,7 @@
         win_h := 190
         win_x := Screen.x  + Screen.w/2 - win_w/2
         win_y := Screen.yy - win_h      - 10
-        WPD["CloudMusic_DesktopLyrics"] := Position(win_x, win_y, win_w, win_h)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(win_x, win_y, win_w, win_h))
     }
 
 #HotIf
@@ -35,9 +33,7 @@
     }
 
     <#\::{
-        WPD["CloudMusic"] := Position(2000 , 1200)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(2000 , 1200))
     }
 
     ; Global Cloud_Music_Volume := -1

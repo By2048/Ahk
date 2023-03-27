@@ -2,9 +2,7 @@
 #HotIf CheckWindowActive( "FreeFileSync" , "" , "同步设置" )
 
     <#\::{
-        WPD["FreeFileSync__同步设置"] := Position(1000, 1000)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(1000, 1000))
 
         InitWindowArgs()
         GetActiveWindowInfo()
@@ -81,9 +79,7 @@
     !Enter::Send "{F9}"
 
     <#\::{
-        WPD["FreeFileSync"] := Position(2500, 1600)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(2111 , 1222))
     }
 
 #HotIf

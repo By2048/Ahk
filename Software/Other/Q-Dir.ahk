@@ -30,9 +30,7 @@
                         + other_width
         total_height := Screen.height * 9/10
 
-        WPD["Q-Dir"] := Position(total_width, total_height)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(total_width, total_height))
 
         tree_width := tree_width + 14
         box_left   := box_left   + scroll_bar_width + 32

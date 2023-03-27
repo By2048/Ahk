@@ -2,9 +2,7 @@
 #HotIf CheckWindowActive("Everything")
 
     <#\::{
-        WPD["Everything"] := Position(1700 , 1200)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(1700 , 1200))
         _1 := " 1    2     3    4        "
         _2 := " 名称  路径  大小  修改时间  "
         _3 := " 650  650   150  200      "

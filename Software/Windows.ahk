@@ -83,7 +83,7 @@
 
 #HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "环境变量" )
     <#\::{
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(1500, 1100))
         win_title := window.title
         if (win_title == "环境变量") {
             SetColumnWidth( "SysListView321", Map( 1,150 , 2,1200 ) ) ;用户变量
@@ -108,10 +108,11 @@
 
 
     <#\::{
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(1666 , 1222))
 
-        _name  := "SysListView321" ;详细信息
-        _width := Map(  1 , 470   ;名称
+        ; 详细信息
+        _name  := "SysListView321"
+        _width := Map(  1 , 500   ;名称
                      ,  2 , 100   ;PID
                      ,  6 , 160   ;工作集内存
                      ,  5 , 100   ;CPU
@@ -124,16 +125,19 @@
                      ,  4 , 200   ;用户名
                      ,  3 , 130   ;状态
                      , 12 , 80    ;平台
-                     , 13 , 180 ) ;DPI 感知
+                     , 13 , 170 ) ;DPI 感知
 
         SetColumnWidth(_name, _width, Screen_4K, Screen_2K)
 
-        _name  := "SysListView322" ;服务
+
+
+        ; 服务
+        _name  := "SysListView322"
         _width := Map( 1 , 600   ;名称
-                     , 2 , 100   ;PID
-                     , 4 , 130   ;状态
-                     , 3 , 700   ;描述
-                     , 5 , 600 ) ;组
+                     , 2 , 130   ;PID
+                     , 4 , 150   ;状态
+                     , 5 , 450   ;组
+                     , 3 , 810 ) ;描述
         SetColumnWidth(_name, _width, Screen_4K, Screen_2K)
     }
 
@@ -161,6 +165,10 @@
 ; 设置
 #HotIf CheckWindowActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
 
+    <#\::{
+        MoveWindowToPosition(Position(1800 , 1200))
+    }
+
     ;点击返回
     Esc::{
         CoordMode "Mouse", "Window"
@@ -176,13 +184,13 @@
 ; 服务
 #HotIf CheckWindowActive( "MMC" , "" , "服务" )
     <#\::{
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(1777 , 1200))
         _name  := "SysListView321"
-        _width := Map( 1 , 300   ;名称
-                     , 2 , 470   ;描述
-                     , 3 , 60    ;状态
+        _width := Map( 1 , 330   ;名称
+                     , 2 , 460   ;描述
+                     , 3 , 70    ;状态
                      , 4 , 110   ;启动类型
-                     , 5 , 60  ) ; 登录为
+                     , 5 , 70  ) ; 登录为
         SetColumnWidth(_name, _width)
     }
 #HotIf
@@ -192,34 +200,26 @@
 ; 注册表
 #HotIf CheckWindowActive( "RegEdit" )
     <#\::{
-        MouseGetPos &x_origin, &y_origin
-
-        MoveWindowToDefaultPosition()
+        total_width := 1800
+        total_height := 1200
+        MoveWindowToPosition(Position(total_width , total_height))
 
         name  := "SysListView321"
-        width := { 1 : 500 , 2 : 230 , 3 : 1000 } ; 名称 类型 数据
-        SetColumnWidth(name, width, Screen_4K, Screen_2K)
+        width := Map( 1 , 500   ; 名称
+                    , 2 , 170   ; 类型
+                    , 3 , 450 ) ; 数据
+        SetColumnWidth(name, width)
 
-        max_left := 500
-        offset   := 9
-
-        control_config := window.controls.SysTreeView321
-        move_steps     := control_config.w - max_left
-        if ( Abs(move_steps) < 9 ) {
+        max_left := 633
+        offset   := 33
+        if ( Abs(max_left - window.controls.SysTreeView321.w) < offset ) {
             return
         }
+        CoordMode "Mouse", "Window"
+        MouseGetPos &x_origin, &y_origin
         Send "{Alt Down}{v}{Alt Up}{Down}{Enter}"
-        SetKeyDelay -1
-        if (move_steps > 0) {
-            times := move_steps / 2
-            Send Format("{Left {1}}", times)
-        } else {
-            times := Abs(move_steps) / 2
-            Send Format("{Right {1}}", times)
-        }
-        SetKeyDelay 0
+        MouseMove max_left, total_height / 2
         Send "{Esc}"
-
         MouseMove x_origin, y_origin
     }
 #HotIf

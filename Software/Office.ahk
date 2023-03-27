@@ -1,9 +1,7 @@
 ﻿
 #HotIf CheckWindowActive("Excel", "", "名称管理器")
     <#\::{
-        WPD["Excel__名称管理器"] := Position(1500, 900)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(1500, 900))
         ; 服务器
         _1 := " 1    2    3        4    5   "
         _2 := " 名称  数值 引用位置  范围  批注 "
@@ -90,9 +88,7 @@
     ; Return
 
     <#\::{
-        WPD["Excel"] := Position(-60  , -30)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(-60 , -30))
     }
 
 #HotIf
@@ -102,9 +98,7 @@
 #HotIf CheckWindowActive("PPT")
 
     <#\::{
-        WPD["PPT"] := Position(-60  , -30)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(-60 , -30))
     }
 
 #HotIf
@@ -114,9 +108,7 @@
 #HotIf CheckWindowActive("Word")
 
     <#\::{
-        WPD["Word"] := Position(-60  , -30)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(-60 , -30))
     }
 
 #HotIf

@@ -40,9 +40,7 @@
     Insert::Send "!q"
 
     <#\::{
-        WPD["Android"] := Position(2580 , 1583)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(2580 , 1583))
     }
 
 #HotIf

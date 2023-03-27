@@ -3,6 +3,10 @@
 
 #HotIf CheckWindowActive( "Terminal" )
 
+    <#\::{
+        MoveWindowToPosition(Position(2200 , 1400))
+    }
+
     ; 关闭窗格
     !CapsLock::Send "{F13}"
 

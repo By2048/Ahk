@@ -85,9 +85,7 @@
     }
 
     <#\::{
-        WPD["Wallpaper"] := Position(2345 , 1357)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(2345 , 1357))
     }
 
 #HotIf

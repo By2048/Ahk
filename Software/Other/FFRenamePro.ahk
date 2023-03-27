@@ -81,9 +81,7 @@
     F12::Return
 
     <#\::{
-        WPD["FFRenamePro"] := Position(2500 , 1400)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(2500 , 1400))
     }
 
 #HotIf

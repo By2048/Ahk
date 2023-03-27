@@ -2,9 +2,7 @@
 #HotIf CheckWindowActive("7-Zip", "#32770", "属性")
 
     <#\::{
-        WPD["7-Zip_#32770_属性"] := Position(650, 900)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(650, 900))
         config := Map( 1 , 150
                      , 2 , 420 )
         SetColumnWidth("SysListView321", config)
@@ -16,9 +14,7 @@
 #HotIf CheckWindowActive("7-Zip")
 
     <#\::{
-        WPD["7-Zip"] := Position(1100 , 1000)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(1100 , 1000))
         index := " 1     3      2    4   "
         name  := " 名称  文件夹  文件  大小 "
         width := " 700   100    100  140 "

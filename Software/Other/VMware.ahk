@@ -17,9 +17,7 @@
 
 #HotIf CheckWindowActive( "VMware" , "#32770" , "浏览ISO映像" )
     <#\::{
-        WPD["VMware_#32770_浏览ISO映像"] := Position(1520 , 1100)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(1520 , 1100))
     }
 #HotIf
 
@@ -51,9 +49,7 @@
     AppsKey::Send "^p"
 
     <#\::{
-        WPD["VMware"] := Position(1800 , 1200)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(1800 , 1200))
     }
 
     ; 映射或断开虚拟磁盘连接

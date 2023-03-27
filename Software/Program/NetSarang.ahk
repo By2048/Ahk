@@ -1,9 +1,7 @@
 ﻿
 #HotIf CheckWindowActive("Xftp")
     <#\::{
-        WPD["Xftp"] := Position(2200 , 1200)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(2200 , 1200))
     }
 #HotIf
 
@@ -24,9 +22,7 @@
     <#\::{
         width  := 1100
         height := 660
-        WPD["XshellCore_#32770_会话"] := Position(width , height)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(width , height))
         ; 主界面
         index  := " 1    2    3    4    5     6    7        "
         name   := " 名称 主机  端口  协议 用户名 说明  修改时间  "
@@ -66,9 +62,7 @@
     !+CapsLock::Send "^+\"
 
     <#\::{
-        WPD["Xshell"] := Position(2200 , 1200)
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(2200 , 1200))
     }
 
     <#Enter::Send "^!{F12}"

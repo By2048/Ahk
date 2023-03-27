@@ -227,16 +227,9 @@
 
         #Include *i Explorer.Private.ahk
 
-        WPD["Explorer"] := Position(total_width , total_height)
-        InitWindowArgs()
+        WinGetPos &origin_x, &origin_y, &origin_w, &origin_h, "A"
 
-        GetActiveWindowInfo()
-        origin_x := window.x
-        origin_y := window.y
-        origin_w := window.w
-        origin_h := window.h
-
-        MoveWindowToDefaultPosition()
+        MoveWindowToPosition(Position(total_width , total_height))
 
         InitWindowArgs()
         GetActiveWindowInfo()

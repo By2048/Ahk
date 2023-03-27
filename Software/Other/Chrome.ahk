@@ -277,12 +277,10 @@ Expand := False
         Send "{Tab 2}"
         Send "{Enter}"
         if (InStr(Screen.Name, "4K")) {
-            WPD["Chrome__修改书签"] := Position(900, 1500)
+            MoveWindowToPosition(Position(900, 1500))
         } else if (InStr(Screen.Name, "2K")) {
-            WPD["Chrome__修改书签"] := Position(700, 1000)
+            MoveWindowToPosition(Position(700, 1000))
         }
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
     }
     !+d::{
         Send "^d"
@@ -332,12 +330,10 @@ Expand := False
 
     <#\::{
         if (InStr(Screen.Name, "4K")) {
-            WPD["Chrome"] := Position(3300, 2000)
+            MoveWindowToPosition(Position(3300, 2000))
         } else if (InStr(Screen.Name, "2K")) {
-            WPD["Chrome"] := Position(2500, 1400)
+            MoveWindowToPosition(Position(2500, 1400))
         }
-        InitWindowArgs()
-        MoveWindowToDefaultPosition()
     }
 
     ; 前进后退
