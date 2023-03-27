@@ -640,97 +640,41 @@ MoveWindowToMainMini(command)
 
 
 
-; 将窗口移动到软件设置的默认位置
-; return | None
-MoveWindowToPosition(position:="Default")
+; 将窗口移动到指定位置
+MoveWindowToPosition(position)
 {
-    GetActiveWindowInfo()
-
-    win_id           := window.id
-    win_class        := window.class
-    win_title        := window.title
-    win_process_name := window.process_name
-    win_x            := window.x
-    win_y            := window.y
-    win_w            := window.w
-    win_h            := window.h
-    screen_x         := window.screen.x
-    screen_y         := window.screen.y
-    screen_w         := window.screen.w
-    screen_h         := window.screen.h
-    screen_xx        := window.screen.xx
-    screen_yy        := window.screen.yy
-
-    ; Win10 \ WinServer
-    ; 开始菜单在屏幕上居中 兼容处理
-    ; 按下Win键，此时在最上层激活的是Search(SearchApp)
-    ; 而需要处理的是 StartMenu(StartMenuExperienceHost)
-    if (win_process_name == "Search") {
-        ; Global System_Type
-        if (System_Type == "WinServer") {
-            ProcessClose "SearchUI.exe"
-            Sleep 100
-            WinActivate "ShellExperienceHost.exe"
-            Sleep 300
-            GetActiveWindowInfo()
-        } else if (System_Type == "Win10") {
-            ProcessClose "SearchApp.exe"
-            Sleep 100
-            try {
-                WinActivate "StartMenuExperienceHost.exe"
-                Sleep 300
-                GetActiveWindowInfo()
-            }
-        }
-    }
-
-    if (position == "Default") {
-        if (not window.position_default.Length) {
-            return
-        }
-        x := window.position_default[1]
-        y := window.position_default[2]
-        w := window.position_default[3]
-        h := window.position_default[4]
-    } else if (position == "Backup") {
-        if (not window.position_backup.Length) {
-            return
-        }
-        x := window.position_backup[1]
-        y := window.position_backup[2]
-        w := window.position_backup[3]
-        h := window.position_backup[4]
-    } else {
+    if (not position.Length) {
         return
     }
-
-    ; 处理相对参数下的窗口位置
-    if (w == 0 or h ==0) {
-        if (w == 0) {
-            w := win_w
-        }
-        if (h == 0) {
-            h := win_h
-        }
-        if (x >= 0) {
-            x := x
-        } else {
-            x := screen_xx + x - win_w
-        }
-        if (y >=0) {
-            y := y
-        } else {
-            y := screen_yy + y - win_h
-        }
-    }
-
+    x := position[1]
+    y := position[2]
+    w := position[3]
+    h := position[4]
     SetWindow(x, y, w, h)
 }
-MoveWindowToDefaultPosition() {
-    MoveWindowToPosition("Default")
+MoveWindowToDefaultPosition()
+{
+    GetActiveWindowInfo()
+    if (not window.position_default.Length) {
+        return
+    }
+    x := window.position_default[1]
+    y := window.position_default[2]
+    w := window.position_default[3]
+    h := window.position_default[4]
+    SetWindow(x, y, w, h)
 }
-MoveWindowToBackupPosition()  {
-    MoveWindowToPosition("Backup")
+MoveWindowToBackupPosition()
+{
+    GetActiveWindowInfo()
+    if (not window.position_backup.Length) {
+        return
+    }
+    x := window.position_backup[1]
+    y := window.position_backup[2]
+    w := window.position_backup[3]
+    h := window.position_backup[4]
+    SetWindow(x, y, w, h)
 }
 
 
