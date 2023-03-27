@@ -140,10 +140,11 @@ ShowShiftImage()
 HideShiftImage()
 {
     global GSI
+    global hotkeys_index, hotkeys_current
     try {
         GSI.Destroy()
     }
-    hotkeys_index   := 0
+    hotkeys_index   := -1
     hotkeys_current := []
 }
 
@@ -164,7 +165,7 @@ ChangeShiftImage(np:="")
 }
 
 
-#HotIf ( hotkeys_index != 0 )
+#HotIf ( hotkeys_index != -1 )
     [::ChangeShiftImage("-")
     ]::ChangeShiftImage("+")
     Insert::HideShiftImage()
