@@ -134,3 +134,7 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
         GlobalSet("Status", "help_text_show_status", False)
     }
 }
+
+
+HT := HelpText
+HI := HelpImage
