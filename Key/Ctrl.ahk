@@ -75,12 +75,7 @@
 >^,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
 >^.::Run "T:\\"
 >^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
->^+/::{
-    Run "Chrome.bat", A_InitialWorkingDir, "Hide"
-    exe := Windows_Process_Name.Get("Chrome")
-    WinWaitActive "ahk_exe " . exe,  , 3
-    MoveWindowToBackupPosition()
-}
+>^+/::Run "MSEdge.exe"
 
 >^Up::Return
 >^Down::Return
