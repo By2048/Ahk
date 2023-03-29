@@ -53,7 +53,7 @@ LWin & RCtrl::{
 
 ; 输入法管理
 LCtrl & LWin::{
-    ; ZH()
+    ZH()
     HelpText("`n ZH_CN `n", "Center", "Screen", 300)
 }
 LAlt & LWin::{

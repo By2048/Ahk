@@ -5,11 +5,6 @@
 ; 切换默认输入法
 ; https://www.voidtools.com/support/everything/language_ids/
 
-CN() {
-    try {
-        PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0804,  , "A"
-    }
-}
 ZH() {
     try {
         PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0804,  , "A"
