@@ -172,9 +172,22 @@ DpiArgs(from:="", to:="", args*)
 }
 
 
-AID(ahk_id) {
-    if (not ahk_id) {
+AID(id) {
+    if (not id) {
         return "A"
     }
-    return "ahk_id " . ahk_id
+    return Format("ahk_id ", id)
+}
+
+AEXE(exe) {
+    if (not exe) {
+        return "A"
+    }
+    if (not InStr(exe, ".exe")) {
+        try {
+            exe := Windows_Process_Name.Get("JetBrainsToolBox")
+            return Format("ahk_exe {}", exe)
+        }
+    }
+    return Format("ahk_exe {}", exe)
 }
