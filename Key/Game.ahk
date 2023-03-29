@@ -1,6 +1,6 @@
 ﻿
 RAlt::EN()
-RCtrl::CN()
+RCtrl::ZH()
 
 >^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
 >^Esc::Run "Taskmgr.exe"

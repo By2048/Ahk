@@ -650,6 +650,7 @@ MoveWindowToPosition(position)
     y := position[2]
     w := position[3]
     h := position[4]
+    GetActiveWindowInfo()
     SetWindow(x, y, w, h)
 }
 MoveWindowToDefaultPosition()
