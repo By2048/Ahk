@@ -61,6 +61,15 @@ ChromeTimer()
         url_result := StrReplace(url_origin, "video", "all")
     }
 
+    ; .jpg@!web-comment-note.avif
+    if (InStr(url_origin, ".jpg@!web-comment-note.avif")) {
+        url_result := StrReplace(url_origin, "@!web-comment-note.avif", "")
+    }
+    ; .jpg@180w_!web-comment-note.avif
+    if (InStr(url_origin, ".jpg@180w_!web-comment-note.avif")) {
+        url_result := StrReplace(url_origin, "@180w_!web-comment-note.avif", "")
+    }
+
     ; 2 -> 1
     ; 1 -> 3 -> 1
     ; 1 https://www.zhihu.com/question/xxx
