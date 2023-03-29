@@ -42,14 +42,18 @@
 #Include ..\Software\Other\VMware.ahk
 #Include ..\Software\Other\Wallpaper.ahk
 
-#Include ..\Software\Program\JetBrains.ahk
 #Include ..\Software\Program\Navicat.ahk
 #Include ..\Software\Program\NetSarang.ahk
 #Include ..\Software\Program\Obsidian.ahk
 #Include ..\Software\Program\Postman.ahk
-#Include ..\Software\Program\PyCharm.ahk
 #Include ..\Software\Program\VSCode.ahk
 #Include ..\Software\Program\WindowsTerminal.Ahk
+
+#Include ..\Software\JetBrains\Lib.ahk
+#Include ..\Software\JetBrains\Keys.ahk
+#Include ..\Software\JetBrains\ToolBox.ahk
+#Include ..\Software\JetBrains\IDEA.ahk
+#Include ..\Software\JetBrains\PyCharm.ahk
 
 #SingleInstance Force
 #NoTrayIcon

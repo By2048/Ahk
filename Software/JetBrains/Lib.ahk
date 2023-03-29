@@ -1,5 +1,20 @@
 ﻿
-ToolSwitch(Key, rule) {
+IsJetbrains()
+{
+    all_process_name := "PyCharm IDEA"
+    GetActiveWindowInfo()
+    if (not window.process_name) {
+        return false
+    }
+    if (InStr(all_process_name, window.process_name)) {
+        return true
+    }
+    return false
+}
+
+
+ToolSwitch(Key, rule)
+{
     win_title := WinGetTitle("A")
     if (win_title == rule) {
         Send "{Esc}"
@@ -11,7 +26,8 @@ ToolSwitch(Key, rule) {
 }
 
 
-CapsLockRedirect() {
+CapsLockRedirect()
+{
     global CapsLockActivate
     key := StrReplace(A_ThisHotkey, "CapsLock & ", "")
     key_shift := GetKeyState("LShift", "P")
@@ -29,8 +45,9 @@ CapsLockRedirect() {
 }
 
 
-GetHideWindowConfig() {
-    exe := Windows_Process_Name.Get("PyCharm")
+GetHideWindowConfig()
+{
+    exe := WinGetProcessName("A")
     check_rule  := Format("ahk_exe {} ahk_class SunAwtWindow", exe)
     check_sleep := 30
     check_count := 22
@@ -60,7 +77,8 @@ GetHideWindowConfig() {
 }
 
 
-CenterHideWindow(position*) {
+CenterHideWindow(position*)
+{
     win := GetHideWindowConfig()
     if (not win.id) {
         return
@@ -99,8 +117,8 @@ CenterHideWindow(position*) {
 }
 
 
-; 后台任务默认位置
-PositionBackGroundTask() {
+PositionBackGroundTask()
+{
     win   := GetHideWindowConfig()
     win_w := 800
     win_h := 600

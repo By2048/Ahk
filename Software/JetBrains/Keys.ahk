@@ -1,29 +1,9 @@
 ﻿
-#Include *i PyCharm.Tool.ahk
+#Include *i Lib.ahk
 
 
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "评估")
-    !Enter::Send "^{Enter}"
-#HotIf
 
-
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "Python 控制台")
-    ;ReRun
-    +BackSpace::MouseClickAndResetting(34, 92)
-
-    ;StopConsole
-    !BackSpace::MouseClickAndResetting(34, 142)
-#HotIf
-
-
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "书签")
-    $CapsLock::{
-        Send "^{CapsLock}"
-    }
-#HotIf
-
-
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "终端|运行|调试")
+#HotIf IsJetbrains() And CheckWindowActive("", "SunAwtDialog", "终端|运行|调试")
     ~RAlt::{
         if (not hide_status or hide_status == False) {
             WinSetTransparent 99, "A"
@@ -38,11 +18,9 @@
 #HotIf
 
 
-; ----------------------------------------------------------------------------------------------- ;
-
 
 DoubleShift := False
-#HotIf CheckWindowActive("PyCharm") And DoubleShift == True
+#HotIf IsJetbrains() And DoubleShift == True
     Esc::
     CapsLock::{
         global DoubleShift
@@ -53,10 +31,11 @@ DoubleShift := False
 #HotIf
 
 
+
 ;AppsKey Esc 一次性返回问题修复
 AppsKeyRedirect   := False
 AppsKeyEnterCount := 0
-#HotIf CheckWindowActive("PyCharm") And AppsKeyRedirect == True
+#HotIf IsJetbrains() And AppsKeyRedirect == True
     $Enter::{
         global AppsKeyEnterCount
         Send "{Enter}"
@@ -77,9 +56,10 @@ AppsKeyEnterCount := 0
 #HotIf
 
 
+
 ; 浮动工具栏
 FloatTool := False
-#HotIf CheckWindowActive("PyCharm") And FloatTool == True
+#HotIf IsJetbrains() And FloatTool == True
     $Esc::
     $CapsLock::{
         global FloatTool, CapsLockActivate
@@ -99,11 +79,12 @@ FloatTool := False
 #HotIf
 
 
+
 ; 主菜单处理
 CenterTools := False
 CenterToolsConfig := []
 CenterToolsSpace := 10
-#HotIf CheckWindowActive("PyCharm") And CenterTools == True
+#HotIf IsJetbrains() And CenterTools == True
     $Enter::{
         global CenterTools, CenterToolsConfig, CenterToolsSpace
         Send "{Enter}"
@@ -162,10 +143,11 @@ CenterToolsSpace := 10
 #HotIf
 
 
-CapsLockActivate := False
-#HotIf CheckWindowActive("PyCharm")
 
-    #Include *i PyCharm.Fxx.ahk
+CapsLockActivate := False
+#HotIf IsJetbrains()
+
+    #Include *i Keys.Fxx.ahk
 
     ~Esc::{
         global CapsLockActivate
@@ -177,26 +159,6 @@ CapsLockActivate := False
         global AppsKeyRedirect, AppsKeyEnterCount
         AppsKeyRedirect := True
         AppsKeyEnterCount := 1
-        ; CenterHideWindow()
-    }
-
-    cnt := 0
-    ~LShift::{
-        global cnt
-        if (cnt > 0) {
-            cnt += 1
-            return
-        } else {
-            cnt := 1
-        }
-        SetTimer PyCharmTimer, -500
-    }
-    PyCharmTimer() {
-        global cnt, DoubleShift
-        if (cnt == 2) {
-            DoubleShift := True
-        }
-        cnt := 0
     }
 
     ~RWin::{
@@ -213,6 +175,25 @@ CapsLockActivate := False
         GlobalSet("Status", "ignore_function", True)
     }
 
+    cnt := 0
+    ~LShift::{
+        global cnt
+        if (cnt > 0) {
+            cnt += 1
+            return
+        } else {
+            cnt := 1
+        }
+        SetTimer Timer, -500
+    }
+    Timer() {
+        global cnt, DoubleShift
+        if (cnt == 2) {
+            DoubleShift := True
+        }
+        cnt := 0
+    }
+
     ~!+`::{
         WinWaitActive "书签描述"
         win_title := WinGetTitle("A")
@@ -220,6 +201,7 @@ CapsLockActivate := False
             MoveWindowToCenter(True)
         }
     }
+
     ; ~!+\::CenterHideWindow()
     ; ~^n::CenterHideWindow()
     ; ~^+n::CenterHideWindow()
@@ -265,7 +247,7 @@ CapsLockActivate := False
     <!Tab::Send "^{Tab}"
     <!+Tab::Send "^+{Tab}"
 
-    #Include *i PyCharm.CapsLock.ahk
+    #Include *i Keys.CapsLock.ahk
 
     ; 代码注释
     ; ^\::Return
@@ -277,7 +259,6 @@ CapsLockActivate := False
             Send "^\"
         }
     }
-
     ; 设置
     LAlt & RAlt::{
         Send "^{ScrollLock}"
@@ -294,5 +275,16 @@ CapsLockActivate := False
         SetScrollLockState "Off"
         CenterHideWindow()
     }
-
 #HotIf
+
+
+
+
+
+
+
+
+
+
+
+
