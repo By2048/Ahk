@@ -41,15 +41,15 @@
 >^+h::Run "E:\GitX\AhkSpy\AhkSpy.exe"
 >^j::{
     Run "D:\#Lnk\JetBrains.lnk"
-    exe := Windows_Process_Name.Get("JetBrains")
+    exe := Windows_Process_Name.Get("JetBrainsToolBox")
+    rule := Format("ahk_exe {}", exe)
     loop 9 {
         try {
-            WinActivate "ahk_exe " . exe
-        }
-        if WinActive("ahk_exe " . exe) {
-            MoveWindowToCenter(True)
-            break
-        } else {
+            WinActivate rule
+            GetActiveWindowInfo()
+            MoveWindowToPosition(Position(window.w, window.h))
+            return
+        } catch {
             Sleep 10
         }
     }
