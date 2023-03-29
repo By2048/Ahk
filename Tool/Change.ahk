@@ -187,6 +187,8 @@ AEXE(exe) {
         try {
             exe := Windows_Process_Name.Get("JetBrainsToolBox")
             return Format("ahk_exe {}", exe)
+        } catch {
+            return "A"
         }
     }
     return Format("ahk_exe {}", exe)
