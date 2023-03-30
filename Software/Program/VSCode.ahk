@@ -99,6 +99,8 @@
     !F4::Send "!{F16}"
     !+F4::Send "!+{F16}"
 
+    <#\::MoveWindowToPosition(Position(-60  , -30))
+
     ;窗口全屏
     <#Enter::{
         Send "^!{NumLock}"

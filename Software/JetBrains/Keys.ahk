@@ -217,6 +217,9 @@ CapsLockActivate := False
     ;     CenterHideWindow(1600, 1000)
     ; }
 
+    #Include *i Position.ahk
+    <#\::MoveWindowToDefaultPosition()
+
     ;窗口全屏
     <#Enter::{
         Send "^!{NumLock}"
@@ -226,14 +229,6 @@ CapsLockActivate := False
     <#+Enter::{
         Send "^!+{NumLock}"
         SetNumLockState "Off"
-    }
-
-    <#\::{
-        WinGetPos &x, &y, &w, &h, "A"
-        if (x <= 0 and y == 0 ) {
-            return
-        }
-        MoveWindowToDefaultPosition()
     }
 
     <!Esc::Send "!{F24}"

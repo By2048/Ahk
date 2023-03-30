@@ -78,4 +78,3 @@ WPD := Windows_Position_Default
 WPB := Windows_Position_Backup
 
 #Include *i .\Position.ahk
-#Include *i .\Position.IDE.ahk
