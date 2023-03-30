@@ -69,10 +69,18 @@ Position(args*)
     if (check_x) {
         screen_index := re_match_x.1
         if (screen_index <= Screens.Count) {
-            win_w := w < 0 ? Screens.%screen_index%.w + w : w
+            if ( w > 0 and w < 1 ) {
+                win_w := Screens.%screen_index%.w * w
+            } else if ( w < 0 ) {
+                win_w := Screens.%screen_index%.w + w
+            }
             win_x := Screens.%screen_index%.x + Screens.%screen_index%.w/2 - win_w/2
         } else {
-            win_w := w < 0 ? Screen.w + w : w
+            if ( w > 0 and w < 1 ) {
+                win_w := Screen.w * w
+            } else if ( w < 0 ) {
+                win_w := Screen.w + w
+            }
             win_x := Screen.x + Screen.w/2 - win_w/2
         }
     }
@@ -81,10 +89,18 @@ Position(args*)
     if (check_y) {
         screen_index := re_match_y.1
         if (screen_index <= Screens.Count) {
-            win_h := h < 0 ? Screens.%screen_index%.h + h : h
+            if ( h > 0 and h < 1 ) {
+                win_h := Screens.%screen_index%.h * h
+            } else if ( h < 0 ) {
+                win_h := Screens.%screen_index%.h + h
+            }
             win_y := Screens.%screen_index%.y + Screens.%screen_index%.h/2 - win_h/2
         } else {
-            win_h := h < 0 ? Screen.h + h : h
+            if ( h > 0 and h < 1 ) {
+                win_h := Screen.h * h
+            } else if ( h < 0 ) {
+                win_h := Screen.h + h
+            }
             win_y := Screen.y + Screen.h/2 - win_h/2
         }
     }
