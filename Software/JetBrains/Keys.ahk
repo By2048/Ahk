@@ -73,7 +73,7 @@ FloatTool := False
         Sleep 99
         win := GetHideWindowConfig()
         if (win.id) {
-            WinActivate "ahk_id " . win.id
+            WinActivate AID(win.id)
         }
     }
 #HotIf
@@ -103,7 +103,7 @@ CenterToolsSpace := 10
             cfg.x := cx
             cfg.y := cy
             cx  := cx - (max_length - index) * CenterToolsSpace
-            WinMove cx, cy, cw, ch, "ahk_id " . cid
+            WinMove cx, cy, cw, ch, AID(cid)
         }
     }
     $+Enter::{
@@ -132,7 +132,7 @@ CenterToolsSpace := 10
             cx  := cx + move_space
             cfg.x := cx
             cx  := cx + index * CenterToolsSpace
-            WinMove cx, cy, cw, ch, "ahk_id " . cid
+            WinMove cx, cy, cw, ch, AID(cid)
         }
         l := CenterToolsConfig.Length
         if (CenterToolsConfig.Length == 0) {
