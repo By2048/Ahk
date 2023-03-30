@@ -71,8 +71,8 @@ Windows_Process_Name["StartMenuExperienceHost" ] := "Start"            ;开始�
 Windows_Process_Name["ShellExperienceHost"     ] := "Start"            ;开始菜单
 Windows_Process_Name["WindowsTerminal"         ] := "Terminal"         ;终端
 
-
 Windows_Process_Name["哔哩哔哩" ] := "BiliBili"
+
 
 For Key, Value In Windows_Process_Name {
     Windows_Process_Name[Value] := Key . ".exe"
