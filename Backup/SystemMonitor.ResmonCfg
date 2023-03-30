@@ -14,9 +14,9 @@
             <column id="AverageCycle" width="60" hidden="false"/>
             <column id="UserName" width="120" hidden="false"/>
             <column id="Platform" width="45" hidden="false"/>
-            <column id="Elevated" width="40" hidden="false"/>
+            <column id="Elevated" width="45" hidden="false"/>
             <column id="SwitchContext" width="90" hidden="false"/>
-            <column id="Status" width="65" hidden="false"/>
+            <column id="Status" width="60" hidden="false"/>
             <column id="Description" width="270" hidden="false"/>
             <sort column="Image" descending="false"/>
         </table>
@@ -62,9 +62,9 @@
             <column id="AverageCycle" width="60" hidden="false"/>
             <column id="UserName" width="120" hidden="false"/>
             <column id="Platform" width="45" hidden="false"/>
-            <column id="Elevated" width="40" hidden="false"/>
+            <column id="Elevated" width="45" hidden="false"/>
             <column id="SwitchContext" width="90" hidden="false"/>
-            <column id="Status" width="65" hidden="false"/>
+            <column id="Status" width="60" hidden="false"/>
             <column id="Description" width="270" hidden="false"/>
             <sort column="Image" descending="false"/>
         </table>
@@ -104,7 +104,7 @@
             <column id="Shareable" width="130" hidden="false"/>
             <column id="Private" width="130" hidden="false"/>
             <sort column="Image" descending="false"/>
-        </table>    
+        </table>
         <table id="MemoryWidget" hidden="false"/>
     </tab>
     <tab id="Disk" chartview="2">
