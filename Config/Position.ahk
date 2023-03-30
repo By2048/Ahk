@@ -9,7 +9,6 @@ WPD["_#32770_打开文件"]    := Position4K(2030 , 1500)
 WPD["_#32770_选择文件夹"]  := Position4K(2030 , 1500)
 WPD["_#32770_浏览文件夹"]  := Position4K(900 , 1500)
 WPD["_#32770_浏览计算机"]   := Position4K(900 , 1500)
-WPD["_#32770_编辑环境变量"] := Position4K(1000 , 1500)
 
 WPD["qBittorrent"] := Position4K(3000 , 1500)
 WPD["Calibre"]     := Position4K(3000 , 1500)

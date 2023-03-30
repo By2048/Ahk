@@ -79,6 +79,7 @@
 #HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "编辑环境变量" )
     PgUp::Send "!u"
     PgDn::Send "!o"
+    <#\::MoveWindowToPosition(Position(888, 1111))
 #HotIf
 
 #HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "环境变量" )
