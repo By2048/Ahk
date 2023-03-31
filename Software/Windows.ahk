@@ -166,17 +166,10 @@
 ; 设置
 #HotIf CheckWindowActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
 
-    <#\::{
-        MoveWindowToPosition(Position(1800 , 1200))
-    }
+    <#\::MoveWindowToPosition(Position(1800 , 1200))
 
     ;点击返回
-    Esc::{
-        CoordMode "Mouse", "Window"
-        MouseGetPos &x, &y
-        MouseClick "Left", 50, 30, 1, 0
-        MouseMove x, y, 0
-    }
+    Esc::MouseClickAndResetting(38, 23)
 
 #HotIf
 
