@@ -3,10 +3,11 @@
 *.Backup.ahk
 *.Test.ahk
 
+Script.txt
+InputPrivate.txt
+
 /.vscode/
 /.idea/
-
-/Config/Script.txt
 
 /Test/*
 
