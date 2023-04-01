@@ -192,7 +192,7 @@ AID(id) {
     if (not id) {
         return "A"
     }
-    return Format("ahk_id ", id)
+    return Format("ahk_id {}", id)
 }
 
 AEXE(exe) {
