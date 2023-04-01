@@ -55,7 +55,6 @@ InitStatusArgs()
 #Include *i .\Screen.ahk
 #Include *i .\Software.ahk
 #Include *i .\Init.ahk
-#Include *i .\KeyMap.ahk
 #Include *i .\Message.ahk
 
 ; Key

@@ -10,10 +10,7 @@
 #Include ..\Tool\Mouse.ahk
 #Include ..\Tool\Other.ahk
 #Include ..\Tool\Window.ahk
-#Include ..\Tool\Explorer.ahk
 #Include ..\Tool\Control.ahk
-#Include ..\Tool\KeyMap.ahk
-#Include ..\Tool\Office.ahk
 
 #Include ..\Software\Chat.ahk
 #Include ..\Software\Explorer.ahk
