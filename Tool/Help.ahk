@@ -26,7 +26,7 @@ HelpImage(image:="")
     x := Screen.w/2 - w/2
     y := Screen.h/2 - h/2
 
-    GHI.Opt("-DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
+    GHI.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
     GHI.MarginX := 1
     GHI.MarginY := 1
     GHI.Add("Picture", Format("+Border w{1} h{2}", w, h), image)
