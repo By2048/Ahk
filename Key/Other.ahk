@@ -62,12 +62,6 @@ LAlt & LWin::{
 }
 
 
-LCtrl & LAlt::{
-}
-LAlt & LCtrl::{
-}
-
-
 RAlt  & RWin::Send "!{F4}"
 RCtrl & RWin::Send "^w"
 
