@@ -219,6 +219,7 @@ CapsLockActivate := False
 
     #Include *i Position.ahk
     <#\::MoveWindowToDefaultPosition()
+    <#+\::MoveWindowToBackupPosition()
 
     ;窗口全屏
     <#Enter::{
