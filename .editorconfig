@@ -15,3 +15,8 @@ max_line_length = 99
 
 [*.bat]
 charset = gbk
+
+[*.txt]
+charset = utf-8
+max_line_length = 123
+trim_trailing_whitespace = false
