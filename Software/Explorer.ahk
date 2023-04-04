@@ -215,7 +215,7 @@
         EC := Map( "File"     , "ItemNameDisplay:1150"
                  , "List"     , "ItemNameDisplay:999,Size:150"
                  , "Default"  , "ItemNameDisplay:800,ItemDate:200,Size:150"
-                 , "Software" , "ItemNameDisplay:550,Comment:400,ItemDate:200"
+                 , "Software" , "ItemNameDisplay:450,Comment:500,ItemDate:200"
                  , "Recover"  , "ItemNameDisplay:420,"
                                 "Recycle.DeletedFrom:400,Recycle.DateDeleted:180,"
                                 "Size:150"   )
