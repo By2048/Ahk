@@ -134,8 +134,7 @@ RWin & RShift::{
             HelpText("`n Proxy On `n", "Center", "Screen1", 500)
         } else if (proxy_state == "1") {
             RegWrite 0, "REG_DWORD", path, key
-            HelpText("`n Proxy Off `n", "Center", "Screen1", 500)
-            HelpText("`n Proxy Off `n", "Center", "Screen" . Screens.Count)
+            HelpText("`n Proxy Off `n", "Center", "Screen1", 1000)
         }
     }
 }
