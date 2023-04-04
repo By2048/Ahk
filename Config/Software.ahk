@@ -71,12 +71,15 @@ Windows_Process_Name["StartMenuExperienceHost" ] := "Start"            ;开始�
 Windows_Process_Name["ShellExperienceHost"     ] := "Start"            ;开始菜单
 Windows_Process_Name["WindowsTerminal"         ] := "Terminal"         ;终端
 
-Windows_Process_Name["哔哩哔哩" ] := "BiliBili"
+Windows_Process_Name["哔哩哔哩"                 ] := "BiliBili"
 
-
-For Key, Value In Windows_Process_Name {
-    Windows_Process_Name[Value] := Key . ".exe"
+Init_Windows_Process_Name() {
+    for key, value In Windows_Process_Name {
+        Windows_Process_Name[value] := key . ".exe"
+    }
 }
+Init_Windows_Process_Name()
+
 
 
 ; 游戏进程
@@ -84,3 +87,45 @@ Games_Process_Name := []
 Games_Process_Name.Push( "LOL_TX"     )
 Games_Process_Name.Push( "LOL_Client" )
 Games_Process_Name.Push( "LOL_Game"   )
+
+
+
+Software_Keys_Gui := {
+    Name   : "Source Code Pro" ,
+    Size   : "s11" ,
+    Margin : 9
+}
+
+; 快捷键图片对应关系
+Software_Keys_Help := Map()
+
+Software_Keys_Help["Default"                ] := "Windows"
+Software_Keys_Help["Explorer_CabinetWClass" ] := "Explorer"
+Software_Keys_Help["Explorer_WorkerW"       ] := "Windows"
+Software_Keys_Help["VSCode"                 ] := "VSCode"
+Software_Keys_Help["Xshell"                 ] := "Xshell"
+Software_Keys_Help["SumatraPDF"             ] := "SumatraPDF"
+Software_Keys_Help["PyCharm"                ] := "PyCharm"
+Software_Keys_Help["QuiteRSS"               ] := "QuiteRSS"
+Software_Keys_Help["Chrome"                 ] := "Chrome Chrome.Fxx"
+Software_Keys_Help["Chrome__Bilibili"       ] := "Chrome.Bilibili"
+Software_Keys_Help["PotPlayer"              ] := "PotPlayer"
+
+Init_Software_Keys_Help() {
+    for key, config In Software_Keys_Help {
+        if InStr(config, " ") {
+            config := StrSplit(config, " ")
+        } else {
+            config := [config]
+        }
+        obj := []
+        for index, value In config {
+            file := Format("{}\Config\Help\{}.txt", A_InitialWorkingDir, Value)
+            content := FileRead(file, "`n UTF-8")
+            obj.Push(content)
+        }
+        Software_Keys_Help[Key] := obj
+    }
+}
+Init_Software_Keys_Help()
+

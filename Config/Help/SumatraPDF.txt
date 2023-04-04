@@ -1,0 +1,13 @@
+﻿| \     | 显示书签   | Alt / | 属性         | Alt 0 | 符合页面   | Win Enter     | 全屏       |
+| Right | 下一页     | Alt P | 打印         | Alt 1 | 实际大小   | Alt Capslock  | 退出       |
+| Left  | 上一页     | Alt S | 另存为       | Alt 2 | 符合宽度   | Alt Tab       | 下一个标签 |
+| Home  | 第一页     | Alt O | 打开         | Alt 3 | 符合内容   | Alt Shift Tab | 上一个标签 |
+| End   | 最后一页   | Alt N | 新建窗口     | Alt 6 | 单页模式   |
+| Space | 下一页     | Alt W | 关闭         | Alt 7 | 双页模式   |
+| +     | 放大       | Alt A | 全选         | Alt 8 | 书籍视图   |
+| -     | 缩小       | Alt C | 复制选定范围 | Alt Y | 自定义缩放 |
+| 9     | 向左旋转   | Alt F | 查找         |
+| 0     | 向右旋转   | Alt G | 前往页       |
+| [     | 向前翻     | Alt D | 添加到收藏   |
+| ]     | 向后翻     | Alt V | 幻灯片       |
+                     | Alt R | 重命名       |

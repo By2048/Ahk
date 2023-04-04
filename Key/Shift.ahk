@@ -20,11 +20,11 @@ ShiftTimer() {
     global cnt
     if (cnt == 1) {
         HelpText()
-        HideShiftImage()
+        HideKeysHelp()
         HideInitConfig()
     } else if (cnt == 2) {
         HelpText()
-        ShowShiftImage()
+        ShowKeysHelp()
     } else if (cnt == 3) {
         GetInitConfig()
         ShowInitConfig()
@@ -34,150 +34,72 @@ ShiftTimer() {
 
 
 
-hotkeys_images      := Map() ; 软件图片对应关系
-hotkeys_current     := []    ; 当前显示的图片组
-hotkeys_index       := 0     ; 显示图片的序号
+hotkeys_current     := []    ; 当前显示的信息
+hotkeys_index       := 0     ; 显示的序号
 hotkeys_show_status := False
 
-InitImageConfig()
+
+
+ShowKeysHelp(step := 0)
 {
-    global hotkeys_images
-    if (hotkeys_images.Count > 0) {
-        return
-    }
-    ; 快捷键图片对应关系
-    ; Default                : Windows.png
-    ; Explorer_CabinetWClass : Explorer.png
-    ; Explorer_WorkerW       : Windows.png
-    ; VSCode                 : VSCodeFxx.png , VSCode.png
-    ; Xshell                 : Xshell.png
-    ; SumatraPDF             : SumatraPDF.png
-    ; PyCharm                : PyCharmFxx.png , PyCharm.png
-    ; QuiteRSS               : QuiteRSS.png
-    ; Chrome                 : Chrome.png
-    ; Chrome__Bilibili       : ChromeBilibili.png
-    ; PotPlayer              : PotPlayer.png
-    ; CloudMusic             : CloudMusic.png
-    file  := A_LineFile
-    slice := [ A_LineNumber - 13 , A_LineNumber - 2 ]
-    data  := ReadConfig(file, slice)
-    data  := StrSplit(data, "`n")
-    for index, item in data {
-        item  := StrSplit(item, ":")
-        key   := item[1]
-        value := item[2]
-        key   := StrReplace(key, " ", "")
-        value := StrReplace(value, " ", "")
-        value := StrSplit(value, ",")
-        hotkeys_images[key] := value
-    }
-}
-
-
-; 获取需要展示的图片
-GetShiftImage()
-{
-    InitImageConfig()
-    GetActiveWindowInfo()
-
     global window
-    global hotkeys_images, hotkeys_current, hotkeys_index
-
-    win_process_name := window.process_name
-    win_title        := window.title
-    hotkeys_current  := GetWindowConfig(window, hotkeys_images)
-
-    if (hotkeys_index > hotkeys_current.Length) {
-        hotkeys_index := 1
-    } else if (hotkeys_index <= 0) {
-        hotkeys_index := hotkeys_current.Length
-    }
-
-    result := hotkeys_current[hotkeys_index]
-    result := A_InitialWorkingDir . "\Image\RShift\" . result
-    A_Debug.rshift_image := result
-    return result
-}
-
-
-ShowShiftImage()
-{
-    image := GetShiftImage()
-    if (not image) {
-        return
-    }
-
-    image_size := GetImageSize(image)
-    image_w    := image_size.w
-    image_h    := image_size.h
-    image_x    := Screen.x + Screen.w/2 - image_w/2
-    image_y    := Screen.y + Screen.h/2 - image_h/2
-
-    global GSI
     global hotkeys_current, hotkeys_index
     global hotkeys_show_status
+    global Software_Keys_Help
 
-    try {
-        win_id := GSI.Hwnd
-        GSI.Destroy()
+    GetActiveWindowInfo()
+    win_process_name := window.process_name
+    win_title        := window.title
+    hotkeys_current  := GetWindowConfig(window, Software_Keys_Help)
+
+    if (hotkeys_current.Length and not step) {
+        hotkeys_index := 1
+    } else if (step) {
+        hotkeys_index := hotkeys_index + step
+        if (hotkeys_index > hotkeys_current.Length) {
+            hotkeys_index := 1
+        } else if (hotkeys_index <=0) {
+            hotkeys_index := hotkeys_current.Length
+        }
     }
 
-    GSI := Gui()
-    GSI.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
-    GSI.MarginX := 1
-    GSI.MarginY := 1
-    GSI.Add("Picture", Format("vPicture w{1} h{2}", image_w, image_h), image)
+    global Software_Keys_Gui
+    font_name := Software_Keys_Gui.Name
+    font_size := Software_Keys_Gui.Size
+    content := hotkeys_current[hotkeys_index]
+    margin  := Software_Keys_Gui.Margin
 
-    ; 页面索引
+    global GKH
+    if (hotkeys_show_status) {
+        GKH.Destroy()
+    }
+    GKH := Gui()
+
+    GKH.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
+    GKH.MarginX := margin
+    GKH.MarginY := margin
+    GKH.SetFont(font_size, font_name)
+    GContent := GKH.Add("Text", "-Center -Border", content)
+    GContent.GetPos(&x, &y , &w, &h)
     if (hotkeys_current.Length > 1) {
-        GSI.SetFont("s15", "Cascadia Code")
-        text := hotkeys_index . "/" . hotkeys_current.Length
-        GSI.Add("Text", Format("+Center +Border w{}", image_w), text)
+        rule := Format("+Center +Border w{}", w)
+        data := Format("{} / {}", hotkeys_index, hotkeys_current.Length)
+        GKH.Add("Text", rule, data)
     }
-    GSI.Show("NA Center")
+    GKH.Show("NA Center")
     hotkeys_show_status := True
 }
 
-
-HideShiftImage()
+HideKeysHelp()
 {
-    global GSI
-    global hotkeys_index, hotkeys_current
+    global GKH
     global hotkeys_show_status
-    try {
-        GSI.Destroy()
-    }
-    hotkeys_index       := 0
-    hotkeys_current     := []
+    GKH.Destroy()
     hotkeys_show_status := False
 }
 
 
-; 展示图片切换上一个下一个
-ChangeShiftImage(np:="")
-{
-    global hotkeys_current, hotkeys_index
-    if (hotkeys_current.Length == 1) {
-        return
-    }
-    if (np == "+") {
-        hotkeys_index := hotkeys_index + 1
-    } else if (np == "-") {
-        hotkeys_index := hotkeys_index - 1
-    }
-    ShowShiftImage()
-}
-
-
 #HotIf ( hotkeys_show_status == True )
-    [::ChangeShiftImage("-")
-    ]::ChangeShiftImage("+")
-    Insert::HideShiftImage()
-    Delete::{
-        global hotkeys_current, hotkeys_index
-        image := hotkeys_current[hotkeys_index]
-        image := A_InitialWorkingDir . "\Image\RShift\" . image
-        SnipasteImage(image, "Screen")
-        SetTimer HideShiftImage, -300
-    }
+    [::ShowKeysHelp(-1)
+    ]::ShowKeysHelp( 1)
 #HotIf
