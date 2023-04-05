@@ -82,7 +82,7 @@ Expand := False
 
     #Include *i Chrome.LShift.ahk
 
-    LAlt::Send "{F10}"
+    RAlt::Send "{F10}"
 
     ;帮助
     F1::Return
@@ -142,7 +142,7 @@ Expand := False
 
     ;删除联想
     ;删除搜索历史记录
-    +Delete::Return
+    ; +Delete::Return
     ; !Delete::Send +{Delete}
     !Delete::{
         Send "{Esc}"
@@ -233,12 +233,13 @@ Expand := False
     ;主页
     !BackSpace::Send "!{Home}"
 
+    ; 切换标签页
     !Tab::Send "^{Tab}"
     !+Tab::Send "^+{Tab}"
     !Home::Send "^1"
     !End::Send "^9"
 
-    ;滚动
+    ; 滚动
     ^PgUp::Return
     ^PgDn::Return
     !PgUp::Send "^+{Tab}"
@@ -346,6 +347,7 @@ Expand := False
         Send "{Esc}"
     }
 
+    ; 拓展程序界面
     LAlt & RShift::{
         global Expand
         Send "{F10}"
