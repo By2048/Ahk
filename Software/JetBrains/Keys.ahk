@@ -193,6 +193,9 @@ CapsLockActivate := False
         }
         cnt := 0
     }
+    $RShift::{
+        Send "{Blind}{vkFF}"
+    }
 
     ~!+`::{
         WinWaitActive "书签描述"

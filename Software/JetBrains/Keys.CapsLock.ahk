@@ -60,7 +60,7 @@ CapsLockToEscCount := 0
     CenterHideWindow()
 }
 
-; 在Explorer中显示
+; 在Explorer中显示 选择打开
 ^!e::Return
 ~CapsLock & e::{
     global CapsLockActivate
@@ -89,7 +89,7 @@ CapsLockToEscCount := 0
     CenterHideWindow(999, 900)
 }
 
-; Git工具
+; Git工具 VCS操作
 ^!g::Return
 ^!+g::Return
 ~CapsLock & g::{

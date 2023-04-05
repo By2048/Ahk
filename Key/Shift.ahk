@@ -71,7 +71,9 @@ ShowKeysHelp(step := 0)
 
     global GKH
     if (hotkeys_show_status) {
-        GKH.Destroy()
+        try {
+            GKH.Destroy()
+        }
     }
     GKH := Gui()
 
