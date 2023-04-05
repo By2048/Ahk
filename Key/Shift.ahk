@@ -52,6 +52,10 @@ ShowKeysHelp(step := 0)
     win_title        := window.title
     hotkeys_current  := GetWindowConfig(window, Software_Keys_Help)
 
+    if (hotkeys_current.Length == 1 and hotkeys_show_status == True) {
+        return
+    }
+
     if (hotkeys_current.Length and not step) {
         hotkeys_index := 1
     } else if (step) {
