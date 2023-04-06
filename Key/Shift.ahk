@@ -100,7 +100,9 @@ HideKeysHelp()
 {
     global GKH
     global hotkeys_show_status
-    GKH.Destroy()
+    try {
+        GKH.Destroy()
+    }
     hotkeys_show_status := False
 }
 
