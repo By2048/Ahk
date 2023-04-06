@@ -83,32 +83,54 @@
 >^Right::Return
 
 cnt := 0
+ctrl_help_gui := False
 $RCtrl::{
-    global cnt
+    global cnt, ctrl_help_gui
     if (cnt > 0) {
         cnt += 1
-        HelpText("RCtrl " . cnt, "Center", "Screen3")
+        ; HelpText("RCtrl " . cnt, "Center", "Screen3")
         return
     } else {
         cnt := 1
-        HelpText("RCtrl " . cnt, "Center", "Screen3")
+        ; HelpText("RCtrl " . cnt, "Center", "Screen3")
     }
     SetTimer CtrlTimer, -333
 }
 CtrlTimer() {
-    global cnt
-    help_image_show_status := GlobalGet("Status", "help_image_show_status", "Bool")
+    global cnt, ctrl_help_gui
     if (cnt == 1) {
-        HelpText()
-        if (help_image_show_status==True) {
-            HelpImage()
-        } else if (CheckWindowActive("Maye")) {
+        if (ctrl_help_gui) {
+            CtrlHelpGui()
+            cnt := 0
+            return
+        }
+        if (CheckWindowActive("Maye")) {
             Send "{Esc}"
         } else {
             Run "D:\#Lnk\Maye.lnk"
         }
     } else if (cnt == 2) {
-        HelpImage(A_InitialWorkingDir . "\Image\RCtrl.png")
+        CtrlHelpGui()
     }
     cnt := 0
+}
+CtrlHelpGui()
+{
+    global ctrl_help_gui
+    global G
+    if (ctrl_help_gui) {
+        try {
+            G.Destroy()
+        }
+        ctrl_help_gui := False
+        return
+    }
+    content := Software_Keys_Help["Ctrl"][1]
+    G := Gui()
+    ctrl_help_gui := True
+    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
+    G.MarginX := 9 , G.MarginY := 9
+    G.SetFont("s11", "Source Code Pro")
+    G.Add("Text", "-Center -Border", content)
+    G.Show("NA Center")
 }

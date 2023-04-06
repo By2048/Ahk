@@ -111,6 +111,8 @@ Software_Keys_Help["Chrome"                 ] := "Chrome Chrome.Fxx"
 Software_Keys_Help["Chrome__Bilibili"       ] := "Chrome.Bilibili"
 Software_Keys_Help["PotPlayer"              ] := "PotPlayer"
 
+Software_Keys_Help["Ctrl"] := "Ctrl"
+
 Init_Software_Keys_Help() {
     for key, config In Software_Keys_Help {
         if InStr(config, " ") {

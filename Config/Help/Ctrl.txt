@@ -1,22 +1,22 @@
-| Q  | Q-Dir          | *1 | Maye             |
-| E  | Everything     | *2 | 隐藏帮助         |
-| R  | QuiteRSS       |----|------------------|
-| Y  | v2rayN         | ,  | 回收站           |
-| P  | WT             | .  | 我的电脑         |
-| +P | WT (Admin)     | /  | T:\\             |
-|----|----------------|-----------------------|
-| A  | 安卓模拟器     | [  | VSCode Notes     |
-| S  | Sandboxie      | ]  | VSCode Ahk       |
-| F  | FreeFileSync   | \  | Windows白板      |
-| G  | Chrome         |-----------------------|
-| H  | WindowSpy      | Esc   | 任务管理器    |
-| J  | JetBrains      | +Esc  | HuoRongSword  |
-| K  | 显示虚拟键盘   | Enter | All.xlsx      |
-| L  | LogiOptions    |
-|----|----------------|
-| X  | XShell         |
-| C  | 音乐播放器     |
-| V  | VSCode Windows |
-| +V | VSCode         |
-| N  | Notepad++      |
-| M  | PotPlayer      |
+|  Q | Q-Dir          | *1 | Maye            |
+|  E | Everything     | *2 | 隐藏帮助        |
+|  R | QuiteRSS       |----|-----------------|
+|  Y | v2rayN         |  , | 回收站          |
+|  P | WT             |  . | 我的电脑        |
+| +P | WT (Admin)     |  / | T:\\            |
+|----|----------------|----------------------|
+|  A | 安卓模拟器     |  [ | VSCode Notes    |
+|  S | Sandboxie      |  ] | VSCode Ahk      |
+|  F | FreeFileSync   |  \ | Windows白板     |
+|  G | Chrome         |----------------------|
+|  H | WindowSpy      |   Esc | 任务管理器   |
+|  J | JetBrains      |  +Esc | HuoRongSword |
+|  K | 显示虚拟键盘   | Enter | All.xlsx     |
+|  L | LogiOptions    |                       
+|----|----------------|                       
+|  X | XShell         |                       
+|  C | 音乐播放器     |                       
+|  V | VSCode Windows |                       
+| +V | VSCode         |                       
+|  N | Notepad++      |                       
+|  M | PotPlayer      |                       
