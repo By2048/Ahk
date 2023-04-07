@@ -88,11 +88,9 @@ $RCtrl::{
     global cnt, ctrl_help_gui
     if (cnt > 0) {
         cnt += 1
-        ; HelpText("RCtrl " . cnt, "Center", "Screen3")
         return
     } else {
         cnt := 1
-        ; HelpText("RCtrl " . cnt, "Center", "Screen3")
     }
     SetTimer CtrlTimer, -333
 }

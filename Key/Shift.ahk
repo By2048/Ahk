@@ -8,11 +8,9 @@ $RShift::{
     global cnt
     if (cnt > 0) {
         cnt += 1
-        HelpText("RShift " . cnt, "Center", "Screen" . Screens.Count)
         return
     } else {
         cnt := 1
-        HelpText("RShift " . cnt, "center", "Screen" . Screens.Count)
     }
     SetTimer ShiftTimer, -333
 }
