@@ -61,13 +61,10 @@ ChromeTimer()
         url_result := StrReplace(url_origin, "video", "all")
     }
 
-    ; .jpg@!web-comment-note.avif
-    if (InStr(url_origin, ".jpg@!web-comment-note.avif")) {
-        url_result := StrReplace(url_origin, "@!web-comment-note.avif", "")
-    }
-    ; .jpg@180w_!web-comment-note.avif
-    if (InStr(url_origin, ".jpg@180w_!web-comment-note.avif")) {
-        url_result := StrReplace(url_origin, "@180w_!web-comment-note.avif", "")
+    ; .jpg@xxx.xxx
+    if (InStr(url_origin, ".jpg@")) {
+        url_args := StrSplit(url_origin, ".jpg@")
+        url_result := url_args[1] . ".jpg"
     }
 
     ; 2 -> 1

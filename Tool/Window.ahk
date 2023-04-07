@@ -11,10 +11,10 @@
 ; Dll获取窗口大小
 GetClientSize(win_id, &width:="", &height:="")
 {
-	config := Buffer(16)
-	DllCall("GetClientRect", "ptr", win_id, "ptr", config)
-	width  := NumGet(config,  8, "int")
-	height := NumGet(config, 12, "int")
+    config := Buffer(16)
+    DllCall("GetClientRect", "ptr", win_id, "ptr", config)
+    width  := NumGet(config,  8, "int")
+    height := NumGet(config, 12, "int")
 }
 
 

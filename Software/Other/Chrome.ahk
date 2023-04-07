@@ -82,7 +82,7 @@ Expand := False
 
     #Include *i Chrome.LShift.ahk
 
-    RAlt::Send "{F10}"
+    ~RShift::Send "{F10}"
 
     ;帮助
     F1::Return
