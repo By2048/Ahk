@@ -109,6 +109,7 @@ Software_Keys_Help["PyCharm"                ] := "PyCharm.FC PyCharm"
 Software_Keys_Help["QuiteRSS"               ] := "QuiteRSS"
 Software_Keys_Help["Chrome"                 ] := "Chrome Chrome.Fxx"
 Software_Keys_Help["Chrome__Bilibili"       ] := "Chrome.Bilibili"
+Software_Keys_Help["Chrome__知乎"            ] := "Chrome.ZhiHu"
 Software_Keys_Help["PotPlayer"              ] := "PotPlayer"
 
 Software_Keys_Help["Ctrl"] := "Ctrl"
@@ -123,7 +124,10 @@ Init_Software_Keys_Help() {
         obj := []
         for index, value In config {
             file := Format("{}\Config\Help\{}.txt", A_InitialWorkingDir, Value)
-            content := FileRead(file, "`n UTF-8")
+            content := ""
+            if (FileExist(file)) {
+                content := FileRead(file, "`n UTF-8")
+            }
             obj.Push(content)
         }
         Software_Keys_Help[Key] := obj
