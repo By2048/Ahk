@@ -615,7 +615,7 @@ MoveWindowToMainMini(command)
     screen_y := window.screen.y
     screen_w := window.screen.w
     screen_h := window.screen.h
-    screen_index := window.screen.id
+    screen_index := window.screen.index
 
     main := Windows_Main_Mini[1]
     mini := Windows_Main_Mini[2]
