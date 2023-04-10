@@ -23,6 +23,7 @@ ChromeTimer()
     A_Clipboard := ""
 
     Send "!d"
+    Sleep 9
     Send "^c"
     ClipWait
 

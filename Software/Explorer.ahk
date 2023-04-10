@@ -69,7 +69,6 @@
     F10::Run VSCode . " -n " "E:\Config\Windows.yaml", A_InitialWorkingDir, "Hide"
     F11::Run "E:\Project\Demo\"
     F12::Run "E:\Project\Ahk\"
-    >!Space::Run "D:\#Lnk\Everything.lnk"
 #HotIf
 
 #HotIf CheckWindowActive( "Explorer" )
