@@ -1,5 +1,4 @@
 ﻿
-<^Space::Return
 
 ~<^c::{
     ; data := Clipboard
