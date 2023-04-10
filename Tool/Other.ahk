@@ -36,13 +36,13 @@ WindowsTerminal(mode:="Focus", folder:="")
     } else if (mode == "Focus") {
         mode := "--focus"
     }
-
     exe := "WindowsTerminal.exe"
     rule := "ahk_exe WindowsTerminal.exe ahk_class CASCADIA_HOSTING_WINDOW_CLASS"
     title := "Administrator: PowerShell"
-
-    ; 启动
     Run Format("{} {} -d {}", WT, mode, folder)
+    try {
+        WinActivate AEXE(exe)
+    }
 }
 
 
