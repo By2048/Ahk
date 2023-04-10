@@ -193,15 +193,22 @@
 
 ; 注册表
 #HotIf CheckWindowActive( "RegEdit" )
+
+    F2::Return
+    ^r::Send "{F2}"
+
+    F5::Return
+    $RShift::Send "{F5}"
+
     <#\::{
         total_width := 1800
         total_height := 1200
         MoveWindowToPosition(Position(total_width , total_height))
 
         name  := "SysListView321"
-        width := Map( 1 , 500   ; 名称
+        width := Map( 1 , 400   ; 名称
                     , 2 , 170   ; 类型
-                    , 3 , 450 ) ; 数据
+                    , 3 , 550 ) ; 数据
         SetColumnWidth(name, width)
 
         max_left := 633
@@ -216,4 +223,5 @@
         Send "{Esc}"
         MouseMove x_origin, y_origin
     }
+
 #HotIf
