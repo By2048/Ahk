@@ -9,9 +9,8 @@
 
 >^q::Run "E:\Config\PC.qdr"
 
-; >^w::RunNormalUser("D:\#Lnk\WeChat.lnk")
->^e::Run "D:\#Lnk\Everything.lnk"
->^r::Run "D:\#Lnk\QuiteRSS.lnk"
+>^e::Run "D:\#Lnk\#\Everything.lnk"
+>^r::Run "D:\#Lnk\#\QuiteRSS.lnk"
 >^t::{
     win_pid := ProcessExist("TIM.exe")
     if (win_pid) {
@@ -27,15 +26,13 @@
         x := 1
         ; TrayIcon_Button("v2rayN.exe", "L")
     } else {
-        Run "D:\#Lnk\v2rayN.lnk"
+        Run "D:\#Lnk\#\v2rayN.lnk"
     }
 }
 >^p::Run WT . " -d T:\"
 
-; >^a::Run "D:\#Lnk\Android.lnk"
-; >^+a::Run "D:\#Lnk\AndroidX.lnk"
->^s::Run "D:\#Lnk\Sandboxie.lnk"
->^f::Run "D:\#Lnk\FreeFileSync.lnk"
+>^s::Run "D:\#Lnk\#\Sandboxie.lnk"
+>^f::Run "D:\#Lnk\#\FreeFileSync.lnk"
 >^h::Run AutoHotkey . " D:\AutoHotkey\#\WindowSpy.ahk"
 >^+h::Run "E:\GitX\AhkSpy\AhkSpy.exe"
 >^j::{
@@ -56,15 +53,15 @@
 >^k::KeyboardGUI()
 >^l::Run "C:\Program Files\LogiOptionsPlus\LogiOptionsPlus.exe"
 
->^x:: Run "D:\#Lnk\Xshell.lnk"
+>^x:: Run "D:\#Lnk\#\Xshell.lnk"
 >^v::Run VSCode . " E:\Config\VSCode\Windows.code-workspace", A_InitialWorkingDir, "Hide"
 >^+v::Run VSCodeDefault, A_InitialWorkingDir, "Hide"
->^m::Run "D:\#Lnk\PotPlayer.lnk"
->^n::Run "D:\#Lnk\CloudMusic.lnk"
->^+n::Run "D:\#Lnk\QQMusic.lnk"
+>^m::Run "D:\#Lnk\#\PotPlayer.lnk"
+>^n::Run "D:\#Lnk\#\CloudMusic.lnk"
+>^+n::Run "D:\#Lnk\#\QQMusic.lnk"
 
 >^Esc::Run "Taskmgr.exe" ;任务管理器
->^+Esc::Run "D:\#Lnk\HuoRongSword.lnk"
+>^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
 
 >^[::Run VSCode . " E:\Config\VSCode\Note.code-workspace", A_InitialWorkingDir, "Hide"
 >^]::Run VSCode . " E:\Config\VSCode\Ahk.code-workspace",  A_InitialWorkingDir, "Hide"
@@ -104,7 +101,7 @@ CtrlTimer() {
         if (CheckWindowActive("Maye")) {
             Send "{Esc}"
         } else {
-            Run "D:\#Lnk\Maye.lnk"
+            Run "D:\#Lnk\#\Maye.lnk"
         }
     } else if (cnt == 2) {
         CtrlHelpGui()
