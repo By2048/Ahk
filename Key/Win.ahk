@@ -94,13 +94,59 @@
 ;声音
 <#=::Send "{Volume_Up}"
 <#-::Send "{Volume_Down}"
+<#+-::
 <#+=::{
-    Send "{Volume_Down 1}"
-    SoundSetVolume 50
-}
-<#+-::{
-    Send "{Volume_Down 1}"
-    SoundSetVolume 25
+    Send "{Volume_Down}"
+    Send "{Volume_Up}"
+
+    offset := 5
+    volume_steps := [11, 33, 55, 77, 99]
+    volume_current := Round(SoundGetVolume())
+    for index, volume in volume_steps {
+        if ( Abs(volume_current - volume) < offset ) {
+            if (InStr(A_ThisHotkey, "-")) {
+                if (index == 1) {
+                    SoundSetVolume volume_steps[1]
+                } else {
+                    SoundSetVolume volume_steps[index - 1]
+                }
+            } else if (InStr(A_ThisHotkey, "=")) {
+                if (index == volume_steps.Length) {
+                    SoundSetVolume volume_steps[-1]
+
+
+                } else {
+                    SoundSetVolume volume_steps[index + 1]
+                }
+            }
+            return
+        }
+    }
+
+    min_close := 99
+    min_close_index := 0
+    for index, volume in volume_steps {
+        if ( Abs(volume - volume_current) < min_close) {
+            min_close := Abs(volume - volume_current)
+            min_close_index := index
+        }
+    }
+    if (InStr(A_ThisHotkey, "-")) {
+        if (volume_steps[min_close_index] > volume_current) {
+            if (min_close_index > 1) {
+                SoundSetVolume volume_steps[min_close_index - 1]
+                return
+            }
+        }
+    } else if (InStr(A_ThisHotkey, "=")) {
+        if (volume_steps[min_close_index] > volume_current) {
+            if (min_close_index < volume_steps.Length) {
+                SoundSetVolume volume_steps[min_close_index + 1]
+                return
+            }
+        }
+    }
+    SoundSetVolume volume_steps[min_close_index]
 }
 
 ; 窗口置顶
