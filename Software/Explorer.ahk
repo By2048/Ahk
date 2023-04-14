@@ -87,83 +87,22 @@
     ; Num Lock + 加号 (+) 显示选定文件夹中的内容
     ; Num Lock + 减号 (-) 折叠选定文件夹
 
-    ; 帮助
-    F1::Return
-
-    ; 重命名
-    F2::Return
-    ^r::Send "{F2}"
+    #Include Explorer.Base.ahk
 
     ; ----------------------------------------------------------------------
-
-    ;切换输入焦点
-    F6::Return
-    +F6::Return
-    /::
-    +/::{
-        if (A_ThisHotkey == "/") {
-            Send "{F6}"
-        }
-        if (A_ThisHotkey == "+/") {
-            Send "+{F6}"
-        }
-        win_class := WinGetClass("A")
-        control_name := ControlGetFocus("A")
-        control_text := ControlGetText(control_name, "A")
-        if (win_class == "WorkerW") { ;桌面
-            HelpText("`nDesktop`n", "Center", "Screen1", 100)
-        }
-        if (control_name == "ToolbarWindow321" and control_text == "导航按钮") {
-            HelpText("`n导航按钮`n", "Center", "Screen1")
-        }
-        if (control_name == "SysTreeView321" and control_text == "树视图") {
-            HelpText("`n树视图`n", "Center", "Screen1")
-        }
-        if (control_name == "DirectUIHWND3") {
-            HelpText("`n文件目录`n", "Center", "Screen1")
-        }
-        if (control_name == "DirectUIHWND2") {
-            HelpText("`n切换显示`n", "Center", "Screen1")
-        }
-        Sleep 300
-        HelpText()
-    }
 
     ; 功能区展开缩放
+    !`::Send "^{F1}"
     ^F1::Return
-    !/::Send "^{F1}"
 
-    ; 刷新
-    F5::Return
-    \::Send "{F5}"
-
-    ; 状态栏历史
-    F4::Return
-    >!Space::Send "{F4}"
-
-    !\::{
-        control_name := ControlGetFocus("A")
-        if (control_name == "SysTreeView321" ) {
-            ControlFocus "DirectUIHWND3", "A"
-        }
-        if (control_name == "DirectUIHWND3" ) {
-            ControlFocus "SysTreeView321", "A"
-        }
-    }
-
-    ; ----------------------------------------------------------------------
-
-    ; 显示Alt快捷键帮助
+    ; 快捷键帮助
     F10::Return
-    RAlt::Send "{F10}"
-    RAlt & RWin::Send "!{F4}"
 
     ; 全屏
     F11::Return
     #Enter::Send "{F11}"
 
-    ; Ctrl+Shift+E 显示选定文件夹上的所有文件夹
-    ^+e::Return
+    ; ----------------------------------------------------------------------
 
     ; Alt+向左键 查看上一个文件夹
     ; Alt+向右键 查看下一个文件夹
@@ -186,18 +125,6 @@
     !CapsLock::Send "^w"
 
     ; 属性对话框 !{Enter}
-
-    ; 删除
-    ^d::Return
-
-    ; Ctrl+E 选择搜索框
-    <^e::Return
-
-    ; Ctrl+N 打开新窗口
-    ; Ctrl+Shift+N 创建新文件夹
-    ; Ctrl+N -> Ctrl+Shift+N
-    ^+n::Return
-    <^n::Send "^+n"
 
     ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
     ^WheelUp::Return
