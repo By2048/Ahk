@@ -3,9 +3,7 @@
 
 #HotIf CheckWindowActive( "Terminal" )
 
-    <#\::{
-        MoveWindowToPosition(Position(2200 , 1400))
-    }
+    <#\::MoveWindowToPosition(Position(2200 , 1400))
 
     ; 关闭窗格
     !CapsLock::Send "{F13}"
@@ -36,7 +34,7 @@
 
     ; 查找
     ^+f::Return
-    ^f::Send "^+f"
+    <^f::Send "^+f"
 
     ; 滚动至历史记录底部
     ; 滚动至历史记录顶部

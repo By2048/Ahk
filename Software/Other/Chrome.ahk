@@ -84,6 +84,10 @@ Expand := False
 
     AppsKey::Send "{F10}"
 
+    $Alt::{
+        Send "{Blind}{vkFF}"
+    }
+
     ;帮助
     F1::Return
 

@@ -100,6 +100,7 @@
     !+F4::Send "!+{F16}"
 
     <#\::MoveWindowToPosition(Position(-60  , -30))
+    <#+\::MoveWindowToPosition(Position(1616 , 1212))
 
     ;窗口全屏
     <#Enter::{
