@@ -53,6 +53,10 @@ ShowKeysHelp(step := 0)
     if (hotkeys_current.Length == 1 and hotkeys_show_status == True) {
         return
     }
+    if (hotkeys_current.Length == 0 and hotkeys_show_status == False) {
+        HelpText("`n No Content `n", "Center", "Screen", 300)
+        return
+    }
 
     if (hotkeys_current.Length and not step) {
         hotkeys_index := 1
