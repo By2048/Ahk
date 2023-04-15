@@ -87,9 +87,7 @@
     ; Num Lock + 加号 (+) 显示选定文件夹中的内容
     ; Num Lock + 减号 (-) 折叠选定文件夹
 
-    #Include Explorer.Base.ahk
-
-    ; ----------------------------------------------------------------------
+    #IncludeAgain Explorer.Base.ahk
 
     ; 功能区展开缩放
     !`::Send "^{F1}"
@@ -102,7 +100,11 @@
     F11::Return
     #Enter::Send "{F11}"
 
-    ; ----------------------------------------------------------------------
+    !/::ControlFocus "SysTreeView321", "A"
+    !\::{
+        ControlFocus "DirectUIHWND3",  "A"
+        Send "{PgDn}{PgUp}"
+    }
 
     ; Alt+向左键 查看上一个文件夹
     ; Alt+向右键 查看下一个文件夹

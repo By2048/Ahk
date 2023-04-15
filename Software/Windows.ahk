@@ -2,10 +2,16 @@
 ; 打开的窗口
 #HotIf CheckWindowActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为|浏览" )
 
-    #Include Explorer.Base.ahk
-
     ; 文件名修改框
     /::ControlFocus "Edit1", "A"
+
+    #IncludeAgain Explorer.Base.ahk
+
+    !/::ControlFocus "SysTreeView321", "A"
+    !\::{
+        ControlFocus "DirectUIHWND2", "A"
+        Send "{Home}"
+    }
 
     ; 默认位置
     <#\::{

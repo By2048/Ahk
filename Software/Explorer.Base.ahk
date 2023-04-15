@@ -71,6 +71,3 @@ F6::Return
 ; 创建新文件夹
 ^+n::Return
 ^n::Send "^+n"
-
-!/::ControlFocus "SysTreeView321", "A"
-!\::ControlFocus "DirectUIHWND3",  "A"
