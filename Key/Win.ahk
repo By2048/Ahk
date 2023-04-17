@@ -99,8 +99,8 @@
     Send "{Volume_Down}"
     Send "{Volume_Up}"
 
-    offset := 5
-    volume_steps := [11, 33, 55, 77, 99]
+    offset := 3
+    volume_steps := [11, 22, 33, 44, 55, 66, 77, 88, 99]
     volume_current := Round(SoundGetVolume())
     for index, volume in volume_steps {
         if ( Abs(volume_current - volume) < offset ) {
@@ -113,8 +113,6 @@
             } else if (InStr(A_ThisHotkey, "=")) {
                 if (index == volume_steps.Length) {
                     SoundSetVolume volume_steps[-1]
-
-
                 } else {
                     SoundSetVolume volume_steps[index + 1]
                 }
