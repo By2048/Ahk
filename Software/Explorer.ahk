@@ -57,18 +57,18 @@
 
 ; 桌面
 #HotIf CheckWindowActive( "Explorer" , "WorkerW" )
-    F1::Run "D:\"
-    F2::Run "E:\"
-    F3::Run "F:\"
-    F4::Run "N:\"
-    F5::Return
-    F6::Return
-    F7::Return
-    F8::Return
-    F9::Return
-    F10::Run VSCode . " -n " "E:\Config\Windows.yaml", A_InitialWorkingDir, "Hide"
-    F11::Run "E:\Project\Demo\"
-    F12::Run "E:\Project\Ahk\"
+    F1::Run "C:\"
+    F2::Run "D:\"
+    F3::Run "E:\"
+    F4::Run "F:\"
+    F5::Run "C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
+    F6::Run "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"
+    F7::Run "E:\GitX"
+    F8::Run "E:\Doc"
+    F9::Run "D:\#Lnk"
+    F10::Run "E:\Script"
+    F11::Run "V:\"
+    F12::Run "T:\"
 #HotIf
 
 #HotIf CheckWindowActive( "Explorer" )

@@ -37,7 +37,7 @@ F2::Return
 ; 选择搜索框
 F3::Return
 ^e::Return
-^f::Return
+<^f::Return
 
 ; 地址栏历史
 ; 下拉列表 展开
@@ -70,4 +70,4 @@ F6::Return
 
 ; 创建新文件夹
 ^+n::Return
-^n::Send "^+n"
+<^n::Send "^+n"
