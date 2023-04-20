@@ -14,9 +14,29 @@ If (A_Args.Length != 1) {
 
 image := A_Args[1]
 
+; 不是绝对路径 是相对路径
 If (Not InStr(image, ":")) {
     image := LTrim(image, ".\")
     image := A_InitialWorkingDir . "\" . image
+}
+
+If (not FileExist(image)) {
+    MsgBox "未传入图片路径"
+    Exit
+}
+
+check := False
+stems := "png jpg jpeg bmp gif"
+For stem In StrSplit(stems, " ") {
+    If InStr(image, stem) {
+        check := True
+        Break
+    }
+}
+
+If (not check) {
+    MsgBox "未传入图片路径"
+    Exit
 }
 
 scale := 0.98
