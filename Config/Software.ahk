@@ -47,7 +47,9 @@ Windows_Process_Name["NVIDIA Share"      ] := "GeForceTool"
 Windows_Process_Name["PotPlayerMini64"   ] := "PotPlayer"
 Windows_Process_Name["GetWindowText_x64" ] := "GetWindowText"
 Windows_Process_Name["calibre"           ] := "Calibre"
-Windows_Process_Name["happ"              ] := "TongHuaShun"  ;同花顺
+Windows_Process_Name["happ"              ] := "TongHuaShun"
+Windows_Process_Name["Foxmail"           ] := "FoxMail"
+Windows_Process_Name["douyin"            ] := "DouYin"
 
 Windows_Process_Name["TenSafe"           ] := "LOL_TX"
 Windows_Process_Name["TenSafe_1"         ] := "LOL_TX"

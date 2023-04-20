@@ -26,6 +26,7 @@
 #Include ..\Software\Other\Everything.ahk
 #Include ..\Software\Other\FFRenamePro.ahk
 #Include ..\Software\Other\FireFox.ahk
+#Include ..\Software\Other\FoxMail.ahk
 #Include ..\Software\Other\FreeFileSync.ahk
 #Include ..\Software\Other\FSViewer.ahk
 #Include ..\Software\Other\Geek.ahk
