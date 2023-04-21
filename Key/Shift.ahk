@@ -69,9 +69,6 @@ ShowKeysHelp(step := 0)
         }
     }
 
-    global Software_Keys_Gui
-    font_name := Software_Keys_Gui.Name
-    font_size := Software_Keys_Gui.Size
     content := hotkeys_current[hotkeys_index]
     margin  := Software_Keys_Gui.Margin
 
@@ -83,10 +80,25 @@ ShowKeysHelp(step := 0)
     }
     GKH := Gui()
 
+    global Software_Keys_Gui
+    font_name := Software_Keys_Gui.Name
+    font_size := Software_Keys_Gui.Size
+    path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+    key   := "AppsUseLightTheme"
+    theme := RegRead(path, key, "")
+    if (theme == "0") {
+        font_color := Software_Keys_Gui.Light.Font
+        back_color := Software_Keys_Gui.Light.Back
+    } else if (theme == "1") {
+        font_color := Software_Keys_Gui.Dark.Font
+        back_color := Software_Keys_Gui.Dark.Back
+    }
+
     GKH.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
     GKH.MarginX := margin
     GKH.MarginY := margin
-    GKH.SetFont(font_size, font_name)
+    GKH.BackColor := back_color
+    GKH.SetFont(Format("c{} s{}", font_color, font_size), font_name)
     GContent := GKH.Add("Text", "-Center -Border", content)
     GContent.GetPos(&x, &y , &w, &h)
     if (hotkeys_current.Length > 1) {

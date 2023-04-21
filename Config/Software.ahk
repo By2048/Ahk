@@ -93,8 +93,10 @@ Games_Process_Name.Push( "LOL_Game"   )
 
 
 Software_Keys_Gui := {
+    Light  : { Font : "FFFFFF" , Back : "000000" } ,
+    Dark   : { Font : "000000" , Back : "FFFFFF" } ,
     Name   : "Source Code Pro" ,
-    Size   : "s11" ,
+    Size   : "11" ,
     Margin : 9
 }
 
