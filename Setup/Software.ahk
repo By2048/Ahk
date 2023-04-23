@@ -22,7 +22,6 @@
 #Include ..\Software\Other\Android.ahk
 #Include ..\Software\Other\BitComet.ahk
 #Include ..\Software\Other\Chrome.ahk
-#Include ..\Software\Other\CloudMusic.ahk
 #Include ..\Software\Other\Everything.ahk
 #Include ..\Software\Other\FFRenamePro.ahk
 #Include ..\Software\Other\FireFox.ahk
@@ -32,6 +31,7 @@
 #Include ..\Software\Other\Geek.ahk
 #Include ..\Software\Other\GeForceTool.ahk
 #Include ..\Software\Other\Maye.ahk
+#Include ..\Software\Other\Music.ahk
 #Include ..\Software\Other\PotPlayer.ahk
 #Include ..\Software\Other\Q-Dir.ahk
 #Include ..\Software\Other\Snipaste.ahk
