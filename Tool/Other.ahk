@@ -40,6 +40,7 @@ WindowsTerminal(mode:="Focus", folder:="")
     rule := "ahk_exe WindowsTerminal.exe ahk_class CASCADIA_HOSTING_WINDOW_CLASS"
     title := "Administrator: PowerShell"
     Run Format("{} {} -d {}", WT, mode, folder)
+    Sleep 300
     try {
         WinActivate AEXE(exe)
     }

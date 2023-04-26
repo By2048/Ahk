@@ -13,7 +13,7 @@ Init.config   := []
 Init.script   := A_InitialWorkingDir . "\Config\Script.txt"
 Init.new_line := "-----------------------------------------------------------------"
 Init.input         := A_InitialWorkingDir . "\Config\Input.txt"
-Init.input_private := A_InitialWorkingDir . "\Config\InputPrivate.txt"
+Init.input_private := A_InitialWorkingDir . "\Config\Input.Private.txt"
 
 
 GetInitConfig()
