@@ -1,10 +1,9 @@
 
-*.Private.ahk
-*.Backup.ahk
-*.Test.ahk
+*.Private.*
+*.Backup.*
+*.Test.*
 
 Script.txt
-InputPrivate.txt
 
 /.vscode/
 /.idea/
