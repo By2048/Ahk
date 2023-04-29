@@ -81,17 +81,16 @@ ShowKeysHelp(step := 0)
     GKH := Gui()
 
     global Software_Keys_Gui
-    font_name := Software_Keys_Gui.Name
-    font_size := Software_Keys_Gui.Size
-    path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-    key   := "AppsUseLightTheme"
-    theme := RegRead(path, key, "")
-    if (theme == "0") {
-        font_color := Software_Keys_Gui.Light.Font
-        back_color := Software_Keys_Gui.Light.Back
-    } else if (theme == "1") {
+    font_name := Software_Keys_Gui.FontName
+    font_size := Software_Keys_Gui.FontSize
+
+    if (GetWindowTheme() == "Dark") {
         font_color := Software_Keys_Gui.Dark.Font
         back_color := Software_Keys_Gui.Dark.Back
+    }
+    if (GetWindowTheme() == "Light") {
+        font_color := Software_Keys_Gui.Light.Font
+        back_color := Software_Keys_Gui.Light.Back
     }
 
     GKH.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")

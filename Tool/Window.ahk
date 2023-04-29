@@ -18,6 +18,21 @@ GetClientSize(win_id, &width:="", &height:="")
 }
 
 
+; 获取Windows主题 Drak Light
+GetWindowTheme()
+{
+    path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+    key   := "AppsUseLightTheme"
+    theme := RegRead(path, key, "")
+    if (theme == "0") {
+        return "Dark"
+    } else if (theme == "1") {
+        return "Light"
+    } else {
+        return ""
+    }
+}
+
 
 ; 获取当前激活的应用配置文件信息
 ; Config_Data | Config中定义的配置信息

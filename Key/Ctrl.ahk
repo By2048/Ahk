@@ -1,5 +1,4 @@
 ﻿
-
 ~<^c::{
     ; data := Clipboard
     ; data := "https://www.bilibili.com/video/BV16L4y1L7fK?spm_id_from=333.999.0.0"
@@ -79,9 +78,9 @@
 >^Right::Return
 
 cnt := 0
-ctrl_help_gui := False
+ctrl_gui_status := False
 $RCtrl::{
-    global cnt, ctrl_help_gui
+    global cnt, ctrl_gui_status
     if (cnt > 0) {
         cnt += 1
         return
@@ -91,9 +90,9 @@ $RCtrl::{
     SetTimer CtrlTimer, -333
 }
 CtrlTimer() {
-    global cnt, ctrl_help_gui
+    global cnt, ctrl_gui_status
     if (cnt == 1) {
-        if (ctrl_help_gui) {
+        if (ctrl_gui_status) {
             CtrlHelpGui()
             cnt := 0
             return
@@ -110,21 +109,40 @@ CtrlTimer() {
 }
 CtrlHelpGui()
 {
-    global ctrl_help_gui
+    global ctrl_gui_status
     global G
-    if (ctrl_help_gui) {
+    global Ctrl_Help_Content
+
+    if (ctrl_gui_status) {
         try {
             G.Destroy()
         }
-        ctrl_help_gui := False
+        ctrl_gui_status := False
         return
     }
-    content := Software_Keys_Help["Ctrl"][1]
+    ctrl_gui_status := True
+
     G := Gui()
-    ctrl_help_gui := True
     G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
-    G.MarginX := 9 , G.MarginY := 9
-    G.SetFont("s11", "Source Code Pro")
-    G.Add("Text", "-Center -Border", content)
+
+    margin := Ctrl_Help_Gui.Margin
+    G.MarginX := margin
+    G.MarginY := margin
+
+    font_name := Ctrl_Help_Gui.FontName
+    font_size := Ctrl_Help_Gui.FontSize
+    if (GetWindowTheme() == "Dark") {
+        font_color := Ctrl_Help_Gui.Dark.Font
+        back_color := Ctrl_Help_Gui.Dark.Back
+        G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
+    }
+    if (GetWindowTheme() == "Light") {
+        font_color := Ctrl_Help_Gui.Light.Font
+        back_color := Ctrl_Help_Gui.Light.Back
+        G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
+    }
+    G.BackColor := back_color
+
+    G.Add("Text", "-Center -Border", Ctrl_Help_Content)
     G.Show("NA Center")
 }

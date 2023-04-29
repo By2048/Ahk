@@ -93,12 +93,14 @@ Games_Process_Name.Push( "LOL_Game"   )
 
 
 Software_Keys_Gui := {
-    Light  : { Font : "FFFFFF" , Back : "000000" } ,
-    Dark   : { Font : "000000" , Back : "FFFFFF" } ,
-    Name   : "Source Code Pro" ,
-    Size   : "11" ,
-    Margin : 9
+    Dark     : { Font : "FFFFFF" , Back : "000000" } ,
+    Light    : { Font : "000000" , Back : "FFFFFF" } ,
+    FontName : "Source Code Pro" ,
+    FontSize : "11" ,
+    Margin   : 9
 }
+
+
 
 ; 快捷键图片对应关系
 Software_Keys_Help := Map()
@@ -116,17 +118,18 @@ Software_Keys_Help["Chrome__Bilibili"       ] := "Chrome.Bilibili"
 Software_Keys_Help["Chrome__知乎"            ] := "Chrome.ZhiHu"
 Software_Keys_Help["PotPlayer"              ] := "PotPlayer"
 
-Software_Keys_Help["Ctrl"] := "Ctrl"
+
 
 Init_Software_Keys_Help() {
-    for key, config In Software_Keys_Help {
+    global Software_Keys_Help
+    for key, config in Software_Keys_Help {
         if InStr(config, " ") {
             config := StrSplit(config, " ")
         } else {
             config := [config]
         }
         obj := []
-        for index, value In config {
+        for index, value in config {
             file := Format("{}\Config\Help\{}.txt", A_InitialWorkingDir, Value)
             content := ""
             if (FileExist(file)) {
@@ -139,3 +142,23 @@ Init_Software_Keys_Help() {
 }
 Init_Software_Keys_Help()
 
+
+
+
+Ctrl_Help_Gui := {
+    Dark     : { Font : "FFFFFF" , Back : "000000" } ,
+    Light    : { Font : "000000" , Back : "FFFFFF" } ,
+    FontName : "Source Code Pro" ,
+    FontSize : "13" ,
+    Margin   : 9
+}
+Ctrl_Help_Content := ""
+Init_Ctrl_Help_Content()
+{
+    global Ctrl_Help_Content
+    file := A_InitialWorkingDir . "\Config\Ctrl.txt"
+    if (FileExist(file)) {
+        Ctrl_Help_Content := FileRead(file, "`n UTF-8")
+    }
+}
+Init_Ctrl_Help_Content()
