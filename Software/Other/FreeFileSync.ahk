@@ -7,14 +7,14 @@
         InitWindowArgs()
         GetActiveWindowInfo()
 
-        ;       Edit10
-        ; Static35   SysLink5
-        ;       Edit11
+        ;       Edit8
+        ; Static33   SysLink5
+        ;       Edit9
 
         win_id := window.id
-        control_1 := "Edit10"
-        control_2 := "Edit11"
-        control_3 := "Static35"
+        control_1 := "Edit8"
+        control_2 := "Edit9"
+        control_3 := "Static33"
         control_4 := "SysLink5"
 
         x1 := window.controls.%control_1%.x
