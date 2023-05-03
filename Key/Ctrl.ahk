@@ -7,27 +7,10 @@
 }
 
 >^q::Run "E:\Config\PC.qdr"
-
 >^e::Run "D:\#Lnk\#\Everything.lnk"
 >^r::Run "D:\#Lnk\#\QuiteRSS.lnk"
->^t::{
-    win_pid := ProcessExist("TIM.exe")
-    if (win_pid) {
-        x := 1
-        ; TrayIcon_Button("TIM.exe", "L")
-    } else {
-        Run "D:\TIM\Bin\TIM.exe"
-    }
-}
->^y::{
-    win_pid := ProcessExist("v2rayN.exe")
-    if (win_pid) {
-        x := 1
-        ; TrayIcon_Button("v2rayN.exe", "L")
-    } else {
-        Run "D:\#Lnk\#\v2rayN.lnk"
-    }
-}
+>^t::Run "D:\TIM\Bin\TIM.exe"
+>^y::Run "D:\#Lnk\#\v2rayN.lnk"
 >^p::Run WT . " -d T:\"
 
 >^s::Run "D:\#Lnk\#\Sandboxie.lnk"
