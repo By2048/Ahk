@@ -120,7 +120,27 @@ HideKeysHelp()
 }
 
 
+
+SnipasteHelp()
+{
+    global GKH
+    global hotkeys_current, hotkeys_index
+    content := hotkeys_current[hotkeys_index]
+    HideKeysHelp()
+    tmp := A_Clipboard
+    A_Clipboard := content
+    ClipWait
+    cmd := Format("{1} paste --clipboard", Snipaste)
+    Run cmd
+    Sleep 333
+    A_Clipboard := tmp
+    ClipWait
+}
+
+
+
 #HotIf ( hotkeys_show_status == True )
     [::ShowKeysHelp(-1)
-    ]::ShowKeysHelp( 1)
+    ]::ShowKeysHelp(+1)
+    \::SnipasteHelp()
 #HotIf
