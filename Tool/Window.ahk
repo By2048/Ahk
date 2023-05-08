@@ -617,7 +617,7 @@ MoveWindowToCenter(silent:=False)
 ; 调整窗口为Main\Mini 并居中
 ; command | Main 或者 Mini
 ; return  | None
-MoveWindowToMainMini(command)
+MoveWindowToMainMini(command, slient:=False)
 {
     GetActiveWindowInfo()
 
@@ -636,11 +636,15 @@ MoveWindowToMainMini(command)
     mini := Windows_Main_Mini[2]
 
     if (command == "Main") {
-        HelpText("Windows Main", "CenterDown", "Screen" . screen_index)
+        if (not slient) {
+            HelpText("Windows Main", "CenterDown", "Screen" . screen_index)
+        }
         w := screen_w * main[1]
         h := screen_h * main[2]
     } else if (command == "Mini") {
-        HelpText("Windows Mini", "CenterDown", "Screen" . screen_index)
+        if (not slient) {
+            HelpText("Windows Mini", "CenterDown", "Screen" . screen_index)
+        }
         w := screen_w * mini[1]
         h := screen_h * mini[2]
     }
