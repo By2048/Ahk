@@ -1,10 +1,10 @@
 ﻿
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
     <#\::{
-        MoveWindowToPosition(Position(1300, 900))
+        MoveWindowToPosition(Position(1350, 1300))
         _1 := " 1    2    3   "
         _2 := " 名称 大小  %   "
-        _3 := " 999  100  70  "
+        _3 := " 999  130  100 "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)
     }
@@ -33,7 +33,7 @@
         ; 用户
         _1 := " 1    2        3        4    5       6       7        8        9       10           11       12    "
         _2 := " IP   远程端口  监听端口  进度  分快图  下载速度  上传速度  下载大小  上传大小  对方下载速度  链接时间  客户端  "
-        _3 := " 300  110      110      100  300     130     130      130      130     130          130      200    "
+        _3 := " 300  110      110      100  300     130     130      130      130     130          130      220    "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView3212", config)
 
