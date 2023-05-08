@@ -1,4 +1,24 @@
 ﻿
+; 重置显示器设置
+<#6::{
+    Run "ms-settings:display"
+    Sleep 99
+    WinActivate "设置"
+    Sleep 99
+    MouseClickAndResetting(600, 456 ,"Window")
+    Send "{Up}"
+    Sleep 99
+    Send "{Tab 2}{Enter}"
+    Sleep 99
+    MouseClickAndResetting(600, 456 ,"Window")
+    Sleep 99
+    Send "{Down}"
+    Sleep 99
+    Send "{Tab 2}{Enter}"
+    Sleep 99
+    WinClose "设置"
+}
+
 ; 环境编辑器
 <#7::{
     Run "sysdm.cpl"
@@ -13,10 +33,10 @@
     rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
     if (!WinExist(rule)) {
         WinShow rule
-        HelpText("`n显示任务栏`n", "Center", "Screen", 500)
+        HelpText("`n显示任务栏`n", "Center", Screens.Count, 500)
     } else {
         WinHide rule
-        HelpText("`n隐藏任务栏`n", "Center", "Screen", 500)
+        HelpText("`n隐藏任务栏`n", "Center", Screens.Count, 500)
     }
 }
 
@@ -378,7 +398,8 @@ RWinTimer() {
         }
     }
     if (cnt == 1) {
-        MoveWindowToCenter()
+        MoveWindowToCenter(True)
+        HighlightActiveWindow(500)
     } else if (cnt == 2) {
         MoveWindowToDefaultPosition()
     } else if (cnt == 3) {
