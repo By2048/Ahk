@@ -9,7 +9,6 @@
 >^q::Run "E:\Config\PC.qdr"
 >^e::Run "D:\#Lnk\#\Everything.lnk"
 >^r::Run "D:\#Lnk\#\QuiteRSS.lnk"
->^t::Run "D:\TIM\Bin\TIM.exe"
 >^y::Run "D:\#Lnk\#\v2rayN.lnk"
 >^p::Run WT . " -d T:\"
 
@@ -36,20 +35,20 @@
 >^l::Run "C:\Program Files\LogiOptionsPlus\LogiOptionsPlus.exe"
 
 >^x:: Run "D:\#Lnk\#\Xshell.lnk"
->^v::Run VSCode . " E:\Config\VSCode\Windows.code-workspace", A_InitialWorkingDir, "Hide"
->^+v::Run VSCodeDefault, A_InitialWorkingDir, "Hide"
->^m::Run "D:\#Lnk\#\PotPlayer.lnk"
+>^v::Run VSCodeDefault, A_InitialWorkingDir, "Hide"
 >^n::Run "D:\#Lnk\#\CloudMusic.lnk"
 >^+n::Run "D:\#Lnk\#\QQMusic.lnk"
+>^m::Run "D:\#Lnk\#\PotPlayer.lnk"
 
 >^Esc::Run "Taskmgr.exe" ;任务管理器
 >^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
 
 >^[::Run VSCode . " E:\Config\VSCode\Note.code-workspace", A_InitialWorkingDir, "Hide"
 >^]::Run VSCode . " E:\Config\VSCode\Ahk.code-workspace",  A_InitialWorkingDir, "Hide"
->^\::Run "D:\#Lnk\#AppStore\Whiteboard.lnk"
+>^\::Run VSCode,  A_InitialWorkingDir, "Hide"
+>^+\::Run VSCode . " E:\Config\VSCode\Windows.code-workspace", A_InitialWorkingDir, "Hide"
 
-;           {20d04fe0-3aea-1069-a2d8-08002b30309d}::   ;我的电脑
+;           {20d04fe0-3aea-1069-a2d8-08002b30309d}::  ;我的电脑
 >^,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
 >^.::Run "T:\\"
 >^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
