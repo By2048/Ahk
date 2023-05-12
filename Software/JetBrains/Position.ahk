@@ -7,6 +7,8 @@
 WPD["PyCharm"] := [ -13 ,   0 , 2584 , 1451 ]
 WPB["PyCharm"] := [ 19  ,  29 , 2522 , 1393 ]
 
+WPD["PyCharm__JsonParser"] := Position(0.6 , 0.8)
+
 WPD["PyCharm__[更改]"] := Position(-100 , -100)
 WPD["PyCharm__[变更]"] := Position(-100 , -100)
 
@@ -16,11 +18,13 @@ WPD["PyCharm__插件同步"] := Position(900 , 1300)
 WPD["PyCharm__回滚变更"] := Position(900 , 1300)
 WPD["PyCharm__注册新文件类型关联"] := Position(900 , 1300)
 
-WPD["PyCharm__浏览图标"]      := Position(900 , 1500)
-WPD["PyCharm__导航栏工具栏"]   := Position(900 , 1500)
-WPD["PyCharm__选择路径"]      := Position(900 , 1500)
-WPD["PyCharm__选择"]          := Position(900 , 1500)
-WPD["PyCharm__打开文件或项目"] := Position(0.28 , 0.7)
+WPD["PyCharm__自定义主工具栏"] := Position(0.3 , 0.7)
+WPD["PyCharm__添加操作"]      := Position(0.3 , 0.7)
+WPD["PyCharm__浏览图标"]      := Position(0.3 , 0.7)
+WPD["PyCharm__导航栏工具栏"]  := Position(0.3 , 0.7)
+WPD["PyCharm__选择路径"]      := Position(0.3 , 0.7)
+WPD["PyCharm__选择"]         := Position(0.3 , 0.7)
+WPD["PyCharm__打开文件或项目"] := Position(0.3 , 0.7)
 
 WPD["PyCharm__提交更改"] := Position(0.45 , 0.66)
 
@@ -63,6 +67,7 @@ WPD["PyCharm__运行"] := Position4K(2800 , 1750)
 WPD["PyCharm__服务"] := Position4K(2800 , 1750)
 
 WPD["PyCharm__调试"] := Position4K(2800 , 1750)
+; WPD["PyCharm__调试"] := Position(2800 , 1750)
 
 x := Screens.2.x
 y := ( Screens.2.yy - Screens.2.y ) / 2  - 200
