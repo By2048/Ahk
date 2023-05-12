@@ -99,11 +99,12 @@ ShowKeysHelp(step := 0)
     GKH.BackColor := back_color
     GKH.SetFont(Format("c{} s{}", font_color, font_size), font_name)
     GContent := GKH.Add("Text", "-Center -Border", content)
-    GContent.GetPos(&x, &y , &w, &h)
+    GContent.GetPos(&cx, &cy , &cw, &ch)
     if (hotkeys_current.Length > 1) {
-        rule := Format("+Center +Border w{}", w)
         data := Format("{} / {}", hotkeys_index, hotkeys_current.Length)
-        GKH.Add("Text", rule, data)
+        GPage := GKH.Add("Text", "-Border xm ym", data)
+        GPage.GetPos(&px, &py , &pw, &ph)
+        GPage.Move(cw-pw+margin,ch-ph+margin,pw,ph)
     }
     GKH.Show("NA Center")
     hotkeys_show_status := True
