@@ -107,20 +107,20 @@ CtrlHelpGui()
     G := Gui()
     G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
 
-    margin := Ctrl_Help_Gui.Margin
+    margin := Gui_Config.Margin
     G.MarginX := margin
     G.MarginY := margin
 
-    font_name := Ctrl_Help_Gui.FontName
-    font_size := Ctrl_Help_Gui.FontSize
+    font_name := Gui_Config.FontName
+    font_size := Gui_Config.FontSize
     if (GetWindowTheme() == "Dark") {
-        font_color := Ctrl_Help_Gui.Dark.Font
-        back_color := Ctrl_Help_Gui.Dark.Back
+        font_color := Gui_Config.Dark.Font
+        back_color := Gui_Config.Dark.Back
         G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
     }
     if (GetWindowTheme() == "Light") {
-        font_color := Ctrl_Help_Gui.Light.Font
-        back_color := Ctrl_Help_Gui.Light.Back
+        font_color := Gui_Config.Light.Font
+        back_color := Gui_Config.Light.Back
         G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
     }
     G.BackColor := back_color

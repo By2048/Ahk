@@ -70,7 +70,7 @@ ShowKeysHelp(step := 0)
     }
 
     content := hotkeys_current[hotkeys_index]
-    margin  := Software_Keys_Gui.Margin
+    margin  := Gui_Config.Margin
 
     global GKH
     if (hotkeys_show_status) {
@@ -80,17 +80,16 @@ ShowKeysHelp(step := 0)
     }
     GKH := Gui()
 
-    global Software_Keys_Gui
-    font_name := Software_Keys_Gui.FontName
-    font_size := Software_Keys_Gui.FontSize
+    font_name := Gui_Config.FontName
+    font_size := Gui_Config.FontSize
 
     if (GetWindowTheme() == "Dark") {
-        font_color := Software_Keys_Gui.Dark.Font
-        back_color := Software_Keys_Gui.Dark.Back
+        font_color := Gui_Config.Dark.Font
+        back_color := Gui_Config.Dark.Back
     }
     if (GetWindowTheme() == "Light") {
-        font_color := Software_Keys_Gui.Light.Font
-        back_color := Software_Keys_Gui.Light.Back
+        font_color := Gui_Config.Light.Font
+        back_color := Gui_Config.Light.Back
     }
 
     GKH.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
@@ -101,7 +100,7 @@ ShowKeysHelp(step := 0)
     GContent := GKH.Add("Text", "-Center -Border", content)
     GContent.GetPos(&cx, &cy , &cw, &ch)
     if (hotkeys_current.Length > 1) {
-        data := Format("{} / {}", hotkeys_index, hotkeys_current.Length)
+        data := Format("{}/{}", hotkeys_index, hotkeys_current.Length)
         GPage := GKH.Add("Text", "-Border xm ym", data)
         GPage.GetPos(&px, &py , &pw, &ph)
         GPage.Move(cw-pw+margin,ch-ph+margin,pw,ph)

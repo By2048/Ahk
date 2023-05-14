@@ -26,6 +26,16 @@ Debug := False
 PC_USERNAME := "Admin"
 PC_PASSWORD := "Xxxxx"
 
+;---------------------------------------------------------------------------;
+Gui_Config := {
+    Dark     : { Font : "FFFFFF" , Back : "000000" } ,
+    Light    : { Font : "000000" , Back : "FFFFFF" } ,
+    FontName : "Source Code Pro" ,
+    FontSize : "12" ,
+    Margin   : 9
+}
+
+;---------------------------------------------------------------------------;
 ; 屏幕数量   | 1 \ 2 \ 3
 ; 屏幕编号   | 根据实际情况设置 可能与系统显示设置不同
 ;           | 1,          2,          3
@@ -36,7 +46,7 @@ Screen_2K := { Dpi:1.5  , Width:2560 , Hight:1440 , Name:"2K" }
 Screen_1K := { Dpi:1.25 , Width:1920 , Hight:1080 , Name:"1K" }
 Screens_Id     := [         1 ] ; Windows设置/系统/屏幕 上对应的ID
 Screens_Detail := [ Screen_2K ]
-; --------------------------------------------------------------------------------
+;---------------------------------------------------------------------------;
 
 ; 手机<->电脑 剪切板文件
 JQB := { Phone   : A_InitialWorkingDir . "\JQB_Phone"   ;

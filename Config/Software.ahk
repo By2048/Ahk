@@ -92,16 +92,6 @@ Games_Process_Name.Push( "LOL_Game"   )
 
 
 
-Software_Keys_Gui := {
-    Dark     : { Font : "FFFFFF" , Back : "000000" } ,
-    Light    : { Font : "000000" , Back : "FFFFFF" } ,
-    FontName : "Source Code Pro" ,
-    FontSize : "11" ,
-    Margin   : 9
-}
-
-
-
 ; 快捷键图片对应关系
 Software_Keys_Help := Map()
 
@@ -144,14 +134,6 @@ Init_Software_Keys_Help()
 
 
 
-
-Ctrl_Help_Gui := {
-    Dark     : { Font : "FFFFFF" , Back : "000000" } ,
-    Light    : { Font : "000000" , Back : "FFFFFF" } ,
-    FontName : "Source Code Pro" ,
-    FontSize : "13" ,
-    Margin   : 9
-}
 Ctrl_Help_Content := ""
 Init_Ctrl_Help_Content()
 {

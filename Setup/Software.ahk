@@ -11,6 +11,7 @@
 #Include ..\Tool\Other.ahk
 #Include ..\Tool\Window.ahk
 #Include ..\Tool\Control.ahk
+#Include ..\Tool\Gui.ahk
 
 #Include ..\Software\Chat.ahk
 #Include ..\Software\Explorer.ahk

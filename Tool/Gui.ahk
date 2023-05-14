@@ -93,3 +93,34 @@ HideInitConfig()
         return
     }
 }
+
+
+GuiTxtFile(paths)
+{
+    for path in paths {
+        if (not FileExist(path)) {
+            return
+        }
+    }
+    global Gui_Config
+    global GT, GT_Status, GT_Content, GT_Index
+
+    theme   := GetWindowTheme()
+    content := FileRead(path, "`n UTF-8")
+
+    margin_xy  := Gui_Config.Margin
+    font_name  := Gui_Config.FontName
+    font_size  := Gui_Config.FontSize
+    font_color := Gui_Config.%theme%.Font
+    back_color := Gui_Config.%theme%.Back
+
+    GT := Gui()
+    GT.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
+    GT.SetFont(Format("c{} s{}", font_color, font_size), font_name)
+    GT.MarginX := margin_xy
+    GT.MarginY := margin_xy
+    GT.BackColor := back_color
+    GT.Add("Text", "-Center -Border", content)
+    GT.Show("NA Center")
+    GT_Status := True
+}
