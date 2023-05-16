@@ -1,8 +1,9 @@
 ﻿
 #HotIf CheckWindowActive( "Wallpaper" )
 
-    ClickImage(image)
-    {
+    SleepTime := 200
+
+    ClickImage(image) {
         CoordMode "Mouse", "Window"
         MouseGetPos &x_origin, &y_origin
         x1 := x_origin
@@ -12,21 +13,37 @@
         MouseClickImageXYWH(x1, y1, x2, y2, image, "Window")
     }
 
-    F10::Return
+    PageTool(mode) {
+        x := 550
+        y := 1242
+        w := 1000
+        h := 55
+        xx := x + w
+        yy := y + h
+        ; GuiTool(x,y,w,h)
+        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\" . mode . ".png"
+        MouseClickImageXYWH(x, y, xx, yy, image, "Screen", 99)
+    }
+
+    GuiTool(x,y,w,h) {
+        G := Gui()
+        G.Opt("-DPIScale +Border +Disabled +Owner -SysMenu -Caption")
+        G.Opt("+LastFound")
+        WinSetTransColor("F1ECED 100", G)
+        G.Show(Format("x{} y{} w{} h{}", x, y, w, h))
+    }
+
+    ; F10::Return
     ; LShift::Send {F10}
 
     ; 在资源管理器中打开
     !\::{
         MouseClick "Right"
-        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Open.png"
-        ClickImage(image)
+        Sleep SleepTime
+        ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Open.png")
     }
 
-    ; wallpaper_exe   := Windows_Process_Name.Get("Wallpaper")
-    ; wallpaper_class := "WPEUI"
-    ; WinShow, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
-    ; WinHide, ahk_exe %wallpaper_exe% ahk_class %wallpaper_class%
-
+    global Wallpaper_State
     ; 预览
     !p::{
         if (not Wallpaper_State) {
@@ -42,50 +59,34 @@
     }
 
     !PgUp::{
-        win_w := WPD["Wallpaper"][3]
-        win_h := WPD["Wallpaper"][4]
-        x1    := win_w * 1/6
-        y1    := win_h * 90/100
-        x2    := x1    + 2000
-        y2    := y1    + 100
-        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\PgUp.png"
-        MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
+        PageTool("PgUp")
     }
     !PgDn::{
-        win_w := WPD["Wallpaper"][3]
-        win_h := WPD["Wallpaper"][4]
-        x1    := win_w * 1/6
-        y1    := win_h * 90/100
-        x2    := x1    + 2000
-        y2    := y1    + 100
-        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\PgDn.png"
-        MouseClickImageXYWH(x1, y1, x2, y2, image, "Screen", 60)
-        ; Gui, -DPIScale +Disabled +Owner -SysMenu -Caption
-        ; Gui, +Border
-        ; Gui, Margin, 0, 0
-        ; Gui, Show, X%x1% Y%y1% W2000 H99
-        ; WinGet, win_id, ID, A
-        ; WinSet, TransColor, F1ECED 100, ahk_id %win_id%
+        PageTool("PgDn")
     }
 
     ; 订阅
     ![::{
         MouseClick "Right"
-        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Download.png"
-        ClickImage(image)
+        Sleep SleepTime
+        ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Download.png")
     }
 
     ; 取消订阅
     !]::{
         MouseClick "Right"
-        image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Delete.png"
-        ClickImage(image)
-        Sleep 100
+        Sleep SleepTime
+        ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Delete.png")
         Send "{Enter}"
     }
 
     <#\::{
-        MoveWindowToPosition(Position(2345 , 1357))
+        x := 0
+        y := 0
+        w := A_ScreenWidth  - x - x - 1
+        h := A_ScreenHeight - y - y - 0
+        pos := Position(x, y, w, h)
+        MoveWindowToPosition(pos)
     }
 
 #HotIf
