@@ -1,4 +1,13 @@
 ﻿
+; 环境编辑器
+<#5::{
+    Run "sysdm.cpl"
+    WinWaitActive "ahk_exe SystemPropertiesComputerName.exe",  , 3
+    MoveWindowToCenter(True)
+    Send "^{Tab 2}"
+    Send "!n"
+}
+
 ; 重置显示器设置
 <#6::{
     Run "ms-settings:display"
@@ -19,30 +28,9 @@
     WinClose "设置"
 }
 
-; 环境编辑器
-<#7::{
-    Run "sysdm.cpl"
-    WinWaitActive "ahk_exe SystemPropertiesComputerName.exe",  , 3
-    MoveWindowToCenter(True)
-    Send "^{Tab 2}"
-    Send "!n"
-}
-
-; 显示隐藏任务栏
-<#8::{
-    rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
-    if (!WinExist(rule)) {
-        WinShow rule
-        HelpText("`n显示任务栏`n", "Center", Screens.Count, 500)
-    } else {
-        WinHide rule
-        HelpText("`n隐藏任务栏`n", "Center", Screens.Count, 500)
-    }
-}
-
 ; 任务栏多屏移动
 ; 主屏幕 27寸2K -> 副屏幕 21.5寸1080P
-<#+8::{
+<#7::{
     CoordMode "Mouse", "Screen"
     MouseGetPos &x_origin, &y_origin
     win_id := 0x0
@@ -78,6 +66,18 @@
         Click Format("Click Up {} {}", mouse_xx, mouse_yy)
     }
     MouseMove x_origin, y_origin, 0
+}
+
+; 显示隐藏任务栏
+<#8::{
+    rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
+    if (!WinExist(rule)) {
+        WinShow rule
+        HelpText("`n显示任务栏`n", "Center", Screens.Count, 500)
+    } else {
+        WinHide rule
+        HelpText("`n隐藏任务栏`n", "Center", Screens.Count, 500)
+    }
 }
 
 <#9::   ;主显示器 -
