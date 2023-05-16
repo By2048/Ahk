@@ -87,15 +87,12 @@ ChromeTimer()
 
     ; https://picx.zhimg.com/80/v2-104d5c498690a3268a49a84705094f25_1440w.webp?source=1940ef5c
     if ( InStr(url_origin, "zhimg.com") ) {
-        if (InStr(url_origin, "v2-") and InStr(url_origin, ".webp")) {
-            url_result := url_origin
-            if (InStr(url_origin, "?")) {
-                url_result := StrSplit(url_result, "?")[1]
-            }
-            url_result := RegExReplace(url_result, "(http.*)(v2-)(\d\w+)(_\d\w+)(.*)", "$1$2$3$5")
+        url_result := url_origin
+        if (InStr(url_result, "?")) {
+            url_result := StrSplit(url_result, "?")[1]
         }
+        url_result := RegExReplace(url_result, "(http.*)(v2-)(\d\w+)(_\d\w+|_\w+)(.*)", "$1$2$3$5")
     }
-
 
     if (url_result) {
         A_Clipboard := ""
