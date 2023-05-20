@@ -1,7 +1,11 @@
 ﻿
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
-    <#\::{
-        MoveWindowToPosition(Position(1350, 1300))
+    <#\::
+    <#+\::{
+        if (A_ThisHotkey == "<#\")
+            MoveWindowToPosition(Position(1350, 500))
+        if (A_ThisHotkey == "<#+\")
+            MoveWindowToPosition(Position(1350, 1300))
         _1 := " 1    2    3   "
         _2 := " 名称 大小  %   "
         _3 := " 999  130  100 "
