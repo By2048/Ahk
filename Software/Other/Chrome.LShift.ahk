@@ -42,31 +42,25 @@ ChromeTimer()
     ; cn.bing.com/search?q=Xxx
     ; baidu.com/s?wd=Xxx
     if (InStr(url_origin, "cn.bing.com/search?q=")) {
-        ; https://cn.bing.com/search?q=test
         keyword := RegExReplace(url_origin, "(http.*)(search\?q\=)(.*?)", "$3")
         url_result := "https://www.baidu.com/s?wd=" . keyword
     }
 
     ; learn.microsoft.com/en-us/windows/win32/shell/shellwindows
     ; learn.microsoft.com/zh-cn/windows/win32/shell/shellwindows
-    if (InStr(url_origin, "learn.microsoft.com/en-us/")) {
+    if InStr(url_origin, "learn.microsoft.com/en-us/")
         url_result := StrReplace(url_origin, "/en-us/", "/zh-cn/")
-    }
 
     ; https://t.bilibili.com/?tab=all
     ; https://t.bilibili.com/?tab=video
-    if (InStr(url_origin, "t.bilibili.com/?tab=all")) {
+    if InStr(url_origin, "t.bilibili.com/?tab=all")
         url_result := StrReplace(url_origin, "all", "video")
-    }
-    if (InStr(url_origin, "t.bilibili.com/?tab=video")) {
+    if InStr(url_origin, "t.bilibili.com/?tab=video")
         url_result := StrReplace(url_origin, "video", "all")
-    }
 
     ; .jpg@xxx.xxx
-    if (InStr(url_origin, ".jpg@")) {
-        url_args := StrSplit(url_origin, ".jpg@")
-        url_result := url_args[1] . ".jpg"
-    }
+    if ( InStr(url_origin, ".jpg@") or InStr(url_origin, ".png@") )
+        url_result := RegExReplace(url_origin, "(http.*)(.jpg|.png)(@)(.*)", "$1$2")
 
     ; 2 -> 1
     ; 1 -> 3 -> 1
