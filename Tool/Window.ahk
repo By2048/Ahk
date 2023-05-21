@@ -267,6 +267,13 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
             if (!InStr(win_process, _process_)) {
                 return False
             }
+        } else if (InStr(_process_, "|")) {
+            _process_ := StrSplit(_process_, "|")
+            for item in _process_ {
+                if (win_process == item) {
+                    return True
+                }
+            }
         } else if (win_process != _process_) {
             return False
         }
@@ -285,15 +292,12 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
 
     if (StrLen(_title_) > 0) {
         titles := StrSplit(_title_, "|")
-        check  := False
-        for index, value in titles {
-            if (InStr(win_title, value)) {
-                check := True
+        for item in titles {
+            if (InStr(win_title, item)) {
+                return True
             }
         }
-        if (not check) {
-            return False
-        }
+        return False
     }
 
     return True
