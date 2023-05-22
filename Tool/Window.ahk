@@ -355,10 +355,9 @@ IsGame()
 ; offset | 在一定误差内不进行窗口移动
 ; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小
 ; return | None
-SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
+SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
 {
     win_id := window.id
-    win_process_name := window.process_name
     win_min_max := window.min_max
 
     if (not win_id) {
@@ -373,27 +372,27 @@ SetWindow(xx:=0, yy:=0, ww:=0, hh:=0, offset:=3, step:=False)
         return
     }
 
-    x := window.x
-    y := window.y
-    w := window.w
-    h := window.h
+    win_x := window.x
+    win_y := window.y
+    win_w := window.w
+    win_h := window.h
 
-    if (ww == 0 or not ww) {
-        ww := w
+    if (w == 0) {
+        w := window.w
     }
-    if (hh == 0 or not hh) {
-        hh := h
+    if (h == 0) {
+        h := window.h
     }
 
-    if (Abs(xx-x)>offset or Abs(yy-y)>offset or Abs(ww-w)>offset or Abs(hh-h)>offset) {
+    if (Abs(win_x-x)>offset or Abs(win_y-y)>offset or Abs(win_w-w)>offset or Abs(win_h-h)>offset) {
         if (step) {
             try {
-                WinMove xx, yy,   ,    , "ahk_id " . win_id
-                WinMove   ,   , ww,  hh, "ahk_id " . win_id
+                WinMove x, y,  ,  , "ahk_id " . win_id
+                WinMove  ,  , w, h, "ahk_id " . win_id
             }
         } else {
             try {
-                WinMove xx, yy, ww,  hh, "ahk_id " . win_id
+                WinMove x, y, w, h, "ahk_id " . win_id
             }
         }
     }
