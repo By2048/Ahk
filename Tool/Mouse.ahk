@@ -80,7 +80,7 @@ MouseClickImage(image, trans:="")
 
 
 
-MouseClickImageXYWH(x1, y1, x2, y2, image, mode:="Window", offset:=30, key:="Left", trans:="")
+MouseClickImageXYWH(x1, y1, x2, y2, image, mode:="Window", offset:=66, key:="Left", trans:="")
 {
     if (mode == "Window") {
         CoordMode "Mouse", "Window"

@@ -2,6 +2,7 @@
 #HotIf CheckWindowActive( "Wallpaper" )
 
     SleepTime := 200
+    Offset := 99
 
     ClickImage(image) {
         CoordMode "Mouse", "Window"
@@ -10,7 +11,7 @@
         y1 := y_origin - 400
         x2 := x_origin + 80
         y2 := y_origin + 800
-        MouseClickImageXYWH(x1, y1, x2, y2, image, "Window")
+        MouseClickImageXYWH(x1, y1, x2, y2, image, "Window", Offset)
     }
 
     PageTool(mode) {
@@ -22,7 +23,7 @@
         yy := y + h
         ; GuiTool(x,y,w,h)
         image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\" . mode . ".png"
-        MouseClickImageXYWH(x, y, xx, yy, image, "Screen", 99)
+        MouseClickImageXYWH(x, y, xx, yy, image, "Screen", Offset)
     }
 
     GuiTool(x,y,w,h) {
