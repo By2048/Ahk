@@ -62,10 +62,8 @@ Position(args*)
     }
 
     win_x := x , win_y := y , win_w := w , win_h := h
-    x := Format("{:L}", x)
-    y := Format("{:L}", y)
 
-    check_x := RegExMatch(x, "\[center\]\[([1-9])\]", &re_match_x)
+    check_x := RegExMatch(Format("{:L}", x), "\[center\]\[([1-9])\]", &re_match_x)
     if (check_x) {
         screen_index := re_match_x.1
         if (screen_index <= Screens.Count) {
@@ -85,7 +83,7 @@ Position(args*)
         }
     }
 
-    check_y := RegExMatch(y, "\[center\]\[([1-9])\]", &re_match_y)
+    check_y := RegExMatch(Format("{:L}", y), "\[center\]\[([1-9])\]", &re_match_y)
     if (check_y) {
         screen_index := re_match_y.1
         if (screen_index <= Screens.Count) {
@@ -113,89 +111,17 @@ Position(args*)
 }
 
 
-Position4K(width, height)
+AID(id)
 {
-    scale := Screen_4K.Dpi / Screen.dpi
-    x := Screen_4K.Width/2 - width/2
-    y := Screen_4K.Hight/2 - height/2
-    if ( scale != 1 ) {
-        win_w := width  / scale
-        win_h := height / scale
-        win_x := Screen.w/2 - win_w/2
-        win_y := Screen.h/2 - win_h/2
-    } else {
-        win_x := x
-        win_y := y
-        win_w := width
-        win_h := height
-    }
-    win_x := Round(win_x)
-    win_y := Round(win_y)
-    win_w := Round(win_w)
-    win_h := Round(win_h)
-    return [ win_x , win_y , win_w , win_h ]
-}
-
-
-PositionDpiChange(A, B, args*)
-{
-    if (not args.Length) {
-        return args
-    }
-    dpi_from := A["Dpi"]
-    dpi_to   := B["Dpi"]
-    scale    := dpi_from / dpi_to
-    offset   := 15
-    if (scale == 1) {
-        return args
-    }
-    x := args[1]
-    y := args[2]
-    w := args[3]
-    h := args[4]
-    if (x < offset ) {
-        x := x
-    } else {
-        x := x / scale / scale
-    }
-    if (y < offset ) {
-        y := y
-    } else {
-        y := y / scale / scale
-    }
-    w := w / scale
-    h := h / scale
-    return [ x, y, w, h ]
-}
-
-
-; A -> B
-DpiArgs(from:="", to:="", args*)
-{
-    if (from == to) {
-        return args
-    }
-    if (not args.Length) {
-        return args
-    }
-    scale  := from / to
-    result := []
-    for index, arg in args {
-        arg := arg / scale
-        result.Push(arg / scale)
-    }
-    return result
-}
-
-
-AID(id) {
     if (not id) {
         return "A"
     }
     return Format("ahk_id {}", id)
 }
 
-AEXE(exe) {
+
+AEXE(exe)
+{
     if (not exe) {
         return "A"
     }
