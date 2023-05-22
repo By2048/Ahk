@@ -31,6 +31,7 @@
 #Include ..\Software\Other\FSViewer.ahk
 #Include ..\Software\Other\Geek.ahk
 #Include ..\Software\Other\GeForceTool.ahk
+#Include ..\Software\Other\HuoRong.ahk
 #Include ..\Software\Other\Maye.ahk
 #Include ..\Software\Other\Music.ahk
 #Include ..\Software\Other\PotPlayer.ahk

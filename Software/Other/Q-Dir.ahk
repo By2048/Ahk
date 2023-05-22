@@ -1,7 +1,7 @@
 ﻿
 #HotIf CheckWindowActive( "Q-Dir" , "#32770" , "MiniBrowserOK" )
     <#\::{
-        WPD["Q-Dir_#32770_MiniBrowserOK"] := Position4K(2100, 1700)
+        WPD["Q-Dir_#32770_MiniBrowserOK"] := Position(1555, 1333)
         MoveWindowToDefaultPosition()
     }
 #HotIf
