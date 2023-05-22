@@ -1,18 +1,4 @@
 ﻿
-IsJetbrains()
-{
-    all_process_name := "PyCharm IDEA"
-    GetActiveWindowInfo()
-    if (not window.process_name) {
-        return false
-    }
-    if (InStr(all_process_name, window.process_name)) {
-        return true
-    }
-    return false
-}
-
-
 ToolSwitch(Key, rule)
 {
     win_title := WinGetTitle("A")
@@ -45,13 +31,10 @@ CapsLockRedirect()
 }
 
 
-GetHideWindowConfig()
+GetHideWindowConfig(check_sleep:=44, check_count:=22)
 {
     exe := WinGetProcessName("A")
     check_rule  := Format("ahk_exe {} ahk_class SunAwtWindow", exe)
-    check_sleep := 30
-    check_count := 22
-
     win_id := 0x0
     loop {
         if (A_Index >= check_count) {
@@ -63,11 +46,10 @@ GetHideWindowConfig()
             break
         }
     }
-
     win := {}
-    win.id := win_id
     if (win_id) {
         WinGetPos &win_x, &win_y, &win_w, &win_h, AID(win_id)
+        win.id := win_id
         win.x  := win_x
         win.y  := win_y
         win.w  := win_w
@@ -80,7 +62,7 @@ GetHideWindowConfig()
 CenterHideWindow(position*)
 {
     win := GetHideWindowConfig()
-    if (not win.id) {
+    if (not ObjOwnPropCount(win)) {
         return
     }
     win_id := win.id

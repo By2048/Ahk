@@ -58,28 +58,28 @@
 ; 断点 | 临时断点
 cnt := 0
 $F2::{
-   global cnt
-   if (cnt > 0) {
-       cnt += 1
-       return
-   } else {
-       cnt := 1
-   }
-   SetTimer F2Timer, -200
+    global cnt
+    if (cnt > 0) {
+        cnt += 1
+        return
+    } else {
+        cnt := 1
+    }
+    SetTimer F2Timer, -200
 }
 F2Timer() {
-   global cnt
-   if (cnt == 1) {
-       Send "{F2}"
-   } else if (cnt == 2) {
-       Send "^{F2}"
-       HelpText("`nF2 * 2`n", "Center", "Screen", 300)
-       ; Send "!{F2}"
-       ; WinWaitActive "断点"
-       ; Send "!d"
-       ; Send "{Enter}"
-   }
-   cnt := 0
+    global cnt
+    if (cnt == 1) {
+        Send "{F2}"
+    } else if (cnt == 2) {
+        Send "^{F2}"
+        HelpText("`nF2 * 2`n", "Center", "Screen", 300)
+        ; Send "!{F2}"
+        ; WinWaitActive "断点"
+        ; Send "!d"
+        ; Send "{Enter}"
+    }
+    cnt := 0
 }
 
 ~F9::{
@@ -87,10 +87,10 @@ F2Timer() {
 }
 
 ~F11::{
-   win_title := WinGetTitle("A")
-   if (win_title == "评估") {
-       Send "{Esc}"
-   }
+    win_title := WinGetTitle("A")
+    if (win_title == "评估") {
+        Send "{Esc}"
+    }
 }
 
 ; >!F12::{

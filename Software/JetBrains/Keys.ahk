@@ -1,26 +1,21 @@
 ﻿
 #Include *i Lib.ahk
 
+JApps := "PyCharm|IDEA"
 
-
-#HotIf IsJetbrains() And CheckWindowActive("", "SunAwtDialog", "终端|运行|调试")
+#HotIf CheckWindowActive(JApps, "SunAwtDialog", "终端|运行|调试")
     ~RAlt::{
-        if (not hide_status or hide_status == False) {
-            WinSetTransparent 99, "A"
-            hide_status := True
-        }
+        WinSetTransparent 99, "A"
     }
     ~RAlt Up::{
         WinSetTransparent 255, "A"
-        hide_status := False
-        SetCapsLockState "Off"
     }
 #HotIf
 
 
 
 DoubleShift := False
-#HotIf IsJetbrains() And DoubleShift == True
+#HotIf CheckWindowActive(JApps) And DoubleShift == True
     Esc::
     CapsLock::{
         global DoubleShift
@@ -35,7 +30,7 @@ DoubleShift := False
 ;AppsKey Esc 一次性返回问题修复
 AppsKeyRedirect   := False
 AppsKeyEnterCount := 0
-#HotIf IsJetbrains() And AppsKeyRedirect == True
+#HotIf CheckWindowActive(JApps) And AppsKeyRedirect == True
     $Enter::{
         global AppsKeyEnterCount
         Send "{Enter}"
@@ -59,7 +54,7 @@ AppsKeyEnterCount := 0
 
 ; 浮动工具栏
 FloatTool := False
-#HotIf IsJetbrains() And FloatTool == True
+#HotIf CheckWindowActive(JApps) And FloatTool == True
     $Esc::
     $CapsLock::{
         global FloatTool, CapsLockActivate
@@ -72,7 +67,7 @@ FloatTool := False
         Send "{Enter}"
         Sleep 99
         win := GetHideWindowConfig()
-        if (win.id) {
+        if (ObjOwnPropCount(win)) {
             WinActivate AID(win.id)
         }
     }
@@ -80,72 +75,87 @@ FloatTool := False
 
 
 
-; 主菜单处理
-CenterTools := False
+; 主菜单 动态调整位置
+CenterTools       := False
+CenterToolsSpace  := 2
 CenterToolsConfig := []
-CenterToolsSpace := 10
-#HotIf IsJetbrains() And CenterTools == True
-    $Enter::{
-        global CenterTools, CenterToolsConfig, CenterToolsSpace
-        Send "{Enter}"
-        win := GetHideWindowConfig()
-        CenterToolsConfig.Push(win)
-        max_length := CenterToolsConfig.Length
-        move_space := win.w / 2
-        for index, cfg in CenterToolsConfig {
-            cid := cfg.id
-            cx  := cfg.x
-            cy  := cfg.y
-            cw  := cfg.w
-            ch  := cfg.h
-            cx  := cx - move_space
-            cy  := Screen.y + Screen.h/2 - ch/2
-            cfg.x := cx
-            cfg.y := cy
-            cx  := cx - (max_length - index) * CenterToolsSpace
-            WinMove cx, cy, cw, ch, AID(cid)
+#HotIf CheckWindowActive(JApps) And CenterTools == True
+    FloatWindows() {
+        Global CenterToolsConfig, CenterToolsSpace
+        tmp := []
+        loop CenterToolsConfig.Length {
+            tmp.Push(CenterToolsConfig.Pop())
+        }
+        pos := 0
+        loop tmp.Length {
+            o := tmp[A_Index]
+            x := o.x
+            y := o.y
+            w := o.w
+            h := o.h
+            if (A_Index == 1) {
+                x := Screen.x + Screen.w/2 - w/2
+            } else {
+                x := pos - w
+            }
+            o.x := x - A_Index * CenterToolsSpace
+            o.y := Screen.y + Screen.h/2 - h/2
+            CenterToolsConfig.InsertAt(1, o)
+            pos := o.x
+        }
+        loop CenterToolsConfig.Length {
+            o := CenterToolsConfig[A_Index]
+            WinMove o.x, o.y, o.w, o.h, AID(o.id)
         }
     }
-    $+Enter::{
-        global CenterTools
+    $RShift::{
+        Send "{Blind}{vkFF}"
+        Global CenterToolsConfig
+        CenterToolsConfig.Pop()
+        win := GetHideWindowConfig(333)
+        if (ObjOwnPropCount(win)) {
+            CenterToolsConfig.Push(win)
+            FloatWindows()
+        }
+    }
+    $Enter::{
+        Global CenterTools, CenterToolsConfig
         Send "{Enter}"
-        CenterHideWindow()
-        CenterTools := False
+        win := GetHideWindowConfig()
+        if (not ObjOwnPropCount(win)) {
+            CenterTools := False
+            AppsKeyRedirect := False
+            CenterToolsConfig := []
+        } else {
+            CenterToolsConfig.Push(win)
+            FloatWindows()
+        }
     }
     $Esc::
     $CapsLock::{
-        global AppsKeyRedirect
-        global CenterTools, CenterToolsConfig, CenterToolsSpace
+        Global AppsKeyRedirect
+        Global CenterTools, CenterToolsConfig
         if (AppsKeyRedirect) {
             Send "{Left}"
         } else {
             Send "{Esc}"
         }
-        c := CenterToolsConfig.Pop()
-        move_space := c.w / 2
-        for index, cfg in CenterToolsConfig {
-            cid := cfg.id
-            cx  := cfg.x
-            cy  := cfg.y
-            cw  := cfg.w
-            ch  := cfg.h
-            cx  := cx + move_space
-            cfg.x := cx
-            cx  := cx + index * CenterToolsSpace
-            WinMove cx, cy, cw, ch, AID(cid)
-        }
-        l := CenterToolsConfig.Length
-        if (CenterToolsConfig.Length == 0) {
+        CenterToolsConfig.Pop()
+        FloatWindows()
+        if (not CenterToolsConfig.Length) {
             CenterTools := False
             AppsKeyRedirect := False
         }
+    }
+    $CapsLock Up::{
+        SetCapsLockState "Off"
     }
 #HotIf
 
 
 
 CapsLockActivate := False
-#HotIf IsJetbrains()
+#HotIf CheckWindowActive(JApps)
 
     #Include *i Keys.Fxx.ahk
 
@@ -169,7 +179,7 @@ CapsLockActivate := False
             MoveWindowToCenter(True)
         }
         win := GetHideWindowConfig()
-        if (win.id) {
+        if (ObjOwnPropCount(win)) {
             CenterHideWindow()
         }
         GlobalSet("Status", "ignore_function", True)
@@ -221,8 +231,12 @@ CapsLockActivate := False
     ; }
 
     #Include *i Position.ahk
-    <#\::MoveWindowToDefaultPosition()
-    <#+\::MoveWindowToBackupPosition()
+    <#\::{
+        MoveWindowToDefaultPosition()
+    }
+    <#+\::{
+        MoveWindowToBackupPosition()
+    }
 
     ;窗口全屏
     <#Enter::{
@@ -275,15 +289,3 @@ CapsLockActivate := False
         CenterHideWindow()
     }
 #HotIf
-
-
-
-
-
-
-
-
-
-
-
-
