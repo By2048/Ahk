@@ -9,7 +9,7 @@
 }
 
 ; 重置显示器设置
-<#6::{
+<#8::{
     Run "ms-settings:display"
     Sleep 99
     WinActivate "设置"
@@ -30,7 +30,7 @@
 
 ; 任务栏多屏移动
 ; 主屏幕 27寸2K -> 副屏幕 21.5寸1080P
-<#7::{
+<#9::{
     CoordMode "Mouse", "Screen"
     MouseGetPos &x_origin, &y_origin
     win_id := 0x0
@@ -69,7 +69,7 @@
 }
 
 ; 显示隐藏任务栏
-<#8::{
+<#0::{
     rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
     if (!WinExist(rule)) {
         WinShow rule
@@ -80,17 +80,17 @@
     }
 }
 
-<#9::   ;主显示器 -
-<#0::   ;主显示器 +
-<#+9::  ;副显示器 -
-<#+0::{ ;副显示器 +
+<#Home::   ;主显示器 -
+<#End::   ;主显示器 +
+<#+Home::  ;副显示器 -
+<#+End::{ ;副显示器 +
     global previous_win_id
     previous_win_id := WinGetID("A")
     switch A_ThisHotkey {
-        case "<#9"  : Send "#^!9"
-        case "<#0"  : Send "#^!0"
-        case "<#+9" : Send "#^!+9"
-        case "<#+0" : Send "#^!+0"
+        case "<#Home"  : Send "#^!{Home}"
+        case "<#End"   : Send "#^!{End}"
+        case "<#+Home" : Send "#^!+{Home}"
+        case "<#+End"  : Send "#^!+{End}"
     }
     win_exe := "Twinkle Tray.exe"
     win_id  := WinExist("ahk_exe " . win_exe)
@@ -101,21 +101,25 @@
     h := win_h
     WinActivate "ahk_id " . win_id
     WinMove x, y, w, h, "ahk_id " . win_id
-    WinSetAlwaysOnTop 1, "ahk_id " . win_id
+    WinSetAlwaysOnTop True, "ahk_id " . win_id
 }
-<#9 Up::
-<#0 Up::
-<#+9 Up::
-<#+0 Up::{
+<#Home Up::
+<#End Up::
+<#+Home Up::
+<#+End Up::{
     global previous_win_id
     WinActivate "ahk_id " . previous_win_id
 }
 
+; 缩放快捷键
+<#=::Send "^!="
+<#-::Send "^!-"
+
 ;声音
-<#=::Send "{Volume_Up}"
-<#-::Send "{Volume_Down}"
-<#+-::
-<#+=::{
+<#PgUp::Send "{Volume_Up}"
+<#PgDn::Send "{Volume_Down}"
+<#+PgUp::
+<#+PgDn::{
     Send "{Volume_Down}"
     Send "{Volume_Up}"
 
@@ -124,13 +128,13 @@
     volume_current := Round(SoundGetVolume())
     for index, volume in volume_steps {
         if ( Abs(volume_current - volume) < offset ) {
-            if (InStr(A_ThisHotkey, "-")) {
+            if (InStr(A_ThisHotkey, "PgDn")) {
                 if (index == 1) {
                     SoundSetVolume volume_steps[1]
                 } else {
                     SoundSetVolume volume_steps[index - 1]
                 }
-            } else if (InStr(A_ThisHotkey, "=")) {
+            } else if (InStr(A_ThisHotkey, "PgUp")) {
                 if (index == volume_steps.Length) {
                     SoundSetVolume volume_steps[-1]
                 } else {
@@ -171,13 +175,13 @@
 <#t::Send "^!t"
 
 ;切换任务栏应用（预览
-<#[::#+t
-<#]::#t
+<#[::Send "#+t"
+<#]::Send "#t"
 
 ;插入表情
-<#j::#`;
+<#j::Send "#`;"
 
-<#,::#x ;系统菜单
+<#,::Send "#x" ;系统菜单
 <#.::Run "control" ;控制面板
 <#/::Run "ms-settings:" ;设置
 
