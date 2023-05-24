@@ -5,10 +5,10 @@ RCtrl::ZH()
 >^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
 >^Esc::Run "Taskmgr.exe"
 
->#9::Send "#^!9"
->#0::Send "#^!0"
->#=::Send "{Volume_Up}"
->#-::Send "{Volume_Down}"
+>#Home::Send "#^!{Home}"
+>#End::Send "#^!{End}"
+>#PgUp::Send "{Volume_Up}"
+>#PgDn::Send "{Volume_Down}"
 
 LWin & Tab::AltTab
 
