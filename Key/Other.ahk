@@ -66,8 +66,8 @@ RAlt  & RWin::Send "!{F4}"
 RCtrl & RWin::Send "^w"
 
 
-RWin & RCtrl::MoveWindowToMainMini("Main")
-RWin & RAlt:: MoveWindowToMainMini("Mini")
+RWin & RCtrl::MoveWindowToMainMini("Main", True)
+RWin & RAlt:: MoveWindowToMainMini("Mini", True)
 
 
 
