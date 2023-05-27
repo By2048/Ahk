@@ -80,17 +80,17 @@
     }
 }
 
-<#Home::   ;主显示器 -
-<#End::   ;主显示器 +
-<#+Home::  ;副显示器 -
-<#+End::{ ;副显示器 +
+#Home::   ;主显示器 -
+#End::   ;主显示器 +
+#+Home::  ;副显示器 -
+#+End::{ ;副显示器 +
     global previous_win_id
     previous_win_id := WinGetID("A")
     switch A_ThisHotkey {
-        case "<#Home"  : Send "#^!{Home}"
-        case "<#End"   : Send "#^!{End}"
-        case "<#+Home" : Send "#^!+{Home}"
-        case "<#+End"  : Send "#^!+{End}"
+        case "#Home"  : Send "#^!{Home}"
+        case "#End"   : Send "#^!{End}"
+        case "#+Home" : Send "#^!+{Home}"
+        case "#+End"  : Send "#^!+{End}"
     }
     win_exe := "Twinkle Tray.exe"
     win_id  := WinExist("ahk_exe " . win_exe)
@@ -103,10 +103,10 @@
     WinMove x, y, w, h, "ahk_id " . win_id
     WinSetAlwaysOnTop True, "ahk_id " . win_id
 }
-<#Home Up::
-<#End Up::
-<#+Home Up::
-<#+End Up::{
+#Home Up::
+#End Up::
+#+Home Up::
+#+End Up::{
     global previous_win_id
     WinActivate "ahk_id " . previous_win_id
 }
@@ -116,10 +116,10 @@
 <#-::Send "^!-"
 
 ;声音
-<#PgUp::Send "{Volume_Up}"
-<#PgDn::Send "{Volume_Down}"
-<#+PgUp::
-<#+PgDn::{
+#PgUp::Send "{Volume_Up}"
+#PgDn::Send "{Volume_Down}"
+#+PgUp::
+#+PgDn::{
     Send "{Volume_Down}"
     Send "{Volume_Up}"
 

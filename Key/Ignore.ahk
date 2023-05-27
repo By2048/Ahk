@@ -40,9 +40,9 @@
 #,::Return ;透明窗口显示桌面
 #.::Return ;输入法表情界面
 #F1::Return ;系统帮助
-#Home::Return ;最小化活动桌面窗口之外的所有窗口
 #Pause::Return ;控制面板\所有控制面板项\系统
 #PrintScreen::Return ;不明
+; #Home::Return ;最小化活动桌面窗口之外的所有窗口
 
 ; 快速切换任务栏程序
 #t::Return
