@@ -17,22 +17,18 @@
 #Include ..\Software\Explorer.ahk
 #Include ..\Software\Function.ahk
 #Include ..\Software\Office.ahk
-#Include ..\Software\Windows.Ahk
+#Include ..\Software\Windows.ahk
+#Include ..\Software\Other.ahk
 
 #Include ..\Software\Other\7-Zip.ahk
 #Include ..\Software\Other\Android.ahk
 #Include ..\Software\Other\BitComet.ahk
 #Include ..\Software\Other\Chrome.ahk
-#Include ..\Software\Other\Everything.ahk
 #Include ..\Software\Other\FFRenamePro.ahk
-#Include ..\Software\Other\FireFox.ahk
 #Include ..\Software\Other\FoxMail.ahk
 #Include ..\Software\Other\FreeFileSync.ahk
 #Include ..\Software\Other\FSViewer.ahk
 #Include ..\Software\Other\Geek.ahk
-#Include ..\Software\Other\GeForceTool.ahk
-#Include ..\Software\Other\HuoRong.ahk
-#Include ..\Software\Other\Maye.ahk
 #Include ..\Software\Other\Music.ahk
 #Include ..\Software\Other\PotPlayer.ahk
 #Include ..\Software\Other\Q-Dir.ahk

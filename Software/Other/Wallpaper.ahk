@@ -34,8 +34,8 @@
         G.Show(Format("x{} y{} w{} h{}", x, y, w, h))
     }
 
-    ; F10::Return
-    ; LShift::Send {F10}
+    F10::Return
+    AppsKey::Send "{F10}"
 
     ; 在资源管理器中打开
     !\::{

@@ -1,4 +1,0 @@
-﻿
-#HotIf CheckWindowActive( "FireFox" )
-
-#HotIf
