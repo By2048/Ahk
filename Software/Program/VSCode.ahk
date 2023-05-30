@@ -141,4 +141,12 @@
     CapsLock & Up::   Send "^!{Up}"
     CapsLock & Down:: Send "^!{Down}"
 
+    LAlt & RShift::
+    RShift & LAlt::{
+        if (A_ThisHotkey == "LAlt & RShift")
+            Send "{F15}"
+        if (A_ThisHotkey == "RShift & LAlt")
+            Send "^{F15}"
+    }
+
 #HotIf
