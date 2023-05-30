@@ -54,7 +54,8 @@ ShowKeysHelp(step := 0)
         return
     }
     if (hotkeys_current.Length == 0 and hotkeys_show_status == False) {
-        HelpText("`n No Content `n", "Center", "Screen", 300)
+        hotkeys_current := Software_Keys_Help["Default"]
+        ; HelpText("`n No Content `n", "Center", "Screen", 300)
         return
     }
 
