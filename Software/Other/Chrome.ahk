@@ -183,6 +183,7 @@ Expand := False
     ^w::Return
     ^F4::Return
     !CapsLock::{
+        Send "{Blind}{vkFF}"
         Send "^w"
         SetCapsLockState "Off"
     }
@@ -235,8 +236,14 @@ Expand := False
     !BackSpace::Send "!{Home}"
 
     ; 切换标签页
-    !Tab::Send "^{Tab}"
-    !+Tab::Send "^+{Tab}"
+    !Tab::{
+        Send "{Blind}{vkFF}"
+        Send "^{Tab}"
+    }
+    !+Tab::{
+        Send "{Blind}{vkFF}"
+        Send "^+{Tab}"
+    }
     !Home::Send "^1"
     !End::Send "^9"
 
