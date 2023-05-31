@@ -85,7 +85,11 @@
 #+Home::  ;副显示器 -
 #+End::{ ;副显示器 +
     global previous_win_id
-    previous_win_id := WinGetID("A")
+    try {
+        previous_win_id := WinGetID("A")
+    } catch {
+        previous_win_id := 0x0
+    }
     switch A_ThisHotkey {
         case "#Home"  : Send "#^!{Home}"
         case "#End"   : Send "#^!{End}"
@@ -94,21 +98,23 @@
     }
     win_exe := "Twinkle Tray.exe"
     win_id  := WinExist("ahk_exe " . win_exe)
-    WinGetPos &win_x, &win_y, &win_w, &win_h, "ahk_id " . win_id
+    WinGetPos &win_x, &win_y, &win_w, &win_h, AID(win_id)
     x := Screen.x + Screen.w/2 - win_w/2
     y := Screen.y + Screen.h/2 - win_h/2
     w := win_w
     h := win_h
-    WinActivate "ahk_id " . win_id
-    WinMove x, y, w, h, "ahk_id " . win_id
-    WinSetAlwaysOnTop True, "ahk_id " . win_id
+    WinActivate AID(win_id)
+    WinMove x, y, w, h, AID(win_id)
+    WinSetAlwaysOnTop True, AID(win_id)
 }
 #Home Up::
 #End Up::
 #+Home Up::
 #+End Up::{
     global previous_win_id
-    WinActivate "ahk_id " . previous_win_id
+    if (previous_win_id) {
+        WinActivate AID(previous_win_id)
+    }
 }
 
 ; 缩放快捷键
