@@ -5,7 +5,7 @@
 |  P | WT             |  . | 我的电脑        |
 |----|----------------|  / | T:\\            |
 |  S | Sandboxie      |----------------------|
-|  F | FreeFileSync   |  [  | VSCode Notes   |
+|  F | FreeFileSync   |  [ | VSCode Notes    |
 |  H | WindowSpy      |  ] | VSCode Ahk      |
 | +H | WindowSpy      |  \ | VSCode          |
 |  J | JetBrains      | +\ | VSCode Config   |

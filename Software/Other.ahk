@@ -1,6 +1,5 @@
 ﻿
 #HotIf CheckWindowActive("Everything")
-
     <#\::{
         MoveWindowToPosition(Position(1700 , 1200))
         _1 := " 1    2     3    4        "
@@ -9,14 +8,11 @@
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321", config)
     }
-
 #HotIf
 
 
 #HotIf CheckWindowActive( "GeForceTool" )
-
     Esc::Send "^!{Insert}"
-
 #HotIf
 
 
@@ -34,7 +30,6 @@
 
 
 #HotIf CheckWindowActive("Maye")
-
-    CapsLock::Send "+{Tab}"
-
+    LShift::Send "+{Tab}"
+    CapsLock::Send "{Esc}"
 #HotIf
