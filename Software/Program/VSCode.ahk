@@ -99,7 +99,7 @@
     !F4::Send "!{F16}"
     !+F4::Send "!+{F16}"
 
-    <#\::MoveWindowToPosition(Position(-60  , -30))
+    <#\::MoveWindowToPosition(Position(0, 0, A_ScreenWidth, A_ScreenHeight))
     <#+\::MoveWindowToPosition(Position(1616 , 1212))
 
     ;窗口全屏
