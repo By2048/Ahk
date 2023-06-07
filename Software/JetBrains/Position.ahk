@@ -50,6 +50,7 @@ WPD["PyCharm__选择"]         := Position(0.3 , 0.7)
 WPD["PyCharm__打开文件或项目"] := Position(0.3 , 0.7)
 
 WPD["PyCharm__提交更改"] := Position(0.45 , 0.75)
+WPD["PyCharm__回滚更改"] := Position(0.45 , 0.75)
 
 WPD["PyCharm__设置"] := Position(0.65 , 0.77)
 WPB["PyCharm__设置"] := Position(0.76 , 0.88)

@@ -267,7 +267,7 @@ CapsLockActivate := False
     ; ^+\::Return
     ~LAlt & RShift::{
         if (GetKeyState("LShift", "P")) {
-            Send "^z"
+            Send "^+\"
         } else {
             Send "^\"
         }
