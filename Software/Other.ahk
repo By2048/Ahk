@@ -30,6 +30,5 @@
 
 
 #HotIf CheckWindowActive("Maye")
-    LShift::Send "+{Tab}"
     CapsLock::Send "{Esc}"
 #HotIf
