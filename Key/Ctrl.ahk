@@ -43,15 +43,16 @@
 >^Esc::Run "Taskmgr.exe" ;任务管理器
 >^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
 
->^[::Run VSCode . " E:\Config\VSCode\Note.code-workspace", A_InitialWorkingDir, "Hide"
->^]::Run VSCode . " E:\Config\VSCode\Ahk.code-workspace",  A_InitialWorkingDir, "Hide"
->^\::Run VSCode,  A_InitialWorkingDir, "Hide"
+ >^[::Run VSCode . " E:\Config\VSCode\Note.code-workspace", A_InitialWorkingDir, "Hide"
+ >^]::Run VSCode . " E:\Config\VSCode\Ahk.code-workspace",  A_InitialWorkingDir, "Hide"
+ >^\::Run VSCode,  A_InitialWorkingDir, "Hide"
 >^+\::Run VSCode . " E:\Config\VSCode\Windows.code-workspace", A_InitialWorkingDir, "Hide"
 
-;           {20d04fe0-3aea-1069-a2d8-08002b30309d}::  ;我的电脑
->^,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
->^.::Run "T:\\"
->^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
+ >^,::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::"  ;我的电脑
+>^+,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
+ >^.::Run "T:\\"
+>^+.::Run "V:\\"
+ >^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
 >^+/::Run "MSEdge.exe"
 
 >^Up::Return
