@@ -5,7 +5,7 @@ AutoHotkey := "D:\AutoHotkey\V2\AutoHotkey.exe"
 ; 注册表信息保存位置
 Reg_Path := "HKEY_CURRENT_USER\SOFTWARE\AutoHotkey"
 
-; ; HelpText 配置
+; HelpText 配置
 Font := { Dpi:2 , Size:25 , Type:"Courier New" }
 
 ; 检测窗口位置时允许的偏移量（某些窗口全屏 xy为-11,-11）
