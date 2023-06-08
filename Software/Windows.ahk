@@ -18,10 +18,12 @@
         MoveWindowToDefaultPosition()
         InitWindowArgs()
         GetActiveWindowInfo("Window")
-        info   := window.controls.DirectUIHWND2 ;左侧信息栏
-        offset := 6
-        left   := 300
-        MoveControlUDLR(info, 0, 0, left, 0, offset)
+        try {
+            info := window.controls.DirectUIHWND2 ;左侧信息栏
+        } catch {
+            return
+        }
+        MoveControlUDLR(info, 0, 0, 300, 0, 6)
         Send "^!7" ;平铺模式
     }
 
