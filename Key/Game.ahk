@@ -1,18 +1,27 @@
 ﻿
 RAlt::EN()
 RCtrl::ZH()
+RWin::Return
 
->^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
 >^Esc::Run "Taskmgr.exe"
+>^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
+>^.::Run "Explorer.exe"
+>^,::AltTab
 
-#Home::Send "#^!{Home}"
-#End::Send "#^!{End}"
-#PgUp::Send "{Volume_Up}"
-#PgDn::Send "{Volume_Down}"
+<#Home::Send "#^!{Home}"
+<#End::Send "#^!{End}"
+<#PgUp::Send "{Volume_Up}"
+<#PgDn::Send "{Volume_Down}"
 
-LWin & Tab::AltTab
 
 ; ------------------------------------------------- ;
+
+#Tab::Return
+#+Tab::Return
+#Enter::Return
+#+Enter::Return
+#CapsLock::Return
+#+CapsLock::Return
 
 ^Esc::Return
 ^+Esc::Return
@@ -24,8 +33,6 @@ LWin & Tab::AltTab
 !+Tab::Return
 
 ; ------------------------------------------------- ;
-
-RWin::Return
 
 #Esc::Return
 #F1::Return
@@ -90,22 +97,10 @@ RWin::Return
 #.::Return
 #/::Return
 
-#Tab::Return
-#+Tab::Return
-#Enter::Return
-#+Enter::Return
-#CapsLock::Return
-#+CapsLock::Return
-
 #Space::Return
 #Insert::Return
 #Delete::Return
 #AppsKey::Return
-
-; #Home::Return
-; #End::Return
-; #PgUp::Return
-; #PgDn::Return
 
 #Up::Return
 #Down::Return
