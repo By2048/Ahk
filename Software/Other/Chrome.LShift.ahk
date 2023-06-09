@@ -59,8 +59,8 @@ ChromeTimer()
         url_result := StrReplace(url_origin, "video", "all")
 
     ; .jpg@xxx.xxx
-    if ( InStr(url_origin, ".jpg@") or InStr(url_origin, ".png@") )
-        url_result := RegExReplace(url_origin, "(http.*)(.jpg|.png)(@)(.*)", "$1$2")
+    if InStr(url_origin, ".jpg@") or InStr(url_origin, ".png@") or InStr(url_origin, ".webp@")
+        url_result := RegExReplace(url_origin, "(http.*)(.\w+)(@)(.*)", "$1$2")
 
     ; 2 -> 1
     ; 1 -> 3 -> 1
@@ -74,19 +74,13 @@ ChromeTimer()
         } else {
             url_result := url_origin . "/answers/updated"
         }
-        if ( InStr(url_origin, "/answers/updated") ) {
+        if InStr(url_origin, "/answers/updated")
             url_result := StrReplace(url_origin, "/answers/updated", "")
-        }
     }
 
     ; https://picx.zhimg.com/80/v2-104d5c498690a3268a49a84705094f25_1440w.webp?source=1940ef5c
-    if ( InStr(url_origin, "zhimg.com") ) {
-        url_result := url_origin
-        if (InStr(url_result, "?")) {
-            url_result := StrSplit(url_result, "?")[1]
-        }
-        url_result := RegExReplace(url_result, "(http.*)(v2-)(\d\w+)(_\d\w+|_\w+)(.*)", "$1$2$3$5")
-    }
+    if InStr(url_origin, "zhimg.com")
+        url_result := RegExReplace(url_origin, "(http.*)(v2-)([\d\w]+)(_)(\d+\w)(.webp)(\?.*)", "$1$2$3$6")
 
     if (url_result) {
         A_Clipboard := ""
