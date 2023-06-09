@@ -1,6 +1,24 @@
 ﻿
 ; https://support.google.com/chrome/answer/157179
 
+#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "哔哩哔哩" )
+    ; https://www.freedownloadmanager.org/board/viewtopic.php?t=18253
+    AppsKey::{
+        Send "{RButton}{Down 4}{Enter}"
+        Sleep 99
+        url := A_Clipboard
+        if InStr(url, "@")
+            url := RegExReplace(url, "(http.*)(.\w+)(@)(.*)", "$1$2")
+        if ( url ) {
+            name := RegExReplace(url, "(http.*/)([\d\w]+)(.)", "$2$3")
+            name := SubStr(name, 1, 5) . "..." . SubStr(name, -9)
+            Run "D:\FDM\fdm.exe --hidden --url " . url
+            HelpText(name, "CenterDown", "Screen", 1000)
+        }
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "书签" )
     F2::Return
     ^r::Send "{F2}"
@@ -137,6 +155,8 @@ Expand := False
         SetCapsLockState "Off"
     }
 
+    Alt Up::Send "{Esc}"
+
     ;任务管理
     ^Esc::Return
     !Esc::Send "+{Esc}"
@@ -237,11 +257,9 @@ Expand := False
 
     ; 切换标签页
     !Tab::{
-        Send "{Blind}{vkFF}"
         Send "^{Tab}"
     }
     !+Tab::{
-        Send "{Blind}{vkFF}"
         Send "^+{Tab}"
     }
     !Home::Send "^1"
