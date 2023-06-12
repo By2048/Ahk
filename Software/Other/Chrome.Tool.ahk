@@ -1,0 +1,74 @@
+﻿
+UrlChange(origin)
+{
+    result := origin
+
+    if not origin
+        return result
+
+    ; google -> bing
+    ; google.com/search?q=Xxx
+    ; cn.bing.com/search?q=Xxx
+    if (InStr(origin, "google.com/search?q=")) {
+        keyword := RegExReplace(origin, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
+        result := "https://cn.bing.com/search?q=" . keyword
+    }
+
+    ; bing -> baidu
+    ; cn.bing.com/search?q=Xxx
+    ; baidu.com/s?wd=Xxx
+    if (InStr(origin, "cn.bing.com/search?q=")) {
+        keyword := RegExReplace(origin, "(http.*)(search\?q\=)(.*?)", "$3")
+        result := "https://www.baidu.com/s?wd=" . keyword
+    }
+
+    ; learn.microsoft.com/en-us/windows/win32/shell/shellwindows
+    ; learn.microsoft.com/zh-cn/windows/win32/shell/shellwindows
+    if InStr(origin, "learn.microsoft.com/en-us/")
+        result := StrReplace(origin, "/en-us/", "/zh-cn/")
+
+    ; https://t.bilibili.com/?tab=all
+    ; https://t.bilibili.com/?tab=video
+    if InStr(origin, "t.bilibili.com/?tab=all")
+        result := StrReplace(origin, "all", "video")
+    if InStr(origin, "t.bilibili.com/?tab=video")
+        result := StrReplace(origin, "video", "all")
+
+    ; .jpg@xxx.xxx
+    if InStr(origin, ".jpg@") or InStr(origin, ".png@") or InStr(origin, ".webp@")
+        result := RegExReplace(origin, "(http.*)(.\w+)(@)(.*)", "$1$2")
+
+    ; 2 -> 1
+    ; 1 -> 3 -> 1
+    ; 1 https://www.zhihu.com/question/xxx
+    ; 2 https://www.zhihu.com/question/xxx/answer/xxx
+    ; 3 https://www.zhihu.com/question/xxx/answers/updated
+    if ( InStr(origin, "zhihu.com/question") ) {
+        if ( InStr(origin, "/answer/") ) {
+            qid := RegExReplace(origin, "(http.*)(/question/)(\d+)(/answer/)(\d+)", "$3")
+            result := "https://www.zhihu.com/question/" . qid
+        } else {
+            result := origin . "/answers/updated"
+        }
+        if InStr(origin, "/answers/updated")
+            result := StrReplace(origin, "/answers/updated", "")
+    }
+
+    ; https://picx.zhimg.com/80/v2-104d5c498690a3268a49a84705094f25_1440w.webp?source=1940ef5c
+    ; https://pic4.zhimg.com/v2-23ecf011fe34a64b376b40d598bf79fb_b.jpg
+    if InStr(origin, "zhimg.com")
+        result := RegExReplace(origin, "(http.*)(v2-)([\d\w]+)(_)(\d+\w|\w)(.\w+)(.*)?", "$1$2$3$6")
+
+    return result
+}
+
+
+FdmDownload(url)
+{
+    if not url
+        return
+    name := RegExReplace(url, "(http.*/)([\d\w]+)(.)", "$2$3")
+    name := SubStr(name, 1, 5) . "..." . SubStr(name, -9)
+    Run "D:\FDM\fdm.exe --hidden --url " . url
+    HelpText(name, "CenterDown", "Screen", 1000)
+}
