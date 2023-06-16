@@ -6,6 +6,11 @@ UrlChange(origin)
     if not origin
         return result
 
+    ; localhost:9090/devtools/inspector.html?ws=localhost:9090/devtools/page/CAB865F
+    ; localhost:9090/devtools/inspector.html?ws=ws://localhost:9090/devtools/page/CAB865
+    if (InStr(origin, "devtools/inspector.html?ws="))
+        result := StrReplace(origin, "?ws=", "?ws://")
+
     ; google -> bing
     ; google.com/search?q=Xxx
     ; cn.bing.com/search?q=Xxx
@@ -63,12 +68,27 @@ UrlChange(origin)
 }
 
 
-FdmDownload(url)
+AriaDownload(url, folder:="T:\", name:="")
 {
     if not url
         return
-    name := RegExReplace(url, "(http.*/)([\d\w]+)(.)", "$2$3")
-    name := SubStr(name, 1, 5) . "..." . SubStr(name, -9)
-    Run "D:\FDM\fdm.exe --hidden --url " . url
-    HelpText(name, "CenterDown", "Screen", 1000)
+
+    if ( name ) {
+        name := name
+        info := name
+    } else {
+        name := RegExReplace(url, "(http.*/)([\d\w]+\.\w)", "$2")
+        info := SubStr(name, 1, 5) . "..." . SubStr(name, -9)
+    }
+
+    command := "D:\Aria2\aria2c.exe " . url
+    if folder
+        command := command . " --dir " . Format("{}", folder)
+    if name
+        command := command . " --out " . Format("{}", name)
+
+    if not FileExist(folder . "\" . name)
+        Run command, A_InitialWorkingDir, "Hide"
+
+    HelpText(info, "CenterDown", "Screen", 500)
 }

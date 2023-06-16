@@ -4,16 +4,27 @@
 
 ; https://support.google.com/chrome/answer/157179
 
-#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "哔哩哔哩|知乎" )
+#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "哔哩哔哩|知乎|美图" )
     ; https://www.freedownloadmanager.org/board/viewtopic.php?t=18253
+    $AppsKey::
     $CapsLock::{
+        tmp := A_Clipboard
+        Sleep 99
         Send "{RButton}{Down 4}{Enter}"
         Sleep 99
         url := A_Clipboard
-        Sleep 333
+        if not url
+            return
         url := UrlChange(url)
-        FdmDownload(url)
-        A_Clipboard := ""
+        if A_ThisHotkey == "$CapsLock"
+            AriaDownload(url, "F:\Image\Other\")
+        if ( A_ThisHotkey == "$AppsKey" ) {
+            time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
+            ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
+            file := time . ext
+            AriaDownload(url, "F:\Image\Other\", file)
+        }
+        A_Clipboard := tmp
         SetCapsLockState "Off"
     }
 #HotIf
@@ -100,7 +111,48 @@ Expand := False
 
 #HotIf CheckWindowActive( "Chrome" )
 
-    #Include *i Chrome.LShift.ahk
+    cnt := 0
+    ~LShift::{
+        global cnt
+        if (cnt > 0) {
+            cnt += 1
+            return
+        } else {
+            cnt := 1
+        }
+        SetTimer ChromeTimer, -300
+    }
+
+    ChromeTimer()
+    {
+        global cnt
+        if (cnt != 2) {
+            cnt := 0
+            return
+        }
+
+        A_Clipboard := ""
+
+        Send "!d"
+        Sleep 9
+        Send "^c"
+        ClipWait
+
+        url_origin := A_Clipboard
+        url_result := UrlChange(url_origin)
+
+        if (url_result != url_origin) {
+            A_Clipboard := url_result
+            ClipWait
+            Send "^v"
+            Send "{Enter}"
+        } else {
+            Send "{F10 2}"
+        }
+
+        A_Clipboard := ""
+        cnt := 0
+    }
 
     AppsKey::Send "{F10}"
 
