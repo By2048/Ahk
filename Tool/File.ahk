@@ -72,20 +72,22 @@ GetMD5(file)
 RenameToMd5(file)
 {
     ; 不存在
-    if (not FileExist(file)) {
+    if not FileExist(file)
         return
-    }
+
     ; 不是文件
-    if (FileGetAttrib(file) != "A") {
+    if FileGetAttrib(file) != "A"
         return
-    }
+
     md5 := GetMD5(file)
-    if (not md5) {
+    if not md5
         return
-    }
+
     try {
         SplitPath file, &name, &dir, &ext, &name_no_ext, &drive
         result := Format("{1}\{2}.{3}", dir, md5, ext)
+        if FileExist(result)
+            return
         FileMove file, result
     }
 }
