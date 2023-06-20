@@ -141,12 +141,12 @@
         line_width := 26
 
         EC := Map( "File"     , "ItemNameDisplay:1150"
-                 , "List"     , "ItemNameDisplay:999,Size:150"
-                 , "Default"  , "ItemNameDisplay:800,ItemDate:200,Size:150"
-                 , "Software" , "ItemNameDisplay:450,Comment:500,ItemDate:200"
-                 , "Recover"  , "ItemNameDisplay:420,"
-                                "Recycle.DeletedFrom:400,Recycle.DateDeleted:180,"
-                                "Size:150"   )
+                 , "List"     , "ItemNameDisplay:999 Size:150"
+                 , "Default"  , "ItemNameDisplay:800 ItemDate:200 Size:150"
+                 , "Software" , "ItemNameDisplay:450 Comment:500 ItemDate:200"
+                 , "Recover"  , "ItemNameDisplay:420 "
+                                "Recycle.DeletedFrom:400 Recycle.DateDeleted:180 "
+                                "Size:150" )
 
         EC["D:\"]   := EC["Software"]
         EC["回收站"] := EC["Recover"]
@@ -190,11 +190,8 @@
             config := EC[window.title]
         }
 
-        command := Format("{1} {2} {3}"
-                         , A_InitialWorkingDir . "\Lib\V1\Explorer.exe"
-                         , "SetColumns"
-                         , config )
-        Run command
+        #Include Explorer.Tool.ahk
+        SetExplorerColumns(config)
 
         GetActiveWindowInfo("Window")
         win_id := window.id
