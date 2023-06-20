@@ -8,7 +8,7 @@ $CapsLock::{
     GetActiveWindowInfo()
     win_process_name := window.process_name
 
-    ignore_process := [ "PyCharm" ]
+    ignore_process := [ "PyCharm" , "Chrome" , "IDEA" ]
     for index, value in ignore_process {
         if (win_process_name == value) {
             return
