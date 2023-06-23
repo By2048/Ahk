@@ -1,14 +1,14 @@
 ﻿
-#SingleInstance force
+#SingleInstance Force
 
 image := ""
 
 if (not image and A_Args.Length != 1) {
     MsgBox "未传入图片路径"
-    exit
+    ExitApp
 }
 
-if (A_Args.Length == 1)
+if A_Args.Length == 1
     image := A_Args[1]
 
 ; 不是绝对路径 是相对路径
@@ -19,7 +19,7 @@ if (not InStr(image, ":")) {
 
 if (not FileExist(image)) {
     MsgBox "未传入图片路径"
-    exit
+    ExitApp
 }
 
 check := False
@@ -33,7 +33,7 @@ for stem In StrSplit(stems, " ") {
 
 if (not check) {
     MsgBox "未传入图片路径"
-    exit
+    ExitApp
 }
 
 scale := 0.98
@@ -42,8 +42,9 @@ command := "D:\Git\usr\bin\file.exe" . " " . image
 result := ComObject("WScript.Shell").Exec(command).StdOut.ReadAll()
 result := StrReplace(result, " x ", "x")
 find_pos := RegExmatch(result, ", (\d+x\d+),", &find_result)
+
 if not find_pos
-    exit
+    ExitApp
 
 if (find_pos) {
     size_wh := StrSplit(find_result[1], "x")
@@ -51,7 +52,7 @@ if (find_pos) {
     image_h := size_wh[2]
 }
 if (not image_w OR not image_h)
-    exit
+    ExitApp
 
 if InStr(image, ".jpg") and InStr(result, "PNG image data") {
     old_file := image
@@ -93,5 +94,5 @@ G.Show("Center NA")
 Esc::
 Enter::
 RShift::{
-    exit
+    ExitApp
 }
