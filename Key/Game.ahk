@@ -5,8 +5,7 @@ RWin::Return
 
 >^Esc::Run "Taskmgr.exe"
 >^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
->^.::Run "Explorer.exe"
->^,::AltTab
+>^.::AltTab
 
 <#Home::Send "#^!{Home}"
 <#End::Send "#^!{End}"
