@@ -89,6 +89,8 @@ AriaDownload(url, folder:="T:\", name:="")
 
     if not FileExist(folder . "\" . name)
         Run command, A_InitialWorkingDir, "Hide"
+    else
+        info := "#" . info
 
     HelpText(info, "CenterDown", "Screen", 500)
 }
