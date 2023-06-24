@@ -155,10 +155,13 @@ GetActiveWindowInfo(mode:="Default")
         return
     }
 
-    win_process_name := RTrim(win_process_exe , "exe")
-    win_process_name := RTrim(win_process_name, "EXE")
-    win_process_name := RTrim(win_process_name, "."  )
-    win_process_name := Windows_Process_Name.Get(win_process_name, win_process_name)
+    wpn := win_process_exe
+    wpn := RTrim(wpn , "exe")
+    wpn := RTrim(wpn , "EXE")
+    wpn := RTrim(wpn , "."  )
+    win_process_name := Windows_Process.Get(wpn, win_process_exe)
+    if InStr(win_process_name, ".exe") or InStr(win_process_name, ".EXE")
+        win_process_name := wpn
 
     ; 基础信息
     window.id           := win_id
@@ -244,6 +247,8 @@ GetActiveWindowInfo(mode:="Default")
     window.cache.id     := win_id
     window.cache.title  := win_title
     window.cache.expire := A_TickCount + Cache_Expire_Time
+
+    return window
 }
 
 
@@ -260,6 +265,14 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
     win_process := window.process_name
     win_class   := window.class
     win_title   := window.title
+
+    _process_   := StrLower(_process_  )
+    _class_     := StrLower(_class_    )
+    _title_     := StrLower(_title_    )
+
+    win_process := StrLower(win_process)
+    win_class   := StrLower(win_class  )
+    win_title   := StrLower(win_title  )
 
     if (StrLen(_process_) > 0) {
         if (InStr(_process_, "*")) {
@@ -341,7 +354,7 @@ IsGame()
 {
     GetActiveWindowInfo()
     win_process_name := window.process_name
-    for index, value in Games_Process_Name {
+    for index, value in Games_Process {
         if (value == win_process_name) {
             return True
         }
