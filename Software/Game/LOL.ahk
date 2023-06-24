@@ -31,7 +31,7 @@
     #Include *i LOL.Client.Private.ahk
     Insert::ScreenShot("Screen", "T:\")
     #+BackSpace::{
-        exe := Windows_Process_Name.Get("LOL_Client")
+        exe := Windows_Process.Get("LOL_Client")
         Run "Taskkill /F /IM " . exe
     }
 #HotIf
@@ -43,7 +43,7 @@
     F12::Return
     Insert::Screenshot("Screen" , "T:\")
     #+BackSpace::{
-        exe := Windows_Process_Name.Get("LOL_Game")
+        exe := Windows_Process.Get("LOL_Game")
         Run "Taskkill /F /IM %_exe_%" . exe
     }
 

@@ -88,7 +88,7 @@ LWin & RShift::{
             Windows_Theme := "HCBlack"
             HelpText("Windows Theme HCBlack", "Ccenter", "Screen", 1000)
         }
-        exe := Windows_Process_Name.Get("WindowsSettings")
+        exe := Windows_Process.Get("WindowsSettings")
         WinWait "ahk_exe " . exe
         WinClose "ahk_exe " . exe
     } else {

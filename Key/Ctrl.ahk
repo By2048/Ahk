@@ -18,7 +18,7 @@
 >^+h::Run "E:\GitX\AhkSpy\AhkSpy.exe"
 >^j::{
     Run "D:\#Lnk\JetBrains.lnk"
-    exe := Windows_Process_Name.Get("JetBrainsToolBox")
+    exe := Windows_Process.Get("JetBrainsToolBox")
     rule := Format("ahk_exe {}", exe)
     loop 9 {
         try {
