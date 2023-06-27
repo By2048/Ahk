@@ -4,9 +4,6 @@ cnt := 0
 $RAlt::{
     global cnt
     GetActiveWindowInfo()
-    if (IsGame()) {
-        return
-    }
     if (cnt > 0) {
         cnt += 1
         return
