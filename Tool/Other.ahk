@@ -90,7 +90,7 @@ ScreenShot(screen_name:="Screen", keep_path:="")
 
 
 ; 软件设置界面截图保存
-ScreenshotSoftware(keep_path:="")
+SoftwareShot(keep_path:="")
 {
     if (not FileExist(Snipaste)) {
         return
