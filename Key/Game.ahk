@@ -1,17 +1,18 @@
 ﻿
-RAlt::EN()
-RCtrl::ZH()
-RWin::Return
+$RAlt::EN()
+$RCtrl::ZH()
+$RWin::Return
 
 >^Esc::Run "Taskmgr.exe"
 >^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
 >^.::AltTab
 
+; ------------------------------------------------- ;
+
 <#Home::Send "#^!{Home}"
 <#End::Send "#^!{End}"
 <#PgUp::Send "{Volume_Up}"
 <#PgDn::Send "{Volume_Down}"
-
 
 ; ------------------------------------------------- ;
 

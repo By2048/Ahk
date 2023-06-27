@@ -1,51 +1,42 @@
 ﻿
-; 屏幕   | 4K
-; 窗口   | 1600 * 900
+; 屏幕   | 2560 * 1440
+; 窗口   | 1280 * 720
 ; 小地图 | 77
 ; 商店   | 77
 
+#HotIf CheckWindowActive("LOL_Client")
 
-; LOLSoftware()
-; {
-;     r1 := CheckWindowActive("Client",  , "英雄联盟")
-;     r2 := CheckWindowActive("LOL_Client")
-;     r3 := CheckWindowActive("LOL_Game")
-;     result := r1 or r2 or r3
-;     return result
-; }
+    RWin::MoveWindowToCenter(True)
+    Insert::SoftwareShot("T:\")
+    Delete::SoftwareShot("F:\Game\LOL\")
 
-; #HotIf ( LOLSoftware() )
-;     #BackSpace::
-;         Run, Setup.bat GameMode, %A_InitialWorkingDir%, Hide
-;         HelpText("`n GameMode `n", "Center", "Screen3")
-;     Return
-; #HotIf
+    ; 修改
+    \::MouseClickAndResetting(684, 1012)
 
+    ; 保存
+    Enter::MouseClickAndResetting(891, 191)
 
-#HotIf ( CheckWindowActive("Client",  , "英雄联盟")  )
-    #+BackSpace::Run "Taskkill /F /IM Client.exe"
-#HotIf
+    ; 退出
+    BackSpace::MouseClickAndResetting(1753, 105)
 
-
-#HotIf ( CheckWindowActive("LOL_Client") )
-    #Include *i LOL.Client.Private.ahk
-    Insert::ScreenShot("Screen", "T:\")
-    #+BackSpace::{
-        exe := Windows_Process.Get("LOL_Client")
-        Run "Taskkill /F /IM " . exe
+    ; 拒绝好友申请
+    Esc::{
+        Send "{LButton}"
+        Sleep 300
+        Send "{Enter}"
     }
+
 #HotIf
 
 
-#HotIf ( CheckWindowActive("LOL_Game") )
+
+#HotIf CheckWindowActive("LOL_Game")
+
     #Include *i LOL.Game.Private.ahk
-    ; 截图
-    F12::Return
-    Insert::Screenshot("Screen" , "T:\")
-    #+BackSpace::{
-        exe := Windows_Process.Get("LOL_Game")
-        Run "Taskkill /F /IM %_exe_%" . exe
-    }
+
+    RWin::Return
+    Insert::ScreenShot("Screen", "T:\")
+    Delete::ScreenShot("Screen", "F:\Game\LOL\")
 
     ![::{
         EN()
