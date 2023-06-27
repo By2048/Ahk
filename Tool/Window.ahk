@@ -381,9 +381,8 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
         WinRestore "ahk_id " . win_id
     }
 
-    if (IsDesktops() or IsGame()) {
+    if IsDesktops()
         return
-    }
 
     win_x := window.x
     win_y := window.y
@@ -461,9 +460,8 @@ ResizeWindow(command, direction)
 
     GetActiveWindowInfo()
 
-    if (IsDesktops() or IsMaxMin() or IsGame()) {
+    if IsDesktops() or IsMaxMin()
         return
-    }
 
     step := 10
 
@@ -515,9 +513,8 @@ MoveWindowUDLR(direction)
 
     GetActiveWindowInfo()
 
-    if (IsDesktops() or IsMaxMin() or IsGame()) {
+    if IsDesktops() or IsMaxMin()
         return
-    }
 
     win_id := window.id
     win_x  := window.x
@@ -598,9 +595,8 @@ MoveWindowToCenter(silent:=False)
 {
     GetActiveWindowInfo()
 
-    if (IsDesktops() or IsMaxMin() or IsGame()) {
+    if IsDesktops() or IsMaxMin()
         return
-    }
 
     win_id := window.id
     win_process_name := window.process_name
@@ -637,9 +633,8 @@ MoveWindowToMainMini(command, slient:=False)
 {
     GetActiveWindowInfo()
 
-    if ( IsDesktops() or IsMaxMin() or IsGame() ) {
+    if IsDesktops() or IsMaxMin()
         return
-    }
 
     win_id := window.id
     screen_x := window.screen.x
