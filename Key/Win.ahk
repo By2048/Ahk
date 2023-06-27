@@ -221,29 +221,35 @@
     Send "^c"
     ClipWait
     HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
-    if (FileExist(JQB.Windows)) {
+    if FileExist(JQB.Windows)
         FileDelete JQB.Windows
-    }
     file := FileOpen(JQB.Windows, "w", "UTF-8")
     file.Write(A_Clipboard)
     file.Close()
 }
 
-<#v::{
+<#+v::{
     global JQB
     FileEncoding "UTF-8"
-    if (!FileExist(JQB.Phone)) {
-        HelpText("No Data", "Center",  , 333)
+    tmp := A_Clipboard
+    if (not FileExist(JQB.Phone)) {
+        HelpText("No Data", "CenterDown",  , 333)
         return
     }
+    content := ""
     try {
-        A_Clipboard := ""
-        FileRead  A_Clipboard, JQB.Phone
+        content := FileRead(JQB.Phone)
+        FileDelete JQB.Phone
     }
-    A_Clipboard := A_Clipboard
+    if not content
+        return
+    A_Clipboard := content
+    ClipWait 3
     Send "^v"
-    HelpText(A_Clipboard, "Center", "Screen", 333)
-    FileDelete JQB.Phone
+    A_Clipboard := tmp
+    if StrLen(content) > 15
+        content := SubStr(content, 1, 5) . "..." . SubStr(content, -5)
+    HelpText(A_Clipboard, "CenterDown", "Screen", 333)
 }
 
 ; 文件重命名
@@ -297,13 +303,11 @@
 
 ; 屏幕截图 临时 | 长久
 <#Insert::ScreenShot("Screen", "T:\")
-<#+Insert::{
-    ScreenShot("Screen1", "F:\Image\Screen\")
-    ScreenShot("Screen2", "F:\Image\Screen\")
-}
+<#+Insert::ScreenShot("Screen", "F:\Image\Screen\")
+
 ;软件截图 临时 | 长久
-<#Delete:: ScreenshotSoftware("T:\")
-<#+Delete::ScreenshotSoftware("F:\Image\Screen\")
+<#Delete:: SoftwareShot("T:\")
+<#+Delete::SoftwareShot("F:\Image\Screen\")
 
 ;结束应用
 <#BackSpace::{
@@ -324,17 +328,15 @@
             }
         }
     }
-    if (IsDesktops() or IsGame()) {
+    if IsDesktops()
         return
-    }
     WinClose "ahk_id " . win_id
 }
 ; 结束进程
 <#+BackSpace::{
     GetActiveWindowInfo()
-    if (IsDesktops() or IsGame()) {
+    if IsDesktops()
         return
-    }
     win_pid := window.pid
     ProcessClose win_pid
     ; win_process_exe := window.process_exe
@@ -424,29 +426,26 @@ RWinTimer() {
 
 >#,::{
     GetActiveWindowInfo()
-    if (IsDesktops() or IsMaxMin() or IsGame()) {
+    if IsDesktops() or IsMaxMin()
         return
-    }
     global windows_resize_small
     windows_resize_small := True
-    HelpText("Windows Resize Small")
+    HelpText("Windows Resize ---")
 }
 
 >#.::{
     GetActiveWindowInfo()
-    if (IsDesktops() or IsMaxMin() or IsGame()) {
+    if IsDesktops() or IsMaxMin()
         return
-    }
     global windows_resize_big
     windows_resize_big := True
-    HelpText("Windows Resize Big")
+    HelpText("Windows Resize +++")
 }
 
 >#/::{
     GetActiveWindowInfo()
-    if (IsDesktops() or IsMaxMin() or IsGame()) {
+    if IsDesktops() or IsMaxMin()
         return
-    }
     global windows_move
     windows_move := True
     HelpText("Move Windows")
