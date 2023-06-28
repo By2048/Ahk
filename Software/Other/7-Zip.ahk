@@ -33,13 +33,12 @@
         ; Clear History
         RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM", "FolderHistory"
         RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM", "CopyHistory"
+        HelpText("`nClear History`n", "Center", "Screen", 1000)
 
         ; 默认列配置 Zip
         ; 其他列配置 Rar
         ; RegRead, default_columns_config, HKEY_CURRENT_USER\SOFTWARE\7-Zip\FM\Columns, 7-Zip.zip
         ; RegWrite, REG_BINARY, HKEY_CURRENT_USER, SOFTWARE\7-Zip\FM\Columns\, 7-Zip.Rar, %default_columns_config%
-
-        HelpText("`nClear History`n", "Center", "Screen", 1000)
     }
 
     ; 选择所有
