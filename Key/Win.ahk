@@ -80,9 +80,9 @@
     }
 }
 
-#Home::   ;主显示器 -
+#Home::  ;主显示器 -
 #End::   ;主显示器 +
-#+Home::  ;副显示器 -
+#+Home:: ;副显示器 -
 #+End::{ ;副显示器 +
     global previous_win_id
     try {
@@ -294,7 +294,7 @@
     Sleep 300
     Send "#k"
 }
-<#m::Send "#,"   ;显示隐藏所有应用
+<#m:: Send "#," ;显示隐藏所有应用
 <#+m::Send "#d" ;切换隐藏所有应用界面
 
 ; 修改窗口透明度
@@ -302,7 +302,7 @@
 ; <#WheelDown::SetWindowTransparent(-10)
 
 ; 屏幕截图 临时 | 长久
-<#Insert::ScreenShot("Screen", "T:\")
+<#Insert:: ScreenShot("Screen", "T:\")
 <#+Insert::ScreenShot("Screen", "F:\Image\Screen\")
 
 ;软件截图 临时 | 长久
@@ -355,8 +355,8 @@
 >#]::Send "{Media_Next}"
 >#p::Send "^!p" ;添加收藏
 
->#Space::WindowsTerminal("Focus", "T:\\")
->#+Space::WindowsTerminal("Full", "T:\\")
+>#Space:: WindowsTerminal("Focus", "T:\\")
+>#+Space::WindowsTerminal("Full" , "T:\\")
 
 >#b::Return
 >#Tab::Return
