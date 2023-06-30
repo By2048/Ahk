@@ -14,27 +14,28 @@
 
 #HotIf CheckWindowActive( "v2rayN" )
 
-    ; 更新订阅
+    ; 一键更新
     !\::{
-        MouseClickAndResetting(240, 90, "Window")
-        Send "{Down 2}"
-        Send "{Enter}"
-    }
-
-    ; 更新Geo
-    !/::{
+        HelpText("`nStart ...`n", "Center", "Screen")
+        ; 更新订阅
+        MouseClickAndResetting(240, 90, "Window", "Left")
+        Send "{Down 2}{Enter}"
+        Sleep 5000
+        ; 去重
+        MouseClickAndResetting(30, 207, "Window", "Right")
+        Send "{Down 4}{Enter}"
+        Sleep 1500
+        ; 测试
+        MouseClickAndResetting(30, 207, "Window", "Left")
+        Send "^r"
+        Sleep 1500
+        ; 更新Geo
         MouseClickAndResetting(685, 90, "Window")
-        Send "{Up 2}"
-        Send "{Enter}"
+        Send "{Up 2}{Enter}"
+        Sleep 1000
+        HelpText("`nOver`n", "Center", "Screen", 1000)
     }
 
-    ; 关闭窗口
-    !CapsLock::{
-        WinClose "A"
-    }
-
-    <#\::{
-        MoveWindowToPosition(Position(2100, 1200))
-    }
+    <#\::MoveWindowToPosition(Position(2100, 1200))
 
 #HotIf
