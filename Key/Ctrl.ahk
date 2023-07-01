@@ -54,6 +54,8 @@
  >^/::Run "Chrome.bat",        A_InitialWorkingDir, "Hide"
 >^+/::Run "ChromeDefault.bat", A_InitialWorkingDir, "Hide"
 
+>^F12::Run "D:\#Lnk\#\Dexpot.lnk"
+
 >^Up::Return
 >^Down::Return
 >^Left::Return
