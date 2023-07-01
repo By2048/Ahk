@@ -262,56 +262,36 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
 {
     GetActiveWindowInfo()
 
-    win_process := window.process_name
-    win_class   := window.class
-    win_title   := window.title
+    win_process := StrLower(window.process_name)
+    win_class   := StrLower(window.class       )
+    win_title   := StrLower(window.title       )
 
-    _process_   := StrLower(_process_  )
-    _class_     := StrLower(_class_    )
-    _title_     := StrLower(_title_    )
+    rule_process := StrLower(_process_  )
+    rule_class   := StrLower(_class_    )
+    rule_title   := StrLower(_title_    )
 
-    win_process := StrLower(win_process)
-    win_class   := StrLower(win_class  )
-    win_title   := StrLower(win_title  )
 
-    if (StrLen(_process_) > 0) {
-        if (InStr(_process_, "*")) {
-            _process_ := StrReplace(_process_, "*", "")
-            if (!InStr(win_process, _process_)) {
+    if (StrLen(rule_process) > 0) {
+        if (InStr(rule_process, "*") or InStr(rule_process, "|")) {
+            if !InStr(rule_process, win_process)
                 return False
-            }
-        } else if (InStr(_process_, "|")) {
-            _process_ := StrSplit(_process_, "|")
-            for item in _process_ {
-                if (win_process == item) {
-                    return True
-                }
-            }
-        } else if (win_process != _process_) {
+        } else if (rule_process != win_process) {
             return False
         }
     }
 
-    if (StrLen(_class_) > 0) {
-        if (InStr(_class_, "*")) {
-            _class_ := StrReplace(_class_, "*", "")
-            if (!InStr(win_class, _class_)) {
+    if (StrLen(rule_class) > 0) {
+        if (InStr(rule_class, "*")) {
+            if !InStr(rule_class, win_class)
                 return False
-            }
-        } else if (win_class != _class_) {
+        } else if (rule_class != win_class) {
             return False
         }
     }
 
-    if (StrLen(_title_) > 0) {
-        titles := StrSplit(_title_, "|")
-        for item in titles {
-            if (InStr(win_title, item)) {
-                return True
-            }
-        }
-        return False
-    }
+    if StrLen(rule_title) > 0
+        if !InStr(win_title, _title_)
+            return False
 
     return True
 }
