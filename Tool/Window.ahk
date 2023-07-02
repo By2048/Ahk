@@ -276,18 +276,16 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
         status := True
         if InStr(cfg, "|") {
             status := False
-            cfg := StrSplit(cfg, "|")
-            for item in cfg {
+            for item in StrSplit(cfg, "|") {
                 if InStr(item, "*") {
-                    if InStr(win, item)
+                    if InStr(win, StrReplace(item, "*", ""))
                         status := True
                 } else if (item == win) {
                     status := True
                 }
             }
         } else if InStr(cfg, "*") {
-            cfg := StrReplace(cfg, "*", "")
-            if !InStr(win, cfg)
+            if !InStr(win, StrReplace(cfg, "*", ""))
                 status := False
         } else if (cfg != win) {
             status := False
