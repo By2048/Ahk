@@ -266,34 +266,53 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
     win_class   := StrLower(window.class       )
     win_title   := StrLower(window.title       )
 
+    win_title := StrReplace(win_title, " ", "")
+
     rule_process := StrLower(_process_  )
     rule_class   := StrLower(_class_    )
     rule_title   := StrLower(_title_    )
 
-
-    if (StrLen(rule_process) > 0) {
-        if (InStr(rule_process, "*") or InStr(rule_process, "|")) {
-            if !InStr(rule_process, win_process)
-                return False
-        } else if (rule_process != win_process) {
-            return False
+    Check(win, cfg) {
+        status := True
+        if InStr(cfg, "|") {
+            status := False
+            cfg := StrSplit(cfg, "|")
+            for item in cfg {
+                if InStr(item, "*") {
+                    if InStr(win, item)
+                        status := True
+                } else if (item == win) {
+                    status := True
+                }
+            }
+        } else if InStr(cfg, "*") {
+            cfg := StrReplace(cfg, "*", "")
+            if !InStr(win, cfg)
+                status := False
+        } else if (cfg != win) {
+            status := False
         }
+        return status
     }
 
-    if (StrLen(rule_class) > 0) {
-        if (InStr(rule_class, "*")) {
-            if !InStr(rule_class, win_class)
-                return False
-        } else if (rule_class != win_class) {
-            return False
-        }
+    result := True
+    if ( StrLen(rule_process) > 0 ) {
+        result := Check(win_process, rule_process)
+        if not result
+            return result
+    }
+    if ( StrLen(rule_class) > 0 ) {
+        result := Check(win_class, rule_class)
+        if not result
+            return result
+    }
+    if ( StrLen(rule_title) > 0 ) {
+        result := Check(win_title, rule_title)
+        if not result
+            return result
     }
 
-    if StrLen(rule_title) > 0
-        if !InStr(win_title, _title_)
-            return False
-
-    return True
+    return result
 }
 
 
