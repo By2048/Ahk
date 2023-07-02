@@ -4,7 +4,7 @@
 
 ; https://support.google.com/chrome/answer/157179
 
-#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "哔哩哔哩|知乎|美图" )
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*" )
     ; https://www.freedownloadmanager.org/board/viewtopic.php?t=18253
     $AppsKey::
     $CapsLock::{
@@ -31,14 +31,37 @@
 
 
 
-#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "书签" )
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "WeTab新标签页*" )
+     $AppsKey::
+    <^AppsKey::{
+        MouseGetPos &x, &y
+        Send "{RButton}"
+        switch A_ThisHotkey {
+            case "$AppsKey":
+                xx := x + 50
+                yy := y + 140
+            case "<^AppsKey":
+                xx := x + 50
+                yy := y + 195
+            default:
+                xx := x
+                yy := y
+        }
+        MouseClick "Left", xx, yy, 1, 0
+        MouseMove x, y, 0
+    }
+#HotIf
+
+
+
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "书签" )
     F2::Return
     ^r::Send "{F2}"
 #HotIf
 
 
 
-#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "修改书签" )
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "修改书签" )
 
     ; 收藏
     !Enter::Send "{Tab 4}{Enter}"
@@ -55,13 +78,13 @@
 
 
 
-#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" , "DevTools" )
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "DevTools" )
 
 #HotIf
 
 
 
-#HotIf CheckWindowActive( "Chrome" , "Chrome_WidgetWin_1" )
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" )
 
     Redirect(url) {
         tmp := A_Clipboard
