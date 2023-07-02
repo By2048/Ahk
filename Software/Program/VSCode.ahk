@@ -1,5 +1,5 @@
 ﻿
-#HotIf CheckWindowActive("VSCode", "", ".md")
+#HotIf CheckWindowActive("VSCode", "", "*.md")
 
     !\::{
         GetActiveWindowInfo()
@@ -13,7 +13,7 @@
 #HotIf
 
 
-#HotIf CheckWindowActive("VSCode", "", ".ahk")
+#HotIf CheckWindowActive("VSCode", "", "*.ahk")
 
     F1::{
         Run Chrome . " --app=file:///E:/GitX/wyagd001.github.io/v2/docs/index.htm"
