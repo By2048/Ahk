@@ -89,6 +89,8 @@
 
     #IncludeAgain Explorer.Base.ahk
 
+    RWin::MoveWindowToCenter(True)
+
     ; 功能区展开缩放
     !`::Send "^{F1}"
     ^F1::Return

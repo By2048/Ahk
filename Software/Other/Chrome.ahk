@@ -16,7 +16,7 @@
         if not url
             return
         url := UrlChange(url)
-        if A_ThisHotkey == "$CapsLock"
+        if ( A_ThisHotkey == "$CapsLock" )
             AriaDownload(url, "F:\Image\Other\")
         if ( A_ThisHotkey == "$AppsKey" ) {
             time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
