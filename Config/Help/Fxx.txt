@@ -1,0 +1,12 @@
+﻿| F1  | C:\               |
+| F2  | D:\               |
+| F3  | E:\               |
+| F4  | F:\               |
+| F5  | $Windows Programs |
+| F6  | $User Programs    |
+| F7  | E:\GitX           |
+| F8  | E:\Doc            |
+| F9  | D:\#Lnk           |
+| F10 | E:\Script         |
+| F11 | V:\               |
+| F12 | T:\               |

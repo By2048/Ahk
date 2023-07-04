@@ -76,9 +76,8 @@ Windows_Process["WindowsTerminal"         ] := "Terminal"         ;终端
 Windows_Process["哔哩哔哩"                 ] := "BiliBili"
 
 Init_Windows_Process() {
-    for key, value In Windows_Process {
+    for key, value In Windows_Process
         Windows_Process[value] := key . ".exe"
-    }
 }
 Init_Windows_Process()
 
@@ -97,13 +96,13 @@ Software_Keys_Help := Map()
 
 Software_Keys_Help["Default"                ] := "Windows"
 Software_Keys_Help["Explorer_CabinetWClass" ] := "Explorer"
-Software_Keys_Help["Explorer_WorkerW"       ] := "Windows"
+Software_Keys_Help["Explorer_WorkerW"       ] := "Windows | Fxx"
 Software_Keys_Help["VSCode"                 ] := "VSCode"
 Software_Keys_Help["Xshell"                 ] := "Xshell"
 Software_Keys_Help["SumatraPDF"             ] := "SumatraPDF"
-Software_Keys_Help["PyCharm"                ] := "PyCharm.FC PyCharm"
+Software_Keys_Help["PyCharm"                ] := "PyCharm.FC | PyCharm"
 Software_Keys_Help["QuiteRSS"               ] := "QuiteRSS"
-Software_Keys_Help["Chrome"                 ] := "Chrome Chrome.Fxx"
+Software_Keys_Help["Chrome"                 ] := "Chrome | Chrome.Fxx"
 Software_Keys_Help["Chrome__Bilibili"       ] := "Chrome.Bilibili"
 Software_Keys_Help["Chrome__知乎"            ] := "Chrome.ZhiHu"
 Software_Keys_Help["PotPlayer"              ] := "PotPlayer"
@@ -113,18 +112,16 @@ Software_Keys_Help["PotPlayer"              ] := "PotPlayer"
 Init_Software_Keys_Help() {
     global Software_Keys_Help
     for key, config in Software_Keys_Help {
-        if InStr(config, " ") {
-            config := StrSplit(config, " ")
-        } else {
+        if InStr(config, " | ")
+            config := StrSplit(config, " | ")
+        else
             config := [config]
-        }
         obj := []
         for index, value in config {
             file := Format("{}\Config\Help\{}.txt", A_InitialWorkingDir, Value)
             content := ""
-            if (FileExist(file)) {
+            if FileExist(file)
                 content := FileRead(file, "`n UTF-8")
-            }
             obj.Push(content)
         }
         Software_Keys_Help[Key] := obj
@@ -139,8 +136,7 @@ Init_Ctrl_Help_Content()
 {
     global Ctrl_Help_Content
     file := A_InitialWorkingDir . "\Config\Ctrl.txt"
-    if (FileExist(file)) {
+    if FileExist(file)
         Ctrl_Help_Content := FileRead(file, "`n UTF-8")
-    }
 }
 Init_Ctrl_Help_Content()
