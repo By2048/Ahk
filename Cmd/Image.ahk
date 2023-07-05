@@ -38,6 +38,7 @@ if (not check) {
 
 scale := 0.98
 
+image := Format("'{}'", image)
 command := "D:\Git\usr\bin\file.exe" . " " . image
 result := ComObject("WScript.Shell").Exec(command).StdOut.ReadAll()
 result := StrReplace(result, " x ", "x")
@@ -84,6 +85,7 @@ G.Opt("-DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
 G.MarginX := 1
 G.MarginY := 1
 try {
+    image := Trim(image, "`'")
     G.Add("Picture", format("+Border w{1} h{2}", image_w, image_h), image)
 } catch {
     MsgBox "加载图片失败"
