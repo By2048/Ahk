@@ -1,6 +1,6 @@
 ﻿
 ; 一些可执行文件路径
-AHKV1         := "D:\AutoHotkey\#\AutoHotkey.exe"
+AHK           := "D:\AutoHotkey\#\AutoHotkey.exe"
 ADB           := "D:\Adb\adb.exe"
 CMD           := "C:\Windows\System32\cmd.exe"
 Chrome        := "C:\Program Files\Google\Chrome\Application\chrome.exe"
