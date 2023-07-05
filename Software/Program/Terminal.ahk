@@ -3,6 +3,19 @@
 
 #HotIf CheckWindowActive( "Terminal" )
 
+      :o:\s::F:\Software\
+     :o:\sd::F:\Software\Development\
+    :o:\sys::F:\System\
+      :o:\i::F:\Image\
+     :o:\io::F:\Image\Other\
+     :o:\ih::F:\Image\History\
+     :o:\iw::F:\Image\Wallpaper\
+      :o:\r::F:\Resource\
+     :o:\ro::F:\Resource\Other\
+      :o:\p::F:\Phone\
+     :o:\pr::F:\Phone\Recorder\
+     :o:\pc::F:\Phone\Camera\
+
     <#\::MoveWindowToPosition(Position(2200 , 1400))
 
     ; 关闭窗格

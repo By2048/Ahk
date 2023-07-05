@@ -42,8 +42,8 @@
 #Include ..\Software\Program\NetSarang.ahk
 #Include ..\Software\Program\Obsidian.ahk
 #Include ..\Software\Program\Postman.ahk
+#Include ..\Software\Program\Terminal.Ahk
 #Include ..\Software\Program\VSCode.ahk
-#Include ..\Software\Program\WindowsTerminal.Ahk
 
 #Include ..\Software\JetBrains\Lib.ahk
 #Include ..\Software\JetBrains\Keys.ahk
