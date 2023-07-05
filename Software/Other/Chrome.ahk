@@ -4,14 +4,27 @@
 
 ; https://support.google.com/chrome/answer/157179
 
+#HotIf CheckWindowActive( "Chrome" , "#32770" , "另存为" )
+    CapsLock::{
+        Send "{Esc}"
+        SetCapsLockState "Off"
+    }
+#HotIf
+
+
+
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*" )
     ; https://www.freedownloadmanager.org/board/viewtopic.php?t=18253
     $AppsKey::
     $CapsLock::{
         tmp := A_Clipboard
-        Sleep 99
-        Send "{RButton}{Down 4}{Enter}"
-        Sleep 99
+        Sleep 33
+        Send "{RButton}"
+        Sleep 66
+        Send "{Down 4}"
+        Sleep 33
+        Send "{Enter}"
+        Sleep 33
         url := A_Clipboard
         if not url
             return
@@ -231,7 +244,7 @@ Expand := False
         SetCapsLockState "Off"
     }
 
-    Alt Up::Send "{Esc}"
+    LAlt Up::Send "{Esc}"
 
     ;任务管理
     ^Esc::Return
