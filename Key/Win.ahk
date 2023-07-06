@@ -215,7 +215,12 @@
     HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
 }
 
-; 复制文件
+; 剪切板内容处理粘贴
+<#v::{
+    return
+}
+
+; 同步复制
 <#+c::{
     A_Clipboard := ""
     Send "^c"
@@ -228,6 +233,7 @@
     file.Close()
 }
 
+; 同步粘贴
 <#+v::{
     global JQB
     FileEncoding "UTF-8"
@@ -380,7 +386,7 @@
 
 ; 右键RWin设置
 cnt := 0
-$RWin::{
+RWin::{
     Send "{Blind}{vkFF}"
     global cnt
     if (cnt > 0) {
@@ -396,26 +402,10 @@ windows_move         := False
 windows_resize_big   := False
 windows_resize_small := False
 RWinTimer() {
-    global cnt, windows_move, windows_resize_big, windows_resize_small
-    if (   windows_move == True
-        or windows_resize_big == True
-        or windows_resize_small == True ) {
-        windows_move := False
-        windows_resize_big := False
-        windows_resize_small := False
-        HelpText()
-        return
-    }
-    if (cnt > 0) {
-        ignore_function := GlobalGet("Status", "ignore_function", "Bool")
-        if (ignore_function) {
-            GlobalSet("Status", "ignore_function", False)
-            return
-        }
-    }
+    global cnt
     if (cnt == 1) {
         MoveWindowToCenter(True)
-        HighlightActiveWindow(500)
+        HighlightActiveWindow(100)
     } else if (cnt == 2) {
         MoveWindowToDefaultPosition()
     } else if (cnt == 3) {
@@ -450,24 +440,3 @@ RWinTimer() {
     windows_move := True
     HelpText("Move Windows")
 }
-
-#HotIf ( windows_move == True )
-    Up::   MoveWindowUDLR("Up"   )
-    Down:: MoveWindowUDLR("Down" )
-    Left:: MoveWindowUDLR("Left" )
-    Right::MoveWindowUDLR("Right")
-#HotIf
-
-#HotIf ( windows_resize_big == True )
-    Up::   ResizeWindow("Big", "Up"   )
-    Down:: ResizeWindow("Big", "Down" )
-    Left:: ResizeWindow("Big", "Left" )
-    Right::ResizeWindow("Big", "Right")
-#HotIf
-
-#HotIf ( windows_resize_small == True )
-    Up::   ResizeWindow("Small", "Up"   )
-    Down:: ResizeWindow("Small", "Down" )
-    Left:: ResizeWindow("Small", "Left" )
-    Right::ResizeWindow("Small", "Right")
-#HotIf
