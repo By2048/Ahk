@@ -1,6 +1,6 @@
 ﻿
 ; AutoHotkey路径,Setup.bat中解析取[22,-1]内的值
-AutoHotkey := "D:\AutoHotkey\V2\AutoHotkey.exe"
+AutoHotkey := "D:\AutoHotkey\#\AutoHotkey.exe"
 
 ; 注册表信息保存位置
 Reg_Path := "HKEY_CURRENT_USER\SOFTWARE\AutoHotkey"
