@@ -57,26 +57,26 @@ SetExplorerColumns(config)
 	icm  := ComObjQuery(ifv2, IID_IColumnManager)
 
     ; GetColumnCount
-    ComCall(5, icm, "UInt", CM_ENUM_VISIBLE, "Ptr*", &columns_count := 0)
+    ComCall(5, icm, "UInt", CM_ENUM_VISIBLE, "Ptr*", &column_count := 0)
 
     ; SetColumns
-    VarSetStrCapacity(&columns_point, columns_count * 20)
+    VarSetStrCapacity(&property_key_ptr, column_count * 20)
     for column_name in config_names {
         offset := (A_Index - 1) * 20
-        DllCall("propsys\PSGetPropertyKeyFromName", "Str", column_name, "Ptr", StrPtr(columns_point) + offset)
+        DllCall("propsys\PSGetPropertyKeyFromName", "Str", column_name, "Ptr", StrPtr(property_key_ptr) + offset)
     }
-    ComCall(7, icm, "Ptr", StrPtr(columns_point), "Int", config_names.Length)
+    ComCall(7, icm, "Ptr", StrPtr(property_key_ptr), "Int", config_names.Length)
 
     ; SetColumnsWidth
-    VarSetStrCapacity(&point_property,  20)
-    VarSetStrCapacity(&point_column,   184)
+    VarSetStrCapacity(&property_key_ptr,  20)
+    VarSetStrCapacity(&column_info_ptr,  184)
     for item in config_all {
         column_name  := item[1]
         column_width := item[2]
-        DllCall("propsys\PSGetPropertyKeyFromName", "Ptr", StrPtr(column_name), "Ptr", StrPtr(point_property))
-        NumPut("UInt",          184, StrPtr(point_column),  0)
-        NumPut("UInt",            1, StrPtr(point_column),  4)
-        NumPut("UInt", column_width, StrPtr(point_column), 12)
-        ComCall(3, icm, "Ptr", StrPtr(point_property), "Ptr", StrPtr(point_column))
+        DllCall("propsys\PSGetPropertyKeyFromName", "Ptr", StrPtr(column_name), "Ptr", StrPtr(property_key_ptr))
+        NumPut("UInt",          184, StrPtr(column_info_ptr),  0)
+        NumPut("UInt",            1, StrPtr(column_info_ptr),  4)
+        NumPut("UInt", column_width, StrPtr(column_info_ptr), 12)
+        ComCall(3, icm, "Ptr", StrPtr(property_key_ptr), "Ptr", StrPtr(column_info_ptr))
     }
 }
