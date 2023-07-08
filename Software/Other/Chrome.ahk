@@ -300,6 +300,9 @@ Expand := False
     ;关闭所有窗口
     ^+w::Return
 
+    ; 开发者工具选择元素
+    ^+c::Return
+
     ;将焦点放置在Chrome工具栏中的第一项上
     !+t::Return
     alt_shift_t := False
