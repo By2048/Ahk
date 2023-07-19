@@ -78,11 +78,13 @@ WPD["PyCharm__服务"]   := Position(0.8 , 0.8)
 WPD["PyCharm__终端"] := Position(0.8 , 0.9)
 WPD["PyCharm__运行"] := Position(0.8 , 0.9)
 WPD["PyCharm__调试"] := Position(0.8 , 0.9)
-x := Screens.2.x
-y := Screens.2.yy / 2 - Screens.2.y / 2 - 200
-w := Screens.2.w
-h := Screens.2.h / 2
-WPB["PyCharm__调试"] := [x, y, w, h]
+try {
+    x := Screens.2.x
+    y := Screens.2.yy / 2 - Screens.2.y / 2 - 200
+    w := Screens.2.w
+    h := Screens.2.h / 2
+    WPB["PyCharm__调试"] := [x, y, w, h]
+}
 
 WPD["PyCharm__Python控制台"] := Position(0.9 , 0.9)
 WPD["PyCharm__Git"]         := Position(0.9 , 0.9)
