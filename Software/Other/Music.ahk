@@ -56,12 +56,6 @@
         MouseClickAndResetting(1044, 1600,  ,  ,4)
     }
 
-    Esc::{
-        Send "{Esc}"
-        Sleep 300
-        MouseClickAndResetting(1317, 335, "Window")
-    }
-
 #HotIf
 
 
