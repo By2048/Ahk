@@ -14,9 +14,8 @@
 
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*" )
-    ; https://www.freedownloadmanager.org/board/viewtopic.php?t=18253
-    $AppsKey::
-    $CapsLock::{
+    $CapsLock::
+    +CapsLock::{
         tmp := A_Clipboard
         Sleep 33
         Send "{RButton}"
@@ -31,7 +30,7 @@
         url := UrlChange(url)
         if ( A_ThisHotkey == "$CapsLock" )
             AriaDownload(url, "F:\Image\Other\")
-        if ( A_ThisHotkey == "$AppsKey" ) {
+        if ( A_ThisHotkey == "+CapsLock" ) {
             time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
             ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
             file := time . ext
