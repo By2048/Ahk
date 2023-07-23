@@ -7,27 +7,26 @@
 #Hotstring EndChars `t
 
 
-:*:\Date::{
+:o:\Date::{
     SendInput FormatTime(A_Now, "yyyy-MM-dd")
 }
 
-:*:\Time::{
+:o:\Time::{
     SendInput FormatTime(A_Now, "HH-mm-ss")
 }
 
-:*:\DateTime::{
-    SendInput FormatTime(A_Now, "yyyy-MM-dd HH-mm-ss")
+:o:\DateTime::{
+    SendInput FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
 }
 
-:*:\---::{- 80}
-:*:\###::{# 80}
-:*:\///::{/ 80}
+:o:\---::{- 80}
+:o:\###::{# 80}
+:o:\///::{/ 80}
 
 
 :o:\Dism::DISM /Online /Cleanup-image /Restorehealth
 
 :o:\Sfc::sfc /scannow
-
 
 
 #Include Input.Private.ahk
