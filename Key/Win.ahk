@@ -349,7 +349,7 @@
     }
     if IsDesktops()
         return
-    WinClose "ahk_id " . win_id
+    Try WinClose AID(win_id)
 }
 ; 结束进程
 <#+BackSpace::{
