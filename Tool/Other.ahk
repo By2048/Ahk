@@ -53,12 +53,11 @@ WindowsTerminal(mode:="Focus", folder:="")
 ; keep_path | T:\  F:\Image\Screen\
 ScreenShot(screen_name:="Screen", keep_path:="")
 {
-    if (not FileExist(Snipaste)) {
+    if not FileExist(Snipaste)
         HelpText(Snipaste, "Center", "Screen", 500)
-    }
-    if (not FileExist(keep_path)) {
+
+    if not FileExist(keep_path)
         return
-    }
 
     screen_id := ScreenNameToId(screen_name)
     if (screen_id == "1") {
@@ -79,9 +78,8 @@ ScreenShot(screen_name:="Screen", keep_path:="")
 
     name := "", file := "", cmd := ""
     name := FormatTime(A_Now, "[yyyy-MM-dd][HH-mm-ss]")
-    if (screen_name != "Screen"){
+    if screen_name != "Screen"
         name := Format("{1}[{2}]", name, screen_id)
-    }
     file := keep_path . name . ".png"
     cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, x, y, w, h, file)
     Run cmd
@@ -92,12 +90,11 @@ ScreenShot(screen_name:="Screen", keep_path:="")
 ; 软件设置界面截图保存
 SoftwareShot(keep_path:="")
 {
-    if (not FileExist(Snipaste)) {
+    if not FileExist(Snipaste)
         return
-    }
-    if (not FileExist(keep_path)) {
+
+    if not FileExist(keep_path)
         return
-    }
 
     GetActiveWindowInfo()
     win_process_name := window.process_name
@@ -117,7 +114,7 @@ SoftwareShot(keep_path:="")
 
 
 ; 屏幕贴图
-SnipasteImage(image:="", screen:="screen1")
+SnipasteImage(image:="", screen:="Screen")
 {
     image_size := GetImageSize(image)
     image_w    := image_size.w
@@ -160,10 +157,10 @@ CheckColor(color_base, color_compare, offse:=9)
     color_compare_green := ToBase("0x" . color_compare_green, 10)
     color_compare_blue  := ToBase("0x" . color_compare_blue,  10)
 
-    if ( Abs(color_base_red - color_compare_red)<=offse) {
-        if ( Abs(color_base_green - color_compare_green)<=offse ) {
-            if ( Abs(color_base_blue - color_compare_blue)<=offse ) {
-                return true
+    if ( Abs(color_base_red - color_compare_red) <= offse) {
+        if ( Abs(color_base_green - color_compare_green) <= offse ) {
+            if ( Abs(color_base_blue - color_compare_blue) <= offse ) {
+                return True
             }
         }
     }
