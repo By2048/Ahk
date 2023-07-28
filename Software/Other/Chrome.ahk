@@ -44,21 +44,31 @@
 
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "WeTab新标签页*" )
-     $AppsKey::
-    <^AppsKey::{
+    ; 刷新
+    End::{
         MouseGetPos &x, &y
         Send "{RButton}"
-        switch A_ThisHotkey {
-            case "$AppsKey":
-                xx := x + 50
-                yy := y + 140
-            case "<^AppsKey":
-                xx := x + 50
-                yy := y + 195
-            default:
-                xx := x
-                yy := y
-        }
+        xx := x + 50
+        yy := y + 140
+        MouseClick "Left", xx, yy, 1, 0
+        MouseMove x, y, 0
+    }
+    ; 下载
+    Home::{
+        MouseGetPos &x, &y
+        Send "{RButton}"
+        xx := x + 50
+        yy := y + 195
+        MouseClick "Left", xx, yy, 1, 0
+        MouseMove x, y, 0
+    }
+    ; 关闭下载提示
+    AppsKey::{
+        CoordMode "Mouse", "Window"
+        MouseGetPos &x, &y
+        WinGetPos &win_x, &win_y, &win_w, &win_h, "A"
+        xx := win_w - 37
+        yy := win_h - 59
         MouseClick "Left", xx, yy, 1, 0
         MouseMove x, y, 0
     }
@@ -233,9 +243,8 @@ Expand := False
     <!+\::{
         shift_status := GetKeyState("Shift", "P")
         Send "{F6 3}"
-        if (shift_status) {
+        if shift_status
             Send "{Left}"
-        }
     }
 
     CapsLock::{
@@ -394,11 +403,10 @@ Expand := False
         Send "^d"
         Send "{Tab 2}"
         Send "{Enter}"
-        if (InStr(Screen.Name, "4K")) {
+        if InStr(Screen.Name, "4K")
             MoveWindowToPosition(Position(900, 1500))
-        } else if (InStr(Screen.Name, "2K")) {
+        if InStr(Screen.Name, "2K")
             MoveWindowToPosition(Position(700, 1000))
-        }
     }
     !+d::{
         Send "^d"
@@ -447,11 +455,10 @@ Expand := False
     !=::Send "^{=}"
 
     <#\::{
-        if (InStr(Screen.Name, "4K")) {
+        if InStr(Screen.Name, "4K")
             MoveWindowToPosition(Position(3300, 2000))
-        } else if (InStr(Screen.Name, "2K")) {
+        if InStr(Screen.Name, "2K")
             MoveWindowToPosition(Position(2500, 1400))
-        }
     }
 
     ; 前进后退
