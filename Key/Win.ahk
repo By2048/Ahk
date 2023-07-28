@@ -190,6 +190,10 @@
     SoundSetVolume volume_steps[min_close_index]
 }
 
+; 有道翻译
+^!i::Return
+<#i::Send "^!i"
+
 ; 窗口置顶
 <#t::Send "^!t"
 
