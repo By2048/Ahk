@@ -20,9 +20,7 @@
 }
 
 :o:\---::{- 80}
-:o:\###::{# 80}
-:o:\///::{/ 80}
-
+:o:\===::{= 80}
 
 :o:\Dism::DISM /Online /Cleanup-image /Restorehealth
 
