@@ -14,10 +14,16 @@
 
 #HotIf CheckWindowActive( "CloudMusic" )
 
+    global CM_Main_Detail := "Main"
     /::{
-        MoveWindowToDefaultPosition()
-        Sleep 300
-        MouseClickAndResetting(53, 1137, "Window")
+        global CM_Main_Detail
+        if ( CM_Main_Detail == "Main" ) {
+            MouseClickAndResetting(89, 1124, "Window")
+            CM_Main_Detail := "Detail"
+        } else if ( CM_Main_Detail == "Detail" ) {
+            MouseClickAndResetting(85, 72, "Window")
+            CM_Main_Detail := "Main"
+        }
     }
 
     \::Send "!\"
@@ -27,7 +33,7 @@
     -::Send "!-"
 
     <#BackSpace::{
-        ProcessClose "CrashReporter.exe"
+        ProcessClose "cloudmusic_reporter.exe"
         Sleep 300
         ProcessClose "CloudMusic.exe"
     }
