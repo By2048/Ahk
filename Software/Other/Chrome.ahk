@@ -63,15 +63,7 @@
         MouseMove x, y, 0
     }
     ; 关闭下载提示
-    AppsKey::{
-        CoordMode "Mouse", "Window"
-        MouseGetPos &x, &y
-        WinGetPos &win_x, &win_y, &win_w, &win_h, "A"
-        xx := win_w - 37
-        yy := win_h - 59
-        MouseClick "Left", xx, yy, 1, 0
-        MouseMove x, y, 0
-    }
+    AppsKey::HideDownload()
 #HotIf
 
 
@@ -168,8 +160,7 @@ Expand := False
         SetTimer ChromeTimer, -300
     }
 
-    ChromeTimer()
-    {
+    ChromeTimer() {
         global cnt
         if (cnt != 2) {
             cnt := 0
@@ -255,8 +246,11 @@ Expand := False
     LAlt Up::Send "{Esc}"
 
     ;任务管理
-    ^Esc::Return
     !Esc::Send "+{Esc}"
+    +ESc::Return
+
+    ;隐藏下载条
+    ^Esc::HideDownload()
 
     ;删除联想
     ;删除搜索历史记录

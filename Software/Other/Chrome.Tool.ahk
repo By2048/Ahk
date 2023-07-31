@@ -94,3 +94,15 @@ AriaDownload(url, folder:="T:\", name:="")
 
     HelpText(info, "CenterDown", "Screen", 500)
 }
+
+
+HideDownload()
+{
+    CoordMode "Mouse", "Window"
+    MouseGetPos &x, &y
+    WinGetPos &win_x, &win_y, &win_w, &win_h, "A"
+    xx := win_w - 37
+    yy := win_h - 59
+    MouseClick "Left", xx, yy, 1, 0
+    MouseMove x, y, 0
+}
