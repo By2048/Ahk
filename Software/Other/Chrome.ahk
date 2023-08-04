@@ -28,13 +28,14 @@
         if not url
             return
         url := UrlChange(url)
+        global Chrome_Image_Download
         if ( A_ThisHotkey == "$CapsLock" )
-            AriaDownload(url, "F:\Image\Other\")
+            AriaDownload(url, Chrome_Image_Download)
         if ( A_ThisHotkey == "+CapsLock" ) {
             time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
             ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
             file := time . ext
-            AriaDownload(url, "F:\Image\Other\", file)
+            AriaDownload(url, Chrome_Image_Download, file)
         }
         A_Clipboard := tmp
         SetCapsLockState "Off"

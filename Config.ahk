@@ -26,6 +26,8 @@ Debug := False
 PC_USERNAME := "Admin"
 PC_PASSWORD := "Xxxxx"
 
+Chrome_Image_Download := "T:\Image\"
+
 ;---------------------------------------------------------------------------;
 Gui_Config := {
     Dark     : { Font : "FFFFFF" , Back : "000000" } ,
