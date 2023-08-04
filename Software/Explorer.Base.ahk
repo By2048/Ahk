@@ -23,8 +23,9 @@
 !=::Send "^!6"
 !-::Send "^!7"
 
-!p::Return
-!BackSpace::Send "!p"
+; 预览窗口
+; !p::Return
+; !BackSpace::Send "!p"
 
 ; 帮助
 F1::Return

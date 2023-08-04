@@ -141,7 +141,6 @@
         line_width := 26
 
         EC := Map( "File"     , "ItemNameDisplay:1150"
-                 , "List"     , "ItemNameDisplay:999 Size:150"
                  , "Default"  , "ItemNameDisplay:800 ItemDate:200 Size:150"
                  , "Software" , "ItemNameDisplay:500 Comment:450 ItemDate:200"
                  , "Recover"  , "ItemNameDisplay:420 "
@@ -151,7 +150,6 @@
         ; 设置 文件夹选项 查看 在标题栏中显示完整路径
         EC["D:\"]   := EC["Software"]
         EC["回收站"] := EC["Recover"]
-        EC["T:\"]   := EC["List"]
 
         #Include *i Explorer.Private.ahk
 
