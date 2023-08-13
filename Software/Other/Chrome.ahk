@@ -1,4 +1,4 @@
-
+﻿
 #Include *i Chrome.Tool.ahk
 
 
@@ -254,6 +254,23 @@ Expand := False
     CapsLock::{
         Send "{F10 2}"
         SetCapsLockState "Off"
+    }
+
+    CapsLock & Enter::{
+        A_Clipboard := ""
+        Send "!d"
+        Send "^c"
+        ClipWait
+        origin := A_Clipboard
+        result := GoogleTranslate(origin)
+        if ( origin == result ) {
+            Send "{Esc}"
+            return
+        }
+        A_Clipboard := result
+        ClipWait
+        Send "^v"
+        Send "{Enter}"
     }
 
     LAlt Up::Send "{Esc}"

@@ -1,4 +1,19 @@
 ﻿
+ClipboardChange(origin)
+{
+    result := origin
+
+    ; pixiv ID: 110428163
+    if ( InStr(origin, "pixiv", "Off") ) {
+        image := RegExReplace(origin, "(pixiv)(.*?)(\d+)", "$3")
+        result := "https://www.pixiv.net/artworks/" . image
+    }
+
+    return result
+}
+
+
+
 UrlChange(origin)
 {
     result := origin
@@ -105,4 +120,23 @@ HideDownload()
     yy := win_h - 59
     MouseClick "Left", xx, yy, 1, 0
     MouseMove x, y, 0
+}
+
+
+GoogleTranslate(origin)
+{
+    ; origin := "https://flask.palletsprojects.com/en/2.3.x/"
+    result := origin
+
+    code := RegExMatch(origin, "(http.*//)([\.\w]+\.com|\.cn|\.org)(.*)", &match)
+    if not code
+        return result
+
+    http := match[1]
+    url  := StrReplace(match[2], ".", "-")
+    path := match[3]
+
+    result := http . url . ".translate.goog" . path . "?_x_tr_sl=auto&_x_tr_tl=zh-CN"
+
+    return result
 }
