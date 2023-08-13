@@ -34,6 +34,13 @@
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)
 
+        ; 种子存档
+        _1 := " 1         2       3      4        5         6        "
+        _2 := " 下载任务   名称    大小    元数据    发布日期   添加日期  "
+        _3 := " 130       1200    150    150      150       150      "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView322", config)
+
         ; 用户
         _1 := " 1    2        3        4    5       6       7        8        9       10           11       12    "
         _2 := " IP   远程端口  监听端口  进度  分快图  下载速度  上传速度  下载大小  上传大小  对方下载速度  链接时间  客户端  "
