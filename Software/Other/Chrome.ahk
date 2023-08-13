@@ -1,4 +1,4 @@
-﻿
+
 #Include *i Chrome.Tool.ahk
 
 
@@ -168,10 +168,22 @@ Expand := False
             return
         }
 
-        A_Clipboard := ""
+        origin := A_Clipboard
+        result := ClipboardChange(origin)
 
+        if ( origin != result ) {
+            A_Clipboard := result
+            ClipWait
+            Send "^t"
+            Send "!d"
+            Sleep 9
+            Send "^v"
+            Send "{Enter}"
+            return
+        }
+
+        A_Clipboard := ""
         Send "!d"
-        Sleep 9
         Send "^c"
         ClipWait
 
