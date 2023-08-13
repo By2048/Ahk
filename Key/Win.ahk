@@ -39,9 +39,13 @@
         WinActivate rule
         win_id := WinGetID("A")
     }
-    if (not win_id) {
+
+    if not win_id
         return
-    }
+
+    if Screens.Count == 1
+        return
+
     WinGetPos &x, &y, &w, &h, AID(win_id)
 
     ; 屏幕1左侧
@@ -276,11 +280,11 @@
 }
 
 ; 文件重命名
-<#h::{
+ <#h::
+<#+h::{
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if (not hwnd) {
+    if not hwnd
         return
-    }
 
     ; 获取Explorer当前选择的项目
     data := Map()
@@ -296,20 +300,26 @@
             data := Map( "folder" , folder_path , "select" , select_items )
         }
     }
-    if (not data) {
+
+    if not data or not data.Count
         return
-    }
-    if (not data.Count) {
+
+    select := data["select"]
+    if not select
         return
+
+
+    if A_ThisHotkey == "<#h"
+        for item in select
+            RenameToMd5(item)
+
+    if ( A_ThisHotkey == "<#+h" ) {
+        for item in select {
+            RenameToData(item)
+            Sleep 1000
+        }
     }
 
-    all_select := data["select"]
-    if (not all_select) {
-        return
-    }
-    for select_item in all_select {
-        RenameToMd5(select_item)
-    }
 }
 
 ; 打开“连接”快速操作
