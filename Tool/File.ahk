@@ -79,13 +79,38 @@ RenameToMd5(file)
     if FileGetAttrib(file) != "A"
         return
 
-    md5 := GetMD5(file)
-    if not md5
+    new_name := GetMD5(file)
+    if not new_name
         return
 
     try {
         SplitPath file, &name, &dir, &ext, &name_no_ext, &drive
-        result := Format("{1}\{2}.{3}", dir, md5, ext)
+        result := Format("{1}\{2}.{3}", dir, new_name, ext)
+        if FileExist(result)
+            return
+        FileMove file, result
+    }
+}
+
+
+; 重命名为当前日期
+RenameToData(file)
+{
+    ; 不存在
+    if not FileExist(file)
+        return
+
+    ; 不是文件
+    if FileGetAttrib(file) != "A"
+        return
+
+    new_name := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
+    if not new_name
+        return
+
+    try {
+        SplitPath file, &name, &dir, &ext, &name_no_ext, &drive
+        result := Format("{1}\{2}.{3}", dir, new_name, ext)
         if FileExist(result)
             return
         FileMove file, result
