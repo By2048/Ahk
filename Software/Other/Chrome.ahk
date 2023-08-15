@@ -179,6 +179,8 @@ Expand := False
             Sleep 9
             Send "^v"
             Send "{Enter}"
+            A_Clipboard := ""
+            cnt := 0
             return
         }
 
