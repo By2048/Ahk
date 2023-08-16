@@ -63,8 +63,11 @@
 >^Left::Return
 >^Right::Return
 
+
 cnt := 0
+ctrl_content := ""
 ctrl_gui_status := False
+
 $RCtrl::{
     global cnt, ctrl_gui_status
     if (cnt > 0) {
@@ -76,7 +79,8 @@ $RCtrl::{
     SetTimer CtrlTimer, -333
 }
 CtrlTimer() {
-    global cnt, ctrl_gui_status
+    global cnt
+    global ctrl_gui_status
     if (cnt == 1) {
         if (ctrl_gui_status) {
             CtrlHelpGui()
@@ -95,9 +99,9 @@ CtrlTimer() {
 }
 CtrlHelpGui()
 {
-    global ctrl_gui_status
     global G
-    global Ctrl_Help_Content
+    global ctrl_gui_status
+    global ctrl_content
 
     if (ctrl_gui_status) {
         try {
@@ -107,6 +111,12 @@ CtrlHelpGui()
         return
     }
     ctrl_gui_status := True
+
+    if (not ctrl_content) {
+        file := A_InitialWorkingDir . "\Key\Ctrl.txt"
+        if FileExist(file)
+            ctrl_content := FileRead(file, "`n UTF-8")
+    }
 
     G := Gui()
     G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
@@ -129,6 +139,6 @@ CtrlHelpGui()
     }
     G.BackColor := back_color
 
-    G.Add("Text", "-Center -Border", Ctrl_Help_Content)
+    G.Add("Text", "-Center -Border", ctrl_content)
     G.Show("NA Center")
 }

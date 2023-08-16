@@ -130,13 +130,3 @@ Init_Software_Keys_Help() {
 Init_Software_Keys_Help()
 
 
-
-Ctrl_Help_Content := ""
-Init_Ctrl_Help_Content()
-{
-    global Ctrl_Help_Content
-    file := A_InitialWorkingDir . "\Config\Ctrl.txt"
-    if FileExist(file)
-        Ctrl_Help_Content := FileRead(file, "`n UTF-8")
-}
-Init_Ctrl_Help_Content()
