@@ -27,8 +27,17 @@
     }
 
     \::Send "!\"
-    [::Send "!["
-    ]::Send "!]"
+    [::{
+        Send "!["
+        Sleep 1500
+        Send "{Esc}"
+    }
+    ]::{
+        Send "!]"
+        Sleep 1500
+        Send "{Esc}"
+    }
+
     =::Send "!="
     -::Send "!-"
 
