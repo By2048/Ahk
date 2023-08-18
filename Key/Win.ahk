@@ -432,7 +432,6 @@ RWinTimer() {
     global cnt
     if (cnt == 1) {
         MoveWindowToCenter(True)
-        HighlightActiveWindow(100)
     } else if (cnt == 2) {
         MoveWindowToDefaultPosition()
     } else if (cnt == 3) {
