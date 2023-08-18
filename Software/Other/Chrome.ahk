@@ -149,6 +149,11 @@ Expand := False
 
 #HotIf CheckWindowActive( "Chrome" )
 
+    ; 默认激活菜单按钮 / 取消激活
+    ~RAlt Up::{
+        Send "{Esc}"
+    }
+
     cnt := 0
     ~LShift::{
         global cnt
