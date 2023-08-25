@@ -129,17 +129,16 @@ HideDownload()
 GoogleTranslate(origin)
 {
     ; origin := "https://flask.palletsprojects.com/en/2.3.x/"
+    ; https://flask-palletsprojects-com.translate.goog/en/2.3.x/?_x_tr_sl=auto&_x_tr_tl=zh-CN
     result := origin
 
     code := RegExMatch(origin, "(http.*//)([\.\w]+\.com|\.cn|\.org)(.*)", &match)
     if not code
         return result
 
-    http := match[1]
-    url  := StrReplace(match[2], ".", "-")
-    path := match[3]
-
+    http   := match[1]
+    url    := StrReplace(match[2], ".", "-")
+    path   := match[3]
     result := http . url . ".translate.goog" . path . "?_x_tr_sl=auto&_x_tr_tl=zh-CN"
-
     return result
 }
