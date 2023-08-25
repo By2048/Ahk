@@ -113,14 +113,14 @@
         SetNumLockState "Off"
     }
 
-    >^j::{
-        Send "^c"
-        ClipWait
-        data := A_Clipboard
-        A_Clipboard := StrReplace(A_Clipboard, "`r`n")
-        Send "^v"
-        A_Clipboard := data
-    }
+    ; <^j::{
+    ;     Send "^c"
+    ;     ClipWait
+    ;     data := A_Clipboard
+    ;     A_Clipboard := StrReplace(A_Clipboard, "`r`n")
+    ;     Send "^v"
+    ;     A_Clipboard := data
+    ; }
     ~>^j::Return
 
     ;快速命令
