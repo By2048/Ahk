@@ -121,6 +121,7 @@
         Send "^v"
         A_Clipboard := data
     }
+    ~>^j::Return
 
     ;快速命令
     <!Space::Send "^!["
