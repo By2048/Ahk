@@ -50,12 +50,12 @@ ShowKeysHelp(step := 0)
     win_title        := window.title
     hotkeys_current  := GetWindowConfig(window, Software_Keys_Help)
 
-    if (hotkeys_current.Length == 1 and hotkeys_show_status == True) {
+    if hotkeys_current.Length == 1 and hotkeys_show_status == True
         return
-    }
+
     if (hotkeys_current.Length == 0 and hotkeys_show_status == False) {
         hotkeys_current := Software_Keys_Help["Default"]
-        ; HelpText("`n No Content `n", "Center", "Screen", 300)
+        HelpText("`n No Content `n", "Center", "Screen", 500)
         return
     }
 
@@ -93,30 +93,30 @@ ShowKeysHelp(step := 0)
         back_color := Gui_Config.Light.Back
     }
 
-    GKH.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
-    GKH.MarginX := margin
-    GKH.MarginY := margin
+    GKH.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
+    GKH.MarginX   := margin
+    GKH.MarginY   := margin
     GKH.BackColor := back_color
     GKH.SetFont(Format("c{} s{}", font_color, font_size), font_name)
     GContent := GKH.Add("Text", "-Center -Border", content)
-    GContent.GetPos(&cx, &cy , &cw, &ch)
+    GContent.GetPos(&cx, &cy, &cw, &ch)
     if (hotkeys_current.Length > 1) {
-        data := Format("{}/{}", hotkeys_index, hotkeys_current.Length)
+        data  := Format("{}/{}", hotkeys_index, hotkeys_current.Length)
         GPage := GKH.Add("Text", "-Border xm ym", data)
-        GPage.GetPos(&px, &py , &pw, &ph)
-        GPage.Move(cw-pw+margin,ch-ph+margin,pw,ph)
+        GPage.GetPos(&px, &py, &pw, &ph)
+        GPage.Move(cw - pw + margin, ch - ph + margin, pw, ph)
     }
     GKH.Show("NA Center")
     hotkeys_show_status := True
 }
 
+
+
 HideKeysHelp()
 {
     global GKH
     global hotkeys_show_status
-    try {
-        GKH.Destroy()
-    }
+    Try GKH.Destroy()
     hotkeys_show_status := False
 }
 
