@@ -14,13 +14,13 @@ JApps := "PyCharm|IDEA"
 
 
 
-DoubleShift := False
-#HotIf CheckWindowActive(JApps) And DoubleShift == True
+DoubleKeys := False
+#HotIf CheckWindowActive(JApps) And DoubleKeys == True
     Esc::
     CapsLock::{
-        global DoubleShift
+        global DoubleKeys
         Send "{Esc}"
-        DoubleShift := False
+        DoubleKeys := False
     }
     RWin::CenterHideWindow(1000, 1000)
 #HotIf
@@ -186,6 +186,7 @@ CapsLockActivate := False
     }
 
     cnt := 0
+    ~LCtrl::
     ~LShift::{
         global cnt
         if (cnt > 0) {
@@ -197,12 +198,14 @@ CapsLockActivate := False
         SetTimer Timer, -500
     }
     Timer() {
-        global cnt, DoubleShift
+        global cnt, DoubleKeys
         if (cnt == 2) {
-            DoubleShift := True
+            DoubleKeys := True
         }
         cnt := 0
     }
+
+    $RCtrl::
     $RShift::{
         Send "{Blind}{vkFF}"
     }
