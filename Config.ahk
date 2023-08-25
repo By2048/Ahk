@@ -33,7 +33,7 @@ Gui_Config := {
     Dark     : { Font : "FFFFFF" , Back : "000000" } ,
     Light    : { Font : "000000" , Back : "FFFFFF" } ,
     FontName : "Source Code Pro" ,
-    FontSize : "12" ,
+    FontSize : "13" ,
     Margin   : 9
 }
 
