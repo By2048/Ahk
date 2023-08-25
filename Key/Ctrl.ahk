@@ -119,11 +119,10 @@ CtrlHelpGui()
     }
 
     G := Gui()
-    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
+    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
 
-    margin := Gui_Config.Margin
-    G.MarginX := margin
-    G.MarginY := margin
+    G.MarginX := Gui_Config.Margin
+    G.MarginY := Gui_Config.Margin
 
     font_name := Gui_Config.FontName
     font_size := Gui_Config.FontSize
