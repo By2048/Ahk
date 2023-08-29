@@ -53,6 +53,7 @@
     End::{
         Send "{Volume_Down 5}"
     }
+    RAlt & RWin::Return
 #HotIf
 
 ; 桌面
@@ -69,6 +70,7 @@
     F10::Run "E:\Script"
     F11::Run "V:\"
     F12::Run "T:\"
+    RAlt & RWin::Return
 #HotIf
 
 #HotIf CheckWindowActive( "Explorer" )
