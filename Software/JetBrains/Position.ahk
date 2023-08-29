@@ -62,6 +62,7 @@ WPD["PyCharm__查找"]    := Position(0.4 , 0.8)
 WPD["PyCharm__拉取请求"] := Position(0.4 , 0.8)
 
 WPD["PyCharm__Python软件包"] := Position(0.6 , 0.7)
+WPD["PyCharm__AWS"]         := Position(0.6 , 0.7)
 WPD["PyCharm__单词本"]       := Position(0.6 , 0.7)
 
 WPD["PyCharm__TODO"]       := Position(0.6 , 0.8)
