@@ -27,7 +27,6 @@
 #Include ..\Software\Other\FFRenamePro.ahk
 #Include ..\Software\Other\FoxMail.ahk
 #Include ..\Software\Other\FreeFileSync.ahk
-#Include ..\Software\Other\FSViewer.ahk
 #Include ..\Software\Other\Geek.ahk
 #Include ..\Software\Other\Music.ahk
 #Include ..\Software\Other\PotPlayer.ahk

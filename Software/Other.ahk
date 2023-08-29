@@ -32,3 +32,10 @@
 #HotIf CheckWindowActive("Maye")
     CapsLock::Send "{Esc}"
 #HotIf
+
+
+#HotIf CheckWindowActive("FSViewer")
+      ]::Send "{Right}"
+      [::Send "{Left}"
+    End::Send "{Delete}{Enter}"
+#HotIf
