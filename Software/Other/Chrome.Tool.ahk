@@ -9,6 +9,12 @@ ClipboardChange(origin)
         result := "https://www.pixiv.net/artworks/" . image
     }
 
+    ; 作品ID：111186810
+    if ( InStr(origin, "作品ID", "Off") ) {
+        image := RegExReplace(origin, "(作品ID)(.*?)(\d+)", "$3")
+        result := "https://www.pixiv.net/artworks/" . image
+    }
+
     return result
 }
 
