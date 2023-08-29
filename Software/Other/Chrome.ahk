@@ -417,7 +417,7 @@ Expand := False
 
     ;使用Google搜索
     ^k::Return
-    ^e::Return
+    ~^e::Return
 
     ;历史记录
     ^h::Return
