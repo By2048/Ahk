@@ -42,10 +42,10 @@
 >^Esc::Run "TaskMgr" ;任务管理器
 >^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
 
- >^[::Run VSCode " E:\Config\VSCode\Note.code-workspace"    , A_InitialWorkingDir, "Hide"
- >^]::Run VSCode " E:\Config\VSCode\Ahk.code-workspace"     , A_InitialWorkingDir, "Hide"
- >^\::Run VSCode " E:\Config\VSCode\Windows.code-workspace" , A_InitialWorkingDir, "Hide"
->^+\::Run VSCode " --new-window"                            , A_InitialWorkingDir, "Hide"
+ >^[::Run VSCode " E:\VSCode\Note.code-workspace"    , A_InitialWorkingDir, "Hide"
+ >^]::Run VSCode " E:\VSCode\Ahk.code-workspace"     , A_InitialWorkingDir, "Hide"
+ >^\::Run VSCode " E:\VSCode\Windows.code-workspace" , A_InitialWorkingDir, "Hide"
+>^+\::Run VSCode " --new-window"                     , A_InitialWorkingDir, "Hide"
 
 >^Enter::Run VSCode " E:\Life\" , A_InitialWorkingDir, "Hide"
 
