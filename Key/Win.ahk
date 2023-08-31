@@ -274,7 +274,7 @@
     if not content
         return
     A_Clipboard := content
-    ClipWait 3
+    ClipWait
     Send "^v"
     A_Clipboard := tmp
     if StrLen(content) > 15

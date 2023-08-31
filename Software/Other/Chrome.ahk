@@ -106,11 +106,10 @@
         A_Clipboard := url
         ClipWait
         Send "!d"
+        Sleep 99
         Send "^v"
         Send "{Enter}"
-        Sleep 99
         A_Clipboard := tmp
-        ClipWait
     }
 
      !F1::Redirect("https://cn.bing.com/")
@@ -181,7 +180,7 @@ Expand := False
             ClipWait
             Send "^t"
             Send "!d"
-            Sleep 9
+            Sleep 99
             Send "^v"
             Send "{Enter}"
             A_Clipboard := ""
