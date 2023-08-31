@@ -7,12 +7,12 @@
 |  F | FreeFileSync   | +. | V:\\            |
 |  H | WindowSpy      |  / | Chrome          |
 | +H | WindowSpy      | +/ | ChromeDefault   |
-|  J | JetBrains      |----------------------|
+|  J | JetBrains      |----|-----------------|
 |  K | 显示虚拟键盘   |  [ | VSCode Notes    |
 |  L | LogiOptions    |  ] | VSCode Ahk      |
-|----|----------------|  \ | VSCode          |
-|  X | XShell         | +\ | VSCode Config   |
-|  V | VSCodeDefault  |----------------------|
+|----|----------------|  \ | VSCode Windows  |
+|  X | XShell         | +\ | VSCode          |
+|  V | VSCodeDefault  |-------|--------------|
 |  N | CloudMusic     |   Esc | 任务管理器   |
 | +N | QQMusic        |  +Esc | HuoRongSword |
 |  M | PotPlayer      |                       
