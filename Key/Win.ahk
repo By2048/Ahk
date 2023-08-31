@@ -198,6 +198,9 @@
 ^!i::Return
 <#i::Send "^!i"
 
+; PowerToys Orc
+; <#o::Return
+
 ; 窗口置顶
 <#t::Send "^!t"
 
