@@ -9,7 +9,7 @@
 >^q::Run "E:\Config\PC.qdr"
 >^e::Run "D:\#Lnk\#\Everything.lnk"
 >^y::Run "D:\#Lnk\#\v2rayN.lnk"
->^p::Run WT . " -d T:\"
+>^p::Run WT " -d T:\"
 
 >^s::Run "D:\#Lnk\#\Sandboxie.lnk"
 >^f::Run "D:\#Lnk\#\FreeFileSync.lnk"
@@ -17,12 +17,12 @@
 >^+h::Run "E:\GitX\AhkSpy\AhkSpy.exe"
 >^j::{
     Run "D:\#Lnk\JetBrains.lnk"
-    exe := Windows_Process.Get("JetBrainsToolBox")
+    exe  := Windows_Process.Get("JetBrainsToolBox")
     rule := Format("ahk_exe {}", exe)
-    loop 9 {
+    loop 33 {
         try {
             WinActivate rule
-            GetActiveWindowInfo()
+            window := GetActiveWindowInfo()
             MoveWindowToPosition(Position(window.w, window.h))
             return
         } catch {
