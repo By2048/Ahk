@@ -12,7 +12,7 @@
 
     ; minimize/maximize Available Tools on the Tools tab
     ^h::Return
-    \::Send "^h"
+    !\::Send "^h"
 
     ; Space update the selected IDE
 
@@ -22,7 +22,7 @@
 
     ; 检查更新
     ^r::Return
-    !\::Send "^r"
+    \::Send "^r"
 
     ^Tab::Return
     !Tab::Send "^{Tab}"
