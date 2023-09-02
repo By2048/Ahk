@@ -14,6 +14,9 @@
 
 #HotIf CheckWindowActive( "CloudMusic" )
 
+    ; 播放暂停
+    F5::Return
+
     global CM_Main_Detail := "Main"
     /::{
         global CM_Main_Detail
