@@ -20,6 +20,8 @@ WPD["FDM"]     := Position(1888 , 1333)
 WPB["FDM"]     := Position(1500 , 1000)
 WPD["DouYin"]  := Position(2333 , 1333)
 
+WPD["Office Tool Plus"] := Position(1900 , 1100)
+
 WPD["Scrcpy"] := Position(        1032, 2064)
 WPB["Scrcpy"] := Position(48, 48, 1032, 2064)
 

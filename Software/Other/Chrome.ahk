@@ -493,14 +493,9 @@ Expand := False
     <#+\::{
         if Screens.Count == 1
             return
-        if Screens.Software.2.w != 1080 or Screens.Software.2.h != 1920
-            return
-        win_w := Screens.2.w
-        win_h := 1600
-        win_x := Screens.2.x + ( Screens.2.w - win_w ) / 2
-        win_y := Screens.2.y + ( Screens.2.h - win_h ) / 2
-        MoveWindowToPosition(Position(win_x, win_y, win_w, win_h))
-        MoveWindowToPosition(Position(win_x, win_y, win_w, win_h))
+        pos := Position("[Center][2]", 0, 1600)
+        MoveWindowToPosition(pos)
+        MoveWindowToPosition(pos)
     }
 
     ; 前进后退

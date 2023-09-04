@@ -5,7 +5,18 @@
 
     #Include Terminal.Private.ahk
 
-    <#\::MoveWindowToPosition(Position(2200 , 1400))
+    <#\::{
+        MoveWindowToPosition(Position(2200 , 1400))
+    }
+
+    <#+\::{
+        if Screens.Count == 1
+            return
+        pos := Position("[Center][2]", 0, 1600)
+        MoveWindowToPosition(pos)
+        MoveWindowToPosition(pos)
+    }
+
 
     ; 关闭窗格
     !CapsLock::Send "{F13}"
