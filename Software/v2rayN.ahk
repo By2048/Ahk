@@ -14,8 +14,38 @@
 
 #HotIf CheckWindowActive( "v2rayN" )
 
-    ; 一键更新
+    ; 更新v2ray
+    ![::{
+        MouseClickAndResetting(685, 90, "Window")
+        Send "{Down 1}{Enter}"
+    }
+
+    ; 更新Geo
+    !]::{
+        MouseClickAndResetting(685, 90, "Window")
+        Send "{Up 2}{Enter}"
+    }
+
+    ; 更新订阅
     !\::{
+        MouseClickAndResetting(240, 90, "Window", "Left")
+        Send "{Down 2}{Enter}"
+    }
+
+    ; 去重
+    !+\::{
+        MouseClickAndResetting(30, 207, "Window", "Right")
+        Send "{Down 4}{Enter}"
+    }
+
+    !Enter::{
+        Send "^a"
+        Sleep 300
+        Send "^r"
+    }
+
+    ; 一键更新
+    ^!AppsKey::{
         HelpText("`nStart ...`n", "Center", "Screen")
         ; 更新订阅
         MouseClickAndResetting(240, 90, "Window", "Left")

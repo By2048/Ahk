@@ -81,7 +81,7 @@
     F12::Return
 
     <#\::{
-        MoveWindowToPosition(Position(2500 , 1400))
+        MoveWindowToPosition(Position(2333 , 1333))
     }
 
 #HotIf
