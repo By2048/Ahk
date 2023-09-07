@@ -38,9 +38,10 @@
         Send "{Down 4}{Enter}"
     }
 
+    ; 测速
     !Enter::{
         Send "^a"
-        Sleep 300
+        Sleep 99
         Send "^r"
     }
 
