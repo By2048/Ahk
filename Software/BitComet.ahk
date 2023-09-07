@@ -1,4 +1,16 @@
 ﻿
+#HotIf CheckWindowActive("BitComet", "#32770", "通知")
+    <#\::{
+        MoveWindowToPosition(Position(800, 750))
+        _1 := " 1    2     3    "
+        _2 := " 空   时间   消息  "
+        _3 := " 50   250   400  "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView321" , config)
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
     <#\::
     <#+\::{

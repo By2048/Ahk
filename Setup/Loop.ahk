@@ -15,6 +15,7 @@ Ignore_Process := [
     , "LOL_Game"
     , "GetWindowText"
     , "ThunderMini"
+    , "BitComet"
 ]
 
 
