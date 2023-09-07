@@ -1,10 +1,11 @@
 
+#Include *i Tool.ahk
+
+
 Browser := "Chrome|Edge|Opera|FireFox"
 
 
-
 ; https://support.google.com/chrome/answer/157179
-
 #HotIf CheckWindowActive( Browser , "#32770" , "另存为" )
     CapsLock::{
         Send "{Esc}"
@@ -80,20 +81,17 @@ Browser := "Chrome|Edge|Opera|FireFox"
     F11::Return
     <#Enter::Send "{F11}"
 
-
     ;开发者模式
     F12::Return
     ^+j::Return
     <^AppsKey::Send "{F12}"
 
-
-    ;清理浏览记录
+    ; 清理浏览记录
     ; ^+Delete::Return
 
     ;新标签页
     ^t::Return
     !t::Send "^t"
-
 
     ; 新窗口
     ; ^n::Return
@@ -103,16 +101,15 @@ Browser := "Chrome|Edge|Opera|FireFox"
     ; ^+n::Return
     ; !+n::Send ^+n
 
-    ;保存
+    ; 保存
     ; ^s::Return
     ; !s::Send ^s
 
-    ;定位
+    ; 定位
     ; ^g::Return
     ; !g::Send ^g
     ; ^+g::Return
     ; !+g::Send ^+g
-
 
     ;关闭窗口
     ^w::Return
@@ -152,16 +149,16 @@ Browser := "Chrome|Edge|Opera|FireFox"
     ^+Tab::Return
     +Tab::Return
 
+    ;任务管理
+    !Esc::Send "+{Esc}"
+    +ESc::Return
+
     ;主页
     !BackSpace::Send "!{Home}"
 
     ; 切换标签页
-    !Tab::{
-        Send "^{Tab}"
-    }
-    !+Tab::{
-        Send "^+{Tab}"
-    }
+    !Tab::Send "^{Tab}"
+    !+Tab::Send "^+{Tab}"
     !Home::Send "^1"
     !End::Send "^9"
 
@@ -171,12 +168,11 @@ Browser := "Chrome|Edge|Opera|FireFox"
     !PgUp::Send "^+{Tab}"
     !PgDn::Send "^{Tab}"
 
-
     ;切换书签栏显示隐藏状态
     ^+b::Return
     !v::Send "^+b"
 
-    ;打开文件
+    ; 打开文件
     ; ^o::Return
 
     ;书签管理页面
@@ -198,14 +194,13 @@ Browser := "Chrome|Edge|Opera|FireFox"
     ~^j::Return
     !j::Send "^j"
 
-
     ;打印 高级打印
     <^p::Return
     <^+p::Return
     !p::Send "^p"
     !+p::Send "^+p"
 
-    ; 反馈
+    ;反馈
     !+i::Return
 
     ;查看源码
@@ -227,6 +222,7 @@ Browser := "Chrome|Edge|Opera|FireFox"
     !-::Send "^{-}"
     !=::Send "^{=}"
 
+    ;窗口位置
     <#\::{
         if InStr(Screen.Name, "4K")
             MoveWindowToPosition(Position(3300, 2000))
@@ -241,17 +237,16 @@ Browser := "Chrome|Edge|Opera|FireFox"
         MoveWindowToPosition(pos)
     }
 
-
-    ; 前进后退
+    ;前进后退
     ~Lbutton & RButton::{
+        Send "{Blind}{vkFF}"
         Send "!{Right}"
     }
     ~RButton & Lbutton::{
+        Send "{Blind}{vkFF}"
         Send "!{Left}"
         Sleep 250
         Send "{Esc}"
     }
-
-
 
 #HotIf

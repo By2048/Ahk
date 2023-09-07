@@ -1,7 +1,4 @@
 ﻿
-#Include *i Chrome.Tool.ahk
-
-
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*" )
     $CapsLock::
     +CapsLock::{
@@ -51,8 +48,6 @@
         MouseClick "Left", xx, yy, 1, 0
         MouseMove x, y, 0
     }
-    ; 关闭下载提示
-    ; AppsKey::HideDownload()
 #HotIf
 
 
@@ -74,11 +69,6 @@
         Send "{Tab 4}"
         Send "{Enter}"
     }
-
-#HotIf
-
-
-#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "DevTools" )
 
 #HotIf
 
@@ -199,23 +189,15 @@ Expand := False
 
     LAlt Up::Send "{Esc}"
 
-    ;任务管理
-    !Esc::Send "+{Esc}"
-    +ESc::Return
-
-    ;隐藏下载条
-    ^Esc::HideDownload()
-
-    ;删除联想
     ;删除搜索历史记录
-    ; +Delete::Return
-    ; !Delete::Send +{Delete}
     !Delete::{
-        Send "{Esc}"
-        Send "{LButton}"
+        CoordMode "Mouse", "Window"
+        MouseGetPos &x_origin, &y_origin
+        MouseClick "Left", 440, 95, 1, 0
         Send "{Down}"
         Send "+{Delete 9}"
-        Send "{Esc}"
+        Send "{Esc 3}"
+        MouseMove x_origin, y_origin, 0
     }
 
     ;将焦点放置在Chrome工具栏中的第一项上
@@ -274,10 +256,5 @@ Expand := False
         Send "{Down 3}"
         Expand := True
     }
-
-    ; >!y::MouseClickImage(A_InitialWorkingDir "\Image\Software\Chrome\Y.png")
-    ; >!z::MouseClickImage(A_InitialWorkingDir "\Image\Software\Chrome\Z.png")
-    ; >!w::MouseClickImage(A_InitialWorkingDir "\Image\Software\Chrome\W.png")
-    ; >!n::MouseClickImage(A_InitialWorkingDir "\Image\Software\Chrome\N.png")
 
 #HotIf
