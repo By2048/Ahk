@@ -1,0 +1,257 @@
+
+Browser := "Chrome|Edge|Opera|FireFox"
+
+
+
+; https://support.google.com/chrome/answer/157179
+
+#HotIf CheckWindowActive( Browser , "#32770" , "另存为" )
+    CapsLock::{
+        Send "{Esc}"
+        SetCapsLockState "Off"
+    }
+#HotIf
+
+
+
+#HotIf CheckWindowActive( Browser , "*WidgetWin*" )
+
+    Redirect(url) {
+        tmp := A_Clipboard
+        A_Clipboard := url
+        ClipWait
+        Send "!d"
+        Sleep 99
+        Send "^v"
+        Send "{Enter}"
+        A_Clipboard := tmp
+    }
+
+     !F1::Redirect("https://cn.bing.com/")
+     !F2::Redirect("https://www.deepl.com/zh/translator")
+     !F3::Redirect("https://translate.google.com/?sl=en&tl=zh-CN&op=translate")
+     !F4::Redirect("https://fanyi.baidu.com/")
+
+     !F5::Redirect("https://wyagd001.github.io/v2/docs/")
+     !F6::Redirect("https://tool.oschina.net/uploads/apidocs/jquery/regexp.html")
+     !F7::Redirect("https://www.jetbrains.com/help/pycharm/quick-start-guide.html")
+     !F8::Redirect("https://docs.python.org/zh-cn/3/")
+
+     !F9::Redirect("https://vcb-s.com")
+    !F10::Redirect("http://www.bd4399.com")
+    !F11::Redirect("https://www.zhihu.com/hot")
+    !F12::Redirect("https://t.bilibili.com/?tab=8")
+
+#HotIf
+
+
+
+#HotIf CheckWindowActive(Browser)
+
+    ;帮助
+    F1::Return
+
+    ;重命名
+    F2::Return
+
+    ;搜索
+    F3::Return
+
+    ;重新加载
+    ;强制重新加载
+    F5::Return
+    +F5::Return
+    ^r::Return
+    ^+r::Return
+    !r::Send "^r"
+    !+r::Send "^+r"
+
+    ;切换焦点
+    F6::Return
+    +F6::Return
+    !`::Send "{F6}"
+    ^`::Send "+{F6}"
+
+    ;光标浏览模式
+    F7::Return
+    !i::Send "{F7}{Enter}"
+
+    ;全屏
+    F11::Return
+    <#Enter::Send "{F11}"
+
+
+    ;开发者模式
+    F12::Return
+    ^+j::Return
+    <^AppsKey::Send "{F12}"
+
+
+    ;清理浏览记录
+    ; ^+Delete::Return
+
+    ;新标签页
+    ^t::Return
+    !t::Send "^t"
+
+
+    ; 新窗口
+    ; ^n::Return
+    ; !n::Send ^n
+
+    ; 新隐私窗口
+    ; ^+n::Return
+    ; !+n::Send ^+n
+
+    ;保存
+    ; ^s::Return
+    ; !s::Send ^s
+
+    ;定位
+    ; ^g::Return
+    ; !g::Send ^g
+    ; ^+g::Return
+    ; !+g::Send ^+g
+
+
+    ;关闭窗口
+    ^w::Return
+    ^F4::Return
+    !CapsLock::{
+        Send "{Blind}{vkFF}"
+        Send "^w"
+        SetCapsLockState "Off"
+    }
+
+    ;关闭所有窗口
+    ^+w::Return
+
+    ; 开发者工具选择元素
+    ^+c::Return
+
+    ;重新打开标签页
+    ^+t::Return
+    +CapsLock::
+    !+CapsLock::{
+        Send "^+t"
+        SetCapsLockState "Off"
+    }
+
+    ;切换标签页
+    ^1::Return
+    ^2::Return
+    ^3::Return
+    ^4::Return
+    ^5::Return
+    ^6::Return
+    ^7::Return
+    ^8::Return
+    ^9::Return
+
+    ^Tab::Return
+    ^+Tab::Return
+    +Tab::Return
+
+    ;主页
+    !BackSpace::Send "!{Home}"
+
+    ; 切换标签页
+    !Tab::{
+        Send "^{Tab}"
+    }
+    !+Tab::{
+        Send "^+{Tab}"
+    }
+    !Home::Send "^1"
+    !End::Send "^9"
+
+    ; 滚动
+    ^PgUp::Return
+    ^PgDn::Return
+    !PgUp::Send "^+{Tab}"
+    !PgDn::Send "^{Tab}"
+
+
+    ;切换书签栏显示隐藏状态
+    ^+b::Return
+    !v::Send "^+b"
+
+    ;打开文件
+    ; ^o::Return
+
+    ;书签管理页面
+    ^+o::Return
+    !b::Send "^+o"
+
+    ;切换用户
+    ^+m::Return
+
+    ;使用Xxx搜索
+    ^k::Return
+    ~^e::Return
+
+    ;历史记录
+    ^h::Return
+    !h::Send "^h"
+
+    ;下载页面
+    ~^j::Return
+    !j::Send "^j"
+
+
+    ;打印 高级打印
+    <^p::Return
+    <^+p::Return
+    !p::Send "^p"
+    !+p::Send "^+p"
+
+    ; 反馈
+    !+i::Return
+
+    ;查看源码
+    ^u::Return
+    !u::Send "^u"
+
+    ;打开Chrome菜单
+    !f::Return
+    !e::Return
+    !/::!e
+
+    ;网页缩放
+    ^WheelUp::Return
+    ^WheelDown::Return
+    ^0::Return
+    ^-::Return
+    ^=::Return
+    !0::Send "^0"
+    !-::Send "^{-}"
+    !=::Send "^{=}"
+
+    <#\::{
+        if InStr(Screen.Name, "4K")
+            MoveWindowToPosition(Position(3300, 2000))
+        if InStr(Screen.Name, "2K")
+            MoveWindowToPosition(Position(2500, 1400))
+    }
+    <#+\::{
+        if Screens.Count == 1
+            return
+        pos := Position("[Center][2]", 0, 1600)
+        MoveWindowToPosition(pos)
+        MoveWindowToPosition(pos)
+    }
+
+
+    ; 前进后退
+    ~Lbutton & RButton::{
+        Send "!{Right}"
+    }
+    ~RButton & Lbutton::{
+        Send "!{Left}"
+        Sleep 250
+        Send "{Esc}"
+    }
+
+
+
+#HotIf

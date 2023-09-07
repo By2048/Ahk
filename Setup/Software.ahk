@@ -18,7 +18,6 @@
 #Include ..\Software\Android.ahk
 #Include ..\Software\BitComet.ahk
 #Include ..\Software\Chat.ahk
-#Include ..\Software\Chrome.ahk
 #Include ..\Software\Explorer.ahk
 #Include ..\Software\FFRenamePro.ahk
 #Include ..\Software\FoxMail.ahk
@@ -40,6 +39,12 @@
 #Include ..\Software\VSCode.ahk
 #Include ..\Software\Wallpaper.ahk
 #Include ..\Software\Windows.ahk
+
+#Include ..\Software\Browser\@.ahk
+#Include ..\Software\Browser\Chrome.ahk
+#Include ..\Software\Browser\Edge.ahk
+#Include ..\Software\Browser\FireFox.ahk
+#Include ..\Software\Browser\Opera.ahk
 
 #Include ..\Software\JetBrains\Lib.ahk
 #Include ..\Software\JetBrains\Keys.ahk

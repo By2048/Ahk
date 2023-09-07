@@ -19,7 +19,6 @@ ClipboardChange(origin)
 }
 
 
-
 UrlChange(origin)
 {
     result := origin
