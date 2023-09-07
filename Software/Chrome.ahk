@@ -183,7 +183,8 @@ Expand := False
             Sleep 99
             Send "^v"
             Send "{Enter}"
-            A_Clipboard := ""
+            A_Clipboard := origin
+            ClipWait
             cnt := 0
             return
         }
@@ -205,7 +206,8 @@ Expand := False
             Send "{F10 2}"
         }
 
-        A_Clipboard := ""
+        A_Clipboard := origin
+        ClipWait
         cnt := 0
     }
 
