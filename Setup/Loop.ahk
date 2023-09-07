@@ -59,33 +59,33 @@ Loop {
         }
     }
 
-    if (win_process_name == "Excel" and win_class == "NUIDialog") {
+    ; Excel 居中
+    if win_process_name == "Excel" and win_class == "NUIDialog"
         MoveWindowToCenter(True)
-    }
 
     ; Windows系统文件操作
     if (win_class == "#32770" or win_class == "OperationStatusWindow") {
         if (InStr(win_title, "属性")) {
-            xx := screen_x + screen_w/2 - win_w/2
-            yy := screen_y + screen_h/2 - win_h/2
-            SetWindow(xx, yy, win_w, win_h)
+            win_x := screen_x + screen_w/2 - win_w/2
+            win_y := screen_y + screen_h/2 - win_h/2
+            SetWindow(win_x, win_y, win_w, win_h)
             continue
         }
         if (InStr(win_title, "删除") or InStr(win_title, "替换") or InStr(win_title, "跳过")) {
-            xx := screen_x + screen_w/2 - win_w/2
-            yy := screen_y + screen_h/2 - win_h/2
+            win_x := screen_x + screen_w/2 - win_w/2
+            win_y := screen_y + screen_h/2 - win_h/2
             SetWindow(xx, yy, win_w, win_h)
             continue
         }
         if (InStr(win_title, "已完成")) {
-            xx := Screens.%Screens.Count%.x + Screens.%Screens.Count%.w/2 - win_w/2
-            yy := Screens.%Screens.Count%.y + Screens.%Screens.Count%.h/2 - win_h/2
-            SetWindow(xx, yy, win_w, win_h)
+            win_x := Screens.%Screens.Count%.x + Screens.%Screens.Count%.w/2   - win_w/2
+            win_y := Screens.%Screens.Count%.y + Screens.%Screens.Count%.h/3*4 - win_h/2
+            SetWindow(win_x, win_y, win_w, win_h)
             continue
         }
-        xx := Screen.x + Screen.w/2 - win_w/2
-        yy := Screen.y + Screen.h/2 - win_h/2
-        SetWindow(xx, yy, win_w, win_h)
+        win_x := Screen.x + Screen.w/2 - win_w/2
+        win_y := Screen.y + Screen.h/2 - win_h/2
+        SetWindow(win_x, win_y, win_w, win_h)
         continue
     }
 
