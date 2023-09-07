@@ -74,7 +74,7 @@ Loop {
         if (InStr(win_title, "删除") or InStr(win_title, "替换") or InStr(win_title, "跳过")) {
             win_x := screen_x + screen_w/2 - win_w/2
             win_y := screen_y + screen_h/2 - win_h/2
-            SetWindow(xx, yy, win_w, win_h)
+            SetWindow(win_x, win_y, win_w, win_h)
             continue
         }
         if (InStr(win_title, "已完成")) {
