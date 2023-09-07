@@ -134,6 +134,23 @@
     ^WheelUp::Return
     ^WheelDown::Return
 
+    ; 打开主右键菜单设置
+    !AppsKey::{
+        windows := GetActiveWindowInfo()
+        info := window.controls.DirectUIHWND3
+        content_x  := info.x
+        content_y  := info.y
+        content_w  := info.w
+        content_h  := info.h
+        content_xx := info.xx
+        content_yy := info.yy
+        x := content_x  + 10
+        y := content_yy - 10
+        MouseGetPos &x_origin, &y_origin
+        MouseClick "Right", x, y, 1, 0
+        MouseMove x_origin, y_origin, 0
+    }
+
     <#\::
     <#+\::{
         total_width := 1960 , total_height := 1250
