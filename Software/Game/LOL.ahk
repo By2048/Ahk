@@ -6,6 +6,8 @@
 
 #HotIf CheckWindowActive("LOL_Client")
 
+    ; D:\Game\英雄联盟\LeagueClient\LeagueClientUx.exe
+
     RWin::MoveWindowToCenter(True)
     Insert::SoftwareShot("T:\")
     Delete::SoftwareShot("F:\Game\LOL\")
@@ -29,8 +31,9 @@
 #HotIf
 
 
-
 #HotIf CheckWindowActive("LOL_Game")
+
+    ; D:\Game\英雄联盟\Game\League of Legends.exe
 
     #Include *i LOL.Game.Private.ahk
 

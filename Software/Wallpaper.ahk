@@ -34,6 +34,7 @@
         G.Show(Format("x{} y{} w{} h{}", x, y, w, h))
     }
 
+    ; 设置
     F10::Return
     AppsKey::Send "{F10}"
 
@@ -59,12 +60,9 @@
         }
     }
 
-    !PgUp::{
-        PageTool("PgUp")
-    }
-    !PgDn::{
-        PageTool("PgDn")
-    }
+    ; 翻页
+    !PgUp::PageTool("PgUp")
+    !PgDn::PageTool("PgDn")
 
     ; 订阅
     ![::{
