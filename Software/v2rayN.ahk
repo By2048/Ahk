@@ -69,4 +69,6 @@
 
     <#\::MoveWindowToPosition(Position(2100, 1200))
 
+    <#BackSpace::MouseClickAndResetting(1052, 73, "Window", "Left")
+
 #HotIf
