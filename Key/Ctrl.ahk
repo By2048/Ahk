@@ -34,7 +34,6 @@
 >^l::Run "C:\Program Files\LogiOptionsPlus\LogiOptionsPlus.exe"
 
 >^x::Run "D:\#Lnk\#\Xshell.lnk"
->^v::Run VSCodeDefault, A_InitialWorkingDir, "Hide"
 >^n::Run "D:\#Lnk\#\CloudMusic.lnk"
 >^+n::Run "D:\#Lnk\#\QQMusic.lnk"
 >^m::Run "D:\#Lnk\#\PotPlayer.lnk"
@@ -42,10 +41,9 @@
 >^Esc::Run "TaskMgr" ;任务管理器
 >^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
 
- >^[::Run VSCode " E:\VSCode\Note.code-workspace"    , A_InitialWorkingDir, "Hide"
- >^]::Run VSCode " E:\VSCode\Ahk.code-workspace"     , A_InitialWorkingDir, "Hide"
- >^\::Run VSCode " E:\VSCode\Windows.code-workspace" , A_InitialWorkingDir, "Hide"
->^+\::Run VSCode " --new-window"                     , A_InitialWorkingDir, "Hide"
+>^\::Run VSCode " E:\VSCode\Windows.code-workspace", A_InitialWorkingDir, "Hide"
+>^]::Run VSCode " --new-window", A_InitialWorkingDir, "Hide"
+>^[::Run VSCodeDefault " --new-window", A_InitialWorkingDir, "Hide"
 
  >^,::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
 >^+,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站

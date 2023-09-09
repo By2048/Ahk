@@ -8,11 +8,10 @@
 |  H | WindowSpy      |  / | Chrome          |
 | +H | WindowSpy      | +/ | ChromeDefault   |
 |  J | JetBrains      |----|-----------------|
-|  K | 显示虚拟键盘   |  [ | VSCode Notes    |
-|  L | LogiOptions    |  ] | VSCode Ahk      |
+|  K | 显示虚拟键盘   |  [ | VSCode Default  |
+|  L | LogiOptions    |  ] | VSCode NewWin   |
 |----|----------------|  \ | VSCode Windows  |
-|  X | XShell         | +\ | VSCode          |
-|  V | VSCodeDefault  |-------|--------------|
+|  X | XShell         |-------|--------------|
 |  N | CloudMusic     |   Esc | 任务管理器   |
 | +N | QQMusic        |  +Esc | HuoRongSword |
 |  M | PotPlayer      |                       
