@@ -3,9 +3,11 @@ $RAlt::EN()
 $RCtrl::ZH()
 $RWin::Return
 
+; ------------------------------------------------- ;
+
+<#Tab::AltTab
 >^Esc::Run "Taskmgr.exe"
 >^/::Run "Chrome.bat", A_InitialWorkingDir, "Hide"
->^.::AltTab
 
 ; ------------------------------------------------- ;
 
