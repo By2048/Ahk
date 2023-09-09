@@ -128,7 +128,6 @@ Browser := "Chrome|Edge|Opera|FireFox"
 
     ;重新打开标签页
     ^+t::Return
-    +CapsLock::
     !+CapsLock::{
         Send "^+t"
         SetCapsLockState "Off"
