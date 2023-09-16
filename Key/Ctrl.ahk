@@ -11,11 +11,11 @@
 >^y::Run "D:\#Lnk\#\v2rayN.lnk"
 >^p::Run WT " -d T:\"
 
->^s::Run "D:\#Lnk\#\Sandboxie.lnk"
->^f::Run "D:\#Lnk\#\FreeFileSync.lnk"
->^h::Run AutoHotkey " D:\AutoHotkey\V2\WindowSpy.ahk"
+ >^s::Run "D:\#Lnk\#\Sandboxie.lnk"
+ >^f::Run "D:\#Lnk\#\FreeFileSync.lnk"
+ >^h::Run AutoHotkey " D:\AutoHotkey\V2\WindowSpy.ahk"
 >^+h::Run "E:\GitX\AhkSpy\AhkSpy.exe"
->^j::{
+ >^j::{
     Run "D:\#Lnk\JetBrains.lnk"
     exe  := Windows_Process.Get("JetBrainsToolBox")
     rule := Format("ahk_exe {}", exe)
@@ -33,28 +33,29 @@
 >^k::KeyboardGUI()
 >^l::Run "C:\Program Files\LogiOptionsPlus\LogiOptionsPlus.exe"
 
->^x::Run "D:\#Lnk\#\Xshell.lnk"
->^n::Run "D:\#Lnk\#\CloudMusic.lnk"
+ >^x::Run "D:\#Lnk\#\Xshell.lnk"
+ >^n::Run "D:\#Lnk\#\CloudMusic.lnk"
 >^+n::Run "D:\#Lnk\#\QQMusic.lnk"
->^m::Run "D:\#Lnk\#\PotPlayer.lnk"
+ >^m::Run "D:\#Lnk\#\PotPlayer.lnk"
 
->^Esc::Run "TaskMgr" ;任务管理器
+ >^Esc::Run "TaskMgr" ;任务管理器
 >^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
 
->^\::Run VSCode " E:\VSCode\Windows.code-workspace", A_InitialWorkingDir, "Hide"
->^]::Run VSCode " --new-window", A_InitialWorkingDir, "Hide"
->^[::Run VSCodeDefault " --new-window", A_InitialWorkingDir, "Hide"
+ >^\::Run VSCode " E:\Config\VSCode\Windows.code-workspace", A_InitialWorkingDir, "Hide"
+>^+\::Run VSCode " T:\", A_InitialWorkingDir, "Hide"
+ >^]::Run VSCode " --new-window", A_InitialWorkingDir, "Hide"
+ >^[::Run VSCodeDefault " --new-window", A_InitialWorkingDir, "Hide"
 
  >^,::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
 >^+,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
- >^.::Run "T:\\"
->^+.::Run "V:\\"
+ >^.::Run "T:\"
+>^+.::Run "V:\"
  >^/::Run "Chrome.bat",        A_InitialWorkingDir, "Hide"
 >^+/::Run "ChromeDefault.bat", A_InitialWorkingDir, "Hide"
 
->^Up::Return
->^Down::Return
->^Left::Return
+   >^Up::Return
+ >^Down::Return
+ >^Left::Return
 >^Right::Return
 
 
