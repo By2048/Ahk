@@ -2,6 +2,7 @@
 EscRedirect := False
 EscCount := 0
 
+
 #HotIf ( EscRedirect == True )
     $Esc::
     $CapsLock::{
@@ -29,7 +30,7 @@ EscCount := 0
         MoveWindowToPosition(Position(1700 , 1200))
         _1 := " 1    2     3    4        "
         _2 := " 名称  路径  大小  修改时间  "
-        _3 := " 650  650   150  200      "
+        _3 := " 750  600   120  180      "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321", config)
     }
