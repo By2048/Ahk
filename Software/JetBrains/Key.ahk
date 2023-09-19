@@ -1,7 +1,10 @@
 ﻿
-#Include *i Lib.ahk
+#Include *i Tool.ahk
+#Include *i Position.ahk
+
 
 JApps := "PyCharm|IDEA"
+
 
 #HotIf CheckWindowActive(JApps, "SunAwtDialog", "终端|运行|调试")
     ~RAlt::{
@@ -157,7 +160,7 @@ CenterToolsConfig := []
 CapsLockActivate := False
 #HotIf CheckWindowActive(JApps)
 
-    #Include *i Keys.Fxx.ahk
+    #Include *i Key.Fxx.ahk
 
     ~Esc::{
         global CapsLockActivate
@@ -233,7 +236,6 @@ CapsLockActivate := False
     ;     CenterHideWindow(1600, 1000)
     ; }
 
-    #Include *i Position.ahk
     <#\::{
         MoveWindowToDefaultPosition()
     }
@@ -263,7 +265,7 @@ CapsLockActivate := False
     <!Tab::Send "^{Tab}"
     <!+Tab::Send "^+{Tab}"
 
-    #Include *i Keys.CapsLock.ahk
+    #Include *i Key.CapsLock.ahk
 
     ; 代码注释
     ; ^\::Return

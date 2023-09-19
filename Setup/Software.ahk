@@ -41,17 +41,16 @@
 #Include ..\Software\Wallpaper.ahk
 #Include ..\Software\Windows.ahk
 
-#Include ..\Software\Browser\@.ahk
 #Include ..\Software\Browser\Chrome.ahk
 #Include ..\Software\Browser\Edge.ahk
 #Include ..\Software\Browser\FireFox.ahk
 #Include ..\Software\Browser\Opera.ahk
+#Include ..\Software\Browser\Key.ahk
 
-#Include ..\Software\JetBrains\Lib.ahk
-#Include ..\Software\JetBrains\Keys.ahk
 #Include ..\Software\JetBrains\ToolBox.ahk
 #Include ..\Software\JetBrains\IDEA.ahk
 #Include ..\Software\JetBrains\PyCharm.ahk
+#Include ..\Software\JetBrains\Key.ahk
 
 #SingleInstance Force
 #NoTrayIcon

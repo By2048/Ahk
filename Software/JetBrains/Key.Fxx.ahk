@@ -73,7 +73,7 @@ F2Timer() {
         Send "{F2}"
     } else if (cnt == 2) {
         Send "^{F2}"
-        HelpText("`nF2 * 2`n", "Center", "Screen", 300)
+        HelpText("`n F2 * 2 `n", "Center", "Screen", 300)
         ; Send "!{F2}"
         ; WinWaitActive "断点"
         ; Send "!d"
