@@ -22,7 +22,7 @@ LWin & RWin::{
     } else {
         Run "Setup.bat Start", A_InitialWorkingDir, "Hide"
     }
-    HelpText("`nReload All Script`n", "Center", "Screen" . Screens.Count, 1000)
+    HelpText("`n Reload All Script `n", "Center", "Screen" . Screens.Count, 1000)
     Reload
 }
 
@@ -36,9 +36,9 @@ RWin & LWin::{
         Run "Setup.bat Stop", A_InitialWorkingDir, "Hide"
     }
     if (Screens.Count == 1) {
-        HelpText("`nClose All Script`n", "Center", "Screen", 1000)
+        HelpText("`n Close All Script `n", "Center", "Screen", 1000)
     } else if (Screens.Count > 1) {
-        HelpText("`nClose All Script`n", "Center", "Screen" . Screens.Count, 1000)
+        HelpText("`n Close All Script `n", "Center", "Screen" . Screens.Count, 1000)
     }
 }
 
