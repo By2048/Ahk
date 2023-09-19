@@ -8,6 +8,7 @@
 
 >^q::Run "E:\Config\PC.qdr"
 >^e::Run "D:\#Lnk\#\Everything.lnk"
+>^r::Run "RegEdit"
 >^y::Run "D:\#Lnk\#\v2rayN.lnk"
 >^p::Run WT " -d T:\"
 
