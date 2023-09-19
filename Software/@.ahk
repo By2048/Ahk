@@ -65,3 +65,13 @@ EscCount := 0
       [::Send "{Left}"
     End::Send "{Delete}{Enter}"
 #HotIf
+
+
+; 文件预览
+#HotIf CheckWindowActive("PowerToys.Peek.UI")
+    Esc::
+    CapsLock::{
+        ; WinClose "A"
+        Send "^{Space}"
+    }
+#HotIf

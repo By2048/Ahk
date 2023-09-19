@@ -1,35 +1,4 @@
 ﻿
-; 打开的窗口
-#HotIf CheckWindowActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|另存为|浏览" )
-
-    ; 文件名修改框
-    /::ControlFocus "Edit1", "A"
-
-    #IncludeAgain Explorer.Base.ahk
-
-    !/::ControlFocus "SysTreeView321", "A"
-    !\::{
-        ControlFocus "DirectUIHWND2", "A"
-        Send "{Home}"
-    }
-
-    ; 默认位置
-    <#\::{
-        MoveWindowToDefaultPosition()
-        InitWindowArgs()
-        GetActiveWindowInfo("Window")
-        try {
-            info := window.controls.DirectUIHWND2 ;左侧信息栏
-        } catch {
-            return
-        }
-        MoveControlUDLR(info, 0, 0, 300, 0, 6)
-        Send "^!7" ;平铺模式
-    }
-
-#HotIf
-
-
 ; Windows 安全中心警报
 #HotIf CheckWindowActive( "" , "#32770" , "安全中心警报" )
     Enter::{
@@ -165,24 +134,27 @@
     ^r::Send "{F2}"
 
     F5::Return
-    $RShift::Send "{F5}"
+    $CapsLock::Send "{F5}"
 
     <#\::{
-        total_width := 1800
-        total_height := 1200
+        InitWindowArgs()
+
+        total_width  := 2222
+        total_height := 1222
         MoveWindowToPosition(Position(total_width , total_height))
 
         name  := "SysListView321"
         width := Map( 1 , 400   ; 名称
-                    , 2 , 170   ; 类型
-                    , 3 , 550 ) ; 数据
+                    , 2 , 171   ; 类型
+                    , 3 , 888 ) ; 数据
         SetColumnWidth(name, width)
 
-        max_left := 633
+        max_left := 733
         offset   := 33
-        if ( Abs(max_left - window.controls.SysTreeView321.w) < offset ) {
+
+        if ( Abs(max_left - window.controls.SysTreeView321.w) < offset )
             return
-        }
+
         CoordMode "Mouse", "Window"
         MouseGetPos &x_origin, &y_origin
         Send "{Alt Down}{v}{Alt Up}{Down}{Enter}"

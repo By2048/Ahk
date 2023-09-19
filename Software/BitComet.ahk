@@ -30,10 +30,10 @@
 #HotIf CheckWindowActive("BitComet")
 
     <#\::{
-        total_width := 2250
-        total_height := 1100
-        max_left := 200
-        offset := 9
+        total_width  := 2222
+        total_height := 1111
+        max_left := 191
+        offset   := 9
 
         MoveWindowToPosition(Position(total_width , total_height))
 

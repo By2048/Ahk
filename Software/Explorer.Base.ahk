@@ -51,10 +51,13 @@ F5::Return
 
 ; 输入文件名 默认
 ; 切换焦点 在输入框
+; 切换桌面焦点
 F6::Return
 +F6::Return
->+/::Send "{F6}"
-<+/::Send "+{F6}"
+; >+/::Send "{F6}"
+; <+/::Send "+{F6}"
+!Tab::Send "{F6}"
+!+Tab::Send "+{F6}"
 
 ; 地址栏
 !d::Return
@@ -67,7 +70,9 @@ F6::Return
 ^l::Return
 
 ; 显示选定文件夹上的所有文件夹
-^+e::Return
+; 目录中定位到文件夹
+; ^+e::Return
+^g::Send "^+e"
 
 ; 创建新文件夹
 ^+n::Return

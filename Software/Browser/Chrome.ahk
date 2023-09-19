@@ -126,6 +126,7 @@ Expand := False
             Sleep 99
             Send "^v"
             Send "{Enter}"
+            Sleep 99
             A_Clipboard := origin
             ClipWait
             cnt := 0
@@ -136,6 +137,7 @@ Expand := False
         Send "!d"
         Send "^c"
         ClipWait
+        Sleep 33
 
         url_origin := A_Clipboard
         url_result := UrlChange(url_origin)
@@ -143,6 +145,7 @@ Expand := False
         if (url_result != url_origin) {
             A_Clipboard := url_result
             ClipWait
+            Sleep 33
             Send "^v"
             Send "{Enter}"
         } else {

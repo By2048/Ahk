@@ -71,9 +71,11 @@
     F11::Run "V:\"
     F12::Run "T:\"
     RAlt & RWin::Return
+    ; ^r::Send "{F2}"
 #HotIf
 
-#HotIf CheckWindowActive( "Explorer" )
+; 文件管理器
+#HotIf CheckWindowActive( "Explorer" , "CabinetWClass" )
 
     ; Ctrl+F 选择搜索框
     ; Alt+D 选择地址栏
@@ -89,8 +91,6 @@
     ; Num Lock + 加号 (+) 显示选定文件夹中的内容
     ; Num Lock + 减号 (-) 折叠选定文件夹
 
-    #IncludeAgain Explorer.Base.ahk
-
     ; 功能区展开缩放
     !`::Send "^{F1}"
     ^F1::Return
@@ -104,7 +104,7 @@
 
     !/::ControlFocus "SysTreeView321", "A"
     !\::{
-        ControlFocus "DirectUIHWND3",  "A"
+        ControlFocus "DirectUIHWND3", "A"
         Send "{PgDn}{PgUp}"
     }
 
@@ -117,10 +117,10 @@
     ; 前进|返回|历史
     ; 切换到树状列表
     ; 文件夹列表
-    !Tab::{
-        Send "^+e" ;目录树定位到文件夹
-        Send "{F6}" ;切换焦点
-    }
+    ; !Tab::{
+    ;     Send "^+e" ;目录中定位到文件夹
+    ;     Send "{F6}" ;切换焦点
+    ; }
     ^Tab::Return
     ^+Tab::Return
 
@@ -153,11 +153,10 @@
 
     <#\::
     <#+\::{
-        total_width := 1960 , total_height := 1250
+        total_width := 1960 , total_height := 1250 , offset_down := -8
         total_left := 317  , offset_left := -6
-        total_right := 411 , offset_right := 12
-        input_check_width := 388 , input_move_width := 426 , input_offset := 4
-        line_width := 26
+        total_right := 411 , right_line_width := 26 , offset_right := 12
+        input_check_width := 388 , input_move_width := 426 , offset_input := 4
 
         EC := Map( "File"     , "ItemNameDisplay:1150"
                  , "Default"  , "ItemNameDisplay:800 ItemDate:200 Size:150"
@@ -191,11 +190,12 @@
             or origin_y != current_y
             or origin_w != current_w
             or origin_h != current_h ) {
-            offset := -10
-            MouseMove current_w/2, current_h + offset, 0
+            MouseMove current_w/2, current_h + offset_down, 0
+            ; Todo 根据鼠标样式进行判断
             MouseClickDrag "Left", 0, 0, 0, -30, 0, "R"
             MouseClickDrag "Left", 0, 0, 0,  30, 0, "R"
         }
+
 
         config := ""
         if (!EC.Has(window.title)) {
@@ -247,10 +247,10 @@
         }
 
         ; 搜索框
-        if ( Abs(input_w - input_check_width) > Abs(input_offset) ) {
+        if ( Abs(input_w - input_check_width) > Abs(offset_input) ) {
             MouseClickDrag "Left"
-                           , input_x  + input_offset                        , input_y + input_h/2
-                           , total_width - input_move_width  + input_offset , input_y + input_h/2
+                           , input_x     + offset_input                    , input_y + input_h/2
+                           , total_width - input_move_width + offset_input , input_y + input_h/2
                            , 0
         }
         ; 左侧树状信息
@@ -261,13 +261,50 @@
                            , 0
         }
         ; 右侧预览
-        if ( Abs(total_width - content_xx - total_right - line_width) > Abs(offset_right) ) {
+        if ( Abs(total_width - content_xx - total_right - right_line_width) > Abs(offset_right) ) {
             MouseClickDrag "Left"
-                           , content_xx + offset_right                , content_yy/2 - content_y/2
+                           , content_xx  + offset_right               , content_yy/2 - content_y/2
                            , total_width - total_right - offset_right , content_yy/2 - content_y/2
                            , 0
         }
         MouseMove x_origin, y_origin, 0
+    }
+
+#HotIf
+
+; 通用设置
+#HotIf CheckWindowActive( "Explorer" )
+
+    #Include *i Explorer.Base.ahk
+
+#HotIf
+
+; 打开的窗口
+#HotIf CheckWindowActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|选择文件夹|另存为|浏览" )
+
+    ; 文件名修改框
+    /::ControlFocus "Edit1", "A"
+
+    #Include *i Explorer.Base.ahk
+
+    !/::ControlFocus "SysTreeView321", "A"
+    !\::{
+        ControlFocus "DirectUIHWND2", "A"
+        Send "{Home}"
+    }
+
+    ; 默认位置
+    <#\::{
+        MoveWindowToDefaultPosition()
+        InitWindowArgs()
+        GetActiveWindowInfo("Window")
+        try {
+            info := window.controls.DirectUIHWND2 ;左侧信息栏
+        } catch {
+            return
+        }
+        MoveControlUDLR(info, 0, 0, 300, 0, 6)
+        Send "^!7" ;平铺模式
     }
 
 #HotIf

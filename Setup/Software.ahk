@@ -14,6 +14,7 @@
 #Include ..\Tool\Gui.ahk
 
 #Include ..\Software\@.ahk
+
 #Include ..\Software\7-Zip.ahk
 #Include ..\Software\Android.ahk
 #Include ..\Software\BitComet.ahk
