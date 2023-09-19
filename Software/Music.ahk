@@ -21,13 +21,15 @@
     /::{
         global CM_Main_Detail
         if ( CM_Main_Detail == "Main" ) {
-            MouseClickAndResetting(89, 1124, "Window")
+            MouseClickAndResetting(85, 1172, "Window")
             CM_Main_Detail := "Detail"
         } else if ( CM_Main_Detail == "Detail" ) {
             MouseClickAndResetting(85, 72, "Window")
             CM_Main_Detail := "Main"
         }
     }
+
+    $RShift::MouseClickAndResetting(857, 1130, "Window")
 
     \::Send "!\"
     [::{
