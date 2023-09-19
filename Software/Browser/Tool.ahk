@@ -95,13 +95,10 @@ AriaDownload(url, folder:="T:\", name:="")
     if not url
         return
 
-    if ( name ) {
-        name := name
-        info := name
-    } else {
+    if not name
         name := RegExReplace(url, "(http.*/)([\d\w]+\.\w)", "$2")
-        info := SubStr(name, 1, 5) . "..." . SubStr(name, -9)
-    }
+
+    info := name
 
     if not DirExist(folder)
         DirCreate folder
@@ -117,7 +114,7 @@ AriaDownload(url, folder:="T:\", name:="")
     else
         info := "#" . info
 
-    HelpText(info, "CenterDown", "Screen", 500)
+    HelpText(info, "CenterDown", "Screen", 700)
 }
 
 
