@@ -3,9 +3,7 @@
 
     <#\::{
         MoveWindowToPosition(Position(650, 900))
-        config := Map( 1 , 150
-                     , 2 , 420 )
-        SetColumnWidth("SysListView321", config)
+        SetColumnWidth("SysListView321", Map( 1,150 , 2,420 ))
     }
 
 #HotIf
@@ -43,8 +41,14 @@
 
     ; 选择所有
     >![::{
-        Sleep 500
-        max_select := 19
+        Sleep 300
+
+        win_title := WinGetTitle("A")
+        if InStr(win_title, "rar")
+            max_select := 24
+        else
+            max_select := 19
+
         Loop max_select {
             Send "{RButton}"
             Sleep 300
@@ -55,8 +59,14 @@
 
     ; 选择指定列
     >!]::{
-        Sleep 500
-        all_select := [ 17, 18, 2, 4 ]
+        Sleep 300
+
+        win_title := WinGetTitle("A")
+        if InStr(win_title, "rar")
+            all_select := [ 21, 22, 2 ]
+        else
+            all_select := [ 17, 18, 2 ]
+
         for index, item in all_select {
             Send "{RButton}"
             Sleep 300
