@@ -53,21 +53,19 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
         return
     }
 
-    zh_cn_count := ZHCN_Count(data)
-    total_count := StrLen(data)
-    total_count := total_count > 6 ? total_count : 6
-
-    text_x := text_y := 1
-    text_w := (total_count + zh_cn_count) * Font.Size * Font.Dpi
+    data   := Gui_Help.Start . data . Gui_Help.End
+    text_x := Gui_Help.X
+    text_y := Gui_Help.Y
+    text_w := 0
     text_h := 0
 
+    Global Gui_Help
     GHT.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
     GHT.MarginX := 0
     GHT.MarginY := 0
-    GHT.SetFont(Format("s{}", Font.Size), Font.Type)
-    xywh := Format("x{1} y{2} w{3}", text_x, text_y, text_w)
-    GHT.Add("Text", "+Center +Border vTextContent " . xywh, data)
-    GHT["TextContent"].GetPos(&_, &_, &_, &text_h)
+    GHT.SetFont(Format("s{}", Gui_Help.Font.Size), Gui_Help.Font.Type)
+    GHT.Add("Text", Format("+Center +Border vTextContent x{} y{}", text_x, text_y), data)
+    GHT["TextContent"].GetPos(&text_x, &text_y, &text_w, &text_h)
 
     screen_config := {}
     screen_id := ScreenNameToId(screen_name)
@@ -96,8 +94,8 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 
     gui_x := 0
     gui_y := 0
-    gui_w := text_w + 2
-    gui_h := text_h + 2
+    gui_w := text_w + Gui_Help.X * 2
+    gui_h := text_h + Gui_Help.Y * 2
 
     xy := Format("{:L}", xy)
     xy := StrReplace(xy, "|", "")
@@ -134,7 +132,3 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
         GlobalSet("Status", "help_text_show_status", False)
     }
 }
-
-
-HT := HelpText
-HI := HelpImage

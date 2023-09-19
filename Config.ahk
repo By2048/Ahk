@@ -6,7 +6,13 @@ AutoHotkey := "D:\AutoHotkey\#\AutoHotkey.exe"
 Reg_Path := "HKEY_CURRENT_USER\SOFTWARE\AutoHotkey"
 
 ; HelpText 配置
-Font := { Dpi:2 , Size:25 , Type:"Courier New" }
+Gui_Help := {
+    Font  : { Size : 25 , Type : "Courier New" } ,
+    Start : " " ,
+    End   : " " ,
+    X     : 1   ,
+    Y     : 1
+}
 
 ; 检测窗口位置时允许的偏移量（某些窗口全屏 xy为-11,-11）
 Window_Screen_Offset := 15
