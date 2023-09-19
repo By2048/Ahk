@@ -2,18 +2,18 @@
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*" )
     $CapsLock::
     +CapsLock::{
-        tmp := A_Clipboard
+        origin := A_Clipboard
         Sleep 33
         Send "{RButton}"
-        Sleep 66
         Send "{Down 4}"
-        Sleep 33
         Send "{Enter}"
-        Sleep 33
+        Sleep 66
         url := A_Clipboard
         if not url
             return
         url := UrlChange(url)
+        if not InStr(url, "http")
+            return
         global Chrome_Image_Download
         if ( A_ThisHotkey == "$CapsLock" )
             AriaDownload(url, Chrome_Image_Download)
@@ -23,7 +23,7 @@
             file := time . ext
             AriaDownload(url, Chrome_Image_Download, file)
         }
-        A_Clipboard := tmp
+        A_Clipboard := origin
         SetCapsLockState "Off"
     }
 #HotIf
@@ -115,19 +115,22 @@ Expand := False
             return
         }
 
-        origin := A_Clipboard
-        result := ClipboardChange(origin)
+        url_origin := A_Clipboard
 
-        if ( origin != result ) {
-            A_Clipboard := result
+        ; 处理直接在网页中复制的数据
+        url_result := ClipboardChange(A_Clipboard)
+        if ( url_origin != url_result ) {
+            A_Clipboard := ""
+            A_Clipboard := url_result
             ClipWait
             Send "^t"
+            Sleep 33
             Send "!d"
-            Sleep 99
+            Sleep 33
             Send "^v"
             Send "{Enter}"
-            Sleep 99
-            A_Clipboard := origin
+            A_Clipboard := ""
+            A_Clipboard := url_origin
             ClipWait
             cnt := 0
             return
@@ -136,23 +139,23 @@ Expand := False
         A_Clipboard := ""
         Send "!d"
         Send "^c"
+        Send "{F10 2}"
         ClipWait
-        Sleep 33
 
-        url_origin := A_Clipboard
-        url_result := UrlChange(url_origin)
-
+        url_result := UrlChange(A_Clipboard)
         if (url_result != url_origin) {
+            A_Clipboard := ""
             A_Clipboard := url_result
             ClipWait
+            Send "!d"
             Sleep 33
             Send "^v"
+            Sleep 33
             Send "{Enter}"
-        } else {
-            Send "{F10 2}"
         }
 
-        A_Clipboard := origin
+        A_Clipboard := ""
+        A_Clipboard := url_origin
         ClipWait
         cnt := 0
     }
