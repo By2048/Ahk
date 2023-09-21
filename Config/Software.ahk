@@ -96,19 +96,18 @@ Games_Process.Push( "LOL_Game"   )
 ; 快捷键图片对应关系
 Software_Keys_Help := Map()
 
-Software_Keys_Help["Default"                ] := "Windows"
-Software_Keys_Help["Explorer_CabinetWClass" ] := "Explorer"
-Software_Keys_Help["Explorer_WorkerW"       ] := "Windows | Fxx"
-Software_Keys_Help["VSCode"                 ] := "VSCode"
-Software_Keys_Help["Xshell"                 ] := "Xshell"
-Software_Keys_Help["SumatraPDF"             ] := "SumatraPDF"
-Software_Keys_Help["PyCharm"                ] := "PyCharm.FC | PyCharm"
-Software_Keys_Help["QuiteRSS"               ] := "QuiteRSS"
-Software_Keys_Help["Chrome"                 ] := "Chrome | Chrome.Fxx"
-Software_Keys_Help["Chrome__Bilibili"       ] := "Chrome.Bilibili"
-Software_Keys_Help["Chrome__知乎"            ] := "Chrome.ZhiHu"
-Software_Keys_Help["PotPlayer"              ] := "PotPlayer"
-
+Software_Keys_Help["Default"                ] := "Config\Windows"
+Software_Keys_Help["Explorer_CabinetWClass" ] := "Software\Explorer"
+Software_Keys_Help["Explorer_WorkerW"       ] := "Config\Windows | Software\Explorer.Fxx"
+Software_Keys_Help["VSCode"                 ] := "Software\VSCode"
+Software_Keys_Help["Xshell"                 ] := "Software\NetSarang.Xshell"
+Software_Keys_Help["SumatraPDF"             ] := "Software\SumatraPDF"
+Software_Keys_Help["PyCharm"                ] := "Software\JetBrains\PyCharm.FC | Software\JetBrains\PyCharm"
+Software_Keys_Help["QuiteRSS"               ] := "Software\QuiteRSS"
+Software_Keys_Help["Chrome"                 ] := "Software\Browser\Chrome | Software\BrowserChrome.Fxx"
+Software_Keys_Help["Chrome__Bilibili"       ] := "Software\Browser\Chrome.Bilibili"
+Software_Keys_Help["Chrome__知乎"            ] := "Software\Browser\Chrome.ZhiHu"
+Software_Keys_Help["PotPlayer"              ] := "Software\PotPlayer"
 
 
 Init_Software_Keys_Help() {
@@ -119,8 +118,8 @@ Init_Software_Keys_Help() {
         else
             config := [config]
         obj := []
-        for index, value in config {
-            file := Format("{}\Config\Help\{}.txt", A_InitialWorkingDir, Value)
+        for cfg in config {
+            file := Format("{}\{}.help", A_InitialWorkingDir, cfg)
             content := ""
             if FileExist(file)
                 content := FileRead(file, "`n UTF-8")

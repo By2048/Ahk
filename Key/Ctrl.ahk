@@ -109,7 +109,7 @@ CtrlHelpGui()
     ctrl_gui_status := True
 
     if (not ctrl_content) {
-        file := A_InitialWorkingDir . "\Key\Ctrl.txt"
+        file := A_InitialWorkingDir . "\Key\Ctrl.help"
         if FileExist(file)
             ctrl_content := FileRead(file, "`n UTF-8")
     }
