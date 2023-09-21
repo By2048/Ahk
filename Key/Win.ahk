@@ -198,18 +198,20 @@
 ^!i::Return
 <#i::Send "^!i"
 
-; PowerToys Orc
-; <#o::Return
-
-; 窗口置顶
-<#t::Send "^!t"
+; PowerToy
+; #t 窗口置顶
+; #o Orc
+<#x::Send "#^!x"    ; 裁剪
+<#+x::Send "#^!+x"  ; 锁定
+<#g::Send "#^!g"    ; 鼠标荧光笔
+<#+g::Send "#^!+g"  ; 屏幕标尺
 
 ;切换任务栏应用（预览
 <#[::Send "#+t"
 <#]::Send "#t"
 
 ;插入表情
-<#j::Send "#`;"
+<#j::#`;
 
 <#,::Send "#x" ;系统菜单
 <#.::Run "control" ;控制面板
@@ -239,10 +241,8 @@
     HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
 }
 
-; 剪切板内容处理粘贴
-<#v::{
-    return
-}
+; Windows原生剪切板内容处理粘贴
+; #v::Return
 
 ; 同步复制
 <#+c::{
