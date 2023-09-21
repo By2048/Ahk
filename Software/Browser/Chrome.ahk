@@ -124,7 +124,7 @@ Expand := False
             A_Clipboard := url_result
             ClipWait
             Send "^t"
-            Sleep 33
+            Sleep 333
             Send "!d"
             Sleep 33
             Send "^v"
