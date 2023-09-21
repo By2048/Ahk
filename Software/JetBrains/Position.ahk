@@ -16,15 +16,14 @@ WPD["PyCharm__书签"] := Position(1000 , 1500)
 
 WPD["PyCharm__编辑宏"] := Position(1300 , 1000)
 
-WPD["PyCharm__编辑配置设置"] := Position(1300 , 1600)
+WPD["PyCharm__编辑配置设置"] := Position(888 , 1030)
 
 WPD["PyCharm__指定检查范围"] := Position(1500 , 1000)
 WPD["PyCharm__将提交推送到"] := Position(1500 , 1000)
 
 WPD["PyCharm__自定义调试"] := Position(0.3 , 0.7)
-
-WPD["PyCharm__编辑运行配置"] := Position(0.5 , 0.8)
-WPD["PyCharm__运行/调试配置"] := Position(0.5 , 0.8)
+WPD["PyCharm__运行/调试配置"] := Position(0.46 , 0.73)
+WPD["PyCharm__编辑运行配置"] := Position(0.5 , 0.75)
 
 ; WPD["PyCharm__查找"]     := Position4K(1600 , 1500)
 ; WPD["PyCharm__检查"]     := Position4K(1600 , 1500)
@@ -49,8 +48,11 @@ WPD["PyCharm__选择路径"]      := Position(0.3 , 0.7)
 WPD["PyCharm__选择"]         := Position(0.3 , 0.7)
 WPD["PyCharm__打开文件或项目"] := Position(0.3 , 0.7)
 
+WPD["PyCharm__宏"] := Position(0.4 , 0.7)
+
 WPD["PyCharm__提交更改"] := Position(0.45 , 0.75)
 WPD["PyCharm__回滚更改"] := Position(0.45 , 0.75)
+
 
 WPD["PyCharm__设置"] := Position(0.65 , 0.77)
 WPB["PyCharm__设置"] := Position(0.76 , 0.88)
@@ -76,15 +78,17 @@ WPD["PyCharm__GrepConsole"] := Position(0.8 , 0.8)
 WPD["PyCharm__数据库"] := Position(0.8 , 0.8)
 WPD["PyCharm__服务"]   := Position(0.8 , 0.8)
 
+WPD["PyCharm__运行"] := Position(0.8 , 0.8)
 WPD["PyCharm__终端"] := Position(0.8 , 0.9)
-WPD["PyCharm__运行"] := Position(0.8 , 0.9)
 WPD["PyCharm__调试"] := Position(0.8 , 0.9)
-try {
+Try {
     x := Screens.2.x
     y := Screens.2.yy / 2 - Screens.2.y / 2 - 200
     w := Screens.2.w
     h := Screens.2.h / 2
-    WPB["PyCharm__调试"] := [x, y, w, h]
+    WPB["PyCharm__运行"] := [ x , y , w , h ]
+    WPD["PyCharm__终端"] := [ x , y , w , h ]
+    WPD["PyCharm__调试"] := [ x , y , w , h ]
 }
 
 WPD["PyCharm__Python控制台"] := Position(0.9 , 0.9)
