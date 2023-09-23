@@ -1,4 +1,7 @@
 ﻿
+#Include *i Chrome.Private.ahk
+
+
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*" )
     $CapsLock::
     +CapsLock::{
@@ -25,28 +28,6 @@
         }
         A_Clipboard := origin
         SetCapsLockState "Off"
-    }
-#HotIf
-
-
-#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "WeTab新标签页*" )
-    ; 刷新
-    PgDn::{
-        MouseGetPos &x, &y
-        Send "{RButton}"
-        xx := x + 50
-        yy := y + 140
-        MouseClick "Left", xx, yy, 1, 0
-        MouseMove x, y, 0
-    }
-    ; 下载
-    PgUp::{
-        MouseGetPos &x, &y
-        Send "{RButton}"
-        xx := x + 50
-        yy := y + 195
-        MouseClick "Left", xx, yy, 1, 0
-        MouseMove x, y, 0
     }
 #HotIf
 
@@ -124,9 +105,9 @@ Expand := False
             A_Clipboard := url_result
             ClipWait
             Send "^t"
-            Sleep 333
+            Sleep 500
             Send "!d"
-            Sleep 33
+            Sleep 50
             Send "^v"
             Send "{Enter}"
             A_Clipboard := ""
@@ -148,9 +129,9 @@ Expand := False
             A_Clipboard := url_result
             ClipWait
             Send "!d"
-            Sleep 33
+            Sleep 50
             Send "^v"
-            Sleep 33
+            Sleep 50
             Send "{Enter}"
         }
 

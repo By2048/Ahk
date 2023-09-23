@@ -10,8 +10,8 @@ ClipboardChange(origin)
     }
 
     ; 作品ID：111186810
-    if ( InStr(origin, "作品ID", "Off") ) {
-        image := RegExReplace(origin, "(作品ID)(.*?)(\d+)", "$3")
+    if ( InStr(origin, "ID", "Off") ) {
+        image := RegExReplace(origin, "(ID)(.*?)(\d+)", "$3")
         result := "https://www.pixiv.net/artworks/" . image
     }
 
@@ -134,4 +134,22 @@ GoogleTranslate(origin)
     path   := match[3]
     result := http . url . ".translate.goog" . path . "?_x_tr_sl=auto&_x_tr_tl=zh-CN"
     return result
+}
+
+
+
+RedirectTo(url)
+{
+    tmp := A_Clipboard
+    A_Clipboard := ""
+    A_Clipboard := url
+    ClipWait
+    Send "!d"
+    Sleep 33
+    Send "^v"
+    Sleep 33
+    Send "{Enter}"
+    A_Clipboard := ""
+    A_Clipboard := tmp
+    ClipWait
 }

@@ -15,38 +15,6 @@ Browser := "Chrome|Edge|Opera|FireFox"
 
 
 
-#HotIf CheckWindowActive( Browser , "*WidgetWin*" )
-
-    Redirect(url) {
-        tmp := A_Clipboard
-        A_Clipboard := url
-        ClipWait
-        Send "!d"
-        Sleep 99
-        Send "^v"
-        Send "{Enter}"
-        A_Clipboard := tmp
-    }
-
-     !F1::Redirect("https://cn.bing.com/")
-     !F2::Redirect("https://www.deepl.com/zh/translator")
-     !F3::Redirect("https://translate.google.com/?sl=en&tl=zh-CN&op=translate")
-     !F4::Redirect("https://fanyi.baidu.com/")
-
-     !F5::Redirect("https://wyagd001.github.io/v2/docs/")
-     !F6::Redirect("https://tool.oschina.net/uploads/apidocs/jquery/regexp.html")
-     !F7::Redirect("https://www.jetbrains.com/help/pycharm/quick-start-guide.html")
-     !F8::Redirect("https://docs.python.org/zh-cn/3/")
-
-     !F9::Redirect("https://vcb-s.com")
-    !F10::Redirect("http://www.bd4399.com")
-    !F11::Redirect("https://www.zhihu.com/hot")
-    !F12::Redirect("https://t.bilibili.com/?tab=8")
-
-#HotIf
-
-
-
 #HotIf CheckWindowActive(Browser)
 
     ;帮助
