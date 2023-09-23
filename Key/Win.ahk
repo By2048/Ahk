@@ -195,8 +195,8 @@
 }
 
 ; 有道翻译
-^!i::Return
-<#i::Send "^!i"
+^!f::Return
+<#f::Send "^!f"
 
 ; PowerToy
 ; #t 窗口置顶
