@@ -33,26 +33,26 @@ WPD["PyCharm__插件更新"] := Position(1500 , 1000)
 
 WPD["PyCharm__断点"] := Position(1500 , 1122)
 
-WPD["PyCharm__问题"]             := Position(900 , 1100)
+WPD["PyCharm__问题"]            := Position(900 , 1100)
 WPD["PyCharm__远程主机"]         := Position(1500 , 1122)
 WPD["PyCharm__可用软件包"]       := Position(1500 , 1122)
 WPD["PyCharm__添加Python解释器"] := Position(1500 , 1122)
-WPD["PyCharm__评估"]             := Position(1500 , 1122)
-WPD["PyCharm__Python解释器"]     := Position(1500 , 1122)
+WPD["PyCharm__评估"]            := Position(1500 , 1122)
+WPD["PyCharm__Python解释器"]    := Position(1500 , 1122)
 
-WPD["PyCharm__自定义主工具栏"] := Position(0.3 , 0.7)
-WPD["PyCharm__添加操作"]      := Position(0.3 , 0.7)
-WPD["PyCharm__浏览图标"]      := Position(0.3 , 0.7)
-WPD["PyCharm__导航栏工具栏"]  := Position(0.3 , 0.7)
-WPD["PyCharm__选择路径"]      := Position(0.3 , 0.7)
-WPD["PyCharm__选择"]         := Position(0.3 , 0.7)
-WPD["PyCharm__打开文件或项目"] := Position(0.3 , 0.7)
+WPD["PyCharm__自定义主工具栏"]     := Position(0.3 , 0.7)
+WPD["PyCharm__添加操作"]          := Position(0.3 , 0.7)
+WPD["PyCharm__浏览图标"]          := Position(0.3 , 0.7)
+WPD["PyCharm__导航栏工具栏"]       := Position(0.3 , 0.7)
+WPD["PyCharm__选择路径"]          := Position(0.3 , 0.7)
+WPD["PyCharm__选择"]              := Position(0.3 , 0.7)
+WPD["PyCharm__打开文件或项目"]      := Position(0.3 , 0.7)
+WPD["PyCharm__将操作添加到快速列表"] := Position(0.3 , 0.7)
 
 WPD["PyCharm__宏"] := Position(0.4 , 0.7)
 
 WPD["PyCharm__提交更改"] := Position(0.45 , 0.75)
 WPD["PyCharm__回滚更改"] := Position(0.45 , 0.75)
-
 
 WPD["PyCharm__设置"] := Position(0.65 , 0.77)
 WPB["PyCharm__设置"] := Position(0.76 , 0.88)
@@ -87,8 +87,8 @@ Try {
     w := Screens.2.w
     h := Screens.2.h / 2
     WPB["PyCharm__运行"] := [ x , y , w , h ]
-    WPD["PyCharm__终端"] := [ x , y , w , h ]
-    WPD["PyCharm__调试"] := [ x , y , w , h ]
+    WPB["PyCharm__终端"] := [ x , y , w , h ]
+    WPB["PyCharm__调试"] := [ x , y , w , h ]
 }
 
 WPD["PyCharm__Python控制台"] := Position(0.9 , 0.9)

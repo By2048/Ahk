@@ -102,13 +102,13 @@ Software_Keys_Help["Explorer_WorkerW"       ] := "Config\Windows | Software\Expl
 Software_Keys_Help["VSCode"                 ] := "Software\VSCode"
 Software_Keys_Help["Xshell"                 ] := "Software\NetSarang.Xshell"
 Software_Keys_Help["SumatraPDF"             ] := "Software\SumatraPDF"
-Software_Keys_Help["PyCharm"                ] := "Software\JetBrains\PyCharm.FC | Software\JetBrains\PyCharm"
 Software_Keys_Help["QuiteRSS"               ] := "Software\QuiteRSS"
 Software_Keys_Help["Chrome"                 ] := "Software\Browser\Chrome | Software\BrowserChrome.Fxx"
 Software_Keys_Help["Chrome__Bilibili"       ] := "Software\Browser\Chrome.Bilibili"
 Software_Keys_Help["Chrome__知乎"            ] := "Software\Browser\Chrome.ZhiHu"
 Software_Keys_Help["PotPlayer"              ] := "Software\PotPlayer"
 
+Software_Keys_Help["PyCharm"] := "Software\JetBrains\PyCharm | Software\JetBrains\PyCharm.Fxx | Software\JetBrains\PyCharm.CapsLock"
 
 Init_Software_Keys_Help() {
     global Software_Keys_Help

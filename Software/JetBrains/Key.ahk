@@ -1,9 +1,10 @@
 ﻿
 #Include *i Tool.ahk
-#Include *i Position.ahk
+#Include *i PyCharm.Position.ahk
 
 
 JApps := "PyCharm|IDEA"
+
 
 
 #HotIf CheckWindowActive(JApps, "SunAwtDialog", "终端|运行|调试")
@@ -264,6 +265,8 @@ CapsLockActivate := False
     ^+Tab::Return
     <!Tab::Send "^{Tab}"
     <!+Tab::Send "^+{Tab}"
+
+    ~>^*::Return
 
     #Include *i Key.CapsLock.ahk
 

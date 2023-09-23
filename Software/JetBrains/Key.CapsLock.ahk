@@ -226,7 +226,7 @@ CapsLockToEscCount := 0
     CenterHideWindow()
 }
 
-; 快速列表 上下文
+; 快速列表 #上下文
 ^!;::Return
 ~CapsLock & `;::{
     global CapsLockActivate
@@ -235,7 +235,7 @@ CapsLockToEscCount := 0
     CenterHideWindow()
 }
 
-; 快速列表 选项卡
+; 快速列表 #选项卡
 ^!'::Return
 ~CapsLock & '::{
     global CapsLockActivate
