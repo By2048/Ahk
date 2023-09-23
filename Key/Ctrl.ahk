@@ -32,6 +32,7 @@
     }
 }
 >^k::KeyboardGUI()
+>^+k::KeyHistory
 >^l::Run "C:\Program Files\LogiOptionsPlus\LogiOptionsPlus.exe"
 
  >^x::Run "D:\#Lnk\#\Xshell.lnk"
