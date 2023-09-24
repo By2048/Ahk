@@ -664,6 +664,12 @@ MoveWindowToMainMini(command, slient:=False)
     Sleep 500
     HelpText()
 }
+MoveWindowToMain(slient:=False) {
+    MoveWindowToMainMini("Main", slient)
+}
+MoveWindowToMini(slient:=False) {
+    MoveWindowToMainMini("Mini", slient)
+}
 
 
 
