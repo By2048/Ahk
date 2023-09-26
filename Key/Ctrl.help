@@ -10,9 +10,8 @@
 | +H | WindowSpy      |----|-----------------|
 |  J | JetBrains      |  [ | VSCode Default  |
 |  K | 显示虚拟键盘   |  ] | VSCode NewWin   |
-|  L | LogiOptions    |  \ | VSCode Windows  |
-|----|----------------|-------|--------------|
-|  X | XShell         |   Esc | 任务管理器   |
-|  N | CloudMusic     |  +Esc | HuoRongSword |
-| +N | QQMusic        |                       
+|----|----------------|  \ | VSCode Windows  |
+|  X | XShell         |-------|--------------|
+|  N | CloudMusic     |   Esc | 任务管理器   |
+| +N | QQMusic        |  +Esc | HuoRongSword |
 |  M | PotPlayer      |                       

@@ -33,7 +33,6 @@
 }
 >^k::KeyboardGUI()
 >^+k::KeyHistory
->^l::Run "C:\Program Files\LogiOptionsPlus\LogiOptionsPlus.exe"
 
  >^x::Run "D:\#Lnk\#\Xshell.lnk"
  >^n::Run "D:\#Lnk\#\CloudMusic.lnk"
