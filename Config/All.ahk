@@ -1,5 +1,17 @@
 ﻿
-InitWindowArgs() {
+; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
+window := {}
+
+; 各种状态信息
+status := {}
+
+; 辅助调试信息
+A_Debug := {}
+
+;==========================================;
+
+InitWindowArgs()
+{
     global window
     window := {
         cache : {
@@ -31,49 +43,23 @@ InitWindowArgs() {
     }
 }
 
-InitStatusArgs() {
+InitStatusArgs()
+{
     global status
     status := {
         init_config : False
     }
 }
 
-; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
-window := {}
-
-; 各种状态信息
-status := {}
-
-; 辅助调试信息
-A_Debug := {}
-
 InitWindowArgs()
 InitStatusArgs()
 
+;==========================================;
+
 #Include *i ..\Config.ahk
 
+#Include *i .\Message.ahk
 #Include *i .\Screen.ahk
+
 #Include *i .\Software.ahk
 #Include *i .\Init.ahk
-#Include *i .\Message.ahk
-
-; Key
-; [process_name]
-; [process_name]_[class]
-; []_[class]
-; [process_name]_[title]
-; [process_name]_[class]_[title]
-; []_[class]_[title]
-; []_[]_[title]
-
-; Value
-; 设置一些软件默认位置 [x,y,w,h]
-
-; WPD Windows_Position_Default
-; WPB Windows_Position_Backup
-Windows_Position_Default := Map()
-Windows_Position_Backup  := Map()
-WPD := Windows_Position_Default
-WPB := Windows_Position_Backup
-
-#Include *i .\Position.ahk
