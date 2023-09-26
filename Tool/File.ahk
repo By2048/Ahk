@@ -1,8 +1,4 @@
 ﻿
-#Include *i ..\Config\Software.ahk
-
-
-
 ; 获取Windows系统的文件信息
 GetFileInfo(path)
 {
@@ -58,6 +54,9 @@ GetImageSize(path)
 ; 获取文件的MD5
 GetMD5(file)
 {
+    Global MD5Sum  ;D:\Git\usr\bin\md5sum.exe
+    if not FileExist(MD5Sum)
+        return ""
     command := Format("{} --zero  `"{}`" ", MD5Sum, file)
     shell := ComObject("WScript.Shell")
     data := shell.Exec(A_ComSpec . " /C " . command)
