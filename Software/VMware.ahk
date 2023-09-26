@@ -1,4 +1,7 @@
 ﻿
+RegisterProcess("vmware", "VMware")
+
+
 ; 虚拟网络编辑器
 #HotIf CheckWindowActive( "VMNetCfg" , "#32770" )
 #HotIf

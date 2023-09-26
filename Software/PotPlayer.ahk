@@ -1,4 +1,8 @@
 ﻿
+RegisterProcess("PotPlayerMini64" , "PotPlayer")
+RegisterHelp("PotPlayer" , "Software\PotPlayer")
+
+
 #HotIf CheckWindowActive("PotPlayer")
 
     ; 2倍数播放

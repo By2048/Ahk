@@ -1,4 +1,7 @@
 ﻿
+RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
+
+
 #HotIf CheckWindowActive( "FreeFileSync" , "" , "同步设置" )
 
     <#\::{

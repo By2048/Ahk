@@ -37,6 +37,7 @@ EscCount := 0
 #HotIf
 
 
+RegisterProcess("NVIDIA Share" , "GeForceTool")
 #HotIf CheckWindowActive( "GeForceTool" )
     Esc::Send "^!{Insert}"
 #HotIf

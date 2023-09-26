@@ -1,4 +1,9 @@
 ﻿
+RegisterProcess("explorer" , "Explorer")
+RegisterHelp("Explorer_CabinetWClass" , "Software\Explorer")
+RegisterHelp("Explorer_WorkerW"       , "Config\Windows | Software\Explorer.Fxx")
+
+
 ; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
 #HotIf CheckWindowActive( "Explorer" , "CabinetWClass" , "防火墙\允许的应用" )
     Delete::{

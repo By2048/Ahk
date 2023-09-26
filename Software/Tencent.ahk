@@ -1,4 +1,7 @@
 ﻿
+RegisterProcess("DingTalk" , "DingDing")
+
+
 #HotIf CheckWindowActive("DingDing")
 
     ; 发送消息

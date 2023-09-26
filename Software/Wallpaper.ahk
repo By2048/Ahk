@@ -1,4 +1,7 @@
 ﻿
+RegisterProcess("ui32" , "Wallpaper")
+
+
 #HotIf CheckWindowActive( "Wallpaper" )
 
     SleepTime := 200

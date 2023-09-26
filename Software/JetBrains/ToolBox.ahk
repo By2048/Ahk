@@ -1,6 +1,8 @@
 ﻿
 ; https://www.jetbrains.com/toolbox-app/faq/#keyboard-navigation
 
+RegisterProcess("jetbrains-toolbox", "JetBrainsToolBox")
+
 #HotIf CheckWindowActive("JetBrainsToolBox")
 
     ^1::Return ; Tools tab

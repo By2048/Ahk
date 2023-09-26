@@ -1,4 +1,7 @@
 ﻿
+RegisterProcess("7zFM" , "7-Zip")
+
+
 #HotIf CheckWindowActive("7-Zip", "#32770", "属性")
 
     <#\::{

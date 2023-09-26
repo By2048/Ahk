@@ -209,10 +209,7 @@ CapsLockActivate := False
         cnt := 0
     }
 
-    $RCtrl::
-    $RShift::{
-        Send "{Blind}{vkFF}"
-    }
+    $RCtrl::Send "{Blind}{vkFF}"
 
     ~!+`::{
         WinWaitActive "书签描述"

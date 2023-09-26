@@ -1,4 +1,7 @@
 ﻿
+RegisterProcess("navicat", "Navicat")
+
+
 #HotIf CheckWindowActive( "Navicat" )
 
     ; ^r::Return

@@ -13,12 +13,12 @@
 #Include ..\Tool\Control.ahk
 #Include ..\Tool\Gui.ahk
 
-#Include ..\Software\@.ahk
+#Include ..\Software\@Other.ahk
+#Include ..\Software\@Help.ahk
 
 #Include ..\Software\7-Zip.ahk
 #Include ..\Software\Android.ahk
 #Include ..\Software\BitComet.ahk
-#Include ..\Software\Chat.ahk
 #Include ..\Software\Explorer.ahk
 #Include ..\Software\FFRenamePro.ahk
 #Include ..\Software\FoxMail.ahk
@@ -34,6 +34,7 @@
 #Include ..\Software\Q-Dir.ahk
 #Include ..\Software\Snipaste.ahk
 #Include ..\Software\SumatraPDF.ahk
+#Include ..\Software\Tencent.ahk
 #Include ..\Software\Terminal.Ahk
 #Include ..\Software\v2rayN.ahk
 #Include ..\Software\VMware.ahk

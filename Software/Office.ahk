@@ -1,4 +1,10 @@
 ﻿
+RegisterProcess("EXCEL"    , "Excel"   )
+RegisterProcess("WINWORD"  , "Word"    )
+RegisterProcess("POWERPNT" , "PPT"     )
+RegisterProcess("ONENOTE"  , "OneNote" )
+
+
 #HotIf CheckWindowActive("Excel", "", "名称管理器")
     <#\::{
         MoveWindowToPosition(Position(1500, 900))

@@ -1,4 +1,7 @@
 ﻿
+RegisterHelp("v2rayN", "Software\v2rayN")
+
+
 #HotIf CheckWindowActive( "EnableLoopback" )
     <#\::{
         MoveWindowToPosition(Position(1860 , 1000))

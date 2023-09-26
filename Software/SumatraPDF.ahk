@@ -1,4 +1,7 @@
 ﻿
+RegisterHelp("SumatraPDF", "Software\SumatraPDF")
+
+
 #HotIf CheckWindowActive("SumatraPDF")
 
     ; 重命名

@@ -1,4 +1,7 @@
 ﻿
+RegisterProcess("geek64" , "Geek")
+
+
 #HotIf CheckWindowActive( "Geek" )
 
     Enter::Return

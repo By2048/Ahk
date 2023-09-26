@@ -1,6 +1,9 @@
 ﻿
 #Include *i VSCode.Private.ahk
 
+RegisterProcess("Code", "VSCode")
+RegisterHelp("VSCode", "Software\VSCode")
+
 
 #HotIf CheckWindowActive("VSCode")
 

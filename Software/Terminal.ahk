@@ -1,5 +1,6 @@
 ﻿
-; {"keys": "f13","command": {"action": "quakeMode"}}
+RegisterProcess("WindowsTerminal" , "Terminal")
+
 
 #HotIf CheckWindowActive( "Terminal" )
 

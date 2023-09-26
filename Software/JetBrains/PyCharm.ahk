@@ -1,4 +1,7 @@
 ﻿
+RegisterProcess("pycharm64", "PyCharm")
+RegisterHelp("PyCharm", "Software\JetBrains\PyCharm | Software\JetBrains\PyCharm.Fxx | Software\JetBrains\PyCharm.CapsLock")
+
 
 #HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "运行/调试配置")
     !F1::Esc

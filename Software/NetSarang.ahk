@@ -1,4 +1,7 @@
 ﻿
+RegisterHelp("Xshell", "Software\NetSarang.Xshell")
+
+
 #HotIf CheckWindowActive("Xftp")
     <#\::{
         MoveWindowToPosition(Position(2200 , 1200))

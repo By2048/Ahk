@@ -1,4 +1,7 @@
 ﻿
+RegisterProcess("cloudmusic" , "CloudMusic")
+
+
 #HotIf CheckWindowActive( "CloudMusic" , "DesktopLyrics" )
 
     <#\::{

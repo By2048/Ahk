@@ -4,6 +4,12 @@
 ; 小地图 | 77
 ; 商店   | 77
 
+RegisterProcess("TenSafe"           , "LOL_TX"    )
+RegisterProcess("TenSafe_1"         , "LOL_TX"    )
+RegisterProcess("LeagueClientUx"    , "LOL_Client")
+RegisterProcess("League of Legends" , "LOL_Game"  )
+
+
 #HotIf CheckWindowActive("LOL_Client")
 
     ; D:\Game\英雄联盟\LeagueClient\LeagueClientUx.exe

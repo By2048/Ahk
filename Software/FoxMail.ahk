@@ -1,4 +1,6 @@
 ﻿
+RegisterProcess("Foxmail" , "FoxMail")
+
 #HotIf CheckWindowActive( "FoxMail" )
 
     ; 收取所有邮件
