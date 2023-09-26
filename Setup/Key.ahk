@@ -18,7 +18,6 @@
 #Include ..\Key\Win.ahk
 #Include ..\Key\Ctrl.ahk
 #Include ..\Key\Alt.ahk
-#Include ..\Key\Shift.ahk
 #Include ..\Key\Space.ahk
 #Include ..\Key\CapsLock.ahk
 #Include ..\Key\Other.ahk
