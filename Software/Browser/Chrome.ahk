@@ -8,14 +8,16 @@
         A_Clipboard := ""
         Sleep 33
         Send "{RButton}"
-        Sleep 99
+        Sleep 333
         Send "{Down 4}"
         Send "{Enter}"
         Sleep 33
         url := A_Clipboard
         ClipWait
-        if not url
+        if ( not url ) {
+            HelpText(" No Url ", "Screen", "CenterDown", "500")
             return
+        }
         url := UrlChange(url)
         if not InStr(url, "http")
             return
@@ -106,9 +108,9 @@ Expand := False
             A_Clipboard := url_result
             ClipWait
             Send "^t"
-            Sleep 500
+            Sleep 555
             Send "!d"
-            Sleep 50
+            Sleep 99
             Send "^v"
             Send "{Enter}"
             A_Clipboard := ""
