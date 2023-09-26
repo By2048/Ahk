@@ -54,7 +54,7 @@ GetImageSize(path)
 ; 获取文件的MD5
 GetMD5(file)
 {
-    Global MD5Sum  ;D:\Git\usr\bin\md5sum.exe
+    MD5Sum := "D:\Git\usr\bin\md5sum.exe"
     if not FileExist(MD5Sum)
         return ""
     command := Format("{} --zero  `"{}`" ", MD5Sum, file)
