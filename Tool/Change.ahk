@@ -127,7 +127,7 @@ AEXE(exe)
     }
     if (not InStr(exe, ".exe")) {
         try {
-            exe := Windows_Process.Get("JetBrainsToolBox")
+            exe := Windows_Process.Get(exe)
             return Format("ahk_exe {}", exe)
         } catch {
             return "A"
