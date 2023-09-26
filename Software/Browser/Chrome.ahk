@@ -5,13 +5,15 @@
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*" )
     $CapsLock::
     +CapsLock::{
-        origin := A_Clipboard
+        A_Clipboard := ""
         Sleep 33
         Send "{RButton}"
+        Sleep 99
         Send "{Down 4}"
         Send "{Enter}"
-        Sleep 66
+        Sleep 33
         url := A_Clipboard
+        ClipWait
         if not url
             return
         url := UrlChange(url)
@@ -23,10 +25,9 @@
         if ( A_ThisHotkey == "+CapsLock" ) {
             time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
             ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
-            file := time . ext
-            AriaDownload(url, Chrome_Image_Download, file)
+            AriaDownload(url, Chrome_Image_Download, time . ext)
         }
-        A_Clipboard := origin
+        A_Clipboard := ""
         SetCapsLockState "Off"
     }
 #HotIf
