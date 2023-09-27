@@ -18,11 +18,9 @@
 >^+h::Run "E:\GitX\AhkSpy\AhkSpy.exe"
  >^j::{
     Run "D:\#Lnk\JetBrains.lnk"
-    exe  := Windows_Process.Get("JetBrainsToolBox")
-    rule := Format("ahk_exe {}", exe)
     loop 33 {
         try {
-            WinActivate rule
+            WinActivate "ahk_exe jetbrains-toolbox.exe"
             window := GetActiveWindowInfo()
             MoveWindowToPosition(Position(window.w, window.h))
             return
