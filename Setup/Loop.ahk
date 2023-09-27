@@ -46,12 +46,14 @@ Loop {
     }
 
     ; 特定软件不进行处理 并延迟循环时间
-    for index, value in Ignore_Process {
-        if (value == win_process_name) {
+    for process_name in Ignore_Process {
+        if (process_name == win_process_name) {
             Sleep 30 * 1000
             continue
         }
     }
+
+    #Include *i Loop.Private.ahk
 
     if (win_process_name == "7-Zip") {
         if (win_class == "#32770" and win_title == "浏览文件夹") {
@@ -78,9 +80,9 @@ Loop {
             SetWindow(win_x, win_y, win_w, win_h)
             continue
         }
-        if (InStr(win_title, "已完成")) {
-            win_x := Screens.%Screens.Count%.x + Screens.%Screens.Count%.w/2   - win_w/2
-            win_y := Screens.%Screens.Count%.y + Screens.%Screens.Count%.h/3*4 - win_h/2
+        if (InStr(win_title, "已完成") or InStr(win_title, "正在运行")) {
+            win_x := Screens.%Screens.Count%.x + Screens.%Screens.Count%.w/2    - win_w/2
+            win_y := Screens.%Screens.Count%.y + Screens.%Screens.Count%.h*0.66 - win_h/2
             SetWindow(win_x, win_y, win_w, win_h)
             continue
         }
