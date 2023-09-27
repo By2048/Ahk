@@ -34,7 +34,7 @@ AltTimer() {
  >!F8::Send "{F20}"
  >!F9::Send "{F21}"
 
- >!F10::Send "{F22}"
+>!F10::Send "{F22}"
 >!F11::Send "{F23}"
 >!F12::Send "{F24}"
 
@@ -48,6 +48,7 @@ AltTimer() {
 >!7::Send "{Numpad7}"
 >!8::Send "{Numpad8}"
 >!9::Send "{Numpad9}"
+
 ; >!`::Send "{NumpadDot}"
 ; >!=::Send "{NumpadAdd}"
 ; >!-::Send "{NumpadSub}"

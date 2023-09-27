@@ -1,4 +1,6 @@
 ﻿
+#Include *i Win.Private.ahk
+
 ; 环境编辑器
 <#5::{
     Run "sysdm.cpl"
@@ -6,83 +8,6 @@
     MoveWindowToCenter(True)
     Send "^{Tab 2}"
     Send "!n"
-}
-
-; 重置显示器设置
-<#8::{
-    Run "ms-settings:display"
-    Sleep 99
-    WinActivate "设置"
-    Sleep 99
-    MouseClickAndResetting(600, 456 ,"Window")
-    Send "{Up}"
-    Sleep 99
-    Send "{Tab 2}{Enter}"
-    Sleep 99
-    MouseClickAndResetting(600, 456 ,"Window")
-    Sleep 99
-    Send "{Down}"
-    Sleep 99
-    Send "{Tab 2}{Enter}"
-    Sleep 99
-    WinClose "设置"
-}
-
-; 任务栏多屏移动
-; 主屏幕 27寸2K -> 副屏幕 21.5寸1080P
-<#9::{
-    CoordMode "Mouse", "Screen"
-    MouseGetPos &x_origin, &y_origin
-    win_id := 0x0
-    try {
-        rule := "ahk_exe Explorer.EXE ahk_class Shell_TrayWnd"
-        WinActivate rule
-        win_id := WinGetID("A")
-    }
-
-    if not win_id
-        return
-
-    if Screens.Count == 1
-        return
-
-    WinGetPos &x, &y, &w, &h, AID(win_id)
-
-    ; 屏幕1左侧
-    if (h == 1440 and w < 200) {
-        mouse_x  := x + w/2
-        mouse_y  := y + h/2.8
-        mouse_xx := Screens.Software.2.x + Screens.Software.2.w/2
-        mouse_yy := Screens.Software.2.yy - 33
-        MouseClickDrag "Left", mouse_x, mouse_y, mouse_xx, mouse_yy, 3
-    }
-
-    ; 屏幕1底部
-    if (w == 2560 and h < 200 ) {
-        mouse_x  := w/2 - Screens.Software.1.w/6
-        mouse_y  := Screens.Software.1.yy - h/2
-        mouse_xx := Screens.Software.2.x + Screens.Software.2.w/2
-        mouse_yy := Screens.Software.2.yy - 33
-        MouseClickDrag "Left", mouse_x, mouse_y, mouse_xx, mouse_yy, 3
-    }
-
-    Sleep 999
-
-    ; 屏幕2底部
-    WinActivate rule
-    win_id := WinGetID("A")
-    WinGetPos &x, &y, &w, &h, AID(win_id)
-    total_height := 160
-    if (h < total_height) {
-        mouse_x  := x + w/2
-        mouse_y  := y
-        mouse_xx := mouse_x
-        mouse_yy := Screens.Software.2.yy - total_height
-        DllCall("SetCursorPos", "int", mouse_x, "int", mouse_y)
-        Click "Click Down"
-        Click Format("Click Up {} {}", mouse_xx, mouse_yy)
-    }
-    MouseMove x_origin, y_origin, 0
 }
 
 ; 显示隐藏任务栏
