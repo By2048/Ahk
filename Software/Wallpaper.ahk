@@ -1,5 +1,6 @@
 ﻿
 RegisterProcess("ui32" , "Wallpaper")
+RegisterHelp("Wallpaper" , "Software\Wallpaper")
 
 
 #HotIf CheckWindowActive( "Wallpaper" )
@@ -42,32 +43,19 @@ RegisterProcess("ui32" , "Wallpaper")
     AppsKey::Send "{F10}"
 
     ; 在资源管理器中打开
+    LShift::
     !\::{
         MouseClick "Right"
         Sleep SleepTime
         ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Open.png")
     }
 
-    global Wallpaper_State
-    ; 预览
-    !p::{
-        if (not Wallpaper_State) {
-            Wallpaper_State := 0
-        }
-        if (Wallpaper_State == 0) {
-            SetWindowTransparent("Min")
-            Wallpaper_State := 1
-        } else if (Wallpaper_State == 1) {
-            SetWindowTransparent("Max")
-            Wallpaper_State := 0
-        }
-    }
-
     ; 翻页
-    !PgUp::PageTool("PgUp")
-    !PgDn::PageTool("PgDn")
+    PgUp::PageTool("PgUp")
+    PgDn::PageTool("PgDn")
 
     ; 订阅
+    Tab::
     ![::{
         MouseClick "Right"
         Sleep SleepTime
@@ -75,6 +63,7 @@ RegisterProcess("ui32" , "Wallpaper")
     }
 
     ; 取消订阅
+    CapsLock::
     !]::{
         MouseClick "Right"
         Sleep SleepTime
