@@ -21,7 +21,6 @@ ShiftTimer() {
         HelpText()
         ShowKeysHelp()
     } else if (cnt == 3) {
-        GetInitConfig()
         ShowInitConfig()
     }
     cnt := 0
