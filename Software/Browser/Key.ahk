@@ -114,7 +114,6 @@ Browser := "Chrome|Edge|Opera|FireFox"
 
     ^Tab::Return
     ^+Tab::Return
-    +Tab::Return
 
     ;任务管理
     !Esc::Send "+{Esc}"
