@@ -80,8 +80,7 @@ RegisterHelp(process, config)
     Software_Keys_Help[process] := result
 }
 
-RegisterHelp("Default", "Config\Windows")
-
+RegisterHelp("Default", "Config\Windows | Confit\Windows.Other")
 
 
 ; 软件位置设置
