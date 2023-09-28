@@ -26,15 +26,15 @@ Cache_Expire_Time := 666
 ; 系统类型 | Win10 \ WinServer
 System_Type := "Win10"
 
-; 全局调试模式
-Debug := False
-
+; 系统用户给相关信息
 PC_USERNAME := "Admin"
 PC_PASSWORD := "Xxxxx"
 
+; Chrome Image 默认下载位置
 Chrome_Image_Download := "T:\Image\"
 
 ;---------------------------------------------------------------------------;
+; 通用GUI默认设置
 Gui_Config := {
     Dark     : { Font : "FFFFFF" , Back : "000000" } ,
     Light    : { Font : "000000" , Back : "FFFFFF" } ,
