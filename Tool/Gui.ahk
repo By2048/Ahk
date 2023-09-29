@@ -23,7 +23,7 @@ ShowDefaultProgress()
     G.Show("NA Center")
     loop {
         move_current := move_current + move_step
-        GDP["InitProgress"].Value := move_current
+        G["InitProgress"].Value := move_current
         Sleep move_sleep
         if (move_current >= move_total) {
             Sleep move_sleep
