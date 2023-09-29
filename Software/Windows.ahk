@@ -126,8 +126,9 @@
 #HotIf
 
 
-
 ; 注册表
+RegisterHelp("RegEdit", "Software\Windows.RegEdit")
+
 #HotIf CheckWindowActive( "RegEdit" )
 
     F2::Return
