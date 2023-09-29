@@ -24,7 +24,7 @@ SetExplorerColumns(config)
     win_class := WinGetClass("A")
     win_process_name := WinGetProcessName("A")
 
-    if win_process_name != "explorer.exe"
+    if win_process_name != "Explorer"
         return
 
     if win_class != "CabinetWClass" and win_class != "ExploreWClass"

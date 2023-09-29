@@ -180,8 +180,7 @@ RegisterHelp("Explorer_WorkerW" , "Config\Windows | Config\Windows.Other | Softw
 
         MoveWindowToPosition(Position(total_width , total_height))
 
-        InitWindowArgs()
-        GetActiveWindowInfo()
+        GetActiveWindowInfo("Default", False)
         current_x := window.x
         current_y := window.y
         current_w := window.w
@@ -301,8 +300,7 @@ RegisterHelp("Explorer_WorkerW" , "Config\Windows | Config\Windows.Other | Softw
     ; 默认位置
     <#\::{
         MoveWindowToDefaultPosition()
-        InitWindowArgs()
-        GetActiveWindowInfo("Window")
+        GetActiveWindowInfo("Window", False)
         try {
             info := window.controls.DirectUIHWND2 ;左侧信息栏
         } catch {

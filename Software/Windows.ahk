@@ -137,8 +137,6 @@
     $CapsLock::Send "{F5}"
 
     <#\::{
-        InitWindowArgs()
-
         total_width  := 2222
         total_height := 1222
         MoveWindowToPosition(Position(total_width , total_height))

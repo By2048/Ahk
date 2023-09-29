@@ -36,20 +36,17 @@
         box_left   := box_left   + scroll_bar_width + 32
         box_down   := total_height * 2/5 + 22
 
-        InitWindowArgs()
-        GetActiveWindowInfo("Default")
+        GetActiveWindowInfo("Default", False)
         info   := window.controls.GetOwnPropDesc("#327702").Value
         offset := 9
         MoveControlUDLR(info, _, _, tree_width, _, offset)
 
-        InitWindowArgs()
-        GetActiveWindowInfo("Default")
+        GetActiveWindowInfo("Default", False)
         info   := window.controls.GetOwnPropDesc("#327702").Value
         offset := 16
         MoveControlUDLR(info, _, _, _, info.x + box_left, offset)
 
-        InitWindowArgs()
-        GetActiveWindowInfo("Default")
+        GetActiveWindowInfo("Default", False)
         info   := window.controls.GetOwnPropDesc("#327702").Value
         offset := 50
         MoveControlUDLR(info, _, box_down, _, _, offset)

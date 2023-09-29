@@ -23,7 +23,6 @@ RegisterHelp("PotPlayer" , "Software\PotPlayer")
             WPB["PotPlayer"] := Position("[Center][2]", Screens.2.w * 5/6 , Screens.2.h * 4/9)
             WPB["PotPlayer__播放列表"] := Position("[Center][2]", 1000, 1500)
         }
-        InitWindowArgs()
         if (GetKeyState("LShift", "P")) {
             MoveWindowToBackupPosition()
         } else {

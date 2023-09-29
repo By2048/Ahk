@@ -370,7 +370,7 @@ RWinTimer() {
 
 >#,::{
     GetActiveWindowInfo()
-    if IsDesktops() or IsMaxMin()
+    if IsDesktops()
         return
     global windows_resize_small
     windows_resize_small := True
@@ -379,7 +379,7 @@ RWinTimer() {
 
 >#.::{
     GetActiveWindowInfo()
-    if IsDesktops() or IsMaxMin()
+    if IsDesktops()
         return
     global windows_resize_big
     windows_resize_big := True
@@ -388,7 +388,7 @@ RWinTimer() {
 
 >#/::{
     GetActiveWindowInfo()
-    if IsDesktops() or IsMaxMin()
+    if IsDesktops()
         return
     global windows_move
     windows_move := True

@@ -7,8 +7,7 @@ RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
     <#\::{
         MoveWindowToPosition(Position(1000, 1000))
 
-        InitWindowArgs()
-        GetActiveWindowInfo()
+        GetActiveWindowInfo("Default", False)
 
         ;       Edit8
         ; Static33   SysLink5
