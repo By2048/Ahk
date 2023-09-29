@@ -1,19 +1,20 @@
 ﻿
-; 当前窗口信息缓存 处理同一进程重复窗口信息获取问题
-window := {}
+; 存储当前窗口的信息
+; 缓存处理 优化相关性能
+Window := {}
 
-; 各种状态信息
-status := {}
+; 各种临时性状态信息
+Status := {}
 
 ; 辅助调试信息
-A_Debug := {}
+Debug := {}
 
 ;==========================================;
 
 InitWindowArgs()
 {
-    global window
-    window := {
+    global Window
+    Window := {
         cache : {
             id     :  0 ,
             title  : "" ,
@@ -36,8 +37,8 @@ InitWindowArgs()
         w  : 0 , h  : 0 ,
         xx : 0 , yy : 0 ,
 
-        min_max  : [] ,
-        screen   : {} ,
+        min_max : "" ,
+        screen  : {} ,
         position_default : [] ,
         position_backup  : [] ,
     }
@@ -45,9 +46,14 @@ InitWindowArgs()
 
 InitStatusArgs()
 {
-    global status
-    status := {
-        init_config : False
+    global Status
+    Status := {
+        init_gui_show   : False  ,
+        shift_cnt       : 0      ,
+
+        hotkeys_show    : False  ,
+        hotkeys_index   : 0      ,
+        hotkeys_current : ""
     }
 }
 
