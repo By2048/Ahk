@@ -13,8 +13,7 @@
 #Include ..\Tool\Control.ahk
 #Include ..\Tool\Gui.ahk
 
-#Include ..\Software\@Other.ahk
-#Include ..\Software\@Help.ahk
+#Include ..\Software\@.ahk
 
 #Include ..\Software\7-Zip.ahk
 #Include ..\Software\Android.ahk

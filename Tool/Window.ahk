@@ -111,7 +111,7 @@ GetWindowConfig(window, config)
             match_count := match_cnt
             win_config := []
             win_config.Push(config_value*)
-            A_Debug.window_config_name := config_name
+            Debug.window_config_name := config_name
         }
 
     }
@@ -124,7 +124,7 @@ GetWindowConfig(window, config)
 ; 获取激活窗口的所在屏幕的信息以及窗口信息 使用全局变量window共享
 ; result | {} 应用信息
 ; mode   | Default AHK默认 \ Strict|Window API修正
-GetActiveWindowInfo(mode:="Default")
+GetActiveWindowInfo(mode:="Default", cache:=True)
 {
     try {
         win_id    := WinGetID("A")
@@ -132,6 +132,9 @@ GetActiveWindowInfo(mode:="Default")
     } catch {
         return
     }
+
+    if ( cache == False )
+        InitWindowValue()
 
     ; 缓存数据
     if (window.cache.id == win_id and window.cache.title == win_title) {
@@ -162,6 +165,15 @@ GetActiveWindowInfo(mode:="Default")
     win_process_name := Windows_Process.Get(wpn, win_process_exe)
     if InStr(win_process_name, ".exe") or InStr(win_process_name, ".EXE")
         win_process_name := wpn
+
+    wmm := win_min_max
+    if wmm == 1
+        wmm := "Max"
+    else if wmm == -1
+        wmm := "Min"
+    else if wmm == 0
+        wmm := ""
+    win_min_max := wmm
 
     ; 基础信息
     window.id           := win_id
@@ -268,9 +280,9 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
 
     win_title := StrReplace(win_title, " ", "")
 
-    rule_process := StrLower(_process_  )
-    rule_class   := StrLower(_class_    )
-    rule_title   := StrLower(_title_    )
+    rule_process := StrLower(_process_)
+    rule_class   := StrLower(_class_  )
+    rule_title   := StrLower(_title_  )
 
     Check(win, cfg) {
         status := True
@@ -320,27 +332,12 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
 IsDesktops()
 {
     GetActiveWindowInfo()
+    win_process_name := window.process_name
     win_class := window.class
-    if (win_class == "WorkerW") {
+    if ( win_process_name == "Explorer" and win_class == "WorkerW" )
         return True
-    } else {
+    else
         return False
-    }
-}
-
-
-
-; 判断软件是否全屏\最小化
-; return | True \ False
-IsMaxMin()
-{
-    GetActiveWindowInfo()
-    win_min_max := window.min_max
-    if (win_min_max) {
-        return True
-    } else {
-        return False
-    }
 }
 
 
@@ -351,8 +348,8 @@ IsGame()
 {
     GetActiveWindowInfo()
     win_process_name := window.process_name
-    for index, value in Games_Process {
-        if (value == win_process_name) {
+    for process_name in Games_Process {
+        if (process_name == win_process_name) {
             return True
         }
     }
@@ -374,7 +371,7 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
         HelpText("No WinId",  ,  , 1000)
     }
 
-    if (win_min_max) {
+    if (win_min_max == "Max") {
         WinRestore "ahk_id " . win_id
     }
 
@@ -446,7 +443,7 @@ SetWindowTransparent(change:=0)
 
 
 ; 调整窗口大小
-; status    | Big \ Small
+; command   | Big \ Small
 ; direction | Up \ Down \ Left \ Right
 ; return    | None
 ResizeWindow(command, direction)
@@ -457,7 +454,7 @@ ResizeWindow(command, direction)
 
     GetActiveWindowInfo()
 
-    if IsDesktops() or IsMaxMin()
+    if IsDesktops()
         return
 
     step := 10
@@ -510,7 +507,7 @@ MoveWindowUDLR(direction)
 
     GetActiveWindowInfo()
 
-    if IsDesktops() or IsMaxMin()
+    if IsDesktops()
         return
 
     win_id := window.id
@@ -592,7 +589,10 @@ MoveWindowToCenter(silent:=False)
 {
     GetActiveWindowInfo()
 
-    if IsDesktops() or IsMaxMin()
+    if IsDesktops()
+        return
+
+    if window.min_max
         return
 
     win_id := window.id
@@ -630,7 +630,10 @@ MoveWindowToMainMini(command, slient:=False)
 {
     GetActiveWindowInfo()
 
-    if IsDesktops() or IsMaxMin()
+    if IsDesktops()
+        return
+
+    if window.min_max
         return
 
     win_id := window.id
@@ -716,8 +719,7 @@ MoveWindowToBackupPosition()
 ; 高亮激活的窗口
 HighlightActiveWindow(time:=300, width:=4, color:="e51400")
 {
-    InitWindowArgs()
-    GetActiveWindowInfo("Strict")
+    GetActiveWindowInfo("Strict", False)
 
     win_x            := window.x
     win_y            := window.y
@@ -730,7 +732,7 @@ HighlightActiveWindow(time:=300, width:=4, color:="e51400")
     win_process_name := window.process_name
 
     ; 最小化
-    if (win_min_max == -1) {
+    if (win_min_max == "Min") {
         return
     }
     if (not win_w or not win_h) {

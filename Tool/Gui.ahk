@@ -15,19 +15,19 @@ ShowDefaultProgress()
     move_step    := 10
     move_sleep   := 30
 
-    GDP := Gui()
-    GDP.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
-    GDP.MarginX := 1
-    GDP.MarginY := 1
-    GDP.Add("Progress", Format("vInitProgress cBlack w{} h{}", gui_w, gui_h), 0)
-    GDP.Show("NA Center")
+    G := Gui()
+    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
+    G.MarginX := 1
+    G.MarginY := 1
+    G.Add("Progress", Format("vInitProgress cBlack w{} h{}", gui_w, gui_h), 0)
+    G.Show("NA Center")
     loop {
         move_current := move_current + move_step
         GDP["InitProgress"].Value := move_current
         Sleep move_sleep
         if (move_current >= move_total) {
             Sleep move_sleep
-            GDP.Destroy()
+            G.Destroy()
             break
         }
     }
@@ -36,23 +36,20 @@ ShowDefaultProgress()
 
 
 ; 显示Init帮助信息
-ShowInitConfig()
+InitConfig()
 {
     CoordMode "Pixel", "Screen"
     CoordMode "Mouse", "Screen"
 
-    HelpText()
+    Global G, Arg, Init
 
-    global GIC
-    try {
-        GIC.Hwnd
-    } catch error {
-        GIC := Gui()
-    }
-
-    if (status.init_config == True) {
+    if (Arg.init_show == True) {
+        Arg.init_show := False
+        Try G.Destroy()
         return
     }
+
+    G := Gui()
 
     content := ""
     for index, value in Init.config {
@@ -66,61 +63,17 @@ ShowInitConfig()
     x := Screen.x + Screen.w/2 - w/2
     y := Screen.y + Screen.h/2 - h/2
 
-    GIC := Gui()
-    GIC.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
-    GIC.MarginX := 0
-    GIC.MarginY := 3
-    GIC.SetFont("s25", "Source Code Pro")
-    GIC.Add("Text", Format("+Center -Border w{}", w), "Ahk Config")
+    G := Gui()
+    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
+    G.MarginX := 0
+    G.MarginY := 3
+    G.SetFont("s25", "Source Code Pro")
+    G.Add("Text", Format("+Center -Border w{}", w), "Ahk Config")
+    G.MarginX := 0
+    G.MarginY := 0
+    G.SetFont("s12", "Source Code Pro")
+    G.Add("Text", Format("-Center -Border w{}", w), content)
+    G.Show(Format("NA x{} y{} w{} h{}", x, y, w, h))
 
-    if (status.init_config == False) {
-        GIC.MarginX := 0
-        GIC.MarginY := 0
-        GIC.SetFont("s12", "Source Code Pro")
-        GIC.Add("Text", Format("-Center -Border w{}", w), content)
-        GIC.Show(Format("NA x{} y{} w{} h{}", x, y, w, h))
-        status.init_config := True
-    }
-}
-
-
-HideInitConfig()
-{
-    global GIC
-    if (status.init_config == True) {
-        status.init_config := False
-        GIC.Destroy()
-        return
-    }
-}
-
-
-GuiTxtFile(paths)
-{
-    for path in paths {
-        if (not FileExist(path)) {
-            return
-        }
-    }
-    global Gui_Config
-    global GT, GT_Status, GT_Content, GT_Index
-
-    theme   := GetWindowTheme()
-    content := FileRead(path, "`n UTF-8")
-
-    margin_xy  := Gui_Config.Margin
-    font_name  := Gui_Config.FontName
-    font_size  := Gui_Config.FontSize
-    font_color := Gui_Config.%theme%.Font
-    back_color := Gui_Config.%theme%.Back
-
-    GT := Gui()
-    GT.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
-    GT.SetFont(Format("c{} s{}", font_color, font_size), font_name)
-    GT.MarginX := margin_xy
-    GT.MarginY := margin_xy
-    GT.BackColor := back_color
-    GT.Add("Text", "-Center -Border", content)
-    GT.Show("NA Center")
-    GT_Status := True
+    Arg.init_show := True
 }

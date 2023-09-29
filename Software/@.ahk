@@ -1,7 +1,31 @@
 
-EscRedirect := False
-EscCount := 0
+$RShift::{
+    Send "{Blind}{vkFF}"
+    Global Arg
+    if (Arg.shift_cnt > 0) {
+        Arg.shift_cnt += 1
+        return
+    } else {
+        Arg.shift_cnt := 1
+    }
+    SetTimer ShiftTimer, -333
+}
+ShiftTimer() {
+    Global Arg
+    if (Arg.shift_cnt == 1) {
+        HelpText()
+        HelpKeysHide()
+    } else if (Arg.shift_cnt == 2) {
+        HelpText()
+        HelpKeysShow()
+    }
+    Arg.shift_cnt := 0
+}
 
+
+
+EscRedirect := False
+EscCount    := 0
 
 #HotIf ( EscRedirect == True )
     $Esc::
@@ -14,6 +38,13 @@ EscCount := 0
             EscRedirect := False
         }
     }
+#HotIf
+
+
+#HotIf ( Arg.hotkeys_show == True )
+    [::HelpKeysShow(-1)
+    ]::HelpKeysShow(+1)
+    \::HelpKeysSnipaste()
 #HotIf
 
 

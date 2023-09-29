@@ -3,18 +3,22 @@
 ; 缓存处理 优化相关性能
 Window := {}
 
-; 各种临时性状态信息
-Status := {}
+; 各种临时性数据
+Arg := {}
 
 ; 辅助调试信息
 Debug := {}
 
+; Gui显示
+G := Gui()
+
 ;==========================================;
 
-InitWindowArgs()
+InitWindowValue()
 {
-    global Window
+    Global Window
     Window := {
+        ;
         cache : {
             id     :  0 ,
             title  : "" ,
@@ -44,12 +48,21 @@ InitWindowArgs()
     }
 }
 
-InitStatusArgs()
+InitArgValue()
 {
-    global Status
-    Status := {
-        init_gui_show   : False  ,
-        shift_cnt       : 0      ,
+    Global Arg
+    Arg := {
+        ;
+        ctrl_cnt     : 0 ,
+        alt_cnt      : 0 ,
+        shift_cnt    : 0 ,
+        capslock_cnt : 0 ,
+
+        init_show    : False ,
+        init_content : ""    ,
+
+        ctrl_show    : False ,
+        ctrl_content : ""    ,
 
         hotkeys_show    : False  ,
         hotkeys_index   : 0      ,
@@ -57,8 +70,8 @@ InitStatusArgs()
     }
 }
 
-InitWindowArgs()
-InitStatusArgs()
+InitWindowValue()
+InitArgValue()
 
 ;==========================================;
 

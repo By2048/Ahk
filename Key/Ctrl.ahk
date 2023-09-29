@@ -1,11 +1,4 @@
 ﻿
-~<^c::{
-    ; data := Clipboard
-    ; data := "https://www.bilibili.com/video/BV16L4y1L7fK?spm_id_from=333.999.0.0"
-    ; cmd  := "D:\Python\#\Scripts\python.exe E:\Project\script\ahk\clipboard.py " . data
-    ; Run %cmd%
-}
-
 >^q::Run "E:\Config\PC.qdr"
 >^e::Run "D:\#Lnk\#\Everything.lnk"
 >^r::Run "RegEdit"
@@ -29,7 +22,7 @@
         }
     }
 }
->^k::KeyboardGUI()
+ >^k::KeyboardGUI()
 >^+k::KeyHistory
 
  >^x::Run "D:\#Lnk\#\Xshell.lnk"
@@ -58,27 +51,26 @@
 >^Right::Return
 
 
-cnt := 0
-ctrl_content := ""
-ctrl_gui_status := False
-
 $RCtrl::{
-    global cnt, ctrl_gui_status
-    if (cnt > 0) {
-        cnt += 1
+    Global Arg
+    if (Arg.ctrl_cnt > 0) {
+        Arg.ctrl_cnt += 1
         return
     } else {
-        cnt := 1
+        Arg.ctrl_cnt := 1
     }
     SetTimer CtrlTimer, -333
 }
 CtrlTimer() {
-    global cnt
-    global ctrl_gui_status
-    if (cnt == 1) {
-        if (ctrl_gui_status) {
+    Global Arg
+    if (Arg.ctrl_cnt == 1) {
+        if (Arg.init_show) {
+            InitConfig()
+            return
+        }
+        if (Arg.ctrl_show) {
             CtrlHelpGui()
-            cnt := 0
+            Arg.ctrl_cnt := 0
             return
         }
         if (CheckWindowActive("Maye")) {
@@ -86,52 +78,47 @@ CtrlTimer() {
         } else {
             Run "D:\#Lnk\#\Maye.lnk"
         }
-    } else if (cnt == 2) {
+    } else if (Arg.ctrl_cnt == 2) {
         CtrlHelpGui()
+    } else if (Arg.ctrl_cnt == 3) {
+        InitConfig()
     }
-    cnt := 0
+    Arg.ctrl_cnt := 0
 }
-CtrlHelpGui()
-{
-    global G
-    global ctrl_gui_status
-    global ctrl_content
+CtrlHelpGui() {
+    Global G , Arg
 
-    if (ctrl_gui_status) {
-        try {
-            G.Destroy()
-        }
-        ctrl_gui_status := False
+    if (Arg.ctrl_show) {
+        try G.Destroy()
+        Arg.ctrl_show := False
         return
     }
-    ctrl_gui_status := True
 
-    if (not ctrl_content) {
-        file := A_InitialWorkingDir . "\Key\Ctrl.help"
-        if FileExist(file)
-            ctrl_content := FileRead(file, "`n UTF-8")
+    if (not Arg.ctrl_content) {
+        file_path := A_InitialWorkingDir . "\Key\Ctrl.help"
+        if FileExist(file_path)
+            Arg.ctrl_content := FileRead(file_path, "`n UTF-8")
     }
 
-    G := Gui()
-    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
-
-    G.MarginX := Gui_Config.Margin
-    G.MarginY := Gui_Config.Margin
-
+    margin    := Gui_Config.Margin
     font_name := Gui_Config.FontName
     font_size := Gui_Config.FontSize
     if (GetWindowTheme() == "Dark") {
         font_color := Gui_Config.Dark.Font
         back_color := Gui_Config.Dark.Back
-        G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
-    }
-    if (GetWindowTheme() == "Light") {
+    } else if (GetWindowTheme() == "Light") {
         font_color := Gui_Config.Light.Font
         back_color := Gui_Config.Light.Back
-        G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
     }
-    G.BackColor := back_color
 
-    G.Add("Text", "-Center -Border", ctrl_content)
+    G := Gui()
+    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
+    G.MarginX := margin
+    G.MarginY := margin
+    G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
+    G.BackColor := back_color
+    G.Add("Text", "-Center -Border", Arg.ctrl_content)
     G.Show("NA Center")
+
+    Arg.ctrl_show := True
 }
