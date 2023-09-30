@@ -53,6 +53,7 @@ InitArgValue()
     Global Arg
     Arg := {
         ;
+        win_cnt      : 0 ,
         ctrl_cnt     : 0 ,
         alt_cnt      : 0 ,
         shift_cnt    : 0 ,

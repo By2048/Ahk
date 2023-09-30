@@ -1,27 +1,25 @@
 ﻿
-cnt := 0
-
 $RAlt::{
-    global cnt
+    Global Arg
     GetActiveWindowInfo()
-    if (cnt > 0) {
-        cnt += 1
+    if (Arg.alt_cnt > 0) {
+        Arg.alt_cnt += 1
         return
     } else {
-        cnt := 1
+        Arg.alt_cnt := 1
     }
     SetTimer AltTimer, -500
 }
 AltTimer() {
-    global cnt
-    if (cnt == 2) {
+    Global Arg
+    if (Arg.alt_cnt == 2) {
         GetActiveWindowInfo()
         process_name := window.process_name
         HelpText("`n" process_name "`n", "CenterDown", "Screen1")
         HighlightActiveWindow(500)
         HelpText()
     }
-    cnt := 0
+    Arg.alt_cnt := 0
 }
 
  >!F1::Send "{F13}"
