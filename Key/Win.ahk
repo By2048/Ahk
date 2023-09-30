@@ -340,57 +340,25 @@
 
 
 ; 右键RWin设置
-cnt := 0
 RWin::{
     Send "{Blind}{vkFF}"
-    global cnt
-    if (cnt > 0) {
-        cnt += 1
+    Global Arg
+    if (Arg.win_cnt > 0) {
+        Arg.win_cnt += 1
         return
     } else {
-        cnt := 1
+        Arg.win_cnt := 1
     }
     SetTimer RWinTimer, -500
 }
-
-windows_move         := False
-windows_resize_big   := False
-windows_resize_small := False
 RWinTimer() {
-    global cnt
-    if (cnt == 1) {
+    Global Arg
+    if (Arg.win_cnt == 1) {
         MoveWindowToCenter(True)
-    } else if (cnt == 2) {
+    } else if (Arg.win_cnt == 2) {
         MoveWindowToDefaultPosition()
-    } else if (cnt == 3) {
+    } else if (Arg.win_cnt == 3) {
         MoveWindowToBackupPosition()
     }
-    cnt := 0
-}
-
->#,::{
-    GetActiveWindowInfo()
-    if IsDesktops()
-        return
-    global windows_resize_small
-    windows_resize_small := True
-    HelpText("Windows Resize ---")
-}
-
->#.::{
-    GetActiveWindowInfo()
-    if IsDesktops()
-        return
-    global windows_resize_big
-    windows_resize_big := True
-    HelpText("Windows Resize +++")
-}
-
->#/::{
-    GetActiveWindowInfo()
-    if IsDesktops()
-        return
-    global windows_move
-    windows_move := True
-    HelpText("Move Windows")
+    Arg.win_cnt := 0
 }
