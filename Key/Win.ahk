@@ -1,26 +1,6 @@
 ﻿
 #Include *i Win.Private.ahk
 
-; 环境编辑器
-<#5::{
-    Run "sysdm.cpl"
-    WinWaitActive "ahk_exe SystemPropertiesComputerName.exe",  , 3
-    MoveWindowToCenter(True)
-    Send "^{Tab 2}"
-    Send "!n"
-}
-
-; 显示隐藏任务栏
-<#0::{
-    rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
-    if (!WinExist(rule)) {
-        WinShow rule
-        HelpText("`n显示任务栏`n", "Center", Screens.Count, 500)
-    } else {
-        WinHide rule
-        HelpText("`n隐藏任务栏`n", "Center", Screens.Count, 500)
-    }
-}
 
 #Home::  ;主显示器 -
 #End::   ;主显示器 +
@@ -138,9 +118,16 @@
 ;插入表情
 <#j::#`;
 
-<#,::Send "#x" ;系统菜单
-<#.::Run "control" ;控制面板
-<#/::Run "ms-settings:" ;设置
+ <#,::Send "#x"          ;系统菜单
+ <#.::Run "control"      ;控制面板
+ <#/::Run "ms-settings:" ;设置
+<#+/::{                  ;环境编辑器
+    Run "sysdm.cpl"
+    WinWaitActive "ahk_exe SystemPropertiesComputerName.exe",  , 3
+    MoveWindowToCenter(True)
+    Send "^{Tab 2}"
+    Send "!n"
+}
 
 ;类似于Vim的快捷键操作工具
 <#;::Run HuntAndPeck . " /tray" ;任务栏
@@ -315,6 +302,18 @@
 >#[::Send "{Media_Prev}"
 >#]::Send "{Media_Next}"
 >#p::Send "^!p" ;添加收藏
+
+; 显示隐藏任务栏
+>#/::{
+    rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
+    if ( !WinExist(rule) ) {
+        Try WinShow rule
+        HelpText("`n 显示任务栏 `n", "Center", Screens.Count, 500)
+    } else {
+        Try WinHide rule
+        HelpText("`n 隐藏任务栏 `n", "Center", Screens.Count, 500)
+    }
+}
 
 >#Space:: WindowsTerminal("Focus", "T:\\")
 >#+Space::WindowsTerminal("Full" , "T:\\")
