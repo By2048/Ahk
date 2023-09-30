@@ -250,11 +250,11 @@
 ; <#WheelDown::SetWindowTransparent(-10)
 
 ; 屏幕截图 临时 | 长久
-<#Insert:: ScreenShot("Screen", "T:\")
-<#+Insert::ScreenShot("Screen", "F:\Image\Screen\")
+ <#Insert::ScreenShot("T:\")
+<#+Insert::ScreenShot("F:\Image\Screen\")
 
 ;软件截图 临时 | 长久
-<#Delete:: SoftwareShot("T:\")
+ <#Delete::SoftwareShot("T:\")
 <#+Delete::SoftwareShot("F:\Image\Screen\")
 
 ;结束应用
