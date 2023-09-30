@@ -49,52 +49,38 @@ WindowsTerminal(mode:="Focus", folder:="")
 
 
 ; 屏幕截图
-; screens   | screen1 screen2 screen3
-; keep_path | T:\  F:\Image\Screen\
-ScreenShot(screen_name:="Screen", keep_path:="")
+ScreenShot(path:="", slient:=True)
 {
-    if not FileExist(Snipaste)
-        HelpText(Snipaste, "Center", "Screen", 500)
-
-    if not FileExist(keep_path)
+    if ( !slient and !FileExist(path) ) {
+        HelpText("`n Snipaste Error `n", "Center", "Screen", 500)
         return
-
-    screen_id := ScreenNameToId(screen_name)
-    if (screen_id == "1") {
-        screen_config := Screens.Software.1
-    } else if (screen_id == "2") {
-        screen_config := Screens.Software.2
-    } else if (screen_id == "3") {
-        screen_config := Screens.Software.3
     }
-    x := screen_config.x
-    y := screen_config.y
-    w := screen_config.w
-    h := screen_config.h
-    x := Round(x)
-    y := Round(y)
-    w := Round(w)
-    h := Round(h)
-
-    name := "", file := "", cmd := ""
-    name := FormatTime(A_Now, "[yyyy-MM-dd][HH-mm-ss]")
-    if screen_name != "Screen"
-        name := Format("{1}[{2}]", name, screen_id)
-    file := keep_path . name . ".png"
-    cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, x, y, w, h, file)
+    if ( !slient and !FileExist(path) ) {
+        HelpText("`n Keep Path Error `n", "Center", "Screen", 500)
+        return
+    }
+    x := 0
+    y := 0
+    w := A_ScreenWidth
+    h := A_ScreenHeight
+    path := path . FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss") . ".png"
+    cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, x, y, w, h, path)
     Run cmd
 }
 
 
 
 ; 软件设置界面截图保存
-SoftwareShot(keep_path:="")
+SoftwareShot(path:="", slient:=True)
 {
-    if not FileExist(Snipaste)
+    if ( !slient and !FileExist(path) ) {
+        HelpText("`n Snipaste Error `n", "Center", "Screen", 500)
         return
-
-    if not FileExist(keep_path)
+    }
+    if ( !slient and !FileExist(path) ) {
+        HelpText("`n Keep Path Error `n", "Center", "Screen", 500)
         return
+    }
 
     GetActiveWindowInfo()
     win_process_name := window.process_name
@@ -103,11 +89,10 @@ SoftwareShot(keep_path:="")
     win_w := window.w
     win_h := window.h
 
-    name := "", file := "", cmd := ""
     name := FormatTime(A_Now, "[yyyy-MM-dd][HH-mm-ss]")
     name := Format("{1}[{2}]", name, win_process_name)
-    file := keep_path . name . ".png"
-    cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, win_x, win_y, win_w, win_h, file)
+    path := path . name . ".png"
+    cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, win_x, win_y, win_w, win_h, path)
     Run cmd
 }
 
