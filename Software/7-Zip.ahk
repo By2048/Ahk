@@ -49,6 +49,8 @@ RegisterProcess("7zFM" , "7-Zip")
         win_title := WinGetTitle("A")
         if InStr(win_title, "rar")
             max_select := 24
+        else if InStr(win_title, "7z")
+            max_select := 11
         else
             max_select := 19
 
