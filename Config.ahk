@@ -30,8 +30,11 @@ System_Type := "Win10"
 PC_USERNAME := "Admin"
 PC_PASSWORD := "Xxxxx"
 
-; Chrome Image 默认下载位置
-Chrome_Image_Download := "T:\Image\"
+; Chrome Image 存储位置
+Chrome_Image := "T:\Image\"
+
+; Game Image 存储位置
+Game_Image := "V:\"
 
 ;---------------------------------------------------------------------------;
 ; 通用GUI默认设置

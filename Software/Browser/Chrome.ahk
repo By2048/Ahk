@@ -25,13 +25,13 @@ RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili")
         url := UrlChange(url)
         if not InStr(url, "http")
             return
-        global Chrome_Image_Download
+        Global Chrome_Image
         if ( A_ThisHotkey == "$CapsLock" )
-            AriaDownload(url, Chrome_Image_Download)
+            AriaDownload(url, Chrome_Image)
         if ( A_ThisHotkey == "+CapsLock" ) {
             time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
             ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
-            AriaDownload(url, Chrome_Image_Download, time . ext)
+            AriaDownload(url, Chrome_Image, time . ext)
         }
         A_Clipboard := ""
         SetCapsLockState "Off"
