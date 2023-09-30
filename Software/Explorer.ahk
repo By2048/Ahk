@@ -73,10 +73,9 @@ RegisterHelp("Explorer_WorkerW" , "Key\Win | Key\Win.Other | Software\Explorer.F
      F8::Run "E:\GitPy\"
      F9::Run "E:\Doc\"
     F10::Run "E:\Xxxx\"
-    F11::Run "V:\"
-    F12::Run "T:\"
+    F11::Run "T:\"
+    F12::Run "V:\"
     RAlt & RWin::Return
-    ; ^r::Send "{F2}"
 #HotIf
 
 ; 文件管理器
