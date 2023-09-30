@@ -289,6 +289,7 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
         if InStr(cfg, "|") {
             status := False
             for item in StrSplit(cfg, "|") {
+                item := Trim(item)
                 if InStr(item, "*") {
                     if InStr(win, StrReplace(item, "*", ""))
                         status := True
