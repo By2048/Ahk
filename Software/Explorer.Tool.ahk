@@ -24,7 +24,7 @@ SetExplorerColumns(config)
     win_class := WinGetClass("A")
     win_process_name := WinGetProcessName("A")
 
-    if win_process_name != "Explorer"
+    if win_process_name != "Explorer.exe"
         return
 
     if win_class != "CabinetWClass" and win_class != "ExploreWClass"
@@ -32,7 +32,7 @@ SetExplorerColumns(config)
 
     obj := 0
 	for win in ComObject("Shell.Application").Windows
-		if (win.HWND == win_id)
+		if win.HWND == win_id
 			obj := win
 
     if not obj
