@@ -10,13 +10,17 @@ RegisterProcess("LeagueClientUx"    , "LOL_Client")
 RegisterProcess("League of Legends" , "LOL_Game"  )
 
 
+#HotIf CheckWindowActive(" LOL_Client | LOL_Game ")
+    Insert::SoftwareShot(Game_Image)
+    Delete::ScreenShot(Game_Image)
+#HotIf
+
+
 #HotIf CheckWindowActive("LOL_Client")
 
     ; D:\Game\英雄联盟\LeagueClient\LeagueClientUx.exe
 
     RWin::MoveWindowToCenter(True)
-    Insert::SoftwareShot("T:\")
-    Delete::SoftwareShot("F:\Game\LOL\")
 
     ; 修改
     \::MouseClickAndResetting(684, 1012)
@@ -44,8 +48,6 @@ RegisterProcess("League of Legends" , "LOL_Game"  )
     #Include *i LOL.Game.Private.ahk
 
     RWin::Return
-    Insert::ScreenShot("Screen", "T:\")
-    Delete::ScreenShot("Screen", "F:\Game\LOL\")
 
     ![::{
         EN()

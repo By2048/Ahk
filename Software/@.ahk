@@ -21,12 +21,15 @@ ShiftTimer() {
     }
     Arg.shift_cnt := 0
 }
-
+#HotIf ( Arg.hotkeys_show == True )
+    [::HelpKeysShow(-1)
+    ]::HelpKeysShow(+1)
+    \::HelpKeysSnipaste()
+#HotIf
 
 
 EscRedirect := False
 EscCount    := 0
-
 #HotIf ( EscRedirect == True )
     $Esc::
     $CapsLock::{
@@ -37,21 +40,6 @@ EscCount    := 0
             EscCount := 0
             EscRedirect := False
         }
-    }
-#HotIf
-
-
-#HotIf ( Arg.hotkeys_show == True )
-    [::HelpKeysShow(-1)
-    ]::HelpKeysShow(+1)
-    \::HelpKeysSnipaste()
-#HotIf
-
-
-#HotIf IsGame()
-    #BackSpace::
-    #+BackSpace::{
-        Run "Setup.bat GameMode", A_InitialWorkingDir, "Hide"
     }
 #HotIf
 

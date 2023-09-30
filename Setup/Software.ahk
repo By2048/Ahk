@@ -41,6 +41,9 @@
 #Include ..\Software\Wallpaper.ahk
 #Include ..\Software\Windows.ahk
 
+#Include ..\Software\Game\Key.ahk
+#Include ..\Software\Game\LOL.ahk
+
 #Include ..\Software\Browser\Chrome.ahk
 #Include ..\Software\Browser\Edge.ahk
 #Include ..\Software\Browser\FireFox.ahk
