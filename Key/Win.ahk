@@ -16,8 +16,16 @@
 }
 
 ; 缩放快捷键
+ <#0::Send "^!0"
+<#+0::Send "^!+0"
+ <#-::Send "^!-"
+<#+-::Send "^!+-"
 <#=::Send "^!="
-<#-::Send "^!-"
+<#+=::Send "^!+="
+
+; 设置快捷键
+ <#AppsKey::Send "^!{AppsKey}"
+<#+AppsKey::Send "^!+{AppsKey}"
 
 ;声音
 #PgUp::Send "{Volume_Up}"
