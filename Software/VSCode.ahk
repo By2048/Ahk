@@ -63,13 +63,11 @@ RegisterHelp("VSCode", "Software\VSCode | Software\VSCode.Fxx")
         SetCapsLockState "Off"
     }
 
-
     ; 聚焦 编辑器|工具
     ^!NumpadDiv::Return
     ^!NumpadMult::Return
     ~CapsLock & LShift::Send "^!{NumpadDiv}"
     ~CapsLock & Tab::Send "^!{NumpadMult}"
-
 
     ; 项目 结构
     CapsLock & [::{
@@ -87,8 +85,6 @@ RegisterHelp("VSCode", "Software\VSCode | Software\VSCode.Fxx")
         }
     }
 
-
-
     ; 窗口大小调整
     CapsLock & Left:: Send "^!{Left}"
     CapsLock & Right::Send "^!{Right}"
@@ -98,5 +94,13 @@ RegisterHelp("VSCode", "Software\VSCode | Software\VSCode.Fxx")
     ; 切换编辑器焦点
     LAlt & RShift::Send "{F15}"
     RShift & LAlt::Send "+{F15}"
+
+#HotIf
+
+
+; 快捷键设置
+#HotIf CheckWindowActive("VSCode", "", "*User\KeyBindings.json")
+
+    RShift::HelpFile("Software\VSCode.Setting.help")
 
 #HotIf
