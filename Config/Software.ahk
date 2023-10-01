@@ -4,6 +4,7 @@
 
 ; 可执行文件路径
 AHK           := "D:\AutoHotkey\#\AutoHotkey.exe"
+Aria          := "D:\Aria2\aria2c.exe"
 ADB           := "D:\Adb\adb.exe"
 CMD           := "C:\Windows\System32\cmd.exe"
 Chrome        := "C:\Program Files\Google\Chrome\Application\chrome.exe"
