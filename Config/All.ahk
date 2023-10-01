@@ -59,11 +59,16 @@ InitArgValue()
         shift_cnt    : 0 ,
         capslock_cnt : 0 ,
 
+        previous_win_id : 0x0 ,
+
         init_show    : False ,
         init_content : ""    ,
 
         ctrl_show    : False ,
         ctrl_content : ""    ,
+
+        help_file_show    : False ,
+        help_file_content : ""    ,
 
         hotkeys_show    : False  ,
         hotkeys_index   : 0      ,
