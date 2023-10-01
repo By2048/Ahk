@@ -103,7 +103,7 @@ AriaDownload(url, folder:="T:\", name:="")
     if not DirExist(folder)
         DirCreate folder
 
-    command := "D:\Aria2\aria2c.exe " . url
+    command := Aria . " " . url
     if folder
         command := command . " --dir " . Format("{}", folder)
     if name

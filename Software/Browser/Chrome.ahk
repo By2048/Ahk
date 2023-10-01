@@ -8,16 +8,16 @@ RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili")
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*" )
     $CapsLock::
-    +CapsLock::{
+    $+CapsLock::{
         A_Clipboard := ""
         Sleep 33
         Send "{RButton}"
-        Sleep 333
+        Sleep 9
         Send "{Down 4}"
         Send "{Enter}"
         Sleep 33
         url := A_Clipboard
-        ClipWait
+        ClipWait 999
         if ( not url ) {
             HelpText(" No Url ", "Screen", "CenterDown", "500")
             return
@@ -25,13 +25,12 @@ RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili")
         url := UrlChange(url)
         if not InStr(url, "http")
             return
-        Global Chrome_Image
         if ( A_ThisHotkey == "$CapsLock" )
-            AriaDownload(url, Chrome_Image)
-        if ( A_ThisHotkey == "+CapsLock" ) {
+            Try AriaDownload(url, Chrome_Image)
+        if ( A_ThisHotkey == "$+CapsLock" ) {
             time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
             ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
-            AriaDownload(url, Chrome_Image, time . ext)
+            Try AriaDownload(url, Chrome_Image, time . ext)
         }
         A_Clipboard := ""
         SetCapsLockState "Off"
@@ -46,10 +45,8 @@ RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili")
 
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "修改书签" )
-
     ; 收藏
     !Enter::Send "{Tab 4}{Enter}"
-
     ; 取消收藏
     !Esc::{
         Send "{Esc}"
@@ -57,7 +54,6 @@ RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili")
         Send "{Tab 4}"
         Send "{Enter}"
     }
-
 #HotIf
 
 
@@ -110,7 +106,7 @@ Expand := False
         if ( url_origin != url_result ) {
             A_Clipboard := ""
             A_Clipboard := url_result
-            ClipWait
+            ClipWait 999
             Send "^t"
             Sleep 555
             Send "!d"
@@ -119,7 +115,7 @@ Expand := False
             Send "{Enter}"
             A_Clipboard := ""
             A_Clipboard := url_origin
-            ClipWait
+            ClipWait 999
             cnt := 0
             return
         }
@@ -128,7 +124,7 @@ Expand := False
         Send "!d"
         Send "^c"
         Send "{F10 2}"
-        ClipWait
+        ClipWait 999 999
 
         url_result := UrlChange(A_Clipboard)
         if (url_result != url_origin) {
