@@ -1,4 +1,4 @@
-
+﻿
 #Include *i Win.Private.ahk
 
 
@@ -20,7 +20,7 @@
 <#+0::Send "^!+0"
  <#-::Send "^!-"
 <#+-::Send "^!+-"
-<#=::Send "^!="
+ <#=::Send "^!="
 <#+=::Send "^!+="
 
 ; 设置快捷键
@@ -32,14 +32,13 @@
 #PgDn::Send "{Volume_Down}"
 #+PgUp::
 #+PgDn::{
-    Send "{Volume_Down}"
-    Send "{Volume_Up}"
-
-    offset := 3
-    volume_steps := [11, 22, 33, 44, 55, 66, 77, 88, 99]
+    Send "{Volume_Down}{Volume_Up}" ;显示声音调整UI
+    volume_offset  := 3
+    volume_steps   := [ 11, 22, 33, 44, 55, 66, 77, 88, 99 ]
     volume_current := Round(SoundGetVolume())
     for index, volume in volume_steps {
-        if ( Abs(volume_current - volume) < offset ) {
+        ; 调整音量时 不能准确调整到指定数值 存在小数点偏差
+        if ( Abs(volume_current - volume) < volume_offset ) {
             if (InStr(A_ThisHotkey, "PgDn")) {
                 if (index == 1) {
                     SoundSetVolume volume_steps[1]
@@ -53,34 +52,9 @@
                     SoundSetVolume volume_steps[index + 1]
                 }
             }
-            return
+            break
         }
     }
-
-    min_close := 99
-    min_close_index := 0
-    for index, volume in volume_steps {
-        if ( Abs(volume - volume_current) < min_close) {
-            min_close := Abs(volume - volume_current)
-            min_close_index := index
-        }
-    }
-    if (InStr(A_ThisHotkey, "-")) {
-        if (volume_steps[min_close_index] > volume_current) {
-            if (min_close_index > 1) {
-                SoundSetVolume volume_steps[min_close_index - 1]
-                return
-            }
-        }
-    } else if (InStr(A_ThisHotkey, "=")) {
-        if (volume_steps[min_close_index] > volume_current) {
-            if (min_close_index < volume_steps.Length) {
-                SoundSetVolume volume_steps[min_close_index + 1]
-                return
-            }
-        }
-    }
-    SoundSetVolume volume_steps[min_close_index]
 }
 
 ; 有道翻译
@@ -90,9 +64,9 @@
 ; PowerToy
 ; #t 窗口置顶
 ; #o Orc
-<#x::Send "#^!x"    ; 裁剪
+ <#x::Send "#^!x"    ; 裁剪
 <#+x::Send "#^!+x"  ; 锁定
-<#g::Send "#^!g"    ; 鼠标荧光笔
+ <#g::Send "#^!g"    ; 鼠标荧光笔
 <#+g::Send "#^!+g"  ; 屏幕标尺
 
 ;切换任务栏应用（预览
