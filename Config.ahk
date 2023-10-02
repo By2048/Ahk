@@ -31,10 +31,10 @@ PC_USERNAME := "Admin"
 PC_PASSWORD := "Xxxxx"
 
 ; Chrome Image 存储位置
-Chrome_Image := "T:\Image\"
+Chrome_Image := "T:\"
 
 ; Game Image 存储位置
-Game_Image := "V:\"
+Game_Image := "T:\"
 
 ;---------------------------------------------------------------------------;
 ; 通用GUI默认设置
