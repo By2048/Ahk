@@ -1,7 +1,8 @@
 ﻿
 RegisterProcess("explorer" , "Explorer")
-RegisterHelp("Explorer_CabinetWClass" , "Software\Explorer")
-RegisterHelp("Explorer_WorkerW" , "Key\Win | Key\Win.Other | Software\Explorer.Fxx")
+
+RegisterHelp("Explorer_CabinetWClass" , "Software\Explorer.help")
+RegisterHelp("Explorer_WorkerW"       , "Key\Win.help | Key\Win.Other.help | Software\Explorer.Fxx.help")
 
 
 ; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
@@ -22,6 +23,7 @@ RegisterHelp("Explorer_WorkerW" , "Key\Win | Key\Win.Other | Software\Explorer.F
     !y::Return
     !n::Return
 #HotIf
+
 
 #HotIf CheckWindowActive( "Explorer" , "#32770" , "属性" )
     ; 修改文件图标

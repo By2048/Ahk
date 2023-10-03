@@ -1,6 +1,7 @@
 ﻿
 RegisterProcess("PotPlayerMini64" , "PotPlayer")
-RegisterHelp("PotPlayer" , "Software\PotPlayer")
+
+RegisterHelp("PotPlayer" , "Software\PotPlayer.help")
 
 
 #HotIf CheckWindowActive("PotPlayer")

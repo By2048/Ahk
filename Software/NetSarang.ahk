@@ -1,5 +1,5 @@
 ﻿
-RegisterHelp("Xshell", "Software\NetSarang.Xshell")
+RegisterHelp("Xshell", "Software\NetSarang.Xshell.help")
 
 
 #HotIf CheckWindowActive("Xftp")

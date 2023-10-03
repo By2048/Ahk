@@ -1,5 +1,5 @@
 ﻿
-RegisterHelp("v2rayN", "Software\v2rayN")
+RegisterHelp("v2rayN", "Software\v2rayN.help")
 
 
 #HotIf CheckWindowActive( "EnableLoopback" )
@@ -12,7 +12,6 @@ RegisterHelp("v2rayN", "Software\v2rayN")
         SetColumnWidth("WindowsForms10.SysListView32.app.0.141b42a_r6_ad11" , config)
     }
 #HotIf
-
 
 
 #HotIf CheckWindowActive( "v2rayN" )

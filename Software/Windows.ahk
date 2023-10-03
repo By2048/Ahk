@@ -10,7 +10,6 @@
 #HotIf
 
 
-
 ; 编辑环境变量
 #HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "编辑环境变量" )
     PgUp::Send "!u"
@@ -28,7 +27,6 @@
         }
     }
 #HotIf
-
 
 
 ; 任务管理器
@@ -81,7 +79,6 @@
 #HotIf
 
 
-
 ; 远程桌面
 #HotIf CheckWindowActive( "RemoteDesktop" )
 
@@ -98,7 +95,6 @@
 #HotIf
 
 
-
 ; 设置
 #HotIf CheckWindowActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
 
@@ -108,7 +104,6 @@
     Esc::MouseClickAndResetting(38, 23)
 
 #HotIf
-
 
 
 ; 服务
@@ -127,7 +122,7 @@
 
 
 ; 注册表
-RegisterHelp("RegEdit", "Software\Windows.RegEdit")
+RegisterHelp("RegEdit", "Software\Windows.RegEdit.help")
 
 #HotIf CheckWindowActive( "RegEdit" )
 

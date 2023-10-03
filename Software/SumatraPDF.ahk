@@ -1,5 +1,5 @@
 ﻿
-RegisterHelp("SumatraPDF", "Software\SumatraPDF")
+RegisterHelp("SumatraPDF", "Software\SumatraPDF.help")
 
 
 #HotIf CheckWindowActive("SumatraPDF")

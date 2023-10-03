@@ -1,10 +1,13 @@
 ﻿
 #Include *i Chrome.Private.ahk
 
+
 RegisterProcess("chrome" , "Chrome")
-RegisterHelp("Chrome" , "Software\Browser\Chrome | Software\BrowserChrome.Fxx")
-RegisterHelp("Chrome__知乎" , "Software\Browser\Chrome.ZhiHu")
-RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili")
+
+RegisterHelp("Chrome__知乎"     , "Software\Browser\Chrome.ZhiHu.help")
+RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili.help")
+RegisterHelp("Chrome"           , "Software\Browser\Chrome.help | Software\BrowserChrome.Fxx.help")
+
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*" )
     $CapsLock::

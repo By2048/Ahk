@@ -65,23 +65,25 @@ Software_Keys_Help := Map()
 
 RegisterHelp(process, config)
 {
-    global Software_Keys_Help
-    if InStr(config, " | ")
-        config := StrSplit(config, " | ")
+    if InStr(config, "|")
+        config := StrSplit(config, "|")
     else
         config := [config]
     result := []
     for cfg in config {
-        help_file := Format("{}\{}.help", A_InitialWorkingDir, cfg)
-        if FileExist(help_file) {
-            content := FileRead(help_file, "`n UTF-8")
+        cfg := Trim(cfg)
+        if not cfg
+            continue
+        path := Format("{}\{}", A_InitialWorkingDir, cfg)
+        if FileExist(path) {
+            content := FileRead(path, "`n UTF-8")
             result.Push(content)
         }
     }
     Software_Keys_Help[process] := result
 }
 
-RegisterHelp("Default", "Config\Windows | Key\Win.Other")
+RegisterHelp("Default", "Key\Win.help | Key\Win.Other.help")
 
 
 ; 软件位置设置
