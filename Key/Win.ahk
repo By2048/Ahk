@@ -1,4 +1,4 @@
-﻿
+
 #Include *i Win.Private.ahk
 
 
@@ -28,8 +28,8 @@
 <#+AppsKey::Send "^!+{AppsKey}"
 
 ;声音
-#PgUp::Send "{Volume_Up}"
-#PgDn::Send "{Volume_Down}"
+ #PgUp::Send "{Volume_Up}"
+ #PgDn::Send "{Volume_Down}"
 #+PgUp::
 #+PgDn::{
     Send "{Volume_Down}{Volume_Up}" ;显示声音调整UI
@@ -200,7 +200,7 @@
     Sleep 300
     Send "#k"
 }
-<#m:: Send "#," ;显示隐藏所有应用
+ <#m::Send "#," ;显示隐藏所有应用
 <#+m::Send "#d" ;切换隐藏所有应用界面
 
 ; 修改窗口透明度
@@ -250,7 +250,7 @@
 }
 
 ;设置默认位置
-<#\::MoveWindowToDefaultPosition()
+ <#\::MoveWindowToDefaultPosition()
 <#+\::MoveWindowToBackupPosition()
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -273,17 +273,18 @@
     }
 }
 
->#Space:: WindowsTerminal("Focus", "T:\\")
+ >#Space::WindowsTerminal("Focus", "T:\\")
 >#+Space::WindowsTerminal("Full" , "T:\\")
 
->#b::Return
->#Tab::Return
-
 ; Snipaste截图
->#Insert:: Send "^!{PrintScreen}"
+ >#Insert::Send "^!{PrintScreen}"
 >#+Insert::Send "^!+{PrintScreen}"
->#Delete:: Send "^!{CtrlBreak}"
+ >#Delete::Send "^!{CtrlBreak}"
 >#+Delete::Send "^!+{CtrlBreak}"
+
+; 窗口全屏
+ >#Enter::Send "^!{Enter}"
+>#+Enter::Send "^!+{Enter}"
 
 ; 窗口大小调整
 >#Left:: Send "^!{Numpad4}"
