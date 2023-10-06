@@ -215,6 +215,10 @@
  <#Delete::SoftwareShot("T:\")
 <#+Delete::SoftwareShot("F:\Image\Screen\")
 
+; 窗口全屏
+ <#Enter::Send "^!{Enter}"
+<#+Enter::Send "^!+{Enter}"
+
 ;结束应用
 <#BackSpace::{
     GetActiveWindowInfo()
@@ -281,10 +285,6 @@
 >#+Insert::Send "^!+{PrintScreen}"
  >#Delete::Send "^!{CtrlBreak}"
 >#+Delete::Send "^!+{CtrlBreak}"
-
-; 窗口全屏
- >#Enter::Send "^!{Enter}"
->#+Enter::Send "^!+{Enter}"
 
 ; 窗口大小调整
 >#Left:: Send "^!{Numpad4}"
