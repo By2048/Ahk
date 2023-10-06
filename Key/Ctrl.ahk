@@ -66,6 +66,7 @@ CtrlTimer() {
     if (Arg.ctrl_cnt == 1) {
         if (Arg.init_show) {
             InitConfig()
+            Arg.ctrl_cnt := 0
             return
         }
         if (Arg.ctrl_show) {
