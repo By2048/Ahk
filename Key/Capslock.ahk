@@ -1,4 +1,9 @@
 ﻿
+RegisterProcess("pycharm64" , "PyCharm")
+RegisterProcess("chrome"    , "Chrome" )
+RegisterProcess("idea64"    , "IDEA"   )
+
+
 ;切换到显示器中心
 $CapsLock::{
 
@@ -8,9 +13,9 @@ $CapsLock::{
     GetActiveWindowInfo()
     win_process_name := window.process_name
 
-    ignore_process := [ "PyCharm" , "Chrome" , "IDEA" ]
-    for index, value in ignore_process {
-        if (win_process_name == value) {
+    process_ignore := [ "PyCharm" , "Chrome" , "IDEA" ]
+    for process_name in process_ignore {
+        if (win_process_name == process_name) {
             return
         }
     }
