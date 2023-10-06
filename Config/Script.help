@@ -1,7 +1,8 @@
- Adb        FastBoot   Ahk        Aria       CMD        
- FFmpeg     FFplay     FFprobe    Git        Go         
- Java       Lua        LuaC       LuaW       PSL        
- Scrcpy     TaskKill   Vim        Zip        Python     
- Py         Pip        RustC      RustUp     Cargo      
- Script     PyEnv      GitX       GitPy      Bi-Free    
- Rename     Nicotv     Windows    Rename-Config
+ Rename-Config         Adb        FastBoot   Ahk        
+ Aria       BBDown     CMD        FFmpeg     FFplay     
+ FFprobe    Git        Go         Java       Lua        
+ LuaC       LuaW       PSL        Scrcpy     TaskKill   
+ Vim        Zip        Python     Py         Pip        
+ RustC      RustUp     Cargo      Script     PyEnv      
+ GitX       GitPy      Bi-Free    Rename     Nicotv     
+ Windows
