@@ -40,6 +40,7 @@
 #Include ..\Software\VSCode.ahk
 #Include ..\Software\Wallpaper.ahk
 #Include ..\Software\Windows.ahk
+#Include ..\Software\WPS.ahk
 
 #Include ..\Software\Game\Key.ahk
 #Include ..\Software\Game\LOL.ahk
