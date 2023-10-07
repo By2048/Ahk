@@ -12,8 +12,7 @@ Debug := {}
 ; Gui显示
 G := Gui()
 
-;==========================================;
-
+; 当前窗口的信息
 InitWindowValue()
 {
     Global Window
@@ -48,38 +47,33 @@ InitWindowValue()
     }
 }
 
-InitArgValue()
-{
-    Global Arg
-    Arg := {
-        ;
-        win_cnt      : 0 ,
-        ctrl_cnt     : 0 ,
-        alt_cnt      : 0 ,
-        shift_cnt    : 0 ,
-        capslock_cnt : 0 ,
+InitWindowValue()
 
-        previous_win_id : 0x0 ,
+; 临时性使用的全局变量
+Arg := {
+    ;
+    win_cnt      : 0 ,
+    ctrl_cnt     : 0 ,
+    alt_cnt      : 0 ,
+    shift_cnt    : 0 ,
+    capslock_cnt : 0 ,
 
-        init_show    : False ,
-        init_content : ""    ,
+    previous_win_id : 0x0 ,
 
-        ctrl_show    : False ,
-        ctrl_content : ""    ,
+    init_show    : False ,
+    init_content : ""    ,
 
-        help_file_show    : False ,
-        help_file_content : ""    ,
+    ctrl_show    : False ,
+    ctrl_content : ""    ,
 
-        hotkeys_show    : False  ,
-        hotkeys_index   : 0      ,
-        hotkeys_current : ""
-    }
+    help_file_show    : False ,
+    help_file_content : ""    ,
+
+    hotkeys_show    : False  ,
+    hotkeys_index   : 0      ,
+    hotkeys_current : ""
 }
 
-InitWindowValue()
-InitArgValue()
-
-;==========================================;
 
 #Include *i ..\Config.ahk
 
