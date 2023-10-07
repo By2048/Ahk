@@ -270,13 +270,14 @@ CapsLockActivate := False
     ; 代码注释
     ; ^\::Return
     ; ^+\::Return
-    ~LAlt & RShift::{
-        if (GetKeyState("LShift", "P")) {
+    LAlt & RShift::{
+        if ( GetKeyState("LShift", "P") ) {
             Send "^+\"
         } else {
             Send "^\"
         }
     }
+
     ; 设置
     LAlt & RAlt::{
         Send "^{ScrollLock}"
@@ -287,10 +288,15 @@ CapsLockActivate := False
             MoveWindowToCenter(True)
         }
     }
+
     ; 快速切换
     RAlt & LAlt::{
         Send "!{ScrollLock}"
         SetScrollLockState "Off"
         CenterHideWindow()
     }
+
+    ; Send "!{CtrlBreak}"
+    ; Send "+{CtrlBreak}"
+
 #HotIf

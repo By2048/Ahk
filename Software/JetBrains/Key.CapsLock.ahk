@@ -86,7 +86,7 @@ CapsLockToEscCount := 0
 ^!p::Return
 ~CapsLock & p::{
     Send "^!p"
-    CenterHideWindow(999, 900)
+    CenterHideWindow(888, 999)
 }
 
 ; Git工具 VCS操作
