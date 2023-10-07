@@ -22,7 +22,7 @@ RegisterHelp("Chrome"           , "Software\Browser\Chrome.help | Software\Brows
         url := A_Clipboard
         ClipWait 1
         if ( not url ) {
-            HelpText(" No Url ", "Screen", "CenterDown", "500")
+            HelpText(" No Url ", "CenterDown", "Screen", "500")
             return
         }
         url := UrlChange(url)
@@ -216,22 +216,21 @@ Expand := False
     ^+d::Return
     !d::{
         Send "^d"
-        Send "{Tab 2}"
+        Send "{Tab}"
+        Sleep 99
         Send "{Enter}"
-        if InStr(Screen.Name, "4K")
-            MoveWindowToPosition(Position(900, 1500))
-        if InStr(Screen.Name, "2K")
-            MoveWindowToPosition(Position(700, 1000))
+        Sleep 99
+        Send "{End}"
+        Send "{Enter}"
     }
     !+d::{
         Send "^d"
-        Send "{Tab 4}"
+        Send "{Tab 3}"
         Send "{Enter}"
     }
 
     alt_space := False
     !Space::{
-        global alt_space
         if (not alt_space) {
             alt_space := True
             Send "!d"
