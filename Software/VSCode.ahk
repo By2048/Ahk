@@ -7,26 +7,32 @@ RegisterProcess("Code", "VSCode")
 RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
 
 
+; 快捷键设置
+#HotIf CheckWindowActive("VSCode", "", "*User\KeyBindings.json")
+
+    RShift::HelpFile("Software\VSCode.Setting.help")
+
+#HotIf
+
+
 #HotIf CheckWindowActive("VSCode")
 
-    cnt := 0
+    Global Arg , EscRedirect
     ~LShift::{
-        global cnt
-        if (cnt > 0) {
-            cnt += 1
+        if (Arg.shift_cnt > 0) {
+            Arg.shift_cnt += 1
             return
         } else {
-            cnt := 1
+            Arg.shift_cnt := 1
         }
-        SetTimer VSCodeTimer, -500
+        SetTimer VSCodeTimer, -300
     }
     VSCodeTimer() {
-        global cnt, EscRedirect
-        if (cnt == 2) {
+        if (Arg.shift_cnt == 2) {
             Send "^!{Space}"
             EscRedirect := True
         }
-        cnt := 0
+        Arg.shift_cnt := 0
     }
 
     ; 切换标签页
@@ -93,16 +99,17 @@ RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
     CapsLock & Up::   Send "^!{Up}"
     CapsLock & Down:: Send "^!{Down}"
 
+    ; 代码注释
+    LAlt & RShift::{
+        if ( GetKeyState("LShift", "P") ) {
+            Send "^+\"
+        } else {
+            Send "^\"
+        }
+    }
+
     ; 切换编辑器焦点
-    LAlt & RShift::Send "{F15}"
-    RShift & LAlt::Send "+{F15}"
-
-#HotIf
-
-
-; 快捷键设置
-#HotIf CheckWindowActive("VSCode", "", "*User\KeyBindings.json")
-
-    RShift::HelpFile("Software\VSCode.Setting.help")
+    LShift & RShift::Send "{F15}"
+    RShift & LShift::Send "+{F15}"
 
 #HotIf
