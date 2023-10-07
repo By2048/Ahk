@@ -20,7 +20,7 @@ RegisterHelp("Chrome"           , "Software\Browser\Chrome.help | Software\Brows
         Send "{Enter}"
         Sleep 33
         url := A_Clipboard
-        ClipWait 999
+        ClipWait 1
         if ( not url ) {
             HelpText(" No Url ", "Screen", "CenterDown", "500")
             return
@@ -29,11 +29,11 @@ RegisterHelp("Chrome"           , "Software\Browser\Chrome.help | Software\Brows
         if not InStr(url, "http")
             return
         if ( A_ThisHotkey == "$CapsLock" )
-            AriaDownload(url, Chrome_Image)
+            Try AriaDownload(url, Chrome_Image)
         if ( A_ThisHotkey == "$+CapsLock" ) {
             time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
             ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
-            AriaDownload(url, Chrome_Image, time . ext)
+            Try AriaDownload(url, Chrome_Image, time . ext)
         }
         A_Clipboard := ""
         SetCapsLockState "Off"
@@ -109,7 +109,7 @@ Expand := False
         if ( url_origin != url_result ) {
             A_Clipboard := ""
             A_Clipboard := url_result
-            ClipWait 999
+            ClipWait 1
             Send "^t"
             Sleep 555
             Send "!d"
@@ -118,7 +118,7 @@ Expand := False
             Send "{Enter}"
             A_Clipboard := ""
             A_Clipboard := url_origin
-            ClipWait 999
+            ClipWait 1
             cnt := 0
             return
         }
@@ -127,7 +127,7 @@ Expand := False
         Send "!d"
         Send "^c"
         Send "{F10 2}"
-        ClipWait 999 999
+        ClipWait 1
 
         url_result := UrlChange(A_Clipboard)
         if (url_result != url_origin) {
@@ -243,7 +243,7 @@ Expand := False
 
     ; 拓展程序界面
     LAlt & RShift::{
-        global Expand
+        Global Expand
         Send "{F10}"
         Send "{Left 4}"
         Send "{Down 3}"
