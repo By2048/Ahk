@@ -5,13 +5,13 @@ ClipboardChange(origin)
 
     ; 作品ID：111186810
     if ( InStr(origin, "ID", "Off") ) {
-        image := RegExReplace(origin, "(ID)(.*?)(\d+)", "$3")
+        image := RegExReplace(origin, "(.*?)(ID)(.*?)(\d+)", "$4")
         result := "https://www.pixiv.net/artworks/" . image
     }
 
     ; pixiv ID: 110428163
     if ( InStr(origin, "pixiv", "Off") ) {
-        image := RegExReplace(origin, "(pixiv)(.*?)(\d+)", "$3")
+        image := RegExReplace(origin, "(.*?)(pixiv)(.*?)(\d+)", "$4")
         result := "https://www.pixiv.net/artworks/" . image
     }
 
