@@ -1,5 +1,5 @@
 
-$RShift::{
+~RShift::{
     Send "{Blind}{vkFF}"
     Global Arg
     if (Arg.shift_cnt > 0) {
