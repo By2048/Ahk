@@ -78,7 +78,7 @@
 
  <#,::Send "#x"          ;系统菜单
  <#.::Run "control"      ;控制面板
- <#/::Run "ms-settings:" ;设置
+ <#/::Run "MS-Settings:" ;设置
 <#+/::{                  ;环境编辑器
     Run "sysdm.cpl"
     WinWaitActive "ahk_exe SystemPropertiesComputerName.exe",  , 3

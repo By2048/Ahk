@@ -82,11 +82,11 @@
 ; 远程桌面
 #HotIf CheckWindowActive( "RemoteDesktop" )
 
-    $CapsLock::{
+    CapsLock::{
+        Global Arg
         WinActivate "ahk_exe Explorer.exe ahk_class WorkerW"
-        GlobalSet("Windows", "Previous_Process_Name", "RemoteDesktop")
-        GlobalSet("Status", "Remote_Desktop_Switch_Check", True)
-        HelpText("`n Windows `n", "Center", "Screen", 300)
+        HelpText("`n  Windows  `n", "Center", "Screen", 300)
+        Arg.Previous_Process_Name := "RemoteDesktop"
     }
 
     ; 显示链接栏

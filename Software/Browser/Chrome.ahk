@@ -231,6 +231,7 @@ Expand := False
 
     alt_space := False
     !Space::{
+        global alt_space
         if (not alt_space) {
             alt_space := True
             Send "!d"
