@@ -25,6 +25,8 @@ WPD["PyCharm__自定义调试"] := Position(0.3 , 0.7)
 WPD["PyCharm__运行/调试配置"] := Position(0.46 , 0.73)
 WPD["PyCharm__编辑运行配置"] := Position(0.5 , 0.75)
 
+WPD["PyCharm__选择要粘贴的内容"] := Position(0.5 , 0.75)
+
 ; WPD["PyCharm__查找"]     := Position4K(1600 , 1500)
 ; WPD["PyCharm__检查"]     := Position4K(1600 , 1500)
 ; WPD["PyCharm__提交变更"] := Position4K(1600 , 1500)
