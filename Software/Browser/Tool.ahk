@@ -32,6 +32,13 @@ UrlChange(origin)
     if (InStr(origin, "devtools/inspector.html?ws="))
         result := StrReplace(origin, "?ws=", "?ws://")
 
+    ; https://wx2.sinaimg.cn/mw690/008sJj2hgy1hirkxpx96bj30yg1e07vi.jpg
+    ; https://weibo.com/ajax/common/download?pid=008sJj2hgy1hirkxpx96bj30yg1e07vi
+    if InStr(origin, "sinaimg.cn") {
+        pid := RegExReplace(origin, "(http.*)(.\w+)(/)(.*)(\.\w+)", "$4")
+        result := "https://weibo.com/ajax/common/download?pid=" . pid
+    }
+
     ; google -> bing
     ; google.com/search?q=Xxx
     ; cn.bing.com/search?q=Xxx

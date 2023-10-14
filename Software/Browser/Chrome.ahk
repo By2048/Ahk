@@ -6,12 +6,27 @@ RegisterProcess("chrome" , "Chrome")
 
 RegisterHelp("Chrome__知乎"     , "Software\Browser\Chrome.ZhiHu.help")
 RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili.help")
-RegisterHelp("Chrome"           , "Software\Browser\Chrome.help | Software\BrowserChrome.Fxx.help")
+RegisterHelp("Chrome"           , "Software\Browser\Key.help | Software\Browser\Chrome.Fxx.help")
 
 
-#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*" )
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*|微博*" )
+    ~MButton & WheelUp::
+    ~MButton & WheelDown::
     $CapsLock::
     $+CapsLock::{
+        x  := 777
+        xx := A_ScreenWidth - x
+        y  := 444
+        yy := A_ScreenHeight - y
+        CoordMode "Mouse", "Screen"
+        MouseGetPos &pos_x, &pos_y
+        if InStr(A_ThisHotkey, "MButton") {
+            if pos_x < x or pos_x > xx
+                return
+            if pos_y < y or pos_y > yy
+                return
+        }
+
         A_Clipboard := ""
         Sleep 33
         Send "{RButton}"
@@ -25,16 +40,25 @@ RegisterHelp("Chrome"           , "Software\Browser\Chrome.help | Software\Brows
             HelpText(" No Url ", "CenterDown", "Screen", "500")
             return
         }
+
         url := UrlChange(url)
         if not InStr(url, "http")
             return
-        if ( A_ThisHotkey == "$CapsLock" )
+
+        if ( InStr(url, "weibo.com") ) {
+            Try Run FDM . " " . url
+            return
+        }
+
+        if ( A_ThisHotkey == "$CapsLock" or InStr(A_ThisHotkey, "WheelDown") )
             Try AriaDownload(url, Chrome_Image)
-        if ( A_ThisHotkey == "$+CapsLock" ) {
+
+        if ( A_ThisHotkey == "$+CapsLock" or InStr(A_ThisHotkey, "WheelUp") ) {
             time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
             ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
             Try AriaDownload(url, Chrome_Image, time . ext)
         }
+
         A_Clipboard := ""
         SetCapsLockState "Off"
     }
@@ -60,20 +84,6 @@ RegisterHelp("Chrome"           , "Software\Browser\Chrome.help | Software\Brows
 #HotIf
 
 
-Expand := False
-#HotIf ( CheckWindowActive( "Chrome" ) And Expand == True )
-    Tab::{
-        Send "{Right 3}"
-    }
-    LShift::{
-        Send "{Left 3}"
-    }
-    CapsLock::{
-        global Expand
-        Send "{F10 2}"
-        Expand := False
-    }
-#HotIf
 
 
 #HotIf CheckWindowActive( "Chrome" )
@@ -83,29 +93,26 @@ Expand := False
         Send "{Esc}"
     }
 
-    cnt := 0
     ~LShift::{
-        global cnt
-        if (cnt > 0) {
-            cnt += 1
+        if (Arg.shift_cnt > 0) {
+            Arg.shift_cnt += 1
             return
         } else {
-            cnt := 1
+            Arg.shift_cnt := 1
         }
         SetTimer ChromeTimer, -300
     }
 
     ChromeTimer() {
-        global cnt
-        if (cnt != 2) {
-            cnt := 0
+        if (Arg.shift_cnt != 2) {
+            Arg.shift_cnt := 0
             return
         }
 
         url_origin := A_Clipboard
 
         ; 处理直接在网页中复制的数据
-        url_result := ClipboardChange(A_Clipboard)
+        url_result := ClipboardChange(url_origin)
         if ( url_origin != url_result ) {
             A_Clipboard := ""
             A_Clipboard := url_result
@@ -113,13 +120,13 @@ Expand := False
             Send "^t"
             Sleep 555
             Send "!d"
-            Sleep 99
+            Sleep 222
             Send "^v"
             Send "{Enter}"
             A_Clipboard := ""
             A_Clipboard := url_origin
             ClipWait 1
-            cnt := 0
+            Arg.shift_cnt := 0
             return
         }
 
@@ -144,7 +151,7 @@ Expand := False
         A_Clipboard := ""
         A_Clipboard := url_origin
         ClipWait
-        cnt := 0
+        Arg.shift_cnt := 0
     }
 
     AppsKey::Send "{F10}"
@@ -180,7 +187,7 @@ Expand := False
         Send "{Enter}"
     }
 
-    LAlt Up::Send "{Esc}"
+    ; LAlt Up::Send "{Esc}"
 
     ;删除搜索历史记录
     !Delete::{
@@ -195,14 +202,13 @@ Expand := False
 
     ;将焦点放置在Chrome工具栏中的第一项上
     !+t::Return
-    alt_shift_t := False
+    Arg.alt_shift_t := False
     ![::{
-        global alt_shift_t
-        if (not alt_shift_t) {
-            alt_shift_t := True
+        if (not Arg.alt_shift_t) {
+            Arg.alt_shift_t := True
             Send "!+t"
         } else {
-            alt_shift_t := False
+            Arg.alt_shift_t := False
             Send "{Esc}"
         }
     }
@@ -229,25 +235,15 @@ Expand := False
         Send "{Enter}"
     }
 
-    alt_space := False
+    Arg.alt_space := False
     !Space::{
-        global alt_space
-        if (not alt_space) {
-            alt_space := True
+        if (not Arg.alt_space) {
+            Arg.alt_space := True
             Send "!d"
         } else {
-            alt_space := False
+            Arg.alt_space := False
             Send "{F6 3}"
         }
-    }
-
-    ; 拓展程序界面
-    LAlt & RShift::{
-        Global Expand
-        Send "{F10}"
-        Send "{Left 4}"
-        Send "{Down 3}"
-        Expand := True
     }
 
 #HotIf

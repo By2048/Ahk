@@ -2,7 +2,7 @@
 #Include *i Tool.ahk
 
 
-Browser := "Chrome|Edge|Opera|FireFox"
+Browser := " Chrome | Edge | Opera | FireFox "
 
 
 ; https://support.google.com/chrome/answer/157179
@@ -40,6 +40,8 @@ Browser := "Chrome|Edge|Opera|FireFox"
     +F6::Return
     !`::Send "{F6}"
     ^`::Send "+{F6}"
+    ~LShift & RShift::Send "{F6}"
+    ~RShift & LShift::Send "{F6}"
 
     ;光标浏览模式
     F7::Return
@@ -53,9 +55,9 @@ Browser := "Chrome|Edge|Opera|FireFox"
     F12::Return
     ^+j::Return
     <^AppsKey::Send "{F12}"
-
-    ; 清理浏览记录
-    ; ^+Delete::Return
+    ;开发者工具选择元素
+    ^+c::Return
+    <^+AppsKey::Send "^+c"
 
     ;新标签页
     ^t::Return
@@ -79,6 +81,9 @@ Browser := "Chrome|Edge|Opera|FireFox"
     ; ^+g::Return
     ; !+g::Send ^+g
 
+    ; 清理浏览记录
+    ; ^+Delete::Return
+
     ;关闭窗口
     ^w::Return
     ^F4::Return
@@ -90,9 +95,6 @@ Browser := "Chrome|Edge|Opera|FireFox"
 
     ;关闭所有窗口
     ^+w::Return
-
-    ; 开发者工具选择元素
-    ^+c::Return
 
     ;重新打开标签页
     ^+t::Return
@@ -145,7 +147,7 @@ Browser := "Chrome|Edge|Opera|FireFox"
     ^+o::Return
     !b::Send "^+o"
 
-    ;切换用户
+    ;用户按钮
     ^+m::Return
 
     ;使用Xxx搜索
@@ -176,7 +178,7 @@ Browser := "Chrome|Edge|Opera|FireFox"
     ;打开Chrome菜单
     !f::Return
     !e::Return
-    !/::!e
+    !AppsKey::!e
 
     ;网页缩放
     ^WheelUp::Return
@@ -184,9 +186,11 @@ Browser := "Chrome|Edge|Opera|FireFox"
     ^0::Return
     ^-::Return
     ^=::Return
-    !0::Send "^0"
-    !-::Send "^{-}"
-    !=::Send "^{=}"
+
+    ; 缩放
+    #0::Send "^0"
+    #-::Send "^{-}"
+    #=::Send "^{=}"
 
     ;窗口位置
     <#\::{
@@ -216,6 +220,3 @@ Browser := "Chrome|Edge|Opera|FireFox"
     }
 
 #HotIf
-
-
-
