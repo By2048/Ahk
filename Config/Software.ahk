@@ -18,6 +18,7 @@ ScrcpyAdb     := "D:\Scrcpy\adb.exe"
 Scrcpy        := "D:\Scrcpy\scrcpy.exe"
 Snipaste      := "D:\Snipaste\Snipaste.exe"
 MD5Sum        := "D:\Git\usr\bin\md5sum.exe"
+FDM           := "D:\FDM\fdm.exe"
 
 
 ; 软件自定义名字替换
