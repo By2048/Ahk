@@ -20,10 +20,10 @@ RegisterProcess("7zFM" , "7-Zip")
         name  := " 名称  文件夹  文件  大小 "
         width := " 700   100    100  140 "
         win_title := window.title
-        if (InStr(win_title, ".iso")) {
-            index := " 1     4      3    2   "
-            name  := " 名称  文件夹  文件  大小 "
-            width := " 700   100    100  140 "
+        if InStr(win_title, ".iso") {
+            index := " 1     2      3     4     "
+            name  := " 名称  文件夹  文件   大小  "
+            width := " 700   100    100   140   "
         }
         config := GetColumnConfig(index, name, width)
         SetColumnWidth("SysListView321", config)
