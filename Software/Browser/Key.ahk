@@ -4,16 +4,7 @@
 
 Browser := " Chrome | Edge | Opera | FireFox "
 
-
 ; https://support.google.com/chrome/answer/157179
-#HotIf CheckWindowActive( Browser , "#32770" , "另存为" )
-    $CapsLock::{
-        Send "{Esc}"
-        SetCapsLockState "Off"
-    }
-#HotIf
-
-
 
 #HotIf CheckWindowActive(Browser)
 

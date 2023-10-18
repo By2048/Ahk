@@ -290,6 +290,11 @@ RegisterHelp("Explorer_WorkerW"       , "Key\Win.help | Key\Win.Other.help | Sof
     ; 文件名修改框
     /::ControlFocus "Edit1", "A"
 
+    $CapsLock::{
+        Send "{Esc}"
+        SetCapsLockState "Off"
+    }
+
     #Include *i Explorer.Base.ahk
 
     !/::ControlFocus "SysTreeView321", "A"
