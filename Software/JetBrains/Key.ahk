@@ -177,6 +177,7 @@ CapsLockActivate := False
     }
 
     ~RWin::{
+        Send "{Blind}{vkFF}"
         WinGetPos &x, &y, &w, &h, "A"
         if (x <= 0 or y <= 0 ) {
             return
@@ -187,7 +188,6 @@ CapsLockActivate := False
         if (ObjOwnPropCount(win)) {
             CenterHideWindow()
         }
-        GlobalSet("Status", "ignore_function", True)
     }
 
     ~LCtrl::
