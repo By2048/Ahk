@@ -81,8 +81,8 @@ Loop {
             continue
         }
         if (InStr(win_title, "已完成") or InStr(win_title, "正在运行")) {
-            win_x := Screens.%Screens.Count%.x + Screens.%Screens.Count%.w/2    - win_w/2
-            win_y := Screens.%Screens.Count%.y + Screens.%Screens.Count%.h*0.66 - win_h/2
+            win_x := Screens.%Screens.Count%.x + Screens.%Screens.Count%.w/2 - win_w/2
+            win_y := Screens.%Screens.Count%.yy - win_h - 200
             SetWindow(win_x, win_y, win_w, win_h)
             continue
         }

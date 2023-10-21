@@ -84,8 +84,6 @@ RegisterHelp("Chrome"           , "Software\Browser\Key.help | Software\Browser\
 #HotIf
 
 
-
-
 #HotIf CheckWindowActive( "Chrome" )
 
     ; 默认激活菜单按钮 / 取消激活
