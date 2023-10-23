@@ -46,9 +46,6 @@ RegisterProcess("cloudmusic" , "CloudMusic")
         Send "{Esc}"
     }
 
-    =::Send "!="
-    -::Send "!-"
-
     <#BackSpace::{
         ProcessClose "cloudmusic_reporter.exe"
         Sleep 300
@@ -57,27 +54,25 @@ RegisterProcess("cloudmusic" , "CloudMusic")
 
     <#\::MoveWindowToPosition(Position(2000 , 1200))
 
-    ; 列表上一首
-    PgUp::{
-        MoveWindowToDefaultPosition()
-        Sleep 300
-        MouseClickAndResetting(1044, 1600)
-        Sleep 300
-        Send "!["
-        Sleep 300
-        MouseClickAndResetting(1044, 1600,  ,  ,4)
+    ; 音量调整
+    Up::Send "!{PgUp}"
+    Down::Send "!{PgDn}"
+
+    ; 列表 上一首 下一首
+    Left::
+    Right::{
+        MouseClickAndResetting(854, 1117, "Window")
+        Sleep 1000
+        if A_ThisHotkey == "Left"
+            Send "!["
+        if A_ThisHotkey == "Right"
+            Send "!]"
+        Sleep 1000
+        MouseClickAndResetting(854, 1117, "Window", "Left", 4)
     }
 
-    ; 列表下一首
-    PgDn::{
-        MoveWindowToDefaultPosition()
-        Sleep 300
-        MouseClickAndResetting(1044, 1600)
-        Sleep 300
-        Send "!]"
-        Sleep 300
-        MouseClickAndResetting(1044, 1600,  ,  ,4)
-    }
+    PgUp::Send "{Volume_Up}"
+    PgDn::Send "{Volume_Down}"
 
 #HotIf
 
