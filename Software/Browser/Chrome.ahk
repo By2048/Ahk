@@ -172,7 +172,7 @@ RegisterHelp("Chrome"           , "Software\Browser\Key.help | Software\Browser\
         A_Clipboard := ""
         Send "!d"
         Send "^c"
-        ClipWait
+        ClipWait 1
         origin := A_Clipboard
         result := GoogleTranslate(origin)
         if ( origin == result ) {
@@ -180,7 +180,7 @@ RegisterHelp("Chrome"           , "Software\Browser\Key.help | Software\Browser\
             return
         }
         A_Clipboard := result
-        ClipWait
+        ClipWait 1
         Send "^v"
         Send "{Enter}"
     }

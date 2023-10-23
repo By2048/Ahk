@@ -85,7 +85,7 @@ WPD["PyCharm__终端"] := Position(0.8 , 0.9)
 WPD["PyCharm__调试"] := Position(0.8 , 0.9)
 Try {
     x := Screens.2.x
-    y := Screens.2.yy / 2 - Screens.2.y / 2 - 100
+    y := Screens.2.yy / 2 - Screens.2.y / 2 - 200
     w := Screens.2.w
     h := Screens.2.h / 2
     WPB["PyCharm__运行"] := [ x , y , w , h ]
