@@ -30,14 +30,15 @@
 ;声音
  #PgUp::Send "{Volume_Up}"
  #PgDn::Send "{Volume_Down}"
-#+PgUp::
-#+PgDn::{
-    Send "{Volume_Down}{Volume_Up}" ;显示声音调整UI
-    volume_offset  := 3
+<#+PgUp::
+<#+PgDn::{
+    ; 显示声音调整UI
+    Send "{Volume_Down}{Volume_Up}"
+    ; 调整音量时 不能准确调整到指定数值 存在小数点偏差
+    volume_offset  := 5
     volume_steps   := [ 11, 22, 33, 44, 55, 66, 77, 88, 99 ]
     volume_current := Round(SoundGetVolume())
     for index, volume in volume_steps {
-        ; 调整音量时 不能准确调整到指定数值 存在小数点偏差
         if ( Abs(volume_current - volume) < volume_offset ) {
             if (InStr(A_ThisHotkey, "PgDn")) {
                 if (index == 1) {
