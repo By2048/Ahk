@@ -7,6 +7,7 @@
 
  >^s::Run "D:\#Lnk\#\Sandboxie.lnk"
  >^f::Run "D:\#Lnk\#\FreeFileSync.lnk"
+ >^g::Run "D:\#Lnk\#\Geek.lnk"
  >^h::Run AutoHotkey " D:\AutoHotkey\V2\WindowSpy.ahk"
 >^+h::Run "E:\GitX\AhkSpy\AhkSpy.exe"
  >^j::{
