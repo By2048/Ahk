@@ -110,3 +110,16 @@ RegisterProcess("NVIDIA Share" , "GeForceTool")
     F7::Return
     AppsKey::Send "{F7}"
 #HotIf
+
+
+RegisterProcess("IDMan" , "IDM")
+#HotIf CheckWindowActive("IDM")
+    <#\::{
+        MoveWindowToPosition(Position(1500 , 1000))
+        _1 := " 1       2     3    4        "
+        _2 := " 文件名  路径  大小  修改时间  "
+        _3 := " 500    600   120  180      "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView321", config)
+    }
+#HotIf
