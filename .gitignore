@@ -8,6 +8,8 @@ Script.txt
 /.vscode/
 /.idea/
 
+/@/
+
 /Test/*
 
 /@.ahk
