@@ -12,12 +12,13 @@
 
 
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
+    MButton::
     <#\::
     <#+\::{
         if A_ThisHotkey == "<#\"
             MoveWindowToPosition(Position(1350, 1300))
         if A_ThisHotkey == "<#+\"
-            MoveWindowToPosition(Position(1350, 500))
+            MoveWindowToPosition(Position(1350, 800))
         _1 := " 1     2     3   "
         _2 := " 名称  大小   %   "
         _3 := " 999   130   100 "
@@ -27,12 +28,24 @@
 #HotIf
 
 
+#HotIf CheckWindowActive("BitComet", "#32770", "批量下载种子")
+    <#\::{
+        MoveWindowToPosition(Position(1300, 700))
+        _1 := " 1     2     3       "
+        _2 := " 名称  大小   发表日期  "
+        _3 := " 999  130   100      "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("SysListView321" , config)
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive("BitComet")
 
     <#\::{
-        total_width  := 2222
-        total_height := 1111
-        max_left := 191
+        total_width  := 2300
+        total_height := 1200
+        max_left := 222
         offset   := 9
 
         MoveWindowToPosition(Position(total_width , total_height))
@@ -42,7 +55,7 @@
         ; 主界面 全部任务
         _1 := " 1     13     2     3     8      6        4        9        7       5         10       11       12     "
         _2 := " 名称  文件夹  大小   进度   需时   下载速度  下载大小  剩余大小  上传速度  上传大小   种子/用户 长效种子  分享率  "
-        _3 := " 500   250    170   70    120    120      110      110      120     110       160      90       70     "
+        _3 := " 600   180    170   70    120    120      110      110      120     110       160      90       70     "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)
 
