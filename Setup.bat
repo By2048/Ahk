@@ -87,8 +87,6 @@ Echo   %Command%  %Loop.ahk%
 Start  %AHK%      %Software.ahk%  %Command%
 Echo   %Command%  %Software.ahk%
 Echo.
-Start  %AHK%      %@.ahk%         %Command%
-Echo   %Command%  %@.ahk%
 ::#endregion
 
 If "%Command%"=="GameMode" (
@@ -98,6 +96,9 @@ If "%Command%"=="GameMode" (
     Start  %AHK%  %Base.ahk%  Start
     Start  %AHK%  %Game.ahk%  Start
 )
+
+@REM 加载临时性脚本
+Start  %AHK%  %@.ahk%
 
 EndLocal
 
