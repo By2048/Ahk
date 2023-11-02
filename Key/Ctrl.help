@@ -1,17 +1,18 @@
-|  Q | Q-Dir          | *1 | Maye            |
-|  E | Everything     | *2 | 隐藏帮助        |
-|  R | RegEdit        |----|-----------------|
-|  Y | v2rayN         |  , | 我的电脑        |
-|  P | WT             | +, | 回收站          |
-|----|----------------|  . | T:\\            |
-|  S | Sandboxie      | +. | V:\\            |
-|  F | FreeFileSync   |  / | Chrome          |
-|  H | WindowSpy      | +/ | ChromeDefault   |
-| +H | WindowSpy      |----|-----------------|
-|  J | JetBrains      |  [ | VSCode Default  |
-|  K | 显示虚拟键盘   |  ] | VSCode NewWin   |
-|----|----------------|  \ | VSCode Windows  |
-|  X | XShell         |-------|--------------|
-|  N | CloudMusic     |   Esc | 任务管理器   |
-| +N | QQMusic        |  +Esc | HuoRongSword |
-|  M | PotPlayer      |                       
+|  Q | QDir PC        | *1 | Maye            |
+| +Q | QDir File      | *2 | 隐藏帮助        |
+|  E | Everything     |----|-----------------|
+|  R | RegEdit        |  , | 我的电脑        |
+|  Y | v2rayN         | +, | 回收站          |
+|  P | WT             |  . | T:\\            |
+|----|----------------| +. | V:\\            |
+|  S | Sandboxie      |  / | Chrome          |
+|  F | FreeFileSync   | +/ | ChromeDefault   |
+|  H | WindowSpy      |----|-----------------|
+| +H | WindowSpy      |  [ | VSCode Default  |
+|  J | JetBrains      |  ] | VSCode NewWin   |
+|  K | 显示虚拟键盘   |  \ | VSCode Windows  |
+|----|----------------|-------|--------------|
+|  X | XShell         |   Esc | 任务管理器   |
+|  N | CloudMusic     |  +Esc | HuoRongSword |
+| +N | QQMusic        |
+|  M | PotPlayer      |
