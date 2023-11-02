@@ -8,15 +8,17 @@
 #NoTrayIcon
 
 
-Ignore_Process := [
-      "Geek"
-    , "LOL_TX"
-    , "LOL_Client"
-    , "LOL_Game"
-    , "GetWindowText"
-    , "ThunderMini"
-    , "BitComet"
-]
+; Process_Name : Sleep_Time Second
+Ignore_Process := Map()
+
+Ignore_Process["BitComet"]    := 9
+Ignore_Process["ThunderMini"] := 9
+Ignore_Process["Geek"]        := 9
+Ignore_Process["Q-Dir"]       := 9
+
+
+; 自定义屏蔽设置
+#Include *i Loop.Cfg.Private.ahk
 
 
 Loop {
@@ -46,14 +48,13 @@ Loop {
     }
 
     ; 特定软件不进行处理 并延迟循环时间
-    for process_name in Ignore_Process {
-        if (process_name == win_process_name) {
-            Sleep 30 * 1000
-            continue
-        }
+    if Ignore_Process.Has(win_process_name) {
+        sleep_time := Ignore_Process.Get(win_process_name)
+        Sleep sleep_time * 1000
     }
 
-    #Include *i Loop.Private.ahk
+    ; 自定义运行设置
+    #Include *i Loop.Run.Private.ahk
 
     if (win_process_name == "7-Zip") {
         if (win_class == "#32770" and win_title == "浏览文件夹") {
