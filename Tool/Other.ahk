@@ -229,3 +229,49 @@ ReadConfig(file, slice, replace:="`; ")
     }
     return data
 }
+
+
+
+; 获取需要移动的鼠标偏移量
+; x 横向检测 | y 纵向检测
+; step  每次检测移动的像素
+; total 检测次数
+GetOffset(direction:="X", step:=3, total:=10, cursor:="")
+{
+    Check() {
+        if cursor and A_Cursor == cursor
+            return true
+        if A_Cursor == "SizeWE" or A_Cursor == "SizeNS"
+            return true
+        return false
+    }
+
+    offset := 0
+
+    if not direction
+        return offset
+
+    if Check()
+        return offset
+
+    MouseGetPos &x_origin, &y_origin
+    xx := x_origin
+    yy := y_origin
+    offset := 0
+    Loop total {
+        move := step * A_Index
+        if Mod(A_Index, 2)
+            move := 0 - move
+        if direction == "x" or direction == "X"
+            xx := xx + move
+        if direction == "y" or direction == "Y"
+            yy := yy + move
+        MouseMove xx, yy, 0
+        if Check() {
+            offset := move / 2
+            break
+        }
+    }
+    MouseMove x_origin, y_origin
+    return offset
+}
