@@ -8,10 +8,7 @@ Screen  := {} ;主窗口信息
 
 Screens.Count := GlobalGet("Screens", "Count", "Int" )
 Screens.Keys  := { Dpi  : [ "Default", "Software", "System", "SystemPlus" ]
-                 , Attr : [ "id", "index", "name", "dpi" ,
-                            "x", "y", "w", "h",
-                            "width", "height" ,
-                            "xx", "yy" ] }
+                 , Attr : [ "id", "index", "name", "dpi", "x", "y", "w", "h" ] }
 
 For index_dpi, key_dpi In Screens.Keys.Dpi {
     Screens.%key_dpi% := {}

@@ -81,20 +81,16 @@ InitScreens(dpi_mode:="Default")
     GlobalSet( "Screens", "Name" , ListToStr(screens_name, " | ") )
 
     loop screen_count {
-        screen        := {}
-        screen.id     := Screens_Id[A_Index]
-        screen.index  := A_Index
-        IsExisting    := MonitorGet(screen.id, &Left, &Top, &Right, &Bottom)
-        screen.x      := Left   + 0
-        screen.y      := Top    + 0
-        screen.xx     := Right  + 0
-        screen.yy     := Bottom + 0
-        screen.w      := screen.xx - screen.x
-        screen.h      := screen.yy - screen.y
-        screen.dpi    := Screens_Detail[screen.index].Dpi
-        screen.name   := Screens_Detail[screen.index].Name
-        screen.width  := screen.w
-        screen.height := screen.h
+        screen       := {}
+        screen.id    := Screens_Id[A_Index]
+        screen.index := A_Index
+        IsExisting   := MonitorGet(screen.id, &Left, &Top, &Right, &Bottom)
+        screen.x     := Left
+        screen.y     := Top
+        screen.w     := Right  - Left
+        screen.h     := Bottom - Top
+        screen.dpi   := Screens_Detail[A_Index].Dpi
+        screen.name  := Screens_Detail[A_Index].Name
         for key, value in screen.OwnProps() {
             section := Format("Screens\{}\{}", dpi_mode, screen.index)
             GlobalSet(section, key, value)
