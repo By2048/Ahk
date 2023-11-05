@@ -107,7 +107,7 @@ Position(args*)
     win_y := Round(win_y)
     win_w := Round(win_w)
     win_h := Round(win_h)
-    return [ win_x , win_y , win_w , win_h ]
+    return { x : win_x  ,  y : win_y  ,  w : win_w  ,  h : win_h }
 }
 
 
