@@ -43,14 +43,21 @@
 #HotIf CheckWindowActive("BitComet")
 
     <#\::{
-        total_width  := 2300
-        total_height := 1200
-        max_left := 222
-        offset   := 9
+        total_width  := 2333
+        total_height := 1222
+        left_width   := 255
 
         MoveWindowToPosition(Position(total_width , total_height))
 
         GetActiveWindowInfo()
+
+        ; 左边栏大小
+        info := window.controls.SysListView321
+        if Abs(info.x - left_width) > 10 {
+            MouseMove info.x , info.y + info.h / 2
+            offset := GetOffset("X")
+            MoveControlUDLR(info, 0, 0, left_width, 0, offset)
+        }
 
         ; 主界面 全部任务
         _1 := " 1     13     2     3     8      6        4        9        7       5         10       11       12     "
@@ -58,10 +65,6 @@
         _3 := " 600   180    170   70    120    120      110      110      120     110       160      90       70     "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)
-
-        ; 左边栏大小
-        info := window.controls.SysListView321
-        MoveControlUDLR(info, 0, 0, max_left, 0, offset)
 
         #Include *i BitComet.Private.ahk
     }

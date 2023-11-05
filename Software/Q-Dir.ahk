@@ -8,49 +8,63 @@
 
 
 #HotIf CheckWindowActive( "Q-Dir" , "ATL*" )
+
     ;  DPI设置 系统增强
     ;  1 #3277010->SysTreeView325   2 #327702->SysListView321   4 #327706->SysListView323
     ;  1 ^                          3 #327704->SysListView322   4 ^
     <#\::{
-        ; 界面配置信息
-        _          := 0
-        tree_width := 300
-        box_left   := 200 + 200 + 120
-        box_right  := 500 + 90
+        ; 界面配置信息 * 1.5 (Dpi)
+        _ := 0
 
-        scroll_bar_width := 25
-        other_width      := 44
+        tree_width      := Screen.Dpi * ( 300             )
+        box_left_width  := Screen.Dpi * ( 200 + 200 + 120 )
+        box_right_width := Screen.Dpi * ( 500 + 90        )
 
-        tree_width := tree_width * Screen.Dpi
-        box_left   := box_left   * Screen.Dpi
-        box_right  := box_right  * Screen.Dpi
+        check_offset      := 15
+        box_split_width   := 15
+        scroll_bar_width  := 25
+        box_status_height := 50
 
-        total_width  := tree_width + box_left + box_right
+        total_height := Screen.h * 0.9
+        total_width  := tree_width + box_left_width + box_right_width
+                        + box_split_width  * 3
                         + scroll_bar_width * 3
-                        + other_width
-        total_height := Screen.height * 9/10
-
         MoveWindowToPosition(Position(total_width, total_height))
 
-        tree_width := tree_width + 14
-        box_left   := box_left   + scroll_bar_width + 32
-        box_down   := total_height * 2/5 + 22
+        split_box_left   := tree_width + scroll_bar_width
+        split_box_right  := box_left_width + scroll_bar_width * 2
+        split_box_bottom := total_height * 0.44
 
-        GetActiveWindowInfo("Default", False)
-        info   := window.controls.GetOwnPropDesc("#327702").Value
-        offset := 9
-        MoveControlUDLR(info, _, _, tree_width, _, offset)
+        MouseGetPos &x_origin, &y_origin
 
-        GetActiveWindowInfo("Default", False)
-        info   := window.controls.GetOwnPropDesc("#327702").Value
-        offset := 16
-        MoveControlUDLR(info, _, _, _, info.x + box_left, offset)
+        ; Tree | Xxx
+        GetActiveWindowInfo(False)
+        info := window.controls.GetOwnPropDesc("#327702").Value
+        if Abs(info.x - split_box_left) > check_offset {
+            MouseMove info.x , info.y + info.h / 2
+            offset := GetOffset("X")
+            MoveControlUDLR(info, _, _, split_box_left, _, offset)
+        }
 
-        GetActiveWindowInfo("Default", False)
-        info   := window.controls.GetOwnPropDesc("#327702").Value
-        offset := 50
-        MoveControlUDLR(info, _, box_down, _, _, offset)
+        ; A = B
+        GetActiveWindowInfo(False)
+        info := window.controls.GetOwnPropDesc("#327702").Value
+        if Abs((info.x + info.w) - (info.x + split_box_right)) > check_offset {
+            MouseMove info.x + info.w , info.y + info.h / 2
+            offset := GetOffset("X")
+            MoveControlUDLR(info, _, _, _, info.x + split_box_right, offset)
+        }
+
+        ; Aa | Ab
+        GetActiveWindowInfo(False)
+        info := window.controls.GetOwnPropDesc("#327702").Value
+        if Abs((info.y + info.h) - split_box_bottom + box_status_height) > check_offset {
+            MouseMove info.x + info.w / 2 , info.y + info.h + box_status_height
+            offset := GetOffset("Y") + box_status_height
+            MoveControlUDLR(info, _, split_box_bottom, _, _, offset)
+        }
     }
+
 #HotIf
 
 

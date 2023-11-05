@@ -10,19 +10,28 @@ RegisterProcess("Foxmail" , "FoxMail")
     <#\::{
         MoveWindowToPosition(Position(2233,1250))
 
+        width_folder := 300
+        width_mail   := 550
+        check_split_folder := 10
+        check_split_mail   := 20
+
         ; 邮箱列表
-        GetActiveWindowInfo("Default", False)
-        info   := window.controls.TVirtualDrawTree2
-        width  := 300
-        offset := 8
-        MoveControlUDLR(info, 0, 0, 0, width, offset)
+        GetActiveWindowInfo(False)
+        info := window.controls.TVirtualDrawTree2
+        if Abs(info.w - width_folder) > check_split_folder {
+            MouseMove info.x + info.w , (info.y + info.h) / 2
+            offset := GetOffset("X", 1, 20, "Unknown")
+            MoveControlUDLR(info, 0, 0, 0, width_folder, offset)
+        }
 
         ; 邮件列表
-        GetActiveWindowInfo("Default", False)
-        info   := window.controls.TVirtualDrawTree1
-        width  := 850
-        offset := 8
-        MoveControlUDLR(info, 0, 0, 0, width, offset)
+        GetActiveWindowInfo(False)
+        info := window.controls.TVirtualDrawTree1
+        if Abs(info.w - width_mail) > check_split_mail {
+            MouseMove info.x + info.w , (info.y + info.h) / 2
+            offset := GetOffset("X", 1, 20, "Unknown")
+            MoveControlUDLR(info, 0, 0, 0, width_mail + width_folder, offset)
+        }
     }
 
 #HotIf
