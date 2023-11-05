@@ -58,3 +58,6 @@
 
 #SingleInstance Force
 #NoTrayIcon
+
+CoordMode "Mouse", "Window"
+CoordMode "Pixel", "Window"
