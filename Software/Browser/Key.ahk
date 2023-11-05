@@ -211,3 +211,6 @@ Browser := " Chrome | Edge | Opera | FireFox "
     }
 
 #HotIf
+
+
+#Include *i Key.Private.ahk
