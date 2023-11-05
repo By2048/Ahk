@@ -7,8 +7,8 @@ RegisterProcess("cloudmusic" , "CloudMusic")
     <#\::{
         win_w := 2333
         win_h := 166
-        win_x := Screen.x  + Screen.w/2 - win_w/2
-        win_y := Screen.yy - win_h      - 10
+        win_x := Screen.w/2 - win_w/2
+        win_y := Screen.h   - win_h   - 10
         MoveWindowToPosition(Position(win_x, win_y, win_w, win_h))
     }
 

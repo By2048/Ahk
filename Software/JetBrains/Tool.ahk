@@ -104,8 +104,8 @@ PositionBackGroundTask()
     win   := GetHideWindowConfig()
     win_w := 800
     win_h := 600
-    win_x := Screen.xx - win_w - 100
-    win_y := Screen.yy - win_h - 150
+    win_x := Screen.x + Screen.w - win_w - 100
+    win_y := Screen.y + Screen.h - win_h - 150
     try {
         WinActivate AID(win.id)
         WinMove win_x, win_y, win_w, win_h, AID(win.id)

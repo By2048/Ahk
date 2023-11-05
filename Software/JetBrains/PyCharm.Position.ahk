@@ -1,6 +1,6 @@
 ﻿
-WPD["PyCharm_SunAwtFrame"] := [ -13 ,   0 , 2584 , 1451 ]
-WPB["PyCharm_SunAwtFrame"] := [ 19  ,  29 , 2522 , 1393 ]
+WPD["PyCharm_SunAwtFrame"] := Position( -13 ,   0 , 2584 , 1451 )
+WPB["PyCharm_SunAwtFrame"] := Position( 19  ,  29 , 2522 , 1393 )
 
 WPD["PyCharm__更改"] := Position(-100 , -100)
 WPD["PyCharm__变更"] := Position(-100 , -100)
@@ -85,12 +85,12 @@ WPD["PyCharm__终端"] := Position(0.8 , 0.9)
 WPD["PyCharm__调试"] := Position(0.8 , 0.9)
 Try {
     x := Screens.2.x
-    y := Screens.2.yy / 2 - Screens.2.y / 2 - 200
+    y := ( Screens.2.y + Screens.2.h ) / 2 - Screens.2.y / 2 - 200
     w := Screens.2.w
     h := Screens.2.h / 2
-    WPB["PyCharm__运行"] := [ x , y , w , h ]
-    WPB["PyCharm__终端"] := [ x , y , w , h ]
-    WPB["PyCharm__调试"] := [ x , y , w , h ]
+    WPB["PyCharm__运行"] := Position( x , y , w , h )
+    WPB["PyCharm__终端"] := Position( x , y , w , h )
+    WPB["PyCharm__调试"] := Position( x , y , w , h )
 }
 
 WPD["PyCharm__Python控制台"] := Position(0.9 , 0.9)
@@ -98,6 +98,6 @@ WPD["PyCharm__Git"]         := Position(0.9 , 0.9)
 
 w := 800
 h := 500
-x := Screen.xx - w - 70
-y := Screen.yy - h - 60
-WPD["PyCharm__通知"] := [x, y, w, h]
+x := Screen.x + Screen.w - w - 70
+y := Screen.y + Screen.h - h - 60
+WPD["PyCharm__通知"] := Position(x, y, w, h)

@@ -7,7 +7,7 @@ RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
     <#\::{
         MoveWindowToPosition(Position(1000, 1000))
 
-        GetActiveWindowInfo("Default", False)
+        GetActiveWindowInfo(False)
 
         ;       Edit8
         ; Static33   SysLink5
@@ -80,8 +80,6 @@ RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
     ; 开始同步
     !Enter::Send "{F9}"
 
-    <#\::{
-        MoveWindowToPosition(Position(2111 , 1222))
-    }
+    <#\::MoveWindowToPosition(Position(2222 , 1111))
 
 #HotIf

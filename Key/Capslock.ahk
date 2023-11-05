@@ -37,8 +37,8 @@ $CapsLock::{
     yy := y_default
 
     ; 在屏幕1
-    if (     x_current >= Screens.1.x and x_current <= Screens.1.xx
-         and y_current >= Screens.1.y and y_current <= Screens.1.yy )
+    if (     x_current >= Screens.1.x and x_current <= Screens.1.x + Screens.1.w
+         and y_current >= Screens.1.y and y_current <= Screens.1.y + Screens.1.h )
     {
         ; 不在在屏幕1中心
         if ( x_current != x1 and y_current != y1 ) {
@@ -51,8 +51,8 @@ $CapsLock::{
     }
 
     ; 在屏幕2
-    if (    x_current >= Screens.2.x and x_current <= Screens.2.xx
-        and y_current >= Screens.2.y and y_current <= Screens.2.yy )
+    if (    x_current >= Screens.2.x and x_current <= Screens.2.x + Screens.2.w
+        and y_current >= Screens.2.y and y_current <= Screens.2.y + Screens.2.h )
     {
         ; 不在在屏幕2中心
         if ( x_current != x2 and y_current != y2 ) {

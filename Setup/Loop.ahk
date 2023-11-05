@@ -38,10 +38,12 @@ Loop {
         win_y            := window.y
         win_w            := window.w
         win_h            := window.h
-        screen_x         := window.screen.x
-        screen_y         := window.screen.y
-        screen_w         := window.screen.w
-        screen_h         := window.screen.h
+
+        screen   := GetWindowScreen(window)
+        screen_x := screen.x
+        screen_y := screen.y
+        screen_w := screen.w
+        screen_h := screen.h
     } catch {
         Sleep 500
         continue
@@ -83,7 +85,7 @@ Loop {
         }
         if (InStr(win_title, "已完成") or InStr(win_title, "正在运行")) {
             win_x := Screens.%Screens.Count%.x + Screens.%Screens.Count%.w/2 - win_w/2
-            win_y := Screens.%Screens.Count%.yy - win_h - 200
+            win_y := Screens.%Screens.Count%.y + Screens.%Screens.Count%.h   - win_h   - 200
             SetWindow(win_x, win_y, win_w, win_h)
             continue
         }
