@@ -35,6 +35,9 @@ HelpImage(image:="")
 ; 显示帮助文本
 HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 {
+    origin_pixel_mode := A_CoordModePixel
+    origin_mouse_mode := A_CoordModeMouse
+
     CoordMode "Pixel", "Screen"
     CoordMode "Mouse", "Screen"
 
@@ -79,8 +82,6 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     screen_y   := screen_config.y
     screen_w   := screen_config.w
     screen_h   := screen_config.h
-    screen_xx  := screen_config.xx
-    screen_yy  := screen_config.yy
     ; 屏幕3 只使用上半部分
     if (screen_id == "3") {
         screen_h  := screen_h  / 2
@@ -105,17 +106,17 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
             gui_x := screen_x + (screen_w - gui_w) / 2
             gui_y := screen_y + 5
         case "centerdown":
-            gui_x := screen_x  + (screen_w - gui_w) / 2
-            gui_y := screen_yy - gui_h - 5
+            gui_x := screen_x + (screen_w - gui_w) / 2
+            gui_y := screen_y + screen.h - gui_h - 5
         case "rightdown":
-            gui_x := screen_xx - gui_w - 5
-            gui_y := screen_yy - gui_h - 5
+            gui_x := screen_x + screen.w - gui_w - 5
+            gui_y := screen_y + screen.h - gui_h - 5
         case "leftdown":
-            gui_x := screen_x  + 5
-            gui_y := screen_yy - gui_h - 5
+            gui_x := screen_x + 5
+            gui_y := screen_y + screen.h - gui_h - 5
         default:
-            gui_x := screen_x  + (screen_w - gui_w) / 2
-            gui_y := screen_yy - gui_h - 5
+            gui_x := screen_x + (screen_w - gui_w) / 2
+            gui_y := screen_y + screen.h - gui_h - 5
     }
 
     G.Show(Format("NA x{1} y{2} w{3} h{4}", gui_x, gui_y, gui_w, gui_h))
@@ -124,6 +125,9 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
         Sleep sleep_time
         G.Destroy()
     }
+
+    CoordMode "Pixel", origin_pixel_mode
+    CoordMode "Mouse", origin_mouse_mode
 }
 
 
