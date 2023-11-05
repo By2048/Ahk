@@ -1,4 +1,4 @@
-
+﻿
 #Include *i ..\Config\All.ahk
 #Include *i ..\Tool\Mouse.ahk
 #Include *i ..\Tool\File.ahk
@@ -439,7 +439,6 @@ SetWindowTransparent(change:=0)
 ; return    | None
 ResizeWindow(command, direction)
 {
-
     SetWinDelay 1
     CoordMode "Mouse", "Screen"
 
@@ -525,7 +524,6 @@ MoveWindowUDLR(direction)
 ; 修改控件位置 CoordMode : Window
 MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
 {
-    CoordMode "Mouse", "Window"
     MouseGetPos &x_origin, &y_origin
 
     xy := 0 , x_start := 0 , y_start := 0 , x_end := 0 , y_end := 0
@@ -539,8 +537,8 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
     }
 
     if (cdown > 0) {
-        x_start := cinfo.xx - cinfo.w/2
-        y_start := cinfo.yy + offset
+        x_start := cinfo.x + cinfo.w - cinfo.w/2
+        y_start := cinfo.y + cinfo.h + offset
         x_end   := x_start
         y_end   := cdown
         xy      := y_end    - y_start
@@ -555,8 +553,8 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
     }
 
     if (cright > 0) {
-        x_start := cinfo.xx + offset
-        y_start := cinfo.yy - cinfo.h/2
+        x_start := cinfo.x + cinfo.w + offset
+        y_start := cinfo.y + cinfo.h - cinfo.h/2
         x_end   := cright
         y_end   := y_start
         xy      := x_end    - x_start
@@ -566,8 +564,9 @@ MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
         return
     }
 
-    ; MouseMove x_start, x_end
+    ; MouseMove x_start, y_start
     ; MouseMove x_end, y_end
+
     MouseClickDrag "Left", x_start, y_start, x_end, y_end, 0
     MouseMove x_origin, y_origin, 0
 }
@@ -594,11 +593,12 @@ MoveWindowToCenter(silent:=False)
     win_w := window.w
     win_h := window.h
 
-    screen_x := window.screen.x
-    screen_y := window.screen.y
-    screen_w := window.screen.w
-    screen_h := window.screen.h
-    screen_index := window.screen.index
+    screen   := GetWindowScreen(window)
+    screen_x := screen.x
+    screen_y := screen.y
+    screen_w := screen.w
+    screen_h := screen.h
+    screen_index := screen.index
 
     xx := screen_x + screen_w/2 - win_w/2
     yy := screen_y + screen_h/2 - win_h/2
@@ -628,11 +628,12 @@ MoveWindowToMainMini(command, slient:=False)
         return
 
     win_id := window.id
-    screen_x := window.screen.x
-    screen_y := window.screen.y
-    screen_w := window.screen.w
-    screen_h := window.screen.h
-    screen_index := window.screen.index
+    screen := GetWindowScreen(window)
+    screen_x := screen.x
+    screen_y := screen.y
+    screen_w := screen.w
+    screen_h := screen.h
+    screen_index := screen.index
 
     main := Windows_Main_Mini[1]
     mini := Windows_Main_Mini[2]
@@ -670,39 +671,50 @@ MoveWindowToMini(slient:=False) {
 ; 将窗口移动到指定位置
 MoveWindowToPosition(position)
 {
-    if (not position.Length) {
-        return
+    if Type(position) == "Array"
+        if not position.Length
+            return
+    if Type(position) == "Object"
+        if not ObjOwnPropCount(position)
+            return
+
+    if Type(position) == "Array" {
+        win_x := position[1]
+        win_y := position[2]
+        win_w := position[3]
+        win_h := position[4]
     }
-    x := position[1]
-    y := position[2]
-    w := position[3]
-    h := position[4]
+    if Type(position) == "Object" {
+        win_x := position.x
+        win_y := position.y
+        win_w := position.w
+        win_h := position.h
+    }
+
     GetActiveWindowInfo()
-    SetWindow(x, y, w, h)
+    SetWindow(win_x, win_y, win_w, win_h)
 }
 MoveWindowToDefaultPosition()
 {
     GetActiveWindowInfo()
-    if (not window.position_default.Length) {
+    if not ObjOwnPropCount(window.position_default)
         return
-    }
-    x := window.position_default[1]
-    y := window.position_default[2]
-    w := window.position_default[3]
-    h := window.position_default[4]
-    SetWindow(x, y, w, h)
+    win_x := window.position_default.x
+    win_y := window.position_default.y
+    win_w := window.position_default.w
+    win_h := window.position_default.h
+    SetWindow(win_x, win_y, win_w, win_h)
 }
 MoveWindowToBackupPosition()
 {
     GetActiveWindowInfo()
-    if (not window.position_backup.Length) {
+    if not ObjOwnPropCount(window.position_backup)
         return
-    }
-    x := window.position_backup[1]
-    y := window.position_backup[2]
-    w := window.position_backup[3]
-    h := window.position_backup[4]
-    SetWindow(x, y, w, h)
+    win_x := window.position_backup.x
+    win_y := window.position_backup.y
+    win_w := window.position_backup.w
+    win_h := window.position_backup.h
+    SetWindow(win_x, win_y, win_w, win_h)
 }
 
 
@@ -710,35 +722,31 @@ MoveWindowToBackupPosition()
 ; 高亮激活的窗口
 HighlightActiveWindow(time:=300, width:=4, color:="e51400")
 {
-    GetActiveWindowInfo("Strict", False)
+    GetActiveWindowInfo(False)
 
-    win_x            := window.x
-    win_y            := window.y
-    win_w            := window.w
-    win_h            := window.h
-    win_xx           := window.xx
-    win_yy           := window.yy
+    win_x  := window.position_client.x
+    win_y  := window.position_client.y
+    win_w  := window.position_client.w
+    win_h  := window.position_client.h
+
     win_class        := window.class
     win_min_max      := window.min_max
     win_process_name := window.process_name
 
     ; 最小化
-    if (win_min_max == "Min") {
+    if win_min_max == "Min"
         return
-    }
-    if (not win_w or not win_h) {
-        return
-    }
-    if (win_process_name == "Explorer" and win_class == "WorkerW") {
-        return
-    }
 
-    gui_x  := win_x
-    gui_y  := win_y
-    gui_w  := win_w
-    gui_h  := win_h
-    gui_xx := win_xx
-    gui_yy := win_yy
+    if not win_w or not win_h
+        return
+
+    if win_process_name == "Explorer" and win_class == "WorkerW"
+        return
+
+    gui_x := win_x
+    gui_y := win_y
+    gui_w := win_w
+    gui_h := win_h
 
     pos_out := [  0     , 0      ,
                   gui_w , 0      ,
@@ -754,12 +762,10 @@ HighlightActiveWindow(time:=300, width:=4, color:="e51400")
 
     ; 窗口上下全屏 Win+Left|Right操作时
     ; if (info.win_min_max == 0 and win_y == 0) {
-    ;     gui_x  := win_x - width
-    ;     gui_y  := win_y
-    ;     gui_w  := win_w + width * 2
-    ;     gui_h  := win_h
-    ;     gui_xx := gui_x + gui_w
-    ;     gui_yy := gui_y + gui_h
+    ;     gui_x := win_x - width
+    ;     gui_y := win_y
+    ;     gui_w := win_w + width * 2
+    ;     gui_h := win_h
     ;     Q := [ [ 0 , 0 ] , [ gui_w , 0 ] , [ gui_w , gui_h ] , [ 0 , gui_h ] , [ 0 , 0 ] ]
     ;     P := [ [ width , width ] , [ width + win_w , width ] , [ gui_w - width , gui_h - width ] , [ width , gui_h - width ] , [ width , width ] ]
     ; }
