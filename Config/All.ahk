@@ -18,14 +18,14 @@ InitWindowValue()
     Global Window
     Window := {
         ;
-        cache : {
-            id     :  0 ,
-            title  : "" ,
-            expire : -1 ,
-        } ,
+        cache_id     :  0 ,
+        cache_title  : "" ,
+        cache_expire : -1 ,
 
         id  : 0 ,
         pid : 0 ,
+
+        min_max : "" ,
 
         class        : "" ,
         title        : "" ,
@@ -36,14 +36,13 @@ InitWindowValue()
         transparent  : -1 ,
         controls     : {} ,
 
-        x  : 0 , y  : 0 ,
-        w  : 0 , h  : 0 ,
-        xx : 0 , yy : 0 ,
+        ; 窗口坐标信息 默认 Screen
+        x : 0  ,  y : 0  ,  w : 0  ,  h : 0  ,
 
-        min_max : "" ,
-        screen  : {} ,
-        position_default : [] ,
-        position_backup  : [] ,
+        position_screen  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口信息 Screen
+        position_client  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口信息 Client
+        position_default : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Default
+        position_backup  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Backup
     }
 }
 

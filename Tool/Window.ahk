@@ -1,4 +1,4 @@
-﻿
+
 #Include *i ..\Config\All.ahk
 #Include *i ..\Tool\Mouse.ahk
 #Include *i ..\Tool\File.ahk
@@ -109,9 +109,7 @@ GetWindowConfig(window, config)
 
         if (match_cnt > match_count) {
             match_count := match_cnt
-            win_config := []
-            win_config.Push(config_value*)
-            Debug.window_config_name := config_name
+            win_config  := config_value
         }
 
     }
@@ -121,10 +119,26 @@ GetWindowConfig(window, config)
 
 
 
+; 获取当前激活窗口所在屏幕的信息
+GetWindowScreen(window)
+{
+    result := {}
+    loop Screens.Count {
+        if ( window.x > Screens.%A_Index%.x - Window_Screen_Offset ) {
+            if ( window.x < Screens.%A_Index%.x + Screens.%A_Index%.w + Window_Screen_Offset ) {
+                result := Screens.%A_Index%
+            }
+        }
+    }
+    return result
+}
+
+
+
 ; 获取激活窗口的所在屏幕的信息以及窗口信息 使用全局变量window共享
 ; result | {} 应用信息
-; mode   | Default AHK默认 \ Strict|Window API修正
-GetActiveWindowInfo(mode:="Default", cache:=True)
+; mode   | Default|Screen AHK默认 \ Window API修正
+GetActiveWindowInfo(cache:=True)
 {
     try {
         win_id    := WinGetID("A")
@@ -137,8 +151,8 @@ GetActiveWindowInfo(mode:="Default", cache:=True)
         InitWindowValue()
 
     ; 缓存数据
-    if (window.cache.id == win_id and window.cache.title == win_title) {
-        if (window.cache.expire - A_TickCount > 0) {
+    if (window.cache_id == win_id and window.cache_title == win_title) {
+        if (window.cache_expire - A_TickCount > 0) {
             return
         }
     }
@@ -153,7 +167,8 @@ GetActiveWindowInfo(mode:="Default", cache:=True)
         win_controls_name := WinGetControls("ahk_id " . win_id)
         win_class         := WinGetClass("ahk_id " . win_id)
         win_text          := WinGetText("ahk_id " . win_id)
-        WinGetPos &win_x, &win_y, &win_w, &win_h, "ahk_id " . win_id
+        WinGetPos       &win_x,        &win_y,        &win_w,        &win_h,        "ahk_id " . win_id
+        WinGetClientPos &win_x_client, &win_y_client, &win_w_client, &win_h_client, "ahk_id " . win_id
     } catch {
         return
     }
@@ -187,29 +202,20 @@ GetActiveWindowInfo(mode:="Default", cache:=True)
     window.title        := win_title
     window.text         := win_text
 
-    ; 窗口位置
-    ; 两种不同方式获取的窗口坐标存在差别
-    if (mode == "Window") {
-        win_x := 0
-        win_y := 0
-        GetClientSize(win_id, &win_w, &win_h)
-    }
-    if (mode == "Strict") {
-        win_size_w := win_w
-        win_size_h := win_h
-        GetClientSize(win_id, &win_size_w, &win_size_h)
-        win_x := win_x + (win_w - win_size_w) / 2
-        win_y := win_y + (win_h - win_size_h) / 2
-        win_w := win_size_w
-        win_h := win_size_h
-    }
-
     window.x  := win_x
     window.y  := win_y
     window.w  := win_w
     window.h  := win_h
-    window.xx := win_x + win_w
-    window.yy := win_y + win_h
+
+    window.position_screen.x  := win_x
+    window.position_screen.y  := win_y
+    window.position_screen.w  := win_w
+    window.position_screen.h  := win_h
+
+    window.position_client.x  := win_x_client
+    window.position_client.y  := win_y_client
+    window.position_client.w  := win_w_client
+    window.position_client.h  := win_h_client
 
     ; 控件信息
     win_controls := {}
@@ -226,39 +232,23 @@ GetActiveWindowInfo(mode:="Default", cache:=True)
         } catch error {
             win_controls.DeleteProp(control_name)
         } else {
-            win_controls.%control_name%.x    := x
-            win_controls.%control_name%.y    := y
-            win_controls.%control_name%.w    := w
-            win_controls.%control_name%.h    := h
-            win_controls.%control_name%.xx   := x + w
-            win_controls.%control_name%.yy   := y + h
+            win_controls.%control_name%.x := x
+            win_controls.%control_name%.y := y
+            win_controls.%control_name%.w := w
+            win_controls.%control_name%.h := h
             win_controls.%control_name%.text := control_text
         }
     }
     window.controls := win_controls
 
-    ; 窗口所在屏幕信息
-    win_screen := {}
-    loop Screens.Count {
-        if ( win_x + Window_Screen_Offset > Screens.%A_Index%.x ) {
-            if ( win_x - Screens.%A_Index%.xx < Window_Screen_Offset ) {
-                win_screen := Screens.%A_Index%
-                break
-            }
-        }
-    }
-    window.screen := win_screen
-
     ; 窗口位置 默认1 默认2
-    win_position_default := GetWindowConfig(window, WPD)
-    win_position_backup  := GetWindowConfig(window, WPB)
-    window.position_default := win_position_default
-    window.position_backup  := win_position_backup
+    window.position_default := GetWindowConfig(window, WPD)
+    window.position_backup  := GetWindowConfig(window, WPB)
 
     ; 最后一次获取的信息缓存时间
-    window.cache.id     := win_id
-    window.cache.title  := win_title
-    window.cache.expire := A_TickCount + Cache_Expire_Time
+    window.cache_id     := win_id
+    window.cache_title  := win_title
+    window.cache_expire := A_TickCount + Cache_Expire_Time
 
     return window
 }
