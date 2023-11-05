@@ -22,11 +22,17 @@ RegisterHelp("v2rayN", "Software\v2rayN.help")
         Send "{Down 1}{Enter}"
     }
 
-
     ; 更新Geo
     !]::{
         MouseClickAndResetting(685, 90, "Window")
         Send "{Up 2}{Enter}"
+    }
+
+    ; 删除订阅
+    !BackSpace::{
+        Send "^a"
+        Send "{Delete}"
+        Send "!y"
     }
 
     ; 更新订阅
@@ -40,7 +46,7 @@ RegisterHelp("v2rayN", "Software\v2rayN.help")
     }
 
     ; 去重
-    !+\::{
+    ^!\::{
         MouseClickAndResetting(30, 207, "Window", "Right")
         Send "{Down 4}{Enter}"
     }
@@ -48,7 +54,6 @@ RegisterHelp("v2rayN", "Software\v2rayN.help")
     ; 测速
     !Enter::{
         Send "^a"
-        Sleep 99
         Send "^r"
     }
 
