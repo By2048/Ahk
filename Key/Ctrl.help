@@ -6,7 +6,7 @@
 |  P | WT             |  . | T:\\            |
 |----|----------------| +. | V:\\            |
 |  S | Sandboxie      |  / | Chrome          |
-|  F | FreeFileSync   | +/ | ChromeDefault   |
+|  F | FreeFileSync   | +/ | Edge            |
 |  H | WindowSpy      |----|-----------------|
 | +H | WindowSpy      |  [ | VSCode Default  |
 |  J | JetBrains      |  ] | VSCode NewWin   |
