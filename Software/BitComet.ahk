@@ -56,7 +56,7 @@
         if Abs(info.x - left_width) > 10 {
             MouseMove info.x , info.y + info.h / 2
             offset := GetOffset("X")
-            MoveControlUDLR(info, 0, 0, left_width, 0, offset)
+            MoveControlUDLR(info, "Left", left_width, offset)
         }
 
         ; 主界面 全部任务

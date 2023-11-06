@@ -521,53 +521,51 @@ MoveWindowUDLR(direction)
 
 
 
-; 修改控件位置 CoordMode : Window
-MoveControlUDLR(cinfo, cup:=0, cdown:=0, cleft:=0, cright:=0, offset:=6)
+; 修改控件位置 CoordMode Window
+; mode : Up Down Left Right
+MoveControlUDLR(info, mode:="Right", value:=0, offset:=6)
 {
     MouseGetPos &x_origin, &y_origin
 
     xy := 0 , x_start := 0 , y_start := 0 , x_end := 0 , y_end := 0
 
-    if (cup > 0) {
-        x_start := cinfo.x + cinfo.w/2
-        y_start := cinfo.y + offset
+    if (mode == "Up") {
+        x_start := info.x + info.w / 2
+        y_start := info.y + offset
         x_end   := x_start
-        y_end   := cup
-        xy      := y_end   - y_start
+        y_end   := value
+        xy      := y_end - y_start
     }
 
-    if (cdown > 0) {
-        x_start := cinfo.x + cinfo.w - cinfo.w/2
-        y_start := cinfo.y + cinfo.h + offset
+    if (mode == "Down") {
+        x_start := info.x + info.w - info.w / 2
+        y_start := info.y + info.h + offset
         x_end   := x_start
-        y_end   := cdown
-        xy      := y_end    - y_start
+        y_end   := value
+        xy      := y_end - y_start
     }
 
-    if (cleft > 0) {
-        x_start := cinfo.x + offset
-        y_start := cinfo.y + cinfo.h/2
-        x_end   := cleft
+    if (mode == "Left") {
+        x_start := info.x + offset
+        y_start := info.y + info.h / 2
+        x_end   := value
         y_end   := y_start
-        xy      := x_end   - x_start
+        xy      := x_end - x_start
     }
 
-    if (cright > 0) {
-        x_start := cinfo.x + cinfo.w + offset
-        y_start := cinfo.y + cinfo.h - cinfo.h/2
-        x_end   := cright
+    if (mode == "Right") {
+        x_start := info.x + info.w + offset
+        y_start := info.y + info.h - info.h / 2
+        x_end   := value
         y_end   := y_start
-        xy      := x_end    - x_start
+        xy      := x_end - x_start
     }
 
-    if (Abs(xy) < 3) {
+    if Abs(xy) < 3
         return
-    }
-
-    ; MouseMove x_start, y_start
-    ; MouseMove x_end, y_end
 
     MouseClickDrag "Left", x_start, y_start, x_end, y_end, 0
+
     MouseMove x_origin, y_origin, 0
 }
 

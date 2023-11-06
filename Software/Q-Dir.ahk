@@ -43,7 +43,7 @@
         if Abs(info.x - split_box_left) > check_offset {
             MouseMove info.x , info.y + info.h / 2
             offset := GetOffset("X")
-            MoveControlUDLR(info, _, _, split_box_left, _, offset)
+            MoveControlUDLR(info, "Left", split_box_left, offset)
         }
 
         ; A = B
@@ -52,7 +52,7 @@
         if Abs((info.x + info.w) - (info.x + split_box_right)) > check_offset {
             MouseMove info.x + info.w , info.y + info.h / 2
             offset := GetOffset("X")
-            MoveControlUDLR(info, _, _, _, info.x + split_box_right, offset)
+            MoveControlUDLR(info, "Right", info.x + split_box_right, offset)
         }
 
         ; Aa | Ab
@@ -61,7 +61,7 @@
         if Abs((info.y + info.h) - split_box_bottom + box_status_height) > check_offset {
             MouseMove info.x + info.w / 2 , info.y + info.h + box_status_height
             offset := GetOffset("Y") + box_status_height
-            MoveControlUDLR(info, _, split_box_bottom, _, _, offset)
+            MoveControlUDLR(info, "Down", split_box_bottom, offset)
         }
     }
 

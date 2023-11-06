@@ -21,7 +21,7 @@ RegisterProcess("Foxmail" , "FoxMail")
         if Abs(info.w - width_folder) > check_split_folder {
             MouseMove info.x + info.w , (info.y + info.h) / 2
             offset := GetOffset("X", 1, 20, "Unknown")
-            MoveControlUDLR(info, 0, 0, 0, width_folder, offset)
+            MoveControlUDLR(info, "Right", width_folder, offset)
         }
 
         ; 邮件列表
@@ -30,7 +30,7 @@ RegisterProcess("Foxmail" , "FoxMail")
         if Abs(info.w - width_mail) > check_split_mail {
             MouseMove info.x + info.w , (info.y + info.h) / 2
             offset := GetOffset("X", 1, 20, "Unknown")
-            MoveControlUDLR(info, 0, 0, 0, width_mail + width_folder, offset)
+            MoveControlUDLR(info, "Right", width_mail + width_folder, offset)
         }
     }
 
