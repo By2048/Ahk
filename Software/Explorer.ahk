@@ -142,16 +142,14 @@ RegisterHelp("Explorer_WorkerW"       , "Key\Win.help | Key\Win.Other.help | Sof
 
     ; 打开主右键菜单设置
     !AppsKey::{
-        windows := GetActiveWindowInfo()
-        info := window.controls.DirectUIHWND3
-        content_x  := info.x
-        content_y  := info.y
-        content_w  := info.w
-        content_h  := info.h
-        content_xx := info.xx
-        content_yy := info.yy
-        x := content_x  + 10
-        y := content_yy - 10
+        windows   := GetActiveWindowInfo(False)
+        info      := window.controls.DirectUIHWND3
+        content_x := info.x
+        content_y := info.y
+        content_w := info.w
+        content_h := info.h
+        x := content_x + 20
+        y := content_y + content_h - 13
         MouseGetPos &x_origin, &y_origin
         MouseClick "Right", x, y, 1, 0
         MouseMove x_origin, y_origin, 0
@@ -159,10 +157,17 @@ RegisterHelp("Explorer_WorkerW"       , "Key\Win.help | Key\Win.Other.help | Sof
 
     <#\::
     <#+\::{
-        total_width := 1960 , total_height := 1250 , offset_down := -8
-        total_left := 317  , offset_left := -6
-        total_right := 411 , right_line_width := 26 , offset_right := 12
-        input_check_width := 388 , input_move_width := 426 , offset_input := 4
+        total_width  := 1960
+        total_height := 1250
+
+        check_offset := 30
+
+        tree_width := 317
+
+        preview_width := 411
+
+        input_move_width   := 426
+        input_check_width  := 388
 
         EC := Map( "File"     , "ItemNameDisplay:1150"
                  , "Default"  , "ItemNameDisplay:800 ItemDate:200 Size:150"
@@ -177,30 +182,23 @@ RegisterHelp("Explorer_WorkerW"       , "Key\Win.help | Key\Win.Other.help | Sof
 
         #Include *i Explorer.Private.ahk
 
-        WinGetPos &origin_x, &origin_y, &origin_w, &origin_h, "A"
+        MouseGetPos &x_origin, &y_origin
+
+        WinGetPos &origin_win_x, &origin_win_y, &origin_win_w, &origin_win_h, "A"
 
         MoveWindowToPosition(Position(total_width , total_height))
 
-        GetActiveWindowInfo("Default", False)
-        current_x := window.x
-        current_y := window.y
-        current_w := window.w
-        current_h := window.h
-
-        CoordMode "Mouse", "Window"
-        MouseGetPos &x_origin, &y_origin
+        GetActiveWindowInfo(False)
 
         ; 通过鼠标移动移动窗口,通过此操作Window可以在下次启动时使用修改后的位置
-        if (   origin_x != current_x
-            or origin_y != current_y
-            or origin_w != current_w
-            or origin_h != current_h ) {
-            MouseMove current_w/2, current_h + offset_down, 0
-            ; Todo 根据鼠标样式进行判断
-            MouseClickDrag "Left", 0, 0, 0, -30, 0, "R"
-            MouseClickDrag "Left", 0, 0, 0,  30, 0, "R"
+        if (   origin_win_x != window.x or origin_win_y != window.y
+            or origin_win_w != window.w or origin_win_h != window.h ) {
+            MouseMove window.position_client.w/2 , window.position_client.h , 0
+            if A_CoordModeMouse == "SizeNS" {
+                MouseClickDrag "Left", 0, 0, 0, -50, 0, "R"
+                MouseClickDrag "Left", 0, 0, 0,  50, 0, "R"
+            }
         }
-
 
         config := ""
         if (!EC.Has(window.title)) {
@@ -216,62 +214,36 @@ RegisterHelp("Explorer_WorkerW"       , "Key\Win.help | Key\Win.Other.help | Sof
         #Include Explorer.Tool.ahk
         SetExplorerColumns(config)
 
-        GetActiveWindowInfo("Window")
-        win_id := window.id
-        win_xx := window.xx
-
-        try {
-            info := window.controls.DirectUIHWND1
-            input_x  := info.x
-            input_y  := info.y
-            input_w  := info.w
-            input_h  := info.h
-            input_xx := info.xx
-            input_yy := info.yy
-        } catch {
-            return
-        }
-
-        try {
-            info := window.controls.DirectUIHWND3
-            content_x  := info.x
-            content_y  := info.y
-            content_w  := info.w
-            content_h  := info.h
-            content_xx := info.xx
-            content_yy := info.yy
-        } catch {
-            return
-        }
-
-        try {
-            info := window.controls.SysTreeView321
-            tree_width := info.w
-        } catch {
-            return
-        }
-
         ; 搜索框
-        if ( Abs(input_w - input_check_width) > Abs(offset_input) ) {
-            MouseClickDrag "Left"
-                           , input_x     + offset_input                    , input_y + input_h/2
-                           , total_width - input_move_width + offset_input , input_y + input_h/2
-                           , 0
+        GetActiveWindowInfo(False)
+        info := window.controls.DirectUIHWND1
+        if ( Abs(info.w - input_check_width) > check_offset ) {
+            MouseMove info.x , info.y + info.h / 2
+            offset := GetOffset("X")
+            MouseMove info.x + offset , info.y + info.h / 2
+            MoveControlUDLR(info, "Left", total_width - input_move_width, offset)
         }
+
         ; 左侧树状信息
-        if ( Abs(tree_width - total_left) > Abs(offset_left) ) {
-            MouseClickDrag "Left"
-                           , content_x  - offset_left     , content_yy/2 - content_y/2
-                           , total_left - offset_left * 2 , content_yy/2 - content_y/2
-                           , 0
+        GetActiveWindowInfo(False)
+        info := window.controls.SysTreeView321
+        if ( Abs(info.w - tree_width) > check_offset * 1 ) {
+            MouseMove info.x + info.w , info.y + info.h / 2
+            offset := GetOffset("X")
+            MouseMove info.x + info.w + offset , info.y + info.h / 2
+            MoveControlUDLR(info, "Right", tree_width, offset)
         }
+
         ; 右侧预览
-        if ( Abs(total_width - content_xx - total_right - right_line_width) > Abs(offset_right) ) {
-            MouseClickDrag "Left"
-                           , content_xx  + offset_right               , content_yy/2 - content_y/2
-                           , total_width - total_right - offset_right , content_yy/2 - content_y/2
-                           , 0
+        GetActiveWindowInfo(False)
+        info := window.controls.DirectUIHWND3
+        if ( Abs(total_width - (info.x + info.w) - preview_width) > check_offset * 2 ) {
+            MouseMove info.x + info.w , info.y + info.h / 2
+            offset := GetOffset("X")
+            MouseMove info.x + info.w + offset , info.y + info.h / 2
+            MoveControlUDLR(info, "Right", info.x + info.w + preview_width, offset)
         }
+
         MouseMove x_origin, y_origin, 0
     }
 
@@ -306,13 +278,13 @@ RegisterHelp("Explorer_WorkerW"       , "Key\Win.help | Key\Win.Other.help | Sof
     ; 默认位置
     <#\::{
         MoveWindowToDefaultPosition()
-        GetActiveWindowInfo("Window", False)
+        GetActiveWindowInfo(False)
         try {
             info := window.controls.DirectUIHWND2 ;左侧信息栏
         } catch {
             return
         }
-        MoveControlUDLR(info, 0, 0, 300, 0, 6)
+        MoveControlUDLR(info, "Left", 300, 6)
         Send "^!7" ;平铺模式
     }
 
