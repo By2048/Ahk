@@ -162,7 +162,7 @@ RegisterHelp("Explorer_WorkerW"       , "Key\Win.help | Key\Win.Other.help | Sof
 
         check_offset := 30
 
-        tree_width := 317
+        tree_width := 325
 
         preview_width := 411
 
@@ -194,22 +194,17 @@ RegisterHelp("Explorer_WorkerW"       , "Key\Win.help | Key\Win.Other.help | Sof
         if (   origin_win_x != window.x or origin_win_y != window.y
             or origin_win_w != window.w or origin_win_h != window.h ) {
             MouseMove window.position_client.w/2 , window.position_client.h , 0
-            if A_CoordModeMouse == "SizeNS" {
-                MouseClickDrag "Left", 0, 0, 0, -50, 0, "R"
-                MouseClickDrag "Left", 0, 0, 0,  50, 0, "R"
-            }
+            MouseClickDrag "Left", 0, 0, 0, -50, 0, "R"
+            MouseClickDrag "Left", 0, 0, 0,  50, 0, "R"
         }
 
         config := ""
-        if (!EC.Has(window.title)) {
-            if (A_ThisHotkey == "<#+\") {
-                config := EC["File"]
-            } else if (A_ThisHotkey == "<#\") {
-                config := EC["Default"]
-            }
-        } else {
+        if EC.Has(window.title)
             config := EC[window.title]
-        }
+        else if A_ThisHotkey == "<#+\"
+            config := EC["File"]
+        else if A_ThisHotkey == "<#\"
+            config := EC["Default"]
 
         #Include Explorer.Tool.ahk
         SetExplorerColumns(config)
