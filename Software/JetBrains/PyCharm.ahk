@@ -1,10 +1,9 @@
 ﻿
 RegisterProcess("pycharm64", "PyCharm")
 
-doc :=       "| Software\JetBrains\PyCharm.help          "
-doc := doc . "| Software\JetBrains\PyCharm.Fxx.md        "
-doc := doc . "| Software\JetBrains\PyCharm.CapsLock.help "
-RegisterHelp("PyCharm", doc)
+RegisterHelp("PyCharm" , "| Software\JetBrains\PyCharm.help          "
+                       . "| Software\JetBrains\PyCharm.Fxx.md        "
+                       . "| Software\JetBrains\PyCharm.CapsLock.help ")
 
 
 #HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "运行/调试配置")
