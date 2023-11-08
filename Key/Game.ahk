@@ -8,7 +8,7 @@ $RWin::Return
 <#Tab::AltTab
 
 >^Esc::Run "TaskMgr"
->^/::Run "Chrome", A_InitialWorkingDir, "Hide"
+>^/::Run "E:\Script\Software\Chrome.bat", A_InitialWorkingDir, "Hide"
 >^AppsKey::{
     SetCapsLockState "Off"
     SetNumLockState "Off"
