@@ -123,3 +123,28 @@ RegisterProcess("IDMan" , "IDM")
         SetColumnWidth("SysListView321", config)
     }
 #HotIf
+
+
+RegisterProcess("Adobe Premiere Pro" , "PR")
+#HotIf CheckWindowActive("PR")
+    <#\::{
+        x := 2
+        y := 0
+        w := A_ScreenWidth  - x * 2
+        h := A_ScreenHeight + 9
+        MoveWindowToPosition( [ x, y, w, h ] )
+    }
+#HotIf
+
+
+RegisterProcess("Photoshop" , "PS")
+#HotIf CheckWindowActive("PS")
+    <#\::MoveWindowToPosition( [ 0, 0, A_ScreenWidth, A_ScreenHeight ] )
+    <#+\::{
+        x := 40
+        y := 20
+        w := A_ScreenWidth  - x * 2
+        h := A_ScreenHeight - y * 2
+        MoveWindowToPosition( [ x, y, w, h ] )
+    }
+#HotIf
