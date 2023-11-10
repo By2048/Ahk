@@ -239,7 +239,7 @@ HelpKeysShow(step:=0)
 
     Arg.hotkeys_show    := True
     Arg.hotkeys_index   := hotkeys_index
-    Arg.hotkeys_current := hotkeys_config[hotkeys_index]
+    Arg.hotkeys_current := content
 }
 
 
@@ -258,13 +258,12 @@ HelpKeysHide()
 HelpKeysSnipaste()
 {
     Global G , Arg
-    HelpKeysHide()
-    tmp := A_Clipboard
-    A_Clipboard := ""
+    origin := A_Clipboard
     A_Clipboard := Arg.hotkeys_current
-    ClipWait
+    ClipWait 1
+    HelpKeysHide()
     cmd := Format("{1} paste --clipboard", Snipaste)
     Run cmd
-    Sleep 333
-    A_Clipboard := tmp
+    Sleep 555
+    A_Clipboard := origin
 }
