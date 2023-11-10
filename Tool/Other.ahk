@@ -211,20 +211,19 @@ GetColumnConfig(args*)
 
 
 ; 从代码注释中读取配置
-ReadConfig(file, slice, replace:="`; ")
+ReadConfig(path, slice, replace:="`; ")
 {
     data  := ""
     start := slice[1]
     stop  := slice[2]
-    loop read, file
+    Loop Read , path
     {
         line := StrReplace(A_LoopReadLine, replace, "")
         if (A_Index >= start and A_Index <= stop) {
-            if (A_Index != stop) {
+            if A_Index != stop
                 data := data . line . "`n"
-            } else {
+            else
                 data := data . line
-            }
         }
     }
     return data
