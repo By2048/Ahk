@@ -148,3 +148,8 @@ RegisterProcess("Photoshop" , "PS")
         MoveWindowToPosition( [ x, y, w, h ] )
     }
 #HotIf
+
+
+#HotIf CheckWindowActive("MediaInfo")
+    AppsKey::Send "!ys"
+#HotIf
