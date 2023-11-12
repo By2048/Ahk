@@ -249,7 +249,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
 ; 通用设置
 #HotIf CheckWindowActive( "Explorer" )
 
-    #Include *i Explorer.Base.ahk
+    #Include Explorer.Base.ahk
 
 #HotIf
 
@@ -264,7 +264,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
         SetCapsLockState "Off"
     }
 
-    #Include *i Explorer.Base.ahk
+    #Include Explorer.Base.ahk
 
     !/::ControlFocus "SysTreeView321", "A"
     !\::{
