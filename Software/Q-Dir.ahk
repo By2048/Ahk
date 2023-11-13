@@ -7,6 +7,17 @@
 #HotIf
 
 
+#HotIf CheckWindowActive( "Q-Dir" , "#32770" , "选项" )
+    <#\::{
+        index  := " 1        2     3    4    5      6      7    "
+        name   := " 过滤条件  颜色  斜体  加粗  下划线  删除线  预览 "
+        width  := " 300      100   50   50   70     70     100 "
+        config := GetColumnConfig(index, name, width)
+        SetColumnWidth("SysListView321", config)
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive( "Q-Dir" , "ATL*" )
 
     ;  DPI设置 系统增强
