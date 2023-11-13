@@ -89,11 +89,8 @@ RegisterProcess("NVIDIA Share" , "GeForceTool")
 
 ; 文件预览
 #HotIf CheckWindowActive("PowerToys.Peek.UI")
-    Esc::
-    CapsLock::{
-        ; WinClose "A"
-        Send "^{Space}"
-    }
+         Esc::Send "#z"
+    CapsLock::Send "#z"
 #HotIf
 
 
