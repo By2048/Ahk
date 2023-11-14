@@ -10,18 +10,16 @@ RegisterProcess("vmware", "VMware")
 #HotIf CheckWindowActive( "VMware" , "#32770" , "扫描虚拟机向导" )
     RWin::{
         MoveWindowToCenter(True)
-        _name  := "SysListView321"
-        _width := Map( 1 , 200    ;虚拟机名称
-                     , 2 , 1000 ) ;路径
-        SetColumnWidth(_name, _width)
+        name  := "SysListView321"
+        width := Map( 1 , 200    ;虚拟机名称
+                    , 2 , 1000 ) ;路径
+        SetColumnWidth(name, width)
     }
 #HotIf
 
 
 #HotIf CheckWindowActive( "VMware" , "#32770" , "浏览ISO映像" )
-    <#\::{
-        MoveWindowToPosition(Position(1520 , 1100))
-    }
+    <#\::MoveWindowToPosition(Position(1520 , 1100))
 #HotIf
 
 
@@ -60,12 +58,12 @@ RegisterProcess("vmware", "VMware")
         Send "{Alt Down}{f}{m}{Alt Up}"
         Sleep 300
         MoveWindowToCenter(True)
-        _name  := "SysListView321"
-        _width := Map( 1 , 150   ;驱动器
-                     , 2 , 200   ;名称
-                     , 3 , 600   ;文件夹
-                     , 4 , 200 ) ;最大大小
-        SetColumnWidth(_name, _width)
+        name  := "SysListView321"
+        width := Map( 1 , 150   ;驱动器
+                    , 2 , 200   ;名称
+                    , 3 , 600   ;文件夹
+                    , 4 , 200 ) ;最大大小
+        SetColumnWidth(name, width)
     }
 
     ; 帮助

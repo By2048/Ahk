@@ -2,13 +2,22 @@
 RegisterProcess("7zFM" , "7-Zip")
 
 
-#HotIf CheckWindowActive("7-Zip", "#32770", "属性")
+#HotIf CheckWindowActive("7-Zip", "*FM", "我的电脑*")
+    <#\::{
+        MoveWindowToPosition(Position(1100 , 1000))
+        cfg := " 1:名称:100  5:卷标:100  4:类型:100  6:文件系统:100  7:簇大小:100  3:可用空间:200  2:总大小:200 "
+        cfg := " 1:名称:150  2:卷标:140  3:类型:100  4:文件系统:100  5:簇大小:100  6:可用空间:233  7:总大小:233 "
+        SetColumnWidth("SysListView321", GetColumnConfig(cfg))
+    }
+#HotIf
 
+
+
+#HotIf CheckWindowActive("7-Zip", "#32770", "属性")
     <#\::{
         MoveWindowToPosition(Position(650, 900))
         SetColumnWidth("SysListView321", Map( 1,150 , 2,420 ))
     }
-
 #HotIf
 
 
@@ -16,16 +25,10 @@ RegisterProcess("7zFM" , "7-Zip")
 
     <#\::{
         MoveWindowToPosition(Position(1100 , 1000))
-        index := " 1     3      2    4   "
-        name  := " 名称  文件夹  文件  大小 "
-        width := " 700   100    100  140 "
-        win_title := window.title
-        if InStr(win_title, ".iso") {
-            index := " 1     2      3     4     "
-            name  := " 名称  文件夹  文件   大小  "
-            width := " 700   100    100   140   "
-        }
-        config := GetColumnConfig(index, name, width)
+        cfg := " 1:名称:700  3:文件夹:100  2:文件:100  4:大小:140 "
+        if InStr(window.title, ".iso")
+            cfg := " 1:名称:700  2:文件夹:100  3:文件:100  4:大小:140 "
+        cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321", config)
     }
 

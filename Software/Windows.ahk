@@ -46,34 +46,43 @@
         MoveWindowToPosition(Position(1666 , 1222))
 
         ; 详细信息
-        _name  := "SysListView321"
-        _width := Map(  1 , 500   ;名称
-                     ,  2 , 100   ;PID
-                     ,  6 , 160   ;工作集内存
-                     ,  5 , 100   ;CPU
-                     ,  7 , 100   ;句柄
-                     ,  8 , 100   ;线程
-                     , 14 , 100   ;GPU
-                     ,  9 , 130   ;I/O 读取
-                     , 10 , 130   ;I/O 写入
-                     , 11 , 150   ;I/O 其他
-                     ,  4 , 200   ;用户名
-                     ,  3 , 130   ;状态
-                     , 12 , 80    ;平台
-                     , 13 , 170 ) ;DPI 感知
+        name  := "SysListView321"
+        width := Map(  1 , 500   ;名称
+                    ,  2 , 100   ;PID
+                    ,  6 , 160   ;工作集内存
+                    ,  5 , 100   ;CPU
+                    ,  7 , 100   ;句柄
+                    ,  8 , 100   ;线程
+                    , 14 , 100   ;GPU
+                    ,  9 , 130   ;I/O 读取
+                    , 10 , 130   ;I/O 写入
+                    , 11 , 150   ;I/O 其他
+                    ,  4 , 200   ;用户名
+                    ,  3 , 130   ;状态
+                    , 12 , 80    ;平台
+                    , 13 , 170 ) ;DPI 感知
 
-        SetColumnWidth(_name, _width, Screen_4K, Screen_2K)
-
-
+        scale := Screen_4K.Dpi / Screen_2K.Dpi
+        for k , v in width {
+            v := v / scale + 0
+            width[k] := v
+        }
+        SetColumnWidth(name, width)
 
         ; 服务
-        _name  := "SysListView322"
-        _width := Map( 1 , 600   ;名称
+        name  := "SysListView322"
+        width := Map(  1 , 600   ;名称
                      , 2 , 130   ;PID
                      , 4 , 150   ;状态
                      , 5 , 450   ;组
                      , 3 , 810 ) ;描述
-        SetColumnWidth(_name, _width, Screen_4K, Screen_2K)
+
+        scale := Screen_4K.Dpi / Screen_2K.Dpi
+        for k , v in width {
+            v := v / scale + 0
+            width[k] := v
+        }
+        SetColumnWidth(name, width)
     }
 
 #HotIf
@@ -110,13 +119,13 @@
 #HotIf CheckWindowActive( "MMC" , "" , "服务" )
     <#\::{
         MoveWindowToPosition(Position(1777 , 1200))
-        _name  := "SysListView321"
-        _width := Map( 1 , 330   ;名称
-                     , 2 , 460   ;描述
-                     , 3 , 70    ;状态
-                     , 4 , 110   ;启动类型
-                     , 5 , 70  ) ; 登录为
-        SetColumnWidth(_name, _width)
+        name  := "SysListView321"
+        width := Map( 1 , 330   ;名称
+                    , 2 , 460   ;描述
+                    , 3 , 70    ;状态
+                    , 4 , 110   ;启动类型
+                    , 5 , 70  ) ;登录为
+        SetColumnWidth(name, width)
     }
 #HotIf
 

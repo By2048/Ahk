@@ -2,11 +2,9 @@
 #HotIf CheckWindowActive("BitComet", "#32770", "通知")
     <#\::{
         MoveWindowToPosition(Position(800, 750))
-        _1 := " 1    2     3    "
-        _2 := " 空   时间   消息  "
-        _3 := " 50   250   400  "
-        config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth("SysListView321" , config)
+        cfg := " 1:空:50  2:时间:250  3:消息:400 "
+        cfg := GetColumnConfig(cfg)
+        SetColumnWidth("SysListView321" , cfg)
     }
 #HotIf
 
@@ -19,11 +17,9 @@
             MoveWindowToPosition(Position(1350, 1300))
         if A_ThisHotkey == "<#+\"
             MoveWindowToPosition(Position(1350, 800))
-        _1 := " 1     2     3   "
-        _2 := " 名称  大小   %   "
-        _3 := " 999   130   100 "
-        config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth("SysListView321" , config)
+        cfg := " 1:名称:999  2:大小:130  3:%:100 "
+        cfg := GetColumnConfig(cfg)
+        SetColumnWidth("SysListView321" , cfg)
     }
 #HotIf
 
@@ -31,11 +27,9 @@
 #HotIf CheckWindowActive("BitComet", "#32770", "批量下载种子")
     <#\::{
         MoveWindowToPosition(Position(1300, 700))
-        _1 := " 1     2     3       "
-        _2 := " 名称  大小   发表日期  "
-        _3 := " 999  130   100      "
-        config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth("SysListView321" , config)
+        cfg := " 1:名称:999  2:大小:130  3:发表日期:100 "
+        cfg := GetColumnConfig(cfg)
+        SetColumnWidth("SysListView321" , cfg)
     }
 #HotIf
 
