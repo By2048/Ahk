@@ -175,34 +175,57 @@ SendData(data)
 ; 文本转字典
 GetColumnConfig(args*)
 {
-    arg_index := args[1]
-    arg_name  := args[2]
-    arg_width := args[3]
-
-    if (not arg_index or not arg_width) {
-        return
+    GetCfg(cfg) {
+        result := Map()
+        if not cfg
+            return result
+        cfg := Trim(cfg)
+        cfg := RegExReplace(cfg, "\s+", " ")
+        cfg := StrSplit(cfg, " ")
+        for item in cfg {
+            item := StrSplit(item, ":")
+            index := item[1] + 0
+            name  := item[2]
+            width := item[3] + 0
+            result[index] := width
+        }
+        return result
     }
 
-    arg_index := Trim(arg_index)
-    arg_width := Trim(arg_width)
-    arg_name  := Trim(arg_name)
-    arg_index := RegExReplace(arg_index, "\s+", " ")
-    arg_width := RegExReplace(arg_width, "\s+", " ")
-    arg_name  := RegExReplace(arg_name, "\s+", " ")
-    arg_index := StrSplit(arg_index, " ")
-    arg_width := StrSplit(arg_width, " ")
-    arg_name  := StrSplit(arg_name, " ")
-
-    if (arg_index.Length != arg_width.Length) {
-        return
+    GetINW(index, name, width) {
+        result := Map()
+        if not index or not width
+            return result
+        index := Trim(index)
+        width := Trim(width)
+        name  := Trim(name )
+        index := RegExReplace(index, "\s+", " ")
+        width := RegExReplace(width, "\s+", " ")
+        name  := RegExReplace(name,  "\s+", " ")
+        index := StrSplit(index, " ")
+        width := StrSplit(width, " ")
+        name  := StrSplit(name,  " ")
+        if index.Length != width.Length
+            return result
+        loop index.Length {
+            key   := index[A_Index] + 0
+            value := width[A_Index] + 0
+            result[key] := value
+        }
+        return result
     }
 
     result := Map()
-    length := arg_index.Length
-    loop length {
-        key   := arg_index[A_Index] + 0
-        value := arg_width[A_Index] + 0
-        result[key] := value
+    if args.Length == 1 {
+        cfg := args[1]
+        result := GetCfg(cfg)
+    }
+
+    if args.Length == 3 {
+        index := args[1]
+        name  := args[2]
+        width := args[3]
+        result := GetINW(index, name, width)
     }
 
     return result
