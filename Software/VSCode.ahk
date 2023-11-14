@@ -78,14 +78,14 @@ RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
     ~CapsLock & Tab::Send "^!{NumpadMult}"
 
     ; 项目 结构
-    CapsLock & [::{
+    ~CapsLock & [::{
         if (GetKeyState("LShift", "P")) {
             Send "^!+["
         } else {
             Send "^!["
         }
     }
-    CapsLock & ]::{
+    ~CapsLock & ]::{
         if (GetKeyState("LShift", "P")) {
             Send "^!+]"
         } else {
@@ -94,10 +94,10 @@ RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
     }
 
     ; 窗口大小调整
-    CapsLock & Left:: Send "^!{Left}"
-    CapsLock & Right::Send "^!{Right}"
-    CapsLock & Up::   Send "^!{Up}"
-    CapsLock & Down:: Send "^!{Down}"
+    ~CapsLock & Left:: Send "^!{Left}"
+    ~CapsLock & Right::Send "^!{Right}"
+    ~CapsLock & Up::   Send "^!{Up}"
+    ~CapsLock & Down:: Send "^!{Down}"
 
     ; 代码注释
     LAlt & RShift::{

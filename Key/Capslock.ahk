@@ -5,7 +5,7 @@ RegisterProcess("idea64"    , "IDEA"   )
 
 
 ;切换到显示器中心
-$CapsLock::{
+~CapsLock & RShift::{
 
     CoordMode "Mouse", "Screen"
     MouseGetPos &x_current, &y_current
@@ -37,8 +37,8 @@ $CapsLock::{
     yy := y_default
 
     ; 在屏幕1
-    if (     x_current >= Screens.1.x and x_current <= Screens.1.x + Screens.1.w
-         and y_current >= Screens.1.y and y_current <= Screens.1.y + Screens.1.h )
+    if (    x_current >= Screens.1.x and x_current <= Screens.1.x + Screens.1.w
+        and y_current >= Screens.1.y and y_current <= Screens.1.y + Screens.1.h )
     {
         ; 不在在屏幕1中心
         if ( x_current != x1 and y_current != y1 ) {
@@ -81,35 +81,21 @@ $CapsLock::{
 }
 
 
+; 屏幕1中心
+~CapsLock & Space::{
+    DllCall("SetCursorPos", "int", A_ScreenWidth / 2, "int", A_ScreenHeight / 2)
+    MouseGetPos &_, &_, &win_id
+    WinActivate "ahk_id " . win_id
+}
+
+
 ; 关闭大写锁定
-$CapsLock Up::{
+~CapsLock Up::{
     SetCapsLockState "Off"
     SetNumLockState "Off"
     SetScrollLockState "Off"
 }
 
-
-; 屏幕1中心
-CapsLock & Space::{
-    xx := Screen.x + Screen.w/2
-    yy := Screen.y + Screen.h/2
-    DllCall("SetCursorPos", "int", xx, "int", yy)
-    MouseGetPos  &_,  &_, &win_id
-    WinActivate "ahk_id " . win_id
-    HighlightActiveWindow(300)
-}
+#Include *i CapsLock.Private.ahk
 
 
-; 快速输入数字
-; CapsLock & j::Send 1
-; CapsLock & k::Send 2
-; CapsLock & l::Send 3
-; CapsLock & u::Send 4
-; CapsLock & i::Send 5
-; CapsLock & o::Send 6
-; CapsLock & 7::Send 7
-; CapsLock & 8::Send 8
-; CapsLock & 9::Send 9
-; CapsLock & m::Send 0
-; CapsLock & ,::Send 00
-; CapsLock & .::Send .
