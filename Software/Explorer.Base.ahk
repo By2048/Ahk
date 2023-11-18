@@ -77,3 +77,6 @@ F6::Return
 ; 创建新文件夹
 ^+n::Return
 <^n::Send "^+n"
+
+; 重命名时功能调整
+<^BackSpace::Send "^+{Left}{BackSpace}"
