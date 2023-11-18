@@ -165,10 +165,7 @@ RegisterHelp("Chrome" , "| Software\Browser\Key.help           "
             Send "{Left}"
     }
 
-    CapsLock::{
-        Send "{F10 2}"
-        SetCapsLockState "Off"
-    }
+    CapsLock::Send "{F10 2}"
 
     CapsLock & Enter::{
         A_Clipboard := ""

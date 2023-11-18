@@ -40,7 +40,7 @@ Browser := " Chrome | Edge | Opera | FireFox "
 
     ;全屏
     F11::Return
-    <#Enter::Send "{F11}"
+    #Enter::Send "{F11}"
 
     ;开发者模式
     F12::Return
@@ -184,13 +184,13 @@ Browser := " Chrome | Edge | Opera | FireFox "
     #=::Send "^{=}"
 
     ;窗口位置
-    <#\::{
+    #\::{
         if InStr(Screen.Name, "4K")
             MoveWindowToPosition(Position(3300, 2000))
         if InStr(Screen.Name, "2K")
             MoveWindowToPosition(Position(2500, 1400))
     }
-    <#+\::{
+    #+\::{
         if Screens.Count == 1
             return
         pos := Position("[Center][2]", 0, 1600)
