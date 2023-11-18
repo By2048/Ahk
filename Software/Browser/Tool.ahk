@@ -71,6 +71,13 @@ UrlChange(origin)
     if InStr(origin, ".jpg@") or InStr(origin, ".png@") or InStr(origin, ".webp@")
         result := RegExReplace(origin, "(http.*)(.\w+)(@)(.*)", "$1$2")
 
+    ; https://www.zhihu.com/hot
+    ; https://www.zhihu.com/knowledge-plan/hot-question/hot/0/hour
+    if InStr(origin, "zhihu.com/hot")
+        result := "https://www.zhihu.com/knowledge-plan/hot-question/hot/0/hour"
+    if InStr(origin, "zhihu.com/knowledge-plan/hot-question/hot")
+        result := "https://www.zhihu.com/hot"
+
     ; 2 -> 1
     ; 1 -> 3 -> 1
     ; 1 https://www.zhihu.com/question/xxx
