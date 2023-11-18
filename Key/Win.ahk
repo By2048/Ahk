@@ -132,9 +132,9 @@
 <#+v::{
     global JQB
     FileEncoding "UTF-8"
-    tmp := A_Clipboard
-    if (not FileExist(JQB.Phone)) {
-        HelpText("No Data", "CenterDown",  , 333)
+    origin := A_Clipboard
+    if not FileExist(JQB.Phone) {
+        HelpText("No File", "CenterDown",  , 333)
         return
     }
     content := ""
@@ -142,15 +142,17 @@
         content := FileRead(JQB.Phone)
         FileDelete JQB.Phone
     }
-    if not content
+    if not content {
+        HelpText("No Data", "CenterDown",  , 333)
         return
+    }
     A_Clipboard := content
-    ClipWait
+    ClipWait 1
     Send "^v"
-    A_Clipboard := tmp
     if StrLen(content) > 15
         content := SubStr(content, 1, 5) . "..." . SubStr(content, -5)
     HelpText(A_Clipboard, "CenterDown", "Screen", 333)
+    A_Clipboard := origin
 }
 
 ; 文件重命名
