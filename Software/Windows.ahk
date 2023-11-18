@@ -14,11 +14,11 @@
 #HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "编辑环境变量" )
     PgUp::Send "!u"
     PgDn::Send "!o"
-    <#\::MoveWindowToPosition(Position(888, 1111))
+    #\::MoveWindowToPosition(Position(888, 1111))
 #HotIf
 
 #HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "环境变量" )
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1500, 1100))
         win_title := window.title
         if (win_title == "环境变量") {
@@ -42,7 +42,7 @@
     !CapsLock::Send "!{F4}"
 
 
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1666 , 1222))
 
         ; 详细信息
@@ -107,7 +107,7 @@
 ; 设置
 #HotIf CheckWindowActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
 
-    <#\::MoveWindowToPosition(Position(1800 , 1200))
+    #\::MoveWindowToPosition(Position(1800 , 1200))
 
     ;点击返回
     Esc::MouseClickAndResetting(38, 23)
@@ -117,7 +117,7 @@
 
 ; 服务
 #HotIf CheckWindowActive( "MMC" , "" , "服务" )
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1777 , 1200))
         name  := "SysListView321"
         width := Map( 1 , 330   ;名称
@@ -141,7 +141,7 @@ RegisterHelp("RegEdit", "Software\Windows.RegEdit.help")
     F5::Return
     $CapsLock::Send "{F5}"
 
-    <#\::{
+    #\::{
         total_width  := 2222
         total_height := 1222
         MoveWindowToPosition(Position(total_width , total_height))

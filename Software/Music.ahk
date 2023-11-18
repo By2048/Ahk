@@ -4,7 +4,7 @@ RegisterProcess("cloudmusic" , "CloudMusic")
 
 #HotIf CheckWindowActive( "CloudMusic" , "DesktopLyrics" )
 
-    <#\::{
+    #\::{
         win_w := 2333
         win_h := 166
         win_x := Screen.w/2 - win_w/2
@@ -52,7 +52,7 @@ RegisterProcess("cloudmusic" , "CloudMusic")
         ProcessClose "CloudMusic.exe"
     }
 
-    <#\::MoveWindowToPosition(Position(2000 , 1200))
+    #\::MoveWindowToPosition(Position(2000 , 1200))
 
     ; 音量调整
     Up::Send "!{PgUp}"
@@ -79,7 +79,7 @@ RegisterProcess("cloudmusic" , "CloudMusic")
 
 #HotIf CheckWindowActive( "QQMusic" )
 
-    <#\::MoveWindowToPosition(Position(1800 , 1100))
+    #\::MoveWindowToPosition(Position(1800 , 1100))
 
     <#BackSpace::{
         ProcessClose "QQMusic.exe"

@@ -80,9 +80,7 @@
     ; 查看用户自定义元变量<USER0>~<USER9>
     F12::Return
 
-    <#\::{
-        MoveWindowToPosition(Position(2333 , 1333))
-    }
+    #\::MoveWindowToPosition(Position(2333 , 1333))
 
 #HotIf
 

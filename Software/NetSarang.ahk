@@ -3,14 +3,14 @@ RegisterHelp("Xshell", "Software\NetSarang.Xshell.help")
 
 
 #HotIf CheckWindowActive("Xftp")
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(2200 , 1200))
     }
 #HotIf
 
 
 #HotIf CheckWindowActive("XshellCore", "#32770", "自定义按键对应")
-    <#\::{
+    #\::{
         _name  := "SysListView321"
         _width := Map( 1 , 200   ;组合键
                      , 2 , 150   ;类型
@@ -22,7 +22,7 @@ RegisterHelp("Xshell", "Software\NetSarang.Xshell.help")
 
 
 #HotIf CheckWindowActive("XshellCore", "#32770", "会话")
-    <#\::{
+    #\::{
         width  := 1100
         height := 660
         MoveWindowToPosition(Position(width , height))
@@ -64,11 +64,9 @@ RegisterHelp("Xshell", "Software\NetSarang.Xshell.help")
     ^+\::Return
     !+CapsLock::Send "^+\"
 
-    <#\::{
-        MoveWindowToPosition(Position(2200 , 1200))
-    }
+    #\::MoveWindowToPosition(Position(2200 , 1200))
 
-    <#Enter::Send "^!{F12}"
-    <#+Enter::Send "^!+{F12}"
+    #Enter::Send "^!{F12}"
+    #+Enter::Send "^!+{F12}"
 
 #HotIf

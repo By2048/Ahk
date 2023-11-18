@@ -7,7 +7,7 @@ RegisterProcess("Foxmail" , "FoxMail")
     F4::Return
     AppsKey::Send "{F4}"
 
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(2233,1250))
 
         width_folder := 300

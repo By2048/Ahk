@@ -4,7 +4,7 @@ RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
 
 #HotIf CheckWindowActive( "FreeFileSync" , "" , "同步设置" )
 
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1000, 1000))
 
         GetActiveWindowInfo(False)
@@ -80,6 +80,6 @@ RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
     ; 开始同步
     !Enter::Send "{F9}"
 
-    <#\::MoveWindowToPosition(Position(2222 , 1111))
+    #\::MoveWindowToPosition(Position(2222 , 1111))
 
 #HotIf

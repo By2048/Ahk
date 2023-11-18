@@ -232,20 +232,16 @@ CapsLockActivate := False
     ;     CenterHideWindow(1600, 1000)
     ; }
 
-    <#\::{
-        MoveWindowToDefaultPosition()
-    }
-    <#+\::{
-        MoveWindowToBackupPosition()
-    }
+    #\::MoveWindowToDefaultPosition()
+    #+\::MoveWindowToBackupPosition()
 
     ;窗口全屏
-    <#Enter::{
+    #Enter::{
         Send "^!{NumLock}"
         SetNumLockState "Off"
     }
     ;Zen模式
-    <#+Enter::{
+    #+Enter::{
         Send "^!+{NumLock}"
         SetNumLockState "Off"
     }

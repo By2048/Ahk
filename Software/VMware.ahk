@@ -19,7 +19,7 @@ RegisterProcess("vmware", "VMware")
 
 
 #HotIf CheckWindowActive( "VMware" , "#32770" , "浏览ISO映像" )
-    <#\::MoveWindowToPosition(Position(1520 , 1100))
+    #\::MoveWindowToPosition(Position(1520 , 1100))
 #HotIf
 
 
@@ -49,9 +49,7 @@ RegisterProcess("vmware", "VMware")
     ^p::Return
     AppsKey::Send "^p"
 
-    <#\::{
-        MoveWindowToPosition(Position(1800 , 1200))
-    }
+    #\::MoveWindowToPosition(Position(1800 , 1200))
 
     ; 映射或断开虚拟磁盘连接
     >!/::{

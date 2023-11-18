@@ -14,7 +14,7 @@ RegisterProcess("geek64" , "Geek")
     ^e::Return
     ^w::Return
 
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1100 , 1000))
         _name  := "SysListView321"
         _width := Map( 1 , 780   ; 名称

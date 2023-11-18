@@ -45,7 +45,7 @@ EscCount    := 0
 
 
 #HotIf CheckWindowActive("Everything")
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1700 , 1200))
         cfg := " 1:名称:750  2:路径:600  3:大小:120  4:修改时间:180 "
         cfg := GetColumnConfig(cfg)
@@ -62,7 +62,7 @@ RegisterProcess("NVIDIA Share" , "GeForceTool")
 
 ; 火绒U盘工具
 #HotIf CheckWindowActive("HipsTray")
-    <#\::{
+    #\::{
         GetActiveWindowInfo()
         win_w := window.w
         win_h := window.h
@@ -109,7 +109,7 @@ RegisterProcess("NVIDIA Share" , "GeForceTool")
 
 RegisterProcess("IDMan" , "IDM")
 #HotIf CheckWindowActive("IDM")
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1500 , 1000))
         cfg := " 1:文件名:500  2:路径:600  3:大小:120  4:修改时间:180 "
         cfg := GetColumnConfig(cfg)
@@ -120,7 +120,7 @@ RegisterProcess("IDMan" , "IDM")
 
 RegisterProcess("Adobe Premiere Pro" , "PR")
 #HotIf CheckWindowActive("PR")
-    <#\::{
+    #\::{
         x := 2
         y := 0
         w := A_ScreenWidth  - x * 2
@@ -132,8 +132,8 @@ RegisterProcess("Adobe Premiere Pro" , "PR")
 
 RegisterProcess("Photoshop" , "PS")
 #HotIf CheckWindowActive("PS")
-    <#\::MoveWindowToPosition( [ 0, 0, A_ScreenWidth, A_ScreenHeight ] )
-    <#+\::{
+    #\::MoveWindowToPosition( [ 0, 0, A_ScreenWidth, A_ScreenHeight ] )
+    #+\::{
         x := 40
         y := 20
         w := A_ScreenWidth  - x * 2

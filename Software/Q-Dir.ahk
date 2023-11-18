@@ -1,6 +1,6 @@
 ﻿
 #HotIf CheckWindowActive( "Q-Dir" , "#32770" , "MiniBrowserOK" )
-    <#\::{
+    #\::{
         WPD["Q-Dir_#32770_MiniBrowserOK"] := Position(1555, 1333)
         MoveWindowToDefaultPosition()
     }
@@ -8,7 +8,7 @@
 
 
 #HotIf CheckWindowActive( "Q-Dir" , "#32770" , "选项" )
-    <#\::{
+    #\::{
         index  := " 1        2     3    4    5      6      7    "
         name   := " 过滤条件  颜色  斜体  加粗  下划线  删除线  预览 "
         width  := " 300      100   50   50   70     70     100 "
@@ -23,7 +23,7 @@
     ;  DPI设置 系统增强
     ;  1 #3277010->SysTreeView325   2 #327702->SysListView321   4 #327706->SysListView323
     ;  1 ^                          3 #327704->SysListView322   4 ^
-    <#\::{
+    #\::{
         ; 界面配置信息 * 1.5 (Dpi)
         _ := 0
 
@@ -120,7 +120,7 @@
 
     ;全屏
     F11::Return
-    <#Enter::Send "{F11}"
+    #Enter::Send "{F11}"
 
     ; 重新启动
     !F11::Return

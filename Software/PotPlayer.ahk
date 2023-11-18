@@ -1,8 +1,8 @@
 ﻿
 RegisterProcess("PotPlayerMini64" , "PotPlayer")
 
-RegisterHelp("PotPlayer" , "Software\PotPlayer.help")
-
+RegisterHelp("PotPlayer" , "| Software\PotPlayer.help"
+                         . "| Software\PotPlayer.NumPad.help")
 
 #HotIf CheckWindowActive("PotPlayer")
 
@@ -13,10 +13,11 @@ RegisterHelp("PotPlayer" , "Software\PotPlayer.help")
 
     !CapsLock::Send "!{F4}"
 
-    <#Enter::Send "!{Enter}"
+    #Enter::Send "!{Enter}"
+    #+Enter::Send "^{Enter}"
 
-    <#\::
-    <#+\::{
+    #\::
+    #+\::{
         WPD["PotPlayer"] := Position(Screen.w * 4/6 , Screen.h * 4/6)
         WPD["PotPlayer_#32770"]   := Position(1500 , 1200)
         WPD["PotPlayer__播放列表"] := Position(10, "[Center][1]", 700, 1000)

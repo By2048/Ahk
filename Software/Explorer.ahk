@@ -157,8 +157,8 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
         MouseMove x_origin, y_origin, 0
     }
 
-    <#\::
-    <#+\::{
+    #\::
+    #+\::{
         total_width  := 1960
         total_height := 1250
 
@@ -203,9 +203,9 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
         config := ""
         if EC.Has(window.title)
             config := EC[window.title]
-        else if A_ThisHotkey == "<#+\"
+        else if A_ThisHotkey == "#+\"
             config := EC["File"]
-        else if A_ThisHotkey == "<#\"
+        else if A_ThisHotkey == "#\"
             config := EC["Default"]
 
         #Include Explorer.Tool.ahk
@@ -273,7 +273,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
     }
 
     ; 默认位置
-    <#\::{
+    #\::{
         MoveWindowToDefaultPosition()
         GetActiveWindowInfo(False)
         try {

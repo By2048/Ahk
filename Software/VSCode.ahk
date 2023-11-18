@@ -47,16 +47,16 @@ RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
     !F4::Send "!{F16}"
     !+F4::Send "!+{F16}"
 
-    <#\::MoveWindowToPosition(Position(0, 0, A_ScreenWidth, A_ScreenHeight))
-    <#+\::MoveWindowToPosition(Position(1616 , 1212))
+    #\::MoveWindowToPosition(Position(0, 0, A_ScreenWidth, A_ScreenHeight))
+    #+\::MoveWindowToPosition(Position(1616 , 1212))
 
     ;窗口全屏
-    <#Enter::{
+    #Enter::{
         Send "^!{NumLock}"
         SetNumLockState "Off"
     }
     ;窗口全屏选项
-    <#+Enter::{
+    #+Enter::{
         Send "^!+{NumLock}"
         SetNumLockState "Off"
     }

@@ -8,11 +8,9 @@ RegisterHelp("Terminal", "Software\Terminal.help | Config\Script.help")
 
     #Include Terminal.Private.ahk
 
-    <#\::{
-        MoveWindowToPosition(Position(2200 , 1400))
-    }
+    #\::MoveWindowToPosition(Position(2200 , 1400))
 
-    <#+\::{
+    #+\::{
         if Screens.Count == 1
             return
         pos := Position("[Center][2]", 0, 1600)
@@ -60,7 +58,7 @@ RegisterHelp("Terminal", "Software\Terminal.help | Config\Script.help")
     !End::Send "^+{End}"
 
     ; 全屏
-    <#Enter::Send "{F14}"
+    #Enter::Send "{F14}"
 
     ; 字号重置
     ^WheelUp::Return

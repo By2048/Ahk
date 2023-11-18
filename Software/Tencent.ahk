@@ -8,7 +8,7 @@ RegisterProcess("DingTalk" , "DingDing")
     ^Enter::Return
     !Enter::Send "^{Enter}"
 
-    <#\::{
+    #\::{
         win_x := 10
         win_y := 10
         win_w := Screens.1.w/2 -10-10 +100
@@ -36,7 +36,7 @@ RegisterProcess("DingTalk" , "DingDing")
     ^Enter::Return
     !Enter::Send "^{Enter}"
 
-    <#\::{
+    #\::{
         win_x := 10
         win_y := 10
         win_w := Screens.1.w/2 -10-10 +100
@@ -68,7 +68,7 @@ RegisterProcess("DingTalk" , "DingDing")
     ^Enter::Return
     !Enter::Send "^{Enter}"
 
-    <#\::{
+    #\::{
         win_x := Screens.1.w/2 +10    +100
         win_y := 10 + 14
         win_w := Screens.1.w/2 -10-10 -100

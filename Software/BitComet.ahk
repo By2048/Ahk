@@ -1,6 +1,6 @@
 ﻿
 #HotIf CheckWindowActive("BitComet", "#32770", "通知")
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(800, 750))
         cfg := " 1:空:50  2:时间:250  3:消息:400 "
         cfg := GetColumnConfig(cfg)
@@ -11,11 +11,11 @@
 
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
     MButton::
-    <#\::
-    <#+\::{
-        if A_ThisHotkey == "<#\"
+    #\::
+    #+\::{
+        if A_ThisHotkey == "#\"
             MoveWindowToPosition(Position(1350, 1300))
-        if A_ThisHotkey == "<#+\"
+        if A_ThisHotkey == "#+\"
             MoveWindowToPosition(Position(1350, 800))
         cfg := " 1:名称:999  2:大小:130  3:%:100 "
         cfg := GetColumnConfig(cfg)
@@ -25,7 +25,7 @@
 
 
 #HotIf CheckWindowActive("BitComet", "#32770", "批量下载种子")
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1300, 700))
         cfg := " 1:名称:999  2:大小:130  3:发表日期:100 "
         cfg := GetColumnConfig(cfg)
@@ -36,7 +36,7 @@
 
 #HotIf CheckWindowActive("BitComet")
 
-    <#\::{
+    #\::{
         total_width  := 2333
         total_height := 1222
         left_width   := 255

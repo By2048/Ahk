@@ -39,9 +39,7 @@
     !q::Return
     Insert::Send "!q"
 
-    <#\::{
-        MoveWindowToPosition(Position(2580 , 1583))
-    }
+    #\::MoveWindowToPosition(Position(2580 , 1583))
 
 #HotIf
 

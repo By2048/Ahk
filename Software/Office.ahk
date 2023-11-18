@@ -6,7 +6,7 @@ RegisterProcess("ONENOTE"  , "OneNote" )
 
 
 #HotIf CheckWindowActive("Excel", "", "名称管理器")
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1500, 900))
         ; 服务器
         _1 := " 1    2    3        4    5   "
@@ -93,7 +93,7 @@ RegisterProcess("ONENOTE"  , "OneNote" )
     ;     HelpText("`n Over `n", "center", "screen3", 3000)
     ; Return
 
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(-60 , -30))
     }
 
@@ -103,7 +103,7 @@ RegisterProcess("ONENOTE"  , "OneNote" )
 
 #HotIf CheckWindowActive("PPT")
 
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(-60 , -30))
     }
 
@@ -113,7 +113,7 @@ RegisterProcess("ONENOTE"  , "OneNote" )
 
 #HotIf CheckWindowActive("Word")
 
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(-60 , -30))
     }
 

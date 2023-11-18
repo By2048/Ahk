@@ -3,7 +3,7 @@ RegisterProcess("7zFM" , "7-Zip")
 
 
 #HotIf CheckWindowActive("7-Zip", "*FM", "我的电脑*")
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1100 , 1000))
         cfg := " 1:名称:100  5:卷标:100  4:类型:100  6:文件系统:100  7:簇大小:100  3:可用空间:200  2:总大小:200 "
         cfg := " 1:名称:150  2:卷标:140  3:类型:100  4:文件系统:100  5:簇大小:100  6:可用空间:233  7:总大小:233 "
@@ -14,7 +14,7 @@ RegisterProcess("7zFM" , "7-Zip")
 
 
 #HotIf CheckWindowActive("7-Zip", "#32770", "属性")
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(650, 900))
         SetColumnWidth("SysListView321", Map( 1,150 , 2,420 ))
     }
@@ -23,7 +23,7 @@ RegisterProcess("7zFM" , "7-Zip")
 
 #HotIf CheckWindowActive("7-Zip")
 
-    <#\::{
+    #\::{
         MoveWindowToPosition(Position(1100 , 1000))
         cfg := " 1:名称:700  3:文件夹:100  2:文件:100  4:大小:140 "
         if InStr(window.title, ".iso")

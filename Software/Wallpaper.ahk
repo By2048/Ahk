@@ -72,7 +72,7 @@ RegisterHelp("Wallpaper" , "Software\Wallpaper.help")
         Send "{Enter}"
     }
 
-    <#\::{
+    #\::{
         x := 0
         y := 0
         w := A_ScreenWidth  - x - x - 1
