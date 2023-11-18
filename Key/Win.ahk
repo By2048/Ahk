@@ -15,6 +15,49 @@
     }
 }
 
+; 设置默认位置
+#\::MoveWindowToDefaultPosition()
+#+\::MoveWindowToBackupPosition()
+
+; 窗口全屏
+#Enter::Send "^!{Enter}"
+#+Enter::Send "^!+{Enter}"
+
+; 结束应用\进程
+#BackSpace::{
+    GetActiveWindowInfo()
+    win_id := window.id
+    win_process_name := window.process_name
+    ; 远程桌面切换到Windows时 结束远程桌面
+    if (win_process_name == "Explorer") {
+        windows_previous_process_name := GlobalGet("Windows", "Previous_Process_Name")
+        remote_desktop_switch_check := GlobalGet("Status", "Remote_Desktop_Switch_Check", "Bool")
+        if (windows_previous_process_name == "RemoteDesktop") {
+            if (remote_desktop_switch_check == True) {
+                exe := Windows_Process.Get("RemoteDesktop")
+                ProcessClose exe
+                GlobalSet("Windows", "Previous_Process_Name", "")
+                GlobalSet("Status", "Remote_Desktop_Switch_Check", False)
+                return
+            }
+        }
+    }
+    if IsDesktops()
+        return
+    Try WinClose AID(win_id)
+}
+; 结束进程
+#+BackSpace::{
+    GetActiveWindowInfo()
+    if IsDesktops()
+        return
+    if not window.pid
+        return
+    ProcessClose window.pid
+}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ; 缩放快捷键
  <#0::Send "^!0"
 <#+0::Send "^!+0"
@@ -218,49 +261,6 @@
  <#Delete::SoftwareShot("T:\")
 <#+Delete::SoftwareShot("F:\Image\Screen\")
 
-; 窗口全屏
- <#Enter::Send "^!{Enter}"
-<#+Enter::Send "^!+{Enter}"
-
-;结束应用
-<#BackSpace::{
-    GetActiveWindowInfo()
-    win_id := window.id
-    win_process_name := window.process_name
-    ; 远程桌面切换到Windows时 结束远程桌面
-    if (win_process_name == "Explorer") {
-        windows_previous_process_name := GlobalGet("Windows", "Previous_Process_Name")
-        remote_desktop_switch_check := GlobalGet("Status", "Remote_Desktop_Switch_Check", "Bool")
-        if (windows_previous_process_name == "RemoteDesktop") {
-            if (remote_desktop_switch_check == True) {
-                exe := Windows_Process.Get("RemoteDesktop")
-                ProcessClose exe
-                GlobalSet("Windows", "Previous_Process_Name", "")
-                GlobalSet("Status", "Remote_Desktop_Switch_Check", False)
-                return
-            }
-        }
-    }
-    if IsDesktops()
-        return
-    Try WinClose AID(win_id)
-}
-; 结束进程
-<#+BackSpace::{
-    GetActiveWindowInfo()
-    if IsDesktops()
-        return
-    win_pid := window.pid
-    ProcessClose win_pid
-    ; win_process_exe := window.process_exe
-    ; ProcessClose win_process_exe
-}
-
-;设置默认位置
- <#\::MoveWindowToDefaultPosition()
-<#+\::MoveWindowToBackupPosition()
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 通用媒体按键
 >#\::Send "{Media_Play_Pause}"
