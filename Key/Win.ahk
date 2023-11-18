@@ -263,10 +263,11 @@
 
 
 ; 通用媒体按键
->#\::Send "{Media_Play_Pause}"
+>#p::Send "{Media_Play_Pause}"
 >#[::Send "{Media_Prev}"
 >#]::Send "{Media_Next}"
->#p::Send "^!p" ;添加收藏
+>#o::Send "^!o" ;添加收藏
+
 
 ; 显示隐藏任务栏
 >#/::{
