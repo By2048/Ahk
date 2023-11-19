@@ -75,7 +75,3 @@
 ; #7::Return
 ; #8::Return
 ; #9::Return
-
-; 屏幕缩放
-#=::Return
-#-::Return

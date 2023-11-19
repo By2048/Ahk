@@ -1,4 +1,4 @@
-
+﻿
  >^q::Run "E:\Config\QPC.qdr"
 >^+q::Run "E:\Config\QFile.qdr"
  >^e::Run "D:\#Lnk\#\Everything.lnk"
