@@ -8,7 +8,7 @@
     } else {
         Arg.shift_cnt := 1
     }
-    SetTimer ShiftTimer, -333
+    SetTimer ShiftTimer, -500
 }
 ShiftTimer() {
     Global Arg

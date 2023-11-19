@@ -1,4 +1,4 @@
-﻿
+
  >^q::Run "E:\Config\QPC.qdr"
 >^+q::Run "E:\Config\QFile.qdr"
  >^e::Run "D:\#Lnk\#\Everything.lnk"
@@ -61,7 +61,7 @@ $RCtrl::{
     } else {
         Arg.ctrl_cnt := 1
     }
-    SetTimer CtrlTimer, -333
+    SetTimer CtrlTimer, -500
 }
 CtrlTimer() {
     Global Arg

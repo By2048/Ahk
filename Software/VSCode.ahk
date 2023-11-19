@@ -25,7 +25,7 @@ RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
         } else {
             Arg.shift_cnt := 1
         }
-        SetTimer VSCodeTimer, -300
+        SetTimer VSCodeTimer, -500
     }
     VSCodeTimer() {
         if (Arg.shift_cnt == 2) {
