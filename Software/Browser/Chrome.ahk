@@ -100,27 +100,36 @@ RegisterHelp("Chrome" , "| Software\Browser\Key.help           "
         } else {
             Arg.shift_cnt := 1
         }
-        SetTimer ChromeTimer, -300
+        SetTimer ChromeTimer, -500
     }
 
     ChromeTimer() {
+
         if (Arg.shift_cnt != 2) {
             Arg.shift_cnt := 0
             return
         }
 
+        clipboard_origin := A_Clipboard
+        A_Clipboard := ""
+        Send "!d"
+        Sleep 55
+        Send "^c"
+        ClipWait 1
+        Send "{F10 2}"
         url_origin := A_Clipboard
 
         ; 处理直接在网页中复制的数据
-        url_result := ClipboardChange(url_origin)
-        if ( url_origin != url_result ) {
-            A_Clipboard := ""
-            A_Clipboard := url_result
+        clipboard_result := ClipboardChange(clipboard_origin)
+        url_result := UrlChange(url_origin)
+
+        if ( clipboard_origin != clipboard_result ) {
+            A_Clipboard := clipboard_result
             ClipWait 1
             Send "^t"
-            Sleep 555
+            Sleep 333
             Send "!d"
-            Sleep 222
+            Sleep 55
             Send "^v"
             Send "{Enter}"
             A_Clipboard := ""
@@ -130,27 +139,21 @@ RegisterHelp("Chrome" , "| Software\Browser\Key.help           "
             return
         }
 
-        A_Clipboard := ""
-        Send "!d"
-        Send "^c"
-        Send "{F10 2}"
-        ClipWait 1
-
-        url_result := UrlChange(A_Clipboard)
         if (url_result != url_origin) {
             A_Clipboard := ""
             A_Clipboard := url_result
-            ClipWait
+            ClipWait 1
             Send "!d"
-            Sleep 50
+            Sleep 55
             Send "^v"
-            Sleep 50
+            Sleep 55
             Send "{Enter}"
         }
 
         A_Clipboard := ""
-        A_Clipboard := url_origin
-        ClipWait
+        A_Clipboard := clipboard_origin
+        ClipWait 1
+
         Arg.shift_cnt := 0
     }
 
