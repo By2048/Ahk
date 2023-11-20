@@ -26,10 +26,8 @@
 ; 结束应用\进程
 #BackSpace::{
     GetActiveWindowInfo()
-    win_id := window.id
-    win_process_name := window.process_name
     ; 远程桌面切换到Windows时 结束远程桌面
-    if (win_process_name == "Explorer") {
+    if (window.process_name == "Explorer") {
         windows_previous_process_name := GlobalGet("Windows", "Previous_Process_Name")
         remote_desktop_switch_check := GlobalGet("Status", "Remote_Desktop_Switch_Check", "Bool")
         if (windows_previous_process_name == "RemoteDesktop") {
@@ -44,7 +42,7 @@
     }
     if IsDesktops()
         return
-    Try WinClose AID(win_id)
+    Try WinClose AID(window.id)
 }
 ; 结束进程
 #+BackSpace::{
@@ -56,25 +54,24 @@
     ProcessClose window.pid
 }
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; 缩放快捷键
- <#0::Send "^!0"
-<#+0::Send "^!+0"
- <#-::Send "^!-"
-<#+-::Send "^!+-"
- <#=::Send "^!="
-<#+=::Send "^!+="
+; UI缩放快捷键
+#0::Send "^!0"
+#+0::Send "^!+0"
+#-::Send "^!-"
+#+-::Send "^!+-"
+#=::Send "^!="
+#+=::Send "^!+="
 
 ; 设置快捷键
- <#AppsKey::Send "^!{AppsKey}"
-<#+AppsKey::Send "^!+{AppsKey}"
+#AppsKey::Send "^!{AppsKey}"
+#+AppsKey::Send "^!+{AppsKey}"
 
 ;声音
- #PgUp::Send "{Volume_Up}"
- #PgDn::Send "{Volume_Down}"
-<#+PgUp::
-<#+PgDn::{
+#PgUp::Send "{Volume_Up}"
+#PgDn::Send "{Volume_Down}"
+#+PgUp::
+#+PgDn::{
     ; 显示声音调整UI
     Send "{Volume_Down}{Volume_Up}"
     ; 调整音量时 不能准确调整到指定数值 存在小数点偏差
@@ -101,6 +98,8 @@
     }
 }
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ; 有道翻译
 ^!f::Return
 <#f::Send "^!f"
@@ -108,10 +107,10 @@
 ; PowerToy
 ; #t 窗口置顶
 ; #o Orc
- <#x::Send "#^!x"    ; 裁剪
-<#+x::Send "#^!+x"  ; 锁定
- <#g::Send "#^!g"    ; 鼠标荧光笔
-<#+g::Send "#^!+g"  ; 屏幕标尺
+<#x::Send "#^!x"   ; 裁剪
+<#+x::Send "#^!+x" ; 锁定
+<#g::Send "#^!g"   ; 鼠标荧光笔
+<#+g::Send "#^!+g" ; 屏幕标尺
 
 ;切换任务栏应用（预览
 <#[::Send "#+t"
@@ -120,9 +119,9 @@
 ;插入表情
 <#j::#`;
 
- <#,::Send "#x"          ;系统菜单
- <#.::Run "control"      ;控制面板
- <#/::Run "MS-Settings:" ;设置
+<#,::Send "#x"          ;系统菜单
+<#.::Run "control"      ;控制面板
+<#/::Run "MS-Settings:" ;设置
 <#+/::{                  ;环境编辑器
     Run "sysdm.cpl"
     WinWaitActive "ahk_exe SystemPropertiesComputerName.exe",  , 3
@@ -199,7 +198,7 @@
 }
 
 ; 文件重命名
- <#h::
+<#h::
 <#+h::{
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
     if not hwnd
@@ -238,7 +237,6 @@
             Sleep 1000
         }
     }
-
 }
 
 ; 打开“连接”快速操作
@@ -261,6 +259,7 @@
  <#Delete::SoftwareShot("T:\")
 <#+Delete::SoftwareShot("F:\Image\Screen\")
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 通用媒体按键
 >#p::Send "{Media_Play_Pause}"
