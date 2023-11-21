@@ -1,0 +1,22 @@
+﻿|            帧位              |   |      屏幕 -> 窗口定位        |
+|------------------------------|   |------------------------------|
+| Numpad 0 | 预置 选择预置顺序 |   | Ctrl Alt Numpad 1 | 置于 ↙  |
+| Numpad 5 | 帧位 之前/复位    |   | Ctrl Alt Numpad 3 | 置于 ↘  |
+|------------------------------|   | Ctrl Alt Numpad 7 | 置于 ↖  |
+| Numpad 9 | 全帧 +            |   | Ctrl Alt Numpad 9 | 置于 ↗  |
+| Numpad 1 | 全帧 -            |   |------------------------------|
+|------------------------------|   | Ctrl+Alt+Numpad 5 | 外框居中 |
+| Numpad 6 | 帧宽 +            |   |------------------------------|
+| Numpad 4 | 帧宽 -            |   | Ctrl Alt Numpad 2 | 位移 ↓  |
+|------------------------------|   | Ctrl Alt Numpad 4 | 位移 ←  |
+| Numpad 8 | 帧高 +            |   | Ctrl Alt Numpad 6 | 位移 →  |
+| Numpad 2 | 帧高 -            |   | Ctrl Alt Numpad 8 | 位移 ↑  |
+|------------------------------|
+| Ctrl Alt Numpad + | 窗口+    |   |    字幕 -> 字幕样式       |
+| Ctrl Alt Numpad - | 窗口-    |   |---------------------------|
+|------------------------------|   | Alt Numpad 2 | 上下边距 - |
+| Ctrl Numpad 2 | 偏移 ↓      |   | Alt Numpad 4 | 左右边距 - |
+| Ctrl Numpad 4 | 偏移 ←      |   | Alt Numpad 6 | 左右边距 + |
+| Ctrl Numpad 6 | 偏移 →      |   | Alt Numpad 8 | 上下边距 + |
+| Ctrl Numpad 8 | 偏移 ↑      |
+| Ctrl Numpad 5 | 帧位居中     |

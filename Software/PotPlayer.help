@@ -1,27 +1,39 @@
-﻿| F1   | 关于     | Left             | 步退5秒      | D       | 上一帧       | Q | 图像属性复位   |
-| F5   | 选项     | Ctrl Right       | 步进30秒     | Shift Z | 时间场景浏览 | R | 对比度-1%      |
-| F6   | 列表     | Shift Left       | 步退1分      | Alt Z   | 书签场景浏览 | T | 对比度+1%      |
-| F7   | 控制     | Shift Right      | 步进1分      | Z       | 速度复位     | Y | 饱和度-1%      |
-| F9   | 浏览器   | Ctrl Alt Left    | 步退5分      | X       | 速度-        | U | 饱和度+1%      |
-| F12  | 简索文件 | Ctrl Alt Right   | 步进5分      | C       | 速度+        | I | 色彩度-1%      |
-                  | Ctrl Shift Left  | 上一关键帧   |                        | O | 色彩度+1%      |
-                  | Ctrl Shift Right | 下一关键帧   |                                              
-                                                                                                   
-| ` | 迷你尺寸       | Alt Enter        | 全屏             |       | BackSpace       | 重新开始   |
-| 0 | 自定义尺寸设置 | Ctrl Enter       | 全屏+ (拉伸)     |       | Ctrl BackSpace  | 中段       |
-| 1 | 半倍屏         | Ctrl Alt Enter   | 全屏+ (保持比例) |       | Shift BackSpace | 结束前30秒 |
-| 2 | 1倍屏          | Ctrl Shift Enter | 全屏(其他显示器) |                                       
-| 3 | 1.5倍屏        | Ctrl Alt +       | 窗口+            |                    | PgUp | 上一文件 |
-| 4 | 2.0倍屏        | Ctrl Alt -       | 窗口-            |                    | PgDn | 下一文件 |
-| 5 | 最大化         |                                                          | Home | 上一对白 |
-| 6 | 最大化 还原    |                                                          | End  | 下一对白 |
-| 7 | 最大化+ 还原   |                                                                             
-| 8 | 无边框尺寸     |                                                                             
-| 9 | 自定义尺寸     |                                                                             
-                                                                                                   
-| Alt N      | 创建缩略图       | Alt F4   | 退出             |           | Alt 1 | 显示器30%尺寸 |
-| Ctrl G     | 连续截图         | Alt F12  | 打开远程连接     |           | Alt 2 | 显示器45%尺寸 |
-| Ctrl C     | 复制当前源画面   | Ctrl F12 | 简索菜单         |           | Alt 3 | 显示器60%尺寸 |
-| Ctrl E     | 截存当前源画面   | Ctrl F5  | 依次切换比例模式 |           | Alt 4 | 显示器75%尺寸 |
-| Ctrl Alt C | 复制当前实画面   | Ctrl F1  | 属性             |                                    
-| Ctrl Alt E | 截存当前实画面   |                                                                  
+﻿| F1  | 关于       |   | Q | 图像属性复位 |
+| F2  | 选择文件夹 |   | W | 亮度 -1%     |
+| F3  | 选择文件   |   | E | 亮度 +1%     |
+| F4  | 关闭       |   | R | 对比度 -1%   |
+| F5  | 选项       |   | T | 对比度 +1%   |
+| F6  | 列表       |   | Y | 饱和度 -1%   |
+| F7  | 控制       |   | U | 饱和度 +1%   |
+| F9  | 浏览器     |   | I | 色彩度 -1%   |
+| F12 | 简索文件   |   | O | 色彩度 +1%   |
+
+| Alt  L     | 按顺序切换字幕   |   | Ctrl F1  | 属性             |
+| Alt  N     | 创建缩略图       |   | Ctrl F5  | 依次切换比例模式 |
+| Ctrl G     | 连续截图         |   | Ctrl F12 | 简索菜单         |
+| Ctrl C     | 复制当前源画面   |   | Alt  F4  | 退出             |
+| Ctrl E     | 截存当前源画面   |   | Alt  F12 | 打开远程连接     |
+| Ctrl Alt C | 复制当前实画面   |
+| Ctrl Alt E | 截存当前实画面   |
+
+|            |          | Ctrl |   Shift    | Ctrl Alt | Ctrl Shift |
+| Left/Right |     1    |  5   |    30      |    60    |  关键帧    |
+| BackSpace  | 重新开始 | 中段 | 结束前30秒 |
+
+| D | 上一帧   |   | PgUp | 上一文件 |   | Shift Z | 时间场景浏览 |
+| F | 上一帧   |   | PgDn | 下一文件 |   | Alt   Z | 书签场景浏览 |
+| Z | 速度复位 |   | Home | 上一对白 |
+| X | 速度加   |   | End  | 下一对白 |
+| C | 速度减   |
+
+| ` | 迷你尺寸       |            Enter | 全屏               |
+| 0 | 自定义尺寸设置 | Alt        Enter | 全屏+ (拉伸)       |
+| 1 | 半倍屏         | Ctrl       Enter | 全屏+ (拉伸)       |
+| 2 | 1倍屏          | Ctrl Alt   Enter | 全屏+ (保持比例)   |
+| 3 | 1.5倍屏        | Ctrl Shift Enter | 全屏  (其他显示器) |
+| 4 | 2.0倍屏        | Alt 1            | 显示器30%尺寸      |
+| 5 | 最大化         | Alt 2            | 显示器45%尺寸      |
+| 6 | 最大化 还原    | Alt 3            | 显示器60%尺寸      |
+| 7 | 最大化+ 还原   | Alt 4            | 显示器75%尺寸      |
+| 8 | 无边框尺寸     |
+| 9 | 自定义尺寸     |
