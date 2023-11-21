@@ -201,12 +201,10 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
         }
 
         config := ""
-        if EC.Has(window.title)
-            config := EC[window.title]
-        else if A_ThisHotkey == "#+\"
+        if A_ThisHotkey == "#\"
+            config := EC.Get(window.title, EC["Default"])
+        if A_ThisHotkey == "#+\"
             config := EC["File"]
-        else if A_ThisHotkey == "#\"
-            config := EC["Default"]
 
         #Include Explorer.Tool.ahk
         SetExplorerColumns(config)
