@@ -4,7 +4,8 @@ RegisterProcess("explorer" , "Explorer")
 RegisterHelp("Explorer_CabinetWClass" , "Software\Explorer.help")
 RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
                                 . "| Key\Win.Other.help         "
-                                . "| Software\Explorer.Fxx.help ")
+                                . "| Software\Explorer.Fxx.help "
+                                . "| Config\Mouse.help "        )
 
 
 ; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
