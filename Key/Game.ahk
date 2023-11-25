@@ -106,9 +106,6 @@ $RWin::Return
 #/::Return
 
 #Space::Return
-#Insert::Return
-#Delete::Return
-#AppsKey::Return
 
 #Up::Return
 #Down::Return

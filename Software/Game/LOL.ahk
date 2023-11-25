@@ -11,8 +11,8 @@ RegisterProcess("League of Legends" , "LOL_Game"  )
 
 
 #HotIf CheckWindowActive(" LOL_Client | LOL_Game ")
-    Insert::SoftwareShot(Game_Image)
-    Delete::ScreenShot(Game_Image)
+    #Insert::SoftwareShot(Game_Image)
+    #Delete::ScreenShot(Game_Image)
 #HotIf
 
 
@@ -20,23 +20,9 @@ RegisterProcess("League of Legends" , "LOL_Game"  )
 
     ; D:\Game\英雄联盟\LeagueClient\LeagueClientUx.exe
 
+    #Include *i LOL.Client.Private.ahk
+
     RWin::MoveWindowToCenter(True)
-
-    ; 修改
-    \::MouseClickAndResetting(684, 1012)
-
-    ; 保存
-    Enter::MouseClickAndResetting(891, 191)
-
-    ; 退出
-    BackSpace::MouseClickAndResetting(1753, 105)
-
-    ; 拒绝好友申请
-    Esc::{
-        Send "{LButton}"
-        Sleep 300
-        Send "{Enter}"
-    }
 
 #HotIf
 
