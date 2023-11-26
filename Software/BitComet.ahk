@@ -36,6 +36,13 @@
 
 #HotIf CheckWindowActive("BitComet")
 
+    #BackSpace::{
+        Send "!{f}"
+        Sleep 99
+        Send "{Up}"
+        Send "{Enter}"
+    }
+
     #\::{
         total_width  := 2333
         total_height := 1222
