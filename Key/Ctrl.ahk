@@ -24,8 +24,8 @@
         }
     }
 }
- >^k::KeyboardGUI()
->^+k::KeyHistory
+ >^k::KeyHistory
+>^+k::KeyboardGUI()
 
  >^x::Run "D:\#Lnk\#\Xshell.lnk"
  >^n::Run "D:\#Lnk\#\CloudMusic.lnk"
