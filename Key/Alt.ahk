@@ -22,30 +22,29 @@ AltTimer() {
     Arg.alt_cnt := 0
 }
 
- >!F1::Send "{F13}"
- >!F2::Send "{F14}"
- >!F3::Send "{F15}"
- >!F4::Send "{F16}"
- >!F5::Send "{F17}"
- >!F6::Send "{F18}"
- >!F7::Send "{F19}"
- >!F8::Send "{F20}"
- >!F9::Send "{F21}"
+ >!F1::F13
+ >!F2::F14
+ >!F3::F15
+ >!F4::F16
+ >!F5::F17
+ >!F6::F18
+ >!F7::F19
+ >!F8::F20
+ >!F9::F21
+>!F10::F22
+>!F11::F23
+>!F12::F24
 
->!F10::Send "{F22}"
->!F11::Send "{F23}"
->!F12::Send "{F24}"
-
->!0::Send "{Numpad0}"
->!1::Send "{Numpad1}"
->!2::Send "{Numpad2}"
->!3::Send "{Numpad3}"
->!4::Send "{Numpad4}"
->!5::Send "{Numpad5}"
->!6::Send "{Numpad6}"
->!7::Send "{Numpad7}"
->!8::Send "{Numpad8}"
->!9::Send "{Numpad9}"
+>!0::Numpad0
+>!1::Numpad1
+>!2::Numpad2
+>!3::Numpad3
+>!4::Numpad4
+>!5::Numpad5
+>!6::Numpad6
+>!7::Numpad7
+>!8::Numpad8
+>!9::Numpad9
 
 ; >!`::Send "{NumpadDot}"
 ; >!=::Send "{NumpadAdd}"
