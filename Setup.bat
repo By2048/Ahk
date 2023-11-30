@@ -42,7 +42,6 @@ Set AutoHotkeyDpiSystemPlus=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystemPlus.e
 Set        @.ahk=.\@.ahk
 Set     Init.ahk=.\Init.ahk
 Set     Base.ahk=.\Setup\Base.ahk
-Set   Dexpot.ahk=.\Setup\Dexpot.ahk
 Set     Game.ahk=.\Setup\Game.ahk
 Set    Input.ahk=.\Setup\Input.ahk
 Set      Key.ahk=.\Setup\Key.ahk
@@ -78,8 +77,6 @@ If "%Command%"=="Start" (
 Echo.
 Start  %AHK%      %Key.ahk%       %Command%
 Echo   %Command%  %Key.ahk%
-Start  %AHK%      %Dexpot.ahk%    %Command%
-Echo   %Command%  %Dexpot.ahk%
 Start  %AHK%      %Input.ahk%     %Command%
 Echo   %Command%  %Input.ahk%
 Start  %AHK%      %Loop.ahk%      %Command%

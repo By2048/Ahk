@@ -1,5 +1,5 @@
 ﻿
-; Setup\Dexpot.ahk
+; Dexpot
 ; LWin & LAlt   窗口目录
 ; LWin & LCtrl  全屏预览
 

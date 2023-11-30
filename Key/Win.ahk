@@ -1,5 +1,8 @@
 
+#Include Win.Dexpot.ahk
+
 #Include *i Win.Private.ahk
+
 
 
 ; 调整显示器亮度 基于 Twinkle 软件

@@ -1,9 +1,4 @@
 ﻿
-#Include ..\Tool\Base.ahk
-
-#SingleInstance Force
-#NoTrayIcon
-
 ; 虚拟桌面 Dextop 快捷键按拓展
 ; 部分快捷键与Win系统冲突 无法通过软件中配置 故在此处进行处理
 
@@ -43,7 +38,7 @@ LWin & LAlt::Send "#^!{F22}"
 ; 全屏预览
 LWin & LCtrl::Send "#^!{F23}"
 
-;  上一个桌面
+; 上一个桌面
 #CapsLock::{
     Send "#^!{F24}"
     SetCapsLockState "Off"
