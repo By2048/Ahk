@@ -1,6 +1,8 @@
 ﻿
 CapsLockToEscCount := 0
 
+~#CapsLock::Return
+
 ~*CapsLock::{
     Send "{Esc}"
     global CapsLockToEscCount

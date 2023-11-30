@@ -1,5 +1,5 @@
 
-#Include *i Tool.ahk
+#Include @.Tool.ahk
 
 
 Browser := " Chrome | Edge | Opera | FireFox "
@@ -213,4 +213,4 @@ Browser := " Chrome | Edge | Opera | FireFox "
 #HotIf
 
 
-#Include *i Key.Private.ahk
+#Include *i @.Private.ahk

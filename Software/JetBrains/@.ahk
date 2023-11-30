@@ -1,19 +1,15 @@
 ﻿
-#Include *i Tool.ahk
-#Include *i PyCharm.Position.ahk
-
-
 JApps := "PyCharm|IDEA"
+
+#Include @.Tool.ahk
+
+#Include PyCharm.Position.ahk
 
 
 
 #HotIf CheckWindowActive(JApps, "SunAwtDialog", "终端|运行|调试")
-    ~RAlt::{
-        WinSetTransparent 99, "A"
-    }
-    ~RAlt Up::{
-        WinSetTransparent 255, "A"
-    }
+    ~RAlt::WinSetTransparent 99, "A"
+    ~RAlt Up::WinSetTransparent 255, "A"
 #HotIf
 
 
@@ -37,13 +33,13 @@ AppsKeyRedirect   := False
 AppsKeyEnterCount := 0
 #HotIf CheckWindowActive(JApps) And AppsKeyRedirect == True
     $Enter::{
-        global AppsKeyEnterCount
+        Global AppsKeyEnterCount
         Send "{Enter}"
         AppsKeyEnterCount := AppsKeyEnterCount + 1
     }
     $Esc::
     $CapsLock::{
-        global AppsKeyRedirect, AppsKeyEnterCount
+        Global AppsKeyRedirect, AppsKeyEnterCount
         if (AppsKeyEnterCount > 1) {
             Send "{Left}"
             AppsKeyEnterCount := AppsKeyEnterCount - 1
@@ -62,7 +58,7 @@ FloatTool := False
 #HotIf CheckWindowActive(JApps) And FloatTool == True
     $Esc::
     $CapsLock::{
-        global FloatTool, CapsLockActivate
+        Global FloatTool, CapsLockActivate
         Send "{Esc}"
         FloatTool := False
         CapsLockActivate := False
@@ -72,9 +68,8 @@ FloatTool := False
         Send "{Enter}"
         Sleep 99
         win := GetHideWindowConfig()
-        if (ObjOwnPropCount(win)) {
+        if ObjOwnPropCount(win)
             WinActivate AID(win.id)
-        }
     }
 #HotIf
 
@@ -140,11 +135,10 @@ CenterToolsConfig := []
     $CapsLock::{
         Global AppsKeyRedirect
         Global CenterTools, CenterToolsConfig
-        if (AppsKeyRedirect) {
+        if AppsKeyRedirect
             Send "{Left}"
-        } else {
+        else
             Send "{Esc}"
-        }
         CenterToolsConfig.Pop()
         FloatWindows()
         if (not CenterToolsConfig.Length) {
@@ -162,7 +156,7 @@ CenterToolsConfig := []
 CapsLockActivate := False
 #HotIf CheckWindowActive(JApps)
 
-    #Include *i Key.Fxx.ahk
+    #Include @.Fxx.ahk
 
     ~Esc::{
         global CapsLockActivate
@@ -185,9 +179,8 @@ CapsLockActivate := False
             MoveWindowToCenter(True)
         }
         win := GetHideWindowConfig()
-        if (ObjOwnPropCount(win)) {
+        if ObjOwnPropCount(win)
             CenterHideWindow()
-        }
     }
 
     ~LCtrl::
@@ -207,14 +200,13 @@ CapsLockActivate := False
         Arg.ClickCnt := 0
     }
 
-    $RCtrl::Send "{Blind}{vkFF}"
+    $RCtrl::Return
+    ; Send "{Blind}{vkFF}"
 
     ~!+`::{
         WinWaitActive "书签描述"
-        win_title := WinGetTitle("A")
-        if (win_title == "书签描述") {
+        if WinGetTitle("A") == "书签描述"
             MoveWindowToCenter(True)
-        }
     }
 
     ; ~!+\::CenterHideWindow()
@@ -246,51 +238,24 @@ CapsLockActivate := False
         SetNumLockState "Off"
     }
 
-    <!Esc::Send "!{F24}"
-    <!+Esc::Send "!+{F24}"
-    <^Esc::Send "^{F24}"
-    <^+Esc::Send "^+{F24}"
+    <!Esc::!Pause
+    <^Esc::^Pause
+    <!+Esc::!+Pause
+    <^+Esc::^+Pause
 
     ;标签页管理
     ^Tab::Return
     ^+Tab::Return
-    <!Tab::Send "^{Tab}"
-    <!+Tab::Send "^+{Tab}"
+    <!Tab::^Tab
+    <!+Tab::^+Tab
 
     ~>^*::Return
 
-    #Include *i Key.CapsLock.ahk
+    #Include @.CapsLock.ahk
 
-    ; 代码注释
-    ; ^\::Return
-    ; ^+\::Return
-    LAlt & RShift::{
-        if ( GetKeyState("LShift", "P") ) {
-            Send "^+\"
-        } else {
-            Send "^\"
-        }
-    }
+    #Include @.Other.ahk
 
-    ; 设置
-    LAlt & RAlt::{
-        Send "^{ScrollLock}"
-        SetScrollLockState "Off"
-        WinWaitActive "设置"
-        win_title := WinGetTitle("A")
-        if (win_title == "设置") {
-            MoveWindowToCenter(True)
-        }
-    }
-
-    ; 快速切换
-    RAlt & LAlt::{
-        Send "!{ScrollLock}"
-        SetScrollLockState "Off"
-        CenterHideWindow()
-    }
-
-    ; Send "!{CtrlBreak}"
-    ; Send "+{CtrlBreak}"
+    ; F1::^CtrlBreak
+    ; F1::Send "{PrintScreen}"
 
 #HotIf
