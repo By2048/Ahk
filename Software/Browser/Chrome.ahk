@@ -6,7 +6,7 @@ RegisterProcess("chrome" , "Chrome")
 
 RegisterHelp("Chrome__知乎" , "Software\Browser\Chrome.ZhiHu.help")
 RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili.help")
-RegisterHelp("Chrome" , "| Software\Browser\@.help           "
+RegisterHelp("Chrome" , "| Software\Browser\@.help             "
                       . "| Software\Browser\Chrome.Fxx.help    "
                       . "| Software\Browser\Chrome.Search.help ")
 

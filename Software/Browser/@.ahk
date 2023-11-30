@@ -31,8 +31,6 @@ Browser := " Chrome | Edge | Opera | FireFox "
     +F6::Return
     !`::Send "{F6}"
     ^`::Send "+{F6}"
-    ~LShift & RShift::Send "{F6}"
-    ~RShift & LShift::Send "{F6}"
 
     ;光标浏览模式
     F7::Return
