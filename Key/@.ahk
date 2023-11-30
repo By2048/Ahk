@@ -72,69 +72,63 @@ RWin & RAlt:: MoveWindowToMainMini("Mini", True)
 
 
 ; 切换系统 主题|亮暗
-Windows_Theme := "Default"
 LWin & RShift::{
-    lshift_state := GetKeyState("LShift")
-    if (lshift_state) {
+    if (GetKeyState("LShift")) {
         ; 系统主题
-        hcblack_theme := "C:\Windows\Resources\Ease of Access Themes\hcblack.theme"
-        default_theme := "C:\Users\Administrator\AppData\Local\Microsoft\Windows\Themes\Default.theme"
-        if (Windows_Theme == "HCBlack") {
-            Run default_theme
-            Windows_Theme := "Default"
-            HelpText("Windows Theme Default", "Center", "Screen", 1000)
-        } else if (Windows_Theme == "Default") {
-            Run hcblack_theme
-            Windows_Theme := "HCBlack"
-            HelpText("Windows Theme HCBlack", "Ccenter", "Screen", 1000)
+        path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes"
+        key   := "CurrentTheme"
+        theme := RegRead(path, key, "")
+        if ( InStr(theme, "HCBlack") ) {
+            Run "E:\Config\Default.theme"
+            HelpText("`n  Windows Theme Default  `n", "Center", "Screen", 1000)
+        } else if ( InStr(theme, "Default") ) {
+            Run "E:\Config\HCBlack.theme"
+            HelpText("`n  Windows Theme HCBlack  `n", "Center", "Screen", 1000)
         }
-        exe := Windows_Process.Get("WindowsSettings")
-        WinWait "ahk_exe " . exe
-        WinClose "ahk_exe " . exe
+        Sleep 999
+        Try WinClose "ahk_exe ApplicationFrameHost.exe ahk_class ApplicationFrameWindow"
     } else {
         ; 系统亮暗
-        path := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-        key  := "AppsUseLightTheme"
-        light_theme := RegRead(path, key, "")
-        if (light_theme == "0") {
+        path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+        key   := "AppsUseLightTheme"
+        theme := RegRead(path, key, "")
+        if (theme == "0") {
             RegWrite 1, "REG_DWORD", path, key
-            HelpText("`n Light `n", "Center", "Screen1", 1000)
-        } else if (light_theme == "1") {
+            HelpText("`n  Light  `n", "Center", "Screen", 1000)
+        } else if (theme == "1") {
             RegWrite 0, "REG_DWORD", path, key
-            HelpText("`n Dark `n", "Center", "Screen1", 1000)
+            HelpText("`n  Dark  `n", "Center", "Screen", 1000)
         }
     }
 }
+
+
 
 ; 设置代理
 RWin & RShift::{
     path := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
     key  := "ProxyEnable"
-
-    proxy_state  := RegRead(path, key, "")
-    win_pid      := ProcessExist("v2rayN.exe")
-    lshift_state := GetKeyState("LShift", "P")
-
-    if (lshift_state == "1") {
-         ; v2rayN开关
-        if (win_pid) {
-            ProcessClose win_pid
+    if (GetKeyState("LShift", "P")) {
+        ; v2rayN
+        pid := ProcessExist("v2rayN.exe")
+        if (pid) {
+            ProcessClose pid
             RegWrite 0, "REG_DWORD", path, key
-            HelpText("`n v2rayN Close `n", "Center", "Screen1", 500)
-            HelpText("`n v2rayN Close `n", "Center", "Screen" . Screens.Count)
+            HelpText("`n  v2rayN Close  `n", "Center", "Screen", 500)
         } else {
             Run "D:\#Lnk\v2rayN.lnk"
             RegWrite 1, "REG_DWORD", path, key
-            HelpText("`n v2rayN Start `n", "Center", "Screen1", 500)
+            HelpText("`n  v2rayN Start  `n", "Center", "Screen", 500)
         }
     } else {
-        ; Windows代理开关
-        if (proxy_state == "0") {
+        ; Windows代理
+        state := RegRead(path, key, "")
+        if (state == "0") {
             RegWrite 1, "REG_DWORD", path, key
-            HelpText("`n Proxy On `n", "Center", "Screen1", 500)
-        } else if (proxy_state == "1") {
+            HelpText("`n  Proxy On  `n", "Center", "Screen1", 500)
+        } else if (state == "1") {
             RegWrite 0, "REG_DWORD", path, key
-            HelpText("`n Proxy Off `n", "Center", "Screen1", 1000)
+            HelpText("`n  Proxy Off  `n", "Center", "Screen1", 1000)
         }
     }
 }
