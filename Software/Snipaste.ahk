@@ -8,19 +8,19 @@
     !5::^5
     !6::^6
 
-    `::e
+    ]::r
+    [::+r
 
-    \::r
-    RShift::+r
+    `;::,
+    '::.
 
-    Enter::^c
+    \::^+s
 
-    Insert::Send "^s"
-    Delete::Send "^t"
-    [::,
-    ]::.
+    BackSpace::Esc
 
-    ^y::Return
+    Insert::^c
+    Delete::^t
+
     ^+z::^y
 
 #HotIf

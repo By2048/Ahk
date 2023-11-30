@@ -109,7 +109,7 @@ RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
     }
 
     ; 切换编辑器焦点
-    LShift & RShift::Send "{F15}"
-    RShift & LShift::Send "+{F15}"
+    RAlt & RShift::Send "{F15}"
+    RShift & RAlt::Send "+{F15}"
 
 #HotIf

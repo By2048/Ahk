@@ -6,6 +6,8 @@ RegisterHelp("PotPlayer" , "| Software\PotPlayer.help"
 
 #HotIf CheckWindowActive("PotPlayer")
 
+    $RCtrl::Return
+
     ; 2倍数播放
     >!2::Send "{c 10}"
 
