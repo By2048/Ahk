@@ -189,6 +189,7 @@
     }
     if not content {
         HelpText("No Data", "CenterDown",  , 333)
+        try FileDelete JQB.Phone
         return
     }
     A_Clipboard := content
@@ -198,6 +199,7 @@
         content := SubStr(content, 1, 5) . "..." . SubStr(content, -5)
     HelpText(A_Clipboard, "CenterDown", "Screen", 333)
     A_Clipboard := origin
+    try FileDelete JQB.Phone
 }
 
 ; 文件重命名
