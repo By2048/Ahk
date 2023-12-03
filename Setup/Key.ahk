@@ -1,7 +1,6 @@
 ﻿
 #Include ..\Config\All.ahk
 
-#Include ..\Tool\Base.ahk
 #Include ..\Tool\Change.ahk
 #Include ..\Tool\Help.ahk
 #Include ..\Tool\File.ahk
@@ -24,3 +23,11 @@
 
 #SingleInstance Force
 #NoTrayIcon
+
+
+For Arg_Index, Arg_Value In A_Args {
+    If Arg_Value == "Start"
+        Reload
+    If Arg_Value == "Stop"
+        ExitApp
+}

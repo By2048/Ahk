@@ -1,7 +1,4 @@
 ﻿
-#Include ..\Config\All.ahk
-#Include ..\Tool\Base.ahk
-
 #NoTrayIcon
 #SingleInstance Force
 #Hotstring EndChars `t

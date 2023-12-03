@@ -233,27 +233,6 @@ GetColumnConfig(args*)
 
 
 
-; 从代码注释中读取配置
-ReadConfig(path, slice, replace:="`; ")
-{
-    data  := ""
-    start := slice[1]
-    stop  := slice[2]
-    Loop Read , path
-    {
-        line := StrReplace(A_LoopReadLine, replace, "")
-        if (A_Index >= start and A_Index <= stop) {
-            if A_Index != stop
-                data := data . line . "`n"
-            else
-                data := data . line
-        }
-    }
-    return data
-}
-
-
-
 ; 获取需要移动的鼠标偏移量
 ; x 横向检测 | y 纵向检测
 ; step  每次检测移动的像素

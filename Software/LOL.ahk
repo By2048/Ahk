@@ -1,9 +1,4 @@
 ﻿
-; 屏幕   | 2560 * 1440
-; 窗口   | 1280 * 720
-; 小地图 | 77
-; 商店   | 77
-
 RegisterProcess("TenSafe"           , "LOL_TX"    )
 RegisterProcess("TenSafe_1"         , "LOL_TX"    )
 RegisterProcess("LeagueClientUx"    , "LOL_Client")
@@ -11,8 +6,12 @@ RegisterProcess("League of Legends" , "LOL_Game"  )
 
 
 #HotIf CheckWindowActive(" LOL_Client | LOL_Game ")
+
     #Insert::SoftwareShot(Game_Image)
     #Delete::ScreenShot(Game_Image)
+
+    #BackSpace::Run "Setup.bat GameMode", A_InitialWorkingDir, "Hide"
+
 #HotIf
 
 
@@ -22,7 +21,7 @@ RegisterProcess("League of Legends" , "LOL_Game"  )
 
     #Include *i LOL.Client.Private.ahk
 
-    RWin::MoveWindowToCenter(True)
+    #\::MoveWindowToCenter(True)
 
 #HotIf
 
@@ -31,9 +30,9 @@ RegisterProcess("League of Legends" , "LOL_Game"  )
 
     ; D:\Game\英雄联盟\Game\League of Legends.exe
 
-    #Include *i LOL.Game.Private.ahk
+    #Include ..\Key\Game.ahk
 
-    RWin::Return
+    #Include *i LOL.Game.Private.ahk
 
     ![::{
         EN()

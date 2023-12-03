@@ -1,7 +1,6 @@
 ﻿
 #Include ..\Config\All.ahk
 
-#Include ..\Tool\Base.ahk
 #Include ..\Tool\Change.ahk
 #Include ..\Tool\Help.ahk
 #Include ..\Tool\File.ahk
@@ -23,6 +22,7 @@
 #Include ..\Software\FoxMail.ahk
 #Include ..\Software\FreeFileSync.ahk
 #Include ..\Software\Geek.ahk
+#Include ..\Software\LOL.ahk
 #Include ..\Software\Music.ahk
 #Include ..\Software\Navicat.ahk
 #Include ..\Software\NetSarang.ahk
@@ -42,9 +42,6 @@
 #Include ..\Software\Windows.ahk
 #Include ..\Software\WPS.ahk
 
-#Include ..\Software\Game\@.ahk
-#Include ..\Software\Game\LOL.ahk
-
 #Include ..\Software\Browser\@.ahk
 #Include ..\Software\Browser\Chrome.ahk
 #Include ..\Software\Browser\Edge.ahk
@@ -61,3 +58,11 @@
 
 CoordMode "Mouse", "Window"
 CoordMode "Pixel", "Window"
+
+
+For Arg_Index, Arg_Value In A_Args {
+    If Arg_Value == "Start"
+        Reload
+    If Arg_Value == "Stop"
+        ExitApp
+}
