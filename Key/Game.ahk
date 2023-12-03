@@ -1,21 +1,13 @@
 ﻿
-$RAlt::EN()
-$RCtrl::ZH()
-$RWin::Return
-
-; ------------------------------------------------- ;
-
 <#Tab::AltTab
 
->^Esc::Run "TaskMgr"
 >^/::Run "E:\Script\Software\Chrome.bat", A_InitialWorkingDir, "Hide"
+>^Esc::Run "TaskMgr"
 >^AppsKey::{
     SetCapsLockState "Off"
     SetNumLockState "Off"
     SetScrollLockState "Off"
 }
-
-; ------------------------------------------------- ;
 
 <#Home::Send "#^!{Home}"
 <#End::Send "#^!{End}"
@@ -23,6 +15,8 @@ $RWin::Return
 <#PgDn::Send "{Volume_Down}"
 
 ; ------------------------------------------------- ;
+
+LWin::Return
 
 #Tab::Return
 #+Tab::Return
@@ -39,8 +33,6 @@ $RWin::Return
 
 !Tab::Return
 !+Tab::Return
-
-; ------------------------------------------------- ;
 
 #Esc::Return
 #F1::Return
