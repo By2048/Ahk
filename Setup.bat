@@ -11,7 +11,8 @@ Echo  ======= %CD% =======
 
 SetLocal
 
-@REM Command # Start|Reload \ Stop|Exit \ ForceStop \ ForceStart \ GameMode
+:: Start      Stop
+:: ForceStart ForceStop
 Set Command=%1
 If "%Command%"=="" (
     Set Command=Start
@@ -23,9 +24,9 @@ If "%Command%"=="ForceStop" (
     Exit
 )
 
-::#region Init AutoHotkey Exe
-@REM                15                    -1
-@REM AutoHotkey := "D:\Xxx\Xx\AutoHotkey.exe"
+:: Init AutoHotkey Exe
+::                15                    -1
+:: AutoHotkey := "D:\Xxx\Xx\AutoHotkey.exe"
 For /f "delims=" %%A In ('FindStr ".*AutoHotkey.exe" .\Config.ahk') Do Set AutoHotkey=%%A
 Set AutoHotkey=%AutoHotkey:~15,-1%
 If Not Exist %AutoHotkey% (
@@ -36,28 +37,25 @@ Set                     AHK=%AutoHotkey%
 Set   AutoHotkeyDpiSoftware=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSoftware.exe%
 Set     AutoHotkeyDpiSystem=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystem.exe%
 Set AutoHotkeyDpiSystemPlus=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystemPlus.exe%
-::#endregion
 
-::#region Init AutoHotkey Files
+:: Init AutoHotkey Files
 Set        @.ahk=.\@.ahk
 Set     Init.ahk=.\Init.ahk
 Set     Base.ahk=.\Setup\Base.ahk
-Set     Game.ahk=.\Setup\Game.ahk
 Set    Input.ahk=.\Setup\Input.ahk
 Set      Key.ahk=.\Setup\Key.ahk
 Set     Loop.ahk=.\Setup\Loop.ahk
 Set Software.ahk=.\Setup\Software.ahk
-::#endregion
 
 If "%Command%"=="ForceStart" (
     @Echo Off
-    TaskKill  /f /im  AutoHotkey.exe
+    Taskkill  /f /im  AutoHotkey.exe
     Ping -n 1 127.0.0.1 > nul
     @Echo On
     Set Command=Start
 )
 
-::#region 初始化项目于系统信息
+:: 初始化项目于系统信息
 %AutoHotkey%  %Init.ahk%  Ahks
 %AutoHotkey%  %Init.ahk%  Regs
 %AutoHotkey%  %Init.ahk%  Files
@@ -65,15 +63,13 @@ If "%Command%"=="ForceStart" (
 %AutoHotkeyDpiSoftware%    %Init.ahk%  ScreenSoftware
 %AutoHotkeyDpiSystem%      %Init.ahk%  ScreenSystem
 %AutoHotkeyDpiSystemPlus%  %Init.ahk%  ScreenSystemPlus
-::#endregion
 
-If "%Command%"=="Start" (
-    Echo.
-    Start  %AHK%  %Base.ahk%  Start
-    Start  %AHK%  %Game.ahk%  Stop
-)
+:: 脚本入口
+Echo.
+Start  %AHK%      %Base.ahk%
+Echo   %Command%  %Base.ahk%
 
-::#region AutoHotkey Run With Command
+:: 主要使用的脚本
 Echo.
 Start  %AHK%      %Key.ahk%       %Command%
 Echo   %Command%  %Key.ahk%
@@ -84,18 +80,10 @@ Echo   %Command%  %Loop.ahk%
 Start  %AHK%      %Software.ahk%  %Command%
 Echo   %Command%  %Software.ahk%
 Echo.
-::#endregion
 
-If "%Command%"=="GameMode" (
-    @Echo Off
-    TaskKill  /f /im  AutoHotkey.exe
-    @Echo On
-    Start  %AHK%  %Base.ahk%  Start
-    Start  %AHK%  %Game.ahk%  Start
-)
-
-@REM 加载临时性脚本
-Start  %AHK%  %@.ahk%
+:: 临时性的脚本
+Start  %AHK%      %@.ahk%
+Echo   %Command%  %@.ahk%
 
 EndLocal
 
