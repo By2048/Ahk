@@ -15,13 +15,14 @@ StrToBool(value)
 ; 屏幕参数名转换
 ScreenNameToId(screen_name)
 {
+
     screen_name := Format("{:L}", screen_name)
-    if (screen_name == "screen" or screen_name == "main") {
+    if not screen_name
         return "1"
-    }
-    if (screen_name == "screen_main" or screen_name == "screenmain") {
+    if screen_name == "screen" or screen_name == "main"
         return "1"
-    }
+    if screen_name == "screen_main" or screen_name == "screenmain"
+        return "1"
     screen_name := StrReplace(screen_name  , "screen", "")
     screen_name := StrReplace(screen_name  , "_"     , "")
     screen_id   := screen_name
