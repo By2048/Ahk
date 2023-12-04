@@ -21,6 +21,9 @@ LWin & RWin::{
         Run "Setup.bat Start", A_InitialWorkingDir, "Hide"
         HelpText("`n  Reload All Script  `n", "Center", "Screen" . Screens.Count, 1000)
     }
+    SetNumLockState "Off"
+    SetCapsLockState "Off"
+    SetScrollLockState "Off"
     Reload
 }
 
