@@ -25,10 +25,10 @@
 ^Esc::Return  ;开始菜单
 ^+Esc::Return ;任务管理器
 
-; #a::Return  ;打开操作中心
-; #w::Return  ;打开WindwsInk
-; #s::Return  ;打开搜索
-; #+s::Return ;获取部分屏幕
+#a::Return  ;打开操作中心
+#w::Return  ;打开WindwsInk
+#s::Return  ;打开搜索
+#+s::Return ;获取部分屏幕
 #x::Return  ;系统菜单
 #h::Return  ;听写
 #k::Return  ;打开“连接”快速操作
@@ -52,7 +52,6 @@
 ; #Tab::Return
 ; #+Tab::Return
 
-
 #^q::Return ;快速助手
 #^o::Return ;屏幕键盘
 #^n::Return ;讲述人
@@ -66,12 +65,17 @@
 #^Right::Return ;向右切换虚拟桌面
 
 ; 切换到激活的应用
-; #1::Return
-; #2::Return
-; #3::Return
-; #4::Return
-; #5::Return
-; #6::Return
-; #7::Return
-; #8::Return
-; #9::Return
+#1::Return
+#2::Return
+#3::Return
+#4::Return
+#5::Return
+#6::Return
+#7::Return
+#8::Return
+#9::Return
+
+; 缩放
+; #0::Return
+; #-::Return
+; #=::Return
