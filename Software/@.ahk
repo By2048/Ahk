@@ -8,19 +8,21 @@
     } else {
         Arg.shift_cnt := 1
     }
-    SetTimer ShiftTimer, -500
-}
-ShiftTimer() {
-    Global Arg
-    if (Arg.shift_cnt == 1) {
-        HelpText()
-        HelpKeysHide()
-    } else if (Arg.shift_cnt == 2) {
-        HelpText()
-        HelpKeysShow()
+    SetTimer Timer, -500
+    Timer() {
+        Global Arg
+        if (Arg.shift_cnt == 1) {
+            HelpText()
+            HelpKeysHide()
+        } else if (Arg.shift_cnt == 2) {
+            HelpText()
+            HelpKeysShow()
+        }
+        Arg.shift_cnt := 0
     }
-    Arg.shift_cnt := 0
 }
+
+
 #HotIf ( Arg.hotkeys_show == True )
     [::HelpKeysShow(-1)
     ]::HelpKeysShow(+1)
