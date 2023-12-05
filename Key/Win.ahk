@@ -57,7 +57,6 @@
     ProcessClose window.pid
 }
 
-
 ; UI缩放快捷键
 #0::Send "^!0"
 #+0::Send "^!+0"
@@ -272,7 +271,6 @@
 >#]::Send "{Media_Next}"
 >#o::Send "^!o" ;添加收藏
 
-
 ; 显示隐藏任务栏
 >#/::{
     rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
@@ -288,11 +286,9 @@
  >#Space::WindowsTerminal("Focus", "T:\\")
 >#+Space::WindowsTerminal("Full" , "T:\\")
 
-; Snipaste截图
- >#Insert::Send "^!{PrintScreen}"
->#+Insert::Send "^!+{PrintScreen}"
- >#Delete::Send "^!{CtrlBreak}"
->#+Delete::Send "^!+{CtrlBreak}"
+; Snipaste 截图 贴图
+>#Insert::Send "^!{PrintScreen}"
+>#Delete::Send "^!+{PrintScreen}"
 
 ; 窗口大小调整
 >#Left:: Send "^!{Numpad4}"
@@ -304,8 +300,7 @@
 >#`;::Send "^!;" ;识图
 >#':: Send "^!'" ;翻译
 
-
-; 右键RWin设置
+; RWin设置
 RWin::{
     Send "{Blind}{vkFF}"
     Global Arg
@@ -315,16 +310,15 @@ RWin::{
     } else {
         Arg.win_cnt := 1
     }
-    SetTimer RWinTimer, -500
-}
-RWinTimer() {
-    Global Arg
-    if (Arg.win_cnt == 1) {
-        MoveWindowToCenter(True)
-    } else if (Arg.win_cnt == 2) {
-        MoveWindowToDefaultPosition()
-    } else if (Arg.win_cnt == 3) {
-        MoveWindowToBackupPosition()
+    SetTimer Timer, -500
+    Timer() {
+        Global Arg
+        if Arg.win_cnt == 1
+            MoveWindowToCenter(True)
+        else if Arg.win_cnt == 2
+            MoveWindowToDefaultPosition()
+        else if Arg.win_cnt == 3
+            MoveWindowToBackupPosition()
+        Arg.win_cnt := 0
     }
-    Arg.win_cnt := 0
 }
