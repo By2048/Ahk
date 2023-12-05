@@ -47,11 +47,6 @@
  >^/::Run "E:\Script\Software\Chrome.bat", A_InitialWorkingDir, "Hide"
 >^+/::Run "D:\#Lnk\Edge.lnk",              A_InitialWorkingDir, "Hide"
 
-   >^Up::Return
- >^Down::Return
- >^Left::Return
->^Right::Return
-
 
 $RCtrl::{
     Global Arg
@@ -66,25 +61,15 @@ $RCtrl::{
 CtrlTimer() {
     Global Arg
     if (Arg.ctrl_cnt == 1) {
-        if (Arg.init_show) {
-            InitConfig()
-            Arg.ctrl_cnt := 0
-            return
-        }
-        if (Arg.ctrl_show) {
+        if Arg.ctrl_show
             CtrlHelpGui()
-            Arg.ctrl_cnt := 0
-            return
-        }
-        if (CheckWindowActive("Maye")) {
+        if CheckWindowActive("Maye")
             Send "{Esc}"
-        } else {
-            Run "D:\#Lnk\#\Maye.lnk"
-        }
+        Arg.ctrl_cnt := 0
     } else if (Arg.ctrl_cnt == 2) {
-        CtrlHelpGui()
+        Run "D:\#Lnk\#\Maye.lnk"
     } else if (Arg.ctrl_cnt == 3) {
-        InitConfig()
+        CtrlHelpGui()
     }
     Arg.ctrl_cnt := 0
 }
