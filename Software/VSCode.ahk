@@ -17,7 +17,7 @@ RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
 
 #HotIf CheckWindowActive("VSCode")
 
-    Global Arg , EscRedirect
+    Global  Arg , EscRedirect
     ~LShift::{
         if (Arg.shift_cnt > 0) {
             Arg.shift_cnt += 1
@@ -25,14 +25,14 @@ RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
         } else {
             Arg.shift_cnt := 1
         }
-        SetTimer VSCodeTimer, -500
-    }
-    VSCodeTimer() {
-        if (Arg.shift_cnt == 2) {
-            Send "^!{Space}"
-            EscRedirect := True
+        SetTimer Timer, -333
+        Timer() {
+            if (Arg.shift_cnt == 2) {
+                Send "^!{Space}"
+                EscRedirect := True
+            }
+            Arg.shift_cnt := 0
         }
-        Arg.shift_cnt := 0
     }
 
     ; 切换标签页
@@ -71,41 +71,32 @@ RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
         SetCapsLockState "Off"
     }
 
-    ; 聚焦 编辑器|工具
-    ^!NumpadDiv::Return
-    ^!NumpadMult::Return
-    ~CapsLock & LShift::Send "^!{NumpadDiv}"
-    ~CapsLock & Tab::Send "^!{NumpadMult}"
-
     ; 项目 结构
-    ~CapsLock & [::{
-        if (GetKeyState("LShift", "P")) {
-            Send "^!+["
-        } else {
+    CapsLock & [::{
+        if !GetKeyState("LShift", "P")
             Send "^!["
-        }
+        else
+            Send "^!+["
     }
-    ~CapsLock & ]::{
-        if (GetKeyState("LShift", "P")) {
-            Send "^!+]"
-        } else {
+    CapsLock & ]::{
+        if !GetKeyState("LShift", "P")
             Send "^!]"
-        }
+        else
+            Send "^!+]"
     }
 
     ; 窗口大小调整
-    ~CapsLock & Left:: Send "^!{Left}"
-    ~CapsLock & Right::Send "^!{Right}"
-    ~CapsLock & Up::   Send "^!{Up}"
-    ~CapsLock & Down:: Send "^!{Down}"
+    CapsLock & Left:: Send "^!{Left}"
+    CapsLock & Right::Send "^!{Right}"
+    CapsLock & Up::   Send "^!{Up}"
+    CapsLock & Down:: Send "^!{Down}"
 
     ; 代码注释
     LAlt & RShift::{
-        if ( GetKeyState("LShift", "P") ) {
-            Send "^+\"
-        } else {
+        if !GetKeyState("LShift", "P")
             Send "^\"
-        }
+        else
+            Send "^+\"
     }
 
     ; 切换编辑器焦点
