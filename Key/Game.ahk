@@ -16,32 +16,33 @@
 
 ; ------------------------------------------------- ;
 
-~Space & w::Return
-~Space & s::Return
-~Space & a::Return
-~Space & d::Return
+~Space & w::w
+~Space & s::s
+~Space & a::a
+~Space & d::d
 
-~Space & g::Return
-~Space & h::Return
-~Space & f::Return
-~Space & j::Return
+~Space & g::g
+~Space & h::h
+~Space & f::f
+~Space & j::j
+
+~Space & LAlt::LAlt
+~Space & RAlt::RAlt
+
+~Space &      Tab::Tab
+~Space & CapsLock::CapsLock
+~Space &    Shift::Shift
 
 ~Space &    Up::Return
 ~Space &  Down::Return
 ~Space &  Left::Return
 ~Space & Right::Return
 
-~Space & LAlt::Return
-~Space & RAlt::Return
-
-~Space &      Tab::Return
-~Space & CapsLock::Return
-~Space &    Shift::Return
-
 ; ------------------------------------------------- ;
 
 LWin::Return
 
+#Esc::Return
 #Tab::Return
 #+Tab::Return
 #Enter::Return
@@ -60,7 +61,6 @@ LWin::Return
 !Tab::Return
 !+Tab::Return
 
-#Esc::Return
 #F1::Return
 #F2::Return
 #F3::Return
@@ -128,5 +128,5 @@ LWin::Return
 #Left::Return
 #Right::Return
 
-LWin & LAlt::Return
+LWin & LAlt:: Return
 LWin & LCtrl::Return
