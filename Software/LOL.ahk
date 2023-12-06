@@ -10,8 +10,6 @@ RegisterProcess("League of Legends" , "LOL_Game"  )
     #Insert::SoftwareShot(Game_Image)
     #Delete::ScreenShot(Game_Image)
 
-    #BackSpace::Run "Setup.bat GameMode", A_InitialWorkingDir, "Hide"
-
 #HotIf
 
 
