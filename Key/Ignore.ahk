@@ -50,8 +50,8 @@
 #+t::Return
 
 ; 打开任务视图
-; #Tab::Return
-; #+Tab::Return
+#Tab::Return
+#+Tab::Return
 
 #^q::Return ;快速助手
 #^o::Return ;屏幕键盘
