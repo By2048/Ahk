@@ -3,8 +3,8 @@
 |  E | Everything     |----|-----------------|
 |  R | RegEdit        |  , | 我的电脑        |
 |  Y | v2rayN         | +, | 回收站          |
-|  P | WT             |  . | T:\\            |
-|----|----------------| +. | V:\\            |
+|  P | WT             |  . | T:\             |
+|----|----------------| +. | V:\#\           |
 |  S | Sandboxie      |  / | Chrome          |
 |  F | FreeFileSync   | +/ | Edge            |
 |  H | WindowSpy      |----|-----------------|
