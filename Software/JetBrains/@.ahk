@@ -14,8 +14,6 @@ JApps := "PyCharm|IDEA"
 
 
 
-Arg.CtrlOrShift := False
-Arg.ClickCnt    := 0
 #HotIf CheckWindowActive(JApps) And Arg.CtrlOrShift == True
     Esc::
     CapsLock::{
@@ -28,9 +26,7 @@ Arg.ClickCnt    := 0
 
 
 
-;AppsKey Esc 一次性返回问题修复
-AppsKeyRedirect   := False
-AppsKeyEnterCount := 0
+; AppsKey Esc 一次性返回问题修复
 #HotIf CheckWindowActive(JApps) And AppsKeyRedirect == True
     $Enter::{
         Global AppsKeyEnterCount
@@ -51,64 +47,35 @@ AppsKeyEnterCount := 0
     }
 #HotIf
 
-
-
-; 浮动工具栏
-FloatTool := False
-#HotIf CheckWindowActive(JApps) And FloatTool == True
-    $Esc::
-    $CapsLock::{
-        Global FloatTool, CapsLockActivate
-        Send "{Esc}"
-        FloatTool := False
-        CapsLockActivate := False
-        SetCapsLockState "Off"
-    }
-    $Enter::{
-        Send "{Enter}"
-        Sleep 99
-        win := GetHideWindowConfig()
-        if ObjOwnPropCount(win)
-            WinActivate AID(win.id)
-    }
-#HotIf
-
-
-
 ; 主菜单 动态调整位置
 CenterTools       := False
-CenterToolsSpace  := 2
 CenterToolsConfig := []
 #HotIf CheckWindowActive(JApps) And CenterTools == True
     FloatWindows() {
-        Global CenterToolsConfig, CenterToolsSpace
-        tmp := []
+        Global CenterToolsConfig
+        config := []
         loop CenterToolsConfig.Length {
-            tmp.Push(CenterToolsConfig.Pop())
+            win := CenterToolsConfig.Pop()
+            config.Push(win)
         }
-        pos := 0
-        loop tmp.Length {
-            o := tmp[A_Index]
-            x := o.x
-            y := o.y
-            w := o.w
-            h := o.h
-            if (A_Index == 1) {
-                x := Screen.x + Screen.w/2 - w/2
-            } else {
-                x := pos - w
-            }
-            o.x := x - A_Index * CenterToolsSpace
-            o.y := Screen.y + Screen.h/2 - h/2
-            CenterToolsConfig.InsertAt(1, o)
-            pos := o.x
+        left := 0
+        loop config.Length {
+            win := config[A_Index]
+            if A_Index == 1
+                win.x := Screen.x + Screen.w/2 - win.w/2
+            else
+                win.x := left - win.w
+            win.x := win.x - A_Index * 2  ;UI间隔
+            win.y := Screen.y + Screen.h/2 - win.h/2
+            CenterToolsConfig.InsertAt(1, win)
+            left := win.x
         }
         loop CenterToolsConfig.Length {
-            o := CenterToolsConfig[A_Index]
-            WinMove o.x, o.y, o.w, o.h, AID(o.id)
+            win := CenterToolsConfig[A_Index]
+            WinMove win.x, win.y, win.w, win.h, AID(win.id)
         }
     }
-    $RShift::{
+    ~RShift::{
         Send "{Blind}{vkFF}"
         Global CenterToolsConfig
         CenterToolsConfig.Pop()
@@ -118,9 +85,8 @@ CenterToolsConfig := []
             FloatWindows()
         }
     }
-    $Enter::{
+    ~Enter::{
         Global CenterTools, CenterToolsConfig
-        Send "{Enter}"
         win := GetHideWindowConfig()
         if (not ObjOwnPropCount(win)) {
             CenterTools := False
@@ -146,43 +112,30 @@ CenterToolsConfig := []
             AppsKeyRedirect := False
         }
     }
-    $CapsLock Up::{
-        SetCapsLockState "Off"
-    }
 #HotIf
 
 
 
-CapsLockActivate := False
 #HotIf CheckWindowActive(JApps)
 
-    #Include @.Fxx.ahk
-
     ~Esc::{
-        global CapsLockActivate
+        Global CapsLockActivate
         CapsLockActivate := False
-    }
-
-    $AppsKey::{
-        Send "{AppsKey}"
-        global AppsKeyRedirect, AppsKeyEnterCount
-        AppsKeyRedirect := True
-        AppsKeyEnterCount := 1
     }
 
     ~RWin::{
         Send "{Blind}{vkFF}"
         WinGetPos &x, &y, &w, &h, "A"
-        if (x <= 0 or y <= 0 ) {
+        if x <= 0 or y <= 0
             return
-        } else {
-            MoveWindowToCenter(True)
-        }
+        MoveWindowToCenter(True)
         win := GetHideWindowConfig()
         if ObjOwnPropCount(win)
             CenterHideWindow()
     }
 
+    Arg.CtrlOrShift := False
+    Arg.ClickCnt    := 0
     ~LCtrl::
     ~LShift::{
         if (Arg.ClickCnt > 0) {
@@ -191,17 +144,22 @@ CapsLockActivate := False
         } else {
             Arg.ClickCnt := 1
         }
+        Timer() {
+            Arg.ClickCnt := 0
+            if Arg.ClickCnt == 2
+                Arg.CtrlOrShift := True
+        }
         SetTimer Timer, -500
     }
-    Timer() {
-        if (Arg.ClickCnt == 2) {
-            Arg.CtrlOrShift  := True
-        }
-        Arg.ClickCnt := 0
-    }
 
-    $RCtrl::Return
-    ; Send "{Blind}{vkFF}"
+    AppsKeyRedirect   := False
+    AppsKeyEnterCount := 0
+    $AppsKey::{
+        Send "{AppsKey}"
+        Global AppsKeyRedirect, AppsKeyEnterCount
+        AppsKeyRedirect := True
+        AppsKeyEnterCount := 1
+    }
 
     ~!+`::{
         WinWaitActive "书签描述"
@@ -209,37 +167,25 @@ CapsLockActivate := False
             MoveWindowToCenter(True)
     }
 
-    ; ~!+\::CenterHideWindow()
-    ; ~^n::CenterHideWindow()
-    ; ~^+n::CenterHideWindow()
-    ; ~!i::CenterHideWindow(1000, 1000)
-    ; ~^o::{
-    ;     global EscRedirect
-    ;     EscRedirect := True
-    ;     CenterHideWindow()
-    ; }
-    ; ~!a::{
-    ;     global EscRedirect
-    ;     EscRedirect := True
-    ;     CenterHideWindow(1600, 1000)
-    ; }
+    <#\::MoveWindowToDefaultPosition()
+    <#+\::MoveWindowToBackupPosition()
 
-    #\::MoveWindowToDefaultPosition()
-    #+\::MoveWindowToBackupPosition()
+    <#0::^!0  ;编辑器字体 重置
+    <#-::^!-  ;编辑器字体 减小
+    <#=::^!=  ;编辑器字体 增加
+    <#0::^!+0 ;IDE缩放 重置
+    <#-::^!+- ;IDE缩放 减小
+    <#=::^!+= ;IDE缩放 增加
 
-    ;窗口全屏
-    #Enter::{
-        Send "^!{NumLock}"
-        SetNumLockState "Off"
-    }
-    ;Zen模式
-    #+Enter::{
-        Send "^!+{NumLock}"
-        SetNumLockState "Off"
-    }
+    ^!Enter::Return
+    ^!+Enter::Return
+    #Enter::^!Enter   ;窗口全屏
+    #+Enter::^!+Enter ;Zen模式
 
-    <!Esc::!Pause
+    ;切换器
     <^Esc::^Pause
+    <!Esc::!Pause
+    <+Esc::+Pause
     <!+Esc::!+Pause
     <^+Esc::^+Pause
 
@@ -249,13 +195,34 @@ CapsLockActivate := False
     <!Tab::^Tab
     <!+Tab::^+Tab
 
-    ~>^*::Return
+    ;设置
+    LAlt & RAlt::{
+        Send "{Help}"
+        WinWaitActive "设置"
+        if WinGetTitle("A") == "设置"
+            MoveWindowToCenter(True)
+    }
+    ;快速切换
+    RAlt & LAlt::{
+        Send "^!+{Help}"
+        CenterHideWindow()
+    }
+    ;代码注释
+    LAlt & RShift::Send "^{Help}"
+    RShift & LAlt::Send "!{Help}"
+    ; Xxx
+    RAlt & RShift::Send "!+{Help}"
+    RShift & RAlt::Send "^!{Help}"
+
+    ^!AppsKey::{
+        HelpText(" Reload ", "Center", "Screen", 500)
+        Reload
+    }
 
     #Include @.CapsLock.ahk
 
-    #Include @.Other.ahk
+    #Include @.Fxx.ahk
 
-    ; F1::^CtrlBreak
-    ; F1::Send "{PrintScreen}"
+    #Include *i @.Test.ahk
 
 #HotIf

@@ -14,18 +14,16 @@ ToolSwitch(Key, rule)
 
 CapsLockRedirect()
 {
-    global CapsLockActivate
-    key := StrReplace(A_ThisHotkey, "CapsLock & ", "")
-    key_shift := GetKeyState("LShift", "P")
+    Global CapsLockActivate
     if (CapsLockActivate == True) {
         Send "{Esc}"
         CapsLockActivate := False
     } else {
-        if (key_shift) {
-            Send Format("^!+{1}", key)
-        } else {
+        key := StrReplace(A_ThisHotkey, "CapsLock & ", "")
+        if !GetKeyState("LShift", "P")
             Send Format("^!{1}", key)
-        }
+        else
+            Send Format("^!+{1}", key)
         CapsLockActivate := True
     }
 }
@@ -34,17 +32,15 @@ CapsLockRedirect()
 GetHideWindowConfig(check_sleep:=44, check_count:=22)
 {
     exe := WinGetProcessName("A")
-    check_rule  := Format("ahk_exe {} ahk_class SunAwtWindow", exe)
+    check_rule := Format("ahk_exe {} ahk_class SunAwtWindow", exe)
     win_id := 0x0
     loop {
-        if (A_Index >= check_count) {
+        if A_Index >= check_count
             break
-        }
         Sleep check_sleep
         win_id := WinExist(check_rule)
-        if (win_id) {
+        if win_id
             break
-        }
     }
     win := {}
     if (win_id) {
@@ -62,9 +58,8 @@ GetHideWindowConfig(check_sleep:=44, check_count:=22)
 CenterHideWindow(position*)
 {
     win := GetHideWindowConfig()
-    if (not ObjOwnPropCount(win)) {
+    if not ObjOwnPropCount(win)
         return
-    }
     win_id := win.id
     if (position.Length == 0) {
         win_w := win.w

@@ -1,9 +1,9 @@
 ﻿
-RegisterProcess("pycharm64", "PyCharm")
+RegisterProcess("pycharm64" , "PyCharm")
 
-RegisterHelp("PyCharm" , "| Software\JetBrains\PyCharm.help          "
-                       . "| Software\JetBrains\PyCharm.Fxx.md        "
-                       . "| Software\JetBrains\PyCharm.CapsLock.help ")
+RegisterHelp("PyCharm" , "| Software\JetBrains\@.help          "
+                       . "| Software\JetBrains\@.Fxx.md        "
+                       . "| Software\JetBrains\@.CapsLock.help ")
 
 
 #HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "运行/调试配置")
@@ -45,7 +45,5 @@ RegisterHelp("PyCharm" , "| Software\JetBrains\PyCharm.help          "
 
 
 #HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "书签")
-    $CapsLock::{
-        Send "^{CapsLock}"
-    }
+    $CapsLock::^CapsLock
 #HotIf

@@ -1,50 +1,84 @@
 ﻿
-CapsLockToEscCount := 0
-
-~#CapsLock::Return
+CapsLockActivate := False
 
 ~*CapsLock::{
+    ; Global CapsLockActivate
+    ; CapsLockActivate := True
     Send "{Esc}"
-    global CapsLockToEscCount
-    if (CapsLockActivate != 0) {
-        Send Format("{Esc {1}}", CapsLockToEscCount - 1)
-        CapsLockToEscCount := 0
+    if InStr(A_PriorHotkey, "*CapsLock")
+        if A_TimeSincePriorHotkey < 333
+            Send "{CtrlBreak}"
+    SetCapsLockState "Off"
+}
+
+~*CapsLock Up::{
+    Global CapsLockActivate
+    CapsLockActivate := False
+    SetNumLockState "Off"
+    SetCapsLockState "Off"
+    SetScrollLockState "Off"
+}
+
+!CapsLock::!CtrlBreak
+!+CapsLock::!+CtrlBreak
+
+; 聚焦
+~CapsLock & Tab::^CtrlBreak      ;工具
+~CapsLock & LShift::^!CtrlBreak  ;编辑器
+
+; 主菜单 工具窗口
+~CapsLock & Enter::{
+    Global CapsLockActivate
+    Global CenterTools, CenterToolsConfig
+    if (CapsLockActivate == True) {
+        Send "{Esc}"
+        CenterTools := False
+        CapsLockActivate := False
+        return
     }
-    SetCapsLockState "Off"
+    if ( !GetKeyState("LShift", "P") ) {
+        Send "^!{NumLock}"
+        CenterHideWindow()
+    } else {
+        Send "^!+{NumLock}"
+        CenterTools := True
+        CenterToolsConfig := []
+        win := CenterHideWindow()
+        CenterToolsConfig.Push(win)
+    }
+    CapsLockActivate := True
 }
 
-; ~*CapsLock Up::{
-;     global CapsLockActivate
-;     CapsLockActivate := False
-; }
-
-~!CapsLock::{
-    SetCapsLockState "Off"
-}
-~!+CapsLock::{
-    SetCapsLockState "Off"
+; 导航 / 代码
+~CapsLock & RShift::{
+    if !GetKeyState("LShift", "P")
+        Send "^!{ScrollLock}"
+    else
+        Send "^!+{ScrollLock}"
+    CenterHideWindow()
 }
 
-; 聚焦 编辑器|工具
-^!NumpadDiv::Return
-^!NumpadMult::Return
-~CapsLock & LShift::Send "^!{NumpadDiv}"
-~CapsLock & Tab::Send "^!{NumpadMult}"
+; {未使用}
+~CapsLock & Esc::{
+    if !GetKeyState("LShift", "P")
+        Send "^!{Pause}"
+    else
+        Send "^!+{Pause}"
+}
 
-; 项目 结构
+; 项目 书签
 ~CapsLock & [::{
-    if (GetKeyState("LShift", "P")) {
-        Send "^!+["
-    } else {
+    if !GetKeyState("LShift", "P")
         Send "^!["
+    else
+        Send "^!+["
     }
-}
+; 结构 层次结构
 ~CapsLock & ]::{
-    if (GetKeyState("LShift", "P")) {
-        Send "^!+]"
-    } else {
+    if !GetKeyState("LShift", "P")
         Send "^!]"
-    }
+    else
+        Send "^!+]"
 }
 
 ; 窗口大小调整
@@ -56,7 +90,7 @@ CapsLockToEscCount := 0
 ; 书签描述符
 ^!`::Return
 ~CapsLock & `::{
-    global CapsLockActivate
+    Global CapsLockActivate
     Send "^!``"
     CapsLockActivate := True
     CenterHideWindow()
@@ -65,62 +99,85 @@ CapsLockToEscCount := 0
 ; 在Explorer中显示 选择打开
 ^!e::Return
 ~CapsLock & e::{
-    global CapsLockActivate
+    Global CapsLockActivate
     CapsLockActivate := True
-    if (!GetKeyState("LShift", "P")) {
+    if !GetKeyState("LShift", "P")
         Send "^!e"
-    } else {
+    else
         Send "^!+e"
-    }
 }
 
 ; 跳转到导航栏
 ^!o::Return
 ~CapsLock & o::{
     Send "^!o"
-    global CapsLockActivate
+    Global CapsLockActivate
     CapsLockActivate := True
-    global CapsLockToEscCount
-    CapsLockToEscCount := 2
-}
-
-; 最近的文件
-^!p::Return
-~CapsLock & p::{
-    Send "^!p"
-    CenterHideWindow(888, 999)
 }
 
 ; Git工具 VCS操作
 ^!g::Return
 ^!+g::Return
 ~CapsLock & g::{
-    global CapsLockActivate, FloatTool
+    Global CapsLockActivate, FloatTool
     if (CapsLockActivate == True) {
         Send "{Esc}"
-        FloatTool := False
         CapsLockActivate := False
         return
     }
-    if (!GetKeyState("LShift", "P")) {
+    if !GetKeyState("LShift", "P")
         Send "^!g"
-    } else {
+    else
         Send "^!+g"
-    }
     CenterHideWindow()
-    FloatTool := True
     CapsLockActivate := True
 }
 
-; 迷你地图
+; 宏
+^!h::Return
+^!+h::Return
+~CapsLock & h::{
+    if !GetKeyState("LShift", "P")
+        Send "^!h"
+    else
+        Send "^!+h"
+    CenterHideWindow()
+    Global CapsLockActivate
+    CapsLockActivate := True
+}
+
+; 查看最近的操作组
+^!l::Return
+^!+l::Return
+~CapsLock & l::{
+    if !GetKeyState("LShift", "P")
+        Send "^!l"
+    else
+        Send "^!+l"
+    CenterHideWindow()
+    Global CapsLockActivate
+    CapsLockActivate := True
+}
+
+
+; CodeGlance Pro
 ^!m::Return
-~CapsLock & m::Send "^!m"
+^!+m::Return
+~CapsLock & m::{
+    if !GetKeyState("LShift", "P")
+        Send "^!m"
+    else
+        Send "^!+m"
+    Global CapsLockActivate
+    CapsLockActivate := True
+}
+
 
 ; 编辑 编辑器操作
 ^!BackSpace::Return
 ^!+BackSpace::Return
 ~CapsLock & BackSpace::{
-    global CapsLockActivate
+    Global CapsLockActivate
     if (CapsLockActivate == True) {
         Send "{Esc}"
         CapsLockActivate := False
@@ -140,7 +197,7 @@ CapsLockToEscCount := 0
 ^!\::Return
 ^!+\::Return
 ~CapsLock & \::{
-    global CapsLockActivate
+    Global CapsLockActivate
     if (CapsLockActivate) {
         if (GetKeyState("LShift", "P")) {
             Send "^!+\"
@@ -160,49 +217,10 @@ CapsLockToEscCount := 0
     CapsLockActivate := True
 }
 
-; 主菜单 工具窗口
-^!Enter::Return
-^!+Enter::Return
-~CapsLock & Enter::{
-    global CapsLockActivate
-    global CenterTools, CenterToolsConfig
-    if (CapsLockActivate == True) {
-        Send "{Esc}"
-        CenterTools := False
-        CapsLockActivate := False
-        return
-    }
-    if (!GetKeyState("LShift", "P")) {
-        Send "^!{Enter}"
-        CenterHideWindow()
-    } else {
-        Send "^!+{Enter}"
-        CenterTools := True
-        CenterToolsConfig := []
-        win := CenterHideWindow()
-        CenterToolsConfig.Push(win)
-    }
-    CapsLockActivate := True
-}
-
-; 代码
-^!Numpad0::Return
-^!Numpad5::Return
-~CapsLock & RShift::{
-    global CapsLockActivate
-    if (!GetKeyState("LShift", "P")) {
-        Send "^!{Numpad5}"
-    } else {
-        Send "^!{Numpad0}"
-    }
-    CapsLockActivate := True
-    CenterHideWindow()
-}
-
 ; 外观
 ^!,::Return
 ~CapsLock & ,::{
-    global CapsLockActivate
+    Global CapsLockActivate
     Send "^!,"
     CapsLockActivate := True
     CenterHideWindow()
@@ -211,10 +229,18 @@ CapsLockToEscCount := 0
 ;窗口
 ^!.::Return
 ~CapsLock & .::{
-    global CapsLockActivate
-    global CenterTools, CenterToolsConfig
-    Send "^!."
+    Global CapsLockActivate
+    Global CenterTools, CenterToolsConfig
+    if (CapsLockActivate == True) {
+        Send "{Esc}"
+        CenterTools := False
+        CapsLockActivate := False
+        return
+    }
     CapsLockActivate := True
+    Send "^!."
+    CenterTools := True
+    CenterToolsConfig := []
     win := CenterHideWindow()
     CenterToolsConfig.Push(win)
 }
@@ -222,7 +248,7 @@ CapsLockToEscCount := 0
 ;活动编辑器
 ^!/::Return
 ~CapsLock & /::{
-    global CapsLockActivate
+    Global CapsLockActivate
     Send "^!/"
     CapsLockActivate := True
     CenterHideWindow()
@@ -231,7 +257,7 @@ CapsLockToEscCount := 0
 ; 快速列表 #上下文
 ^!;::Return
 ~CapsLock & `;::{
-    global CapsLockActivate
+    Global CapsLockActivate
     Send "^!;"
     CapsLockActivate := True
     CenterHideWindow()
@@ -240,8 +266,42 @@ CapsLockToEscCount := 0
 ; 快速列表 #选项卡
 ^!'::Return
 ~CapsLock & '::{
-    global CapsLockActivate
+    Global CapsLockActivate
     Send "^!'"
     CapsLockActivate := True
     CenterHideWindow()
+}
+
+; 向左/向右 滚动
+^!f::Return
+^!j::Return
+~CapsLock & f::^!f
+~CapsLock & j::^!j
+
+; 移动并滚动
+~CapsLock & PgUp::{
+    if !GetKeyState("LShift", "P")
+        Send "^!{PgUp}"
+    else
+        Send "^!+{PgUp}"
+}
+~CapsLock & PgDn::{
+    if !GetKeyState("LShift", "P")
+        Send "^!{PgDn}"
+    else
+        Send "^!+{PgDn}"
+}
+
+; 滚动到顶部底部
+~CapsLock & Home::{
+    if !GetKeyState("LShift", "P")
+        Send "^!{Home}"
+    else
+        Send "^!+{Home}"
+}
+~CapsLock & End::{
+    if !GetKeyState("LShift", "P")
+        Send "^!{End}"
+    else
+        Send "^!+{End}"
 }
