@@ -4,13 +4,13 @@
 
 RegisterProcess("Code", "VSCode")
 
-RegisterHelp("VSCode", "Software\VSCode.help | Software\VSCode.Fxx.help")
+RegisterHelp("VSCode", "Software\Microsoft\VSCode.help | Software\Microsoft\VSCode.Fxx.help")
 
 
 ; 快捷键设置
 #HotIf CheckWindowActive("VSCode", "", "*User\KeyBindings.json")
 
-    RShift::HelpFile("Software\VSCode.Setting.help")
+    RShift::HelpFile("Software\Microsoft\VSCode.Setting.help")
 
 #HotIf
 

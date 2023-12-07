@@ -1,12 +1,12 @@
 ﻿
 RegisterProcess("WindowsTerminal" , "Terminal")
 
-RegisterHelp("Terminal", "Software\Terminal.help | Config\Script.help")
+RegisterHelp("Terminal", "Software\Microsoft\Terminal.help | Config\Script.help")
 
 
 #HotIf CheckWindowActive( "Terminal" )
 
-    #Include Terminal.Private.ahk
+    #Include *i Terminal.Private.ahk
 
     #\::MoveWindowToPosition(Position(2200 , 1400))
 

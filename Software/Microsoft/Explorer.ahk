@@ -1,11 +1,12 @@
 ﻿
 RegisterProcess("explorer" , "Explorer")
 
-RegisterHelp("Explorer_CabinetWClass" , "Software\Explorer.help")
-RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
-                                . "| Key\Win.Other.help         "
-                                . "| Software\Explorer.Fxx.help "
-                                . "| Config\Mouse.help "        )
+RegisterHelp("Explorer_CabinetWClass" , "Software\Microsoft\Explorer.help")
+
+RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
+                                . "| Key\Win.Other.help                   "
+                                . "| Software\Microsoft\Explorer.Fxx.help "
+                                . "| Config\Mouse.help "                  )
 
 
 ; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
@@ -183,7 +184,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
         EC["D:\"]   := EC["Software"]
         EC["回收站"] := EC["Recover"]
 
-        #Include *i Explorer.Private.ahk
+        #Include *i Explorer.Columns.Private.ahk
 
         MouseGetPos &x_origin, &y_origin
 
@@ -207,7 +208,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
         if A_ThisHotkey == "#+\"
             config := EC["File"]
 
-        #Include Explorer.Tool.ahk
+        #Include Explorer.Columns.Tool.ahk
         SetExplorerColumns(config)
 
         ; 搜索框
@@ -248,7 +249,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
 ; 通用设置
 #HotIf CheckWindowActive( "Explorer" )
 
-    #Include Explorer.Base.ahk
+    #Include Explorer.Key.ahk
 
 #HotIf
 
@@ -263,7 +264,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help               "
         SetCapsLockState "Off"
     }
 
-    #Include Explorer.Base.ahk
+    #Include Explorer.Key.ahk
 
     !/::ControlFocus "SysTreeView321", "A"
     !\::{

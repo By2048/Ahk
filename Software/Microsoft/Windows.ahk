@@ -93,7 +93,7 @@
 
     CapsLock::{
         Global Arg
-        WinActivate "ahk_exe Explorer.exe ahk_class WorkerW"
+        WinActivate "ahk_exe explorer.exe ahk_class WorkerW"
         HelpText("`n  Windows  `n", "Center", "Screen", 300)
         Arg.Previous_Process_Name := "RemoteDesktop"
     }
@@ -131,7 +131,7 @@
 
 
 ; 注册表
-RegisterHelp("RegEdit", "Software\Windows.RegEdit.help")
+RegisterHelp("RegEdit", "Software\Microsoft\Windows.RegEdit.help")
 
 #HotIf CheckWindowActive( "RegEdit" )
 
