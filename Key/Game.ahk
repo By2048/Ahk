@@ -1,21 +1,4 @@
 ﻿
-<#Tab::AltTab
-
->^/::Run "E:\Script\Software\Chrome.bat", A_InitialWorkingDir, "Hide"
->^Esc::Run "TaskMgr"
->^AppsKey::{
-    SetNumLockState "Off"
-    SetCapsLockState "Off"
-    SetScrollLockState "Off"
-}
-
-<#Home::Send "#^!{Home}"
-<#End::Send "#^!{End}"
-<#PgUp::Send "{Volume_Up}"
-<#PgDn::Send "{Volume_Down}"
-
-; ------------------------------------------------- ;
-
 ~Space & w::w
 ~Space & s::s
 ~Space & a::a
@@ -40,11 +23,11 @@
 
 ; ------------------------------------------------- ;
 
-LWin::Return
+; LWin::Return
+; #Tab::Return
+; #+Tab::Return
 
 #Esc::Return
-#Tab::Return
-#+Tab::Return
 #Enter::Return
 #+Enter::Return
 #Space::Return
