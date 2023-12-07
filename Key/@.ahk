@@ -46,7 +46,7 @@ LWin & RAlt::{
 }
 ; 激活桌面
 LWin & RCtrl::{
-    WinActivate "ahk_exe Explorer.exe ahk_class WorkerW"
+    WinActivate "ahk_exe explorer.exe ahk_class WorkerW"
     HelpText("`n  Desktop  `n", "Center", "Screen1", 300)
 }
 

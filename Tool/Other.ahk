@@ -11,7 +11,7 @@
 RunNormalUser(command)
 {
     if ( InStr(command, ".lnk") ) {
-        command := Format("C:\Windows\Explorer.exe {}", command)
+        command := Format("C:\Windows\explorer.exe {}", command)
     }
     if (A_UserName = "Administrator") {
         Run command
