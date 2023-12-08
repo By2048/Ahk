@@ -1,7 +1,7 @@
 ﻿
 #NoTrayIcon
 #SingleInstance Force
-#Hotstring EndChars `t
+#HotString EndChars `t
 
 
 :o:\Date::{
@@ -17,6 +17,7 @@
 }
 
 :o:\---::{- 80}
+
 :o:\===::{= 80}
 
 :o:\Dism::DISM /Online /Cleanup-image /Restorehealth

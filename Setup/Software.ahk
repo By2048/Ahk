@@ -55,6 +55,7 @@
 #Include ..\Software\Microsoft\Windows.ahk
 
 #SingleInstance Force
+#HotString EndChars `t
 #NoTrayIcon
 
 CoordMode "Mouse", "Window"
