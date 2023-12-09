@@ -8,16 +8,16 @@ RegisterHelp("Terminal", "Software\Microsoft\Terminal.help | Config\Script.help"
 
     #Include *i Terminal.Private.ahk
 
+    `::~
+    +~::`
+
     #\::MoveWindowToPosition(Position(2200 , 1400))
 
     #+\::{
-        if Screens.Count == 1
-            return
-        pos := Position("[Center][2]", 0, 1600)
+        pos := Position("[Center][2]" , 0 , 1600)
         MoveWindowToPosition(pos)
         MoveWindowToPosition(pos)
     }
-
 
     ; 关闭窗格
     !CapsLock::Send "{F13}"
@@ -50,11 +50,10 @@ RegisterHelp("Terminal", "Software\Microsoft\Terminal.help | Config\Script.help"
     ^+f::Return
     <^f::Send "^+f"
 
-    ; 滚动至历史记录底部
-    ; 滚动至历史记录顶部
+    ; 滚动至历史记录 顶部|底部
     ^+Home::Return
-    !Home::Send "^+{Home}"
     ^+End::Return
+    !Home::Send "^+{Home}"
     !End::Send "^+{End}"
 
     ; 全屏
