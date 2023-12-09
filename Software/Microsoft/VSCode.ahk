@@ -47,8 +47,16 @@ RegisterHelp("VSCode", "Software\Microsoft\VSCode.help | Software\Microsoft\VSCo
     !F4::Send "!{F16}"
     !+F4::Send "!+{F16}"
 
-    #\::MoveWindowToPosition(Position(0, 0, A_ScreenWidth, A_ScreenHeight))
-    #+\::MoveWindowToPosition(Position(1616 , 1212))
+    #\::{
+        pos := Position(1999 , 1222)
+        MoveWindowToPosition(pos)
+        MoveWindowToPosition(pos)
+    }
+    #+\::{
+        pos := Position("[Center][2]" , -10 , 1600)
+        MoveWindowToPosition(pos)
+        MoveWindowToPosition(pos)
+    }
 
     ;窗口全屏
     #Enter::{
