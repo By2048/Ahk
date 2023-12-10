@@ -4,7 +4,8 @@
 
 RegisterProcess("Code", "VSCode")
 
-RegisterHelp("VSCode", "Software\Microsoft\VSCode.help | Software\Microsoft\VSCode.Fxx.help")
+RegisterHelp("VSCode", "| Software\Microsoft\VSCode.help"
+                       "| Software\Microsoft\VSCode.Fxx.help")
 
 
 ; 快捷键设置
