@@ -1,26 +1,10 @@
 ﻿
-RegisterProcess("pycharm64" , "PyCharm")
-RegisterProcess("chrome"    , "Chrome" )
-RegisterProcess("idea64"    , "IDEA"   )
-
-
 ;切换到显示器中心
-~CapsLock & RShift::{
+~CapsLock & Tab::{
 
     CoordMode "Mouse", "Screen"
     MouseGetPos &x_current, &y_current
 
-    GetActiveWindowInfo()
-    win_process_name := window.process_name
-
-    process_ignore := [ "PyCharm" , "Chrome" , "IDEA" ]
-    for process_name in process_ignore {
-        if (win_process_name == process_name) {
-            return
-        }
-    }
-
-    offset    := 300
     x_default := Screen.x + Screen.w/2
     y_default := Screen.y + Screen.h/2
 
@@ -64,11 +48,6 @@ RegisterProcess("idea64"    , "IDEA"   )
         }
     }
 
-    ; 忽略一定的差异
-    if ( Abs(xx - x_current) < offset and Abs(yy - y_current) < offset ) {
-        return
-    }
-
     DllCall("SetCursorPos", "int", xx, "int", yy)
 
     ; 激活鼠标下的窗口
@@ -82,7 +61,7 @@ RegisterProcess("idea64"    , "IDEA"   )
 
 
 ; 屏幕1中心
-~CapsLock & Space::{
+~CapsLock & LShift::{
     DllCall("SetCursorPos", "int", A_ScreenWidth / 2, "int", A_ScreenHeight / 2)
     MouseGetPos &_, &_, &win_id
     WinActivate "ahk_id " . win_id
@@ -90,12 +69,10 @@ RegisterProcess("idea64"    , "IDEA"   )
 
 
 ; 关闭大写锁定
-~CapsLock Up::{
-    SetCapsLockState "Off"
+~*CapsLock Up::{
     SetNumLockState "Off"
+    SetCapsLockState "Off"
     SetScrollLockState "Off"
 }
 
 #Include *i CapsLock.Private.ahk
-
-
