@@ -128,7 +128,7 @@ AEXE(exe)
     }
     if (not InStr(exe, ".exe")) {
         try {
-            exe := Windows_Process.Get(exe)
+            exe := Windows_Process.Get(StrLower(exe))
             return Format("ahk_exe {}", exe)
         } catch {
             return "A"

@@ -23,32 +23,30 @@ FDM           := "D:\FDM\fdm.exe"
 
 ; 软件自定义名字替换
 Windows_Process := Map()
-
 Windows_Process["scrcpy"    ] := "Scrcpy"
 Windows_Process["SandMan"   ] := "Sandboxie"
 Windows_Process["fdm"       ] := "FDM"
 Windows_Process["NemuPlayer"] := "Android"
-
-Windows_Process["哔哩哔哩" ] := "BiliBili"
-
-Windows_Process["mstsc"                  ] := "RemoteDesktop"    ;远程桌面
-Windows_Process["regedit"                ] := "RegEdit"          ;注册表编辑器
-Windows_Process["perfmon"                ] := "SystemMonitor"    ;资源监视器
+Windows_Process["哔哩哔哩"   ] := "BiliBili"
+Windows_Process["mstsc"     ] := "RemoteDesktop" ;远程桌面
+Windows_Process["regedit"   ] := "RegEdit"       ;注册表编辑器
+Windows_Process["perfmon"   ] := "SystemMonitor" ;资源监视器
+Windows_Process["taskmgr"   ] := "TaskMGR"       ;任务管理器
+Windows_Process["SearchApp" ] := "Search"        ;搜索
+Windows_Process["SearchUI"  ] := "Search"        ;搜索
 Windows_Process["ApplicationFrameHost"   ] := "WindowsSettings"  ;设置界面
-Windows_Process["taskmgr"                ] := "TaskMGR"          ;任务管理器
-Windows_Process["SearchApp"              ] := "Search"           ;搜索
-Windows_Process["SearchUI"               ] := "Search"           ;搜索
-Windows_Process["StartMenuExperienceHost"] := "Start"            ;开始菜单
 Windows_Process["ShellExperienceHost"    ] := "Start"            ;开始菜单
+Windows_Process["StartMenuExperienceHost"] := "Start"            ;开始菜单
 
-For key, value In Windows_Process
-    Windows_Process[value] := key
+For key, value In Windows_Process {
+    Windows_Process.Delete(key)
+    Windows_Process[StrLower(key)] := value
+}
 
 RegisterProcess(origin, rename)
 {
-    global Windows_Process
-    Windows_Process[origin] := rename
-    Windows_Process[rename] := origin
+    Global Windows_Process
+    Windows_Process[StrLower(origin)] := rename
 }
 
 

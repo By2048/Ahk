@@ -177,7 +177,7 @@ GetActiveWindowInfo(cache:=True)
     wpn := RTrim(wpn , "exe")
     wpn := RTrim(wpn , "EXE")
     wpn := RTrim(wpn , "."  )
-    win_process_name := Windows_Process.Get(wpn, win_process_exe)
+    win_process_name := Windows_Process.Get(StrLower(wpn), win_process_exe)
     if InStr(win_process_name, ".exe") or InStr(win_process_name, ".EXE")
         win_process_name := wpn
 
