@@ -42,10 +42,27 @@ RegisterHelp("Wallpaper" , "Software\Wallpaper.help")
     ; 设置
     F10::Return
     AppsKey::Send "{F10}"
+    LShift::Send "{F10}"
+
+    ; 订阅
+    Tab::
+    F2::{
+        MouseClick "Right"
+        Sleep SleepTime
+        ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Download.png")
+    }
+
+    ; 取消订阅
+    !CapsLock::
+    F3::{
+        MouseClick "Right"
+        Sleep SleepTime
+        ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Delete.png")
+        Send "{Enter}"
+    }
 
     ; 在资源管理器中打开
-    LShift::
-    !\::{
+    CapsLock::{
         MouseClick "Right"
         Sleep SleepTime
         ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Open.png")
@@ -54,23 +71,6 @@ RegisterHelp("Wallpaper" , "Software\Wallpaper.help")
     ; 翻页
     PgUp::PageTool("PgUp")
     PgDn::PageTool("PgDn")
-
-    ; 订阅
-    Tab::
-    ![::{
-        MouseClick "Right"
-        Sleep SleepTime
-        ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Download.png")
-    }
-
-    ; 取消订阅
-    CapsLock::
-    !]::{
-        MouseClick "Right"
-        Sleep SleepTime
-        ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Delete.png")
-        Send "{Enter}"
-    }
 
     #\::{
         x := 0
