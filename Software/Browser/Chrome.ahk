@@ -12,23 +12,8 @@ RegisterHelp("Chrome" , "| Software\Browser\@.help             "
 
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*|微博*" )
-    ~MButton & WheelUp::
-    ~MButton & WheelDown::
-    $CapsLock::
-    $+CapsLock::{
-        x  := 777
-        xx := A_ScreenWidth - x
-        y  := 444
-        yy := A_ScreenHeight - y
-        CoordMode "Mouse", "Screen"
-        MouseGetPos &pos_x, &pos_y
-        if InStr(A_ThisHotkey, "MButton") {
-            if pos_x < x or pos_x > xx
-                return
-            if pos_y < y or pos_y > yy
-                return
-        }
-
+    CapsLock::
+    +CapsLock::{
         A_Clipboard := ""
         Sleep 33
         Send "{RButton}"
@@ -52,17 +37,16 @@ RegisterHelp("Chrome" , "| Software\Browser\@.help             "
             return
         }
 
-        if ( A_ThisHotkey == "$CapsLock" or InStr(A_ThisHotkey, "WheelDown") )
+        if A_ThisHotkey == "CapsLock"
             Try AriaDownload(url, Chrome_Image)
 
-        if ( A_ThisHotkey == "$+CapsLock" or InStr(A_ThisHotkey, "WheelUp") ) {
+        if ( A_ThisHotkey == "+CapsLock" ) {
             time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
             ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
             Try AriaDownload(url, Chrome_Image, time . ext)
         }
 
         A_Clipboard := ""
-        SetCapsLockState "Off"
     }
 #HotIf
 
