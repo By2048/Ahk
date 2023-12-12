@@ -12,20 +12,47 @@ ToolSwitch(Key, rule)
 }
 
 
-CapsLockRedirect()
+CapsLockRedirect(key:="", cycle:="", fun:="", arg:="")
 {
     Global CapsLockActivate
-    if (CapsLockActivate == True) {
-        Send "{Esc}"
-        CapsLockActivate := False
-    } else {
-        key := StrReplace(A_ThisHotkey, "CapsLock & ", "")
-        if !GetKeyState("LShift", "P")
-            Send Format("^!{1}", key)
-        else
-            Send Format("^!+{1}", key)
-        CapsLockActivate := True
+
+    if ( cycle ) {
+        if ( CapsLockActivate == True ) {
+            Send Format("{{1}}", cycle)
+            CapsLockActivate := False
+            return
+        }
     }
+
+    if ( not key ) {
+        key := StrReplace(A_ThisHotkey, "CapsLock &",  "")
+        key := StrReplace(key, "~", "")
+        key := StrReplace(key, " ", "")
+    }
+
+    lshift := GetKeyState("LShift", "P")
+
+    if !lshift
+        Send Format("^!{{1}}", key)
+    else
+        Send Format("^!+{{1}}", key)
+
+    CapsLockActivate := True
+
+    if ( fun == "Center" ) {
+        if InStr(arg, "|") {
+            arg := StrSplit(arg, "|")
+            if !lshift
+                arg := Trim(arg[1])
+            else
+                arg := Trim(arg[2])
+        }
+        arg := StrSplit(arg, " ")
+        CenterHideWindow(arg*)
+    }
+}
+CapsLockRedirectCenter(arg:="") {
+    CapsLockRedirect(key:="", cycle:="Esc", fun:="Center", arg:=arg)
 }
 
 

@@ -2,8 +2,6 @@
 CapsLockActivate := False
 
 ~*CapsLock::{
-    ; Global CapsLockActivate
-    ; CapsLockActivate := True
     Send "{Esc}"
     if InStr(A_PriorHotkey, "*CapsLock")
         if A_TimeSincePriorHotkey < 333
@@ -19,15 +17,19 @@ CapsLockActivate := False
     SetScrollLockState "Off"
 }
 
-!CapsLock::!CtrlBreak
-!+CapsLock::!+CtrlBreak
+!CapsLock::!CtrlBreak   ;关闭标签
+!+CapsLock::!+CtrlBreak ;重新打开标签
 
-; 聚焦
-~CapsLock & Tab::^CtrlBreak      ;工具
-~CapsLock & LShift::^!CtrlBreak  ;编辑器
+~CapsLock & Tab::^CtrlBreak      ;聚焦 工具
+~CapsLock & LShift::^!CtrlBreak  ;聚焦 编辑器
 
-; 主菜单 工具窗口
-~CapsLock & Enter::{
+; {未使用}
+; ^!{Pause}
+; ^!+{Pause}
+~CapsLock & Esc::Return
+
+; 主菜单
+~CapsLock & AppsKey::{
     Global CapsLockActivate
     Global CenterTools, CenterToolsConfig
     if (CapsLockActivate == True) {
@@ -36,50 +38,28 @@ CapsLockActivate := False
         CapsLockActivate := False
         return
     }
-    if ( !GetKeyState("LShift", "P") ) {
-        Send "^!{NumLock}"
-        CenterHideWindow()
-    } else {
-        Send "^!+{NumLock}"
-        CenterTools := True
-        CenterToolsConfig := []
-        win := CenterHideWindow()
-        CenterToolsConfig.Push(win)
-    }
+    Send "^!{AppsKey}"
     CapsLockActivate := True
+    CenterTools := True
+    CenterToolsConfig := []
+    win := CenterHideWindow()
+    CenterToolsConfig.Push(win)
 }
+
+; ^!NumLock
+; ^!+NumLock
+~CapsLock & Enter::CapsLockRedirect(key:="NumLock", cycle:="Esc", fun:="Center")
 
 ; 导航 / 代码
-~CapsLock & RShift::{
-    if !GetKeyState("LShift", "P")
-        Send "^!{ScrollLock}"
-    else
-        Send "^!+{ScrollLock}"
-    CenterHideWindow()
-}
+~CapsLock & RShift::CapsLockRedirect(key:="ScrollLock", cycle:="Esc", fun:="Center")
 
-; {未使用}
-~CapsLock & Esc::{
-    if !GetKeyState("LShift", "P")
-        Send "^!{Pause}"
-    else
-        Send "^!+{Pause}"
-}
+~CapsLock & Space::Return
 
 ; 项目 书签
-~CapsLock & [::{
-    if !GetKeyState("LShift", "P")
-        Send "^!["
-    else
-        Send "^!+["
-    }
+~CapsLock & [::CapsLockRedirect()
+
 ; 结构 层次结构
-~CapsLock & ]::{
-    if !GetKeyState("LShift", "P")
-        Send "^!]"
-    else
-        Send "^!+]"
-}
+~CapsLock & ]::CapsLockRedirect()
 
 ; 窗口大小调整
 ~CapsLock & Left:: Send "^!{Left}"
@@ -89,113 +69,44 @@ CapsLockActivate := False
 
 ; 书签描述符
 ^!`::Return
-~CapsLock & `::{
-    Global CapsLockActivate
-    Send "^!``"
-    CapsLockActivate := True
-    CenterHideWindow()
-}
-
-; 在Explorer中显示 选择打开
-^!e::Return
-~CapsLock & e::{
-    Global CapsLockActivate
-    CapsLockActivate := True
-    if !GetKeyState("LShift", "P")
-        Send "^!e"
-    else
-        Send "^!+e"
-}
+~CapsLock & `::CapsLockRedirect()
 
 ; 跳转到导航栏
 ^!o::Return
-~CapsLock & o::{
-    Send "^!o"
-    Global CapsLockActivate
-    CapsLockActivate := True
-}
+~CapsLock & o::CapsLockRedirect()
+
+; 最近文件
+~CapsLock & p::CapsLockRedirect()
 
 ; Git工具 VCS操作
 ^!g::Return
 ^!+g::Return
-~CapsLock & g::{
-    Global CapsLockActivate, FloatTool
-    if (CapsLockActivate == True) {
-        Send "{Esc}"
-        CapsLockActivate := False
-        return
-    }
-    if !GetKeyState("LShift", "P")
-        Send "^!g"
-    else
-        Send "^!+g"
-    CenterHideWindow()
-    CapsLockActivate := True
-}
+~CapsLock & g::CapsLockRedirectCenter()
 
 ; 宏
 ^!h::Return
 ^!+h::Return
-~CapsLock & h::{
-    if !GetKeyState("LShift", "P")
-        Send "^!h"
-    else
-        Send "^!+h"
-    CenterHideWindow()
-    Global CapsLockActivate
-    CapsLockActivate := True
-}
+~CapsLock & h::CapsLockRedirectCenter()
 
 ; 查看最近的操作组
 ^!l::Return
 ^!+l::Return
-~CapsLock & l::{
-    if !GetKeyState("LShift", "P")
-        Send "^!l"
-    else
-        Send "^!+l"
-    CenterHideWindow()
-    Global CapsLockActivate
-    CapsLockActivate := True
-}
-
+~CapsLock & l::CapsLockRedirectCenter()
 
 ; CodeGlance Pro
-^!m::Return
-^!+m::Return
-~CapsLock & m::{
-    if !GetKeyState("LShift", "P")
-        Send "^!m"
-    else
-        Send "^!+m"
-    Global CapsLockActivate
-    CapsLockActivate := True
-}
-
+^!v::Return
+^!+v::Return
+~CapsLock & v::CapsLockRedirect()
 
 ; 编辑 编辑器操作
 ^!BackSpace::Return
 ^!+BackSpace::Return
-~CapsLock & BackSpace::{
-    Global CapsLockActivate
-    if (CapsLockActivate == True) {
-        Send "{Esc}"
-        CapsLockActivate := False
-        return
-    }
-    if (!GetKeyState("LShift", "P")) {
-        Send "^!{BackSpace}"
-        CenterHideWindow()
-    } else {
-        Send "^!+{BackSpace}"
-        CenterHideWindow(700, 1100)
-    }
-    CapsLockActivate := True
-}
+~CapsLock & BackSpace::CapsLockRedirectCenter(arg:="600 1111 | 1000 1111")
 
 ; 书签 | 最近编辑
-^!\::Return
-^!+\::Return
+; ^!\::Return
+; ^!+\::Return
+; ~CapsLock & \::CapsLockRedirectCenter(arg:="1600 1100 | 1500 1100")
 ~CapsLock & \::{
     Global CapsLockActivate
     if (CapsLockActivate) {
@@ -217,14 +128,10 @@ CapsLockActivate := False
     CapsLockActivate := True
 }
 
+
 ; 外观
 ^!,::Return
-~CapsLock & ,::{
-    Global CapsLockActivate
-    Send "^!,"
-    CapsLockActivate := True
-    CenterHideWindow()
-}
+~CapsLock & ,::CapsLockRedirectCenter()
 
 ;窗口
 ^!.::Return
@@ -237,8 +144,8 @@ CapsLockActivate := False
         CapsLockActivate := False
         return
     }
-    CapsLockActivate := True
     Send "^!."
+    CapsLockActivate := True
     CenterTools := True
     CenterToolsConfig := []
     win := CenterHideWindow()
@@ -247,30 +154,15 @@ CapsLockActivate := False
 
 ;活动编辑器
 ^!/::Return
-~CapsLock & /::{
-    Global CapsLockActivate
-    Send "^!/"
-    CapsLockActivate := True
-    CenterHideWindow()
-}
+~CapsLock & /::CapsLockRedirectCenter()
 
 ; 快速列表 #上下文
 ^!;::Return
-~CapsLock & `;::{
-    Global CapsLockActivate
-    Send "^!;"
-    CapsLockActivate := True
-    CenterHideWindow()
-}
+~CapsLock & `;::CapsLockRedirectCenter()
 
 ; 快速列表 #选项卡
-^!'::Return
-~CapsLock & '::{
-    Global CapsLockActivate
-    Send "^!'"
-    CapsLockActivate := True
-    CenterHideWindow()
-}
+^!'::
+~CapsLock & '::CapsLockRedirectCenter()
 
 ; 向左/向右 滚动
 ^!f::Return
@@ -279,29 +171,9 @@ CapsLockActivate := False
 ~CapsLock & j::^!j
 
 ; 移动并滚动
-~CapsLock & PgUp::{
-    if !GetKeyState("LShift", "P")
-        Send "^!{PgUp}"
-    else
-        Send "^!+{PgUp}"
-}
-~CapsLock & PgDn::{
-    if !GetKeyState("LShift", "P")
-        Send "^!{PgDn}"
-    else
-        Send "^!+{PgDn}"
-}
+~CapsLock & PgUp::CapsLockRedirect(key:="PgUp")
+~CapsLock & PgDn::CapsLockRedirect(key:="PgDn")
 
-; 滚动到顶部底部
-~CapsLock & Home::{
-    if !GetKeyState("LShift", "P")
-        Send "^!{Home}"
-    else
-        Send "^!+{Home}"
-}
-~CapsLock & End::{
-    if !GetKeyState("LShift", "P")
-        Send "^!{End}"
-    else
-        Send "^!+{End}"
-}
+; 滚动到顶部|底部
+~CapsLock & Home::CapsLockRedirect(key:="Home")
+~CapsLock & End::CapsLockRedirect(key:="End")

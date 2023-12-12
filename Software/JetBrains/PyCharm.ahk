@@ -6,6 +6,12 @@ RegisterHelp("PyCharm" , "| Software\JetBrains\@.help          "
                        . "| Software\JetBrains\@.CapsLock.help ")
 
 
+#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "设置")
+    ; 快捷键 搜索按钮
+    AppsKey::MouseClickAndResetting(1558, 240)
+#HotIf
+
+
 #HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "运行/调试配置")
     !F1::Esc
     CapsLock::Esc

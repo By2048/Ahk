@@ -161,11 +161,23 @@ CenterToolsConfig := []
         AppsKeyEnterCount := 1
     }
 
-    ~!+`::{
-        WinWaitActive "书签描述"
-        if WinGetTitle("A") == "书签描述"
-            MoveWindowToCenter(True)
+    ~!AppsKey::{
+        CenterHideWindow()
     }
+
+    ; 修复热键替换出现的问题
+    !`::!`
+    !+`::!+`
+    ^`::^`
+    ^+`::^+`
+    ^!`::^!`
+    ^!+`::^!+`
+
+    ; ~!+`::{
+    ;     WinWaitActive "书签描述"
+    ;     if WinGetTitle("A") == "书签描述"
+    ;         MoveWindowToCenter(True)
+    ; }
 
     <#\::MoveWindowToDefaultPosition()
     <#+\::MoveWindowToBackupPosition()
@@ -182,12 +194,11 @@ CenterToolsConfig := []
     #Enter::^!Enter   ;窗口全屏
     #+Enter::^!+Enter ;Zen模式
 
-    ;切换器
-    <^Esc::^Pause
+    <^Esc::^Pause    ;切换器
     <!Esc::!Pause
     <+Esc::+Pause
-    <!+Esc::!+Pause
     <^+Esc::^+Pause
+    <!+Esc::!+Pause
 
     ;标签页管理
     ^Tab::Return
@@ -213,11 +224,6 @@ CenterToolsConfig := []
     ; Xxx
     RAlt & RShift::Send "!+{Help}"
     RShift & RAlt::Send "^!{Help}"
-
-    ^!AppsKey::{
-        HelpText(" Reload ", "Center", "Screen", 500)
-        Reload
-    }
 
     #Include @.CapsLock.ahk
 
