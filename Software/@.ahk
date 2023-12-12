@@ -30,18 +30,12 @@
 #HotIf
 
 
-EscRedirect := False
-EscCount    := 0
+Global EscRedirect := False
 #HotIf ( EscRedirect == True )
-    $Esc::
-    $CapsLock::{
-        global EscRedirect, EscCount
+   CapsLock::{
+        Global EscRedirect
         Send "{Esc}"
-        if (EscCount > 0) {
-            Send Format("{Esc {1}}", EscCount - 1)
-            EscCount := 0
-            EscRedirect := False
-        }
+        EscRedirect := False
     }
 #HotIf
 
