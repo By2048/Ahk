@@ -67,22 +67,6 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
     RAlt & RWin::Return
 #HotIf
 
-; 桌面
-#HotIf CheckWindowActive( "Explorer" , "WorkerW" )
-     F1::Run "C:\"
-     F2::Run "D:\"
-     F3::Run "E:\"
-     F4::Run "F:\"
-     F5::Run "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\"
-     F6::Run "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\"
-     F7::Run "E:\GitX\"
-     F8::Run "E:\GitPy\"
-     F9::Run "E:\Doc\"
-    F10::Run "E:\Xxxx\"
-    F11::Run "T:\"
-    F12::Run "V:\"
-    RAlt & RWin::Return
-#HotIf
 
 ; 文件管理器
 #HotIf CheckWindowActive( "Explorer" , "CabinetWClass" )
@@ -259,7 +243,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
     ; 文件名修改框
     /::ControlFocus "Edit1", "A"
 
-    $CapsLock::{
+    CapsLock::{
         Send "{Esc}"
         SetCapsLockState "Off"
     }
@@ -277,12 +261,15 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
         MoveWindowToDefaultPosition()
         GetActiveWindowInfo(False)
         try {
-            info := window.controls.DirectUIHWND2 ;左侧信息栏
+            info := window.controls.DirectUIHWND2  ;左侧信息栏
         } catch {
             return
         }
         MoveControlUDLR(info, "Left", 300, 6)
-        Send "^!7" ;平铺模式
+        Send "^!7"  ;平铺模式
     }
 
 #HotIf
+
+
+#Include Explorer.Fxx.ahk
