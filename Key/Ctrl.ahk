@@ -35,6 +35,7 @@
 >^+k::KeyboardGUI()
 
  >^x::Run "D:\#Lnk\#\Xshell.lnk"
+ >^b::Run "D:\#Lnk\#\BitComet.lnk"
  >^n::Run "D:\#Lnk\#\CloudMusic.lnk"
 >^+n::Run "D:\#Lnk\#\QQMusic.lnk"
  >^m::Run "D:\#Lnk\#\PotPlayer.lnk"
