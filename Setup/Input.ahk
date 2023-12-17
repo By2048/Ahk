@@ -20,9 +20,9 @@
 
 :o:\===::{= 80}
 
-:o:\Dism::DISM /Online /Cleanup-image /Restorehealth
+:o:\Dism::DISM /Online /Cleanup-Image /RestoreHealth
 
-:o:\Sfc::sfc /scannow
+:o:\Sfc::SFC /ScanNow
 
 
 #Include *i Input.Private.ahk
