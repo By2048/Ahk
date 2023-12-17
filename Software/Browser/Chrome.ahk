@@ -47,6 +47,7 @@ RegisterHelp("Chrome" , "| Software\Browser\@.help             "
         }
 
         A_Clipboard := ""
+        SetCapsLockState "Off"
     }
 #HotIf
 
@@ -54,6 +55,7 @@ RegisterHelp("Chrome" , "| Software\Browser\@.help             "
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "书签" )
     F2::Return
     ^r::Send "{F2}"
+    $AppsKey::Send "{AppsKey}"
 #HotIf
 
 
@@ -141,8 +143,6 @@ RegisterHelp("Chrome" , "| Software\Browser\@.help             "
         Arg.shift_cnt := 0
     }
 
-    AppsKey::Send "{F10}"
-
     ; 书签第一个
     <!\::
     <!+\::{
@@ -170,8 +170,6 @@ RegisterHelp("Chrome" , "| Software\Browser\@.help             "
         Send "^v"
         Send "{Enter}"
     }
-
-    ; LAlt Up::Send "{Esc}"
 
     ;删除搜索历史记录
     !Delete::{
