@@ -37,6 +37,12 @@
 #Include ..\Software\Wallpaper.ahk
 #Include ..\Software\WPS.ahk
 
+#Include ..\Software\Microsoft\Explorer.ahk
+#Include ..\Software\Microsoft\Office.ahk
+#Include ..\Software\Microsoft\Terminal.ahk
+#Include ..\Software\Microsoft\VSCode.ahk
+#Include ..\Software\Microsoft\Windows.ahk
+
 #Include ..\Software\Browser\Chrome.ahk
 #Include ..\Software\Browser\Edge.ahk
 #Include ..\Software\Browser\FireFox.ahk
@@ -47,12 +53,6 @@
 #Include ..\Software\JetBrains\IDEA.ahk
 #Include ..\Software\JetBrains\PyCharm.ahk
 #Include ..\Software\JetBrains\@.ahk
-
-#Include ..\Software\Microsoft\Explorer.ahk
-#Include ..\Software\Microsoft\Office.ahk
-#Include ..\Software\Microsoft\Terminal.ahk
-#Include ..\Software\Microsoft\VSCode.ahk
-#Include ..\Software\Microsoft\Windows.ahk
 
 #SingleInstance Force
 #HotString EndChars `t
