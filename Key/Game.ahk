@@ -23,6 +23,17 @@
 
 ; ------------------------------------------------- ;
 
+LWin & LCtrl::Return
+LWin & RCtrl::Return
+LWin & LAlt:: Return
+LWin & RAlt:: Return
+RWin & RAlt ::Return
+RWin & RCtrl::Return
+LCtrl & LWin::Return
+LAlt  & LWin::Return
+
+; ------------------------------------------------- ;
+
 ; LWin::Return
 ; #Tab::Return
 ; #+Tab::Return
@@ -110,6 +121,3 @@
 #Down::Return
 #Left::Return
 #Right::Return
-
-LWin & LAlt:: Return
-LWin & LCtrl::Return
