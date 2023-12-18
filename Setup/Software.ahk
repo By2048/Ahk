@@ -55,7 +55,7 @@
 #Include ..\Software\JetBrains\@.ahk
 
 #SingleInstance Force
-#HotString EndChars `t
+#HotString EndChars `t`n`s
 #NoTrayIcon
 
 CoordMode "Mouse", "Window"

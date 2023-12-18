@@ -1,7 +1,7 @@
 ﻿
 #NoTrayIcon
 #SingleInstance Force
-#HotString EndChars `t
+#HotString EndChars `t`n`s
 
 
 :o:\Date::{
