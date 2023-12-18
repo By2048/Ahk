@@ -30,8 +30,9 @@ System_Type := "Win10"
 PC_USERNAME := "Admin"
 PC_PASSWORD := "Xxxxx"
 
-; Chrome Image 存储位置
+; Chrome相关下载文件存储位置
 Chrome_Image := "T:\"
+Chrome_Video := "T:\"
 
 ; Game Image 存储位置
 Game_Image := "T:\"
