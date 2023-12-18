@@ -118,7 +118,7 @@ CenterToolsConfig := []
 
 #HotIf CheckWindowActive(JApps)
 
-    #Include ..\..\Key\Replace.ahk
+    #IncludeAgain ..\..\Key\Replace.ahk
 
     ~Esc::{
         Global CapsLockActivate

@@ -28,7 +28,7 @@ RegisterProcess("League of Legends" , "LOL_Game"  )
 
     ; D:\Game\英雄联盟\Game\League of Legends.exe
 
-    #Include ..\Key\Game.ahk
+    #IncludeAgain ..\Key\Game.ahk
 
     #Include *i LOL.Game.Private.ahk
 

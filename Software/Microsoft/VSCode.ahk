@@ -18,7 +18,7 @@ RegisterHelp("VSCode", "| Software\Microsoft\VSCode.help"
 
 #HotIf CheckWindowActive("VSCode")
 
-    #Include ..\..\Key\Replace.ahk
+    #IncludeAgain ..\..\Key\Replace.ahk
 
     Global  Arg , EscRedirect
     ~LShift::{
