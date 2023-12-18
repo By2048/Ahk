@@ -9,7 +9,7 @@ RegisterHelp("VSCode", "| Software\Microsoft\VSCode.help"
 
 
 ; 快捷键设置
-#HotIf CheckWindowActive("VSCode", "", "*User\KeyBindings.json")
+#HotIf CheckWindowActive( "VSCode" , "" , "*User\KeyBindings.json | *键盘快捷方式" )
 
     RShift::HelpFile("Software\Microsoft\VSCode.Setting.help")
 
@@ -17,6 +17,8 @@ RegisterHelp("VSCode", "| Software\Microsoft\VSCode.help"
 
 
 #HotIf CheckWindowActive("VSCode")
+
+    #Include ..\..\Key\Replace.ahk
 
     Global  Arg , EscRedirect
     ~LShift::{

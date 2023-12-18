@@ -118,6 +118,8 @@ CenterToolsConfig := []
 
 #HotIf CheckWindowActive(JApps)
 
+    #Include ..\..\Key\Replace.ahk
+
     ~Esc::{
         Global CapsLockActivate
         CapsLockActivate := False
@@ -164,14 +166,6 @@ CenterToolsConfig := []
     ~!AppsKey::{
         CenterHideWindow()
     }
-
-    ; 修复热键替换出现的问题
-    !`::!`
-    !+`::!+`
-    ^`::^`
-    ^+`::^+`
-    ^!`::^!`
-    ^!+`::^!+`
 
     ; ~!+`::{
     ;     WinWaitActive "书签描述"
