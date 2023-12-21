@@ -1,4 +1,9 @@
 ﻿
+#HotIf CheckWindowActive("BitComet", "#32770", "选项*")
+    #\::MoveWindowToPosition(Position(1500 , 1000))
+#HotIf
+
+
 #HotIf CheckWindowActive("BitComet", "#32770", "通知")
     #\::{
         MoveWindowToPosition(Position(800, 750))
@@ -62,10 +67,9 @@
             MouseMove x_origin, y_origin, 0
         }
 
-        ; 主界面 全部任务
-        _1 := " 1     13     2     3     8      6        4        9        7       5         10       11       12     "
-        _2 := " 名称  文件夹  大小   进度   需时   下载速度  下载大小  剩余大小  上传速度  上传大小   种子/用户 长效种子  分享率  "
-        _3 := " 600   180    170   70    120    120      110      110      120     110       160      90       70     "
+        _1 := " 1     12     2     3      8     6        4        9        7       5         10       11 "
+        _2 := " 名称  文件夹  大小   进度   需时   下载速度  下载大小  剩余大小  上传速度  上传大小   种子/用户 分享率  "
+        _3 := " 550   300    170   80    120    120      110      110      120     110       160      80     "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)
 
