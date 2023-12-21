@@ -52,6 +52,7 @@ Loop {
     if Ignore_Process.Has(win_process_name) {
         sleep_time := Ignore_Process.Get(win_process_name)
         Sleep sleep_time * 1000
+        continue
     }
 
     ; 自定义运行设置
