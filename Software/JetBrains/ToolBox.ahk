@@ -46,7 +46,7 @@ RegisterProcess("jetbrains-toolbox", "JetBrainsToolBox")
     CapsLock::{
         cmd := 'WT --focus  '
         cmd .= '--size "30,30" --pos "50,230"  '
-        cmd .= 'PowerShell -NoProfile -NoExit -Command  '
+        cmd .= 'PowerShell -NoProfile -WorkingDirectory T:\ -Command  '  ; -NoExit
         cmd .= '"D:\Python\#\Scripts\python.exe E:\Script\Tool\JetBrains.py"  '
         Run cmd
     }
