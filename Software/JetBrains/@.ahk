@@ -1,5 +1,5 @@
 ﻿
-JApps := "PyCharm|IDEA"
+Global JApps := "PyCharm|IDEA"
 
 #Include @.Tool.ahk
 
