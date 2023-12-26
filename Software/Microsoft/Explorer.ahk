@@ -18,9 +18,10 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
 #HotIf
 
 #HotIf CheckWindowActive( "Explorer" , "OperationStatusWindow" , "删除文件" )
-    !y::Return
-    !n::Return
-    \::Send "!a"
+    !Enter::{
+        Send "!a"
+        Send "!y"
+    }
 #HotIf
 
 #HotIf CheckWindowActive( "Explorer" , "#32770" , "删除多个项目" )
@@ -157,16 +158,17 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
         input_move_width   := 426
         input_check_width  := 388
 
-        EC := Map( "File"     , "ItemNameDisplay:1150"
-                 , "Default"  , "ItemNameDisplay:800 ItemDate:200 Size:150"
-                 , "Software" , "ItemNameDisplay:500 Comment:450 ItemDate:200"
-                 , "Recover"  , "ItemNameDisplay:420 "
-                                "Recycle.DeletedFrom:400 Recycle.DateDeleted:180 "
-                                "Size:150" )
+        Cfg := Map( "FileInfo"   , "ItemNameDisplay:800 ItemDate:200 Size:150"
+                  , "FileList"   , "ItemNameDisplay:1150"
+                  , "FolderInfo" , "ItemNameDisplay:500 Comment:450 ItemDate:200"
+                  , "FolderList" , "ItemNameDisplay:575 Comment:575"
+                  , "Recover"    , "ItemNameDisplay:420 "
+                                   "Recycle.DeletedFrom:400 Recycle.DateDeleted:180 "
+                                   "Size:150" )
 
         ; 设置 文件夹选项 查看 在标题栏中显示完整路径
-        EC["D:\"]   := EC["Software"]
-        EC["回收站"] := EC["Recover"]
+        Cfg["Default"] := Cfg["FileInfo"]
+        Cfg["回收站"]   := Cfg["Recover"]
 
         #Include *i Explorer.Columns.Private.ahk
 
@@ -188,9 +190,9 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
 
         config := ""
         if A_ThisHotkey == "#\"
-            config := EC.Get(window.title, EC["Default"])
+            config := Cfg.Get(window.title, Cfg["Default"])
         if A_ThisHotkey == "#+\"
-            config := EC["File"]
+            config := Cfg["FileList"]
 
         #Include Explorer.Columns.Tool.ahk
         SetExplorerColumns(config)
