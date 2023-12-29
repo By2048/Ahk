@@ -7,9 +7,21 @@ RegisterHelp("PotPlayer" , "| Software\PotPlayer.help"
 
 #HotIf CheckWindowActive("PotPlayer")
 
+    ~Delete::{
+        if InStr(A_PriorHotkey, "Delete")
+            if A_TimeSincePriorHotkey < 333
+                Send "+{Delete}!{y}"
+    }
+
     !CapsLock::Send "!{F4}"
 
     #Enter::Send "!{Enter}"
+
+    ~+Left::+Left
+    ~+Right::+Right
+    ~+Up::+Up
+    ~+Down::+Down
+
     #+Enter::Send "^{Enter}"
 
     #\::{
