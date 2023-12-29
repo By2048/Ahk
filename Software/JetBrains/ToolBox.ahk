@@ -43,14 +43,6 @@ RegisterProcess("jetbrains-toolbox", "JetBrainsToolBox")
     ^q::Return
     #BackSpace::Send "^q"
 
-    CapsLock::{
-        cmd := 'WT --focus  '
-        cmd .= '--size "30,30" --pos "50,230"  '
-        cmd .= 'PowerShell -NoProfile -WorkingDirectory T:\ -Command  '  ; -NoExit
-        cmd .= '"D:\Python\#\Scripts\python.exe E:\Script\Tool\JetBrains.py"  '
-        Run cmd
-    }
-
     ; add/delete to/from favorites
     ; hide the project from the Toolbox App
     ; !=::Return

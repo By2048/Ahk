@@ -26,8 +26,8 @@
 }
 ^+j::{
     cmd := 'WT --focus  '
-    cmd .= '--size "30,30" --pos "933,222"  '
-    cmd .= 'PowerShell -NoProfile -WorkingDirectory T:\ -Command  '  ; -NoExit
+    cmd .= '--size "30,30"  '
+    cmd .= 'PowerShell -NoProfile -NoExit -WorkingDirectory T:\ -Command  '
     cmd .= '"D:\Python\#\Scripts\python.exe E:\Script\Tool\JetBrains.py"  '
     Run cmd
 }
