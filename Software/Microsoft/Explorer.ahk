@@ -97,6 +97,13 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
     F11::Return
     #Enter::Send "{F11}"
 
+    ; 快速删除
+    Insert & Delete::{
+        Send "{Delete}"
+        Sleep 99
+        Send "!{y}"
+    }
+
     !/::ControlFocus "SysTreeView321", "A"
     !\::{
         ControlFocus "DirectUIHWND3", "A"
