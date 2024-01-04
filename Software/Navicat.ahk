@@ -2,6 +2,11 @@
 RegisterProcess("navicat", "Navicat")
 
 
+#HotIf CheckWindowActive( "Navicat" , "TRegistrationSubForm" )
+    Enter::Send "{Tab}{Enter}"
+#HotIf
+
+
 #HotIf CheckWindowActive( "Navicat" )
 
     ; ^r::Return

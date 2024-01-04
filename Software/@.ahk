@@ -77,7 +77,7 @@ RegisterProcess("NVIDIA Share" , "GeForceTool")
 #HotIf CheckWindowActive("FSViewer")
     [::Send "{Left}"
     ]::Send "{Right}"
-    \::Send "m"
+    `::Send "m"
     AppsKey::Send "{Delete}{Enter}"
 #HotIf
 
