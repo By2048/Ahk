@@ -26,9 +26,9 @@
 }
 ^+j::{
     cmd := 'WT --focus  '
-    cmd .= '--size "30,30"  '
+    cmd .= '--size 50,20  '
     cmd .= 'PowerShell -NoProfile -NoExit -WorkingDirectory T:\ -Command  '
-    cmd .= '"D:\Python\#\Scripts\python.exe E:\Script\Tool\JetBrains.py"  '
+    cmd .= '"D:\Python\#\Scripts\python.exe E:\Script\Python\JetBrains.py"  '
     Run cmd
 }
  >^k::KeyHistory
@@ -40,20 +40,24 @@
 >^+n::Run "D:\#Lnk\#\QQMusic.lnk"
  >^m::Run "D:\#Lnk\#\PotPlayer.lnk"
 
- >^Esc::Run "TaskMgr" ;任务管理器
->^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
-
+ >^[::Run VSCode " T:\",                                     A_InitialWorkingDir, "Hide"
+ >^]::Run VSCode " E:\Config\VSCode\Project.code-workspace", A_InitialWorkingDir, "Hide"
  >^\::Run VSCode " E:\Config\VSCode\Windows.code-workspace", A_InitialWorkingDir, "Hide"
->^+\::Run VSCode " T:\",                                     A_InitialWorkingDir, "Hide"
- >^]::Run VSCode " --new-window",                            A_InitialWorkingDir, "Hide"
- >^[::Run VSCodeDefault " --new-window",                     A_InitialWorkingDir, "Hide"
+ >^'::Run VSCode        " --new-window", A_InitialWorkingDir, "Hide"
+>^`;::Run VSCodeDefault " --new-window", A_InitialWorkingDir, "Hide"
 
  >^,::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
 >^+,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
  >^.::Run "T:\"
->^+.::Run "V:\#\"
+>^+.::Run "V:\"
  >^/::Run "E:\Script\Software\Chrome.bat", A_InitialWorkingDir, "Hide"
 >^+/::Run "D:\#Lnk\Edge.lnk",              A_InitialWorkingDir, "Hide"
+
+ >^Esc::Run "TaskMgr" ;任务管理器
+>^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
+
+ >^Enter::Run "D:\#Lnk\#AppStore\Whiteboard.lnk"
+>^+Enter::Run "D:\#Lnk\#AppStore\DevToys.lnk"
 
 
 $RCtrl::{
