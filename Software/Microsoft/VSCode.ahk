@@ -16,6 +16,12 @@ RegisterHelp("VSCode", "| Software\Microsoft\VSCode.help"
 #HotIf
 
 
+#HotIf CheckWindowActive( "VSCode" , "" , "*.sql" )
+    `;::`;
+    +;:::
+#HotIf
+
+
 #HotIf CheckWindowActive("VSCode")
 
     #IncludeAgain ..\..\Key\Replace.ahk
