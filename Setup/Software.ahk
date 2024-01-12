@@ -38,6 +38,7 @@
 #Include ..\Software\WPS.ahk
 
 #Include ..\Software\Microsoft\Explorer.ahk
+#Include ..\Software\Microsoft\MMC.ahk
 #Include ..\Software\Microsoft\Office.ahk
 #Include ..\Software\Microsoft\Terminal.ahk
 #Include ..\Software\Microsoft\VSCode.ahk

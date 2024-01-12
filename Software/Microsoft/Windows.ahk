@@ -17,6 +17,7 @@
     #\::MoveWindowToPosition(Position(888, 1111))
 #HotIf
 
+
 #HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "环境变量" )
     #\::{
         MoveWindowToPosition(Position(1500, 1100))
@@ -112,21 +113,6 @@
     ;点击返回
     Esc::MouseClickAndResetting(38, 23)
 
-#HotIf
-
-
-; 服务
-#HotIf CheckWindowActive( "MMC" , "" , "服务" )
-    #\::{
-        MoveWindowToPosition(Position(1777 , 1200))
-        name  := "SysListView321"
-        width := Map( 1 , 330   ;名称
-                    , 2 , 460   ;描述
-                    , 3 , 70    ;状态
-                    , 4 , 110   ;启动类型
-                    , 5 , 70  ) ;登录为
-        SetColumnWidth(name, width)
-    }
 #HotIf
 
 
