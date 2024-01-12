@@ -22,6 +22,8 @@ RegisterHelp("VSCode", "| Software\Microsoft\VSCode.help"
 #HotIf
 
 
+WPD["VSCode"] := Position(1999 , 1222)
+
 #HotIf CheckWindowActive("VSCode")
 
     #IncludeAgain ..\..\Key\Replace.ahk

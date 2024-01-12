@@ -100,7 +100,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
     ; 快速删除
     Insert & Delete::{
         Send "{Delete}"
-        Sleep 99
+        Sleep 333
         Send "!{y}"
     }
 
@@ -165,7 +165,9 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
         input_move_width   := 426
         input_check_width  := 388
 
-        Cfg := Map( "FileInfo"   , "ItemNameDisplay:800 ItemDate:200 Size:150"
+        ; "ItemNameDisplay:800 ItemDate:200 Size:150"
+        ; "ItemNameDisplay:1000 Size:150"
+        Cfg := Map( "FileInfo"   , "ItemNameDisplay:1000 Size:150"
                   , "FileList"   , "ItemNameDisplay:1150"
                   , "FolderInfo" , "ItemNameDisplay:500 Comment:450 ItemDate:200"
                   , "FolderList" , "ItemNameDisplay:575 Comment:575"
@@ -235,6 +237,11 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
         }
 
         MouseMove x_origin, y_origin, 0
+    }
+
+    CapsLock & Enter::{
+        path := " E:\Project\Ahk\Software\Microsoft\Explorer.Columns.Private.ahk "
+        Run VSCode . path
     }
 
 #HotIf
