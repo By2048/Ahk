@@ -29,7 +29,7 @@ RegisterProcess("7zFM" , "7-Zip")
         if InStr(window.title, ".iso")
             cfg := " 1:名称:700  2:文件夹:100  3:文件:100  4:大小:140 "
         cfg := GetColumnConfig(cfg)
-        SetColumnWidth("SysListView321", config)
+        SetColumnWidth("SysListView321", cfg)
     }
 
     ; 注册表相关操作

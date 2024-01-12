@@ -3,20 +3,18 @@ RegisterHelp("Xshell", "Software\NetSarang.Xshell.help")
 
 
 #HotIf CheckWindowActive("Xftp")
-    #\::{
-        MoveWindowToPosition(Position(2200 , 1200))
-    }
+    #\::MoveWindowToPosition(Position(2200 , 1200))
 #HotIf
 
 
 #HotIf CheckWindowActive("XshellCore", "#32770", "自定义按键对应")
     #\::{
-        _name  := "SysListView321"
-        _width := Map( 1 , 200   ;组合键
-                     , 2 , 150   ;类型
-                     , 3 , 300   ;操作
-                     , 4 , 150 ) ;参数
-        SetColumnWidth(_name, _width)
+        name  := "SysListView321"
+        width := Map( 1 , 200   ;组合键
+                    , 2 , 150   ;类型
+                    , 3 , 300   ;操作
+                    , 4 , 150 ) ;参数
+        SetColumnWidth(name, width)
     }
 #HotIf
 
@@ -26,10 +24,9 @@ RegisterHelp("Xshell", "Software\NetSarang.Xshell.help")
         width  := 1100
         height := 660
         MoveWindowToPosition(Position(width , height))
-        ; 主界面
-        index  := " 1    2    3    4    5     6    7        "
-        name   := " 名称 主机  端口  协议 用户名 说明  修改时间  "
-        width  := " 170  200  90   90   100   170   200     "
+        index  := " 1    2    3    4    5     6   7       "
+        name   := " 名称 主机  端口  协议 用户名 说明 修改时间 "
+        width  := " 170  200  90   90   100   170  200    "
         config := GetColumnConfig(index, name, width)
         SetColumnWidth("SysListView321" , config)
     }
@@ -37,6 +34,8 @@ RegisterHelp("Xshell", "Software\NetSarang.Xshell.help")
 
 
 #HotIf CheckWindowActive("Xshell")
+
+    ~>^\::Return
 
     ;下一个选项卡
     ^]::Return
