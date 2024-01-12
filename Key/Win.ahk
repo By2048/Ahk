@@ -117,16 +117,18 @@
 ;插入表情
 <#j::#`;
 
-<#,::Send "#x"          ;系统菜单
-<#.::Run "control"      ;控制面板
-<#/::Run "MS-Settings:" ;设置
-<#+/::{                  ;环境编辑器
+<#,::Send "#x" ;系统菜单
+<#.::Run "control" ;控制面板
+<#+.::{ ;环境编辑器
     Run "sysdm.cpl"
     WinWaitActive "ahk_exe SystemPropertiesComputerName.exe",  , 3
     MoveWindowToCenter(True)
     Send "^{Tab 2}"
     Send "!n"
 }
+<#/::Run "MS-Settings:" ;设置 基础
+<#+/::Run "E:\Config\Windows.msc" ;设置 高级
+
 
 ;类似于Vim的快捷键操作工具
 <#;::Run HuntAndPeck . " /tray" ;任务栏
