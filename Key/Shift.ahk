@@ -1,5 +1,5 @@
 
-~RShift::{
+$RShift::{
 
     Send "{Blind}{vkFF}"
 

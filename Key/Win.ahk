@@ -296,25 +296,8 @@
 >#`;::Send "^!;" ;识图
 >#':: Send "^!'" ;翻译
 
-; RWin设置
-RWin::{
+; 默认窗口居中 其他的通过软件中设置
+$RWin::{
     Send "{Blind}{vkFF}"
-    Global Arg
-    if (Arg.win_cnt > 0) {
-        Arg.win_cnt += 1
-        return
-    } else {
-        Arg.win_cnt := 1
-    }
-    SetTimer Timer, -500
-    Timer() {
-        Global Arg
-        if Arg.win_cnt == 1
-            MoveWindowToCenter(True)
-        else if Arg.win_cnt == 2
-            MoveWindowToDefaultPosition()
-        else if Arg.win_cnt == 3
-            MoveWindowToBackupPosition()
-        Arg.win_cnt := 0
-    }
+    MoveWindowToCenter(True)
 }
