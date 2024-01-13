@@ -10,6 +10,13 @@
 ^!-::Return ;向下切换
 ^!=::Return ;向上切换
 
+>+Up::+Up
+>+Down::+Down
+>+Left::+Left
+>+Right::+Right
+>+Insert::+Insert
+>+Delete::+Delete
+
 !1::Send "^!1"
 !2::Send "^!2"
 !3::Send "^!3"
