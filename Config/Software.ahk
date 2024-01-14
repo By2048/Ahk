@@ -131,3 +131,13 @@ WPD["MsPaint"] := Position(0.7 , 0.88)
 
 ; 资源监视器
 WPD["SystemMonitor"] := Position(2250 , 1350)
+
+RegisterPosition(cfg, args, mode:="Default")
+{
+    Global Windows_Position_Default
+    Global Windows_Position_Backup
+    if mode == "Default"
+        Windows_Position_Default[cfg] := args
+    else if mode == "Backup"
+        Windows_Position_Backup[cfg] := args
+}
