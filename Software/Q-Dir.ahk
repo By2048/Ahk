@@ -1,14 +1,9 @@
 ﻿
-#HotIf CheckWindowActive( "Q-Dir" , "#32770" , "MiniBrowserOK" )
-    #\::{
-        WPD["Q-Dir_#32770_MiniBrowserOK"] := Position(1555, 1333)
-        MoveWindowToDefaultPosition()
-    }
-#HotIf
+RegisterPosition( "Q-Dir_#32770_MiniBrowserOK" , Position(1555, 1333) )
 
 
 #HotIf CheckWindowActive( "Q-Dir" , "#32770" , "选项" )
-    #\::{
+    ~RWin::{
         index  := " 1        2     3    4    5      6      7    "
         name   := " 过滤条件  颜色  斜体  加粗  下划线  删除线  预览 "
         width  := " 300      100   50   50   70     70     100 "
@@ -97,10 +92,7 @@
 
     ; 刷新
     F5::Return
-    \::{
-        Send "{F5}"
-        Send "\"
-    }
+    ~\::F5
 
     ; 显示视图菜单
     +F5::Return
