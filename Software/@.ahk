@@ -35,14 +35,11 @@
     SetTimer Timer, -500
     Timer() {
         Global Arg
-        ; if Arg.alt_cnt == 2
-        ;     HighlightActiveWindow(500)
         Arg.alt_cnt := 0
     }
 }
 
 ~RShift::{
-    Send "{Blind}{vkFF}"
     Global Arg
     if (Arg.shift_cnt > 0) {
         Arg.shift_cnt += 1
@@ -64,6 +61,8 @@
     }
 }
 
+~#\::MoveWindowToDefaultPosition()
+~#+\::MoveWindowToBackupPosition()
 
 
 #HotIf ( Arg.hotkeys_show == True )
@@ -84,9 +83,9 @@ Global EscRedirect := False
 #HotIf
 
 
+RegisterPosition("Everything", Position(1700 , 1200))
 #HotIf CheckWindowActive("Everything")
-    #\::{
-        MoveWindowToPosition(Position(1700 , 1200))
+    ~*RWin::{
         cfg := " 1:名称:750  2:路径:600  3:大小:120  4:修改时间:180 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321", cfg)
@@ -141,7 +140,6 @@ RegisterProcess("NVIDIA Share" , "GeForceTool")
         Send "{F5}"
         SetCapsLockState "Off"
     }
-
     ; 读档
     F7::Return
     AppsKey::Send "{F7}"
