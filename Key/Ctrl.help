@@ -16,7 +16,8 @@
 | +K | 显示虚拟键盘   |----------------------|
 |---------------------|  Esc | 任务管理器    |
 |  X | XShell         | +Esc | HuoRongSword  |
-|  B | BitComet       |----------------------|
-|  N | CloudMusic     |  Enter | Whiteboard  |
-| +N | QQMusic        | +Enter | DevToys     |
+|  C | Calc           |----------------------|
+|  B | BitComet       |  Enter | Whiteboard  |
+|  N | CloudMusic     | +Enter | DevToys     |
+| +N | QQMusic        |
 |  M | PotPlayer      |
