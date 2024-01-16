@@ -10,13 +10,6 @@
 ^!-::Return ;向下切换
 ^!=::Return ;向上切换
 
->+Up::+Up
->+Down::+Down
->+Left::+Left
->+Right::+Right
->+Insert::+Insert
->+Delete::+Delete
-
 !1::Send "^!1"
 !2::Send "^!2"
 !3::Send "^!3"
@@ -32,7 +25,6 @@
 
 ; 预览窗口
 ; !p::Return
-; !BackSpace::Send "!p"
 
 ; 帮助
 F1::Return
@@ -54,15 +46,17 @@ F4::Return
 
 ; 刷新
 F5::Return
-+\::Send "{F5}"
+~\::F5
+~CapsLock::F5
+; ~RShift::F5
+; +\::Send "{F5}"
+; +\::Send "{F5}"
 
 ; 输入文件名 默认
 ; 切换焦点 在输入框
 ; 切换桌面焦点
 F6::Return
 +F6::Return
-; >+/::Send "{F6}"
-; <+/::Send "+{F6}"
 !Tab::Send "{F6}"
 !+Tab::Send "+{F6}"
 

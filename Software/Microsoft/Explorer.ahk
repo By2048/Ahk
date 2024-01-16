@@ -17,12 +17,14 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
     }
 #HotIf
 
+
 #HotIf CheckWindowActive( "Explorer" , "OperationStatusWindow" , "删除文件" )
     !Enter::{
         Send "!a"
         Send "!y"
     }
 #HotIf
+
 
 #HotIf CheckWindowActive( "Explorer" , "#32770" , "删除多个项目" )
     !y::Return
@@ -45,6 +47,13 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
     }
 #HotIf
 
+
+#HotIf CheckWindowActive( "Explorer" , "#32770" , "回收站*" )
+    ;回收站位置 可用空间
+    #\::SetColumnWidth( "SysListView321" , Map( 1,400 , 2,100 ) )
+#HotIf
+
+
 #HotIf CheckWindowActive( "Explorer" , "#32770" )
     ^Tab::Return
     ^+Tab::Return
@@ -52,6 +61,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
     !+Tab::Send "^+{Tab}"
     !CapsLock::Send "!{F4}"
 #HotIf
+
 
 ; 任务栏
 #HotIf CheckWindowActive( "Explorer" , "Shell_TrayWnd" )
@@ -198,9 +208,9 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
         }
 
         config := ""
-        if A_ThisHotkey == "#\"
+        if InStr(A_ThisHotkey, "#\")
             config := Cfg.Get(window.title, Cfg["Default"])
-        if A_ThisHotkey == "#+\"
+        if InStr(A_ThisHotkey, "#+\")
             config := Cfg["FileList"]
 
         #Include Explorer.Columns.Tool.ahk
@@ -246,12 +256,14 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
 
 #HotIf
 
+
 ; 通用设置
 #HotIf CheckWindowActive( "Explorer" )
 
     #IncludeAgain Explorer.Key.ahk
 
 #HotIf
+
 
 ; 打开的窗口
 #HotIf CheckWindowActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|选择文件夹|另存为|浏览" )
