@@ -111,14 +111,17 @@ RegisterHelp("BitComet", "Software\BitComet.help")
             MouseMove x_origin, y_origin, 0
         }
 
-        _1 := " 1     12     2     3      8     6        4        9        7       5         10       11 "
-        _2 := " 名称  文件夹  大小   进度   需时   下载速度  下载大小  剩余大小  上传速度  上传大小   种子/用户 分享率  "
-        _3 := " 550   266    200   80    122    120      110      110      120     110       160      80     "
+        _1 := " 1     12     2     3     9        8     6        4         7       5         10       11     "
+        _2 := " 名称  文件夹  大小   进度  剩余大小  需时   下载速度  下载大小   上传速度  上传大小   种子/用户 分享率  "
+        _3 := " 620   200    200   80    110     130    120      110       120     110       150      80     "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)
 
         #Include *i BitComet.Private.ahk
     }
+
+    ; 显示详细信息
+    !\::Send "!{V}{Down 4}{Enter}"
 
     ^AppsKey::{
         MouseGetPos &x, &y, &win_id, &win_control
