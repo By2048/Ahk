@@ -1,9 +1,24 @@
 
+RegisterHelp("FFRenamePro" , "Software\FFRenamePro.help")
+
+RegisterPosition("FFRenamePro" , Position(2100 , 1234))
+
+
+; TConfigForm   参数设置
+; TGoRenameOKForm   批量更名完成
+
+
 #HotIf CheckWindowActive("FFRenamePro")
 
-    Esc::{
-        Send "{Esc}"
-        Send "!c"
+    Esc::
+    CapsLock::{
+        GetActiveWindowInfo(False)
+        win_class := window.class
+        win_title := window.title
+        if win_class == "TFilterForm" ;对象过滤设置对象过滤设置
+            Send "!c"
+        else if win_class == "TFileNameEditorForm" ;文件名编辑器
+            Send "!c"
     }
 
     ; 退出
@@ -12,14 +27,14 @@
 
     ; 参数设置
     ^s::Return
-    ,::Send "^s"
+    !AppsKey::Send "^s"
 
     ; 添加文件或文件夹
     ^o::Return
-    [::Send "^o"
+    ![::Send "^o"
 
     ; 添加一个文件夹下的对象
-    ]::Send "!{f}{d}"
+    !]::Send "^g"
 
     ; 反选
     ^i::Return
@@ -33,14 +48,14 @@
     ^d::Return
     ^!u::Return
     ^!d::Return
-    PgUp::Send "^u"
-    PgDn::Send "^d"
-    Home::Send "^!u"
-    End::Send "^!d"
+    !PgUp::Send "^u"
+    !PgDn::Send "^d"
+    !Home::Send "^!u"
+    !End::Send "^!d"
 
     ; 隐藏所选项目
     ^h::Return
-    Delete::Send "^h"
+    !Delete::Send "^h"
 
     ; 结束当前命令 (插入空命令)
     F2::Return
@@ -50,15 +65,15 @@
 
     ; 文件名编辑器
     F4::Return
-    /::Send "{F4}"
+    !\::Send "{F4}"
 
     ; 刷新
     F5::Return
-    \::Send "{F5}"
+    ~RShift::F5
 
     ; 对象过滤设置工具
-    .::Send "{F6}"
     F6::Return
+    !/::F6
 
     ; 导出列表内容到文件
     F7::Return
@@ -74,24 +89,12 @@
     F10::Return
     !Enter::Send "{F10}"
 
-    ; 定义用户自定义元变里<USER0>n<USER9>
+    ; 定义用户自定义元变里<USER0>~<USER9>
     F11::Return
+    !,::F11
 
     ; 查看用户自定义元变量<USER0>~<USER9>
     F12::Return
-
-    #\::MoveWindowToPosition(Position(2333 , 1333))
+    !.::F12
 
 #HotIf
-
-; 文件名编辑器
-; #HotIf ( CheckWindowActive("FFRenamePro" , "TFileNameEditorForm") )
-; #HotIf
-
-; 参数设置
-; #HotIf ( CheckWindowActive("FFRenamePro" , "TConfigForm") )
-; #HotIf
-
-; 批量更名完成
-; #HotIf ( CheckWindowActive("FFRenamePro" , "TGoRenameOKForm") )
-; #HotIf
