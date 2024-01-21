@@ -246,20 +246,16 @@
     Sleep 300
     Send "#k"
 }
- <#m::Send "#," ;显示隐藏所有应用
+<#m::Send "#," ;显示隐藏所有应用
 <#+m::Send "#d" ;切换隐藏所有应用界面
 
-; 修改窗口透明度
-; <#WheelUp::SetWindowTransparent(10)
-; <#WheelDown::SetWindowTransparent(-10)
-
 ; 屏幕截图 临时 | 长久
- <#Insert::ScreenShot("T:\")
-<#+Insert::ScreenShot("F:\Image\Screen\")
+<#Insert::ScreenShotFull(ScreenShot_Full)
+<#+Insert::ScreenShotFull(ScreenShot_Temp)
 
 ;软件截图 临时 | 长久
- <#Delete::SoftwareShot("T:\")
-<#+Delete::SoftwareShot("F:\Image\Screen\")
+<#Delete::ScreenShotSoftware(ScreenShot_Software)
+<#+Delete::ScreenShotSoftware(ScreenShot_Temp)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -281,7 +277,7 @@
     }
 }
 
- >#Space::WindowsTerminal("Focus", "T:\\")
+>#Space::WindowsTerminal("Focus", "T:\\")
 >#+Space::WindowsTerminal("Full" , "T:\\")
 
 ; Snipaste 截图 贴图

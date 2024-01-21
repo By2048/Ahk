@@ -49,7 +49,7 @@ WindowsTerminal(mode:="Focus", folder:="")
 
 
 ; 屏幕截图
-ScreenShot(path:="", slient:=True)
+ScreenShotFull(path:="", slient:=True)
 {
     if ( !slient and !FileExist(path) ) {
         HelpText("`n Snipaste Error `n", "Center", "Screen", 500)
@@ -71,7 +71,7 @@ ScreenShot(path:="", slient:=True)
 
 
 ; 软件设置界面截图保存
-SoftwareShot(path:="", slient:=True)
+ScreenShotSoftware(path:="", slient:=True)
 {
     if ( !slient and !FileExist(path) ) {
         HelpText("`n Snipaste Error `n", "Center", "Screen", 500)

@@ -30,12 +30,17 @@ System_Type := "Win10"
 PC_USERNAME := "Admin"
 PC_PASSWORD := "Xxxxx"
 
-; Chrome相关下载文件存储位置
-Chrome_Image := "T:\"
-Chrome_Video := "T:\"
+; 临时文件位置
+Temp_Path := "C:\Ahk\Temp\"
 
-; Game Image 存储位置
-Game_Image := "T:\"
+; Chrome相关下载文件存储位置
+Chrome_Image := "C:\Ahk\Image\"
+Chrome_Video := "C:\Ahk\Video\"
+
+; 截图位置 全屏 软件 游戏
+ScreenShot_Temp     := "C:\Ahk\ScreenShot\"
+ScreenShot_Full     := "C:\Ahk\ScreenShot\"
+ScreenShot_Software := "C:\Ahk\ScreenShot\"
 
 ;---------------------------------------------------------------------------;
 ; 通用GUI默认设置
