@@ -19,41 +19,32 @@ RegisterHelp("BitComet", "Software\BitComet.help")
 
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
 
-    SetPos() {
-        cfg := " 1:名称:999  2:大小:130  3:%:100 "
-        cfg := GetColumnConfig(cfg)
-        SetColumnWidth("SysListView321" , cfg)
-    }
-
     ; 立即下载
     CapsLock::{
         SetControlDelay -1
         ControlClick "Button27", "A"
     }
 
-    F2::
-    #\::{
-        MoveWindowToPosition(Position(1350, 800))
-        SetPos()
-    }
-
-    F3::
-    #+\::{
-        MoveWindowToPosition(Position(1350, 1300))
-        SetPos()
-    }
-
-    ; 保存到
-    F6::{
-        SetControlDelay -1
-        ControlClick "wxWindow1", "A"
-        Send "{Down}"
-    }
-
-    ; 文件名排序
-    F7::{
+    ; 文件名称排序
+    F2::{
         SetControlDelay -1
         ControlClick "SysHeader321", "A"
+    }
+
+    ; 全选
+    F3::{
+        ControlSetChecked True, "Button5", "A"
+    }
+
+    ; 快速选择路径
+    F6::
+    F7::{
+        SetControlDelay -1
+        ControlClick "wxWindow1", "A"
+        if InStr(A_ThisHotkey, "F6")
+            Send "{Down}"
+        if InStr(A_ThisHotkey, "F7")
+            Send "{Up}"
     }
 
     ; 选择下载文件夹
@@ -62,9 +53,13 @@ RegisterHelp("BitComet", "Software\BitComet.help")
         ControlClick "Button2", "A"
     }
 
-    ; 全选
-    F11::{
-        ControlSetChecked True, "Button5", "A"
+    ; 窗口位置
+    F11::
+    #\::{
+        MoveWindowToPosition(Position(1300, 1000))
+        cfg := " 1:名称:999  2:大小:111  3:%:77 "
+        cfg := GetColumnConfig(cfg)
+        SetColumnWidth("SysListView321" , cfg)
     }
 
     !Tab::^Tab
@@ -121,7 +116,7 @@ RegisterHelp("BitComet", "Software\BitComet.help")
     }
 
     ; 显示详细信息
-    !\::Send "!{V}{Down 4}{Enter}"
+    CapsLock::Send "!{V}{Down 4}{Enter}"
 
     ^AppsKey::{
         MouseGetPos &x, &y, &win_id, &win_control
