@@ -1,6 +1,9 @@
 ﻿
 RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
 
+RegisterPosition( "FreeFileSync__摘要" , Position(600 , 400) )
+RegisterPosition( "FreeFileSync" , Position(2000 , 1111) )
+
 
 #HotIf CheckWindowActive( "FreeFileSync" , "" , "同步设置" )
 
@@ -80,6 +83,7 @@ RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
     ; 开始同步
     !Enter::Send "{F9}"
 
-    #\::MoveWindowToPosition(Position(2222 , 1111))
+    ; 显示摘要
+    ; LAlt & RShift::Send "!{t}{Up}{Enter}"
 
 #HotIf
