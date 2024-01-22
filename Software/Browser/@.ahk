@@ -110,10 +110,12 @@ Browser := " Chrome | Edge | Opera | FireFox "
     !Esc::Send "+{Esc}"
     +ESc::Return
 
-    ;主页
-    !BackSpace::Send "!{Home}"
+    ;鼠标宏快捷键
+    MButton::Send "^t"
+    !BackSpace::Send "^r" ;刷新
+    !Enter::Send "{MButton}" ;新建标签
 
-    ; 切换标签页
+    ;切换标签页
     !Tab::Send "^{Tab}"
     !+Tab::Send "^+{Tab}"
     !Home::Send "^1"
