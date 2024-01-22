@@ -7,11 +7,31 @@ RegisterHelp("PotPlayer" , "| Software\PotPlayer.help"
 
 #HotIf CheckWindowActive("PotPlayer")
 
-    ~Delete::{
+    $Insert::{
+        if InStr(A_PriorHotkey, "Insert") {
+            if A_TimeSincePriorHotkey < 333 {
+                rule := "播放列表 ahk_exe PotPlayerMini64.exe"
+                if !WinExist(rule) {
+                    Send "{F6}^f"
+                    Sleep 333
+                    WinClose(rule)
+                } else {
+                    WinActivate(rule)
+                    Sleep 333
+                    Send "^f"
+                    WinActivate("ahk_exe PotPlayerMini64.exe ahk_class PotPlayer64")
+                }
+            }
+        }
+    }
+
+    $Delete::{
         if InStr(A_PriorHotkey, "Delete")
             if A_TimeSincePriorHotkey < 333
                 Send "+{Delete}!{y}"
     }
+
+    CapsLock::WinClose("A")
 
     !CapsLock::Send "!{F4}"
 
