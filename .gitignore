@@ -3,6 +3,8 @@
 *.Backup.*
 *.Test.*
 
+*.lnk
+
 Script.txt
 
 /.vscode/
