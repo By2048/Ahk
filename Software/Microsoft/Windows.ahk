@@ -106,13 +106,10 @@
 
 
 ; 设置
+RegisterPosition( "WindowsSettings_ApplicationFrameWindow_设置" , Position(1800 , 1200) )
+
 #HotIf CheckWindowActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
-
-    #\::MoveWindowToPosition(Position(1800 , 1200))
-
-    ;点击返回
-    Esc::MouseClickAndResetting(38, 23)
-
+    Esc::MouseClickAndResetting( 38 , 23 ) ;点击返回
 #HotIf
 
 
