@@ -112,8 +112,8 @@ Browser := " Chrome | Edge | Opera | FireFox "
 
     ;鼠标宏快捷键
     MButton::Send "^t"
-    !BackSpace::Send "^r" ;刷新
-    !Enter::Send "{MButton}" ;新建标签
+    !BackSpace::Send "^r"
+    !Enter::Send "^{Click}"
 
     ;切换标签页
     !Tab::Send "^{Tab}"

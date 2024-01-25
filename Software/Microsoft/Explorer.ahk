@@ -107,6 +107,8 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
     F11::Return
     #Enter::Send "{F11}"
 
+    CapsLock::WinClose("A")
+
     ; 快速删除
     Insert & Delete::{
         Send "{Delete}"
