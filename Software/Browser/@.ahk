@@ -2,11 +2,16 @@
 #Include @.Tool.ahk
 
 
-Browser := " Chrome | Edge | Opera | FireFox "
-
 ; https://support.google.com/chrome/answer/157179
 
-#HotIf CheckWindowActive(Browser)
+#HotIf CheckWindowActive( " Chrome | Edge | Opera | FireFox " )
+
+    ;鼠标宏快捷键
+    MButton::Send "^t"
+    !BackSpace::Send "^r"
+    !Enter::Send "^{Click}"
+
+    $LAlt::Return
 
     ;帮助
     F1::Return
@@ -109,11 +114,6 @@ Browser := " Chrome | Edge | Opera | FireFox "
     ;任务管理
     !Esc::Send "+{Esc}"
     +ESc::Return
-
-    ;鼠标宏快捷键
-    MButton::Send "^t"
-    !BackSpace::Send "^r"
-    !Enter::Send "^{Click}"
 
     ;切换标签页
     !Tab::Send "^{Tab}"
