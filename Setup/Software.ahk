@@ -20,6 +20,7 @@
 #Include ..\Software\FFRenamePro.ahk
 #Include ..\Software\FoxMail.ahk
 #Include ..\Software\FreeFileSync.ahk
+#Include ..\Software\FSViewer.ahk
 #Include ..\Software\Geek.ahk
 #Include ..\Software\LOL.ahk
 #Include ..\Software\Music.ahk

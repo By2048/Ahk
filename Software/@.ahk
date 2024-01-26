@@ -117,14 +117,6 @@ RegisterProcess("NVIDIA Share" , "GeForceTool")
 #HotIf
 
 
-#HotIf CheckWindowActive("FSViewer")
-    [::Send "{Left}"
-    ]::Send "{Right}"
-    `::Send "m"
-    AppsKey::Send "{Delete}{Enter}"
-#HotIf
-
-
 ; 文件预览
 #HotIf CheckWindowActive("PowerToys.Peek.UI")
          Esc::Send "#z"
