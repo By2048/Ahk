@@ -23,7 +23,7 @@
 #+\::MoveWindowToBackupPosition()
 
 ; 窗口全屏
-#Enter::Send "^!{Enter}"
+#Enter:: Send "^!{Enter}"
 #+Enter::Send "^!+{Enter}"
 
 ; 结束应用\进程
@@ -45,7 +45,7 @@
     }
     if IsDesktops()
         return
-    Try WinClose AID(window.id)
+    try WinClose AID(window.id)
 }
 ; 结束进程
 #+BackSpace::{
@@ -58,15 +58,15 @@
 }
 
 ; UI缩放快捷键
-#0::Send "^!0"
+#0:: Send "^!0"
 #+0::Send "^!+0"
-#-::Send "^!-"
+#-:: Send "^!-"
 #+-::Send "^!+-"
-#=::Send "^!="
+#=:: Send "^!="
 #+=::Send "^!+="
 
 ; 设置快捷键
-#AppsKey::Send "^!{AppsKey}"
+#AppsKey:: Send "^!{AppsKey}"
 #+AppsKey::Send "^!+{AppsKey}"
 
 ;声音
@@ -74,8 +74,7 @@
 #PgDn::Send "{Volume_Down}"
 #+PgUp::
 #+PgDn::{
-    ; 显示声音调整UI
-    Send "{Volume_Down}{Volume_Up}"
+    Send "{Volume_Down}{Volume_Up}" ;显示声音调整UI
     ; 调整音量时 不能准确调整到指定数值 存在小数点偏差
     volume_offset  := 5
     volume_steps   := [ 11, 22, 33, 44, 55, 66, 77, 88, 99 ]
@@ -105,9 +104,9 @@
 ; PowerToy
 ; #t 窗口置顶
 ; #o Orc
-<#x::Send "#^!x"   ; 裁剪
+<#x:: Send "#^!x"  ; 裁剪
 <#+x::Send "#^!+x" ; 锁定
-<#g::Send "#^!g"   ; 鼠标荧光笔
+<#g:: Send "#^!g"  ; 鼠标荧光笔
 <#+g::Send "#^!+g" ; 屏幕标尺
 
 ;切换任务栏应用（预览
@@ -126,9 +125,8 @@
     Send "^{Tab 2}"
     Send "!n"
 }
-<#/::Run "MS-Settings:" ;设置 基础
+<#/:: Run "MS-Settings:" ;设置 基础
 <#+/::Run "E:\Config\Windows.msc" ;设置 高级
-
 
 ;类似于Vim的快捷键操作工具
 <#;::Run HuntAndPeck . " /tray" ;任务栏
@@ -137,9 +135,8 @@
 ; 复制文件路径
 <#c::{
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if (not hwnd) {
+    if not hwnd
         return
-    }
     result := ""
     for win in ComObject("Shell.Application").Windows {
         if (win.hwnd == hwnd) {
@@ -228,7 +225,6 @@
     if not select
         return
 
-
     if A_ThisHotkey == "<#h"
         for item in select
             RenameToMd5(item)
@@ -246,16 +242,16 @@
     Sleep 300
     Send "#k"
 }
-<#m::Send "#," ;显示隐藏所有应用
+<#m:: Send "#," ;显示隐藏所有应用
 <#+m::Send "#d" ;切换隐藏所有应用界面
 
 ; 屏幕截图 临时 | 长久
-<#Insert::ScreenShotFull(ScreenShot_Full)
+<#Insert:: ScreenShotFull(ScreenShot_Full)
 <#+Insert::ScreenShotFull(ScreenShot_Temp)
 
 ;软件截图 临时 | 长久
-<#Delete::ScreenShotSoftware(ScreenShot_Software)
-<#+Delete::ScreenShotSoftware(ScreenShot_Temp)
+<#Delete:: ScreenShotSoftware(ScreenShot_Software)
+<#+Delete::ScreenShotSoftware(ScreenShot_Temp    )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -277,7 +273,7 @@
     }
 }
 
->#Space::WindowsTerminal("Focus", "T:\\")
+>#Space:: WindowsTerminal("Focus", "T:\\")
 >#+Space::WindowsTerminal("Full" , "T:\\")
 
 ; Snipaste 截图 贴图
