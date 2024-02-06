@@ -7,6 +7,7 @@
 #HotIf
 
 
+
 #HotIf CheckWindowActive( "MMC" , "MMCMainFrame" , "*共享文件夹*" )
     #\::{
         GetActiveWindowInfo()
@@ -39,6 +40,7 @@
 #HotIf
 
 
+
 #HotIf CheckWindowActive( "MMC" , "MMCMainFrame" , "*服务*" )
     #\::{
         name  := "SysListView321"
@@ -50,6 +52,7 @@
         SetColumnWidth(name, width)
     }
 #HotIf
+
 
 
 #HotIf CheckWindowActive( "MMC" , "MMCMainFrame" , "*事件查看器*" )
@@ -85,11 +88,13 @@
 #HotIf
 
 
+
+RegisterPosition( "MMC" , Position(2000 , 1222) )
 #HotIf CheckWindowActive( "MMC" )
     #\::{
         MoveWindowToPosition(Position(2000 , 1222))
-        tree_width   := 270
-        check_offset := 3
+        tree_width   := 333
+        check_offset := 22
         move_offset  := 13
         GetActiveWindowInfo(False)
         info := window.controls.SysTreeView321
