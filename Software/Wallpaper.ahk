@@ -6,7 +6,7 @@ RegisterHelp("Wallpaper" , "Software\Wallpaper.help")
 
 #HotIf CheckWindowActive( "Wallpaper" )
 
-    SleepTime := 200
+    SleepTime := 333
     Offset := 99
 
     ClickImage(image) {
@@ -39,39 +39,6 @@ RegisterHelp("Wallpaper" , "Software\Wallpaper.help")
         G.Show(Format("x{} y{} w{} h{}", x, y, w, h))
     }
 
-    ; 设置
-    F10::Return
-    AppsKey::Send "{F10}"
-    LShift::Send "{F10}"
-
-    ; 订阅
-    Tab::
-    F2::{
-        MouseClick "Right"
-        Sleep SleepTime
-        ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Download.png")
-    }
-
-    ; 取消订阅
-    !CapsLock::
-    F3::{
-        MouseClick "Right"
-        Sleep SleepTime
-        ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Delete.png")
-        Send "{Enter}"
-    }
-
-    ; 在资源管理器中打开
-    CapsLock::{
-        MouseClick "Right"
-        Sleep SleepTime
-        ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Open.png")
-    }
-
-    ; 翻页
-    PgUp::PageTool("PgUp")
-    PgDn::PageTool("PgDn")
-
     #\::{
         x := 0
         y := 0
@@ -80,5 +47,7 @@ RegisterHelp("Wallpaper" , "Software\Wallpaper.help")
         pos := Position(x, y, w, h)
         MoveWindowToPosition(pos)
     }
+
+    #Include *i Wallpaper.Mouse.ahk
 
 #HotIf
