@@ -16,9 +16,8 @@ RegisterHelp("VSCode", "| Software\Microsoft\VSCode.help"
 #HotIf
 
 
-#HotIf CheckWindowActive( "VSCode" , "" , "*.sql" )
-    `;::`;
-    +;:::
+#HotIf CheckWindowActive( "VSCode" , "" , " *.sql | *.bat | *.ps1 " )
+    #IncludeAgain ..\..\Key\Reset.ahk
 #HotIf
 
 
