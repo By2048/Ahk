@@ -1,7 +1,6 @@
 ﻿
 RegisterProcess("cloudmusic" , "CloudMusic")
 
-
 #HotIf CheckWindowActive( "CloudMusic" , "DesktopLyrics" )
 
     #\::{
@@ -15,10 +14,13 @@ RegisterProcess("cloudmusic" , "CloudMusic")
 #HotIf
 
 
+
 #HotIf CheckWindowActive( "CloudMusic" )
 
     ; 播放暂停
     F5::Return
+
+    CapsLock::Send "{Esc}"
 
     global CM_Main_Detail := "Main"
     /::{
@@ -77,7 +79,10 @@ RegisterProcess("cloudmusic" , "CloudMusic")
 #HotIf
 
 
+
 #HotIf CheckWindowActive( "QQMusic" )
+
+    CapsLock::Send "{Esc}"
 
     #\::MoveWindowToPosition(Position(1800 , 1100))
 
