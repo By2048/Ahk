@@ -3,7 +3,7 @@ CapsLockActivate := False
 
 ~*CapsLock::{
     Send "{Esc}"
-    if InStr(A_PriorHotkey, "*CapsLock")
+    if InStr(A_PriorHotkey, "CapsLock")
         if A_TimeSincePriorHotkey < 333
             Send "{CtrlBreak}"
     SetCapsLockState "Off"
@@ -50,7 +50,7 @@ CapsLockActivate := False
 ; ^!+NumLock
 ~CapsLock & Enter::CapsLockRedirect(key:="NumLock", cycle:="Esc", fun:="Center")
 
-; 导航 / 代码
+; 导航 / 代码 ScrollLock
 ~CapsLock & RShift::CapsLockRedirect(key:="ScrollLock", cycle:="Esc", fun:="Center")
 
 ~CapsLock & Space::Return

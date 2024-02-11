@@ -96,6 +96,8 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
     ; Num Lock + 加号 (+) 显示选定文件夹中的内容
     ; Num Lock + 减号 (-) 折叠选定文件夹
 
+    #IncludeAgain ..\..\Key\Replace.ahk
+
     ; 功能区展开缩放
     !`::Send "^{F1}"
     ^F1::Return
