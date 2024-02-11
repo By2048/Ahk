@@ -11,6 +11,7 @@
 Ignore_Process := Map()
 
 Ignore_Process["BitComet"]    := 9
+Ignore_Process["DiskGenius"]  := 9
 Ignore_Process["ThunderMini"] := 9
 Ignore_Process["Geek"]        := 9
 Ignore_Process["Q-Dir"]       := 9

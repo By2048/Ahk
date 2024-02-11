@@ -17,6 +17,7 @@
 #Include ..\Software\7-Zip.ahk
 #Include ..\Software\Android.ahk
 #Include ..\Software\BitComet.ahk
+#Include ..\Software\DiskGenius.ahk
 #Include ..\Software\FFRenamePro.ahk
 #Include ..\Software\FoxMail.ahk
 #Include ..\Software\FreeFileSync.ahk
