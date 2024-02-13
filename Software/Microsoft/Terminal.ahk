@@ -6,7 +6,7 @@ RegisterHelp("Terminal", "Software\Microsoft\Terminal.help | Config\Script.help"
 
 #HotIf CheckWindowActive( "Terminal" )
 
-    #IncludeAgain ..\..\Key\Replace.ahk
+    #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
 
     #Include *i Terminal.Private.ahk
 

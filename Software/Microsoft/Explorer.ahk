@@ -96,7 +96,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
     ; Num Lock + 加号 (+) 显示选定文件夹中的内容
     ; Num Lock + 减号 (-) 折叠选定文件夹
 
-    #IncludeAgain ..\..\Key\Replace.ahk
+    #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
 
     ; 功能区展开缩放
     !`::Send "^{F1}"
@@ -265,6 +265,8 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
 #HotIf CheckWindowActive( "Explorer" )
 
     #IncludeAgain Explorer.Key.ahk
+
+    #IncludeAgain %A_InitialWorkingDir%\Key\Ctrl.Fix.ahk
 
 #HotIf
 

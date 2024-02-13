@@ -17,7 +17,7 @@ RegisterHelp("VSCode", "| Software\Microsoft\VSCode.help"
 
 
 #HotIf CheckWindowActive( "VSCode" , "" , " *.sql | *.bat | *.ps1 " )
-    #IncludeAgain ..\..\Key\Reset.ahk
+    #IncludeAgain %A_InitialWorkingDir%\Key\Reset.ahk
 #HotIf
 
 
@@ -26,7 +26,7 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
 #HotIf CheckWindowActive("VSCode")
 
-    #IncludeAgain ..\..\Key\Replace.ahk
+    #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
 
     Global  Arg , EscRedirect
     ~LShift::{
