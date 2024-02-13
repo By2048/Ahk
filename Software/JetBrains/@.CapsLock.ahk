@@ -2,31 +2,36 @@
 CapsLockActivate := False
 
 ~*CapsLock::{
-    Send "{Esc}"
     if InStr(A_PriorHotkey, "CapsLock")
         if A_TimeSincePriorHotkey < 333
             Send "{CtrlBreak}"
-    SetCapsLockState "Off"
 }
 
 ~*CapsLock Up::{
     Global CapsLockActivate
     CapsLockActivate := False
-    SetNumLockState "Off"
     SetCapsLockState "Off"
-    SetScrollLockState "Off"
 }
 
-!CapsLock::!CtrlBreak   ;关闭标签
-!+CapsLock::!+CtrlBreak ;重新打开标签
+!CapsLock::{
+    Send "!{CtrlBreak}" ;关闭标签
+    SetCapsLockState "Off"
+}
+!+CapsLock::{
+    Send "!+{CtrlBreak}" ;重新打开标签
+    SetCapsLockState "Off"
+}
+
+; ------------------------------------------------------------------------- ;
 
 ~CapsLock & Tab::^CtrlBreak      ;聚焦 工具
-~CapsLock & LShift::^!CtrlBreak  ;聚焦 编辑器
+~CapsLock & LShift::^+CtrlBreak  ;聚焦 编辑器
 
-; {未使用}
-; ^!{Pause}
-; ^!+{Pause}
-~CapsLock & Esc::Return
+; 未使用
+~CapsLock & Esc::{
+    ; ^!{Pause}
+    ; ^!+{Pause}
+}
 
 ; 主菜单
 ~CapsLock & AppsKey::{
@@ -46,14 +51,26 @@ CapsLockActivate := False
     CenterToolsConfig.Push(win)
 }
 
-; ^!NumLock
-; ^!+NumLock
-~CapsLock & Enter::CapsLockRedirect(key:="NumLock", cycle:="Esc", fun:="Center")
+; CapsLockRedirect(key:="Enter", cycle:="Esc", fun:="Center")
+~CapsLock & Enter::{
+    Global CapsLockActivate
+    CapsLockActivate := True
+    if (!GetKeyState("LShift", "P")) {
+        if CapsLockActivate {
+            Send "^!{Enter}"
+        } else {
+            MsgBox "123"
+            Send "!{CtrlBreak}"
+            CapsLockActivate := False
+        }
+    } else {
+        Send "^!+{Enter}"
+    }
+}
 
-; 导航 / 代码 ScrollLock
-~CapsLock & RShift::CapsLockRedirect(key:="ScrollLock", cycle:="Esc", fun:="Center")
+~CapsLock & RShift::CapsLockRedirect(key:="CtrlBreak", cycle:="Esc", fun:="Center")
 
-~CapsLock & Space::Return
+~CapsLock & Space::Send "{Esc}"
 
 ; 项目 书签
 ~CapsLock & [::CapsLockRedirect()
@@ -61,11 +78,7 @@ CapsLockActivate := False
 ; 结构 层次结构
 ~CapsLock & ]::CapsLockRedirect()
 
-; 窗口大小调整
-~CapsLock & Left:: Send "^!{Left}"
-~CapsLock & Right::Send "^!{Right}"
-~CapsLock & Up::   Send "^!{Up}"
-~CapsLock & Down:: Send "^!{Down}"
+; ------------------------------------------------------------------------- ;
 
 ; 书签描述符
 ^!`::Return
@@ -77,6 +90,12 @@ CapsLockActivate := False
 
 ; 最近文件
 ~CapsLock & p::CapsLockRedirect()
+
+; 向左/向右 滚动
+^!f::Return
+^!j::Return
+CapsLock & f::^!f
+CapsLock & j::^!j
 
 ; Git工具 VCS操作
 ^!g::Return
@@ -128,33 +147,21 @@ CapsLockActivate := False
     CapsLockActivate := True
 }
 
+; ---------------------------------------------- ;
 
 ; 外观
 ^!,::Return
 ~CapsLock & ,::CapsLockRedirectCenter()
 
-;窗口
+; 窗口
 ^!.::Return
-~CapsLock & .::{
-    Global CapsLockActivate
-    Global CenterTools, CenterToolsConfig
-    if (CapsLockActivate == True) {
-        Send "{Esc}"
-        CenterTools := False
-        CapsLockActivate := False
-        return
-    }
-    Send "^!."
-    CapsLockActivate := True
-    CenterTools := True
-    CenterToolsConfig := []
-    win := CenterHideWindow()
-    CenterToolsConfig.Push(win)
-}
+~CapsLock & .::CapsLockRedirectCenter()
 
-;活动编辑器
+; 活动编辑器
 ^!/::Return
 ~CapsLock & /::CapsLockRedirectCenter()
+
+; ---------------------------------------------- ;
 
 ; 快速列表 #上下文
 ^!;::Return
@@ -164,16 +171,27 @@ CapsLockActivate := False
 ^!'::
 ~CapsLock & '::CapsLockRedirectCenter()
 
-; 向左/向右 滚动
-^!f::Return
-^!j::Return
-~CapsLock & f::^!f
-~CapsLock & j::^!j
+; ---------------------------------------------- ;
 
 ; 移动并滚动
+^!PgUp::Return
+^!PgDn::Return
 ~CapsLock & PgUp::CapsLockRedirect(key:="PgUp")
 ~CapsLock & PgDn::CapsLockRedirect(key:="PgDn")
 
 ; 滚动到顶部|底部
+^!Home::Return
+^!End::Return
 ~CapsLock & Home::CapsLockRedirect(key:="Home")
-~CapsLock & End::CapsLockRedirect(key:="End")
+~CapsLock & End:: CapsLockRedirect(key:="End" )
+
+; 窗口大小调整
+~CapsLock & Left:: Send "^!{Left}"
+~CapsLock & Right::Send "^!{Right}"
+~CapsLock & Up::   Send "^!{Up}"
+~CapsLock & Down:: Send "^!{Down}"
+
+>#Up::   Send "^!{Numpad8}"
+>#Left:: Send "^!{Numpad4}"
+>#Right::Send "^!{Numpad6}"
+>#Down:: Send "^!{Numpad2}"

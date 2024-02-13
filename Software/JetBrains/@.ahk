@@ -118,7 +118,7 @@ CenterToolsConfig := []
 
 #HotIf CheckWindowActive(JApps)
 
-    #IncludeAgain ..\..\Key\Replace.ahk
+    #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
 
     ~Esc::{
         Global CapsLockActivate
@@ -176,19 +176,17 @@ CenterToolsConfig := []
     <#\::MoveWindowToDefaultPosition()
     <#+\::MoveWindowToBackupPosition()
 
-    <#0::^!0  ;编辑器字体 重置
-    <#-::^!-  ;编辑器字体 减小
-    <#=::^!=  ;编辑器字体 增加
-    <#0::^!+0 ;IDE缩放 重置
-    <#-::^!+- ;IDE缩放 减小
-    <#=::^!+= ;IDE缩放 增加
+    <#0::^!NumpadMult  ;编辑页 重置
+    <#-::^!NumpadSub   ;编辑页 减小
+    <#=::^!NumpadAdd   ;编辑页 增加
+    <#0::^!+NumpadMult ;IDE 重置
+    <#-::^!+NumpadSub  ;IDE 减小
+    <#=::^!+NumpadAdd  ;IDE 增加
 
-    ^!Enter::Return
-    ^!+Enter::Return
-    #Enter::^!Enter   ;窗口全屏
-    #+Enter::^!+Enter ;Zen模式
+    #Enter::^!NumpadDiv   ;窗口全屏
+    #+Enter::^!+NumpadDiv ;Zen模式
 
-    <^Esc::^Pause    ;切换器
+    <^Esc::^Pause  ;切换器
     <!Esc::!Pause
     <+Esc::+Pause
     <^+Esc::^+Pause
