@@ -3,6 +3,7 @@
 >^+q::Run "E:\Config\QFile.qdr"
  >^e::Run "D:\#Lnk\#\Everything.lnk"
  >^r::Run "RegEdit"
+ >^t::Run "D:\#Lnk\#\TIM.lnk"
  >^y::Run "D:\#Lnk\#\v2rayN.lnk"
  >^p::Run WT " -d T:\"
 
