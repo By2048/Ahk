@@ -32,35 +32,4 @@ RegisterProcess("League of Legends" , "LOL_Game"  )
 
     #Include *i LOL.Game.Private.ahk
 
-    ![::{
-        EN()
-        Send "{Enter}"
-        Sleep 300
-        SendInput "/ff"
-        Sleep 300
-        Send "{Enter}"
-        ZH()
-    }
-
-    !]::{
-        EN()
-        Send "{Enter}"
-        Sleep 300
-        SendInput "/remake"
-        Sleep 300
-        Send "{Enter}"
-        ZH()
-    }
-
-    !\::{
-        EN()
-        Send "{Enter}"
-        Sleep 300
-        SendInput "/mute all"
-        Sleep 300
-        Send "{Enter}"
-        Sleep 100
-        ZH()
-    }
-
 #HotIf
