@@ -110,7 +110,8 @@ AriaDownload(url, folder:="T:\", name:="")
         return
 
     if not name
-        name := RegExReplace(url, "(http.*/)([\d\w]+\.\w)", "$2")
+        name := RegExReplace(url, "(http.:/)(/.*/)([\d\w\-_]+\.[\d\w]+)", "$3")
+                                 ;  https:/  /xx/  Xxx.jpg
 
     info := name
 
