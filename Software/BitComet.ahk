@@ -84,7 +84,7 @@ RegisterHelp("BitComet", "Software\BitComet.help")
         #Include *i BitComet.Private.ahk
     }
 
-    !BackSpace::{
+    #BackSpace::{
         Send "!{f}"
         Sleep 99
         Send "{Up}"
