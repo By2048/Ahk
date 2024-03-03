@@ -56,13 +56,6 @@ RegisterHelp("BitComet", "Software\BitComet.help")
 
 #HotIf CheckWindowActive("BitComet")
 
-    #BackSpace::{
-        Send "!{f}"
-        Sleep 99
-        Send "{Up}"
-        Send "{Enter}"
-    }
-
     #\::{
         total_width  := 2333
         total_height := 1222
@@ -89,6 +82,13 @@ RegisterHelp("BitComet", "Software\BitComet.help")
         SetColumnWidth("SysListView321" , config)
 
         #Include *i BitComet.Private.ahk
+    }
+
+    !BackSpace::{
+        Send "!{f}"
+        Sleep 99
+        Send "{Up}"
+        Send "{Enter}"
     }
 
     ; 显示详细信息
