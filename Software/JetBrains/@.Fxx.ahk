@@ -1,34 +1,15 @@
 ﻿
- ^F1::Return
- ^F2::Return
- ^F3::Return
- ^F4::Return
- ^F5::Return
- ^F6::Return
- ^F7::Return
- ^F8::Return
- ^F9::Return
-^F10::Return
-^F11::Return
-^F12::Return
+$!F3::{
+    if WinActive("运行目标")
+        WinClose("A")
+    else
+        Send "!{F3}"
+}
 
- ^!F1::Return
- ^!F2::Return
- ^!F3::Return
- ^!F4::Return
- ^!F5::Return
- ^!F6::Return
- ^!F7::Return
- ^!F8::Return
- ^!F9::Return
-^!F10::Return
-^!F11::Return
-^!F12::Return
-
-
- <!F4::^!F16
-<!+F4::^!+F16
-
+ <!F4::!Numpad0
+ <^F4::^Numpad0
+<!+F4::!+Numpad0
+<^+F4::^+Numpad0
 
  >!F1::!F13
  >!F2::!F14

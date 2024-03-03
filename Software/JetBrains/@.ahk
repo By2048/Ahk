@@ -186,7 +186,7 @@ CenterToolsConfig := []
     #Enter::^!NumpadDiv   ;窗口全屏
     #+Enter::^!+NumpadDiv ;Zen模式
 
-    <^Esc::^Pause  ;切换器
+    <^Esc::^Pause
     <!Esc::!Pause
     <+Esc::+Pause
     <^+Esc::^+Pause

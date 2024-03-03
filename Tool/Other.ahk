@@ -59,6 +59,7 @@ ScreenShotFull(path:="", slient:=True)
         HelpText("`n Keep Path Error `n", "Center", "Screen", 500)
         return
     }
+
     x := 0
     y := 0
     w := A_ScreenWidth
@@ -66,6 +67,9 @@ ScreenShotFull(path:="", slient:=True)
     path := path . FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss") . ".png"
     cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, x, y, w, h, path)
     Run cmd
+
+    Sleep 333
+    HelpText("`n ScreenShot Full `n", "Center", "Screen", 666)
 }
 
 
@@ -94,6 +98,9 @@ ScreenShotSoftware(path:="", slient:=True)
     path := path . name . ".png"
     cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, win_x, win_y, win_w, win_h, path)
     Run cmd
+
+    Sleep 333
+    HelpText("`n ScreenShot Software `n", "Center", "Screen", 666)
 }
 
 
