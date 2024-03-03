@@ -86,13 +86,13 @@ RegisterHelp("v2rayN", "Software\v2rayN.help")
     RButton::{
         WinActivate("ahk_exe v2rayN.exe")
         window := GetActiveWindowInfo(False)
-        w := window.w
-        h := window.h
-        if w > 555 or h > 777
+        if ( window.w > 555 or window.h > 777 ) {
+            Send "{RButton}"
             return
-        x := Screens.2.x + Screens.2.w - w - 100
-        y := Screens.2.y + Screens.2.h - h - 135
-        MoveWindowToPosition([ x, y, w, h ])
+        }
+        x := Screens.2.x + Screens.2.w - window.w - 100
+        y := Screens.2.y + Screens.2.h - window.h - 135
+        MoveWindowToPosition([ x, y, window.w, window.h ])
     }
 
 #HotIf
