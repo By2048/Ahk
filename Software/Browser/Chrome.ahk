@@ -59,19 +59,6 @@ RegisterHelp("Chrome" , "| Software\Browser\@.help             "
 #HotIf
 
 
-#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "修改书签" )
-    ; 收藏
-    !Enter::Send "{Tab 4}{Enter}"
-    ; 取消收藏
-    !Esc::{
-        Send "{Esc}"
-        Send "^d"
-        Send "{Tab 4}"
-        Send "{Enter}"
-    }
-#HotIf
-
-
 #HotIf CheckWindowActive( "Chrome" )
 
     ; 默认激活菜单按钮 / 取消激活
@@ -204,17 +191,24 @@ RegisterHelp("Chrome" , "| Software\Browser\@.help             "
     ^+d::Return
     !d::{
         Send "^d"
+        Sleep 55
         Send "{Tab}"
-        Sleep 99
+        Sleep 55
         Send "{Enter}"
-        Sleep 99
+        Sleep 111
+        Send "{Tab 3}{Enter}"
+        Sleep 111
         Send "{End}"
         Send "{Enter}"
+        Sleep 111
+        if CheckWindowActive( "Chrome" , "*WidgetWin*" , "修改书签" )
+            MoveWindowToPosition(Position(777 , 1111))
+        Send "{Tab 2}{Left 4}{Right}"
     }
     !+d::{
         Send "^d"
-        Send "{Tab 3}"
-        Send "{Enter}"
+        Sleep 111
+        Send "{Tab 3}{Enter}"
     }
 
     Arg.alt_space := False
