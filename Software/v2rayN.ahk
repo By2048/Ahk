@@ -83,4 +83,16 @@ RegisterHelp("v2rayN", "Software\v2rayN.help")
 
     #BackSpace::MouseClickAndResetting(1052, 73, "Window", "Left")
 
+    RButton::{
+        WinActivate("ahk_exe v2rayN.exe")
+        window := GetActiveWindowInfo(False)
+        w := window.w
+        h := window.h
+        if w > 555 or h > 777
+            return
+        x := Screens.2.x + Screens.2.w - w - 100
+        y := Screens.2.y + Screens.2.h - h - 135
+        MoveWindowToPosition([ x, y, w, h ])
+    }
+
 #HotIf
