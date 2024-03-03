@@ -6,11 +6,6 @@
 
 #HotIf CheckWindowActive( " Chrome | Edge | Opera | FireFox " )
 
-    ;鼠标宏快捷键
-    MButton::Send "^t"
-    !BackSpace::Send "^r"
-    !Enter::Send "^{Click}"
-
     $LAlt::Return
 
     ;帮助
@@ -121,7 +116,7 @@
     !Home::Send "^1"
     !End::Send "^9"
 
-    ; 滚动
+    ;滚动
     ^PgUp::Return
     ^PgDn::Return
     !PgUp::Send "^+{Tab}"
@@ -198,19 +193,8 @@
         MoveWindowToPosition(pos)
     }
 
-    ;前进后退
-    ~Lbutton & RButton::{
-        Send "{Blind}{vkFF}"
-        Send "!{Right}"
-    }
-    ~RButton & Lbutton::{
-        Send "{Blind}{vkFF}"
-        Send "!{Left}"
-        Sleep 250
-        Send "{Esc}"
-    }
+    #Include *i @.Mouse.ahk
+
+    #Include *i @.Private.ahk
 
 #HotIf
-
-
-#Include *i @.Private.ahk
