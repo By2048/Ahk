@@ -71,7 +71,7 @@
     ; !+g::Send ^+g
 
     ; 清理浏览记录
-    ; ^+Delete::Return
+    ^+Delete::Return
 
     ;关闭窗口
     ^w::Return

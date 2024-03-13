@@ -29,7 +29,7 @@ UrlChange(origin)
 
     ; localhost:9090/devtools/inspector.html?ws=localhost:9090/devtools/page/CAB865F
     ; localhost:9090/devtools/inspector.html?ws=ws://localhost:9090/devtools/page/CAB865
-    if (InStr(origin, "devtools/inspector.html?ws="))
+    if InStr(origin, "devtools/inspector.html?ws=")
         result := StrReplace(origin, "?ws=", "?ws://")
 
     ; https://wx2.sinaimg.cn/mw690/008sJj2hgy1hirkxpx96bj30yg1e07vi.jpg
