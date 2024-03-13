@@ -12,8 +12,6 @@
 #Include ..\Tool\Control.ahk
 #Include ..\Tool\Gui.ahk
 
-#Include ..\Software\@.ahk
-
 #Include ..\Software\7-Zip.ahk
 #Include ..\Software\Android.ahk
 #Include ..\Software\BitComet.ahk
@@ -52,14 +50,18 @@
 #Include ..\Software\Browser\Opera.ahk
 #Include ..\Software\Browser\@.ahk
 
-#Include ..\Software\JetBrains\ToolBox.ahk
 #Include ..\Software\JetBrains\IDEA.ahk
 #Include ..\Software\JetBrains\PyCharm.ahk
+#Include ..\Software\JetBrains\ToolBox.ahk
 #Include ..\Software\JetBrains\@.ahk
+
+#Include ..\Software\@.ahk
+
 
 #SingleInstance Force
 #HotString EndChars `t`n`s
 #NoTrayIcon
+
 
 CoordMode "Mouse", "Window"
 CoordMode "Pixel", "Window"
