@@ -12,6 +12,9 @@
 #Include ..\Tool\Control.ahk
 #Include ..\Tool\Gui.ahk
 
+#Include ..\Software\@.Key.ahk
+#Include ..\Software\@.Software.ahk
+
 #Include ..\Software\7-Zip.ahk
 #Include ..\Software\Android.ahk
 #Include ..\Software\BitComet.ahk
@@ -54,8 +57,6 @@
 #Include ..\Software\JetBrains\PyCharm.ahk
 #Include ..\Software\JetBrains\ToolBox.ahk
 #Include ..\Software\JetBrains\@.ahk
-
-#Include ..\Software\@.ahk
 
 
 #SingleInstance Force
