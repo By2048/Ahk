@@ -8,8 +8,6 @@ CapsLockActivate := False
 }
 
 ~*CapsLock Up::{
-    Global CapsLockActivate
-    CapsLockActivate := False
     SetCapsLockState "Off"
 }
 
@@ -27,16 +25,13 @@ CapsLockActivate := False
 ~CapsLock & Tab::^CtrlBreak      ;聚焦 工具
 ~CapsLock & LShift::^+CtrlBreak  ;聚焦 编辑器
 
-; 未使用
-~CapsLock & Esc::{
-    ; ^!{Pause}
-    ; ^!+{Pause}
-}
+; 切换器
+~CapsLock & Esc::CapsLockRedirect(key:="Pause", cycle:="Esc", fun:="Center")
 
 ; 主菜单
 ~CapsLock & AppsKey::{
     Global CapsLockActivate
-    Global CenterTools, CenterToolsConfig
+    Global CenterTools , CenterToolsConfig
     if (CapsLockActivate == True) {
         Send "{Esc}"
         CenterTools := False
@@ -51,26 +46,14 @@ CapsLockActivate := False
     CenterToolsConfig.Push(win)
 }
 
-; CapsLockRedirect(key:="Enter", cycle:="Esc", fun:="Center")
-~CapsLock & Enter::{
-    Global CapsLockActivate
-    CapsLockActivate := True
-    if (!GetKeyState("LShift", "P")) {
-        if CapsLockActivate {
-            Send "^!{Enter}"
-        } else {
-            MsgBox "123"
-            Send "!{CtrlBreak}"
-            CapsLockActivate := False
-        }
-    } else {
-        Send "^!+{Enter}"
-    }
-}
+; AI Assistant
+~CapsLock & Enter::CapsLockRedirect()
 
+; 导航 代码
 ~CapsLock & RShift::CapsLockRedirect(key:="CtrlBreak", cycle:="Esc", fun:="Center")
 
-~CapsLock & Space::Send "{Esc}"
+; 问题
+~CapsLock & Space::CapsLockRedirect()
 
 ; 项目 书签
 ~CapsLock & [::CapsLockRedirect()
@@ -81,15 +64,22 @@ CapsLockActivate := False
 ; ------------------------------------------------------------------------- ;
 
 ; 书签描述符
-^!`::Return
-~CapsLock & `::CapsLockRedirect()
+; ^!`::Return
+~CapsLock & `::CapsLockRedirectCenter()
 
 ; 跳转到导航栏
-^!o::Return
+; ^!o::Return
 ~CapsLock & o::CapsLockRedirect()
 
 ; 最近文件
-~CapsLock & p::CapsLockRedirect()
+~CapsLock & p::{
+    Global CapsLockToEsc
+    CapsLockToEsc := True
+    CapsLockRedirect()
+}
+
+; 复制
+~CapsLock & c::CapsLockRedirectCenter()
 
 ; 向左/向右 滚动
 ^!f::Return
@@ -108,13 +98,9 @@ CapsLock & j::^!j
 ~CapsLock & h::CapsLockRedirectCenter()
 
 ; 查看最近的操作组
-^!l::Return
-^!+l::Return
 ~CapsLock & l::CapsLockRedirectCenter()
 
 ; CodeGlance Pro
-^!v::Return
-^!+v::Return
 ~CapsLock & v::CapsLockRedirect()
 
 ; 编辑 编辑器操作
@@ -122,30 +108,10 @@ CapsLock & j::^!j
 ^!+BackSpace::Return
 ~CapsLock & BackSpace::CapsLockRedirectCenter(arg:="600 1111 | 1000 1111")
 
-; 书签 | 最近编辑
-; ^!\::Return
-; ^!+\::Return
-; ~CapsLock & \::CapsLockRedirectCenter(arg:="1600 1100 | 1500 1100")
-~CapsLock & \::{
-    Global CapsLockActivate
-    if (CapsLockActivate) {
-        if (GetKeyState("LShift", "P")) {
-            Send "^!+\"
-        } else {
-            Send "{Esc}"
-            CapsLockActivate := False
-        }
-        return
-    }
-    if (!GetKeyState("LShift", "P")) {
-        Send "^!\"
-        CenterHideWindow(1600, 1100)
-    } else {
-        Send "^!+\"
-        CenterHideWindow(1500, 1100)
-    }
-    CapsLockActivate := True
-}
+; 快速切换书签 | 切换书签
+^!\::Return
+^!+\::Return
+~CapsLock & \::CapsLockRedirectCenter(arg:="888 666 | 2020 1155")
 
 ; ---------------------------------------------- ;
 
@@ -190,8 +156,3 @@ CapsLock & j::^!j
 ~CapsLock & Right::Send "^!{Right}"
 ~CapsLock & Up::   Send "^!{Up}"
 ~CapsLock & Down:: Send "^!{Down}"
-
->#Up::   Send "^!{Numpad8}"
->#Left:: Send "^!{Numpad4}"
->#Right::Send "^!{Numpad6}"
->#Down:: Send "^!{Numpad2}"

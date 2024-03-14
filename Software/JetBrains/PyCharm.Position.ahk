@@ -3,7 +3,7 @@ WPD["PyCharm_SunAwtFrame"] := Position( -13 ,   0 , 2584 , 1451 )
 WPB["PyCharm_SunAwtFrame"] := Position( 19  ,  29 , 2522 , 1393 )
 
 WPD["PyCharm__更改"] := Position(-100 , -100)
-WPD["PyCharm__变更"] := Position(-100 , -100)
+WPD["PyCharm__变更"] := Position(-10 , -30)
 
 WPD["PyCharm__收藏夹"]   := Position(900 , 1300)
 WPD["PyCharm__设置同步"] := Position(900 , 1300)
@@ -56,8 +56,10 @@ WPD["PyCharm__宏"] := Position(0.4 , 0.7)
 WPD["PyCharm__提交更改"] := Position(0.45 , 0.75)
 WPD["PyCharm__回滚更改"] := Position(0.45 , 0.75)
 
-WPD["PyCharm__设置"] := Position(0.65 , 0.77)
-WPB["PyCharm__设置"] := Position(0.76 , 0.88)
+win   := Position(0.65 , 0.77)
+win.w := Mod(win.w, 2) ? win.w : win.w + 1
+win.h := Mod(win.h, 2) ? win.h : win.h + 1
+WPD["PyCharm__设置"] := Position( win.x, win.y, win.w, win.h )
 
 WPD["PyCharm__BigDataTools"] := Position(0.2 , 0.8)
 WPD["PyCharm__学习"] := Position(0.3 , 0.8)
