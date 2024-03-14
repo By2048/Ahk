@@ -180,10 +180,12 @@
 
     ;窗口位置
     #\::{
-        if InStr(Screen.Name, "4K")
-            MoveWindowToPosition(Position(3300, 2000))
-        if InStr(Screen.Name, "2K")
-            MoveWindowToPosition(Position(2500, 1400))
+        win_w := 2500
+        win_h := 1400
+        win   := Position(win_w, win_h)
+        win_x := win.x
+        win_y := win.y + (30-20)/2 ;坐标修正
+        MoveWindowToPosition( [ win_x, win_y, win_w, win_h ] )
     }
     #+\::{
         if Screens.Count == 1
