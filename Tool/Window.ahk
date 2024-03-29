@@ -151,11 +151,9 @@ GetActiveWindowInfo(cache:=True)
         InitWindowValue()
 
     ; 缓存数据
-    if (window.cache_id == win_id and window.cache_title == win_title) {
-        if (window.cache_expire - A_TickCount > 0) {
+    if ( window.cache_id == win_id and window.cache_title == win_title )
+        if ( window.cache_expire - A_TickCount > 0 )
             return
-        }
-    }
 
     try {
         win_pid           := WinGetPID("ahk_id " . win_id)
@@ -167,8 +165,6 @@ GetActiveWindowInfo(cache:=True)
         win_controls_name := WinGetControls("ahk_id " . win_id)
         win_class         := WinGetClass("ahk_id " . win_id)
         win_text          := WinGetText("ahk_id " . win_id)
-        WinGetPos       &win_x,        &win_y,        &win_w,        &win_h,        "ahk_id " . win_id
-        WinGetClientPos &win_x_client, &win_y_client, &win_w_client, &win_h_client, "ahk_id " . win_id
     } catch {
         return
     }
@@ -202,20 +198,11 @@ GetActiveWindowInfo(cache:=True)
     window.title        := win_title
     window.text         := win_text
 
-    window.x  := win_x
-    window.y  := win_y
-    window.w  := win_w
-    window.h  := win_h
-
-    window.position_screen.x  := win_x
-    window.position_screen.y  := win_y
-    window.position_screen.w  := win_w
-    window.position_screen.h  := win_h
-
-    window.position_client.x  := win_x_client
-    window.position_client.y  := win_y_client
-    window.position_client.w  := win_w_client
-    window.position_client.h  := win_h_client
+    WinGetPos        &sx, &sy, &sw, &sh, "ahk_id " . win_id
+    WinGetClientPos  &cx, &cy, &cw, &ch, "ahk_id " . win_id
+    window.x  := sx , window.y  := sy , window.w  := sw , window.h  := sh
+    window.sx := sx , window.sy := sy , window.sw := sw , window.sh := sh
+    window.cx := cx , window.cy := cy , window.cw := cw , window.ch := ch
 
     ; 控件信息
     win_controls := {}
@@ -242,8 +229,8 @@ GetActiveWindowInfo(cache:=True)
     window.controls := win_controls
 
     ; 窗口位置 默认1 默认2
-    window.position_default := GetWindowConfig(window, WPD)
-    window.position_backup  := GetWindowConfig(window, WPB)
+    window.default := GetWindowConfig(window, Windows_Default)
+    window.backup  := GetWindowConfig(window, Windows_Backup )
 
     ; 最后一次获取的信息缓存时间
     window.cache_id     := win_id
@@ -357,14 +344,13 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
 {
     win_id := window.id
     win_min_max := window.min_max
+    win_process_name := window.process_name
 
-    if (not win_id) {
+    if not win_id
         HelpText("No WinId",  ,  , 1000)
-    }
 
-    if (win_min_max == "Max") {
+    if win_min_max == "Max"
         WinRestore "ahk_id " . win_id
-    }
 
     if IsDesktops()
         return
@@ -374,12 +360,11 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
     win_w := window.w
     win_h := window.h
 
-    if (w == 0) {
+    if w == 0
         w := window.w
-    }
-    if (h == 0) {
+
+    if h == 0
         h := window.h
-    }
 
     if (Abs(win_x-x)>offset or Abs(win_y-y)>offset or Abs(win_w-w)>offset or Abs(win_h-h)>offset) {
         if (step) {
@@ -573,7 +558,7 @@ MoveControlUDLR(info, mode:="Right", value:=0, offset:=6)
 
 ; 窗口移动到屏幕中心
 ; return | None
-MoveWindowToCenter(silent:=False)
+MoveWindowCenter()
 {
     GetActiveWindowInfo()
 
@@ -604,10 +589,6 @@ MoveWindowToCenter(silent:=False)
     hh := win_h
 
     SetWindow(xx, yy, ww, hh)
-
-    if (not silent) {
-        HelpText("Center", "CenterDown", "Screen" . screen_index, 1000)
-    }
 }
 
 
@@ -615,13 +596,12 @@ MoveWindowToCenter(silent:=False)
 ; 调整窗口为Main\Mini 并居中
 ; command | Main 或者 Mini
 ; return  | None
-MoveWindowToMainMini(command, slient:=False)
+MoveWindowQuick(command)
 {
     GetActiveWindowInfo()
 
     if IsDesktops()
         return
-
     if window.min_max
         return
 
@@ -637,15 +617,9 @@ MoveWindowToMainMini(command, slient:=False)
     mini := Windows_Main_Mini[2]
 
     if (command == "Main") {
-        if (not slient) {
-            HelpText("Windows Main", "CenterDown", "Screen" . screen_index)
-        }
         w := screen_w * main[1]
         h := screen_h * main[2]
     } else if (command == "Mini") {
-        if (not slient) {
-            HelpText("Windows Mini", "CenterDown", "Screen" . screen_index)
-        }
         w := screen_w * mini[1]
         h := screen_h * mini[2]
     }
@@ -653,21 +627,12 @@ MoveWindowToMainMini(command, slient:=False)
     y := screen_y + (screen_h - h)/2
 
     SetWindow(x, y, w, h)
-
-    Sleep 500
-    HelpText()
-}
-MoveWindowToMain(slient:=False) {
-    MoveWindowToMainMini("Main", slient)
-}
-MoveWindowToMini(slient:=False) {
-    MoveWindowToMainMini("Mini", slient)
 }
 
 
 
 ; 将窗口移动到指定位置
-MoveWindowToPosition(position)
+MoveWindowPosition(position)
 {
     if Type(position) == "Array"
         if not position.Length
@@ -692,26 +657,26 @@ MoveWindowToPosition(position)
     GetActiveWindowInfo()
     SetWindow(win_x, win_y, win_w, win_h)
 }
-MoveWindowToDefaultPosition()
+MoveWindowDefault()
 {
     GetActiveWindowInfo()
-    if not ObjOwnPropCount(window.position_default)
+    if not ObjOwnPropCount(window.default)
         return
-    win_x := window.position_default.x
-    win_y := window.position_default.y
-    win_w := window.position_default.w
-    win_h := window.position_default.h
+    win_x := window.default.x
+    win_y := window.default.y
+    win_w := window.default.w
+    win_h := window.default.h
     SetWindow(win_x, win_y, win_w, win_h)
 }
-MoveWindowToBackupPosition()
+MoveWindowBackup()
 {
     GetActiveWindowInfo()
-    if not ObjOwnPropCount(window.position_backup)
+    if not ObjOwnPropCount(window.backup)
         return
-    win_x := window.position_backup.x
-    win_y := window.position_backup.y
-    win_w := window.position_backup.w
-    win_h := window.position_backup.h
+    win_x := window.backup.x
+    win_y := window.backup.y
+    win_w := window.backup.w
+    win_h := window.backup.h
     SetWindow(win_x, win_y, win_w, win_h)
 }
 
@@ -722,10 +687,10 @@ HighlightActiveWindow(time:=300, width:=4, color:="e51400")
 {
     GetActiveWindowInfo(False)
 
-    win_x  := window.position_client.x
-    win_y  := window.position_client.y
-    win_w  := window.position_client.w
-    win_h  := window.position_client.h
+    win_x  := window.cx
+    win_y  := window.cy
+    win_w  := window.cw
+    win_h  := window.ch
 
     win_class        := window.class
     win_min_max      := window.min_max
