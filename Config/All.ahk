@@ -36,13 +36,13 @@ InitWindowValue()
         transparent  : -1 ,
         controls     : {} ,
 
-        ; 窗口坐标信息 默认 Screen
-        x : 0  ,  y : 0  ,  w : 0  ,  h : 0  ,
+        ; 窗口坐标信息 Screen / Client
+        x  : 0  ,  y  : 0  ,  w  : 0  ,  h  : 0  ,
+        sx : 0  ,  sy : 0  ,  sw : 0  ,  sh : 0  ,
+        cx : 0  ,  cy : 0  ,  cw : 0  ,  ch : 0  ,
 
-        position_screen  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口信息 Screen
-        position_client  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口信息 Client
-        position_default : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Default
-        position_backup  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Backup
+        default : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Default
+        backup  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Backup
     }
 }
 
