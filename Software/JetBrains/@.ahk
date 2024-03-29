@@ -1,13 +1,11 @@
 
-Global JApps := "PyCharm|IDEA"
-
 #Include @.Tool.ahk
 
 
 ; 双击按键
 Arg.ClickKey := ""
 Arg.ClickCnt := 0
-#HotIf CheckWindowActive(JApps) And Arg.ClickKey
+#HotIf CheckWindowActive("PyCharm|IDEA") And Arg.ClickKey
     Esc::
     CapsLock::{
         Send "{Esc}"
@@ -18,17 +16,25 @@ Arg.ClickCnt := 0
 #HotIf
 
 
-#HotIf CheckWindowActive(JApps)
+#HotIf CheckWindowActive("PyCharm|IDEA")
 
-    $RWin::{
+    RWin::{
         Send "{Blind}{vkFF}"
-        WinGetPos &x, &y, &w, &h, "A"
+        WinGetClientPos &x, &y, &w, &h, "A"
         if x <= 0 or y <= 0
             return
-        MoveWindowToCenter(True)
+        MoveWindowCenter()
         win := GetHideWindowConfig()
         if ObjOwnPropCount(win)
             CenterHideWindow()
+    }
+    RWin & RAlt::{
+        Send "{Blind}{vkFF}"
+        MoveWindowQuick("Mini")
+    }
+    RWin & RCtrl::{
+        Send "{Blind}{vkFF}"
+        MoveWindowQuick("Main")
     }
 
     AppsKeyRedirect   := False
@@ -75,8 +81,13 @@ Arg.ClickCnt := 0
         }
     }
 
-    <#\::MoveWindowToDefaultPosition()
-    <#+\::MoveWindowToBackupPosition()
+    ~^o::CenterHideWindow()  ;最近的项目
+    ~^+o::CenterHideWindow() ;打开文件或项目
+    ~^n::CenterHideWindow()         ;新建文件
+    ~^+n::CenterHideWindow(400,800) ;新建临时文件
+
+    <#\::MoveWindowDefault()
+    <#+\::MoveWindowBackup()
 
     <#0::^!NumpadMult  ;编辑页 重置
     <#-::^!NumpadSub   ;编辑页 减小
@@ -105,7 +116,7 @@ Arg.ClickCnt := 0
         Send "{Help}"
         WinWaitActive "设置"
         if WinGetTitle("A") == "设置"
-            MoveWindowToCenter(True)
+            MoveWindowCenter()
     }
     ;快速切换
     RAlt & LAlt::{
@@ -118,6 +129,7 @@ Arg.ClickCnt := 0
     ; Xxx
     RAlt & RShift::Send "!+{Help}"
     RShift & RAlt::Send "^!{Help}"
+
 
     #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
 

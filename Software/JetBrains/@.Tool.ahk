@@ -7,7 +7,7 @@ ToolSwitch(Key, rule)
     } else {
         Send key
         WinWaitActive rule
-        MoveWindowToCenter(True)
+        MoveWindowCenter()
     }
 }
 

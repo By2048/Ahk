@@ -39,7 +39,7 @@ RegisterHelp("PyCharm" , "| Software\JetBrains\@.help          "
 
 
 #HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "文档")
-    RWin::MoveWindowToPosition(Position(1600 , 1100))
+    RWin::MoveWindowPosition(Position(1600 , 1100))
     Esc::
     CapsLock::{
         MouseClickAndResetting(10, 25, "Window", "Right")

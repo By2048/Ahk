@@ -81,6 +81,9 @@ CapsLockActivate := False
 ; 复制
 ~CapsLock & c::CapsLockRedirectCenter()
 
+; 包围 解除包围
+~CapsLock & b::CapsLockRedirect()
+
 ; 向左/向右 滚动
 ^!f::Return
 ^!j::Return
