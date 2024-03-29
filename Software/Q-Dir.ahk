@@ -35,7 +35,7 @@ RegisterPosition( "Q-Dir_#32770_MiniBrowserOK" , Position(1555, 1333) )
         total_width  := tree_width + box_left_width + box_right_width
                         + box_split_width  * 3
                         + scroll_bar_width * 3
-        MoveWindowToPosition(Position(total_width, total_height))
+        MoveWindowPosition(Position(total_width, total_height))
 
         split_box_left   := tree_width + scroll_bar_width
         split_box_right  := box_left_width + scroll_bar_width * 2

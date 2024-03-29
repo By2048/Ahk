@@ -14,13 +14,13 @@
 #HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "编辑环境变量" )
     PgUp::Send "!u"
     PgDn::Send "!o"
-    #\::MoveWindowToPosition(Position(888, 1111))
+    #\::MoveWindowPosition(Position(888, 1111))
 #HotIf
 
 
 #HotIf CheckWindowActive( "SystemPropertiesComputerName" , "#32770" , "环境变量" )
     #\::{
-        MoveWindowToPosition(Position(1500, 1100))
+        MoveWindowPosition(Position(1500, 1100))
         win_title := window.title
         if (win_title == "环境变量") {
             SetColumnWidth( "SysListView321", Map( 1,150 , 2,1200 ) ) ;用户变量
@@ -44,7 +44,7 @@
 
 
     #\::{
-        MoveWindowToPosition(Position(1666 , 1222))
+        MoveWindowPosition(Position(1666 , 1222))
 
         ; 详细信息
         name  := "SysListView321"
@@ -127,7 +127,7 @@ RegisterHelp("RegEdit", "Software\Microsoft\Windows.RegEdit.help")
     #\::{
         total_width  := 2222
         total_height := 1222
-        MoveWindowToPosition(Position(total_width , total_height))
+        MoveWindowPosition(Position(total_width , total_height))
 
         name  := "SysListView321"
         width := Map( 1 , 400   ; 名称

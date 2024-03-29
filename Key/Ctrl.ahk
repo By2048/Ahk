@@ -18,7 +18,7 @@
         try {
             WinActivate "ahk_exe jetbrains-toolbox.exe"
             window := GetActiveWindowInfo()
-            MoveWindowToPosition(Position(window.w, window.h))
+            MoveWindowPosition(Position(window.w, window.h))
             return
         } catch {
             Sleep 10

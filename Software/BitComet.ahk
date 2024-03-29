@@ -3,13 +3,13 @@ RegisterHelp("BitComet", "Software\BitComet.help")
 
 
 #HotIf CheckWindowActive("BitComet", "#32770", "选项*")
-    #\::MoveWindowToPosition(Position(1500 , 1000))
+    #\::MoveWindowPosition(Position(1500 , 1000))
 #HotIf
 
 
 #HotIf CheckWindowActive("BitComet", "#32770", "通知")
     #\::{
-        MoveWindowToPosition(Position(800, 750))
+        MoveWindowPosition(Position(800, 750))
         cfg := " 1:空:50  2:时间:250  3:消息:400 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321" , cfg)
@@ -32,7 +32,7 @@ RegisterHelp("BitComet", "Software\BitComet.help")
     }
 
     #\::{
-        MoveWindowToPosition(Position(1300, 1000))
+        MoveWindowPosition(Position(1300, 1000))
         SetListView()
     }
 
@@ -46,7 +46,7 @@ RegisterHelp("BitComet", "Software\BitComet.help")
 
 #HotIf CheckWindowActive("BitComet", "#32770", "批量下载种子")
     #\::{
-        MoveWindowToPosition(Position(1300, 700))
+        MoveWindowPosition(Position(1300, 700))
         cfg := " 1:名称:999  2:大小:130  3:发表日期:100 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321" , cfg)
@@ -61,7 +61,7 @@ RegisterHelp("BitComet", "Software\BitComet.help")
         total_height := 1222
         left_width   := 255
 
-        MoveWindowToPosition(Position(total_width , total_height))
+        MoveWindowPosition(Position(total_width , total_height))
 
         GetActiveWindowInfo()
 

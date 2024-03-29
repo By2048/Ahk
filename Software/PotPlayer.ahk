@@ -45,17 +45,17 @@ RegisterHelp("PotPlayer" , "| Software\PotPlayer.help"
     #+Enter::Send "^{Enter}"
 
     #\::{
-        WPD["PotPlayer"] := Position(Screen.w * 4/6 , Screen.h * 4/6)
-        WPD["PotPlayer_#32770"] := Position(1500 , 1200)
-        WPD["PotPlayer__播放列表"] := Position(10, "[Center][1]", 700, 1000)
-        MoveWindowToDefaultPosition()
+        WD["PotPlayer"] := Position(Screen.w * 4/6 , Screen.h * 4/6)
+        WD["PotPlayer_#32770"] := Position(1500 , 1200)
+        WD["PotPlayer__播放列表"] := Position(10, "[Center][1]", 700, 1000)
+        MoveWindowDefault()
     }
     #+\::{
         w := Screens.2.w - 20
         h := w * 3/4 + 40
-        WPB["PotPlayer"] := Position("[Center][2]", w, h)
-        WPB["PotPlayer__播放列表"] := Position("[Center][2]", 1000, 1500)
-        MoveWindowToBackupPosition()
+        WB["PotPlayer"] := Position("[Center][2]", w, h)
+        WB["PotPlayer__播放列表"] := Position("[Center][2]", 1000, 1500)
+        MoveWindowBackup()
     }
 
 #HotIf

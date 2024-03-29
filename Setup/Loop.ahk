@@ -21,6 +21,14 @@ Ignore_Process["Q-Dir"]       := 9
 #Include *i Loop.Cfg.Private.ahk
 
 
+For Arg_Index, Arg_Value In A_Args {
+    If Arg_Value == "Start"
+        Reload
+    If Arg_Value == "Stop"
+        ExitApp
+}
+
+
 Loop {
 
     Sleep 1000
@@ -61,14 +69,14 @@ Loop {
 
     if (win_process_name == "7-Zip") {
         if (win_class == "#32770" and win_title == "浏览文件夹") {
-            MoveWindowToDefaultPosition()
+            MoveWindowDefault()
             continue
         }
     }
 
     ; Excel 居中
     if win_process_name == "Excel" and win_class == "NUIDialog"
-        MoveWindowToCenter(True)
+        MoveWindowCenter()
 
     ; Windows系统文件操作
     if (win_class == "#32770" or win_class == "OperationStatusWindow") {
@@ -96,12 +104,4 @@ Loop {
         continue
     }
 
-}
-
-
-For Arg_Index, Arg_Value In A_Args {
-    If Arg_Value == "Start"
-        Reload
-    If Arg_Value == "Stop"
-        ExitApp
 }

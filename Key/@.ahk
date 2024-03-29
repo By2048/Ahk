@@ -66,9 +66,8 @@ RAlt  & RWin::Send "!{F4}"
 RCtrl & RWin::Send "^w"
 
 
-RWin & RCtrl::MoveWindowToMainMini("Main", True)
-RWin & RAlt:: MoveWindowToMainMini("Mini", True)
-
+RWin & RAlt:: MoveWindowQuick("Mini")
+RWin & RCtrl::MoveWindowQuick("Main")
 
 
 ; 切换系统 主题|亮暗

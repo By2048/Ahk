@@ -3,7 +3,7 @@ RegisterHelp("Xshell", "Software\NetSarang.Xshell.help")
 
 
 #HotIf CheckWindowActive("Xftp")
-    #\::MoveWindowToPosition(Position(2200 , 1200))
+    #\::MoveWindowPosition(Position(2200 , 1200))
 #HotIf
 
 
@@ -23,7 +23,7 @@ RegisterHelp("Xshell", "Software\NetSarang.Xshell.help")
     #\::{
         width  := 1100
         height := 660
-        MoveWindowToPosition(Position(width , height))
+        MoveWindowPosition(Position(width , height))
         index  := " 1    2    3    4    5     6   7       "
         name   := " 名称 主机  端口  协议 用户名 说明 修改时间 "
         width  := " 170  200  90   90   100   170  200    "
@@ -63,7 +63,7 @@ RegisterHelp("Xshell", "Software\NetSarang.Xshell.help")
     ^+\::Return
     !+CapsLock::Send "^+\"
 
-    #\::MoveWindowToPosition(Position(2200 , 1200))
+    #\::MoveWindowPosition(Position(2200 , 1200))
 
     #Enter::Send "^!{F12}"
     #+Enter::Send "^!+{F12}"

@@ -8,7 +8,7 @@ RegisterProcess("Foxmail" , "FoxMail")
     AppsKey::Send "{F4}"
 
     #\::{
-        MoveWindowToPosition(Position(2233,1250))
+        MoveWindowPosition(Position(2233,1250))
 
         width_folder := 300
         width_mail   := 550

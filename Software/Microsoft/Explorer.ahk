@@ -199,14 +199,15 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
 
         WinGetPos &origin_win_x, &origin_win_y, &origin_win_w, &origin_win_h, "A"
 
-        MoveWindowToPosition(Position(total_width , total_height))
+        MoveWindowPosition(Position(total_width , total_height))
 
         GetActiveWindowInfo(False)
 
         ; 通过鼠标移动移动窗口,通过此操作Window可以在下次启动时使用修改后的位置
         if (   origin_win_x != window.x or origin_win_y != window.y
             or origin_win_w != window.w or origin_win_h != window.h ) {
-            MouseMove window.position_client.w/2 , window.position_client.h , 0
+            ; MouseMove window.position_client.w/2 , window.position_client.h , 0
+            MouseMove window.cw/2 , window.ch , 0
             MouseClickDrag "Left", 0, 0, 0, -50, 0, "R"
             MouseClickDrag "Left", 0, 0, 0,  50, 0, "R"
         }
@@ -292,7 +293,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
 
     ; 默认位置
     #\::{
-        MoveWindowToDefaultPosition()
+        MoveWindowDefault()
         GetActiveWindowInfo(False)
         try {
             info := window.controls.DirectUIHWND2  ;左侧信息栏

@@ -202,7 +202,7 @@ RegisterHelp("Chrome" , "| Software\Browser\@.help             "
         Send "{Enter}"
         Sleep 111
         if CheckWindowActive( "Chrome" , "*WidgetWin*" , "修改书签" )
-            MoveWindowToPosition(Position(777 , 1111))
+            MoveWindowPosition(Position(777 , 1111))
         Send "{Tab 2}{Left 4}{Right}"
     }
     !+d::{

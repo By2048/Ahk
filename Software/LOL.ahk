@@ -19,7 +19,7 @@ RegisterProcess("League of Legends" , "LOL_Game"  )
 
     #Include *i LOL.Client.Private.ahk
 
-    #\::MoveWindowToCenter(True)
+    #\::MoveWindowCenter()
 
 #HotIf
 

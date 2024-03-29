@@ -9,7 +9,7 @@ RegisterProcess("vmware", "VMware")
 
 #HotIf CheckWindowActive( "VMware" , "#32770" , "扫描虚拟机向导" )
     RWin::{
-        MoveWindowToCenter(True)
+        MoveWindowCenter()
         name  := "SysListView321"
         width := Map( 1 , 200    ;虚拟机名称
                     , 2 , 1000 ) ;路径
@@ -19,7 +19,7 @@ RegisterProcess("vmware", "VMware")
 
 
 #HotIf CheckWindowActive( "VMware" , "#32770" , "浏览ISO映像" )
-    #\::MoveWindowToPosition(Position(1520 , 1100))
+    #\::MoveWindowPosition(Position(1520 , 1100))
 #HotIf
 
 
@@ -49,13 +49,13 @@ RegisterProcess("vmware", "VMware")
     ^p::Return
     AppsKey::Send "^p"
 
-    #\::MoveWindowToPosition(Position(1800 , 1200))
+    #\::MoveWindowPosition(Position(1800 , 1200))
 
     ; 映射或断开虚拟磁盘连接
     >!/::{
         Send "{Alt Down}{f}{m}{Alt Up}"
         Sleep 300
-        MoveWindowToCenter(True)
+        MoveWindowCenter()
         name  := "SysListView321"
         width := Map( 1 , 150   ;驱动器
                     , 2 , 200   ;名称

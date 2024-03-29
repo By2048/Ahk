@@ -13,12 +13,12 @@ RegisterHelp("Terminal", "Software\Microsoft\Terminal.help | Config\Script.help"
     `::~
     +~::`
 
-    #\::MoveWindowToPosition(Position(2200 , 1400))
+    #\::MoveWindowPosition(Position(2200 , 1400))
 
     #+\::{
         pos := Position("[Center][2]" , 0 , 1600)
-        MoveWindowToPosition(pos)
-        MoveWindowToPosition(pos)
+        MoveWindowPosition(pos)
+        MoveWindowPosition(pos)
     }
 
     ; 关闭窗格

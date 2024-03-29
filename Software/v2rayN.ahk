@@ -4,7 +4,7 @@ RegisterHelp("v2rayN", "Software\v2rayN.help")
 
 #HotIf CheckWindowActive( "EnableLoopback" )
     #\::{
-        MoveWindowToPosition(Position(1860 , 1000))
+        MoveWindowPosition(Position(1860 , 1000))
         _1 := " 1   2   3   4   5   6   7   "
         _2 := " -   -   -   -   -   -   -   "
         _3 := " 400 400 200 300 150 200 150 "
@@ -79,7 +79,7 @@ RegisterHelp("v2rayN", "Software\v2rayN.help")
         HelpText("`nOver`n", "Center", "Screen", 1000)
     }
 
-    #\::MoveWindowToPosition(Position(2100, 1200))
+    #\::MoveWindowPosition(Position(2100, 1200))
 
     #BackSpace::MouseClickAndResetting(1052, 73, "Window", "Left")
 
@@ -92,7 +92,7 @@ RegisterHelp("v2rayN", "Software\v2rayN.help")
         }
         x := Screens.2.x + Screens.2.w - window.w - 100
         y := Screens.2.y + Screens.2.h - window.h - 135
-        MoveWindowToPosition([ x, y, window.w, window.h ])
+        MoveWindowPosition([ x, y, window.w, window.h ])
     }
 
 #HotIf

@@ -92,7 +92,7 @@
 RegisterPosition( "MMC" , Position(2000 , 1222) )
 #HotIf CheckWindowActive( "MMC" )
     #\::{
-        MoveWindowToPosition(Position(2000 , 1222))
+        MoveWindowPosition(Position(2000 , 1222))
         tree_width   := 333
         check_offset := 22
         move_offset  := 13

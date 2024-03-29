@@ -12,10 +12,10 @@
     Timer() {
         Global Arg
         if ( Arg.win_cnt == 2 ) {
-            MoveWindowToDefaultPosition()
+            MoveWindowDefault()
             HighlightActiveWindow(500)
         } else if ( Arg.win_cnt == 3 ) {
-            MoveWindowToBackupPosition()
+            MoveWindowBackup()
             HighlightActiveWindow(500)
         }
         Arg.win_cnt := 0
@@ -62,8 +62,8 @@
     }
 }
 
-~#\::MoveWindowToDefaultPosition()
-~#+\::MoveWindowToBackupPosition()
+~#\::MoveWindowDefault()
+~#+\::MoveWindowBackup()
 
 
 #HotIf ( Arg.hotkeys_show == True )

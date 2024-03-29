@@ -28,7 +28,7 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
     #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
 
-    Global  Arg , EscRedirect
+    Global  Arg , CapsLockToEsc
     ~LShift::{
         if (Arg.shift_cnt > 0) {
             Arg.shift_cnt += 1
@@ -40,7 +40,7 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
         Timer() {
             if (Arg.shift_cnt == 2) {
                 Send "^!{Space}"
-                EscRedirect := True
+                CapsLockToEsc := True
             }
             Arg.shift_cnt := 0
         }

@@ -45,7 +45,7 @@ RegisterHelp("Wallpaper" , "Software\Wallpaper.help")
         w := A_ScreenWidth  - x - x - 1
         h := A_ScreenHeight - y - y - 0
         pos := Position(x, y, w, h)
-        MoveWindowToPosition(pos)
+        MoveWindowPosition(pos)
     }
 
     #Include *i Wallpaper.Mouse.ahk

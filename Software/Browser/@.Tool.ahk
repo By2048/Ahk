@@ -71,6 +71,11 @@ UrlChange(origin)
     if InStr(origin, ".jpg@") or InStr(origin, ".png@") or InStr(origin, ".webp@")
         result := RegExReplace(origin, "(http.*)(.\w+)(@)(.*)", "$1$2")
 
+
+    ; Bilibili Image
+    ; http://i0.hdslb.com/bfs/new_dyn/47351fbfc476b71f3509bbb96f872583413023694.jpg
+
+
     ; https://www.zhihu.com/hot
     ; https://www.zhihu.com/knowledge-plan/hot-question/hot/0/hour
     if InStr(origin, "zhihu.com/hot")
@@ -110,8 +115,8 @@ AriaDownload(url, folder:="T:\", name:="")
         return
 
     if not name
-        name := RegExReplace(url, "(http.:/)(/.*/)([\d\w\-_]+\.[\d\w]+)", "$3")
-                                 ;  https:/  /xx/  Xxx.jpg
+        name := RegExReplace(url, "(http.?:/)(/.*/)([\d\w\-_]+\.[\d\w]+)", "$3")
+                                 ;  http:/   /xx/  Xxx.jpg
 
     info := name
 

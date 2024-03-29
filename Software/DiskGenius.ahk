@@ -5,7 +5,7 @@ RegisterPosition("DiskGenius" , Position(2222,1248))
 
     #\::{
         Send "{Blind}{vkFF}"
-        MoveWindowToPosition(Position(2222,1248))
+        MoveWindowPosition(Position(2222,1248))
 
         ; 磁盘树
         tree_width   := 468

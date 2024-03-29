@@ -1,14 +1,15 @@
 ﻿
 RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
 
-RegisterPosition( "FreeFileSync__摘要" , Position(600 , 400) )
-RegisterPosition( "FreeFileSync" , Position(2000 , 1111) )
+RegisterPosition( "FreeFileSync__摘要"    , Position(600  , 400) )
+RegisterPosition( "FreeFileSync__同步中*" , Position(1177 , 777) )
+RegisterPosition( "FreeFileSync"         , Position(2000 , 1111) )
 
 
 #HotIf CheckWindowActive( "FreeFileSync" , "" , "同步设置" )
 
     #\::{
-        MoveWindowToPosition(Position(1000, 1000))
+        MoveWindowPosition(Position(1000, 1000))
 
         GetActiveWindowInfo(False)
 

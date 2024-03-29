@@ -8,7 +8,7 @@ RegisterProcess("cloudmusic" , "CloudMusic")
         win_h := 166
         win_x := Screen.w/2 - win_w/2
         win_y := Screen.h   - win_h   - 10
-        MoveWindowToPosition(Position(win_x, win_y, win_w, win_h))
+        MoveWindowPosition(Position(win_x, win_y, win_w, win_h))
     }
 
 #HotIf
@@ -23,6 +23,8 @@ RegisterProcess("cloudmusic" , "CloudMusic")
     CapsLock::Send "{Esc}"
 
     global CM_Main_Detail := "Main"
+
+    MButton::
     /::{
         global CM_Main_Detail
         if ( CM_Main_Detail == "Main" ) {
@@ -54,7 +56,7 @@ RegisterProcess("cloudmusic" , "CloudMusic")
         ProcessClose "CloudMusic.exe"
     }
 
-    #\::MoveWindowToPosition(Position(2000 , 1200))
+    #\::MoveWindowPosition(Position(2000 , 1200))
 
     ; 音量调整
     Up::Send "!{PgUp}"
@@ -84,7 +86,7 @@ RegisterProcess("cloudmusic" , "CloudMusic")
 
     CapsLock::Send "{Esc}"
 
-    #\::MoveWindowToPosition(Position(1800 , 1100))
+    #\::MoveWindowPosition(Position(1800 , 1100))
 
     <#BackSpace::{
         ProcessClose "QQMusic.exe"
