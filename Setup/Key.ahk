@@ -13,14 +13,13 @@
 #Include ..\Tool\Control.ahk
 #Include ..\Tool\Keyboard.ahk
 
-#Include ..\Key\@.ahk
 #Include ..\Key\Ignore.ahk
 #Include ..\Key\Win.ahk
 #Include ..\Key\Ctrl.ahk
 #Include ..\Key\Alt.ahk
-#Include ..\Key\Shift.ahk
 #Include ..\Key\Space.ahk
 #Include ..\Key\CapsLock.ahk
+#Include ..\Key\Complex.ahk
 
 #SingleInstance Force
 #NoTrayIcon

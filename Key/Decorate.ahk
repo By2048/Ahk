@@ -1,5 +1,8 @@
-
-~RWin::{
+﻿
+; Window Center
+; Window Default
+; Window Backup
+RWin::{
     Send "{Blind}{vkFF}"
     Global Arg
     if (Arg.win_cnt > 0) {
@@ -11,7 +14,9 @@
     SetTimer Timer, -500
     Timer() {
         Global Arg
-        if ( Arg.win_cnt == 2 ) {
+        if ( Arg.win_cnt == 1 ) {
+            MoveWindowCenter()
+        } else if ( Arg.win_cnt == 2 ) {
             MoveWindowDefault()
             HighlightActiveWindow(500)
         } else if ( Arg.win_cnt == 3 ) {
@@ -22,7 +27,41 @@
     }
 }
 
-~RAlt::{
+
+
+; 快捷键帮助
+; 项目信息
+RShift::{
+    Send "{Blind}{vkFF}"
+    Global Arg
+    if (Arg.shift_cnt > 0) {
+        Arg.shift_cnt += 1
+        return
+    } else {
+        Arg.shift_cnt := 1
+    }
+    SetTimer Timer, -500
+    Timer() {
+        Global Arg
+        if (Arg.shift_cnt == 1) {
+            if Arg.init_show
+                InitConfig()
+            HelpText()
+            HelpKeysHide()
+        } else if (Arg.shift_cnt == 2) {
+            HelpText()
+            HelpKeysShow()
+        } else if (Arg.shift_cnt == 3) {
+            InitConfig()
+        }
+        Arg.shift_cnt := 0
+    }
+}
+
+
+
+; F13 - F24
+RAlt::{
     Send "{Blind}{vkFF}"
     Global Arg
     GetActiveWindowInfo()
@@ -38,47 +77,3 @@
         Arg.alt_cnt := 0
     }
 }
-
-~RShift::{
-    Send "{Blind}{vkFF}"
-    Global Arg
-    if (Arg.shift_cnt > 0) {
-        Arg.shift_cnt += 1
-        return
-    } else {
-        Arg.shift_cnt := 1
-    }
-    SetTimer Timer, -500
-    Timer() {
-        Global Arg
-        if (Arg.shift_cnt == 1) {
-            HelpText()
-            HelpKeysHide()
-        } else if (Arg.shift_cnt == 2) {
-            HelpText()
-            HelpKeysShow()
-        }
-        Arg.shift_cnt := 0
-    }
-}
-
-~#\::MoveWindowDefault()
-~#+\::MoveWindowBackup()
-
-
-#HotIf ( Arg.hotkeys_show == True )
-    [::HelpKeysShow(-1)
-    ]::HelpKeysShow(+1)
-    \::HelpKeysSnipaste()
-    CapsLock::Return
-#HotIf
-
-
-Global CapsLockToEsc := False
-#HotIf ( CapsLockToEsc == True )
-    CapsLock::{
-        Send "{Esc}"
-        Global CapsLockToEsc
-        CapsLockToEsc := False
-    }
-#HotIf

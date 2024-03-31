@@ -4,13 +4,6 @@
 #Include *i Win.Private.ahk
 
 
-; 默认窗口居中 其他的通过软件中设置
-$RWin::{
-    Send "{Blind}{vkFF}"
-    MoveWindowCenter()
-}
-
-
 ; 调整显示器亮度 基于 Twinkle 软件
 #Home::  ;主显示器 +
 #End::   ;主显示器 -

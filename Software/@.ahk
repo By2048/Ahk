@@ -1,4 +1,22 @@
 
+#HotIf ( Arg.hotkeys_show == True )
+    [::HelpKeysShow(-1)
+    ]::HelpKeysShow(+1)
+    \::HelpKeysSnipaste()
+    CapsLock::Return
+#HotIf
+
+
+Global CapsLockToEsc := False
+#HotIf ( CapsLockToEsc == True )
+    CapsLock::{
+        Send "{Esc}"
+        Global CapsLockToEsc
+        CapsLockToEsc := False
+    }
+#HotIf
+
+
 RegisterPosition("Everything", Position(1700 , 1200))
 #HotIf CheckWindowActive("Everything")
     ~*RWin::{

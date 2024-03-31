@@ -12,8 +12,9 @@
 #Include ..\Tool\Control.ahk
 #Include ..\Tool\Gui.ahk
 
-#Include ..\Software\@.Key.ahk
-#Include ..\Software\@.Software.ahk
+#Include ..\Key\Decorate.ahk
+
+#Include ..\Software\@.ahk
 
 #Include ..\Software\7-Zip.ahk
 #Include ..\Software\Android.ahk
@@ -57,7 +58,6 @@
 #Include ..\Software\JetBrains\IDEA.ahk
 #Include ..\Software\JetBrains\PyCharm.ahk
 #Include ..\Software\JetBrains\ToolBox.ahk
-
 
 #SingleInstance Force
 #HotString EndChars `t`n`s

@@ -1,8 +1,4 @@
 ﻿
-$RAlt::{
-    Send "{Blind}{vkFF}"
-}
-
 >!F1::F13
 >!F2::F14
 >!F3::F15
