@@ -4,7 +4,6 @@
  >^e::Run "D:\#Lnk\#\Everything.lnk"
  >^r::Run "RegEdit"
  >^t::Run "D:\#Lnk\#\TIM.lnk"
- >^y::Run "D:\#Lnk\#\v2rayN.lnk"
  >^p::Run WT " -d T:\"
 
  >^s::Run "D:\#Lnk\#\Sandboxie.lnk"
@@ -37,6 +36,8 @@
 
  >^x::Run "D:\#Lnk\#\Xshell.lnk"
  >^c::Run "Calc"
+ >^v::Run "D:\#Lnk\#\LetsVpn.lnk"
+>^+v::Run "D:\#Lnk\#\v2rayN.lnk"
  >^b::Run "D:\#Lnk\#\BitComet.lnk"
  >^n::Run "D:\#Lnk\#\CloudMusic.lnk"
 >^+n::Run "D:\#Lnk\#\QQMusic.lnk"
@@ -60,6 +61,7 @@
 
  >^Enter::Run "D:\#Lnk\#AppStore\Whiteboard.lnk"
 >^+Enter::Run "D:\#Lnk\#AppStore\DevToys.lnk"
+
 
 
 $RCtrl::{

@@ -1,24 +1,32 @@
 |  Q | QDir PC        | *1 | Maye            |
 | +Q | QDir File      | *2 | 隐藏帮助        |
-|  E | Everything     |----------------------|
-|  R | RegEdit        |  , | 我的电脑        |
+|  W |                |----------------------|
+|  E | Everything     |  , | 我的电脑        |
 |  R | RegEdit        | +, | 回收站          |
 |  T | Tim            |  . | T:\             |
-|  Y | v2rayN         | +. | V:\             |
-|  P | WT             |  / | Chrome          |
-|---------------------| +/ | Edge            |
-|  S | Sandboxie      |----------------------|
-|  F | FreeFileSync   |  [ | VSCode T:\      |
-|  G | Geek           |  ] | VSCode Project  |
-|  H | WindowSpy      |  \ | VSCode Windows  |
-| +H | WindowSpy      |  : | VSCode          |
-|  J | JetBrains      |  " | VSCodeDefault   |
-| +J | JetBrainsCheck |----------------------|
-|  K | KeyHistory     |  Esc | 任务管理器    |
-| +K | 显示虚拟键盘   | +Esc | HuoRongSword  |
-|---------------------|----------------------|
-|  X | XShell         |  Enter | Whiteboard  |
-|  C | Calc           | +Enter | DevToys     |
+|  Y |                | +. | V:\             |
+|  U |                |  / | Chrome          |
+|  I |                | +/ | Edge            |
+|  O |                |----------------------|
+|  P | WT             |  [ | VSCode T:\      |
+|---------------------|  ] | VSCode Project  |
+|  A |                |  \ | VSCode Windows  |
+|  S | Sandboxie      |  : | VSCode          |
+|  D |                |  " | VSCodeDefault   |
+|  F | FreeFileSync   |----------------------|
+|  G | Geek           |  Esc | 任务管理器    |
+|  H | WindowSpy      | +Esc | HuoRongSword  |
+| +H | WindowSpy      |----------------------|
+|  J | JetBrains      |  Enter | Whiteboard  |
+| +J | JetBrainsCheck | +Enter | DevToys     |
+|  K | KeyHistory     |
+| +K | 显示虚拟键盘   |
+|  L |                |
+|---------------------|
+|  Z |                |
+|  X | XShell         |
+|  C | Calc           |
+|  V | Vpn            |
 |  B | BitComet       |
 |  N | CloudMusic     |
 | +N | QQMusic        |
