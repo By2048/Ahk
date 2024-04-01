@@ -3,8 +3,8 @@
 ReadConfig(path, slice, replace:="`; ")
 {
     data  := ""
-    start := slice[1]
-    stop  := slice[2]
+    start := slice[1] - slice[2] + 1
+    stop  := slice[1]
     loop read , path
     {
         line := StrReplace(A_LoopReadLine, replace, "")
