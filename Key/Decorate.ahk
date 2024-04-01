@@ -2,7 +2,7 @@
 ; Window Center
 ; Window Default
 ; Window Backup
-RWin::{
+~RWin::{
     Send "{Blind}{vkFF}"
     Global Arg
     if (Arg.win_cnt > 0) {
@@ -31,7 +31,7 @@ RWin::{
 
 ; 快捷键帮助
 ; 项目信息
-RShift::{
+~RShift::{
     Send "{Blind}{vkFF}"
     Global Arg
     if (Arg.shift_cnt > 0) {
@@ -61,7 +61,7 @@ RShift::{
 
 
 ; F13 - F24
-RAlt::{
+~RAlt::{
     Send "{Blind}{vkFF}"
     Global Arg
     GetActiveWindowInfo()
