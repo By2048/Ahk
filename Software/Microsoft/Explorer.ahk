@@ -34,7 +34,7 @@ RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
 
 #HotIf CheckWindowActive( "Explorer" , "#32770" , "*属性" )
     ; 修改文件图标为默认
-    \::{
+    !\::{
         Send "^+{Tab}"
         Sleep 500
         Send "!i"
