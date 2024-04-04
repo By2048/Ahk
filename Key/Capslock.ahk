@@ -1,4 +1,12 @@
 ﻿
+; 重置状态
+~CapsLock::{
+    SetNumLockState "Off"
+    SetCapsLockState "Off"
+    SetScrollLockState "Off"
+}
+
+
 ;切换到显示器中心
 ~CapsLock & Tab::{
 
@@ -67,12 +75,5 @@
     WinActivate "ahk_id " . win_id
 }
 
-
-; 关闭大写锁定
-~*CapsLock Up::{
-    SetNumLockState "Off"
-    SetCapsLockState "Off"
-    SetScrollLockState "Off"
-}
 
 #Include *i CapsLock.Private.ahk
