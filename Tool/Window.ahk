@@ -156,19 +156,22 @@ GetActiveWindowInfo(cache:=True)
             return window
 
     try {
+        WinGetPos        &win_sx, &win_sy, &win_sw, &win_sh, "ahk_id " . win_id
+        WinGetClientPos  &win_cx, &win_cy, &win_cw, &win_ch, "ahk_id " . win_id
         win_pid           := WinGetPID("ahk_id " . win_id)
-        win_process_exe   := WinGetProcessName("ahk_id " . win_id)
-        win_process_path  := WinGetProcessPath("ahk_id " . win_id)
-        win_min_max       := WinGetMinMax("ahk_id " . win_id)
-        win_transparent   := WinGetTransparent("ahk_id " . win_id)
-        win_controls_id   := WinGetControlsHwnd("ahk_id " . win_id)
-        win_controls_name := WinGetControls("ahk_id " . win_id)
         win_class         := WinGetClass("ahk_id " . win_id)
         win_text          := WinGetText("ahk_id " . win_id)
+        win_process_exe   := WinGetProcessName("ahk_id " . win_id)
+        win_process_path  := WinGetProcessPath("ahk_id " . win_id)
+        win_controls_id   := WinGetControlsHwnd("ahk_id " . win_id)
+        win_controls_name := WinGetControls("ahk_id " . win_id)
+        win_min_max       := WinGetMinMax("ahk_id " . win_id)
+        win_transparent   := WinGetTransparent("ahk_id " . win_id)
     } catch {
         return
     }
 
+    ; 数据格式转换
     wpn := win_process_exe
     wpn := RTrim(wpn , "exe")
     wpn := RTrim(wpn , "EXE")
@@ -177,14 +180,10 @@ GetActiveWindowInfo(cache:=True)
     if InStr(win_process_name, ".exe") or InStr(win_process_name, ".EXE")
         win_process_name := wpn
 
-    wmm := win_min_max
-    if wmm == 1
-        wmm := "Max"
-    else if wmm == -1
-        wmm := "Min"
-    else if wmm == 0
-        wmm := ""
-    win_min_max := wmm
+    ; 窗口信息
+    window.x  := win_sx , window.y  := win_sy , window.w  := win_sw , window.h  := win_sh
+    window.sx := win_sx , window.sy := win_sy , window.sw := win_sw , window.sh := win_sh
+    window.cx := win_cx , window.cy := win_cy , window.cw := win_cw , window.ch := win_ch
 
     ; 基础信息
     window.id           := win_id
@@ -198,11 +197,15 @@ GetActiveWindowInfo(cache:=True)
     window.title        := win_title
     window.text         := win_text
 
-    WinGetPos        &sx, &sy, &sw, &sh, "ahk_id " . win_id
-    WinGetClientPos  &cx, &cy, &cw, &ch, "ahk_id " . win_id
-    window.x  := sx , window.y  := sy , window.w  := sw , window.h  := sh
-    window.sx := sx , window.sy := sy , window.sw := sw , window.sh := sh
-    window.cx := cx , window.cy := cy , window.cw := cw , window.ch := ch
+    ; 全屏信息
+    wmm := win_min_max
+    if wmm == 1
+        wmm := "Max"
+    else if wmm == -1
+        wmm := "Min"
+    else if wmm == 0
+        wmm := ""
+    win_min_max := wmm
 
     ; 控件信息
     win_controls := {}
