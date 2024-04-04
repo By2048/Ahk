@@ -14,6 +14,10 @@
     SetTimer Timer, -500
     Timer() {
         Global Arg
+        if ( CheckWindowActive("Snipaste") ) {
+            Arg.win_cnt := 0
+            return
+        }
         if ( Arg.win_cnt == 1 ) {
             MoveWindowCenter()
         } else if ( Arg.win_cnt == 2 ) {
