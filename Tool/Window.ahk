@@ -153,7 +153,7 @@ GetActiveWindowInfo(cache:=True)
     ; 缓存数据
     if ( window.cache_id == win_id and window.cache_title == win_title )
         if ( window.cache_expire - A_TickCount > 0 )
-            return
+            return window
 
     try {
         win_pid           := WinGetPID("ahk_id " . win_id)
