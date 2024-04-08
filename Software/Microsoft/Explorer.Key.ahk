@@ -42,7 +42,7 @@ F3::Return
 ; 地址栏历史
 ; 下拉列表 展开
 F4::Return
->!Space::Send "{F4}"
+>^Space::Send "{F4}"
 
 ; 刷新
 F5::Return
@@ -62,7 +62,7 @@ F6::Return
 
 ; 地址栏
 !d::Return
-<!Space::Send "!d"
+>!Space::Send "!d"
 
 ; 删除
 ^d::Return
