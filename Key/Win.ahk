@@ -89,7 +89,10 @@
     Send "^{Tab 2}"
     Send "!n"
 }
-<#/:: Run "MS-Settings:" ;设置 基础
+<#/::{
+    Send "{Blind}{vkFF}"
+    Run "MS-Settings:" ;设置 基础
+}
 <#+/::Run "E:\Config\Windows.msc" ;设置 高级
 
 ;类似于Vim的快捷键操作工具
@@ -233,18 +236,18 @@
     }
 }
 
->#Space:: WindowsTerminal("Focus", "T:\\")
->#+Space::WindowsTerminal("Full" , "T:\\")
-
 ; Snipaste 截图 贴图
 >#Insert::Send "^!{PrintScreen}"
 >#Delete::Send "^!+{PrintScreen}"
 
+; 终端
+>#Space:: Run WT " --focus --size 124,36 -d T:\\"
+
 ; 窗口大小调整
->#Left:: Send "^!{Numpad4}"
->#Right::Send "^!{Numpad6}"
->#Up::   Send "^!{Numpad8}"
->#Down:: Send "^!{Numpad2}"
+>#Up::   MoveWindowOffset( 0 , 0 ,   0 , +10 )
+>#Down:: MoveWindowOffset( 0 , 0 ,   0 , -10 )
+>#Left:: MoveWindowOffset( 0 , 0 , -10 ,   0 )
+>#Right::MoveWindowOffset( 0 , 0 , +10 ,   0 )
 
 ; TIM
 >#`;::Send "^!;" ;识图

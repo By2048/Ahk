@@ -62,6 +62,10 @@
  >^Enter::Run "D:\#Lnk\#AppStore\Whiteboard.lnk"
 >^+Enter::Run "D:\#Lnk\#AppStore\DevToys.lnk"
 
+>^Up::   MoveWindowOffset(   0 , -10 )
+>^Down:: MoveWindowOffset(   0 , +10 )
+>^Left:: MoveWindowOffset( -10 ,   0 )
+>^Right::MoveWindowOffset( +10 ,   0 )
 
 
 $RCtrl::{
