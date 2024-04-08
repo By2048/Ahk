@@ -474,37 +474,15 @@ ResizeWindow(command, direction)
 
 
 
-; 窗口上下左右移动
-; direction | Up \ Down \ Left \ Right
-; return    | None
-MoveWindowUDLR(direction)
+; 窗口相对当前坐标移动
+MoveWindowOffset(x:=0, y:=0, w:=0, h:=0, step:=10)
 {
-    SetWinDelay 1
-
-    step := 10
-
-    GetActiveWindowInfo()
-
-    if IsDesktops()
-        return
-
-    win_id := window.id
-    win_x  := window.x
-    win_y  := window.y
-    win_w  := window.w
-    win_h  := window.h
-
-    if (direction == "Up") {
-        win_y := win_y - step
-    } else if (direction == "Down") {
-        win_y := win_y + step
-    } else if (direction == "Left") {
-        win_x := win_x - step
-    } else if (direction == "Right") {
-        win_x := win_x + step
-    }
-
-    SetWindow(win_x, win_y, win_w, win_h)
+    WinGetPos &win_x, &win_y, &win_w, &win_h, "A"
+    win_x := win_x + x
+    win_y := win_y + y
+    win_w := win_w + w
+    win_h := win_h + h
+    WinMove win_x, win_y, win_w, win_h, "A"
 }
 
 
