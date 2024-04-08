@@ -129,3 +129,12 @@ AEXE(exe)
     }
     return Format("ahk_exe {}", exe)
 }
+
+
+; 通过文件所在位置来获取路径
+FilePath(path, name)
+{
+    SplitPath(path, &file_name, &file_dir)
+    file_path := file_dir . "\" . name
+    return file_path
+}
