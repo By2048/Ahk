@@ -12,8 +12,6 @@
 #Include ..\Tool\Control.ahk
 #Include ..\Tool\Gui.ahk
 
-#Include ..\Key\Decorate.ahk
-
 #Include ..\Software\@.ahk
 
 #Include ..\Software\7-Zip.ahk

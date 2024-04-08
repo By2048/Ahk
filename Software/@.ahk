@@ -1,4 +1,8 @@
 
+#Include @.Config.ahk
+#Include @.Key.ahk
+
+
 #HotIf ( Arg.hotkeys_show == True )
     [::HelpKeysShow(-1)
     ]::HelpKeysShow(+1)
@@ -13,6 +17,21 @@ Global CapsLockToEsc := False
         Send "{Esc}"
         Global CapsLockToEsc
         CapsLockToEsc := False
+    }
+#HotIf
+
+
+RegisterProcess("scrcpy" , "Scrcpy")
+#HotIf CheckWindowActive("Scrcpy")
+    #\::
+    #+\::{
+        GetActiveWindowInfo(False)
+        win_w := window.cw
+        win_h := window.ch
+        if A_ThisHotKey == "#\"
+            MoveWindowPosition(Position(33, "Center", win_w, win_h))
+        if A_ThisHotKey == "#+\"
+            MoveWindowPosition(Position("[Center][2]", win_w, win_h))
     }
 #HotIf
 

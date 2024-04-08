@@ -17,44 +17,9 @@
     }
 }
 
-; 设置默认位置
-#\::MoveWindowDefault()
-#+\::MoveWindowBackup()
-
 ; 窗口全屏
 #Enter:: Send "^!{Enter}"
 #+Enter::Send "^!+{Enter}"
-
-; 结束应用\进程
-#BackSpace::{
-    GetActiveWindowInfo()
-    ; 远程桌面切换到Windows时 结束远程桌面
-    if (window.process_name == "Explorer") {
-        windows_previous_process_name := GlobalGet("Windows", "Previous_Process_Name")
-        remote_desktop_switch_check := GlobalGet("Status", "Remote_Desktop_Switch_Check", "Bool")
-        if (windows_previous_process_name == "RemoteDesktop") {
-            if (remote_desktop_switch_check == True) {
-                exe := Windows_Process.Get(StrLower("RemoteDesktop"))
-                ProcessClose exe
-                GlobalSet("Windows", "Previous_Process_Name", "")
-                GlobalSet("Status", "Remote_Desktop_Switch_Check", False)
-                return
-            }
-        }
-    }
-    if IsDesktops()
-        return
-    try WinClose AID(window.id)
-}
-; 结束进程
-#+BackSpace::{
-    GetActiveWindowInfo()
-    if IsDesktops()
-        return
-    if not window.pid
-        return
-    ProcessClose window.pid
-}
 
 ; UI缩放快捷键
 #0:: Send "^!0"
@@ -247,10 +212,6 @@
 ; 屏幕截图 临时 | 长久
 <#Insert:: ScreenShotFull(ScreenShot_Full)
 <#+Insert::ScreenShotFull(ScreenShot_Temp)
-
-;软件截图 临时 | 长久
-<#Delete:: ScreenShotSoftware(ScreenShot_Software)
-<#+Delete::ScreenShotSoftware(ScreenShot_Temp    )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
