@@ -42,12 +42,13 @@ ToBase(n, b)
 }
 
 
+; Center / [Center] / [Center][1] / 0.7 / -15
 ; 屏幕坐标参数转换
 Position(args*)
 {
     if ( args.Length == 2 ) {
-        x := "[Center][1]"
-        y := "[Center][1]"
+        x := "Center"
+        y := "Center"
         w := args[1]
         h := args[2]
     } else if ( args.Length == 3 ) {
@@ -64,45 +65,37 @@ Position(args*)
 
     win_x := x , win_y := y , win_w := w , win_h := h
 
-    check_x := RegExMatch(Format("{:L}", x), "\[center\]\[([1-9])\]", &re_match_x)
-    if (check_x) {
-        screen_index := re_match_x.1
-        if (screen_index <= Screens.Count) {
-            if ( w > 0 and w < 1 ) {
-                win_w := Screens.%screen_index%.w * w
-            } else if ( w <= 0 ) {
-                win_w := Screens.%screen_index%.w + w
-            }
-            win_x := Screens.%screen_index%.x + Screens.%screen_index%.w/2 - win_w/2
-        } else {
-            if ( w > 0 and w < 1 ) {
-                win_w := Screen.w * w
-            } else if ( w <= 0 ) {
-                win_w := Screen.w + w
-            }
-            win_x := Screen.x + Screen.w/2 - win_w/2
+    GetScreenIndex(arg) {
+        screen_index := 1
+        if ( StrLower(arg) == "[center]" or StrLower(arg) == "center" ) {
+            screen_index := 1
+        } else if InStr( StrLower(arg) , "center" ) {
+            check := RegExMatch(StrLower(arg), "\[center\]\[([1-9])\]", &re_match)
+            if ( check )
+                screen_index := re_match.1
         }
+        if ( screen_index > Screens.Count )
+            screen_index := 1
+        return screen_index
     }
 
-    check_y := RegExMatch(Format("{:L}", y), "\[center\]\[([1-9])\]", &re_match_y)
-    if (check_y) {
-        screen_index := re_match_y.1
-        if (screen_index <= Screens.Count) {
-            if ( h > 0 and h < 1 ) {
-                win_h := Screens.%screen_index%.h * h
-            } else if ( h <= 0 ) {
-                win_h := Screens.%screen_index%.h + h
-            }
-            win_y := Screens.%screen_index%.y + Screens.%screen_index%.h/2 - win_h/2
-        } else {
-            if ( h > 0 and h < 1 ) {
-                win_h := Screen.h * h
-            } else if ( h <= 0 ) {
-                win_h := Screen.h + h
-            }
-            win_y := Screen.y + Screen.h/2 - win_h/2
-        }
+    screen_index := GetScreenIndex(x)
+    if ( w > 0 and w < 1 ) {
+        win_w := Screens.%screen_index%.w * w
+    } else if ( w <= 0 ) {
+        win_w := Screens.%screen_index%.w + w
     }
+    if InStr( StrLower(x) , "center" )
+        win_x := Screens.%screen_index%.x + Screens.%screen_index%.w/2 - win_w/2
+
+    screen_index := GetScreenIndex(y)
+    if ( h > 0 and h < 1 ) {
+        win_h := Screens.%screen_index%.h * h
+    } else if ( h <= 0 ) {
+        win_h := Screens.%screen_index%.h + h
+    }
+    if InStr( StrLower(y) , "center" )
+        win_y := Screens.%screen_index%.y + Screens.%screen_index%.h/2 - win_h/2
 
     win_x := Round(win_x)
     win_y := Round(win_y)
