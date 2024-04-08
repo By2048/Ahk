@@ -30,7 +30,10 @@
 #HotIf
 
 
+
 ; 任务管理器
+RegisterProcess( "taskmgr" , "TaskMGR" )
+
 #HotIf CheckWindowActive( "TaskMGR" )
 
     ; 切换标签页
@@ -90,30 +93,29 @@
 
 
 ; 远程桌面
+RegisterProcess( "mstsc" , "RemoteDesktop" )
 #HotIf CheckWindowActive( "RemoteDesktop" )
-
     CapsLock::{
         Global Arg
         WinActivate "ahk_exe explorer.exe ahk_class WorkerW"
         HelpText("`n  Windows  `n", "Center", "Screen", 300)
         Arg.Previous_Process_Name := "RemoteDesktop"
     }
-
     ; 显示链接栏
     ^!Home::Return
-
 #HotIf
 
 
-; 设置
+; 设置界面
+RegisterProcess("ApplicationFrameHost" , "WindowsSettings")
 RegisterPosition( "WindowsSettings_ApplicationFrameWindow_设置" , Position(1800 , 1200) )
-
-#HotIf CheckWindowActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
+#HotIf CheckWindowActive( "ApplicationFrameHost" , "ApplicationFrameWindow" , "设置" )
     Esc::MouseClickAndResetting( 38 , 23 ) ;点击返回
 #HotIf
 
 
 ; 注册表
+RegisterProcess( "regedit" , "RegEdit" )
 RegisterHelp("RegEdit", "Software\Microsoft\Windows.RegEdit.help")
 
 #HotIf CheckWindowActive( "RegEdit" )
