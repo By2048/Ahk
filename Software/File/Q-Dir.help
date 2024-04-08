@@ -1,0 +1,145 @@
+
+ 	
+[CTRL+X]	 	Cut
+[CTRL+C]	 	Copy
+[CTRL+V]	 	Paste
+[CTRL+A]	 	Select all.
+[CTRL+T]	 	New Tab
+[CTRL+W]	 	Last tab close
+[CTRL+SHIFT+T]	 	New Tab from select folder
+[CTRL+SHIFT+A]	 	Invert Selection.
+[CTRL+TAB]	 	Next Tab
+[CTRL+SHIFT+TAB]	 	Previous Tab
+[CTRL+E]	 	Toggle Tree
+[CTRL+Z]	 	Undo
+[CTRL+Q]	 	Menu Quick-Link's
+[CTRL+M]	 	Select-Filter On/Off
+[CTRL+N]	 	New Folder.
+[CTRL+S]	 	Programstarter
+[CTRL+?]	 	[?=Left/Right/Up/Down] Select more than one item.
+[CTRL+Num+]	 	Autosize columns
+ 	
+[STRG+ALT+(Driver-Char)]	 	Fast Driver Switch.
+ 	
+[DELETE]	 	Delete
+[BACKSPACE]	 	View the folder one level up.
+ 	
+[F2]	 	Toggle Rename/Rename Name Only
+[F3]	 	Search for a file or folder.
+[F4]	 	Display the Address bar list in activ view.
+[F5]	 	Refresh the active window.
+[F7]	 	Show Desktop-Menu.
+[F8]	 	Show My-Computer-Menu.
+[F11]	 	Full Screen: on/off
+[ESC]	 	Full Screen: off
+ 	
+ 	
+[ATL+S]	 	Focus the Address
+[ALT+L]	 	Screen magnifying.
+[ALT+V] or [ALT+M]	 	Move items to ... .
+[ALT+K]	 	Copy items to ... .
+[ALT+ENTER]	 	Displays the properties of the selected object.
+[ALT+LEFT]	 	Go back.
+[ALT+RIGHT]	 	Go forward.
+[ALT+BACKSPACE]	 	Go back.
+[ALT+SHIFT+BACKSPACE]	 	Go forward.
+ 	
+[SHIFT+F5]	 	Show viewmenu
+[SHIFT+F6]	 	next view mode (Detail,...)
+[SHIFT+F10]	 	Display the shortcut menu for the selected item.
+[SHIFT+DELETE]	 	Delete selected item permanently without placing the item in the Recycle Bin.
+
+Some Features		 	
+ 	
+Favorites	  :	 	Quick access to most often used folders.
+Drag&Drop	  :	 	Move files by dragging in Q-views, and other programs such as MS Explorer.
+Clipboard	  :	 	Copy/ Paste between the Q-Dir directory views, and other programs such as MS Explorer.
+Folder-Type	  :	 	ZIP-, FTP-,cabinet-,network-, system - folders, shortcuts ...
+Views	  :	 	Large icons, tiles, list, detail, thumbnail (Vista: extra large symbols) .
+Export	  :	 	to XLS, CSV, TXT, HTML.
+Popup Menus	  :	 	Desktop, My Computer.
+Screen magnifier	  :	 	anything on the screen can be enlarged.
+Color Filter	  :	 	Different colors for different item types (e.g. *.log;*.txt).
+Highlight-Filter	  :	 	Effective way for fast items highlighting.
+File-Filter	  :	 	Allows for quick and easy  filtering of the items.
+Columns	  :	 	All columns support, and save function .
+Quick-Link's	  :	 	For fast folder access.
+Folder-Select	  :	 	Fast & flexible folder selection address-bar/ desktop menu/ my-computer menu/...
+Multi-INI	  :	 	Several INI files for Q-Dir.
+Tree-View	  :	 	Simple and quadruple.
+Preview	  :	 	Allows a quick preview.
+Portable	  :	 	from 2.77 is Q-Dir portable.
+
+
+
+
+
+[CTRL+X] 剪切
+[CTRL+C] 复制
+[CTRL+V] 粘贴
+[CTRL+A] 全选。
+[CTRL+T] 新标签
+[CTRL+W] 最后一个选项卡关闭
+[CTRL+SHIFT+T] 从所选文件夹中新建选项卡
+[CTRL+SHIFT+A] 反转选择。
+[CTRL+TAB] 下一个选项卡
+[CTRL+SHIFT+TAB] 上一个选项卡
+[CTRL+E] 切换树
+[CTRL+Z] 撤消
+[CTRL+Q] 菜单快速链接
+[CTRL+M] 选择滤镜开/关
+[CTRL+N] 新建文件夹。
+[CTRL+S] 程序启动器
+[CTRL+?] [?=左/右/上/下] 选择多个项目。
+[CTRL+Num+] 自动调整列大小
+ 
+[STRG+ALT+(Driver-Char)] 快速驱动程序开关。
+ 
+[删除] 删除
+[BACKSPACE] 查看上一级文件夹。
+ 
+[F2] 切换重命名/仅重命名名称
+[F3] 搜索文件或文件夹。
+[F4] 在活动视图中显示地址栏列表。
+[F5] 刷新活动窗口。
+[F7] 显示桌面菜单。
+[F8] 显示我的计算机菜单。
+[F11] 全屏：开/关
+[ESC] 全屏：关闭
+ 
+ 
+[ATL+S] 聚焦地址
+[ALT+L] 屏幕放大。
+[ALT+V] 或 [ALT+M] 将项目移至...。
+[ALT+K] 将项目复制到...。
+[ALT+ENTER] 显示所选对象的属性。
+[ALT+向左] 返回。
+[ALT+右] 前进。
+[ALT+退格键] 返回。
+[ALT+SHIFT+退格键] 前进。
+ 
+[SHIFT+F5] 显示视图菜单
+[SHIFT+F6] 下一个视图模式（详细信息，...）
+[SHIFT+F10] 显示所选项目的快捷菜单。
+[SHIFT+DELETE] 永久删除所选项目，而不将该项目放入回收站。
+
+一些特点
+ 
+收藏夹：快速访问最常用的文件夹。
+拖放：通过在 Q 视图和其他程序（例如 MS Explorer）中拖动来移动文件。
+剪贴板：在 Q-Dir 目录视图和其他程序（例如 MS Explorer）之间复制/粘贴。
+文件夹类型：ZIP-、FTP-、机柜-、网络-、系统-文件夹、快捷方式...
+视图：大图标、图块、列表、详细信息、缩略图（Vista：超大符号）。
+导出：导出为 XLS、CSV、TXT、HTML。
+弹出菜单：桌面、我的电脑。
+屏幕放大镜：可以放大屏幕上的任何内容。
+颜色过滤器：不同的项目类型使用不同的颜色（例如*.log；*.txt）。
+高亮过滤器：快速突出显示项目的有效方法。
+文件过滤器：允许快速轻松地过滤项目。
+栏目：所有栏目均支持，并保存功能。
+快速链接：用于快速文件夹访问。
+文件夹选择：快速灵活的文件夹选择地址栏/桌面菜单/我的电脑菜单/...
+多 INI ：Q-Dir 的多个 INI 文件。
+树状视图：简单和四重。
+预览：允许快速预览。
+便携式：从 2.77 开始，Q-Dir 是便携式的。

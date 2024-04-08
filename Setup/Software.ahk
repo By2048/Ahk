@@ -14,37 +14,15 @@
 
 #Include ..\Software\@.ahk
 
-#Include ..\Software\7-Zip.ahk
 #Include ..\Software\Android.ahk
-#Include ..\Software\BitComet.ahk
-#Include ..\Software\DiskGenius.ahk
-#Include ..\Software\FFRenamePro.ahk
 #Include ..\Software\FoxMail.ahk
-#Include ..\Software\FreeFileSync.ahk
-#Include ..\Software\FSViewer.ahk
 #Include ..\Software\Geek.ahk
 #Include ..\Software\LOL.ahk
-#Include ..\Software\Music.ahk
-#Include ..\Software\Navicat.ahk
-#Include ..\Software\NetSarang.ahk
-#Include ..\Software\Obsidian.ahk
-#Include ..\Software\Postman.ahk
-#Include ..\Software\PotPlayer.ahk
-#Include ..\Software\Q-Dir.ahk
 #Include ..\Software\Snipaste.ahk
-#Include ..\Software\SumatraPDF.ahk
 #Include ..\Software\Tencent.ahk
 #Include ..\Software\v2rayN.ahk
 #Include ..\Software\VMware.ahk
 #Include ..\Software\Wallpaper.ahk
-#Include ..\Software\WPS.ahk
-
-#Include ..\Software\Microsoft\Explorer.ahk
-#Include ..\Software\Microsoft\MMC.ahk
-#Include ..\Software\Microsoft\Office.ahk
-#Include ..\Software\Microsoft\Terminal.ahk
-#Include ..\Software\Microsoft\VSCode.ahk
-#Include ..\Software\Microsoft\Windows.ahk
 
 #Include ..\Software\Browser\@.ahk
 #Include ..\Software\Browser\Chrome.ahk
@@ -52,10 +30,34 @@
 #Include ..\Software\Browser\FireFox.ahk
 #Include ..\Software\Browser\Opera.ahk
 
+#Include ..\Software\Develop\Navicat.ahk
+#Include ..\Software\Develop\NetSarang.ahk
+#Include ..\Software\Develop\Obsidian.ahk
+#Include ..\Software\Develop\Postman.ahk
+
+#Include ..\Software\File\7-Zip.ahk
+#Include ..\Software\File\BitComet.ahk
+#Include ..\Software\File\DiskGenius.ahk
+#Include ..\Software\File\FFRenamePro.ahk
+#Include ..\Software\File\FreeFileSync.ahk
+#Include ..\Software\File\FSViewer.ahk
+#Include ..\Software\File\Music.ahk
+#Include ..\Software\File\PotPlayer.ahk
+#Include ..\Software\File\Q-Dir.ahk
+#Include ..\Software\File\SumatraPDF.ahk
+#Include ..\Software\File\WPS.ahk
+
 #Include ..\Software\JetBrains\@.ahk
 #Include ..\Software\JetBrains\IDEA.ahk
 #Include ..\Software\JetBrains\PyCharm.ahk
 #Include ..\Software\JetBrains\ToolBox.ahk
+
+#Include ..\Software\Microsoft\Explorer.ahk
+#Include ..\Software\Microsoft\MMC.ahk
+#Include ..\Software\Microsoft\Office.ahk
+#Include ..\Software\Microsoft\Terminal.ahk
+#Include ..\Software\Microsoft\VSCode.ahk
+#Include ..\Software\Microsoft\Windows.ahk
 
 #SingleInstance Force
 #HotString EndChars `t`n`s
