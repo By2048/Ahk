@@ -34,6 +34,8 @@
 #Include ..\Software\Develop\NetSarang.ahk
 #Include ..\Software\Develop\Obsidian.ahk
 #Include ..\Software\Develop\Postman.ahk
+#Include ..\Software\Develop\Terminal.ahk
+#Include ..\Software\Develop\VSCode.ahk
 
 #Include ..\Software\File\7-Zip.ahk
 #Include ..\Software\File\BitComet.ahk
@@ -55,8 +57,6 @@
 #Include ..\Software\Microsoft\Explorer.ahk
 #Include ..\Software\Microsoft\MMC.ahk
 #Include ..\Software\Microsoft\Office.ahk
-#Include ..\Software\Microsoft\Terminal.ahk
-#Include ..\Software\Microsoft\VSCode.ahk
 #Include ..\Software\Microsoft\Windows.ahk
 
 #SingleInstance Force

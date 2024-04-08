@@ -28,22 +28,20 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
     #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
 
-    Global  Arg , CapsLockToEsc
-    ~LShift::{
-        if (Arg.shift_cnt > 0) {
-            Arg.shift_cnt += 1
-            return
-        } else {
-            Arg.shift_cnt := 1
-        }
-        SetTimer Timer, -333
-        Timer() {
-            if (Arg.shift_cnt == 2) {
-                Send "^!{Space}"
+    ~*LShift::{
+        if InStr(A_PriorHotkey, "LShift")
+            if ( A_TimeSincePriorHotkey < 333 ) {
+                Send "^+/"
                 CapsLockToEsc := True
             }
-            Arg.shift_cnt := 0
-        }
+    }
+
+    ~*LCtrl::{
+        if InStr(A_PriorHotkey, "LCtrl")
+            if ( A_TimeSincePriorHotkey < 333 ) {
+                Send "!+/"
+                CapsLockToEsc := True
+            }
     }
 
     ; 切换标签页
@@ -71,13 +69,9 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
     ~>^j::Return
 
-    ;快速命令
-    <!Space::Send "^!["
-    >!Space::Send "^!]"
-
-    ~*CapsLock Up::{
-        SetCapsLockState "Off"
-    }
+    ; 命令 / 文件
+    >^Space::Send "^+/"
+    >!Space::Send "!+/"
 
     ; 项目 结构
     CapsLock & [::{
