@@ -1,6 +1,6 @@
 ﻿
 ; 重置状态
-~CapsLock::{
+~*CapsLock::{
     SetNumLockState "Off"
     SetCapsLockState "Off"
     SetScrollLockState "Off"

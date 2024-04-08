@@ -1,5 +1,6 @@
 
-RegisterHelp("Default", "Key\Win.help | Key\Win.Other.help")
+RegisterHelp("Default", "Key\Win.help"      )
+RegisterHelp("Default", "Key\Win.Other.help")
 
 RegisterPosition("_#32770"          , Position(1522 , 1122) )
 RegisterPosition("_#32770_浏览"      , Position(1522 , 1122) )

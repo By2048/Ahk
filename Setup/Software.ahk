@@ -57,6 +57,8 @@
 #Include ..\Software\Microsoft\Explorer.ahk
 #Include ..\Software\Microsoft\MMC.ahk
 #Include ..\Software\Microsoft\Office.ahk
+#Include ..\Software\Microsoft\RegEdit.ahk
+#Include ..\Software\Microsoft\TaskMgr.ahk
 #Include ..\Software\Microsoft\Windows.ahk
 
 #SingleInstance Force

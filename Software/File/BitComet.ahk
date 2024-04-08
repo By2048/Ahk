@@ -1,5 +1,5 @@
 ﻿
-RegisterHelp("BitComet", "Software\BitComet.help")
+RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 
 #HotIf CheckWindowActive("BitComet", "#32770", "选项*")

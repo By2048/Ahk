@@ -1,7 +1,8 @@
 ﻿
 RegisterProcess("WindowsTerminal" , "Terminal")
 
-RegisterHelp("Terminal", "Software\Microsoft\Terminal.help | Config\Script.help")
+RegisterHelp("Terminal", FilePath(A_LineFile, "Terminal.help"))
+RegisterHelp("Terminal", "Config\Script.help")
 
 
 #HotIf CheckWindowActive( "Terminal" )

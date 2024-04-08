@@ -1,12 +1,9 @@
 ﻿
 #Include *i VSCode.Private.ahk
 
-
 RegisterProcess("Code", "VSCode")
-
-RegisterHelp("VSCode", "| Software\Microsoft\VSCode.help"
-                       "| Software\Microsoft\VSCode.Fxx.help")
-
+RegisterHelp("VSCode", FilePath(A_LineFile, "VSCode.help"))
+RegisterHelp("VSCode", FilePath(A_LineFile, "VSCode.Fxx.help"))
 
 ; 快捷键设置
 #HotIf CheckWindowActive( "VSCode" , "" , "*User\KeyBindings.json | *键盘快捷方式" )

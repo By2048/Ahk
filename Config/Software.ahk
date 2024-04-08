@@ -41,26 +41,21 @@ RegisterProcess(origin, rename)
 
 
 
-; 软件与帮助信息对应关系
+; 软件与帮助信息对应关系 Map( Process : [ Help ])
 Software_Keys_Help := Map()
-RegisterHelp(process, config)
+RegisterHelp(process, path)
 {
-    if InStr(config, "|")
-        config := StrSplit(config, "|")
-    else
-        config := [config]
-    result := []
-    for cfg in config {
-        cfg := Trim(cfg)
-        if not cfg
-            continue
-        path := Format("{}\{}", A_InitialWorkingDir, cfg)
-        if FileExist(path) {
-            content := FileRead(path, "`n UTF-8")
-            result.Push(content)
-        }
-    }
-    Software_Keys_Help[process] := result
+    path := Trim(path)
+    if not path
+        return
+    if not InStr(path, ":")
+        path := Format("{}\{}", A_InitialWorkingDir, path)
+    if not FileExist(path)
+        return
+    config := Software_Keys_Help.Get(process, [])
+    content := FileRead(path, "`n UTF-8")
+    config.Push(content)
+    Software_Keys_Help[process] := config
 }
 
 

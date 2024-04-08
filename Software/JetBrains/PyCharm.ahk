@@ -1,9 +1,10 @@
 ﻿
 RegisterProcess("pycharm64" , "PyCharm")
 
-RegisterHelp("PyCharm" , "| Software\JetBrains\@.help          "
-                       . "| Software\JetBrains\@.Fxx.md        "
-                       . "| Software\JetBrains\@.CapsLock.help ")
+RegisterHelp("PyCharm", FilePath(A_LineFile, "@.help"))
+RegisterHelp("PyCharm", FilePath(A_LineFile, "@.Fxx.help"))
+RegisterHelp("PyCharm", FilePath(A_LineFile, "@.CapsLock.help"))
+
 
 #Include PyCharm.Position.ahk
 

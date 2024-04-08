@@ -6,9 +6,9 @@ RegisterProcess("chrome" , "Chrome")
 
 RegisterHelp("Chrome__知乎" , "Software\Browser\Chrome.ZhiHu.help")
 RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili.help")
-RegisterHelp("Chrome" , "| Software\Browser\@.help             "
-                      . "| Software\Browser\Chrome.Fxx.help    "
-                      . "| Software\Browser\Chrome.Search.help ")
+RegisterHelp("Chrome", "Software\Browser\@.help")
+RegisterHelp("Chrome", "Software\Browser\Chrome.Fxx.help")
+RegisterHelp("Chrome", "Software\Browser\Chrome.Search.help")
 
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*|微博*" )

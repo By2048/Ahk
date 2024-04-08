@@ -1,12 +1,12 @@
 ﻿
 RegisterProcess("explorer" , "Explorer")
 
-RegisterHelp("Explorer_CabinetWClass" , "Software\Microsoft\Explorer.help")
+RegisterHelp("Explorer_CabinetWClass", FilePath(A_LineFile, "Explorer.help"))
 
-RegisterHelp("Explorer_WorkerW" , "| Key\Win.help                         "
-                                . "| Key\Win.Other.help                   "
-                                . "| Software\Microsoft\Explorer.Fxx.help "
-                                . "| Config\Mouse.help "                  )
+RegisterHelp("Explorer_WorkerW", "Key\Win.help")
+RegisterHelp("Explorer_WorkerW", "Key\Win.Other.help")
+RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Fxx.help"))
+RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
 
 
 ; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
