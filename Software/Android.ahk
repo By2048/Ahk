@@ -1,4 +1,6 @@
 ﻿
+RegisterProcess( "NemuPlayer" , "Android" )
+
 #HotIf CheckWindowActive( "Android" )
 
     ; 全屏
