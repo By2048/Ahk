@@ -14,8 +14,8 @@
 
      F9::Run "E:\Book\"
     F10::Run "E:\Doc\"
-    F11::Run "E:\Image\"
-    F12::Run "E:\GitPy\"
+    F11::Run "E:\Config\"
+    F12::Run "E:\Script\"
 
     RAlt & RWin::Return
 
