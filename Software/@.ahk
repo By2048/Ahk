@@ -22,6 +22,7 @@ Global CapsLockToEsc := False
 
 
 RegisterProcess("scrcpy" , "Scrcpy")
+RegisterHelp("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
 #HotIf CheckWindowActive("Scrcpy")
     #\::
     #+\::{

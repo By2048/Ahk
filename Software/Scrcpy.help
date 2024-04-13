@@ -1,0 +1,31 @@
+| 切换全屏模式               | Mod f                            |
+| 左旋转显示                 | Mod Left                         |
+| 右旋转显示                 | Mod Right                        |
+| 水平翻转显示               | Mod Shift Left | Mod Shift Right |
+| 垂直翻转显示               | Mod Shift Up   | Mod Shift Down  |
+| 将窗口调整为1:1（像素完美）| Mod g                            |
+| 调整窗口以消除黑边         | Mod w | 双击左键                 |
+| 点击 主页                  | Mod h | 中键                     |
+| 点击 返回                  | Mod b | Mod Backspace            |
+| 点击 应用切换              | Mod s |                          |
+| 点击 菜单（解锁屏幕）      | Mod m                            |
+| 点击 音量增加              | Mod Up                           |
+| 点击 音量减少              | Mod Down                         |
+| 点击 电源                  | Mod p                            |
+| 开机                       | 右键                             |
+| 关闭设备屏幕（保持镜像）   | Mod o                            |
+| 打开设备屏幕               | Mod Shift o                      |
+| 旋转设备屏幕               | Mod r                            |
+| 展开通知面板               | Mod n                            |
+| 展开设置面板               | Mod n n                          |
+| 折叠面板                   | Mod Shift n                      |
+| 复制到剪贴板               | Mod c                            |
+| 剪切到剪贴板               | Mod x                            |
+| 同步剪贴板并粘贴           | Mod v                            |
+| 注入计算机剪贴板文本       | Mod Shift v                      |
+| 打开键盘设置（仅限HID键盘）| Mod k                            |
+| FPS计数器 StdOut           | Mod i                            |
+| 捏拉缩放/旋转              | Ctrl 点击并移动                  |
+| 倾斜（用两个手指垂直滑动） | Shift 点击并移动                 |
+| 拖放APK文件                | 从计算机安装APK                  |
+| 拖放非APK文件              | 将文件推送到设备                 |
