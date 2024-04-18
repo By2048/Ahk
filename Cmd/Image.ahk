@@ -95,6 +95,10 @@ G.Show("Center NA")
 \::
 Esc::
 Enter::
+CapsLock::
+BackSpace::
+AppsKey::
 RShift::{
+    SetCapsLockState "Off"
     ExitApp
 }
