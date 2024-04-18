@@ -20,6 +20,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
 
     ; 立即下载
+    NumLock::
     CapsLock::{
         SetControlDelay -1
         ControlClick "Button27", "A"
@@ -92,7 +93,10 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
     }
 
     ; 显示详细信息
-    CapsLock::Send "!{V}{Down 4}{Enter}"
+    NumLock::
+    CapsLock::{
+        Send "!{V}{Down 4}{Enter}"
+    }
 
     ^AppsKey::{
         MouseGetPos &x, &y, &win_id, &win_control
@@ -102,10 +106,10 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
     }
 
     CapsLock & Enter::{
-        path := " E:\Project\Ahk\Software\BitComet.ahk "
-        path .= " E:\Project\Ahk\Software\BitComet.Private.ahk "
-        path .= " E:\Project\Ahk\Software\BitComet.help "
-        path .= " E:\Project\Ahk\Software\BitComet.Backup.ahk "
+        path := " E:\Project\Ahk\Software\File\BitComet.ahk "
+        path .= " E:\Project\Ahk\Software\File\BitComet.Private.ahk "
+        path .= " E:\Project\Ahk\Software\File\BitComet.help "
+        path .= " E:\Project\Ahk\Software\File\BitComet.Backup.ahk "
         Run VSCode . path
     }
 

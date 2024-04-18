@@ -1,31 +1,31 @@
 
 ; 文件名称排序
-F2::{
+NumpadHome::{
     SetControlDelay -1
     ControlClick "SysHeader321", "A"
 }
 
 ; 全选
-F3::{
+NumpadEnd::{
     ControlSetChecked True, "Button5", "A"
 }
 
 ; 快速选择路径
-F6::
-F7::{
+NumpadPgUp::
+NumpadPgDn::{
     SetControlDelay -1
     ControlClick "wxWindow1", "A"
-    if InStr(A_ThisHotkey, "F6")
+    if InStr(A_ThisHotkey, "NumpadPgUp")
         Send "{Down}"
-    if InStr(A_ThisHotkey, "F7")
+    if InStr(A_ThisHotkey, "NumpadPgDn")
         Send "{Up}"
 }
 
 ; 文件大小排序
-F10::MouseClickAndResetting(1094, 404, "Window")
+NumpadIns::MouseClickAndResetting(1094, 404, "Window")
 
 ; 选择下载文件夹
-F11::{
+NumpadDel::{
     SetControlDelay -1
     ControlClick "Button2", "A"
 }
