@@ -124,8 +124,8 @@ GetWindowScreen(window)
 {
     result := {}
     loop Screens.Count {
-        if ( window.x > Screens.%A_Index%.x - Window_Screen_Offset ) {
-            if ( window.x < Screens.%A_Index%.x + Screens.%A_Index%.w + Window_Screen_Offset ) {
+        if ( window.cx > Screens.%A_Index%.x - Window_Screen_Offset ) {
+            if ( window.cx < Screens.%A_Index%.x + Screens.%A_Index%.w + Window_Screen_Offset ) {
                 result := Screens.%A_Index%
             }
         }
