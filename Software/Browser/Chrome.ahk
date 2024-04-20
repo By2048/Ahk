@@ -4,6 +4,7 @@
 
 RegisterProcess("chrome" , "Chrome")
 
+
 RegisterHelp("Chrome__知乎" , "Software\Browser\Chrome.ZhiHu.help")
 RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili.help")
 RegisterHelp("Chrome", "Software\Browser\@.help")
@@ -11,9 +12,23 @@ RegisterHelp("Chrome", "Software\Browser\Chrome.Fxx.help")
 RegisterHelp("Chrome", "Software\Browser\Chrome.Search.help")
 
 
+win_w   := 2500
+win_h   := 1400
+win     := Position(win_w, win_h)
+win_x   := win.x
+win_y   := win.y + (30-20)/2  ;坐标修正
+win_pos := Position( win_x, win_y, win_w, win_h )
+RegisterPosition( "Chrome" , win_pos , "Default" )
+RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
+RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开") )
+
+
+
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*|微博*" )
-    CapsLock::
-    +CapsLock::{
+    ~NumLock::
+    ~+NumLock::
+    ~CapsLock::
+    ~+CapsLock::{
         A_Clipboard := ""
         Sleep 33
         Send "{RButton}"
@@ -37,17 +52,16 @@ RegisterHelp("Chrome", "Software\Browser\Chrome.Search.help")
             return
         }
 
-        if A_ThisHotkey == "CapsLock"
+        if ( A_ThisHotkey == "CapsLock" or A_ThisHotkey == "NumLock" )
             Try AriaDownload(url, Chrome_Image)
 
-        if ( A_ThisHotkey == "+CapsLock" ) {
+        if ( A_ThisHotkey == "+CapsLock" or A_ThisHotkey == "+NumLock" ) {
             time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
             ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
             Try AriaDownload(url, Chrome_Image, time . ext)
         }
 
         A_Clipboard := ""
-        SetCapsLockState "Off"
     }
 #HotIf
 

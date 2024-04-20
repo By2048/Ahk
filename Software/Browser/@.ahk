@@ -76,10 +76,9 @@
     ;关闭窗口
     ^w::Return
     ^F4::Return
-    !CapsLock::{
+    ~!CapsLock::{
         Send "{Blind}{vkFF}"
         Send "^w"
-        SetCapsLockState "Off"
     }
 
     ;关闭所有窗口
@@ -87,9 +86,9 @@
 
     ;重新打开标签页
     ^+t::Return
-    !+CapsLock::{
+    ~!+CapsLock::{
+        Send "{Blind}{vkFF}"
         Send "^+t"
-        SetCapsLockState "Off"
     }
 
     ;切换标签页
@@ -178,25 +177,8 @@
     #-::Send "^{-}"
     #=::Send "^{=}"
 
-    ;窗口位置
-    #\::{
-        win_w := 2500
-        win_h := 1400
-        win   := Position(win_w, win_h)
-        win_x := win.x
-        win_y := win.y + (30-20)/2  ;坐标修正
-        MoveWindowPosition( [ win_x, win_y, win_w, win_h ] )
-    }
-    #+\::{
-        if Screens.Count == 1
-            return
-        pos := Position("[Center][2]", 0, 1600)
-        MoveWindowPosition(pos)
-        MoveWindowPosition(pos)
-    }
-
-    #Include *i @.Mouse.ahk
-
+    #Include @.Mouse.ahk
+    #Include @.Joy.ahk
     #Include *i @.Private.ahk
 
 #HotIf

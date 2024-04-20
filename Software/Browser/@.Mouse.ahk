@@ -1,9 +1,14 @@
 
 MButton::Send "^t"
 
-!BackSpace::Send "^r"
+NumpadHome::Send "^w"
+NumpadEnd::Send "^{Click}"
 
-!Enter::Send "^{Click}"
+NumpadPgUp::Send "^+{Tab}"
+NumpadPgDn::Send "^{Tab}"
+
+NumpadIns::Send "^+t"
+NumpadDel::Send "^r"
 
 ;前进
 ~Lbutton & RButton::{
