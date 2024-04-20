@@ -4,6 +4,12 @@
 ; LWin & LCtrl  全屏预览
 
 
+; 重置状态
+~*NumLock Up::{
+    SetNumLockState "Off"
+}
+
+
 ;切换应用
 win_tab := win_shift_tab := False
 LWin & Tab::{
@@ -100,7 +106,6 @@ LWin & RShift::{
         }
     }
 }
-
 
 
 ; 设置代理
