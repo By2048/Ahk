@@ -1,6 +1,6 @@
 
 ; 取消订阅
-CapsLock::{
+NumLock::{
     MouseClick "Right"
     Sleep SleepTime
     ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Delete.png")
@@ -8,26 +8,26 @@ CapsLock::{
 }
 
 ; 订阅
-F2::{
+NumpadHome::{
     MouseClick "Right"
     Sleep SleepTime
     ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Download.png")
 }
 
 ; 在资源管理器中打开
-F3::{
+NumpadEnd::{
     MouseClick "Right"
     Sleep SleepTime
     ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Open.png")
 }
 
 ; 翻页
-F6::PageTool("PgUp")
-F7::PageTool("PgDn")
+NumpadPgUp::PageTool("PgUp")
+NumpadPgDn::PageTool("PgDn")
 
 
 ; 设置
-; F10::Return
+; NumpadIns::Return
 
 ; 全屏
-; F11::Return
+; NumpadDel::Return
