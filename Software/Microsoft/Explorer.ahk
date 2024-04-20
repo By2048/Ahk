@@ -9,6 +9,9 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Fxx.help"))
 RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
 
 
+#Include Explorer.Fxx.ahk
+
+
 ; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
 #HotIf CheckWindowActive( "Explorer" , "CabinetWClass" , "防火墙\允许的应用" )
     Delete::{
@@ -98,6 +101,8 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
 
     #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
 
+    #IncludeAgain Explorer.Tool.ahk
+
     ; 功能区展开缩放
     !`::Send "^{F1}"
     ^F1::Return
@@ -118,11 +123,8 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
         Send "!{y}"
     }
 
-    !/::ControlFocus "SysTreeView321", "A"
-    !\::{
-        ControlFocus "DirectUIHWND3", "A"
-        Send "{PgDn}{PgUp}"
-    }
+    !/::ActivateLeft()
+    !\::ActivateRight()
 
     ; Alt+向左键 查看上一个文件夹
     ; Alt+向右键 查看下一个文件夹
@@ -151,113 +153,18 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
     ^WheelDown::Return
 
     ; 打开主右键菜单设置
-    !AppsKey::{
-        windows   := GetActiveWindowInfo(False)
-        info      := window.controls.DirectUIHWND3
-        content_x := info.x
-        content_y := info.y
-        content_w := info.w
-        content_h := info.h
-        x := content_x + 20
-        y := content_y + content_h - 13
-        MouseGetPos &x_origin, &y_origin
-        MouseClick "Right", x, y, 1, 0
-        MouseMove x_origin, y_origin, 0
-    }
+    !AppsKey::ActivateMenu()
 
-    #\::
-    #+\::{
-        total_width  := 1960
-        total_height := 1250
-
-        check_offset := 30
-
-        tree_width := 325
-
-        preview_width := 411
-
-        input_move_width   := 426
-        input_check_width  := 388
-
-        ; "ItemNameDisplay:800 ItemDate:200 Size:150"
-        ; "ItemNameDisplay:1000 Size:150"
-        Cfg := Map( "FileInfo"   , "ItemNameDisplay:1000 Size:150"
-                  , "FileList"   , "ItemNameDisplay:1150"
-                  , "FolderInfo" , "ItemNameDisplay:500 Comment:450 ItemDate:200"
-                  , "FolderList" , "ItemNameDisplay:575 Comment:575"
-                  , "Recover"    , "ItemNameDisplay:420 "
-                                   "Recycle.DeletedFrom:400 Recycle.DateDeleted:180 "
-                                   "Size:150" )
-
-        ; 设置 文件夹选项 查看 在标题栏中显示完整路径
-        Cfg["Default"] := Cfg["FileInfo"]
-        Cfg["回收站"]   := Cfg["Recover"]
-
-        #Include *i Explorer.Columns.Private.ahk
-
-        MouseGetPos &x_origin, &y_origin
-
-        WinGetPos &origin_win_x, &origin_win_y, &origin_win_w, &origin_win_h, "A"
-
-        MoveWindowPosition(Position(total_width , total_height))
-
-        GetActiveWindowInfo(False)
-
-        ; 通过鼠标移动移动窗口,通过此操作Window可以在下次启动时使用修改后的位置
-        if (   origin_win_x != window.x or origin_win_y != window.y
-            or origin_win_w != window.w or origin_win_h != window.h ) {
-            ; MouseMove window.position_client.w/2 , window.position_client.h , 0
-            MouseMove window.cw/2 , window.ch , 0
-            MouseClickDrag "Left", 0, 0, 0, -50, 0, "R"
-            MouseClickDrag "Left", 0, 0, 0,  50, 0, "R"
-        }
-
-        config := ""
-        if InStr(A_ThisHotkey, "#\")
-            config := Cfg.Get(window.title, Cfg["Default"])
-        if InStr(A_ThisHotkey, "#+\")
-            config := Cfg["FileList"]
-
-        #Include Explorer.Columns.Tool.ahk
-        SetExplorerColumns(config)
-
-        ; 搜索框
-        GetActiveWindowInfo(False)
-        info := window.controls.DirectUIHWND1
-        if ( Abs(info.w - input_check_width) > check_offset ) {
-            MouseMove info.x , info.y + info.h / 2
-            offset := GetOffset("X")
-            MouseMove info.x + offset , info.y + info.h / 2
-            MoveControlUDLR(info, "Left", total_width - input_move_width, offset)
-        }
-
-        ; 左侧树状信息
-        GetActiveWindowInfo(False)
-        info := window.controls.SysTreeView321
-        if ( Abs(info.w - tree_width) > check_offset * 1 ) {
-            MouseMove info.x + info.w , info.y + info.h / 2
-            offset := GetOffset("X")
-            MouseMove info.x + info.w + offset , info.y + info.h / 2
-            MoveControlUDLR(info, "Right", tree_width, offset)
-        }
-
-        ; 右侧预览
-        GetActiveWindowInfo(False)
-        info := window.controls.DirectUIHWND3
-        if ( Abs(total_width - (info.x + info.w) - preview_width) > check_offset * 2 ) {
-            MouseMove info.x + info.w , info.y + info.h / 2
-            offset := GetOffset("X")
-            MouseMove info.x + info.w + offset , info.y + info.h / 2
-            MoveControlUDLR(info, "Right", info.x + info.w + preview_width, offset)
-        }
-
-        MouseMove x_origin, y_origin, 0
-    }
+    #\::ResetPosition(columns:="Default")
+    #+\::ResetPosition(columns:="FileList")
 
     CapsLock & Enter::{
         path := " E:\Project\Ahk\Software\Microsoft\Explorer.Columns.Private.ahk "
         Run VSCode . path
     }
+
+    #IncludeAgain *i Explorer.Joy.ahk
+    #IncludeAgain *i Explorer.Mouse.ahk
 
 #HotIf
 
@@ -285,10 +192,12 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
 
     #IncludeAgain Explorer.Key.ahk
 
-    !/::ControlFocus "SysTreeView321", "A"
+    !/::{
+        ControlFocus "SysTreeView321", "A"
+    }
     !\::{
         ControlFocus "DirectUIHWND2", "A"
-        Send "{Home}"
+        Send "{Space}"
     }
 
     ; 默认位置
@@ -305,6 +214,3 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
     }
 
 #HotIf
-
-
-#Include Explorer.Fxx.ahk

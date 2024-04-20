@@ -2,20 +2,20 @@
 ; 桌面
 #HotIf CheckWindowActive( "Explorer" , "WorkerW" )
 
-     F1::Run "C:\Users\Administrator\"
-     F2::Run "C:\ProgramData\"
-     F3::Run "C:\Program Files (x86)\"
-     F4::Run "C:\Program Files\"
+     F1::Run "T:\#Sync\"
+     F2::Run "T:\#ToDo\"
+     F3::Run "D:\#Lnk\"
+     F4::Run "V:\#\"
 
-     F5::Run "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\"
-     F6::Run "C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\"
-     F7::Run "C:\Users\Administrator\AppData\Local\"
-     F8::Run "C:\Users\Administrator\AppData\Roaming\"
+     F5::Run "C:\"
+     F6::Run "D:\"
+     F7::Run "E:\"
+     F8::Run "F:\"
 
-     F9::Run "E:\Book\"
-    F10::Run "E:\Doc\"
-    F11::Run "E:\Config\"
-    F12::Run "E:\Script\"
+     F9::Run "E:\Doc\"
+    F10::Run "E:\Config\"
+    F11::Run "E:\Script\"
+    F12::Run "E:\Project\"
 
     RAlt & RWin::Return
 

@@ -1,12 +1,14 @@
-﻿| F1  | Administrator     |
-| F2  | Program Data      |
-| F3  | Program Files 32  |
-| F4  | Program Files 64  |
-| F5  | Programs $Windows |
-| F6  | Programs $User    |
-| F7  | AppData Local     |
-| F8  | AppData Roaming   |
-| F9  | Book              |
-| F10 | Doc               |
-| F11 | Config            |
-| F12 | Script            |
+﻿| F1  | #Sync       |
+| F2  | #ToDo       |
+| F3  | #Lnk        |
+| F4  | #V          |
+|-----|-------------|
+| F5  | $C          |
+| F6  | $D          |
+| F7  | $E          |
+| F8  | $F          |
+|-----|-------------|
+| F9  | E\Doc\      |
+| F10 | E\Config\   |
+| F11 | E\Script\   |
+| F12 | E\Project \ |
