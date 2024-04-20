@@ -37,12 +37,33 @@ RegisterHelp("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
 #HotIf
 
 
+RegisterProcess(  "antimicrox" , "AntiMicroX" )
+RegisterPosition( "AntiMicroX" , Position(1234 , 1111) )
+RegisterPosition( "AntiMicroX__按键" , Position(1600 , 666) )
+#HotIf CheckWindowActive("AntiMicroX__按键")
+    $RWin::MoveWindowDefault()
+#HotIf
+
+
 RegisterPosition("Everything", Position(1700 , 1200))
 #HotIf CheckWindowActive("Everything")
     ~*RWin::{
         cfg := " 1:名称:750  2:路径:600  3:大小:120  4:修改时间:180 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321", cfg)
+    }
+#HotIf
+
+
+RegisterProcess("Duplicate Cleaner 5" , "DuplicateCleaner")
+RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
+#HotIf CheckWindowActive("DuplicateCleaner")
+    #\::{
+        w := 2500
+        h := 1400
+        x := Screen.w/2 - w/2
+        y := Screen.h/2 - h/2 + 5
+        MoveWindowPosition( [ x, y, w, h ] )
     }
 #HotIf
 
