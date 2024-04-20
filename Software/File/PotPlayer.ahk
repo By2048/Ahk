@@ -1,9 +1,17 @@
 ﻿
-RegisterProcess("PotPlayerMini64" , "PotPlayer")
+RegisterProcess( "PotPlayerMini64" , "PotPlayer" )
 
 
-RegisterHelp("PotPlayer", FilePath(A_LineFile, "PotPlayer.help"))
-RegisterHelp("PotPlayer", FilePath(A_LineFile, "PotPlayer.NumPad.help"))
+RegisterHelp( "PotPlayer" , FilePath(A_LineFile, "PotPlayer.help")        )
+RegisterHelp( "PotPlayer" , FilePath(A_LineFile, "PotPlayer.NumPad.help") )
+
+
+RegisterPosition( "PotPlayer"          , Position(Screen.w * 4/6 , Screen.h * 4/6) )
+RegisterPosition( "PotPlayer_#32770"   , Position(1500 , 1200)                     )
+RegisterPosition( "PotPlayer__播放列表" , Position(10 , "[Center][1]" , 700 , 1000) )
+
+RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Screens.2.w * 3/4) , "Backup" )
+
 
 
 #HotIf CheckWindowActive("PotPlayer")
@@ -32,7 +40,10 @@ RegisterHelp("PotPlayer", FilePath(A_LineFile, "PotPlayer.NumPad.help"))
                 Send "+{Delete}!{y}"
     }
 
-    CapsLock::WinClose("A")
+    ~NumLock::
+    ~CapsLock::{
+        WinClose("A")
+    }
 
     !CapsLock::Send "!{F4}"
 
@@ -45,18 +56,7 @@ RegisterHelp("PotPlayer", FilePath(A_LineFile, "PotPlayer.NumPad.help"))
 
     #+Enter::Send "^{Enter}"
 
-    #\::{
-        WD["PotPlayer"] := Position(Screen.w * 4/6 , Screen.h * 4/6)
-        WD["PotPlayer_#32770"] := Position(1500 , 1200)
-        WD["PotPlayer__播放列表"] := Position(10, "[Center][1]", 700, 1000)
-        MoveWindowDefault()
-    }
-    #+\::{
-        w := Screens.2.w - 20
-        h := w * 3/4 + 40
-        WB["PotPlayer"] := Position("[Center][2]", w, h)
-        WB["PotPlayer__播放列表"] := Position("[Center][2]", 1000, 1500)
-        MoveWindowBackup()
-    }
+    #Include PotPlayer.Joy.ahk
+    #Include PotPlayer.Mouse.ahk
 
 #HotIf
