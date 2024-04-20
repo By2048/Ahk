@@ -54,7 +54,7 @@
  >^.::Run "T:\"
 >^+.::Run "V:\"
  >^/::Run "E:\Script\Software\Chrome.bat", A_InitialWorkingDir, "Hide"
->^+/::Run "D:\#Lnk\Edge.lnk",              A_InitialWorkingDir, "Hide"
+>^+/::Run "D:\#Lnk\Edge.lnk"
 
  >^Esc::Run "TaskMgr" ;任务管理器
 >^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
