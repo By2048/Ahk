@@ -20,9 +20,7 @@ RegisterPosition( "Q-Dir_#32770_MiniBrowserOK" , Position(1555, 1333) )
     ;  1 ^                          3 #327704->SysListView322   4 ^
     #\::{
         ; 界面配置信息 * 1.5 (Dpi)
-        _ := 0
-
-        tree_width      := Screen.Dpi * ( 300             )
+        tree_width      := Screen.Dpi * ( 250             )
         box_left_width  := Screen.Dpi * ( 200 + 200 + 120 )
         box_right_width := Screen.Dpi * ( 500 + 90        )
 
@@ -118,10 +116,8 @@ RegisterPosition( "Q-Dir_#32770_MiniBrowserOK" , Position(1555, 1333) )
     !F11::Return
     ; 切换树状列表
 
-    ; 预览
+    ; 树视图
     ^e::Return
-    ![::Send "^e"
-    !]::MouseClickAndResetting(555, 135, "Window")
 
     ; 标签页
     ^Tab::Return
@@ -147,5 +143,9 @@ RegisterPosition( "Q-Dir_#32770_MiniBrowserOK" , Position(1555, 1333) )
     ; 将项目移动到
     !v::Return
     !m::Return
+
+    <^BackSpace::Send "^+{Left}{BackSpace}"
+
+    #Include Q-Dir.Joy.ahk
 
 #HotIf
