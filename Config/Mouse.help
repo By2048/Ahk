@@ -1,4 +1,6 @@
-| Default  | CapsLock  | Home      | End     | PgUp   | PgDn   | Insert     | Delete   |
-| Brower   | M !T      | !CapsLock | Middle  | !+Tab  | !Tab   | !+CapsLock | !R       |
-| Fxx      | CapsLock  | F2        | F3      | F6     | F7     | F10        | F11      |
-| Expand   | Loop Default 333ms                                                        |
+----------------------------------------------------------------------------------------
+| Fxx     | CapsLock |   F2        | F3     | F6    | F7   | F10        | F11          |
+| NumPad  | NumLock  |   Home      | End    | PgUp  | PgDn | Insert     | Delete       |
+| Expand  | CapsLock |   !CapsLock | !Enter | !+Tab | !Tab | !+CapsLock | !BackSpace   |
+| Game    | CapsLock |   Home      | End    | PgUp  | PgDn | Insert     | Delete       |
+----------------------------------------------------------------------------------------
