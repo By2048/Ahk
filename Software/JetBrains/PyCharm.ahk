@@ -2,7 +2,7 @@
 RegisterProcess("pycharm64" , "PyCharm")
 
 RegisterHelp("PyCharm", FilePath(A_LineFile, "@.help"))
-RegisterHelp("PyCharm", FilePath(A_LineFile, "@.Fxx.help"))
+RegisterHelp("PyCharm", FilePath(A_LineFile, "@.Fxx.md"))
 RegisterHelp("PyCharm", FilePath(A_LineFile, "@.CapsLock.help"))
 
 
