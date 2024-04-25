@@ -1,5 +1,6 @@
 ﻿
-; 重置状态
+~*CapsLock::Return
+
 ~*CapsLock Up::{
     SetCapsLockState "Off"
 }

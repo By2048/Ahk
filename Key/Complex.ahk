@@ -1,16 +1,40 @@
 
-; Dexpot
-; LWin & LAlt   窗口目录
-; LWin & LCtrl  全屏预览
+~*Pause::{
+    Send "{Blind}{vkFF}"
+    Global Arg
+    if (Arg.pause_cnt > 0) {
+        Arg.pause_cnt += 1
+        return
+    } else {
+        Arg.pause_cnt := 1
+    }
+    SetTimer Timer, -500
+    Timer() {
+        Global Arg
+        if (Arg.pause_cnt == 1) {
+            HelpText("`n NumPad *1 `n", "Center", "Screen", 500)
+        } else if (Arg.pause_cnt == 2) {
+            HelpText("`n Mouse *2 `n", "Center", "Screen", 500)
+        } else if (Arg.pause_cnt == 3) {
+            HelpText("`n Normal *3 `n", "Center", "Screen", 500)
+        }
+        Arg.pause_cnt := 0
+    }
+}
+
+~*Pause Up::Return
 
 
-; 重置状态
+
+~*NumLock::Return
+
 ~*NumLock Up::{
     SetNumLockState "Off"
 }
 
+; ------------------------------------------------------------------------------------ ;
 
-;切换应用
+; 切换应用
 win_tab := win_shift_tab := False
 LWin & Tab::{
     global win_tab, win_shift_tab
@@ -35,7 +59,7 @@ LWin & Tab::{
 }
 
 
-;切换Windows默认标题栏
+; 切换Windows默认标题栏
 LWin & RAlt::{
     if (IsDesktops()) {
         HelpText("`n Desktop Return `n", "Center", "Screen1", 500)
@@ -68,12 +92,11 @@ LAlt & LWin::{
 }
 
 
+; 快速管理窗口
 RAlt  & RWin::Send "!{F4}"
 RCtrl & RWin::Send "^w"
-
-
-RWin & RAlt:: MoveWindowQuick("Mini")
-RWin & RCtrl::MoveWindowQuick("Main")
+RWin  & RAlt:: MoveWindowQuick("Mini")
+RWin  & RCtrl::MoveWindowQuick("Main")
 
 
 ; 切换系统 主题|亮暗

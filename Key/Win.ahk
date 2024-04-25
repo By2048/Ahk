@@ -29,10 +29,6 @@
 #=:: Send "^!="
 #+=::Send "^!+="
 
-; 设置快捷键
-#AppsKey:: Send "^!{AppsKey}"
-#+AppsKey::Send "^!+{AppsKey}"
-
 ;声音
 #PgUp::Send "{Volume_Up}"
 #PgDn::Send "{Volume_Down}"
