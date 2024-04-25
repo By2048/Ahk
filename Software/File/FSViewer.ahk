@@ -1,6 +1,8 @@
 
 RegisterPosition( "FSViewer" , Position(2525 , 1450) )
 
+RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
+
 
 #HotIf CheckWindowActive("FSViewer")
 

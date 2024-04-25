@@ -33,4 +33,4 @@ NumpadMult::Send "{Home}"
 
 NumpadDiv::Send "{End}"
 
-NumpadSub::Send "{BackSpace}"
+NumpadSub::EN()

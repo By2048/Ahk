@@ -11,9 +11,6 @@ RegisterHelp("Terminal", "Config\Script.help")
 
     #Include *i Terminal.Private.ahk
 
-    `::~
-    +~::`
-
     #\::MoveWindowPosition(Position(2200 , 1400))
 
     #+\::{
