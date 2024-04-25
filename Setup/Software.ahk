@@ -13,6 +13,8 @@
 #Include ..\Tool\Gui.ahk
 
 #Include ..\Software\@.ahk
+#Include ..\Software\@.Config.ahk
+#Include ..\Software\@.Key.ahk
 
 #Include ..\Software\Android.ahk
 #Include ..\Software\FoxMail.ahk
@@ -61,6 +63,7 @@
 #Include ..\Software\Microsoft\TaskMgr.ahk
 #Include ..\Software\Microsoft\Windows.ahk
 
+
 #SingleInstance Force
 #HotString EndChars `t`n`s
 #NoTrayIcon
@@ -76,3 +79,7 @@ For Arg_Index, Arg_Value In A_Args {
     If Arg_Value == "Stop"
         ExitApp
 }
+
+
+#Include ..\Software\%.Loop.ahk
+

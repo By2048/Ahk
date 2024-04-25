@@ -7,7 +7,9 @@ Mode 33,22
 
 CD  /d  %~dp0
 
+Echo.
 Echo  ======= %CD% =======
+Echo.
 
 SetLocal
 
@@ -44,7 +46,6 @@ Set     Init.ahk=.\Init.ahk
 Set     Base.ahk=.\Setup\Base.ahk
 Set    Input.ahk=.\Setup\Input.ahk
 Set      Key.ahk=.\Setup\Key.ahk
-Set     Loop.ahk=.\Setup\Loop.ahk
 Set Software.ahk=.\Setup\Software.ahk
 
 If "%Command%"=="ForceStart" (
@@ -75,8 +76,6 @@ Start  %AHK%      %Key.ahk%       %Command%
 Echo   %Command%  %Key.ahk%
 Start  %AHK%      %Input.ahk%     %Command%
 Echo   %Command%  %Input.ahk%
-Start  %AHK%      %Loop.ahk%      %Command%
-Echo   %Command%  %Loop.ahk%
 Start  %AHK%      %Software.ahk%  %Command%
 Echo   %Command%  %Software.ahk%
 Echo.

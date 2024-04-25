@@ -56,3 +56,5 @@ RegisterPosition( "MsPaint" , Position(0.62 , 0.82) )
 ; 资源监视器
 RegisterProcess( "perfmon" , "SystemMonitor" )
 RegisterPosition( "SystemMonitor" , Position(2250 , 1350) )
+
+#Include *i @.Config.Private.ahk

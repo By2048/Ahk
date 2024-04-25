@@ -122,11 +122,14 @@ GetWindowConfig(window, config)
 ; 获取当前激活窗口所在屏幕的信息
 GetWindowScreen(window)
 {
-    result := {}
+    result := { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 }
     loop Screens.Count {
         if ( window.cx > Screens.%A_Index%.x - Window_Screen_Offset ) {
             if ( window.cx < Screens.%A_Index%.x + Screens.%A_Index%.w + Window_Screen_Offset ) {
-                result := Screens.%A_Index%
+                result.x := Screens.%A_Index%.x
+                result.y := Screens.%A_Index%.y
+                result.w := Screens.%A_Index%.w
+                result.h := Screens.%A_Index%.h
             }
         }
     }
@@ -234,6 +237,8 @@ GetActiveWindowInfo(cache:=True)
     ; 窗口位置 默认1 默认2
     window.default := GetWindowConfig(window, Windows_Default)
     window.backup  := GetWindowConfig(window, Windows_Backup )
+
+    window.screen  := GetWindowScreen(window)
 
     ; 最后一次获取的信息缓存时间
     window.cache_id     := win_id

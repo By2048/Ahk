@@ -1,7 +1,4 @@
 
-#Include @.Config.ahk
-#Include @.Key.ahk
-
 
 #HotIf ( Arg.hotkeys_show == True )
     [::HelpKeysShow(-1)
@@ -30,7 +27,7 @@ RegisterHelp("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
         win_w := window.cw
         win_h := window.ch
         if A_ThisHotKey == "#\"
-            MoveWindowPosition(Position(33, "Center", win_w, win_h))
+            MoveWindowPosition(Position(55, "Center", win_w, win_h))
         if A_ThisHotKey == "#+\"
             MoveWindowPosition(Position("[Center][2]", win_w, win_h))
     }
