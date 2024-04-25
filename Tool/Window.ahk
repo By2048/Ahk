@@ -551,7 +551,7 @@ MoveWindowCenter()
     if IsDesktops()
         return
 
-    if window.min_max
+    if ( window.min_max )
         return
 
     win_id := window.id
@@ -562,15 +562,8 @@ MoveWindowCenter()
     win_w := window.w
     win_h := window.h
 
-    screen   := GetWindowScreen(window)
-    screen_x := screen.x
-    screen_y := screen.y
-    screen_w := screen.w
-    screen_h := screen.h
-    screen_index := screen.index
-
-    xx := screen_x + screen_w/2 - win_w/2
-    yy := screen_y + screen_h/2 - win_h/2
+    xx := window.screen.x + window.screen.w/2 - win_w/2
+    yy := window.screen.y + window.screen.h/2 - win_h/2
     ww := win_w
     hh := win_h
 
@@ -588,29 +581,22 @@ MoveWindowQuick(command)
 
     if IsDesktops()
         return
-    if window.min_max
-        return
 
-    win_id := window.id
-    screen := GetWindowScreen(window)
-    screen_x := screen.x
-    screen_y := screen.y
-    screen_w := screen.w
-    screen_h := screen.h
-    screen_index := screen.index
+    if ( window.min_max )
+        return
 
     main := Windows_Main_Mini[1]
     mini := Windows_Main_Mini[2]
 
     if (command == "Main") {
-        w := screen_w * main[1]
-        h := screen_h * main[2]
+        w := window.screen.w * main[1]
+        h := window.screen.h * main[2]
     } else if (command == "Mini") {
-        w := screen_w * mini[1]
-        h := screen_h * mini[2]
+        w := window.screen.w * mini[1]
+        h := window.screen.h * mini[2]
     }
-    x := screen_x + (screen_w - w)/2
-    y := screen_y + (screen_h - h)/2
+    x := window.screen.x + (window.screen.w - w)/2
+    y := window.screen.y + (window.screen.h - h)/2
 
     SetWindow(x, y, w, h)
 }
