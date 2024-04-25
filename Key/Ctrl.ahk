@@ -6,6 +6,7 @@
  >^t::Run "D:\#Lnk\#\TIM.lnk"
  >^p::Run WT " -d T:\"
 
+ >^a::Run "D:\#Lnk\#\AntiMicroX.lnk"
  >^s::Run "D:\#Lnk\#\Sandboxie.lnk"
  >^f::Run "D:\#Lnk\#\FreeFileSync.lnk"
  >^g::Run "D:\#Lnk\#\Geek.lnk"

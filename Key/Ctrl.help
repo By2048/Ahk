@@ -10,7 +10,7 @@
 |  O |                |----------------------|
 |  P | WT             |  [ | VSCode T:\      |
 |---------------------|  ] | VSCode Project  |
-|  A |                |  \ | VSCode Windows  |
+|  A | AntiMicroX     |  \ | VSCode Windows  |
 |  S | Sandboxie      |  : | VSCode          |
 |  D |                |  " | VSCodeDefault   |
 |  F | FreeFileSync   |----------------------|
