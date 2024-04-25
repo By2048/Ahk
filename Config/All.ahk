@@ -6,11 +6,12 @@ Window := {}
 ; 各种临时性数据
 Arg := {}
 
-; 辅助调试信息
-Debug := {}
-
 ; Gui显示
 G := Gui()
+
+; 调试模式
+Debug := 0
+
 
 ; 当前窗口的信息
 InitWindowValue()
@@ -41,12 +42,14 @@ InitWindowValue()
         sx : 0  ,  sy : 0  ,  sw : 0  ,  sh : 0  ,
         cx : 0  ,  cy : 0  ,  cw : 0  ,  ch : 0  ,
 
+        screen  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口所在屏幕
         default : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Default
         backup  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Backup
     }
 }
 
 InitWindowValue()
+
 
 ; 临时性使用的全局变量
 Arg := {
@@ -55,7 +58,12 @@ Arg := {
     ctrl_cnt     : 0 ,
     alt_cnt      : 0 ,
     shift_cnt    : 0 ,
+
     capslock_cnt : 0 ,
+    numlock_cnt  : 0 ,
+    scroll_cnt   : 0 ,
+
+    pause_cnt : 0 ,
 
     previous_win_id : 0x0 ,
 
