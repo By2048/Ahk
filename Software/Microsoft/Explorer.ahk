@@ -62,7 +62,7 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
     ^+Tab::Return
     !Tab::Send "^{Tab}"
     !+Tab::Send "^+{Tab}"
-    !CapsLock::Send "!{F4}"
+    ~!CapsLock::Send "!{F4}"
 #HotIf
 
 
@@ -144,7 +144,7 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
 
     ; Ctrl+W 关闭活动窗口
     ^w::Return
-    !CapsLock::Send "^w"
+    ~!CapsLock::Send "^w"
 
     ; 属性对话框 !{Enter}
 
