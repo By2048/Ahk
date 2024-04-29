@@ -10,6 +10,7 @@ A_IconTip := "[Ahk]"
 
 ; 启动脚本
 LWin & RWin::{
+    Send "{Blind}{vkFF}"
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Run.png")
     ShowDefaultProgress()
     if GetKeyState("LShift", "P") {
@@ -29,6 +30,7 @@ LWin & RWin::{
 
 ; 停止脚本
 RWin & LWin::{
+    Send "{Blind}{vkFF}"
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Error.png")
     if GetKeyState("RShift", "P") {
         HelpText("`n  Force Close All Script | Delete Reg  `n", "Center", "Screen", 2000)
