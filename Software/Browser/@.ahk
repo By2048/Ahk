@@ -6,8 +6,6 @@
 
 #HotIf CheckWindowActive( " Chrome | Edge | Opera | FireFox " )
 
-    $LAlt::Return
-
     ;帮助
     F1::Return
 
