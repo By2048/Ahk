@@ -1,10 +1,8 @@
-|   8   | + |
-| 4   6 | * |
-|   2   |   |
-|       |   |
-|   0   |   |
-| Enter |   |
-|       |   |
-|   9   |   |
-| 7   1 | / |
-|   3   | - |
+|--{ NumPad }--|-------{ Mouse }--------|------{ KeyBoard }------|
+|   8    ~  +  |       Up       ~  Mide |      Up       ~  Enter |
+| 4   6  ~  *  |  Left   Right  ~  Home | Left   Right  ~  Esc   |
+|   2    ~     |       Down     ~       |      Down     ~        |
+|        ~     |                ~       |               ~        |
+|   9    ~     |     ScrUp      ~       |   PgUp        ~        |
+| 7   1  ~  /  |  ButL   ButR   ~  End  | Home   End    ~   {BS} |
+|   3    ~  -  |     ScrDn      ~  Caps |   PgDn        ~  Space |
