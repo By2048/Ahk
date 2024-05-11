@@ -22,8 +22,8 @@
 #Include ..\Software\LOL.ahk
 #Include ..\Software\Snipaste.ahk
 #Include ..\Software\Tencent.ahk
-#Include ..\Software\v2rayN.ahk
 #Include ..\Software\VMware.ahk
+#Include ..\Software\Vpn.ahk
 #Include ..\Software\Wallpaper.ahk
 
 #Include ..\Software\Browser\@.ahk

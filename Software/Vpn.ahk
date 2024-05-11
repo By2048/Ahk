@@ -1,5 +1,14 @@
 ﻿
-RegisterHelp("v2rayN", "Software\v2rayN.help")
+RegisterProcess( "clashN" , "ClashN" )
+
+RegisterPosition( "ClashN" , Position(1666 , 1122) )
+
+
+RegisterProcess( "v2rayN" , "v2rayN" )
+
+RegisterPosition( "v2rayN" , Position(2100 , 1200) )
+
+RegisterHelp( "v2rayN", "Software\Vpn.help" )
 
 
 #HotIf CheckWindowActive( "EnableLoopback" )
@@ -9,8 +18,13 @@ RegisterHelp("v2rayN", "Software\v2rayN.help")
         _2 := " -   -   -   -   -   -   -   "
         _3 := " 400 400 200 300 150 200 150 "
         config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth("WindowsForms10.SysListView32.app.0.141b42a_r6_ad11" , config)
+        SetColumnWidth("WindowsForms10.SysListView32.app.0.141b42a_r8_ad11" , config)
     }
+#HotIf
+
+
+#HotIf CheckWindowActive( "ClashN" )
+
 #HotIf
 
 
@@ -78,8 +92,6 @@ RegisterHelp("v2rayN", "Software\v2rayN.help")
         Sleep 1000
         HelpText("`nOver`n", "Center", "Screen", 1000)
     }
-
-    #\::MoveWindowPosition(Position(2100, 1200))
 
     #BackSpace::MouseClickAndResetting(1052, 73, "Window", "Left")
 
