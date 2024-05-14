@@ -55,6 +55,8 @@ RegisterPosition("Everything", Position(1700 , 1200))
 RegisterProcess("Duplicate Cleaner 5" , "DuplicateCleaner")
 RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
 #HotIf CheckWindowActive("DuplicateCleaner")
+    #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
+    ~NumLock::Send "{Enter}"
     #\::{
         w := 2500
         h := 1400
