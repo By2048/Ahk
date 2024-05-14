@@ -14,8 +14,8 @@
 
      F9::Run "E:\Doc\"
     F10::Run "E:\Config\"
-    F11::Run "E:\Script\"
-    F12::Run "E:\Project\"
+    F11::Run "E:\Project\"
+    F12::Run "E:\Script\"
 
     RAlt & RWin::Return
 

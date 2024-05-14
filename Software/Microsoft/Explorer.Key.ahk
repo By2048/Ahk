@@ -62,7 +62,7 @@ F6::Return
 
 ; 地址栏
 !d::Return
->!Space::Send "!d"
+<!Space::Send "!d"
 
 ; 删除
 ^d::Return
