@@ -1,16 +1,11 @@
 ﻿
-#Include *i Chrome.Private.ahk
-
-
 RegisterProcess("chrome" , "Chrome")
-
 
 RegisterHelp("Chrome__知乎" , "Software\Browser\Chrome.ZhiHu.help")
 RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili.help")
 RegisterHelp("Chrome", "Software\Browser\@.help")
 RegisterHelp("Chrome", "Software\Browser\Chrome.Fxx.help")
 RegisterHelp("Chrome", "Software\Browser\Chrome.Search.help")
-
 
 win_w   := 2500
 win_h   := 1400
@@ -23,47 +18,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
 RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开") )
 
 
-
-#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "哔哩哔哩*|知乎*|美图*|微博*" )
-    ~NumLock::
-    ~+NumLock::
-    ~CapsLock::
-    ~+CapsLock::{
-        A_Clipboard := ""
-        Sleep 33
-        Send "{RButton}"
-        Sleep 9
-        Send "{Down 4}"
-        Send "{Enter}"
-        Sleep 33
-        url := A_Clipboard
-        ClipWait 1
-        if ( not url ) {
-            HelpText(" No Url ", "CenterDown", "Screen", "500")
-            return
-        }
-
-        url := UrlChange(url)
-        if not InStr(url, "http")
-            return
-
-        if ( InStr(url, "weibo.com") ) {
-            Try Run FDM . " " . url
-            return
-        }
-
-        if ( A_ThisHotkey == "CapsLock" or A_ThisHotkey == "NumLock" )
-            Try AriaDownload(url, Chrome_Image)
-
-        if ( A_ThisHotkey == "+CapsLock" or A_ThisHotkey == "+NumLock" ) {
-            time := FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
-            ext  := RegExReplace(url, "(http.*)(\.\w+)", "$2")
-            Try AriaDownload(url, Chrome_Image, time . ext)
-        }
-
-        A_Clipboard := ""
-    }
-#HotIf
+#Include *i Chrome.Private.ahk
 
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "书签" )
@@ -116,6 +71,7 @@ RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开")
             url_result := UrlChange(url_origin)
 
             if ( clipboard_origin != clipboard_result ) {
+                Sleep 33
                 A_Clipboard := clipboard_result
                 ClipWait 1
                 Send "^t"
@@ -124,7 +80,6 @@ RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开")
                 Sleep 55
                 Send "^v"
                 Send "{Enter}"
-                A_Clipboard := ""
                 A_Clipboard := url_origin
                 ClipWait 1
                 Arg.shift_cnt := 0
@@ -152,7 +107,7 @@ RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开")
 
     ~CapsLock::Return
 
-    ~CapsLock & Enter::{
+    CapsLock & Enter::{
         A_Clipboard := ""
         Send "!d"
         Send "^c"
@@ -167,6 +122,7 @@ RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开")
         ClipWait 1
         Send "^v"
         Send "{Enter}"
+        SetCapsLockState "Off"
     }
 
     ; 书签第一个
@@ -178,7 +134,7 @@ RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开")
             Send "{Left}"
     }
 
-    ;删除搜索历史记录
+    ; 删除搜索历史记录
     !Delete::{
         CoordMode "Mouse", "Window"
         MouseGetPos &x_origin, &y_origin
@@ -189,7 +145,7 @@ RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开")
         MouseMove x_origin, y_origin, 0
     }
 
-    ;将焦点放置在Chrome工具栏中的第一项上
+    ; 将焦点放置在Chrome工具栏中的第一项上
     !+t::Return
     Arg.alt_shift_t := False
     ![::{
@@ -202,11 +158,11 @@ RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开")
         }
     }
 
-    ;将焦点放置在Chrome工具栏中最右侧的那一项上
+    ; 将焦点放置在Chrome工具栏中最右侧的那一项上
     F10::Return
     !]::Send "{F10}"
 
-    ;收藏 取消收藏
+    ; 收藏 取消收藏
     ^d::Return
     ^+d::Return
     !d::{
@@ -231,6 +187,7 @@ RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开")
         Send "{Tab 3}{Enter}"
     }
 
+    ; 定位地址栏
     Arg.alt_space := False
     !Space::{
         if (not Arg.alt_space) {

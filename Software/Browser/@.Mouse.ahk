@@ -4,8 +4,8 @@ MButton::Send "^t"
 NumpadHome::Send "^w"
 NumpadEnd::Send "^{Click}"
 
-NumpadPgUp::Send "^+{Tab}"
-NumpadPgDn::Send "^{Tab}"
+NumpadPgUp::Send "^{Tab}"
+NumpadPgDn::Send "^+{Tab}"
 
 NumpadIns::Send "^+t"
 NumpadDel::Send "^r"
