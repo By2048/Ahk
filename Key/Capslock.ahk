@@ -72,6 +72,12 @@
     DllCall("SetCursorPos", "int", A_ScreenWidth / 2, "int", A_ScreenHeight / 2)
     MouseGetPos &_, &_, &win_id
     WinActivate "ahk_id " . win_id
+    HighlightActiveWindow(300)
+}
+
+; 鼠标点击
+~CapsLock & Space::{
+    Click
 }
 
 
