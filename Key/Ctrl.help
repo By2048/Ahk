@@ -1,33 +1,28 @@
-|  Q | QDir PC        | *1 | Maye            |
-| +Q | QDir File      | *2 | 隐藏帮助        |
-|  W |                |----------------------|
-|  E | Everything     |  , | 我的电脑        |
-|  R | RegEdit        | +, | 回收站          |
-|  T | Tim            |  . | T:\             |
-|  Y |                | +. | V:\             |
-|  U |                |  / | Chrome          |
-|  I |                | +/ | Edge            |
-|  O |                |----------------------|
-|  P | WT             |  [ | VSCode T:\      |
-|---------------------|  ] | VSCode Project  |
-|  A | AntiMicroX     |  \ | VSCode Windows  |
-|  S | Sandboxie      |  : | VSCode          |
-|  D |                |  " | VSCodeDefault   |
-|  F | FreeFileSync   |----------------------|
-|  G | Geek           |  Esc | 任务管理器    |
-|  H | WindowSpy      | +Esc | HuoRongSword  |
-| +H | WindowSpy      |----------------------|
-|  J | JetBrains      |  Enter | Whiteboard  |
-| +J | JetBrainsCheck | +Enter | DevToys     |
-|  K | KeyHistory     |
-| +K | 显示虚拟键盘   |
-|  L |                |
-|---------------------|
-|  Z |                |
-|  X | XShell         |
-|  C | Calc           |
-|  V | Vpn            |
-|  B | BitComet       |
-|  N | CloudMusic     |
-| +N | QQMusic        |
-|  M | PotPlayer      |
+|  Q | QDir PC | File         | *1 | Maye            |
+|  W |                        | *2 | 隐藏帮助        |
+|  E | Everything             |----------------------|
+|  R | RegEdit                |  , | 我的电脑        |
+|  T | Tim                    | +, | 回收站          |
+|  Y |                        |  . | T:\             |
+|  U |                        | +. | V:\             |
+|  I |                        |  / | Chrome          |
+|  O |                        | +/ | Edge            |
+|  P | WT                     |----------------------|
+|-----------------------------|  [ | VSCode T:\      |
+|  A | AntiMicroX             |  ] | VSCode Project  |
+|  S | Sandboxie              |  \ | VSCode Windows  |
+|  D |                        |  : | VSCode          |
+|  F | FreeFileSync           |  " | VSCodeDefault   |
+|  G | Geek                   |----------------------|
+|  H | Spy AHK | GH           |  Esc | 任务管理器    |
+|  J | JetBrains Tool | Check | +Esc | HuoRongSword  |
+|  K | Key History | Virtual  |----------------------|
+|  L |                        |  Enter | Whiteboard  |
+|-----------------------------| +Enter | DevToys     |
+|  Z |                        |
+|  X | XShell                 |
+|  C | Calc                   |
+|  V | Vpn                    |
+|  B | BitComet               |
+|  N | CloudMusic | QQMusic   |
+|  M | PotPlayer              |

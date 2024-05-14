@@ -37,10 +37,9 @@
 
  >^x::Run "D:\#Lnk\#\Xshell.lnk"
  >^c::Run "Calc"
- >^v::Run "D:\#Lnk\#\LetsVpn.lnk"
->^+v::Run "D:\#Lnk\#\v2rayN.lnk"
+ >^v::Run "D:\#Lnk\#\Vpn.lnk"
  >^b::Run "D:\#Lnk\#\BitComet.lnk"
- >^n::Run "D:\#Lnk\#\CloudMusic.lnk"
+ >^n::Run "D:\#Lnk\#\Music.lnk"
 >^+n::Run "D:\#Lnk\#\QQMusic.lnk"
  >^m::Run "D:\#Lnk\#\PotPlayer.lnk"
 
