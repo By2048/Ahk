@@ -12,8 +12,8 @@ RegisterPosition("_#32770_浏览文件夹"  , Position(666 , 1122) )
 RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
 
 RegisterProcess( "fdm" , "FDM" )
-RegisterPosition( "FDM" , Position(1888 , 1333) , "Default" )
-RegisterPosition( "FDM" , Position(1500 , 1000) , "Backup"  )
+RegisterPosition( "FDM" , Position(1500 , 1111) , "Default" )
+RegisterPosition( "FDM" , Position("[Center][2]" , 0.9 , 1000) , "Backup"  )
 
 RegisterProcess( "SandMan" , "Sandboxie" )
 RegisterPosition( "Sandboxie" , Position(0.7 ,  0.7) )
