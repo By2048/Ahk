@@ -28,3 +28,9 @@ Screen := Screens.Default.1
 Loop Screens.Count {
     Screens.%A_Index% := Screens.Default.%A_Index%
 }
+
+; 补全设置
+If ( Screens.Count < 2 )
+    Screens.2 := Screens.Default.1
+Else
+    Screens.2 := Screens.Default.2

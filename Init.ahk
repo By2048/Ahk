@@ -5,6 +5,7 @@
 #Include Tool\File.ahk
 
 ; ----------------------------------------------------------------------------------------------- ;
+
 ; DPI相关设置处理
 ; 复制可执行程序 并且在系统中手动设置DPI设置
 InitAhks()
@@ -20,6 +21,7 @@ InitAhks()
 }
 
 ; ----------------------------------------------------------------------------------------------- ;
+
 ; 初始化注册表相关数据
 InitRegs()
 {
@@ -32,6 +34,7 @@ InitRegs()
 }
 
 ; ----------------------------------------------------------------------------------------------- ;
+
 ; 私有配置文件填补
 InitFiles()
 {
@@ -45,11 +48,12 @@ InitFiles()
 }
 
 ; ----------------------------------------------------------------------------------------------- ;
+
 ; 初始化系统屏幕相关信息
 InitScreens(dpi_mode:="Default")
 {
-    Global Screens_Id, Screens_Detail
-    Local  screen, screen_count
+    Global Screens_Id , Screens_Detail
+    Local  screen , screen_count
 
     screen_count := Screens_Detail.Length
     GlobalSet("Screens", "Count", screen_count)
@@ -79,18 +83,19 @@ InitScreens(dpi_mode:="Default")
 }
 
 ; ----------------------------------------------------------------------------------------------- ;
+
 ; AutoHotkey.exe  Init.ahk  ArgXxx
 
-If A_Args.Length < 1
+If ( A_Args.Length < 1 )
     ExitApp
 
 Arg := A_Args[1]
 
-If Arg == "Ahks"
+If ( Arg == "Ahks" )
     InitAhks()
-Else If Arg == "Files"
+Else If ( Arg == "Files" )
     InitFiles()
-Else If Arg == "Regs"
+Else If ( Arg == "Regs" )
     InitRegs()
 Else If InStr( "ScreenDefault, ScreenSoftware, ScreenSystem, ScreenSystemPlus" , Arg )
     InitScreens(Arg)
