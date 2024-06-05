@@ -236,6 +236,9 @@
 >#Insert::Send "^!{PrintScreen}"
 >#Delete::Send "^!+{PrintScreen}"
 
+; 切换静音
+>#AppsKey::SoundSetMute -1
+
 ; 终端
 >#Space:: Run WT " --focus --size 124,36 -d T:\\"
 
