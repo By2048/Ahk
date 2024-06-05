@@ -5,11 +5,9 @@ RegisterHelp("Explorer_CabinetWClass", FilePath(A_LineFile, "Explorer.help"))
 
 RegisterHelp("Explorer_WorkerW", "Key\Win.help")
 RegisterHelp("Explorer_WorkerW", "Key\Win.Other.help")
-RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Fxx.help"))
+RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
 RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
 
-
-#Include Explorer.Fxx.ahk
 
 
 ; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
@@ -66,15 +64,46 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
 #HotIf
 
 
+; 桌面
+#HotIf CheckWindowActive( "Explorer" , "WorkerW" )
+
+     F1::Run "T:\#Sync\"
+     F2::Run "T:\#ToDo\"
+     F3::Run "D:\#Lnk\"
+     F4::Run "V:\#\"
+
+     F5::Run "C:\"
+     F6::Run "D:\"
+     F7::Run "E:\"
+     F8::Run "F:\"
+
+     F9::Run "E:\Doc\"
+    F10::Run "E:\Config\"
+    F11::Run "E:\Project\"
+    F12::Run "E:\Script\"
+
+    AppsKey::Run "E:\Script\Software\Chrome.bat -Url chatgpt.com", A_InitialWorkingDir, "Hide"
+
+    RAlt & RWin::Return
+
+#HotIf
+
+
 ; 任务栏
 #HotIf CheckWindowActive( "Explorer" , "Shell_TrayWnd" )
-    PgUp::Send "{Volume_Up}"
-    PgDn::Send "{Volume_Down}"
-    =::
+    NumpadPgDn::
+    PgUp::{
+        Send "{Volume_Up}"
+    }
+    NumpadPgUp::
+    PgDn::{
+        Send "{Volume_Down}"
+    }
+    NumpadHome::
     Home::{
         Send "{Volume_Up 5}"
     }
-    -::
+    NumpadEnd::
     End::{
         Send "{Volume_Down 5}"
     }
