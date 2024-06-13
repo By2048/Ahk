@@ -16,36 +16,54 @@ RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Scre
 
 #HotIf CheckWindowActive("PotPlayer")
 
-    $Insert::{
-        if InStr(A_PriorHotkey, "Insert") {
-            if A_TimeSincePriorHotkey < 333 {
-                rule := "播放列表 ahk_exe PotPlayerMini64.exe"
-                if !WinExist(rule) {
-                    Send "{F6}^f"
-                    Sleep 333
-                    WinClose(rule)
-                } else {
-                    WinActivate(rule)
-                    Sleep 333
-                    Send "^f"
-                    WinActivate("ahk_exe PotPlayerMini64.exe ahk_class PotPlayer64")
-                }
+    PotPlayerPlayList() {
+        rule := "播放列表 "
+        rule .= "ahk_exe PotPlayerMini64.exe "
+        rule .= "ahk_class Afx:00007FFB8FA10000:b:0000000000010005:0000000000900011:0000000000000000"
+        if WinExist(rule) {
+            WinActivate(rule)
+        } else {
+            Send "{F6}"
+        }
+    }
+
+    PotPlayerOpenFile() {
+        if InStr(A_PriorHotkey, A_ThisHotkey) {
+            if ( A_TimeSincePriorHotkey < 333 ) {
+                PotPlayerPlayList()
+                Sleep 99
+                Send "^f"
+                Sleep 333
+                WinActivate("ahk_exe PotPlayerMini64.exe ahk_class PotPlayer64")
+                Sleep 99
+                Send "{F6}"
             }
         }
     }
 
-    $Delete::{
-        if InStr(A_PriorHotkey, "Delete")
-            if A_TimeSincePriorHotkey < 333
+    PotPlayerDeleteFile() {
+        if InStr(A_PriorHotkey, A_ThisHotkey) {
+            if ( A_TimeSincePriorHotkey < 333 ) {
                 Send "+{Delete}!{y}"
+                Sleep 99
+                PotPlayerPlayList()
+                Sleep 99
+                Send "{Enter}"
+            }
+        }
     }
 
-    ~NumLock::
+
+    $Insert::PotPlayerOpenFile()
+    $Delete::PotPlayerDeleteFile()
+
     ~CapsLock::{
-        WinClose("A")
+        if InStr(A_PriorHotkey, A_ThisHotkey)
+            if ( A_TimeSincePriorHotkey < 333 )
+                WinClose("A")
     }
 
-    !CapsLock::Send "!{F4}"
+    ~!CapsLock::Send "!{F4}"
 
     #Enter::Send "!{Enter}"
 
