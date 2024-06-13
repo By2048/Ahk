@@ -5,6 +5,8 @@
 
 ; 可执行文件路径
 AHK           := "D:\AutoHotkey\#\AutoHotkey.exe"
+PSL           := "D:\PowerShell\psl.exe"
+BDown         := "D:\BBDown\BBDown.exe"
 Aria          := "D:\Aria2\aria2c.exe"
 ADB           := "D:\Adb\adb.exe"
 CMD           := "C:\Windows\System32\cmd.exe"
@@ -31,7 +33,7 @@ Games_Process.Push( "LOL_Game"   )
 
 
 
-; 软件自定义名字替换
+; 软件自定义名字替换 MARK:Process
 Windows_Process := Map()
 RegisterProcess(origin, rename)
 {
@@ -40,8 +42,7 @@ RegisterProcess(origin, rename)
 }
 
 
-
-; 软件与帮助信息对应关系 Map( Process : [ Help ])
+; 软件与帮助信息对应关系 Map( Process : [ Help ])  MARK:Software
 Software_Keys_Help := Map()
 RegisterHelp(process, path)
 {
@@ -60,7 +61,7 @@ RegisterHelp(process, path)
 
 
 
-; 软件位置设置
+; 软件位置设置 MARK:Windows
 Windows_Default := Map()
 Windows_Backup  := Map()
 WD := Windows_Default
