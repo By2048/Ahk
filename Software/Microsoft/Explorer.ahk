@@ -68,21 +68,19 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
 #HotIf CheckWindowActive( "Explorer" , "WorkerW" )
 
      F1::Run "T:\#Sync\"
-     F2::Run "T:\#ToDo\"
-     F3::Run "D:\#Lnk\"
-     F4::Run "V:\#\"
+     F2::Run "T:\#Image\"
+     F3::Run "T:\#ToDo\"
+     F4::Run "D:\#Lnk\"
 
-     F5::Run "C:\"
+     F5::Run "C:\Users\Administrator\"
      F6::Run "D:\"
      F7::Run "E:\"
      F8::Run "F:\"
 
-     F9::Run "E:\Doc\"
-    F10::Run "E:\Config\"
-    F11::Run "E:\Project\"
-    F12::Run "E:\Script\"
-
-    AppsKey::Run "E:\Script\Software\Chrome.bat -Url chatgpt.com", A_InitialWorkingDir, "Hide"
+     F9::Run "E:\Script\"
+    F10::Run "E:\Backup\"
+    F11::Run "E:\Config\"
+    F12::Run "E:\Doc\"
 
     RAlt & RWin::Return
 
