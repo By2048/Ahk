@@ -4,9 +4,9 @@
 |  R | RegEdit                |  , | 我的电脑        |
 |  T | Tim                    | +, | 回收站          |
 |  Y |                        |  . | T:\             |
-|  U |                        | +. | V:\             |
+|  U |                        | +. | V:\#\           |
 |  I |                        |  / | Chrome          |
-|  O |                        | +/ | Edge            |
+|  O |                        | +/ | ChromeDefault   |
 |  P | WT                     |----------------------|
 |-----------------------------|  [ | VSCode T:\      |
 |  A | AntiMicroX             |  ] | VSCode Project  |
