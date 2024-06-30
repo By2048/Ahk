@@ -1,18 +1,33 @@
 ﻿
 RegisterProcess("cloudmusic" , "CloudMusic")
 
-#HotIf CheckWindowActive( "CloudMusic" , "DesktopLyrics" )
+pos_w := 2333
+pos_h := 200
+pos_x := Screen.w/2 - pos_w/2
+pos_y := Screen.h   - pos_h   - 10
+pos   := Position( pos_x, pos_y, pos_w, pos_h )
+RegisterPosition( "CloudMusic_DesktopLyrics" , pos )
 
-    #\::{
-        win_w := 2333
-        win_h := 166
-        win_x := Screen.w/2 - win_w/2
-        win_y := Screen.h   - win_h   - 10
-        MoveWindowPosition(Position(win_x, win_y, win_w, win_h))
+RegisterPosition( "CloudMusic" , Position(2000 , 1200) )
+
+RegisterPosition( "QQMusic" , Position(1800 , 1100) )
+
+
+MusicLike() {
+
+}
+
+MusicDetail() {
+    GetActiveWindowInfo()
+    win_process_name := window.process_name
+
+    if ( win_process_name == "CloudMusic" )
+        MouseClickAndResetting(13, 1133, "Window")
+
+    if ( win_process_name == "QQMusic" ) {
+        MouseClickAndResetting(13, 1133, "Window")
     }
-
-#HotIf
-
+}
 
 
 #HotIf CheckWindowActive( "CloudMusic" )
@@ -20,43 +35,10 @@ RegisterProcess("cloudmusic" , "CloudMusic")
     ; 播放暂停
     F5::Return
 
-    CapsLock::Send "{Esc}"
+    ~CapsLock::Send "{Esc}"
 
-    global CM_Main_Detail := "Main"
-
-    MButton::
-    /::{
-        global CM_Main_Detail
-        if ( CM_Main_Detail == "Main" ) {
-            MouseClickAndResetting(85, 1172, "Window")
-            CM_Main_Detail := "Detail"
-        } else if ( CM_Main_Detail == "Detail" ) {
-            MouseClickAndResetting(85, 72, "Window")
-            CM_Main_Detail := "Main"
-        }
-    }
-
-    $RShift::MouseClickAndResetting(857, 1130, "Window")
-
-    \::Send "!\"
-    [::{
-        Send "!["
-        Sleep 1500
-        Send "{Esc}"
-    }
-    ]::{
-        Send "!]"
-        Sleep 1500
-        Send "{Esc}"
-    }
-
-    <#BackSpace::{
-        ProcessClose "cloudmusic_reporter.exe"
-        Sleep 300
-        ProcessClose "CloudMusic.exe"
-    }
-
-    #\::MoveWindowPosition(Position(2000 , 1200))
+    ; 播放界面 详细信息
+    /::MusicDetail()
 
     ; 音量调整
     Up::Send "!{PgUp}"
@@ -78,18 +60,41 @@ RegisterProcess("cloudmusic" , "CloudMusic")
     PgUp::Send "{Volume_Up}"
     PgDn::Send "{Volume_Down}"
 
+    ; 点击喜欢
+    ; AppsKey::MouseClickAndResetting(857, 1130, "Window")
+
+    \::Send "!\"
+    [::{
+        Send "!["
+        Sleep 1500
+        Send "{Esc}"
+    }
+    ]::{
+        Send "!]"
+        Sleep 1500
+        Send "{Esc}"
+    }
+
+    <#BackSpace::{
+        ProcessClose "cloudmusic_reporter.exe"
+        Sleep 300
+        ProcessClose "CloudMusic.exe"
+    }
+
+    #Include Music.Mouse.ahk
+
 #HotIf
 
 
 
 #HotIf CheckWindowActive( "QQMusic" )
 
-    CapsLock::Send "{Esc}"
-
-    #\::MoveWindowPosition(Position(1800 , 1100))
+    ~CapsLock::Send "{Esc}"
 
     <#BackSpace::{
         ProcessClose "QQMusic.exe"
     }
+
+    #Include Music.Mouse.ahk
 
 #HotIf
