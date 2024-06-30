@@ -1,8 +1,5 @@
 
-NumLock::{
-    Send "{Delete}{Enter}"
-    SetNumLockState "Off"
-}
+~NumLock::Send "{Esc}"
 
 ; NumpadHome::Send "m1"
 ; NumpadEnd::Send "m2"

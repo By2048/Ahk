@@ -44,7 +44,7 @@ RegisterPosition( "AntiMicroX__按键" , Position(1600 , 666) )
 
 RegisterPosition("Everything", Position(1700 , 1200))
 #HotIf CheckWindowActive("Everything")
-    ~*RWin::{
+    RAlt::{
         cfg := " 1:名称:750  2:路径:600  3:大小:120  4:修改时间:180 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321", cfg)
@@ -150,4 +150,9 @@ RegisterProcess("Photoshop" , "PS")
 
 #HotIf CheckWindowActive("MediaInfo")
     AppsKey::Send "!ys"
+#HotIf
+
+
+#HotIf CheckWindowActive("Telegram")
+    ~NumLock::Send "{Esc}"
 #HotIf

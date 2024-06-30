@@ -20,9 +20,9 @@ RegisterPosition( "Q-Dir_#32770_MiniBrowserOK" , Position(1555, 1333) )
     ;  1 ^                          3 #327704->SysListView322   4 ^
     #\::{
         ; 界面配置信息 * 1.5 (Dpi)
-        tree_width      := Screen.Dpi * ( 250             )
-        box_left_width  := Screen.Dpi * ( 200 + 200 + 120 )
-        box_right_width := Screen.Dpi * ( 500 + 90        )
+        tree_width      := Screen.Dpi * ( 257       )
+        box_left_width  := Screen.Dpi * ( 300 + 200 ) ; 名称 备注
+        box_right_width := Screen.Dpi * ( 500 + 90  ) ; 名称 大小
 
         check_offset      := 15
         box_split_width   := 15

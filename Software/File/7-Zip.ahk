@@ -23,6 +23,8 @@ RegisterProcess("7zFM" , "7-Zip")
 
 #HotIf CheckWindowActive("7-Zip")
 
+    ~NumLock::WinClose "A"
+
     #\::{
         MoveWindowPosition(Position(1100 , 1000))
         cfg := " 1:名称:700  3:文件夹:100  2:文件:100  4:大小:140 "
