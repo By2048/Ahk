@@ -22,6 +22,7 @@ Scrcpy        := "D:\Scrcpy\scrcpy.exe"
 Snipaste      := "D:\Snipaste\Snipaste.exe"
 MD5Sum        := "D:\Git\usr\bin\md5sum.exe"
 FDM           := "D:\FDM\fdm.exe"
+NirCmd        := "D:\NirCmd\nircmdc.exe"
 
 
 

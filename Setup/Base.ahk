@@ -11,8 +11,16 @@ A_IconTip := "[Ahk]"
 ; 启动脚本
 LWin & RWin::{
     Send "{Blind}{vkFF}"
+    SetNumLockState "Off"
+    SetCapsLockState "Off"
+    SetScrollLockState "Off"
+    if GetKeyState("CapsLock", "P") and GetKeyState("Enter", "P") {
+        SetCapsLockState "Off"
+        Run NirCmd " standby "
+        return
+    }
+    GuiProgress()
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Run.png")
-    ShowDefaultProgress()
     if GetKeyState("LShift", "P") {
         HelpText("`n  Force Reload | Delete Reg  `n", "Center", "Screen", 1500)
         RegDeleteKey Reg_Path
@@ -22,9 +30,6 @@ LWin & RWin::{
         Run "Setup.bat Start", A_InitialWorkingDir, "Hide"
         HelpText("`n  Reload All Script  `n", "Center", "Screen" . Screens.Count, 1000)
     }
-    SetNumLockState "Off"
-    SetCapsLockState "Off"
-    SetScrollLockState "Off"
     Reload
 }
 

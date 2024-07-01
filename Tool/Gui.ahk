@@ -1,11 +1,10 @@
 ﻿
 #Include *i ..\Config\All.ahk
 #Include *i ..\Tool\Change.ahk
-#Include *i ..\Tool\Help.ahk
 
 
 ; 项目启动时创建的居中进度条
-ShowDefaultProgress()
+GuiProgress()
 {
     gui_w := 330
     gui_h := 28
