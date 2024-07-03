@@ -5,20 +5,18 @@
 ; 切换默认输入法
 ; https://www.voidtools.com/support/everything/language_ids/
 
-ZH() {
-    try {
-        PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0804,  , "A"
-    }
+ZH()
+{
+    Try PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0804,  , "A"
 }
 
-EN() {
-    try {
-        PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0409,  , "A"
-    }
+EN()
+{
+    Try PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0409,  , "A"
 }
 
 ; 获取中文字符数量
-ZHCN_Count(data)
+ZH_Count(data)
 {
     start_code := ToBase(0x4e00 , 10)
     end_code := ToBase(0x9fa5 , 10)

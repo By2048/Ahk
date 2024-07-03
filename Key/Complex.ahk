@@ -84,11 +84,11 @@ LWin & RCtrl::{
 ; 输入法管理
 LCtrl & LWin::{
     ZH()
-    HelpText("`n ZH_CN `n", "Center", "Screen", 300)
+    HelpText("`n  中文  `n", "Center", "Screen", 300)
 }
 LAlt & LWin::{
     EN()
-    HelpText("`n  EN  `n", "Center", "Screen", 300)
+    HelpText("`n  English  `n", "Center", "Screen", 300)
 }
 
 
