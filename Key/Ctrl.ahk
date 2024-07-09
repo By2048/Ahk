@@ -43,9 +43,9 @@
 >^+n::Run "D:\#Lnk\#\QQMusic.lnk"
  >^m::Run "D:\#Lnk\#\PotPlayer.lnk"
 
- >^\::Run VSCode " --profile %Windows  E:\Config\VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
- >^]::Run VSCode " --profile %Note     E:\Config\VSCode\%Note.code-workspace",    A_InitialWorkingDir, "Hide"
  >^[::Run VSCode " --profile %Temp     E:\Config\VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
+ >^]::Run VSCode " --profile %Note     E:\Config\VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
+ >^\::Run VSCode " --profile %Windows  E:\Config\VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
 
 >^`;::Run VSCodeDefault " --new-window", A_InitialWorkingDir, "Hide"
  >^'::Run VSCode        " --new-window", A_InitialWorkingDir, "Hide"
