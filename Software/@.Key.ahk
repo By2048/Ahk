@@ -86,11 +86,6 @@
 #+\::MoveWindowBackup()
 
 
-;软件截图 临时 | 长久
-<#Delete:: ScreenShotSoftware(ScreenShot_Software)
-<#+Delete::ScreenShotSoftware(ScreenShot_Temp    )
-
-
 ; 结束应用\进程
 #BackSpace::{
     GetActiveWindowInfo()

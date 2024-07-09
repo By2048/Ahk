@@ -212,6 +212,10 @@
 <#Insert:: ScreenShotFull(ScreenShot_Full)
 <#+Insert::ScreenShotFull(ScreenShot_Temp)
 
+;软件截图 临时 | 长久
+<#Delete:: ScreenShotSoftware(ScreenShot_Software)
+<#+Delete::ScreenShotSoftware(ScreenShot_Temp    )
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; 通用媒体按键
