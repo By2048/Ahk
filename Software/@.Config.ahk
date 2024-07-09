@@ -11,6 +11,9 @@ RegisterPosition("_#32770_选择文件夹"  , Position(1522 , 1122) )
 RegisterPosition("_#32770_浏览文件夹"  , Position(666 , 1122) )
 RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
 
+RegisterProcess( "Clash Nyanpasu" , "ClashNyanpasu" )
+RegisterPosition( "ClashNyanpasu" , Position(1700 , 1234) )
+
 RegisterProcess( "fdm" , "FDM" )
 RegisterPosition( "FDM" , Position(1500 , 1111) , "Default" )
 RegisterPosition( "FDM" , Position("[Center][2]" , 0.9 , 1000) , "Backup"  )
