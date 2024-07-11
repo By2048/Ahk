@@ -30,3 +30,14 @@ ZH_Count(data)
     }
     return result
 }
+
+SendCN(data)
+{
+    data   := StrSplit(data)
+    result := ""
+    ; 转换每个字符为{U+16进制Unicode编码}
+    for key, val in data {
+        result .= "{U+" . Format("{:X}" , ord(val)) . "}"
+    }
+    SendInput(result)
+}
