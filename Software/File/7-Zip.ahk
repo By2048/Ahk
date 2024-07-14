@@ -34,13 +34,11 @@ RegisterProcess("7zFM" , "7-Zip")
         SetColumnWidth("SysListView321", cfg)
     }
 
-    ; 注册表相关操作
+    ; 注册表相关操作 Clear History
     >!\::{
-        ; Clear History
         RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM", "FolderHistory"
         RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM", "CopyHistory"
-        HelpText("`nClear History`n", "Center", "Screen", 1000)
-
+        HelpText("`n Clear History `n", "Center", "Screen", 1000)
         ; 默认列配置 Zip
         ; 其他列配置 Rar
         ; RegRead, default_columns_config, HKEY_CURRENT_USER\SOFTWARE\7-Zip\FM\Columns, 7-Zip.zip
