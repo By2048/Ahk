@@ -54,8 +54,8 @@
 >^+,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
  >^.::Run "T:\"
 >^+.::Run "V:\#\"
- >^/::Run "E:\Script\Software\Chrome.bat",        A_InitialWorkingDir, "Hide"
->^+/::Run "E:\Script\Software\ChromeDefault.bat", A_InitialWorkingDir, "Hide"
+ >^/::Run "E:\Script\Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
+>^+/::Run "E:\Script\Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
 
  >^Esc::Run "TaskMgr" ;任务管理器
 >^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
