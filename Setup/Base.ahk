@@ -25,9 +25,9 @@ LWin & RWin::{
         HelpText("`n  Force Reload | Delete Reg  `n", "Center", "Screen", 1500)
         RegDeleteKey Reg_Path
         SendMessage(0x1A, 0, StrPtr("Environment"), 0xFFFF) ; EnvUpdate
-        Run "Setup.bat ForceStart", A_InitialWorkingDir, "Hide"
+        Run "Setup.cmd ForceStart", A_InitialWorkingDir, "Hide"
     } else {
-        Run "Setup.bat Start", A_InitialWorkingDir, "Hide"
+        Run "Setup.cmd Start", A_InitialWorkingDir, "Hide"
         HelpText("`n  Reload All Script  `n", "Center", "Screen" . Screens.Count, 1000)
     }
     Reload
@@ -40,10 +40,10 @@ RWin & LWin::{
     if GetKeyState("RShift", "P") {
         HelpText("`n  Force Close All Script | Delete Reg  `n", "Center", "Screen", 2000)
         RegDeleteKey Reg_Path
-        Run "Setup.bat ForceStop", A_InitialWorkingDir, "Hide"
+        Run "Setup.cmd ForceStop", A_InitialWorkingDir, "Hide"
         ExitApp
     } else {
-        Run "Setup.bat Stop", A_InitialWorkingDir, "Hide"
+        Run "Setup.cmd Stop", A_InitialWorkingDir, "Hide"
         HelpText("`n  Close All Script  `n", "Center", "Screen" . Screens.Count, 1000)
     }
 }

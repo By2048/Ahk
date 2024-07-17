@@ -36,7 +36,7 @@
 
 
 ## 启动运行
-- 在项目所在目录运行 `Setup.bat`
+- 在项目所在目录运行 `Setup.cmd`
 - `LWin + RWin` 重启脚本
 - `LShift + LWin + RWin` 强制重启脚本
 - `RWin + LWin` 结束脚本
