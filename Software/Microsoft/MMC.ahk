@@ -42,13 +42,15 @@
 
 
 #HotIf CheckWindowActive( "MMC" , "MMCMainFrame" , "*服务*" )
+    CapsLock::F5
     #\::{
+        MoveWindowPosition(Position(1888 , 1222))
         name  := "SysListView321"
-        width := Map( 1 , 333   ;名称
+        width := Map( 1 , 350   ;名称
                     , 2 , 500   ;描述
                     , 3 , 77    ;状态
                     , 4 , 111   ;启动类型
-                    , 5 , 77  ) ;登录为
+                    , 5 , 70  ) ;登录为
         SetColumnWidth(name, width)
     }
 #HotIf

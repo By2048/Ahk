@@ -1,14 +1,14 @@
-﻿| F1  | #Sync       |
-| F2  | #Image      |
-| F3  | #ToDo       |
-| F4  | #Lnk        |
-|-----|-------------|
-| F5  | ${Admin}    |
-| F6  | $D          |
-| F7  | $E          |
-| F8  | $F          |
-|-----|-------------|
-| F9  | E\Script\   |
-| F10 | E\Backup\   |
-| F11 | E\Config \  |
-| F12 | E\Doc\      |
+﻿| #Lnk        |
+| #Sync       |
+| #Image      |
+| #ToDo       |
+|-------------|
+| $D          |
+| $E          |
+| $F          |
+| $G          |
+|-------------|
+| E\Config\   |
+| E\Doc\      |
+| E\Book\     |
+| E\Script\   |
