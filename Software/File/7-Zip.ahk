@@ -1,6 +1,9 @@
 ﻿
 RegisterProcess("7zFM" , "7-Zip")
 
+RegisterHelp("7-Zip", FilePath(A_LineFile, "7-Zip.help"))
+
+
 
 #HotIf CheckWindowActive("7-Zip", "*FM", "我的电脑*")
     #\::{
@@ -21,6 +24,7 @@ RegisterProcess("7zFM" , "7-Zip")
 #HotIf
 
 
+
 #HotIf CheckWindowActive("7-Zip")
 
     ~NumLock::WinClose "A"
@@ -36,6 +40,8 @@ RegisterProcess("7zFM" , "7-Zip")
 
     ; 注册表相关操作 Clear History
     >!\::{
+        RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Compression", "ArcHistory"
+        RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Extraction", "PathHistory"
         RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM", "FolderHistory"
         RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM", "CopyHistory"
         HelpText("`n Clear History `n", "Center", "Screen", 1000)
