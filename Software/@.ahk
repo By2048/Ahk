@@ -153,6 +153,7 @@ RegisterProcess("Photoshop" , "PS")
 #HotIf
 
 
+RegisterPosition( "Telegram" , Position(2222 , 1357) )
 #HotIf CheckWindowActive("Telegram")
     ~NumLock::Send "{Esc}"
 #HotIf
