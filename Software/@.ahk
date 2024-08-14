@@ -42,15 +42,6 @@ RegisterPosition( "AntiMicroX__按键" , Position(1600 , 666) )
 #HotIf
 
 
-RegisterPosition("Everything", Position(1700 , 1200))
-#HotIf CheckWindowActive("Everything")
-    RAlt::{
-        cfg := " 1:名称:750  2:路径:600  3:大小:120  4:修改时间:180 "
-        cfg := GetColumnConfig(cfg)
-        SetColumnWidth("SysListView321", cfg)
-    }
-#HotIf
-
 
 RegisterProcess("Duplicate Cleaner 5" , "DuplicateCleaner")
 RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
@@ -153,7 +144,7 @@ RegisterProcess("Photoshop" , "PS")
 #HotIf
 
 
-RegisterPosition( "Telegram" , Position(2222 , 1357) )
+RegisterPosition( "Telegram" , Position(2000 , 1357) )
 #HotIf CheckWindowActive("Telegram")
     ~NumLock::Send "{Esc}"
 #HotIf

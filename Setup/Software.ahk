@@ -42,6 +42,7 @@
 #Include ..\Software\File\7-Zip.ahk
 #Include ..\Software\File\BitComet.ahk
 #Include ..\Software\File\DiskGenius.ahk
+#Include ..\Software\File\Everything.ahk
 #Include ..\Software\File\FFRenamePro.ahk
 #Include ..\Software\File\FreeFileSync.ahk
 #Include ..\Software\File\FSViewer.ahk
