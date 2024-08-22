@@ -37,6 +37,11 @@ LWin & RWin::{
 RWin & LWin::{
     Send "{Blind}{vkFF}"
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Error.png")
+    if GetKeyState("CapsLock", "P") and GetKeyState("Enter", "P") {
+        SetCapsLockState "Off"
+        Run NirCmd " exitwin poweroff"
+        return
+    }
     if GetKeyState("RShift", "P") {
         HelpText("`n  Force Close All Script | Delete Reg  `n", "Center", "Screen", 2000)
         RegDeleteKey Reg_Path
