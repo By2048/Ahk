@@ -111,7 +111,7 @@ SetColumns(config)
 }
 
 
-ResetPosition(columns:="Default")
+ResetPosition(columns:="")
 {
     total_width       := 1960
     total_height      := 1250
@@ -136,11 +136,11 @@ ResetPosition(columns:="Default")
     }
 
     #Include Explorer.Columns.ahk
-    config := ""
-    if ( columns == "Default" )
+
+    if ( not columns ) 
         config := Cfg.Get(window.title, Cfg["Default"])
-    if ( columns == "FileList" )
-        config := Cfg["FileList"]
+    else
+        config := Cfg.Get(columns, Cfg["Default"])
     SetColumns(config)
 
     ; 搜索框

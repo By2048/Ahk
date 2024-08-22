@@ -183,8 +183,8 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
     ; 打开主右键菜单设置
     !AppsKey::ActivateMenu()
 
-    #\::ResetPosition(columns:="Default")
-    #+\::ResetPosition(columns:="FileList")
+    #\::ResetPosition()
+    #+\::ResetPosition(columns:="List")
 
     RWin & RCtrl::Return    
     RWin & RAlt::Return    
