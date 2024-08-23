@@ -1,32 +1,16 @@
 ﻿
 RegisterProcess( "clashN" , "ClashN" )
-
 RegisterPosition( "ClashN" , Position(1666 , 1122) )
-
-
-RegisterProcess( "v2rayN" , "v2rayN" )
-
-RegisterPosition( "v2rayN" , Position(2100 , 1200) )
-
-RegisterHelp( "v2rayN", "Software\Vpn.help" )
-
-
-#HotIf CheckWindowActive( "EnableLoopback" )
-    #\::{
-        MoveWindowPosition(Position(1860 , 1000))
-        _1 := " 1   2   3   4   5   6   7   "
-        _2 := " -   -   -   -   -   -   -   "
-        _3 := " 400 400 200 300 150 200 150 "
-        config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth("WindowsForms10.SysListView32.app.0.141b42a_r8_ad11" , config)
-    }
-#HotIf
-
 
 #HotIf CheckWindowActive( "ClashN" )
 
 #HotIf
 
+
+
+RegisterProcess( "v2rayN" , "v2rayN" )
+RegisterPosition( "v2rayN" , Position(2100 , 1200) )
+RegisterHelp( "v2rayN", "Software\Vpn.help" )
 
 #HotIf CheckWindowActive( "v2rayN" )
 
@@ -93,6 +77,7 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
         HelpText("`nOver`n", "Center", "Screen", 1000)
     }
 
+
     #BackSpace::MouseClickAndResetting(1052, 73, "Window", "Left")
 
     RButton::{
@@ -107,4 +92,22 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
         MoveWindowPosition([ x, y, window.w, window.h ])
     }
 
+#HotIf
+
+
+
+RegisterProcess( "Clash Nyanpasu" , "ClashNyanpasu" )
+RegisterPosition( "ClashNyanpasu" , Position(1700 , 1111) )
+
+
+
+#HotIf CheckWindowActive( "EnableLoopback" )
+    #\::{
+        MoveWindowPosition(Position(1860 , 1000))
+        _1 := " 1   2   3   4   5   6   7   "
+        _2 := " -   -   -   -   -   -   -   "
+        _3 := " 400 400 200 300 150 200 150 "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("WindowsForms10.SysListView32.app.0.141b42a_r8_ad11" , config)
+    }
 #HotIf
