@@ -2,6 +2,6 @@
 |  CMD         FFmpeg      FFplay      FFprobe     Git           |
 |  Go          Java        Lua         LuaC        LuaW          |
 |  PSL         Scrcpy      TaskKill    Vim         Zip           |
-|  Python      Py          Pip         RustC       RustUp        |
-|  Cargo       Script      PyEnv       GitX        GitPy         |
-|  Bi-Free     Rename      Windows                               |
+|  Py          Pip         Py-         Pip-        Py=           |
+|  Pip=        RustC       RustUp      Cargo       Script        |
+|  GitX        GitPy       Rename      Windows                   |

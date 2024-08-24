@@ -6,14 +6,16 @@
 
 Init := Gui()
 
-Init.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
-Init.MarginX  := 0
-Init.MarginY := 0
-
 Init.w := 1056
-Init.h := 1111
+Init.h := 1248
 Init.x := Screen.w/2 - Init.w/2
 Init.y := Screen.h/2 - Init.h/2
+
+Init.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
+Init.MarginX   := 0
+Init.MarginY   := 0
+Init.TextStyle := Format("-Center -Border w{}", Init.w)
+Init.Line      := "------------------------------------------------------------------"
 
 if ( GetWindowTheme() == "Dark" ) {
     Init.font_color := Gui_Config.Dark.Font
@@ -26,44 +28,37 @@ Init.font_name := "Source Code Pro"
 Init.font_size := 13
 Init.BackColor := Init.back_color
 
-; --------------------------------------------------------------------------------
-
-Init.config := []
-
-Init.config.Push( "" )
-Init.config.Push( Format("  A_InitialWorkingDir | {1}"        , A_InitialWorkingDir    ) )
-Init.config.Push( Format("  JQB                 | {1}    {2}" , JQB.Phone, JQB.Windows ) )
-Init.config.Push( "------------------------------------------------------------------"   )
-
-Init.config.Push(FileRead(A_InitialWorkingDir . "\Setup\Input.Private.help", "UTF-8"))
-
-Init.script := A_InitialWorkingDir . "\Config\Script.help"
-if FileExist(Init.script)
-    Init.config.Push(FileRead(Init.script))
-
-init_content := ""
-For index, value In Init.config {
-    init_content .= value
-    if ( index != Init.config.Length )
-        init_content .= "`n"
+AddLine() {
+    Init.SetFont(Format("c{} s{}", Init.font_color, Init.font_size), Init.font_name)
+    Init.Add("Text", Init.TextStyle, Init.Line)
 }
-Init.content := init_content
+
+;-------------------------------------------------------------------------------------------------;
+
+Init.Add("Text", Init.TextStyle, "")
+Init.SetFont(Format("c{} s{}", Init.font_color, 10), Init.font_name)
+Init.Add("Text", Init.TextStyle, FileRead(A_InitialWorkingDir . "\Config\Mouse.help", "UTF-8"))
+AddLine()
+
+Init.SetFont(Format("c{} s{}", Init.font_color, 13), Init.font_name)
+Init.Add("Text", Init.TextStyle, FileRead(A_InitialWorkingDir . "\Config\Joy.help", "UTF-8"))
+AddLine()
+
+Init.SetFont(Format("c{} s{}", Init.font_color, 12), Init.font_name)
+text := Format("  A_InitialWorkingDir | {1}"        , A_InitialWorkingDir    ) . "`n"
+text .= Format("  JQB                 | {1}    {2}" , JQB.Phone, JQB.Windows )
+Init.Add("Text", Init.TextStyle, text)
+AddLine()
+
+Init.SetFont(Format("c{} s{}", Init.font_color, 13), Init.font_name)
+Init.Add("Text", Init.TextStyle, FileRead(A_InitialWorkingDir . "\Setup\Input.help", "UTF-8"))
+AddLine()
 
 ; --------------------------------------------------------------------------------
 
-Init.SetFont(Format("c{} s{}", Init.font_color, Init.font_size), Init.font_name)
-Init.Add("Text", Format("-Center -Border w{}", Init.w), Init.content)
+#Include *i Init.Private.ahk
 
-Init.mouse := A_InitialWorkingDir . "\Config\Mouse.help"
-Init.SetFont(Format("c{} s{}", Init.font_color, 10), Init.font_name)
-if FileExist(Init.mouse)
-    Init.Add("Text", Format("-Center -Border w{}", Init.w), FileRead(Init.mouse, "UTF-8"))
-
-Init.joy := A_InitialWorkingDir . "\Config\Joy.help"
-Init.SetFont(Format("c{} s{}", Init.font_color, Init.font_size), Init.font_name)
-if FileExist(Init.joy)
-    Init.Add("Text", Format("-Center -Border w{}", Init.w), FileRead(Init.joy, "UTF-8"))
-
+; --------------------------------------------------------------------------------
 
 ; 显示Init帮助信息
 InitConfig()
