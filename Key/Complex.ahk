@@ -135,27 +135,13 @@ LWin & RShift::{
 RWin & RShift::{
     path := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
     key  := "ProxyEnable"
-    if (GetKeyState("LShift", "P")) {
-        ; v2rayN
-        pid := ProcessExist("v2rayN.exe")
-        if (pid) {
-            ProcessClose pid
-            RegWrite 0, "REG_DWORD", path, key
-            HelpText("`n  v2rayN Close  `n", "Center", "Screen", 500)
-        } else {
-            Run "D:\#Lnk\v2rayN.lnk"
-            RegWrite 1, "REG_DWORD", path, key
-            HelpText("`n  v2rayN Start  `n", "Center", "Screen", 500)
-        }
-    } else {
-        ; Windows代理
-        state := RegRead(path, key, "")
-        if (state == "0") {
-            RegWrite 1, "REG_DWORD", path, key
-            HelpText("`n  Proxy On  `n", "Center", "Screen1", 500)
-        } else if (state == "1") {
-            RegWrite 0, "REG_DWORD", path, key
-            HelpText("`n  Proxy Off  `n", "Center", "Screen1", 1000)
-        }
+    ; Windows代理
+    state := RegRead(path, key, "")
+    if (state == "0") {
+        RegWrite 1, "REG_DWORD", path, key
+        HelpText("`n  Proxy On  `n", "Center", "Screen1", 500)
+    } else if (state == "1") {
+        RegWrite 0, "REG_DWORD", path, key
+        HelpText("`n  Proxy Off  `n", "Center", "Screen1", 1000)
     }
 }
