@@ -21,6 +21,7 @@
 #Include ..\Software\Geek.ahk
 #Include ..\Software\LOL.ahk
 #Include ..\Software\Snipaste.ahk
+#Include ..\Software\Telegram.ahk
 #Include ..\Software\Tencent.ahk
 #Include ..\Software\VMware.ahk
 #Include ..\Software\Vpn.ahk
@@ -39,7 +40,6 @@
 #Include ..\Software\Develop\Terminal.ahk
 #Include ..\Software\Develop\VSCode.ahk
 
-#Include ..\Software\File\7-Zip.ahk
 #Include ..\Software\File\BitComet.ahk
 #Include ..\Software\File\DiskGenius.ahk
 #Include ..\Software\File\Everything.ahk
@@ -51,6 +51,7 @@
 #Include ..\Software\File\Q-Dir.ahk
 #Include ..\Software\File\SumatraPDF.ahk
 #Include ..\Software\File\WPS.ahk
+#Include ..\Software\File\Zip.ahk
 
 #Include ..\Software\JetBrains\@.ahk
 #Include ..\Software\JetBrains\IDEA.ahk

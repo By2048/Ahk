@@ -1,11 +1,27 @@
 ﻿
-RegisterProcess("7zFM" , "7-Zip")
+RegisterProcess( "7zFM" , "ZipMain"   )
+RegisterProcess( "7zG"  , "ZipDialog" )
 
-RegisterHelp("7-Zip", FilePath(A_LineFile, "7-Zip.help"))
+RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
 
 
 
-#HotIf CheckWindowActive("7-Zip", "*FM", "我的电脑*")
+#HotIf CheckWindowActive( "ZipDialog" , "#32770" , "*解压*" )
+
+    SetUnZipFolder(path) {
+        ControlSetText(path, "Edit1", "A")
+        ControlFocus("Button7", "A")
+    }
+
+    [::SetUnZipFolder("F:\Resource\EHentai")
+    ]::SetUnZipFolder("T:\")
+    \::SetUnZipFolder("V:\")
+    
+#HotIf
+
+
+
+#HotIf CheckWindowActive( "ZipMain" , "*FM*" , "*我的电脑*" )
     #\::{
         MoveWindowPosition(Position(1100 , 1000))
         cfg := " 1:名称:100  5:卷标:100  4:类型:100  6:文件系统:100  7:簇大小:100  3:可用空间:200  2:总大小:200 "
@@ -16,7 +32,7 @@ RegisterHelp("7-Zip", FilePath(A_LineFile, "7-Zip.help"))
 
 
 
-#HotIf CheckWindowActive("7-Zip", "#32770", "属性")
+#HotIf CheckWindowActive( "ZipMain | ZipDialog" , "#32770" , "属性" )
     #\::{
         MoveWindowPosition(Position(650, 900))
         SetColumnWidth("SysListView321", Map( 1,150 , 2,420 ))
@@ -25,9 +41,9 @@ RegisterHelp("7-Zip", FilePath(A_LineFile, "7-Zip.help"))
 
 
 
-#HotIf CheckWindowActive("7-Zip")
+#HotIf CheckWindowActive( "ZipMain" )
 
-    ~NumLock::WinClose "A"
+    ~NumLock::WinClose("A")
 
     #\::{
         MoveWindowPosition(Position(1100 , 1000))
