@@ -13,7 +13,7 @@
  >^h::Run AutoHotkey " D:\AutoHotkey\V2\WindowSpy.ahk"
 >^+h::Run "E:\GitX\AhkSpy\AhkSpy.exe"
  >^j::{
-    Run "D:\#Lnk\JetBrains.lnk"
+    Run "D:\#Lnk\#\JetBrains.lnk"
     loop 33 {
         try {
             WinActivate "ahk_exe jetbrains-toolbox.exe"
@@ -32,7 +32,7 @@
     cmd .= '"D:\Python\#\Scripts\python.exe E:\Script\Python\JetBrains.py"  '
     Run cmd
 }
- >^k::KeyHistory
+ >^k::KeyHistory()
 >^+k::KeyboardGUI()
 
  >^x::Run "D:\#Lnk\#\Xshell.lnk"
