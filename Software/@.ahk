@@ -1,5 +1,4 @@
 
-
 #HotIf ( Arg.hotkeys_show == True )
     [::HelpKeysShow(-1)
     ]::HelpKeysShow(+1)
@@ -40,7 +39,6 @@ RegisterPosition( "AntiMicroX__按键" , Position(1600 , 666) )
 #HotIf CheckWindowActive("AntiMicroX__按键")
     $RWin::MoveWindowDefault()
 #HotIf
-
 
 
 RegisterProcess("Duplicate Cleaner 5" , "DuplicateCleaner")
@@ -144,7 +142,6 @@ RegisterProcess("Photoshop" , "PS")
 #HotIf
 
 
-RegisterPosition( "Telegram" , Position(2000 , 1357) )
-#HotIf CheckWindowActive("Telegram")
-    ~NumLock::Send "{Esc}"
+#HotIf CheckWindowActive("PicView")
+    ~NumLock::WinClose("A")
 #HotIf

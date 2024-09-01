@@ -97,7 +97,7 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
 
 
 RegisterProcess( "Clash Nyanpasu" , "ClashNyanpasu" )
-RegisterPosition( "ClashNyanpasu" , Position(1700 , 1111) )
+RegisterPosition( "ClashNyanpasu" , Position(1700 , 1248) )
 
 
 
