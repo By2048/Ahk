@@ -1,5 +1,5 @@
 ﻿
-#Include *i ..\Tool\Change.ahk
+#Include ..\Tool\Change.ahk
 
 
 

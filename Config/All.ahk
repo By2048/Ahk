@@ -1,4 +1,11 @@
 ﻿
+#Include ..\Config.ahk
+#Include Message.ahk
+#Include Screen.ahk
+#Include Software.ahk
+#Include Init.ahk
+
+
 ; 存储当前窗口的信息
 ; 缓存处理 优化相关性能
 Window := {}
@@ -67,6 +74,8 @@ Arg := {
 
     previous_win_id : 0x0 ,
 
+    search_input : False ,
+
     init_show    : False ,
     init_content : ""    ,
 
@@ -80,12 +89,3 @@ Arg := {
     hotkeys_index   : 0      ,
     hotkeys_current : ""
 }
-
-
-#Include *i ..\Config.ahk
-
-#Include *i .\Message.ahk
-#Include *i .\Screen.ahk
-
-#Include *i .\Software.ahk
-#Include *i .\Init.ahk

@@ -1,7 +1,7 @@
 ﻿
-#Include *i .\Screen.ahk
-#Include *i .\Software.ahk
-#Include *i ..\Tool\Other.ahk
+#Include Screen.ahk
+#Include Software.ahk
+#Include ..\Tool\Other.ahk
 
 
 Init := Gui()

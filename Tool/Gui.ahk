@@ -1,6 +1,6 @@
 ﻿
-#Include *i ..\Config\All.ahk
-#Include *i ..\Tool\Change.ahk
+#Include ..\Config\All.ahk
+#Include ..\Tool\Change.ahk
 
 
 ; 项目启动时创建的居中进度条

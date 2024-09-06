@@ -1,8 +1,8 @@
 ﻿
-#Include *i ..\Tool\Help.ahk
-#Include *i ..\Tool\Window.ahk
-#Include *i ..\Tool\Other.ahk
-#Include *i ..\Tool\File.ahk
+#Include ..\Tool\Help.ahk
+#Include ..\Tool\Window.ahk
+#Include ..\Tool\Other.ahk
+#Include ..\Tool\File.ahk
 
 
 

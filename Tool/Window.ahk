@@ -1,10 +1,10 @@
 ﻿
-#Include *i ..\Config\All.ahk
-#Include *i ..\Tool\Mouse.ahk
-#Include *i ..\Tool\File.ahk
-#Include *i ..\Tool\Change.ahk
-#Include *i ..\Tool\Help.ahk
-#Include *i ..\Tool\Language.ahk
+#Include ..\Config\All.ahk
+#Include ..\Tool\Mouse.ahk
+#Include ..\Tool\File.ahk
+#Include ..\Tool\Change.ahk
+#Include ..\Tool\Help.ahk
+#Include ..\Tool\Language.ahk
 
 
 
