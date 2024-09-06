@@ -105,8 +105,6 @@ RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开")
         }
     }
 
-    ~CapsLock::Return
-
     CapsLock & Enter::{
         A_Clipboard := ""
         Send "!d"
@@ -188,13 +186,13 @@ RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开")
     }
 
     ; 定位地址栏
-    Arg.alt_space := False
+    ~CapsLock::
     !Space::{
-        if (not Arg.alt_space) {
-            Arg.alt_space := True
+        if (not Arg.search_input) {
+            Arg.search_input := True
             Send "!d"
         } else {
-            Arg.alt_space := False
+            Arg.search_input := False
             Send "{F6 3}"
         }
     }
