@@ -10,6 +10,7 @@ RegisterPosition("Everything", Position(1700 , 1200))
 
     ; 输入框
     F3::Return
+    CapsLock::Send "{F3}"
 
     ; 切换焦点
     F6::Return

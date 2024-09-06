@@ -8,15 +8,19 @@ RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
 
 #HotIf CheckWindowActive( "ZipDialog" , "#32770" , "*解压*" )
 
-    SetUnZipFolder(path) {
-        ControlSetText(path, "Edit1", "A")
-        ControlFocus("Button7", "A")
-    }
-
-    [::SetUnZipFolder("F:\Resource\EHentai")
-    ]::SetUnZipFolder("T:\")
-    \::SetUnZipFolder("V:\")
+    \::ControlClick "Button1", "A"
     
+    Insert::ControlFocus "Edit2", "A"
+    
+    AppsKey::ControlClick "Button5", "A"
+
+    Enter::ControlClick "Button7", "A"
+    
+    [::ControlSetText "T:\", "Edit1", "A"
+    ]::ControlSetText "V:\", "Edit1", "A"
+
+    #Include Zip.Private.ahk
+
 #HotIf
 
 

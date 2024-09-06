@@ -12,7 +12,7 @@ RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     F1::Return
 
     F2::Return
-    ^r::F2
+    ^r::Send "F2"
 
     `::Send "m"
 

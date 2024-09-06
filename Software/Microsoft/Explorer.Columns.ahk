@@ -20,9 +20,9 @@ Cfg["C:\Users"]                       := Cfg["List"]
 Cfg["C:\Users\Administrator"]         := Cfg["FolderList"]
 Cfg["C:\Users\Administrator\AppData"] := Cfg["List"]
 Cfg["C:\Windows"]                     := Cfg["List"]
+Cfg["C:\ProgramData"]                 := Cfg["List"]
 Cfg["C:\Program Files"]               := Cfg["List"]
 Cfg["C:\Program Files (x86)"]         := Cfg["List"]
-Cfg["C:\ProgramData"]                 := Cfg["List"]
 
 
 #Include *i Explorer.Columns.Private.ahk

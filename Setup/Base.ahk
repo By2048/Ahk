@@ -6,7 +6,9 @@
 #SingleInstance Ignore
 
 TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Run.png")
+
 A_IconTip := "[Ahk]"
+
 
 ; 启动脚本
 LWin & RWin::{

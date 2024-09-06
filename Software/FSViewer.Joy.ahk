@@ -3,7 +3,7 @@
 Numpad8::Send "{Left}"
 
 ; 下
-Numpad2::Send "{Delete}{Enter}"
+Numpad2::Send "m9"
 
 ; 左
 Numpad4::Send "{Right}"
@@ -14,7 +14,7 @@ Numpad6::Send "{Right}"
 ;---------------------------------;
 
 ; 上
-Numpad9::Send "m9"
+Numpad9::Send "{Delete}{Enter}"
 
 ; 下
 Numpad3::Send "{Enter}"

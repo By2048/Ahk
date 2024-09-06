@@ -15,17 +15,29 @@
 #Include ..\Software\@.ahk
 #Include ..\Software\@.Config.ahk
 #Include ..\Software\@.Key.ahk
-
+#Include ..\Software\%.Loop.ahk
 #Include ..\Software\Android.ahk
+#Include ..\Software\BitComet.ahk
+#Include ..\Software\DiskGenius.ahk
+#Include ..\Software\Everything.ahk
+#Include ..\Software\FFRenamePro.ahk
 #Include ..\Software\FoxMail.ahk
+#Include ..\Software\FreeFileSync.ahk
+#Include ..\Software\FSViewer.ahk
 #Include ..\Software\Geek.ahk
 #Include ..\Software\LOL.ahk
+#Include ..\Software\Music.ahk
+#Include ..\Software\PotPlayer.ahk
+#Include ..\Software\Q-Dir.ahk
 #Include ..\Software\Snipaste.ahk
+#Include ..\Software\SumatraPDF.ahk
 #Include ..\Software\Telegram.ahk
 #Include ..\Software\Tencent.ahk
 #Include ..\Software\VMware.ahk
 #Include ..\Software\Vpn.ahk
 #Include ..\Software\Wallpaper.ahk
+#Include ..\Software\WPS.ahk
+#Include ..\Software\Zip.ahk
 
 #Include ..\Software\Browser\@.ahk
 #Include ..\Software\Browser\Chrome.ahk
@@ -39,19 +51,6 @@
 #Include ..\Software\Develop\Postman.ahk
 #Include ..\Software\Develop\Terminal.ahk
 #Include ..\Software\Develop\VSCode.ahk
-
-#Include ..\Software\File\BitComet.ahk
-#Include ..\Software\File\DiskGenius.ahk
-#Include ..\Software\File\Everything.ahk
-#Include ..\Software\File\FFRenamePro.ahk
-#Include ..\Software\File\FreeFileSync.ahk
-#Include ..\Software\File\FSViewer.ahk
-#Include ..\Software\File\Music.ahk
-#Include ..\Software\File\PotPlayer.ahk
-#Include ..\Software\File\Q-Dir.ahk
-#Include ..\Software\File\SumatraPDF.ahk
-#Include ..\Software\File\WPS.ahk
-#Include ..\Software\File\Zip.ahk
 
 #Include ..\Software\JetBrains\@.ahk
 #Include ..\Software\JetBrains\IDEA.ahk
@@ -73,6 +72,7 @@
 
 CoordMode "Mouse", "Window"
 CoordMode "Pixel", "Window"
+SetControlDelay -1
 
 
 For Arg_Index, Arg_Value In A_Args {
@@ -81,7 +81,4 @@ For Arg_Index, Arg_Value In A_Args {
     If Arg_Value == "Stop"
         ExitApp
 }
-
-
-#Include ..\Software\%.Loop.ahk
 

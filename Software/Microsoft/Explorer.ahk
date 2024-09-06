@@ -6,7 +6,6 @@ RegisterHelp("Explorer_CabinetWClass", FilePath(A_LineFile, "Explorer.help"))
 RegisterHelp("Explorer_WorkerW", "Key\Win.help")
 RegisterHelp("Explorer_WorkerW", "Key\Win.Other.help")
 RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
-RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
 
 
 
@@ -52,6 +51,13 @@ RegisterHelp("Explorer_WorkerW", "Config\Mouse.help")
 #HotIf CheckWindowActive( "Explorer" , "#32770" , "回收站*" )
     ;回收站位置 可用空间
     #\::SetColumnWidth( "SysListView321" , Map( 1,400 , 2,100 ) )
+#HotIf
+
+
+#HotIf CheckWindowActive( "Explorer" , "#32770" , "删除文件|删除文件夹" )
+    Delete::Send "{Esc}"
+    Insert::Send "!y"
+    AppsKey::Send "!n"
 #HotIf
 
 
