@@ -1,10 +1,11 @@
 ﻿
-#Include ..\Config\All.ahk
+#Include ..\Config.ahk
 
-#Include ..\Tool\Change.ahk
+#Include ..\Lib\Global.ahk
+#Include ..\Lib\Change.ahk
+#Include ..\Lib\File.ahk
+
 #Include ..\Tool\Help.ahk
-#Include ..\Tool\File.ahk
-#Include ..\Tool\Global.ahk
 #Include ..\Tool\Language.ahk
 #Include ..\Tool\Mouse.ahk
 #Include ..\Tool\Other.ahk
@@ -12,10 +13,6 @@
 #Include ..\Tool\Control.ahk
 #Include ..\Tool\Gui.ahk
 
-#Include ..\Software\@.ahk
-#Include ..\Software\@.Config.ahk
-#Include ..\Software\@.Key.ahk
-#Include ..\Software\%.Loop.ahk
 #Include ..\Software\Android.ahk
 #Include ..\Software\BitComet.ahk
 #Include ..\Software\DiskGenius.ahk
@@ -64,16 +61,13 @@
 #Include ..\Software\Microsoft\TaskMgr.ahk
 #Include ..\Software\Microsoft\Windows.ahk
 
-
 #SingleInstance Force
 #HotString EndChars `t`n`s
 #NoTrayIcon
 
-
 CoordMode "Mouse", "Window"
 CoordMode "Pixel", "Window"
 SetControlDelay -1
-
 
 For Arg_Index, Arg_Value In A_Args {
     If Arg_Value == "Start"
@@ -82,3 +76,6 @@ For Arg_Index, Arg_Value In A_Args {
         ExitApp
 }
 
+#Include ..\Software\@Key.ahk
+#Include ..\Software\@Other.ahk
+#Include ..\Software\@Loop.ahk

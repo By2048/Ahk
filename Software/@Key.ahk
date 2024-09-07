@@ -47,15 +47,15 @@
     Timer() {
         Global Arg
         if (Arg.shift_cnt == 1) {
-            if Arg.init_show
-                InitConfig()
+            if Arg.status_show
+                StatusGui()
             HelpText()
             HelpKeysHide()
         } else if (Arg.shift_cnt == 2) {
             HelpText()
             HelpKeysShow()
         } else if (Arg.shift_cnt == 3) {
-            InitConfig()
+            StatusGui()
         }
         Arg.shift_cnt := 0
     }

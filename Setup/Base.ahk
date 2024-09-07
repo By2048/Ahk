@@ -1,5 +1,5 @@
 ﻿
-#Include ..\Config\All.ahk
+#Include ..\Config.ahk
 #Include ..\Tool\Gui.ahk
 #Include ..\Tool\Help.ahk
 

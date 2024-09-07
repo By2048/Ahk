@@ -1,8 +1,9 @@
 ﻿
-#Include ..\Config\All.ahk
-#Include ..\Tool\Change.ahk
-#Include ..\Tool\File.ahk
+#Include ..\Lib\File.ahk
+#Include ..\Lib\Change.ahk
+#Include ..\Lib\Windows.ahk
 #Include ..\Tool\Language.ahk
+#Include ..\Tool\Window.ahk
 
 
 ; 显示图片

@@ -1,11 +1,12 @@
 ﻿
-#Include ..\Config\All.ahk
+#Include ..\Config.ahk
 
-#Include ..\Tool\Change.ahk
+#Include ..\Lib\Change.ahk
+#Include ..\Lib\File.ahk
+#Include ..\Lib\Global.ahk
+
 #Include ..\Tool\Help.ahk
-#Include ..\Tool\File.ahk
 #Include ..\Tool\Gui.ahk
-#Include ..\Tool\Global.ahk
 #Include ..\Tool\Language.ahk
 #Include ..\Tool\Mouse.ahk
 #Include ..\Tool\Other.ahk

@@ -35,14 +35,10 @@ If Not Exist %AutoHotkey% (
     Msg %username% /time:9 配置文件错误 \ 未设置脚本执行文件路径 Config.ahk
     Exit
 )
-Set                     AHK=%AutoHotkey%
-Set   AutoHotkeyDpiSoftware=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSoftware.exe%
-Set     AutoHotkeyDpiSystem=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystem.exe%
-Set AutoHotkeyDpiSystemPlus=%AutoHotkey:AutoHotkey.exe=AutoHotkeyDpiSystemPlus.exe%
+Set AHK=%AutoHotkey%
 
 :: Init AutoHotkey Files
 Set        @.ahk=.\@.ahk
-Set     Init.ahk=.\Init.ahk
 Set     Base.ahk=.\Setup\Base.ahk
 Set    Input.ahk=.\Setup\Input.ahk
 Set      Key.ahk=.\Setup\Key.ahk
@@ -55,15 +51,6 @@ If "%Command%"=="ForceStart" (
     @Echo On
     Set Command=Start
 )
-
-:: 初始化项目于系统信息
-%AutoHotkey%  %Init.ahk%  Ahks
-%AutoHotkey%  %Init.ahk%  Regs
-%AutoHotkey%  %Init.ahk%  Files
-%AutoHotkey%               %Init.ahk%  ScreenDefault
-%AutoHotkeyDpiSoftware%    %Init.ahk%  ScreenSoftware
-%AutoHotkeyDpiSystem%      %Init.ahk%  ScreenSystem
-%AutoHotkeyDpiSystemPlus%  %Init.ahk%  ScreenSystemPlus
 
 :: 脚本入口
 Echo.

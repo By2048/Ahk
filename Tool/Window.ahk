@@ -1,37 +1,9 @@
 ﻿
-#Include ..\Config\All.ahk
-#Include ..\Tool\Mouse.ahk
-#Include ..\Tool\File.ahk
-#Include ..\Tool\Change.ahk
+#Include ..\Lib\File.ahk
+#Include ..\Lib\\Change.ahk
 #Include ..\Tool\Help.ahk
+#Include ..\Tool\Mouse.ahk
 #Include ..\Tool\Language.ahk
-
-
-
-; Dll获取窗口大小
-GetClientSize(win_id, &width:="", &height:="")
-{
-    config := Buffer(16)
-    DllCall("GetClientRect", "ptr", win_id, "ptr", config)
-    width  := NumGet(config,  8, "int")
-    height := NumGet(config, 12, "int")
-}
-
-
-; 获取Windows主题 Drak Light
-GetWindowTheme()
-{
-    path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-    key   := "AppsUseLightTheme"
-    theme := RegRead(path, key, "")
-    if (theme == "0") {
-        return "Dark"
-    } else if (theme == "1") {
-        return "Light"
-    } else {
-        return ""
-    }
-}
 
 
 ; 获取当前激活的应用配置文件信息

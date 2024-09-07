@@ -1,8 +1,4 @@
 
-#Include @.Config.ahk
-#Include @.Key.ahk
-
-
 #HotIf ( Arg.hotkeys_show == True )
     [::HelpKeysShow(-1)
     ]::HelpKeysShow(+1)

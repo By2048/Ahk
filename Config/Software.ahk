@@ -1,8 +1,4 @@
 ﻿
-#Include ..\Tool\Change.ahk
-
-
-
 ; 可执行文件路径
 AHK           := "D:\AutoHotkey\#\AutoHotkey.exe"
 PSL           := "D:\PowerShell\psl.exe"
@@ -26,53 +22,62 @@ NirCmd        := "D:\NirCmd\nircmdc.exe"
 
 
 
-; 游戏进程
-Games_Process := []
-Games_Process.Push( "LOL_TX"     )
-Games_Process.Push( "LOL_Client" )
-Games_Process.Push( "LOL_Game"   )
+RegisterHelp("Default", "Key\Win.help"      )
+RegisterHelp("Default", "Key\Win.Other.help")
 
+RegisterPosition("_#32770"          , Position(1522 , 1122) )
+RegisterPosition("_#32770_浏览"      , Position(1522 , 1122) )
+RegisterPosition("_#32770_打开"      , Position(1522 , 1122) )
+RegisterPosition("_#32770_另存为"     , Position(1522 , 1122) )
+RegisterPosition("_#32770_打开文件"   , Position(1522 , 1122) )
+RegisterPosition("_#32770_选择文件夹"  , Position(1522 , 1122) )
+RegisterPosition("_#32770_浏览文件夹"  , Position(666 , 1122) )
+RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
 
+RegisterProcess( "fdm" , "FDM" )
+RegisterPosition( "FDM" , Position(1500 , 999) , "Default" )
+RegisterPosition( "FDM" , Position("[Center][2]" , 0.9 , 1000) , "Backup"  )
 
-; 软件自定义名字替换 MARK:Process
-Windows_Process := Map()
-RegisterProcess(origin, rename)
-{
-    Global Windows_Process
-    Windows_Process[StrLower(origin)] := rename
-}
+RegisterProcess( "SandMan" , "Sandboxie" )
+RegisterPosition( "Sandboxie" , Position(0.7 ,  0.7) )
 
+RegisterPosition( "qBittorrent" , Position(0.9 ,  0.8) )
 
-; 软件与帮助信息对应关系 Map( Process : [ Help ])  MARK:Software
-Software_Keys_Help := Map()
-RegisterHelp(process, path)
-{
-    path := Trim(path)
-    if not path
-        return
-    if not InStr(path, ":")
-        path := Format("{}\{}", A_InitialWorkingDir, path)
-    if not FileExist(path)
-        return
-    config := Software_Keys_Help.Get(process, [])
-    content := FileRead(path, "`n UTF-8")
-    config.Push(content)
-    Software_Keys_Help[process] := config
-}
+RegisterPosition( "Calibre" , Position(0.8 ,  0.8) )
 
+RegisterProcess( "哔哩哔哩" , "BiliBili" )
+RegisterPosition( "BiliBili" , Position(0.7 , 0.88) )
 
+RegisterPosition( "Maye" , Position(1172 , 1100) )
 
-; 软件位置设置 MARK:Windows
-Windows_Default := Map()
-Windows_Backup  := Map()
-WD := Windows_Default
-WB := Windows_Backup
-RegisterPosition(cfg, args, mode:="Default")
-{
-    Global Windows_Default
-    Global Windows_Backup
-    if mode == "Default"
-        Windows_Default[cfg] := args
-    else if mode == "Backup"
-        Windows_Backup[cfg] := args
-}
+RegisterPosition( "DouYin" , Position(2333 , 1333) )
+
+RegisterPosition( "PikPak" , Position(1666 , 1100) )
+
+RegisterPosition( "Office Tool Plus" , Position(1900 , 1100) )
+
+RegisterPosition( "Python__Anaconda" , Position(2666, 1666) )
+
+RegisterPosition( "Thunder"             , Position(0.7 , 0.8) )
+RegisterPosition( "Thunder__新建任务面板" , Position(0.3 , 0.4) )
+
+RegisterPosition( "OneCommander" , Position(-9 , -9) )
+
+; 开启关闭 Windows 功能
+RegisterPosition( "OptionalFeatures_NativeHWNDHost" , Position(800 , 1000) )
+
+; 搜索
+RegisterProcess( "SearchApp" , "Search" )
+RegisterProcess( "SearchUI" , "Search" )
+
+; 开始菜单
+RegisterProcess( "ShellExperienceHost" , "Start" )
+RegisterProcess( "StartMenuExperienceHost" , "Start" )
+RegisterPosition( "Start" , Position(488 , 600) )
+
+; 画图
+RegisterPosition( "MsPaint" , Position(0.62 , 0.82) )
+
+; 资源监视器
+RegisterProcess( "perfmon" , "SystemMonitor" )
+RegisterPosition( "SystemMonitor" , Position(2250 , 1350) )
