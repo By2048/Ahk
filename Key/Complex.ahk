@@ -35,7 +35,7 @@
 ; ------------------------------------------------------------------------------------ ;
 
 ; 切换应用
-win_tab := win_shift_tab := False
+Global win_tab := win_shift_tab := False
 LWin & Tab::{
     global win_tab, win_shift_tab
     win_tab := True
