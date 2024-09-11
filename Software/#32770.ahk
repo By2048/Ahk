@@ -40,12 +40,9 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
 
     NumpadPgdn::Send "^v"
 
-
-    ![::ControlFocus("SysTreeView321", "A")
-    !]::{
-        ControlFocus("DirectUIHWND2", "A")
-        Send "{Space}"
-    }
+    ![::ActivateLeft()
+    !]::ActivateRight()
+    !\::ActivateMenu()
 
     ; 默认位置
     #\::{

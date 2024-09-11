@@ -7,6 +7,7 @@ RegisterHelp("Explorer_WorkerW", "Key\Win.help")
 RegisterHelp("Explorer_WorkerW", "Key\Win.Other.help")
 RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
 
+#IncludeAgain Explorer.Tool.ahk
 
 
 ; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
@@ -123,24 +124,25 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     ; Num Lock + 星号 (*) 显示选定文件夹下的所有子文件夹
     ; Num Lock + 加号 (+) 显示选定文件夹中的内容
     ; Num Lock + 减号 (-) 折叠选定文件夹
+    ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
+    ; 属性对话框 !{Enter}
+
+    RWin & RCtrl::Return
+    RWin & RAlt::Return
+    ^WheelUp::Return
+    ^WheelDown::Return
+        
+    ; F10::Return ; 快捷键帮助
 
     #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
-
-    #IncludeAgain Explorer.Tool.ahk
 
     ; 功能区展开缩放
     !`::Send "^{F1}"
     ^F1::Return
 
-    ; 快捷键帮助
-    F10::Return
-
-    ; 全屏
-    F11::Return
-    #Enter::Send "{F11}"
-
-    !/::ActivateLeft()
-    !\::ActivateRight()
+    ![::ActivateLeft()
+    !]::ActivateRight()
+    !\::ActivateMenu()
 
     ; Alt+向左键 查看上一个文件夹
     ; Alt+向右键 查看下一个文件夹
@@ -162,20 +164,13 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     ^w::Return
     ~!CapsLock::Send "^w"
 
-    ; 属性对话框 !{Enter}
 
-    ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
-    ^WheelUp::Return
-    ^WheelDown::Return
-
-    ; 打开主右键菜单设置
-    !AppsKey::ActivateMenu()
 
     #\::ResetPosition()
     #+\::ResetPosition(columns:="List")
-
-    RWin & RCtrl::Return    
-    RWin & RAlt::Return    
+        
+    F11::Return ; 全屏
+    #Enter::Send "{F11}"
 
     #IncludeAgain *i Explorer.Joy.ahk
     #IncludeAgain *i Explorer.Mouse.ahk

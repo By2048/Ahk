@@ -1,30 +1,45 @@
 
 ActivateLeft()
 {
-    ControlFocus "SysTreeView321", "A"
+    ControlFocus("SysTreeView321", "A")
 }
 
 
 ActivateRight()
 {
-    ControlFocus "DirectUIHWND3", "A"
+    win_class := WinGetClass("A")
+    if (win_class == "CabinetWClass") {
+        ControlFocus("DirectUIHWND3", "A")
+    } else if (win_class == "#32770") {
+        ControlFocus("DirectUIHWND2", "A")
+    }
     Send "{Space}"
 }
 
 
 ActivateMenu()
 {
-    windows   := GetActiveWindowInfo(False)
-    info      := window.controls.DirectUIHWND3
+    window   := GetActiveWindowInfo(False)
+    offset_x := 0
+    offset_y := 0
+    if (window.class == "CabinetWClass") {
+        info     := window.controls.DirectUIHWND3
+        offset_x := 20
+        offset_y := -13
+    } else if (window.class == "#32770") {
+        info     := window.controls.DirectUIHWND2
+        offset_x := 20
+        offset_y := 30
+    }
     content_x := info.x
     content_y := info.y
     content_w := info.w
     content_h := info.h
-    x := content_x + 20
-    y := content_y + content_h - 13
-    MouseGetPos &x_origin, &y_origin
-    MouseClick "Right", x, y, 1, 0
-    MouseMove x_origin, y_origin, 0
+    click_x   := content_x + offset_x
+    click_y   := content_y + content_h + offset_y
+    MouseGetPos(&x_origin, &y_origin)
+    MouseClick("Right", click_x, click_y, 1, 0)
+    MouseMove(x_origin, y_origin, 0)
 }
 
 
@@ -34,7 +49,7 @@ ActivateMenu()
 ; Recycle.DeletedFrom:400 Recycle.DateDeleted:180 Size:150
 SetColumns(config)
 {
-    if not config
+    if ( not config )
         return
 
     config_all    := []
@@ -53,10 +68,10 @@ SetColumns(config)
     win_class := WinGetClass("A")
     win_process_name := WinGetProcessName("A")
 
-    if win_process_name != "explorer.exe"
+    if ( win_process_name != "explorer.exe" )
         return
 
-    if win_class != "CabinetWClass" and win_class != "ExploreWClass"
+    if ( win_class != "CabinetWClass" and win_class != "ExploreWClass" )
         return
 
     obj := 0
@@ -64,7 +79,7 @@ SetColumns(config)
 		if win.HWND == win_id
 			obj := win
 
-    if not obj
+    if ( not obj )
         return
 
     IID_IServiceProvider := "{6D5140C1-7436-11CE-8034-00AA006009FA}"
@@ -79,7 +94,7 @@ SetColumns(config)
 	isp := ComObjQuery(obj, IID_IServiceProvider)
 	isb := ComObjQuery(isp, IID_TopLevelBrowser, SID_SShellBrowser)
 
-    if ComCall(15, isb, "Ptr*", &isv := 0) < 0
+    if ( ComCall(15, isb, "Ptr*", &isv := 0) < 0 )
         return
 
     ifv2 := ComObjQuery(isv,  IID_IFolderView2)
@@ -121,8 +136,8 @@ ResetPosition(columns:="")
     input_move_width  := 426
     input_check_width := 388
 
-    MouseGetPos &x_origin, &y_origin
-    WinGetPos &origin_win_x, &origin_win_y, &origin_win_w, &origin_win_h, "A"
+    MouseGetPos(&x_origin, &y_origin)
+    WinGetPos(&origin_win_x, &origin_win_y, &origin_win_w, &origin_win_h, "A")
     MoveWindowPosition(Position(total_width , total_height))
     GetActiveWindowInfo(False)
 
@@ -130,9 +145,9 @@ ResetPosition(columns:="")
     if (   origin_win_x != window.x or origin_win_y != window.y
         or origin_win_w != window.w or origin_win_h != window.h ) {
         ; MouseMove window.position_client.w/2 , window.position_client.h , 0
-        MouseMove window.cw/2 , window.ch , 0
-        MouseClickDrag "Left", 0, 0, 0, -50, 0, "R"
-        MouseClickDrag "Left", 0, 0, 0,  50, 0, "R"
+        MouseMove(window.cw/2 , window.ch , 0)
+        MouseClickDrag("Left", 0, 0, 0, -50, 0, "R")
+        MouseClickDrag("Left", 0, 0, 0,  50, 0, "R")
     }
 
     #Include Explorer.Columns.ahk
@@ -147,9 +162,9 @@ ResetPosition(columns:="")
     GetActiveWindowInfo(False)
     info := window.controls.DirectUIHWND1
     if ( Abs(info.w - input_check_width) > check_offset ) {
-        MouseMove info.x , info.y + info.h / 2
+        MouseMove(info.x , info.y + info.h / 2)
         offset := GetOffset("X")
-        MouseMove info.x + offset , info.y + info.h / 2
+        MouseMove(info.x + offset , info.y + info.h / 2)
         MoveControlUDLR(info, "Left", total_width - input_move_width, offset)
     }
 
@@ -157,9 +172,9 @@ ResetPosition(columns:="")
     GetActiveWindowInfo(False)
     info := window.controls.SysTreeView321
     if ( Abs(info.w - tree_width) > check_offset * 1 ) {
-        MouseMove info.x + info.w , info.y + info.h / 2
+        MouseMove(info.x + info.w , info.y + info.h / 2)
         offset := GetOffset("X")
-        MouseMove info.x + info.w + offset , info.y + info.h / 2
+        MouseMove(info.x + info.w + offset , info.y + info.h / 2)
         MoveControlUDLR(info, "Right", tree_width, offset)
     }
 
@@ -167,11 +182,11 @@ ResetPosition(columns:="")
     GetActiveWindowInfo(False)
     info := window.controls.DirectUIHWND3
     if ( Abs(total_width - (info.x + info.w) - preview_width) > check_offset * 2 ) {
-        MouseMove info.x + info.w , info.y + info.h / 2
+        MouseMove(info.x + info.w , info.y + info.h / 2)
         offset := GetOffset("X")
-        MouseMove info.x + info.w + offset , info.y + info.h / 2
+        MouseMove(info.x + info.w + offset , info.y + info.h / 2)
         MoveControlUDLR(info, "Right", info.x + info.w + preview_width, offset)
     }
 
-    MouseMove x_origin, y_origin, 0
+    MouseMove(x_origin, y_origin, 0)
 }
