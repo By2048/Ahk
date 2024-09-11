@@ -1,50 +1,6 @@
 ﻿
 ; 存储当前窗口的信息
 ; 缓存处理 优化相关性能
-Window := {}
-
-; 各种临时性数据
-Arg := {}
-
-; Gui显示
-G := Gui()
-
-; 调试模式
-Debug := 0
-
-; 临时性使用的全局变量
-Arg := {
-    ;
-    win_cnt      : 0 ,
-    ctrl_cnt     : 0 ,
-    alt_cnt      : 0 ,
-    shift_cnt    : 0 ,
-
-    capslock_cnt : 0 ,
-    numlock_cnt  : 0 ,
-    scroll_cnt   : 0 ,
-
-    pause_cnt : 0 ,
-
-    previous_win_id : 0x0 ,
-
-    search_input : False ,
-
-    status_show    : False ,
-
-    ctrl_show    : False ,
-    ctrl_content : ""    ,
-
-    help_file_show    : False ,
-    help_file_content : ""    ,
-
-    hotkeys_show    : False  ,
-    hotkeys_index   : 0      ,
-    hotkeys_current : ""
-}
-
-
-; 当前窗口的信息
 Window := {
     ;
     cache_id     :  0 ,
@@ -76,6 +32,45 @@ Window := {
 }
 
 
+; 各种临时性数据
+Arg := {
+    ;
+    win_cnt      : 0 ,
+    ctrl_cnt     : 0 ,
+    alt_cnt      : 0 ,
+    shift_cnt    : 0 ,
+
+    capslock_cnt : 0 ,
+    numlock_cnt  : 0 ,
+    scroll_cnt   : 0 ,
+
+    pause_cnt : 0 ,
+
+    previous_win_id : 0x0 ,
+
+    search_input : False ,
+
+    status_show    : False ,
+
+    ctrl_show    : False ,
+    ctrl_content : ""    ,
+
+    help_file_show    : False ,
+    help_file_content : ""    ,
+
+    hotkeys_show    : False  ,
+    hotkeys_index   : 0      ,
+    hotkeys_current : ""
+}
+
+
+; Gui显示
+G := Gui()
+
+; 调试模式
+Debug := 0
+
+
 ; 游戏进程
 Games_Process := []
 Games_Process.Push( "LOL_TX"     )
@@ -85,8 +80,7 @@ Games_Process.Push( "LOL_Game"   )
 
 ; 软件自定义名字替换 MARK:Process
 Windows_Process := Map()
-RegisterProcess(origin, rename)
-{
+RegisterProcess(origin, rename) {
     Global Windows_Process
     Windows_Process[StrLower(origin)] := rename
 }
@@ -94,8 +88,7 @@ RegisterProcess(origin, rename)
 
 ; 软件与帮助信息对应关系 Map( Process : [ Help ])  MARK:Software
 Software_Keys_Help := Map()
-RegisterHelp(process, path)
-{
+RegisterHelp(process, path) {
     path := Trim(path)
     if not path
         return
@@ -115,8 +108,7 @@ Windows_Default := Map()
 Windows_Backup  := Map()
 WD := Windows_Default
 WB := Windows_Backup
-RegisterPosition(cfg, args, mode:="Default")
-{
+RegisterPosition(cfg, args, mode:="Default") {
     Global Windows_Default
     Global Windows_Backup
     if mode == "Default"
