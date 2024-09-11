@@ -57,16 +57,7 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
 #HotIf CheckWindowActive( "Explorer" , "#32770" , "删除文件|删除文件夹" )
     Delete::Send "{Esc}"
     Insert::Send "!y"
-    AppsKey::Send "!n"
-#HotIf
-
-
-#HotIf CheckWindowActive( "Explorer" , "#32770" )
-    ^Tab::Return
-    ^+Tab::Return
-    !Tab::Send "^{Tab}"
-    !+Tab::Send "^+{Tab}"
-    ~!CapsLock::Send "!{F4}"
+    BackSpace::Send "!n"
 #HotIf
 
 
@@ -148,15 +139,6 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     F11::Return
     #Enter::Send "{F11}"
 
-    CapsLock::WinClose("A")
-
-    ; 快速删除
-    Insert & Delete::{
-        Send "{Delete}"
-        Sleep 333
-        Send "!{y}"
-    }
-
     !/::ActivateLeft()
     !\::ActivateRight()
 
@@ -207,42 +189,5 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     #IncludeAgain Explorer.Key.ahk
 
     #IncludeAgain %A_InitialWorkingDir%\Key\Ctrl.Fix.ahk
-
-#HotIf
-
-
-; 打开的窗口
-#HotIf CheckWindowActive( "" , "#32770" , "打开|打开文件|更改图标|选择文件|选择文件夹|另存为|浏览" )
-
-    ; 文件名修改框
-    /::ControlFocus "Edit1", "A"
-
-    CapsLock::{
-        Send "{Esc}"
-        SetCapsLockState "Off"
-    }
-
-    #IncludeAgain Explorer.Key.ahk
-
-    !/::{
-        ControlFocus "SysTreeView321", "A"
-    }
-    !\::{
-        ControlFocus "DirectUIHWND2", "A"
-        Send "{Space}"
-    }
-
-    ; 默认位置
-    #\::{
-        MoveWindowDefault()
-        GetActiveWindowInfo(False)
-        try {
-            info := window.controls.DirectUIHWND2  ;左侧信息栏
-        } catch {
-            return
-        }
-        MoveControlUDLR(info, "Left", 300, 6)
-        Send "^!7"  ;平铺模式
-    }
 
 #HotIf

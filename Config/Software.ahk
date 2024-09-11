@@ -25,18 +25,10 @@ NirCmd        := "D:\NirCmd\nircmdc.exe"
 RegisterHelp("Default", "Key\Win.help"      )
 RegisterHelp("Default", "Key\Win.Other.help")
 
-RegisterPosition("_#32770"          , Position(1522 , 1122) )
-RegisterPosition("_#32770_浏览"      , Position(1522 , 1122) )
-RegisterPosition("_#32770_打开"      , Position(1522 , 1122) )
-RegisterPosition("_#32770_另存为"     , Position(1522 , 1122) )
-RegisterPosition("_#32770_打开文件"   , Position(1522 , 1122) )
-RegisterPosition("_#32770_选择文件夹"  , Position(1522 , 1122) )
-RegisterPosition("_#32770_浏览文件夹"  , Position(666 , 1122) )
-RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
-
 RegisterProcess( "fdm" , "FDM" )
+RegisterPosition( "FDM__%]" , Position("[Center][2]", 1500 , 800 , 600) )
 RegisterPosition( "FDM" , Position(1500 , 999) , "Default" )
-RegisterPosition( "FDM" , Position("[Center][2]" , 0.9 , 1000) , "Backup"  )
+RegisterPosition( "FDM" , Position("[Center][2]" , 0.9 , 1000) , "Backup" )
 
 RegisterProcess( "SandMan" , "Sandboxie" )
 RegisterPosition( "Sandboxie" , Position(0.7 ,  0.7) )
@@ -48,11 +40,13 @@ RegisterPosition( "Calibre" , Position(0.8 ,  0.8) )
 RegisterProcess( "哔哩哔哩" , "BiliBili" )
 RegisterPosition( "BiliBili" , Position(0.7 , 0.88) )
 
-RegisterPosition( "Maye" , Position(1172 , 1100) )
+RegisterPosition( "Maye" , Position(1160 , 999) )
 
 RegisterPosition( "DouYin" , Position(2333 , 1333) )
 
 RegisterPosition( "PikPak" , Position(1666 , 1100) )
+
+RegisterPosition( "Upscayl" , Position(2233 , 1357) )
 
 RegisterPosition( "Office Tool Plus" , Position(1900 , 1100) )
 

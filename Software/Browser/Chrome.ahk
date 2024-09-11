@@ -15,7 +15,6 @@ win_y   := win.y + (30-20)/2  ;坐标修正
 win_pos := Position( win_x, win_y, win_w, win_h )
 RegisterPosition( "Chrome" , win_pos , "Default" )
 RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
-RegisterPosition( "Chrome_#32770_打开" , Windows_Default.Get("_#32770_打开") )
 
 
 #Include *i Chrome.Private.ahk

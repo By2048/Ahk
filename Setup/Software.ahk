@@ -13,6 +13,10 @@
 #Include ..\Tool\Control.ahk
 #Include ..\Tool\Gui.ahk
 
+#Include ..\Software\@Key.ahk
+#Include ..\Software\#32770.ahk
+#Include ..\Software\@Other.ahk
+
 #Include ..\Software\Android.ahk
 #Include ..\Software\BitComet.ahk
 #Include ..\Software\DiskGenius.ahk
@@ -76,6 +80,4 @@ For Arg_Index, Arg_Value In A_Args {
         ExitApp
 }
 
-#Include ..\Software\@Key.ahk
-#Include ..\Software\@Other.ahk
 #Include ..\Software\@Loop.ahk

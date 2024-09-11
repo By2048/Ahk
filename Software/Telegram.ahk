@@ -1,16 +1,30 @@
 
-RegisterPosition( "Telegram" , Position(2000 , 1357) )
+RegisterPosition( "Telegram"        , Position(2000 , 1357) )
+RegisterPosition( "Telegram__Media" , Position(1700 , 1357) )
+
+
+
+#HotIf CheckWindowActive("Telegram" , "Qt*" , "Media*")
+    NumpadPgDn::Send "{Enter}"
+    NumpadPgUp::Send "{AppsKey}{Down 4}{Enter}"
+    NumpadIns::Send "^="
+    NumpadDel::Send "^-"
+#HotIf
+
 
 
 #HotIf CheckWindowActive("Telegram")
     
     ~NumLock::Send "{Esc}"
-    NumpadHome::Send "^v"
-    NumpadEnd::Send "^c"
-    NumpadPgDn::Send "{Enter}"
-    NumpadPgUp::Send "{AppsKey}{Down 4}{Enter}"
+    NumpadHome::Send "^c"
+    NumpadEnd::Send "^v"
+
+    ^PgUp::Return
+    ^PgDn::Return
+    NumpadPgDn::Send "^{PgDn}"
+    NumpadPgUp::Send "^{PgUp}"
     NumpadIns::Send "{RButton}{Down 2}{Enter}"
-    NumpadDel::Send "{Volume_Down 5}"
+    NumpadDel::Send "{Enter}"
 
     #[::{
         pos := Position( 99 , "Center" , 999 , 1357)

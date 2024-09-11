@@ -45,6 +45,8 @@ Arg := {
 
 
 ; 当前窗口的信息
+Window := {}
+
 InitWindowValue()
 {
     Global Window

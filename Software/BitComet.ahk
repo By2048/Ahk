@@ -105,12 +105,5 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         HelpText(win_control, "CenterDown", "Screen", "900")
     }
 
-    CapsLock & Enter::{
-        path := " E:\Project\Ahk\Software\File\BitComet.ahk "
-        path .= " E:\Project\Ahk\Software\File\BitComet.Private.ahk "
-        path .= " E:\Project\Ahk\Software\File\BitComet.help "
-        path .= " E:\Project\Ahk\Software\File\BitComet.Backup.ahk "
-        Run VSCode . path
-    }
 
 #HotIf
