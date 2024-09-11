@@ -122,8 +122,11 @@ GetActiveWindowInfo(cache:=True)
         return
     }
 
-    if ( cache == False )
-        InitWindowValue()
+    if ( cache == False ) {
+        window.cache_id := 0
+        window.cache_title := ""
+        window.cache_expire := -1
+    }
 
     ; 缓存数据
     if ( window.cache_id == win_id and window.cache_title == win_title )
@@ -131,8 +134,8 @@ GetActiveWindowInfo(cache:=True)
             return window
 
     try {
-        WinGetPos        &win_sx, &win_sy, &win_sw, &win_sh, "ahk_id " . win_id
-        WinGetClientPos  &win_cx, &win_cy, &win_cw, &win_ch, "ahk_id " . win_id
+        WinGetPos(&win_sx, &win_sy, &win_sw, &win_sh, "ahk_id " . win_id)
+        WinGetClientPos(&win_cx, &win_cy, &win_cw, &win_ch, "ahk_id " . win_id)
         win_pid           := WinGetPID("ahk_id " . win_id)
         win_class         := WinGetClass("ahk_id " . win_id)
         win_text          := WinGetText("ahk_id " . win_id)
@@ -152,7 +155,7 @@ GetActiveWindowInfo(cache:=True)
     wpn := RTrim(wpn , "EXE")
     wpn := RTrim(wpn , "."  )
     win_process_name := Windows_Process.Get(StrLower(wpn), win_process_exe)
-    if InStr(win_process_name, ".exe") or InStr(win_process_name, ".EXE")
+    if ( InStr(win_process_name, ".exe") or InStr(win_process_name, ".EXE") )
         win_process_name := wpn
 
     ; 窗口信息
@@ -174,11 +177,11 @@ GetActiveWindowInfo(cache:=True)
 
     ; 全屏信息
     wmm := win_min_max
-    if wmm == 1
+    if ( wmm == 1 )
         wmm := "Max"
-    else if wmm == -1
+    else if ( wmm == -1 )
         wmm := "Min"
-    else if wmm == 0
+    else if ( wmm == 0 )
         wmm := ""
     win_min_max := wmm
 
@@ -192,7 +195,7 @@ GetActiveWindowInfo(cache:=True)
     }
     for control_name, control_args in win_controls.OwnProps() {
         try {
-            ControlGetPos &x, &y,&w, &h, control_name, "ahk_id " . win_id
+            ControlGetPos(&x, &y,&w, &h, control_name, "ahk_id " . win_id)
             control_text := ControlGetText(control_name, "ahk_id " . win_id)
         } catch error {
             win_controls.DeleteProp(control_name)

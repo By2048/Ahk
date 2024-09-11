@@ -45,43 +45,35 @@ Arg := {
 
 
 ; 当前窗口的信息
-Window := {}
+Window := {
+    ;
+    cache_id     :  0 ,
+    cache_title  : "" ,
+    cache_expire : -1 ,
 
-InitWindowValue()
-{
-    Global Window
-    Window := {
-        ;
-        cache_id     :  0 ,
-        cache_title  : "" ,
-        cache_expire : -1 ,
+    id  : 0 ,
+    pid : 0 ,
 
-        id  : 0 ,
-        pid : 0 ,
+    min_max : "" ,
 
-        min_max : "" ,
+    class        : "" ,
+    title        : "" ,
+    text         : "" ,
+    process_exe  : "" ,
+    process_name : "" ,
+    process_path : "" ,
+    transparent  : -1 ,
+    controls     : {} ,
 
-        class        : "" ,
-        title        : "" ,
-        text         : "" ,
-        process_exe  : "" ,
-        process_name : "" ,
-        process_path : "" ,
-        transparent  : -1 ,
-        controls     : {} ,
+    ; 窗口坐标信息 Screen / Client
+    x  : 0  ,  y  : 0  ,  w  : 0  ,  h  : 0  ,
+    sx : 0  ,  sy : 0  ,  sw : 0  ,  sh : 0  ,
+    cx : 0  ,  cy : 0  ,  cw : 0  ,  ch : 0  ,
 
-        ; 窗口坐标信息 Screen / Client
-        x  : 0  ,  y  : 0  ,  w  : 0  ,  h  : 0  ,
-        sx : 0  ,  sy : 0  ,  sw : 0  ,  sh : 0  ,
-        cx : 0  ,  cy : 0  ,  cw : 0  ,  ch : 0  ,
-
-        screen  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口所在屏幕
-        default : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Default
-        backup  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Backup
-    }
+    screen  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口所在屏幕
+    default : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Default
+    backup  : { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 } , ;窗口位置 Backup
 }
-
-InitWindowValue()
 
 
 ; 游戏进程
