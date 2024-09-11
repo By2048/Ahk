@@ -69,15 +69,15 @@
 #HotString EndChars `t`n`s
 #NoTrayIcon
 
-CoordMode "Mouse", "Window"
-CoordMode "Pixel", "Window"
-SetControlDelay -1
+CoordMode("Mouse", "Window")
+CoordMode("Pixel", "Window")
+SetControlDelay(-1)
 
 For Arg_Index, Arg_Value In A_Args {
-    If Arg_Value == "Start"
-        Reload
-    If Arg_Value == "Stop"
-        ExitApp
+    If ( Arg_Value == "Start" )
+        Reload()
+    If ( Arg_Value == "Stop" )
+        ExitApp()
 }
 
 #Include ..\Software\@Loop.ahk

@@ -5,15 +5,15 @@
 
 
 :o:\Date::{
-    SendInput FormatTime(A_Now, "yyyy-MM-dd")
+    SendInput( FormatTime(A_Now, "yyyy-MM-dd") )
 }
 
 :o:\Time::{
-    SendInput FormatTime(A_Now, "HH-mm-ss")
+    SendInput( FormatTime(A_Now, "HH-mm-ss") )
 }
 
 :o:\DateTime::{
-    SendInput FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
+    SendInput( FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss") )
 }
 
 :o:\---::{- 80}
