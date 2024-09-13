@@ -2,6 +2,39 @@
 ; AutoHotkey路径,Setup.cmd中解析取[22,-1]内的值
 AutoHotkey := "D:\AutoHotkey\#\AutoHotkey.exe"
 
+; 截图位置 全屏 软件 游戏
+ScreenShot_Temp     := "C:\Ahk\ScreenShot\"
+ScreenShot_Full     := "C:\Ahk\ScreenShot\"
+ScreenShot_Software := "C:\Ahk\ScreenShot\"
+
+; Chrome相关下载文件存储位置
+Chrome_Image := "C:\Ahk\Image\"
+Chrome_Video := "C:\Ahk\Video\"
+
+; 临时文件位置
+Temp_Path := "C:\Ahk\Temp\"
+
+; 屏幕数量   | 1 \ 2 \ 3
+; 屏幕编号   | 根据实际情况设置 可能与系统显示设置不同
+;           | 1,          2,          3
+;           | Screen1.Id  Screen2.Id  Screen3.Id
+; 屏幕信息   |
+Screen_4K := { Dpi:2    , Width:3840 , Hight:2160 , Name:"4K" }
+Screen_2K := { Dpi:1.5  , Width:2560 , Hight:1440 , Name:"2K" }
+Screen_1K := { Dpi:1.25 , Width:1920 , Hight:1080 , Name:"1K" }
+Screens_Id     := [         1 ] ; Windows设置/系统/屏幕 上对应的ID
+Screens_Detail := [ Screen_2K ]
+
+; 系统用户给相关信息
+PC_USERNAME := "Admin"
+PC_PASSWORD := "Xxxxx"
+
+; 手机<->电脑 剪切板文件
+JQB := { Phone   : A_InitialWorkingDir . "\JQB_Phone"   ;
+       , Windows : A_InitialWorkingDir . "\JQB_Windows" }
+
+;---------------------------------------------------------------------------;
+
 ; 注册表信息保存位置
 Reg_Path := "HKEY_CURRENT_USER\SOFTWARE\AutoHotkey"
 
@@ -23,26 +56,6 @@ Windows_Main_Mini := [  [ 5/6 , 8/9 ] , [ 3/5 , 3/4 ]  ]
 ; 缓存过期时间 毫秒
 Cache_Expire_Time := 666
 
-; 系统类型 | Win10 \ WinServer
-System_Type := "Win10"
-
-; 系统用户给相关信息
-PC_USERNAME := "Admin"
-PC_PASSWORD := "Xxxxx"
-
-; 临时文件位置
-Temp_Path := "C:\Ahk\Temp\"
-
-; Chrome相关下载文件存储位置
-Chrome_Image := "C:\Ahk\Image\"
-Chrome_Video := "C:\Ahk\Video\"
-
-; 截图位置 全屏 软件 游戏
-ScreenShot_Temp     := "C:\Ahk\ScreenShot\"
-ScreenShot_Full     := "C:\Ahk\ScreenShot\"
-ScreenShot_Software := "C:\Ahk\ScreenShot\"
-
-;---------------------------------------------------------------------------;
 ; 通用GUI默认设置
 Gui_Config := {
     Dark     : { Font : "FFFFFF" , Back : "000000" } ,
@@ -53,27 +66,13 @@ Gui_Config := {
 }
 
 ;---------------------------------------------------------------------------;
-; 屏幕数量   | 1 \ 2 \ 3
-; 屏幕编号   | 根据实际情况设置 可能与系统显示设置不同
-;           | 1,          2,          3
-;           | Screen1.Id  Screen2.Id  Screen3.Id
-; 屏幕信息   |
-Screen_4K := { Dpi:2    , Width:3840 , Hight:2160 , Name:"4K" }
-Screen_2K := { Dpi:1.5  , Width:2560 , Hight:1440 , Name:"2K" }
-Screen_1K := { Dpi:1.25 , Width:1920 , Hight:1080 , Name:"1K" }
-Screens_Id     := [         1 ] ; Windows设置/系统/屏幕 上对应的ID
-Screens_Detail := [ Screen_2K ]
-
-;---------------------------------------------------------------------------;
-; 手机<->电脑 剪切板文件
-JQB := { Phone   : A_InitialWorkingDir . "\JQB_Phone"   ;
-       , Windows : A_InitialWorkingDir . "\JQB_Windows" }
 
 #Include *i Config.Private.ahk
 
 ;---------------------------------------------------------------------------;
 
 #Include .\Init.ahk
+
 #Include .\Config\Arg.ahk
 #Include .\Config\Message.ahk
 #Include .\Config\Screen.ahk
