@@ -1,6 +1,6 @@
 ﻿
 #Include ..\Lib\File.ahk
-#Include ..\Lib\\Change.ahk
+#Include ..\Lib\Change.ahk
 #Include ..\Tool\Help.ahk
 #Include ..\Tool\Mouse.ahk
 #Include ..\Tool\Language.ahk
@@ -115,17 +115,19 @@ GetWindowScreen(window)
 ; mode   | Default|Screen AHK默认 \ Window API修正
 GetActiveWindowInfo(cache:=True)
 {
-    try {
-        win_id    := WinGetID("A")
-        win_title := WinGetTitle("ahk_id " . win_id)
-    } catch {
-        return
-    }
+    Global Window , Arg
 
     if ( cache == False ) {
         window.cache_id := 0
         window.cache_title := ""
         window.cache_expire := -1
+    }
+
+    try {
+        win_id    := WinGetID("A")
+        win_title := WinGetTitle("ahk_id " . win_id)
+    } catch {
+        return
     }
 
     ; 缓存数据
@@ -246,19 +248,19 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
 
     Check(win, cfg) {
         status := True
-        if InStr(cfg, "|") {
+        if ( InStr(cfg, "|") ) {
             status := False
             for item in StrSplit(cfg, "|") {
                 item := Trim(item)
-                if InStr(item, "*") {
-                    if InStr(win, StrReplace(item, "*", ""))
+                if ( InStr(item, "*") ) {
+                    if ( InStr(win, StrReplace(item, "*", "")) )
                         status := True
                 } else if (item == win) {
                     status := True
                 }
             }
-        } else if InStr(cfg, "*") {
-            if !InStr(win, StrReplace(cfg, "*", ""))
+        } else if ( InStr(cfg, "*") ) {
+            if ( !InStr(win, StrReplace(cfg, "*", "")) )
                 status := False
         } else if (cfg != win) {
             status := False
@@ -269,17 +271,17 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
     result := True
     if ( StrLen(rule_process) > 0 ) {
         result := Check(win_process, rule_process)
-        if not result
+        if ( not result )
             return result
     }
     if ( StrLen(rule_class) > 0 ) {
         result := Check(win_class, rule_class)
-        if not result
+        if ( not result )
             return result
     }
     if ( StrLen(rule_title) > 0 ) {
         result := Check(win_title, rule_title)
-        if not result
+        if ( not result )
             return result
     }
 
@@ -329,13 +331,13 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
     win_min_max := window.min_max
     win_process_name := window.process_name
 
-    if not win_id
+    if ( not win_id )
         HelpText("No WinId",  ,  , 1000)
 
-    if win_min_max == "Max"
+    if ( win_min_max == "Max" )
         WinRestore "ahk_id " . win_id
 
-    if IsDesktops()
+    if ( IsDesktops() )
         return
 
     win_x := window.x
@@ -343,21 +345,24 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
     win_w := window.w
     win_h := window.h
 
-    if w == 0
+    if ( w == 0 )
         w := window.w
 
-    if h == 0
+    if ( h == 0 )
         h := window.h
 
-    if (Abs(win_x-x)>offset or Abs(win_y-y)>offset or Abs(win_w-w)>offset or Abs(win_h-h)>offset) {
+    if (   Abs(win_x - x) > offset 
+        or Abs(win_y - y) > offset 
+        or Abs(win_w - w) > offset
+        or Abs(win_h - h) > offset ) {
         if (step) {
             try {
-                WinMove x, y,  ,  , "ahk_id " . win_id
-                WinMove  ,  , w, h, "ahk_id " . win_id
+                WinMove(x, y,  ,  , "ahk_id " . win_id)
+                WinMove( ,  , w, h, "ahk_id " . win_id)
             }
         } else {
             try {
-                WinMove x, y, w, h, "ahk_id " . win_id
+                WinMove(x, y, w, h, "ahk_id " . win_id)
             }
         }
     }
@@ -374,11 +379,11 @@ SetWindowTransparent(change:=0)
 
     if (change == "Max") {
         win_transparent := 255
-        WinSetTransparent  win_transparent, "ahk_id " . win_id
+        WinSetTransparent(win_transparent, "ahk_id " . win_id)
         return
     } else if (change == "Min") {
         win_transparent := 0
-        WinSetTransparent  win_transparent, "ahk_id " . win_id
+        WinSetTransparent(win_transparent, "ahk_id " . win_id)
         return
     }
 
@@ -388,14 +393,14 @@ SetWindowTransparent(change:=0)
         } else {
             win_transparent := win_transparent + change
         }
-        WinSetTransparent  win_transparent, "ahk_id " . win_id
+        WinSetTransparent(win_transparent, "ahk_id " . win_id)
     } else if (change < 0) {
         if (win_transparent + change <= 55) {
             win_transparent := 55
         } else {
             win_transparent := win_transparent + change
         }
-        WinSetTransparent  win_transparent, "ahk_id " . win_id
+        WinSetTransparent(win_transparent, "ahk_id " . win_id)
     }
 }
 
@@ -407,12 +412,12 @@ SetWindowTransparent(change:=0)
 ; return    | None
 ResizeWindow(command, direction)
 {
-    SetWinDelay 1
-    CoordMode "Mouse", "Screen"
+    SetWinDelay(1)
+    CoordMode("Mouse", "Screen")
 
     GetActiveWindowInfo()
 
-    if IsDesktops()
+    if ( IsDesktops() )
         return
 
     step := 10
@@ -423,7 +428,7 @@ ResizeWindow(command, direction)
     win_w  := window.w
     win_h  := window.h
 
-    if (command == "Big") {
+    if (command == "+") {
         if (direction == "Up") {
             win_y := win_y - step
             win_h := win_h + step
@@ -435,7 +440,7 @@ ResizeWindow(command, direction)
         } else if (direction == "Right") {
             win_w := win_w + step
         }
-    } else if (command == "Small") {
+    } else if (command == "-") {
         if (direction == "Up") {
             win_y := win_y + step
             win_h := win_h - step
@@ -457,12 +462,12 @@ ResizeWindow(command, direction)
 ; 窗口相对当前坐标移动
 MoveWindowOffset(x:=0, y:=0, w:=0, h:=0, step:=10)
 {
-    WinGetPos &win_x, &win_y, &win_w, &win_h, "A"
+    WinGetPos(&win_x, &win_y, &win_w, &win_h, "A")
     win_x := win_x + x
     win_y := win_y + y
     win_w := win_w + w
     win_h := win_h + h
-    WinMove win_x, win_y, win_w, win_h, "A"
+    WinMove(win_x, win_y, win_w, win_h, "A")
 }
 
 
@@ -471,7 +476,7 @@ MoveWindowOffset(x:=0, y:=0, w:=0, h:=0, step:=10)
 ; mode : Up Down Left Right
 MoveControlUDLR(info, mode:="Right", value:=0, offset:=6)
 {
-    MouseGetPos &x_origin, &y_origin
+    MouseGetPos(&x_origin, &y_origin)
 
     xy := 0 , x_start := 0 , y_start := 0 , x_end := 0 , y_end := 0
 
@@ -507,12 +512,12 @@ MoveControlUDLR(info, mode:="Right", value:=0, offset:=6)
         xy      := x_end - x_start
     }
 
-    if Abs(xy) < 3
+    if ( Abs(xy) < 3 )
         return
 
-    MouseClickDrag "Left", x_start, y_start, x_end, y_end, 0
+    MouseClickDrag("Left", x_start, y_start, x_end, y_end, 0)
 
-    MouseMove x_origin, y_origin, 0
+    MouseMove(x_origin, y_origin, 0)
 }
 
 
@@ -523,7 +528,7 @@ MoveWindowCenter()
 {
     GetActiveWindowInfo()
 
-    if IsDesktops()
+    if ( IsDesktops() )
         return
 
     if ( window.min_max )
@@ -554,7 +559,7 @@ MoveWindowQuick(command)
 {
     GetActiveWindowInfo()
 
-    if IsDesktops()
+    if ( IsDesktops() )
         return
 
     if ( window.min_max )
@@ -581,20 +586,20 @@ MoveWindowQuick(command)
 ; 将窗口移动到指定位置
 MoveWindowPosition(position)
 {
-    if Type(position) == "Array"
-        if not position.Length
+    if ( Type(position) == "Array" )
+        if ( not position.Length )
             return
-    if Type(position) == "Object"
-        if not ObjOwnPropCount(position)
+    if ( Type(position) == "Object" )
+        if ( not ObjOwnPropCount(position) )
             return
 
-    if Type(position) == "Array" {
+    if ( Type(position) == "Array" ) {
         win_x := position[1]
         win_y := position[2]
         win_w := position[3]
         win_h := position[4]
     }
-    if Type(position) == "Object" {
+    if ( Type(position) == "Object" ) {
         win_x := position.x
         win_y := position.y
         win_w := position.w
@@ -607,7 +612,7 @@ MoveWindowPosition(position)
 MoveWindowDefault()
 {
     GetActiveWindowInfo()
-    if not ObjOwnPropCount(window.default)
+    if ( not ObjOwnPropCount(window.default) )
         return
     win_x := window.default.x
     win_y := window.default.y
@@ -618,7 +623,7 @@ MoveWindowDefault()
 MoveWindowBackup()
 {
     GetActiveWindowInfo()
-    if not ObjOwnPropCount(window.backup)
+    if ( not ObjOwnPropCount(window.backup) )
         return
     win_x := window.backup.x
     win_y := window.backup.y
@@ -644,13 +649,13 @@ HighlightActiveWindow(time:=300, width:=4, color:="e51400")
     win_process_name := window.process_name
 
     ; 最小化
-    if win_min_max == "Min"
+    if ( win_min_max == "Min" )
         return
 
-    if not win_w or not win_h
+    if ( not win_w or not win_h )
         return
 
-    if win_process_name == "Explorer" and win_class == "WorkerW"
+    if ( win_process_name == "Explorer" and win_class == "WorkerW" )
         return
 
     gui_x := win_x
@@ -695,11 +700,11 @@ HighlightActiveWindow(time:=300, width:=4, color:="e51400")
     config_in  := Format("{}-{} {}-{} {}-{} {}-{} {}-{} ", pos_in* )
     pos_config := config_out . config_in
 
-    WinSetRegion pos_config, "ahk_id " . g_id
+    WinSetRegion(pos_config, "ahk_id " . g_id)
 
     CloseHighlight() {
-        Sleep time
-        WinClose "ahk_id " . g_id
+        Sleep(time)
+        WinClose("ahk_id " . g_id)
     }
-    SetTimer CloseHighlight, -1
+    SetTimer(CloseHighlight, -1)
 }
