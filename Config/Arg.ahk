@@ -67,6 +67,7 @@ Arg := {
 ; Gui显示
 G := Gui()
 
+
 ; 调试模式
 Debug := 0
 
@@ -90,11 +91,11 @@ RegisterProcess(origin, rename) {
 Software_Keys_Help := Map()
 RegisterHelp(process, path) {
     path := Trim(path)
-    if not path
+    if ( not path )
         return
-    if not InStr(path, ":")
+    if ( not InStr(path, ":") )
         path := Format("{}\{}", A_InitialWorkingDir, path)
-    if not FileExist(path)
+    if ( not FileExist(path) )
         return
     config := Software_Keys_Help.Get(process, [])
     content := FileRead(path, "`n UTF-8")
@@ -111,8 +112,8 @@ WB := Windows_Backup
 RegisterPosition(cfg, args, mode:="Default") {
     Global Windows_Default
     Global Windows_Backup
-    if mode == "Default"
+    if ( mode == "Default" )
         Windows_Default[cfg] := args
-    else if mode == "Backup"
+    else if ( mode == "Backup" )
         Windows_Backup[cfg] := args
 }
