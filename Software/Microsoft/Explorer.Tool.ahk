@@ -19,7 +19,7 @@ ActivateRight()
 
 ActivateMenu()
 {
-    window   := GetActiveWindowInfo(False)
+    window   := GetActiveWindowInfo()
     offset_x := 0
     offset_y := 0
     if (window.class == "CabinetWClass") {
