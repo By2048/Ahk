@@ -20,6 +20,19 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
 #Include *i Chrome.Private.ahk
 
 
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "近期的下载记录" )
+    NumpadEnd::{
+        CoordMode("Mouse", "Window")
+        MouseGetPos(&x_origin, &y_origin)
+        x := 25
+        y := 95
+        MouseMove x, y
+        MouseClick("Left", x, y , 1, 0)
+        MouseMove(x_origin, y_origin)
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "书签" )
     F2::Return
     ^r::Send "{F2}"
@@ -123,8 +136,8 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
     }
 
     ; 书签第一个
-    <!\::
-    <!+\::{
+    !\::
+    !+\::{
         shift_status := GetKeyState("Shift", "P")
         Send "{F6 3}"
         if shift_status
