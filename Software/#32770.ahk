@@ -1,6 +1,7 @@
 
 RegisterPosition("_#32770"           , Position(1522 , 1122) )
 RegisterPosition("_#32770_SaveFile"  , Position(1522 , 1122) )
+RegisterPosition("_#32770_SaveVideo" , Position(1522 , 1122) )
 RegisterPosition("_#32770_浏览"       , Position(1522 , 1122) )
 RegisterPosition("_#32770_打开"       , Position(1522 , 1122) )
 RegisterPosition("_#32770_另存为"     , Position(1522 , 1122) )
@@ -17,16 +18,10 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
 
     #IncludeAgain .\Microsoft\Explorer.Key.ahk
 
-    ; ^Tab::Return
-    ; ^+Tab::Return
-    ; !Tab::Send "^{Tab}"
-    ; !+Tab::Send "^+{Tab}"
-    ; ~!CapsLock::Send "!{F4}"
-
     ; 文件名修改框
     ~CapsLock::ControlFocus("Edit1", "A")
 
-    ~NumLock::WinClose("A")
+    ~NumLock::Send("!s")
 
     NumpadHome::{
         old_name := ControlGetText("Edit1", "A")
@@ -36,15 +31,22 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
         new_name := StrReplace(new_name, "  ", " ")
         ControlSetText(new_name, "Edit1", "A")
     }
-    NumpadEnd::Send "!s"
+    NumpadEnd::{
+        new_name := A_Clipboard
+        ControlSetText(new_name, "Edit1", "A")
+    }
 
-    NumpadPgdn::Send "^v"
+    NumpadPgDn::MoveWindowDefault()
+    NumpadPgUp::Send("^!7")
 
     ![::ActivateLeft()
     !]::ActivateRight()
     !\::ActivateMenu()
 
+    NumpadIns::WinClose("A")
+
     ; 默认位置
+    NumpadDel::
     #\::{
         MoveWindowDefault()
         GetActiveWindowInfo(False)
@@ -54,7 +56,7 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
             return
         }
         MoveControlUDLR(info, "Left", 300, 6)
-        Send "^!7"  ;平铺模式
+        Send("^!7")  ;平铺模式
     }
 
 #HotIf

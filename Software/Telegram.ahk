@@ -5,10 +5,10 @@ RegisterPosition( "Telegram__Media" , Position(1700 , 1357) )
 
 
 #HotIf CheckWindowActive("Telegram" , "Qt*" , "Media*")
-    NumpadPgDn::Send "{Enter}"
-    NumpadPgUp::Send "{AppsKey}{Down 4}{Enter}"
-    NumpadIns::Send "^="
-    NumpadDel::Send "^-"
+    NumpadPgDn::Send "^="
+    NumpadPgUp::Send "^-"
+    NumpadIns::Send "{AppsKey}{Up 2}{Enter}"
+    NumpadDel::Send "{Enter}"
 #HotIf
 
 

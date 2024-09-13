@@ -22,8 +22,8 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
     ; 立即下载
     NumLock::
     CapsLock::{
-        SetControlDelay -1
-        ControlClick "Button27", "A"
+        SetControlDelay(-1)
+        ControlClick("Button27", "A")
     }
 
     SetListView() {
@@ -57,6 +57,9 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 #HotIf CheckWindowActive("BitComet")
 
+    NumpadIns::WinClose("A")
+
+    NumpadDel::
     #\::{
         total_width  := 2333
         total_height := 1222
@@ -104,6 +107,5 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         ClipWait
         HelpText(win_control, "CenterDown", "Screen", "900")
     }
-
-
+    
 #HotIf
