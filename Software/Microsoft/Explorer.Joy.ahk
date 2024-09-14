@@ -14,7 +14,7 @@ Numpad6::ActivateRight()
 ;---------------------------------;
 
 ; 上
-Numpad9::Send "{Space}"
+Numpad9::Send "{Enter}"
 
 ; 下
 Numpad3::Send "{Esc}"
@@ -27,10 +27,10 @@ Numpad1::Send "{AppsKey}"
 
 ;---------------------------------;
 
-NumpadAdd::Send "{Enter}"
+NumpadAdd::Send "{BackSpace}"
 
 NumpadMult::Send "{Home}"
 
 NumpadDiv::Send "{End}"
 
-NumpadSub::Send "{BackSpace}"
+NumpadSub::Send "{Delete}"

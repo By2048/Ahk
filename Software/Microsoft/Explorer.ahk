@@ -59,6 +59,8 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     Delete::Send "{Esc}"
     Insert::Send "!y"
     BackSpace::Send "!n"
+    Numpad9::Send "{Enter}"  ; 上
+    Numpad3::Send "{Esc}"    ; 下
 #HotIf
 
 

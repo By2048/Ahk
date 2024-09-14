@@ -24,11 +24,10 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
     NumpadEnd::{
         CoordMode("Mouse", "Window")
         MouseGetPos(&x_origin, &y_origin)
-        x := 25
-        y := 95
-        MouseMove x, y
+        x := 40
+        y := 140
         MouseClick("Left", x, y , 1, 0)
-        MouseMove(x_origin, y_origin)
+        MouseMove(x_origin, y_origin, 0)
     }
 #HotIf
 
