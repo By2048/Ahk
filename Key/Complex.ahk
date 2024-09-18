@@ -1,39 +1,4 @@
 
-~*Pause::{
-    Send "{Blind}{vkFF}"
-    Global Arg
-    if (Arg.pause_cnt > 0) {
-        Arg.pause_cnt += 1
-        return
-    } else {
-        Arg.pause_cnt := 1
-    }
-    SetTimer Timer, -500
-    Timer() {
-        Global Arg
-        if (Arg.pause_cnt == 1) {
-            HelpText("`n NumPad *1 `n", "Center", "Screen", 500)
-        } else if (Arg.pause_cnt == 2) {
-            HelpText("`n Mouse *2 `n", "Center", "Screen", 500)
-        } else if (Arg.pause_cnt == 3) {
-            HelpText("`n Normal *3 `n", "Center", "Screen", 500)
-        }
-        Arg.pause_cnt := 0
-    }
-}
-
-~*Pause Up::Return
-
-
-
-~*NumLock::Return
-
-~*NumLock Up::{
-    SetNumLockState "Off"
-}
-
-; ------------------------------------------------------------------------------------ ;
-
 ; 切换应用
 Global win_tab := win_shift_tab := False
 LWin & Tab::{
@@ -67,7 +32,7 @@ LWin & RAlt::{
     }
     WS_CAPTION := 0xC00000
     style := WinGetStyle("A")
-    WinSetStyle Format("^{}", WS_CAPTION), "A"
+    WinSetStyle(Format("^{}", WS_CAPTION), "A")
     if (not (style & WS_CAPTION)) {
         HelpText("`n Windows Title Show `n", "Center", "Screen1", 500)
     } else {
@@ -76,7 +41,7 @@ LWin & RAlt::{
 }
 ; 激活桌面
 LWin & RCtrl::{
-    WinActivate "ahk_exe explorer.exe ahk_class WorkerW"
+    WinActivate("ahk_exe explorer.exe ahk_class WorkerW")
     HelpText("`n  Desktop  `n", "Center", "Screen1", 300)
 }
 
@@ -114,17 +79,17 @@ LWin & RShift::{
             HelpText("`n  Windows Theme HCBlack  `n", "Center", "Screen", 1000)
         }
         Sleep 999
-        Try WinClose "ahk_exe ApplicationFrameHost.exe ahk_class ApplicationFrameWindow"
+        Try WinClose("ahk_exe ApplicationFrameHost.exe ahk_class ApplicationFrameWindow")
     } else {
         ; 系统亮暗
         path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
         key   := "AppsUseLightTheme"
         theme := RegRead(path, key, "")
         if (theme == "0") {
-            RegWrite 1, "REG_DWORD", path, key
+            RegWrite(1, "REG_DWORD", path, key)
             HelpText("`n  Light  `n", "Center", "Screen", 1000)
         } else if (theme == "1") {
-            RegWrite 0, "REG_DWORD", path, key
+            RegWrite(0, "REG_DWORD", path, key)
             HelpText("`n  Dark  `n", "Center", "Screen", 1000)
         }
     }
@@ -138,10 +103,10 @@ RWin & RShift::{
     ; Windows代理
     state := RegRead(path, key, "")
     if (state == "0") {
-        RegWrite 1, "REG_DWORD", path, key
+        RegWrite(1, "REG_DWORD", path, key)
         HelpText("`n  Proxy On  `n", "Center", "Screen1", 500)
     } else if (state == "1") {
-        RegWrite 0, "REG_DWORD", path, key
+        RegWrite(0, "REG_DWORD", path, key)
         HelpText("`n  Proxy Off  `n", "Center", "Screen1", 1000)
     }
 }

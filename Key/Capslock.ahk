@@ -2,15 +2,15 @@
 ~*CapsLock::Return
 
 ~*CapsLock Up::{
-    SetCapsLockState "Off"
+    SetCapsLockState("Off")
 }
 
 
 ;切换到显示器中心
 ~CapsLock & Tab::{
 
-    CoordMode "Mouse", "Screen"
-    MouseGetPos &x_current, &y_current
+    CoordMode("Mouse", "Screen")
+    MouseGetPos(&x_current, &y_current)
 
     x_default := Screen.x + Screen.w/2
     y_default := Screen.y + Screen.h/2
@@ -58,8 +58,8 @@
     DllCall("SetCursorPos", "int", xx, "int", yy)
 
     ; 激活鼠标下的窗口
-    MouseGetPos  &_,  &_, &win_id
-    WinActivate "ahk_id " . win_id
+    MouseGetPos(&_,  &_, &win_id)
+    WinActivate("ahk_id " . win_id)
 
     ; 高亮窗口
     HighlightActiveWindow(300)
@@ -70,14 +70,14 @@
 ; 屏幕1中心
 ~CapsLock & LShift::{
     DllCall("SetCursorPos", "int", A_ScreenWidth / 2, "int", A_ScreenHeight / 2)
-    MouseGetPos &_, &_, &win_id
-    WinActivate "ahk_id " . win_id
+    MouseGetPos(&_, &_, &win_id)
+    WinActivate("ahk_id " . win_id)
     HighlightActiveWindow(300)
 }
 
 ; 鼠标点击
 ~CapsLock & Space::{
-    Click
+    Click()
 }
 
 
