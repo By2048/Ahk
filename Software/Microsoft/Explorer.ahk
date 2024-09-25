@@ -1,4 +1,4 @@
-﻿
+
 RegisterProcess("explorer" , "Explorer")
 
 RegisterHelp("Explorer_CabinetWClass", FilePath(A_LineFile, "Explorer.help"))
@@ -55,10 +55,23 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
 #HotIf
 
 
-#HotIf CheckWindowActive( "Explorer" , "#32770" , "删除文件|删除文件夹" )
+#HotIf CheckWindowActive( "Explorer" , "#32770" , "删除文件|删除文件夹|删除多个项目" )
     Delete::Send "{Esc}"
-    Insert::Send "!y"
-    BackSpace::Send "!n"
+    Insert::{
+        Send "!y"
+        Sleep 99
+        Send "{Space}"
+    }
+    DelFile() {
+        Send "{Esc}"
+        Sleep 33
+        Send "+{Delete}"
+        Sleep 66
+        Send "!y"
+        Sleep 99
+        Send "{Space}"
+    }
+    BackSpace::SetTimer(DelFile, -99)
     Numpad9::Send "{Enter}"  ; 上
     Numpad3::Send "{Esc}"    ; 下
 #HotIf
