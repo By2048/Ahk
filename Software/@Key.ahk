@@ -25,6 +25,7 @@
             HighlightActiveWindow(500)
         } else if ( Arg.win_cnt == 3 ) {
             MoveWindowBackup()
+            MoveWindowBackup()
             HighlightActiveWindow(500)
         }
         Arg.win_cnt := 0
