@@ -3,11 +3,11 @@
 >^+q::Run "E:\Config\QFile.qdr"
  >^e::Run "D:\#Lnk\#\Everything.lnk"
  >^r::Run "RegEdit"
- >^t::Run "D:\#Lnk\#\TIM.lnk"
- >^p::Run WT " -d T:\"
+ >^t::Run "D:\#Lnk\#\Torrent.lnk"
 
  >^a::Run "D:\#Lnk\#\AntiMicroX.lnk"
  >^s::Run "D:\#Lnk\#\Sandboxie.lnk"
+ >^d::Run "D:\#Lnk\#\Download.lnk"
  >^f::Run "D:\#Lnk\#\FreeFileSync.lnk"
  >^g::Run "D:\#Lnk\#\Geek.lnk"
  >^h::Run AutoHotkey " D:\AutoHotkey\V2\WindowSpy.ahk"
@@ -26,22 +26,22 @@
     }
 }
 ^+j::{
-    cmd := 'WT --focus  '
-    cmd .= '--size 50,20  '
-    cmd .= 'PowerShell -NoProfile -NoExit -WorkingDirectory T:\ -Command  '
-    cmd .= '"D:\Python\#\Scripts\python.exe E:\Script\Python\JetBrains.py"  '
+    cmd := WT " --focus --size 50,20 "
+    cmd .= PSL " -NoProfile -NoExit -WorkingDirectory T:\ -Command "
+    cmd .= "D:\Python\#\Scripts\python.exe E:\Script\Python\JetBrains.py"
     Run cmd
 }
  >^k::KeyHistory()
 >^+k::KeyboardGUI()
 
- >^x::Run "D:\#Lnk\#\Xshell.lnk"
  >^c::Run "Calc"
  >^v::Run "D:\#Lnk\#\Vpn.lnk"
- >^b::Run "D:\#Lnk\#\BitComet.lnk"
+ >^b::Run "D:\#Lnk\#\Image.lnk"
  >^n::Run "D:\#Lnk\#\Music.lnk"
 >^+n::Run "D:\#Lnk\#\QQMusic.lnk"
  >^m::Run "D:\#Lnk\#\PotPlayer.lnk"
+
+ >^F12::Run WT " -d T:\"
 
  >^[::Run VSCode " --profile %Temp     E:\Config\VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
  >^]::Run VSCode " --profile %Note     E:\Config\VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"

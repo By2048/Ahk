@@ -2,16 +2,16 @@
 |  W |                        | *2 | 隐藏帮助        |
 |  E | Everything             |----------------------|
 |  R | RegEdit                |  , | 我的电脑        |
-|  T | Tim                    | +, | 回收站          |
+|  T | Torrent                | +, | 回收站          |
 |  Y |                        |  . | T:\             |
 |  U |                        | +. | V:\#\           |
 |  I |                        |  / | Chrome          |
 |  O |                        | +/ | ChromeDefault   |
-|  P | WT                     |----------------------|
+|  P |                        |----------------------|
 |-----------------------------|  [ | VSCode T:\      |
 |  A | AntiMicroX             |  ] | VSCode Project  |
 |  S | Sandboxie              |  \ | VSCode Windows  |
-|  D |                        |  : | VSCode          |
+|  D | Download               |  : | VSCode          |
 |  F | FreeFileSync           |  " | VSCodeDefault   |
 |  G | Geek                   |----------------------|
 |  H | Spy AHK | GH           |  Esc | 任务管理器    |
@@ -19,10 +19,10 @@
 |  K | Key History | Virtual  |----------------------|
 |  L |                        |  Enter | Whiteboard  |
 |-----------------------------| +Enter | DevToys     |
-|  Z |                        |
-|  X | XShell                 |
+|  Z |                        |----------------------|
+|  X |                        | F12 | WT             | 
 |  C | Calc                   |
 |  V | Vpn                    |
-|  B | BitComet               |
-|  N | CloudMusic | QQMusic   |
+|  B | Image                  |
+|  N | Music                  |
 |  M | PotPlayer              |
