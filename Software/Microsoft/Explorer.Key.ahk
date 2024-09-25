@@ -60,19 +60,16 @@ F6::Return
 !Tab::Send "{F6}"
 !+Tab::Send "+{F6}"
 
-; 地址栏
-!d::Return
-<!Space::Send "!d"
-
 ; 删除
 ^d::Return
 
-; 下拉列表 输入
+; 下拉列表 地址栏
+!d::Return
 ^l::Return
 
 ; 显示选定文件夹上的所有文件夹
-; 目录中定位到文件夹
-; ^+e::Return
+; 树状目录中定位到文件夹
+^+e::Return
 ^g::Send "^+e"
 
 ; 创建新文件夹

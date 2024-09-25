@@ -1,4 +1,4 @@
-
+﻿
 RegisterProcess("explorer" , "Explorer")
 
 RegisterHelp("Explorer_CabinetWClass", FilePath(A_LineFile, "Explorer.help"))
@@ -146,8 +146,6 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     RWin & RAlt::Return
     ^WheelUp::Return
     ^WheelDown::Return
-        
-    ; F10::Return ; 快捷键帮助
 
     #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
 
@@ -175,20 +173,23 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     ^Tab::Return
     ^+Tab::Return
 
-    ; Ctrl+W 关闭活动窗口
+    ; 关闭活动窗口
     ^w::Return
     ~!CapsLock::Send "^w"
 
-
-
     #\::ResetPosition()
     #+\::ResetPosition(columns:="List")
+            
+    ; F10::Return ; 快捷键帮助
+    ~RAlt::Send "{F10}"
         
-    F11::Return ; 全屏
+    ; F11::Return ; 全屏
     #Enter::Send "{F11}"
 
-    #IncludeAgain *i Explorer.Joy.ahk
-    #IncludeAgain *i Explorer.Mouse.ahk
+    #Include *i Explorer.Private.ahk
+
+    #Include Explorer.Joy.ahk
+    #Include Explorer.Mouse.ahk
 
 #HotIf
 
@@ -197,7 +198,5 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
 #HotIf CheckWindowActive( "Explorer" )
 
     #IncludeAgain Explorer.Key.ahk
-
-    #IncludeAgain %A_InitialWorkingDir%\Key\Ctrl.Fix.ahk
 
 #HotIf
