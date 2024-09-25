@@ -13,6 +13,8 @@
 #Include ..\Tool\Control.ahk
 #Include ..\Tool\Gui.ahk
 
+#Include ..\Key\Ctrl.Ignore.ahk
+
 #Include ..\Software\@Key.ahk
 #Include ..\Software\#32770.ahk
 #Include ..\Software\@Other.ahk

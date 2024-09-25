@@ -19,6 +19,7 @@ LWin & RWin::{
     if ( GetKeyState("CapsLock", "P") and GetKeyState("Enter", "P") ) {
         SetCapsLockState("Off")
         Run(NirCmd " standby ")
+        Reload()
         return
     }
     GuiProgress()
@@ -42,13 +43,14 @@ RWin & LWin::{
     if ( GetKeyState("CapsLock", "P") and GetKeyState("Enter", "P") ) {
         SetCapsLockState("Off")
         Run(NirCmd " exitwin poweroff")
+        Reload()
         return
     }
     if ( GetKeyState("RShift", "P") ) {
         HelpText("`n  Force Close All Script | Delete Reg  `n", "Center", "Screen", 2000)
         RegDeleteKey(Reg_Path)
         Run("Setup.cmd ForceStop", A_InitialWorkingDir, "Hide")
-        ExitApp
+        ExitApp()
     } else {
         Run("Setup.cmd Stop", A_InitialWorkingDir, "Hide")
         HelpText("`n  Close All Script  `n", "Center", "Screen" . Screens.Count, 1000)
