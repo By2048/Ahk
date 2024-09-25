@@ -2,6 +2,8 @@
 RegisterPosition( "Telegram"        , Position(2000 , 1357) )
 RegisterPosition( "Telegram__Media" , Position(1700 , 1357) )
 
+RegisterHelp( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
+
 
 
 #HotIf CheckWindowActive("Telegram" , "Qt*" , "Media*")

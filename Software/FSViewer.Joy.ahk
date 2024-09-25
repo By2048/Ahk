@@ -14,10 +14,10 @@ Numpad6::Send "{Right}"
 ;---------------------------------;
 
 ; 上
-Numpad9::Send "{Delete}{Enter}"
+Numpad9::Send "{Enter}"
 
 ; 下
-Numpad3::Send "{Enter}"
+Numpad3::Send "{Delete}{Enter}"
 
 ; 左
 Numpad7::Send "m1"

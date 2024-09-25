@@ -163,15 +163,17 @@
 <#h::
 <#+h::{
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if not hwnd
+    if ( not hwnd )
         return
 
     ; 获取Explorer当前选择的项目
     data := Map()
     for Win in ComObject("Shell.Application").Windows {
         if (Win.hwnd == hwnd) {
-            ; a := Win.LocationName
-            ; b := Win.LocationURL
+            ; Win.LocationName
+            ; Win.LocationURL
+            ; Win.Document.SelectedItems.Count
+            ; Win.Navigate("C:\")
             folder_path  := Win.Document.Folder.Self.Path
             select_items := []
             for item in Win.Document.SelectedItems {
@@ -181,14 +183,14 @@
         }
     }
 
-    if not data or not data.Count
+    if ( not data or not data.Count )
         return
 
     select := data["select"]
-    if not select
+    if ( not select )
         return
 
-    if A_ThisHotkey == "<#h"
+    if ( A_ThisHotkey == "<#h" )
         for item in select
             RenameToMd5(item)
 

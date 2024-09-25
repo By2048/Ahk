@@ -12,11 +12,11 @@ RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     F1::Return
 
     F2::Return
-    ^r::Send "F2"
+    ^r::Send "{F2}"
 
     `::Send "m"
 
-    <^BackSpace::Send "^+{Left}{BackSpace}"
+    BackSpace::Send "!x"
 
     #Include FSViewer.Joy.ahk
     #Include FSViewer.Mouse.ahk
