@@ -26,7 +26,7 @@ RegisterHelp("Default", "Key\Win.help"      )
 RegisterHelp("Default", "Key\Win.Other.help")
 
 RegisterProcess( "fdm" , "FDM" )
-RegisterPosition( "FDM__%]" , Position("[Center][2]", 1500 , 800 , 600) )
+RegisterPosition( "FDM__%]" , Position("[Center][2]", 1357 , 777 , 555) )
 RegisterPosition( "FDM" , Position(1500 , 999) , "Default" )
 RegisterPosition( "FDM" , Position("[Center][2]" , 0.9 , 1000) , "Backup" )
 
