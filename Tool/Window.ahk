@@ -96,8 +96,8 @@ GetWindowScreen(window)
 {
     result := { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 }
     loop Screens.Count {
-        if ( window.cx > Screens.%A_Index%.x - Window_Screen_Offset ) {
-            if ( window.cx < Screens.%A_Index%.x + Screens.%A_Index%.w + Window_Screen_Offset ) {
+        if ( window.x >= Screens.%A_Index%.x - Window_Screen_Offset ) {
+            if ( window.x <= Screens.%A_Index%.x + Screens.%A_Index%.w - Window_Screen_Offset ) {
                 result.x := Screens.%A_Index%.x
                 result.y := Screens.%A_Index%.y
                 result.w := Screens.%A_Index%.w
@@ -115,11 +115,11 @@ GetWindowScreen(window)
 ; mode   | Default|Screen AHK默认 \ Window API修正
 GetActiveWindowInfo(cache:=True)
 {
-    Global Window , Arg
+    Global window , arg
 
     if ( cache == False ) {
-        window.cache_id := 0
-        window.cache_title := ""
+        window.cache_id     := 0
+        window.cache_title  := ""
         window.cache_expire := -1
     }
 
@@ -335,7 +335,7 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
         HelpText("No WinId",  ,  , 1000)
 
     if ( win_min_max == "Max" )
-        WinRestore "ahk_id " . win_id
+        WinRestore("ahk_id " . win_id)
 
     if ( IsDesktops() )
         return
@@ -563,7 +563,7 @@ MoveWindowQuick(command)
         return
 
     if ( window.min_max )
-        return
+        WinRestore(window.id)
 
     main := Windows_Main_Mini[1]
     mini := Windows_Main_Mini[2]
@@ -614,6 +614,8 @@ MoveWindowDefault()
     GetActiveWindowInfo()
     if ( not ObjOwnPropCount(window.default) )
         return
+    if ( window.min_max )
+        WinRestore(window.id)
     win_x := window.default.x
     win_y := window.default.y
     win_w := window.default.w
@@ -625,6 +627,8 @@ MoveWindowBackup()
     GetActiveWindowInfo()
     if ( not ObjOwnPropCount(window.backup) )
         return
+    if ( window.min_max )
+        WinRestore(window.id)
     win_x := window.backup.x
     win_y := window.backup.y
     win_w := window.backup.w
