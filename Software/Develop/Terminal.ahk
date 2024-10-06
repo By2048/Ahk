@@ -10,7 +10,7 @@ RegisterPosition( "Terminal" , Position("[Center][2]" , 0 , 1600) , "Backup"  )
 
 #HotIf CheckWindowActive( "Terminal" )
 
-    #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
+    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
 
     #Include *i Terminal.Private.ahk
 

@@ -125,7 +125,7 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     ^WheelUp::Return
     ^WheelDown::Return
 
-    #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
+    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
 
     ; 功能区展开缩放
     !`::Send "^{F1}"

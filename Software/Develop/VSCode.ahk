@@ -18,14 +18,14 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
 #HotIf CheckWindowActive( "VSCode" , "" , " *.sql | *.ps1 | *.md " )
 
-    #IncludeAgain %A_InitialWorkingDir%\Key\Reset.ahk
+    #IncludeAgain *i %A_InitialWorkingDir%\Key\Reset.ahk
 
 #HotIf
 
 
 #HotIf CheckWindowActive("VSCode")
 
-    #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
+    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
 
     ; ~*LShift::{
     ;     if InStr(A_PriorHotkey, "LShift")

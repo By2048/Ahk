@@ -44,7 +44,7 @@ RegisterPosition( "AntiMicroX__按键" , Position(1600 , 666) )
 RegisterProcess("Duplicate Cleaner 5" , "DuplicateCleaner")
 RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
 #HotIf CheckWindowActive("DuplicateCleaner")
-    #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
+    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
     ~NumLock::Send "{Enter}"
     #\::{
         w := 2500

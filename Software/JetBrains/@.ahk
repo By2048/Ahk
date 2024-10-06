@@ -99,11 +99,11 @@ Arg.ClickCnt := 0
     #Enter::^!NumpadDiv   ;窗口全屏
     #+Enter::^!+NumpadDiv ;Zen模式
 
-    <^Esc::^Pause
-    <!Esc::!Pause
-    <+Esc::+Pause
-    <^+Esc::^+Pause
-    <!+Esc::!+Pause
+    <^Esc::Send "^Pause"
+    <!Esc::Send "!Pause"
+    <+Esc::Send "+Pause"
+    <^+Esc::Send "^+Pause"
+    <!+Esc::Send "!+Pause"
 
     ;标签页管理
     ^Tab::Return
@@ -131,7 +131,7 @@ Arg.ClickCnt := 0
     RShift & RAlt::Send "^!{Help}"
 
 
-    #IncludeAgain %A_InitialWorkingDir%\Key\Replace.ahk
+    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
 
     #Include @.CapsLock.ahk
 
