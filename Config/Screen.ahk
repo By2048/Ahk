@@ -1,19 +1,24 @@
 ﻿
-; 屏幕信息
+; 初始化系统屏幕相关信息
+
 Screens := {} ;所有屏幕相关信息
 Screen  := {} ;主窗口信息
 
-Screens.Count    := GlobalGet( "Screens", "Count", "Int" )
-Screens.Property := [ "id", "index", "name", "dpi", "x", "y", "w", "h" ]
-
-Loop Screens.Count {
-    screen_index := A_Index
-    Screens.%screen_index% := {}
-    For value In Screens.Property {
-        data := GlobalGet(Format("Screens\{}", screen_index), value)
-        Screens.%screen_index%.%value% := data
-    }
+Loop Screens_Detail.Length {
+    screen       := {}
+    screen.id    := Screens_Id[A_Index]
+    screen.index := A_Index
+    IsExisting   := MonitorGet(screen.id, &Left, &Top, &Right, &Bottom)
+    screen.x     := Left
+    screen.y     := Top
+    screen.w     := Right  - Left
+    screen.h     := Bottom - Top
+    screen.dpi   := Screens_Detail[A_Index].Dpi
+    screen.name  := Screens_Detail[A_Index].Name
+    Screens.%A_Index% := screen
+    Screens.Count     := A_Index
 }
+
 
 Screen := Screens.1
 

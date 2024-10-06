@@ -18,8 +18,8 @@ LWin & RWin::{
     SetScrollLockState("Off")
     if ( GetKeyState("CapsLock", "P") and GetKeyState("Enter", "P") ) {
         SetCapsLockState("Off")
-        Run(NirCmd " standby ")
         Reload()
+        Run(NirCmd " standby ")
         return
     }
     GuiProgress()
@@ -42,8 +42,8 @@ RWin & LWin::{
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Error.png")
     if ( GetKeyState("CapsLock", "P") and GetKeyState("Enter", "P") ) {
         SetCapsLockState("Off")
-        Run(NirCmd " exitwin poweroff")
         Reload()
+        Run(NirCmd " exitwin poweroff")
         return
     }
     if ( GetKeyState("RShift", "P") ) {

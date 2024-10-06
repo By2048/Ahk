@@ -71,8 +71,6 @@ Gui_Config := {
 
 ;---------------------------------------------------------------------------;
 
-#Include .\Init.ahk
-
 #Include .\Config\Arg.ahk
 #Include .\Config\Message.ahk
 #Include .\Config\Screen.ahk
