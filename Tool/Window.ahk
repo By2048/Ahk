@@ -126,6 +126,9 @@ GetActiveWindowInfo(cache:=True)
     try {
         win_id    := WinGetID("A")
         win_title := WinGetTitle("ahk_id " . win_id)
+    } catch {
+        win_id    := 0
+        win_title := ""
     }
     
     ; 缓存数据
@@ -159,6 +162,9 @@ GetActiveWindowInfo(cache:=True)
     if ( InStr(win_process_name, ".exe") or InStr(win_process_name, ".EXE") )
         win_process_name := wpn
 
+    if ( InStr(win_title , " - Google Chrome") )
+        win_title := StrReplace(win_title, " - Google Chrome", "")
+
     ; 窗口信息
     window.x  := win_sx , window.y  := win_sy , window.w  := win_sw , window.h  := win_sh
     window.sx := win_sx , window.sy := win_sy , window.sw := win_sw , window.sh := win_sh
@@ -177,14 +183,14 @@ GetActiveWindowInfo(cache:=True)
     window.text         := win_text
 
     ; 全屏信息
-    wmm := win_min_max
-    if ( wmm == 1 )
-        wmm := "Max"
-    else if ( wmm == -1 )
-        wmm := "Min"
-    else if ( wmm == 0 )
-        wmm := ""
-    win_min_max := wmm
+    mm := win_min_max
+    if ( mm == 1 )
+        mm := "Max"
+    else if ( mm == -1 )
+        mm := "Min"
+    else if ( mm == 0 )
+        mm := ""
+    win_min_max := mm
 
     ; 控件信息
     win_controls := {}

@@ -1,25 +1,28 @@
 
 ; 切换应用
-Global win_tab := win_shift_tab := False
+Global win_tab := False
+Global win_shift_tab := False
+
+~*LWin Up::{
+    global win_tab, win_shift_tab
+    if ( win_tab == True ) {
+        Send "{Alt Up}"
+        win_tab := False
+        if ( win_shift_tab == True ) {
+            Send "{Shift Up}"
+            win_shift_tab := False
+        }
+    }
+}
+
 LWin & Tab::{
     global win_tab, win_shift_tab
-    if (GetKeyState("Shift", "P")) {
+    if ( GetKeyState("Shift", "P") ) {
         win_shift_tab := True
         Send "{Alt Down}{Shift Down}{Tab}"
     } else {
         win_tab := True
         Send "{Alt Down}{Tab}"
-    }
-}
-~*LWin Up::{
-    global win_tab, win_shift_tab
-    if (win_tab == True) {
-        Send "{Alt Up}"
-        win_tab := False
-        if (win_shift_tab == True) {
-            Send "{Shift Up}"
-            win_shift_tab := False
-        }
     }
 }
 
