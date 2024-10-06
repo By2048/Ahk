@@ -3,7 +3,7 @@
 
 config := ""
 
-if A_Args.Length == 1
+if ( A_Args.Length == 1 )
     config := A_Args[1]
 
 G := Gui()
@@ -31,25 +31,25 @@ time_space_min  := 0
 ; 300 秒
 CountDown(config := "3m")
 {
-    if not config
+    if ( not config )
         return
 
     time_start := A_Now
     time_end   := A_Now
 
-    if InStr(config, "s")
+    if ( InStr(config, "s") )
         time_end := DateAdd(time_start, StrReplace(config, "s", ""), "Seconds")
-    else if InStr(config, "m")
+    else if ( InStr(config, "m") )
         time_end := DateAdd(time_start, StrReplace(config, "m", ""), "Minutes")
-    else if InStr(config, "h")
+    else if ( InStr(config, "h") )
         time_end := DateAdd(time_start, StrReplace(config, "h", ""), "Hours")
     else
         time_end := DateAdd(time_start, config, "Hours")
 
     time_space_min := DateDiff(time_end, A_Now, "Minutes")
-    if time_space_min >= 0 and time_space_min < 99
+    if ( time_space_min >= 0 and time_space_min < 99 )
         time_display := "00:00"
-    if time_space_min >= 100
+    if ( time_space_min >= 100 )
         time_display := "00:00:00"
 
     G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
@@ -66,12 +66,12 @@ CountDown(config := "3m")
 
     G.Show(Format("NA x{1} y{2} w{3} h{4}", gui_x, gui_y, gui_w, gui_h))
 
-    SetTimer Timer, 500
+    SetTimer(Timer, 500)
 
     Timer() {
         seconds := DateDiff(time_end, A_Now, "Seconds")
         GText.Text := Fmt(seconds)
-        if not seconds {
+        if ( not seconds ) {
             Sleep 500
             ExitApp
         }
@@ -85,13 +85,13 @@ Fmt(seconds) {
     time_sec  := Mod(seconds, 60)
     time_text := ""
     if ( time_hou ) {
-        if time_hou < 10
+        if ( time_hou < 10 )
             time_text := time_text . "0" . time_hou . ":"
         else
             time_text := time_text . "" . time_hou . ":"
     }
     if ( time_min ) {
-        if time_min < 10
+        if ( time_min < 10 )
             time_text := time_text . "0" . time_min . ":"
         else
             time_text := time_text . "" . time_min . ":"
@@ -99,7 +99,7 @@ Fmt(seconds) {
         time_text := time_text . "00:"
     }
     if ( time_sec ) {
-        if time_sec < 10
+        if ( time_sec < 10 )
             time_text := time_text . "0" . time_sec
         else
             time_text := time_text . "" . time_sec
@@ -110,7 +110,7 @@ Fmt(seconds) {
 }
 
 
-If config
+If ( config )
     CountDown(config)
 
 
