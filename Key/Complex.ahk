@@ -3,11 +3,11 @@
 Global win_tab := win_shift_tab := False
 LWin & Tab::{
     global win_tab, win_shift_tab
-    win_tab := True
     if (GetKeyState("Shift", "P")) {
         win_shift_tab := True
         Send "{Alt Down}{Shift Down}{Tab}"
     } else {
+        win_tab := True
         Send "{Alt Down}{Tab}"
     }
 }
@@ -26,14 +26,14 @@ LWin & Tab::{
 
 ; 切换Windows默认标题栏
 LWin & RAlt::{
-    if (IsDesktops()) {
+    if ( IsDesktops() ) {
         HelpText("`n Desktop Return `n", "Center", "Screen1", 500)
         return
     }
     WS_CAPTION := 0xC00000
     style := WinGetStyle("A")
     WinSetStyle(Format("^{}", WS_CAPTION), "A")
-    if (not (style & WS_CAPTION)) {
+    if ( not (style & WS_CAPTION) ) {
         HelpText("`n Windows Title Show `n", "Center", "Screen1", 500)
     } else {
         HelpText("`n Windows Title Hide `n", "Center", "Screen1", 500)
