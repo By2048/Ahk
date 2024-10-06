@@ -28,7 +28,7 @@ RegisterHelp("Default", "Key\Win.Other.help")
 RegisterProcess( "fdm" , "FDM" )
 RegisterPosition( "FDM__%]" , Position("[Center][2]", 1357 , 777 , 555) )
 RegisterPosition( "FDM" , Position(1500 , 999) , "Default" )
-RegisterPosition( "FDM" , Position("[Center][2]" , 0.9 , 1000) , "Backup" )
+RegisterPosition( "FDM" , Position("[Center][2]" , Screens.2.h - 1000 , 0.9 , 800) , "Backup" )
 
 RegisterProcess( "SandMan" , "Sandboxie" )
 RegisterPosition( "Sandboxie" , Position(0.7 ,  0.7) )
