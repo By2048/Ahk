@@ -72,8 +72,8 @@ CountDown(config := "3m")
         seconds := DateDiff(time_end, A_Now, "Seconds")
         GText.Text := Fmt(seconds)
         if ( not seconds ) {
-            Sleep 500
-            ExitApp
+            Sleep(500)
+            ExitApp()
         }
     }
 }
@@ -114,4 +114,4 @@ If ( config )
     CountDown(config)
 
 
-^!AppsKey::ExitApp
+^!AppsKey::ExitApp()

@@ -8,7 +8,7 @@ Loop Screens_Detail.Length {
     screen       := {}
     screen.id    := Screens_Id[A_Index]
     screen.index := A_Index
-    IsExisting   := MonitorGet(screen.id, &Left, &Top, &Right, &Bottom)
+    MonitorGet(screen.id, &Left, &Top, &Right, &Bottom)
     screen.x     := Left
     screen.y     := Top
     screen.w     := Right  - Left
