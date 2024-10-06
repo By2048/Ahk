@@ -17,20 +17,26 @@ Numpad6::Send "{Right}"
 Numpad9::Send "{Enter}"
 
 ; 下
-Numpad3::Send "{Delete}{Enter}"
+Numpad3::Send "{Delete}"
 
 ; 左
-Numpad7::Send "m1"
+Numpad7::Send "!x"
 
 ; 右
-Numpad1::Send "m2"
+Numpad1::{
+    Sleep 99
+    Send "{m}"
+    Sleep 99
+    Send "^{Tab 3}"
+    Send "{Esc}"
+}
 
 ;---------------------------------;
 
-NumpadAdd::Send "!x"
+NumpadAdd::Send "="
 
 NumpadMult::Send "{Home}"
 
 NumpadDiv::Send "{End}"
 
-NumpadSub::EN()
+NumpadSub::Send "-"

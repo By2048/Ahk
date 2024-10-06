@@ -7,12 +7,16 @@
 
 ZH()
 {
-    Try PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0804,  , "A"
+    PostMessage(Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0804,  , "A")
+}
+CN()
+{
+    ZH()
 }
 
 EN()
 {
-    Try PostMessage Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0409,  , "A"
+    PostMessage(Message.WM_INPUTLANGCHANGEREQUEST, 0, 0x0409,  , "A")
 }
 
 ; 获取中文字符数量

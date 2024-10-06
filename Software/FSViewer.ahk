@@ -9,10 +9,13 @@ RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     [::Send "{Left}"
     ]::Send "{Right}"
 
-    F1::Return
+    F1::Send "m9"
 
     F2::Return
     ^r::Send "{F2}"
+
+    F5::Return ;刷新
+    F7::Return ; 随机排序
 
     `::Send "m"
 
@@ -20,6 +23,5 @@ RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
     #Include FSViewer.Joy.ahk
     #Include FSViewer.Mouse.ahk
-    #Include *i FSViewer.Private.ahk
 
 #HotIf

@@ -7,20 +7,6 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
 #HotIf
 
 
-#HotIf CheckWindowActive("BitComet", "#32770", "删除任务确认")
-    Delete::Send "{Esc}"
-    Insert::{
-        ControlClick("Button1", "A")
-        Send "{Enter}"
-    }
-    BackSpace::{
-        ControlClick("Button2", "A")
-        Sleep 99
-        Send "{Enter}"
-    }
-#HotIf 
-
-
 #HotIf CheckWindowActive("BitComet", "#32770", "通知")
     #\::{
         MoveWindowPosition(Position(800, 750))
@@ -100,6 +86,13 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         SetColumnWidth("SysListView321" , config)
 
         #Include *i BitComet.Private.ahk
+    }
+
+    ^+c::{
+        Send "{AppsKey}"
+        Send "{Up 3}"
+        Send "{Enter}"
+        Send "{Enter}"
     }
 
     #BackSpace::{

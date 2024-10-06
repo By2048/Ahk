@@ -5,21 +5,36 @@ RegisterProcess( "7zG"  , "ZipDialog" )
 RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
 
 
+SetZipPath(path) {
+    ControlSetText(path, "Edit1", "A")
+}
+
+
+#HotIf CheckWindowActive( "ZipDialog" , "#32770" , "浏览文件夹" )
+    BackSpace::Send "{Esc}"
+#HotIf
+
+
 
 #HotIf CheckWindowActive( "ZipDialog" , "#32770" , "*解压*" )
 
-    \::ControlClick "Button1", "A"
+    ; 浏览文件夹
+    \::ControlClick("Button1", "A")
     
-    Insert::ControlFocus "Edit2", "A"
+    ; 修改文件夹名
+    Insert::ControlFocus("Edit2", "A")
     
-    AppsKey::ControlClick "Button5", "A"
+    ; 显示密码
+    AppsKey::ControlClick("Button5", "A")
 
-    Enter::ControlClick "Button7", "A"
+    ; 确认解压
+    Enter::ControlClick("Button7", "A")
     
-    [::ControlSetText "T:\", "Edit1", "A"
-    ]::ControlSetText "V:\", "Edit1", "A"
+    [::ControlSetText("T:\", "Edit1", "A")
+    ]::ControlSetText("V:\", "Edit1", "A")
 
-    #Include Zip.Private.ahk
+    #Include *i Zip.Private.ahk
+    #Include *i Zip.Joy.ahk
 
 #HotIf
 
@@ -48,6 +63,7 @@ RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
 #HotIf CheckWindowActive( "ZipMain" )
 
     ~NumLock::WinClose("A")
+    Numpad3::WinClose("A")
 
     #\::{
         MoveWindowPosition(Position(1100 , 1000))

@@ -115,7 +115,7 @@ GetWindowScreen(window)
 ; mode   | Default|Screen AHK默认 \ Window API修正
 GetActiveWindowInfo(cache:=True)
 {
-    Global window , arg
+    Global Window , Arg
 
     if ( cache == False ) {
         window.cache_id     := 0
@@ -126,14 +126,13 @@ GetActiveWindowInfo(cache:=True)
     try {
         win_id    := WinGetID("A")
         win_title := WinGetTitle("ahk_id " . win_id)
-    } catch {
-        return
     }
-
+    
     ; 缓存数据
-    if ( window.cache_id == win_id and window.cache_title == win_title )
-        if ( window.cache_expire - A_TickCount > 0 )
-            return window
+    if ( window.cache_id == win_id )
+        if ( window.cache_title == win_title )
+            if ( window.cache_expire - A_TickCount > 0 )
+                return window
 
     try {
         WinGetPos(&win_sx, &win_sy, &win_sw, &win_sh, "ahk_id " . win_id)
