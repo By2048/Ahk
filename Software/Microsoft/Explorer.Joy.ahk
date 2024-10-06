@@ -17,20 +17,20 @@ Numpad6::ActivateRight()
 Numpad9::Send "{Enter}"
 
 ; 下
-Numpad3::Send "{Esc}"
+Numpad3::Send "{Delete}"
 
 ; 左
-Numpad7::ActivateMenu()
+Numpad7::FileQuickPreview()
 
 ; 右
-Numpad1::Send "{AppsKey}"
+Numpad1::FileQuickUnZip()
 
 ;---------------------------------;
 
 NumpadAdd::Send "{BackSpace}"
 
-NumpadMult::Send "{Home}"
+NumpadMult::Send "{AppsKey}"
 
-NumpadDiv::Send "{End}"
+NumpadDiv::ActivateMenu()
 
-NumpadSub::Send "{Delete}"
+NumpadSub::Send "{Esc}"

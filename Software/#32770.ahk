@@ -12,6 +12,48 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
 
 
 
+#HotIf CheckWindowActive( "" , "#32770" , "*删除*" )
+    Delete::Send "{Esc}"
+    Insert::{
+        win := GetActiveWindowInfo()
+        if ( win.process_name == "Explorer" ) {
+            Send "!y"
+            Sleep 99
+            Send "{Space}"
+        } else if ( win.process_name == "BitComet" ) {
+            ControlClick("Button1", "A")
+            Send "{Enter}"
+        } else {
+            Send "!y"
+        }
+    }
+    BackSpace::{
+        win := GetActiveWindowInfo()
+        if ( win.process_name == "Explorer" ) {
+            DelFile() {
+                Send "{Esc}"
+                Sleep 33
+                Send "+{Delete}"
+                Sleep 66
+                Send "!y"
+                Sleep 99
+                Send "{Space}"
+            }
+            SetTimer(DelFile, -99)
+        } else if ( win.process_name == "BitComet" ) {
+            ControlClick("Button2", "A")
+            Sleep 99
+            Send "{Enter}"
+        } else {
+            Send "!y"
+        }
+    }
+    Numpad9::Send "{Enter}"  ; 上
+    Numpad3::Send "{Esc}"    ; 下
+#HotIf
+
+
+
 #HotIf    CheckWindowActive( "" , "#32770" , "打开|打开文件|选择文件|选择文件夹" )
        Or CheckWindowActive( "" , "#32770" , "更改图标|另存为|浏览" )
        Or CheckWindowActive( "" , "#32770" , "SaveFile|SaveVideo" )
@@ -29,6 +71,8 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
         new_name := StrReplace(new_name, "|", " ")
         new_name := StrReplace(new_name, "video_", "")
         new_name := StrReplace(new_name, "  ", " ")
+        new_name := StrReplace(new_name, "  ", " ")
+        new_name := StrReplace(new_name, " - 知乎", "")
         ControlSetText(new_name, "Edit1", "A")
     }
     NumpadEnd::{

@@ -55,28 +55,6 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
 #HotIf
 
 
-#HotIf CheckWindowActive( "Explorer" , "#32770" , "删除文件|删除文件夹|删除多个项目" )
-    Delete::Send "{Esc}"
-    Insert::{
-        Send "!y"
-        Sleep 99
-        Send "{Space}"
-    }
-    DelFile() {
-        Send "{Esc}"
-        Sleep 33
-        Send "+{Delete}"
-        Sleep 66
-        Send "!y"
-        Sleep 99
-        Send "{Space}"
-    }
-    BackSpace::SetTimer(DelFile, -99)
-    Numpad9::Send "{Enter}"  ; 上
-    Numpad3::Send "{Esc}"    ; 下
-#HotIf
-
-
 ; 桌面
 #HotIf CheckWindowActive( "Explorer" , "WorkerW" )
 
@@ -180,10 +158,10 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     #\::ResetPosition()
     #+\::ResetPosition(columns:="List")
             
-    ; F10::Return ; 快捷键帮助
+    F10::Return ; 快捷键帮助
     ~RAlt::Send "{F10}"
         
-    ; F11::Return ; 全屏
+    F11::Return ; 全屏
     #Enter::Send "{F11}"
 
     #Include *i Explorer.Private.ahk
