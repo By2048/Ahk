@@ -1,7 +1,7 @@
 ﻿
-#Include ..\Config.ahk
-#Include ..\Tool\Gui.ahk
-#Include ..\Tool\Help.ahk
+#Include Config.ahk
+#Include Tool\Gui.ahk
+#Include Tool\Help.ahk
 
 #SingleInstance Ignore
 
@@ -24,23 +24,23 @@ LWin & RWin::{
     }
     GuiProgress()
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Run.png")
+    SendMessage(0x1A, 0, StrPtr("Environment"), 0xFFFF) ; EnvUpdate
     if ( GetKeyState("LShift", "P") ) {
-        HelpText("`n  Force Reload  `n", "Center", "Screen", 1500)
         Run("Setup.cmd ForceStart", A_InitialWorkingDir, "Hide")
+        HelpText("`n  Force Reload  `n", "Center", "Screen", 1500)
     } else {
         Run("Setup.cmd Start", A_InitialWorkingDir, "Hide")
         HelpText("`n  Reload All Script  `n", "Center", "Screen" . Screens.Count, 1000)
     }
-    SendMessage(0x1A, 0, StrPtr("Environment"), 0xFFFF) ; EnvUpdate
     Reload()
 }
 
 ; 停止脚本
 RWin & LWin::{
     Send("{Blind}{vkFF}")
+    SetCapsLockState("Off")
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Error.png")
     if ( GetKeyState("CapsLock", "P") and GetKeyState("Enter", "P") ) {
-        SetCapsLockState("Off")
         Reload()
         Run(NirCmd " exitwin poweroff")
         return
@@ -50,7 +50,7 @@ RWin & LWin::{
         Run("Setup.cmd ForceStop", A_InitialWorkingDir, "Hide")
         ExitApp()
     } else {
-        Run("Setup.cmd Stop", A_InitialWorkingDir, "Hide")
         HelpText("`n  Close All Script  `n", "Center", "Screen" . Screens.Count, 1000)
+        Run("Setup.cmd Stop", A_InitialWorkingDir, "Hide")
     }
 }

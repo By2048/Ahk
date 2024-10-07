@@ -25,4 +25,4 @@
 :o:\Sfc::SFC /ScanNow
 
 
-#Include *i Input.Private.ahk
+#Include *i #Input.Private.ahk

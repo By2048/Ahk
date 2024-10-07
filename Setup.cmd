@@ -39,10 +39,10 @@ Set AHK=%AutoHotkey%
 
 :: Init AutoHotkey Files
 Set        @.ahk=.\@.ahk
-Set     Base.ahk=.\Setup\Base.ahk
-Set    Input.ahk=.\Setup\Input.ahk
-Set      Key.ahk=.\Setup\Key.ahk
-Set Software.ahk=.\Setup\Software.ahk
+Set     Base.ahk=.\#Base.ahk
+Set    Input.ahk=.\#Input.ahk
+Set      Key.ahk=.\#Key.ahk
+Set Software.ahk=.\#Software.ahk
 
 If "%Command%"=="ForceStart" (
     @Echo Off
