@@ -23,7 +23,7 @@ Numpad3::Send "{Delete}"
 Numpad7::FileQuickPreview()
 
 ; 右
-Numpad1::FileQuickUnZip()
+Numpad1::FileQuickTools()
 
 ;---------------------------------;
 
