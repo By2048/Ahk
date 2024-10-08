@@ -46,7 +46,7 @@ Status.Add("Text", Status.TextStyle, text)
 AddLine()
 
 Status.SetFont(Format("c{} s{}", Status.font_color, 13), Status.font_name)
-Status.Add("Text", Status.TextStyle, FileRead(A_InitialWorkingDir . "\Setup\Input.help", "UTF-8"))
+Status.Add("Text", Status.TextStyle, FileRead(A_InitialWorkingDir . "\Config\Input.help", "UTF-8"))
 AddLine()
 
 ;-------------------------------------------------------------------------------------------------;
