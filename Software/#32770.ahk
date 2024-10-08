@@ -66,19 +66,30 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
     ~NumLock::Send("!s")
 
     NumpadHome::{
-        old_name := ControlGetText("Edit1", "A")
-        new_name := StrReplace(old_name, "#", "")
-        new_name := StrReplace(new_name, "|", " ")
+        edit_name := ControlGetText("Edit1", "A")
+        new_name  := ""
+        Loop Parse new_name 
+        {
+            name := A_LoopField
+            if ( name == "#" )
+                continue
+            if ( name == "|" )
+                continue
+            if ( Ord(A_LoopField) == "10" )
+                continue
+            if ( Ord(A_LoopField) == "13" )
+                continue
+            new_name := new_name . name
+        }
+        new_name := StrReplace(new_name, "  ", " ")
+        new_name := StrReplace(new_name, "  ", " ")
+        new_name := StrReplace(new_name, A_Tab, " ")
         new_name := StrReplace(new_name, "video_", "")
-        new_name := StrReplace(new_name, "  ", " ")
-        new_name := StrReplace(new_name, "  ", " ")
         new_name := StrReplace(new_name, " - 知乎", "")
+        new_name := name
         ControlSetText(new_name, "Edit1", "A")
     }
-    NumpadEnd::{
-        new_name := A_Clipboard
-        ControlSetText(new_name, "Edit1", "A")
-    }
+    NumpadEnd::ControlSetText(A_Clipboard, "Edit1", "A")
 
     NumpadPgDn::MoveWindowDefault()
     NumpadPgUp::Send("^!7")
