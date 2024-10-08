@@ -77,7 +77,7 @@ RegisterPosition( "FreeFileSync"                , Position(2000 , 1248) )
 #HotIf CheckWindowActive( "FreeFileSync" )
 
     ; 开始比较
-    !\::Send "{F5}"
+    CapsLock::Send "{F5}"
 
     ; 同步设置
     !AppsKey::Send "{F7}"

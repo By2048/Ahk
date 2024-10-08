@@ -32,4 +32,5 @@ NumpadDel::{
 
 ~RButton::SetListView()
 
-~MButton::WinClose("A")
+~MButton::Try WinClose("A")
+ 

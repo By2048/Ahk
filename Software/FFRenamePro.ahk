@@ -11,14 +11,13 @@ RegisterPosition("FFRenamePro" , Position(2100 , 1234))
 
 #HotIf CheckWindowActive("FFRenamePro")
 
-    Esc::
-    CapsLock::{
-        GetActiveWindowInfo(False)
+    Esc::{
+        window := GetActiveWindowInfo(False)
         win_class := window.class
         win_title := window.title
-        if win_class == "TFilterForm" ;对象过滤设置对象过滤设置
+        if ( win_class == "TFilterForm" ) ;对象过滤设置对象过滤设置
             Send "!c"
-        else if win_class == "TFileNameEditorForm" ;文件名编辑器
+        else if ( win_class == "TFileNameEditorForm" ) ;文件名编辑器
             Send "!c"
     }
 
@@ -70,7 +69,7 @@ RegisterPosition("FFRenamePro" , Position(2100 , 1234))
 
     ; 刷新
     F5::Return
-    ~RShift::F5
+    CapsLock::Send "{F5}"
 
     ; 对象过滤设置工具
     F6::Return

@@ -22,6 +22,7 @@
             MoveWindowCenter()
         } else if ( Arg.win_cnt == 2 ) {
             MoveWindowDefault()
+            MoveWindowDefault()
             HighlightActiveWindow(500)
         } else if ( Arg.win_cnt == 3 ) {
             MoveWindowBackup()

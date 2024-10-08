@@ -30,12 +30,12 @@ RegisterHelp("RegEdit", FilePath(A_LineFile, "RegEdit.help"))
         if ( Abs(max_left - window.controls.SysTreeView321.w) < offset )
             return
 
-        CoordMode "Mouse", "Window"
-        MouseGetPos &x_origin, &y_origin
+        CoordMode("Mouse", "Window")
+        MouseGetPos(&x_origin, &y_origin)
         Send "{Alt Down}{v}{Alt Up}{Down}{Enter}"
-        MouseMove max_left, total_height / 2
+        MouseMove(max_left, total_height / 2)
         Send "{Esc}"
-        MouseMove x_origin, y_origin
+        MouseMove(x_origin, y_origin)
     }
 
 #HotIf
