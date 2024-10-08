@@ -48,11 +48,19 @@ GetSelectFile()
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
     if ( not hwnd )
         return
+    
     path := ""
     for Win in ComObject("Shell.Application").Windows
         if ( Win.hwnd == hwnd )
             if ( Win.Document.SelectedItems.Count == 1 )
                 path := Win.Document.FocusedItem.Path
+
+    if ! ( InStr(path, ".zip") Or InStr(path, ".7z") Or InStr(path, ".rar") )
+        return
+
+    if ( InStr(path, ".bc!") )
+        return
+
     return path
 }
 
