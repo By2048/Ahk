@@ -1,12 +1,4 @@
 
-#HotIf ( Arg.hotkeys_show == True )
-    [::HelpKeysShow(-1)
-    ]::HelpKeysShow(+1)
-    \::HelpKeysSnipaste()
-    CapsLock::Return
-#HotIf
-
-
 Global CapsLockToEsc := False
 #HotIf ( CapsLockToEsc == True )
     CapsLock::{
@@ -25,9 +17,9 @@ RegisterHelp("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
         GetActiveWindowInfo(False)
         win_w := window.cw
         win_h := window.ch
-        if A_ThisHotKey == "#\"
+        if ( A_ThisHotKey == "#\" )
             MoveWindowPosition(Position(55, "Center", win_w, win_h))
-        if A_ThisHotKey == "#+\"
+        if ( A_ThisHotKey == "#+\" )
             MoveWindowPosition(Position("[Center][2]", win_w, win_h))
     }
 #HotIf
@@ -93,7 +85,7 @@ RegisterProcess("NVIDIA Share" , "GeForceTool")
     F5::Return
     CapsLock & Enter::{
         Send "{F5}"
-        SetCapsLockState "Off"
+        SetCapsLockState("Off")
     }
     ; 读档
     F7::Return
