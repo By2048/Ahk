@@ -14,7 +14,7 @@ HelpImage(image:="")
 
     G := Gui()
 
-    if (not image) {
+    if ! ( image ) {
         G.Destroy()
         return
     }
@@ -39,15 +39,15 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     origin_pixel_mode := A_CoordModePixel
     origin_mouse_mode := A_CoordModeMouse
 
-    CoordMode "Pixel", "Screen"
-    CoordMode "Mouse", "Screen"
+    CoordMode("Pixel", "Screen")
+    CoordMode("Mouse", "Screen")
 
     Global G
 
     Try G.Destroy()
     G := Gui()
 
-    if (not data) {
+    if ! ( data ) {
         G.Destroy()
         return
     }
@@ -70,11 +70,11 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     screen_id := ScreenNameToId(screen_name)
     screen_id := screen_id > Screens.Count ? screen_id - 1 : screen_id
     screen_id := screen_id > Screens.Count ? screen_id - 1 : screen_id
-    if (screen_id == "1") {
+    if ( screen_id == "1" ) {
         screen_config := Screens.1
-    } else if (screen_id == "2") {
+    } else if ( screen_id == "2" ) {
         screen_config := Screens.2
-    } else if (screen_id == "3") {
+    } else if ( screen_id == "3" ) {
         screen_config := Screens.3
     }
     screen_id  := screen_config.id
@@ -84,7 +84,7 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     screen_w   := screen_config.w
     screen_h   := screen_config.h
     ; 屏幕3 只使用上半部分
-    if (screen_id == "3") {
+    if ( screen_id == "3" ) {
         screen_h  := screen_h  / 2
         screen_yy := screen_yy / 2
     }
@@ -122,23 +122,24 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 
     G.Show(Format("NA x{1} y{2} w{3} h{4}", gui_x, gui_y, gui_w, gui_h))
 
-    if (sleep_time > 0) {
+    if ( sleep_time > 0 ) {
         Sleep sleep_time
         G.Destroy()
     }
 
-    CoordMode "Pixel", origin_pixel_mode
-    CoordMode "Mouse", origin_mouse_mode
+    CoordMode("Pixel", origin_pixel_mode)
+    CoordMode("Mouse", origin_mouse_mode)
 }
 
 
 ; 显示文件内容
 HelpFile(path:="")
 {
-    if not path
+    if ! ( path )
         return
+
     path := A_InitialWorkingDir . "\" . path
-    if not FileExist(path)
+    if ! ( FileExist(path) )
         return
 
     Global Window, Arg, G
@@ -152,10 +153,10 @@ HelpFile(path:="")
     font_name := Gui_Config.FontName
     font_size := Gui_Config.FontSize
     margin    := Gui_Config.Margin
-    if (GetWindowTheme() == "Dark") {
+    if ( GetWindowTheme() == "Dark" ) {
         font_color := Gui_Config.Dark.Font
         back_color := Gui_Config.Dark.Back
-    } else if (GetWindowTheme() == "Light") {
+    } else if ( GetWindowTheme() == "Light" ) {
         font_color := Gui_Config.Light.Font
         back_color := Gui_Config.Light.Back
     }
@@ -172,99 +173,4 @@ HelpFile(path:="")
 }
 
 
-; 隐藏快捷键提示
-HelpKeysShow(step:=0)
-{
-    Global Window, Arg, Software_Keys_Help
-    Global G
-
-    GetActiveWindowInfo()
-    win_process_name := window.process_name
-    win_title        := window.title
-    hotkeys_config   := GetWindowConfig(window, Software_Keys_Help)
-
-    ; 没有内容
-    if ( hotkeys_config.Length == 0 ) {
-        HelpText("`n No Content `n", "Center", "Screen", 500)
-        return
-    }
-
-    ; 已经显示 且只有一个内容
-    if ( Arg.hotkeys_show == True and hotkeys_config.Length == 1 )
-        return
-
-    ; 未显示且有多个内容
-    if ( Arg.hotkeys_show == False and hotkeys_config.Length >= 1 )
-        hotkeys_index := 1
-
-    ; 已经显示且有多个内容
-    if ( Arg.hotkeys_show == True and hotkeys_config.Length > 1 ) {
-        hotkeys_index := Arg.hotkeys_index + step
-        if (hotkeys_index > hotkeys_config.Length)
-            hotkeys_index := 1
-        else if (hotkeys_index == 0)
-            hotkeys_index := hotkeys_config.Length
-    }
-
-    content := hotkeys_config[hotkeys_index]
-
-    font_name := Gui_Config.FontName
-    font_size := Gui_Config.FontSize
-    margin    := Gui_Config.Margin
-    if (GetWindowTheme() == "Dark") {
-        font_color := Gui_Config.Dark.Font
-        back_color := Gui_Config.Dark.Back
-    } else if (GetWindowTheme() == "Light") {
-        font_color := Gui_Config.Light.Font
-        back_color := Gui_Config.Light.Back
-    }
-
-    if ( Arg.hotkeys_show == True )
-        Try G.Destroy()
-
-    G := Gui()
-    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
-    G.MarginX   := margin
-    G.MarginY   := margin
-    G.BackColor := back_color
-    G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
-    GContent := G.Add("Text", "-Center -Border", content)
-    GContent.GetPos(&cx, &cy, &cw, &ch)
-    if (hotkeys_config.Length > 1) {
-        data  := Format("{}/{}", hotkeys_index, hotkeys_config.Length)
-        GPage := G.Add("Text", "-Border xm ym", data)
-        GPage.GetPos(&px, &py, &pw, &ph)
-        GPage.Move(cw - pw + margin, ch - ph + margin, pw, ph)
-    }
-    G.Show("NA Center")
-
-    Arg.hotkeys_show    := True
-    Arg.hotkeys_index   := hotkeys_index
-    Arg.hotkeys_current := content
-}
-
-
-; 隐藏快捷键提示
-HelpKeysHide()
-{
-    Global G , Arg
-    Try G.Destroy()
-    Arg.hotkeys_show    := False
-    Arg.hotkeys_index   := 0
-    Arg.hotkeys_current := ""
-}
-
-
-; 快捷键提示贴图
-HelpKeysSnipaste()
-{
-    Global G , Arg
-    origin := A_Clipboard
-    A_Clipboard := Arg.hotkeys_current
-    ClipWait 1
-    HelpKeysHide()
-    cmd := Format("{1} paste --clipboard", Snipaste)
-    Run cmd
-    Sleep 555
-    A_Clipboard := origin
-}
+#Include Help.Keys.ahk
