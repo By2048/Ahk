@@ -23,6 +23,20 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 #HotIf
 
 
+#HotIf CheckWindowActive( "VSCode" , "#32770" , "VisualStudioCode" )
+    Insert::{
+        win_text := WinGetText("A")
+        if ( InStr(win_text, "移动到回收站") )
+            Send "!m"
+    }
+    Delete::{
+        win_text := WinGetText("A")
+        if ( InStr(win_text, "移动到回收站") )
+            Send "{Esc}"
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive("VSCode")
 
     #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
