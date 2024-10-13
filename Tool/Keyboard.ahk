@@ -24,7 +24,7 @@ KeyboardGUI()
     global keyboard_show_status
     global G
 
-    if (keyboard_show_status) {
+    if ( keyboard_show_status ) {
         keyboard_show_status := False
         G.Destroy()
         return
@@ -46,11 +46,10 @@ KeyboardGUI()
         for index, item in data {
             keyboard_txt := item[1]
             keyboard_txt := StrReplace(keyboard_txt, " ", "`n")
-            if (item.Length == 2) {
+            if ( item.Length == 2 )
                 width := item[2]
-            } else {
+            else
                 width := 1
-            }
             keyboard_w := keyboard_h * width + ( width - 1 )
             xywh := Format("x{} y{} w{} h{}", keyboard_x, keyboard_y, keyboard_w, keyboard_h)
             g.Add("Button", xywh, keyboard_txt)
@@ -66,15 +65,15 @@ KeyboardGUI()
     rule := Format("ahk_id {}", win_id)
 
     ; 移动窗口到中下位置
-    WinGetPos &x, &y, &w, &h, rule
+    WinGetPos(&x, &y, &w, &h, rule)
     x := A_ScreenWidth/2 - w/2
-    y := A_ScreenHeight - h - 5
-    WinMove x, y, w, h, rule
+    y := A_ScreenHeight  - h   - 5
+    WinMove(x, y, w, h, rule)
 
     ; 透明度 最上层
-    WinSetAlwaysOnTop 1, rule
-    WinSetTransColor keyboard_transcolor, rule
-    WinSetTransparent 255, rule
+    WinSetAlwaysOnTop(1, rule)
+    WinSetTransColor(keyboard_transcolor, rule)
+    WinSetTransparent(255, rule)
 
     keyboard_show_status := True
 }
