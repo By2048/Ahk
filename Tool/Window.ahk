@@ -39,53 +39,53 @@ GetWindowConfig(window, config)
         config_process_name := ""
         config_class        := ""
         config_title        := ""
-        if (config_items.Length > 0) {
+        if ( config_items.Length > 0 ) {
             config_process_name := config_items[1]
         }
-        if (config_items.Length > 1) {
+        if ( config_items.Length > 1 ) {
             config_class := config_items[2]
         }
-        if (config_items.Length > 2) {
+        if ( config_items.Length > 2 ) {
             config_title := config_items[3]
         }
 
         match_cnt := 0
 
-        if (StrLen(config_process_name) > 0) {
-            if (win_process_name == config_process_name) {
+        if ( StrLen(config_process_name) > 0 ) {
+            if ( win_process_name == config_process_name ) {
                 match_cnt := match_cnt + 3
-            } else if (InStr(win_process_name, config_process_name)) {
+            } else if ( InStr(win_process_name, config_process_name) ) {
                 match_cnt := match_cnt + 2
             } else {
                 continue
             }
         }
 
-        if (StrLen(config_class) > 0) {
-            if (win_class == config_class) {
+        if ( StrLen(config_class) > 0 ) {
+            if ( win_class == config_class ) {
                 match_cnt := match_cnt + 2
-            } else if (InStr(win_class, config_class)) {
+            } else if ( InStr(win_class, config_class) ) {
                 match_cnt := match_cnt + 1
             } else {
                 continue
             }
         }
 
-        if (StrLen(config_title) > 0) {
-            if (win_title == config_title) {
+        if ( StrLen(config_title) > 0 ) {
+            if ( win_title == config_title ) {
                 match_cnt := match_cnt + 2
-            } else if (InStr(win_title, config_title)) {
+            } else if ( InStr(win_title, config_title) ) {
                 match_cnt := match_cnt + 1
             }
         }
 
-        if (match_cnt > match_count) {
+        if ( match_cnt > match_count ) {
             match_count := match_cnt
             win_config  := config_value
         }
 
     }
-
+    
     return win_config
 }
 
@@ -137,20 +137,22 @@ GetActiveWindowInfo(cache:=True)
             if ( window.cache_expire - A_TickCount > 0 )
                 return window
 
+    rule := Format("ahk_id {}" , win_id)
+
     try {
-        WinGetPos(&win_sx, &win_sy, &win_sw, &win_sh, "ahk_id " . win_id)
-        WinGetClientPos(&win_cx, &win_cy, &win_cw, &win_ch, "ahk_id " . win_id)
-        win_pid           := WinGetPID("ahk_id " . win_id)
-        win_class         := WinGetClass("ahk_id " . win_id)
-        win_text          := WinGetText("ahk_id " . win_id)
-        win_process_exe   := WinGetProcessName("ahk_id " . win_id)
-        win_process_path  := WinGetProcessPath("ahk_id " . win_id)
-        win_controls_id   := WinGetControlsHwnd("ahk_id " . win_id)
-        win_controls_name := WinGetControls("ahk_id " . win_id)
-        win_min_max       := WinGetMinMax("ahk_id " . win_id)
-        win_transparent   := WinGetTransparent("ahk_id " . win_id)
+        WinGetPos(&win_sx, &win_sy, &win_sw, &win_sh, rule)
+        WinGetClientPos(&win_cx, &win_cy, &win_cw, &win_ch, rule)
+        win_pid           := WinGetPID(rule)
+        win_class         := WinGetClass(rule)
+        win_text          := WinGetText(rule)
+        win_process_exe   := WinGetProcessName(rule)
+        win_process_path  := WinGetProcessPath(rule)
+        win_controls_id   := WinGetControlsHwnd(rule)
+        win_controls_name := WinGetControls(rule)
+        win_min_max       := WinGetMinMax(rule)
+        win_transparent   := WinGetTransparent(rule)
     } catch {
-        return
+        return window
     }
 
     ; 数据格式转换
@@ -202,8 +204,8 @@ GetActiveWindowInfo(cache:=True)
     }
     for control_name, control_args in win_controls.OwnProps() {
         try {
-            ControlGetPos(&x, &y,&w, &h, control_name, "ahk_id " . win_id)
-            control_text := ControlGetText(control_name, "ahk_id " . win_id)
+            ControlGetPos(&x, &y,&w, &h, control_name, rule)
+            control_text := ControlGetText(control_name, rule)
         } catch error {
             win_controls.DeleteProp(control_name)
         } else {
@@ -267,7 +269,7 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
         } else if ( InStr(cfg, "*") ) {
             if ( !InStr(win, StrReplace(cfg, "*", "")) )
                 status := False
-        } else if (cfg != win) {
+        } else if ( cfg != win ) {
             status := False
         }
         return status
@@ -316,11 +318,9 @@ IsGame()
 {
     GetActiveWindowInfo()
     win_process_name := window.process_name
-    for process_name in Games_Process {
-        if (process_name == win_process_name) {
+    for process_name in Games_Process
+        if ( process_name == win_process_name )
             return True
-        }
-    }
     return False
 }
 
@@ -336,11 +336,13 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
     win_min_max := window.min_max
     win_process_name := window.process_name
 
+    rule := Format("ahk_id {}" , win_id)
+
     if ( not win_id )
         HelpText("No WinId",  ,  , 1000)
 
     if ( win_min_max == "Max" )
-        WinRestore("ahk_id " . win_id)
+        WinRestore(rule)
 
     if ( IsDesktops() )
         return
@@ -360,7 +362,7 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
         or Abs(win_y - y) > offset 
         or Abs(win_w - w) > offset
         or Abs(win_h - h) > offset ) {
-        if (step) {
+        if ( step ) {
             try {
                 WinMove(x, y,  ,  , "ahk_id " . win_id)
                 WinMove( ,  , w, h, "ahk_id " . win_id)
@@ -382,29 +384,27 @@ SetWindowTransparent(change:=0)
     win_id := window.id
     win_transparent := window.transparent
 
-    if (change == "Max") {
+    if ( change == "Max" ) {
         win_transparent := 255
         WinSetTransparent(win_transparent, "ahk_id " . win_id)
         return
-    } else if (change == "Min") {
+    } else if ( change == "Min" ) {
         win_transparent := 0
         WinSetTransparent(win_transparent, "ahk_id " . win_id)
         return
     }
 
-    if (change > 0) {
-        if (win_transparent + change >= 255) {
+    if ( change > 0 ) {
+        if ( win_transparent + change >= 255 )
             win_transparent := 255
-        } else {
+        else
             win_transparent := win_transparent + change
-        }
         WinSetTransparent(win_transparent, "ahk_id " . win_id)
-    } else if (change < 0) {
-        if (win_transparent + change <= 55) {
+    } else if ( change < 0 ) {
+        if ( win_transparent + change <= 55 )
             win_transparent := 55
-        } else {
+        else
             win_transparent := win_transparent + change
-        }
         WinSetTransparent(win_transparent, "ahk_id " . win_id)
     }
 }
@@ -433,28 +433,28 @@ ResizeWindow(command, direction)
     win_w  := window.w
     win_h  := window.h
 
-    if (command == "+") {
-        if (direction == "Up") {
+    if ( command == "+" ) {
+        if ( direction == "Up" ) {
             win_y := win_y - step
             win_h := win_h + step
-        } else if (direction == "Down") {
+        } else if ( direction == "Down" ) {
             win_h := win_h + step
-        } else if (direction == "Left") {
+        } else if ( direction == "Left" ) {
             win_x := win_x - step
             win_w := win_w + step
-        } else if (direction == "Right") {
+        } else if ( direction == "Right" ) {
             win_w := win_w + step
         }
-    } else if (command == "-") {
-        if (direction == "Up") {
+    } else if ( command == "-" ) {
+        if ( direction == "Up" ) {
             win_y := win_y + step
             win_h := win_h - step
-        } else if (direction == "Down") {
+        } else if ( direction == "Down" ) {
             win_h := win_h - step
-        } else if (direction == "Left") {
+        } else if ( direction == "Left" ) {
             win_x := win_x + step
             win_w := win_w - step
-        } else if (direction == "Right") {
+        } else if ( direction == "Right" ) {
             win_w := win_w - step
         }
     }
@@ -485,7 +485,7 @@ MoveControlUDLR(info, mode:="Right", value:=0, offset:=6)
 
     xy := 0 , x_start := 0 , y_start := 0 , x_end := 0 , y_end := 0
 
-    if (mode == "Up") {
+    if ( mode == "Up" ) {
         x_start := info.x + info.w / 2
         y_start := info.y + offset
         x_end   := x_start
@@ -493,7 +493,7 @@ MoveControlUDLR(info, mode:="Right", value:=0, offset:=6)
         xy      := y_end - y_start
     }
 
-    if (mode == "Down") {
+    if ( mode == "Down" ) {
         x_start := info.x + info.w - info.w / 2
         y_start := info.y + info.h + offset
         x_end   := x_start
@@ -501,7 +501,7 @@ MoveControlUDLR(info, mode:="Right", value:=0, offset:=6)
         xy      := y_end - y_start
     }
 
-    if (mode == "Left") {
+    if ( mode == "Left" ) {
         x_start := info.x + offset
         y_start := info.y + info.h / 2
         x_end   := value
@@ -509,7 +509,7 @@ MoveControlUDLR(info, mode:="Right", value:=0, offset:=6)
         xy      := x_end - x_start
     }
 
-    if (mode == "Right") {
+    if ( mode == "Right" ) {
         x_start := info.x + info.w + offset
         y_start := info.y + info.h - info.h / 2
         x_end   := value
@@ -573,10 +573,10 @@ MoveWindowQuick(command)
     main := Windows_Main_Mini[1]
     mini := Windows_Main_Mini[2]
 
-    if (command == "Main") {
+    if ( command == "Main" ) {
         w := window.screen.w * main[1]
         h := window.screen.h * main[2]
-    } else if (command == "Mini") {
+    } else if ( command == "Mini" ) {
         w := window.screen.w * mini[1]
         h := window.screen.h * mini[2]
     }
