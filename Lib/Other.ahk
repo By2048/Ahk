@@ -29,7 +29,7 @@ CheckColor(color_base, color_compare, offse:=9)
 
 
 ; 顺序切换数组项
-LoopList(data, &current, step:=+1)
+LoopList(data, &current, step:=+1, circle:=false)
 {
     next_index  := 0
     check_match := false
@@ -40,20 +40,32 @@ LoopList(data, &current, step:=+1)
             if ( step == +1 )
                 if ( A_Index < data.Length )
                     next_index := A_Index + 1
-                else 
-                    next_index := -1
+                else {
+                    if ( circle )
+                        next_index := +1
+                    else 
+                        next_index := -1
+                }
             if ( step == -1 ) 
                 if ( A_Index > 1 )
                     next_index := A_Index - 1
-                else
-                    next_index := +1
+                else {
+                    if ( circle )
+                        next_index := -1
+                    else
+                        next_index := +1
+                }
             break
         }
     }
-    if ( not check_match and step == +1 )
-        next_index := +1
-    if ( not check_match and step == -1 )
-        next_index := -1
+
+    if ! ( check_match )
+        if ( step == +1 )
+            next_index := +1
+        else if ( step == -1 )
+            next_index := -1
+        else
+            next_index := +1
 
     current := data[next_index]
     return current
