@@ -115,3 +115,32 @@ RenameToData(file)
         FileMove file, result
     }
 }
+
+
+; 移动匹配 SourcePattern 的所有文件和文件夹到 DestinationFolder 文件夹中且
+; 返回无法移动的文件/文件夹的数目.
+MoveFilesAndFolders(SourcePattern, DestinationFolder, DoOverwrite := false)
+{
+    ErrorCount := 0
+    if ( DoOverwrite = 1 )
+        DoOverwrite := 2  ; 请参阅 DirMove 了解模式 2 与模式 1 的区别.
+    
+    ; 首先移动所有文件(不是文件夹):
+    try
+        FileMove(SourcePattern, DestinationFolder, DoOverwrite)
+    catch as Err
+        ErrorCount := Err.Extra
+
+    ; 现在移动所有文件夹:
+    Loop Files, SourcePattern, "D"  ; D 表示 "只获取文件夹".
+    {
+        try
+            DirMove(A_LoopFilePath, DestinationFolder "\" A_LoopFileName, DoOverwrite)
+        catch {
+            ErrorCount += 1
+            text := "Could not move " A_LoopFilePath " into " DestinationFolder 
+            Try HelpText(text, "CenterDown", "Screen", 500)
+        }
+    }
+    return ErrorCount
+}
