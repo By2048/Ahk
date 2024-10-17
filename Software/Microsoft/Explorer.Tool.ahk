@@ -8,11 +8,10 @@ ActivateLeft()
 ActivateRight()
 {
     win_class := WinGetClass("A")
-    if (win_class == "CabinetWClass") {
+    if ( win_class == "CabinetWClass" )
         ControlFocus("DirectUIHWND3", "A")
-    } else if (win_class == "#32770") {
+    else if ( win_class == "#32770" )
         ControlFocus("DirectUIHWND2", "A")
-    }
     Send "{Space}"
 }
 
@@ -43,7 +42,7 @@ ActivateMenu()
 }
 
 
-GetSelectFile()
+GetFocusedItem()
 {
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
     if ( not hwnd )
@@ -55,13 +54,23 @@ GetSelectFile()
             if ( Win.Document.SelectedItems.Count == 1 )
                 path := Win.Document.FocusedItem.Path
 
-    if ! ( InStr(path, ".zip") Or InStr(path, ".7z") Or InStr(path, ".rar") )
-        return
-
-    if ( InStr(path, ".bc!") )
-        return
-
     return path
+}
+
+
+GetSelectItem()
+{
+    paths := []
+
+    hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
+    if ( not hwnd )
+        return paths
+    
+    for Win in ComObject("Shell.Application").Windows
+        if ( Win.hwnd == hwnd )
+            for item in Win.Document.SelectedItems
+                paths.Push(item.Path)
+    return paths
 }
 
 
@@ -172,12 +181,10 @@ ResetPosition(columns:="")
         MouseClickDrag("Left", 0, 0, 0,  50, 0, "R")
     }
 
-    #Include Explorer.Columns.ahk
-
     if ( not columns ) 
-        config := Cfg.Get(window.title, Cfg["Default"])
+        config := ExplorerColumns.Get(window.title, ExplorerColumns["Default"])
     else
-        config := Cfg.Get(columns, Cfg["Default"])
+        config := ExplorerColumns.Get(columns, ExplorerColumns["Default"])
     SetColumns(config)
 
     ; 搜索框
