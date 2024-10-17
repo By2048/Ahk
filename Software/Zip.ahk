@@ -5,15 +5,9 @@ RegisterProcess( "7zG"  , "ZipDialog" )
 RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
 
 
-SetZipPath(path) {
-    ControlSetText(path, "Edit1", "A")
-}
-
-
 #HotIf CheckWindowActive( "ZipDialog" , "#32770" , "浏览文件夹" )
-    BackSpace::Send "{Esc}"
+    \::Send "{Esc}"
 #HotIf
-
 
 
 #HotIf CheckWindowActive( "ZipDialog" , "#32770" , "*解压*" )
@@ -30,14 +24,19 @@ SetZipPath(path) {
     ; 确认解压
     Enter::ControlClick("Button7", "A")
     
-    [::ControlSetText("T:\", "Edit1", "A")
-    ]::ControlSetText("V:\", "Edit1", "A")
+    `;::ControlSetText("V:\", "Edit1", "A")
+     '::ControlSetText("T:\", "Edit1", "A")
 
     #Include *i Zip.Private.ahk
     #Include *i Zip.Joy.ahk
 
 #HotIf
 
+
+
+#HotIf CheckWindowActive( "ZipMain" , "#32770" , "复制" )
+    #Include *i Zip.Private.ahk
+#HotIf
 
 
 #HotIf CheckWindowActive( "ZipMain" , "*FM*" , "*我的电脑*" )
@@ -76,10 +75,10 @@ SetZipPath(path) {
 
     ; 注册表相关操作 Clear History
     >!\::{
-        RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Compression", "ArcHistory"
-        RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Extraction", "PathHistory"
-        RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM", "FolderHistory"
-        RegWrite "", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM", "CopyHistory"
+        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Compression", "ArcHistory"   )
+        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Extraction",  "PathHistory"  )
+        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "FolderHistory")
+        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "CopyHistory"  )
         HelpText("`n Clear History `n", "Center", "Screen", 1000)
         ; 默认列配置 Zip
         ; 其他列配置 Rar
@@ -92,9 +91,9 @@ SetZipPath(path) {
         Sleep 300
 
         win_title := WinGetTitle("A")
-        if InStr(win_title, "rar")
+        if ( InStr(win_title, "rar") )
             max_select := 24
-        else if InStr(win_title, "7z")
+        else if ( InStr(win_title, "7z") )
             max_select := 11
         else
             max_select := 19
@@ -112,7 +111,7 @@ SetZipPath(path) {
         Sleep 300
 
         win_title := WinGetTitle("A")
-        if InStr(win_title, "rar")
+        if ( InStr(win_title, "rar") )
             all_select := [ 21, 22, 2 ]
         else
             all_select := [ 17, 18, 2 ]

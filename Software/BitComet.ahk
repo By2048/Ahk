@@ -30,6 +30,9 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         cfg := " 1:名称:999  2:大小:111  3:%:77 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321" , cfg)
+        cfg := " 1:下载顺序:111  2:文件名称:777  3:大小:111 4:%:77 5:当前优先级:111 "
+        cfg := GetColumnConfig(cfg)
+        SetColumnWidth("SysListView323" , cfg)
     }
 
     #\::{
@@ -79,9 +82,9 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
             MouseMove x_origin, y_origin, 0
         }
 
-        _1 := " 1     12     2     3     9        8     6        4         7       5         10       11     "
-        _2 := " 名称  文件夹  大小   进度  剩余大小  需时   下载速度  下载大小   上传速度  上传大小   种子/用户 分享率  "
-        _3 := " 700   150    200   77    110     110    120      110       120     110       150      77     "
+        _1 := " 1     12     2     3     9        8        6        4         7       5         10       11     "
+        _2 := " 名称  文件夹  大小   进度  剩余大小  剩余时间   下载速度  下载大小   上传速度  上传大小   种子/用户 分享率  "
+        _3 := " 700   150    200   77    110     110       120      110       120     110       150      77     "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)
 
@@ -109,9 +112,9 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
     }
 
     ^AppsKey::{
-        MouseGetPos &x, &y, &win_id, &win_control
+        MouseGetPos(&x, &y, &win_id, &win_control)
         A_Clipboard := win_control
-        ClipWait
+        ClipWait()
         HelpText(win_control, "CenterDown", "Screen", "900")
     }
     
