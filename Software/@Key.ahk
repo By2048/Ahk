@@ -3,35 +3,53 @@
 ; Window Default
 ; Window Backup
 ~RWin::{
+
     Send "{Blind}{vkFF}"
+
     Global Arg
-    if ( Arg.win_cnt > 0 ) {
-        Arg.win_cnt += 1
+
+    Arg.win_press := 0
+
+    if ( Arg.win_click > 0 ) {
+        Arg.win_click += 1
         return
     } else {
-        Arg.win_cnt := 1
+        Arg.win_click := 1
     }
-    SetTimer(Timer, -500)
-    Timer() {
-        Global Arg
-        if ( CheckWindowActive("Snipaste") ) {
-            Arg.win_cnt := 0
-            return
-        }
-        if ( Arg.win_cnt == 1 ) {
-            MoveWindowCenter()
-        } else if ( Arg.win_cnt == 2 ) {
+
+    SetTimer(ClickTimer, -500)
+
+    SetTimer(PauseTimer, 66)
+
+    ClickTimer() {
+        if ( Arg.win_click == 2 ) {
             MoveWindowDefault()
             MoveWindowDefault()
             HighlightActiveWindow(500)
-        } else if ( Arg.win_cnt == 3 ) {
+        } else if ( Arg.win_click == 3 ) {
             MoveWindowBackup()
             MoveWindowBackup()
             HighlightActiveWindow(500)
         }
-        Arg.win_cnt := 0
+        Arg.win_click := 0
     }
+
+    PauseTimer() {
+        if ( GetKeyState("RWin", "P") ) {
+            Arg.win_press := Arg.win_press + 1
+            if ( Arg.win_press >= 6) {
+                Arg.win_press := 0
+                MoveWindowCenter()
+                SetTimer( , 0)
+            }
+        } else {
+            Arg.win_press := 0
+            SetTimer( , 0)
+        }
+    }
+
 }
+
 
 
 ; 快捷键帮助
@@ -39,29 +57,30 @@
 ~RShift::{
     Send "{Blind}{vkFF}"
     Global Arg
-    if ( Arg.shift_cnt > 0 ) {
-        Arg.shift_cnt += 1
+    if ( Arg.shift_click > 0 ) {
+        Arg.shift_click += 1
         return
     } else {
-        Arg.shift_cnt := 1
+        Arg.shift_click := 1
     }
     SetTimer(Timer, -500)
     Timer() {
         Global Arg
-        if ( Arg.shift_cnt == 1 ) {
+        if ( Arg.shift_click == 1 ) {
             if ( Arg.status_show )
                 StatusGui()
             HelpText()
             HelpKeysHide()
-        } else if ( Arg.shift_cnt == 2 ) {
+        } else if ( Arg.shift_click == 2 ) {
             HelpText()
             HelpKeysShow()
-        } else if ( Arg.shift_cnt == 3 ) {
+        } else if ( Arg.shift_click == 3 ) {
             StatusGui()
         }
-        Arg.shift_cnt := 0
+        Arg.shift_click := 0
     }
 }
+
 
 
 ; F13 - F24
@@ -69,23 +88,25 @@
     Send "{Blind}{vkFF}"
     Global Arg
     GetActiveWindowInfo()
-    if ( Arg.alt_cnt > 0 ) {
-        Arg.alt_cnt += 1
+    if ( Arg.alt_click > 0 ) {
+        Arg.alt_click += 1
         return
     } else {
-        Arg.alt_cnt := 1
+        Arg.alt_click := 1
     }
     SetTimer(Timer, -500)
     Timer() {
         Global Arg
-        Arg.alt_cnt := 0
+        Arg.alt_click := 0
     }
 }
+
 
 
 ; 设置默认位置
 #\::MoveWindowDefault()
 #+\::MoveWindowBackup()
+
 
 
 ; 结束应用\进程
@@ -109,6 +130,7 @@
         return
     Try WinClose(AID(window.id))
 }
+
 
 
 ; 结束进程
