@@ -5,14 +5,19 @@
 ; 双击按键
 Arg.ClickKey := ""
 Arg.ClickCnt := 0
-#HotIf CheckWindowActive("PyCharm|IDEA") And Arg.ClickKey
+#HotIf CheckWindowActive("PyCharm|IDEA")
+       And ( Arg.ClickKey == "~LCtrl" Or Arg.ClickKey == "~LShift" )
+       And ( Arg.ClickCnt == 2 )
     Esc::
     CapsLock::{
         Send "{Esc}"
         Arg.ClickKey := ""
         Arg.ClickCnt := 0
     }
-    RWin::CenterHideWindow(1000, 1000)
+    RWin::{
+        Send "{Blind}{vkFF}"
+        CenterHideWindow(1000, 1000)
+    }
 #HotIf
 
 
@@ -20,12 +25,12 @@ Arg.ClickCnt := 0
 
     RWin::{
         Send "{Blind}{vkFF}"
-        WinGetClientPos &x, &y, &w, &h, "A"
-        if x <= 0 or y <= 0
+        WinGetClientPos(&x, &y, &w, &h, "A")
+        if ( x <= 0 or y <= 0 )
             return
         MoveWindowCenter()
         win := GetHideWindowConfig()
-        if ObjOwnPropCount(win)
+        if ( ObjOwnPropCount(win) )
             CenterHideWindow()
     }
     RWin & RAlt::{
@@ -41,29 +46,28 @@ Arg.ClickCnt := 0
     AppsKeyEnterCount := 0
     $AppsKey::{
         Send "{AppsKey}"
-        Global AppsKeyRedirect, AppsKeyEnterCount
-        AppsKeyRedirect := True
+        Global AppsKeyRedirect , AppsKeyEnterCount
+        AppsKeyRedirect   := True
         AppsKeyEnterCount := 1
     }
 
     ~Esc::{
-        Global CapsLockActivate
-        Global CapsLockToEsc
+        Global CapsLockActivate , CapsLockToEsc
         CapsLockActivate := False
         CapsLockToEsc    := False
     }
 
     ~LCtrl::
     ~LShift::{
-        if (Arg.ClickCnt > 0) {
+        if ( Arg.ClickCnt > 0 ) {
             Arg.ClickCnt += 1
             return
         } else {
             Arg.ClickCnt := 1
         }
-        SetTimer Timer, -500
+        SetTimer(Timer, -500)
         Timer() {
-            if Arg.ClickCnt == 2
+            if ( Arg.ClickCnt == 2 )
                 Arg.ClickKey := A_ThisHotkey
         }
     }
@@ -114,8 +118,8 @@ Arg.ClickCnt := 0
     ;设置
     LAlt & RAlt::{
         Send "{Help}"
-        WinWaitActive "设置"
-        if WinGetTitle("A") == "设置"
+        WinWaitActive("设置")
+        if ( WinGetTitle("A") == "设置" )
             MoveWindowCenter()
     }
     ;快速切换

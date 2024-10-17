@@ -1,6 +1,6 @@
 ﻿
 $!F3::{
-    if WinActive("运行目标")
+    if ( WinActive("运行目标") )
         WinClose("A")
     else
         Send "!{F3}"

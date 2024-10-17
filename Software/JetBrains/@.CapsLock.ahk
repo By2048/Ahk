@@ -2,22 +2,22 @@
 CapsLockActivate := False
 
 ~*CapsLock::{
-    if InStr(A_PriorHotkey, "CapsLock")
-        if A_TimeSincePriorHotkey < 333
+    if ( InStr(A_PriorHotkey, "CapsLock") )
+        if ( A_TimeSincePriorHotkey < 333 )
             Send "{CtrlBreak}"
 }
 
 ~*CapsLock Up::{
-    SetCapsLockState "Off"
+    SetCapsLockState("Off")
 }
 
 !CapsLock::{
     Send "!{CtrlBreak}" ;关闭标签
-    SetCapsLockState "Off"
+    SetCapsLockState("Off")
 }
 !+CapsLock::{
     Send "!+{CtrlBreak}" ;重新打开标签
-    SetCapsLockState "Off"
+    SetCapsLockState("Off")
 }
 
 ; ------------------------------------------------------------------------- ;
@@ -32,7 +32,7 @@ CapsLockActivate := False
 ~CapsLock & AppsKey::{
     Global CapsLockActivate
     Global CenterTools , CenterToolsConfig
-    if (CapsLockActivate == True) {
+    if ( CapsLockActivate == True ) {
         Send "{Esc}"
         CenterTools := False
         CapsLockActivate := False
