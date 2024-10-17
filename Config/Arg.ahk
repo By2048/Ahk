@@ -35,28 +35,32 @@ Window := {
 ; 各种临时性数据
 Arg := {
     ;
-    win_cnt      : 0 ,
-    ctrl_cnt     : 0 ,
-    alt_cnt      : 0 ,
-    shift_cnt    : 0 ,
+    win_click      : 0 ,
+    ctrl_click     : 0 ,
+    alt_click      : 0 ,
+    shift_click    : 0 ,
+    capslock_click : 0 ,
+    numlock_click  : 0 ,
+    scroll_cnt     : 0 ,
+    pause_click    : 0 ,
 
-    capslock_cnt : 0 ,
-    numlock_cnt  : 0 ,
-    scroll_cnt   : 0 ,
-
-    pause_cnt : 0 ,
+    win_press : 0 ,
 
     previous_win_id : 0x0 ,
 
     search_input : False ,
 
-    status_show    : False ,
+    status_show : False ,
 
     ctrl_show    : False ,
     ctrl_content : ""    ,
 
     help_file_show    : False ,
     help_file_content : ""    ,
+
+    quick_move_show  : False ,
+    quick_move_index : 1     ,
+    quick_move_path  : ""    ,
 
     hotkeys_show    : False  ,
     hotkeys_index   : 0      ,

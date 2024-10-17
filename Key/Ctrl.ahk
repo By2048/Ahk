@@ -71,28 +71,28 @@
 
 $RCtrl::{
     Global Arg
-    if (Arg.ctrl_cnt > 0) {
-        Arg.ctrl_cnt += 1
+    if (Arg.ctrl_click > 0) {
+        Arg.ctrl_click += 1
         return
     } else {
-        Arg.ctrl_cnt := 1
+        Arg.ctrl_click := 1
     }
     SetTimer CtrlTimer, -500
 }
 CtrlTimer() {
     Global Arg
-    if (Arg.ctrl_cnt == 1) {
+    if (Arg.ctrl_click == 1) {
         if Arg.ctrl_show
             CtrlHelpGui()
         if CheckWindowActive("Maye")
             Send "{Esc}"
-        Arg.ctrl_cnt := 0
-    } else if (Arg.ctrl_cnt == 2) {
+        Arg.ctrl_click := 0
+    } else if (Arg.ctrl_click == 2) {
         Run "D:\#Lnk\#\Maye.lnk"
-    } else if (Arg.ctrl_cnt == 3) {
+    } else if (Arg.ctrl_click == 3) {
         CtrlHelpGui()
     }
-    Arg.ctrl_cnt := 0
+    Arg.ctrl_click := 0
 }
 CtrlHelpGui() {
     Global G , Arg

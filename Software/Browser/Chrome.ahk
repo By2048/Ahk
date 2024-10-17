@@ -41,23 +41,18 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
         return
     }
 
-    ~RWin::{
-        Send "{Blind}{vkFF}"
-        return
-    }
-
     ~LShift::{
-        if (Arg.shift_cnt > 0) {
-            Arg.shift_cnt += 1
+        if (Arg.shift_click > 0) {
+            Arg.shift_click += 1
             return
         } else {
-            Arg.shift_cnt := 1
+            Arg.shift_click := 1
         }
 
         SetTimer Timer, -500
         Timer() {
-            if (Arg.shift_cnt != 2) {
-                Arg.shift_cnt := 0
+            if (Arg.shift_click != 2) {
+                Arg.shift_click := 0
                 return
             }
 
@@ -86,7 +81,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
                 Send "{Enter}"
                 A_Clipboard := url_origin
                 ClipWait 1
-                Arg.shift_cnt := 0
+                Arg.shift_click := 0
                 return
             }
 
@@ -105,7 +100,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
             A_Clipboard := clipboard_origin
             ClipWait 1
 
-            Arg.shift_cnt := 0
+            Arg.shift_click := 0
         }
     }
 
