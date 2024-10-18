@@ -68,25 +68,25 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
     NumpadHome::{
         edit_name := ControlGetText("Edit1", "A")
         new_name  := ""
-        Loop Parse new_name 
+        Loop Parse edit_name 
         {
             name := A_LoopField
             if ( name == "#" )
                 continue
-            if ( name == "|" )
+            else if ( name == "|" )
                 continue
-            if ( Ord(A_LoopField) == "10" )
-                continue
-            if ( Ord(A_LoopField) == "13" )
-                continue
-            new_name := new_name . name
+            else if ( Ord(name) == "10" )
+                new_name := new_name . " "
+            else if ( Ord(name) == "13" )
+                new_name := new_name . " "
+            else
+                new_name := new_name . name
         }
         new_name := StrReplace(new_name, "  ", " ")
         new_name := StrReplace(new_name, "  ", " ")
         new_name := StrReplace(new_name, A_Tab, " ")
         new_name := StrReplace(new_name, "video_", "")
         new_name := StrReplace(new_name, " - 知乎", "")
-        new_name := name
         ControlSetText(new_name, "Edit1", "A")
     }
     NumpadEnd::ControlSetText(A_Clipboard, "Edit1", "A")
@@ -104,13 +104,13 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
     NumpadDel::
     #\::{
         MoveWindowDefault()
-        GetActiveWindowInfo(False)
         try {
+            window := GetActiveWindowInfo(False)
             info := window.controls.DirectUIHWND2  ;左侧信息栏
+            MoveControlUDLR(info, "Left", 300, 6)
         } catch {
             return
         }
-        MoveControlUDLR(info, "Left", 300, 6)
         Send("^!7")  ;平铺模式
     }
 
