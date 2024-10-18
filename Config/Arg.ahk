@@ -1,4 +1,4 @@
-﻿
+
 ; 存储当前窗口的信息
 ; 缓存处理 优化相关性能
 Window := {
@@ -51,9 +51,6 @@ Arg := {
     search_input : False ,
 
     status_show : False ,
-
-    ctrl_show    : False ,
-    ctrl_content : ""    ,
 
     help_file_show    : False ,
     help_file_content : ""    ,

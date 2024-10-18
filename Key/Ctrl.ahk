@@ -69,63 +69,69 @@
 >^Right::MoveWindowOffset( +10 ,   0 )
 
 
+Arg.ctrl_show    := False
+Arg.ctrl_content := ""
+
 $RCtrl::{
     Global Arg
-    if (Arg.ctrl_click > 0) {
+    if ( Arg.ctrl_click > 0 ) {
         Arg.ctrl_click += 1
         return
     } else {
         Arg.ctrl_click := 1
     }
-    SetTimer CtrlTimer, -500
+    SetTimer(CtrlTimer, -500)
 }
-CtrlTimer() {
+
+CtrlTimer()
+{
     Global Arg
-    if (Arg.ctrl_click == 1) {
-        if Arg.ctrl_show
-            CtrlHelpGui()
-        if CheckWindowActive("Maye")
+    if ( Arg.ctrl_click == 1 ) {
+        if ( Arg.ctrl_show )
+            CtrlGui()
+        if ( CheckWindowActive("Maye") )
             Send "{Esc}"
         Arg.ctrl_click := 0
-    } else if (Arg.ctrl_click == 2) {
+    } else if ( Arg.ctrl_click == 2 ) {
         Run "D:\#Lnk\#\Maye.lnk"
-    } else if (Arg.ctrl_click == 3) {
-        CtrlHelpGui()
-    }
+    } else if ( Arg.ctrl_click == 3 )
+        CtrlGui()
     Arg.ctrl_click := 0
 }
-CtrlHelpGui() {
+
+CtrlGui()
+{
     Global G , Arg
 
-    if (Arg.ctrl_show) {
-        try G.Destroy()
+    if ( Arg.ctrl_show ) {
+        Try G.Destroy()
         Arg.ctrl_show := False
         return
     }
 
-    if (not Arg.ctrl_content) {
-        file_path := A_InitialWorkingDir . "\Key\Ctrl.help"
-        if FileExist(file_path)
-            Arg.ctrl_content := FileRead(file_path, "`n UTF-8")
+    if ! ( Arg.ctrl_content ) {
+        path := A_InitialWorkingDir . "\Key\Ctrl.help"
+        if ( FileExist(path) )
+            Arg.ctrl_content := FileRead(path, "`n UTF-8")
     }
 
     margin    := Gui_Config.Margin
     font_name := Gui_Config.FontName
     font_size := Gui_Config.FontSize
-    if (GetWindowTheme() == "Dark") {
+    if ( GetWindowTheme() == "Dark" ) {
         font_color := Gui_Config.Dark.Font
         back_color := Gui_Config.Dark.Back
-    } else if (GetWindowTheme() == "Light") {
+    } else if ( GetWindowTheme() == "Light" ) {
         font_color := Gui_Config.Light.Font
         back_color := Gui_Config.Light.Back
     }
 
     G := Gui()
-    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
     G.MarginX := margin
     G.MarginY := margin
-    G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
     G.BackColor := back_color
+    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
+    G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
     G.Add("Text", "-Center -Border", Arg.ctrl_content)
     G.Show("NA Center")
 
