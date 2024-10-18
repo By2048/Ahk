@@ -170,9 +170,8 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     #Include Explorer.Joy.ahk
     #Include Explorer.Mouse.ahk
     
-          \::FileQuickPreview()
-     Insert::FileQuickMoveShow()
-    +Insert::FileQuickTools()
+    \::FileQuickPreview()
+    Insert::FileQuickTools()
 
 #HotIf
 

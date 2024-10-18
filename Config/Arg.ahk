@@ -1,4 +1,4 @@
-
+﻿
 ; 存储当前窗口的信息
 ; 缓存处理 优化相关性能
 Window := {
@@ -54,10 +54,6 @@ Arg := {
 
     help_file_show    : False ,
     help_file_content : ""    ,
-
-    quick_move_show  : False ,
-    quick_move_index : 1     ,
-    quick_move_path  : ""    ,
 
     hotkeys_show    : False  ,
     hotkeys_index   : 0      ,

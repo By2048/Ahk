@@ -1,4 +1,9 @@
 ﻿
+Arg.quick_tool_show   := False
+Arg.quick_tool_index  := 1     
+Arg.quick_tool_config := ""    
+
+
 FileQuickPreview()
 {
     paths := GetSelectItem()
@@ -20,8 +25,7 @@ FileQuickPreview()
 }
 
 
-
-FileQuickTools()
+FileQuickUnZip()
 {
     paths := GetSelectItem()
 
@@ -43,8 +47,29 @@ FileQuickTools()
 }
 
 
+FileQuickMove()
+{
+    paths := GetSelectItem()
+    G.Destroy()
+    for path in paths {
+        attribute := FileExist(path)
+        if ( InStr(attribute, "A") )
+            FileMove(path, Arg.quick_tool_config, 0)
+        else if ( InStr(attribute, "D") ) {
+            if ( InStr(path, "[") )
+                path := StrReplace(path, "[", "``[")
+            if ( InStr(path, "]") )
+                path := StrReplace(path, "]", "``]")
+            cmd := WT " --focus --size 77,22 "
+            cmd .= PSL " -NoProfile -WorkingDirectory T:\ -Command "
+            cmd .= Format("`"Move-Item -Path '{1}\' -Destination '{2}' -Force`"", path, Arg.quick_tool_config)
+            Run cmd
+        }
+    }
+}
 
-FileQuickMoveShow()
+
+FileQuickTools()
 {
     Global G , Arg
     Try G.Destroy()
@@ -54,29 +79,30 @@ FileQuickMoveShow()
     G.SetFont("s15", "Verdana")
     G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
     G.Add("Text")
-    for path in ExplorerMovePath[Arg.quick_move_index] {
+    for path in ExplorerTools[Arg.quick_tool_index] {
         text := G.Add("Text", "w333", "  " . path)
         text.Enabled := false
     }
     G.Add("Text")
     G.Show("Center NA")
-    Arg.quick_move_show := True
-    Arg.quick_move_path := ""
+    Arg.quick_tool_show   := True
+    Arg.quick_tool_config := ""
 }
 
 
 
-FileQuickMoveHide()
+FileQuickToolsHide()
 {
     Global G , Arg
     Try G.Destroy()
-    Arg.quick_move_show := false
-    Arg.quick_move_path := ""
+    Arg.quick_tool_show   := False
+    Arg.quick_tool_index  := 1
+    Arg.quick_tool_config := ""
 }
 
 
 
-FileQuickMoveSwitch(step := +1)
+FileQuickToolsSwitch(step := +1)
 {
     Global G , Arg
 
@@ -111,7 +137,7 @@ FileQuickMoveSwitch(step := +1)
         if ( check ) {
             G[control_name].Opt("+Backgroundbdbebd")
             G[control_name].Enabled := true
-            Arg.quick_move_path := text
+            Arg.quick_tool_config := text
             break
         }
     }
@@ -120,37 +146,37 @@ FileQuickMoveSwitch(step := +1)
         G[win_controls[1]].Opt("+Backgroundbdbebd")
         G[win_controls[1]].Enabled := true
         text := Trim( G[win_controls[1]].Text )
-        Arg.quick_move_path := text
+        Arg.quick_tool_config := text
     } 
 }
 
 
 
-#HotIf ( Arg.quick_move_show == true )
+#HotIf ( Arg.quick_tool_show == true )
 
     Up::
     Left::
     [::{
-        FileQuickMoveSwitch(-1)
+        FileQuickToolsSwitch(-1)
     }
 
     Down::
     Right::
     ]::{
-        FileQuickMoveSwitch(+1)
+        FileQuickToolsSwitch(+1)
     }
 
     \::{
-        Arg.quick_move_index := Arg.quick_move_index + 1
-        if ( Arg.quick_move_index > ExplorerMovePath.Length )
-            Arg.quick_move_index := 1
-        FileQuickMoveShow()
+        Arg.quick_tool_index := Arg.quick_tool_index + 1
+        if ( Arg.quick_tool_index > ExplorerTools.Length )
+            Arg.quick_tool_index := 1
+        FileQuickTools()
     }
     +\::{
-        Arg.quick_move_index := Arg.quick_move_index - 1
-        if ( Arg.quick_move_index < 1 )
-            Arg.quick_move_index := 1
-        FileQuickMoveShow()
+        Arg.quick_tool_index := Arg.quick_tool_index - 1
+        if ( Arg.quick_tool_index < 1 )
+            Arg.quick_tool_index := 1
+        FileQuickTools()
     }
 
     Enter::
@@ -164,23 +190,14 @@ FileQuickMoveSwitch(step := +1)
             Try G.Destroy()
         if ( A_ThisHotkey == "BackSpace" )
             Try G.Destroy()
-        if ( A_ThisHotkey == "Enter" ) {
-            select_items := GetSelectItem()
-            G.Destroy()
-            for item in select_items {
-                attribute := FileExist(item)
-                if ( InStr(attribute, "A") )
-                    FileMove(item, Arg.quick_move_path, 0)
-                else if ( InStr(attribute, "D") ) {
-                    cmd := PSL " -NoProfile -NoExit -Command "
-                    cmd .= Format("{Move-Item -Path '{1}' -Destination '{2}' -Force}", item, Arg.quick_move_path)
-                    Run cmd
-                }
-            }
+
+        if ( Arg.quick_tool_config == "@UnZip" ) {
+            FileQuickUnZip()
+        } else {
+            FileQuickMove()
         }
-        Arg.quick_move_show  := False
-        Arg.quick_move_index := 1
-        Arg.quick_move_path  := ""
+
+        FileQuickToolsHide()
     }
 
 #HotIf
