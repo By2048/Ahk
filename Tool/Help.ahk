@@ -6,6 +6,10 @@
 #Include ..\Tool\Window.ahk
 
 
+Arg.help_file_show    := False
+Arg.help_file_content := ""
+
+
 ; 显示图片
 HelpImage(image:="")
 {
@@ -25,9 +29,9 @@ HelpImage(image:="")
     x := Screen.w/2 - w/2
     y := Screen.h/2 - h/2
 
-    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
     G.MarginX := 1
     G.MarginY := 1
+    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption")
     G.Add("Picture", Format("+Border w{1} h{2}", w, h), image)
     G.Show("Center NA")
 }
@@ -59,9 +63,9 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     text_h := 0
 
     Global Gui_Help
-    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
     G.MarginX := 0
     G.MarginY := 0
+    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
     G.SetFont(Format("s{}", Gui_Help.Font.Size), Gui_Help.Font.Type)
     G.Add("Text", Format("+Center +Border vTextContent x{} y{}", text_x, text_y), data)
     G["TextContent"].GetPos(&text_x, &text_y, &text_w, &text_h)

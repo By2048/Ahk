@@ -1,4 +1,6 @@
 ﻿
+Arg.status_show := False
+
 Status := Gui()
 
 Status.w := 1056

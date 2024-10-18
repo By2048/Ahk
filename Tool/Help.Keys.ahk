@@ -1,4 +1,8 @@
 ﻿
+Arg.hotkeys_show    := False
+Arg.hotkeys_index   := 0
+Arg.hotkeys_current := ""
+
 ; 隐藏快捷键提示
 HelpKeysShow(step:=0)
 {

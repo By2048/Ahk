@@ -184,18 +184,15 @@ FileQuickToolsSwitch(step := +1)
     Delete::
     BackSpace::{
         Global G , Arg
-        if ( A_ThisHotkey == "Insert" )
-            Try G.Destroy()
-        if ( A_ThisHotkey == "Delete" )
-            Try G.Destroy()
-        if ( A_ThisHotkey == "BackSpace" )
-            Try G.Destroy()
-
-        if ( Arg.quick_tool_config == "@UnZip" ) {
-            FileQuickUnZip()
-        } else {
-            FileQuickMove()
+        if ( A_ThisHotkey != "Enter" ) {
+            FileQuickToolsHide()
+            return
         }
+
+        if ( Arg.quick_tool_config == "@UnZip" )
+            FileQuickUnZip()
+        else
+            FileQuickMove()
 
         FileQuickToolsHide()
     }

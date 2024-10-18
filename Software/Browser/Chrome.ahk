@@ -185,9 +185,10 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
     }
 
     ; 定位地址栏
+    Arg.search_input := False
     ~CapsLock::
     !Space::{
-        if (not Arg.search_input) {
+        if ! ( Arg.search_input ) {
             Arg.search_input := True
             Send "!d"
         } else {

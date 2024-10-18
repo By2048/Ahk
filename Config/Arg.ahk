@@ -45,19 +45,6 @@ Arg := {
     pause_click    : 0 ,
 
     win_press : 0 ,
-
-    previous_win_id : 0x0 ,
-
-    search_input : False ,
-
-    status_show : False ,
-
-    help_file_show    : False ,
-    help_file_content : ""    ,
-
-    hotkeys_show    : False  ,
-    hotkeys_index   : 0      ,
-    hotkeys_current : ""
 }
 
 
