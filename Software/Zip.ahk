@@ -5,6 +5,27 @@ RegisterProcess( "7zG"  , "ZipDialog" )
 RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
 
 
+UnZipPath := [ "T:\" , "V:\" ]
+
+
+#Include *i Zip.Private.ahk
+
+
+SetZipPath(path) {
+    ControlSetText(path, "Edit1", "A")
+}
+SetZipPathPrev() {
+    path := ControlGetText("Edit1", "A")
+    path := LoopList(UnZipPath, &path, -1)
+    SetZipPath(path)
+}
+SetZipPathNext() {
+    path := ControlGetText("Edit1", "A")
+    path := LoopList(UnZipPath, &path, +1)
+    SetZipPath(path)
+}
+
+
 #HotIf CheckWindowActive( "ZipDialog" , "#32770" , "浏览文件夹" )
     \::Send "{Esc}"
 #HotIf
@@ -24,10 +45,13 @@ RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
     ; 确认解压
     Enter::ControlClick("Button7", "A")
     
-    `;::ControlSetText("V:\", "Edit1", "A")
-     '::ControlSetText("T:\", "Edit1", "A")
+    `;::SetZipPath("V:\#\")
+     '::SetZipPath("T:\"  )
 
-    #Include *i Zip.Private.ahk
+    [::SetZipPathPrev()
+
+    ]::SetZipPathNext()
+     
     #Include *i Zip.Joy.ahk
 
 #HotIf
@@ -35,7 +59,8 @@ RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
 
 
 #HotIf CheckWindowActive( "ZipMain" , "#32770" , "复制" )
-    #Include *i Zip.Private.ahk
+    `;::SetZipPath("V:\#\")
+     '::SetZipPath("T:\"  )
 #HotIf
 
 
@@ -49,14 +74,12 @@ RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
 #HotIf
 
 
-
 #HotIf CheckWindowActive( "ZipMain | ZipDialog" , "#32770" , "属性" )
     #\::{
         MoveWindowPosition(Position(650, 900))
         SetColumnWidth("SysListView321", Map( 1,150 , 2,420 ))
     }
 #HotIf
-
 
 
 #HotIf CheckWindowActive( "ZipMain" )

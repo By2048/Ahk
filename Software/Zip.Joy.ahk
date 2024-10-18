@@ -1,15 +1,15 @@
 ﻿
 ; 上
-Numpad8::SetZipPath("F:\Resource\EHentai\")
+Numpad8::SetZipPathPrev()
 
 ; 下
-Numpad2::SetZipPath("F:\Resource\Cartoon\")
+Numpad2::SetZipPathNext()
 
 ; 左
-Numpad4::SetZipPath("F:\Resource\Anime\")
+Numpad4::SetZipPathPrev()
 
 ; 右
-Numpad6::SetZipPath("F:\Resource\Aldult\")
+Numpad6::SetZipPathNext()
 
 ;---------------------------------;
 
@@ -20,10 +20,10 @@ Numpad9::Send "{Enter}"
 Numpad3::Send "{Esc}"
 
 ; 左
-Numpad7::SetZipPathPrev()
+Numpad7::SetZipPath("V:\#\")
 
 ; 右
-Numpad1::SetZipPathNext()
+Numpad1::SetZipPath("T:\"  )
 
 ;---------------------------------;
 
