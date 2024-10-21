@@ -59,7 +59,7 @@ LoopList(data, &current, step:=+1, circle:=false)
         }
     }
 
-    if ! ( check_match )
+    if ( ! check_match )
         if ( step == +1 )
             next_index := +1
         else if ( step == -1 )

@@ -88,13 +88,13 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
     ; 项目 结构
     ~CapsLock & [::{
-        if !GetKeyState("LShift", "P")
+        if ( ! GetKeyState("LShift", "P") )
             Send "^!["
         else
             Send "^!+["
     }
     ~CapsLock & ]::{
-        if !GetKeyState("LShift", "P")
+        if ( ! GetKeyState("LShift", "P") )
             Send "^!]"
         else
             Send "^!+]"
@@ -108,7 +108,7 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
     ; 代码注释
     LAlt & RShift::{
-        if !GetKeyState("LShift", "P")
+        if ( ! GetKeyState("LShift", "P") )
             Send "^\"
         else
             Send "^+\"

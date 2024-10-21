@@ -32,7 +32,7 @@ CapsLockRedirect(key:="", cycle:="", fun:="", arg:="")
 
     lshift := GetKeyState("LShift", "P")
 
-    if ! ( lshift )
+    if ( ! lshift )
         Send Format("^!{{1}}", key)
     else
         Send Format("^!+{{1}}", key)
@@ -42,7 +42,7 @@ CapsLockRedirect(key:="", cycle:="", fun:="", arg:="")
     if ( fun == "Center" ) {
         if ( InStr(arg, "|") ) {
             arg := StrSplit(arg, "|")
-            if ! ( lshift )
+            if ( ! lshift )
                 arg := Trim(arg[1])
             else
                 arg := Trim(arg[2])
@@ -85,7 +85,7 @@ GetHideWindowConfig(check_sleep:=44, check_count:=22)
 CenterHideWindow(position*)
 {
     win := GetHideWindowConfig()
-    if ! ( ObjOwnPropCount(win) )
+    if ( ! ObjOwnPropCount(win) )
         return
     win_id := win.id
     if ( position.Length == 0 ) {

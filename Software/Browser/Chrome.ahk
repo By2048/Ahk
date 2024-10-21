@@ -188,7 +188,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
     Arg.search_input := False
     ~CapsLock::
     !Space::{
-        if ! ( Arg.search_input ) {
+        if ( ! Arg.search_input ) {
             Arg.search_input := True
             Send "!d"
         } else {

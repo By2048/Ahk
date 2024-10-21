@@ -1,9 +1,7 @@
 ﻿
 ExplorerTools := [  
     [ 
-         "@UnZip"
-        , "" 
-        , "T:\" 
+          "T:\" 
         , "V:\" 
     ] 
 ]

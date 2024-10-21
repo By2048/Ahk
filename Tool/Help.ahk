@@ -18,7 +18,7 @@ HelpImage(image:="")
 
     G := Gui()
 
-    if ! ( image ) {
+    if ( ! image ) {
         G.Destroy()
         return
     }
@@ -51,7 +51,7 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     Try G.Destroy()
     G := Gui()
 
-    if ! ( data ) {
+    if ( ! data ) {
         G.Destroy()
         return
     }
@@ -74,13 +74,12 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     screen_id := ScreenNameToId(screen_name)
     screen_id := screen_id > Screens.Count ? screen_id - 1 : screen_id
     screen_id := screen_id > Screens.Count ? screen_id - 1 : screen_id
-    if ( screen_id == "1" ) {
+    if ( screen_id == "1" )
         screen_config := Screens.1
-    } else if ( screen_id == "2" ) {
+    else if ( screen_id == "2" )
         screen_config := Screens.2
-    } else if ( screen_id == "3" ) {
+    else if ( screen_id == "3" )
         screen_config := Screens.3
-    }
     screen_id  := screen_config.id
     screen_dpi := screen_config.dpi
     screen_x   := screen_config.x
@@ -139,11 +138,11 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 ; 显示文件内容
 HelpFile(path:="")
 {
-    if ! ( path )
+    if ( ! path )
         return
 
     path := A_InitialWorkingDir . "\" . path
-    if ! ( FileExist(path) )
+    if ( ! FileExist(path) )
         return
 
     Global Window, Arg, G

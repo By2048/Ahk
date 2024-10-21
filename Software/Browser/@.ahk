@@ -177,6 +177,5 @@
 
     #Include *i @.Mouse.ahk
     #Include *i @.Joy.ahk
-    #Include *i @.Private.ahk
 
 #HotIf

@@ -138,7 +138,7 @@
     GetActiveWindowInfo()
     if ( IsDesktops() )
         return
-    if ! ( window.pid )
+    if ( ! window.pid )
         return
     ProcessClose(window.pid)
 }

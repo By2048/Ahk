@@ -132,7 +132,7 @@ CenterToolsConfig := []
     ~Enter::{
         Global CenterTools, CenterToolsConfig
         win := GetHideWindowConfig()
-        if ! ( ObjOwnPropCount(win) ) {
+        if ( ! ObjOwnPropCount(win) ) {
             CenterTools := False
             AppsKeyRedirect := False
             CenterToolsConfig := []
@@ -151,7 +151,7 @@ CenterToolsConfig := []
             Send "{Esc}"
         CenterToolsConfig.Pop()
         FloatWindows()
-        if ! ( CenterToolsConfig.Length ) {
+        if ( ! CenterToolsConfig.Length ) {
             CenterTools := False
             AppsKeyRedirect := False
         }
