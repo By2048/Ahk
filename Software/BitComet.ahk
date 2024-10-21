@@ -30,7 +30,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         cfg := " 1:名称:999  2:大小:111  3:%:77 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321" , cfg)
-        cfg := " 1:下载顺序:111  2:文件名称:777  3:大小:111 4:%:77 5:当前优先级:111 "
+        cfg := " 1:下载顺序:111  2:文件名称:777  3:大小:123 4:%:77 5:当前优先级:123 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView323" , cfg)
     }
@@ -91,6 +91,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         #Include *i BitComet.Private.ahk
     }
 
+    ; 复制名称
     ^+c::{
         Send "{AppsKey}"
         Send "{Up 3}"
@@ -98,9 +99,28 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         Send "{Enter}"
     }
 
+    ; 设置代理
+    ![::{
+        Send "^p"
+        Send "^+{Tab 5}"
+        Send "^{Tab}"
+        Send "{Tab}"
+        Send "{Left 5}"
+        Send "^{Enter}"
+    }
+    ; 取消代理
+    !]::{
+        Send "^p"
+        Send "^+{Tab 5}"
+        Send "^{Tab}"
+        Send "{Tab}"
+        Send "{Right 5}"
+        Send "{Left}"
+        Send "^{Enter}"
+    }
+
     #BackSpace::{
-        Send "!{f}"
-        Sleep 99
+        Send "!f"
         Send "{Up}"
         Send "{Enter}"
     }

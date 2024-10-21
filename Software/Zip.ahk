@@ -59,6 +59,8 @@ SetZipPathNext() {
 
 
 #HotIf CheckWindowActive( "ZipMain" , "#32770" , "复制" )
+     [::SetZipPathPrev()
+     ]::SetZipPathNext()
     `;::SetZipPath("V:\#\")
      '::SetZipPath("T:\"  )
 #HotIf
