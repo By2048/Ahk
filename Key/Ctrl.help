@@ -15,12 +15,12 @@
 |  F | FreeFileSync           |  " | VSCodeDefault   |
 |  G | Geek                   |----------------------|
 |  H | Spy AHK | GH           |  Esc | 任务管理器    |
-|  J | JetBrains Tool | Check | +Esc | HuoRongSword  |
+|  J | JetBrains Tool | Check | +Esc |               |
 |  K | Key History | Virtual  |----------------------|
 |  L |                        |  Enter | Whiteboard  |
-|-----------------------------| +Enter | DevToys     |
+|----|------------------------| +Enter | DevToys     |
 |  Z |                        |----------------------|
-|  X |                        | F12 | WT             | 
+|  X |                        | BackSpace | WT       | 
 |  C | Calc                   |
 |  V | Vpn                    |
 |  B | Image                  |

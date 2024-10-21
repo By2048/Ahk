@@ -41,14 +41,12 @@
 >^+n::Run "D:\#Lnk\#\QQMusic.lnk"
  >^m::Run "D:\#Lnk\#\PotPlayer.lnk"
 
- >^F12::Run WT " -d T:\"
+ >^[::Run VSCode " --profile %Temp    E:\Config\VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
+ >^]::Run VSCode " --profile %Note    E:\Config\VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
+ >^\::Run VSCode " --profile %Windows E:\Config\VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
 
- >^[::Run VSCode " --profile %Temp     E:\Config\VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
- >^]::Run VSCode " --profile %Note     E:\Config\VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
- >^\::Run VSCode " --profile %Windows  E:\Config\VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
-
->^`;::Run VSCodeDefault " --profile 默认  --new-window", A_InitialWorkingDir, "Hide"
- >^'::Run VSCode        " --profile 默认  --new-window", A_InitialWorkingDir, "Hide"
+>^`;::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
+ >^'::Run VSCode        " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
 
  >^,::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
 >^+,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
@@ -57,11 +55,12 @@
  >^/::Run "E:\Script\Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
 >^+/::Run "E:\Script\Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
 
- >^Esc::Run "TaskMgr" ;任务管理器
->^+Esc::Run "D:\#Lnk\#\HuoRongSword.lnk"
+>^Esc::Run "TaskMgr" ;任务管理器
 
  >^Enter::Run "D:\#Lnk\#AppStore\Whiteboard.lnk"
 >^+Enter::Run "D:\#Lnk\#AppStore\DevToys.lnk"
+
+>^BackSpace::Run WT " -d T:\"
 
 >^Up::   MoveWindowOffset(   0 , -10 )
 >^Down:: MoveWindowOffset(   0 , +10 )
@@ -109,7 +108,7 @@ CtrlGui()
         return
     }
 
-    if ! ( Arg.ctrl_content ) {
+    if ( ! Arg.ctrl_content ) {
         path := A_InitialWorkingDir . "\Key\Ctrl.help"
         if ( FileExist(path) )
             Arg.ctrl_content := FileRead(path, "`n UTF-8")
