@@ -2,12 +2,10 @@
 ; True False
 StrToBool(value)
 {
-    if (value == "True") {
+    if ( value == "True" )
         return True
-    }
-    if (value == "False") {
+    if (value == "False")
         return False
-    }
     return value
 }
 
@@ -17,11 +15,11 @@ ScreenNameToId(screen_name)
 {
 
     screen_name := Format("{:L}", screen_name)
-    if not screen_name
+    if ( ! screen_name ) 
         return "1"
-    if screen_name == "screen" or screen_name == "main"
+    if ( screen_name == "screen" || screen_name == "main" )
         return "1"
-    if screen_name == "screen_main" or screen_name == "screenmain"
+    if ( screen_name == "screen_main" || screen_name == "screenmain" )
         return "1"
     screen_name := StrReplace(screen_name  , "screen", "")
     screen_name := StrReplace(screen_name  , "_"     , "")
@@ -67,9 +65,9 @@ Position(args*)
 
     GetScreenIndex(arg) {
         screen_index := 1
-        if ( StrLower(arg) == "[center]" or StrLower(arg) == "center" ) {
+        if ( StrLower(arg) == "[center]" || StrLower(arg) == "center" ) {
             screen_index := 1
-        } else if InStr( StrLower(arg) , "center" ) {
+        } else if ( InStr( StrLower(arg) , "center" ) ) {
             check := RegExMatch(StrLower(arg), "\[center\]\[([1-9])\]", &re_match)
             if ( check )
                 screen_index := re_match.1

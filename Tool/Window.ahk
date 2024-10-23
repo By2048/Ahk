@@ -161,7 +161,7 @@ GetActiveWindowInfo(cache:=True)
     wpn := RTrim(wpn , "EXE")
     wpn := RTrim(wpn , "."  )
     win_process_name := Windows_Process.Get(StrLower(wpn), win_process_exe)
-    if ( InStr(win_process_name, ".exe") or InStr(win_process_name, ".EXE") )
+    if ( InStr(win_process_name, ".exe") || InStr(win_process_name, ".EXE") )
         win_process_name := wpn
 
     if ( InStr(win_title , " - Google Chrome") )
@@ -359,9 +359,9 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
         h := window.h
 
     if (   Abs(win_x - x) > offset 
-        or Abs(win_y - y) > offset 
-        or Abs(win_w - w) > offset
-        or Abs(win_h - h) > offset ) {
+        || Abs(win_y - y) > offset 
+        || Abs(win_w - w) > offset
+        || Abs(win_h - h) > offset ) {
         if ( step ) {
             try {
                 WinMove(x, y,  ,  , "ahk_id " . win_id)
@@ -661,10 +661,10 @@ HighlightActiveWindow(time:=300, width:=4, color:="e51400")
     if ( win_min_max == "Min" )
         return
 
-    if ( not win_w or not win_h )
+    if ( ! win_w ) || ( ! win_h )
         return
 
-    if ( win_process_name == "Explorer" and win_class == "WorkerW" )
+    if ( win_process_name == "Explorer" && win_class == "WorkerW" )
         return
 
     gui_x := win_x

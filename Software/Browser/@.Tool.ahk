@@ -68,7 +68,7 @@ UrlChange(origin)
         result := StrReplace(origin, "video", "all")
 
     ; .jpg@xxx.xxx
-    if InStr(origin, ".jpg@") or InStr(origin, ".png@") or InStr(origin, ".webp@")
+    if InStr(origin, ".jpg@") || InStr(origin, ".png@") || InStr(origin, ".webp@")
         result := RegExReplace(origin, "(http.*)(.\w+)(@)(.*)", "$1$2")
 
 

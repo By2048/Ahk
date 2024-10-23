@@ -16,10 +16,12 @@
     Run "D:\#Lnk\#\JetBrains.lnk"
     loop 33 {
         try {
-            WinActivate "ahk_exe jetbrains-toolbox.exe"
+            WinActivate("ahk_exe jetbrains-toolbox.exe")
             window := GetActiveWindowInfo()
-            MoveWindowPosition(Position(window.w, window.h))
-            return
+            if ( window.process_name == "jetbrains-toolbox" ) {
+                MoveWindowPosition(Position(window.w, window.h))
+                break
+            }
         } catch {
             Sleep 10
         }

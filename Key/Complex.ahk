@@ -36,7 +36,7 @@ LWin & RAlt::{
     WS_CAPTION := 0xC00000
     style := WinGetStyle("A")
     WinSetStyle(Format("^{}", WS_CAPTION), "A")
-    if ( not (style & WS_CAPTION) ) {
+    if ( ! (style & WS_CAPTION) ) {
         HelpText("`n Windows Title Show `n", "Center", "Screen1", 500)
     } else {
         HelpText("`n Windows Title Hide `n", "Center", "Screen1", 500)
@@ -69,7 +69,7 @@ RWin  & RCtrl::MoveWindowQuick("Main")
 
 ; 切换系统 主题|亮暗
 LWin & RShift::{
-    if (GetKeyState("LShift")) {
+    if ( GetKeyState("LShift") ) {
         ; 系统主题
         path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes"
         key   := "CurrentTheme"
@@ -88,10 +88,10 @@ LWin & RShift::{
         path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
         key   := "AppsUseLightTheme"
         theme := RegRead(path, key, "")
-        if (theme == "0") {
+        if ( theme == "0" ) {
             RegWrite(1, "REG_DWORD", path, key)
             HelpText("`n  Light  `n", "Center", "Screen", 1000)
-        } else if (theme == "1") {
+        } else if ( theme == "1" ) {
             RegWrite(0, "REG_DWORD", path, key)
             HelpText("`n  Dark  `n", "Center", "Screen", 1000)
         }
@@ -105,10 +105,10 @@ RWin & RShift::{
     key  := "ProxyEnable"
     ; Windows代理
     state := RegRead(path, key, "")
-    if (state == "0") {
+    if ( state == "0" ) {
         RegWrite(1, "REG_DWORD", path, key)
         HelpText("`n  Proxy On  `n", "Center", "Screen1", 500)
-    } else if (state == "1") {
+    } else if ( state == "1" ) {
         RegWrite(0, "REG_DWORD", path, key)
         HelpText("`n  Proxy Off  `n", "Center", "Screen1", 1000)
     }

@@ -30,19 +30,16 @@ RunNormalUser(command)
 ; Windows终端启动设置
 WindowsTerminal(mode:="Focus", folder:="")
 {
-    if (mode == "Full") {
+    if ( mode == "Full" )
         mode := "--fullscreen"
-    } else if (mode == "Focus") {
+    else if ( mode == "Focus" )
         mode := "--focus"
-    }
     exe := "WindowsTerminal.exe"
     rule := "ahk_exe WindowsTerminal.exe ahk_class CASCADIA_HOSTING_WINDOW_CLASS"
     title := "Administrator: PowerShell"
     Run Format("{} {} -d {}", WT, mode, folder)
     Sleep 300
-    try {
-        WinActivate AEXE(exe)
-    }
+    Try WinActivate AEXE(exe)
 }
 
 
@@ -76,11 +73,11 @@ ScreenShotFull(path:="", slient:=True)
 ; 软件设置界面截图保存
 ScreenShotSoftware(path:="", slient:=True)
 {
-    if ( !slient and !FileExist(path) ) {
+    if ( ! slient ) && ( ! FileExist(Snipaste) ) {
         HelpText("`n Snipaste Error `n", "Center", "Screen", 500)
         return
     }
-    if ( !slient and !FileExist(path) ) {
+    if ( ! slient ) && ( ! FileExist(path) ) {
         HelpText("`n Keep Path Error `n", "Center", "Screen", 500)
         return
     }
@@ -139,7 +136,7 @@ GetColumnConfig(args*)
 {
     GetCfg(cfg) {
         result := Map()
-        if not cfg
+        if ( ! cfg )
             return result
         cfg := Trim(cfg)
         cfg := RegExReplace(cfg, "\s+", " ")
@@ -156,7 +153,7 @@ GetColumnConfig(args*)
 
     GetINW(index, name, width) {
         result := Map()
-        if not index or not width
+        if ( ! index ) || ( ! width )
             return result
         index := Trim(index)
         width := Trim(width)
@@ -167,7 +164,7 @@ GetColumnConfig(args*)
         index := StrSplit(index, " ")
         width := StrSplit(width, " ")
         name  := StrSplit(name,  " ")
-        if index.Length != width.Length
+        if ( index.Length != width.Length )
             return result
         loop index.Length {
             key   := index[A_Index] + 0
@@ -178,12 +175,12 @@ GetColumnConfig(args*)
     }
 
     result := Map()
-    if args.Length == 1 {
+    if ( args.Length == 1 ) {
         cfg := args[1]
         result := GetCfg(cfg)
     }
 
-    if args.Length == 3 {
+    if ( args.Length == 3 ) {
         index := args[1]
         name  := args[2]
         width := args[3]
@@ -202,39 +199,39 @@ GetColumnConfig(args*)
 GetOffset(direction:="X", step:=3, total:=10, cursor:="")
 {
     Check() {
-        if cursor and A_Cursor == cursor
+        if ( cursor ) && ( A_Cursor == cursor )
             return true
-        if A_Cursor == "SizeWE" or A_Cursor == "SizeNS"
+        if ( A_Cursor == "SizeWE" ) || ( A_Cursor == "SizeNS" )
             return true
         return false
     }
 
     offset := 0
 
-    if not direction
+    if ( ! direction )
         return offset
 
-    if Check()
+    if ( Check() )
         return offset
 
-    MouseGetPos &x_origin, &y_origin
+    MouseGetPos(&x_origin, &y_origin)
     xx := x_origin
     yy := y_origin
     offset := 0
     Loop total {
         move := step * A_Index
-        if Mod(A_Index, 2)
+        if ( Mod(A_Index, 2) )
             move := 0 - move
-        if direction == "x" or direction == "X"
+        if ( direction == "x" || direction == "X" )
             xx := xx + move
-        if direction == "y" or direction == "Y"
+        if ( direction == "y" || direction == "Y" )
             yy := yy + move
-        MouseMove xx, yy, 0
-        if Check() {
+        MouseMove(xx, yy, 0)
+        if ( Check() ) {
             offset := move / 2
             break
         }
     }
-    MouseMove x_origin, y_origin
+    MouseMove(x_origin, y_origin)
     return offset
 }

@@ -41,17 +41,17 @@
     volume_current := Round(SoundGetVolume())
     for index, volume in volume_steps {
         if ( Abs(volume_current - volume) < volume_offset ) {
-            if (InStr(A_ThisHotkey, "PgDn")) {
-                if (index == 1) {
-                    SoundSetVolume volume_steps[1]
+            if ( InStr(A_ThisHotkey, "PgDn") ) {
+                if ( index == 1 ) {
+                    SoundSetVolume(volume_steps[1])
                 } else {
-                    SoundSetVolume volume_steps[index - 1]
+                    SoundSetVolume(volume_steps[index - 1])
                 }
-            } else if (InStr(A_ThisHotkey, "PgUp")) {
-                if (index == volume_steps.Length) {
-                    SoundSetVolume volume_steps[-1]
+            } else if ( InStr(A_ThisHotkey, "PgUp") ) {
+                if ( index == volume_steps.Length ) {
+                    SoundSetVolume(volume_steps[-1])
                 } else {
-                    SoundSetVolume volume_steps[index + 1]
+                    SoundSetVolume(volume_steps[index + 1])
                 }
             }
             break
@@ -80,7 +80,7 @@
 <#.::Run "control" ;控制面板
 <#+.::{ ;环境编辑器
     Run "sysdm.cpl"
-    WinWaitActive "ahk_exe SystemPropertiesComputerName.exe",  , 3
+    WinWaitActive("ahk_exe SystemPropertiesComputerName.exe",  , 3)
     MoveWindowCenter()
     Send "^{Tab 2}"
     Send "!n"
@@ -98,19 +98,18 @@
 ; 复制文件路径
 <#c::{
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if not hwnd
+    if ( ! hwnd )
         return
     result := ""
     for win in ComObject("Shell.Application").Windows {
-        if (win.hwnd == hwnd) {
-            for item in win.Document.SelectedItems {
+        if ( win.hwnd == hwnd ) {
+            for item in win.Document.SelectedItems
                 result := result . "`n" . item.path
-            }
         }
     }
     result := LTrim(result, "`n")
     A_Clipboard := result
-    ClipWait
+    ClipWait()
     HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
 }
 
@@ -121,10 +120,10 @@
 <#+c::{
     A_Clipboard := ""
     Send "^c"
-    ClipWait
+    ClipWait()
     HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
-    if FileExist(JQB.Windows)
-        FileDelete JQB.Windows
+    if ( FileExist(JQB.Windows) )
+        FileDelete(JQB.Windows)
     file := FileOpen(JQB.Windows, "w", "UTF-8")
     file.Write(A_Clipboard)
     file.Close()
@@ -133,61 +132,56 @@
 ; 同步粘贴
 <#+v::{
     global JQB
-    FileEncoding "UTF-8"
+    FileEncoding("UTF-8")
     origin := A_Clipboard
-    if not FileExist(JQB.Phone) {
+    if ( ! FileExist(JQB.Phone) ) {
         HelpText("No File", "CenterDown",  , 333)
         return
     }
     content := ""
     try {
         content := FileRead(JQB.Phone)
-        FileDelete JQB.Phone
+        FileDelete(JQB.Phone)
     }
-    if not content {
+    if ( ! content ) {
         HelpText("No Data", "CenterDown",  , 333)
-        try FileDelete JQB.Phone
+        Try FileDelete(JQB.Phone)
         return
     }
     A_Clipboard := content
-    ClipWait 1
+    ClipWait(1)
     Send "^v"
-    if StrLen(content) > 15
+    if ( StrLen(content) > 15 )
         content := SubStr(content, 1, 5) . "..." . SubStr(content, -5)
     HelpText(A_Clipboard, "CenterDown", "Screen", 333)
     A_Clipboard := origin
-    try FileDelete JQB.Phone
+    Try FileDelete(JQB.Phone)
 }
 
 ; 文件重命名
 <#h::
 <#+h::{
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if ( not hwnd )
+    if ( ! hwnd )
         return
 
     ; 获取Explorer当前选择的项目
     data := Map()
-    for Win in ComObject("Shell.Application").Windows {
-        if (Win.hwnd == hwnd) {
-            ; Win.LocationName
-            ; Win.LocationURL
-            ; Win.Document.SelectedItems.Count
-            ; Win.Navigate("C:\")
-            folder_path  := Win.Document.Folder.Self.Path
+    for win in ComObject("Shell.Application").Windows {
+        if ( win.hwnd == hwnd ) {
+            folder_path  := win.Document.Folder.Self.Path
             select_items := []
-            for item in Win.Document.SelectedItems {
+            for item in win.Document.SelectedItems
                 select_items.Push(item.path)
-            }
             data := Map( "folder" , folder_path , "select" , select_items )
         }
     }
 
-    if ( not data or not data.Count )
+    if ( ! data ) || ( ! data.Count )
         return
 
     select := data["select"]
-    if ( not select )
+    if ( ! select )
         return
 
     if ( A_ThisHotkey == "<#h" )
@@ -230,10 +224,10 @@
 >#/::{
     rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
     if ( !WinExist(rule) ) {
-        Try WinShow rule
+        Try WinShow(rule)
         HelpText("`n 显示任务栏 `n", "Center", Screens.Count, 500)
     } else {
-        Try WinHide rule
+        Try WinHide(rule)
         HelpText("`n 隐藏任务栏 `n", "Center", Screens.Count, 500)
     }
 }
@@ -243,7 +237,7 @@
 >#Delete::Send "^!+{PrintScreen}"
 
 ; 切换静音
->#AppsKey::SoundSetMute -1
+>#AppsKey::SoundSetMute(-1)
 
 ; 终端
 >#Space:: Run WT " --focus --size 124,36 -d T:\\"

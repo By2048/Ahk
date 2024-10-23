@@ -26,7 +26,7 @@ Arg.ClickCnt := 0
     RWin::{
         Send "{Blind}{vkFF}"
         WinGetClientPos(&x, &y, &w, &h, "A")
-        if ( x <= 0 or y <= 0 )
+        if ( x <= 0 || y <= 0 )
             return
         MoveWindowCenter()
         win := GetHideWindowConfig()

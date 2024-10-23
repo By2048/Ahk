@@ -83,7 +83,7 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
     RButton::{
         WinActivate("ahk_exe v2rayN.exe")
         window := GetActiveWindowInfo(False)
-        if ( window.w > 555 or window.h > 777 ) {
+        if ( window.w > 555 || window.h > 777 ) {
             Send "{RButton}"
             return
         }

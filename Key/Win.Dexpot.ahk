@@ -41,7 +41,7 @@ LWin & LCtrl::Send "#^!{F23}"
 ; 上一个桌面
 #CapsLock::{
     Send "#^!{F24}"
-    SetCapsLockState "Off"
+    SetCapsLockState("Off")
 }
 
 ; #Esc    卷起
