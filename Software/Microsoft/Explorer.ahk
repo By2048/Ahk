@@ -12,6 +12,7 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
 #Include Explorer.Quick.ahk
 #Include Explorer.Config.ahk
 
+#Include Explorer.Joy.ahk
 
 ; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
 #HotIf CheckWindowActive( "Explorer" , "CabinetWClass" , "防火墙\允许的应用" )
@@ -162,12 +163,12 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     #+\::ResetPosition(columns:="List")
             
     F10::Return ; 快捷键帮助
-    ~RAlt::Send "{F10}"
+    !,::Send "{F10}"
         
     F11::Return ; 全屏
     #Enter::Send "{F11}"
 
-    #Include Explorer.Joy.ahk
+
     #Include Explorer.Mouse.ahk
     
     \::FileQuickPreview()

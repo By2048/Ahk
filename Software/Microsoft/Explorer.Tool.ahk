@@ -45,14 +45,13 @@ ActivateMenu()
 GetFocusedItem()
 {
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if ( not hwnd )
+    if ( ! hwnd )
         return
     
     path := ""
     for Win in ComObject("Shell.Application").Windows
         if ( Win.hwnd == hwnd )
-            if ( Win.Document.SelectedItems.Count == 1 )
-                path := Win.Document.FocusedItem.Path
+            path := Win.Document.FocusedItem.Path
 
     return path
 }
@@ -63,7 +62,7 @@ GetSelectItem()
     paths := []
 
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if ( not hwnd )
+    if ( ! hwnd )
         return paths
     
     for Win in ComObject("Shell.Application").Windows
@@ -173,8 +172,8 @@ ResetPosition(columns:="")
     GetActiveWindowInfo(False)
 
     ; 通过鼠标移动移动窗口,通过此操作Window可以在下次启动时使用修改后的位置
-    if (   origin_win_x != window.x or origin_win_y != window.y
-        or origin_win_w != window.w or origin_win_h != window.h ) {
+    if (   origin_win_x != window.x || origin_win_y != window.y
+        || origin_win_w != window.w || origin_win_h != window.h ) {
         ; MouseMove window.position_client.w/2 , window.position_client.h , 0
         MouseMove(window.cw/2 , window.ch , 0)
         MouseClickDrag("Left", 0, 0, 0, -50, 0, "R")
