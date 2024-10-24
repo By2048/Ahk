@@ -41,17 +41,19 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
         return
     }
 
+    ~RWin::Return
+
     ~LShift::{
-        if (Arg.shift_click > 0) {
+        if ( Arg.shift_click > 0 ) {
             Arg.shift_click += 1
             return
         } else {
             Arg.shift_click := 1
         }
 
-        SetTimer Timer, -500
+        SetTimer(Timer, -500)
         Timer() {
-            if (Arg.shift_click != 2) {
+            if ( Arg.shift_click != 2 ) {
                 Arg.shift_click := 0
                 return
             }
@@ -61,7 +63,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
             Send "!d"
             Sleep 55
             Send "^c"
-            ClipWait 1
+            ClipWait(1)
             Send "{F10 2}"
             url_origin := A_Clipboard
 
@@ -72,7 +74,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
             if ( clipboard_origin != clipboard_result ) {
                 Sleep 33
                 A_Clipboard := clipboard_result
-                ClipWait 1
+                ClipWait(1)
                 Send "^t"
                 Sleep 333
                 Send "!d"
@@ -80,15 +82,15 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
                 Send "^v"
                 Send "{Enter}"
                 A_Clipboard := url_origin
-                ClipWait 1
+                ClipWait(1)
                 Arg.shift_click := 0
                 return
             }
 
-            if (url_result != url_origin) {
+            if ( url_result != url_origin ) {
                 A_Clipboard := ""
                 A_Clipboard := url_result
-                ClipWait 1
+                ClipWait(1)
                 Send "!d"
                 Sleep 55
                 Send "^v"
@@ -98,7 +100,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
 
             A_Clipboard := ""
             A_Clipboard := clipboard_origin
-            ClipWait 1
+            ClipWait(1)
 
             Arg.shift_click := 0
         }
@@ -108,7 +110,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
         A_Clipboard := ""
         Send "!d"
         Send "^c"
-        ClipWait 1
+        ClipWait(1)
         origin := A_Clipboard
         result := GoogleTranslate(origin)
         if ( origin == result ) {
@@ -116,10 +118,10 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
             return
         }
         A_Clipboard := result
-        ClipWait 1
+        ClipWait(1)
         Send "^v"
         Send "{Enter}"
-        SetCapsLockState "Off"
+        SetCapsLockState("Off")
     }
 
     ; 书签第一个
@@ -127,26 +129,26 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
     !+\::{
         shift_status := GetKeyState("Shift", "P")
         Send "{F6 3}"
-        if shift_status
+        if ( shift_status )
             Send "{Left}"
     }
 
     ; 删除搜索历史记录
     !Delete::{
-        CoordMode "Mouse", "Window"
-        MouseGetPos &x_origin, &y_origin
-        MouseClick "Left", 440, 95, 1, 0
+        CoordMode("Mouse", "Window")
+        MouseGetPos(&x_origin, &y_origin)
+        MouseClick("Left", 440, 95, 1, 0)
         Send "{Down}"
         Send "+{Delete 9}"
         Send "{Esc 3}"
-        MouseMove x_origin, y_origin, 0
+        MouseMove(x_origin, y_origin, 0)
     }
 
     ; 将焦点放置在Chrome工具栏中的第一项上
     !+t::Return
     Arg.alt_shift_t := False
     ![::{
-        if (not Arg.alt_shift_t) {
+        if ( ! Arg.alt_shift_t ) {
             Arg.alt_shift_t := True
             Send "!+t"
         } else {
@@ -174,8 +176,8 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
         Send "{End}"
         Send "{Enter}"
         Sleep 111
-        if CheckWindowActive( "Chrome" , "*WidgetWin*" , "修改书签" )
-            MoveWindowPosition(Position(777 , 1111))
+        if ( CheckWindowActive( "Chrome" , "*WidgetWin*" , "修改书签" ) )
+            MoveWindowPosition( Position( 777 , 1111 ) )
         Send "{Tab 2}{Left 4}{Right}"
     }
     !+d::{

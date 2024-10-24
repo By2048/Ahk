@@ -24,17 +24,17 @@ UrlChange(origin)
 {
     result := origin
 
-    if not origin
+    if ( ! origin )
         return result
 
     ; localhost:9090/devtools/inspector.html?ws=localhost:9090/devtools/page/CAB865F
     ; localhost:9090/devtools/inspector.html?ws=ws://localhost:9090/devtools/page/CAB865
-    if InStr(origin, "devtools/inspector.html?ws=")
+    if ( InStr(origin, "devtools/inspector.html?ws=") )
         result := StrReplace(origin, "?ws=", "?ws://")
 
     ; https://wx2.sinaimg.cn/mw690/008sJj2hgy1hirkxpx96bj30yg1e07vi.jpg
     ; https://weibo.com/ajax/common/download?pid=008sJj2hgy1hirkxpx96bj30yg1e07vi
-    if InStr(origin, "sinaimg.cn") {
+    if ( InStr(origin, "sinaimg.cn") ) {
         pid := RegExReplace(origin, "(http.*)(.\w+)(/)(.*)(\.\w+)", "$4")
         result := "https://weibo.com/ajax/common/download?pid=" . pid
     }
@@ -42,7 +42,7 @@ UrlChange(origin)
     ; google -> bing
     ; google.com/search?q=Xxx
     ; cn.bing.com/search?q=Xxx
-    if (InStr(origin, "google.com/search?q=")) {
+    if ( InStr(origin, "google.com/search?q=") ) {
         keyword := RegExReplace(origin, "(http.*)(search\?q\=)(.*?)(&.*)", "$3")
         result := "https://cn.bing.com/search?q=" . keyword
     }
@@ -50,25 +50,25 @@ UrlChange(origin)
     ; bing -> baidu
     ; cn.bing.com/search?q=Xxx
     ; baidu.com/s?wd=Xxx
-    if (InStr(origin, "cn.bing.com/search?q=")) {
+    if ( InStr(origin, "cn.bing.com/search?q=") ) {
         keyword := RegExReplace(origin, "(http.*)(search\?q\=)(.*?)", "$3")
         result := "https://www.baidu.com/s?wd=" . keyword
     }
 
     ; learn.microsoft.com/en-us/windows/win32/shell/shellwindows
     ; learn.microsoft.com/zh-cn/windows/win32/shell/shellwindows
-    if InStr(origin, "learn.microsoft.com/en-us/")
+    if ( InStr(origin, "learn.microsoft.com/en-us/") )
         result := StrReplace(origin, "/en-us/", "/zh-cn/")
 
     ; https://t.bilibili.com/?tab=all
     ; https://t.bilibili.com/?tab=video
-    if InStr(origin, "t.bilibili.com/?tab=all")
+    if ( InStr(origin, "t.bilibili.com/?tab=all") )
         result := StrReplace(origin, "all", "video")
-    if InStr(origin, "t.bilibili.com/?tab=video")
+    if ( InStr(origin, "t.bilibili.com/?tab=video") )
         result := StrReplace(origin, "video", "all")
 
     ; .jpg@xxx.xxx
-    if InStr(origin, ".jpg@") || InStr(origin, ".png@") || InStr(origin, ".webp@")
+    if ( InStr(origin, ".jpg@") || InStr(origin, ".png@") || InStr(origin, ".webp@") )
         result := RegExReplace(origin, "(http.*)(.\w+)(@)(.*)", "$1$2")
 
 
@@ -78,9 +78,9 @@ UrlChange(origin)
 
     ; https://www.zhihu.com/hot
     ; https://www.zhihu.com/knowledge-plan/hot-question/hot/0/hour
-    if InStr(origin, "zhihu.com/hot")
+    if ( InStr(origin, "zhihu.com/hot") )
         result := "https://www.zhihu.com/knowledge-plan/hot-question/hot/0/hour"
-    if InStr(origin, "zhihu.com/knowledge-plan/hot-question/hot")
+    if ( InStr(origin, "zhihu.com/knowledge-plan/hot-question/hot") )
         result := "https://www.zhihu.com/hot"
 
     ; 2 -> 1
@@ -95,13 +95,13 @@ UrlChange(origin)
         } else {
             result := origin . "/answers/updated"
         }
-        if InStr(origin, "/answers/updated")
+        if ( InStr(origin, "/answers/updated") )
             result := StrReplace(origin, "/answers/updated", "")
     }
 
     ; https://picx.zhimg.com/80/v2-104d5c498690a3268a49a84705094f25_1440w.webp?source=1940ef5c
     ; https://pic4.zhimg.com/v2-23ecf011fe34a64b376b40d598bf79fb_b.jpg
-    if InStr(origin, "zhimg.com")
+    if ( InStr(origin, "zhimg.com") )
         result := RegExReplace(origin, "(http.*)(v2-)([\d\w]+)(_)(\d+\w|\w)(.\w+)(.*)?", "$1$2$3$6")
 
     return result
@@ -111,25 +111,25 @@ UrlChange(origin)
 
 AriaDownload(url, folder:="T:\", name:="")
 {
-    if not url
+    if ( ! url )
         return
 
-    if not name
+    if ( ! name )
         name := RegExReplace(url, "(http.?:/)(/.*/)([\d\w\-_]+\.[\d\w]+)", "$3")
                                  ;  http:/   /xx/  Xxx.jpg
 
     info := name
 
-    if not DirExist(folder)
-        DirCreate folder
+    if ( ! DirExist(folder) )
+        DirCreate(folder)
 
     command := Aria . " " . url
-    if folder
+    if ( folder )
         command := command . " --dir " . Format("{}", folder)
-    if name
+    if ( name )
         command := command . " --out " . Format("{}", name)
 
-    if not FileExist(folder . "\" . name)
+    if ( ! FileExist(folder . "\" . name) )
         Run command, A_InitialWorkingDir, "Hide"
     else
         info := "#" . info
@@ -146,7 +146,7 @@ GoogleTranslate(origin)
     result := origin
 
     code := RegExMatch(origin, "(http.*//)([\.\w]+\.com|\.cn|\.org)(.*)", &match)
-    if not code
+    if ( ! code )
         return result
 
     http   := match[1]
@@ -163,7 +163,7 @@ RedirectTo(url)
     tmp := A_Clipboard
     A_Clipboard := ""
     A_Clipboard := url
-    ClipWait
+    ClipWait()
     Send "!d"
     Sleep 33
     Send "^v"
@@ -171,5 +171,5 @@ RedirectTo(url)
     Send "{Enter}"
     A_Clipboard := ""
     A_Clipboard := tmp
-    ClipWait
+    ClipWait()
 }

@@ -39,45 +39,37 @@ GetWindowConfig(window, config)
         config_process_name := ""
         config_class        := ""
         config_title        := ""
-        if ( config_items.Length > 0 ) {
+
+        if ( config_items.Length > 0 )
             config_process_name := config_items[1]
-        }
-        if ( config_items.Length > 1 ) {
+        if ( config_items.Length > 1 )
             config_class := config_items[2]
-        }
-        if ( config_items.Length > 2 ) {
+        if ( config_items.Length > 2 )
             config_title := config_items[3]
-        }
 
         match_cnt := 0
 
-        if ( StrLen(config_process_name) > 0 ) {
-            if ( win_process_name == config_process_name ) {
+        if ( StrLen(config_process_name) > 0 )
+            if ( win_process_name == config_process_name )
                 match_cnt := match_cnt + 3
-            } else if ( InStr(win_process_name, config_process_name) ) {
+            else if ( InStr(win_process_name, config_process_name) )
                 match_cnt := match_cnt + 2
-            } else {
+            else
                 continue
-            }
-        }
 
-        if ( StrLen(config_class) > 0 ) {
-            if ( win_class == config_class ) {
+        if ( StrLen(config_class) > 0 )
+            if ( win_class == config_class )
                 match_cnt := match_cnt + 2
-            } else if ( InStr(win_class, config_class) ) {
+            else if ( InStr(win_class, config_class) )
                 match_cnt := match_cnt + 1
-            } else {
+            else
                 continue
-            }
-        }
 
-        if ( StrLen(config_title) > 0 ) {
-            if ( win_title == config_title ) {
+        if ( StrLen(config_title) > 0 )
+            if ( win_title == config_title )
                 match_cnt := match_cnt + 2
-            } else if ( InStr(win_title, config_title) ) {
+            else if ( InStr(win_title, config_title) )
                 match_cnt := match_cnt + 1
-            }
-        }
 
         if ( match_cnt > match_count ) {
             match_count := match_cnt
@@ -338,7 +330,7 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
 
     rule := Format("ahk_id {}" , win_id)
 
-    if ( not win_id )
+    if ( ! win_id )
         HelpText("No WinId",  ,  , 1000)
 
     if ( win_min_max == "Max" )
@@ -592,10 +584,10 @@ MoveWindowQuick(command)
 MoveWindowPosition(position)
 {
     if ( Type(position) == "Array" )
-        if ( not position.Length )
+        if ( ! position.Length )
             return
     if ( Type(position) == "Object" )
-        if ( not ObjOwnPropCount(position) )
+        if ( ! ObjOwnPropCount(position) )
             return
 
     if ( Type(position) == "Array" ) {
@@ -617,7 +609,7 @@ MoveWindowPosition(position)
 MoveWindowDefault()
 {
     GetActiveWindowInfo()
-    if ( not ObjOwnPropCount(window.default) )
+    if ( ! ObjOwnPropCount(window.default) )
         return
     if ( window.min_max )
         WinRestore(window.id)
@@ -630,7 +622,7 @@ MoveWindowDefault()
 MoveWindowBackup()
 {
     GetActiveWindowInfo()
-    if ( not ObjOwnPropCount(window.backup) )
+    if ( ! ObjOwnPropCount(window.backup) )
         return
     if ( window.min_max )
         WinRestore(window.id)

@@ -6,8 +6,8 @@
 Arg.ClickKey := ""
 Arg.ClickCnt := 0
 #HotIf CheckWindowActive("PyCharm|IDEA")
-       And ( Arg.ClickKey == "~LCtrl" Or Arg.ClickKey == "~LShift" )
-       And ( Arg.ClickCnt == 2 )
+       && ( Arg.ClickKey == "~LCtrl" Or Arg.ClickKey == "~LShift" )
+       && ( Arg.ClickCnt == 2 )
     Esc::
     CapsLock::{
         Send "{Esc}"

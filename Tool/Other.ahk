@@ -6,27 +6,6 @@
 
 
 
-; 运行模式设置
-RunNormalUser(command)
-{
-    if ( InStr(command, ".lnk") ) {
-        command := Format("C:\Windows\explorer.exe {}", command)
-    }
-    if (A_UserName = "Administrator") {
-        Run command
-        return
-    }
-    if (StrLen(PC_USERNAME) == 0 and StrLen(PC_PASSWORD) == 0) {
-        HelpText(" PC_USERNAME/PC_PASSWORD - (./Private.ahk) ", "center_down",  , 3000)
-    } else {
-        RunAs PC_USERNAME, PC_PASSWORD
-        Run command
-        RunAs
-    }
-}
-
-
-
 ; Windows终端启动设置
 WindowsTerminal(mode:="Focus", folder:="")
 {
@@ -39,7 +18,7 @@ WindowsTerminal(mode:="Focus", folder:="")
     title := "Administrator: PowerShell"
     Run Format("{} {} -d {}", WT, mode, folder)
     Sleep 300
-    Try WinActivate AEXE(exe)
+    Try WinActivate(AEXE(exe))
 }
 
 
@@ -47,11 +26,11 @@ WindowsTerminal(mode:="Focus", folder:="")
 ; 屏幕截图
 ScreenShotFull(path:="", slient:=True)
 {
-    if ( !slient and !FileExist(path) ) {
+    if ( ! slient ) && ( ! FileExist(path) ) {
         HelpText("`n Snipaste Error `n", "Center", "Screen", 500)
         return
     }
-    if ( !slient and !FileExist(path) ) {
+    if ( ! slient ) && ( ! FileExist(path) ) {
         HelpText("`n Keep Path Error `n", "Center", "Screen", 500)
         return
     }
@@ -110,11 +89,11 @@ SnipasteImage(image:="", screen:="Screen")
 
     screen_id := ScreenNameToId(screen)
 
-    if (screen_id == "1") {
+    if ( screen_id == "1" ) {
         x := Screens.1.x + (Screens.1.w - image_w) / 2
         y := Screens.1.y + (Screens.1.h - image_h) / 2
     }
-    if (screen_id == "2") {
+    if ( screen_id == "2" ) {
         x := Screens.2.x + Screens.2.w/2 - image_w/2
         y := Screens.2.y + Screens.2.h/2 - image_h/2
     }
@@ -124,10 +103,6 @@ SnipasteImage(image:="", screen:="Screen")
     cmd := Format("{1} paste --files {} --pos {} {}", Snipaste, image, x, y)
     Run cmd
 }
-
-
-
-
 
 
 

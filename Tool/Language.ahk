@@ -3,7 +3,6 @@
 #Include ..\Config\Message.ahk
 
 ; 切换默认输入法
-; https://www.voidtools.com/support/everything/language_ids/
 
 ZH()
 {
@@ -28,9 +27,8 @@ ZH_Count(data)
     result := 0
     for index, value in data {
         value := Ord(value)
-        if (value > start_code and value < end_code) {
+        if ( value > start_code && value < end_code )
             result := result + 1
-        }
     }
     return result
 }
@@ -40,8 +38,7 @@ SendCN(data)
     data   := StrSplit(data)
     result := ""
     ; 转换每个字符为{U+16进制Unicode编码}
-    for key, val in data {
+    for key, val in data
         result .= "{U+" . Format("{:X}" , ord(val)) . "}"
-    }
     SendInput(result)
 }

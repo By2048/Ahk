@@ -10,8 +10,8 @@ RegisterHelp("Wallpaper" , "Software\Wallpaper.help")
     Offset := 99
 
     ClickImage(image) {
-        CoordMode "Mouse", "Window"
-        MouseGetPos &x_origin, &y_origin
+        CoordMode("Mouse", "Window")
+        MouseGetPos(&x_origin, &y_origin)
         x1 := x_origin
         y1 := y_origin - 400
         x2 := x_origin + 80

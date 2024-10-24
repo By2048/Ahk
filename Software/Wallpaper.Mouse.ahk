@@ -1,7 +1,7 @@
 
 ; 取消订阅
 NumLock::{
-    MouseClick "Right"
+    MouseClick("Right")
     Sleep SleepTime
     ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Delete.png")
     Send "{Enter}"
@@ -9,14 +9,14 @@ NumLock::{
 
 ; 订阅
 NumpadHome::{
-    MouseClick "Right"
+    MouseClick("Right")
     Sleep SleepTime
     ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Download.png")
 }
 
 ; 在资源管理器中打开
 NumpadEnd::{
-    MouseClick "Right"
+    MouseClick("Right")
     Sleep SleepTime
     ClickImage(A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\Open.png")
 }

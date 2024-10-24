@@ -37,9 +37,9 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
     !\::
     +\::{
         MouseClickAndResetting(240, 90, "Window", "Left")
-        if A_ThisHotkey == "!\" ; 不通过代理
+        if ( A_ThisHotkey == "!\" ) ; 不通过代理
             Send "{Down 2}{Enter}"
-        if A_ThisHotkey == "+\" ; 通过代理
+        if ( A_ThisHotkey == "+\" ) ; 通过代理
             Send "{Down 3}{Enter}"
     }
 

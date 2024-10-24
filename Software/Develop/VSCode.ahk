@@ -74,12 +74,12 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
     ;窗口全屏
     #Enter::{
         Send "^!{NumLock}"
-        SetNumLockState "Off"
+        SetNumLockState("Off")
     }
     ;窗口全屏选项
     #+Enter::{
         Send "^!+{NumLock}"
-        SetNumLockState "Off"
+        SetNumLockState("Off")
     }
 
     ; 命令 / 文件

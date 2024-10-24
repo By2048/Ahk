@@ -20,7 +20,7 @@ GuiProgress()
         move_current := move_current + move_step
         G["InitProgress"].Value := move_current
         Sleep move_sleep
-        if (move_current >= move_total) {
+        if ( move_current >= move_total ) {
             Sleep move_sleep
             G.Destroy()
             break

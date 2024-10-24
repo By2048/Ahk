@@ -101,7 +101,7 @@ RegisterPosition( "MMC" , Position(2000 , 1222) )
         GetActiveWindowInfo(False)
         info := window.controls.SysTreeView321
         if ( Abs(info.w - tree_width) > check_offset ) {
-            MouseGetPos &x_origin, &y_origin
+            MouseGetPos(&x_origin, &y_origin)
             MouseMove info.x + info.w + move_offset , info.y + info.h / 2
             MoveControlUDLR(info, "Right", tree_width, move_offset)
             MouseMove x_origin, y_origin

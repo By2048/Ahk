@@ -75,7 +75,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         ; 左边栏大小
         info := window.controls.SysListView321
         if Abs(info.x - left_width) > 10 {
-            MouseGetPos &x_origin, &y_origin
+            MouseGetPos(&x_origin, &y_origin)
             MouseMove info.x , info.y + info.h / 2
             offset := GetOffset("X")
             MoveControlUDLR(info, "Left", left_width, offset)

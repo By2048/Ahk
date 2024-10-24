@@ -21,15 +21,15 @@ HelpKeysShow(step:=0)
     }
 
     ; 已经显示 且只有一个内容
-    if ( Arg.hotkeys_show == True and hotkeys_config.Length == 1 )
+    if ( Arg.hotkeys_show == True && hotkeys_config.Length == 1 )
         return
 
     ; 未显示且有多个内容
-    if ( Arg.hotkeys_show == False and hotkeys_config.Length >= 1 )
+    if ( Arg.hotkeys_show == False && hotkeys_config.Length >= 1 )
         hotkeys_index := 1
 
     ; 已经显示且有多个内容
-    if ( Arg.hotkeys_show == True and hotkeys_config.Length > 1 ) {
+    if ( Arg.hotkeys_show == True && hotkeys_config.Length > 1 ) {
         hotkeys_index := Arg.hotkeys_index + step
         if ( hotkeys_index > hotkeys_config.Length )
             hotkeys_index := 1

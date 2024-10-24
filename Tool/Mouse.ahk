@@ -62,13 +62,12 @@ MouseClickImage(image, trans:="")
     x_find := 0
     y_find := 0
 
-    if (trans) {
+    if ( trans )
         ImageSearch( &x_find, &y_find, x1, y1, x2, y2, Format("*30 *Trans{} {}", trans, image) )
-    } else {
+    else
         ImageSearch( &x_find, &y_find, x1, y1, x2, y2, "*30 " . image )
-    }
 
-    if (x_find and y_find) {
+    if ( x_find && y_find ) {
         x_find := x_find + image_w/2
         y_find := y_find + image_h/2
         MouseClick("Left", x_find, y_find, 1, 0)
@@ -82,11 +81,11 @@ MouseClickImage(image, trans:="")
 
 MouseClickImageXYWH(x1, y1, x2, y2, image, mode:="Window", offset:=66, key:="Left", trans:="")
 {
-    if (mode == "Window") {
+    if ( mode == "Window" ) {
         CoordMode("Mouse", "Window")
         CoordMode("Pixel", "Window")
     }
-    if (mode == "Screen") {
+    if ( mode == "Screen" ) {
         CoordMode("Mouse", "Screen")
         CoordMode("Pixel", "Screen")
     }
@@ -100,13 +99,12 @@ MouseClickImageXYWH(x1, y1, x2, y2, image, mode:="Window", offset:=66, key:="Lef
     x_find := 0
     y_find := 0
 
-    if (trans) {
+    if ( trans )
         ImageSearch( &x_find, &y_find, x1, y1, x2, y2, Format("*{} *Trans{} {}", offset, trans, image) )
-    } else {
+    else
         ImageSearch( &x_find, &y_find, x1, y1, x2, y2, Format("*{} {}", offset, image) )
-    }
 
-    if (x_find and y_find) {
+    if ( x_find && y_find ) {
         x_find := x_find + image_w/2
         y_find := y_find + image_h/2
         MouseClick(key, x_find, y_find, 1, 0)
