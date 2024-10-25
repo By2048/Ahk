@@ -4,41 +4,38 @@
 GlobalSet(section:="", key:="", value:="")
 {
     path := Reg_Path
-    if (section != "" ) {
+    if ( section != "" )
         path := path . "\" . section
-    }
     RegWrite(value, "REG_SZ", path, key )
 }
 
 GlobalGet(section:="", key:="", type:="Str", split:="|")
 {
     path := Reg_Path
-    if (section != "" ) {
+    if ( section != "" )
         path := path . "\" . section
-    }
     default := ""
-    if (type == "Str") {
+    if ( type == "Str" )
         default := ""
-    } else if (type == "Int") {
+    else if ( type == "Int" )
         default := 0
-    } else if (type == "List") {
+    else if ( type == "List" )
         default := []
-    } else if (type == "Bool") {
+    else if ( type == "Bool" )
         default := False
-    }
+
     result := RegRead(path, key, default)
-    if (type == "Str") {
+    if ( type == "Str" )
         result := result
-    } else if (type == "Int") {
+    else if ( type == "Int" )
         result := result + 0
-    } else if (type == "List") {
+    else if ( type == "List" )
         result := StrSplit(result, split)
-    } else if (type == "Bool") {
-        if (result == "True") {
+    else if ( type == "Bool" ) {
+        if ( result == "True" )
             result := True
-        } else if (result == "False") {
+        else if ( result == "False" )
             result := False
-        }
     }
     return result
 }

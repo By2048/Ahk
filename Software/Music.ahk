@@ -20,13 +20,10 @@ MusicLike() {
 MusicDetail() {
     GetActiveWindowInfo()
     win_process_name := window.process_name
-
     if ( win_process_name == "CloudMusic" )
         MouseClickAndResetting(13, 1133, "Window")
-
-    if ( win_process_name == "QQMusic" ) {
+    if ( win_process_name == "QQMusic" )
         MouseClickAndResetting(13, 1133, "Window")
-    }
 }
 
 
@@ -49,9 +46,9 @@ MusicDetail() {
     Right::{
         MouseClickAndResetting(854, 1117, "Window")
         Sleep 1000
-        if A_ThisHotkey == "Left"
+        if ( A_ThisHotkey == "Left" )
             Send "!["
-        if A_ThisHotkey == "Right"
+        if ( A_ThisHotkey == "Right" )
             Send "!]"
         Sleep 1000
         MouseClickAndResetting(854, 1117, "Window", "Left", 4)
@@ -76,9 +73,9 @@ MusicDetail() {
     }
 
     <#BackSpace::{
-        ProcessClose "cloudmusic_reporter.exe"
+        ProcessClose("cloudmusic_reporter.exe")
         Sleep 300
-        ProcessClose "CloudMusic.exe"
+        ProcessClose("CloudMusic.exe")
     }
 
     #Include Music.Mouse.ahk
@@ -92,7 +89,7 @@ MusicDetail() {
     ~CapsLock::Send "{Esc}"
 
     <#BackSpace::{
-        ProcessClose "QQMusic.exe"
+        ProcessClose("QQMusic.exe")
     }
 
     #Include Music.Mouse.ahk

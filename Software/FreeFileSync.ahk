@@ -45,30 +45,31 @@ RegisterPosition( "FreeFileSync"                , Position(2000 , 1248) )
         h4 := window.controls.%control_4%.h
 
         offset := 80
+        rule   := "ahk_id " . win_id
 
         x := x1
         y := y1
         w := w1
         h := h1 + offset
-        ControlMove x, y, w, h, control_1, "ahk_id " . win_id
+        ControlMove(x, y, w, h, control_1, rule)
 
         x := x2
         y := y2 + offset
         w := w2
         h := h2 - offset
-        ControlMove x, y, w, h, control_2, "ahk_id " . win_id
+        ControlMove(x, y, w, h, control_2, rule)
 
         x := x3
         y := y3 + offset
         w := w3
         h := h3
-        ControlMove x, y, w, h, control_3, "ahk_id " . win_id
+        ControlMove(x, y, w, h, control_3, rule)
 
         x := x4
         y := y4 + offset
         w := w4
         h := h4
-        ControlMove x, y, w, h, control_4, "ahk_id " . win_id
+        ControlMove(x, y, w, h, control_4, rule)
     }
 
 #HotIf

@@ -15,13 +15,12 @@ GetWindowTheme()
     path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
     key   := "AppsUseLightTheme"
     theme := RegRead(path, key, "")
-    if (theme == "0") {
+    if ( theme == "0" )
         return "Dark"
-    } else if (theme == "1") {
+    else if ( theme == "1" )
         return "Light"
-    } else {
+    else
         return ""
-    }
 }
 
 

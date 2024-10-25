@@ -17,13 +17,10 @@ CheckColor(color_base, color_compare, offse:=9)
     color_compare_green := ToBase("0x" . color_compare_green, 10)
     color_compare_blue  := ToBase("0x" . color_compare_blue,  10)
 
-    if ( Abs(color_base_red - color_compare_red) <= offse) {
-        if ( Abs(color_base_green - color_compare_green) <= offse ) {
-            if ( Abs(color_base_blue - color_compare_blue) <= offse ) {
+    if ( Abs(color_base_red - color_compare_red) <= offse)
+        if ( Abs(color_base_green - color_compare_green) <= offse )
+            if ( Abs(color_base_blue - color_compare_blue) <= offse )
                 return True
-            }
-        }
-    }
     return False
 }
 

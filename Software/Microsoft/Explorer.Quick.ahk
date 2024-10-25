@@ -116,7 +116,7 @@ FileQuickTools()
     if ( Arg.quick_tool_index == 1 ) {
 
         path := GetFocusedItem()
-        if ( InStr(path, ".zip") Or InStr(path, ".7z") Or InStr(path, ".rar") ) {
+        if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
             if ( ! InStr(path, ".bc!") ) {
                 G.Add("Text", Format("w{} Disabled", G.text_w), G.Line)
                 G.Add("Text", Format("w{} Disabled", G.text_w), "  UnZip")

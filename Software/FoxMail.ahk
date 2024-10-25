@@ -18,8 +18,8 @@ RegisterProcess("Foxmail" , "FoxMail")
         ; 邮箱列表
         GetActiveWindowInfo(False)
         info := window.controls.TVirtualDrawTree2
-        if Abs(info.w - width_folder) > check_split_folder {
-            MouseMove info.x + info.w , (info.y + info.h) / 2
+        if ( Abs(info.w - width_folder) > check_split_folder ) {
+            MouseMove(info.x + info.w , (info.y + info.h) / 2)
             offset := GetOffset("X", 1, 20, "Unknown")
             MoveControlUDLR(info, "Right", width_folder, offset)
         }
@@ -27,8 +27,8 @@ RegisterProcess("Foxmail" , "FoxMail")
         ; 邮件列表
         GetActiveWindowInfo(False)
         info := window.controls.TVirtualDrawTree1
-        if Abs(info.w - width_mail) > check_split_mail {
-            MouseMove info.x + info.w , (info.y + info.h) / 2
+        if ( Abs(info.w - width_mail) > check_split_mail ) {
+            MouseMove(info.x + info.w , (info.y + info.h) / 2)
             offset := GetOffset("X", 1, 20, "Unknown")
             MoveControlUDLR(info, "Right", width_mail + width_folder, offset)
         }

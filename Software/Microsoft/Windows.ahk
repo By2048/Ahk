@@ -2,8 +2,8 @@
 ; Windows 安全中心警报
 #HotIf CheckWindowActive( "" , "#32770" , "安全中心警报" )
     Enter::{
-        ControlSetChecked True, "Button4", "A"
-        ControlSetChecked True, "Button5", "A"
+        ControlSetChecked(True, "Button4", "A")
+        ControlSetChecked(True, "Button5", "A")
         Sleep 100
         Send "!a"
     }
@@ -22,7 +22,7 @@
     #\::{
         MoveWindowPosition(Position(1500, 1100))
         win_title := window.title
-        if (win_title == "环境变量") {
+        if ( win_title == "环境变量" ) {
             SetColumnWidth( "SysListView321", Map( 1,150 , 2,1200 ) ) ;用户变量
             SetColumnWidth( "SysListView322", Map( 1,200 , 2,1150 ) ) ;系统变量
         }

@@ -13,7 +13,7 @@ RegisterPosition("DiskGenius" , Position(2222,1248))
         move_offset  := 13
         GetActiveWindowInfo()
         info := window.controls.SysTreeView321
-        if Abs(info.w - tree_width) > check_offset
+        if ( Abs(info.w - tree_width) > check_offset )
             MoveControlUDLR(info, "Right", tree_width, move_offset)
 
         _1 := " 1     2     3        4     5        6        7        "
@@ -32,7 +32,7 @@ RegisterPosition("DiskGenius" , Position(2222,1248))
         Sleep 99
         Send "{Enter}"
         Sleep 333
-        if WinActive("设置保存目录列表文件路径") {
+        if ( WinActive("设置保存目录列表文件路径") ) {
             Send "!d"
             Sleep 99
             ControlSetText("E:\Backup\Disk", "Edit2", "A")

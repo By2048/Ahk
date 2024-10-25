@@ -31,7 +31,7 @@ time_space_min  := 0
 ; 300 秒
 CountDown(config := "3m")
 {
-    if ( not config )
+    if ( ! config )
         return
 
     time_start := A_Now
@@ -71,7 +71,7 @@ CountDown(config := "3m")
     Timer() {
         seconds := DateDiff(time_end, A_Now, "Seconds")
         GText.Text := Fmt(seconds)
-        if ( not seconds ) {
+        if ( ! seconds ) {
             Sleep(500)
             ExitApp()
         }

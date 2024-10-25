@@ -3,21 +3,21 @@
 
 image := ""
 
-if ( not image and A_Args.Length != 1 ) {
+if ( ! image ) && ( A_Args.Length != 1 ) {
     MsgBox("未传入图片路径")
     ExitApp()
 }
 
-if A_Args.Length == 1
+if ( A_Args.Length == 1 )
     image := A_Args[1]
 
 ; 不是绝对路径 是相对路径
-if (not InStr(image, ":")) {
+if ( ! InStr(image, ":") ) {
     image := LTrim(image, ".\")
     image := A_InitialWorkingDir . "\" . image
 }
 
-if (not FileExist(image)) {
+if ( ! FileExist(image) ) {
     MsgBox("未传入图片路径")
     ExitApp()
 }
@@ -31,7 +31,7 @@ for stem In StrSplit(stems, " ") {
     }
 }
 
-if (not check) {
+if ( ! check ) {
     MsgBox("未传入图片路径")
     ExitApp()
 }
@@ -44,7 +44,7 @@ result := ComObject("WScript.Shell").Exec(command).StdOut.ReadAll()
 result := StrReplace(result, " x ", "x")
 find_pos := RegExmatch(result, ", (\d+x\d+),", &find_result)
 
-if ( not find_pos )
+if ( ! find_pos )
     ExitApp()
 
 if ( find_pos ) {
@@ -52,17 +52,17 @@ if ( find_pos ) {
     image_w := size_wh[1]
     image_h := size_wh[2]
 }
-if ( not image_w OR not image_h )
+if ( ! image_w ) || ( ! image_h )
     ExitApp()
 
-if ( InStr(image, ".jpg") and InStr(result, "PNG image data") ) {
+if ( InStr(image, ".jpg") && InStr(result, "PNG image data") ) {
     old_file := image
     new_file := StrReplace(image, ".jpg", ".png")
-    if ( not FileExist(new_file) )
+    if ( ! FileExist(new_file) )
         FileMove(old_file, new_file)
 }
 
-if ( image_w > A_ScreenWidth and image_h > A_ScreenHeight ) {
+if ( image_w > A_ScreenWidth && image_h > A_ScreenHeight ) {
     scale_w := image_w / A_ScreenWidth
     scale_h := image_h / A_ScreenHeight
     scale_max := 1 / Max(scale_w, scale_h)

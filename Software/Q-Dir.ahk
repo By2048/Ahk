@@ -44,8 +44,8 @@ RegisterPosition( "Q-Dir_#32770_MiniBrowserOK" , Position(1555, 1333) )
         ; Tree | Xxx
         GetActiveWindowInfo(False)
         info := window.controls.GetOwnPropDesc("#327702").Value
-        if Abs(info.x - split_box_left) > check_offset {
-            MouseMove info.x , info.y + info.h / 2
+        if ( Abs(info.x - split_box_left) > check_offset ) {
+            MouseMove(info.x , info.y + info.h / 2)
             offset := GetOffset("X")
             MoveControlUDLR(info, "Left", split_box_left, offset)
         }
@@ -53,8 +53,8 @@ RegisterPosition( "Q-Dir_#32770_MiniBrowserOK" , Position(1555, 1333) )
         ; A = B
         GetActiveWindowInfo(False)
         info := window.controls.GetOwnPropDesc("#327702").Value
-        if Abs((info.x + info.w) - (info.x + split_box_right)) > check_offset {
-            MouseMove info.x + info.w , info.y + info.h / 2
+        if ( Abs((info.x + info.w) - (info.x + split_box_right)) > check_offset ) {
+            MouseMove(info.x + info.w , info.y + info.h / 2)
             offset := GetOffset("X")
             MoveControlUDLR(info, "Right", info.x + split_box_right, offset)
         }
@@ -62,8 +62,8 @@ RegisterPosition( "Q-Dir_#32770_MiniBrowserOK" , Position(1555, 1333) )
         ; Aa | Ab
         GetActiveWindowInfo(False)
         info := window.controls.GetOwnPropDesc("#327702").Value
-        if Abs((info.y + info.h) - split_box_bottom + box_status_height) > check_offset {
-            MouseMove info.x + info.w / 2 , info.y + info.h + box_status_height
+        if ( Abs((info.y + info.h) - split_box_bottom + box_status_height) > check_offset ) {
+            MouseMove(info.x + info.w / 2 , info.y + info.h + box_status_height)
             offset := GetOffset("Y") + box_status_height
             MoveControlUDLR(info, "Down", split_box_bottom, offset)
         }

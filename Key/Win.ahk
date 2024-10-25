@@ -101,12 +101,10 @@
     if ( ! hwnd )
         return
     result := ""
-    for win in ComObject("Shell.Application").Windows {
-        if ( win.hwnd == hwnd ) {
-            for item in win.Document.SelectedItems
+    for Win in ComObject("Shell.Application").Windows
+        if ( Win.hwnd == hwnd )
+            for item in Win.Document.SelectedItems
                 result := result . "`n" . item.path
-        }
-    }
     result := LTrim(result, "`n")
     A_Clipboard := result
     ClipWait()

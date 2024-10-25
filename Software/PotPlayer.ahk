@@ -20,15 +20,14 @@ RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Scre
         rule := "播放列表 "
         rule .= "ahk_exe PotPlayerMini64.exe "
         rule .= "ahk_class Afx:00007FFB8FA10000:b:0000000000010005:0000000000900011:0000000000000000"
-        if WinExist(rule) {
+        if ( WinExist(rule) )
             WinActivate(rule)
-        } else {
+        else
             Send "{F6}"
-        }
     }
 
     PotPlayerOpenFile() {
-        if InStr(A_PriorHotkey, A_ThisHotkey) {
+        if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
             if ( A_TimeSincePriorHotkey < 333 ) {
                 PotPlayerPlayList()
                 Sleep 99
@@ -42,7 +41,7 @@ RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Scre
     }
 
     PotPlayerDeleteFile() {
-        if InStr(A_PriorHotkey, A_ThisHotkey) {
+        if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
             if ( A_TimeSincePriorHotkey < 333 ) {
                 Send "+{Delete}!{y}"
                 Sleep 99
@@ -58,7 +57,7 @@ RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Scre
     $Delete::PotPlayerDeleteFile()
 
     ~CapsLock::{
-        if InStr(A_PriorHotkey, A_ThisHotkey)
+        if ( InStr(A_PriorHotkey, A_ThisHotkey) )
             if ( A_TimeSincePriorHotkey < 333 )
                 WinClose("A")
     }

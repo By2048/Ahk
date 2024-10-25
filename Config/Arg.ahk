@@ -75,11 +75,11 @@ RegisterProcess(origin, rename) {
 Software_Keys_Help := Map()
 RegisterHelp(process, path) {
     path := Trim(path)
-    if ( not path )
+    if ( ! path )
         return
-    if ( not InStr(path, ":") )
+    if ( ! InStr(path, ":") )
         path := Format("{}\{}", A_InitialWorkingDir, path)
-    if ( not FileExist(path) )
+    if ( ! FileExist(path) )
         return
     config := Software_Keys_Help.Get(process, [])
     content := FileRead(path, "`n UTF-8")

@@ -4,7 +4,7 @@ StrToBool(value)
 {
     if ( value == "True" )
         return True
-    if (value == "False")
+    if ( value == "False" )
         return False
     return value
 }
@@ -78,21 +78,21 @@ Position(args*)
     }
 
     screen_index := GetScreenIndex(x)
-    if ( w > 0 and w < 1 ) {
+    if ( w > 0 && w < 1 )
         win_w := Screens.%screen_index%.w * w
-    } else if ( w <= 0 ) {
+    else if ( w <= 0 )
         win_w := Screens.%screen_index%.w + w
-    }
-    if InStr( StrLower(x) , "center" )
+
+    if ( InStr( StrLower(x) , "center" ) )
         win_x := Screens.%screen_index%.x + Screens.%screen_index%.w/2 - win_w/2
 
     screen_index := GetScreenIndex(y)
-    if ( h > 0 and h < 1 ) {
+    if ( h > 0 && h < 1 )
         win_h := Screens.%screen_index%.h * h
-    } else if ( h <= 0 ) {
+    else if ( h <= 0 )
         win_h := Screens.%screen_index%.h + h
-    }
-    if InStr( StrLower(y) , "center" )
+
+    if ( InStr( StrLower(y) , "center" ) )
         win_y := Screens.%screen_index%.y + Screens.%screen_index%.h/2 - win_h/2
 
     win_x := Round(win_x)
@@ -105,19 +105,17 @@ Position(args*)
 
 AID(id)
 {
-    if (not id) {
+    if ( ! id )
         return "A"
-    }
     return Format("ahk_id {}", id)
 }
 
 
 AEXE(exe)
 {
-    if (not exe) {
+    if ( ! exe )
         return "A"
-    }
-    if (not InStr(exe, ".exe")) {
+    if ( ! InStr(exe, ".exe") ) {
         try {
             exe := Windows_Process.Get(StrLower(exe))
             return Format("ahk_exe {}", exe)

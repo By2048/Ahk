@@ -24,7 +24,7 @@ CapsLockRedirect(key:="", cycle:="", fun:="", arg:="")
         }
     }
 
-    if ( not key ) {
+    if ( ! key ) {
         key := StrReplace(A_ThisHotkey, "CapsLock &",  "")
         key := StrReplace(key, "~", "")
         key := StrReplace(key, " ", "")

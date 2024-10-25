@@ -15,9 +15,9 @@ NumpadPgUp::
 NumpadPgDn::{
     SetControlDelay(-1)
     ControlClick("wxWindow1", "A")
-    if InStr(A_ThisHotkey, "NumpadPgUp")
+    if ( InStr(A_ThisHotkey, "NumpadPgUp") )
         Send "{Down}"
-    if InStr(A_ThisHotkey, "NumpadPgDn")
+    if ( InStr(A_ThisHotkey, "NumpadPgDn") )
         Send "{Up}"
 }
 
