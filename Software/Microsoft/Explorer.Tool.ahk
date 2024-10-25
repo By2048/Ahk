@@ -105,11 +105,11 @@ SetColumns(config)
         return
 
     obj := 0
-	for win in ComObject("Shell.Application").Windows
-		if win.HWND == win_id
-			obj := win
+	for Win in ComObject("Shell.Application").Windows
+		if ( Win.HWND == win_id )
+			obj := Win
 
-    if ( not obj )
+    if ( ! obj )
         return
 
     IID_IServiceProvider := "{6D5140C1-7436-11CE-8034-00AA006009FA}"
@@ -158,13 +158,13 @@ SetColumns(config)
 
 ResetPosition(columns:="")
 {
-    total_width       := 1960
-    total_height      := 1250
     check_offset      := 30
     tree_width        := 325
     preview_width     := 411
     input_move_width  := 426
     input_check_width := 388
+    total_width       := 1960 - preview_width - check_offset/2
+    total_height      := 1250
 
     MouseGetPos(&x_origin, &y_origin)
     WinGetPos(&origin_win_x, &origin_win_y, &origin_win_w, &origin_win_h, "A")
@@ -174,13 +174,12 @@ ResetPosition(columns:="")
     ; 通过鼠标移动移动窗口,通过此操作Window可以在下次启动时使用修改后的位置
     if (   origin_win_x != window.x || origin_win_y != window.y
         || origin_win_w != window.w || origin_win_h != window.h ) {
-        ; MouseMove window.position_client.w/2 , window.position_client.h , 0
-        MouseMove(window.cw/2 , window.ch , 0)
+        MouseMove(window.cw/2, window.ch, 0)
         MouseClickDrag("Left", 0, 0, 0, -50, 0, "R")
         MouseClickDrag("Left", 0, 0, 0,  50, 0, "R")
     }
 
-    if ( not columns ) 
+    if ( ! columns ) 
         config := ExplorerColumns.Get(window.title, ExplorerColumns["Default"])
     else
         config := ExplorerColumns.Get(columns, ExplorerColumns["Default"])
@@ -207,14 +206,14 @@ ResetPosition(columns:="")
     }
 
     ; 右侧预览
-    GetActiveWindowInfo(False)
-    info := window.controls.DirectUIHWND3
-    if ( Abs(total_width - (info.x + info.w) - preview_width) > check_offset * 2 ) {
-        MouseMove(info.x + info.w , info.y + info.h / 2)
-        offset := GetOffset("X")
-        MouseMove(info.x + info.w + offset , info.y + info.h / 2)
-        MoveControlUDLR(info, "Right", info.x + info.w + preview_width, offset)
-    }
+    ; GetActiveWindowInfo(False)
+    ; info := window.controls.DirectUIHWND3
+    ; if ( Abs(total_width - (info.x + info.w) - preview_width) > check_offset * 2 ) {
+    ;     MouseMove(info.x + info.w , info.y + info.h / 2)
+    ;     offset := GetOffset("X")
+    ;     MouseMove(info.x + info.w + offset , info.y + info.h / 2)
+    ;     MoveControlUDLR(info, "Right", info.x + info.w + preview_width, offset)
+    ; }
 
     MouseMove(x_origin, y_origin, 0)
 }
