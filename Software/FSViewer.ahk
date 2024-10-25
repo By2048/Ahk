@@ -4,7 +4,7 @@ RegisterPosition( "FSViewer" , Position(2525 , 1450) )
 RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
 
-#HotIf CheckWindowActive("FSViewer", "", "删除文件")
+#HotIf CheckWindowActive("FSViewer", "", "*删除*")
     Delete::Send "!n"
     Insert::Send "!y"
 #HotIf
@@ -22,18 +22,24 @@ RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
 #HotIf CheckWindowActive("FSViewer")
 
-    `::Send "m"
-    p::{
+    /::{
+        EN()
         Sleep 99
         Send "{m}"
-        Sleep 99
         Send "^{Tab 3}"
-        Send "{Esc}"
+        Send "{Esc}" 
     }
+
+    `::Send "m"
+
     [::Send "m9"
     ]::Send "{Left}"
     \::Send "{Right}"
+    
     BackSpace::Send "!x"
+
+    `;::Send "{Home}!{Left}{Home}"
+     '::Send "{End}!{Right}"
 
     F1::Send "m1"
     F2::Send "m2"

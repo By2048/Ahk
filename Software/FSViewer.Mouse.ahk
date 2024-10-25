@@ -1,8 +1,11 @@
 
 ~NumLock::Send "{Esc}"
 
-; NumpadHome::Send "m1"
-; NumpadEnd::Send "m2"
+NumpadHome::Send "{Enter}"
+NumpadEnd::Send "{Delete}"
 
-; NumpadPgUp::Send "m4"
-; NumpadPgDn::Send "m5"
+NumpadPgUp::Send "!{Left}"
+NumpadPgDn::Send "!{Right}"
+
+NumpadIns::Send "{Home}"
+NumpadDel::Send "{End}"
