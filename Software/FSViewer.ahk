@@ -49,6 +49,14 @@ RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
     ^r::Send "{F2}"
 
+    Insert::{
+        MouseGetPos(&mouse_x, &mouse_y)
+        if ( Abs(mouse_x - Screen.w/2) > 5 ) || ( mouse_y > 5 )
+            MouseMove(Screen.w/2, 0, 0)
+        else
+            MouseMove(Screen.w/2, Screen.h/2, 0)
+    }
+
     #Include FSViewer.Joy.ahk
     #Include FSViewer.Mouse.ahk
 
