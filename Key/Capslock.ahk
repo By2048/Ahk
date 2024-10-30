@@ -7,7 +7,7 @@
 
 
 ;切换到显示器中心
-~CapsLock & Tab::{
+CapsLock & Tab::{
 
     CoordMode("Mouse", "Screen")
     MouseGetPos(&x_current, &y_current)
@@ -46,7 +46,7 @@
         && y_current >= Screens.2.y && y_current <= Screens.2.y + Screens.2.h )
     {
         ; 不在在屏幕2中心
-        if ( x_current != x2 and y_current != y2 ) {
+        if ( x_current != x2 && y_current != y2 ) {
             xx := x2
             yy := y2
         } else {
@@ -68,15 +68,16 @@
 
 
 ; 屏幕1中心
-~CapsLock & LShift::{
+CapsLock & LShift::{
     DllCall("SetCursorPos", "int", A_ScreenWidth / 2, "int", A_ScreenHeight / 2)
     MouseGetPos(&_, &_, &win_id)
     WinActivate("ahk_id " . win_id)
-    HighlightActiveWindow(300)
+    if ( CheckWindowActive("Explorer", "CabinetWClass") )
+        MouseMove(window.w/2, 22, 0)
 }
 
 ; 鼠标点击
-~CapsLock & Space::{
+CapsLock & Space::{
     Click()
 }
 
