@@ -22,7 +22,7 @@ NumpadPgDn::{
 }
 
 ; 文件大小排序
-NumpadIns::MouseClickAndResetting(1094, 404, "Window")
+NumpadIns::MouseClickTool(1094, 404, "Window")
 
 ; 选择下载文件夹
 NumpadDel::{

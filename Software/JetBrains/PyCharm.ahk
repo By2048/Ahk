@@ -11,8 +11,8 @@ RegisterHelp( "PyCharm", FilePath(A_LineFile, "@.CapsLock.help") )
 
 #HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "设置")
     ; 快捷键 搜索按钮
-    AppsKey::MouseClickAndResetting(1558, 240)
-    `::MouseClickAndResetting(1595, 238, "Window", "Left")
+    AppsKey::MouseClickTool(1558, 240)
+    `::MouseClickTool(1595, 238, "Window", "Left")
 #HotIf
 
 
@@ -43,7 +43,7 @@ RegisterHelp( "PyCharm", FilePath(A_LineFile, "@.CapsLock.help") )
     RWin::MoveWindowPosition(Position(1600 , 1100))
     Esc::
     CapsLock::{
-        MouseClickAndResetting(10, 25, "Window", "Right")
+        MouseClickTool(10, 25, "Window", "Right")
         Sleep 99
         Send "{Down 5}"
         Sleep 33
@@ -54,9 +54,9 @@ RegisterHelp( "PyCharm", FilePath(A_LineFile, "@.CapsLock.help") )
 
 #HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "Python 控制台")
     ;ReRun
-    +BackSpace::MouseClickAndResetting(34, 92)
+    +BackSpace::MouseClickTool(34, 92)
     ;StopConsole
-    !BackSpace::MouseClickAndResetting(34, 142)
+    !BackSpace::MouseClickTool(34, 142)
 #HotIf
 
 

@@ -31,7 +31,7 @@ MouseTool()
 
 
 ; mode    Window | Screen
-MouseClickAndResetting(x, y, mode:="Window", key:="Left", click_count:=1, move_speed:=0)
+MouseClickTool(x, y, mode:="Window", key:="Left", click_count:=1, move_speed:=0)
 {
     CoordMode("Mouse", mode)
     MouseGetPos(&x_origin, &y_origin)

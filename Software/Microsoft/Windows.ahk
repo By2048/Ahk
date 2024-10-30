@@ -48,5 +48,5 @@ RegisterProcess( "mstsc" , "RemoteDesktop" )
 RegisterProcess("ApplicationFrameHost" , "WindowsSettings")
 RegisterPosition( "WindowsSettings_ApplicationFrameWindow_设置" , Position(1800 , 1200) )
 #HotIf CheckWindowActive( "ApplicationFrameHost" , "ApplicationFrameWindow" , "设置" )
-    Esc::MouseClickAndResetting( 38 , 23 ) ;点击返回
+    Esc::MouseClickTool( 38 , 23 ) ;点击返回
 #HotIf

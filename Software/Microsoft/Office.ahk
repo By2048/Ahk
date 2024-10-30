@@ -32,7 +32,7 @@ RegisterProcess("ONENOTE"  , "OneNote" )
     ; Excel_Hotkeys_Image.Push( "9 A1 I41 6 E:\Project\Ahk\Image\RShift\Chrome.png"          )
     ; Excel_Hotkeys_Image.Push( "9 J1 P26 2 E:\Project\Ahk\Image\RShift\Chrome-Bilibili.png" )
 
-    !`::MouseClickAndResetting(202,363)
+    !`::MouseClickTool(202,363)
 
     ;无框线
     >![::Send "!{4}{n}"

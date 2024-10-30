@@ -21,9 +21,9 @@ MusicDetail() {
     GetActiveWindowInfo()
     win_process_name := window.process_name
     if ( win_process_name == "CloudMusic" )
-        MouseClickAndResetting(13, 1133, "Window")
+        MouseClickTool(13, 1133, "Window")
     if ( win_process_name == "QQMusic" )
-        MouseClickAndResetting(13, 1133, "Window")
+        MouseClickTool(13, 1133, "Window")
 }
 
 
@@ -44,21 +44,21 @@ MusicDetail() {
     ; 列表 上一首 下一首
     Left::
     Right::{
-        MouseClickAndResetting(854, 1117, "Window")
+        MouseClickTool(854, 1117, "Window")
         Sleep 1000
         if ( A_ThisHotkey == "Left" )
             Send "!["
         if ( A_ThisHotkey == "Right" )
             Send "!]"
         Sleep 1000
-        MouseClickAndResetting(854, 1117, "Window", "Left", 4)
+        MouseClickTool(854, 1117, "Window", "Left", 4)
     }
 
     PgUp::Send "{Volume_Up}"
     PgDn::Send "{Volume_Down}"
 
     ; 点击喜欢
-    ; AppsKey::MouseClickAndResetting(857, 1130, "Window")
+    ; AppsKey::MouseClickTool(857, 1130, "Window")
 
     \::Send "!\"
     [::{

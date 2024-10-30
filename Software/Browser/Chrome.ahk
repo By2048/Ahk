@@ -21,7 +21,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
 
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "近期的下载记录" )
-    NumpadEnd::MouseClickAndResetting(40, 123)
+    NumpadEnd::MouseClickTool(40, 123)
 #HotIf
 
 

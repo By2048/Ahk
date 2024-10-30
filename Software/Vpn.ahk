@@ -16,13 +16,13 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
 
     ; 更新v2ray
     ![::{
-        MouseClickAndResetting(685, 90, "Window")
+        MouseClickTool(685, 90, "Window")
         Send "{Down 1}{Enter}"
     }
 
     ; 更新Geo
     !]::{
-        MouseClickAndResetting(685, 90, "Window")
+        MouseClickTool(685, 90, "Window")
         Send "{Up 2}{Enter}"
     }
 
@@ -36,7 +36,7 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
     ; 更新订阅
     !\::
     +\::{
-        MouseClickAndResetting(240, 90, "Window", "Left")
+        MouseClickTool(240, 90, "Window", "Left")
         if ( A_ThisHotkey == "!\" ) ; 不通过代理
             Send "{Down 2}{Enter}"
         if ( A_ThisHotkey == "+\" ) ; 通过代理
@@ -45,7 +45,7 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
 
     ; 去重
     ^!\::{
-        MouseClickAndResetting(30, 207, "Window", "Right")
+        MouseClickTool(30, 207, "Window", "Right")
         Send "{Down 4}{Enter}"
     }
 
@@ -59,26 +59,26 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
     ^!AppsKey::{
         HelpText("`nStart ...`n", "Center", "Screen")
         ; 更新订阅
-        MouseClickAndResetting(240, 90, "Window", "Left")
+        MouseClickTool(240, 90, "Window", "Left")
         Send "{Down 2}{Enter}"
         Sleep 5000
         ; 去重
-        MouseClickAndResetting(30, 207, "Window", "Right")
+        MouseClickTool(30, 207, "Window", "Right")
         Send "{Down 4}{Enter}"
         Sleep 1500
         ; 测试
-        MouseClickAndResetting(30, 207, "Window", "Left")
+        MouseClickTool(30, 207, "Window", "Left")
         Send "^r"
         Sleep 1500
         ; 更新Geo
-        MouseClickAndResetting(685, 90, "Window")
+        MouseClickTool(685, 90, "Window")
         Send "{Up 2}{Enter}"
         Sleep 1000
         HelpText("`nOver`n", "Center", "Screen", 1000)
     }
 
 
-    #BackSpace::MouseClickAndResetting(1052, 73, "Window", "Left")
+    #BackSpace::MouseClickTool(1052, 73, "Window", "Left")
 
     RButton::{
         WinActivate("ahk_exe v2rayN.exe")
