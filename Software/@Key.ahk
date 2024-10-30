@@ -8,13 +8,13 @@
 
     Global Arg
 
-    Arg.win_press := 0
+    Arg.rwin_press := 0
 
-    if ( Arg.win_click > 0 ) {
-        Arg.win_click += 1
+    if ( Arg.rwin_click > 0 ) {
+        Arg.rwin_click += 1
         return
     } else {
-        Arg.win_click := 1
+        Arg.rwin_click := 1
     }
 
     SetTimer(ClickTimer, -500)
@@ -22,28 +22,28 @@
     SetTimer(PauseTimer, 66)
 
     ClickTimer() {
-        if ( Arg.win_click == 2 ) {
+        if ( Arg.rwin_click == 2 ) {
             MoveWindowDefault()
             MoveWindowDefault()
             HighlightActiveWindow(500)
-        } else if ( Arg.win_click == 3 ) {
+        } else if ( Arg.rwin_click == 3 ) {
             MoveWindowBackup()
             MoveWindowBackup()
             HighlightActiveWindow(500)
         }
-        Arg.win_click := 0
+        Arg.rwin_click := 0
     }
 
     PauseTimer() {
         if ( GetKeyState("RWin", "P") ) {
-            Arg.win_press := Arg.win_press + 1
-            if ( Arg.win_press >= 6) {
-                Arg.win_press := 0
+            Arg.rwin_press := Arg.rwin_press + 1
+            if ( Arg.rwin_press >= 6) {
+                Arg.rwin_press := 0
                 MoveWindowCenter()
                 SetTimer( , 0)
             }
         } else {
-            Arg.win_press := 0
+            Arg.rwin_press := 0
             SetTimer( , 0)
         }
     }
@@ -57,27 +57,27 @@
 ~RShift::{
     Send "{Blind}{vkFF}"
     Global Arg
-    if ( Arg.shift_click > 0 ) {
-        Arg.shift_click += 1
+    if ( Arg.rshift_click > 0 ) {
+        Arg.rshift_click += 1
         return
     } else {
-        Arg.shift_click := 1
+        Arg.rshift_click := 1
     }
     SetTimer(Timer, -500)
     Timer() {
         Global Arg
-        if ( Arg.shift_click == 1 ) {
+        if ( Arg.rshift_click == 1 ) {
             if ( Arg.status_show )
                 StatusGui()
             HelpText()
             HelpKeysHide()
-        } else if ( Arg.shift_click == 2 ) {
+        } else if ( Arg.rshift_click == 2 ) {
             HelpText()
             HelpKeysShow()
-        } else if ( Arg.shift_click == 3 ) {
+        } else if ( Arg.rshift_click == 3 ) {
             StatusGui()
         }
-        Arg.shift_click := 0
+        Arg.rshift_click := 0
     }
 }
 
@@ -88,16 +88,16 @@
     Send "{Blind}{vkFF}"
     Global Arg
     GetActiveWindowInfo()
-    if ( Arg.alt_click > 0 ) {
-        Arg.alt_click += 1
+    if ( Arg.ralt_click > 0 ) {
+        Arg.ralt_click += 1
         return
     } else {
-        Arg.alt_click := 1
+        Arg.ralt_click := 1
     }
     SetTimer(Timer, -500)
     Timer() {
         Global Arg
-        Arg.alt_click := 0
+        Arg.ralt_click := 0
     }
 }
 
