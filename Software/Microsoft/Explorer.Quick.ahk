@@ -12,6 +12,13 @@ FileQuickPreview()
     if ( InStr(path, ".bc!") )
         return
 
+    if ( InStr(path, ".png") || InStr(path, ".jpg") || InStr(path, ".jpeg") || InStr(path, ".bmp") ) {
+        cmd := AHK
+        cmd .= " E:\Project\Ahk\Cmd\Image.ahk "
+        cmd .= Format("`"{}`"", path)
+        Run cmd
+    }
+
     if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
         cmd := "D:\PowerShell\psl.exe -NoLogo -File "
         cmd .= "E:\Script\PSL\UnZip#Image.ps1 "
@@ -19,14 +26,15 @@ FileQuickPreview()
         Run cmd
         return
     }
-
-
-
 }
 
 
 FileQuickMove()
 {
+    if ( ! Arg.quick_tool_config ) {
+        FileQuickToolsHide()    
+        return
+    }
     paths := GetSelectItem()
     for path in paths {
         attribute := FileExist(path)

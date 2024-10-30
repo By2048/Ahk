@@ -125,8 +125,8 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     ; 属性对话框 !{Enter}
 
     RWin & RCtrl::Return
-    RWin & RAlt::Return
-    ^WheelUp::Return
+    RWin & RAlt:: Return
+    ^WheelUp::  Return
     ^WheelDown::Return
 
     #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk

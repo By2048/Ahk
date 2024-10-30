@@ -21,11 +21,11 @@ ActivateMenu()
     window   := GetActiveWindowInfo()
     offset_x := 0
     offset_y := 0
-    if (window.class == "CabinetWClass") {
+    if ( window.class == "CabinetWClass" ) {
         info     := window.controls.DirectUIHWND3
         offset_x := 20
         offset_y := -13
-    } else if (window.class == "#32770") {
+    } else if ( window.class == "#32770" ) {
         info     := window.controls.DirectUIHWND2
         offset_x := 20
         offset_y := 30
@@ -47,12 +47,10 @@ GetFocusedItem()
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
     if ( ! hwnd )
         return
-    
     path := ""
     for Win in ComObject("Shell.Application").Windows
         if ( Win.hwnd == hwnd )
             path := Win.Document.FocusedItem.Path
-
     return path
 }
 
@@ -60,11 +58,9 @@ GetFocusedItem()
 GetSelectItem()
 {
     paths := []
-
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
     if ( ! hwnd )
         return paths
-    
     for Win in ComObject("Shell.Application").Windows
         if ( Win.hwnd == hwnd )
             for item in Win.Document.SelectedItems
@@ -161,8 +157,8 @@ ResetPosition(columns:="")
     check_offset      := 30
     tree_width        := 325
     preview_width     := 411
-    input_move_width  := 426
-    input_check_width := 388
+    input_move_width  := 207  ;426
+    input_check_width := input_move_width - 38
     total_width       := 1960 - preview_width - check_offset/2
     total_height      := 1250
 
