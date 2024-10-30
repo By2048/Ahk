@@ -39,9 +39,6 @@ SetZipPathNext() {
     ; 修改文件夹名
     Insert::ControlFocus("Edit2", "A")
     
-    ; 显示密码
-    AppsKey::ControlClick("Button5", "A")
-
     ; 确认解压
     Enter::ControlClick("Button7", "A")
     
@@ -51,6 +48,11 @@ SetZipPathNext() {
     [::SetZipPathPrev()
 
     ]::SetZipPathNext()
+
+    AppsKey::{
+        WinClose("A")
+        Send "{Esc}"
+    }
      
     #Include *i Zip.Joy.ahk
 
