@@ -31,12 +31,12 @@ MouseTool()
 
 
 ; mode    Window | Screen
-MouseClickTool(x, y, mode:="Window", key:="Left", click_count:=1, move_speed:=0)
+MouseClickTool(x, y, mode:="Window", key:="Left", count:=1, speed:=0)
 {
     CoordMode("Mouse", mode)
     MouseGetPos(&x_origin, &y_origin)
-    MouseClick(key, x, y, click_count, move_speed)
-    MouseMove(x_origin, y_origin, move_speed)
+    MouseClick(key, x, y, count, speed)
+    MouseMove(x_origin, y_origin, speed)
 }
 
 
