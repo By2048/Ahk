@@ -1,29 +1,40 @@
 ﻿
 CapsLockActivate := False
 
-~*CapsLock::{
+~*CapsLock Up::SetCapsLockState("Off")
+
+; 编辑器操作 滚动到中心
+~CapsLock::{
     if ( InStr(A_PriorHotkey, "CapsLock") )
         if ( A_TimeSincePriorHotkey < 333 )
-            Send "{CtrlBreak}"
+            Send "{CtrlBreak}"  
 }
 
-~*CapsLock Up::{
-    SetCapsLockState("Off")
-}
+!CapsLock::Send "!{CtrlBreak}" ;关闭标签
+!+CapsLock::Send "!+{CtrlBreak}" ;重新打开标签
 
-!CapsLock::{
-    Send "!{CtrlBreak}" ;关闭标签
-    SetCapsLockState("Off")
-}
-!+CapsLock::{
-    Send "!+{CtrlBreak}" ;重新打开标签
-    SetCapsLockState("Off")
+; 聚焦 编辑器
+~CapsLock & Tab::Send "^{CtrlBreak}"
+
+; Jump
+; 导航 代码
+~CapsLock & LShift::
+~CapsLock & RShift::{
+    Global CapsLockActivate
+    if ( CapsLockActivate == True ) {
+        Send "{Esc}"
+        CapsLockActivate := False
+        return
+    }
+    if ( InStr(A_ThisHotkey, "LShift") )
+        Send "^+{CtrlBreak}"
+    else if ( InStr(A_ThisHotkey, "RShift") )
+        Send "^!{CtrlBreak}"
+    CenterHideWindow()
+    CapsLockActivate := True
 }
 
 ; ------------------------------------------------------------------------- ;
-
-~CapsLock & Tab::^CtrlBreak      ;聚焦 工具
-~CapsLock & LShift::^+CtrlBreak  ;聚焦 编辑器
 
 ; 切换器
 ~CapsLock & Esc::CapsLockRedirect(key:="Pause", cycle:="Esc", fun:="Center")
@@ -49,10 +60,7 @@ CapsLockActivate := False
 ; AI Assistant
 ~CapsLock & Enter::CapsLockRedirect()
 
-; 导航 代码
-~CapsLock & RShift::CapsLockRedirect(key:="CtrlBreak", cycle:="Esc", fun:="Center")
-
-; 问题
+; 
 ~CapsLock & Space::CapsLockRedirect()
 
 ; 项目 书签
@@ -64,11 +72,9 @@ CapsLockActivate := False
 ; ------------------------------------------------------------------------- ;
 
 ; 书签描述符
-; ^!`::Return
 ~CapsLock & `::CapsLockRedirectCenter()
 
 ; 跳转到导航栏
-; ^!o::Return
 ~CapsLock & o::CapsLockRedirect()
 
 ; 最近文件
@@ -87,8 +93,8 @@ CapsLockActivate := False
 ; 向左/向右 滚动
 ^!f::Return
 ^!j::Return
-CapsLock & f::^!f
-CapsLock & j::^!j
+~CapsLock & f::Send "^!f"
+~CapsLock & j::Send "^!j"
 
 ; Git工具 VCS操作
 ^!g::Return
@@ -133,7 +139,7 @@ CapsLock & j::^!j
 ; ---------------------------------------------- ;
 
 ; 快速列表 #上下文
-^!;::Return
+; ^!;::Return
 ~CapsLock & `;::CapsLockRedirectCenter()
 
 ; 快速列表 #选项卡
@@ -159,3 +165,21 @@ CapsLock & j::^!j
 ~CapsLock & Right::Send "^!{Right}"
 ~CapsLock & Up::   Send "^!{Up}"
 ~CapsLock & Down:: Send "^!{Down}"
+
+; ------------------------------------------------------------------------- ;
+
+CapsLock & q::Return
+CapsLock & w::Return
+CapsLock & e::Return
+CapsLock & r::Return
+
+CapsLock & a::Return
+CapsLock & s::Return
+CapsLock & d::Return
+; CapsLock & f::Return
+
+CapsLock & z::Return
+CapsLock & x::Return
+; CapsLock & c::Return
+; CapsLock & v::Return
+

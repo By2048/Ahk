@@ -51,7 +51,8 @@ CapsLockRedirect(key:="", cycle:="", fun:="", arg:="")
         CenterHideWindow(arg*)
     }
 }
-CapsLockRedirectCenter(arg:="") {
+CapsLockRedirectCenter(arg:="")
+{
     CapsLockRedirect(key:="", cycle:="Esc", fun:="Center", arg:=arg)
 }
 

@@ -1,159 +1,59 @@
 ﻿
-RegisterProcess( "pycharm64" , "PyCharm" )
+#Include Tool.ahk
 
-RegisterHelp( "PyCharm", FilePath(A_LineFile, "@.help")          )
-RegisterHelp( "PyCharm", FilePath(A_LineFile, "@.Fxx.md")        )
-RegisterHelp( "PyCharm", FilePath(A_LineFile, "@.CapsLock.help") )
-
-
-#Include PyCharm.Position.ahk
+#Include PyCharm.Cfg.ahk
+#Include PyCharm.Env.ahk
+#Include PyCharm.Win.ahk
 
 
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "设置")
-    ; 快捷键 搜索按钮
-    AppsKey::MouseClickTool(1558, 240)
-    `::MouseClickTool(1595, 238, "Window", "Left")
-#HotIf
+#HotIf CheckWindowActive( "PyCharm" )
 
-
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "运行/调试配置")
-    !F1::Esc
-    CapsLock::Esc
-#HotIf
-
-
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "终端|运行|调试")
-    ~RAlt::WinSetTransparent(99, "A")
-    ~RAlt Up::WinSetTransparent(255, "A")
-#HotIf
-
-
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "断点")
-    !F2::Esc
-    CapsLock::Esc
-#HotIf
-
-
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "评估")
-    !Enter::Send "^{Enter}"
-#HotIf
-
-
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "文档")
-    RWin::MoveWindowPosition(Position(1600 , 1100))
-    Esc::
-    CapsLock::{
-        MouseClickTool(10, 25, "Window", "Right")
-        Sleep 99
-        Send "{Down 5}"
-        Sleep 33
-        Send "{Enter}"
-    }
-#HotIf
-
-
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "Python 控制台")
-    ;ReRun
-    +BackSpace::MouseClickTool(34, 92)
-    ;StopConsole
-    !BackSpace::MouseClickTool(34, 142)
-#HotIf
-
-
-#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "书签")
-    $CapsLock::^CapsLock
-#HotIf
-
-
-; ---------------------------------------------------------------------------- :
-
-
-; AppsKey Esc 一次性返回问题修复
-#HotIf CheckWindowActive("PyCharm") And ( AppsKeyRedirect == True )
-    $Enter::{
-        Global AppsKeyEnterCount
-        Send "{Enter}"
-        AppsKeyEnterCount := AppsKeyEnterCount + 1
-    }
-    $Esc::
-    $CapsLock::{
-        Global AppsKeyRedirect, AppsKeyEnterCount
-        if ( AppsKeyEnterCount > 1 ) {
-            Send "{Left}"
-            AppsKeyEnterCount := AppsKeyEnterCount - 1
-        } else if ( AppsKeyEnterCount == 1 ) {
+    Arg.alt_appskey := False
+    !AppsKey::{
+        if ( Arg.alt_appskey ) {
             Send "{Esc}"
-            AppsKeyRedirect := False
-            AppsKeyEnterCount := 0
-        }
-    }
-#HotIf
-
-
-
-; 主菜单 动态调整位置
-CenterTools       := False
-CenterToolsConfig := []
-#HotIf CheckWindowActive("PyCharm") And ( CenterTools == True )
-    FloatWindows() {
-        Global CenterToolsConfig
-        config := []
-        loop CenterToolsConfig.Length {
-            win := CenterToolsConfig.Pop()
-            config.Push(win)
-        }
-        left := 0
-        loop config.Length {
-            win := config[A_Index]
-            if ( A_Index == 1 )
-                win.x := Screen.x + Screen.w/2 - win.w/2
-            else
-                win.x := left - win.w
-            win.x := win.x - A_Index * 2  ;UI间隔
-            win.y := Screen.y + Screen.h/2 - win.h/2
-            CenterToolsConfig.InsertAt(1, win)
-            left := win.x
-        }
-        loop CenterToolsConfig.Length {
-            win := CenterToolsConfig[A_Index]
-            WinMove(win.x, win.y, win.w, win.h, AID(win.id))
-        }
-    }
-    ~RShift::{
-        Send "{Blind}{vkFF}"
-        Global CenterToolsConfig
-        CenterToolsConfig.Pop()
-        win := GetHideWindowConfig(333)
-        if ( ObjOwnPropCount(win) ) {
-            CenterToolsConfig.Push(win)
-            FloatWindows()
-        }
-    }
-    ~Enter::{
-        Global CenterTools, CenterToolsConfig
-        win := GetHideWindowConfig()
-        if ( ! ObjOwnPropCount(win) ) {
-            CenterTools := False
-            AppsKeyRedirect := False
-            CenterToolsConfig := []
+            Arg.alt_appskey := False
         } else {
-            CenterToolsConfig.Push(win)
-            FloatWindows()
+            Send "!{AppsKey}"
+            CenterHideWindow()
+            Arg.alt_appskey := True
         }
     }
-    $Esc::
-    $CapsLock::{
-        Global AppsKeyRedirect
-        Global CenterTools, CenterToolsConfig
-        if ( AppsKeyRedirect )
-            Send "{Left}"
-        else
-            Send "{Esc}"
-        CenterToolsConfig.Pop()
-        FloatWindows()
-        if ( ! CenterToolsConfig.Length ) {
-            CenterTools := False
-            AppsKeyRedirect := False
-        }
-    }
+
+    ~^o::CenterHideWindow()  ;最近的项目
+    ~^+o::CenterHideWindow() ;打开文件或项目
+    ~^n::CenterHideWindow()         ;新建文件
+    ~^+n::CenterHideWindow(400,800) ;新建临时文件
+
+    <#\::MoveWindowDefault()
+    <#+\::MoveWindowBackup()
+
+    <#0::Send "^!{NumpadMult}"  ;编辑页 重置
+    <#-::Send "^!{NumpadSub}"   ;编辑页 减小
+    <#=::Send "^!{NumpadAdd}"   ;编辑页 增加
+    <#+0::Send "^!+{NumpadMult}" ;IDE 重置
+    <#+-::Send "^!+{NumpadSub}"  ;IDE 减小
+    <#+=::Send "^!+{NumpadAdd}"  ;IDE 增加
+
+    #Enter::Send "^!NumpadDiv"   ;窗口全屏
+    #+Enter::Send "^!+NumpadDiv" ;Zen模式
+
+    <^Esc::Send "^{Pause}"
+    <!Esc::Send "!{Pause}"
+    <+Esc::Send "+{Pause}"
+    <^+Esc::Send "^+{Pause}"
+    <!+Esc::Send "!+{Pause}"
+
+    ;标签页管理
+    ^Tab::Return
+    ^+Tab::Return
+    <!Tab::Send "^{Tab}"
+    <!+Tab::Send "^+{Tab}"
+
+    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
+
+    #Include Key.ahk
+    #Include Key.CapsLock.ahk
+    #Include Key.Fxx.ahk
+
 #HotIf

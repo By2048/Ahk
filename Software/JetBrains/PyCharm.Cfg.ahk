@@ -1,9 +1,16 @@
 ﻿
+RegisterProcess( "pycharm64" , "PyCharm" )
+
+RegisterHelp( "PyCharm", FilePath(A_LineFile, "Key.help")          )
+RegisterHelp( "PyCharm", FilePath(A_LineFile, "Key.Fxx.md")        )
+RegisterHelp( "PyCharm", FilePath(A_LineFile, "Key.CapsLock.help") )
+
+
 WD["PyCharm_SunAwtFrame"] := Position( -13 ,   0 , 2584 , 1451 )
 WB["PyCharm_SunAwtFrame"] := Position( 19  ,  29 , 2522 , 1393 )
 
 WD["PyCharm__更改"] := Position(-100 , -100)
-WD["PyCharm__变更"] := Position(-10 , -30)
+WD["PyCharm__变更"] := Position(-10  , -30 )
 
 WD["PyCharm__收藏夹"]   := Position(900 , 1300)
 WD["PyCharm__设置同步"] := Position(900 , 1300)
@@ -21,15 +28,11 @@ WD["PyCharm__编辑配置设置"] := Position(888 , 1030)
 WD["PyCharm__指定检查范围"] := Position(1500 , 1000)
 WD["PyCharm__将提交推送到"] := Position(1500 , 1000)
 
-WD["PyCharm__自定义调试"] := Position(0.3 , 0.7)
+WD["PyCharm__自定义调试"]    := Position(0.3 , 0.7)
 WD["PyCharm__运行/调试配置"] := Position(0.46 , 0.73)
-WD["PyCharm__编辑运行配置"] := Position(0.5 , 0.75)
+WD["PyCharm__编辑运行配置"]  := Position(0.5 , 0.75)
 
 WD["PyCharm__选择要粘贴的内容"] := Position(0.5 , 0.75)
-
-; WD["PyCharm__查找"]     := Position4K(1600 , 1500)
-; WD["PyCharm__检查"]     := Position4K(1600 , 1500)
-; WD["PyCharm__提交变更"] := Position4K(1600 , 1500)
 
 WD["PyCharm__插件更新"] := Position(1500 , 1000)
 
