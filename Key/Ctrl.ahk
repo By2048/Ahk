@@ -74,6 +74,7 @@ Arg.ctrl_show    := False
 Arg.ctrl_content := ""
 
 $RCtrl::{
+    Send "{Blind}{vkFF}"
     Global Arg
     if ( Arg.ctrl_click > 0 ) {
         Arg.ctrl_click += 1
