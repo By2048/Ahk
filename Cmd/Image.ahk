@@ -58,6 +58,7 @@ GPic.GetPos(&_, &_, &image_w, &image_h)
 if ( ! image_w ) || ( ! image_h )
     ExitApp()
 
+scale_wh := 1
 if ( image_w > A_ScreenWidth && image_h > A_ScreenHeight )
     scale_wh := Min(A_ScreenWidth / image_w, A_ScreenHeight / image_h)
 else if ( image_w > A_ScreenWidth )
