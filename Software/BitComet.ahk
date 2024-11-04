@@ -99,7 +99,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         Send "{Enter}"
     }
 
-    ; 设置代理
+    ; 取消代理
     ![::{
         Send "^p"
         Send "^+{Tab 5}"
@@ -107,8 +107,10 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         Send "{Tab}"
         Send "{Left 5}"
         Send "^{Enter}"
+        HelpText("`n   Off   `n", "Center", "Screen", 300)
     }
-    ; 取消代理
+
+    ; 设置代理
     !]::{
         Send "^p"
         Send "^+{Tab 5}"
@@ -117,6 +119,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         Send "{Right 5}"
         Send "{Left}"
         Send "^{Enter}"
+        HelpText("`n   On   `n", "Center", "Screen", 300)
     }
 
     #BackSpace::{
@@ -126,9 +129,10 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
     }
 
     ; 显示详细信息
-    NumLock::
-    CapsLock::{
-        Send "!{V}{Down 4}{Enter}"
+    NumLock::{
+        Send "!v"
+        Send "{Down 4}"
+        Send "{Enter}"
     }
 
     ^AppsKey::{
