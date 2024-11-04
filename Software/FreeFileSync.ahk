@@ -1,7 +1,7 @@
 ﻿
 RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
 
-RegisterPosition( "FreeFileSync__摘要"          , Position(600  , 400) )
+RegisterPosition( "FreeFileSync__摘要"          , Position(999  , 888) )
 RegisterPosition( "FreeFileSync__同步中*"        , Position(1177 , 777) )
 RegisterPosition( "FreeFileSync_#32770_删除项目" , Position(1111 , 777) )
 RegisterPosition( "FreeFileSync"                , Position(2000 , 1248) )
@@ -75,6 +75,15 @@ RegisterPosition( "FreeFileSync"                , Position(2000 , 1248) )
 #HotIf
 
 
+#HotIf CheckWindowActive( "FreeFileSync" , "" , "摘要" )
+    AppsKey::
+    Insert::
+    NumLock::{
+        WinClose("A")
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive( "FreeFileSync" )
 
     ; 开始比较
@@ -87,6 +96,11 @@ RegisterPosition( "FreeFileSync"                , Position(2000 , 1248) )
     !Enter::Send "{F9}"
 
     ; 显示摘要
-    ; LAlt & RShift::Send "!{t}{Up}{Enter}"
+    NumLock::
+    Insert::{
+        Send "!t"
+        Send "{Up}"
+        Send "{Enter}"
+    }
 
 #HotIf
