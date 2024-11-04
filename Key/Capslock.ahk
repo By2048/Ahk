@@ -76,10 +76,61 @@ CapsLock & LShift::{
         MouseMove(window.w/2, 22, 0)
 }
 
+
 ; 鼠标点击
 CapsLock & Space::{
     Click()
 }
+
+
+; 截图 贴图
+; 使用 CapsLock 防止 右键菜单被取消
+CapsLock & Insert::Run Snipaste . " snip  "
+CapsLock & Delete::Run Snipaste . " paste "
+
+
+; 快速输入数字
+CapsLock & j::Send "1"
+CapsLock & k::Send "2"
+CapsLock & l::Send "3"
+CapsLock & u::Send "4"
+CapsLock & i::Send "5"
+CapsLock & o::Send "6"
+CapsLock & 7::Send "7"
+CapsLock & 8::Send "8"
+CapsLock & 9::Send "9"
+CapsLock & ,::Send "0"
+
+
+; 快速点击桌面位置
+CapsLock & Esc::{
+    GetActiveWindowInfo()
+    MouseClickTool( window.w/2 , window.h - 15 , "Window" )
+}
+CapsLock & `::{
+    GetActiveWindowInfo()
+    MouseClickTool( window.w/2 , 15 , "Window" )
+}
+; 
+CapsLock & 1::MouseClickTool( 11            , Screen.h/2    , "Screen" )
+CapsLock & 2::MouseClickTool( Screen.w - 11 , Screen.h/2    , "Screen" )
+CapsLock & 3::MouseClickTool( Screen.w/2    , 11            , "Screen" )
+CapsLock & 4::MouseClickTool( Screen.w/2    , Screen.h - 11 , "Screen" )
+; 
+CapsLock & q::MouseClickTool( Screen.w * (1/5) - 123 , Screen.h * (1/3) - 123 , "Screen" )
+CapsLock & w::MouseClickTool( Screen.w * (2/5) - 99  , Screen.h * (1/3) - 123 , "Screen" )
+CapsLock & e::MouseClickTool( Screen.w * (3/5) + 99  , Screen.h * (1/3) - 123 , "Screen" )
+CapsLock & r::MouseClickTool( Screen.w * (4/5) + 123 , Screen.h * (1/3) - 123 , "Screen" )
+; 
+CapsLock & a::MouseClickTool( Screen.w * (1/5) - 123 , Screen.h * (2/3) + 123 , "Screen" )
+CapsLock & s::MouseClickTool( Screen.w * (2/5) - 99  , Screen.h * (2/3) + 123 , "Screen" )
+CapsLock & d::MouseClickTool( Screen.w * (3/5) + 99  , Screen.h * (2/3) + 123 , "Screen" )
+CapsLock & f::MouseClickTool( Screen.w * (4/5) + 123 , Screen.h * (2/3) + 123 , "Screen" )
+; 
+CapsLock & z::MouseClickTool( 22            , Screen.h - 22 , "Screen" )
+CapsLock & x::MouseClickTool( Screen.w - 22 , 22            , "Screen" )
+CapsLock & c::MouseClickTool( Screen.w - 22 , Screen.h - 22 , "Screen" )
+CapsLock & v::MouseClickTool( 22            , 22            , "Screen" )
 
 
 #Include *i CapsLock.Private.ahk
