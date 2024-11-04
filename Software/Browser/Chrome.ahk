@@ -1,11 +1,10 @@
 ﻿
 RegisterProcess("chrome" , "Chrome")
 
-RegisterHelp("Chrome__知乎" , "Software\Browser\Chrome.ZhiHu.help")
-RegisterHelp("Chrome__Bilibili" , "Software\Browser\Chrome.Bilibili.help")
-RegisterHelp("Chrome", "Software\Browser\@.help")
-RegisterHelp("Chrome", "Software\Browser\Chrome.Fxx.help")
-RegisterHelp("Chrome", "Software\Browser\Chrome.Search.help")
+RegisterHelp("Chrome" , "Software\Browser\@.help")
+RegisterHelp("Chrome" , "Software\Browser\Chrome.Search.help")
+RegisterHelp("Chrome" , "Software\Browser\Chrome.Bilibili.help")
+RegisterHelp("Chrome" , "Software\Browser\Chrome.ZhiHu.help")
 
 win_w   := 2500
 win_h   := 1400
@@ -134,7 +133,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
     }
 
     ; 删除搜索历史记录
-    !Delete::{
+    Insert & \::{
         CoordMode("Mouse", "Window")
         MouseGetPos(&x_origin, &y_origin)
         MouseClick("Left", 440, 95, 1, 0)
