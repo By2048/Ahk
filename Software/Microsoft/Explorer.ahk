@@ -53,12 +53,6 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
 #HotIf
 
 
-#HotIf CheckWindowActive( "Explorer" , "#32770" , "回收站*" )
-    ;回收站位置 可用空间
-    #\::SetColumnWidth( "SysListView321" , Map( 1,400 , 2,100 ) )
-#HotIf
-
-
 ; 桌面
 #HotIf CheckWindowActive( "Explorer" , "WorkerW" )
 
@@ -102,6 +96,22 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
         Send "{Volume_Down 5}"
     }
     RAlt & RWin::Return
+#HotIf
+
+
+#HotIf CheckWindowActive( "Explorer" , "#32770" , "回收站*" )
+    ;回收站位置 可用空间
+    #\::SetColumnWidth( "SysListView321" , Map( 1,400 , 2,100 ) )
+#HotIf
+
+
+#HotIf CheckWindowActive( "Explorer" , "CabinetWClass" , "回收站" )
+    +Delete::{
+        ActivateMenu()
+        Sleep 333
+        Send "{Up 2}"
+        Send "{Enter}"
+    }
 #HotIf
 
 
@@ -167,7 +177,6 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
         
     F11::Return ; 全屏
     #Enter::Send "{F11}"
-
 
     #Include Explorer.Mouse.ahk
     

@@ -124,9 +124,11 @@ FileQuickTools()
     if ( Arg.quick_tool_index == 1 ) {
 
         path := GetFocusedItem()
+        
+        GLine := G.Add("Text", Format("w{}", G.text_w), G.Line)
+
         if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
             if ( ! InStr(path, ".bc!") ) {
-                G.Add("Text", Format("w{} Disabled", G.text_w), G.Line)
                 G.Add("Text", Format("w{} Disabled", G.text_w), "  UnZip")
                 Arg.quick_tool_command := "FileQuickUnZip"
             }
@@ -134,6 +136,16 @@ FileQuickTools()
 
         #Include *i Explorer.Quick.Private.ahk
 
+        if ( ! Arg.quick_tool_command ) {
+            if ( StrLen(path) < 20 )
+                G.SetFont(Format("s{}", 10), G.font_name)
+            if ( StrLen(path) > 30 )
+                G.SetFont(Format("s{}", 8), G.font_name)
+            if ( StrLen(path) > 50 )
+                G.SetFont(Format("s{}", 6), G.font_name)
+            G.Add("Text", Format("w{}", G.text_w), "  ( " path " )")
+        }
+        
     }
     
     ; --------------------------------------------------------------------------------
@@ -258,6 +270,7 @@ FileQuickRun()
     BackSpace::FileQuickToolsSwitchPage(+1)
 
     Esc::
+    AppsKey::
     CapsLock::
     Insert::{
         FileQuickToolsHide()

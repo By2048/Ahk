@@ -1,16 +1,11 @@
 
-~NumLock::WinClose "A"
+NumLock::WinClose "A"
 
-NumpadHome::Send "{Space}"
-NumpadEnd::Send "{Delete}"
+NumpadHome::Send "!{Up}"
+NumpadEnd::ResetPosition("Default")
 
-NumpadPgUp::Send "!{Left}"
-NumpadPgDn::Send "!{Right}"
+NumpadPgDn::Send "!{Left}"
+NumpadPgUp::Send "!{Right}"
 
-NumpadIns::ResetPosition("Default")
-NumpadDel::Send "{F5}"
-
-MButton::Send "!{Up}"
-
-; ~Lbutton & RButton::
-; ~RButton & Lbutton::
+NumpadIns::Send "{Enter}"
+NumpadDel::Send "{Delete}"
