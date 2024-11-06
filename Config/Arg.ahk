@@ -35,17 +35,24 @@ Window := {
 ; 各种临时性数据
 Arg := {
     ;
-    rwin_click     : 0 ,
-    ctrl_click     : 0 ,
-    ralt_click     : 0 ,
-    rshift_click   : 0 ,
-    lshift_click   : 0 ,
-    capslock_click : 0 ,
-    numlock_click  : 0 ,
+    lwin_click : 0 ,
+    rwin_click : 0 ,
+    lwin_press : 0 ,
+    rwin_press : 0 ,
+
+    lctrl_click : 0 ,
+    rctrl_click : 0 ,
+
+    lalt_click : 0 ,
+    ralt_click : 0 ,
+    
+    lshift_click : 0 ,
+    rshift_click : 0 ,
+
     scroll_cnt     : 0 ,
     pause_click    : 0 ,
-
-    rwin_press : 0 ,
+    numlock_click  : 0 ,
+    capslock_click : 0 ,
 
     mouse_x : 0 ,
     mouse_y : 0 ,

@@ -76,11 +76,11 @@ Arg.ctrl_content := ""
 $RCtrl::{
     Send "{Blind}{vkFF}"
     Global Arg
-    if ( Arg.ctrl_click > 0 ) {
-        Arg.ctrl_click += 1
+    if ( Arg.rctrl_click > 0 ) {
+        Arg.rctrl_click += 1
         return
     } else {
-        Arg.ctrl_click := 1
+        Arg.rctrl_click := 1
     }
     SetTimer(CtrlTimer, -500)
 }
@@ -88,17 +88,17 @@ $RCtrl::{
 CtrlTimer()
 {
     Global Arg
-    if ( Arg.ctrl_click == 1 ) {
+    if ( Arg.rctrl_click == 1 ) {
         if ( Arg.ctrl_show )
             CtrlGui()
         if ( CheckWindowActive("Maye") )
             Send "{Esc}"
-        Arg.ctrl_click := 0
-    } else if ( Arg.ctrl_click == 2 ) {
+        Arg.rctrl_click := 0
+    } else if ( Arg.rctrl_click == 2 ) {
         Run "D:\#Lnk\#\Maye.lnk"
-    } else if ( Arg.ctrl_click == 3 )
+    } else if ( Arg.rctrl_click == 3 )
         CtrlGui()
-    Arg.ctrl_click := 0
+    Arg.rctrl_click := 0
 }
 
 CtrlGui()
