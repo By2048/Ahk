@@ -1,14 +1,4 @@
 
-Global CapsLockToEsc := False
-#HotIf ( CapsLockToEsc == True )
-    CapsLock::{
-        Send "{Esc}"
-        Global CapsLockToEsc
-        CapsLockToEsc := False
-    }
-#HotIf
-
-
 RegisterProcess("scrcpy" , "Scrcpy")
 RegisterHelp("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
 #HotIf CheckWindowActive("Scrcpy")
