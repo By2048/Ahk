@@ -1,34 +1,17 @@
 ﻿
-ToolSwitch(Key, rule)
+JBCapsLock(cycle:="", fun:="", arg:="")
 {
-    win_title := WinGetTitle("A")
-    if ( win_title == rule ) {
-        Send "{Esc}"
-    } else {
-        Send key
-        WinWaitActive(rule)
-        MoveWindowCenter()
-    }
-}
-
-
-CapsLockRedirect(key:="", cycle:="", fun:="", arg:="")
-{
-    Global CapsLockActivate
-
     if ( cycle ) {
-        if ( CapsLockActivate == True ) {
+        if ( PyCharm.CapsLockActivate == True ) {
             Send Format("{{1}}", cycle)
-            CapsLockActivate := False
+            PyCharm.CapsLockActivate := False
             return
         }
     }
 
-    if ( ! key ) {
-        key := StrReplace(A_ThisHotkey, "CapsLock &",  "")
-        key := StrReplace(key, "~", "")
-        key := StrReplace(key, " ", "")
-    }
+    key := StrReplace(A_ThisHotkey, "CapsLock &",  "")
+    key := StrReplace(key, "~", "")
+    key := StrReplace(key, " ", "")
 
     lshift := GetKeyState("LShift", "P")
 
@@ -37,7 +20,7 @@ CapsLockRedirect(key:="", cycle:="", fun:="", arg:="")
     else
         Send Format("^!+{{1}}", key)
 
-    CapsLockActivate := True
+    PyCharm.CapsLockActivate := True
 
     if ( fun == "Center" ) {
         if ( InStr(arg, "|") ) {
@@ -48,16 +31,12 @@ CapsLockRedirect(key:="", cycle:="", fun:="", arg:="")
                 arg := Trim(arg[2])
         }
         arg := StrSplit(arg, " ")
-        CenterHideWindow(arg*)
+        JBCenterWindow(arg*)
     }
 }
-CapsLockRedirectCenter(arg:="")
-{
-    CapsLockRedirect(key:="", cycle:="Esc", fun:="Center", arg:=arg)
-}
 
 
-GetHideWindowConfig(check_sleep:=44, check_count:=22)
+JBGetWindow(check_sleep:=44, check_count:=22)
 {
     exe := WinGetProcessName("A")
     check_rule := Format("ahk_exe {} ahk_class SunAwtWindow", exe)
@@ -83,11 +62,12 @@ GetHideWindowConfig(check_sleep:=44, check_count:=22)
 }
 
 
-CenterHideWindow(position*)
+JBCenterWindow(position*)
 {
-    win := GetHideWindowConfig()
+    result := {}
+    win := JBGetWindow()
     if ( ! ObjOwnPropCount(win) )
-        return
+        return result
     win_id := win.id
     if ( position.Length == 0 ) {
         win_w := win.w
@@ -112,25 +92,11 @@ CenterHideWindow(position*)
     }
     WinActivate(AID(win.id))
     WinMove(win_x, win_y, win_w, win_h, AID(win.id))
-    result    := {}
+
     result.id := win.id
     result.x  := win_x
     result.y  := win_y
     result.w  := win_w
     result.h  := win_h
     return result
-}
-
-
-PositionBackGroundTask()
-{
-    win   := GetHideWindowConfig()
-    win_w := 800
-    win_h := 600
-    win_x := Screen.x + Screen.w - win_w - 100
-    win_y := Screen.y + Screen.h - win_h - 150
-    try {
-        WinActivate(AID(win.id))
-        WinMove(win_x, win_y, win_w, win_h, AID(win.id))
-    }
 }

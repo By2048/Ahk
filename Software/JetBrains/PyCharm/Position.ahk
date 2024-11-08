@@ -1,11 +1,4 @@
 ﻿
-RegisterProcess( "pycharm64" , "PyCharm" )
-
-RegisterHelp( "PyCharm", FilePath(A_LineFile, "Key.help")          )
-RegisterHelp( "PyCharm", FilePath(A_LineFile, "Key.Fxx.md")        )
-RegisterHelp( "PyCharm", FilePath(A_LineFile, "Key.CapsLock.help") )
-
-
 WD["PyCharm_SunAwtFrame"] := Position( -13 ,   0 , 2584 , 1451 )
 WB["PyCharm_SunAwtFrame"] := Position( 19  ,  29 , 2522 , 1393 )
 
@@ -52,7 +45,7 @@ WD["PyCharm__导航栏工具栏"]       := Position(0.3 , 0.7)
 WD["PyCharm__选择路径"]          := Position(0.3 , 0.7)
 WD["PyCharm__选择"]              := Position(0.3 , 0.7)
 WD["PyCharm__打开文件或项目"]      := Position(0.3 , 0.7)
-WD["PyCharm__将操作添加到快速列表"] := Position(0.3 , 0.7)
+WD["PyCharm__将操作添加到快速列表"] := Position(0.4 , 0.7)
 
 WD["PyCharm__宏"] := Position(0.4 , 0.7)
 

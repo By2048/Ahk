@@ -58,7 +58,6 @@
 #Include Software\JetBrains\ToolBox.ahk
 #Include Software\JetBrains\IDEA.ahk
 #Include Software\JetBrains\PyCharm.ahk
-#Include Software\JetBrains\Key.ahk
 
 #Include Software\Microsoft\Explorer.ahk
 #Include Software\Microsoft\MMC.ahk
