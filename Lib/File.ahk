@@ -18,8 +18,7 @@ GetFileInfo(path)
         ; \u200e chr(8206) in detail_value (Windows WTF)
         detail_value := StrReplace(detail_value, Chr(8206), "")
         if ( detail_key != "" && detail_value != "" )
-            if ( detail_key != detail_value )
-                result.%detail_key% := detail_value
+            result.%detail_key% := detail_value
     }
     return result
 }
@@ -28,18 +27,21 @@ GetFileInfo(path)
 ; 获取图片大小
 GetImageSize(path)
 {
+    result := {}
+    
     info := GetFileInfo(path)
     if ( ! info )
         return
+
     try {
         width  := info.宽度
         height := info.高度
         width  := StrReplace(width,  " 像素", "")
         height := StrReplace(height, " 像素", "")
     } catch {
-        return
+        return result
     }
-    result := {}
+    
     result.width  := width
     result.height := height
     result.w      := result.width
