@@ -91,19 +91,20 @@ CtrlTimer()
     if ( Arg.rctrl_click == 1 ) {
         if ( Arg.ctrl_show )
             CtrlGui()
-        if ( CheckWindowActive("Maye") )
+        else if ( CheckWindowActive("Maye") )
             Send "{Esc}"
         Arg.rctrl_click := 0
     } else if ( Arg.rctrl_click == 2 ) {
         Run "D:\#Lnk\#\Maye.lnk"
-    } else if ( Arg.rctrl_click == 3 )
+    } else if ( Arg.rctrl_click == 3 ) {
         CtrlGui()
+    }
     Arg.rctrl_click := 0
 }
 
 CtrlGui()
 {
-    Global G , Arg
+    Global G , Arg , Gui_Config
 
     if ( Arg.ctrl_show ) {
         Try G.Destroy()
