@@ -33,9 +33,11 @@ MouseTool()
 ; mode    Window | Screen
 MouseClickTool(x, y, mode:="Window", key:="Left", count:=1, speed:=0)
 {
-    CoordMode("Mouse", mode)
+    CoordMode("Mouse", "Screen")
     MouseGetPos(&x_origin, &y_origin)
+    CoordMode("Mouse", mode)
     MouseClick(key, x, y, count, speed)
+    CoordMode("Mouse", "Screen")
     MouseMove(x_origin, y_origin, speed)
 }
 
