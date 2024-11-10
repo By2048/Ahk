@@ -37,7 +37,7 @@
     Send "{Volume_Down}{Volume_Up}" ;显示声音调整UI
     ; 调整音量时 不能准确调整到指定数值 存在小数点偏差
     volume_offset  := 5
-    volume_steps   := [ 11, 22, 33, 44, 55, 66, 77, 88, 99 ]
+    volume_steps   := [ 10, 22, 33, 44, 50, 55, 66, 77, 88, 100 ]
     volume_current := Round(SoundGetVolume())
     for index, volume in volume_steps {
         if ( Abs(volume_current - volume) < volume_offset ) {

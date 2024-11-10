@@ -64,6 +64,8 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
     NumpadDel::
     #\::{
+        Send "{Blind}{vkFF}"
+        
         total_width  := 2333
         total_height := 1222
         left_width   := 255

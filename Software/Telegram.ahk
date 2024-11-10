@@ -1,5 +1,5 @@
 
-RegisterPosition( "Telegram"        , Position(2000 , 1357) )
+RegisterPosition( "Telegram"        , Position(2000 , 1234) )
 RegisterPosition( "Telegram__Media" , Position(1700 , 1357) )
 
 RegisterHelp( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
@@ -20,13 +20,10 @@ RegisterHelp( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     ~NumLock::Send "{Esc}"
     NumpadHome::Send "^c"
     NumpadEnd::Send "^v"
-
-    ^PgUp::Return
-    ^PgDn::Return
-    NumpadPgDn::Send "^{PgDn}"
-    NumpadPgUp::Send "^{PgUp}"
-    NumpadIns::Send "{RButton}{Down 2}{Enter}"
-    NumpadDel::Send "{Enter}"
+    NumpadPgDn::Send "{RButton}{Down 2}{Enter}"
+    NumpadPgUp::Send "^v{Enter}"
+    NumpadIns::Send "^{PgDn}"
+    NumpadDel::Send "^{PgUp}"
 
     #[::{
         pos := Position( 99 , "Center" , 999 , 1357)
