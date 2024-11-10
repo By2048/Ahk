@@ -40,7 +40,6 @@
  >^v::Run "D:\#Lnk\#\Vpn.lnk"
  >^b::Run "D:\#Lnk\#\Image.lnk"
  >^n::Run "D:\#Lnk\#\Music.lnk"
->^+n::Run "D:\#Lnk\#\QQMusic.lnk"
  >^m::Run "D:\#Lnk\#\PotPlayer.lnk"
 
  >^[::Run VSCode " --profile %Temp    E:\Config\VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
@@ -73,8 +72,7 @@
 Arg.ctrl_show    := False
 Arg.ctrl_content := ""
 
-$RCtrl::{
-    Send "{Blind}{vkFF}"
+RCtrl::{
     Global Arg
     if ( Arg.rctrl_click > 0 ) {
         Arg.rctrl_click += 1

@@ -14,15 +14,15 @@
 |  D | Download               |  : | VSCode          |
 |  F | FreeFileSync           |  " | VSCodeDefault   |
 |  G | Geek                   |----------------------|
-|  H | Spy AHK | GH           |  Esc | 任务管理器    |
-|  J | JetBrains Tool | Check | +Esc |               |
-|  K | Key History | Virtual  |----------------------|
-|  L |                        |  Enter | Whiteboard  |
-|----|------------------------| +Enter | DevToys     |
-|  Z |                        |----------------------|
-|  X |                        | BackSpace | WT       | 
+|  H | Spy AHK | GH           |  Esc   | 任务管理器  |
+|  J | JetBrains Tool | Check |  Enter | Whiteboard  |
+|  K | Key History | Virtual  | +Enter | DevToys     |
+|  L |                        |----------------------|
+|----|------------------------| BackSpace | WT       |
+|  Z |                        |
+|  X |                        |
 |  C | Calc                   |
 |  V | Vpn                    |
 |  B | Image                  |
 |  N | Music                  |
-|  M | PotPlayer              |
+|  M | Video                  |
