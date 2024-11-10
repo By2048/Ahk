@@ -67,31 +67,29 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
 
     ~NumLock::Send("!s")
 
+    Insert::
     NumpadHome::{
-        edit_name := ControlGetText("Edit1", "A")
-        new_name  := ""
-        Loop Parse edit_name 
-        {
-            name := A_LoopField
-            if ( name == "#" )
-                continue
-            else if ( name == "|" )
-                continue
-            else if ( Ord(name) == "10" )
-                new_name := new_name . " "
-            else if ( Ord(name) == "13" )
-                new_name := new_name . " "
-            else
-                new_name := new_name . name
-        }
-        new_name := StrReplace(new_name, "  ", " ")
-        new_name := StrReplace(new_name, "  ", " ")
-        new_name := StrReplace(new_name, A_Tab, " ")
-        new_name := StrReplace(new_name, "video_", "")
-        new_name := StrReplace(new_name, " - 知乎", "")
-        ControlSetText(new_name, "Edit1", "A")
+        name := ControlGetText("Edit1", "A")
+        ; 
+        name := StrReplace(name, "  " , " ")
+        name := StrReplace(name, "  " , " ")
+        name := StrReplace(name, A_Tab, " ")
+        ; 
+        name := StrReplace(name, "video_", "")
+        name := StrReplace(name, " - 知乎", "")
+        ; 
+        name := StrReplace(name, "#", "")
+        name := StrReplace(name, "|", "")
+        name := StrReplace(name, "，", "")
+        ; 
+        name := StrReplace(name, Chr(10), " ")
+        name := StrReplace(name, Chr(13), " ")
+        ; 
+        ControlSetText(name, "Edit1", "A")
     }
-    NumpadEnd::ControlSetText(A_Clipboard, "Edit1", "A")
+    NumpadEnd::{
+        ControlSetText(A_Clipboard, "Edit1", "A")
+    }
 
     NumpadPgDn::MoveWindowDefault()
     NumpadPgUp::Send("^!7")
