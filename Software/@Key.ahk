@@ -104,8 +104,14 @@
 
 
 ; 设置默认位置
-#\::MoveWindowDefault()
-#+\::MoveWindowBackup()
+#\::{
+    Send "{Blind}{vkFF}"
+    MoveWindowDefault()
+}
+#+\::{
+    Send "{Blind}{vkFF}"
+    MoveWindowBackup()
+}
 
 
 
