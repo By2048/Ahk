@@ -47,6 +47,12 @@ RegisterProcess( "mstsc" , "RemoteDesktop" )
 ; 设置界面
 RegisterProcess("ApplicationFrameHost" , "WindowsSettings")
 RegisterPosition( "WindowsSettings_ApplicationFrameWindow_设置" , Position(1800 , 1200) )
-#HotIf CheckWindowActive( "ApplicationFrameHost" , "ApplicationFrameWindow" , "设置" )
-    Esc::MouseClickTool( 38 , 23 ) ;点击返回
+#HotIf CheckWindowActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
+    ;点击返回
+    Esc::
+    NumpadHome::{
+        MouseClickTool( 38 , 23 , "Window" ) 
+    }
+    ~NumLock::WinClose("A")
+    NumpadEnd::Send "{BackSpace}"
 #HotIf
