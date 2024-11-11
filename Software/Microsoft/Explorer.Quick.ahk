@@ -7,7 +7,7 @@ Arg.quick_tool_command := ""
 
 FileQuickPreview()
 {
-    path := GetFocusedItem()
+    path := ErGetFocusedItem()
 
     if ( InStr(path, ".bc!") )
         return
@@ -35,7 +35,7 @@ FileQuickMove()
         FileQuickToolsHide()    
         return
     }
-    paths := GetSelectItem()
+    paths := ErGetSelectItem()
     for path in paths {
         attribute := FileExist(path)
         if ( InStr(attribute, "A") )
@@ -57,7 +57,7 @@ FileQuickMove()
 
 FileQuickUnZip()
 {
-    paths := GetSelectItem()
+    paths := ErGetSelectItem()
 
     if ( paths.Length != 1 )
         return
@@ -79,7 +79,7 @@ FileQuickUnZip()
 
 FileQuickArchive(folder)
 {
-    path := GetFocusedItem()
+    path := ErGetFocusedItem()
     attribute := FileExist(path)
     if ( InStr(attribute, "A") )
         FileMove(path, folder, 0)
@@ -123,7 +123,7 @@ FileQuickTools()
     
     if ( Arg.quick_tool_index == 1 ) {
 
-        path := GetFocusedItem()
+        path := ErGetFocusedItem()
         
         GLine := G.Add("Text", Format("w{}", G.text_w), G.Line)
 

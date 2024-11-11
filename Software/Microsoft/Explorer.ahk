@@ -107,7 +107,7 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
 
 #HotIf CheckWindowActive( "Explorer" , "CabinetWClass" , "回收站" )
     +Delete::{
-        ActivateMenu()
+        ErActivateMenu()
         Sleep 333
         Send "{Up 2}"
         Send "{Enter}"
@@ -145,9 +145,9 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     !`::Send "^{F1}"
     ^F1::Return
 
-    ![::ActivateLeft()
-    !]::ActivateRight()
-    !\::ActivateMenu()
+    ![::ErActivateLeft()
+    !]::ErActivateRight()
+    !\::ErActivateMenu()
 
     ; Alt+向左键 查看上一个文件夹
     ; Alt+向右键 查看下一个文件夹
@@ -169,8 +169,8 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     ^w::Return
     ~!CapsLock::Send "^w"
 
-    #\::ResetPosition()
-    #+\::ResetPosition(columns:="List")
+    #\::ErResetPosition()
+    #+\::ErResetPosition(columns:="List")
             
     F10::Return ; 快捷键帮助
     !,::Send "{F10}"

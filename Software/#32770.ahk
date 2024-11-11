@@ -92,12 +92,12 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
         ControlSetText(A_Clipboard, "Edit1", "A")
     }
 
-    NumpadPgDn::MoveWindowDefault()
-    NumpadPgUp::Send("^!7")
+    NumpadPgDn::ErSetPathNext()
+    NumpadPgUp::ErSetPathPrev()
 
-    ![::ActivateLeft()
-    !]::ActivateRight()
-    !\::ActivateMenu()
+    ![::ErActivateLeft()
+    !]::ErActivateRight()
+    !\::ErActivateMenu()
 
     NumpadIns::WinClose("A")
 

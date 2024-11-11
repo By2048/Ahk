@@ -31,10 +31,10 @@
     Numpad2::Send "{Down}"
 
     ; 左
-    Numpad4::ActivateLeft()
+    Numpad4::ErActivateLeft()
 
     ; 右
-    Numpad6::ActivateRight()
+    Numpad6::ErActivateRight()
 
     ;---------------------------------;
 
@@ -56,7 +56,7 @@
 
     NumpadMult::Send "{AppsKey}"
 
-    NumpadDiv::ActivateMenu()
+    NumpadDiv::ErActivateMenu()
 
     NumpadSub::Send "{Esc}"
 

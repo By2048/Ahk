@@ -1,11 +1,11 @@
 
-ActivateLeft()
+ErActivateLeft()
 {
     ControlFocus("SysTreeView321", "A")
 }
 
 
-ActivateRight()
+ErActivateRight()
 {
     win_class := WinGetClass("A")
     if ( win_class == "CabinetWClass" )
@@ -16,7 +16,7 @@ ActivateRight()
 }
 
 
-ActivateMenu()
+ErActivateMenu()
 {
     window   := GetActiveWindowInfo()
     offset_x := 0
@@ -42,7 +42,7 @@ ActivateMenu()
 }
 
 
-GetFocusedItem()
+ErGetFocusedItem()
 {
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
     if ( ! hwnd )
@@ -55,7 +55,7 @@ GetFocusedItem()
 }
 
 
-GetSelectItem()
+ErGetSelectItem()
 {
     paths := []
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
@@ -73,7 +73,7 @@ GetSelectItem()
 ; ItemNameDisplay:800 ItemDate:200 Size:150
 ; ItemNameDisplay:450 Comment:500 ItemDate:200
 ; Recycle.DeletedFrom:400 Recycle.DateDeleted:180 Size:150
-SetColumns(config)
+ErSetColumns(config)
 {
     if ( not config )
         return
@@ -129,7 +129,7 @@ SetColumns(config)
     ; GetColumnCount
     ComCall(5, icm, "UInt", CM_ENUM_VISIBLE, "Ptr*", &column_count := 0)
 
-    ; SetColumns
+    ; ErSetColumns
     VarSetStrCapacity(&property_key_ptr, column_count * 20)
     for column_name in config_names {
         offset := (A_Index - 1) * 20
@@ -137,7 +137,7 @@ SetColumns(config)
     }
     ComCall(7, icm, "Ptr", StrPtr(property_key_ptr), "Int", config_names.Length)
 
-    ; SetColumnsWidth
+    ; ErSetColumnsWidth
     VarSetStrCapacity(&property_key_ptr,  20)
     VarSetStrCapacity(&column_info_ptr,  184)
     for item in config_all {
@@ -152,7 +152,7 @@ SetColumns(config)
 }
 
 
-ResetPosition(columns:="")
+ErResetPosition(columns:="")
 {
     check_offset      := 30
     tree_width        := 325
@@ -179,7 +179,7 @@ ResetPosition(columns:="")
         config := ExplorerColumns.Get(window.title, ExplorerColumns["Default"])
     else
         config := ExplorerColumns.Get(columns, ExplorerColumns["Default"])
-    SetColumns(config)
+    ErSetColumns(config)
 
     ; 搜索框
     GetActiveWindowInfo(False)
@@ -213,3 +213,28 @@ ResetPosition(columns:="")
 
     MouseMove(x_origin, y_origin, 0)
 }
+
+
+ErSetPathPrev() {
+    Send "!d"
+    Sleep 33
+    path := ControlGetText("Edit2", "A")
+    path := RTrim(path, "\") . "\"
+    path := LoopList(ExplorerPaths, &path, -1)
+    ControlSetText(path, "Edit2", "A")
+    Send "{Enter}"
+    Sleep 99
+    ControlFocus("DirectUIHWND2", "A")
+}
+ErSetPathNext() {
+    Send "!d"
+    Sleep 33
+    path := ControlGetText("Edit2", "A")
+    path := RTrim(path, "\") . "\"
+    path := LoopList(ExplorerPaths, &path, +1)
+    ControlSetText(path, "Edit2", "A")
+    Send "{Enter}"
+    Sleep 99
+    ControlFocus("DirectUIHWND2", "A")
+}
+

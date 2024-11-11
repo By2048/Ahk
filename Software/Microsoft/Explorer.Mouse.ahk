@@ -2,7 +2,7 @@
 NumLock::WinClose "A"
 
 NumpadHome::Send "!{Up}"
-NumpadEnd::ResetPosition("Default")
+NumpadEnd::ErResetPosition("Default")
 
 NumpadPgDn::Send "!{Left}"
 NumpadPgUp::Send "!{Right}"
