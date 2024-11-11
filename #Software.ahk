@@ -5,6 +5,7 @@
 #Include Lib\Change.ahk
 #Include Lib\File.ahk
 
+#Include Tool\Config.ahk
 #Include Tool\Help.ahk
 #Include Tool\Language.ahk
 #Include Tool\Mouse.ahk

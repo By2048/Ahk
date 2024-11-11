@@ -17,7 +17,6 @@ LWin & RWin::{
     SetCapsLockState("Off")
     SetScrollLockState("Off")
     if ( GetKeyState("CapsLock", "P") && GetKeyState("Enter", "P") ) {
-        SetCapsLockState("Off")
         Reload()
         Run(NirCmd " standby ")
         return
