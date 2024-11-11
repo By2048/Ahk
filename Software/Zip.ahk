@@ -11,18 +11,18 @@ UnZipPath := [ "T:\" , "V:\" ]
 #Include *i Zip.Private.ahk
 
 
-SetZipPath(path) {
+ZipSetPath(path) {
     ControlSetText(path, "Edit1", "A")
 }
-SetZipPathPrev() {
+ZipSetPathPrev() {
     path := ControlGetText("Edit1", "A")
     path := LoopList(UnZipPath, &path, -1)
-    SetZipPath(path)
+    ZipSetPath(path)
 }
-SetZipPathNext() {
+ZipSetPathNext() {
     path := ControlGetText("Edit1", "A")
     path := LoopList(UnZipPath, &path, +1)
-    SetZipPath(path)
+    ZipSetPath(path)
 }
 
 
@@ -42,12 +42,12 @@ SetZipPathNext() {
     ; 确认解压
     Enter::ControlClick("Button7", "A")
     
-    `;::SetZipPath("V:\#\")
-     '::SetZipPath("T:\"  )
+    `;::ZipSetPath("V:\#\")
+     '::ZipSetPath("T:\"  )
 
-    [::SetZipPathPrev()
+    [::ZipSetPathPrev()
 
-    ]::SetZipPathNext()
+    ]::ZipSetPathNext()
 
     AppsKey::{
         WinClose("A")
@@ -61,10 +61,10 @@ SetZipPathNext() {
 
 
 #HotIf CheckWindowActive( "ZipMain" , "#32770" , "复制" )
-     [::SetZipPathPrev()
-     ]::SetZipPathNext()
-    `;::SetZipPath("V:\#\")
-     '::SetZipPath("T:\"  )
+     [::ZipSetPathPrev()
+     ]::ZipSetPathNext()
+    `;::ZipSetPath("V:\#\")
+     '::ZipSetPath("T:\"  )
 #HotIf
 
 

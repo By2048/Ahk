@@ -1,15 +1,15 @@
 ﻿
 ; 上
-Numpad8::SetZipPathPrev()
+Numpad8::ZipSetPathPrev()
 
 ; 下
-Numpad2::SetZipPathNext()
+Numpad2::ZipSetPathNext()
 
 ; 左
-Numpad4::SetZipPathPrev()
+Numpad4::ZipSetPathPrev()
 
 ; 右
-Numpad6::SetZipPathNext()
+Numpad6::ZipSetPathNext()
 
 ;---------------------------------;
 
@@ -20,10 +20,10 @@ Numpad9::Send "{Enter}"
 Numpad3::Send "{Esc}"
 
 ; 左
-Numpad7::SetZipPath("V:\#\")
+Numpad7::ZipSetPath("V:\#\")
 
 ; 右
-Numpad1::SetZipPath("T:\"  )
+Numpad1::ZipSetPath("T:\"  )
 
 ;---------------------------------;
 
