@@ -59,6 +59,7 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
 #HotIf    CheckWindowActive( "" , "#32770" , "打开|打开文件|选择文件|选择文件夹" )
        || CheckWindowActive( "" , "#32770" , "更改图标|另存为|浏览" )
        || CheckWindowActive( "" , "#32770" , "SaveFile|SaveVideo" )
+       || CheckWindowActive( "" , "#32770" , "图像另存为" )
 
     #IncludeAgain .\Microsoft\Explorer.Key.ahk
 

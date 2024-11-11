@@ -1,9 +1,7 @@
 ﻿
 ~*CapsLock::Return
 
-~*CapsLock Up::{
-    SetCapsLockState("Off")
-}
+~*CapsLock Up::SetCapsLockState("Off")
 
 
 ;切换到显示器中心

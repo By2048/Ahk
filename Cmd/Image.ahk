@@ -3,7 +3,7 @@
 
 scale := 0.98
 
-border := 1
+border := 0
 
 G := Gui()
 

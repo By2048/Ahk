@@ -45,7 +45,6 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
     ;     if InStr(A_PriorHotkey, "LShift")
     ;         if ( A_TimeSincePriorHotkey < 333 ) {
     ;             Send "^+/"
-    ;             CapsLockToEsc := True
     ;         }
     ; }
 
@@ -53,7 +52,6 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
     ;     if InStr(A_PriorHotkey, "LCtrl")
     ;         if ( A_TimeSincePriorHotkey < 333 ) {
     ;             Send "!+/"
-    ;             CapsLockToEsc := True
     ;         }
     ; }
 
