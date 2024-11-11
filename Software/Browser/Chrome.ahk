@@ -133,7 +133,7 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
     }
 
     ; 删除搜索历史记录
-    Insert & \::{
+    Insert & RShift::{
         CoordMode("Mouse", "Window")
         MouseGetPos(&x_origin, &y_origin)
         MouseClick("Left", 440, 95, 1, 0)
