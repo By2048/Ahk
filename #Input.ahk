@@ -24,5 +24,11 @@
 
 :o:\Sfc::SFC /ScanNow
 
+:o:\Admin::Administrator
+
+:o:\WinAdmin::Windows\Administrator
+
+:o:\PSL::PowerShell
+
 
 #Include *i #Input.Private.ahk
