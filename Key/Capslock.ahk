@@ -76,9 +76,7 @@ CapsLock & LShift::{
 
 
 ; 鼠标点击
-CapsLock & Space::{
-    Click()
-}
+CapsLock & Space::Click()
 
 
 ; 截图 贴图
@@ -100,16 +98,23 @@ CapsLock & 9::Send "9"
 CapsLock & ,::Send "0"
 
 
-; 快速点击桌面位置
-CapsLock & Esc::{
-    GetActiveWindowInfo()
-    MouseClickTool( window.w/2 , window.h - 15 , "Window" )
+; 快速点击窗口位置
+~CapsLock & Esc::
+~CapsLock & LCtrl::
+~CapsLock & LWin::
+~CapsLock & LAlt::{
+    key := StrReplace(A_ThisHotkey, "~CapsLock & ", "")
+    win := GetActiveWindowInfo()
+    Switch key {
+        Case "Esc"   : MouseClickTool( win.w - 44 , 22         , "Window" )
+        Case "LCtrl" : MouseClickTool( win.w / 2  , 22         , "Window" )
+        Case "LWin"  : MouseClickTool( win.w / 2  , win.h / 2  , "Window" )
+        Case "LAlt"  : MouseClickTool( win.w / 2  , win.h - 22 , "Window" )
+    }
 }
-CapsLock & `::{
-    GetActiveWindowInfo()
-    MouseClickTool( window.w/2 , 15 , "Window" )
-}
-; 
+
+
+; 快速点击屏幕位置
 CapsLock & 1::MouseClickTool( 11            , Screen.h/2    , "Screen" )
 CapsLock & 2::MouseClickTool( Screen.w - 11 , Screen.h/2    , "Screen" )
 CapsLock & 3::MouseClickTool( Screen.w/2    , 11            , "Screen" )
@@ -129,6 +134,3 @@ CapsLock & z::MouseClickTool( 22            , Screen.h - 22 , "Screen" )
 CapsLock & x::MouseClickTool( Screen.w - 22 , 22            , "Screen" )
 CapsLock & c::MouseClickTool( Screen.w - 22 , Screen.h - 22 , "Screen" )
 CapsLock & v::MouseClickTool( 22            , 22            , "Screen" )
-
-
-#Include *i CapsLock.Private.ahk
