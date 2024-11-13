@@ -36,8 +36,18 @@ ZipSetPathNext() {
     ; 浏览文件夹
     \::ControlClick("Button1", "A")
     
-    ; 修改文件夹名
-    Insert::ControlFocus("Edit2", "A")
+    ; 切换输入框
+    Insert::{
+        contro_name := ControlGetClassNN(ControlGetFocus("A"))
+        if ( contro_name == "Edit1" )
+            ControlFocus("Edit2", "A")
+        else if ( contro_name == "Edit2" )
+            ControlFocus("Edit3", "A")
+        else if ( contro_name == "Edit3" )
+            ControlFocus("Edit1", "A")
+        else
+            ControlFocus("Edit2", "A")
+    }
     
     ; 确认解压
     Enter::ControlClick("Button7", "A")
