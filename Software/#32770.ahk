@@ -66,7 +66,7 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
     ; 文件名修改框
     ~CapsLock::ControlFocus("Edit1", "A")
 
-    ~NumLock::Send("!s")
+    ~NumLock::Send "!s"
 
     Insert::
     NumpadHome::{
@@ -78,19 +78,20 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
         ; 
         name := StrReplace(name, "video_", "")
         name := StrReplace(name, " - 知乎", "")
+        name := StrReplace(name, "_哔哩哔哩", "")
+        name := StrReplace(name, "_bilibili", "")
         ; 
-        name := StrReplace(name, "#", "")
-        name := StrReplace(name, "|", "")
-        name := StrReplace(name, "，", "")
+        name := StrReplace(name, "#", " ")
+        name := StrReplace(name, "|", " ")
+        name := StrReplace(name, "，", " ")
         ; 
         name := StrReplace(name, Chr(10), " ")
         name := StrReplace(name, Chr(13), " ")
         ; 
+        name := Trim(name)
         ControlSetText(name, "Edit1", "A")
     }
-    NumpadEnd::{
-        ControlSetText(A_Clipboard, "Edit1", "A")
-    }
+    NumpadEnd::ControlSetText(A_Clipboard, "Edit1", "A")
 
     NumpadPgDn::ErSetPathNext()
     NumpadPgUp::ErSetPathPrev()
@@ -112,7 +113,7 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
         } catch {
             return
         }
-        Send("^!7")  ;平铺模式
+        Send "^!7"  ;平铺模式
     }
 
 #HotIf
