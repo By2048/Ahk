@@ -8,6 +8,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 
 #HotIf CheckWindowActive("BitComet", "#32770", "通知")
+    NumpadDel::
     #\::{
         MoveWindowPosition(Position(800, 750))
         cfg := " 1:空:50  2:时间:250  3:消息:400 "
@@ -19,14 +20,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 #HotIf CheckWindowActive("BitComet", "#32770", "新建BT任务")
 
-    ; 立即下载
-    NumLock::
-    CapsLock::{
-        SetControlDelay(-1)
-        ControlClick("Button27", "A")
-    }
-
-    SetListView() {
+    BTSetListView() {
         cfg := " 1:名称:999  2:大小:111  3:%:77 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321" , cfg)
@@ -35,20 +29,59 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         SetColumnWidth("SysListView323" , cfg)
     }
 
-    #\::{
-        MoveWindowPosition(Position(1300, 1000))
-        SetListView()
+    ; 立即下载
+    Enter::
+    NumLock::{
+        ControlClick("Button27", "A")
+    }
+
+    ; 设置位置 文件名称排序 设置列 设置路径 
+    NumpadHome::{
+        MoveWindowPosition( Position(1300 , 1000) )
+        BTSetListView()
+        ControlClick("SysHeader321", "A")
+        ControlSetText("T:\", "Edit1", "A")
+    }
+    
+    NumpadEnd::WinClose("A")
+    
+
+    ; 快速选择路径
+    NumpadPgUp::
+    NumpadPgDn::{
+        SetControlDelay(-1)
+        paths := [ "T:\" , "V:\#\" , "N:\"
+                 , "T:\#Anime\" , "T:\#Torrent\" ]
+        path := ControlGetText("Edit1", "A")
+        if ( InStr(A_ThisHotkey, "PgUp") )
+            path := LoopList(paths, &path, -1)
+        if ( InStr(A_ThisHotkey, "PgDn") )
+            path := LoopList(paths, &path, +1)
+        ControlSetText(path, "Edit1", "A")
+    }
+
+    ; 文件大小排序
+    NumpadIns::MouseClickTool(1094, 404, "Window")
+    
+    ; 全选
+    NumpadDel::{
+        ControlSetChecked(True, "Button5", "A")
+    }
+
+    ; 选择下载文件夹
+    \::
+    MButton::{
+        ControlClick("Button2", "A")
     }
 
     !Tab::^Tab
     !+Tab::^+Tab
-
-    #Include *i BitComet.Mouse.ahk
-
+    
 #HotIf
 
 
 #HotIf CheckWindowActive("BitComet", "#32770", "批量下载种子")
+    NumpadDel::
     #\::{
         MoveWindowPosition(Position(1300, 700))
         cfg := " 1:名称:999  2:大小:130  3:发表日期:100 "
@@ -67,7 +100,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         Send "{Blind}{vkFF}"
         
         total_width  := 2333
-        total_height := 1222
+        total_height := 999
         left_width   := 255
 
         MoveWindowPosition(Position(total_width , total_height))
