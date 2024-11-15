@@ -1,10 +1,12 @@
 ﻿
 RegisterProcess("chrome" , "Chrome")
 
-RegisterHelp("Chrome" , "Software\Browser\@.help")
-RegisterHelp("Chrome" , "Software\Browser\Chrome.Search.help")
-RegisterHelp("Chrome" , "Software\Browser\Chrome.Bilibili.help")
-RegisterHelp("Chrome" , "Software\Browser\Chrome.ZhiHu.help")
+RegisterHelp("Chrome" , "Software\Browser\Help\@.help")
+RegisterHelp("Chrome" , "Software\Browser\Help\Vimium.help")
+RegisterHelp("Chrome" , "Software\Browser\Help\Search.help")
+RegisterHelp("Chrome" , "Software\Browser\Help\ZhiHu.help")
+RegisterHelp("Chrome" , "Software\Browser\Help\Bilibili.help")
+
 
 win_w   := 2500
 win_h   := 1400
