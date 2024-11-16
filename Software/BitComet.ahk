@@ -35,16 +35,15 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         ControlClick("Button27", "A")
     }
 
+    NumpadHome::WinClose("A")
+    
     ; 设置位置 文件名称排序 设置列 设置路径 
-    NumpadHome::{
+    NumpadEnd::{
         MoveWindowPosition( Position(1300 , 1000) )
         BTSetListView()
         ControlClick("SysHeader321", "A")
         ControlSetText("T:\", "Edit1", "A")
     }
-    
-    NumpadEnd::WinClose("A")
-    
 
     ; 快速选择路径
     NumpadPgUp::
