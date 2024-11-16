@@ -79,25 +79,6 @@ CapsLock & LShift::{
 CapsLock & Space::Click()
 
 
-; 截图 贴图
-; 使用 CapsLock 防止 右键菜单被取消
-CapsLock & Insert::Run Snipaste . " snip  "
-CapsLock & Delete::Run Snipaste . " paste "
-
-
-; 快速输入数字
-CapsLock & j::Send "1"
-CapsLock & k::Send "2"
-CapsLock & l::Send "3"
-CapsLock & u::Send "4"
-CapsLock & i::Send "5"
-CapsLock & o::Send "6"
-CapsLock & 7::Send "7"
-CapsLock & 8::Send "8"
-CapsLock & 9::Send "9"
-CapsLock & ,::Send "0"
-
-
 ; 快速点击窗口位置
 ~CapsLock & Esc::
 ~CapsLock & LCtrl::
