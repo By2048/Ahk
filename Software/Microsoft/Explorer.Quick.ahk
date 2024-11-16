@@ -94,28 +94,29 @@ FileQuickTools()
 
     G := Gui()
 
-    G.text_w := 333
+    G.text_w      := 333
+    G.size_folder := 13
 
     G.MarginX := 20
     G.MarginY := -4
     G.Line    := "-----------------------------------------"
 
-    if ( GetWindowTheme() == "Dark" ) {
-        G.font_color := Gui_Config.Dark.Font
-        G.back_color := Gui_Config.Dark.Back
-    } else if ( GetWindowTheme() == "Light" ) {
-        G.font_color := Gui_Config.Light.Font
-        G.back_color := Gui_Config.Light.Back
-    }
     G.font_color := "bdbebd"
     G.back_color := "f0f0f0"
     G.font_name := "Verdana"
     G.font_size := 16
 
-    G.SetFont(Format("s{}", 13), G.font_name)
     G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
 
     G.Add("Text")
+
+    path := ErGetFocusedItem()
+    G.Add("Text", Format("w{}", G.text_w), path)
+
+    G.SetFont(Format("s{}", G.size_folder), G.font_name)
+    G.Add("Text", Format("w{}", G.text_w), G.Line)
+
+    G.SetFont(Format("s{}", G.size_folder), G.font_name)
     for path in ExplorerTools[Arg.quick_tool_index]
         G.Add("Text", Format("w{} Disabled", G.text_w), "  " path)
 
@@ -123,8 +124,6 @@ FileQuickTools()
     
     if ( Arg.quick_tool_index == 1 ) {
 
-        path := ErGetFocusedItem()
-        
         GLine := G.Add("Text", Format("w{}", G.text_w), G.Line)
 
         if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
@@ -134,17 +133,7 @@ FileQuickTools()
             }
         }
 
-        #Include *i Explorer.Quick.Private.ahk
-
-        if ( ! Arg.quick_tool_command ) {
-            if ( StrLen(path) < 20 )
-                G.SetFont(Format("s{}", 10), G.font_name)
-            if ( StrLen(path) > 30 )
-                G.SetFont(Format("s{}", 8), G.font_name)
-            if ( StrLen(path) > 50 )
-                G.SetFont(Format("s{}", 6), G.font_name)
-            G.Add("Text", Format("w{}", G.text_w), "  ( " path " )")
-        }
+        #Include *i Explorer.Quick.Snippet.ahk
         
     }
     
