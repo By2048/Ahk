@@ -117,8 +117,10 @@ FileQuickTools()
     G.Add("Text", Format("w{}", G.text_w), G.Line)
 
     G.SetFont(Format("s{}", G.size_folder), G.font_name)
-    for path in ExplorerTools[Arg.quick_tool_index]
-        G.Add("Text", Format("w{} Disabled", G.text_w), "  " path)
+    for path in ExplorerTools[Arg.quick_tool_index] {
+        text := G.Add("Text", Format("w{} Disabled", G.text_w), "  " path)
+        text.folder := path
+    }
 
     ; --------------------------------------------------------------------------------
     
@@ -167,13 +169,10 @@ FileQuickToolsSwitchMenu(step:=+1)
     win_controls  := WinGetControls(G.Hwnd)
 
     for control_name in win_controls {
-        if ( ! Trim( G[control_name].Text ) ) 
-            continue
-        if ( G[control_name].Text == G.Line )
-            break
-        text_controls.Push(control_name)
+        if ( G[control_name].HasOwnProp("folder") )
+            text_controls.Push(control_name)
     }
-
+    
     if ( step == -1 ) {
         obj := []
         loop text_controls.Length
@@ -192,7 +191,7 @@ FileQuickToolsSwitchMenu(step:=+1)
         if ( check_index ) {
             G[control_name].Opt("+Background" G.font_color)
             G[control_name].Enabled := true
-            Arg.quick_tool_config := Trim( G[control_name].Text )
+            Arg.quick_tool_config := G[control_name].folder
             break
         }
     }
@@ -200,7 +199,7 @@ FileQuickToolsSwitchMenu(step:=+1)
     if ( check_index == text_controls.Length ) || ( check_index == 0 ) {
         G[text_controls[1]].Opt("+Background" G.font_color)
         G[text_controls[1]].Enabled := true
-        Arg.quick_tool_config := Trim( G[text_controls[1]].Text )
+        Arg.quick_tool_config := G[text_controls[1]].folder
     } 
 }
 
