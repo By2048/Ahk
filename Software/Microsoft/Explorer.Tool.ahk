@@ -215,6 +215,23 @@ ErResetPosition(columns:="")
 }
 
 
+ErModeSwitch()
+{
+    CoordMode("Mouse", "Window")
+    CoordMode("Pixel", "Window")
+    window := GetActiveWindowInfo()
+    check_x := window.w - 35 
+    check_y := window.h - 18
+    color := PixelGetColor(check_x, check_y)
+    pic_mode_on  := 0x666666
+    lst_mode_off := 0x333333
+    if ( color == pic_mode_on )
+        Send "^!6"
+    if ( color == lst_mode_off )
+        Send "^!2"
+}
+
+
 ErSetPathPrev() {
     Send "!d"
     Sleep 33

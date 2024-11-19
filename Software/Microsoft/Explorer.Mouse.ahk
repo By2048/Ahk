@@ -1,11 +1,11 @@
 
-NumLock::WinClose "A"
+NumLock::WinClose("A")
 
-NumpadHome::Send "!{Up}"
-NumpadEnd::ErResetPosition("Default")
+NumpadHome::Send "{Delete}"
+NumpadEnd::Send "!{Up}"
 
 NumpadPgDn::Send "!{Left}"
 NumpadPgUp::Send "!{Right}"
 
-NumpadIns::Send "{Enter}"
-NumpadDel::Send "{Delete}"
+NumpadIns::ErResetPosition("Default")
+NumpadDel::ErModeSwitch()
