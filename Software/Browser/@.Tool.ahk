@@ -161,15 +161,13 @@ GoogleTranslate(origin)
 RedirectTo(url)
 {
     tmp := A_Clipboard
-    A_Clipboard := ""
     A_Clipboard := url
-    ClipWait()
+    ClipWait(1)
     Send "!d"
-    Sleep 33
+    Sleep 55
     Send "^v"
-    Sleep 33
+    Sleep 55
     Send "{Enter}"
-    A_Clipboard := ""
     A_Clipboard := tmp
-    ClipWait()
+    ClipWait(1)
 }
