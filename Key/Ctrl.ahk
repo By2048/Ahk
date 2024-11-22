@@ -1,9 +1,14 @@
-﻿
+
  >^q::Run "E:\Config\QPC.qdr"
 >^+q::Run "E:\Config\QFile.qdr"
  >^e::Run "D:\#Lnk\#\Everything.lnk"
  >^r::Run "RegEdit"
  >^t::Run "D:\#Lnk\#\Torrent.lnk"
+ >^y::Return
+ >^u::Return
+ >^i::Return
+ >^o::Return
+ >^p::Return
 
  >^a::Run "D:\#Lnk\#\AntiMicroX.lnk"
  >^s::Run "D:\#Lnk\#\Sandboxie.lnk"
@@ -35,7 +40,10 @@
 }
  >^k::KeyHistory()
 >^+k::KeyboardGUI()
+>^l::Return
 
+ >^z::Return
+ >^x::Return
  >^c::Run "Calc"
  >^v::Run "D:\#Lnk\#\Vpn.lnk"
  >^b::Run "D:\#Lnk\#\Image.lnk"
@@ -56,10 +64,10 @@
  >^/::Run "E:\Script\Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
 >^+/::Run "E:\Script\Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
 
->^Esc::Run "TaskMgr" ;任务管理器
+ >^Esc::Run "TaskMgr" ;任务管理器
+>^+Esc::Run "D:\#Lnk\#\SecAnalysis.lnk"
 
- >^Enter::Run "D:\#Lnk\#AppStore\Whiteboard.lnk"
->^+Enter::Run "D:\#Lnk\#AppStore\DevToys.lnk"
+>^Enter::Run "D:\#Lnk\#AppStore\Whiteboard.lnk"
 
 >^BackSpace::Run WT " -d T:\"
 
