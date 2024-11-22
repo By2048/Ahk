@@ -1,4 +1,8 @@
 ﻿
+; 调试模式
+Debug := 0
+
+
 ; 存储当前窗口的信息
 ; 缓存处理 优化相关性能
 Window := {
@@ -61,10 +65,26 @@ Arg := {
 
 ; Gui显示
 G := Gui()
+InitGui() {
+    Global G
+    Try G.Destroy()
+    G := Gui()
+    G.MarginX := Gui_Config.Margin
+    G.MarginY := Gui_Config.Margin
+    if ( GetWindowTheme() == "Dark" ) {
+        G.BackColor := Gui_Config.Dark.Back
+        G.SetFont(Format("c{} s{}", Gui_Config.Dark.Font, Gui_Config.FontSize), Gui_Config.FontName)
+    } else if ( GetWindowTheme() == "Light" ) {
+        G.BackColor := Gui_Config.Light.Back
+        G.SetFont(Format("c{} s{}", Gui_Config.Light.Font, Gui_Config.FontSize), Gui_Config.FontName)
+    } else {
+        G.BackColor := "FFFFFF"
+        G.SetFont("c000000 s13", "Source Code Pro")
+    }
+    ; +Border 参数在最后才有效果
+    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
+}
 
-
-; 调试模式
-Debug := 0
 
 
 ; 游戏进程

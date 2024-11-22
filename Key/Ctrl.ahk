@@ -1,4 +1,4 @@
-
+﻿
  >^q::Run "E:\Config\QPC.qdr"
 >^+q::Run "E:\Config\QFile.qdr"
  >^e::Run "D:\#Lnk\#\Everything.lnk"
@@ -124,23 +124,8 @@ CtrlGui()
             Arg.ctrl_content := FileRead(path, "`n UTF-8")
     }
 
-    margin    := Gui_Config.Margin
-    font_name := Gui_Config.FontName
-    font_size := Gui_Config.FontSize
-    if ( GetWindowTheme() == "Dark" ) {
-        font_color := Gui_Config.Dark.Font
-        back_color := Gui_Config.Dark.Back
-    } else if ( GetWindowTheme() == "Light" ) {
-        font_color := Gui_Config.Light.Font
-        back_color := Gui_Config.Light.Back
-    }
-
-    G := Gui()
-    G.MarginX := margin
-    G.MarginY := margin
-    G.BackColor := back_color
-    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
-    G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
+    InitGui()
+    
     G.Add("Text", "-Center -Border", Arg.ctrl_content)
     G.Show("NA Center")
 

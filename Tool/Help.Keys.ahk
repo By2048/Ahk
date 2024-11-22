@@ -6,8 +6,8 @@ Arg.hotkeys_current := ""
 ; 隐藏快捷键提示
 HelpKeysShow(step:=0)
 {
-    Global Window, Arg, Software_Keys_Help
-    Global G
+    Global Window , Arg , G 
+    Global Software_Keys_Help
 
     GetActiveWindowInfo()
     win_process_name := window.process_name
@@ -36,32 +36,14 @@ HelpKeysShow(step:=0)
         else if ( hotkeys_index == 0 )
             hotkeys_index := hotkeys_config.Length
     }
-
+    
+    InitGui()
+    
     content := hotkeys_config[hotkeys_index]
-
-    font_name := Gui_Config.FontName
-    font_size := Gui_Config.FontSize
-    margin    := Gui_Config.Margin
-    if ( GetWindowTheme() == "Dark" ) {
-        font_color := Gui_Config.Dark.Font
-        back_color := Gui_Config.Dark.Back
-    } else if ( GetWindowTheme() == "Light" ) {
-        font_color := Gui_Config.Light.Font
-        back_color := Gui_Config.Light.Back
-    }
-
-    if ( Arg.hotkeys_show == True )
-        Try G.Destroy()
-
-    G := Gui()
-    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
-    G.MarginX   := margin
-    G.MarginY   := margin
-    G.BackColor := back_color
-    G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
     GContent := G.Add("Text", "-Center -Border", content)
     GContent.GetPos(&cx, &cy, &cw, &ch)
-    if (hotkeys_config.Length > 1) {
+    margin := ( G.MarginX + G.MarginY ) / 2
+    if ( hotkeys_config.Length > 1 ) {
         data  := Format("{}/{}", hotkeys_index, hotkeys_config.Length)
         GPage := G.Add("Text", "-Border xm ym", data)
         GPage.GetPos(&px, &py, &pw, &ph)

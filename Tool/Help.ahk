@@ -138,6 +138,8 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 ; 显示文件内容
 HelpFile(path:="")
 {
+    Global Window , Arg , G
+
     if ( ! path )
         return
 
@@ -145,30 +147,15 @@ HelpFile(path:="")
     if ( ! FileExist(path) )
         return
 
-    Global Window, Arg, G
     if ( Arg.help_file_show ) {
         Try G.Destroy()
         Arg.help_file_show := False
         Arg.help_file_content := ""
         return
     }
-    content   := FileRead(path, "`n UTF-8")
-    font_name := Gui_Config.FontName
-    font_size := Gui_Config.FontSize
-    margin    := Gui_Config.Margin
-    if ( GetWindowTheme() == "Dark" ) {
-        font_color := Gui_Config.Dark.Font
-        back_color := Gui_Config.Dark.Back
-    } else if ( GetWindowTheme() == "Light" ) {
-        font_color := Gui_Config.Light.Font
-        back_color := Gui_Config.Light.Back
-    }
-    G := Gui()
-    G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
-    G.MarginX   := margin
-    G.MarginY   := margin
-    G.BackColor := back_color
-    G.SetFont(Format("c{} s{}", font_color, font_size), font_name)
+
+    InitGui()
+    content := FileRead(path, "`n UTF-8")
     G.Add("Text", "-Center -Border", content)
     G.Show("NA Center")
     Arg.help_file_show := True
