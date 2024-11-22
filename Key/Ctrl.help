@@ -8,17 +8,17 @@
 |  I |                        |  / | Chrome          |
 |  O |                        | +/ | ChromeDefault   |
 |  P |                        |----------------------|
-|-----------------------------|  [ | VSCode T:\      |
-|  A | AntiMicroX             |  ] | VSCode Project  |
+|-----------------------------|  [ | VSCode Temp     |
+|  A | AntiMicroX             |  ] | VSCode Node     |
 |  S | Sandboxie              |  \ | VSCode Windows  |
 |  D | Download               |  : | VSCode          |
 |  F | FreeFileSync           |  " | VSCodeDefault   |
 |  G | Geek                   |----------------------|
-|  H | Spy AHK | GH           |  Esc   | 任务管理器  |
-|  J | JetBrains Tool | Check |  Enter | Whiteboard  |
-|  K | Key History | Virtual  | +Enter | DevToys     |
-|  L |                        |----------------------|
-|----|------------------------| BackSpace | WT       |
+|  H | Spy AHK | GH           |   Esc | 任务管理器   |
+|  J | JetBrains Tool | Check |  +ESc | SecAnalysis  |
+|  K | Key History | Virtual  | Enter | Whiteboard   |
+|  L |                        | BackSpace | WT       |
+|----|------------------------| U D L R   | 窗口移动 |
 |  Z |                        |
 |  X |                        |
 |  C | Calc                   |
