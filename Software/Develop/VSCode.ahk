@@ -11,7 +11,7 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 ; 快捷键设置
 #HotIf CheckWindowActive( "VSCode" , "" , "*User\KeyBindings.json | *键盘快捷方式" )
 
-    RShift::HelpFile("Software\Microsoft\VSCode.Setting.help")
+    RShift::HelpFile("Software\Develop\VSCode.Setting.help")
 
 #HotIf
 
