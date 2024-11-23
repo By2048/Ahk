@@ -29,6 +29,13 @@ FileQuickPreview()
 }
 
 
+FileQuickRemove()
+{
+    path := ErGetFocusedItem()
+    FileDelete(path)
+}
+
+
 FileQuickMove()
 {
     if ( ! Arg.quick_tool_config ) {
