@@ -1,5 +1,7 @@
 ﻿
-RegisterProcess("cloudmusic" , "CloudMusic")
+RegisterProcess( "cloudmusic" , "CloudMusic" )
+RegisterProcess( "QQMusic"    , "QQMusic"    )
+RegisterProcess( "SodaMusic"  , "QQMusic"    )
 
 pos_w := 2333
 pos_h := 200

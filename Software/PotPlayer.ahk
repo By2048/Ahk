@@ -17,9 +17,7 @@ RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Scre
 #HotIf CheckWindowActive("PotPlayer")
 
     PotPlayerPlayList() {
-        rule := "播放列表 "
-        rule .= "ahk_exe PotPlayerMini64.exe "
-        rule .= "ahk_class Afx:00007FFB8FA10000:b:0000000000010005:0000000000900011:0000000000000000"
+        rule := "播放列表 ahk_exe PotPlayerMini64.exe"
         if ( WinExist(rule) )
             WinActivate(rule)
         else

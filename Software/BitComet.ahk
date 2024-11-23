@@ -2,13 +2,29 @@
 RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 
+
+#HotIf CheckWindowActive("BitComet", "#32770", "BitComet")
+    AppsKey::
+    NumLock::
+    NumpadHome::{
+        WinClose("A")
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive("BitComet", "#32770", "选项*")
     #\::MoveWindowPosition(Position(1500 , 1000))
 #HotIf
 
 
 #HotIf CheckWindowActive("BitComet", "#32770", "通知")
-    NumpadDel::
+    AppsKey::    
+    NumLock::    
+    NumpadHome::{
+        WinClose("A")
+    }
+    NumpadEnd::
+    RWin::
     #\::{
         MoveWindowPosition(Position(800, 750))
         cfg := " 1:空:50  2:时间:250  3:消息:400 "
@@ -141,7 +157,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         Send "{Tab}"
         Send "{Left 5}"
         Send "^{Enter}"
-        HelpText("`n   Off   `n", "Center", "Screen", 300)
+        HelpText("`n   Off   `n", "Center", "Screen", 666)
     }
 
     ; 设置代理
@@ -153,7 +169,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
         Send "{Right 5}"
         Send "{Left}"
         Send "^{Enter}"
-        HelpText("`n   On   `n", "Center", "Screen", 300)
+        HelpText("`n   On   `n", "Center", "Screen", 666)
     }
 
     #BackSpace::{

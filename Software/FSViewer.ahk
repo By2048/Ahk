@@ -33,8 +33,8 @@ RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     `::Send "m"
 
     [::Send "m9"
-    ]::Send "{Left}"
-    \::Send "{Right}"
+    ]::Left
+    \::Right
     
     BackSpace::Send "!x"
 
@@ -49,7 +49,7 @@ RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
     ^r::Send "{F2}"
 
-    Insert::{
+    AppsKey::{
         MouseGetPos(&mouse_x, &mouse_y)
         if ( Abs(mouse_x - Screen.w/2) > 5 ) || ( mouse_y > 5 ) {
             MouseMove(Screen.w/2, 0, 0)
