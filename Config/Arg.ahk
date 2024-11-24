@@ -66,21 +66,26 @@ Arg := {
 ; Gui显示
 G := Gui()
 InitGui() {
-    Global G
+    Global G , Gui_Config
     Try G.Destroy()
     G := Gui()
-    G.MarginX := Gui_Config.Margin
-    G.MarginY := Gui_Config.Margin
+    G.MarginX  := Gui_Config.Margin
+    G.MarginY  := Gui_Config.Margin
+    G.FontSize := Gui_Config.FontSize
+    G.FontName := Gui_Config.FontName
     if ( GetWindowTheme() == "Dark" ) {
         G.BackColor := Gui_Config.Dark.Back
-        G.SetFont(Format("c{} s{}", Gui_Config.Dark.Font, Gui_Config.FontSize), Gui_Config.FontName)
+        G.FontColor := Gui_Config.Dark.Font
     } else if ( GetWindowTheme() == "Light" ) {
         G.BackColor := Gui_Config.Light.Back
-        G.SetFont(Format("c{} s{}", Gui_Config.Light.Font, Gui_Config.FontSize), Gui_Config.FontName)
+        G.FontColor := Gui_Config.Light.Font
     } else {
         G.BackColor := "FFFFFF"
-        G.SetFont("c000000 s13", "Source Code Pro")
+        G.FontColor := "000000"
+        G.FontSize  := "13"
+        G.FontName  := "Source Code Pro"
     }
+    G.SetFont(Format("c{} s{}", G.FontColor, G.FontSize), G.FontName)
     ; +Border 参数在最后才有效果
     G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
 }

@@ -18,7 +18,7 @@ StatusGui()
         G.Add("Text", G.TextStyle, G.Line)
     }
 
-    G := Gui()
+    InitGui()
 
     G.w := 1056
     G.h := 1248
@@ -30,18 +30,11 @@ StatusGui()
     G.TextStyle := Format("-Center -Border w{}", G.w)
     G.Line      := "------------------------------------------------------------------"
 
-    if ( GetWindowTheme() == "Dark" ) {
-        G.font_color := Gui_Config.Dark.Font
-        G.back_color := Gui_Config.Dark.Back
-    } else if ( GetWindowTheme() == "Light" ) {
-        G.font_color := Gui_Config.Light.Font
-        G.back_color := Gui_Config.Light.Back
-    }
     G.font_name := "Source Code Pro"
     G.font_size := 13
-    G.BackColor := G.back_color
-
-    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
+    G.back_color := G.BackColor
+    G.font_color := G.FontColor
+    G.Opt("-DPIScale")
 
     ;---------------------------------------------------------------------------------------------;
 
