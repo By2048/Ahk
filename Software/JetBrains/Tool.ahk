@@ -1,14 +1,6 @@
 ﻿
-JBCapsLock(cycle:="", fun:="", arg:="")
+JBCapsLock(fun:="", arg:="")
 {
-    if ( cycle ) {
-        if ( PyCharm.CapsLockActivate == True ) {
-            Send Format("{{1}}", cycle)
-            PyCharm.CapsLockActivate := False
-            return
-        }
-    }
-
     key := StrReplace(A_ThisHotkey, "CapsLock &",  "")
     key := StrReplace(key, "~", "")
     key := StrReplace(key, " ", "")
@@ -39,13 +31,13 @@ JBCapsLock(cycle:="", fun:="", arg:="")
 JBGetWindow(check_sleep:=44, check_count:=22)
 {
     exe := WinGetProcessName("A")
-    check_rule := Format("ahk_exe {} ahk_class SunAwtWindow", exe)
+    rule := Format("ahk_exe {} ahk_class SunAwtWindow", exe)
     win_id := 0x0
     loop {
         if ( A_Index >= check_count )
             break
         Sleep check_sleep
-        win_id := WinExist(check_rule)
+        win_id := WinExist(rule)
         if ( win_id )
             break
     }
