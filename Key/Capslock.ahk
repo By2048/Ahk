@@ -1,11 +1,15 @@
 ﻿
-~*CapsLock::Return
+~*CapsLock::{
+    Return
+}
 
-~*CapsLock Up::SetCapsLockState("Off")
+~*CapsLock Up::{
+    SetCapsLockState("Off")
+}
 
 
 ;切换到显示器中心
-CapsLock & Tab::{
+~CapsLock & Tab::{
 
     CoordMode("Mouse", "Screen")
     MouseGetPos(&x_current, &y_current)
@@ -66,7 +70,7 @@ CapsLock & Tab::{
 
 
 ; 屏幕1中心
-CapsLock & LShift::{
+~CapsLock & LShift::{
     DllCall("SetCursorPos", "int", A_ScreenWidth / 2, "int", A_ScreenHeight / 2)
     MouseGetPos(&_, &_, &win_id)
     WinActivate("ahk_id " . win_id)
@@ -76,7 +80,7 @@ CapsLock & LShift::{
 
 
 ; 鼠标点击
-CapsLock & Space::Click()
+~CapsLock & Space::Click()
 
 
 ; 快速点击窗口位置
@@ -96,22 +100,22 @@ CapsLock & Space::Click()
 
 
 ; 快速点击屏幕位置
-CapsLock & 1::MouseClickTool( 11            , Screen.h/2    , "Screen" )
-CapsLock & 2::MouseClickTool( Screen.w - 11 , Screen.h/2    , "Screen" )
-CapsLock & 3::MouseClickTool( Screen.w/2    , 11            , "Screen" )
-CapsLock & 4::MouseClickTool( Screen.w/2    , Screen.h - 11 , "Screen" )
+~CapsLock & 1::MouseClickTool( 11            , Screen.h/2    , "Screen" )
+~CapsLock & 2::MouseClickTool( Screen.w - 11 , Screen.h/2    , "Screen" )
+~CapsLock & 3::MouseClickTool( Screen.w/2    , 11            , "Screen" )
+~CapsLock & 4::MouseClickTool( Screen.w/2    , Screen.h - 11 , "Screen" )
 ; 
-CapsLock & q::MouseClickTool( Screen.w * (1/5) - 123 , Screen.h * (1/3) - 123 , "Screen" )
-CapsLock & w::MouseClickTool( Screen.w * (2/5) - 99  , Screen.h * (1/3) - 123 , "Screen" )
-CapsLock & e::MouseClickTool( Screen.w * (3/5) + 99  , Screen.h * (1/3) - 123 , "Screen" )
-CapsLock & r::MouseClickTool( Screen.w * (4/5) + 123 , Screen.h * (1/3) - 123 , "Screen" )
+~CapsLock & q::MouseClickTool( Screen.w * (1/5) - 123 , Screen.h * (1/3) - 123 , "Screen" )
+~CapsLock & w::MouseClickTool( Screen.w * (2/5) - 99  , Screen.h * (1/3) - 123 , "Screen" )
+~CapsLock & e::MouseClickTool( Screen.w * (3/5) + 99  , Screen.h * (1/3) - 123 , "Screen" )
+~CapsLock & r::MouseClickTool( Screen.w * (4/5) + 123 , Screen.h * (1/3) - 123 , "Screen" )
 ; 
-CapsLock & a::MouseClickTool( Screen.w * (1/5) - 123 , Screen.h * (2/3) + 123 , "Screen" )
-CapsLock & s::MouseClickTool( Screen.w * (2/5) - 99  , Screen.h * (2/3) + 123 , "Screen" )
-CapsLock & d::MouseClickTool( Screen.w * (3/5) + 99  , Screen.h * (2/3) + 123 , "Screen" )
-CapsLock & f::MouseClickTool( Screen.w * (4/5) + 123 , Screen.h * (2/3) + 123 , "Screen" )
+~CapsLock & a::MouseClickTool( Screen.w * (1/5) - 123 , Screen.h * (2/3) + 123 , "Screen" )
+~CapsLock & s::MouseClickTool( Screen.w * (2/5) - 99  , Screen.h * (2/3) + 123 , "Screen" )
+~CapsLock & d::MouseClickTool( Screen.w * (3/5) + 99  , Screen.h * (2/3) + 123 , "Screen" )
+~CapsLock & f::MouseClickTool( Screen.w * (4/5) + 123 , Screen.h * (2/3) + 123 , "Screen" )
 ; 
-CapsLock & z::MouseClickTool( 22            , Screen.h - 22 , "Screen" )
-CapsLock & x::MouseClickTool( Screen.w - 22 , 22            , "Screen" )
-CapsLock & c::MouseClickTool( Screen.w - 22 , Screen.h - 22 , "Screen" )
-CapsLock & v::MouseClickTool( 22            , 22            , "Screen" )
+~CapsLock & z::MouseClickTool( 22            , Screen.h - 22 , "Screen" )
+~CapsLock & x::MouseClickTool( Screen.w - 22 , 22            , "Screen" )
+~CapsLock & c::MouseClickTool( Screen.w - 22 , Screen.h - 22 , "Screen" )
+~CapsLock & v::MouseClickTool( 22            , 22            , "Screen" )
