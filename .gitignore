@@ -2,18 +2,18 @@
 *.Private.*
 *.Snippet.*
 *.Backup.*
+*.Demo.*
 *.Test.*
 
 *.lnk
-
-Script.txt
 
 /.vscode/
 /.idea/
 
 /@/
-
 /Test/*
+
+Script.txt
 
 /@.ahk
 /Test.ahk
