@@ -31,5 +31,7 @@ Global PyCharm := {
     #Include PyCharm\Key.Base.ahk
     #Include PyCharm\Key.CapsLock.ahk
     #Include PyCharm\Key.Fxx.ahk
+    #Include PyCharm\Key.Joy.ahk
+    #Include PyCharm\Key.Mouse.ahk
 
 #HotIf

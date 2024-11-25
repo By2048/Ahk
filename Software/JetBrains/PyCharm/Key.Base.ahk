@@ -59,7 +59,8 @@ AppsKey::{
     Send "{AppsKey}"
     PyCharm.AppsKeyActivate   := True
     PyCharm.AppsKeyEnterCount := 1
-    JBCenterWindow()
+    Sleep 33
+    Try JBCenterWindow()
 }
 
 
@@ -118,9 +119,8 @@ RShift & LAlt::Send "^z"
 ~^+o::JBCenterWindow() ;打开文件或项目
 ~^n::JBCenterWindow()         ;新建文件
 ~^+n::JBCenterWindow(400,800) ;新建临时文件
-
-; 工具窗口布局
-~!AppsKey::JBCenterWindow()
+~!AppsKey::JBCenterWindow()  ;工具窗口布局
+~!+AppsKey::JBCenterWindow() ; 文件
 
 <#\::MoveWindowDefault()
 <#+\::MoveWindowBackup()

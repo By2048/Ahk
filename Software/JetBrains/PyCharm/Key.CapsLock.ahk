@@ -26,8 +26,8 @@ CapsLock::{
 }
 
 ; 关闭标签 | 重新打开标签
-!CapsLock::Send "!{CtrlBreak}" 
-!+CapsLock::Send "!+{CtrlBreak}" 
+!CapsLock::Send "!{CtrlBreak}"
+!+CapsLock::Send "!+{CtrlBreak}"
 
 ; 跳转到上一个工具窗口
 ~CapsLock & Tab::Send "^{CtrlBreak}"
@@ -53,6 +53,7 @@ CapsLock::{
     PyCharm.CapsLockActivate := True
 }
 
+; 定位窗口位置
 ~CapsLock & LCtrl::MouseMove( 20 , Screen.h - 35 , 0 )
 ~CapsLock & LWin::{
     MouseMove( Screen.w / 2 , Screen.h / 2 , 0 )
@@ -101,11 +102,31 @@ CapsLock::{
 ; 快速列表 @
 ~CapsLock & Space::JBCapsLock(fun:="Center")
 
+; 编辑 编辑器操作
+^!BackSpace::Return
+^!+BackSpace::Return
+~CapsLock & BackSpace::JBCapsLock(fun:="Center", arg:="600 1111 | 1000 1111")
+
+; ------------------------------------------------------------------------- ;
+
 ; 项目 书签
 ~CapsLock & [::JBCapsLock()
 
 ; 结构 层次结构
 ~CapsLock & ]::JBCapsLock()
+
+; 快速切换书签 | 切换书签
+^!\::Return
+^!+\::Return
+~CapsLock & \::{
+    if ( PyCharm.CapsLockToEsc == True ) {
+        Send "{Esc}"
+        PyCharm.CapsLockToEsc := False
+    } else {
+        JBCapsLock(fun:="Center", arg:="2020 1155 | 888 666")
+        PyCharm.CapsLockToEsc := True
+    }
+}
 
 ; ------------------------------------------------------------------------- ;
 
@@ -153,16 +174,6 @@ CapsLock::{
 
 ; CodeGlance Pro
 ~CapsLock & v::JBCapsLock()
-
-; 编辑 编辑器操作
-^!BackSpace::Return
-^!+BackSpace::Return
-~CapsLock & BackSpace::JBCapsLock(fun:="Center", arg:="600 1111 | 1000 1111")
-
-; 快速切换书签 | 切换书签
-^!\::Return
-^!+\::Return
-~CapsLock & \::JBCapsLock(fun:="Center", arg:="2020 1155 | 888 666")
 
 ; ---------------------------------------------- ;
 
