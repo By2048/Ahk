@@ -57,9 +57,9 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
 #HotIf CheckWindowActive( "Explorer" , "WorkerW" )
 
      F1::Run "D:\#Lnk\"
-     F2::Run "T:\#Sync\"
+     F2::Run "T:\#ToDo\"
      F3::Run "T:\#Image\"
-     F4::Run "T:\#ToDo\"
+     F4::Run "T:\#Sync\"
 
      F5::Run "D:\"
      F6::Run "E:\"

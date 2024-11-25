@@ -42,21 +42,12 @@ FileQuickMove()
         FileQuickToolsHide()    
         return
     }
-    paths := ErGetSelectItem()
-    for path in paths {
-        attribute := FileExist(path)
-        if ( InStr(attribute, "A") )
-            FileMove(path, Arg.quick_tool_config, 0)
-        else if ( InStr(attribute, "D") ) {
-            if ( InStr(path, "[") )
-                path := StrReplace(path, "[", "``[")
-            if ( InStr(path, "]") )
-                path := StrReplace(path, "]", "``]")
-            cmd := WT " --focus --size 77,22 "
-            cmd .= PSL " -NoProfile -WorkingDirectory T:\ -Command "
-            cmd .= Format("`"Move-Item -Path '{1}\' -Destination '{2}' -Force`"", path, Arg.quick_tool_config)
-            Run cmd
-        }
+    path := ErGetFocusedItem()
+    attribute := FileExist(path)
+    if ( InStr(attribute, "A") ) {
+        FileMove(path, Arg.quick_tool_config, 0)
+    } else if ( InStr(attribute, "D") ) {
+        MoveFilesAndFolders(path, Arg.quick_tool_config, 0)
     }
     FileQuickToolsHide()
 }
