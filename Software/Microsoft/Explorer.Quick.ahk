@@ -47,7 +47,11 @@ FileQuickMove()
     if ( InStr(attribute, "A") ) {
         FileMove(path, Arg.quick_tool_config, 0)
     } else if ( InStr(attribute, "D") ) {
-        MoveFilesAndFolders(path, Arg.quick_tool_config, 0)
+        source := path . "\*.*"
+        target := Arg.quick_tool_config . StrSplit(path, "\")[-1]
+        DirCreate(target)
+        MoveFilesAndFolders(source, target, 0)
+        DirDelete(path, 1)
     }
     FileQuickToolsHide()
 }
