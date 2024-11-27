@@ -5,7 +5,7 @@ RegisterProcess( "7zG"  , "ZipDialog" )
 RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
 
 
-UnZipPath := [ "T:\" , "V:\" ]
+UnZipPath := [ "T:\" , "V:\#\" ]
 
 
 #Include *i Zip.Private.ahk

@@ -139,7 +139,7 @@ MoveFilesAndFolders(SourcePattern, DestinationFolder, DoOverwrite := false)
         catch {
             ErrorCount += 1
             text := "Could not move " A_LoopFilePath " into " DestinationFolder 
-            Try HelpText(text, "CenterDown", "Screen", 500)
+            MsgBox(text)
         }
     }
     return ErrorCount

@@ -1,6 +1,6 @@
 ﻿
 ~*CapsLock::{
-    Return
+    SetCapsLockState("Off")
 }
 
 ~*CapsLock Up::{
