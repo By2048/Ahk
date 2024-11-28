@@ -129,7 +129,7 @@
 
 ; 同步粘贴
 <#+v::{
-    global JQB
+    Global JQB
     FileEncoding("UTF-8")
     origin := A_Clipboard
     if ( ! FileExist(JQB.Phone) ) {
@@ -159,36 +159,34 @@
 ; 文件重命名
 <#h::
 <#+h::{
-    hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if ( ! hwnd )
+    Send "{Blind}{vkFF}"
+    
+    win_id := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
+    if ( ! win_id )
         return
 
     ; 获取Explorer当前选择的项目
-    data := Map()
+    folder := ""
+    files  := []
+    data := Map( "folder" , ""  ,  "select" , [] )
     for win in ComObject("Shell.Application").Windows {
-        if ( win.hwnd == hwnd ) {
-            folder_path  := win.Document.Folder.Self.Path
-            select_items := []
+        if ( win.hwnd == win_id ) {
+            folder := win.Document.Folder.Self.Path
             for item in win.Document.SelectedItems
-                select_items.Push(item.path)
-            data := Map( "folder" , folder_path , "select" , select_items )
+                files.Push(item.path)
         }
     }
 
-    if ( ! data ) || ( ! data.Count )
-        return
-
-    select := data["select"]
-    if ( ! select )
+    if ( ! files )
         return
 
     if ( A_ThisHotkey == "<#h" )
-        for item in select
-            RenameToMd5(item)
+        for file in files
+            RenameToMd5(file)
 
     if ( A_ThisHotkey == "<#+h" ) {
-        for item in select {
-            RenameToData(item)
+        for file in files {
+            RenameToData(file)
             Sleep 1000
         }
     }
