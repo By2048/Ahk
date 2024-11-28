@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess("geek64" , "Geek")
+RegisterSoftware("geek64" , "Geek")
 
 
 #HotIf CheckWindowActive( "Geek" )

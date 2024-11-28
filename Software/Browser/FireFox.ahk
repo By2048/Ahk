@@ -1,2 +1,2 @@
 
-RegisterProcess("firefox" , "FireFox")
+RegisterSoftware("firefox" , "FireFox")

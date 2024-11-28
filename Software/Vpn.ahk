@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess( "clashN" , "ClashN" )
+RegisterSoftware( "clashN" , "ClashN" )
 RegisterPosition( "ClashN" , Position(1666 , 1122) )
 
 #HotIf CheckWindowActive( "ClashN" )
@@ -8,7 +8,7 @@ RegisterPosition( "ClashN" , Position(1666 , 1122) )
 
 
 
-RegisterProcess( "v2rayN" , "v2rayN" )
+RegisterSoftware( "v2rayN" , "v2rayN" )
 RegisterPosition( "v2rayN" , Position(2100 , 1200) )
 RegisterHelp( "v2rayN", "Software\Vpn.help" )
 
@@ -96,7 +96,7 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
 
 
 
-RegisterProcess( "Clash Nyanpasu" , "ClashNyanpasu" )
+RegisterSoftware( "Clash Nyanpasu" , "ClashNyanpasu" )
 RegisterPosition( "ClashNyanpasu" , Position(1700 , 1111) )
 
 

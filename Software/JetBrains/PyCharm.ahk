@@ -4,7 +4,7 @@
 #Include PyCharm\Position.ahk
 #Include PyCharm\Window.ahk
 
-RegisterProcess( "pycharm64" , "PyCharm" )
+RegisterSoftware( "pycharm64" , "PyCharm" )
 
 RegisterHelp( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.Base.help")     )
 RegisterHelp( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.Fxx.help")      )

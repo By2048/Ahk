@@ -1,5 +1,5 @@
 
-RegisterProcess("wps" , "WPS")
+RegisterSoftware("wps" , "WPS")
 
 
 #HotIf CheckWindowActive( "EnableLoopback" )

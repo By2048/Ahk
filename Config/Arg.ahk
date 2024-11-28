@@ -100,10 +100,10 @@ Games_Process.Push( "LOL_Game"   )
 
 
 ; 软件自定义名字替换 MARK:Process
-Windows_Process := Map()
-RegisterProcess(origin, rename) {
-    Global Windows_Process
-    Windows_Process[StrLower(origin)] := rename
+Windows_Software := Map()
+RegisterSoftware(origin, rename) {
+    Global Windows_Software
+    Windows_Software[StrLower(origin)] := rename
 }
 
 

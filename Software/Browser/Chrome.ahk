@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess("chrome" , "Chrome")
+RegisterSoftware("chrome" , "Chrome")
 
 RegisterHelp("Chrome" , "Software\Browser\Help\@.help")
 RegisterHelp("Chrome" , "Software\Browser\Help\Vimium.help")

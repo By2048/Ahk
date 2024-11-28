@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess("navicat", "Navicat")
+RegisterSoftware("navicat", "Navicat")
 
 
 #HotIf CheckWindowActive( "Navicat" , "TRegistrationSubForm" )

@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess( "WindowsTerminal" , "Terminal" )
+RegisterSoftware( "WindowsTerminal" , "Terminal" )
 
 RegisterHelp( "Terminal" , FilePath(A_LineFile , "Terminal.help") )
 RegisterHelp( "Terminal" , "Config\Script.help"                   )

@@ -124,7 +124,7 @@
         remote_desktop_switch_check := GlobalGet("Status", "Remote_Desktop_Switch_Check", "Bool")
         if ( windows_previous_process_name == "RemoteDesktop" ) {
             if ( remote_desktop_switch_check == True ) {
-                exe := Windows_Process.Get(StrLower("RemoteDesktop"))
+                exe := Windows_Software.Get(StrLower("RemoteDesktop"))
                 ProcessClose(exe)
                 GlobalSet("Windows", "Previous_Process_Name", "")
                 GlobalSet("Status", "Remote_Desktop_Switch_Check", False)

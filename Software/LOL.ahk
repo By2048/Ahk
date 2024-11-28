@@ -1,8 +1,8 @@
 ﻿
-RegisterProcess("TenSafe"           , "LOL_TX"    )
-RegisterProcess("TenSafe_1"         , "LOL_TX"    )
-RegisterProcess("LeagueClientUx"    , "LOL_Client")
-RegisterProcess("League of Legends" , "LOL_Game"  )
+RegisterSoftware("TenSafe"           , "LOL_TX"    )
+RegisterSoftware("TenSafe_1"         , "LOL_TX"    )
+RegisterSoftware("LeagueClientUx"    , "LOL_Client")
+RegisterSoftware("League of Legends" , "LOL_Game"  )
 
 
 #HotIf CheckWindowActive(" LOL_Client | LOL_Game ")

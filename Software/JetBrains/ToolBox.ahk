@@ -1,7 +1,7 @@
 ﻿
 ; https://www.jetbrains.com/toolbox-app/faq/#keyboard-navigation
 
-RegisterProcess( "jetbrains-toolbox" , "JetBrainsToolBox" )
+RegisterSoftware( "jetbrains-toolbox" , "JetBrainsToolBox" )
 
 #HotIf CheckWindowActive("JetBrainsToolBox")
 

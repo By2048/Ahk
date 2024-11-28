@@ -1,7 +1,7 @@
 
 ; 注册表
 
-RegisterProcess( "regedit" , "RegEdit" )
+RegisterSoftware( "regedit" , "RegEdit" )
 
 RegisterHelp("RegEdit", FilePath(A_LineFile, "RegEdit.help"))
 

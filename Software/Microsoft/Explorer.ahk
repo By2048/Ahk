@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess("explorer" , "Explorer")
+RegisterSoftware("explorer" , "Explorer")
 
 RegisterHelp("Explorer_CabinetWClass", FilePath(A_LineFile, "Explorer.help"))
 

@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess("vmware", "VMware")
+RegisterSoftware("vmware", "VMware")
 
 
 ; 虚拟网络编辑器

@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess("DingTalk" , "DingDing")
+RegisterSoftware("DingTalk" , "DingDing")
 
 
 #HotIf CheckWindowActive("DingDing")

@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess( "PotPlayerMini64" , "PotPlayer" )
+RegisterSoftware( "PotPlayerMini64" , "PotPlayer" )
 
 
 RegisterHelp( "PotPlayer" , FilePath(A_LineFile, "PotPlayer.help")        )

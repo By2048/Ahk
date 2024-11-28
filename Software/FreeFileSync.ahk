@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess("FreeFileSync_x64" , "FreeFileSync")
+RegisterSoftware("FreeFileSync_x64" , "FreeFileSync")
 
 RegisterPosition( "FreeFileSync__摘要"          , Position(999  , 888) )
 RegisterPosition( "FreeFileSync__同步中*"        , Position(1177 , 777) )

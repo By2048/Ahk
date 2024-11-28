@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess( "Code" , "VSCode" )
+RegisterSoftware( "Code" , "VSCode" )
 
 RegisterHelp( "VSCode" , FilePath(A_LineFile, "VSCode.help")     )
 RegisterHelp( "VSCode" , FilePath(A_LineFile, "VSCode.Fxx.help") )

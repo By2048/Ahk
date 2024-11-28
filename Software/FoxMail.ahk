@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess("Foxmail" , "FoxMail")
+RegisterSoftware("Foxmail" , "FoxMail")
 
 #HotIf CheckWindowActive( "FoxMail" )
 

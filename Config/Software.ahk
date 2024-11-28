@@ -22,15 +22,15 @@ NirCmd        := "D:\NirCmd\nircmdc.exe"
 
 
 
-RegisterHelp("Default", "Key\Win.help"      )
-RegisterHelp("Default", "Key\Win.Other.help")
+RegisterHelp( "Default" , "Key\Win.help"       )
+RegisterHelp( "Default" , "Key\Win.Other.help" )
 
-RegisterProcess( "fdm" , "FDM" )
+RegisterSoftware( "fdm" , "FDM" )
 RegisterPosition( "FDM__%]" , Position("[Center][2]", 1357 , 777 , 555) )
 RegisterPosition( "FDM" , Position(1500 , 999) , "Default" )
 RegisterPosition( "FDM" , Position("[Center][2]" , Screens.2.h - ( 567 + 200) , 0.96 , 567) , "Backup" )
 
-RegisterProcess( "SandMan" , "Sandboxie" )
+RegisterSoftware( "SandMan" , "Sandboxie" )
 RegisterPosition( "Sandboxie" , Position(0.7 ,  0.7) )
 
 RegisterPosition( "qBittorrent" , Position(0.9 ,  0.8) )
@@ -39,7 +39,7 @@ RegisterPosition( "Calibre" , Position(0.8 ,  0.8) )
 
 RegisterPosition( "Notepad" , Position(0.4 ,  0.5) )
 
-RegisterProcess( "哔哩哔哩" , "BiliBili" )
+RegisterSoftware( "哔哩哔哩" , "BiliBili" )
 RegisterPosition( "BiliBili" , Position(0.7 , 0.88) )
 
 RegisterPosition( "Maye" , Position(1160 , 999) )
@@ -63,17 +63,17 @@ RegisterPosition( "OneCommander" , Position(-9 , -9) )
 RegisterPosition( "OptionalFeatures_NativeHWNDHost" , Position(800 , 1000) )
 
 ; 搜索
-RegisterProcess( "SearchApp" , "Search" )
-RegisterProcess( "SearchUI" , "Search" )
+RegisterSoftware( "SearchApp" , "Search" )
+RegisterSoftware( "SearchUI" , "Search" )
 
 ; 开始菜单
-RegisterProcess( "ShellExperienceHost" , "Start" )
-RegisterProcess( "StartMenuExperienceHost" , "Start" )
+RegisterSoftware( "ShellExperienceHost" , "Start" )
+RegisterSoftware( "StartMenuExperienceHost" , "Start" )
 RegisterPosition( "Start" , Position(488 , 600) )
 
 ; 画图
 RegisterPosition( "MsPaint" , Position(0.62 , 0.82) )
 
 ; 资源监视器
-RegisterProcess( "perfmon" , "SystemMonitor" )
+RegisterSoftware( "perfmon" , "SystemMonitor" )
 RegisterPosition( "SystemMonitor" , Position(2250 , 1350) )

@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess( "NemuPlayer" , "Android" )
+RegisterSoftware( "NemuPlayer" , "Android" )
 
 #HotIf CheckWindowActive( "Android" )
 

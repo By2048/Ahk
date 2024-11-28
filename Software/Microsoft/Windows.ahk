@@ -31,7 +31,7 @@
 
 
 ; 远程桌面
-RegisterProcess( "mstsc" , "RemoteDesktop" )
+RegisterSoftware( "mstsc" , "RemoteDesktop" )
 #HotIf CheckWindowActive( "RemoteDesktop" )
     CapsLock::{
         Global Arg
@@ -45,7 +45,7 @@ RegisterProcess( "mstsc" , "RemoteDesktop" )
 
 
 ; 设置界面
-RegisterProcess("ApplicationFrameHost" , "WindowsSettings")
+RegisterSoftware("ApplicationFrameHost" , "WindowsSettings")
 RegisterPosition( "WindowsSettings_ApplicationFrameWindow_设置" , Position(1800 , 1200) )
 #HotIf CheckWindowActive( "WindowsSettings" , "ApplicationFrameWindow" , "设置" )
     ;点击返回

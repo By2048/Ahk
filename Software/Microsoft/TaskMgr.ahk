@@ -1,6 +1,6 @@
 
 ; 任务管理器
-RegisterProcess( "taskmgr" , "TaskMgr" )
+RegisterSoftware( "taskmgr" , "TaskMgr" )
 
 #HotIf CheckWindowActive( "TaskMgr" )
 

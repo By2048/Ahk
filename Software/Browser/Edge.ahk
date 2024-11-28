@@ -1,2 +1,2 @@
 
-RegisterProcess("msedge" , "Edge")
+RegisterSoftware("msedge" , "Edge")

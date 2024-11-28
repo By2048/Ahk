@@ -1,8 +1,8 @@
 ﻿
-RegisterProcess("EXCEL"    , "Excel"   )
-RegisterProcess("WINWORD"  , "Word"    )
-RegisterProcess("POWERPNT" , "PPT"     )
-RegisterProcess("ONENOTE"  , "OneNote" )
+RegisterSoftware("EXCEL"    , "Excel"   )
+RegisterSoftware("WINWORD"  , "Word"    )
+RegisterSoftware("POWERPNT" , "PPT"     )
+RegisterSoftware("ONENOTE"  , "OneNote" )
 
 
 #HotIf CheckWindowActive("Excel", "", "名称管理器")

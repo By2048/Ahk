@@ -1,6 +1,6 @@
 ﻿
-RegisterProcess( "7zFM" , "ZipMain"   )
-RegisterProcess( "7zG"  , "ZipDialog" )
+RegisterSoftware( "7zFM" , "ZipMain"   )
+RegisterSoftware( "7zG"  , "ZipDialog" )
 
 RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
 

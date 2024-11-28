@@ -1,5 +1,5 @@
 
-RegisterProcess("scrcpy" , "Scrcpy")
+RegisterSoftware("scrcpy" , "Scrcpy")
 RegisterHelp("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
 #HotIf CheckWindowActive("Scrcpy")
     #\::
@@ -15,7 +15,7 @@ RegisterHelp("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
 #HotIf
 
 
-RegisterProcess(  "antimicrox" , "AntiMicroX" )
+RegisterSoftware(  "antimicrox" , "AntiMicroX" )
 RegisterPosition( "AntiMicroX" , Position(1234 , 1111) )
 RegisterPosition( "AntiMicroX__按键" , Position(1600 , 666) )
 #HotIf CheckWindowActive("AntiMicroX__按键")
@@ -23,7 +23,7 @@ RegisterPosition( "AntiMicroX__按键" , Position(1600 , 666) )
 #HotIf
 
 
-RegisterProcess("Duplicate Cleaner 5" , "DuplicateCleaner")
+RegisterSoftware("Duplicate Cleaner 5" , "DuplicateCleaner")
 RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
 #HotIf CheckWindowActive("DuplicateCleaner")
     #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
@@ -38,7 +38,7 @@ RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
 #HotIf
 
 
-RegisterProcess("NVIDIA Share" , "GeForceTool")
+RegisterSoftware("NVIDIA Share" , "GeForceTool")
 #HotIf CheckWindowActive( "GeForceTool" )
     Esc::Send "^!{Insert}"
 #HotIf
@@ -83,7 +83,7 @@ RegisterProcess("NVIDIA Share" , "GeForceTool")
 #HotIf
 
 
-RegisterProcess("IDMan" , "IDM")
+RegisterSoftware("IDMan" , "IDM")
 #HotIf CheckWindowActive("IDM")
     #\::{
         MoveWindowPosition(Position(1500 , 1000))
@@ -94,7 +94,7 @@ RegisterProcess("IDMan" , "IDM")
 #HotIf
 
 
-RegisterProcess("Adobe Premiere Pro" , "PR")
+RegisterSoftware("Adobe Premiere Pro" , "PR")
 #HotIf CheckWindowActive("PR")
     #\::{
         x := 2
@@ -106,7 +106,7 @@ RegisterProcess("Adobe Premiere Pro" , "PR")
 #HotIf
 
 
-RegisterProcess("Photoshop" , "PS")
+RegisterSoftware("Photoshop" , "PS")
 #HotIf CheckWindowActive("PS")
     #\::MoveWindowPosition( [ 0, 0, A_ScreenWidth, A_ScreenHeight ] )
     #+\::{

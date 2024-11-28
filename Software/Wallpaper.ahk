@@ -1,5 +1,5 @@
 ﻿
-RegisterProcess("ui32" , "Wallpaper")
+RegisterSoftware("ui32" , "Wallpaper")
 
 RegisterHelp("Wallpaper" , "Software\Wallpaper.help")
 
