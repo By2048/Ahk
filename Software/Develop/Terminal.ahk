@@ -1,19 +1,25 @@
 ﻿
-RegisterProcess("WindowsTerminal" , "Terminal")
+RegisterProcess( "WindowsTerminal" , "Terminal" )
 
-RegisterHelp("Terminal", FilePath(A_LineFile, "Terminal.help"))
-RegisterHelp("Terminal", "Config\Script.help")
+RegisterHelp( "Terminal" , FilePath(A_LineFile , "Terminal.help") )
+RegisterHelp( "Terminal" , "Config\Script.help"                   )
 
-RegisterPosition( "Terminal" , Position(2200 , 1248) , "Default" )
+RegisterPosition( "Terminal" , Position(2200 , 1248)              , "Default" )
 RegisterPosition( "Terminal" , Position("[Center][2]" , 0 , 1600) , "Backup"  )
 
 
 #HotIf CheckWindowActive( "Terminal" )
 
-    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
+     `::Send "_"
+    +`::Send "~"
 
+    `;::Send ":"
+    +;::Send ";"
+    
     #Include *i Terminal.Private.ahk
 
+    ;-------------------------------;
+    
     ; 关闭窗格
     ~NumLock::Send "{F13}"
     !CapsLock::Send "{F13}"
@@ -35,10 +41,10 @@ RegisterPosition( "Terminal" , Position("[Center][2]" , 0 , 1600) , "Backup"  )
     ; 复制标签页
     ^+d::Return
 
-    ;结束运行
+    ; 结束运行
     !BackSpace::Send "^c"
 
-    ;复制
+    ; 复制
     ^F1::Return
     ^c::Send "^{F1}"
 
