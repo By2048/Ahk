@@ -1,13 +1,22 @@
 ﻿
 #SingleInstance Force
 
+
+$\::
+Esc::
+Enter::
+BackSpace::
+AppsKey::
+RShift::{
+    Send "{Blind}{vkFF}"
+    ExitApp()
+}
+
 scale := 0.98
 
 border := 0
 
-G := Gui()
-
-image := ""
+;--------------------------------------------------------------------------------;
 
 if ( A_Args.Length != 1 ) {
     MsgBox("传入参数错误")
@@ -48,11 +57,11 @@ if ( ! check ) {
 
 image := Trim(image, "`'")
 
+G := Gui()
 G.MarginX := 1
 G.MarginY := 1
 G.Opt("-DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption -Border")
 GPic := G.Add("Picture", format("+Border"), image)
-
 GPic.GetPos(&_, &_, &image_w, &image_h)
 
 if ( ! image_w ) || ( ! image_h )
@@ -74,15 +83,3 @@ image_h := Round(image_h)
 GPic.Move(border, border, image_w, image_h)
 
 G.Show(Format("w{} h{} Center NA ", image_w + border * 2, image_h + border * 2))
-
-
-$\::
-Esc::
-Enter::
-CapsLock::
-BackSpace::
-AppsKey::
-RShift::{
-    SetCapsLockState("Off")
-    ExitApp()
-}

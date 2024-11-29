@@ -1,20 +1,10 @@
 
 #Include .\Screen.ahk
 
-config := ""
+#SingleInstance Ignore
 
-if ( A_Args.Length == 1 )
-    config := A_Args[1]
 
-G := Gui()
-
-Font := {
-    size     : 55 ,
-    color    : "8000FF" ,
-    style    : "Bookman Old Style" ,
-    border_x : 40 ,
-    border_y : 1
-}
+^!AppsKey::ExitApp()
 
 
 font_size     := 55
@@ -23,61 +13,64 @@ font_style    := "Bookman Old Style"
 font_border_x := 40
 font_border_y := 1
 
-time_display := "00:00"
-time_space_min  := 0
-
+;--------------------------------------------------------------------------------;
 
 ; 1s 1m 1h
-; 300 秒
-CountDown(config := "3m")
-{
-    if ( ! config )
-        return
+config := ""
 
-    time_start := A_Now
-    time_end   := A_Now
+if ( A_Args.Length == 1 )
+    config := A_Args[1]
 
-    if ( InStr(config, "s") )
-        time_end := DateAdd(time_start, StrReplace(config, "s", ""), "Seconds")
-    else if ( InStr(config, "m") )
-        time_end := DateAdd(time_start, StrReplace(config, "m", ""), "Minutes")
-    else if ( InStr(config, "h") )
-        time_end := DateAdd(time_start, StrReplace(config, "h", ""), "Hours")
-    else
-        time_end := DateAdd(time_start, config, "Hours")
+If ( ! config )
+    ExitApp()
 
-    time_space_min := DateDiff(time_end, A_Now, "Minutes")
-    if ( time_space_min >= 0 and time_space_min < 99 )
-        time_display := "00:00"
-    if ( time_space_min >= 100 )
-        time_display := "00:00:00"
 
-    G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
-    G.MarginX := 0
-    G.MarginY := 0
-    G.SetFont(Format("c{} s{}", Font.color, Font.size), Font.style)
-    GText := G.Add("Text", Format("vTextContent -Center -Border x{} y{}", Font.border_x, Font.border_y), time_display)
-    G["TextContent"].GetPos(&_, &_, &text_w, &text_h)
+time_start := A_Now
+time_end   := A_Now
 
-    gui_w := text_w + Font.border_x * 2
-    gui_h := text_h + Font.border_y
-    gui_x := Screens.Backup.x + Screens.Backup.w/2 - gui_w/2
-    gui_y := Screens.Backup.y + Screens.Backup.h/3 - gui_w/2
+if ( InStr(config, "s") )
+    time_end := DateAdd(time_start, StrReplace(config, "s", ""), "Seconds")
+else if ( InStr(config, "m") )
+    time_end := DateAdd(time_start, StrReplace(config, "m", ""), "Minutes")
+else if ( InStr(config, "h") )
+    time_end := DateAdd(time_start, StrReplace(config, "h", ""), "Hours")
+else
+    time_end := DateAdd(time_start, config, "Minutes")
 
-    G.Show(Format("NA x{1} y{2} w{3} h{4}", gui_x, gui_y, gui_w, gui_h))
+time_display := "00:00"
+time_space   := DateDiff(time_end, A_Now, "Minutes")
+if ( time_space >= 0 && time_space < 99 )
+    time_display := "00:00"
+if ( time_space >= 100 )
+    time_display := "00:00:00"
 
-    SetTimer(Timer, 500)
 
-    Timer() {
-        seconds := DateDiff(time_end, A_Now, "Seconds")
-        GText.Text := Fmt(seconds)
-        if ( ! seconds ) {
-            Sleep(500)
-            ExitApp()
-        }
+G := Gui()
+G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
+G.BackColor := "1e1e1e"
+G.MarginX := 0
+G.MarginY := 0
+G.SetFont(Format("c{} s{}", font_color, font_size), font_style)
+GText := G.Add("Text", Format("-Center -Border x{} y{}", font_border_x, font_border_y), time_display)
+GText.GetPos(&_, &_, &text_w, &text_h)
+
+gui_w := text_w + font_border_x * 2
+gui_h := text_h + font_border_y
+gui_x := Screens.Backup.x + Screens.Backup.w/2 - gui_w/2
+gui_y := Screens.Backup.y + Screens.Backup.h/3 - gui_w/2
+
+G.Show(Format("NA x{1} y{2} w{3} h{4}", gui_x, gui_y, gui_w, gui_h))
+
+SetTimer(Timer, 500)
+
+Timer() {
+    seconds := DateDiff(time_end, A_Now, "Seconds")
+    GText.Text := Fmt(seconds)
+    if ( ! seconds ) {
+        Sleep(500)
+        ExitApp()
     }
 }
-
 
 Fmt(seconds) {
     time_hou  := seconds // 60 // 60
@@ -109,9 +102,3 @@ Fmt(seconds) {
     return time_text
 }
 
-
-If ( config )
-    CountDown(config)
-
-
-^!AppsKey::ExitApp()
