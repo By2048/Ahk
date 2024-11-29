@@ -186,8 +186,8 @@
     Insert & Delete::Send "!{Home}"
     
     ; 新 窗口 标签
-    Insert & \::Send "^t"
-    Insert & BackSpace::Send "^n"
+    Insert & BackSpace::Send "^t"
+    Insert & \::Send "^n"
     Insert & Enter::Send "^+n"
 
     #Include *i @.Mouse.ahk
