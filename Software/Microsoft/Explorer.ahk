@@ -1,18 +1,18 @@
 ﻿
-RegisterSoftware("explorer" , "Explorer")
+RegisterSoftware( "explorer" , "Explorer" )
 
-RegisterHelp("Explorer_CabinetWClass", FilePath(A_LineFile, "Explorer.help"))
+RegisterHelp( "Explorer_CabinetWClass" , FilePath(A_LineFile, "Explorer.help") )
 
-RegisterHelp("Explorer_WorkerW", "Key\Win.help")
-RegisterHelp("Explorer_WorkerW", "Key\Win.Other.help")
-RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
+RegisterHelp( "Explorer_WorkerW" , "Key\Win.help"                              )
+RegisterHelp( "Explorer_WorkerW" , "Key\Win.Other.help"                        )
+RegisterHelp( "Explorer_WorkerW" , FilePath(A_LineFile, "Explorer.Other.help") )
 
 
 #Include Explorer.Tool.ahk
 #Include Explorer.Quick.ahk
 #Include Explorer.Config.ahk
-
 #Include Explorer.Joy.ahk
+
 
 ; 控制面板\所有控制面板项\Windows Defender 防火墙\允许的应用
 #HotIf CheckWindowActive( "Explorer" , "CabinetWClass" , "防火墙\允许的应用" )
@@ -134,16 +134,19 @@ RegisterHelp("Explorer_WorkerW", FilePath(A_LineFile, "Explorer.Other.help"))
     ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
     ; 属性对话框 !{Enter}
 
+    `;::Send ":"
+    +;::Send ";"
+
+    ;-------------------------------;
+
     RWin & RCtrl::Return
     RWin & RAlt:: Return
     ^WheelUp::  Return
     ^WheelDown::Return
 
-    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
-
     ; 功能区展开缩放
-    !`::Send "^{F1}"
     ^F1::Return
+    ^AppsKey::Send "^{F1}"
 
     ![::ErActivateLeft()
     !]::ErActivateRight()

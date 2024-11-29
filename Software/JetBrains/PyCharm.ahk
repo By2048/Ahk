@@ -25,8 +25,9 @@ Global PyCharm := {
 }
 
 #HotIf CheckWindowActive( "PyCharm" )
-
-    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
+    
+    `;::Send ":"
+    +;::Send ";"
 
     #Include PyCharm\Key.Base.ahk
     #Include PyCharm\Key.CapsLock.ahk
