@@ -28,6 +28,18 @@ JBCapsLock(fun:="", arg:="")
 }
 
 
+JBCapsLockCircle(fun:="", arg:="")
+{
+    if ( PyCharm.CapsLockActivate == True ) {
+        Send "{Esc}"
+        PyCharm.CapsLockActivate := False
+    } else {
+        JBCapsLock(fun, arg)
+        PyCharm.CapsLockActivate := True
+    }
+}
+
+
 JBGetWindow(check_sleep:=44, check_count:=22)
 {
     exe := WinGetProcessName("A")
