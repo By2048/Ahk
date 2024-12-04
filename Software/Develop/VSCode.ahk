@@ -8,17 +8,13 @@ RegisterPosition( "VSCode" , Position(-6 , -6) , "Default" )
 RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
 
+#Include *i VSCode.Private.ahk
+
+
 ; 快捷键设置
 #HotIf CheckWindowActive( "VSCode" , "" , "*User\KeyBindings.json | *键盘快捷方式" )
 
     RShift::HelpFile("Software\Develop\VSCode.Setting.help")
-
-#HotIf
-
-
-#HotIf CheckWindowActive( "VSCode" , "" , " *.sql | *.ps1 | *.md " )
-
-    #IncludeAgain *i %A_InitialWorkingDir%\Key\Reset.ahk
 
 #HotIf
 
@@ -119,5 +115,3 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
 #HotIf
 
-
-#Include *i VSCode.Private.ahk

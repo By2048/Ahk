@@ -8,6 +8,17 @@ RegisterPosition( "Terminal" , Position(2200 , 1248)              , "Default" )
 RegisterPosition( "Terminal" , Position("[Center][2]" , 0 , 1600) , "Backup"  )
 
 
+Arg.TerminalCommand := False
+
+
+#HotIf CheckWindowActive( "Terminal" ) && ( Arg.TerminalCommand == True )
+    LShift::{
+        Send "{Esc}"
+        Arg.TerminalCommand := False
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive( "Terminal" )
 
      `::Send "_"
@@ -19,7 +30,16 @@ RegisterPosition( "Terminal" , Position("[Center][2]" , 0 , 1600) , "Backup"  )
     #Include *i Terminal.Private.ahk
 
     ;-------------------------------;
-    
+
+    ~LShift::{
+        if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
+            if ( A_TimeSincePriorHotkey < 333 ) {
+                Send "^+p"
+                Arg.TerminalCommand := True
+            }
+        }
+    }
+
     ; 关闭窗格
     ~NumLock::Send "{F13}"
     !CapsLock::Send "{F13}"
