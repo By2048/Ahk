@@ -26,7 +26,7 @@
 }
 
 
-LWin::{
+~LWin::{
     Send "{Blind}{vkFF}"
 }
 
@@ -119,8 +119,14 @@ RShift & LAlt::Send "^z"
 ~^+o::JBCenterWindow() ;打开文件或项目
 ~^n::JBCenterWindow()         ;新建文件
 ~^+n::JBCenterWindow(400,800) ;新建临时文件
-~!AppsKey::JBCenterWindow()  ;工具窗口布局
-~!+AppsKey::JBCenterWindow() ; 文件
+~!AppsKey::JBCenterWindow()   ;工具窗口
+~!+AppsKey::JBCenterWindow()  ;文件
+
+; 运行窗口
+>!F1::{
+    Send "!{F13}"
+    JBCenterWindow()
+}
 
 <#\::MoveWindowDefault()
 <#+\::MoveWindowBackup()

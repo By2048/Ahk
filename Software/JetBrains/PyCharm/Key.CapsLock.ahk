@@ -16,11 +16,11 @@ CapsLock::{
         Global Arg
         if ( Arg.capslock_click == 1 ) {
             Send "{CapsLock}"
-            SetCapsLockState("Off")
         } else if ( Arg.capslock_click == 2 ) {
             Send "{CtrlBreak}"
             Send "!m"
         }
+        SetCapsLockState("Off")
         Arg.capslock_click := 0
     }
 }
@@ -32,7 +32,7 @@ CapsLock::{
 ; 跳转到上一个工具窗口
 ~CapsLock & Tab::Send "^{CtrlBreak}"
 
-; 快速窗口 @  |  导航 / 代码
+; 快速窗口 @  \\  导航 || 代码
 ~CapsLock & LShift::
 ~CapsLock & RShift::{
     if ( PyCharm.CapsLockActivate == True ) {
@@ -99,14 +99,25 @@ CapsLock::{
 ; AI Assistant
 ~CapsLock & Enter::JBCapsLock()
 
-; 快速列表 @
-~CapsLock & Space::JBCapsLock(fun:="Center")
+; 快速列表 Window \\ 工具窗口
+~CapsLock & Space::JBCapsLockCircle("Center")
 
 ; 编辑 编辑器操作
 ^!BackSpace::Return
 ^!+BackSpace::Return
 ~CapsLock & BackSpace::JBCapsLock(fun:="Center", arg:="600 1111 | 1000 1111")
 
+; ------------------------------------------------------------------------- ;
+
+; 运行
+~CapsLock & F1::JBCapsLockCircle("Center")
+
+; 快速列表 Run
+~CapsLock & F11::JBCapsLockCircle()
+    
+; 快速列表 Debug
+~CapsLock & F12::JBCapsLockCircle()
+    
 ; ------------------------------------------------------------------------- ;
 
 ; 项目 书签

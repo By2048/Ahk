@@ -1,15 +1,8 @@
 ﻿
-$!F3::{
-    if ( WinActive("运行目标") )
-        WinClose("A")
-    else
-        Send("!{F3}")
-}
-
 ; 后台任务
 >!F11::{
     MouseGetPos(&x_origin, &y_origin)
-    MouseClick("Left", 30, Screen.h / 2 , 1, 0)
+    MouseClick("Left", 30, Screen.h/2, 1, 0)
     MouseMove(x_origin, y_origin, 0)
     win := JBGetWindow(check_sleep:=33, check_count:=3)
     if ( ! ObjOwnPropCount(win) ) {
