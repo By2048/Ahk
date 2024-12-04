@@ -64,7 +64,7 @@ RegisterHelp( "Explorer_WorkerW" , FilePath(A_LineFile, "Explorer.Other.help") )
      F5::Run "D:\"
      F6::Run "E:\"
      F7::Run "F:\"
-     F8::Run "G:\"
+     F8::Run "N:\"
 
      F9::Run "E:\Book\"
     F10::Run "E:\Config\"
