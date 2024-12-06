@@ -10,7 +10,7 @@
 font_size     := 55
 font_color    := "8000FF"
 font_style    := "Bookman Old Style"
-font_border_x := 40
+font_border_x := 33
 font_border_y := 1
 
 ;--------------------------------------------------------------------------------;
@@ -68,7 +68,9 @@ Timer() {
     GText.Text := Fmt(seconds)
     if ( ! seconds ) {
         Sleep(500)
-        ExitApp()
+        GText.Text := " Over "
+        Sleep(500)
+        SetTimer( , 0)
     }
 }
 
