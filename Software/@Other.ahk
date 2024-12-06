@@ -74,10 +74,7 @@ RegisterSoftware("NVIDIA Share" , "GeForceTool")
 #HotIf CheckWindowActive("WinKawaks")
     ; 存档
     F5::Return
-    CapsLock & Enter::{
-        Send "{F5}"
-        SetCapsLockState("Off")
-    }
+    CapsLock & Enter::Send "{F5}"
     ; 读档
     F7::Return
     AppsKey::Send "{F7}"

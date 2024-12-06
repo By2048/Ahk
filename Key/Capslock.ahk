@@ -1,7 +1,5 @@
 ﻿
-~*CapsLock::{
-    SetCapsLockState("Off")
-}
+~*CapsLock::Return
 
 ~*CapsLock Up::{
     SetCapsLockState("Off")

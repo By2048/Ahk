@@ -7,7 +7,7 @@
 
 TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Run.png")
 
-A_IconTip := "[Ahk]"
+A_IconTip := " [ Ahk ] "
 
 
 ; 启动脚本
@@ -36,7 +36,6 @@ LWin & RWin::{
 ; 停止脚本
 RWin & LWin::{
     Send("{Blind}{vkFF}")
-    SetCapsLockState("Off")
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Error.png")
     if ( GetKeyState("LShift", "P") && GetKeyState("RShift", "P") ) {
         Run(NirCmd " exitwin poweroff")

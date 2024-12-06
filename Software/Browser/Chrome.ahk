@@ -122,7 +122,6 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
         ClipWait(1)
         Send "^v"
         Send "{Enter}"
-        SetCapsLockState("Off")
     }
 
     ; 书签第一个

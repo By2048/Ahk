@@ -115,9 +115,4 @@ RegisterHelp("SumatraPDF", FilePath(A_LineFile, "SumatraPDF.help"))
     !Right::Return
     ]::Send "!{Right}"
 
-    CapsLock & Enter::Return
-    CapsLock Up::{
-        SetCapsLockState("Off")
-    }
-
 #HotIf
