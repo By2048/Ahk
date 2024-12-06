@@ -132,7 +132,7 @@ FileQuickTools()
 
         if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
             if ( ! InStr(path, ".bc!") && ! InStr(path, ".torrent") ) {
-                G.Add("Text", Format("w{} Disabled", G.text_w), "  UnZip")
+                G.Add("Text", Format("w{} Disabled", G.text_w), "UnZip")
                 Arg.quick_tool_command := "FileQuickUnZip"
             }
         }
