@@ -27,17 +27,3 @@
 ~Space &      Tab::Send "{LButton}"
 ~Space & CapsLock::Send "{MButton}"
 ~Space &    Shift::Send "{RButton}"
-
-; ~CapsLock & Esc::
-; ~CapsLock & LCtrl::
-; ~CapsLock & LWin::
-; ~CapsLock & LAlt::{
-;     key := StrReplace(A_ThisHotkey, "~CapsLock & ", "")
-;     win := GetActiveWindowInfo()
-;     Switch key {
-;         Case "Esc"   : MouseClickTool( win.w - 44 , 22         , "Window" )
-;         Case "LCtrl" : MouseClickTool( win.w / 2  , 22         , "Window" )
-;         Case "LWin"  : MouseClickTool( win.w / 2  , win.h / 2  , "Window" )
-;         Case "LAlt"  : MouseClickTool( win.w / 2  , win.h - 22 , "Window" )
-;     }
-; }

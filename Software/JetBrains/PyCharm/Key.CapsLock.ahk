@@ -1,10 +1,13 @@
 ﻿
-~*CapsLock Up::SetCapsLockState("Off")
+~*CapsLock Up::{
+    SetCapsLockState("Off")
+}
 
 
 ; 聚焦编辑器 + 滚动到中心
 CapsLock::{
     Global Arg
+    Send "{Blind}{vkFF}"
     if ( Arg.capslock_click > 0 ) {
         Arg.capslock_click += 1
         return
