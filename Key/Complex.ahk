@@ -4,25 +4,26 @@ Global win_tab := False
 Global win_shift_tab := False
 
 ~*LWin Up::{
-    global win_tab, win_shift_tab
-    if ( win_tab == True ) {
-        Send "{Alt Up}"
-        win_tab := False
-        if ( win_shift_tab == True ) {
-            Send "{Shift Up}"
-            win_shift_tab := False
-        }
-    }
+    global win_tab , win_shift_tab
+    Send "{Shift Up}"
+    Send "{Alt Up}"
+    win_tab := win_shift_tab := False
 }
 
+#HotIf ( win_tab == True || win_shift_tab == True )
+    ~*LShift Up::Send "{Shift Up}"
+    LWin & Tab::Send "{Alt Down}{Tab}"
+    LWin & LShift::Send "{Alt Down}{Shift Down}{Tab}"
+#HotIf
+
 LWin & Tab::{
-    global win_tab, win_shift_tab
-    if ( GetKeyState("Shift", "P") ) {
-        win_shift_tab := True
-        Send "{Alt Down}{Shift Down}{Tab}"
-    } else {
-        win_tab := True
+    global win_tab , win_shift_tab
+    if ( ! GetKeyState("Shift", "P") ) {
         Send "{Alt Down}{Tab}"
+        win_tab := True
+    } else {
+        Send "{Alt Down}{Shift Down}{Tab}"
+        win_shift_tab := True
     }
 }
 
