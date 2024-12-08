@@ -1,18 +1,19 @@
 ﻿
-; AutoHotkey路径,Setup.cmd中解析取[22,-1]内的值
+; AutoHotkey 路径 Setup.cmd 中解析取 [15,-1] 内的值
+;             15                            -1   
 AutoHotkey := "D:\AutoHotkey\#\AutoHotkey.exe"
 
 ; 截图位置 全屏 软件 游戏
-ScreenShot_Temp     := "C:\Ahk\ScreenShot\"
-ScreenShot_Full     := "C:\Ahk\ScreenShot\"
-ScreenShot_Software := "C:\Ahk\ScreenShot\"
+ScreenShot_Temp     := A_ScriptDir . "\Data\ScreenShot\"
+ScreenShot_Full     := A_ScriptDir . "\Data\ScreenShot\"
+ScreenShot_Software := A_ScriptDir . "\Data\ScreenShot\"
 
 ; Chrome相关下载文件存储位置
-Chrome_Image := "C:\Ahk\Image\"
-Chrome_Video := "C:\Ahk\Video\"
+Chrome_Image := A_ScriptDir . "\Data\Image\"
+Chrome_Video := A_ScriptDir . "\Data\Video\"
 
 ; 临时文件位置
-Temp_Path := "C:\Ahk\Temp\"
+Temp_Path := A_ScriptDir . "\Data\Temp\"
 
 ; 屏幕数量   | 1 \ 2 \ 3
 ; 屏幕编号   | 根据实际情况设置 可能与系统显示设置不同
