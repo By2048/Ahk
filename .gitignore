@@ -10,9 +10,9 @@
 /.vscode/
 /.idea/
 
-/Data/
 
 /@/
+/Data/*
 /Test/*
 
 Script.txt
