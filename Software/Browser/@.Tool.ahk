@@ -32,13 +32,6 @@ UrlChange(origin)
     if ( InStr(origin, "devtools/inspector.html?ws=") )
         result := StrReplace(origin, "?ws=", "?ws://")
 
-    ; https://wx2.sinaimg.cn/mw690/008sJj2hgy1hirkxpx96bj30yg1e07vi.jpg
-    ; https://weibo.com/ajax/common/download?pid=008sJj2hgy1hirkxpx96bj30yg1e07vi
-    if ( InStr(origin, "sinaimg.cn") ) {
-        pid := RegExReplace(origin, "(http.*)(.\w+)(/)(.*)(\.\w+)", "$4")
-        result := "https://weibo.com/ajax/common/download?pid=" . pid
-    }
-
     ; google -> bing
     ; google.com/search?q=Xxx
     ; cn.bing.com/search?q=Xxx
@@ -55,54 +48,16 @@ UrlChange(origin)
         result := "https://www.baidu.com/s?wd=" . keyword
     }
 
+    ; .jpg@xxx.xxx
+    if ( InStr(origin, ".jpg@") || InStr(origin, ".png@") || InStr(origin, ".webp@") )
+        result := RegExReplace(origin, "(http.*)(.\w+)(@)(.*)", "$1$2")
+
     ; learn.microsoft.com/en-us/windows/win32/shell/shellwindows
     ; learn.microsoft.com/zh-cn/windows/win32/shell/shellwindows
     if ( InStr(origin, "learn.microsoft.com/en-us/") )
         result := StrReplace(origin, "/en-us/", "/zh-cn/")
 
-    ; https://t.bilibili.com/?tab=all
-    ; https://t.bilibili.com/?tab=video
-    if ( InStr(origin, "t.bilibili.com/?tab=all") )
-        result := StrReplace(origin, "all", "video")
-    if ( InStr(origin, "t.bilibili.com/?tab=video") )
-        result := StrReplace(origin, "video", "all")
-
-    ; .jpg@xxx.xxx
-    if ( InStr(origin, ".jpg@") || InStr(origin, ".png@") || InStr(origin, ".webp@") )
-        result := RegExReplace(origin, "(http.*)(.\w+)(@)(.*)", "$1$2")
-
-
-    ; Bilibili Image
-    ; http://i0.hdslb.com/bfs/new_dyn/47351fbfc476b71f3509bbb96f872583413023694.jpg
-
-
-    ; https://www.zhihu.com/hot
-    ; https://www.zhihu.com/knowledge-plan/hot-question/hot/0/hour
-    if ( InStr(origin, "zhihu.com/hot") )
-        result := "https://www.zhihu.com/knowledge-plan/hot-question/hot/0/hour"
-    if ( InStr(origin, "zhihu.com/knowledge-plan/hot-question/hot") )
-        result := "https://www.zhihu.com/hot"
-
-    ; 2 -> 1
-    ; 1 -> 3 -> 1
-    ; 1 https://www.zhihu.com/question/xxx
-    ; 2 https://www.zhihu.com/question/xxx/answer/xxx
-    ; 3 https://www.zhihu.com/question/xxx/answers/updated
-    if ( InStr(origin, "zhihu.com/question") ) {
-        if ( InStr(origin, "/answer/") ) {
-            qid := RegExReplace(origin, "(http.*)(/question/)(\d+)(/answer/)(\d+)", "$3")
-            result := "https://www.zhihu.com/question/" . qid
-        } else {
-            result := origin . "/answers/updated"
-        }
-        if ( InStr(origin, "/answers/updated") )
-            result := StrReplace(origin, "/answers/updated", "")
-    }
-
-    ; https://picx.zhimg.com/80/v2-104d5c498690a3268a49a84705094f25_1440w.webp?source=1940ef5c
-    ; https://pic4.zhimg.com/v2-23ecf011fe34a64b376b40d598bf79fb_b.jpg
-    if ( InStr(origin, "zhimg.com") )
-        result := RegExReplace(origin, "(http.*)(v2-)([\d\w]+)(_)(\d+\w|\w)(.\w+)(.*)?", "$1$2$3$6")
+    #Include *i @.Tool.Snippet.ahk
 
     return result
 }
