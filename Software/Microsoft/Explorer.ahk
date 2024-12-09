@@ -183,7 +183,18 @@ RegisterHelp( "Explorer_WorkerW" , FilePath(A_LineFile, "Explorer.Other.help") )
 
     #Include Explorer.Mouse.ahk
     
-    \::FileQuickPreview()
+    \::{
+        contro_name := ControlGetClassNN(ControlGetFocus("A"))
+        if ( contro_name == "Edit1") ;地址栏
+            Send "\"
+        else if ( contro_name == "Edit2") ;文件名重命名
+            Send FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
+        else if ( contro_name == "DirectUIHWND3") 
+            FileQuickPreview()
+        else
+            Send "\"
+    }
+
     Insert::FileQuickTools()
 
 #HotIf
