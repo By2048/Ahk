@@ -134,8 +134,8 @@ RegisterHelp( "Explorer_WorkerW" , FilePath(A_LineFile, "Explorer.Other.help") )
     ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
     ; 属性对话框 !{Enter}
 
-    `;::Send ":"
-    +;::Send ";"
+    +'::SendInput( FormatTime(A_Now, "yyyy-MM-dd") )
+    +;::SendInput( FormatTime(A_Now, "HH-mm-ss"  ) )
 
     ;-------------------------------;
 
