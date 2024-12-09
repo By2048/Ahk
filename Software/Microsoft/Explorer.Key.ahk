@@ -32,12 +32,13 @@ F1::Return
 ; 重命名
 F2::Return
 ^r::Send "{F2}"
+^e::Send "{F2}{Right}"
 
 ; 搜索
 ; 选择搜索框
 F3::Return
-~^e::Return
-<^f::Return
+; ^e::Return
+; ^f::Return
 
 ; 地址栏历史
 ; 下拉列表 展开
@@ -45,11 +46,8 @@ F4::Return
 
 ; 刷新
 F5::Return
-~\::F5
+~RShift::F5
 ~CapsLock::F5
-; ~RShift::F5
-; +\::Send "{F5}"
-; +\::Send "{F5}"
 
 ; 输入文件名 默认
 ; 切换焦点 在输入框
