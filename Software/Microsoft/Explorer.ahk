@@ -23,6 +23,18 @@ RegisterHelp( "Explorer_WorkerW" , FilePath(A_LineFile, "Explorer.Other.help") )
 #HotIf
 
 
+#HotIf CheckWindowActive( "Explorer" , "OperationStatusWindow" , "文件夹正在使用" )
+    ~NumLock::
+    Insert::
+    Delete::
+    AppsKey::
+    BackSpace::
+    Enter::{
+        Send "{Esc}"
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive( "Explorer" , "OperationStatusWindow" , "删除文件" )
     !Enter::{
         Send "!a"

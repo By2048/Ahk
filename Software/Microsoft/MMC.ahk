@@ -7,6 +7,13 @@
 #HotIf
 
 
+#HotIf CheckWindowActive( "MMC" , "MMCMainFrame" , "*[Windows]*" )
+    !BackSpace::
+    ~NumLock::{
+        Send "!fxn"
+    }
+#HotIf
+
 
 #HotIf CheckWindowActive( "MMC" , "MMCMainFrame" , "*共享文件夹*" )
     #\::{
