@@ -1,7 +1,7 @@
-    Left      | !x         
- Right  Right | Home       
-     m9       | End        
-              | EN()       
-    Enter     |            
- M1      M2   |            
-    Delete    |            
+      Left     | @First 
+ Right  Right  | Home   
+       m9      | End    
+               | @End   
+      Enter    |        
+ @Close  @Init |        
+     Delete    |        
