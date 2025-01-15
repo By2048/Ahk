@@ -2,15 +2,17 @@
 RegisterSoftware( "clashN" , "ClashN" )
 RegisterPosition( "ClashN" , Position(1666 , 1122) )
 
-#HotIf CheckWindowActive( "ClashN" )
+RegisterSoftware( "Clash Nyanpasu" , "ClashNyanpasu" )
+RegisterPosition( "ClashNyanpasu" , Position(1700 , 1111) )
 
-#HotIf
-
-
+RegisterSoftware( "clash-verge" , "ClashVerge" )
+RegisterPosition( "ClashVerge" , Position(1357 , 1111) )
 
 RegisterSoftware( "v2rayN" , "v2rayN" )
-RegisterPosition( "v2rayN" , Position(2100 , 1200) )
+RegisterPosition( "v2rayN" , Position(1800 , 1200) )
 RegisterHelp( "v2rayN", "Software\Vpn.help" )
+
+
 
 #HotIf CheckWindowActive( "v2rayN" )
 
@@ -93,11 +95,6 @@ RegisterHelp( "v2rayN", "Software\Vpn.help" )
     }
 
 #HotIf
-
-
-
-RegisterSoftware( "Clash Nyanpasu" , "ClashNyanpasu" )
-RegisterPosition( "ClashNyanpasu" , Position(1700 , 1111) )
 
 
 
