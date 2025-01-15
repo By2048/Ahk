@@ -9,21 +9,21 @@ RegisterHelp( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 #HotIf CheckWindowActive("Telegram" , "Qt*" , "Media*")
     NumpadPgDn::Send "^="
     NumpadPgUp::Send "^-"
-    NumpadIns::Send "{AppsKey}{Up 2}{Enter}"
-    NumpadDel::Send "{Enter}"
+    NumpadIns:: Send "{AppsKey}{Up 2}{Enter}"
+    NumpadDel:: Send "{Enter}"
 #HotIf
 
 
 
 #HotIf CheckWindowActive("Telegram")
     
-    ~NumLock::Send "{Esc}"
+    ~NumLock::  Send "{Esc}"
     NumpadHome::Send "^c"
-    NumpadEnd::Send "^v"
-    NumpadPgDn::Send "{RButton}{Down 2}{Enter}"
-    NumpadPgUp::Send "^v{Enter}"
-    NumpadIns::Send "^{PgDn}"
-    NumpadDel::Send "^{PgUp}"
+    NumpadEnd:: Send "^v"
+    NumpadPgDn::Send "{Enter}"
+    NumpadPgUp::Send "{RButton}{Down 3}{Enter}"
+    NumpadIns:: Send "^{PgDn}"
+    NumpadDel:: Send "^{PgUp}"
 
     #[::{
         pos := Position( 99 , "Center" , 999 , 1357)

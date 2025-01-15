@@ -134,7 +134,7 @@ RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
         _1 := " 1     12     2     3     9        8        6        4         7       5         10       11     "
         _2 := " 名称  文件夹  大小   进度  剩余大小  剩余时间   下载速度  下载大小   上传速度  上传大小   种子/用户 分享率  "
-        _3 := " 700   150    200   77    110     110       120      110       120     110       150      77     "
+        _3 := " 700   150    180   77    110     110       120      110       120     110       177      77     "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)
 
