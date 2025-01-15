@@ -1,5 +1,5 @@
 ﻿
-RegisterHelp("Xshell", FilePath(A_LineFile, "NetSarang.Xshell.help"))
+RegisterHelpInfo("Xshell", FilePath(A_LineFile, "NetSarang.Xshell.help"))
 
 #HotIf CheckWindowActive("Xftp")
     #\::MoveWindowPosition(Position(2200 , 1200))

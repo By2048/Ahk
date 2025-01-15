@@ -1,8 +1,8 @@
 ﻿
 RegisterSoftware( "WindowsTerminal" , "Terminal" )
 
-RegisterHelp( "Terminal" , FilePath(A_LineFile , "Terminal.help") )
-RegisterHelp( "Terminal" , "Config\Script.help"                   )
+RegisterHelpInfo( "Terminal" , FilePath(A_LineFile , "Terminal.help") )
+RegisterHelpInfo( "Terminal" , "Config\Script.help"                   )
 
 RegisterPosition( "Terminal" , Position(2200 , 1248)              , "Default" )
 RegisterPosition( "Terminal" , Position("[Center][2]" , 0 , 1600) , "Backup"  )

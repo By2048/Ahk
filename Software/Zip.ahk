@@ -2,7 +2,7 @@
 RegisterSoftware( "7zFM" , "ZipMain"   )
 RegisterSoftware( "7zG"  , "ZipDialog" )
 
-RegisterHelp("Zip", FilePath(A_LineFile, "Zip.help"))
+RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 
 
 UnZipPath := [ "T:\" , "V:\#\" ]

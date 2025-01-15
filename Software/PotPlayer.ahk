@@ -2,8 +2,8 @@
 RegisterSoftware( "PotPlayerMini64" , "PotPlayer" )
 
 
-RegisterHelp( "PotPlayer" , FilePath(A_LineFile, "PotPlayer.help")        )
-RegisterHelp( "PotPlayer" , FilePath(A_LineFile, "PotPlayer.NumPad.help") )
+RegisterHelpInfo( "PotPlayer" , FilePath(A_LineFile, "PotPlayer.help")        )
+RegisterHelpInfo( "PotPlayer" , FilePath(A_LineFile, "PotPlayer.NumPad.help") )
 
 
 RegisterPosition( "PotPlayer"          , Position(Screen.w * 4/6 , Screen.h * 4/6) )

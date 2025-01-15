@@ -22,8 +22,8 @@ NirCmd        := "D:\NirCmd\nircmdc.exe"
 
 
 
-RegisterHelp( "Default" , "Key\Win.help"       )
-RegisterHelp( "Default" , "Key\Win.Other.help" )
+RegisterHelpInfo( "Default" , "Key\Win.help"       )
+RegisterHelpInfo( "Default" , "Key\Win.Other.help" )
 
 RegisterSoftware( "fdm" , "FDM" )
 RegisterPosition( "FDM__%]" , Position("[Center][2]", 1357 , 777 , 555) )

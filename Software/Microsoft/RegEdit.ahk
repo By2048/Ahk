@@ -3,7 +3,7 @@
 
 RegisterSoftware( "regedit" , "RegEdit" )
 
-RegisterHelp("RegEdit", FilePath(A_LineFile, "RegEdit.help"))
+RegisterHelpInfo("RegEdit", FilePath(A_LineFile, "RegEdit.help"))
 
 #HotIf CheckWindowActive( "RegEdit" )
 

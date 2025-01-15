@@ -1,5 +1,5 @@
 ﻿
-RegisterHelp("SumatraPDF", FilePath(A_LineFile, "SumatraPDF.help"))
+RegisterHelpInfo("SumatraPDF", FilePath(A_LineFile, "SumatraPDF.help"))
 
 
 #HotIf CheckWindowActive("SumatraPDF")

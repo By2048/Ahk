@@ -1,5 +1,5 @@
 
-RegisterHelp("FFRenamePro", FilePath(A_LineFile, "FFRenamePro.help"))
+RegisterHelpInfo("FFRenamePro", FilePath(A_LineFile, "FFRenamePro.help"))
 
 
 RegisterPosition("FFRenamePro" , Position(2100 , 1234))

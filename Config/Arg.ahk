@@ -109,7 +109,7 @@ RegisterSoftware(origin, rename) {
 
 ; 软件与帮助信息对应关系 Map( Process : [ Help ])  MARK:Software
 Software_Keys_Help := Map()
-RegisterHelp(process, path) {
+RegisterHelpInfo(process, path) {
     path := Trim(path)
     if ( ! path )
         return

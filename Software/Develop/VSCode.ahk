@@ -1,8 +1,8 @@
 ﻿
 RegisterSoftware( "Code" , "VSCode" )
 
-RegisterHelp( "VSCode" , FilePath(A_LineFile, "VSCode.help")     )
-RegisterHelp( "VSCode" , FilePath(A_LineFile, "VSCode.Fxx.help") )
+RegisterHelpInfo( "VSCode" , FilePath(A_LineFile, "VSCode.help")     )
+RegisterHelpInfo( "VSCode" , FilePath(A_LineFile, "VSCode.Fxx.help") )
 
 RegisterPosition( "VSCode" , Position(-6 , -6) , "Default" )
 RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )

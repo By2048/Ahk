@@ -1,7 +1,7 @@
 ﻿
 RegisterSoftware("ui32" , "Wallpaper")
 
-RegisterHelp("Wallpaper" , "Software\Wallpaper.help")
+RegisterHelpInfo("Wallpaper" , "Software\Wallpaper.help")
 
 
 #HotIf CheckWindowActive( "Wallpaper" )

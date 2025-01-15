@@ -1,5 +1,5 @@
 ﻿
-RegisterHelp("BitComet", FilePath(A_LineFile, "BitComet.help"))
+RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 
 

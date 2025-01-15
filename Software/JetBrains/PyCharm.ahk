@@ -6,9 +6,9 @@
 
 RegisterSoftware( "pycharm64" , "PyCharm" )
 
-RegisterHelp( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.Base.help")     )
-RegisterHelp( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.Fxx.help")      )
-RegisterHelp( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.CapsLock.help") )
+RegisterHelpInfo( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.Base.help")     )
+RegisterHelpInfo( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.Fxx.help")      )
+RegisterHelpInfo( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.CapsLock.help") )
 
 Global PyCharm := {
 

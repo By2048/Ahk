@@ -1,7 +1,7 @@
 
 RegisterPosition( "FSViewer" , Position(2525 , 1450) )
 
-RegisterHelp( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
+RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
 
 #HotIf CheckWindowActive("FSViewer", "", "*删除*")

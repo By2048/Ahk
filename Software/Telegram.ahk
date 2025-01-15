@@ -2,7 +2,7 @@
 RegisterPosition( "Telegram"        , Position(2000 , 1234) )
 RegisterPosition( "Telegram__Media" , Position(1700 , 1357) )
 
-RegisterHelp( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
+RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
 
 

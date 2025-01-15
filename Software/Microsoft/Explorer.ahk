@@ -1,11 +1,11 @@
 ﻿
 RegisterSoftware( "explorer" , "Explorer" )
 
-RegisterHelp( "Explorer_CabinetWClass" , FilePath(A_LineFile, "Explorer.help") )
+RegisterHelpInfo( "Explorer_CabinetWClass" , FilePath(A_LineFile, "Explorer.help") )
 
-RegisterHelp( "Explorer_WorkerW" , "Key\Win.help"                              )
-RegisterHelp( "Explorer_WorkerW" , "Key\Win.Other.help"                        )
-RegisterHelp( "Explorer_WorkerW" , FilePath(A_LineFile, "Explorer.Other.help") )
+RegisterHelpInfo( "Explorer_WorkerW" , "Key\Win.help"                              )
+RegisterHelpInfo( "Explorer_WorkerW" , "Key\Win.Other.help"                        )
+RegisterHelpInfo( "Explorer_WorkerW" , FilePath(A_LineFile, "Explorer.Other.help") )
 
 
 #Include Explorer.Tool.ahk
