@@ -1,11 +1,11 @@
 ﻿
 ; 快速切换地址栏路径
-ExplorerPaths := [  "T:\"  ,  "V:\#\"  ]
+Global ExplorerPaths := [  "T:\"  ,  "V:\#\"  ]
 
 ;--------------------------------------------------------------------------------------;
 
 ; Quick工具路径
-ExplorerTools := [  [  "T:\"  ,  "V:\#\"  ]  ]
+Global ExplorerTools := [  [  "T:\"  ,  "V:\#\"  ]  ]
 
 ;--------------------------------------------------------------------------------------;
 
@@ -13,7 +13,7 @@ ExplorerTools := [  [  "T:\"  ,  "V:\#\"  ]  ]
 
 ; "ItemNameDisplay:800 ItemDate:200 Size:150"
 
-ExplorerColumns := Map()
+Global ExplorerColumns := Map()
 
 ExplorerColumns["回收站"]      := "ItemNameDisplay:420 Recycle.DeletedFrom:400 Recycle.DateDeleted:180 Size:150"
 ExplorerColumns["List"]       := "ItemNameDisplay:1150"
@@ -34,4 +34,4 @@ ExplorerColumns["C:\Program Files (x86)"]         := ExplorerColumns["List"]
 
 ;--------------------------------------------------------------------------------------;
 
-#Include *i Explorer.Config.Private.ahk
+#Include *i Config.Private.ahk

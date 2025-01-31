@@ -5,10 +5,10 @@ RegisterPosition("_#32770_SaveVideo" , Position(1522 , 1122) )
 RegisterPosition("_#32770_浏览"       , Position(1522 , 1122) )
 RegisterPosition("_#32770_打开"       , Position(1522 , 1122) )
 RegisterPosition("_#32770_另存为"     , Position(1522 , 1122) )
-RegisterPosition("_#32770_打开文件"   , Position(1522 , 1122) )
+RegisterPosition("_#32770_打开文件"    , Position(1522 , 1122) )
 RegisterPosition("_#32770_选择文件夹"  , Position(1522 , 1122) )
-RegisterPosition("_#32770_浏览文件夹"  , Position(666 , 1122) )
-RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
+RegisterPosition("_#32770_浏览文件夹"  , Position(666 , 1122)  )
+RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
 
 
 
@@ -61,7 +61,7 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122) )
        || CheckWindowActive( "" , "#32770" , "SaveFile|SaveVideo" )
        || CheckWindowActive( "" , "#32770" , "图像另存为" )
 
-    #IncludeAgain .\Microsoft\Explorer.Key.ahk
+    #IncludeAgain .\Microsoft\Explorer\Key.ahk
 
     ; 文件名修改框
     ~CapsLock::ControlFocus("Edit1", "A")

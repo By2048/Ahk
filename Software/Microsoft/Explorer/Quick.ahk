@@ -5,7 +5,7 @@ Arg.quick_tool_config  := ""
 Arg.quick_tool_command := ""
 
 
-FileQuickPreview()
+ErFileQuickPreview()
 {
     path := ErGetFocusedItem()
 
@@ -29,17 +29,17 @@ FileQuickPreview()
 }
 
 
-FileQuickRemove()
+ErFileQuickRemove()
 {
     path := ErGetFocusedItem()
     FileDelete(path)
 }
 
 
-FileQuickMove()
+ErFileQuickMove()
 {
     if ( ! Arg.quick_tool_config ) {
-        FileQuickToolsHide()    
+        ErFileQuickToolsHide()    
         return
     }
     path := ErGetFocusedItem()
@@ -53,11 +53,11 @@ FileQuickMove()
         MoveFilesAndFolders(source, target, 0)
         DirDelete(path, 1)
     }
-    FileQuickToolsHide()
+    ErFileQuickToolsHide()
 }
 
 
-FileQuickUnZip()
+ErFileQuickUnZip()
 {
     paths := ErGetSelectItem()
 
@@ -79,7 +79,7 @@ FileQuickUnZip()
 }
 
 
-FileQuickArchive(folder)
+ErFileQuickArchive(folder)
 {
     path := ErGetFocusedItem()
     attribute := FileExist(path)
@@ -88,7 +88,7 @@ FileQuickArchive(folder)
 }
 
 
-FileQuickTools()
+ErFileQuickTools()
 {
     Global G , Arg
 
@@ -133,11 +133,11 @@ FileQuickTools()
         if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
             if ( ! InStr(path, ".bc!") && ! InStr(path, ".torrent") ) {
                 G.Add("Text", Format("w{} Disabled", G.text_w), "UnZip")
-                Arg.quick_tool_command := "FileQuickUnZip"
+                Arg.quick_tool_command := "ErFileQuickUnZip"
             }
         }
 
-        #Include *i Explorer.Quick.Snippet.ahk
+        #Include *i Quick.Snippet.ahk
         
     }
     
@@ -150,8 +150,7 @@ FileQuickTools()
 }
 
 
-
-FileQuickToolsHide()
+ErFileQuickToolsHide()
 {
     Global G , Arg
     Try G.Destroy()
@@ -162,8 +161,7 @@ FileQuickToolsHide()
 }
 
 
-
-FileQuickToolsSwitchMenu(step:=+1)
+ErFileQuickToolsSwitchMenu(step:=+1)
 {
     Global G , Arg
 
@@ -206,7 +204,7 @@ FileQuickToolsSwitchMenu(step:=+1)
 }
 
 
-FileQuickToolsSwitchPage(step:=+1)
+ErFileQuickToolsSwitchPage(step:=+1)
 {
     if ( step == +1 ) {
         Arg.quick_tool_index := Arg.quick_tool_index + 1
@@ -217,16 +215,16 @@ FileQuickToolsSwitchPage(step:=+1)
         if ( Arg.quick_tool_index < 1 )
             Arg.quick_tool_index := 1
     }
-    FileQuickTools()
+    ErFileQuickTools()
 }
 
 
-FileQuickRun()
+ErFileQuickRun()
 {
     fun_arg := Arg.quick_tool_command
     if ( ! fun_arg )
         return
-    FileQuickToolsHide()
+    ErFileQuickToolsHide()
     if ( fun_arg == "None" ) Or ( ! fun_arg )
         return
     if ( InStr(fun_arg, "|") ) {
@@ -239,35 +237,3 @@ FileQuickRun()
         %f%()
     }
 }
-
-
-#HotIf ( Arg.quick_tool_show == True )
-
-    Up::
-    Left::
-    [::
-    ]::{
-        FileQuickToolsSwitchMenu(-1)
-    }
-
-    Down::
-    Right::
-    \::{
-        FileQuickToolsSwitchMenu(+1)
-    }
-
-    =::FileQuickToolsSwitchPage(-1)
-    BackSpace::FileQuickToolsSwitchPage(+1)
-
-    Esc::
-    AppsKey::
-    CapsLock::
-    Insert::{
-        FileQuickToolsHide()
-    }
-    
-    Delete::FileQuickRun()
-
-    Enter::FileQuickMove()
-
-#HotIf

@@ -76,3 +76,6 @@ F6::Return
 
 ; 重命名时功能调整
 <^BackSpace::Send "^+{Left}{BackSpace}"
+
+; 复制文件名
+<^+c::Send "{F2}^a^c{Esc}"

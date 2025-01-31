@@ -2,7 +2,7 @@
 NumLock::WinClose("A")
 
 NumpadHome::Send "{Delete}"
-NumpadEnd::Send "!{Up}"
+NumpadEnd:: Send "!{Up}"
 
 NumpadPgDn::Send "!{Left}"
 NumpadPgUp::Send "!{Right}"
