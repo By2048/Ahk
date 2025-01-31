@@ -1,6 +1,7 @@
 ﻿
 ~*CapsLock::{
     Send "{Blind}{vkFF}"
+    Send "{Esc}"
 }
 
 ~*CapsLock Up::{
@@ -61,7 +62,7 @@ CapsLock & Tab::{
 
     ; 激活鼠标下的窗口
     MouseGetPos(&_,  &_, &win_id)
-    WinActivate("ahk_id " . win_id)
+    WinActivate("ahk_id " win_id)
 
     ; 高亮窗口
     HighlightActiveWindow(300)
@@ -73,9 +74,7 @@ CapsLock & Tab::{
 CapsLock & LShift::{
     DllCall("SetCursorPos", "int", A_ScreenWidth / 2, "int", A_ScreenHeight / 2)
     MouseGetPos(&_, &_, &win_id)
-    WinActivate("ahk_id " . win_id)
-    if ( CheckWindowActive("Explorer", "CabinetWClass") )
-        MouseMove(window.w/2, 22, 0)
+    WinActivate("ahk_id " win_id)
 }
 
 
@@ -119,3 +118,6 @@ CapsLock & z::MouseClickTool( 22            , Screen.h - 22 , "Screen" )
 CapsLock & x::MouseClickTool( Screen.w - 22 , Screen.h - 22 , "Screen" )
 CapsLock & c::MouseClickTool( 22            , 22            , "Screen" )
 CapsLock & v::MouseClickTool( Screen.w - 22 , 22            , "Screen" )
+
+
+#Include *i Capslock.Private.ahk
