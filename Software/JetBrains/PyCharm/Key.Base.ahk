@@ -25,10 +25,18 @@
     }
 }
 
-
+; AI弹窗
 ~LWin::{
     Send "{Blind}{vkFF}"
+    if ( InStr(A_PriorHotkey, "LWin") ) {
+        if ( A_TimeSincePriorHotkey < 333 ) {
+            Send "^!+{Help}"
+            PyCharm.DoubleEsc := True
+            PyCharm.CapsLockToEsc := True
+        }
+    }
 }
+
 
 
 LAlt::{
@@ -44,11 +52,11 @@ LAlt::{
     Timer() {
         Global Arg
         if ( Arg.lalt_click == 1 ) {
-            Send "{Help}" ;搜索跳转
+            Send "{Help}" ;行首尾跳转
         } else if ( Arg.lalt_click == 2 ) {
-            Send "^!{Help}" ;行首尾跳转
+            Send "+{Help}" ;单词跳转
         } else if ( Arg.lalt_click == 3 ) {
-            Send "^!+{Help}" ;单词跳转
+            Send "!+{Help}" ;搜索跳转
         }
         Arg.lalt_click := 0
     }
@@ -86,10 +94,9 @@ RWin & RCtrl::{
     MoveWindowQuick("Main")
 }
 
-
 ; 设置
 LAlt & RAlt::{
-    Send "!{Help}"
+    Send "^+{NumLock}"
     WinWaitActive("设置")
     if ( WinGetTitle("A") == "设置" )
         MoveWindowCenter()
@@ -97,21 +104,28 @@ LAlt & RAlt::{
 
 ; 快速切换
 RAlt & LAlt::{
-    Send "!+{Help}"
+    Send "!+{NumLock}"
     JBCenterWindow()
 }
 
+; AI功能
+LShift & LCtrl::Send "^{Help}" ;下一个
+LShift & LAlt:: Send "!{Help}" ;补全
+LShift & LWin::{ ;弹窗
+    if ( WinGetTitle("A") == "GitHub Copilot" )
+        WinClose("GitHub Copilot")
+    else
+        Send "^!{Help}"
+}
+
 ; 使用行注释进行注释
-LShift & LAlt::Send "^{Help}"
-RShift & RCtrl::Send "^{Help}"
-
 ; 使用块注释进行注释
-LShift & LCtrl::Send "^+{Help}"
-RShift & RAlt::Send "^+{Help}"
+LAlt & RShift::Send "^\"
+RShift & LAlt::Send "^+\"
 
-; 注释
-LAlt & RShift::Send "^{Help}"
-RShift & LAlt::Send "^z"
+; RShift & RAlt:: Send "^+{Help}"
+; RShift & RCtrl::Send "^{Help}"
+; RShift & RWin:: Send "^{Help}"
 
 ; -------------------------------------------------------------------------------- ;
 
@@ -131,23 +145,28 @@ RShift & LAlt::Send "^z"
 <#\::MoveWindowDefault()
 <#+\::MoveWindowBackup()
 
-<#0::Send "^!{NumpadMult}"   ;编辑页 重置
+<!Space::return
+
+ <#0::Send "^!{NumpadMult}"  ;编辑页 重置
 <#+0::Send "^!+{NumpadMult}" ;IDE 重置
-<#-::Send "^!{NumpadSub}"    ;编辑页 减小
+
+ <#-::Send "^!{NumpadSub}"   ;编辑页 减小
 <#+-::Send "^!+{NumpadSub}"  ;IDE 减小
-<#=::Send "^!{NumpadAdd}"    ;编辑页 增加
+
+ <#=::Send "^!{NumpadAdd}"   ;编辑页 增加
 <#+=::Send "^!+{NumpadAdd}"  ;IDE 增加
-<#Enter::Send "^!{NumpadDiv}"   ;窗口全屏
+
+ <#Enter::Send "^!{NumpadDiv}"  ;窗口全屏
 <#+Enter::Send "^!+{NumpadDiv}" ;Zen模式   
 
-<^Esc::Send "{Blind}^{Pause}"
-<!Esc::Send "{Blind}!{Pause}"
-<+Esc::Send "{Blind}+{Pause}"
+ <^Esc::Send "{Blind}^{Pause}"
+ <!Esc::Send "{Blind}!{Pause}"
+ <+Esc::Send "{Blind}+{Pause}"
 <^+Esc::Send "{Blind}^+{Pause}"
 <!+Esc::Send "{Blind}!+{Pause}"
 
 ;标签页管理
-^Tab::Return
-^+Tab::Return
-<!Tab::Send "^{Tab}"
+  ^Tab::Return
+ ^+Tab::Return
+ <!Tab::Send "^{Tab}"
 <!+Tab::Send "^+{Tab}"

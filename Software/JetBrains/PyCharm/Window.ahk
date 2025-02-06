@@ -16,6 +16,14 @@
 #HotIf
 
 
+#HotIf CheckWindowActive("PyCharm") && ( PyCharm.DoubleEsc == True )
+    ~Esc::{
+        Send "{Esc}"
+        PyCharm.DoubleEsc := False
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive("PyCharm") && ( PyCharm.CapsLockToEsc == True )
     ~CapsLock::{
         Send "{Esc 3}"
@@ -108,6 +116,11 @@
     ; 快捷键 搜索按钮
     AppsKey::MouseClickTool(1558, 240)
     `::MouseClickTool(1595, 238, "Window", "Left")
+#HotIf
+
+
+#HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "删除")
+    Insert::Send "{Enter}"
 #HotIf
 
 

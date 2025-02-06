@@ -15,6 +15,8 @@ Global PyCharm := {
     CapsLockActivate : False ,
     CapsLockToEsc    : False ,
 
+    DoubleEsc : False ,
+
     ClickCnt : 0  ,
     ClickKey : "" ,
 

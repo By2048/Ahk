@@ -99,11 +99,11 @@ CapsLock::{
     PyCharm.FloatWindow.Push(win)
 }
 
-; AI Assistant
-~CapsLock & Enter::JBCapsLock()
-
 ; 快速列表 Window \\ 工具窗口
-~CapsLock & Space::JBCapsLockCircle("Center")
+~CapsLock & Enter::JBCapsLockCircle("Center")
+
+; AI功能
+~CapsLock & Space::JBCapsLock()
 
 ; 编辑 编辑器操作
 ^!BackSpace::Return
