@@ -10,7 +10,9 @@ RegisterPosition("Everything", Position(1700 , 1200))
         SetColumnWidth("SysListView321", cfg)
     }
 
-    ~NumLock::WinClose("A")
+    ~NumLock::{
+        WinClose("A")
+    }
 
     ; 重命名
     F2::Return
@@ -19,12 +21,14 @@ RegisterPosition("Everything", Position(1700 , 1200))
     ; 输入框
     F3::Return
     CapsLock::Send "{F3}"
+    Insert::Send "{F3}"
 
     ; 切换焦点
     F6::Return
 
     ; 全屏
     F11::Return
+    #Enter::Send "{F11}"
 
     ; 设置
     ^p::Return

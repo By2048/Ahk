@@ -1,7 +1,6 @@
 ﻿
 ~*CapsLock::{
     Send "{Blind}{vkFF}"
-    Send "{Esc}"
 }
 
 ~*CapsLock Up::{

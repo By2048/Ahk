@@ -7,7 +7,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     AppsKey::
     NumLock::
     NumpadHome::{
-        WinClose("A")
+        Try WinClose("A")
     }
 #HotIf
 
@@ -21,7 +21,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     AppsKey::    
     NumLock::    
     NumpadHome::{
-        WinClose("A")
+        Try WinClose("A")
     }
     NumpadEnd::
     RWin::
@@ -40,25 +40,34 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
         cfg := " 1:名称:999  2:大小:111  3:%:77 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321" , cfg)
+        SetColumnWidth("SysListView322" , cfg)
         cfg := " 1:下载顺序:111  2:文件名称:777  3:大小:123 4:%:77 5:当前优先级:123 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView323" , cfg)
     }
 
     ; 立即下载
-    Enter::
+    !Enter::
+    +Enter::
     NumLock::{
         ControlClick("Button27", "A")
     }
 
-    NumpadHome::WinClose("A")
+    NumpadHome::{
+        Try WinClose("A")
+    }
     
     ; 设置位置 文件名称排序 设置列 设置路径 
     NumpadEnd::{
-        MoveWindowPosition( Position(1300 , 1000) )
+        MoveWindowPosition(Position(1300,1000))
         BTSetListView()
         ControlClick("SysHeader321", "A")
         ControlSetText("T:\", "Edit1", "A")
+        Sleep 99
+        ControlGetPos(&x, &y, &w, &h, "SysListView321", "A")
+        CoordMode("Mouse", "Client")
+        MouseClickTool(x + 11, y + 44, "Client", "Right")
+        Send "{Down 2}{Enter}"
     }
 
     ; 快速选择路径
@@ -76,7 +85,9 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     }
 
     ; 文件大小排序
-    NumpadIns::MouseClickTool(1094, 404, "Window")
+    NumpadIns::{
+        MouseClickTool(1094, 404, "Window")
+    }
     
     ; 全选
     NumpadDel::{
@@ -108,7 +119,18 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 #HotIf CheckWindowActive("BitComet")
 
-    NumpadIns::WinClose("A")
+    MButton::{
+        ControlClick( "Static155" , "A" )
+        Sleep 999
+        ControlClick( "SysLink2"  , "A" )
+        Sleep 999
+        Try WinClose("ahk_exe BitComet.exe ahk_class #32770 通知")
+    }
+
+    NumpadIns::Send "!{F4}"
+
+    ^n::Send "^u"
+    ^+n::Send "^n"
 
     NumpadDel::
     #\::{
@@ -134,7 +156,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
         _1 := " 1     12     2     3     9        8        6        4         7       5         10       11     "
         _2 := " 名称  文件夹  大小   进度  剩余大小  剩余时间   下载速度  下载大小   上传速度  上传大小   种子/用户 分享率  "
-        _3 := " 700   150    180   77    110     110       120      110       120     110       177      77     "
+        _3 := " 696   150    180   77    110     110       120      110       120     110       177      77     "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)
 
@@ -191,5 +213,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
         ClipWait()
         HelpText(win_control, "CenterDown", "Screen", "900")
     }
+
+    ^!AppsKey::Reload
     
 #HotIf

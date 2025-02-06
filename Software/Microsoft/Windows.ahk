@@ -30,6 +30,15 @@
 #HotIf
 
 
+RegisterPosition( "Notepad" , Position( 0.4 , 0.5 ) )
+#HotIf CheckWindowActive( "Notepad" , "Notepad" )
+    ~NumLock::
+    !CapsLock::{
+        WinClose("A")
+    }
+#HotIf
+
+
 ; 远程桌面
 RegisterSoftware( "mstsc" , "RemoteDesktop" )
 #HotIf CheckWindowActive( "RemoteDesktop" )

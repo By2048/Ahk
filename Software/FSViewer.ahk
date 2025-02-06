@@ -45,7 +45,7 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     F2::Send "m2"
     F3::Send "m3"
     F5::Return ;刷新
-    F7::Return ; 随机排序
+    F7::Return ;随机排序
 
     ^r::Send "{F2}"
 

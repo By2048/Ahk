@@ -37,8 +37,6 @@ RegisterPosition( "qBittorrent" , Position(0.9 ,  0.8) )
 
 RegisterPosition( "Calibre" , Position(0.8 ,  0.8) )
 
-RegisterPosition( "Notepad" , Position(0.4 ,  0.5) )
-
 RegisterSoftware( "哔哩哔哩" , "BiliBili" )
 RegisterPosition( "BiliBili" , Position(0.7 , 0.88) )
 

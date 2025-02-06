@@ -113,6 +113,7 @@ ErFileQuickTools()
     G.Add("Text")
 
     path := ErGetFocusedItem()
+    
     G.Add("Text", Format("w{}", G.text_w), path)
 
     G.SetFont(Format("s{}", G.size_folder), G.font_name)
