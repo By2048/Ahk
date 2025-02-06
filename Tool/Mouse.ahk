@@ -43,6 +43,19 @@ MouseClickTool(x, y, mode:="Window", key:="Left", count:=1, speed:=0)
 
 
 
+MouseClickControl(control, x:=1, y:=1, key:="Left", count:=1, speed:=0)
+{
+    ControlGetPos(&control_x, &control_y, &control_w, &control_h, control, "A")
+    CoordMode("Mouse", "Screen")
+    MouseGetPos(&origin_x, &origin_y)
+    CoordMode("Mouse", "Client")
+    MouseClick("Left", control_x + x, control_y + y, count, speed)
+    CoordMode("Mouse", "Screen")
+    MouseMove(origin_x, origin_x, speed)
+}
+
+
+
 MouseClickImage(image, trans:="")
 {
     CoordMode("Pixel", "Window")
