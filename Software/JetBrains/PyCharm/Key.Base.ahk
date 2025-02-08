@@ -1,14 +1,12 @@
 ﻿
-~Enter::{
-    PyCharm.CapsLockActivate := False
-}
-
-
 ~Esc::{
     PyCharm.CapsLockActivate := False
     PyCharm.CapsLockToEsc    := False
 }
 
+~Enter::{
+    PyCharm.CapsLockActivate := False
+}
 
 ~LCtrl::
 ~LShift::{
@@ -21,22 +19,23 @@
     SetTimer(Timer, -500)
     Timer() {
         if ( PyCharm.ClickCnt == 2 )
-            PyCharm.ClickKey := A_ThisHotkey
+            PyCharm.ClickKey := StrReplace(A_ThisHotkey, "~", "")
     }
 }
 
 ; AI弹窗
-~LWin::{
+LWin::{
     Send "{Blind}{vkFF}"
-    if ( InStr(A_PriorHotkey, "LWin") ) {
+    if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
         if ( A_TimeSincePriorHotkey < 333 ) {
             Send "^!+{Help}"
-            PyCharm.DoubleEsc := True
+            PyCharm.DoubleEsc     := True
             PyCharm.CapsLockToEsc := True
+            PyCharm.ClickKey      := StrReplace(A_ThisHotkey, "~", "")
+            PyCharm.ClickCnt      := 2
         }
     }
 }
-
 
 
 LAlt::{

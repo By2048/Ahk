@@ -1,40 +1,13 @@
 ﻿
 #Include Tool.ahk
 
-#Include PyCharm\Position.ahk
-#Include PyCharm\Window.ahk
+#Include PyCharm\Config.ahk
 
 RegisterSoftware( "pycharm64" , "PyCharm" )
-
-RegisterHelpInfo( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.Base.help")     )
-RegisterHelpInfo( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.Fxx.help")      )
+RegisterHelpInfo( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.Base.help"    ) )
+RegisterHelpInfo( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.Fxx.help"     ) )
 RegisterHelpInfo( "PyCharm", FilePath(A_LineFile, "PyCharm\Key.CapsLock.help") )
 
-Global PyCharm := {
-
-    CapsLockActivate : False ,
-    CapsLockToEsc    : False ,
-
-    DoubleEsc : False ,
-
-    ClickCnt : 0  ,
-    ClickKey : "" ,
-
-    AppsKeyActivate   : False ,
-    AppsKeyEnterCount : 0     ,
-
-    FloatWindow : [] ,
-}
-
-#HotIf CheckWindowActive( "PyCharm" )
-    
-    `;::Send ":"
-    +;::Send ";"
-
-    #Include PyCharm\Key.Base.ahk
-    #Include PyCharm\Key.CapsLock.ahk
-    #Include PyCharm\Key.Fxx.ahk
-    #Include PyCharm\Key.Joy.ahk
-    #Include PyCharm\Key.Mouse.ahk
-
-#HotIf
+#Include PyCharm\HotIF.Arg.ahk
+#Include PyCharm\HotIF.Win.ahk
+#Include PyCharm\HotIF.Key.ahk

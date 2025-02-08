@@ -99,3 +99,20 @@ h := 500
 x := Screen.x + Screen.w - w - 70
 y := Screen.y + Screen.h - h - 60
 WD["PyCharm__通知"] := Position(x, y, w, h)
+
+
+Global PyCharm := {
+
+    CapsLockActivate : False ,
+    CapsLockToEsc    : False ,
+
+    DoubleEsc : False ,
+
+    ClickCnt : 0  ,
+    ClickKey : "" ,
+
+    AppsKeyActivate   : False ,
+    AppsKeyEnterCount : 0     ,
+
+    FloatWindow : [] ,
+}
