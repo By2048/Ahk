@@ -1,5 +1,4 @@
 ﻿
-
 ; 桌面
 #HotIf CheckWindowActive( "Explorer" , "WorkerW" )
 
