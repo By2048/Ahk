@@ -51,13 +51,10 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
     AppsKey::{
         MouseGetPos(&mouse_x, &mouse_y)
-        if ( Abs(mouse_x - Screen.w/2) > 5 ) || ( mouse_y > 5 ) {
+        if ( Abs(mouse_x - Screen.w/2) > 5 ) || ( mouse_y > 5 )
             MouseMove(Screen.w/2, 0, 0)
-            Arg.mouse_x := mouse_x
-            Arg.mouse_y := mouse_y
-        } else {
-            MouseMove(Arg.mouse_x, Arg.mouse_y, 0)
-        }
+        else
+            MouseMove(Screen.w-333, Screen.h-333, 0)
     }
 
     #Include FSViewer.Joy.ahk
