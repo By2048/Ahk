@@ -72,30 +72,37 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
     NumpadHome::{
         name := ControlGetText("Edit1", "A")
         ; 
-        name := StrReplace(name, "  " , " ")
-        name := StrReplace(name, "  " , " ")
         name := StrReplace(name, A_Tab, " ")
+        name := StrReplace(name, "  " , " ")
+        name := StrReplace(name, "  " , " ")
+        name := StrReplace(name, "  " , " ")
         ; 
         name := StrReplace(name, "video_", "")
-        name := StrReplace(name, " - 知乎", "")
-        name := StrReplace(name, "_哔哩哔哩", "")
-        name := StrReplace(name, "_bilibili", "")
+        name := StrReplace(name, " - ", " ")
         ; 
         name := StrReplace(name, "#", " ")
         name := StrReplace(name, "@", " ")
         name := StrReplace(name, "|", " ")
         name := StrReplace(name, "\", " ")
         name := StrReplace(name, "/", " ")
-        name := StrReplace(name, "，", " ")
-        name := StrReplace(name, ",", " ")
-        name := StrReplace(name, "：", " ")
         name := StrReplace(name, ":", " ")
+        name := StrReplace(name, "，", " ")
+        name := StrReplace(name, "：", " ")
+        ; 
+        ; name := StrReplace(name, ",", " ")
+        ; name := StrReplace(name, "。", " ")
         ; 
         name := StrReplace(name, Chr(10), " ")
         name := StrReplace(name, Chr(13), " ")
         ; 
+        name := StrReplace(name, "  " , " ")
+        name := StrReplace(name, "  " , " ")
+        name := StrReplace(name, "  " , " ")
         name := Trim(name)
+        ; 
         ControlSetText(name, "Edit1", "A")
+        ControlFocus("Edit1", "A")
+        Send "{End}"
     }
     NumpadEnd::ControlSetText(A_Clipboard, "Edit1", "A")
 
