@@ -6,13 +6,10 @@ JBCapsLock(fun:="", arg:="")
     key := StrReplace(key, " ", "")
 
     lshift := GetKeyState("LShift", "P")
-
     if ( ! lshift )
         Send Format("^!{{1}}", key)
     else
         Send Format("^!+{{1}}", key)
-
-    PyCharm.CapsLockActivate := True
 
     if ( fun == "Center" ) {
         if ( InStr(arg, "|") ) {

@@ -1,30 +1,28 @@
 ﻿
 ~*CapsLock Up::{
     SetCapsLockState("Off")
+    PyCharm.CapsLockToEsc := False
+    PyCharm.CapsLockActivate := False
 }
 
-
 ; 聚焦编辑器 + 滚动到中心
-CapsLock::{
-    Global Arg
+~*CapsLock::{
     Send "{Blind}{vkFF}"
-    if ( Arg.capslock_click > 0 ) {
-        Arg.capslock_click += 1
+    if ( PyCharm.ClickCnt > 0 ) {
+        PyCharm.ClickCnt += 1
         return
     } else {
-        Arg.capslock_click := 1
+        PyCharm.ClickCnt := 1
     }
     SetTimer(Timer, -500)
     Timer() {
-        Global Arg
-        if ( Arg.capslock_click == 1 ) {
+        if ( PyCharm.ClickCnt == 1 ) {
             Send "{CapsLock}"
-        } else if ( Arg.capslock_click == 2 ) {
+        } else if ( PyCharm.ClickCnt == 2 ) {
             Send "{CtrlBreak}"
             Send "!m"
         }
-        SetCapsLockState("Off")
-        Arg.capslock_click := 0
+        PyCharm.ClickCnt := 0
     }
 }
 
@@ -79,7 +77,7 @@ CapsLock::{
         PyCharm.CapsLockActivate := False
     } else {
         Send "^!{Pause}"
-        PyCharm.CapsLockToEsc := True
+        PyCharm.CapsLockToEsc    := True
         PyCharm.CapsLockActivate := True
         JBCenterWindow()
     }
@@ -89,11 +87,11 @@ CapsLock::{
 ~CapsLock & AppsKey::{
     if ( PyCharm.CapsLockActivate == True ) {
         Send "{Esc}"
-        PyCharm.CapsLockActivate  := False
+        PyCharm.CapsLockActivate := False
         return
     }
     Send "^!{AppsKey}"
-    PyCharm.CapsLockActivate  := True
+    PyCharm.CapsLockActivate := True
     PyCharm.FloatWindow := []
     win := JBCenterWindow()
     PyCharm.FloatWindow.Push(win)
@@ -108,7 +106,7 @@ CapsLock::{
 ; 编辑 编辑器操作
 ^!BackSpace::Return
 ^!+BackSpace::Return
-~CapsLock & BackSpace::JBCapsLock(fun:="Center", arg:="600 1111 | 1000 1111")
+~CapsLock & BackSpace::JBCapsLockCircle(fun:="Center", arg:="600 1111 | 1000 1111")
 
 ; ------------------------------------------------------------------------- ;
 

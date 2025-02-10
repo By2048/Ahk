@@ -1,11 +1,6 @@
 ﻿
 ~Esc::{
-    PyCharm.CapsLockActivate := False
-    PyCharm.CapsLockToEsc    := False
-}
-
-~Enter::{
-    PyCharm.CapsLockActivate := False
+    PyCharm.CapsLockToEsc := False
 }
 
 ~LCtrl::
@@ -18,46 +13,50 @@
     }
     SetTimer(Timer, -500)
     Timer() {
-        if ( PyCharm.ClickCnt == 2 )
-            PyCharm.ClickKey := StrReplace(A_ThisHotkey, "~", "")
+        if ( PyCharm.ClickCnt == 2 ) {
+            if ( InStr(A_ThisHotkey, "LCtrl") )
+                PyCharm.DoubleLCtrl := True
+            if ( InStr(A_ThisHotkey, "LShift") )
+                PyCharm.DoubleLShift := True
+            PyCharm.ClickCnt := 0
+            PyCharm.CapsLockToEsc := True
+        }
     }
 }
 
-; AI弹窗
+; AI
 LWin::{
     Send "{Blind}{vkFF}"
     if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
         if ( A_TimeSincePriorHotkey < 333 ) {
             Send "^!+{Help}"
-            PyCharm.DoubleEsc     := True
+            PyCharm.DoubleLWin    := True
             PyCharm.CapsLockToEsc := True
-            PyCharm.ClickKey      := StrReplace(A_ThisHotkey, "~", "")
-            PyCharm.ClickCnt      := 2
         }
     }
 }
 
-
+; Jump
 LAlt::{
     Send "{Blind}{vkFF}"
     Global Arg
-    if ( Arg.lalt_click > 0 ) {
-        Arg.lalt_click += 1
+    if ( PyCharm.ClickCnt > 0 ) {
+        PyCharm.ClickCnt += 1
         return
     } else {
-        Arg.lalt_click := 1
+        PyCharm.ClickCnt := 1
     }
     SetTimer(Timer, -500)
     Timer() {
-        Global Arg
-        if ( Arg.lalt_click == 1 ) {
+        if ( PyCharm.ClickCnt == 1 )
             Send "{Help}" ;行首尾跳转
-        } else if ( Arg.lalt_click == 2 ) {
+        else if ( PyCharm.ClickCnt == 2 )
             Send "+{Help}" ;单词跳转
-        } else if ( Arg.lalt_click == 3 ) {
+        else if ( PyCharm.ClickCnt == 3 )
             Send "!+{Help}" ;搜索跳转
-        }
-        Arg.lalt_click := 0
+        PyCharm.ClickCnt      := 0
+        PyCharm.DoubleLAlt    := True
+        PyCharm.CapsLockToEsc := True
     }
 }
 

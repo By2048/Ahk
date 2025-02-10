@@ -1,27 +1,15 @@
 ﻿
-#HotIf CheckWindowActive( "PyCharm" ) 
-       && ( PyCharm.ClickKey == "LWin" ) && ( PyCharm.ClickCnt == 2 )
+#HotIf CheckWindowActive( "PyCharm" ) && ( PyCharm.DoubleLWin == True )
     Esc::
     LWin::
     CapsLock::{
         Send "{Esc 2}"
-        PyCharm.DoubleEsc     := True
-        PyCharm.CapsLockToEsc := True
-        PyCharm.ClickKey      := ""
-        PyCharm.ClickCnt      := 0
+        PyCharm.DoubleLWin    := False
     }
 #HotIf
 
 
-#HotIf CheckWindowActive( "PyCharm" )
-       && ( PyCharm.ClickKey == "LCtrl" || PyCharm.ClickKey == "LShift" )
-       && ( PyCharm.ClickCnt == 2 )
-    Esc::
-    CapsLock::{
-        Send "{Esc}"
-        PyCharm.ClickKey := ""
-        PyCharm.ClickCnt := 0
-    }
+#HotIf CheckWindowActive( "PyCharm" ) && ( PyCharm.DoubleLCtrl == True || PyCharm.DoubleLShift == True )
     RWin::{
         Send "{Blind}{vkFF}"
         JBCenterWindow(1000, 1000)
@@ -29,19 +17,10 @@
 #HotIf
 
 
-#HotIf CheckWindowActive("PyCharm") && ( PyCharm.DoubleEsc == True )
-    ~Esc::{
-        Send "{Esc}"
-        PyCharm.DoubleEsc := False
-    }
-#HotIf
-
-
 #HotIf CheckWindowActive("PyCharm") && ( PyCharm.CapsLockToEsc == True )
     ~CapsLock::{
-        Send "{Esc 3}"
+        Send "{Esc}"
         PyCharm.CapsLockToEsc := False
-        PyCharm.CapsLockActivate := False
     }
 #HotIf
 
