@@ -1,9 +1,6 @@
 
-RegisterPosition( "Telegram"        , Position(2000 , 1234) )
-RegisterPosition( "Telegram__Media" , Position(1700 , 1357) )
-
+RegisterPosition( "Telegram" , Position(2000 , 1357) )
 RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
-
 
 
 #HotIf CheckWindowActive("Telegram" , "Qt*" , "Media*")
@@ -14,9 +11,13 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 #HotIf
 
 
-
 #HotIf CheckWindowActive("Telegram")
     
+    ^PgUp::Return
+    ^PgDn::Return
+    !PgUp::Send "^{PgUp}"
+    !PgDn::Send "^{PgDn}"
+
     ~NumLock::  Send "{Esc}"
     NumpadHome::Send "^c"
     NumpadEnd:: Send "^v"
