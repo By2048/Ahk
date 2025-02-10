@@ -2,7 +2,7 @@
  >^q::Run "E:\Config\QPC.qdr"
 >^+q::Run "E:\Config\QFile.qdr"
  >^e::Run "D:\#Lnk\#\Everything.lnk"
- >^r::Run "RegEdit"
+ >^r::Run "D:\#Lnk\#\FFRenamePro.lnk"
  >^t::Run "D:\#Lnk\#\Torrent.lnk"
  >^y::Return
  >^u::Return
