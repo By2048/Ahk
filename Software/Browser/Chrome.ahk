@@ -1,4 +1,6 @@
 ﻿
+#Include Chromium\Tool.ahk
+
 RegisterSoftware("chrome" , "Chrome")
 
 RegisterHelpInfo("Chrome" , "Software\Browser\Help\@.help")
@@ -16,9 +18,6 @@ win_y   := win.y + (30-20)/2  ;坐标修正
 win_pos := Position( win_x, win_y, win_w, win_h )
 RegisterPosition( "Chrome" , win_pos , "Default" )
 RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
-
-
-#Include *i Chrome.Private.ahk
 
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "近期的下载记录" )
@@ -200,3 +199,6 @@ RegisterPosition( "Chrome" , Position("[Center][2]", 0, 1600) , "Backup" )
     }
 
 #HotIf
+
+
+#Include *i Chrome.Private.ahk

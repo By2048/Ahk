@@ -62,9 +62,6 @@
     ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
     ; 属性对话框 !{Enter}
 
-    +'::SendInput( FormatTime(A_Now, "yyyy-MM-dd") )
-    +;::SendInput( FormatTime(A_Now, "HH-mm-ss"  ) )
-
     ;-------------------------------;
 
     RWin & RCtrl::Return
@@ -142,6 +139,9 @@
 
 
 #HotIf CheckWindowActive( "Explorer" )
+
+    +;::SendInput( FormatTime(A_Now, "yyyy-MM-dd") )
+    +'::SendInput( FormatTime(A_Now, "HH-mm-ss"  ) )
 
     #IncludeAgain Key.ahk
 

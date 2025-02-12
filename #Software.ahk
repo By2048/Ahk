@@ -17,8 +17,9 @@
 #Include Key\Ctrl.Ignore.ahk
 
 #Include Software\@Key.ahk
-#Include Software\#32770.ahk
-#Include Software\@Other.ahk
+
+#Include Software\#HotIF.32770.ahk
+#Include Software\#HotIF.Software.ahk
 
 #Include Software\Android.ahk
 #Include Software\BitComet.ahk
@@ -47,7 +48,7 @@
 #Include Software\Browser\Edge.ahk
 #Include Software\Browser\FireFox.ahk
 #Include Software\Browser\Opera.ahk
-#Include Software\Browser\@.ahk
+#Include Software\Browser\Chromium.ahk
 
 #Include Software\Develop\Navicat.ahk
 #Include Software\Develop\NetSarang.ahk

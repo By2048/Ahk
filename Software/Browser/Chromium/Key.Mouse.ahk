@@ -1,8 +1,10 @@
 
+NumLock::Return
+
 MButton::Send "^t"
 
 NumpadHome::Send "^w"
-NumpadEnd::Send "^{Click}{Esc}"
+NumpadEnd:: Send "^{Click}{Esc}"
 
 NumpadPgUp::Send "^{Tab}"
 NumpadPgDn::Send "^+{Tab}"
