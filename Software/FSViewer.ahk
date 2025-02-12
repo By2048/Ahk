@@ -33,8 +33,8 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     `::Send "m"
 
     [::Send "m9"
-    ]::Left
-    \::Right
+    ]::Send "{Left}"
+    \::Send "{Right}"
     
     BackSpace::Send "!x"
 

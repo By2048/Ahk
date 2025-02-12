@@ -69,7 +69,6 @@ ZipSetPathNext() {
 #HotIf
 
 
-
 #HotIf CheckWindowActive( "ZipMain" , "#32770" , "复制" )
      [::ZipSetPathPrev()
      ]::ZipSetPathNext()

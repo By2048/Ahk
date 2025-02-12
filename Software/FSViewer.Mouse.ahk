@@ -2,7 +2,7 @@
 ~NumLock::Send "{Esc}"
 
 NumpadHome::Send "{Enter}"
-NumpadEnd::Send "{Delete}"
+NumpadEnd:: Send "{Delete}"
 
 NumpadPgUp::Send "!{Left}"
 NumpadPgDn::Send "!{Right}"
