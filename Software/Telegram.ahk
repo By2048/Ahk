@@ -1,5 +1,6 @@
 
-RegisterPosition( "Telegram" , Position(2000 , 1357) )
+RegisterPosition( "Telegram" , Position(2000 , 1357) , "Default" )
+RegisterPosition( "Telegram" , Position(1000 , 1357) , "Backup"  )
 RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
 
@@ -27,13 +28,13 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     NumpadDel:: Send "^{PgUp}"
 
     #[::{
-        pos := Position( 99 , "Center" , 999 , 1357)
+        pos := Position( 99 , "Center" , 999 , 1357 )
         win := GetActiveWindowInfo()
         MoveWindowPosition(pos)
     }
 
     #]::{
-        pos := Position( Screen.w - 99 - 1300 , "Center" , 1300 , 1357)
+        pos := Position( Screen.w - 99 - 1300 , "Center" , 1300 , 1357 )
         win := GetActiveWindowInfo()
         MoveWindowPosition(pos)
     }
