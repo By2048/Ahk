@@ -254,4 +254,3 @@ ErSetPathNext() {
     Sleep 99
     ControlFocus("DirectUIHWND2", "A")
 }
-
