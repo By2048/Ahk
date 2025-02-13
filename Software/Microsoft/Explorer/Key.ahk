@@ -1,4 +1,13 @@
 ﻿
+; !Left::Return  ; 查看上一个文件夹
+; !Right::Return ; 查看下一个文件夹
+; !Up::Return    ; 查看该文件夹所在的文件夹
+
+; !p::Return ; 显示预览面板
+; !d::Return ; 选择地址栏
+
+; !Enter::Return ; 属性对话框
+
 ^!1::Return ;超大图标
 ^!2::Return ;大图标
 ^!3::Return ;中等图标
@@ -9,6 +18,10 @@
 ^!8::Return ;内容
 ^!-::Return ;向下切换
 ^!=::Return ;向上切换
+
+; 切换图标显示模式
+^WheelUp::Return
+^WheelDown::Return
 
 !1::Send "^!1"
 !2::Send "^!2"
@@ -22,9 +35,6 @@
 !0::Send "^!="
 !=::Send "^!6"
 !-::Send "^!7"
-
-; 预览窗口
-; !p::Return
 
 ; 帮助
 F1::Return
