@@ -141,6 +141,7 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
 
 
 #HotIf CheckWindowActive( "" , "#32770" )
-    +;::SendInput( FormatTime(A_Now, "yyyy-MM-dd") )
-    +'::SendInput( FormatTime(A_Now, "HH-mm-ss"  ) )
+
+    #IncludeAgain Microsoft\Explorer\Key.Date.ahk
+
 #HotIf

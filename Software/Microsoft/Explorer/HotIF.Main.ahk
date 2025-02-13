@@ -60,7 +60,7 @@
     ; Num Lock + 加号 (+) 显示选定文件夹中的内容
     ; Num Lock + 减号 (-) 折叠选定文件夹
     ; Ctrl+鼠标滚轮 更改文件和文件夹图标的大小和外观
-    ; 属性对话框 !{Enter}
+    ; 属性对话框 !Enter
 
     ;-------------------------------;
 
@@ -111,23 +111,18 @@
 
     \::{
         contro_name := ControlGetClassNN(ControlGetFocus("A"))
-
-        if ( contro_name == "DirectUIHWND3") {
+        if ( contro_name == "DirectUIHWND3" ) {
             if ( InStr(A_PriorHotkey, A_ThisHotkey) && ( A_TimeSincePriorHotkey < 333 ) )
                 ErFileQuickPreview()
             return
         }
-
-        if ( contro_name == "Edit1") ;地址栏
-            Send "\"
-        
-        if ( contro_name == "Edit2") ;文件名重命名
-            Send FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss")
-        
         Send "\"
     }
 
     Insert::ErFileQuickTools()
+    Delete::Delete
+    Insert & Delete::Return
+    Delete & Insert::Return
 
     CapsLock & LShift::MouseMove(window.w/9, window.h-99, 0)
 
@@ -140,9 +135,8 @@
 
 #HotIf CheckWindowActive( "Explorer" )
 
-    +;::SendInput( FormatTime(A_Now, "yyyy-MM-dd") )
-    +'::SendInput( FormatTime(A_Now, "HH-mm-ss"  ) )
-
     #IncludeAgain Key.ahk
+
+    #IncludeAgain Key.Date.ahk
 
 #HotIf
