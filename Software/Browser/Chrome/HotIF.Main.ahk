@@ -86,7 +86,6 @@
         }
     }
 
-    #Include Key.CapsLock.ahk
     #Include Key.Input.ahk
     #Include Key.Insert.ahk
     #Include Key.LShift.ahk
