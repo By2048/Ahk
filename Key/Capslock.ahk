@@ -98,25 +98,31 @@ CapsLock & LAlt::{
 
 
 ; 快速点击屏幕位置
-CapsLock & 1::MouseClickTool( Screen.w/2    , 11            , "Screen" )
-CapsLock & 2::MouseClickTool( Screen.w/2    , Screen.h - 11 , "Screen" )
-CapsLock & 3::MouseClickTool( 11            , Screen.h/2    , "Screen" )
-CapsLock & 4::MouseClickTool( Screen.w - 11 , Screen.h/2    , "Screen" )
 ; 
 CapsLock & q::MouseClickTool( Screen.w * (1/5) - 123 , Screen.h * (1/3) - 123 , "Screen" )
 CapsLock & w::MouseClickTool( Screen.w * (2/5) - 99  , Screen.h * (1/3) - 123 , "Screen" )
 CapsLock & e::MouseClickTool( Screen.w * (3/5) + 99  , Screen.h * (1/3) - 123 , "Screen" )
 CapsLock & r::MouseClickTool( Screen.w * (4/5) + 123 , Screen.h * (1/3) - 123 , "Screen" )
 ; 
-CapsLock & a::MouseClickTool( Screen.w * (1/5) - 123 , Screen.h * (2/3) + 123 , "Screen" )
-CapsLock & s::MouseClickTool( Screen.w * (2/5) - 99  , Screen.h * (2/3) + 123 , "Screen" )
-CapsLock & d::MouseClickTool( Screen.w * (3/5) + 99  , Screen.h * (2/3) + 123 , "Screen" )
-CapsLock & f::MouseClickTool( Screen.w * (4/5) + 123 , Screen.h * (2/3) + 123 , "Screen" )
+CapsLock & a::MouseClickTool( Screen.w * (1/5) - 123 , Screen.h * (1/2)       , "Screen" )
+CapsLock & s::MouseClickTool( Screen.w * (2/5) - 99  , Screen.h * (1/2)       , "Screen" )
+CapsLock & d::MouseClickTool( Screen.w * (3/5) + 99  , Screen.h * (1/2)       , "Screen" )
+CapsLock & f::MouseClickTool( Screen.w * (4/5) + 123 , Screen.h * (1/2)       , "Screen" )
 ; 
-CapsLock & z::MouseClickTool( 22            , Screen.h - 22 , "Screen" )
-CapsLock & x::MouseClickTool( Screen.w - 22 , Screen.h - 22 , "Screen" )
-CapsLock & c::MouseClickTool( 22            , 22            , "Screen" )
-CapsLock & v::MouseClickTool( Screen.w - 22 , 22            , "Screen" )
+CapsLock & z::MouseClickTool( Screen.w * (1/5) - 123 , Screen.h * (2/3) + 123 , "Screen" )
+CapsLock & x::MouseClickTool( Screen.w * (2/5) - 99  , Screen.h * (2/3) + 123 , "Screen" )
+CapsLock & c::MouseClickTool( Screen.w * (3/5) + 99  , Screen.h * (2/3) + 123 , "Screen" )
+CapsLock & v::MouseClickTool( Screen.w * (4/5) + 123 , Screen.h * (2/3) + 123 , "Screen" )
+; 
+CapsLock & 1::MouseClickTool( 22                     , Screen.h - 22          , "Screen" )
+CapsLock & 2::MouseClickTool( Screen.w - 22          , Screen.h - 22          , "Screen" )
+CapsLock & 3::MouseClickTool( 22                     , 22                     , "Screen" )
+CapsLock & 4::MouseClickTool( Screen.w - 22          , 22                     , "Screen" )
+; 
+CapsLock & Up::   MouseClickTool( Screen.w/2    , 11            , "Screen" )
+CapsLock & Down:: MouseClickTool( Screen.w/2    , Screen.h - 11 , "Screen" )
+CapsLock & Left:: MouseClickTool( 11            , Screen.h/2    , "Screen" )
+CapsLock & Right::MouseClickTool( Screen.w - 11 , Screen.h/2    , "Screen" )
 
 
 #Include *i Capslock.Private.ahk
