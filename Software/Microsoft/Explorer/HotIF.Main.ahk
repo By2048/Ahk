@@ -14,11 +14,11 @@
 
     ; 功能区展开缩放
     ^F1::Return
-    ^AppsKey::Send "^{F1}"
+    ^AppsKey::^F1
 
     ; 关闭活动窗口
     ^w::Return
-    ~!CapsLock::Send "^w"
+    !CapsLock::Send "^w"
 
     #\::ErResetPosition()
     #+\::ErResetPosition(columns:="List")
@@ -38,7 +38,7 @@
     !]::ErActivateRight()
     !\::ErActivateMenu()
 
-    Insert::ErFileQuickTools()
+    Insert::ErQuickTools()
     Delete::Delete
     Insert & Delete::Return
     Delete & Insert::Return
@@ -51,7 +51,7 @@
         contro_name := ControlGetClassNN(ControlGetFocus("A"))
         if ( contro_name == "DirectUIHWND3" ) {
             if ( InStr(A_PriorHotkey, A_ThisHotkey) && ( A_TimeSincePriorHotkey < 333 ) )
-                ErFileQuickPreview()
+                ErQuickPreview()
             return
         }
         Send "\"

@@ -1,19 +1,19 @@
 ﻿
 ; 上
-Numpad8::ErFileQuickToolsSwitchMenu(-1)
+Numpad8::ErQuickToolsSwitchMenu(-1)
 ; 下
-Numpad2::ErFileQuickToolsSwitchMenu(+1)
+Numpad2::ErQuickToolsSwitchMenu(+1)
 ; 左
-Numpad4::ErFileQuickToolsSwitchPage(-1)
+Numpad4::ErQuickToolsSwitchPage(-1)
 ; 右
-Numpad6::ErFileQuickToolsSwitchPage(+1)
+Numpad6::ErQuickToolsSwitchPage(+1)
 
 
 ; 上
-Numpad9::ErFileQuickMove()
+Numpad9::ErQuickMove()
 ; 下
-Numpad3::ErFileQuickToolsHide()
+Numpad3::ErQuickToolsHide()
 ; 左
-Numpad7::ErFileQuickRun()
+Numpad7::ErQuickRun()
 ; 右
-Numpad1::ErFileQuickTools()
+Numpad1::ErQuickTools()

@@ -1,32 +1,34 @@
 ﻿
-#HotIf CheckWindowActive( "Explorer" , "CabinetWClass" ) && ( Arg.quick_tool_show == True )
+#HotIf CheckWindowActive( "Explorer" , "CabinetWClass" ) 
+       && ( Arg.ErQuick.show == True )
+
+
+    =::ErQuickToolsSwitchPage(-1)
+    BackSpace::ErQuickToolsSwitchPage(+1)
 
     Up::
     Left::
     [::
     ]::{
-        ErFileQuickToolsSwitchMenu(-1)
+        ErQuickToolsSwitchMenu(-1)
     }
 
     Down::
     Right::
     \::{
-        ErFileQuickToolsSwitchMenu(+1)
+        ErQuickToolsSwitchMenu(+1)
     }
-
-    =::ErFileQuickToolsSwitchPage(-1)
-    BackSpace::ErFileQuickToolsSwitchPage(+1)
 
     Esc::
     AppsKey::
     CapsLock::
     Insert::{
-        ErFileQuickToolsHide()
+        ErQuickToolsHide()
     }
     
-    Delete::ErFileQuickRun()
+    Delete::ErQuickRun()
 
-    Enter::ErFileQuickMove()
+    Enter::ErQuickMove()
 
     #Include Joy.Arg.ahk
 

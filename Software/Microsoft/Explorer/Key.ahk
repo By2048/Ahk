@@ -46,9 +46,9 @@ F2::Return
 
 ; 搜索
 ; 选择搜索框
-F3::Return
 ; ^e::Return
 ; ^f::Return
+F3::Return
 
 ; 地址栏历史
 ; 下拉列表 展开

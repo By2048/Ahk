@@ -20,10 +20,10 @@ Numpad9::Send "{Enter}"
 Numpad3::Send "{Delete}"
 
 ; 左
-Numpad7::ErFileQuickPreview()
+Numpad7::ErQuickPreview()
 
 ; 右
-Numpad1::ErFileQuickTools()
+Numpad1::ErQuickTools()
 
 ;---------------------------------;
 
