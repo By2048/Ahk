@@ -39,10 +39,7 @@ LWin & LAlt::Send "#^!{F22}"
 LWin & LCtrl::Send "#^!{F23}"
 
 ; 上一个桌面
-#CapsLock::{
-    Send "#^!{F24}"
-    SetCapsLockState("Off")
-}
+#CapsLock::Send "#^!{F24}"
 
 ; #Esc    卷起
 ; #+Esc   最小化到系统托盘
