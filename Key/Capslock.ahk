@@ -1,10 +1,11 @@
 ﻿
-~*CapsLock::{
-    Send "{Blind}{vkFF}"
-}
-
 ~*CapsLock Up::{
     SetCapsLockState("Off")
+}
+
+
+~*CapsLock::{
+    Send "{Blind}{vkFF}"
 }
 
 
@@ -83,16 +84,20 @@ CapsLock & Space::Click()
 
 ; 快速点击窗口位置
 CapsLock & Esc::
+CapsLock & Insert::
+CapsLock & Delete::
 CapsLock & LCtrl::
 CapsLock & LWin::
 CapsLock & LAlt::{
     key := StrReplace(A_ThisHotkey, "CapsLock & ", "")
     win := GetActiveWindowInfo()
     Switch key {
-        Case "Esc"   : MouseClickTool( win.w - 44 , 22         , "Window" )
-        Case "LCtrl" : MouseClickTool( win.w / 2  , 22         , "Window" )
-        Case "LWin"  : MouseClickTool( win.w / 2  , win.h / 2  , "Window" )
-        Case "LAlt"  : MouseClickTool( win.w / 2  , win.h - 22 , "Window" )
+        Case "Esc"    : MouseClickTool( win.w - 44 , 22         , "Window" )
+        Case "LCtrl"  : MouseClickTool( win.w / 2  , 22         , "Window" )
+        Case "LWin"   : MouseClickTool( win.w / 2  , win.h / 2  , "Window" )
+        Case "LAlt"   : MouseClickTool( win.w / 2  , win.h - 22 , "Window" )
+        Case "Insert" : MouseClickTool( 22         , win.h / 2  , "Window" )
+        Case "Delete" : MouseClickTool( win.w - 22 , win.h / 2  , "Window" )
     }
 }
 
