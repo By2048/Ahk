@@ -1,5 +1,5 @@
 ﻿
-#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "WeTab新标签页*" )
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "*WeTab新标签页*" )
 
     ; 刷新
     PgDn::{
@@ -21,10 +21,10 @@
         MouseMove(x, y, 0)
     }
 
-     F1::RedirectTo("code.visualstudio.com/docs")
+     F1::RedirectTo("docs.python.org/zh-cn/3")
      F2::RedirectTo("wyagd001.github.io/v2/docs")
      F3::RedirectTo("pycharm.net.cn")
-     F4::RedirectTo("docs.python.org/zh-cn/3")
+     F4::RedirectTo("code.visualstudio.com/docs")
 
      F5::RedirectTo("exhentai.org/popular")
      F6::RedirectTo("e-hentai.org/popular")
@@ -36,6 +36,6 @@
     F11::RedirectTo("zhihu.com/knowledge-plan/hot-question/hot/0/hour")
     F12::RedirectTo("t.bilibili.com/?tab=8")
 
-    AppsKey::RedirectTo("chatgpt.com")
+    AppsKey::RedirectTo("chat.deepseek.com")
 
 #HotIf
