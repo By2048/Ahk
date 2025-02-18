@@ -8,9 +8,6 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 UnZipPath := [ "T:\" , "V:\#\" ]
 
 
-#Include *i Zip.Private.ahk
-
-
 ZipSetPath(path) {
     ControlSetText(path, "Edit1", "A")
 }
@@ -24,6 +21,9 @@ ZipSetPathNext() {
     path := LoopList(UnZipPath, &path, +1)
     ZipSetPath(path)
 }
+
+
+#Include *i Zip.Private.ahk
 
 
 #HotIf CheckWindowActive( "ZipDialog" , "#32770" , "浏览文件夹" )
@@ -97,29 +97,24 @@ ZipSetPathNext() {
 
 #HotIf CheckWindowActive( "ZipMain" )
 
-    ~NumLock::WinClose("A")
-    Numpad3::WinClose("A")
+    NumLock::WinClose("A")
 
     #\::{
         MoveWindowPosition(Position(1100 , 1000))
-        cfg := " 1:名称:700  3:文件夹:100  2:文件:100  4:大小:140 "
-        if InStr(window.title, ".iso")
-            cfg := " 1:名称:700  2:文件夹:100  3:文件:100  4:大小:140 "
+        cfg := " 1:名称:666  3:文件夹:100  2:文件:100  4:大小:159 "
+        if ( InStr(window.title, ".iso") )
+            cfg := " 1:名称:666  2:文件夹:100  3:文件:100  4:大小:159 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321", cfg)
     }
 
     ; 注册表相关操作 Clear History
-    >!\::{
+    >!/::{
         RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Compression", "ArcHistory"   )
         RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Extraction",  "PathHistory"  )
         RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "FolderHistory")
         RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "CopyHistory"  )
-        HelpText("`n Clear History `n", "Center", "Screen", 1000)
-        ; 默认列配置 Zip
-        ; 其他列配置 Rar
-        ; RegRead, default_columns_config, HKEY_CURRENT_USER\SOFTWARE\7-Zip\FM\Columns, 7-Zip.zip
-        ; RegWrite, REG_BINARY, HKEY_CURRENT_USER, SOFTWARE\7-Zip\FM\Columns\, 7-Zip.Rar, %default_columns_config%
+        HelpText("`n  Clear History  `n", "Center", "Screen", 1000)
     }
 
     ; 选择所有
