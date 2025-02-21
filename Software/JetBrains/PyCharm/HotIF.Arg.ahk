@@ -18,7 +18,7 @@
 
 
 #HotIf CheckWindowActive("PyCharm") && ( PyCharm.CapsLockToEsc == True )
-    ~CapsLock::{
+    CapsLock::{
         Send "{Esc}"
         PyCharm.CapsLockToEsc := False
     }

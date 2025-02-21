@@ -1,5 +1,5 @@
 ﻿
-~NumLock::Send "!{CtrlBreak}"
+NumLock::Send "!{CtrlBreak}"
 
 NumpadHome::{
     if ( PyCharm.CapsLockToEsc == True ) {

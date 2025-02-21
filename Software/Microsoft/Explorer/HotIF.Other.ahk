@@ -9,7 +9,7 @@
 
 
 #HotIf CheckWindowActive( "Explorer" , "OperationStatusWindow" , "文件夹正在使用" )
-    ~NumLock::
+    NumLock::
     Insert::
     Delete::
     AppsKey::

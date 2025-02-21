@@ -28,7 +28,7 @@ RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
 #HotIf CheckWindowActive("DuplicateCleaner")
     `;::Send ":"
     +;::Send ";"
-    ~NumLock::Send "{Enter}"
+    NumLock::Send "{Enter}"
     #\::{
         w := 2500
         h := 1400
@@ -123,5 +123,5 @@ RegisterSoftware("Photoshop" , "PS")
 
 
 #HotIf CheckWindowActive("PicView")
-    ~NumLock::WinClose("A")
+    NumLock::WinClose("A")
 #HotIf

@@ -31,7 +31,7 @@
     F11::Return 
     #Enter::Send "{F11}"
     
-    ~CapsLock::Send "{F5}"
+    CapsLock::Send "{F5}"
     +\::Send "{F5}"
 
     ![::ErActivateLeft()

@@ -10,7 +10,7 @@ RegisterPosition("Everything", Position(1700 , 1200))
         SetColumnWidth("SysListView321", cfg)
     }
 
-    ~NumLock::{
+    NumLock::{
         WinClose("A")
     }
 

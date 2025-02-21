@@ -64,9 +64,9 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
     #IncludeAgain .\Microsoft\Explorer\Key.ahk
 
     ; 文件名修改框
-    ~CapsLock::ControlFocus("Edit1", "A")
+    CapsLock::ControlFocus("Edit1", "A")
 
-    ~NumLock::{
+    NumLock::{
         name := ControlGetText("Edit1", "A")
         name := Trim(name)
         ControlSetText(name, "Edit1", "A")
@@ -103,7 +103,7 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
         name := StrReplace(name, "  " , " ")
         name := StrReplace(name, "  " , " ")
         name := StrReplace(name, "  " , " ")
-        name := LTrim(name)
+        name := Trim(name)
         ; 
         name := name . " "
         ; 

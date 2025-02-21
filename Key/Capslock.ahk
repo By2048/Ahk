@@ -1,15 +1,9 @@
 ﻿
-~*CapsLock Up::{
-    SetCapsLockState("Off")
-}
+~*CapsLock::Send "{Blind}{vkFF}"
+~*CapsLock Up::SetCapsLockState("Off")
 
 
-~*CapsLock::{
-    Send "{Blind}{vkFF}"
-}
-
-
-;切换到显示器中心
+; 切换到显示器中心
 CapsLock & Tab::{
 
     CoordMode("Mouse", "Screen")

@@ -54,7 +54,7 @@ RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Scre
     $Insert::PotPlayerOpenFile()
     $Delete::PotPlayerDeleteFile()
 
-    ~CapsLock::{
+    CapsLock::{
         if ( InStr(A_PriorHotkey, A_ThisHotkey) )
             if ( A_TimeSincePriorHotkey < 333 )
                 WinClose("A")

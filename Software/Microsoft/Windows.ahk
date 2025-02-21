@@ -32,7 +32,7 @@
 
 RegisterPosition( "Notepad" , Position( 0.4 , 0.5 ) )
 #HotIf CheckWindowActive( "Notepad" , "Notepad" )
-    ~NumLock::
+    NumLock::
     !CapsLock::{
         WinClose("A")
     }
@@ -62,6 +62,6 @@ RegisterPosition( "WindowsSettings_ApplicationFrameWindow_设置" , Position(180
     NumpadHome::{
         MouseClickTool( 38 , 23 , "Window" ) 
     }
-    ~NumLock::WinClose("A")
+    NumLock::WinClose("A")
     NumpadEnd::Send "{BackSpace}"
 #HotIf

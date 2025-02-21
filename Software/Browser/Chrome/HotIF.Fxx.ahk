@@ -36,6 +36,6 @@
     F11::RedirectTo("zhihu.com/knowledge-plan/hot-question/hot/0/hour")
     F12::RedirectTo("t.bilibili.com/?tab=8")
 
-    AppsKey::RedirectTo("chat.deepseek.com")
+    CapsLock::RedirectTo("chat.deepseek.com")
 
 #HotIf

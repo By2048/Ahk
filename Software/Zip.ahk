@@ -97,7 +97,11 @@ ZipSetPathNext() {
 
 #HotIf CheckWindowActive( "ZipMain" )
 
-    NumLock::WinClose("A")
+    NumLock::
+    AppsKey::
+    !CapsLock::{
+        WinClose("A")
+    }
 
     #\::{
         MoveWindowPosition(Position(1100 , 1000))

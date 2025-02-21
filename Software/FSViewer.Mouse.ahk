@@ -1,5 +1,5 @@
 
-~NumLock::Send "{Esc}"
+NumLock::Send "{Esc}"
 
 NumpadHome::Send "{Enter}"
 NumpadEnd:: Send "{Delete}"

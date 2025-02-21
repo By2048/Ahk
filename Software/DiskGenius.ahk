@@ -37,9 +37,9 @@ RegisterPosition("DiskGenius" , Position(2222,1248))
     ; 备份磁盘树
     F1::{
         Send "{AppsKey}"
-        Sleep 99
+        Sleep 123
         Send "{Down 22}"
-        Sleep 99
+        Sleep 123
         Send "{Enter}"
     }
 

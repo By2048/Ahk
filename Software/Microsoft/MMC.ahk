@@ -9,7 +9,7 @@
 
 #HotIf CheckWindowActive( "MMC" , "MMCMainFrame" , "*[Windows]*" )
     !BackSpace::
-    ~NumLock::{
+    NumLock::{
         Send "!fxn"
     }
 #HotIf

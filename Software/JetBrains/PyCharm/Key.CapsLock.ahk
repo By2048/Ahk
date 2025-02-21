@@ -18,6 +18,7 @@
     Timer() {
         if ( PyCharm.ClickCnt == 1 ) {
             Send "{CapsLock}"
+            SetCapsLockState("Off")
         } else if ( PyCharm.ClickCnt == 2 ) {
             Send "{CtrlBreak}"
             Send "!m"
@@ -31,11 +32,11 @@
 !+CapsLock::Send "!+{CtrlBreak}"
 
 ; 跳转到上一个工具窗口
-~CapsLock & Tab::Send "^{CtrlBreak}"
+CapsLock & Tab::Send "^{CtrlBreak}"
 
 ; 快速窗口 @  \\  导航 || 代码
-~CapsLock & LShift::
-~CapsLock & RShift::{
+CapsLock & LShift::
+CapsLock & RShift::{
     if ( PyCharm.CapsLockActivate == True ) {
         Send "{Esc}"
         PyCharm.CapsLockActivate := False
@@ -55,8 +56,8 @@
 }
 
 ; 定位窗口位置
-~CapsLock & LCtrl::MouseMove( 20 , Screen.h - 35 , 0 )
-~CapsLock & LWin::{
+CapsLock & LCtrl::MouseMove( 20 , Screen.h - 35 , 0 )
+CapsLock & LWin::{
     MouseMove( Screen.w / 2 , Screen.h / 2 , 0 )
     MouseGetPos( &x, &y, &win_id, &win_control )
     rule := "ahk_id " win_id
@@ -68,10 +69,10 @@
     else if ( win_class == "SunAwtFrame" )
         WinActivate(rule)
 }
-~CapsLock & LAlt:: MouseMove( Screen.w - 99 , Screen.h - 99 , 0 )
+CapsLock & LAlt:: MouseMove( Screen.w - 99 , Screen.h - 99 , 0 )
 
 ; 工具窗口
-~CapsLock & Esc::{
+CapsLock & Esc::{
     if ( PyCharm.CapsLockActivate == True ) {
         Send "{Esc}"
         PyCharm.CapsLockActivate := False
@@ -84,7 +85,7 @@
 }
 
 ; 主菜单
-~CapsLock & AppsKey::{
+CapsLock & AppsKey::{
     if ( PyCharm.CapsLockActivate == True ) {
         Send "{Esc}"
         PyCharm.CapsLockActivate := False
@@ -98,39 +99,39 @@
 }
 
 ; 快速列表 Window \\ 工具窗口
-~CapsLock & Enter::JBCapsLockCircle("Center")
+CapsLock & Enter::JBCapsLockCircle("Center")
 
 ; AI功能
-~CapsLock & Space::JBCapsLock()
+CapsLock & Space::JBCapsLock()
 
 ; 编辑 编辑器操作
 ^!BackSpace::Return
 ^!+BackSpace::Return
-~CapsLock & BackSpace::JBCapsLockCircle(fun:="Center", arg:="600 1111 | 1000 1111")
+CapsLock & BackSpace::JBCapsLockCircle(fun:="Center", arg:="600 1111 | 1000 1111")
 
 ; ------------------------------------------------------------------------- ;
 
 ; 运行
-~CapsLock & F1::JBCapsLockCircle("Center")
+CapsLock & F1::JBCapsLockCircle("Center")
 
 ; 快速列表 Run
-~CapsLock & F11::JBCapsLockCircle()
+CapsLock & F11::JBCapsLockCircle()
     
 ; 快速列表 Debug
-~CapsLock & F12::JBCapsLockCircle()
+CapsLock & F12::JBCapsLockCircle()
     
 ; ------------------------------------------------------------------------- ;
 
 ; 项目 书签
-~CapsLock & [::JBCapsLock()
+CapsLock & [::JBCapsLock()
 
 ; 结构 层次结构
-~CapsLock & ]::JBCapsLock()
+CapsLock & ]::JBCapsLock()
 
 ; 快速切换书签 | 切换书签
 ^!\::Return
 ^!+\::Return
-~CapsLock & \::{
+CapsLock & \::{
     if ( PyCharm.CapsLockToEsc == True ) {
         Send "{Esc}"
         PyCharm.CapsLockToEsc := False
@@ -143,49 +144,49 @@
 ; ------------------------------------------------------------------------- ;
 
 ; 书签描述符
-~CapsLock & `::JBCapsLock(fun:="Center")
+CapsLock & `::JBCapsLock(fun:="Center")
 
 ; 跳转到导航栏
-~CapsLock & o::{
+CapsLock & o::{
     PyCharm.CapsLockToEsc := True
     JBCapsLock()
 }
 
 ; 最近文件
-~CapsLock & p::{
+CapsLock & p::{
     PyCharm.CapsLockToEsc := True
     JBCapsLock(fun:="Center", arg:="1700 1234")
 }
 
 ; 复制
-~CapsLock & c::JBCapsLock(fun:="Center")
+CapsLock & c::JBCapsLock(fun:="Center")
 
 ; 在资源管理器中显示
-~CapsLock & e::JBCapsLock(fun:="Center")
+CapsLock & e::JBCapsLock(fun:="Center")
 
 ; 包围 解除包围
-~CapsLock & b::JBCapsLock()
+CapsLock & b::JBCapsLock()
 
 ; 向左/向右 滚动
 ^!f::Return
 ^!j::Return
-~CapsLock & f::Send "^!f"
-~CapsLock & j::Send "^!j"
+CapsLock & f::Send "^!f"
+CapsLock & j::Send "^!j"
 
 ; Git工具 VCS操作
 ^!g::Return
 ^!+g::Return
-~CapsLock & g::JBCapsLock(fun:="Center")
+CapsLock & g::JBCapsLock(fun:="Center")
 
 ; 宏
 ^!h::Return
 ^!+h::Return
-~CapsLock & h::JBCapsLock(fun:="Center")
+CapsLock & h::JBCapsLock(fun:="Center")
 
-~CapsLock & l::JBCapsLock(fun:="Center")
+CapsLock & l::JBCapsLock(fun:="Center")
 
 ; CodeGlance Pro
-~CapsLock & v::JBCapsLock()
+CapsLock & v::JBCapsLock()
 
 ; ---------------------------------------------- ;
 
@@ -196,39 +197,39 @@
 ; " | 下一个拆分
 
 ^!/::Return
-~CapsLock & /::JBCapsLock()
+CapsLock & /::JBCapsLock()
 
 ^!,::Return 
-~CapsLock & ,::JBCapsLock()
+CapsLock & ,::JBCapsLock()
 
 ^!.::Return
-~CapsLock & .::JBCapsLock()
+CapsLock & .::JBCapsLock()
 
 ^!;::Return
-~CapsLock & `;::JBCapsLock()
+CapsLock & `;::JBCapsLock()
 
 ^!'::Return
-~CapsLock & '::JBCapsLock()
+CapsLock & '::JBCapsLock()
 
 ; ---------------------------------------------- ;
 
 ; 移动并滚动
 ^!PgUp::Return
 ^!PgDn::Return
-~CapsLock & PgUp::JBCapsLock()
-~CapsLock & PgDn::JBCapsLock()
+CapsLock & PgUp::JBCapsLock()
+CapsLock & PgDn::JBCapsLock()
 
 ; 滚动到顶部|底部
 ^!Home::Return
 ^!End::Return
-~CapsLock & Home::JBCapsLock()
-~CapsLock & End:: JBCapsLock()
+CapsLock & Home::JBCapsLock()
+CapsLock & End:: JBCapsLock()
 
 ; 窗口大小调整
-~CapsLock & Left:: Send "^!{Left}"
-~CapsLock & Right::Send "^!{Right}"
-~CapsLock & Up::   Send "^!{Up}"
-~CapsLock & Down:: Send "^!{Down}"
+CapsLock & Left:: Send "^!{Left}"
+CapsLock & Right::Send "^!{Right}"
+CapsLock & Up::   Send "^!{Up}"
+CapsLock & Down:: Send "^!{Down}"
 
 ; ------------------------------------------------------------------------- ;
 

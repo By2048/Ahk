@@ -1,5 +1,5 @@
 
-~NumLock::WinClose("A")
+NumLock::WinClose("A")
 
 NumpadHome::Send "{F6}"
 NumpadEnd::MoveWindowDefault()
