@@ -1,11 +1,11 @@
 
-~NumLock::Send "{Esc}"
+NumLock::Send "{Esc}"
 
 NumpadHome::Send "!o"
-NumpadEnd::MusicDetail()
+NumpadEnd:: Send "!\"
 
-NumpadPgUp::Send "!["
 NumpadPgDn::Send "!]"
+NumpadPgUp::Send "!["
 
 NumpadIns::Send "{Volume_Up}"
 NumpadDel::Send "{Volume_Down}"
