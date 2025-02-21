@@ -22,12 +22,10 @@
     }
 }
 
-~*Pause Up::Return
-
-
 
 ~*NumLock::Return
+~*NumLock Up::SetNumLockState("Off")
 
-~*NumLock Up::{
-    SetNumLockState("Off")
-}
+
+~*ScrollLock::Return
+~*ScrollLock Up::SetScrollLockState("Off")
