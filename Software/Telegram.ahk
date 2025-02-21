@@ -5,8 +5,10 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
 
 #HotIf CheckWindowActive("Telegram" , "Qt*" , "Media*")
-    NumpadPgDn::Send "^="
-    NumpadPgUp::Send "^-"
+    NumpadHome::Send "^="
+    NumpadEnd:: Send "^-"
+    NumpadPgDn::Send "{Right}"
+    NumpadPgUp::Send "{Left}"
     NumpadIns:: Send "{AppsKey}{Up 2}{Enter}"
     NumpadDel:: Send "{Enter}"
 #HotIf
@@ -19,7 +21,7 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     !PgUp::Send "^{PgUp}"
     !PgDn::Send "^{PgDn}"
 
-    ~NumLock::  Send "{Esc}"
+    NumLock::   Send "{Esc}"
     NumpadHome::Send "^c"
     NumpadEnd:: Send "^v"
     NumpadPgDn::Send "{Enter}"
@@ -27,15 +29,19 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     NumpadIns:: Send "^{PgDn}"
     NumpadDel:: Send "^{PgUp}"
 
-    #[::{
-        pos := Position( 99 , "Center" , 999 , 1357 )
-        win := GetActiveWindowInfo()
-        MoveWindowPosition(pos)
-    }
-
+    #p::
+    #[::
     #]::{
-        pos := Position( Screen.w - 99 - 1300 , "Center" , 1300 , 1357 )
-        win := GetActiveWindowInfo()
+        offset := 12
+        hight  := Screen.h - offset * 2
+        left   := Screen.w *  16/25 - offset * 1.5
+        right  := Screen.w *   9/25 - offset * 1.5
+        if ( InStr(A_ThisHotkey, "p") )
+            pos := Position( offset , "Center" , Screen.w - offset * 2 , hight )
+        if ( InStr(A_ThisHotkey, "[") )
+            pos := Position( offset , "Center" , left , hight )
+        if ( InStr(A_ThisHotkey, "]") )
+            pos := Position( Screen.w - right - offset , "Center" , right , hight )
         MoveWindowPosition(pos)
     }
 
