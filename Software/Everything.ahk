@@ -4,13 +4,16 @@ RegisterPosition("Everything", Position(1700 , 1200))
 
 #HotIf CheckWindowActive("Everything")
 
+    Esc::Return
+
     ~RShift::{
         cfg := " 1:名称:750  2:路径:600  3:大小:120  4:修改时间:180 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321", cfg)
     }
 
-    NumLock::{
+    NumLock::
+    !CapsLock::{
         WinClose("A")
     }
 
