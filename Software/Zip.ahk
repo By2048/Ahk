@@ -31,7 +31,8 @@ ZipSetPathNext() {
 #HotIf
 
 
-#HotIf CheckWindowActive( "ZipDialog" , "#32770" , "*解压*" )
+#HotIf    CheckWindowActive( "ZipDialog" , "#32770" , "*解压*" )
+       || CheckWindowActive( "ZipMain"   , "#32770" , "*复制*" )
 
     ; 浏览文件夹
     \::ControlClick("Button1", "A")
@@ -60,20 +61,15 @@ ZipSetPathNext() {
     ]::ZipSetPathNext()
 
     AppsKey::{
+        Send "{Blind}{vkFF}"
         WinClose("A")
         Send "{Esc}"
     }
-     
+    
+    ; NumLock::Send "{Enter}"
+
     #Include *i Zip.Joy.ahk
 
-#HotIf
-
-
-#HotIf CheckWindowActive( "ZipMain" , "#32770" , "复制" )
-     [::ZipSetPathPrev()
-     ]::ZipSetPathNext()
-    `;::ZipSetPath("V:\#\")
-     '::ZipSetPath("T:\"  )
 #HotIf
 
 
