@@ -48,13 +48,9 @@
     CapsLock & LShift::MouseMove(window.w/9, window.h-99, 0)
 
     \::{
-        contro_name := ControlGetClassNN(ControlGetFocus("A"))
-        if ( contro_name == "DirectUIHWND3" ) {
-            if ( InStr(A_PriorHotkey, A_ThisHotkey) && ( A_TimeSincePriorHotkey < 333 ) )
+        if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) )
+            if ( ControlGetClassNN(ControlGetFocus("A")) == "DirectUIHWND3" )
                 ErQuickPreview()
-            return
-        }
-        Send "\"
     }
 
     #Include Mouse.ahk

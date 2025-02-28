@@ -1,7 +1,5 @@
 ﻿
-#HotIf CheckWindowActive( "Explorer" , "CabinetWClass" ) 
-       && ( Arg.ErQuick.show == True )
-
+#HotIf CheckWindowActive( "Explorer" , "CabinetWClass" ) && ( Arg.ErQuick.show == True )
 
     =::ErQuickToolsSwitchPage(-1)
     BackSpace::ErQuickToolsSwitchPage(+1)
