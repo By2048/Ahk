@@ -74,6 +74,10 @@
 
 CoordMode("Mouse", "Window")
 CoordMode("Pixel", "Window")
+
+SetWinDelay(99)
+SetKeyDelay(33)
+SetMouseDelay(9)
 SetControlDelay(-1)
 
 For Arg_Index, Arg_Value In A_Args {
