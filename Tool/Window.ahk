@@ -259,7 +259,7 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
                 }
             }
         } else if ( InStr(cfg, "*") ) {
-            if ( !InStr(win, StrReplace(cfg, "*", "")) )
+            if ( ! InStr(win, StrReplace(cfg, "*", "")) )
                 status := False
         } else if ( cfg != win ) {
             status := False
@@ -270,17 +270,17 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
     result := True
     if ( StrLen(rule_process) > 0 ) {
         result := Check(win_process, rule_process)
-        if ( not result )
+        if ( ! result )
             return result
     }
     if ( StrLen(rule_class) > 0 ) {
         result := Check(win_class, rule_class)
-        if ( not result )
+        if ( ! result )
             return result
     }
     if ( StrLen(rule_title) > 0 ) {
         result := Check(win_title, rule_title)
-        if ( not result )
+        if ( ! result )
             return result
     }
 

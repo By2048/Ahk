@@ -71,6 +71,7 @@ Gui_Config := {
 #Include *i Config.Private.ahk
 
 #Include Config\Arg.ahk
+#Include Config\Folder.ahk
 #Include Config\Message.ahk
 #Include Config\Screen.ahk
 #Include Config\Software.ahk
