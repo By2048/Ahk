@@ -1,6 +1,8 @@
 ﻿
 ; 可执行文件路径
 AHK           := "D:\AutoHotkey\#\AutoHotkey.exe"
+AhkSpy        := "D:\AutoHotkey\V2\WindowSpy.ahk"
+AhkSpyPlus    := "E:\GitX\AhkSpy\AhkSpy.exe"
 PSL           := "D:\PowerShell\psl.exe"
 BDown         := "D:\BBDown\BBDown.exe"
 Aria          := "D:\Aria2\aria2c.exe"
@@ -19,7 +21,6 @@ Snipaste      := "D:\Snipaste\Snipaste.exe"
 MD5Sum        := "D:\Git\usr\bin\md5sum.exe"
 FDM           := "D:\FDM\fdm.exe"
 NirCmd        := "D:\NirCmd\nircmdc.exe"
-
 
 
 RegisterHelpInfo( "Default" , "Key\Win.help"       )
