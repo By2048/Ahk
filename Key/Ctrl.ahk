@@ -1,24 +1,24 @@
 ﻿
- >^q::Run "E:\Config\QPC.qdr"
->^+q::Run "E:\Config\QFile.qdr"
- >^e::Run "D:\#Lnk\#\Everything.lnk"
- >^r::Run "D:\#Lnk\#\FFRenamePro.lnk"
- >^t::Run "D:\#Lnk\#\Torrent.lnk"
+ >^q::Run Folders.Config "QPC.qdr"
+>^+q::Run Folders.Config "QFile.qdr"
+ >^e::Run Folders.Lnk "Everything.lnk"
+ >^r::Run Folders.Lnk "FFRenamePro.lnk"
+ >^t::Run Folders.Lnk "Torrent.lnk"
  >^y::Return
  >^u::Return
  >^i::Return
  >^o::Return
  >^p::Return
 
- >^a::Run "D:\#Lnk\#\AntiMicroX.lnk"
- >^s::Run "D:\#Lnk\#\Sandboxie.lnk"
- >^d::Run "D:\#Lnk\#\Download.lnk"
- >^f::Run "D:\#Lnk\#\FreeFileSync.lnk"
- >^g::Run "D:\#Lnk\#\Geek.lnk"
- >^h::Run AutoHotkey " D:\AutoHotkey\V2\WindowSpy.ahk"
->^+h::Run "E:\GitX\AhkSpy\AhkSpy.exe"
+ >^a::Run Folders.Lnk "AntiMicroX.lnk"
+ >^s::Run Folders.Lnk "Sandboxie.lnk"
+ >^d::Run Folders.Lnk "Download.lnk"
+ >^f::Run Folders.Lnk "FreeFileSync.lnk"
+ >^g::Run Folders.Lnk "Geek.lnk"
+ >^h::Run AHK " " AhkSpy
+>^+h::Run AhkSpyPlus
  >^j::{
-    Run "D:\#Lnk\#\JetBrains.lnk"
+    Run Folders.Lnk "JetBrains.lnk"
     loop 33 {
         try {
             WinActivate("ahk_exe jetbrains-toolbox.exe")
@@ -32,44 +32,38 @@
         }
     }
 }
-^+j::{
-    cmd := WT " --focus --size 50,20 "
-    cmd .= PSL " -NoProfile -NoExit -WorkingDirectory T:\ -Command "
-    cmd .= "D:\Python\#\Scripts\python.exe E:\Script\Python\JetBrains.py"
-    Run cmd
-}
  >^k::KeyHistory()
 >^+k::KeyboardGUI()
->^l::Return
+ >^l::Return
 
  >^z::Return
  >^x::Return
  >^c::Run "Calc"
- >^v::Run "D:\#Lnk\#\Vpn.lnk"
- >^b::Run "D:\#Lnk\#\Image.lnk"
- >^n::Run "D:\#Lnk\#\Music.lnk"
- >^m::Run "D:\#Lnk\#\PotPlayer.lnk"
+ >^v::Run Folders.Lnk "Vpn.lnk"
+ >^b::Run Folders.Lnk "Image.lnk"
+ >^n::Run Folders.Lnk "Music.lnk"
+ >^m::Run Folders.Lnk "PotPlayer.lnk"
 
- >^[::Run VSCode " --profile %Temp    E:\Config\VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
- >^]::Run VSCode " --profile %Note    E:\Config\VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
- >^\::Run VSCode " --profile %Windows E:\Config\VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
+ >^[::Run VSCode " --profile %Temp    " Folders.Config "VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
+ >^]::Run VSCode " --profile %Note    " Folders.Config "VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
+ >^\::Run VSCode " --profile %Windows " Folders.Config "VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
 
 >^`;::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
  >^'::Run VSCode        " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
 
  >^,::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
 >^+,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
- >^.::Run "T:\"
->^+.::Run "V:\#\"
- >^/::Run "E:\Script\Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
->^+/::Run "E:\Script\Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
+ >^.::Run Folders.Temp
+>^+.::Run Folders.Ram
+ >^/::Run Folders.Script "Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
+>^+/::Run Folders.Script "Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
 
  >^Esc::Run "TaskMgr" ;任务管理器
 >^+Esc::Run "D:\#Lnk\#\SecAnalysis.lnk"
 
->^Enter::Run "D:\#Lnk\#AppStore\Whiteboard.lnk"
+>^Enter::Run Folders.AppStore "Whiteboard.lnk"
 
->^BackSpace::Run WT " -d T:\"
+>^BackSpace::Run WT " -d " Folders.Temp
 
 >^Up::   MoveWindowOffset(   0 , -10 )
 >^Down:: MoveWindowOffset(   0 , +10 )
