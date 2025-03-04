@@ -44,6 +44,14 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
             Send "!x"
     }
 
+    Delete::{
+        control_name := ControlGetClassNN(ControlGetFocus("A"))
+        if ( control_name == "TJamShellTree.UnicodeClass1" )
+            Send "{AppsKey}{Up 4}{Enter}"
+        else
+            Send "{Delete}"
+    }
+
     [::Send "m9"
     ]::Send "{Left}"
     \::{
@@ -63,6 +71,10 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     }
     
     ^r::Send "{F2}"
+    
+    ![::ControlFocus("TJamShellTree.UnicodeClass1" , "A")
+    !]::ControlFocus("TTntListView.UnicodeClass1"  , "A")
+    !\::ControlFocus("TImageEnView1"               , "A")
 
     #\::{
         Send "{Blind}{vkFF}"
@@ -95,6 +107,16 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
             MoveControlUDLR(ctl_info, "Right", folder_width + thumbnail_width, offset)
             MouseMove(x_origin, y_origin, 0)
         }
+    }
+
+    LAlt & RAlt::Send "{F12}"
+
+    BackSpace & Delete::{
+        ControlFocus("TJamShellTree.UnicodeClass1", "A")
+        ControlFocus("TJamShellTree.UnicodeClass1", "A")
+        ControlFocus("TJamShellTree.UnicodeClass1", "A")
+        if ( ControlGetClassNN(ControlGetFocus("A")) == "TJamShellTree.UnicodeClass1" )
+            Send "{AppsKey}{Up 4}{Enter}"
     }
 
     #Include FSViewer.Joy.ahk

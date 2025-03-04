@@ -5,7 +5,7 @@ RegisterSoftware( "7zG"  , "ZipDialog" )
 RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 
 
-UnZipPath := [ "T:\" , "V:\#\" ]
+UnZipPath := [ Folders.Temp , Folders.Ram ]
 
 
 ZipSetPath(path) {
@@ -31,12 +31,9 @@ ZipSetPathNext() {
 #HotIf
 
 
-#HotIf    CheckWindowActive( "ZipDialog" , "#32770" , "*解压*" )
-       || CheckWindowActive( "ZipMain"   , "#32770" , "*复制*" )
+#HotIf    CheckWindowActive( "ZipDialog" , "#32770" , "解压*" )
+       || CheckWindowActive( "ZipMain"   , "#32770" , "复制*" )
 
-    ; 浏览文件夹
-    \::ControlClick("Button1", "A")
-    
     ; 切换输入框
     Insert::{
         contro_name := ControlGetClassNN(ControlGetFocus("A"))
@@ -53,20 +50,53 @@ ZipSetPathNext() {
     ; 确认解压
     Enter::ControlClick("Button7", "A")
     
-    `;::ZipSetPath("V:\#\")
-     '::ZipSetPath("T:\"  )
+    `;::ZipSetPath(Folders.Temp)
+     '::ZipSetPath(Folders.Ram )
 
     [::ZipSetPathPrev()
 
     ]::ZipSetPathNext()
+    
+    ; 浏览文件夹
+    \::ControlClick("Button1", "A")
 
     AppsKey::{
         Send "{Blind}{vkFF}"
         WinClose("A")
         Send "{Esc}"
     }
-    
-    ; NumLock::Send "{Enter}"
+
+     F1::
+     F2::
+     F3::
+     F4::
+     F5::
+     F6::
+     F8::
+     F7::
+     F9::
+    F10::
+    F11::
+    F12::
+     !`:: 
+     !1:: 
+     !2:: 
+     !3:: 
+     !4:: 
+     !5:: 
+     !6:: 
+     !7:: 
+     !8:: 
+     !9:: 
+     !0:: 
+     !-:: 
+     !=:: 
+     !,:: 
+     !.:: 
+     !/::
+    CapsLock:: {
+        SetEditPrefix("Edit2")
+    }
 
     #Include *i Zip.Joy.ahk
 
@@ -92,6 +122,8 @@ ZipSetPathNext() {
 
 
 #HotIf CheckWindowActive( "ZipMain" )
+
+    ; F1::Return
 
     NumLock::
     AppsKey::

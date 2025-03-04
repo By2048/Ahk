@@ -60,7 +60,7 @@ RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Scre
                 WinClose("A")
     }
 
-    ~!CapsLock::Send "!{F4}"
+    !CapsLock::WinClose("A")
 
     #Enter::Send "!{Enter}"
 

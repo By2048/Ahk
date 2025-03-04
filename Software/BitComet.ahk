@@ -2,12 +2,27 @@
 RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 
-
 #HotIf CheckWindowActive("BitComet", "#32770", "BitComet")
     AppsKey::
     NumLock::
     NumpadHome::{
         Try WinClose("A")
+    }
+#HotIf
+
+
+#HotIf CheckWindowActive("BitComet", "#32770", "删除任务确认")
+    Delete::{
+        Send "{Esc}"
+    }
+    Insert::{
+        ControlClick("Button1", "A")
+        Send "{Enter}"
+    }
+    BackSpace::{
+        ControlClick("Button2", "A")
+        Sleep 99
+        Send "{Enter}"
     }
 #HotIf
 

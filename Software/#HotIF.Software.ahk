@@ -15,11 +15,18 @@ RegisterHelpInfo("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
 #HotIf
 
 
-RegisterSoftware(  "antimicrox" , "AntiMicroX" )
-RegisterPosition( "AntiMicroX" , Position(1234 , 1111) )
-RegisterPosition( "AntiMicroX__按键" , Position(1600 , 666) )
+RegisterSoftware("antimicrox" , "AntiMicroX")
+RegisterPosition("AntiMicroX" , Position(1234 , 1111))
+RegisterPosition("AntiMicroX__按键" , Position(1600 , 666))
 #HotIf CheckWindowActive("AntiMicroX__按键")
     $RWin::MoveWindowDefault()
+#HotIf
+
+
+RegisterSoftware( "dopus" , "ExplorerDO" )
+RegisterPosition( "ExplorerDO" , Position(2468 , 1357) )
+#HotIf CheckWindowActive("ExplorerDO")
+    
 #HotIf
 
 
