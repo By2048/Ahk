@@ -2,1007 +2,1010 @@
 ; https://docs.microsoft.com/en-us/windows/win32/controls/lvm-setcolumnwidth
 ; https://wiki.winehq.org/List_Of_Windows_Messages
 
-Message := {}
+Message := {
 
-Message.WM_NULL                        := 0x0000
-Message.WM_CREATE                      := 0x0001
-Message.WM_DESTROY                     := 0x0002
-Message.WM_MOVE                        := 0x0003
-Message.WM_SIZE                        := 0x0005
-Message.WM_ACTIVATE                    := 0x0006
-Message.WM_SETFOCUS                    := 0x0007
-Message.WM_KILLFOCUS                   := 0x0008
-Message.WM_ENABLE                      := 0x000a
-Message.WM_SETREDRAW                   := 0x000b
-Message.WM_SETTEXT                     := 0x000c
-Message.WM_GETTEXT                     := 0x000d
-Message.WM_GETTEXTLENGTH               := 0x000e
-Message.WM_PAINT                       := 0x000f
-Message.WM_CLOSE                       := 0x0010
-Message.WM_QUERYENDSESSION             := 0x0011
-Message.WM_QUIT                        := 0x0012
-Message.WM_QUERYOPEN                   := 0x0013
-Message.WM_ERASEBKGND                  := 0x0014
-Message.WM_SYSCOLORCHANGE              := 0x0015
-Message.WM_ENDSESSION                  := 0x0016
-Message.WM_SHOWWINDOW                  := 0x0018
-Message.WM_CTLCOLOR                    := 0x0019
-Message.WM_WININICHANGE                := 0x001a
-Message.WM_DEVMODECHANGE               := 0x001b
-Message.WM_ACTIVATEAPP                 := 0x001c
-Message.WM_FONTCHANGE                  := 0x001d
-Message.WM_TIMECHANGE                  := 0x001e
-Message.WM_CANCELMODE                  := 0x001f
-Message.WM_SETCURSOR                   := 0x0020
-Message.WM_MOUSEACTIVATE               := 0x0021
-Message.WM_CHILDACTIVATE               := 0x0022
-Message.WM_QUEUESYNC                   := 0x0023
-Message.WM_GETMINMAXINFO               := 0x0024
-Message.WM_PAINTICON                   := 0x0026
-Message.WM_ICONERASEBKGND              := 0x0027
-Message.WM_NEXTDLGCTL                  := 0x0028
-Message.WM_SPOOLERSTATUS               := 0x002a
-Message.WM_DRAWITEM                    := 0x002b
-Message.WM_MEASUREITEM                 := 0x002c
-Message.WM_DELETEITEM                  := 0x002d
-Message.WM_VKEYTOITEM                  := 0x002e
-Message.WM_CHARTOITEM                  := 0x002f
-Message.WM_SETFONT                     := 0x0030
-Message.WM_GETFONT                     := 0x0031
-Message.WM_SETHOTKEY                   := 0x0032
-Message.WM_GETHOTKEY                   := 0x0033
-Message.WM_QUERYDRAGICON               := 0x0037
-Message.WM_COMPAREITEM                 := 0x0039
-Message.WM_GETOBJECT                   := 0x003d
-Message.WM_COMPACTING                  := 0x0041
-Message.WM_COMMNOTIFY                  := 0x0044
-Message.WM_WINDOWPOSCHANGING           := 0x0046
-Message.WM_WINDOWPOSCHANGED            := 0x0047
-Message.WM_POWER                       := 0x0048
-Message.WM_COPYGLOBALDATA              := 0x0049
-Message.WM_COPYDATA                    := 0x004a
-Message.WM_CANCELJOURNAL               := 0x004b
-Message.WM_NOTIFY                      := 0x004e
-Message.WM_INPUTLANGCHANGEREQUEST      := 0x0050
-Message.WM_INPUTLANGCHANGE             := 0x0051
-Message.WM_TCARD                       := 0x0052
-Message.WM_HELP                        := 0x0053
-Message.WM_USERCHANGED                 := 0x0054
-Message.WM_NOTIFYFORMAT                := 0x0055
-Message.WM_CONTEXTMENU                 := 0x007b
-Message.WM_STYLECHANGING               := 0x007c
-Message.WM_STYLECHANGED                := 0x007d
-Message.WM_DISPLAYCHANGE               := 0x007e
-Message.WM_GETICON                     := 0x007f
-Message.WM_SETICON                     := 0x0080
-Message.WM_NCCREATE                    := 0x0081
-Message.WM_NCDESTROY                   := 0x0082
-Message.WM_NCCALCSIZE                  := 0x0083
-Message.WM_NCHITTEST                   := 0x0084
-Message.WM_NCPAINT                     := 0x0085
-Message.WM_NCACTIVATE                  := 0x0086
-Message.WM_GETDLGCODE                  := 0x0087
-Message.WM_SYNCPAINT                   := 0x0088
-Message.WM_NCMOUSEMOVE                 := 0x00a0
-Message.WM_NCLBUTTONDOWN               := 0x00a1
-Message.WM_NCLBUTTONUP                 := 0x00a2
-Message.WM_NCLBUTTONDBLCLK             := 0x00a3
-Message.WM_NCRBUTTONDOWN               := 0x00a4
-Message.WM_NCRBUTTONUP                 := 0x00a5
-Message.WM_NCRBUTTONDBLCLK             := 0x00a6
-Message.WM_NCMBUTTONDOWN               := 0x00a7
-Message.WM_NCMBUTTONUP                 := 0x00a8
-Message.WM_NCMBUTTONDBLCLK             := 0x00a9
-Message.WM_NCXBUTTONDOWN               := 0x00ab
-Message.WM_NCXBUTTONUP                 := 0x00ac
-Message.WM_NCXBUTTONDBLCLK             := 0x00ad
-Message.EM_GETSEL                      := 0x00b0
-Message.EM_SETSEL                      := 0x00b1
-Message.EM_GETRECT                     := 0x00b2
-Message.EM_SETRECT                     := 0x00b3
-Message.EM_SETRECTNP                   := 0x00b4
-Message.EM_SCROLL                      := 0x00b5
-Message.EM_LINESCROLL                  := 0x00b6
-Message.EM_SCROLLCARET                 := 0x00b7
-Message.EM_GETMODIFY                   := 0x00b8
-Message.EM_SETMODIFY                   := 0x00b9
-Message.EM_GETLINECOUNT                := 0x00ba
-Message.EM_LINEINDEX                   := 0x00bb
-Message.EM_SETHANDLE                   := 0x00bc
-Message.EM_GETHANDLE                   := 0x00bd
-Message.EM_GETTHUMB                    := 0x00be
-Message.EM_LINELENGTH                  := 0x00c1
-Message.EM_REPLACESEL                  := 0x00c2
-Message.EM_SETFONT                     := 0x00c3
-Message.EM_GETLINE                     := 0x00c4
-Message.EM_LIMITTEXT                   := 0x00c5
-Message.EM_SETLIMITTEXT                := 0x00c5
-Message.EM_CANUNDO                     := 0x00c6
-Message.EM_UNDO                        := 0x00c7
-Message.EM_FMTLINES                    := 0x00c8
-Message.EM_LINEFROMCHAR                := 0x00c9
-Message.EM_SETWORDBREAK                := 0x00ca
-Message.EM_SETTABSTOPS                 := 0x00cb
-Message.EM_SETPASSWORDCHAR             := 0x00cc
-Message.EM_EMPTYUNDOBUFFER             := 0x00cd
-Message.EM_GETFIRSTVISIBLELINE         := 0x00ce
-Message.EM_SETREADONLY                 := 0x00cf
-Message.EM_SETWORDBREAKPROC            := 0x00d0
-Message.EM_GETWORDBREAKPROC            := 0x00d1
-Message.EM_GETPASSWORDCHAR             := 0x00d2
-Message.EM_SETMARGINS                  := 0x00d3
-Message.EM_GETMARGINS                  := 0x00d4
-Message.EM_GETLIMITTEXT                := 0x00d5
-Message.EM_POSFROMCHAR                 := 0x00d6
-Message.EM_CHARFROMPOS                 := 0x00d7
-Message.EM_SETIMESTATUS                := 0x00d8
-Message.EM_GETIMESTATUS                := 0x00d9
-Message.SBM_SETPOS                     := 0x00e0
-Message.SBM_GETPOS                     := 0x00e1
-Message.SBM_SETRANGE                   := 0x00e2
-Message.SBM_GETRANGE                   := 0x00e3
-Message.SBM_ENABLE_ARROWS              := 0x00e4
-Message.SBM_SETRANGEREDRAW             := 0x00e6
-Message.SBM_SETSCROLLINFO              := 0x00e9
-Message.SBM_GETSCROLLINFO              := 0x00ea
-Message.SBM_GETSCROLLBARINFO           := 0x00eb
-Message.BM_GETCHECK                    := 0x00f0
-Message.BM_SETCHECK                    := 0x00f1
-Message.BM_GETSTATE                    := 0x00f2
-Message.BM_SETSTATE                    := 0x00f3
-Message.BM_SETSTYLE                    := 0x00f4
-Message.BM_CLICK                       := 0x00f5
-Message.BM_GETIMAGE                    := 0x00f6
-Message.BM_SETIMAGE                    := 0x00f7
-Message.BM_SETDONTCLICK                := 0x00f8
-Message.WM_INPUT                       := 0x00ff
-Message.WM_KEYDOWN                     := 0x0100
-Message.WM_KEYFIRST                    := 0x0100
-Message.WM_KEYUP                       := 0x0101
-Message.WM_CHAR                        := 0x0102
-Message.WM_DEADCHAR                    := 0x0103
-Message.WM_SYSKEYDOWN                  := 0x0104
-Message.WM_SYSKEYUP                    := 0x0105
-Message.WM_SYSCHAR                     := 0x0106
-Message.WM_SYSDEADCHAR                 := 0x0107
-Message.WM_KEYLAST                     := 0x0109
-Message.WM_UNICHAR                     := 0x0109
-Message.WM_WNT_CONVERTREQUESTEX        := 0x0109
-Message.WM_CONVERTREQUEST              := 0x010a
-Message.WM_CONVERTRESULT               := 0x010b
-Message.WM_INTERIM                     := 0x010c
-Message.WM_IME_STARTCOMPOSITION        := 0x010d
-Message.WM_IME_ENDCOMPOSITION          := 0x010e
-Message.WM_IME_COMPOSITION             := 0x010f
-Message.WM_IME_KEYLAST                 := 0x010f
-Message.WM_INITDIALOG                  := 0x0110
-Message.WM_COMMAND                     := 0x0111
-Message.WM_SYSCOMMAND                  := 0x0112
-Message.WM_TIMER                       := 0x0113
-Message.WM_HSCROLL                     := 0x0114
-Message.WM_VSCROLL                     := 0x0115
-Message.WM_INITMENU                    := 0x0116
-Message.WM_INITMENUPOPUP               := 0x0117
-Message.WM_SYSTIMER                    := 0x0118
-Message.WM_MENUSELECT                  := 0x011f
-Message.WM_MENUCHAR                    := 0x0120
-Message.WM_ENTERIDLE                   := 0x0121
-Message.WM_MENURBUTTONUP               := 0x0122
-Message.WM_MENUDRAG                    := 0x0123
-Message.WM_MENUGETOBJECT               := 0x0124
-Message.WM_UNINITMENUPOPUP             := 0x0125
-Message.WM_MENUCOMMAND                 := 0x0126
-Message.WM_CHANGEUISTATE               := 0x0127
-Message.WM_UPDATEUISTATE               := 0x0128
-Message.WM_QUERYUISTATE                := 0x0129
-Message.WM_LBTRACKPOINT                := 0x0131
-Message.WM_CTLCOLORMSGBOX              := 0x0132
-Message.WM_CTLCOLOREDIT                := 0x0133
-Message.WM_CTLCOLORLISTBOX             := 0x0134
-Message.WM_CTLCOLORBTN                 := 0x0135
-Message.WM_CTLCOLORDLG                 := 0x0136
-Message.WM_CTLCOLORSCROLLBAR           := 0x0137
-Message.WM_CTLCOLORSTATIC              := 0x0138
-Message.WM_MOUSEFIRST                  := 0x0200
-Message.WM_MOUSEMOVE                   := 0x0200
-Message.WM_LBUTTONDOWN                 := 0x0201
-Message.WM_LBUTTONUP                   := 0x0202
-Message.WM_LBUTTONDBLCLK               := 0x0203
-Message.WM_RBUTTONDOWN                 := 0x0204
-Message.WM_RBUTTONUP                   := 0x0205
-Message.WM_RBUTTONDBLCLK               := 0x0206
-Message.WM_MBUTTONDOWN                 := 0x0207
-Message.WM_MBUTTONUP                   := 0x0208
-Message.WM_MBUTTONDBLCLK               := 0x0209
-Message.WM_MOUSELAST                   := 0x0209
-Message.WM_MOUSEWHEEL                  := 0x020a
-Message.WM_XBUTTONDOWN                 := 0x020b
-Message.WM_XBUTTONUP                   := 0x020c
-Message.WM_XBUTTONDBLCLK               := 0x020d
-Message.WM_MOUSEHWHEEL                 := 0x020e
-Message.WM_PARENTNOTIFY                := 0x0210
-Message.WM_ENTERMENULOOP               := 0x0211
-Message.WM_EXITMENULOOP                := 0x0212
-Message.WM_NEXTMENU                    := 0x0213
-Message.WM_SIZING                      := 0x0214
-Message.WM_CAPTURECHANGED              := 0x0215
-Message.WM_MOVING                      := 0x0216
-Message.WM_POWERBROADCAST              := 0x0218
-Message.WM_DEVICECHANGE                := 0x0219
-Message.WM_MDICREATE                   := 0x0220
-Message.WM_MDIDESTROY                  := 0x0221
-Message.WM_MDIACTIVATE                 := 0x0222
-Message.WM_MDIRESTORE                  := 0x0223
-Message.WM_MDINEXT                     := 0x0224
-Message.WM_MDIMAXIMIZE                 := 0x0225
-Message.WM_MDITILE                     := 0x0226
-Message.WM_MDICASCADE                  := 0x0227
-Message.WM_MDIICONARRANGE              := 0x0228
-Message.WM_MDIGETACTIVE                := 0x0229
-Message.WM_MDISETMENU                  := 0x0230
-Message.WM_ENTERSIZEMOVE               := 0x0231
-Message.WM_EXITSIZEMOVE                := 0x0232
-Message.WM_DROPFILES                   := 0x0233
-Message.WM_MDIREFRESHMENU              := 0x0234
-Message.WM_IME_REPORT                  := 0x0280
-Message.WM_IME_SETCONTEXT              := 0x0281
-Message.WM_IME_NOTIFY                  := 0x0282
-Message.WM_IME_CONTROL                 := 0x0283
-Message.WM_IME_COMPOSITIONFULL         := 0x0284
-Message.WM_IME_SELECT                  := 0x0285
-Message.WM_IME_CHAR                    := 0x0286
-Message.WM_IME_REQUEST                 := 0x0288
-Message.WM_IMEKEYDOWN                  := 0x0290
-Message.WM_IME_KEYDOWN                 := 0x0290
-Message.WM_IMEKEYUP                    := 0x0291
-Message.WM_IME_KEYUP                   := 0x0291
-Message.WM_NCMOUSEHOVER                := 0x02a0
-Message.WM_MOUSEHOVER                  := 0x02a1
-Message.WM_NCMOUSELEAVE                := 0x02a2
-Message.WM_MOUSELEAVE                  := 0x02a3
-Message.WM_CUT                         := 0x0300
-Message.WM_COPY                        := 0x0301
-Message.WM_PASTE                       := 0x0302
-Message.WM_CLEAR                       := 0x0303
-Message.WM_UNDO                        := 0x0304
-Message.WM_RENDERFORMAT                := 0x0305
-Message.WM_RENDERALLFORMATS            := 0x0306
-Message.WM_DESTROYCLIPBOARD            := 0x0307
-Message.WM_DRAWCLIPBOARD               := 0x0308
-Message.WM_PAINTCLIPBOARD              := 0x0309
-Message.WM_VSCROLLCLIPBOARD            := 0x030a
-Message.WM_SIZECLIPBOARD               := 0x030b
-Message.WM_ASKCBFORMATNAME             := 0x030c
-Message.WM_CHANGECBCHAIN               := 0x030d
-Message.WM_HSCROLLCLIPBOARD            := 0x030e
-Message.WM_QUERYNEWPALETTE             := 0x030f
-Message.WM_PALETTEISCHANGING           := 0x0310
-Message.WM_PALETTECHANGED              := 0x0311
-Message.WM_HOTKEY                      := 0x0312
-Message.WM_PRINT                       := 0x0317
-Message.WM_PRINTCLIENT                 := 0x0318
-Message.WM_APPCOMMAND                  := 0x0319
-Message.WM_HANDHELDFIRST               := 0x0358
-Message.WM_HANDHELDLAST                := 0x035f
-Message.WM_AFXFIRST                    := 0x0360
-Message.WM_AFXLAST                     := 0x037f
-Message.WM_PENWINFIRST                 := 0x0380
-Message.WM_RCRESULT                    := 0x0381
-Message.WM_HOOKRCRESULT                := 0x0382
-Message.WM_GLOBALRCCHANGE              := 0x0383
-Message.WM_PENMISCINFO                 := 0x0383
-Message.WM_SKB                         := 0x0384
-Message.WM_HEDITCTL                    := 0x0385
-Message.WM_PENCTL                      := 0x0385
-Message.WM_PENMISC                     := 0x0386
-Message.WM_CTLINIT                     := 0x0387
-Message.WM_PENEVENT                    := 0x0388
-Message.WM_PENWINLAST                  := 0x038f
-Message.DDM_SETFMT                     := 0x0400
-Message.DM_GETDEFID                    := 0x0400
-Message.NIN_SELECT                     := 0x0400
-Message.TBM_GETPOS                     := 0x0400
-Message.WM_PSD_PAGESETUPDLG            := 0x0400
-Message.WM_USER                        := 0x0400
-Message.CBEM_INSERTITEMA               := 0x0401
-Message.DDM_DRAW                       := 0x0401
-Message.DM_SETDEFID                    := 0x0401
-Message.HKM_SETHOTKEY                  := 0x0401
-Message.PBM_SETRANGE                   := 0x0401
-Message.RB_INSERTBANDA                 := 0x0401
-Message.SB_SETTEXTA                    := 0x0401
-Message.TB_ENABLEBUTTON                := 0x0401
-Message.TBM_GETRANGEMIN                := 0x0401
-Message.TTM_ACTIVATE                   := 0x0401
-Message.WM_CHOOSEFONT_GETLOGFONT       := 0x0401
-Message.WM_PSD_FULLPAGERECT            := 0x0401
-Message.CBEM_SETIMAGELIST              := 0x0402
-Message.DDM_CLOSE                      := 0x0402
-Message.DM_REPOSITION                  := 0x0402
-Message.HKM_GETHOTKEY                  := 0x0402
-Message.PBM_SETPOS                     := 0x0402
-Message.RB_DELETEBAND                  := 0x0402
-Message.SB_GETTEXTA                    := 0x0402
-Message.TB_CHECKBUTTON                 := 0x0402
-Message.TBM_GETRANGEMAX                := 0x0402
-Message.WM_PSD_MINMARGINRECT           := 0x0402
-Message.CBEM_GETIMAGELIST              := 0x0403
-Message.DDM_BEGIN                      := 0x0403
-Message.HKM_SETRULES                   := 0x0403
-Message.PBM_DELTAPOS                   := 0x0403
-Message.RB_GETBARINFO                  := 0x0403
-Message.SB_GETTEXTLENGTHA              := 0x0403
-Message.TBM_GETTIC                     := 0x0403
-Message.TB_PRESSBUTTON                 := 0x0403
-Message.TTM_SETDELAYTIME               := 0x0403
-Message.WM_PSD_MARGINRECT              := 0x0403
-Message.CBEM_GETITEMA                  := 0x0404
-Message.DDM_END                        := 0x0404
-Message.PBM_SETSTEP                    := 0x0404
-Message.RB_SETBARINFO                  := 0x0404
-Message.SB_SETPARTS                    := 0x0404
-Message.TB_HIDEBUTTON                  := 0x0404
-Message.TBM_SETTIC                     := 0x0404
-Message.TTM_ADDTOOLA                   := 0x0404
-Message.WM_PSD_GREEKTEXTRECT           := 0x0404
-Message.CBEM_SETITEMA                  := 0x0405
-Message.PBM_STEPIT                     := 0x0405
-Message.TB_INDETERMINATE               := 0x0405
-Message.TBM_SETPOS                     := 0x0405
-Message.TTM_DELTOOLA                   := 0x0405
-Message.WM_PSD_ENVSTAMPRECT            := 0x0405
-Message.CBEM_GETCOMBOCONTROL           := 0x0406
-Message.PBM_SETRANGE32                 := 0x0406
-Message.RB_SETBANDINFOA                := 0x0406
-Message.SB_GETPARTS                    := 0x0406
-Message.TB_MARKBUTTON                  := 0x0406
-Message.TBM_SETRANGE                   := 0x0406
-Message.TTM_NEWTOOLRECTA               := 0x0406
-Message.WM_PSD_YAFULLPAGERECT          := 0x0406
-Message.CBEM_GETEDITCONTROL            := 0x0407
-Message.PBM_GETRANGE                   := 0x0407
-Message.RB_SETPARENT                   := 0x0407
-Message.SB_GETBORDERS                  := 0x0407
-Message.TBM_SETRANGEMIN                := 0x0407
-Message.TTM_RELAYEVENT                 := 0x0407
-Message.CBEM_SETEXSTYLE                := 0x0408
-Message.PBM_GETPOS                     := 0x0408
-Message.RB_HITTEST                     := 0x0408
-Message.SB_SETMINHEIGHT                := 0x0408
-Message.TBM_SETRANGEMAX                := 0x0408
-Message.TTM_GETTOOLINFOA               := 0x0408
-Message.CBEM_GETEXSTYLE                := 0x0409
-Message.CBEM_GETEXTENDEDSTYLE          := 0x0409
-Message.PBM_SETBARCOLOR                := 0x0409
-Message.RB_GETRECT                     := 0x0409
-Message.SB_SIMPLE                      := 0x0409
-Message.TB_ISBUTTONENABLED             := 0x0409
-Message.TBM_CLEARTICS                  := 0x0409
-Message.TTM_SETTOOLINFOA               := 0x0409
-Message.CBEM_HASEDITCHANGED            := 0x040a
-Message.RB_INSERTBANDW                 := 0x040a
-Message.SB_GETRECT                     := 0x040a
-Message.TB_ISBUTTONCHECKED             := 0x040a
-Message.TBM_SETSEL                     := 0x040a
-Message.TTM_HITTESTA                   := 0x040a
-Message.WIZ_QUERYNUMPAGES              := 0x040a
-Message.CBEM_INSERTITEMW               := 0x040b
-Message.RB_SETBANDINFOW                := 0x040b
-Message.SB_SETTEXTW                    := 0x040b
-Message.TB_ISBUTTONPRESSED             := 0x040b
-Message.TBM_SETSELSTART                := 0x040b
-Message.TTM_GETTEXTA                   := 0x040b
-Message.WIZ_NEXT                       := 0x040b
-Message.CBEM_SETITEMW                  := 0x040c
-Message.RB_GETBANDCOUNT                := 0x040c
-Message.SB_GETTEXTLENGTHW              := 0x040c
-Message.TB_ISBUTTONHIDDEN              := 0x040c
-Message.TBM_SETSELEND                  := 0x040c
-Message.TTM_UPDATETIPTEXTA             := 0x040c
-Message.WIZ_PREV                       := 0x040c
-Message.CBEM_GETITEMW                  := 0x040d
-Message.RB_GETROWCOUNT                 := 0x040d
-Message.SB_GETTEXTW                    := 0x040d
-Message.TB_ISBUTTONINDETERMINATE       := 0x040d
-Message.TTM_GETTOOLCOUNT               := 0x040d
-Message.CBEM_SETEXTENDEDSTYLE          := 0x040e
-Message.RB_GETROWHEIGHT                := 0x040e
-Message.SB_ISSIMPLE                    := 0x040e
-Message.TB_ISBUTTONHIGHLIGHTED         := 0x040e
-Message.TBM_GETPTICS                   := 0x040e
-Message.TTM_ENUMTOOLSA                 := 0x040e
-Message.SB_SETICON                     := 0x040f
-Message.TBM_GETTICPOS                  := 0x040f
-Message.TTM_GETCURRENTTOOLA            := 0x040f
-Message.RB_IDTOINDEX                   := 0x0410
-Message.SB_SETTIPTEXTA                 := 0x0410
-Message.TBM_GETNUMTICS                 := 0x0410
-Message.TTM_WINDOWFROMPOINT            := 0x0410
-Message.RB_GETTOOLTIPS                 := 0x0411
-Message.SB_SETTIPTEXTW                 := 0x0411
-Message.TBM_GETSELSTART                := 0x0411
-Message.TB_SETSTATE                    := 0x0411
-Message.TTM_TRACKACTIVATE              := 0x0411
-Message.RB_SETTOOLTIPS                 := 0x0412
-Message.SB_GETTIPTEXTA                 := 0x0412
-Message.TB_GETSTATE                    := 0x0412
-Message.TBM_GETSELEND                  := 0x0412
-Message.TTM_TRACKPOSITION              := 0x0412
-Message.RB_SETBKCOLOR                  := 0x0413
-Message.SB_GETTIPTEXTW                 := 0x0413
-Message.TB_ADDBITMAP                   := 0x0413
-Message.TBM_CLEARSEL                   := 0x0413
-Message.TTM_SETTIPBKCOLOR              := 0x0413
-Message.RB_GETBKCOLOR                  := 0x0414
-Message.SB_GETICON                     := 0x0414
-Message.TB_ADDBUTTONSA                 := 0x0414
-Message.TBM_SETTICFREQ                 := 0x0414
-Message.TTM_SETTIPTEXTCOLOR            := 0x0414
-Message.RB_SETTEXTCOLOR                := 0x0415
-Message.TB_INSERTBUTTONA               := 0x0415
-Message.TBM_SETPAGESIZE                := 0x0415
-Message.TTM_GETDELAYTIME               := 0x0415
-Message.RB_GETTEXTCOLOR                := 0x0416
-Message.TB_DELETEBUTTON                := 0x0416
-Message.TBM_GETPAGESIZE                := 0x0416
-Message.TTM_GETTIPBKCOLOR              := 0x0416
-Message.RB_SIZETORECT                  := 0x0417
-Message.TB_GETBUTTON                   := 0x0417
-Message.TBM_SETLINESIZE                := 0x0417
-Message.TTM_GETTIPTEXTCOLOR            := 0x0417
-Message.RB_BEGINDRAG                   := 0x0418
-Message.TB_BUTTONCOUNT                 := 0x0418
-Message.TBM_GETLINESIZE                := 0x0418
-Message.TTM_SETMAXTIPWIDTH             := 0x0418
-Message.RB_ENDDRAG                     := 0x0419
-Message.TB_COMMANDTOINDEX              := 0x0419
-Message.TBM_GETTHUMBRECT               := 0x0419
-Message.TTM_GETMAXTIPWIDTH             := 0x0419
-Message.RB_DRAGMOVE                    := 0x041a
-Message.TBM_GETCHANNELRECT             := 0x041a
-Message.TB_SAVERESTOREA                := 0x041a
-Message.TTM_SETMARGIN                  := 0x041a
-Message.RB_GETBARHEIGHT                := 0x041b
-Message.TB_CUSTOMIZE                   := 0x041b
-Message.TBM_SETTHUMBLENGTH             := 0x041b
-Message.TTM_GETMARGIN                  := 0x041b
-Message.RB_GETBANDINFOW                := 0x041c
-Message.TB_ADDSTRINGA                  := 0x041c
-Message.TBM_GETTHUMBLENGTH             := 0x041c
-Message.TTM_POP                        := 0x041c
-Message.RB_GETBANDINFOA                := 0x041d
-Message.TB_GETITEMRECT                 := 0x041d
-Message.TBM_SETTOOLTIPS                := 0x041d
-Message.TTM_UPDATE                     := 0x041d
-Message.RB_MINIMIZEBAND                := 0x041e
-Message.TB_BUTTONSTRUCTSIZE            := 0x041e
-Message.TBM_GETTOOLTIPS                := 0x041e
-Message.TTM_GETBUBBLESIZE              := 0x041e
-Message.RB_MAXIMIZEBAND                := 0x041f
-Message.TBM_SETTIPSIDE                 := 0x041f
-Message.TB_SETBUTTONSIZE               := 0x041f
-Message.TTM_ADJUSTRECT                 := 0x041f
-Message.TBM_SETBUDDY                   := 0x0420
-Message.TB_SETBITMAPSIZE               := 0x0420
-Message.TTM_SETTITLEA                  := 0x0420
-Message.MSG_FTS_JUMP_VA                := 0x0421
-Message.TB_AUTOSIZE                    := 0x0421
-Message.TBM_GETBUDDY                   := 0x0421
-Message.TTM_SETTITLEW                  := 0x0421
-Message.RB_GETBANDBORDERS              := 0x0422
-Message.MSG_FTS_JUMP_QWORD             := 0x0423
-Message.RB_SHOWBAND                    := 0x0423
-Message.TB_GETTOOLTIPS                 := 0x0423
-Message.MSG_REINDEX_REQUEST            := 0x0424
-Message.TB_SETTOOLTIPS                 := 0x0424
-Message.MSG_FTS_WHERE_IS_IT            := 0x0425
-Message.RB_SETPALETTE                  := 0x0425
-Message.TB_SETPARENT                   := 0x0425
-Message.RB_GETPALETTE                  := 0x0426
-Message.RB_MOVEBAND                    := 0x0427
-Message.TB_SETROWS                     := 0x0427
-Message.TB_GETROWS                     := 0x0428
-Message.TB_GETBITMAPFLAGS              := 0x0429
-Message.TB_SETCMDID                    := 0x042a
-Message.RB_PUSHCHEVRON                 := 0x042b
-Message.TB_CHANGEBITMAP                := 0x042b
-Message.TB_GETBITMAP                   := 0x042c
-Message.MSG_GET_DEFFONT                := 0x042d
-Message.TB_GETBUTTONTEXTA              := 0x042d
-Message.TB_REPLACEBITMAP               := 0x042e
-Message.TB_SETINDENT                   := 0x042f
-Message.TB_SETIMAGELIST                := 0x0430
-Message.TB_GETIMAGELIST                := 0x0431
-Message.TB_LOADIMAGES                  := 0x0432
-Message.EM_CANPASTE                    := 0x0432
-Message.TTM_ADDTOOLW                   := 0x0432
-Message.EM_DISPLAYBAND                 := 0x0433
-Message.TB_GETRECT                     := 0x0433
-Message.TTM_DELTOOLW                   := 0x0433
-Message.EM_EXGETSEL                    := 0x0434
-Message.TB_SETHOTIMAGELIST             := 0x0434
-Message.TTM_NEWTOOLRECTW               := 0x0434
-Message.EM_EXLIMITTEXT                 := 0x0435
-Message.TB_GETHOTIMAGELIST             := 0x0435
-Message.TTM_GETTOOLINFOW               := 0x0435
-Message.EM_EXLINEFROMCHAR              := 0x0436
-Message.TB_SETDISABLEDIMAGELIST        := 0x0436
-Message.TTM_SETTOOLINFOW               := 0x0436
-Message.EM_EXSETSEL                    := 0x0437
-Message.TB_GETDISABLEDIMAGELIST        := 0x0437
-Message.TTM_HITTESTW                   := 0x0437
-Message.EM_FINDTEXT                    := 0x0438
-Message.TB_SETSTYLE                    := 0x0438
-Message.TTM_GETTEXTW                   := 0x0438
-Message.EM_FORMATRANGE                 := 0x0439
-Message.TB_GETSTYLE                    := 0x0439
-Message.TTM_UPDATETIPTEXTW             := 0x0439
-Message.EM_GETCHARFORMAT               := 0x043a
-Message.TB_GETBUTTONSIZE               := 0x043a
-Message.TTM_ENUMTOOLSW                 := 0x043a
-Message.EM_GETEVENTMASK                := 0x043b
-Message.TB_SETBUTTONWIDTH              := 0x043b
-Message.TTM_GETCURRENTTOOLW            := 0x043b
-Message.EM_GETOLEINTERFACE             := 0x043c
-Message.TB_SETMAXTEXTROWS              := 0x043c
-Message.EM_GETPARAFORMAT               := 0x043d
-Message.TB_GETTEXTROWS                 := 0x043d
-Message.EM_GETSELTEXT                  := 0x043e
-Message.TB_GETOBJECT                   := 0x043e
-Message.EM_HIDESELECTION               := 0x043f
-Message.TB_GETBUTTONINFOW              := 0x043f
-Message.EM_PASTESPECIAL                := 0x0440
-Message.TB_SETBUTTONINFOW              := 0x0440
-Message.EM_REQUESTRESIZE               := 0x0441
-Message.TB_GETBUTTONINFOA              := 0x0441
-Message.EM_SELECTIONTYPE               := 0x0442
-Message.TB_SETBUTTONINFOA              := 0x0442
-Message.EM_SETBKGNDCOLOR               := 0x0443
-Message.TB_INSERTBUTTONW               := 0x0443
-Message.EM_SETCHARFORMAT               := 0x0444
-Message.TB_ADDBUTTONSW                 := 0x0444
-Message.EM_SETEVENTMASK                := 0x0445
-Message.TB_HITTEST                     := 0x0445
-Message.EM_SETOLECALLBACK              := 0x0446
-Message.TB_SETDRAWTEXTFLAGS            := 0x0446
-Message.EM_SETPARAFORMAT               := 0x0447
-Message.TB_GETHOTITEM                  := 0x0447
-Message.EM_SETTARGETDEVICE             := 0x0448
-Message.TB_SETHOTITEM                  := 0x0448
-Message.EM_STREAMIN                    := 0x0449
-Message.TB_SETANCHORHIGHLIGHT          := 0x0449
-Message.EM_STREAMOUT                   := 0x044a
-Message.TB_GETANCHORHIGHLIGHT          := 0x044a
-Message.EM_GETTEXTRANGE                := 0x044b
-Message.TB_GETBUTTONTEXTW              := 0x044b
-Message.EM_FINDWORDBREAK               := 0x044c
-Message.TB_SAVERESTOREW                := 0x044c
-Message.EM_SETOPTIONS                  := 0x044d
-Message.TB_ADDSTRINGW                  := 0x044d
-Message.EM_GETOPTIONS                  := 0x044e
-Message.TB_MAPACCELERATORA             := 0x044e
-Message.EM_FINDTEXTEX                  := 0x044f
-Message.TB_GETINSERTMARK               := 0x044f
-Message.EM_GETWORDBREAKPROCEX          := 0x0450
-Message.TB_SETINSERTMARK               := 0x0450
-Message.EM_SETWORDBREAKPROCEX          := 0x0451
-Message.TB_INSERTMARKHITTEST           := 0x0451
-Message.EM_SETUNDOLIMIT                := 0x0452
-Message.TB_MOVEBUTTON                  := 0x0452
-Message.TB_GETMAXSIZE                  := 0x0453
-Message.EM_REDO                        := 0x0454
-Message.TB_SETEXTENDEDSTYLE            := 0x0454
-Message.EM_CANREDO                     := 0x0455
-Message.TB_GETEXTENDEDSTYLE            := 0x0455
-Message.EM_GETUNDONAME                 := 0x0456
-Message.TB_GETPADDING                  := 0x0456
-Message.EM_GETREDONAME                 := 0x0457
-Message.TB_SETPADDING                  := 0x0457
-Message.EM_STOPGROUPTYPING             := 0x0458
-Message.TB_SETINSERTMARKCOLOR          := 0x0458
-Message.EM_SETTEXTMODE                 := 0x0459
-Message.TB_GETINSERTMARKCOLOR          := 0x0459
-Message.EM_GETTEXTMODE                 := 0x045a
-Message.TB_MAPACCELERATORW             := 0x045a
-Message.EM_AUTOURLDETECT               := 0x045b
-Message.TB_GETSTRINGW                  := 0x045b
-Message.EM_GETAUTOURLDETECT            := 0x045c
-Message.TB_GETSTRINGA                  := 0x045c
-Message.EM_SETPALETTE                  := 0x045d
-Message.EM_GETTEXTEX                   := 0x045e
-Message.EM_GETTEXTLENGTHEX             := 0x045f
-Message.EM_SHOWSCROLLBAR               := 0x0460
-Message.EM_SETTEXTEX                   := 0x0461
-Message.TAPI_REPLY                     := 0x0463
-Message.ACM_OPENA                      := 0x0464
-Message.BFFM_SETSTATUSTEXTA            := 0x0464
-Message.CDM_FIRST                      := 0x0464
-Message.CDM_GETSPEC                    := 0x0464
-Message.EM_SETPUNCTUATION              := 0x0464
-Message.IPM_CLEARADDRESS               := 0x0464
-Message.WM_CAP_UNICODE_START           := 0x0464
-Message.ACM_PLAY                       := 0x0465
-Message.BFFM_ENABLEOK                  := 0x0465
-Message.CDM_GETFILEPATH                := 0x0465
-Message.EM_GETPUNCTUATION              := 0x0465
-Message.IPM_SETADDRESS                 := 0x0465
-Message.PSM_SETCURSEL                  := 0x0465
-Message.UDM_SETRANGE                   := 0x0465
-Message.WM_CHOOSEFONT_SETLOGFONT       := 0x0465
-Message.ACM_STOP                       := 0x0466
-Message.BFFM_SETSELECTIONA             := 0x0466
-Message.CDM_GETFOLDERPATH              := 0x0466
-Message.EM_SETWORDWRAPMODE             := 0x0466
-Message.IPM_GETADDRESS                 := 0x0466
-Message.PSM_REMOVEPAGE                 := 0x0466
-Message.UDM_GETRANGE                   := 0x0466
-Message.WM_CAP_SET_CALLBACK_ERRORW     := 0x0466
-Message.WM_CHOOSEFONT_SETFLAGS         := 0x0466
-Message.ACM_OPENW                      := 0x0467
-Message.BFFM_SETSELECTIONW             := 0x0467
-Message.CDM_GETFOLDERIDLIST            := 0x0467
-Message.EM_GETWORDWRAPMODE             := 0x0467
-Message.IPM_SETRANGE                   := 0x0467
-Message.PSM_ADDPAGE                    := 0x0467
-Message.UDM_SETPOS                     := 0x0467
-Message.WM_CAP_SET_CALLBACK_STATUSW    := 0x0467
-Message.BFFM_SETSTATUSTEXTW            := 0x0468
-Message.CDM_SETCONTROLTEXT             := 0x0468
-Message.EM_SETIMECOLOR                 := 0x0468
-Message.IPM_SETFOCUS                   := 0x0468
-Message.PSM_CHANGED                    := 0x0468
-Message.UDM_GETPOS                     := 0x0468
-Message.CDM_HIDECONTROL                := 0x0469
-Message.EM_GETIMECOLOR                 := 0x0469
-Message.IPM_ISBLANK                    := 0x0469
-Message.PSM_RESTARTWINDOWS             := 0x0469
-Message.UDM_SETBUDDY                   := 0x0469
-Message.CDM_SETDEFEXT                  := 0x046a
-Message.EM_SETIMEOPTIONS               := 0x046a
-Message.PSM_REBOOTSYSTEM               := 0x046a
-Message.UDM_GETBUDDY                   := 0x046a
-Message.EM_GETIMEOPTIONS               := 0x046b
-Message.PSM_CANCELTOCLOSE              := 0x046b
-Message.UDM_SETACCEL                   := 0x046b
-Message.EM_CONVPOSITION                := 0x046c
-Message.EM_CONVPOSITION                := 0x046c
-Message.PSM_QUERYSIBLINGS              := 0x046c
-Message.UDM_GETACCEL                   := 0x046c
-Message.MCIWNDM_GETZOOM                := 0x046d
-Message.PSM_UNCHANGED                  := 0x046d
-Message.UDM_SETBASE                    := 0x046d
-Message.PSM_APPLY                      := 0x046e
-Message.UDM_GETBASE                    := 0x046e
-Message.PSM_SETTITLEA                  := 0x046f
-Message.UDM_SETRANGE32                 := 0x046f
-Message.PSM_SETWIZBUTTONS              := 0x0470
-Message.UDM_GETRANGE32                 := 0x0470
-Message.WM_CAP_DRIVER_GET_NAMEW        := 0x0470
-Message.PSM_PRESSBUTTON                := 0x0471
-Message.UDM_SETPOS32                   := 0x0471
-Message.WM_CAP_DRIVER_GET_VERSIONW     := 0x0471
-Message.PSM_SETCURSELID                := 0x0472
-Message.UDM_GETPOS32                   := 0x0472
-Message.PSM_SETFINISHTEXTA             := 0x0473
-Message.PSM_GETTABCONTROL              := 0x0474
-Message.PSM_ISDIALOGMESSAGE            := 0x0475
-Message.MCIWNDM_REALIZE                := 0x0476
-Message.PSM_GETCURRENTPAGEHWND         := 0x0476
-Message.MCIWNDM_SETTIMEFORMATA         := 0x0477
-Message.PSM_INSERTPAGE                 := 0x0477
-Message.EM_SETLANGOPTIONS              := 0x0478
-Message.MCIWNDM_GETTIMEFORMATA         := 0x0478
-Message.PSM_SETTITLEW                  := 0x0478
-Message.WM_CAP_FILE_SET_CAPTURE_FILEW  := 0x0478
-Message.EM_GETLANGOPTIONS              := 0x0479
-Message.MCIWNDM_VALIDATEMEDIA          := 0x0479
-Message.PSM_SETFINISHTEXTW             := 0x0479
-Message.WM_CAP_FILE_GET_CAPTURE_FILEW  := 0x0479
-Message.EM_GETIMECOMPMODE              := 0x047a
-Message.EM_FINDTEXTW                   := 0x047b
-Message.MCIWNDM_PLAYTO                 := 0x047b
-Message.WM_CAP_FILE_SAVEASW            := 0x047b
-Message.EM_FINDTEXTEXW                 := 0x047c
-Message.MCIWNDM_GETFILENAMEA           := 0x047c
-Message.EM_RECONVERSION                := 0x047d
-Message.MCIWNDM_GETDEVICEA             := 0x047d
-Message.PSM_SETHEADERTITLEA            := 0x047d
-Message.WM_CAP_FILE_SAVEDIBW           := 0x047d
-Message.EM_SETIMEMODEBIAS              := 0x047e
-Message.MCIWNDM_GETPALETTE             := 0x047e
-Message.PSM_SETHEADERTITLEW            := 0x047e
-Message.EM_GETIMEMODEBIAS              := 0x047f
-Message.MCIWNDM_SETPALETTE             := 0x047f
-Message.PSM_SETHEADERSUBTITLEA         := 0x047f
-Message.MCIWNDM_GETERRORA              := 0x0480
-Message.PSM_SETHEADERSUBTITLEW         := 0x0480
-Message.PSM_HWNDTOINDEX                := 0x0481
-Message.PSM_INDEXTOHWND                := 0x0482
-Message.MCIWNDM_SETINACTIVETIMER       := 0x0483
-Message.PSM_PAGETOINDEX                := 0x0483
-Message.PSM_INDEXTOPAGE                := 0x0484
-Message.DL_BEGINDRAG                   := 0x0485
-Message.MCIWNDM_GETINACTIVETIMER       := 0x0485
-Message.PSM_IDTOINDEX                  := 0x0485
-Message.DL_DRAGGING                    := 0x0486
-Message.PSM_INDEXTOID                  := 0x0486
-Message.DL_DROPPED                     := 0x0487
-Message.PSM_GETRESULT                  := 0x0487
-Message.DL_CANCELDRAG                  := 0x0488
-Message.PSM_RECALCPAGESIZES            := 0x0488
-Message.MCIWNDM_GET_SOURCE             := 0x048c
-Message.MCIWNDM_PUT_SOURCE             := 0x048d
-Message.MCIWNDM_GET_DEST               := 0x048e
-Message.MCIWNDM_PUT_DEST               := 0x048f
-Message.MCIWNDM_CAN_PLAY               := 0x0490
-Message.MCIWNDM_CAN_WINDOW             := 0x0491
-Message.MCIWNDM_CAN_RECORD             := 0x0492
-Message.MCIWNDM_CAN_SAVE               := 0x0493
-Message.MCIWNDM_CAN_EJECT              := 0x0494
-Message.MCIWNDM_CAN_CONFIG             := 0x0495
-Message.IE_GETINK                      := 0x0496
-Message.IE_MSGFIRST                    := 0x0496
-Message.MCIWNDM_PALETTEKICK            := 0x0496
-Message.IE_SETINK                      := 0x0497
-Message.IE_GETPENTIP                   := 0x0498
-Message.IE_SETPENTIP                   := 0x0499
-Message.IE_GETERASERTIP                := 0x049a
-Message.IE_SETERASERTIP                := 0x049b
-Message.IE_GETBKGND                    := 0x049c
-Message.IE_SETBKGND                    := 0x049d
-Message.IE_GETGRIDORIGIN               := 0x049e
-Message.IE_SETGRIDORIGIN               := 0x049f
-Message.IE_GETGRIDPEN                  := 0x04a0
-Message.IE_SETGRIDPEN                  := 0x04a1
-Message.IE_GETGRIDSIZE                 := 0x04a2
-Message.IE_SETGRIDSIZE                 := 0x04a3
-Message.IE_GETMODE                     := 0x04a4
-Message.IE_SETMODE                     := 0x04a5
-Message.IE_GETINKRECT                  := 0x04a6
-Message.WM_CAP_SET_MCI_DEVICEW         := 0x04a6
-Message.WM_CAP_GET_MCI_DEVICEW         := 0x04a7
-Message.WM_CAP_PAL_OPENW               := 0x04b4
-Message.WM_CAP_PAL_SAVEW               := 0x04b5
-Message.IE_GETAPPDATA                  := 0x04b8
-Message.IE_SETAPPDATA                  := 0x04b9
-Message.IE_GETDRAWOPTS                 := 0x04ba
-Message.IE_SETDRAWOPTS                 := 0x04bb
-Message.IE_GETFORMAT                   := 0x04bc
-Message.IE_SETFORMAT                   := 0x04bd
-Message.IE_GETINKINPUT                 := 0x04be
-Message.IE_SETINKINPUT                 := 0x04bf
-Message.IE_GETNOTIFY                   := 0x04c0
-Message.IE_SETNOTIFY                   := 0x04c1
-Message.IE_GETRECOG                    := 0x04c2
-Message.IE_SETRECOG                    := 0x04c3
-Message.IE_GETSECURITY                 := 0x04c4
-Message.IE_SETSECURITY                 := 0x04c5
-Message.IE_GETSEL                      := 0x04c6
-Message.IE_SETSEL                      := 0x04c7
-Message.CDM_LAST                       := 0x04c8
-Message.EM_SETBIDIOPTIONS              := 0x04c8
-Message.IE_DOCOMMAND                   := 0x04c8
-Message.MCIWNDM_NOTIFYMODE             := 0x04c8
-Message.EM_GETBIDIOPTIONS              := 0x04c9
-Message.IE_GETCOMMAND                  := 0x04c9
-Message.EM_SETTYPOGRAPHYOPTIONS        := 0x04ca
-Message.IE_GETCOUNT                    := 0x04ca
-Message.EM_GETTYPOGRAPHYOPTIONS        := 0x04cb
-Message.IE_GETGESTURE                  := 0x04cb
-Message.MCIWNDM_NOTIFYMEDIA            := 0x04cb
-Message.EM_SETEDITSTYLE                := 0x04cc
-Message.IE_GETMENU                     := 0x04cc
-Message.EM_GETEDITSTYLE                := 0x04cd
-Message.IE_GETPAINTDC                  := 0x04cd
-Message.MCIWNDM_NOTIFYERROR            := 0x04cd
-Message.IE_GETPDEVENT                  := 0x04ce
-Message.IE_GETSELCOUNT                 := 0x04cf
-Message.IE_GETSELITEMS                 := 0x04d0
-Message.IE_GETSTYLE                    := 0x04d1
-Message.MCIWNDM_SETTIMEFORMATW         := 0x04db
-Message.EM_OUTLINE                     := 0x04dc
-Message.MCIWNDM_GETTIMEFORMATW         := 0x04dc
-Message.EM_GETSCROLLPOS                := 0x04dd
-Message.EM_SETSCROLLPOS                := 0x04de
-Message.EM_SETSCROLLPOS                := 0x04de
-Message.EM_SETFONTSIZE                 := 0x04df
-Message.EM_GETZOOM                     := 0x04e0
-Message.MCIWNDM_GETFILENAMEW           := 0x04e0
-Message.EM_SETZOOM                     := 0x04e1
-Message.MCIWNDM_GETDEVICEW             := 0x04e1
-Message.EM_GETVIEWKIND                 := 0x04e2
-Message.EM_SETVIEWKIND                 := 0x04e3
-Message.EM_GETPAGE                     := 0x04e4
-Message.MCIWNDM_GETERRORW              := 0x04e4
-Message.EM_SETPAGE                     := 0x04e5
-Message.EM_GETHYPHENATEINFO            := 0x04e6
-Message.EM_SETHYPHENATEINFO            := 0x04e7
-Message.EM_GETPAGEROTATE               := 0x04eb
-Message.EM_SETPAGEROTATE               := 0x04ec
-Message.EM_GETCTFMODEBIAS              := 0x04ed
-Message.EM_SETCTFMODEBIAS              := 0x04ee
-Message.EM_GETCTFOPENSTATUS            := 0x04f0
-Message.EM_SETCTFOPENSTATUS            := 0x04f1
-Message.EM_GETIMECOMPTEXT              := 0x04f2
-Message.EM_ISIME                       := 0x04f3
-Message.EM_GETIMEPROPERTY              := 0x04f4
-Message.EM_GETQUERYRTFOBJ              := 0x050d
-Message.EM_SETQUERYRTFOBJ              := 0x050e
-Message.FM_GETFOCUS                    := 0x0600
-Message.FM_GETDRIVEINFOA               := 0x0601
-Message.FM_GETSELCOUNT                 := 0x0602
-Message.FM_GETSELCOUNTLFN              := 0x0603
-Message.FM_GETFILESELA                 := 0x0604
-Message.FM_GETFILESELLFNA              := 0x0605
-Message.FM_REFRESH_WINDOWS             := 0x0606
-Message.FM_RELOAD_EXTENSIONS           := 0x0607
-Message.FM_GETDRIVEINFOW               := 0x0611
-Message.FM_GETFILESELW                 := 0x0614
-Message.FM_GETFILESELLFNW              := 0x0615
-Message.WLX_WM_SAS                     := 0x0659
-Message.SM_GETSELCOUNT                 := 0x07e8
-Message.UM_GETSELCOUNT                 := 0x07e8
-Message.WM_CPL_LAUNCH                  := 0x07e8
-Message.SM_GETSERVERSELA               := 0x07e9
-Message.UM_GETUSERSELA                 := 0x07e9
-Message.WM_CPL_LAUNCHED                := 0x07e9
-Message.SM_GETSERVERSELW               := 0x07ea
-Message.UM_GETUSERSELW                 := 0x07ea
-Message.SM_GETCURFOCUSA                := 0x07eb
-Message.UM_GETGROUPSELA                := 0x07eb
-Message.SM_GETCURFOCUSW                := 0x07ec
-Message.UM_GETGROUPSELW                := 0x07ec
-Message.SM_GETOPTIONS                  := 0x07ed
-Message.UM_GETCURFOCUSA                := 0x07ed
-Message.UM_GETCURFOCUSW                := 0x07ee
-Message.UM_GETOPTIONS                  := 0x07ef
-Message.UM_GETOPTIONS2                 := 0x07f0
-Message.LVM_FIRST                      := 0x1000
-Message.LVM_GETBKCOLOR                 := 0x1000
-Message.LVM_SETBKCOLOR                 := 0x1001
-Message.LVM_GETIMAGELIST               := 0x1002
-Message.LVM_SETIMAGELIST               := 0x1003
-Message.LVM_GETITEMCOUNT               := 0x1004
-Message.LVM_GETITEMA                   := 0x1005
-Message.LVM_SETITEMA                   := 0x1006
-Message.LVM_INSERTITEMA                := 0x1007
-Message.LVM_DELETEITEM                 := 0x1008
-Message.LVM_DELETEALLITEMS             := 0x1009
-Message.LVM_GETCALLBACKMASK            := 0x100a
-Message.LVM_SETCALLBACKMASK            := 0x100b
-Message.LVM_GETNEXTITEM                := 0x100c
-Message.LVM_FINDITEMA                  := 0x100d
-Message.LVM_GETITEMRECT                := 0x100e
-Message.LVM_SETITEMPOSITION            := 0x100f
-Message.LVM_GETITEMPOSITION            := 0x1010
-Message.LVM_GETSTRINGWIDTHA            := 0x1011
-Message.LVM_HITTEST                    := 0x1012
-Message.LVM_ENSUREVISIBLE              := 0x1013
-Message.LVM_SCROLL                     := 0x1014
-Message.LVM_REDRAWITEMS                := 0x1015
-Message.LVM_ARRANGE                    := 0x1016
-Message.LVM_EDITLABELA                 := 0x1017
-Message.LVM_GETEDITCONTROL             := 0x1018
-Message.LVM_GETCOLUMNA                 := 0x1019
-Message.LVM_SETCOLUMNA                 := 0x101a
-Message.LVM_INSERTCOLUMNA              := 0x101b
-Message.LVM_DELETECOLUMN               := 0x101c
-Message.LVM_GETCOLUMNWIDTH             := 0x101d
-Message.LVM_SETCOLUMNWIDTH             := 0x101e
-Message.LVM_GETHEADER                  := 0x101f
-Message.LVM_CREATEDRAGIMAGE            := 0x1021
-Message.LVM_GETVIEWRECT                := 0x1022
-Message.LVM_GETTEXTCOLOR               := 0x1023
-Message.LVM_SETTEXTCOLOR               := 0x1024
-Message.LVM_GETTEXTBKCOLOR             := 0x1025
-Message.LVM_SETTEXTBKCOLOR             := 0x1026
-Message.LVM_GETTOPINDEX                := 0x1027
-Message.LVM_GETCOUNTPERPAGE            := 0x1028
-Message.LVM_GETORIGIN                  := 0x1029
-Message.LVM_UPDATE                     := 0x102a
-Message.LVM_SETITEMSTATE               := 0x102b
-Message.LVM_GETITEMSTATE               := 0x102c
-Message.LVM_GETITEMTEXTA               := 0x102d
-Message.LVM_SETITEMTEXTA               := 0x102e
-Message.LVM_SETITEMCOUNT               := 0x102f
-Message.LVM_SORTITEMS                  := 0x1030
-Message.LVM_SETITEMPOSITION32          := 0x1031
-Message.LVM_GETSELECTEDCOUNT           := 0x1032
-Message.LVM_GETITEMSPACING             := 0x1033
-Message.LVM_GETISEARCHSTRINGA          := 0x1034
-Message.LVM_SETICONSPACING             := 0x1035
-Message.LVM_SETEXTENDEDLISTVIEWSTYLE   := 0x1036
-Message.LVM_GETEXTENDEDLISTVIEWSTYLE   := 0x1037
-Message.LVM_GETSUBITEMRECT             := 0x1038
-Message.LVM_SUBITEMHITTEST             := 0x1039
-Message.LVM_SETCOLUMNORDERARRAY        := 0x103a
-Message.LVM_GETCOLUMNORDERARRAY        := 0x103b
-Message.LVM_SETHOTITEM                 := 0x103c
-Message.LVM_GETHOTITEM                 := 0x103d
-Message.LVM_SETHOTCURSOR               := 0x103e
-Message.LVM_GETHOTCURSOR               := 0x103f
-Message.LVM_APPROXIMATEVIEWRECT        := 0x1040
-Message.LVM_SETWORKAREAS               := 0x1041
-Message.LVM_GETSELECTIONMARK           := 0x1042
-Message.LVM_SETSELECTIONMARK           := 0x1043
-Message.LVM_SETBKIMAGEA                := 0x1044
-Message.LVM_GETBKIMAGEA                := 0x1045
-Message.LVM_GETWORKAREAS               := 0x1046
-Message.LVM_SETHOVERTIME               := 0x1047
-Message.LVM_GETHOVERTIME               := 0x1048
-Message.LVM_GETNUMBEROFWORKAREAS       := 0x1049
-Message.LVM_SETTOOLTIPS                := 0x104a
-Message.LVM_GETITEMW                   := 0x104b
-Message.LVM_SETITEMW                   := 0x104c
-Message.LVM_INSERTITEMW                := 0x104d
-Message.LVM_GETTOOLTIPS                := 0x104e
-Message.LVM_FINDITEMW                  := 0x1053
-Message.LVM_GETSTRINGWIDTHW            := 0x1057
-Message.LVM_GETCOLUMNW                 := 0x105f
-Message.LVM_SETCOLUMNW                 := 0x1060
-Message.LVM_INSERTCOLUMNW              := 0x1061
-Message.LVM_GETITEMTEXTW               := 0x1073
-Message.LVM_SETITEMTEXTW               := 0x1074
-Message.LVM_GETISEARCHSTRINGW          := 0x1075
-Message.LVM_EDITLABELW                 := 0x1076
-Message.LVM_GETBKIMAGEW                := 0x108b
-Message.LVM_SETSELECTEDCOLUMN          := 0x108c
-Message.LVM_SETTILEWIDTH               := 0x108d
-Message.LVM_SETVIEW                    := 0x108e
-Message.LVM_GETVIEW                    := 0x108f
-Message.LVM_INSERTGROUP                := 0x1091
-Message.LVM_SETGROUPINFO               := 0x1093
-Message.LVM_GETGROUPINFO               := 0x1095
-Message.LVM_REMOVEGROUP                := 0x1096
-Message.LVM_MOVEGROUP                  := 0x1097
-Message.LVM_MOVEITEMTOGROUP            := 0x109a
-Message.LVM_SETGROUPMETRICS            := 0x109b
-Message.LVM_GETGROUPMETRICS            := 0x109c
-Message.LVM_ENABLEGROUPVIEW            := 0x109d
-Message.LVM_SORTGROUPS                 := 0x109e
-Message.LVM_INSERTGROUPSORTED          := 0x109f
-Message.LVM_REMOVEALLGROUPS            := 0x10a0
-Message.LVM_HASGROUP                   := 0x10a1
-Message.LVM_SETTILEVIEWINFO            := 0x10a2
-Message.LVM_GETTILEVIEWINFO            := 0x10a3
-Message.LVM_SETTILEINFO                := 0x10a4
-Message.LVM_GETTILEINFO                := 0x10a5
-Message.LVM_SETINSERTMARK              := 0x10a6
-Message.LVM_GETINSERTMARK              := 0x10a7
-Message.LVM_INSERTMARKHITTEST          := 0x10a8
-Message.LVM_GETINSERTMARKRECT          := 0x10a9
-Message.LVM_SETINSERTMARKCOLOR         := 0x10aa
-Message.LVM_GETINSERTMARKCOLOR         := 0x10ab
-Message.LVM_SETINFOTIP                 := 0x10ad
-Message.LVM_GETSELECTEDCOLUMN          := 0x10ae
-Message.LVM_ISGROUPVIEWENABLED         := 0x10af
-Message.LVM_GETOUTLINECOLOR            := 0x10b0
-Message.LVM_SETOUTLINECOLOR            := 0x10b1
-Message.LVM_CANCELEDITLABEL            := 0x10b3
-Message.LVM_MAPINDEXTOID               := 0x10b4
-Message.LVM_MAPIDTOINDEX               := 0x10b5
-Message.LVM_ISITEMVISIBLE              := 0x10b6
-Message.OCM__BASE                      := 0x2000
-Message.LVM_SETUNICODEFORMAT           := 0x2005
-Message.LVM_GETUNICODEFORMAT           := 0x2006
-Message.OCM_CTLCOLOR                   := 0x2019
-Message.OCM_DRAWITEM                   := 0x202b
-Message.OCM_MEASUREITEM                := 0x202c
-Message.OCM_DELETEITEM                 := 0x202d
-Message.OCM_VKEYTOITEM                 := 0x202e
-Message.OCM_CHARTOITEM                 := 0x202f
-Message.OCM_COMPAREITEM                := 0x2039
-Message.OCM_NOTIFY                     := 0x204e
-Message.OCM_COMMAND                    := 0x2111
-Message.OCM_HSCROLL                    := 0x2114
-Message.OCM_VSCROLL                    := 0x2115
-Message.OCM_CTLCOLORMSGBOX             := 0x2132
-Message.OCM_CTLCOLOREDIT               := 0x2133
-Message.OCM_CTLCOLORLISTBOX            := 0x2134
-Message.OCM_CTLCOLORBTN                := 0x2135
-Message.OCM_CTLCOLORDLG                := 0x2136
-Message.OCM_CTLCOLORSCROLLBAR          := 0x2137
-Message.OCM_CTLCOLORSTATIC             := 0x2138
-Message.OCM_PARENTNOTIFY               := 0x2210
-Message.WM_APP                         := 0x8000
-Message.WM_RASDIALEVENT                := 0xcccd
+    WM_NULL                        : 0x0000 ,
+    WM_CREATE                      : 0x0001 ,
+    WM_DESTROY                     : 0x0002 ,
+    WM_MOVE                        : 0x0003 ,
+    WM_SIZE                        : 0x0005 ,
+    WM_ACTIVATE                    : 0x0006 ,
+    WM_SETFOCUS                    : 0x0007 ,
+    WM_KILLFOCUS                   : 0x0008 ,
+    WM_ENABLE                      : 0x000a ,
+    WM_SETREDRAW                   : 0x000b ,
+    WM_SETTEXT                     : 0x000c ,
+    WM_GETTEXT                     : 0x000d ,
+    WM_GETTEXTLENGTH               : 0x000e ,
+    WM_PAINT                       : 0x000f ,
+    WM_CLOSE                       : 0x0010 ,
+    WM_QUERYENDSESSION             : 0x0011 ,
+    WM_QUIT                        : 0x0012 ,
+    WM_QUERYOPEN                   : 0x0013 ,
+    WM_ERASEBKGND                  : 0x0014 ,
+    WM_SYSCOLORCHANGE              : 0x0015 ,
+    WM_ENDSESSION                  : 0x0016 ,
+    WM_SHOWWINDOW                  : 0x0018 ,
+    WM_CTLCOLOR                    : 0x0019 ,
+    WM_WININICHANGE                : 0x001a ,
+    WM_DEVMODECHANGE               : 0x001b ,
+    WM_ACTIVATEAPP                 : 0x001c ,
+    WM_FONTCHANGE                  : 0x001d ,
+    WM_TIMECHANGE                  : 0x001e ,
+    WM_CANCELMODE                  : 0x001f ,
+    WM_SETCURSOR                   : 0x0020 ,
+    WM_MOUSEACTIVATE               : 0x0021 ,
+    WM_CHILDACTIVATE               : 0x0022 ,
+    WM_QUEUESYNC                   : 0x0023 ,
+    WM_GETMINMAXINFO               : 0x0024 ,
+    WM_PAINTICON                   : 0x0026 ,
+    WM_ICONERASEBKGND              : 0x0027 ,
+    WM_NEXTDLGCTL                  : 0x0028 ,
+    WM_SPOOLERSTATUS               : 0x002a ,
+    WM_DRAWITEM                    : 0x002b ,
+    WM_MEASUREITEM                 : 0x002c ,
+    WM_DELETEITEM                  : 0x002d ,
+    WM_VKEYTOITEM                  : 0x002e ,
+    WM_CHARTOITEM                  : 0x002f ,
+    WM_SETFONT                     : 0x0030 ,
+    WM_GETFONT                     : 0x0031 ,
+    WM_SETHOTKEY                   : 0x0032 ,
+    WM_GETHOTKEY                   : 0x0033 ,
+    WM_QUERYDRAGICON               : 0x0037 ,
+    WM_COMPAREITEM                 : 0x0039 ,
+    WM_GETOBJECT                   : 0x003d ,
+    WM_COMPACTING                  : 0x0041 ,
+    WM_COMMNOTIFY                  : 0x0044 ,
+    WM_WINDOWPOSCHANGING           : 0x0046 ,
+    WM_WINDOWPOSCHANGED            : 0x0047 ,
+    WM_POWER                       : 0x0048 ,
+    WM_COPYGLOBALDATA              : 0x0049 ,
+    WM_COPYDATA                    : 0x004a ,
+    WM_CANCELJOURNAL               : 0x004b ,
+    WM_NOTIFY                      : 0x004e ,
+    WM_INPUTLANGCHANGEREQUEST      : 0x0050 ,
+    WM_INPUTLANGCHANGE             : 0x0051 ,
+    WM_TCARD                       : 0x0052 ,
+    WM_HELP                        : 0x0053 ,
+    WM_USERCHANGED                 : 0x0054 ,
+    WM_NOTIFYFORMAT                : 0x0055 ,
+    WM_CONTEXTMENU                 : 0x007b ,
+    WM_STYLECHANGING               : 0x007c ,
+    WM_STYLECHANGED                : 0x007d ,
+    WM_DISPLAYCHANGE               : 0x007e ,
+    WM_GETICON                     : 0x007f ,
+    WM_SETICON                     : 0x0080 ,
+    WM_NCCREATE                    : 0x0081 ,
+    WM_NCDESTROY                   : 0x0082 ,
+    WM_NCCALCSIZE                  : 0x0083 ,
+    WM_NCHITTEST                   : 0x0084 ,
+    WM_NCPAINT                     : 0x0085 ,
+    WM_NCACTIVATE                  : 0x0086 ,
+    WM_GETDLGCODE                  : 0x0087 ,
+    WM_SYNCPAINT                   : 0x0088 ,
+    WM_NCMOUSEMOVE                 : 0x00a0 ,
+    WM_NCLBUTTONDOWN               : 0x00a1 ,
+    WM_NCLBUTTONUP                 : 0x00a2 ,
+    WM_NCLBUTTONDBLCLK             : 0x00a3 ,
+    WM_NCRBUTTONDOWN               : 0x00a4 ,
+    WM_NCRBUTTONUP                 : 0x00a5 ,
+    WM_NCRBUTTONDBLCLK             : 0x00a6 ,
+    WM_NCMBUTTONDOWN               : 0x00a7 ,
+    WM_NCMBUTTONUP                 : 0x00a8 ,
+    WM_NCMBUTTONDBLCLK             : 0x00a9 ,
+    WM_NCXBUTTONDOWN               : 0x00ab ,
+    WM_NCXBUTTONUP                 : 0x00ac ,
+    WM_NCXBUTTONDBLCLK             : 0x00ad ,
+    EM_GETSEL                      : 0x00b0 ,
+    EM_SETSEL                      : 0x00b1 ,
+    EM_GETRECT                     : 0x00b2 ,
+    EM_SETRECT                     : 0x00b3 ,
+    EM_SETRECTNP                   : 0x00b4 ,
+    EM_SCROLL                      : 0x00b5 ,
+    EM_LINESCROLL                  : 0x00b6 ,
+    EM_SCROLLCARET                 : 0x00b7 ,
+    EM_GETMODIFY                   : 0x00b8 ,
+    EM_SETMODIFY                   : 0x00b9 ,
+    EM_GETLINECOUNT                : 0x00ba ,
+    EM_LINEINDEX                   : 0x00bb ,
+    EM_SETHANDLE                   : 0x00bc ,
+    EM_GETHANDLE                   : 0x00bd ,
+    EM_GETTHUMB                    : 0x00be ,
+    EM_LINELENGTH                  : 0x00c1 ,
+    EM_REPLACESEL                  : 0x00c2 ,
+    EM_SETFONT                     : 0x00c3 ,
+    EM_GETLINE                     : 0x00c4 ,
+    EM_LIMITTEXT                   : 0x00c5 ,
+    EM_SETLIMITTEXT                : 0x00c5 ,
+    EM_CANUNDO                     : 0x00c6 ,
+    EM_UNDO                        : 0x00c7 ,
+    EM_FMTLINES                    : 0x00c8 ,
+    EM_LINEFROMCHAR                : 0x00c9 ,
+    EM_SETWORDBREAK                : 0x00ca ,
+    EM_SETTABSTOPS                 : 0x00cb ,
+    EM_SETPASSWORDCHAR             : 0x00cc ,
+    EM_EMPTYUNDOBUFFER             : 0x00cd ,
+    EM_GETFIRSTVISIBLELINE         : 0x00ce ,
+    EM_SETREADONLY                 : 0x00cf ,
+    EM_SETWORDBREAKPROC            : 0x00d0 ,
+    EM_GETWORDBREAKPROC            : 0x00d1 ,
+    EM_GETPASSWORDCHAR             : 0x00d2 ,
+    EM_SETMARGINS                  : 0x00d3 ,
+    EM_GETMARGINS                  : 0x00d4 ,
+    EM_GETLIMITTEXT                : 0x00d5 ,
+    EM_POSFROMCHAR                 : 0x00d6 ,
+    EM_CHARFROMPOS                 : 0x00d7 ,
+    EM_SETIMESTATUS                : 0x00d8 ,
+    EM_GETIMESTATUS                : 0x00d9 ,
+    SBM_SETPOS                     : 0x00e0 ,
+    SBM_GETPOS                     : 0x00e1 ,
+    SBM_SETRANGE                   : 0x00e2 ,
+    SBM_GETRANGE                   : 0x00e3 ,
+    SBM_ENABLE_ARROWS              : 0x00e4 ,
+    SBM_SETRANGEREDRAW             : 0x00e6 ,
+    SBM_SETSCROLLINFO              : 0x00e9 ,
+    SBM_GETSCROLLINFO              : 0x00ea ,
+    SBM_GETSCROLLBARINFO           : 0x00eb ,
+    BM_GETCHECK                    : 0x00f0 ,
+    BM_SETCHECK                    : 0x00f1 ,
+    BM_GETSTATE                    : 0x00f2 ,
+    BM_SETSTATE                    : 0x00f3 ,
+    BM_SETSTYLE                    : 0x00f4 ,
+    BM_CLICK                       : 0x00f5 ,
+    BM_GETIMAGE                    : 0x00f6 ,
+    BM_SETIMAGE                    : 0x00f7 ,
+    BM_SETDONTCLICK                : 0x00f8 ,
+    WM_INPUT                       : 0x00ff ,
+    WM_KEYDOWN                     : 0x0100 ,
+    WM_KEYFIRST                    : 0x0100 ,
+    WM_KEYUP                       : 0x0101 ,
+    WM_CHAR                        : 0x0102 ,
+    WM_DEADCHAR                    : 0x0103 ,
+    WM_SYSKEYDOWN                  : 0x0104 ,
+    WM_SYSKEYUP                    : 0x0105 ,
+    WM_SYSCHAR                     : 0x0106 ,
+    WM_SYSDEADCHAR                 : 0x0107 ,
+    WM_KEYLAST                     : 0x0109 ,
+    WM_UNICHAR                     : 0x0109 ,
+    WM_WNT_CONVERTREQUESTEX        : 0x0109 ,
+    WM_CONVERTREQUEST              : 0x010a ,
+    WM_CONVERTRESULT               : 0x010b ,
+    WM_INTERIM                     : 0x010c ,
+    WM_IME_STARTCOMPOSITION        : 0x010d ,
+    WM_IME_ENDCOMPOSITION          : 0x010e ,
+    WM_IME_COMPOSITION             : 0x010f ,
+    WM_IME_KEYLAST                 : 0x010f ,
+    WM_INITDIALOG                  : 0x0110 ,
+    WM_COMMAND                     : 0x0111 ,
+    WM_SYSCOMMAND                  : 0x0112 ,
+    WM_TIMER                       : 0x0113 ,
+    WM_HSCROLL                     : 0x0114 ,
+    WM_VSCROLL                     : 0x0115 ,
+    WM_INITMENU                    : 0x0116 ,
+    WM_INITMENUPOPUP               : 0x0117 ,
+    WM_SYSTIMER                    : 0x0118 ,
+    WM_MENUSELECT                  : 0x011f ,
+    WM_MENUCHAR                    : 0x0120 ,
+    WM_ENTERIDLE                   : 0x0121 ,
+    WM_MENURBUTTONUP               : 0x0122 ,
+    WM_MENUDRAG                    : 0x0123 ,
+    WM_MENUGETOBJECT               : 0x0124 ,
+    WM_UNINITMENUPOPUP             : 0x0125 ,
+    WM_MENUCOMMAND                 : 0x0126 ,
+    WM_CHANGEUISTATE               : 0x0127 ,
+    WM_UPDATEUISTATE               : 0x0128 ,
+    WM_QUERYUISTATE                : 0x0129 ,
+    WM_LBTRACKPOINT                : 0x0131 ,
+    WM_CTLCOLORMSGBOX              : 0x0132 ,
+    WM_CTLCOLOREDIT                : 0x0133 ,
+    WM_CTLCOLORLISTBOX             : 0x0134 ,
+    WM_CTLCOLORBTN                 : 0x0135 ,
+    WM_CTLCOLORDLG                 : 0x0136 ,
+    WM_CTLCOLORSCROLLBAR           : 0x0137 ,
+    WM_CTLCOLORSTATIC              : 0x0138 ,
+    WM_MOUSEFIRST                  : 0x0200 ,
+    WM_MOUSEMOVE                   : 0x0200 ,
+    WM_LBUTTONDOWN                 : 0x0201 ,
+    WM_LBUTTONUP                   : 0x0202 ,
+    WM_LBUTTONDBLCLK               : 0x0203 ,
+    WM_RBUTTONDOWN                 : 0x0204 ,
+    WM_RBUTTONUP                   : 0x0205 ,
+    WM_RBUTTONDBLCLK               : 0x0206 ,
+    WM_MBUTTONDOWN                 : 0x0207 ,
+    WM_MBUTTONUP                   : 0x0208 ,
+    WM_MBUTTONDBLCLK               : 0x0209 ,
+    WM_MOUSELAST                   : 0x0209 ,
+    WM_MOUSEWHEEL                  : 0x020a ,
+    WM_XBUTTONDOWN                 : 0x020b ,
+    WM_XBUTTONUP                   : 0x020c ,
+    WM_XBUTTONDBLCLK               : 0x020d ,
+    WM_MOUSEHWHEEL                 : 0x020e ,
+    WM_PARENTNOTIFY                : 0x0210 ,
+    WM_ENTERMENULOOP               : 0x0211 ,
+    WM_EXITMENULOOP                : 0x0212 ,
+    WM_NEXTMENU                    : 0x0213 ,
+    WM_SIZING                      : 0x0214 ,
+    WM_CAPTURECHANGED              : 0x0215 ,
+    WM_MOVING                      : 0x0216 ,
+    WM_POWERBROADCAST              : 0x0218 ,
+    WM_DEVICECHANGE                : 0x0219 ,
+    WM_MDICREATE                   : 0x0220 ,
+    WM_MDIDESTROY                  : 0x0221 ,
+    WM_MDIACTIVATE                 : 0x0222 ,
+    WM_MDIRESTORE                  : 0x0223 ,
+    WM_MDINEXT                     : 0x0224 ,
+    WM_MDIMAXIMIZE                 : 0x0225 ,
+    WM_MDITILE                     : 0x0226 ,
+    WM_MDICASCADE                  : 0x0227 ,
+    WM_MDIICONARRANGE              : 0x0228 ,
+    WM_MDIGETACTIVE                : 0x0229 ,
+    WM_MDISETMENU                  : 0x0230 ,
+    WM_ENTERSIZEMOVE               : 0x0231 ,
+    WM_EXITSIZEMOVE                : 0x0232 ,
+    WM_DROPFILES                   : 0x0233 ,
+    WM_MDIREFRESHMENU              : 0x0234 ,
+    WM_IME_REPORT                  : 0x0280 ,
+    WM_IME_SETCONTEXT              : 0x0281 ,
+    WM_IME_NOTIFY                  : 0x0282 ,
+    WM_IME_CONTROL                 : 0x0283 ,
+    WM_IME_COMPOSITIONFULL         : 0x0284 ,
+    WM_IME_SELECT                  : 0x0285 ,
+    WM_IME_CHAR                    : 0x0286 ,
+    WM_IME_REQUEST                 : 0x0288 ,
+    WM_IMEKEYDOWN                  : 0x0290 ,
+    WM_IME_KEYDOWN                 : 0x0290 ,
+    WM_IMEKEYUP                    : 0x0291 ,
+    WM_IME_KEYUP                   : 0x0291 ,
+    WM_NCMOUSEHOVER                : 0x02a0 ,
+    WM_MOUSEHOVER                  : 0x02a1 ,
+    WM_NCMOUSELEAVE                : 0x02a2 ,
+    WM_MOUSELEAVE                  : 0x02a3 ,
+    WM_CUT                         : 0x0300 ,
+    WM_COPY                        : 0x0301 ,
+    WM_PASTE                       : 0x0302 ,
+    WM_CLEAR                       : 0x0303 ,
+    WM_UNDO                        : 0x0304 ,
+    WM_RENDERFORMAT                : 0x0305 ,
+    WM_RENDERALLFORMATS            : 0x0306 ,
+    WM_DESTROYCLIPBOARD            : 0x0307 ,
+    WM_DRAWCLIPBOARD               : 0x0308 ,
+    WM_PAINTCLIPBOARD              : 0x0309 ,
+    WM_VSCROLLCLIPBOARD            : 0x030a ,
+    WM_SIZECLIPBOARD               : 0x030b ,
+    WM_ASKCBFORMATNAME             : 0x030c ,
+    WM_CHANGECBCHAIN               : 0x030d ,
+    WM_HSCROLLCLIPBOARD            : 0x030e ,
+    WM_QUERYNEWPALETTE             : 0x030f ,
+    WM_PALETTEISCHANGING           : 0x0310 ,
+    WM_PALETTECHANGED              : 0x0311 ,
+    WM_HOTKEY                      : 0x0312 ,
+    WM_PRINT                       : 0x0317 ,
+    WM_PRINTCLIENT                 : 0x0318 ,
+    WM_APPCOMMAND                  : 0x0319 ,
+    WM_HANDHELDFIRST               : 0x0358 ,
+    WM_HANDHELDLAST                : 0x035f ,
+    WM_AFXFIRST                    : 0x0360 ,
+    WM_AFXLAST                     : 0x037f ,
+    WM_PENWINFIRST                 : 0x0380 ,
+    WM_RCRESULT                    : 0x0381 ,
+    WM_HOOKRCRESULT                : 0x0382 ,
+    WM_GLOBALRCCHANGE              : 0x0383 ,
+    WM_PENMISCINFO                 : 0x0383 ,
+    WM_SKB                         : 0x0384 ,
+    WM_HEDITCTL                    : 0x0385 ,
+    WM_PENCTL                      : 0x0385 ,
+    WM_PENMISC                     : 0x0386 ,
+    WM_CTLINIT                     : 0x0387 ,
+    WM_PENEVENT                    : 0x0388 ,
+    WM_PENWINLAST                  : 0x038f ,
+    DDM_SETFMT                     : 0x0400 ,
+    DM_GETDEFID                    : 0x0400 ,
+    NIN_SELECT                     : 0x0400 ,
+    TBM_GETPOS                     : 0x0400 ,
+    WM_PSD_PAGESETUPDLG            : 0x0400 ,
+    WM_USER                        : 0x0400 ,
+    CBEM_INSERTITEMA               : 0x0401 ,
+    DDM_DRAW                       : 0x0401 ,
+    DM_SETDEFID                    : 0x0401 ,
+    HKM_SETHOTKEY                  : 0x0401 ,
+    PBM_SETRANGE                   : 0x0401 ,
+    RB_INSERTBANDA                 : 0x0401 ,
+    SB_SETTEXTA                    : 0x0401 ,
+    TB_ENABLEBUTTON                : 0x0401 ,
+    TBM_GETRANGEMIN                : 0x0401 ,
+    TTM_ACTIVATE                   : 0x0401 ,
+    WM_CHOOSEFONT_GETLOGFONT       : 0x0401 ,
+    WM_PSD_FULLPAGERECT            : 0x0401 ,
+    CBEM_SETIMAGELIST              : 0x0402 ,
+    DDM_CLOSE                      : 0x0402 ,
+    DM_REPOSITION                  : 0x0402 ,
+    HKM_GETHOTKEY                  : 0x0402 ,
+    PBM_SETPOS                     : 0x0402 ,
+    RB_DELETEBAND                  : 0x0402 ,
+    SB_GETTEXTA                    : 0x0402 ,
+    TB_CHECKBUTTON                 : 0x0402 ,
+    TBM_GETRANGEMAX                : 0x0402 ,
+    WM_PSD_MINMARGINRECT           : 0x0402 ,
+    CBEM_GETIMAGELIST              : 0x0403 ,
+    DDM_BEGIN                      : 0x0403 ,
+    HKM_SETRULES                   : 0x0403 ,
+    PBM_DELTAPOS                   : 0x0403 ,
+    RB_GETBARINFO                  : 0x0403 ,
+    SB_GETTEXTLENGTHA              : 0x0403 ,
+    TBM_GETTIC                     : 0x0403 ,
+    TB_PRESSBUTTON                 : 0x0403 ,
+    TTM_SETDELAYTIME               : 0x0403 ,
+    WM_PSD_MARGINRECT              : 0x0403 ,
+    CBEM_GETITEMA                  : 0x0404 ,
+    DDM_END                        : 0x0404 ,
+    PBM_SETSTEP                    : 0x0404 ,
+    RB_SETBARINFO                  : 0x0404 ,
+    SB_SETPARTS                    : 0x0404 ,
+    TB_HIDEBUTTON                  : 0x0404 ,
+    TBM_SETTIC                     : 0x0404 ,
+    TTM_ADDTOOLA                   : 0x0404 ,
+    WM_PSD_GREEKTEXTRECT           : 0x0404 ,
+    CBEM_SETITEMA                  : 0x0405 ,
+    PBM_STEPIT                     : 0x0405 ,
+    TB_INDETERMINATE               : 0x0405 ,
+    TBM_SETPOS                     : 0x0405 ,
+    TTM_DELTOOLA                   : 0x0405 ,
+    WM_PSD_ENVSTAMPRECT            : 0x0405 ,
+    CBEM_GETCOMBOCONTROL           : 0x0406 ,
+    PBM_SETRANGE32                 : 0x0406 ,
+    RB_SETBANDINFOA                : 0x0406 ,
+    SB_GETPARTS                    : 0x0406 ,
+    TB_MARKBUTTON                  : 0x0406 ,
+    TBM_SETRANGE                   : 0x0406 ,
+    TTM_NEWTOOLRECTA               : 0x0406 ,
+    WM_PSD_YAFULLPAGERECT          : 0x0406 ,
+    CBEM_GETEDITCONTROL            : 0x0407 ,
+    PBM_GETRANGE                   : 0x0407 ,
+    RB_SETPARENT                   : 0x0407 ,
+    SB_GETBORDERS                  : 0x0407 ,
+    TBM_SETRANGEMIN                : 0x0407 ,
+    TTM_RELAYEVENT                 : 0x0407 ,
+    CBEM_SETEXSTYLE                : 0x0408 ,
+    PBM_GETPOS                     : 0x0408 ,
+    RB_HITTEST                     : 0x0408 ,
+    SB_SETMINHEIGHT                : 0x0408 ,
+    TBM_SETRANGEMAX                : 0x0408 ,
+    TTM_GETTOOLINFOA               : 0x0408 ,
+    CBEM_GETEXSTYLE                : 0x0409 ,
+    CBEM_GETEXTENDEDSTYLE          : 0x0409 ,
+    PBM_SETBARCOLOR                : 0x0409 ,
+    RB_GETRECT                     : 0x0409 ,
+    SB_SIMPLE                      : 0x0409 ,
+    TB_ISBUTTONENABLED             : 0x0409 ,
+    TBM_CLEARTICS                  : 0x0409 ,
+    TTM_SETTOOLINFOA               : 0x0409 ,
+    CBEM_HASEDITCHANGED            : 0x040a ,
+    RB_INSERTBANDW                 : 0x040a ,
+    SB_GETRECT                     : 0x040a ,
+    TB_ISBUTTONCHECKED             : 0x040a ,
+    TBM_SETSEL                     : 0x040a ,
+    TTM_HITTESTA                   : 0x040a ,
+    WIZ_QUERYNUMPAGES              : 0x040a ,
+    CBEM_INSERTITEMW               : 0x040b ,
+    RB_SETBANDINFOW                : 0x040b ,
+    SB_SETTEXTW                    : 0x040b ,
+    TB_ISBUTTONPRESSED             : 0x040b ,
+    TBM_SETSELSTART                : 0x040b ,
+    TTM_GETTEXTA                   : 0x040b ,
+    WIZ_NEXT                       : 0x040b ,
+    CBEM_SETITEMW                  : 0x040c ,
+    RB_GETBANDCOUNT                : 0x040c ,
+    SB_GETTEXTLENGTHW              : 0x040c ,
+    TB_ISBUTTONHIDDEN              : 0x040c ,
+    TBM_SETSELEND                  : 0x040c ,
+    TTM_UPDATETIPTEXTA             : 0x040c ,
+    WIZ_PREV                       : 0x040c ,
+    CBEM_GETITEMW                  : 0x040d ,
+    RB_GETROWCOUNT                 : 0x040d ,
+    SB_GETTEXTW                    : 0x040d ,
+    TB_ISBUTTONINDETERMINATE       : 0x040d ,
+    TTM_GETTOOLCOUNT               : 0x040d ,
+    CBEM_SETEXTENDEDSTYLE          : 0x040e ,
+    RB_GETROWHEIGHT                : 0x040e ,
+    SB_ISSIMPLE                    : 0x040e ,
+    TB_ISBUTTONHIGHLIGHTED         : 0x040e ,
+    TBM_GETPTICS                   : 0x040e ,
+    TTM_ENUMTOOLSA                 : 0x040e ,
+    SB_SETICON                     : 0x040f ,
+    TBM_GETTICPOS                  : 0x040f ,
+    TTM_GETCURRENTTOOLA            : 0x040f ,
+    RB_IDTOINDEX                   : 0x0410 ,
+    SB_SETTIPTEXTA                 : 0x0410 ,
+    TBM_GETNUMTICS                 : 0x0410 ,
+    TTM_WINDOWFROMPOINT            : 0x0410 ,
+    RB_GETTOOLTIPS                 : 0x0411 ,
+    SB_SETTIPTEXTW                 : 0x0411 ,
+    TBM_GETSELSTART                : 0x0411 ,
+    TB_SETSTATE                    : 0x0411 ,
+    TTM_TRACKACTIVATE              : 0x0411 ,
+    RB_SETTOOLTIPS                 : 0x0412 ,
+    SB_GETTIPTEXTA                 : 0x0412 ,
+    TB_GETSTATE                    : 0x0412 ,
+    TBM_GETSELEND                  : 0x0412 ,
+    TTM_TRACKPOSITION              : 0x0412 ,
+    RB_SETBKCOLOR                  : 0x0413 ,
+    SB_GETTIPTEXTW                 : 0x0413 ,
+    TB_ADDBITMAP                   : 0x0413 ,
+    TBM_CLEARSEL                   : 0x0413 ,
+    TTM_SETTIPBKCOLOR              : 0x0413 ,
+    RB_GETBKCOLOR                  : 0x0414 ,
+    SB_GETICON                     : 0x0414 ,
+    TB_ADDBUTTONSA                 : 0x0414 ,
+    TBM_SETTICFREQ                 : 0x0414 ,
+    TTM_SETTIPTEXTCOLOR            : 0x0414 ,
+    RB_SETTEXTCOLOR                : 0x0415 ,
+    TB_INSERTBUTTONA               : 0x0415 ,
+    TBM_SETPAGESIZE                : 0x0415 ,
+    TTM_GETDELAYTIME               : 0x0415 ,
+    RB_GETTEXTCOLOR                : 0x0416 ,
+    TB_DELETEBUTTON                : 0x0416 ,
+    TBM_GETPAGESIZE                : 0x0416 ,
+    TTM_GETTIPBKCOLOR              : 0x0416 ,
+    RB_SIZETORECT                  : 0x0417 ,
+    TB_GETBUTTON                   : 0x0417 ,
+    TBM_SETLINESIZE                : 0x0417 ,
+    TTM_GETTIPTEXTCOLOR            : 0x0417 ,
+    RB_BEGINDRAG                   : 0x0418 ,
+    TB_BUTTONCOUNT                 : 0x0418 ,
+    TBM_GETLINESIZE                : 0x0418 ,
+    TTM_SETMAXTIPWIDTH             : 0x0418 ,
+    RB_ENDDRAG                     : 0x0419 ,
+    TB_COMMANDTOINDEX              : 0x0419 ,
+    TBM_GETTHUMBRECT               : 0x0419 ,
+    TTM_GETMAXTIPWIDTH             : 0x0419 ,
+    RB_DRAGMOVE                    : 0x041a ,
+    TBM_GETCHANNELRECT             : 0x041a ,
+    TB_SAVERESTOREA                : 0x041a ,
+    TTM_SETMARGIN                  : 0x041a ,
+    RB_GETBARHEIGHT                : 0x041b ,
+    TB_CUSTOMIZE                   : 0x041b ,
+    TBM_SETTHUMBLENGTH             : 0x041b ,
+    TTM_GETMARGIN                  : 0x041b ,
+    RB_GETBANDINFOW                : 0x041c ,
+    TB_ADDSTRINGA                  : 0x041c ,
+    TBM_GETTHUMBLENGTH             : 0x041c ,
+    TTM_POP                        : 0x041c ,
+    RB_GETBANDINFOA                : 0x041d ,
+    TB_GETITEMRECT                 : 0x041d ,
+    TBM_SETTOOLTIPS                : 0x041d ,
+    TTM_UPDATE                     : 0x041d ,
+    RB_MINIMIZEBAND                : 0x041e ,
+    TB_BUTTONSTRUCTSIZE            : 0x041e ,
+    TBM_GETTOOLTIPS                : 0x041e ,
+    TTM_GETBUBBLESIZE              : 0x041e ,
+    RB_MAXIMIZEBAND                : 0x041f ,
+    TBM_SETTIPSIDE                 : 0x041f ,
+    TB_SETBUTTONSIZE               : 0x041f ,
+    TTM_ADJUSTRECT                 : 0x041f ,
+    TBM_SETBUDDY                   : 0x0420 ,
+    TB_SETBITMAPSIZE               : 0x0420 ,
+    TTM_SETTITLEA                  : 0x0420 ,
+    MSG_FTS_JUMP_VA                : 0x0421 ,
+    TB_AUTOSIZE                    : 0x0421 ,
+    TBM_GETBUDDY                   : 0x0421 ,
+    TTM_SETTITLEW                  : 0x0421 ,
+    RB_GETBANDBORDERS              : 0x0422 ,
+    MSG_FTS_JUMP_QWORD             : 0x0423 ,
+    RB_SHOWBAND                    : 0x0423 ,
+    TB_GETTOOLTIPS                 : 0x0423 ,
+    MSG_REINDEX_REQUEST            : 0x0424 ,
+    TB_SETTOOLTIPS                 : 0x0424 ,
+    MSG_FTS_WHERE_IS_IT            : 0x0425 ,
+    RB_SETPALETTE                  : 0x0425 ,
+    TB_SETPARENT                   : 0x0425 ,
+    RB_GETPALETTE                  : 0x0426 ,
+    RB_MOVEBAND                    : 0x0427 ,
+    TB_SETROWS                     : 0x0427 ,
+    TB_GETROWS                     : 0x0428 ,
+    TB_GETBITMAPFLAGS              : 0x0429 ,
+    TB_SETCMDID                    : 0x042a ,
+    RB_PUSHCHEVRON                 : 0x042b ,
+    TB_CHANGEBITMAP                : 0x042b ,
+    TB_GETBITMAP                   : 0x042c ,
+    MSG_GET_DEFFONT                : 0x042d ,
+    TB_GETBUTTONTEXTA              : 0x042d ,
+    TB_REPLACEBITMAP               : 0x042e ,
+    TB_SETINDENT                   : 0x042f ,
+    TB_SETIMAGELIST                : 0x0430 ,
+    TB_GETIMAGELIST                : 0x0431 ,
+    TB_LOADIMAGES                  : 0x0432 ,
+    EM_CANPASTE                    : 0x0432 ,
+    TTM_ADDTOOLW                   : 0x0432 ,
+    EM_DISPLAYBAND                 : 0x0433 ,
+    TB_GETRECT                     : 0x0433 ,
+    TTM_DELTOOLW                   : 0x0433 ,
+    EM_EXGETSEL                    : 0x0434 ,
+    TB_SETHOTIMAGELIST             : 0x0434 ,
+    TTM_NEWTOOLRECTW               : 0x0434 ,
+    EM_EXLIMITTEXT                 : 0x0435 ,
+    TB_GETHOTIMAGELIST             : 0x0435 ,
+    TTM_GETTOOLINFOW               : 0x0435 ,
+    EM_EXLINEFROMCHAR              : 0x0436 ,
+    TB_SETDISABLEDIMAGELIST        : 0x0436 ,
+    TTM_SETTOOLINFOW               : 0x0436 ,
+    EM_EXSETSEL                    : 0x0437 ,
+    TB_GETDISABLEDIMAGELIST        : 0x0437 ,
+    TTM_HITTESTW                   : 0x0437 ,
+    EM_FINDTEXT                    : 0x0438 ,
+    TB_SETSTYLE                    : 0x0438 ,
+    TTM_GETTEXTW                   : 0x0438 ,
+    EM_FORMATRANGE                 : 0x0439 ,
+    TB_GETSTYLE                    : 0x0439 ,
+    TTM_UPDATETIPTEXTW             : 0x0439 ,
+    EM_GETCHARFORMAT               : 0x043a ,
+    TB_GETBUTTONSIZE               : 0x043a ,
+    TTM_ENUMTOOLSW                 : 0x043a ,
+    EM_GETEVENTMASK                : 0x043b ,
+    TB_SETBUTTONWIDTH              : 0x043b ,
+    TTM_GETCURRENTTOOLW            : 0x043b ,
+    EM_GETOLEINTERFACE             : 0x043c ,
+    TB_SETMAXTEXTROWS              : 0x043c ,
+    EM_GETPARAFORMAT               : 0x043d ,
+    TB_GETTEXTROWS                 : 0x043d ,
+    EM_GETSELTEXT                  : 0x043e ,
+    TB_GETOBJECT                   : 0x043e ,
+    EM_HIDESELECTION               : 0x043f ,
+    TB_GETBUTTONINFOW              : 0x043f ,
+    EM_PASTESPECIAL                : 0x0440 ,
+    TB_SETBUTTONINFOW              : 0x0440 ,
+    EM_REQUESTRESIZE               : 0x0441 ,
+    TB_GETBUTTONINFOA              : 0x0441 ,
+    EM_SELECTIONTYPE               : 0x0442 ,
+    TB_SETBUTTONINFOA              : 0x0442 ,
+    EM_SETBKGNDCOLOR               : 0x0443 ,
+    TB_INSERTBUTTONW               : 0x0443 ,
+    EM_SETCHARFORMAT               : 0x0444 ,
+    TB_ADDBUTTONSW                 : 0x0444 ,
+    EM_SETEVENTMASK                : 0x0445 ,
+    TB_HITTEST                     : 0x0445 ,
+    EM_SETOLECALLBACK              : 0x0446 ,
+    TB_SETDRAWTEXTFLAGS            : 0x0446 ,
+    EM_SETPARAFORMAT               : 0x0447 ,
+    TB_GETHOTITEM                  : 0x0447 ,
+    EM_SETTARGETDEVICE             : 0x0448 ,
+    TB_SETHOTITEM                  : 0x0448 ,
+    EM_STREAMIN                    : 0x0449 ,
+    TB_SETANCHORHIGHLIGHT          : 0x0449 ,
+    EM_STREAMOUT                   : 0x044a ,
+    TB_GETANCHORHIGHLIGHT          : 0x044a ,
+    EM_GETTEXTRANGE                : 0x044b ,
+    TB_GETBUTTONTEXTW              : 0x044b ,
+    EM_FINDWORDBREAK               : 0x044c ,
+    TB_SAVERESTOREW                : 0x044c ,
+    EM_SETOPTIONS                  : 0x044d ,
+    TB_ADDSTRINGW                  : 0x044d ,
+    EM_GETOPTIONS                  : 0x044e ,
+    TB_MAPACCELERATORA             : 0x044e ,
+    EM_FINDTEXTEX                  : 0x044f ,
+    TB_GETINSERTMARK               : 0x044f ,
+    EM_GETWORDBREAKPROCEX          : 0x0450 ,
+    TB_SETINSERTMARK               : 0x0450 ,
+    EM_SETWORDBREAKPROCEX          : 0x0451 ,
+    TB_INSERTMARKHITTEST           : 0x0451 ,
+    EM_SETUNDOLIMIT                : 0x0452 ,
+    TB_MOVEBUTTON                  : 0x0452 ,
+    TB_GETMAXSIZE                  : 0x0453 ,
+    EM_REDO                        : 0x0454 ,
+    TB_SETEXTENDEDSTYLE            : 0x0454 ,
+    EM_CANREDO                     : 0x0455 ,
+    TB_GETEXTENDEDSTYLE            : 0x0455 ,
+    EM_GETUNDONAME                 : 0x0456 ,
+    TB_GETPADDING                  : 0x0456 ,
+    EM_GETREDONAME                 : 0x0457 ,
+    TB_SETPADDING                  : 0x0457 ,
+    EM_STOPGROUPTYPING             : 0x0458 ,
+    TB_SETINSERTMARKCOLOR          : 0x0458 ,
+    EM_SETTEXTMODE                 : 0x0459 ,
+    TB_GETINSERTMARKCOLOR          : 0x0459 ,
+    EM_GETTEXTMODE                 : 0x045a ,
+    TB_MAPACCELERATORW             : 0x045a ,
+    EM_AUTOURLDETECT               : 0x045b ,
+    TB_GETSTRINGW                  : 0x045b ,
+    EM_GETAUTOURLDETECT            : 0x045c ,
+    TB_GETSTRINGA                  : 0x045c ,
+    EM_SETPALETTE                  : 0x045d ,
+    EM_GETTEXTEX                   : 0x045e ,
+    EM_GETTEXTLENGTHEX             : 0x045f ,
+    EM_SHOWSCROLLBAR               : 0x0460 ,
+    EM_SETTEXTEX                   : 0x0461 ,
+    TAPI_REPLY                     : 0x0463 ,
+    ACM_OPENA                      : 0x0464 ,
+    BFFM_SETSTATUSTEXTA            : 0x0464 ,
+    CDM_FIRST                      : 0x0464 ,
+    CDM_GETSPEC                    : 0x0464 ,
+    EM_SETPUNCTUATION              : 0x0464 ,
+    IPM_CLEARADDRESS               : 0x0464 ,
+    WM_CAP_UNICODE_START           : 0x0464 ,
+    ACM_PLAY                       : 0x0465 ,
+    BFFM_ENABLEOK                  : 0x0465 ,
+    CDM_GETFILEPATH                : 0x0465 ,
+    EM_GETPUNCTUATION              : 0x0465 ,
+    IPM_SETADDRESS                 : 0x0465 ,
+    PSM_SETCURSEL                  : 0x0465 ,
+    UDM_SETRANGE                   : 0x0465 ,
+    WM_CHOOSEFONT_SETLOGFONT       : 0x0465 ,
+    ACM_STOP                       : 0x0466 ,
+    BFFM_SETSELECTIONA             : 0x0466 ,
+    CDM_GETFOLDERPATH              : 0x0466 ,
+    EM_SETWORDWRAPMODE             : 0x0466 ,
+    IPM_GETADDRESS                 : 0x0466 ,
+    PSM_REMOVEPAGE                 : 0x0466 ,
+    UDM_GETRANGE                   : 0x0466 ,
+    WM_CAP_SET_CALLBACK_ERRORW     : 0x0466 ,
+    WM_CHOOSEFONT_SETFLAGS         : 0x0466 ,
+    ACM_OPENW                      : 0x0467 ,
+    BFFM_SETSELECTIONW             : 0x0467 ,
+    CDM_GETFOLDERIDLIST            : 0x0467 ,
+    EM_GETWORDWRAPMODE             : 0x0467 ,
+    IPM_SETRANGE                   : 0x0467 ,
+    PSM_ADDPAGE                    : 0x0467 ,
+    UDM_SETPOS                     : 0x0467 ,
+    WM_CAP_SET_CALLBACK_STATUSW    : 0x0467 ,
+    BFFM_SETSTATUSTEXTW            : 0x0468 ,
+    CDM_SETCONTROLTEXT             : 0x0468 ,
+    EM_SETIMECOLOR                 : 0x0468 ,
+    IPM_SETFOCUS                   : 0x0468 ,
+    PSM_CHANGED                    : 0x0468 ,
+    UDM_GETPOS                     : 0x0468 ,
+    CDM_HIDECONTROL                : 0x0469 ,
+    EM_GETIMECOLOR                 : 0x0469 ,
+    IPM_ISBLANK                    : 0x0469 ,
+    PSM_RESTARTWINDOWS             : 0x0469 ,
+    UDM_SETBUDDY                   : 0x0469 ,
+    CDM_SETDEFEXT                  : 0x046a ,
+    EM_SETIMEOPTIONS               : 0x046a ,
+    PSM_REBOOTSYSTEM               : 0x046a ,
+    UDM_GETBUDDY                   : 0x046a ,
+    EM_GETIMEOPTIONS               : 0x046b ,
+    PSM_CANCELTOCLOSE              : 0x046b ,
+    UDM_SETACCEL                   : 0x046b ,
+    EM_CONVPOSITION                : 0x046c ,
+    EM_CONVPOSITION                : 0x046c ,
+    PSM_QUERYSIBLINGS              : 0x046c ,
+    UDM_GETACCEL                   : 0x046c ,
+    MCIWNDM_GETZOOM                : 0x046d ,
+    PSM_UNCHANGED                  : 0x046d ,
+    UDM_SETBASE                    : 0x046d ,
+    PSM_APPLY                      : 0x046e ,
+    UDM_GETBASE                    : 0x046e ,
+    PSM_SETTITLEA                  : 0x046f ,
+    UDM_SETRANGE32                 : 0x046f ,
+    PSM_SETWIZBUTTONS              : 0x0470 ,
+    UDM_GETRANGE32                 : 0x0470 ,
+    WM_CAP_DRIVER_GET_NAMEW        : 0x0470 ,
+    PSM_PRESSBUTTON                : 0x0471 ,
+    UDM_SETPOS32                   : 0x0471 ,
+    WM_CAP_DRIVER_GET_VERSIONW     : 0x0471 ,
+    PSM_SETCURSELID                : 0x0472 ,
+    UDM_GETPOS32                   : 0x0472 ,
+    PSM_SETFINISHTEXTA             : 0x0473 ,
+    PSM_GETTABCONTROL              : 0x0474 ,
+    PSM_ISDIALOGMESSAGE            : 0x0475 ,
+    MCIWNDM_REALIZE                : 0x0476 ,
+    PSM_GETCURRENTPAGEHWND         : 0x0476 ,
+    MCIWNDM_SETTIMEFORMATA         : 0x0477 ,
+    PSM_INSERTPAGE                 : 0x0477 ,
+    EM_SETLANGOPTIONS              : 0x0478 ,
+    MCIWNDM_GETTIMEFORMATA         : 0x0478 ,
+    PSM_SETTITLEW                  : 0x0478 ,
+    WM_CAP_FILE_SET_CAPTURE_FILEW  : 0x0478 ,
+    EM_GETLANGOPTIONS              : 0x0479 ,
+    MCIWNDM_VALIDATEMEDIA          : 0x0479 ,
+    PSM_SETFINISHTEXTW             : 0x0479 ,
+    WM_CAP_FILE_GET_CAPTURE_FILEW  : 0x0479 ,
+    EM_GETIMECOMPMODE              : 0x047a ,
+    EM_FINDTEXTW                   : 0x047b ,
+    MCIWNDM_PLAYTO                 : 0x047b ,
+    WM_CAP_FILE_SAVEASW            : 0x047b ,
+    EM_FINDTEXTEXW                 : 0x047c ,
+    MCIWNDM_GETFILENAMEA           : 0x047c ,
+    EM_RECONVERSION                : 0x047d ,
+    MCIWNDM_GETDEVICEA             : 0x047d ,
+    PSM_SETHEADERTITLEA            : 0x047d ,
+    WM_CAP_FILE_SAVEDIBW           : 0x047d ,
+    EM_SETIMEMODEBIAS              : 0x047e ,
+    MCIWNDM_GETPALETTE             : 0x047e ,
+    PSM_SETHEADERTITLEW            : 0x047e ,
+    EM_GETIMEMODEBIAS              : 0x047f ,
+    MCIWNDM_SETPALETTE             : 0x047f ,
+    PSM_SETHEADERSUBTITLEA         : 0x047f ,
+    MCIWNDM_GETERRORA              : 0x0480 ,
+    PSM_SETHEADERSUBTITLEW         : 0x0480 ,
+    PSM_HWNDTOINDEX                : 0x0481 ,
+    PSM_INDEXTOHWND                : 0x0482 ,
+    MCIWNDM_SETINACTIVETIMER       : 0x0483 ,
+    PSM_PAGETOINDEX                : 0x0483 ,
+    PSM_INDEXTOPAGE                : 0x0484 ,
+    DL_BEGINDRAG                   : 0x0485 ,
+    MCIWNDM_GETINACTIVETIMER       : 0x0485 ,
+    PSM_IDTOINDEX                  : 0x0485 ,
+    DL_DRAGGING                    : 0x0486 ,
+    PSM_INDEXTOID                  : 0x0486 ,
+    DL_DROPPED                     : 0x0487 ,
+    PSM_GETRESULT                  : 0x0487 ,
+    DL_CANCELDRAG                  : 0x0488 ,
+    PSM_RECALCPAGESIZES            : 0x0488 ,
+    MCIWNDM_GET_SOURCE             : 0x048c ,
+    MCIWNDM_PUT_SOURCE             : 0x048d ,
+    MCIWNDM_GET_DEST               : 0x048e ,
+    MCIWNDM_PUT_DEST               : 0x048f ,
+    MCIWNDM_CAN_PLAY               : 0x0490 ,
+    MCIWNDM_CAN_WINDOW             : 0x0491 ,
+    MCIWNDM_CAN_RECORD             : 0x0492 ,
+    MCIWNDM_CAN_SAVE               : 0x0493 ,
+    MCIWNDM_CAN_EJECT              : 0x0494 ,
+    MCIWNDM_CAN_CONFIG             : 0x0495 ,
+    IE_GETINK                      : 0x0496 ,
+    IE_MSGFIRST                    : 0x0496 ,
+    MCIWNDM_PALETTEKICK            : 0x0496 ,
+    IE_SETINK                      : 0x0497 ,
+    IE_GETPENTIP                   : 0x0498 ,
+    IE_SETPENTIP                   : 0x0499 ,
+    IE_GETERASERTIP                : 0x049a ,
+    IE_SETERASERTIP                : 0x049b ,
+    IE_GETBKGND                    : 0x049c ,
+    IE_SETBKGND                    : 0x049d ,
+    IE_GETGRIDORIGIN               : 0x049e ,
+    IE_SETGRIDORIGIN               : 0x049f ,
+    IE_GETGRIDPEN                  : 0x04a0 ,
+    IE_SETGRIDPEN                  : 0x04a1 ,
+    IE_GETGRIDSIZE                 : 0x04a2 ,
+    IE_SETGRIDSIZE                 : 0x04a3 ,
+    IE_GETMODE                     : 0x04a4 ,
+    IE_SETMODE                     : 0x04a5 ,
+    IE_GETINKRECT                  : 0x04a6 ,
+    WM_CAP_SET_MCI_DEVICEW         : 0x04a6 ,
+    WM_CAP_GET_MCI_DEVICEW         : 0x04a7 ,
+    WM_CAP_PAL_OPENW               : 0x04b4 ,
+    WM_CAP_PAL_SAVEW               : 0x04b5 ,
+    IE_GETAPPDATA                  : 0x04b8 ,
+    IE_SETAPPDATA                  : 0x04b9 ,
+    IE_GETDRAWOPTS                 : 0x04ba ,
+    IE_SETDRAWOPTS                 : 0x04bb ,
+    IE_GETFORMAT                   : 0x04bc ,
+    IE_SETFORMAT                   : 0x04bd ,
+    IE_GETINKINPUT                 : 0x04be ,
+    IE_SETINKINPUT                 : 0x04bf ,
+    IE_GETNOTIFY                   : 0x04c0 ,
+    IE_SETNOTIFY                   : 0x04c1 ,
+    IE_GETRECOG                    : 0x04c2 ,
+    IE_SETRECOG                    : 0x04c3 ,
+    IE_GETSECURITY                 : 0x04c4 ,
+    IE_SETSECURITY                 : 0x04c5 ,
+    IE_GETSEL                      : 0x04c6 ,
+    IE_SETSEL                      : 0x04c7 ,
+    CDM_LAST                       : 0x04c8 ,
+    EM_SETBIDIOPTIONS              : 0x04c8 ,
+    IE_DOCOMMAND                   : 0x04c8 ,
+    MCIWNDM_NOTIFYMODE             : 0x04c8 ,
+    EM_GETBIDIOPTIONS              : 0x04c9 ,
+    IE_GETCOMMAND                  : 0x04c9 ,
+    EM_SETTYPOGRAPHYOPTIONS        : 0x04ca ,
+    IE_GETCOUNT                    : 0x04ca ,
+    EM_GETTYPOGRAPHYOPTIONS        : 0x04cb ,
+    IE_GETGESTURE                  : 0x04cb ,
+    MCIWNDM_NOTIFYMEDIA            : 0x04cb ,
+    EM_SETEDITSTYLE                : 0x04cc ,
+    IE_GETMENU                     : 0x04cc ,
+    EM_GETEDITSTYLE                : 0x04cd ,
+    IE_GETPAINTDC                  : 0x04cd ,
+    MCIWNDM_NOTIFYERROR            : 0x04cd ,
+    IE_GETPDEVENT                  : 0x04ce ,
+    IE_GETSELCOUNT                 : 0x04cf ,
+    IE_GETSELITEMS                 : 0x04d0 ,
+    IE_GETSTYLE                    : 0x04d1 ,
+    MCIWNDM_SETTIMEFORMATW         : 0x04db ,
+    EM_OUTLINE                     : 0x04dc ,
+    MCIWNDM_GETTIMEFORMATW         : 0x04dc ,
+    EM_GETSCROLLPOS                : 0x04dd ,
+    EM_SETSCROLLPOS                : 0x04de ,
+    EM_SETSCROLLPOS                : 0x04de ,
+    EM_SETFONTSIZE                 : 0x04df ,
+    EM_GETZOOM                     : 0x04e0 ,
+    MCIWNDM_GETFILENAMEW           : 0x04e0 ,
+    EM_SETZOOM                     : 0x04e1 ,
+    MCIWNDM_GETDEVICEW             : 0x04e1 ,
+    EM_GETVIEWKIND                 : 0x04e2 ,
+    EM_SETVIEWKIND                 : 0x04e3 ,
+    EM_GETPAGE                     : 0x04e4 ,
+    MCIWNDM_GETERRORW              : 0x04e4 ,
+    EM_SETPAGE                     : 0x04e5 ,
+    EM_GETHYPHENATEINFO            : 0x04e6 ,
+    EM_SETHYPHENATEINFO            : 0x04e7 ,
+    EM_GETPAGEROTATE               : 0x04eb ,
+    EM_SETPAGEROTATE               : 0x04ec ,
+    EM_GETCTFMODEBIAS              : 0x04ed ,
+    EM_SETCTFMODEBIAS              : 0x04ee ,
+    EM_GETCTFOPENSTATUS            : 0x04f0 ,
+    EM_SETCTFOPENSTATUS            : 0x04f1 ,
+    EM_GETIMECOMPTEXT              : 0x04f2 ,
+    EM_ISIME                       : 0x04f3 ,
+    EM_GETIMEPROPERTY              : 0x04f4 ,
+    EM_GETQUERYRTFOBJ              : 0x050d ,
+    EM_SETQUERYRTFOBJ              : 0x050e ,
+    FM_GETFOCUS                    : 0x0600 ,
+    FM_GETDRIVEINFOA               : 0x0601 ,
+    FM_GETSELCOUNT                 : 0x0602 ,
+    FM_GETSELCOUNTLFN              : 0x0603 ,
+    FM_GETFILESELA                 : 0x0604 ,
+    FM_GETFILESELLFNA              : 0x0605 ,
+    FM_REFRESH_WINDOWS             : 0x0606 ,
+    FM_RELOAD_EXTENSIONS           : 0x0607 ,
+    FM_GETDRIVEINFOW               : 0x0611 ,
+    FM_GETFILESELW                 : 0x0614 ,
+    FM_GETFILESELLFNW              : 0x0615 ,
+    WLX_WM_SAS                     : 0x0659 ,
+    SM_GETSELCOUNT                 : 0x07e8 ,
+    UM_GETSELCOUNT                 : 0x07e8 ,
+    WM_CPL_LAUNCH                  : 0x07e8 ,
+    SM_GETSERVERSELA               : 0x07e9 ,
+    UM_GETUSERSELA                 : 0x07e9 ,
+    WM_CPL_LAUNCHED                : 0x07e9 ,
+    SM_GETSERVERSELW               : 0x07ea ,
+    UM_GETUSERSELW                 : 0x07ea ,
+    SM_GETCURFOCUSA                : 0x07eb ,
+    UM_GETGROUPSELA                : 0x07eb ,
+    SM_GETCURFOCUSW                : 0x07ec ,
+    UM_GETGROUPSELW                : 0x07ec ,
+    SM_GETOPTIONS                  : 0x07ed ,
+    UM_GETCURFOCUSA                : 0x07ed ,
+    UM_GETCURFOCUSW                : 0x07ee ,
+    UM_GETOPTIONS                  : 0x07ef ,
+    UM_GETOPTIONS2                 : 0x07f0 ,
+    LVM_FIRST                      : 0x1000 ,
+    LVM_GETBKCOLOR                 : 0x1000 ,
+    LVM_SETBKCOLOR                 : 0x1001 ,
+    LVM_GETIMAGELIST               : 0x1002 ,
+    LVM_SETIMAGELIST               : 0x1003 ,
+    LVM_GETITEMCOUNT               : 0x1004 ,
+    LVM_GETITEMA                   : 0x1005 ,
+    LVM_SETITEMA                   : 0x1006 ,
+    LVM_INSERTITEMA                : 0x1007 ,
+    LVM_DELETEITEM                 : 0x1008 ,
+    LVM_DELETEALLITEMS             : 0x1009 ,
+    LVM_GETCALLBACKMASK            : 0x100a ,
+    LVM_SETCALLBACKMASK            : 0x100b ,
+    LVM_GETNEXTITEM                : 0x100c ,
+    LVM_FINDITEMA                  : 0x100d ,
+    LVM_GETITEMRECT                : 0x100e ,
+    LVM_SETITEMPOSITION            : 0x100f ,
+    LVM_GETITEMPOSITION            : 0x1010 ,
+    LVM_GETSTRINGWIDTHA            : 0x1011 ,
+    LVM_HITTEST                    : 0x1012 ,
+    LVM_ENSUREVISIBLE              : 0x1013 ,
+    LVM_SCROLL                     : 0x1014 ,
+    LVM_REDRAWITEMS                : 0x1015 ,
+    LVM_ARRANGE                    : 0x1016 ,
+    LVM_EDITLABELA                 : 0x1017 ,
+    LVM_GETEDITCONTROL             : 0x1018 ,
+    LVM_GETCOLUMNA                 : 0x1019 ,
+    LVM_SETCOLUMNA                 : 0x101a ,
+    LVM_INSERTCOLUMNA              : 0x101b ,
+    LVM_DELETECOLUMN               : 0x101c ,
+    LVM_GETCOLUMNWIDTH             : 0x101d ,
+    LVM_SETCOLUMNWIDTH             : 0x101e ,
+    LVM_GETHEADER                  : 0x101f ,
+    LVM_CREATEDRAGIMAGE            : 0x1021 ,
+    LVM_GETVIEWRECT                : 0x1022 ,
+    LVM_GETTEXTCOLOR               : 0x1023 ,
+    LVM_SETTEXTCOLOR               : 0x1024 ,
+    LVM_GETTEXTBKCOLOR             : 0x1025 ,
+    LVM_SETTEXTBKCOLOR             : 0x1026 ,
+    LVM_GETTOPINDEX                : 0x1027 ,
+    LVM_GETCOUNTPERPAGE            : 0x1028 ,
+    LVM_GETORIGIN                  : 0x1029 ,
+    LVM_UPDATE                     : 0x102a ,
+    LVM_SETITEMSTATE               : 0x102b ,
+    LVM_GETITEMSTATE               : 0x102c ,
+    LVM_GETITEMTEXTA               : 0x102d ,
+    LVM_SETITEMTEXTA               : 0x102e ,
+    LVM_SETITEMCOUNT               : 0x102f ,
+    LVM_SORTITEMS                  : 0x1030 ,
+    LVM_SETITEMPOSITION32          : 0x1031 ,
+    LVM_GETSELECTEDCOUNT           : 0x1032 ,
+    LVM_GETITEMSPACING             : 0x1033 ,
+    LVM_GETISEARCHSTRINGA          : 0x1034 ,
+    LVM_SETICONSPACING             : 0x1035 ,
+    LVM_SETEXTENDEDLISTVIEWSTYLE   : 0x1036 ,
+    LVM_GETEXTENDEDLISTVIEWSTYLE   : 0x1037 ,
+    LVM_GETSUBITEMRECT             : 0x1038 ,
+    LVM_SUBITEMHITTEST             : 0x1039 ,
+    LVM_SETCOLUMNORDERARRAY        : 0x103a ,
+    LVM_GETCOLUMNORDERARRAY        : 0x103b ,
+    LVM_SETHOTITEM                 : 0x103c ,
+    LVM_GETHOTITEM                 : 0x103d ,
+    LVM_SETHOTCURSOR               : 0x103e ,
+    LVM_GETHOTCURSOR               : 0x103f ,
+    LVM_APPROXIMATEVIEWRECT        : 0x1040 ,
+    LVM_SETWORKAREAS               : 0x1041 ,
+    LVM_GETSELECTIONMARK           : 0x1042 ,
+    LVM_SETSELECTIONMARK           : 0x1043 ,
+    LVM_SETBKIMAGEA                : 0x1044 ,
+    LVM_GETBKIMAGEA                : 0x1045 ,
+    LVM_GETWORKAREAS               : 0x1046 ,
+    LVM_SETHOVERTIME               : 0x1047 ,
+    LVM_GETHOVERTIME               : 0x1048 ,
+    LVM_GETNUMBEROFWORKAREAS       : 0x1049 ,
+    LVM_SETTOOLTIPS                : 0x104a ,
+    LVM_GETITEMW                   : 0x104b ,
+    LVM_SETITEMW                   : 0x104c ,
+    LVM_INSERTITEMW                : 0x104d ,
+    LVM_GETTOOLTIPS                : 0x104e ,
+    LVM_FINDITEMW                  : 0x1053 ,
+    LVM_GETSTRINGWIDTHW            : 0x1057 ,
+    LVM_GETCOLUMNW                 : 0x105f ,
+    LVM_SETCOLUMNW                 : 0x1060 ,
+    LVM_INSERTCOLUMNW              : 0x1061 ,
+    LVM_GETITEMTEXTW               : 0x1073 ,
+    LVM_SETITEMTEXTW               : 0x1074 ,
+    LVM_GETISEARCHSTRINGW          : 0x1075 ,
+    LVM_EDITLABELW                 : 0x1076 ,
+    LVM_GETBKIMAGEW                : 0x108b ,
+    LVM_SETSELECTEDCOLUMN          : 0x108c ,
+    LVM_SETTILEWIDTH               : 0x108d ,
+    LVM_SETVIEW                    : 0x108e ,
+    LVM_GETVIEW                    : 0x108f ,
+    LVM_INSERTGROUP                : 0x1091 ,
+    LVM_SETGROUPINFO               : 0x1093 ,
+    LVM_GETGROUPINFO               : 0x1095 ,
+    LVM_REMOVEGROUP                : 0x1096 ,
+    LVM_MOVEGROUP                  : 0x1097 ,
+    LVM_MOVEITEMTOGROUP            : 0x109a ,
+    LVM_SETGROUPMETRICS            : 0x109b ,
+    LVM_GETGROUPMETRICS            : 0x109c ,
+    LVM_ENABLEGROUPVIEW            : 0x109d ,
+    LVM_SORTGROUPS                 : 0x109e ,
+    LVM_INSERTGROUPSORTED          : 0x109f ,
+    LVM_REMOVEALLGROUPS            : 0x10a0 ,
+    LVM_HASGROUP                   : 0x10a1 ,
+    LVM_SETTILEVIEWINFO            : 0x10a2 ,
+    LVM_GETTILEVIEWINFO            : 0x10a3 ,
+    LVM_SETTILEINFO                : 0x10a4 ,
+    LVM_GETTILEINFO                : 0x10a5 ,
+    LVM_SETINSERTMARK              : 0x10a6 ,
+    LVM_GETINSERTMARK              : 0x10a7 ,
+    LVM_INSERTMARKHITTEST          : 0x10a8 ,
+    LVM_GETINSERTMARKRECT          : 0x10a9 ,
+    LVM_SETINSERTMARKCOLOR         : 0x10aa ,
+    LVM_GETINSERTMARKCOLOR         : 0x10ab ,
+    LVM_SETINFOTIP                 : 0x10ad ,
+    LVM_GETSELECTEDCOLUMN          : 0x10ae ,
+    LVM_ISGROUPVIEWENABLED         : 0x10af ,
+    LVM_GETOUTLINECOLOR            : 0x10b0 ,
+    LVM_SETOUTLINECOLOR            : 0x10b1 ,
+    LVM_CANCELEDITLABEL            : 0x10b3 ,
+    LVM_MAPINDEXTOID               : 0x10b4 ,
+    LVM_MAPIDTOINDEX               : 0x10b5 ,
+    LVM_ISITEMVISIBLE              : 0x10b6 ,
+    OCM__BASE                      : 0x2000 ,
+    LVM_SETUNICODEFORMAT           : 0x2005 ,
+    LVM_GETUNICODEFORMAT           : 0x2006 ,
+    OCM_CTLCOLOR                   : 0x2019 ,
+    OCM_DRAWITEM                   : 0x202b ,
+    OCM_MEASUREITEM                : 0x202c ,
+    OCM_DELETEITEM                 : 0x202d ,
+    OCM_VKEYTOITEM                 : 0x202e ,
+    OCM_CHARTOITEM                 : 0x202f ,
+    OCM_COMPAREITEM                : 0x2039 ,
+    OCM_NOTIFY                     : 0x204e ,
+    OCM_COMMAND                    : 0x2111 ,
+    OCM_HSCROLL                    : 0x2114 ,
+    OCM_VSCROLL                    : 0x2115 ,
+    OCM_CTLCOLORMSGBOX             : 0x2132 ,
+    OCM_CTLCOLOREDIT               : 0x2133 ,
+    OCM_CTLCOLORLISTBOX            : 0x2134 ,
+    OCM_CTLCOLORBTN                : 0x2135 ,
+    OCM_CTLCOLORDLG                : 0x2136 ,
+    OCM_CTLCOLORSCROLLBAR          : 0x2137 ,
+    OCM_CTLCOLORSTATIC             : 0x2138 ,
+    OCM_PARENTNOTIFY               : 0x2210 ,
+    WM_APP                         : 0x8000 ,
+    WM_RASDIALEVENT                : 0xcccd ,
+
+}
+
