@@ -9,12 +9,12 @@ RegisterHelpInfo( "Explorer_WorkerW"       , FilePath(A_LineFile, "HotIF.Desktop
 ;--------------------------------------------------------------------------------------;
 
 ; 快速切换地址栏路径
-Global ExplorerPaths := [  "T:\"  ,  "V:\#\"  ]
+Global ExplorerPaths := [  Folders.Temp  ,  Folders.Ram  ]
 
 ;--------------------------------------------------------------------------------------;
 
 ; Quick工具路径
-Global ExplorerTools := [  [  "T:\"  ,  "V:\#\"  ]  ]
+Global ExplorerTools := [  [  Folders.Temp  ,  Folders.Ram  ]  ]
 
 ;--------------------------------------------------------------------------------------;
 

@@ -22,21 +22,63 @@
 
     #\::ErResetPosition()
     #+\::ErResetPosition(columns:="List")
-            
-    ; 快捷键帮助
-    F10::Return 
-    !,::Send "{F10}"
 
     ; 全屏
-    F11::Return 
     #Enter::Send "{F11}"
     
-    CapsLock::Send "{F5}"
     +\::Send "{F5}"
 
     ![::ErActivateLeft()
     !]::ErActivateRight()
     !\::ErActivateMenu()
+
+    `::Send "~"
+
+    \::{
+        if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) )
+            if ( ControlGetClassNN(ControlGetFocus("A")) == "DirectUIHWND3" )
+                ErQuickPreview()
+    }
+
+    F1::
+    F2::
+    F3::
+    F4::
+    F5::
+    F6::
+    F8::
+    F7::
+    F9::
+    F10::
+    F11::
+    F12::
+    !`:: 
+    !1:: 
+    !2:: 
+    !3:: 
+    !4:: 
+    !5:: 
+    !6:: 
+    !7:: 
+    !8:: 
+    !9:: 
+    !0:: 
+    !-:: 
+    !=:: 
+    !,:: 
+    !.:: 
+    /::{
+        Try ControlFocus("Edit2", "A")
+        SetEditPrefix("Edit2")
+    }
+
+    CapsLock::{
+        contro_name := ControlGetClassNN(ControlGetFocus("A"))
+        if ( contro_name == "Edit2" )
+            SetEditPrefix("Edit2")
+        else
+            Send "{F5}"
+    }
 
     Insert::ErQuickTools()
     Delete::Delete
@@ -46,12 +88,6 @@
     RWin & RAlt:: Return
 
     CapsLock & LShift::MouseMove(window.w/9, window.h-99, 0)
-
-    \::{
-        if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) )
-            if ( ControlGetClassNN(ControlGetFocus("A")) == "DirectUIHWND3" )
-                ErQuickPreview()
-    }
 
     #Include Mouse.ahk
     #Include Joy.Win.ahk

@@ -5,7 +5,29 @@
 #HotIf
 
 
-#HotIf CheckWindowActive( "Explorer" , "#32770" , "*属性" )
+#HotIf CheckWindowActive( "Explorer" , "#32770" , "删除*" )
+    Delete::{
+        Send "{Esc}"
+    }
+    Insert::{
+        Send "!y"
+        Sleep 99
+        Send "{Space}"
+    }
+    BackSpace::{
+        Sleep 99
+        Send "{Esc}"
+        Sleep 33
+        Send "+{Delete}"
+        Sleep 66
+        Send "!y"
+        Sleep 99
+        Send "{Space}"
+    }
+#HotIf
+
+
+#HotIf CheckWindowActive( "Explorer" , "#32770" , "属性*" )
     ; 修改文件图标为默认
     !\::{
         Send "^+{Tab}"
