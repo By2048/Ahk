@@ -21,7 +21,7 @@
     !CapsLock::Send "^w"
 
     #\::ErResetPosition()
-    #+\::ErResetPosition(columns:="List")
+    #+\::ErResetPosition(columns:="Name")
 
     ; 全屏
     #Enter::Send "{F11}"

@@ -60,4 +60,42 @@ Folders.Prefix := Map(
 )
 
 
+Folders.Columns := {
+
+    Name        : "ItemNameDisplay:1150"                                                         ,
+    Default     : "ItemNameDisplay:999 Size:150"                                                 ,
+    Size        : "ItemNameDisplay:999 Size:150"                                                 ,
+    Date        : "ItemNameDisplay:950 ItemDate:200"                                             ,
+    DateSize    : "ItemNameDisplay:800 ItemDate:200 Size:150"                                    ,
+    Comment     : "ItemNameDisplay:575 Comment:575"                                              ,
+    CommentMini : "ItemNameDisplay:765 Comment:369"                                              ,
+    CommentDate : "ItemNameDisplay:500 Comment:450 ItemDate:200"                                 ,
+    Recycle     : "ItemNameDisplay:460 Recycle.DeletedFrom:360 Recycle.DateDeleted:180 Size:150" ,
+
+}
+
+
+; 设置 文件夹选项 查看 在标题栏中显示完整路径
+; "ItemNameDisplay:800 ItemDate:200 Size:150"
+Folders.Paths := Map(
+
+    "C:\"                            , Folders.Columns.Name    ,
+    "C:\Users"                       , Folders.Columns.Name    ,
+    "C:\Users\Administrator"         , Folders.Columns.Comment ,
+    "C:\Users\Administrator\AppData" , Folders.Columns.Name    ,
+    "C:\Windows"                     , Folders.Columns.Name    ,
+    "C:\ProgramData"                 , Folders.Columns.Name    ,
+    "C:\Program Files"               , Folders.Columns.Name    ,
+    "C:\Program Files (x86)"         , Folders.Columns.Name    ,
+
+    "回收站" , Folders.Columns.Recycle ,
+    "D:\"   , Folders.Columns.Comment ,
+    "E:\"   , Folders.Columns.Comment ,
+    "F:\"   , Folders.Columns.Name    ,
+    "T:\"   , Folders.Columns.Size    ,
+    "V:\"   , Folders.Columns.Name    ,
+
+)
+
+
 #Include *i Folder.Private.ahk

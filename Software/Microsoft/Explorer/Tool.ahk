@@ -154,13 +154,12 @@ ErSetColumns(config)
 
 ErResetPosition(columns:="")
 {
-    check_offset      := 30
-    tree_width        := 325
-    preview_width     := 411
-    input_move_width  := 207  ;426
-    input_check_width := input_move_width - 38
-    total_width       := 1960 - preview_width - check_offset/2
-    total_height      := 1250
+    check_offset  := 30
+    tree_width    := 325
+    preview_width := 411
+    input_width   := 209
+    total_height  := 1250
+    total_width   := 1960 - preview_width - check_offset/2
 
     MouseGetPos(&x_origin, &y_origin)
     WinGetPos(&origin_win_x, &origin_win_y, &origin_win_w, &origin_win_h, "A")
@@ -168,36 +167,36 @@ ErResetPosition(columns:="")
     GetActiveWindowInfo(False)
 
     ; 通过鼠标移动移动窗口,通过此操作Window可以在下次启动时使用修改后的位置
-    if (   origin_win_x != window.x || origin_win_y != window.y
-        || origin_win_w != window.w || origin_win_h != window.h ) {
+    if (    origin_win_x != window.x || origin_win_y != window.y
+         || origin_win_w != window.w || origin_win_h != window.h ) {
         MouseMove(window.cw/2, window.ch, 0)
         MouseClickDrag("Left", 0, 0, 0, -50, 0, "R")
         MouseClickDrag("Left", 0, 0, 0,  50, 0, "R")
     }
 
     if ( ! columns ) 
-        config := ExplorerColumns.Get(window.title, ExplorerColumns["Default"])
+        config := Folders.Paths.Get(window.title, Folders.Columns.Default)
     else
-        config := ExplorerColumns.Get(columns, ExplorerColumns["Default"])
+        config := Folders.Columns.Get(columns, Folders.Columns.Default)
     ErSetColumns(config)
 
     ; 搜索框
     GetActiveWindowInfo(False)
     info := window.controls.DirectUIHWND1
-    if ( Abs(info.w - input_check_width) > check_offset ) {
-        MouseMove(info.x , info.y + info.h / 2)
+    if ( Abs(info.w - input_width + check_offset + 10) > check_offset ) {
+        MouseMove(info.x , info.y + info.h/2)
         offset := GetOffset("X")
-        MouseMove(info.x + offset , info.y + info.h / 2)
-        MoveControlUDLR(info, "Left", total_width - input_move_width, offset)
+        MouseMove(info.x + offset , info.y + info.h/2)
+        MoveControlUDLR(info, "Left", total_width - input_width, offset)
     }
 
     ; 左侧树状信息
     GetActiveWindowInfo(False)
     info := window.controls.SysTreeView321
-    if ( Abs(info.w - tree_width) > check_offset * 1 ) {
-        MouseMove(info.x + info.w , info.y + info.h / 2)
+    if ( Abs(info.w - tree_width) > check_offset ) {
+        MouseMove(info.x + info.w , info.y + info.h/2)
         offset := GetOffset("X")
-        MouseMove(info.x + info.w + offset , info.y + info.h / 2)
+        MouseMove(info.x + info.w + offset , info.y + info.h/2)
         MoveControlUDLR(info, "Right", tree_width, offset)
     }
 
