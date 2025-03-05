@@ -24,7 +24,7 @@ Global ExplorerTools := [  [  Folders.Temp  ,  Folders.Ram  ]  ]
 
 Global ExplorerColumns := Map()
 
-ExplorerColumns["回收站"]      := "ItemNameDisplay:565 Recycle.DeletedFrom:255 Recycle.DateDeleted:180 Size:150"
+ExplorerColumns["回收站"]      := "ItemNameDisplay:460 Recycle.DeletedFrom:360 Recycle.DateDeleted:180 Size:150"
 ExplorerColumns["List"]       := "ItemNameDisplay:1150"
 ExplorerColumns["Info"]       := "ItemNameDisplay:1000 Size:150"
 ExplorerColumns["FolderList"] := "ItemNameDisplay:575 Comment:575"

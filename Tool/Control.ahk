@@ -18,6 +18,8 @@ SetColumnWidth(control, config)
 SetEditPrefix(control)
 {
     key := StrReplace(A_ThisHotkey, "~", "")
+    key := StrReplace(A_ThisHotkey, "<", "")
+    key := StrReplace(A_ThisHotkey, ">", "")
     if ( ! Folders.Prefix.Has(key) )
         return
     text := ControlGetText(control, "A")
