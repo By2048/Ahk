@@ -20,8 +20,14 @@
     ^w::Return
     !CapsLock::Send "^w"
 
-    #\::ErResetPosition()
-    #+\::ErResetPosition(columns:="Name")
+    #\::{
+        Send "{Blind}{vkFF}"
+        ErResetPosition()
+    }
+    #+\::{
+        Send "{Blind}{vkFF}"
+        ErResetPosition(columns:="Name")
+    }
 
     ; 全屏
     #Enter::Send "{F11}"
