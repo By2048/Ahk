@@ -26,13 +26,9 @@ Screen_1K := { Dpi:1.25 , Width:1920 , Hight:1080 , Name:"1K" }
 Screens_Id     := [         1 ] ; Windows设置/系统/屏幕 上对应的ID
 Screens_Detail := [ Screen_2K ]
 
-; 系统用户给相关信息
-PC_USERNAME := "Admin"
-PC_PASSWORD := "Xxxxx"
-
 ; 手机<->电脑 剪切板文件
-JQB := { Phone   : A_InitialWorkingDir . "\JQB_Phone"   ;
-       , Windows : A_InitialWorkingDir . "\JQB_Windows" }
+JQB := { Phone   : A_ScriptDir . "\JQB_Phone"   ;
+       , Windows : A_ScriptDir . "\JQB_Windows" }
 
 ;---------------------------------------------------------------------------;
 
@@ -45,7 +41,7 @@ Gui_Help := {
     Start : " " ,
     End   : " " ,
     X     : 1   ,
-    Y     : 1
+    Y     : 1   ,
 }
 
 ; 检测窗口位置时允许的偏移量（某些窗口全屏 xy为-11,-11）
@@ -63,7 +59,7 @@ Gui_Config := {
     Light    : { Font : "000000" , Back : "FFFFFF" } ,
     FontName : "Source Code Pro" ,
     FontSize : "13" ,
-    Margin   : 9
+    Margin   : 9    ,
 }
 
 ;---------------------------------------------------------------------------;
