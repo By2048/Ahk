@@ -176,8 +176,12 @@ ErResetPosition(columns:="")
 
     if ( ! columns ) 
         config := Folders.Paths.Get(window.title, Folders.Columns.Default)
-    else
-        config := Folders.Columns.Get(columns, Folders.Columns.Default)
+    else {
+        if ( Folders.Columns.HasOwnProp(columns) )
+            config := Folders.Columns.%columns%
+        else
+            config := Folders.Columns.Default
+    }
     ErSetColumns(config)
 
     ; 搜索框
