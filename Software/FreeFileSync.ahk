@@ -1,10 +1,10 @@
 ﻿
 RegisterSoftware("FreeFileSync_x64" , "FreeFileSync")
 
-RegisterPosition( "FreeFileSync__摘要"          , Position(999  , 888) )
-RegisterPosition( "FreeFileSync__同步中*"        , Position(1177 , 777) )
-RegisterPosition( "FreeFileSync_#32770_删除项目" , Position(1111 , 777) )
-RegisterPosition( "FreeFileSync"                , Position(2000 , 1248) )
+RegisterPosition( "FreeFileSync__摘要"    ,  Position(999  , 888)  )
+RegisterPosition( "FreeFileSync__同步中*"  , Position(1177 , 777)  )
+RegisterPosition( "FreeFileSync__删除项目" , Position(1111 , 777)  )
+RegisterPosition( "FreeFileSync"          , Position(2000 , 1248) )
 
 
 #HotIf CheckWindowActive( "FreeFileSync" , "" , "同步设置" )
