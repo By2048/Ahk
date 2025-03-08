@@ -3,7 +3,7 @@
 
 #HotIf CheckWindowActive( " Chrome | Edge | Opera | FireFox " )
 
-    #Include *i Key.Base.ahk
+    #Include *i Key.ahk
     #Include *i Key.Fxx.ahk
     #Include *i Key.Insert.ahk
     #Include *i Key.Joy.ahk

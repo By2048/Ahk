@@ -19,7 +19,7 @@
 #Include Software\@Key.ahk
 
 #Include Software\#HotIF.32770.ahk
-#Include Software\#HotIF.Software.ahk
+#Include Software\#HotIF.ahk
 
 #Include Software\Android.ahk
 #Include Software\BitComet.ahk

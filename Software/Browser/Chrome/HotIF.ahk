@@ -86,8 +86,6 @@
         }
     }
 
-    #Include Key.Input.ahk
-    #Include Key.Insert.ahk
-    #Include Key.LShift.ahk
+    #Include Key.ahk
 
 #HotIf
