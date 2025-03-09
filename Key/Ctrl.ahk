@@ -12,8 +12,9 @@
 
  >^a::Run Folders.Lnk "AntiMicroX.lnk"
  >^s::Run Folders.Lnk "Sandboxie.lnk"
- >^d::Run Folders.Lnk "Download.lnk"
+ >^d::Run Folders.Lnk "DuplicateCleaner.lnk"
  >^f::Run Folders.Lnk "FreeFileSync.lnk"
+>^+f::Run Folders.Lnk "RealTimeSync.lnk"
  >^g::Run Folders.Lnk "Geek.lnk"
  >^h::Run AHK " " AhkSpy
 >^+h::Run AhkSpyPlus
@@ -36,13 +37,13 @@
 >^+k::KeyboardGUI()
  >^l::Return
 
- >^z::Return
+ >^z::Run Folders.Lnk "Download.lnk"
  >^x::Return
  >^c::Run "Calc"
  >^v::Run Folders.Lnk "Vpn.lnk"
  >^b::Run Folders.Lnk "Image.lnk"
  >^n::Run Folders.Lnk "Music.lnk"
- >^m::Run Folders.Lnk "PotPlayer.lnk"
+ >^m::Run Folders.Lnk "Video.lnk"
 
  >^[::Run VSCode " --profile %Temp    " Folders.Config "VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
  >^]::Run VSCode " --profile %Note    " Folders.Config "VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"

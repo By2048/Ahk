@@ -11,15 +11,15 @@
 |-----------------------------|  [ | VSCode Temp     |
 |  A | AntiMicroX             |  ] | VSCode Node     |
 |  S | Sandboxie              |  \ | VSCode Windows  |
-|  D | Download               |  : | VSCode          |
-|  F | FreeFileSync           |  " | VSCodeDefault   |
+|  D | DuplicateCleaner       |  : | VSCode          |
+|  F | File Sync | Watch      |  " | VSCodeDefault   |
 |  G | Geek                   |----------------------|
 |  H | Spy AHK | GH           |   Esc | 任务管理器   |
 |  J | JetBrains              |  +ESc | SecAnalysis  |
 |  K | Key History | Virtual  | Enter | Whiteboard   |
 |  L |                        | BackSpace | WT       |
 |----|------------------------| U D L R   | 窗口移动 |
-|  Z |                        |
+|  Z | Download               |
 |  X |                        |
 |  C | Calc                   |
 |  V | Vpn                    |
