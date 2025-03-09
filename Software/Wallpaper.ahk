@@ -6,17 +6,14 @@ RegisterHelpInfo("Wallpaper" , "Software\Wallpaper.help")
 
 #HotIf CheckWindowActive( "Wallpaper" )
 
-    SleepTime := 333
-    Offset := 99
-
-    ClickImage(image) {
+    WallpaperClickImage(image) {
         CoordMode("Mouse", "Window")
         MouseGetPos(&x_origin, &y_origin)
         x1 := x_origin
         y1 := y_origin - 400
         x2 := x_origin + 80
         y2 := y_origin + 800
-        MouseClickImageXYWH(x1, y1, x2, y2, image, "Window", Offset)
+        MouseClickImageXYWH(x1, y1, x2, y2, image, "Window", 99)
     }
 
     PageTool(mode) {
@@ -28,10 +25,10 @@ RegisterHelpInfo("Wallpaper" , "Software\Wallpaper.help")
         yy := y + h
         ; GuiTool(x,y,w,h)
         image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\" . mode . ".png"
-        MouseClickImageXYWH(x, y, xx, yy, image, "Screen", Offset)
+        MouseClickImageXYWH(x, y, xx, yy, image, "Screen", 99)
     }
 
-    GuiTool(x,y,w,h) {
+    GuiTool(x, y, w, h) {
         G := Gui()
         G.Opt("-DPIScale +Border +Disabled +Owner -SysMenu -Caption")
         G.Opt("+LastFound")
