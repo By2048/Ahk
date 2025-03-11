@@ -1,22 +1,22 @@
 ﻿
 Folders := {
 
-    Temp : "T:\"   ,
-    Tmp  : "T:\"   ,
-    Ram  : "V:\#\" ,
+    Ram   : "V:\#\" ,
 
-    Image     : "T:\#Image\"               ,
-    Video     : "T:\#Video\"               ,
-    Resource  : "T:\#Resource\"            ,
-    Screen    : "T:\#Screen\"              ,
-    History   : "T:\#Sync\History\"        ,
-    Wallpaper : "T:\#Sync\Wallpaper\"      ,
+    Admin : "C:\Users\Administrator\" ,
+    
+    Lnk    : "D:\#Lnk\#\" ,
+    Lnks   : "D:\#Lnk\"   ,
+    Config : "E:\Config\" ,
+    Script : "E:\Script\" ,
 
-    Lnk       : "D:\#Lnk\#\"               ,
-    AppStore  : "D:\#Lnk\#AppStore\"       ,
-    Admin     : "C:\Users\Administrator\"  ,
-    Config    : "E:\Config\"               ,
-    Script    : "E:\Script\"               ,
+    Temp     : "T:\"           ,
+    Image    : "T:\#Image\"    ,
+    Video    : "T:\#Video\"    ,
+    Screen   : "T:\#Screen\"   ,
+    ToDo     : "T:\#ToDo\"     ,
+    Sync     : "T:\#Sync\"     ,
+    Resource : "T:\#Resource\" ,
 
 }
 
@@ -79,6 +79,7 @@ Folders.Columns := {
 ; "ItemNameDisplay:800 ItemDate:200 Size:150"
 Folders.Paths := Map(
 
+    "回收站"                          , Folders.Columns.Recycle ,
     "C:\"                            , Folders.Columns.Name    ,
     "C:\Users"                       , Folders.Columns.Name    ,
     "C:\Users\Administrator"         , Folders.Columns.Comment ,
@@ -87,13 +88,6 @@ Folders.Paths := Map(
     "C:\ProgramData"                 , Folders.Columns.Name    ,
     "C:\Program Files"               , Folders.Columns.Name    ,
     "C:\Program Files (x86)"         , Folders.Columns.Name    ,
-
-    "回收站" , Folders.Columns.Recycle ,
-    "D:\"   , Folders.Columns.Comment ,
-    "E:\"   , Folders.Columns.Comment ,
-    "F:\"   , Folders.Columns.Name    ,
-    "T:\"   , Folders.Columns.Size    ,
-    "V:\"   , Folders.Columns.Name    ,
 
 )
 

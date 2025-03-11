@@ -60,9 +60,9 @@
 >^+/::Run Folders.Script "Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
 
  >^Esc::Run "TaskMgr" ;任务管理器
->^+Esc::Run "D:\#Lnk\#\SecAnalysis.lnk"
+>^+Esc::Run Folders.Lnk "SecAnalysis.lnk"
 
->^Enter::Run Folders.AppStore "Whiteboard.lnk"
+>^Enter::Run Folders.Lnk "AppStore\Whiteboard.lnk"
 
 >^BackSpace::Run WT " -d " Folders.Temp
 
