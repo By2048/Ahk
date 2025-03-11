@@ -50,26 +50,21 @@ RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Scre
         }
     }
 
-
     $Insert::PotPlayerOpenFile()
     $Delete::PotPlayerDeleteFile()
 
-    CapsLock::{
-        if ( InStr(A_PriorHotkey, A_ThisHotkey) )
-            if ( A_TimeSincePriorHotkey < 333 )
-                WinClose("A")
+    ~CapsLock::{
+        if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) )
+            WinClose("A")
     }
 
-    !CapsLock::WinClose("A")
-
     #Enter::Send "!{Enter}"
+    #+Enter::Send "^{Enter}"
 
     ~+Left::+Left
     ~+Right::+Right
     ~+Up::+Up
     ~+Down::+Down
-
-    #+Enter::Send "^{Enter}"
 
     #Include PotPlayer.Joy.ahk
     #Include PotPlayer.Mouse.ahk
