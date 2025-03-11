@@ -29,4 +29,5 @@ SetEditPrefix(control)
         text := LTrim(text, _code)
     text := Format("{1} {2}", Folders.Prefix.Get(key), LTrim(text))
     ControlSetText(text, control, "A")
+    ControlSend("{Home}{Right 2}", control, "A")    
 }
