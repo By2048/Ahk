@@ -1,14 +1,4 @@
 ﻿
-#HotIf CheckWindowActive( "Explorer" , "CabinetWClass" , "回收站" )
-    +Delete::{
-        ErActivateMenu()
-        Sleep 333
-        Send "{Up 2}"
-        Send "{Enter}"
-    }
-#HotIf
-
-
 ; 文件管理器
 #HotIf CheckWindowActive( "Explorer" , "CabinetWClass" )
 

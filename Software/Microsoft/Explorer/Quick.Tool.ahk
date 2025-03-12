@@ -27,14 +27,13 @@ ErQuickPreview()
         return
 
     if ( InStr(path, ".png") || InStr(path, ".jpg") || InStr(path, ".jpeg") || InStr(path, ".bmp") ) {
-        cmd := AHK
-        cmd .= " E:\Project\Ahk\Cmd\Image.ahk "
+        cmd := AHK " E:\Project\Ahk\Cmd\Image.ahk "
         cmd .= Format("`"{}`"", path)
         Run cmd
     }
 
     if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
-        cmd := "D:\PowerShell\psl.exe -NoLogo -File "
+        cmd := PSL " -NoLogo -File "
         cmd .= "E:\Script\PSL\UnZip#Image.ps1 "
         cmd .= Format("`"{}`"", path)
         Run cmd
@@ -45,7 +44,7 @@ ErQuickPreview()
 
 ErQuickRename()
 {
-    Return
+    path := ErGetFocusedItem()
 }
 
 

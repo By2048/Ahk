@@ -26,3 +26,14 @@
         Send "!y"
     }
 #HotIf
+
+
+#HotIf CheckWindowActive( "Explorer" , "CabinetWClass" , "回收站" )
+    +Delete::{
+        ErActivateMenu()
+        Sleep 333
+        Send "{Up 2}"
+        Sleep 99
+        Send "{Enter}"
+    }
+#HotIf
