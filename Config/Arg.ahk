@@ -58,6 +58,8 @@ Arg := {
     numlock_click  : 0 ,
     capslock_click : 0 ,
 
+    win_shift_g : 0 ,
+
     mouse_x : 0 ,
     mouse_y : 0 ,
 }

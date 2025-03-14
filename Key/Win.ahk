@@ -62,12 +62,30 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; PowerToy
-; #t 窗口置顶
 ; #o Orc
+<#t:: Send "^!t"   ; 窗口置顶
 <#x:: Send "#^!x"  ; 裁剪
 <#+x::Send "#^!+x" ; 锁定
-<#g:: Send "#^!g"  ; 鼠标荧光笔
-<#+g::Send "#^!+g" ; 屏幕标尺
+
+<#g::
+<#+g::{
+    if ( A_ThisHotkey == "<#g" ) {
+        Send "#^!g" ; 鼠标荧光笔
+        HelpText("`n  鼠标荧光笔  `n", "Center", "Screen", 666)
+    }
+    if ( A_ThisHotkey == "<#+g" ) {
+        Arg.win_shift_g := True
+        Send "#^!+g" ; 屏幕标尺
+    }
+}
+#HotIf ( Arg.win_shift_g == True )
+    #g::
+    Esc::
+    CapsLock::{
+        Arg.win_shift_g := False
+        Send "#^!+g"
+    }
+#HotIf
 
 ;切换任务栏应用（预览
 <#[::Send "#+t"
