@@ -20,7 +20,7 @@ ClipboardChange(origin)
 
 
 
-AriaDownload(url, folder:="T:\", name:="")
+AriaDownload(url, folder:=Folders.Temp, name:="")
 {
     if ( ! url )
         return

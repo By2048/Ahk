@@ -20,10 +20,10 @@ Numpad9::Send "{Enter}"
 Numpad3::Send "{Esc}"
 
 ; 左
-Numpad7::ZipSetPath("V:\#\")
+Numpad7::ZipSetPath(Folders.Ram)
 
 ; 右
-Numpad1::ZipSetPath("T:\"  )
+Numpad1::ZipSetPath(Folders.Temp)
 
 ;---------------------------------;
 

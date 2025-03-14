@@ -77,7 +77,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
         MoveWindowPosition(Position(1300,1000))
         BTSetListView()
         ControlClick("SysHeader321", "A")
-        ControlSetText("T:\", "Edit1", "A")
+        ControlSetText(Folders.Temp, "Edit1", "A")
         Sleep 99
         ControlGetPos(&x, &y, &w, &h, "SysListView321", "A")
         CoordMode("Mouse", "Client")
@@ -89,8 +89,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     NumpadPgUp::
     NumpadPgDn::{
         SetControlDelay(-1)
-        paths := [ "T:\" , "V:\#\" , "N:\"
-                 , "T:\#Anime\" , "T:\#Torrent\" ]
+        paths := [ Folders.Temp , Folders.Ram ]
         path := ControlGetText("Edit1", "A")
         if ( InStr(A_ThisHotkey, "PgUp") )
             path := LoopList(paths, &path, -1)
