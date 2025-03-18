@@ -1,27 +1,24 @@
 ﻿
-Folders := {
+Folders :=
+{
+    Ram    : "V:\#\" ,
 
-    Ram   : "V:\#\" ,
-
-    Admin : "C:\Users\Administrator\" ,
+    Admin  : "C:\Users\Administrator\" ,
     
-    Lnk    : "D:\#Lnk\#\" ,
-    Lnks   : "D:\#Lnk\"   ,
-    Config : "E:\Config\" ,
-    Script : "E:\Script\" ,
+    Lnk    : "D:\#Lnk\#\"  ,
+    Lnks   : "D:\#Lnk\"    ,
+    Config : "E:\Config\"  ,
+    Script : "E:\Script\"  ,
 
-    Temp     : "T:\"           ,
-    Image    : "T:\#Image\"    ,
-    Video    : "T:\#Video\"    ,
-    Screen   : "T:\#Screen\"   ,
-    ToDo     : "T:\#ToDo\"     ,
-    Sync     : "T:\#Sync\"     ,
-    Resource : "T:\#Resource\" ,
-
+    Temp   : "T:\"         ,
+    Image  : "T:\#Image\"  ,
+    Video  : "T:\#Video\"  ,
+    ToDo   : "T:\#ToDo\"   ,
+    Sync   : "T:\#Sync\"   ,
 }
 
 
-Folders.Prefix := Map( 
+Folders.Prefix := Map(
 
     "CapsLock" , ""
     
@@ -56,12 +53,11 @@ Folders.Prefix := Map(
     , "!0" , "Ⅹ"
     , "!-" , "Ⅺ"
     , "!=" , "Ⅻ"
-
 )
 
 
-Folders.Columns := {
-
+Folders.Columns :=
+{
     Name        : "ItemNameDisplay:1150"                                                         ,
     Default     : "ItemNameDisplay:999 Size:150"                                                 ,
     Size        : "ItemNameDisplay:999 Size:150"                                                 ,
@@ -71,7 +67,6 @@ Folders.Columns := {
     CommentMini : "ItemNameDisplay:765 Comment:369"                                              ,
     CommentDate : "ItemNameDisplay:500 Comment:450 ItemDate:200"                                 ,
     Recycle     : "ItemNameDisplay:460 Recycle.DeletedFrom:360 Recycle.DateDeleted:180 Size:150" ,
-
 }
 
 
@@ -88,7 +83,6 @@ Folders.Paths := Map(
     "C:\ProgramData"                 , Folders.Columns.Name    ,
     "C:\Program Files"               , Folders.Columns.Name    ,
     "C:\Program Files (x86)"         , Folders.Columns.Name    ,
-
 )
 
 
