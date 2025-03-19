@@ -240,7 +240,7 @@ ErSetPathPrev() {
     Sleep 33
     path := ControlGetText("Edit2", "A")
     path := RTrim(path, "\") . "\"
-    path := LoopList(ExplorerPaths, &path, -1)
+    path := LoopList(ExplorerAddressPaths, &path, -1)
     ControlSetText(path, "Edit2", "A")
     Send "{Enter}"
     Sleep 99
@@ -251,7 +251,7 @@ ErSetPathNext() {
     Sleep 33
     path := ControlGetText("Edit2", "A")
     path := RTrim(path, "\") . "\"
-    path := LoopList(ExplorerPaths, &path, +1)
+    path := LoopList(ExplorerAddressPaths, &path, +1)
     ControlSetText(path, "Edit2", "A")
     Send "{Enter}"
     Sleep 99

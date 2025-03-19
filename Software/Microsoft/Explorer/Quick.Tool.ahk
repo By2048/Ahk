@@ -58,20 +58,40 @@ ErQuickRemove()
 ErQuickMove()
 {
     if ( ! Arg.ErQuick.folder ) {
-        ErQuickToolsHide()    
+        ErQuickToolsHide()
         return
     }
-    path := ErGetFocusedItem()
-    attribute := FileExist(path)
-    if ( InStr(attribute, "A") ) {
-        FileMove(path, Arg.ErQuick.folder, 0)
-    } else if ( InStr(attribute, "D") ) {
-        source := path . "\*.*"
-        target := Arg.ErQuick.folder . StrSplit(path, "\")[-1]
-        DirCreate(target)
-        MoveFilesAndFolders(source, target, 0)
-        DirDelete(path, 1)
+    
+    focus_path   := ErGetFocusedItem()
+    select_paths := ErGetSelectItem()
+
+    if ( select_paths.Length == 1 ) {
+        if ( InStr(FileGetAttrib(focus_path), "A") )
+            FileMove(focus_path, Arg.ErQuick.folder, 0)
+        else if ( InStr(FileGetAttrib(focus_path), "D") ) {
+            source := focus_path . "\*.*"
+            target := Arg.ErQuick.folder . StrSplit(focus_path, "\")[-1]
+            DirCreate(target)
+            MoveFilesAndFolders(source, target, 0)
+            DirDelete(focus_path, 1)
+        }
+        ErQuickToolsHide()
+        return
     }
+
+    if ( select_paths.Length > 1 ) {
+        for path in select_paths {
+            if ( InStr(FileGetAttrib(path), "D") ) {
+                text := "`n Selected Path Contains Folders `n"
+                HelpText(text, "Center", "Screen", 1500)
+                ErQuickToolsHide()
+                return
+            }
+        }
+        for path in select_paths
+            FileMove(path, Arg.ErQuick.folder, 0)
+    }
+
     ErQuickToolsHide()
 }
 

@@ -18,7 +18,7 @@ RegisterHelpInfo("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
 RegisterSoftware("antimicrox" , "AntiMicroX")
 RegisterPosition("AntiMicroX" , Position(1234 , 1111))
 RegisterPosition("AntiMicroX__按键" , Position(1600 , 666))
-#HotIf CheckWindowActive("AntiMicroX__按键")
+#HotIf CheckWindowActive("AntiMicroX")
     $RWin::MoveWindowDefault()
 #HotIf
 
@@ -26,23 +26,20 @@ RegisterPosition("AntiMicroX__按键" , Position(1600 , 666))
 RegisterSoftware( "dopus" , "ExplorerDO" )
 RegisterPosition( "ExplorerDO" , Position(2468 , 1357) )
 #HotIf CheckWindowActive("ExplorerDO")
-    
 #HotIf
 
 
 RegisterSoftware("Duplicate Cleaner 5" , "DuplicateCleaner")
 RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
 #HotIf CheckWindowActive("DuplicateCleaner")
-    `;::Send ":"
-    +;::Send ";"
-    NumLock::Send "{Enter}"
-    #\::{
-        w := 2500
-        h := 1400
-        x := Screen.w/2 - w/2
-        y := Screen.h/2 - h/2 + 5
-        MoveWindowPosition( [ x, y, w, h ] )
+    NumLock::{
+        window := GetActiveWindowInfo()
+        if ( window.title == "图片预览" )
+            WinClose("A")
+        else
+            Send "{Enter}"
     }
+    #\::MoveWindowPosition( Position(2500 , 1357) )
 #HotIf
 
 

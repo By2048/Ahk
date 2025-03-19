@@ -15,7 +15,7 @@ RegisterHelpInfo("SumatraPDF", FilePath(A_LineFile, "SumatraPDF.help"))
 
     ; 显示书签
     F12::Return
-    \::Send "{F12}"
+    !\::Send "{F12}"
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -48,6 +48,10 @@ RegisterHelpInfo("SumatraPDF", FilePath(A_LineFile, "SumatraPDF.help"))
     ; !o::Send ^o
 
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+    [::Send "^b" ;收藏
+    ]::Send "{Left}"
+    \::Send "{Right}"
 
     ; 属性
     ^d::Return
@@ -108,11 +112,11 @@ RegisterHelpInfo("SumatraPDF", FilePath(A_LineFile, "SumatraPDF.help"))
     !v::Send "^l"
 
     ; 向前翻
-    !Left::Return
-    [::Send "!{Left}"
+    ; !Left::Return
+    ; [::Send "!{Left}"
 
     ; 向后翻
-    !Right::Return
-    ]::Send "!{Right}"
+    ; !Right::Return
+    ; ]::Send "!{Right}"
 
 #HotIf

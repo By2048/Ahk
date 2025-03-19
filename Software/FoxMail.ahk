@@ -1,6 +1,13 @@
 ﻿
 RegisterSoftware("Foxmail" , "FoxMail")
 
+
+#HotIf CheckWindowActive( "FoxMail" , "" , "确认" )
+    Insert::Send "{Enter}"
+    Delete::Send "{Esc}"
+#HotIf
+
+
 #HotIf CheckWindowActive( "FoxMail" )
 
     ; 收取所有邮件

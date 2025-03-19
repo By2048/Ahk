@@ -31,7 +31,7 @@ ErQuickTools()
     G.Add("Text", Format("w{}", G.width), G.Line)
 
     G.SetFont(Format("s{}", Arg.ErQuick.folder_size), Arg.ErQuick.font_name)
-    for path in ExplorerTools[Arg.ErQuick.page] {
+    for path in ExplorerQuickPaths[Arg.ErQuick.page] {
         text := G.Add("Text", Format("w{} Disabled", G.width), "  " path)
         text.folder := path
     }
@@ -133,8 +133,8 @@ ErQuickToolsSwitchPage(step:=+1)
 {
     if ( step == +1 ) {
         Arg.ErQuick.page := Arg.ErQuick.page + 1
-        if ( Arg.ErQuick.page > ExplorerTools.Length )
-            Arg.ErQuick.page := ExplorerTools.Length
+        if ( Arg.ErQuick.page > ExplorerQuickPaths.Length )
+            Arg.ErQuick.page := ExplorerQuickPaths.Length
     } else if ( step == -1 ) {
         Arg.ErQuick.page := Arg.ErQuick.page - 1
         if ( Arg.ErQuick.page < 1 )

@@ -1,6 +1,6 @@
 ﻿
 ; 桌面
-#HotIf CheckWindowActive( "Explorer" , "WorkerW" )
+#HotIf CheckWindowActive( "Explorer" , "WorkerW | Progman" )
 
      F1::Run Folders.Lnks
      F2::Run Folders.ToDo

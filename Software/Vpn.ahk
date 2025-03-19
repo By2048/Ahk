@@ -9,7 +9,7 @@ RegisterSoftware( "clash-verge" , "ClashVerge" )
 RegisterPosition( "ClashVerge" , Position(1357 , 1111) )
 
 RegisterSoftware( "v2rayN" , "v2rayN" )
-RegisterPosition( "v2rayN" , Position(1818 , 1212) )
+RegisterPosition( "v2rayN" , Position(1940 , 999) )
 RegisterHelpInfo( "v2rayN", "Software\Vpn.help" )
 
 
