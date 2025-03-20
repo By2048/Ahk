@@ -19,41 +19,29 @@ RegisterSoftware( "taskmgr" , "TaskMgr" )
 
         ; 详细信息
         name  := "SysListView321"
-        width := Map(  1 , 500   ;名称
-                    ,  2 , 100   ;PID
-                    ,  6 , 160   ;工作集内存
-                    ,  5 , 100   ;CPU
-                    ,  7 , 100   ;句柄
-                    ,  8 , 100   ;线程
-                    , 14 , 100   ;GPU
-                    ,  9 , 130   ;I/O 读取
-                    , 10 , 130   ;I/O 写入
-                    , 11 , 150   ;I/O 其他
-                    ,  4 , 200   ;用户名
-                    ,  3 , 130   ;状态
-                    , 12 , 80    ;平台
-                    , 13 , 170 ) ;DPI 感知
-
-        scale := Screen_4K.Dpi / Screen_2K.Dpi
-        for k , v in width {
-            v := v / scale + 0
-            width[k] := v
-        }
+        width := Map(  1 , 500 / (2/1.5)   ;名称
+                    ,  2 , 100 / (2/1.5)   ;PID
+                    ,  6 , 160 / (2/1.5)   ;工作集内存
+                    ,  5 , 100 / (2/1.5)   ;CPU
+                    ,  7 , 100 / (2/1.5)   ;句柄
+                    ,  8 , 100 / (2/1.5)   ;线程
+                    , 14 , 100 / (2/1.5)   ;GPU
+                    ,  9 , 130 / (2/1.5)   ;I/O 读取
+                    , 10 , 130 / (2/1.5)   ;I/O 写入
+                    , 11 , 150 / (2/1.5)   ;I/O 其他
+                    ,  4 , 200 / (2/1.5)   ;用户名
+                    ,  3 , 130 / (2/1.5)   ;状态
+                    , 12 , 80  / (2/1.5)   ;平台
+                    , 13 , 170 / (2/1.5) ) ;DPI 感知
         SetColumnWidth(name, width)
 
         ; 服务
         name  := "SysListView322"
-        width := Map(  1 , 600   ;名称
-                     , 2 , 130   ;PID
-                     , 4 , 150   ;状态
-                     , 5 , 450   ;组
-                     , 3 , 810 ) ;描述
-
-        scale := Screen_4K.Dpi / Screen_2K.Dpi
-        for k , v in width {
-            v := v / scale + 0
-            width[k] := v
-        }
+        width := Map(  1 , 500   ;名称
+                     , 2 , 100   ;PID
+                     , 3 , 500   ;描述
+                     , 4 , 100   ;状态
+                     , 5 , 400 ) ;组
         SetColumnWidth(name, width)
     }
 
