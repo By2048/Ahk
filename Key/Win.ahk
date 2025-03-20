@@ -219,12 +219,12 @@
 <#+m::Send "#d" ;切换隐藏所有应用界面
 
 ; 屏幕截图 临时 | 长久
-<#Insert:: ScreenShotFull(ScreenShot_Full)
-<#+Insert::ScreenShotFull(ScreenShot_Temp)
+<#Insert:: ScreenShotFull(Folders.Image)
+<#+Insert::ScreenShotFull(Folders.Temp )
 
 ;软件截图 临时 | 长久
-<#Delete:: ScreenShotSoftware(ScreenShot_Software)
-<#+Delete::ScreenShotSoftware(ScreenShot_Temp    )
+<#Delete:: ScreenShotSoftware(Folders.Image)
+<#+Delete::ScreenShotSoftware(Folders.Temp )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

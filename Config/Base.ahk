@@ -65,6 +65,14 @@ Arg := {
 }
 
 
+; 手机<->电脑 剪切板文件
+JQB := { 
+    ; 
+    Phone   : A_ScriptDir . "\Data\JQB_Phone"   , 
+    Windows : A_ScriptDir . "\Data\JQB_Windows"
+}
+
+
 ; Gui显示
 G := Gui()
 InitGui() {

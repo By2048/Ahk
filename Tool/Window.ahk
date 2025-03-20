@@ -86,6 +86,8 @@ GetWindowConfig(window, config)
 ; 获取当前激活窗口所在屏幕的信息
 GetWindowScreen(window)
 {
+    ; 某些窗口全屏时 xy为-11,-11
+    Window_Screen_Offset := 19
     result := { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 }
     loop Screens.Count {
         if ( window.x >= Screens.%A_Index%.x - Window_Screen_Offset ) {
@@ -562,15 +564,12 @@ MoveWindowQuick(command)
     if ( window.min_max )
         WinRestore(window.id)
 
-    main := Windows_Main_Mini[1]
-    mini := Windows_Main_Mini[2]
-
     if ( command == "Main" ) {
-        w := window.screen.w * main[1]
-        h := window.screen.h * main[2]
+        w := window.screen.w * Windows_Main[1]
+        h := window.screen.h * Windows_Main[2]
     } else if ( command == "Mini" ) {
-        w := window.screen.w * mini[1]
-        h := window.screen.h * mini[2]
+        w := window.screen.w * Windows_Mini[1]
+        h := window.screen.h * Windows_Mini[2]
     }
     x := window.screen.x + (window.screen.w - w)/2
     y := window.screen.y + (window.screen.h - h)/2

@@ -10,11 +10,14 @@
 /.vscode/
 /.idea/
 
-
 /@/
 /Data/*
 /Test/*
 
+JQB_Phone
+JQB_Windows
+
+Private.ahk
 Script.txt
 
 /@.ahk
@@ -25,5 +28,3 @@ Script.txt
 
 /desktop.ini
 
-/JQB_Phone
-/JQB_Windows
