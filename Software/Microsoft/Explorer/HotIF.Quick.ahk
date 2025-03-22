@@ -1,4 +1,10 @@
 ﻿
+#HotIf CheckWindowActive( "Explorer" , "CabinetWClass" )
+    Insert::ErQuickTools()
+    Delete::Delete
+#HotIf
+
+
 #HotIf CheckWindowActive( "Explorer" , "CabinetWClass" ) && ( Arg.ErQuick.show == True )
 
     =::ErQuickToolsSwitchPage(-1)

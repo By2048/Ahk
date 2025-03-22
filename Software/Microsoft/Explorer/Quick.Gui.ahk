@@ -23,7 +23,9 @@ ErQuickTools()
 
     G.Add("Text", "")
 
-    path := ErGetFocusedItem()
+    path  := ErGetFocusedItem()
+    paths := ErGetSelectItem()
+
     G.SetFont(Format("s{}", Arg.ErQuick.title_size), Arg.ErQuick.font_name)
     G.Add("Text", Format("w{}", G.width), path)
     
@@ -57,8 +59,8 @@ ErQuickTools()
         #Include *i Quick.Gui.Snippet.ahk
 
         if ( ! Arg.ErQuick.command ) {
-            G.Add("Text", Format("w{}", G.width), "Rename")
-            Arg.ErQuick.command := "ErQuickRename" 
+            G.Add("Text", Format("w{}", G.width), "MoveToTemp")
+            Arg.ErQuick.command := "ErQuickArchive | " Folders.Temp
         }
         
     }

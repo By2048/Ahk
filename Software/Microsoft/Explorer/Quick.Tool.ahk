@@ -42,12 +42,6 @@ ErQuickPreview()
 }
 
 
-ErQuickRename()
-{
-    path := ErGetFocusedItem()
-}
-
-
 ErQuickRemove()
 {
     path := ErGetFocusedItem()
@@ -82,7 +76,7 @@ ErQuickMove()
     if ( select_paths.Length > 1 ) {
         for path in select_paths {
             if ( InStr(FileGetAttrib(path), "D") ) {
-                text := "`n Selected Path Contains Folders `n"
+                text := "`n  Selected Path Contains Folders  `n"
                 HelpText(text, "Center", "Screen", 1500)
                 ErQuickToolsHide()
                 return
@@ -122,7 +116,9 @@ ErQuickUnZip()
 ErQuickArchive(folder)
 {
     path := ErGetFocusedItem()
-    attribute := FileExist(path)
-    if ( InStr(attribute, "A") )
+    attr := FileGetAttrib(path)
+    if ( InStr(attr, "A") )
         FileMove(path, folder, 0)
+    else if ( InStr(attr, "D") )
+        HelpText("`n  Selected Path Contains Folders  `n", "Center", "Screen", 1500)
 }

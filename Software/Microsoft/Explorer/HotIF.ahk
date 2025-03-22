@@ -76,8 +76,6 @@
             Send "{F5}"
     }
 
-    Insert::ErQuickTools()
-    Delete::Delete
     Insert & Delete::Return
     Delete & Insert::Return
     RWin & RCtrl::Return
