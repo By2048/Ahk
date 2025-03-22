@@ -109,13 +109,13 @@ LAlt  & LWin:: Return
 #n::Return
 #m::Return
 
-#[::Return
-#]::Return
-#\::Return
+<#[::Return
+<#]::Return
+<#\::Return
 
-#,::Return
-#.::Return
-#/::Return
+<#,::Return
+<#.::Return
+<#/::Return
 
 #Up::Return
 #Down::Return
