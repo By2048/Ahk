@@ -107,7 +107,7 @@
     Send "{Blind}{vkFF}"
     Run "MS-Settings:" ;设置 基础
 }
-<#+/::Run "E:\Config\Windows.msc" ;设置 高级
+<#+/::Run Folders.Config "\Windows.msc" ;设置 高级
 
 ;类似于Vim的快捷键操作工具
 <#;::Run HuntAndPeck . " /tray" ;任务栏
@@ -237,7 +237,7 @@
 ; 显示隐藏任务栏
 >#/::{
     rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
-    if ( !WinExist(rule) ) {
+    if ( ! WinExist(rule) ) {
         Try WinShow(rule)
         HelpText("`n 显示任务栏 `n", "Center", Screens.Count, 500)
     } else {
@@ -254,7 +254,7 @@
 >#AppsKey::SoundSetMute(-1)
 
 ; 终端
->#Space:: Run WT " --focus --size 124,36 -d T:\\"
+>#Space:: Run WT " --focus --size 124,36 -d " Folders.Temp
 
 ; 窗口大小调整
 >#Up::   MoveWindowOffset( 0 , 0 ,   0 , -10 )
