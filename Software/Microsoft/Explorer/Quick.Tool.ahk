@@ -4,8 +4,7 @@ ErQuickRun()
     fun_arg := Arg.ErQuick.command
     if ( ! fun_arg )
         return
-    ErQuickToolsHide()
-    if ( fun_arg == "None" ) Or ( ! fun_arg )
+    if ( fun_arg == "None" ) || ( ! fun_arg )
         return
     if ( InStr(fun_arg, "|") ) {
         fa := StrSplit(fun_arg, "|")
@@ -16,6 +15,7 @@ ErQuickRun()
         f := Trim(fun_arg)
         %f%()
     }
+    ErQuickToolsHide()
 }
 
 
@@ -61,7 +61,7 @@ ErQuickMove(folder:="")
     }
 
     path_focus   := Arg.path_focus
-    path_selects := Arg.path_select
+    path_selects := Arg.path_selects
 
     if ( path_selects.Length == 1 ) {
         if ( InStr(FileGetAttrib(path_focus), "A") )

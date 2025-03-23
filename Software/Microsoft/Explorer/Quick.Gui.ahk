@@ -47,8 +47,12 @@ ErQuickTools()
     
     G.SetFont(Format("s{}", Arg.ErQuick.folder_size), Arg.ErQuick.font_name)
 
-    if ( paths.Length > 1 )
-        line := StrReplace(G.info, "{____}", "{ " paths.Length " }")
+    if ( paths.Length == 1 )
+        line := G.line
+    else if ( paths.Length > 1 && paths.Length < 10 )
+        line := StrReplace(G.info, "{----}", "{ " paths.Length " }")
+    else if ( paths.Length >= 10 )
+        line := StrReplace(G.info, "-{----}-", "{ " paths.Length " }")
     else
         line := G.line
     GLine := G.AddText(G.style.text, line)
