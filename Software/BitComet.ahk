@@ -89,7 +89,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     NumpadPgUp::
     NumpadPgDn::{
         SetControlDelay(-1)
-        paths := [ Folders.Temp , Folders.Ram , Folders.Video ]
+        paths := [ Folders.Temp , Folders.Ram ]
         path  := ControlGetText("Edit1", "A")
         if ( InStr(A_ThisHotkey, "PgUp") )
             path := LoopList(paths, &path, -1)
