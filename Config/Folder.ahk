@@ -1,20 +1,21 @@
 ﻿
 Folders :=
 {
-    Ram    : "V:\#\" ,
+    Ram  : "V:\#\" ,
+    Temp : "T:\"   ,
 
-    Admin  : "C:\Users\Administrator\" ,
+    Admin : "C:\Users\Administrator\" ,
     
-    Lnk    : "D:\#Lnk\#\"  ,
-    Lnks   : "D:\#Lnk\"    ,
-    Config : "E:\Config\"  ,
-    Script : "E:\Script\"  ,
+    Lnk  : "D:\#Lnk\#\" ,
+    Lnks : "D:\#Lnk\"   ,
 
-    Temp   : "T:\"         ,
-    Image  : "T:\#Image\"  ,
-    Video  : "T:\#Video\"  ,
-    ToDo   : "T:\#ToDo\"   ,
-    Sync   : "T:\#Sync\"   ,
+    Config : "E:\Config\" ,
+    Script : "E:\Script\" ,
+
+    Sync  : "T:\#Sync\"  ,
+    ToDo  : "T:\#ToDo\"  ,
+    Image : "T:\#Image\" ,
+    Video : "T:\#Video\" ,
 }
 
 
