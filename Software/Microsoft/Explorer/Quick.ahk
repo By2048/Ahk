@@ -1,24 +1,30 @@
 ﻿
-Arg.ErQuick := {
+Arg.ErQuick :=
+{
+    show    : False ,
+    page    : 1     ,
+    folder  : ""    ,
+    command : ""    ,
 
-    show    : False   ,
-    page    : 1       ,
-    folder  : ""      ,
-    command : ""      ,
-    margin_x    : 19  ,
-    margin_y    : -4  ,
+    margin_x : 19 ,
+    margin_y : -4 ,
 
-    text_width  : 333 ,
-    folder_size : 13  ,
+    folder_size : 13 ,
     title_size  : 9  ,
     
-    font_color : "bdbebd" ,
-    back_color : "f0f0f0" ,
     font_name  : "Verdana"  ,
-    
-    line_text  : "----------------------------------------------"
+    font_color : "000000" ,
+    back_color : "ffffff" ,
+
+    select_fore : "bdbebd" ,
+    select_back : "f0f0f0" ,
+
+    line  : "--------------------------------------------------" ,
+    info  : "----------------------{____}----------------------"
 }
 
+
+Arg.ErQuick.width := StrLen(Arg.ErQuick.line) * 8
 
 
 #Include Quick.Gui.ahk

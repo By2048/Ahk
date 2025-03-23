@@ -21,15 +21,23 @@ ErQuickRun()
 
 ErQuickPreview()
 {
-    path := ErGetFocusedItem()
+    path  := ErGetFocusedItem()
+    paths := ErGetSelectItem()
 
-    if ( InStr(path, ".bc!") )
+    if ( paths.Length != 1 )
+        return
+
+    if ( InStr(FileGetAttrib(path), "D") )
+        return
+
+    if ( InStr(path, ".bc!") || InStr(path, ".torrent") )
         return
 
     if ( InStr(path, ".png") || InStr(path, ".jpg") || InStr(path, ".jpeg") || InStr(path, ".bmp") ) {
         cmd := AHK " E:\Project\Ahk\Cmd\Image.ahk "
         cmd .= Format("`"{}`"", path)
         Run cmd
+        return
     }
 
     if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
@@ -42,39 +50,35 @@ ErQuickPreview()
 }
 
 
-ErQuickRemove()
+ErQuickMove(folder:="")
 {
-    path := ErGetFocusedItem()
-    FileDelete(path)
-}
-
-
-ErQuickMove()
-{
+    if ( folder )
+        Arg.ErQuick.folder := folder
+    
     if ( ! Arg.ErQuick.folder ) {
         ErQuickToolsHide()
         return
     }
-    
-    focus_path   := ErGetFocusedItem()
-    select_paths := ErGetSelectItem()
 
-    if ( select_paths.Length == 1 ) {
-        if ( InStr(FileGetAttrib(focus_path), "A") )
-            FileMove(focus_path, Arg.ErQuick.folder, 0)
-        else if ( InStr(FileGetAttrib(focus_path), "D") ) {
-            source := focus_path . "\*.*"
-            target := Arg.ErQuick.folder . StrSplit(focus_path, "\")[-1]
+    path_focus   := Arg.path_focus
+    path_selects := Arg.path_select
+
+    if ( path_selects.Length == 1 ) {
+        if ( InStr(FileGetAttrib(path_focus), "A") )
+            FileMove(path_focus, Arg.ErQuick.folder, 0)
+        else if ( InStr(FileGetAttrib(path_focus), "D") ) {
+            source := path_focus . "\*.*"
+            target := Arg.ErQuick.folder . StrSplit(path_focus, "\")[-1]
             DirCreate(target)
             MoveFilesAndFolders(source, target, 0)
-            DirDelete(focus_path, 1)
+            DirDelete(path_focus, 1)
         }
         ErQuickToolsHide()
         return
     }
 
-    if ( select_paths.Length > 1 ) {
-        for path in select_paths {
+    if ( path_selects.Length > 1 ) {
+        for path in path_selects {
             if ( InStr(FileGetAttrib(path), "D") ) {
                 text := "`n  Selected Path Contains Folders  `n"
                 HelpText(text, "Center", "Screen", 1500)
@@ -82,7 +86,7 @@ ErQuickMove()
                 return
             }
         }
-        for path in select_paths
+        for path in path_selects
             FileMove(path, Arg.ErQuick.folder, 0)
     }
 
@@ -93,12 +97,11 @@ ErQuickMove()
 
 ErQuickUnZip()
 {
-    paths := ErGetSelectItem()
+    path  := Arg.path_focus
+    paths := Arg.path_selects
 
     if ( paths.Length != 1 )
         return
-
-    path := paths[1]
 
     if ( InStr(path, ".bc!") )
         return
@@ -110,15 +113,4 @@ ErQuickUnZip()
         Sleep 333
         Try WinActivate("ahk_exe 7zG.exe ahk_class #32770")
     }
-}
-
-
-ErQuickArchive(folder)
-{
-    path := ErGetFocusedItem()
-    attr := FileGetAttrib(path)
-    if ( InStr(attr, "A") )
-        FileMove(path, folder, 0)
-    else if ( InStr(attr, "D") )
-        HelpText("`n  Selected Path Contains Folders  `n", "Center", "Screen", 1500)
 }
