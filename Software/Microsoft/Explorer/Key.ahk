@@ -56,7 +56,6 @@ F4::Return
 
 ; 刷新
 F5::Return
-CapsLock::F5
 
 ; 输入文件名 默认
 ; 切换焦点 在输入框

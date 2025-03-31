@@ -1,12 +1,7 @@
 
 RegisterHelpInfo("FFRenamePro", FilePath(A_LineFile, "FFRenamePro.help"))
 
-
 RegisterPosition("FFRenamePro" , Position(2100 , 1234))
-
-
-; TConfigForm   参数设置
-; TGoRenameOKForm   批量更名完成
 
 
 #HotIf CheckWindowActive("FFRenamePro")

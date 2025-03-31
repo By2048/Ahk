@@ -5,7 +5,7 @@
 #HotIf
 
 
-#HotIf CheckWindowActive( "Explorer" , "#32770" , "删除*" )
+#HotIf CheckWindowActive( "Explorer" , "#32770" , "*删除*" )
     Delete::{
         Send "{Esc}"
     }
@@ -45,7 +45,5 @@
 
 #HotIf CheckWindowActive( "Explorer" , "#32770" , "回收站*" )
     ;回收站位置 可用空间
-    #\::{
-        SetColumnWidth( "SysListView321" , Map( 1,400 , 2,100 ) )
-    }
+    #\::SetColumnWidth( "SysListView321" , Map( 1,400 , 2,100 ) )
 #HotIf

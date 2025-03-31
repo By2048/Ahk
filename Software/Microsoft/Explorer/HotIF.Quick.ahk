@@ -35,5 +35,4 @@
 
 #HotIf CheckWindowActive( "Explorer" , "CabinetWClass" )
     Insert::ErQuickTools()
-    Delete::Delete
 #HotIf

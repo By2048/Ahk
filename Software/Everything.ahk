@@ -2,7 +2,7 @@
 RegisterPosition("Everything", Position(1700 , 1200))
 
 
-#HotIf CheckWindowActive( "Everything" , "#32770" , "删除多个项目" )
+#HotIf CheckWindowActive( "Everything" , "#32770" , "删除*" )
     Delete::Send "{Esc}"
     Insert::Send "{Enter}"
 #HotIf
