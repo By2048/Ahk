@@ -4,14 +4,17 @@
 #HotString EndChars `t`n`s
 
 
+:o:\D::
 :o:\Date::{
     SendInput( FormatTime(A_Now, "yyyy-MM-dd") )
 }
 
+:o:\T::
 :o:\Time::{
     SendInput( FormatTime(A_Now, "HH-mm-ss") )
 }
 
+:o:\DT::
 :o:\DateTime::{
     SendInput( FormatTime(A_Now, "yyyy-MM-dd_HH-mm-ss") )
 }
