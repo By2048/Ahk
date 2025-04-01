@@ -1,6 +1,8 @@
 ﻿
 ErQuickRun()
 {
+    Global G
+    Try G.Destroy()
     fun_arg := Arg.ErQuick.command
     if ( ! fun_arg )
         return
