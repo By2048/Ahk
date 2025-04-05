@@ -87,11 +87,3 @@
     #Include Joy.Win.ahk
 
 #HotIf
-
-
-#HotIf CheckWindowActive( "Explorer" )
-
-    #IncludeAgain Key.ahk
-    #IncludeAgain Key.Date.ahk
-
-#HotIf
