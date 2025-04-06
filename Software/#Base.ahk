@@ -40,6 +40,8 @@ RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
             Send "{Enter}"
     }
     #\::MoveWindowPosition( Position(2500 , 1357) )
+    `;:::
+    +;::`;
 #HotIf
 
 

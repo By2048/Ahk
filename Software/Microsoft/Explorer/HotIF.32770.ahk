@@ -6,6 +6,14 @@
 
 
 #HotIf CheckWindowActive( "Explorer" , "#32770" , "*删除*" )
+    ErFlash() {
+        Loop 5 {
+            Sleep 111
+            Send "{Right}"
+            Sleep 33
+            Send "{Left}"
+        }
+    }
     Delete::{
         Send "{Esc}"
     }
@@ -13,6 +21,8 @@
         Send "!y"
         Sleep 99
         Send "{Space}"
+        Sleep 555
+        ErFlash()
     }
     BackSpace::{
         Sleep 99
@@ -23,6 +33,8 @@
         Send "!y"
         Sleep 99
         Send "{Space}"
+        Sleep 555
+        ErFlash()
     }
 #HotIf
 
