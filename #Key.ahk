@@ -21,7 +21,6 @@
 #Include Key\Alt.ahk
 #Include Key\Space.ahk
 #Include Key\CapsLock.ahk
-#Include Key\Complex.ahk
 
 #SingleInstance Force
 #NoTrayIcon
