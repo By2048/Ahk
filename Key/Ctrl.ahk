@@ -1,4 +1,6 @@
 ﻿
+#Include *i Ctrl.Private.ahk
+
  >^q::Run Folders.Config "QPC.qdr"
 >^+q::Run Folders.Config "QFile.qdr"
  >^e::Run Folders.Lnk "Everything.lnk"
@@ -62,8 +64,11 @@
  >^Esc::Run "TaskMgr" ;任务管理器
 >^+Esc::Run Folders.Lnk "SecAnalysis.lnk"
 
->^Enter::Run Folders.Lnk "AppStore\Whiteboard.lnk"
+ >^Enter::Run Folders.Lnks
+>^+Enter::Run Folders.Lnk
 
+>^-::Run "Notepad"
+>^=::Run Folders.Lnk "Notepad++.lnk"
 >^BackSpace::Run WT " -d " Folders.Temp
 
 >^Up::   MoveWindowOffset(   0 , -10 )
