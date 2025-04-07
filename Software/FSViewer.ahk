@@ -1,7 +1,6 @@
 
-RegisterPosition( "FSViewer"        , Position(2525 , 1450) )
-RegisterPosition( "FSViewer__另存为" , Position(1414 , 1000) )
-
+RegisterSoftware( "FSViewer" , "FSViewer" )
+RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
 RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
 
@@ -19,6 +18,58 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     $`::Send "``"
     $BackSpace::Send "{BackSpace}"
 #HotIf
+
+
+
+#HotIf CheckWindowActive( "FSViewer" , "FastStoneImageViewerMainForm.UnicodeClass" )
+   
+    ![::ControlFocus("TJamShellTree.UnicodeClass1" , "A")
+    !]::ControlFocus("TTntListView.UnicodeClass1"  , "A")
+    !\::ControlFocus("TImageEnView1"               , "A")
+
+    #\::{
+        Send "{Blind}{vkFF}"
+
+        total_width  := 2500
+        total_height := 1357
+
+        folder_width    := 425
+        thumbnail_width := 691
+        MoveWindowPosition(Position(total_width , total_height))
+        
+        window   := GetActiveWindowInfo(False)
+        ctl_name := "TJamShellTree.UnicodeClass1"
+        ctl_info := window.controls.%ctl_name%
+        if ( Abs(ctl_info.w - folder_width) > 15 ) {
+            MouseGetPos(&x_origin, &y_origin)
+            MouseMove(ctl_info.w , ctl_info.y + ctl_info.h / 2)
+            offset := GetOffset("X")
+            MoveControlUDLR(ctl_info, "Right", folder_width, offset)
+            MouseMove(x_origin, y_origin, 0)
+        }
+        
+        window   := GetActiveWindowInfo(False)
+        ctl_name := "TTntListView.UnicodeClass1"
+        ctl_info := window.controls.%ctl_name%
+        if ( Abs(ctl_info.w - thumbnail_width) > 10 ) {
+            MouseGetPos(&x_origin, &y_origin)
+            MouseMove(ctl_info.x + ctl_info.w , ctl_info.y + ctl_info.h / 2)
+            offset := GetOffset("X")
+            MoveControlUDLR(ctl_info, "Right", folder_width + thumbnail_width, offset)
+            MouseMove(x_origin, y_origin, 0)
+        }
+    }
+    
+    BackSpace & Delete::{
+        ControlFocus("TJamShellTree.UnicodeClass1", "A")
+        ControlFocus("TJamShellTree.UnicodeClass1", "A")
+        ControlFocus("TJamShellTree.UnicodeClass1", "A")
+        if ( ControlGetClassNN(ControlGetFocus("A")) == "TJamShellTree.UnicodeClass1" )
+            Send "{AppsKey}{Up 4}{Enter}"
+    }
+
+#HotIf
+
 
 
 #HotIf CheckWindowActive("FSViewer")
@@ -71,53 +122,8 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     }
     
     ^r::Send "{F2}"
-    
-    ![::ControlFocus("TJamShellTree.UnicodeClass1" , "A")
-    !]::ControlFocus("TTntListView.UnicodeClass1"  , "A")
-    !\::ControlFocus("TImageEnView1"               , "A")
-
-    #\::{
-        Send "{Blind}{vkFF}"
-
-        total_width  := 2500
-        total_height := 1357
-
-        folder_width    := 425
-        thumbnail_width := 691
-        MoveWindowPosition(Position(total_width , total_height))
-        
-        window   := GetActiveWindowInfo(False)
-        ctl_name := "TJamShellTree.UnicodeClass1"
-        ctl_info := window.controls.%ctl_name%
-        if ( Abs(ctl_info.w - folder_width) > 15 ) {
-            MouseGetPos(&x_origin, &y_origin)
-            MouseMove(ctl_info.w , ctl_info.y + ctl_info.h / 2)
-            offset := GetOffset("X")
-            MoveControlUDLR(ctl_info, "Right", folder_width, offset)
-            MouseMove(x_origin, y_origin, 0)
-        }
-        
-        window   := GetActiveWindowInfo(False)
-        ctl_name := "TTntListView.UnicodeClass1"
-        ctl_info := window.controls.%ctl_name%
-        if ( Abs(ctl_info.w - thumbnail_width) > 10 ) {
-            MouseGetPos(&x_origin, &y_origin)
-            MouseMove(ctl_info.x + ctl_info.w , ctl_info.y + ctl_info.h / 2)
-            offset := GetOffset("X")
-            MoveControlUDLR(ctl_info, "Right", folder_width + thumbnail_width, offset)
-            MouseMove(x_origin, y_origin, 0)
-        }
-    }
 
     LAlt & RAlt::Send "{F12}"
-
-    BackSpace & Delete::{
-        ControlFocus("TJamShellTree.UnicodeClass1", "A")
-        ControlFocus("TJamShellTree.UnicodeClass1", "A")
-        ControlFocus("TJamShellTree.UnicodeClass1", "A")
-        if ( ControlGetClassNN(ControlGetFocus("A")) == "TJamShellTree.UnicodeClass1" )
-            Send "{AppsKey}{Up 4}{Enter}"
-    }
 
     #Include FSViewer.Joy.ahk
     #Include FSViewer.Mouse.ahk
