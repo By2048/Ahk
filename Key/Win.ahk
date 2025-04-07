@@ -3,9 +3,9 @@
 #Include Win.Other.ahk
 #Include Win.Left.ahk
 #Include Win.Right.ahk
-#Include Win.Fxx.ahk
 
-#Include *i Win.Private.ahk
+#Include *i Win.Setting.Private.ahk
+#Include *i Win.Fxx.Private.ahk
 
 
 ; 调整显示器亮度 基于 Twinkle 软件
