@@ -41,13 +41,16 @@ LAlt & LWin::{
     HelpText("`n  English  `n", "Center", "Screen", 300)
 }
 
+LCtrl & LAlt:: Send "{NumLock}"
+LAlt  & LCtrl::Send "{ScrollLock}"
+
 
 ; 快速管理窗口
-RAlt  & RWin:: Send "!{F4}"
-RCtrl & RWin:: Send "^w"
+RAlt  & RWin::Send "!{F4}"
+RCtrl & RWin::Send "^w"
 ; 
-RWin  & RAlt:: MoveWindowQuick("Mini")
-RWin  & RCtrl::MoveWindowQuick("Main")
+RWin & RAlt:: MoveWindowQuick("Mini")
+RWin & RCtrl::MoveWindowQuick("Main")
 ; 
 RAlt  & RCtrl::Send "{Help}"
 RCtrl & RAlt:: Send "{Pause}"
