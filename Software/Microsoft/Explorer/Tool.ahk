@@ -201,6 +201,9 @@ ErResetPosition(columns:="")
     MoveWindowPosition(Position(total_width , total_height))
     GetActiveWindowInfo(False)
 
+    if ( window.title == "控制面板" ) 
+        return
+
     ; 通过鼠标移动移动窗口,通过此操作Window可以在下次启动时使用修改后的位置
     if (    origin_win_x != window.x || origin_win_y != window.y
          || origin_win_w != window.w || origin_win_h != window.h ) {
