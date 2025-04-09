@@ -15,7 +15,7 @@ GetFileInfo(path)
     Loop 333 {
         detail_key   := folder.GetDetailsOf(folder.Items, A_Index)
         detail_value := folder.GetDetailsOf(file, A_Index)
-        ; \u200e chr(8206) in detail_value (Windows WTF)
+        ; \u200e chr(8206) in detail_value (WTF)
         detail_value := StrReplace(detail_value, Chr(8206), "")
         if ( detail_key != "" && detail_value != "" )
             result.%detail_key% := detail_value
@@ -53,7 +53,7 @@ GetImageSize(path)
 ; 获取文件的MD5
 GetMD5(file)
 {
-    MD5Sum := "D:\Git\usr\bin\md5sum.exe"
+    ; MD5Sum "D:\Git\usr\bin\md5sum.exe"
     if ( ! FileExist(MD5Sum) )
         return ""
     command := Format("{} --zero  `"{}`" ", MD5Sum, file)

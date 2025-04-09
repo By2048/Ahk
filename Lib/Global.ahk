@@ -6,7 +6,7 @@ GlobalSet(section:="", key:="", value:="")
     path := Reg_Path
     if ( section != "" )
         path := path . "\" . section
-    RegWrite(value, "REG_SZ", path, key )
+    RegWrite(value, "REG_SZ", path, key)
 }
 
 GlobalGet(section:="", key:="", type:="Str", split:="|")
