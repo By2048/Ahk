@@ -18,7 +18,8 @@
 
 #Include Software\@Key.ahk
 
-#Include Software\#Base.ahk
+#Include Software\#32770.ahk
+#Include Software\#ALL.ahk
 
 #Include Software\Android.ahk
 #Include Software\BitComet.ahk
@@ -66,8 +67,6 @@
 #Include Software\Microsoft\RegEdit.ahk
 #Include Software\Microsoft\TaskMgr.ahk
 #Include Software\Microsoft\Windows.ahk
-
-#Include Software\#32770.ahk
 
 #SingleInstance Force
 #HotString EndChars `t`n`s

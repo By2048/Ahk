@@ -1,43 +1,4 @@
 ﻿
-#HotIf CheckWindowActive( "Explorer" , "#32770" , "删除多个项目" )
-    !y::Return
-    !n::Return
-#HotIf
-
-
-#HotIf CheckWindowActive( "Explorer" , "#32770" , "*删除*" )
-    ErFlash() {
-        Sleep 333
-        Loop 5 {
-            Sleep 111
-            Send "{Right}"
-            Sleep 33
-            Send "{Left}"
-        }
-    }
-    Delete::{
-        Send "{Esc}"
-    }
-    Insert::{
-        Send "!y"
-        Sleep 99
-        Send "{Space}"
-        ErFlash()
-    }
-    BackSpace::{
-        Sleep 99
-        Send "{Esc}"
-        Sleep 33
-        Send "+{Delete}"
-        Sleep 66
-        Send "!y"
-        Sleep 99
-        Send "{Space}"
-        ErFlash()
-    }
-#HotIf
-
-
 #HotIf CheckWindowActive( "Explorer" , "#32770" , "属性*" )
     ; 修改文件图标为默认
     !\::{

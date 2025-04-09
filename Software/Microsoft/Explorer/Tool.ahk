@@ -1,4 +1,39 @@
 
+ErFlash()
+{
+    Sleep 333
+    Loop 5 {
+        Sleep 111
+        Send "{Right}"
+        Sleep 33
+        Send "{Left}"
+    }
+}
+
+
+ErDelete()
+{
+    Send "!y"
+    Sleep 99
+    Send "{Space}"
+    ErFlash()
+}
+
+
+ErDeleteForever()
+{
+    Sleep 99
+    Send "{Esc}"
+    Sleep 33
+    Send "+{Delete}"
+    Sleep 66
+    Send "!y"
+    Sleep 99
+    Send "{Space}"
+    ErFlash()
+}
+
+
 ErActivateLeft()
 {
     ControlFocus("SysTreeView321", "A")
