@@ -140,8 +140,14 @@ RShift & LAlt::Send "^+\"
     JBCenterWindow()
 }
 
-<#\::MoveWindowDefault()
-<#+\::MoveWindowBackup()
+<#\::{
+    Send "{Blind}{vkFF}"
+    MoveWindowBackup()
+}
+<#+\::{
+    Send "{Blind}{vkFF}"
+    MoveWindowDefault()
+}
 
 <!Space::return
 
