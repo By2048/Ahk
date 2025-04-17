@@ -1,6 +1,6 @@
 ﻿
-Global PyCharm := {
-
+Global PyCharm :=
+{
     ClickCnt : 0 ,
 
     CapsLockToEsc    : False ,

@@ -52,7 +52,7 @@ WD["PyCharm__宏"] := Position(0.4 , 0.7)
 WD["PyCharm__提交更改"] := Position(0.45 , 0.75)
 WD["PyCharm__回滚更改"] := Position(0.45 , 0.75)
 
-win   := Position(0.65 , 0.77)
+win   := Position(0.66 , 0.77)
 win.w := Mod(win.w, 2) ? win.w : win.w + 1
 win.h := Mod(win.h, 2) ? win.h : win.h + 1
 WD["PyCharm__设置"] := Position( win.x, win.y, win.w, win.h )
@@ -94,8 +94,8 @@ Try {
 WD["PyCharm__Python控制台"] := Position(0.9 , 0.9)
 WD["PyCharm__Git"]         := Position(0.9 , 0.9)
 
-w := 800
-h := 500
-x := Screen.x + Screen.w - w - 70
+w := Screen.w * 0.33
+h := Screen.h * 0.33
+x := Screen.x + Screen.w - w - 80
 y := Screen.y + Screen.h - h - 60
 WD["PyCharm__通知"] := Position(x, y, w, h)
