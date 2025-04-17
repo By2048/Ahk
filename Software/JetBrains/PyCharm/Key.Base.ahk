@@ -142,11 +142,11 @@ RShift & LAlt::Send "^+\"
 
 <#\::{
     Send "{Blind}{vkFF}"
-    MoveWindowBackup()
+    MoveWindowDefault()
 }
 <#+\::{
     Send "{Blind}{vkFF}"
-    MoveWindowDefault()
+    MoveWindowBackup()
 }
 
 <!Space::return
