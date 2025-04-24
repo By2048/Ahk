@@ -16,15 +16,14 @@ LWin & RWin::{
     SetNumLockState("Off")
     SetCapsLockState("Off")
     SetScrollLockState("Off")
-    if ( GetKeyState("LShift", "P") && GetKeyState("RShift", "P") ) {
-        Run(NirCmd " sysrefresh")
-        Run(NirCmd " sysrefresh environment")
-        return
-    }
-    GuiProgress()
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Run.png")
-    SendMessage(0x1A, 0, StrPtr("Environment"), 0xFFFF) ; EnvUpdate
-    if ( GetKeyState("LShift", "P") ) {
+    SetTimer(GuiProgress, -99)
+    if ( GetKeyState("LShift", "P") && GetKeyState("RShift", "P") ) {
+        SendMessage(0x1A, 0, StrPtr("Environment"), 0xFFFF) ; EnvUpdate
+        Run(NirCmd " sysrefresh"            , A_InitialWorkingDir, "Hide")
+        Run(NirCmd " sysrefresh environment", A_InitialWorkingDir, "Hide")
+        HelpText("`n  Refresh  `n", "Center", "Screen", 1500)
+    } else if ( GetKeyState("LShift", "P") ) {
         Run("Setup.cmd ForceStart", A_InitialWorkingDir, "Hide")
         HelpText("`n  Force Reload  `n", "Center", "Screen", 1500)
     } else {
