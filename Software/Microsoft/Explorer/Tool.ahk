@@ -16,7 +16,6 @@ ErDelete()
     Send "!y"
     Sleep 99
     Send "{Space}"
-    ErFlash()
 }
 
 
@@ -30,7 +29,6 @@ ErDeleteForever()
     Send "!y"
     Sleep 99
     Send "{Space}"
-    ErFlash()
 }
 
 

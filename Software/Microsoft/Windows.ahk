@@ -23,8 +23,8 @@
         MoveWindowPosition(Position(1500, 1100))
         win_title := window.title
         if ( win_title == "环境变量" ) {
-            SetColumnWidth( "SysListView321", Map( 1,150 , 2,1200 ) ) ;用户变量
-            SetColumnWidth( "SysListView322", Map( 1,200 , 2,1150 ) ) ;系统变量
+            SetColumnWidth( "SysListView321", Map( 1,150 , 2,1234 ) ) ;用户变量
+            SetColumnWidth( "SysListView322", Map( 1,300 , 2,1050 ) ) ;系统变量
         }
     }
 #HotIf

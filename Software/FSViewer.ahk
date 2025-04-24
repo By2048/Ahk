@@ -87,7 +87,7 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
         if ( Abs(mouse_x - Screen.w/2) > 5 ) || ( mouse_y > 5 )
             MouseMove(Screen.w/2, 0, 0)
         else
-            MouseMove(Screen.w - 333, Screen.h - 333, 0)
+            MouseMove(Screen.w - 300, Screen.h - 300, 0)
     }
 
     BackSpace::{
