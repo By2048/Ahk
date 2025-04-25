@@ -1,28 +1,28 @@
-|  Q | QDir PC | File        | *1 | Maye            |
-|  W |                       | *2 | 隐藏帮助        |
-|  E | Everything            |----------------------|
-|  R | FFRenamePro           |  - | Notepad         |
-|  T | Torrent               |  = | Notepad++       |
-|  Y |                       |----------------------|
-|  U |                       |  [ | VSCode Temp     |
-|  I |                       |  ] | VSCode Node     |
-|  O |                       |  \ | VSCode Windows  |
-|  P |                       |  : | VSCode          |
-|----------------------------|  " | VSCode Default  |
-|  A | AntiMicroX            |----------------------|
-|  S | Sandboxie             |  , | 我的电脑        |
-|  D | DuplicateCleaner      | +, | 回收站          |
-|  F | File Sync | Watch     |  . | T:\             |
-|  G | Geek                  | +. | V:\#\           |
-|  H | Spy AHK | GH          |  / | Chrome          |
-|  J | JetBrains             | +/ | Chrome Default  |
-|  K | Key History | Virtual |----------------------|
-|  L |                       |       Esc | TaskMgr  |
-|----|-----------------------| BackSpace | WT       |
-|  Z | Download              |     Enter | Lnks     |
-|  X |                       |    +Enter | Lnk      |
-|  C | Calc                  |  U D L R  | 窗口移动 |
-|  V | Vpn                   |
+|  Q | QDir PC | File        | *1 | Maye               |
+|  W |                       | *2 | 隐藏帮助           |
+|  E | Everything            |-------------------------|
+|  R | FFRenamePro           |  - | Notepad            |
+|  T | Torrent               |  = | Notepad++          |
+|  Y |                       |-------------------------|
+|  U |                       |  [ | VSCode Temp        |
+|  I |                       |  ] | VSCode Node        |
+|  O |                       |  \ | VSCode Windows     |
+|  P |                       |  : | VSCode             |
+|----------------------------|  " | VSCode Default     |
+|  A | AntiMicroX            |-------------------------|
+|  S | Sandboxie             |  , | 我的电脑           |
+|  D | DuplicateCleaner      | +, | 回收站             |
+|  F | File Sync | Watch     |  . | T:\                |
+|  G | Geek                  | +. | V:\#\              |
+|  H | Spy AHK | GH          |  / | Chrome             |
+|  J | JetBrains             | +/ | Chrome Default     |
+|  K | Key History | Virtual |-------------------------|
+|  L |                       |       Esc | 任务管理器  |
+|----|-----------------------|      +Esc | SecAnalysis |
+|  Z | Download              | BackSpace | WT          |
+|  X |                       |     Enter | Lnks        |
+|  C | Calc                  |    +Enter | Lnk         |
+|  V | Vpn                   |  U D L R  | 窗口移动    |
 |  B | Image                 |
 |  N | Music                 |
 |  M | Video                 |
