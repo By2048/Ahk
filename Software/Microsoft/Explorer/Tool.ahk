@@ -221,23 +221,27 @@ ErResetPosition(columns:="")
     ErSetColumns(config)
 
     ; 搜索框
-    GetActiveWindowInfo(False)
-    info := window.controls.DirectUIHWND1
-    if ( Abs(info.w - input_width + check_offset + 10) > check_offset ) {
-        MouseMove(info.x , info.y + info.h/2)
-        offset := GetOffset("X")
-        MouseMove(info.x + offset , info.y + info.h/2)
-        MoveControlUDLR(info, "Left", total_width - input_width, offset)
+    Try {
+        GetActiveWindowInfo(False)
+        info := window.controls.DirectUIHWND1
+        if ( Abs(info.w - input_width + check_offset + 10) > check_offset ) {
+            MouseMove(info.x , info.y + info.h/2)
+            offset := GetOffset("X")
+            MouseMove(info.x + offset , info.y + info.h/2)
+            MoveControlUDLR(info, "Left", total_width - input_width, offset)
+        }
     }
 
     ; 左侧树状信息
-    GetActiveWindowInfo(False)
-    info := window.controls.SysTreeView321
-    if ( Abs(info.w - tree_width) > check_offset ) {
-        MouseMove(info.x + info.w , info.y + info.h/2)
-        offset := GetOffset("X")
-        MouseMove(info.x + info.w + offset , info.y + info.h/2)
-        MoveControlUDLR(info, "Right", tree_width, offset)
+    Try {
+        GetActiveWindowInfo(False)
+        info := window.controls.SysTreeView321
+        if ( Abs(info.w - tree_width) > check_offset ) {
+            MouseMove(info.x + info.w , info.y + info.h/2)
+            offset := GetOffset("X")
+            MouseMove(info.x + info.w + offset , info.y + info.h/2)
+            MoveControlUDLR(info, "Right", tree_width, offset)
+        }
     }
 
     ; 右侧预览
