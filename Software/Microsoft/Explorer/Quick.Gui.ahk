@@ -42,11 +42,22 @@ ErQuickTools()
     Arg.path_selects := paths
     Arg.file_name    := name
 
+    ; 选择的文件
     G.SetFont(Format("s{}", Arg.ErQuick.title_size), Arg.ErQuick.font_name)
-    G.AddText(G.style.text, path)
+    path_text := ""
+    if ( paths.Length == 1 )
+        path_text := path
+    else if ( paths.Length < 13 ) {
+        path_text := ""
+        for path in paths 
+            path_text := path_text . path . "`n"
+        path_text := RTrim(path_text, "`n")
+    } else
+        path_text := paths[1] . "`n- - - - - - - - -`n" . paths[-1]
+    G.AddText(G.style.text, path_text)
     
+    ; 分割线
     G.SetFont(Format("s{}", Arg.ErQuick.folder_size), Arg.ErQuick.font_name)
-
     if ( paths.Length == 1 )
         line := G.line
     else if ( paths.Length > 1 && paths.Length < 10 )
@@ -57,6 +68,7 @@ ErQuickTools()
         line := G.line
     GLine := G.AddText(G.style.text, line)
 
+    ; 快速移动文件夹
     G.SetFont(Format("s{}", Arg.ErQuick.folder_size), Arg.ErQuick.font_name)
     for folder in ExplorerQuickPaths[Arg.ErQuick.page] {
         text := G.AddText(G.style.text_disabled, "  " folder)
