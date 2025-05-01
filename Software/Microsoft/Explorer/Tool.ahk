@@ -27,7 +27,7 @@ ErDeleteForever()
     Send "+{Delete}"
     Sleep 66
     Send "!y"
-    Sleep 99
+    Sleep 555
     Send "{Space}"
 }
 
@@ -108,7 +108,7 @@ ErGetSelectItem()
 ; Recycle.DeletedFrom:400 Recycle.DateDeleted:180 Size:150
 ErSetColumns(config)
 {
-    if ( not config )
+    if ( ! config )
         return
 
     config_all    := []
@@ -118,7 +118,7 @@ ErSetColumns(config)
         name  := StrSplit(item, ":")[1]
         width := StrSplit(item, ":")[2] + 0
         name  := "System." . name
-        config_all.Push([name,width])
+        config_all.Push( [name,width] )
         config_names.Push(name)
         config_widths.Push(width)
     }
@@ -130,7 +130,7 @@ ErSetColumns(config)
     if ( win_process_name != "explorer.exe" )
         return
 
-    if ( win_class != "CabinetWClass" and win_class != "ExploreWClass" )
+    if ( win_class != "CabinetWClass" && win_class != "ExploreWClass" )
         return
 
     obj := 0
