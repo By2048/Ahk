@@ -17,7 +17,7 @@ LWin & RWin::{
     SetCapsLockState("Off")
     SetScrollLockState("Off")
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Run.png")
-    SetTimer(GuiProgress, -99)
+    SetTimer(LoadProgress, -99)
     if ( GetKeyState("LShift", "P") && GetKeyState("RShift", "P") ) {
         SendMessage(0x1A, 0, StrPtr("Environment"), 0xFFFF) ; EnvUpdate
         Run(NirCmd " sysrefresh"            , A_InitialWorkingDir, "Hide")

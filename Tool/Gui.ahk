@@ -1,6 +1,6 @@
 ﻿
 ; 项目启动时创建的居中进度条
-GuiProgress()
+LoadProgress()
 {
     G := Gui()
 
@@ -27,9 +27,9 @@ GuiProgress()
     loop {
         move_current   := move_current + move_step
         progress.Value := move_current
-        Sleep(move_sleep)
+        Sleep move_sleep
         if ( move_current >= move_total ) {
-            Sleep(move_pause)
+            Sleep move_pause
             break
         }
     }
