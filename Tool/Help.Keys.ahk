@@ -6,8 +6,7 @@ Arg.hotkeys_current := ""
 ; 隐藏快捷键提示
 HelpKeysShow(step:=0)
 {
-    Global Window , Arg , G 
-    Global Software_Keys_Help
+    Global Window , Arg , G , Software_Keys_Help
 
     GetActiveWindowInfo()
     win_process_name := window.process_name
@@ -36,7 +35,7 @@ HelpKeysShow(step:=0)
         else if ( hotkeys_index == 0 )
             hotkeys_index := hotkeys_config.Length
     }
-    
+
     InitGui()
     
     content := hotkeys_config[hotkeys_index]

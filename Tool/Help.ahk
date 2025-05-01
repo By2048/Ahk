@@ -47,26 +47,32 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     CoordMode("Mouse", "Screen")
 
     Global G
-
     Try G.Destroy()
     G := Gui()
+
+    G.Help := {
+        Font  : { Size : 25 , Type : "Courier New" } ,
+        Start : " " ,
+        End   : " " ,
+        X     : 1   ,
+        Y     : 1   ,
+    }
 
     if ( ! data ) {
         G.Destroy()
         return
     }
 
-    data   := Gui_Help.Start . data . Gui_Help.End
-    text_x := Gui_Help.X
-    text_y := Gui_Help.Y
+    data   := G.Help.Start . data . G.Help.End
+    text_x := G.Help.X
+    text_y := G.Help.Y
     text_w := 0
     text_h := 0
 
-    Global Gui_Help
     G.MarginX := 0
     G.MarginY := 0
     G.Opt("+AlwaysOnTop +Disabled +Owner -SysMenu -Caption -DPIScale")
-    G.SetFont(Format("s{}", Gui_Help.Font.Size), Gui_Help.Font.Type)
+    G.SetFont(Format("s{}", G.Help.Font.Size), G.Help.Font.Type)
     G.Add("Text", Format("+Center +Border vTextContent x{} y{}", text_x, text_y), data)
     G["TextContent"].GetPos(&text_x, &text_y, &text_w, &text_h)
 
@@ -94,8 +100,8 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
 
     gui_x := 0
     gui_y := 0
-    gui_w := text_w + Gui_Help.X * 2
-    gui_h := text_h + Gui_Help.Y * 2
+    gui_w := text_w + G.Help.X * 2
+    gui_h := text_h + G.Help.Y * 2
 
     xy := Format("{:L}", xy)
     xy := StrReplace(xy, "|", "")

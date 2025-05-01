@@ -110,7 +110,7 @@ CtrlTimer()
 
 CtrlGui()
 {
-    Global G , Arg , Gui_Config
+    Global G , Arg
 
     if ( Arg.ctrl_show ) {
         Try G.Destroy()

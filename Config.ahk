@@ -25,7 +25,6 @@ Screens_Info :=
 
 #Include Config\Base.ahk
 #Include Config\Folder.ahk
-#Include Config\Gui.ahk
 #Include Config\Message.ahk
 #Include Config\Screen.ahk
 #Include Config\Software.ahk

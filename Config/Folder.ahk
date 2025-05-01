@@ -2,7 +2,7 @@
 Folders :=
 {
     Ram  : "V:\#\" ,
-    Temp : "T:\"   ,
+    Temp : "T:\#\" ,
 
     Admin : "C:\Users\Administrator\" ,
     
@@ -74,7 +74,7 @@ Folders.Columns :=
 ; 设置 文件夹选项 查看 在标题栏中显示完整路径
 ; "ItemNameDisplay:800 ItemDate:200 Size:150"
 Folders.Paths := Map(
-
+    
     "回收站"                          , Folders.Columns.Recycle ,
     "C:\"                            , Folders.Columns.Name    ,
     "C:\Users"                       , Folders.Columns.Name    ,

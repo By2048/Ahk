@@ -75,28 +75,27 @@ JQB := {
 
 ; Gui显示
 G := Gui()
-InitGui() {
-    Global G , Gui_Config
+InitGui()
+{
+    Global G
     Try G.Destroy()
     G := Gui()
-    G.MarginX  := Gui_Config.Margin
-    G.MarginY  := Gui_Config.Margin
-    G.FontSize := Gui_Config.FontSize
-    G.FontName := Gui_Config.FontName
+    G.Dark  := { Font : "FFFFFF" , Back : "000000" }
+    G.Light := { Font : "000000" , Back : "FFFFFF" }
+    G.MarginX   := 9
+    G.MarginY   := 9
+    G.FontSize  := "13"
+    G.FontName  := "Source Code Pro"
+    G.BackColor := G.Light.Back
+    G.FontColor := G.Light.Font
     if ( GetWindowTheme() == "Dark" ) {
-        G.BackColor := Gui_Config.Dark.Back
-        G.FontColor := Gui_Config.Dark.Font
+        G.BackColor := G.Dark.Back
+        G.FontColor := G.Dark.Font
     } else if ( GetWindowTheme() == "Light" ) {
-        G.BackColor := Gui_Config.Light.Back
-        G.FontColor := Gui_Config.Light.Font
-    } else {
-        G.BackColor := "FFFFFF"
-        G.FontColor := "000000"
-        G.FontSize  := "13"
-        G.FontName  := "Source Code Pro"
+        G.BackColor := G.Light.Back
+        G.FontColor := G.Light.Font
     }
     G.SetFont(Format("c{} s{}", G.FontColor, G.FontSize), G.FontName)
-    ; +Border 参数在最后才有效果
     G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
 }
 
@@ -111,7 +110,8 @@ Games_Process.Push( "LOL_Game"   )
 
 ; 软件自定义名字替换 MARK:Process
 Windows_Software := Map()
-RegisterSoftware(origin, rename) {
+RegisterSoftware(origin, rename)
+{
     Global Windows_Software
     Windows_Software[StrLower(origin)] := rename
 }
@@ -119,7 +119,8 @@ RegisterSoftware(origin, rename) {
 
 ; 软件与帮助信息对应关系 Map( Process : [ Help ])  MARK:Software
 Software_Keys_Help := Map()
-RegisterHelpInfo(process, path) {
+RegisterHelpInfo(process, path)
+{
     path := Trim(path)
     if ( ! path )
         return
@@ -139,7 +140,8 @@ Windows_Default := Map()
 Windows_Backup  := Map()
 WD := Windows_Default
 WB := Windows_Backup
-RegisterPosition(cfg, args, mode:="Default") {
+RegisterPosition(cfg, args, mode:="Default")
+{
     Global Windows_Default
     Global Windows_Backup
     if ( mode == "Default" )
