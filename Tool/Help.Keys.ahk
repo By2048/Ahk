@@ -6,12 +6,12 @@ Arg.hotkeys_current := ""
 ; 隐藏快捷键提示
 HelpKeysShow(step:=0)
 {
-    Global Window , Arg , G , Software_Keys_Help
+    Global Window , Arg , G , Software_Help
 
     GetActiveWindowInfo()
     win_process_name := window.process_name
     win_title        := window.title
-    hotkeys_config   := GetWindowConfig(window, Software_Keys_Help)
+    hotkeys_config   := GetWindowConfig(window, Software_Help)
 
     ; 没有内容
     if ( hotkeys_config.Length == 0 ) {

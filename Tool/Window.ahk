@@ -154,7 +154,7 @@ GetActiveWindowInfo(cache:=True)
     wpn := RTrim(wpn , "exe")
     wpn := RTrim(wpn , "EXE")
     wpn := RTrim(wpn , "."  )
-    win_process_name := Windows_Software.Get(StrLower(wpn), win_process_exe)
+    win_process_name := Software_Rename.Get(StrLower(wpn), win_process_exe)
     if ( InStr(win_process_name, ".exe") || InStr(win_process_name, ".EXE") )
         win_process_name := wpn
 
@@ -213,8 +213,8 @@ GetActiveWindowInfo(cache:=True)
     window.controls := win_controls
 
     ; 窗口位置 默认1 默认2
-    window.default := GetWindowConfig(window, Windows_Default)
-    window.backup  := GetWindowConfig(window, Windows_Backup )
+    window.default := GetWindowConfig(window, Software_Position.Default)
+    window.backup  := GetWindowConfig(window, Software_Position.Backup )
 
     window.screen  := GetWindowScreen(window)
 
