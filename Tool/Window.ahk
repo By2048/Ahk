@@ -306,20 +306,6 @@ IsDesktops()
 
 
 
-; 判断当前激活的应用是否为游戏
-; return | True \ False
-IsGame()
-{
-    GetActiveWindowInfo()
-    win_process_name := window.process_name
-    for process_name in Games_Process
-        if ( process_name == win_process_name )
-            return True
-    return False
-}
-
-
-
 ; 将窗口移动到指定位置
 ; offset | 在一定误差内不进行窗口移动
 ; step   | 不同分辨率屏幕之间移动窗口 分两次处理 先位置 后大小

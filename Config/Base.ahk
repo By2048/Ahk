@@ -100,14 +100,6 @@ InitGui()
 }
 
 
-
-; 游戏进程
-Games_Process := []
-Games_Process.Push( "LOL_TX"     )
-Games_Process.Push( "LOL_Client" )
-Games_Process.Push( "LOL_Game"   )
-
-
 ; 软件自定义名字替换 MARK:Process
 Windows_Software := Map()
 RegisterSoftware(origin, rename)
