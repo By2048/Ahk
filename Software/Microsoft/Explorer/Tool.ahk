@@ -27,7 +27,7 @@ ErDeleteForever()
     Send "+{Delete}"
     Sleep 66
     Send "!y"
-    Sleep 555
+    Sleep 666
     Send "{Space}"
 }
 

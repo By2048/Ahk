@@ -62,6 +62,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     }
 
     ; 立即下载
+    `::
     !Enter::
     +Enter::
     NumLock::{

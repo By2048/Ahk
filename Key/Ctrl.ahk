@@ -69,7 +69,7 @@
 
 >^-::Run "Notepad"
 >^=::Run Folders.Lnk "Notepad++.lnk"
->^BackSpace::Run WT " -d " Folders.Temp
+>^BackSpace::Run WT " -d " Folders.Disks.Temp
 
 >^Up::   MoveWindowOffset(   0 , -10 )
 >^Down:: MoveWindowOffset(   0 , +10 )
