@@ -3,6 +3,7 @@
 
  >^q::Run Folders.Config "QPC.qdr"
 >^+q::Run Folders.Config "QFile.qdr"
+ >^w::Return
  >^e::Run Folders.Lnk "Everything.lnk"
  >^r::Run Folders.Lnk "FFRenamePro.lnk"
  >^t::Run Folders.Lnk "Torrent.lnk"
@@ -37,7 +38,8 @@
 }
  >^k::KeyHistory()
 >^+k::KeyboardGUI()
- >^l::Return
+ >^l::Run Folders.Lnks
+>^+l::Run Folders.Lnk
 
  >^z::Run Folders.Lnk "Download.lnk"
  >^x::Return
@@ -56,7 +58,7 @@
 
  >^,::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
 >^+,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
- >^.::Run Folders.Temp
+ >^.::Run Folders.Disks.Temp
 >^+.::Run Folders.Ram
  >^/::Run Folders.Script "Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
 >^+/::Run Folders.Script "Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
@@ -64,12 +66,12 @@
  >^Esc::Run "TaskMgr" ;任务管理器
 >^+Esc::Run Folders.Lnk "SecAnalysis.lnk"
 
- >^Enter::Run Folders.Lnks
->^+Enter::Run Folders.Lnk
+    >^Enter::Run Folders.Lnks "\#AppStore\Whiteboard.lnk"
+>^BackSpace::Run WT " -d " Folders.Disks.Temp
+
 
 >^-::Run "Notepad"
 >^=::Run Folders.Lnk "Notepad++.lnk"
->^BackSpace::Run WT " -d " Folders.Disks.Temp
 
 >^Up::   MoveWindowOffset(   0 , -10 )
 >^Down:: MoveWindowOffset(   0 , +10 )

@@ -17,12 +17,12 @@
 |  H | Spy AHK | GH          |  / | Chrome             |
 |  J | JetBrains             | +/ | Chrome Default     |
 |  K | Key History | Virtual |-------------------------|
-|  L |                       |       Esc | 任务管理器  |
+|  L | Lnks | Lnk            |       Esc | 任务管理器  |
 |----|-----------------------|      +Esc | SecAnalysis |
 |  Z | Download              | BackSpace | WT          |
-|  X |                       |     Enter | Lnks        |
-|  C | Calc                  |    +Enter | Lnk         |
-|  V | Vpn                   |  U D L R  | 窗口移动    |
+|  X |                       |     Enter | Whiteboard  |
+|  C | Calc                  |  U D L R  | 窗口移动    |
+|  V | Vpn                   |
 |  B | Image                 |
 |  N | Music                 |
 |  M | Video                 |
