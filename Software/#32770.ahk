@@ -12,6 +12,20 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
 
 
 
+#HotIf CheckWindowActive( "" , "#32770" , "确认另存为" )
+    Insert::
+    Enter::{
+        Send "!y"
+    }
+    Esc::
+    NumLock::
+    Delete::{
+        Send "!n"
+    }
+#HotIf
+
+
+
 #HotIf CheckWindowActive( "" , "#32770" , "删除|删除文件|删除文件夹|删除多个项目|删除快捷方式" )
     Delete::{
         Send "{Esc}"
@@ -42,8 +56,13 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
     #IncludeAgain .\Microsoft\Explorer\Key.ahk
     #IncludeAgain .\Microsoft\Explorer\Key.Date.ahk
     
+    MButton::WinClose("A")
+
     ; 文件名修改框
-    Insert::ControlFocus("Edit1", "A")
+    Insert::{
+        ControlFocus("Edit1", "A")
+        Send "{End}^{Left}{Left}"
+    }
 
     NumLock::{
         name := ControlGetText("Edit1", "A")
