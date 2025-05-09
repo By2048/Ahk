@@ -130,12 +130,17 @@ ZipSetPathNext() {
 
 #HotIf CheckWindowActive( "ZipMain" )
 
-    ; F1::Return
-
     NumLock::
-    AppsKey::
     !CapsLock::{
+        Send "{Blind}{vkFF}"
         WinClose("A")
+    }
+
+    $AppsKey::{
+        Send "{Blind}{vkFF}"
+        WinClose "A"
+        Sleep 333
+        Send "{Esc}"
     }
 
     #\::{
