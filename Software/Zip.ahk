@@ -67,12 +67,6 @@ ZipSetPathNext() {
     ; 浏览文件夹
     \::ControlClick("Button1", "A")
 
-    AppsKey::{
-        Send "{Blind}{vkFF}"
-        WinClose("A")
-        Send "{Esc}"
-    }
-
      F1::
      F2::
      F3::
@@ -136,11 +130,10 @@ ZipSetPathNext() {
         WinClose("A")
     }
 
-    $AppsKey::{
+    BackSpace::{
         Send "{Blind}{vkFF}"
-        WinClose "A"
-        Sleep 333
-        Send "{Esc}"
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) && ( A_TimeSincePriorHotkey < 456 ) )
+            WinClose("A")
     }
 
     #\::{
