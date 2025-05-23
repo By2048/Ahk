@@ -4,5 +4,4 @@
 #Include Chrome\Tool.ahk
 
 #Include Chrome\HotIF.Private.ahk
-#Include Chrome\HotIF.Fxx.ahk
 #Include Chrome\HotIF.ahk
