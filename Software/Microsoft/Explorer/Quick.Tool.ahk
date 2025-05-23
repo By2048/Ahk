@@ -67,7 +67,7 @@ ErQuickMove(folder:="")
 
     if ( path_selects.Length == 1 ) {
         if ( InStr(FileGetAttrib(path_focus), "A") )
-            FileMove(path_focus, Arg.ErQuick.folder, 0)
+            FileMove(path_focus, Arg.ErQuick.folder, 1)
         else if ( InStr(FileGetAttrib(path_focus), "D") ) {
             source := path_focus . "\*.*"
             target := Arg.ErQuick.folder . StrSplit(path_focus, "\")[-1]
@@ -89,7 +89,7 @@ ErQuickMove(folder:="")
             }
         }
         for path in path_selects
-            FileMove(path, Arg.ErQuick.folder, 0)
+            FileMove(path, Arg.ErQuick.folder, 1)
     }
 
     ErQuickToolsHide()

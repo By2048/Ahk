@@ -8,6 +8,13 @@
 #HotIf
 
 
+#HotIf CheckWindowActive( "Explorer" , "OperationStatusWindow" , "替换或跳过文件" )
+    ~CapsLock::{
+        Send "!r"
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive( "Explorer" , "OperationStatusWindow" , "文件夹正在使用" )
     NumLock::
     Insert::
