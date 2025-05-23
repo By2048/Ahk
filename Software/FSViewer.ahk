@@ -4,13 +4,13 @@ RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
 RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
 
-#HotIf CheckWindowActive("FSViewer", "", "*删除*")
+#HotIf CheckWindowActive( "FSViewer" , "" , "*删除*" )
     Delete::Send "!n"
     Insert::Send "!y"
 #HotIf
 
 
-#HotIf CheckWindowActive("FSViewer", "", "另存为")
+#HotIf CheckWindowActive( "FSViewer" , "" , "另存为" )
     $[::Send "["
     $]::Send "]"
     $\::Send "\"
@@ -20,12 +20,7 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 #HotIf
 
 
-
 #HotIf CheckWindowActive( "FSViewer" , "FastStoneImageViewerMainForm.UnicodeClass" )
-   
-    ![::ControlFocus("TJamShellTree.UnicodeClass1" , "A")
-    !]::ControlFocus("TTntListView.UnicodeClass1"  , "A")
-    !\::ControlFocus("TImageEnView1"               , "A")
 
     #\::{
         Send "{Blind}{vkFF}"
@@ -68,11 +63,30 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
             Send "{AppsKey}{Up 4}{Enter}"
     }
 
+    BackSpace::{
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) && ( A_TimeSincePriorHotkey < 456 ) )
+            Send "!x"
+    }
+
 #HotIf
 
 
+#HotIf CheckWindowActive( "FSViewer" , "TFullScreenWindow" )
+    AppsKey::{
+        MouseGetPos(&mouse_x, &mouse_y)
+        if ( Abs(mouse_x - Screen.w/2) > 5 ) || ( mouse_y > 5 )
+            MouseMove(Screen.w/2, 0, 0)
+        else
+            MouseMove(Screen.w - 300, Screen.h - 300, 0)
+    }
+    BackSpace::{
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) && ( A_TimeSincePriorHotkey < 456 ) )
+            Send "!x"
+    }
+#HotIf
 
-#HotIf CheckWindowActive("FSViewer")
+
+#HotIf CheckWindowActive( "FSViewer" )
 
     F1::Send "m1"
     F2::Send "m2"
@@ -81,19 +95,6 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     F7::Return ;随机排序
 
     `::Send "m"
-
-    AppsKey::{
-        MouseGetPos(&mouse_x, &mouse_y)
-        if ( Abs(mouse_x - Screen.w/2) > 5 ) || ( mouse_y > 5 )
-            MouseMove(Screen.w/2, 0, 0)
-        else
-            MouseMove(Screen.w - 300, Screen.h - 300, 0)
-    }
-
-    BackSpace::{
-        if ( InStr(A_PriorHotkey , A_ThisHotkey) && ( A_TimeSincePriorHotkey < 456 ) )
-            Send "!x"
-    }
 
     Delete::{
         control_name := ControlGetClassNN(ControlGetFocus("A"))
@@ -122,6 +123,10 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     }
     
     ^r::Send "{F2}"
+
+    ![::ControlFocus("TJamShellTree.UnicodeClass1" , "A")
+    !]::ControlFocus("TTntListView.UnicodeClass1"  , "A")
+    !\::ControlFocus("TImageEnView1"               , "A")
 
     LAlt & RAlt::Send "{F12}"
 
