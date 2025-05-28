@@ -34,6 +34,7 @@
 
 
 #HotIf CheckWindowActive( "Explorer" , "CabinetWClass" )
-    Insert::ErQuickTools()
+      Insert::ErQuickTools()
+     +Insert::ErQuickTools("Rename")
     ~*Delete::Return
 #HotIf

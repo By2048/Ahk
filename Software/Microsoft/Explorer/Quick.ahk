@@ -5,6 +5,12 @@ Arg.ErQuick :=
     page    : 1     ,
     folder  : ""    ,
     command : ""    ,
+    
+    path_focus   : "" ,
+    path_selects : "" ,
+    path_folder  : "" ,
+    file_name    : "" ,
+    file_rename  : "" ,
 
     margin_x : 19 ,
     margin_y : -4 ,

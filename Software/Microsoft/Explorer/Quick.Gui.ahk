@@ -1,21 +1,13 @@
 ﻿
-ErQuickTools()
+ErQuickTools(cmd:="")
 {
     Global G , Arg
 
-    try {
-        gui_id := G.Hwnd
-    } catch {
-        gui_id := 0
-    } 
+    InitGui("Light")
     
-    Try G.Destroy()
-
-    G := Gui()
-
-    Arg.path_focus   := ""
-    Arg.path_selects := []
-    Arg.file_name    := ""
+    Arg.ErQuick.path_focus   := ""
+    Arg.ErQuick.path_selects := []
+    Arg.ErQuick.file_name    := ""
 
     G.MarginX := Arg.ErQuick.margin_x
     G.MarginY := Arg.ErQuick.margin_y
@@ -35,26 +27,34 @@ ErQuickTools()
     G.AddText()
 
     path  := ErGetFocusedItem()
-    name  := StrSplit(path, "\")[-1]
     paths := ErGetSelectItem()
 
-    Arg.path_focus   := path
-    Arg.path_selects := paths
-    Arg.file_name    := name
+    SplitPath(path, &file_name, &path_folder)
+
+    Arg.ErQuick.path_focus   := path
+    Arg.ErQuick.path_selects := paths
+    Arg.ErQuick.path_folder  := path_folder
+    Arg.ErQuick.file_name    := file_name
+    Arg.ErQuick.file_rename  := file_name
 
     ; 选择的文件
     G.SetFont(Format("s{}", Arg.ErQuick.title_size), Arg.ErQuick.font_name)
-    path_text := ""
+    title_info := ""
     if ( paths.Length == 1 )
-        path_text := path
+        title_info := file_name
     else if ( paths.Length < 13 ) {
-        path_text := ""
-        for path in paths 
-            path_text := path_text . path . "`n"
-        path_text := RTrim(path_text, "`n")
-    } else
-        path_text := paths[1] . "`n- - - - - - - - -`n" . paths[-1]
-    G.AddText(G.style.text, path_text)
+        title_info := ""
+        for path in paths {
+            name := StrSplit(path, "\")[-1]
+            title_info := title_info . name . "`n"
+        }
+        title_info := RTrim(title_info, "`n")
+    } else {
+        name_first := StrSplit(paths[ 1], "\")[-1]
+        name_last  := StrSplit(paths[-1], "\")[-1]
+        title_info := name_first . "`n- - - - - - - - -`n" . name_last
+    }
+    G.AddText(G.style.text, title_info)
     
     ; 分割线
     G.SetFont(Format("s{}", Arg.ErQuick.folder_size), Arg.ErQuick.font_name)
@@ -74,12 +74,22 @@ ErQuickTools()
         text := G.AddText(G.style.text_disabled, "  " folder)
         text.folder := folder
     }
+
+    ; 重命名文件
+    if ( Arg.ErQuick.page == 1 && cmd == "Rename" ) {
+        GLine := G.AddText(G.style.text, G.line)
+        file_rename := FileRename(Arg.ErQuick.file_name)
+        Arg.ErQuick.file_rename := file_rename
+        Arg.ErQuick.command := "ErQuickRename"
+        G.SetFont(Format("s{}", Arg.ErQuick.title_size), Arg.ErQuick.font_name)
+        G.AddText(G.style.text, file_rename)
+    }
     
     ; 首页
-    if ( Arg.ErQuick.page == 1 ) {
-
+    if ( Arg.ErQuick.page == 1 && cmd == "" ) {
+        
         GLine := G.AddText(G.style.text, G.line)
-
+        
         if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
             if ( ! InStr(path, ".bc!") && ! InStr(path, ".torrent") ) {
                 G.AddText(G.style.text, "UnZip")
@@ -98,6 +108,8 @@ ErQuickTools()
     
     G.AddText()
     G.Show("Center NA")
+    G.ShowStatus := True
+
     Arg.ErQuick.show   := True
     Arg.ErQuick.folder := ""
 }
@@ -173,8 +185,11 @@ ErQuickToolsHide()
     Arg.ErQuick.page    := 1
     Arg.ErQuick.folder  := ""
     Arg.ErQuick.command := ""
-    
-    Arg.path_focus   := ""
-    Arg.path_selects := []
-    Arg.file_name    := ""
+
+    Arg.ErQuick.path_focus   := ""
+    Arg.ErQuick.path_selects := []
+
+    Arg.ErQuick.path_folder  := ""
+    Arg.ErQuick.file_name    := ""
+    Arg.ErQuick.file_rename  := ""
 }

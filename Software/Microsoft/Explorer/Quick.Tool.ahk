@@ -62,8 +62,8 @@ ErQuickMove(folder:="")
         return
     }
 
-    path_focus   := Arg.path_focus
-    path_selects := Arg.path_selects
+    path_focus   := Arg.ErQuick.path_focus
+    path_selects := Arg.ErQuick.path_selects
 
     if ( path_selects.Length == 1 ) {
         if ( InStr(FileGetAttrib(path_focus), "A") )
@@ -96,11 +96,10 @@ ErQuickMove(folder:="")
 }
 
 
-
 ErQuickUnZip()
 {
-    path  := Arg.path_focus
-    paths := Arg.path_selects
+    path  := Arg.ErQuick.path_focus
+    paths := Arg.ErQuick.path_selects
 
     if ( paths.Length != 1 )
         return
@@ -115,4 +114,21 @@ ErQuickUnZip()
         Sleep 333
         Try WinActivate("ahk_exe 7zG.exe ahk_class #32770")
     }
+}
+
+
+ErQuickRename()
+{
+    name_old := Arg.ErQuick.file_name
+    name_new := Arg.ErQuick.file_rename
+    if ( name_old == name_new ) {
+        ErQuickToolsHide()
+        return
+    }
+    path_old := Arg.ErQuick.path_folder . "\" . name_old
+    path_new := Arg.ErQuick.path_folder . "\" . name_new
+
+    FileMove(path_old, path_new)
+    
+    ErQuickToolsHide()
 }
