@@ -55,15 +55,25 @@
 ; 快捷键帮助
 ; 项目信息
 ~RShift::{
+
     Send "{Blind}{vkFF}"
-    Global Arg
+    
+    Global G , Arg
+
+    try {
+        if ( G.ShowStatus )
+            return
+    }
+
     if ( Arg.rshift_click > 0 ) {
         Arg.rshift_click += 1
         return
     } else {
         Arg.rshift_click := 1
     }
+
     SetTimer(Timer, -500)
+
     Timer() {
         Global Arg
         if ( Arg.rshift_click == 1 ) {
@@ -79,6 +89,7 @@
         }
         Arg.rshift_click := 0
     }
+
 }
 
 
