@@ -77,9 +77,8 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
     CapsLock::
     NumpadHome::{
         name := ControlGetText("Edit1", "A")
-        ; 
-        name := StrReplace(name, "video_", "")
-        name := StrReplace(name, " - ", " ")
+
+        name := FileRename(name)
         ; 
         name := StrReplace(name, "#", " ")
         name := StrReplace(name, "@", " ")
@@ -88,20 +87,6 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
         name := StrReplace(name, "/", " ")
         name := StrReplace(name, ":", " ")
         ; 
-        name := StrReplace(name, "，", " ")
-        name := StrReplace(name, "：", " ")
-        name := StrReplace(name, ",",  " ")
-        name := StrReplace(name, "。", " ")
-        ; 
-        name := StrReplace(name, Chr(10), " ")
-        name := StrReplace(name, Chr(13), " ")
-        ; 
-        name := StrReplace(name, A_Tab, " ")
-        name := StrReplace(name, "  " , " ")
-        name := StrReplace(name, "  " , " ")
-        name := StrReplace(name, "  " , " ")
-        ; 
-        name := Trim(name)
         name := name . " "
         ; 
         ControlSetText(name, "Edit1", "A")
