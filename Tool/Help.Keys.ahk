@@ -36,7 +36,7 @@ HelpKeysShow(step:=0)
             hotkeys_index := hotkeys_config.Length
     }
 
-    InitGui()
+    InitGui("Dark")
     
     content := hotkeys_config[hotkeys_index]
     GContent := G.Add("Text", "-Center -Border", content)
