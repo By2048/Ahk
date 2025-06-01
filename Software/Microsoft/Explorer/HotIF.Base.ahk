@@ -19,6 +19,24 @@
         ErResetPosition(columns:="Name")
     }
 
+    ^q::{
+        Send "{Blind}{vkFF}"
+        Sleep 99
+        Send "{F2}"
+        Sleep 123
+        Send "^a"
+        Send "^c"
+        ClipWait(1)
+        name := A_Clipboard
+        rename := FileRename(name)
+        A_Clipboard := rename
+        ClipWait(1)
+        Sleep 123
+        Send "^v"
+        A_Clipboard := ""
+        ClipWait(1)
+    }
+
     ; 全屏
     #Enter::Send "{F11}"
     
