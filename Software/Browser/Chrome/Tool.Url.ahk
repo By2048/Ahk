@@ -31,6 +31,10 @@ UrlChange(origin)
     if ( InStr(origin, ".jpg@") || InStr(origin, ".png@") || InStr(origin, ".webp@") )
         result := RegExReplace(origin, "(http.*)(.\w+)(@)(.*)", "$1$2")
 
+    ; https://pbs.twimg.com/media/GrxC6JDW4AILRpz?format=jpg&name=4096x4096
+    if ( InStr(origin, "twimg.com") )
+        result := RegExReplace(origin, "(http.*)(\?format=)(jpg)(.*)", "$1.$3:orig")
+
     ; learn.microsoft.com/en-us/windows/win32/shell/shellwindows
     ; learn.microsoft.com/zh-cn/windows/win32/shell/shellwindows
     if ( InStr(origin, "learn.microsoft.com/en-us/") )
