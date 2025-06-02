@@ -61,6 +61,23 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
         SetColumnWidth("SysListView323" , cfg)
     }
 
+    [::ControlSetText("V:\", "Edit1", "A")
+    ]::ControlSetText("T:\", "Edit1", "A")
+    \::ControlClick("Button2", "A")
+    
+    ; 选择下载文件夹
+    MButton::{
+        ControlClick("Button2", "A")
+    }
+
+    ; 复制下载名
+    ^+c::{
+        text := ControlGetText("Edit2", "A")
+        A_Clipboard := text
+        ClipWait()
+        HelpText("`n" text "`n", "Center", "Screen", 666)
+    }
+
     ; 立即下载
     `::
     !Enter::
@@ -73,7 +90,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
         Try WinClose("A")
     }
     
-    ; 设置位置 文件名称排序 设置列 设置路径 
+    ; 设置位置 文件名称排序 设置列 设置路径
     NumpadEnd::{
         MoveWindowPosition(Position(1300,1000))
         BTSetListView()
@@ -90,12 +107,12 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     NumpadPgUp::
     NumpadPgDn::{
         SetControlDelay(-1)
-        paths := [ Folders.Temp , Folders.Ram ]
+        paths := [ Folders.Ram , Folders.Temp ]
         path  := ControlGetText("Edit1", "A")
         if ( InStr(A_ThisHotkey, "PgUp") )
-            path := LoopList(paths, &path, -1)
+            path := LoopList(paths, path, -1)
         if ( InStr(A_ThisHotkey, "PgDn") )
-            path := LoopList(paths, &path, +1)
+            path := LoopList(paths, path, +1)
         ControlSetText(path, "Edit1", "A")
     }
 
@@ -107,12 +124,6 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     ; 全选
     NumpadDel::{
         ControlSetChecked(True, "Button5", "A")
-    }
-
-    ; 选择下载文件夹
-    \::
-    MButton::{
-        ControlClick("Button2", "A")
     }
 
     !Tab::^Tab
