@@ -13,12 +13,12 @@ ZipSetPath(path) {
 }
 ZipSetPathPrev() {
     path := ControlGetText("Edit1", "A")
-    path := LoopList(UnZipPath, &path, -1)
+    path := LoopList(UnZipPath, path, -1)
     ZipSetPath(path)
 }
 ZipSetPathNext() {
     path := ControlGetText("Edit1", "A")
-    path := LoopList(UnZipPath, &path, +1)
+    path := LoopList(UnZipPath, path, +1)
     ZipSetPath(path)
 }
 

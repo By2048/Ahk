@@ -26,7 +26,7 @@ CheckColor(color_a, color_b, offset:=9)
 
 
 ; 顺序切换数组项
-LoopList(data, &current, step:=+1, circle:=false)
+LoopList(data, current, step:=+1, circle:=false)
 {
     next_index  := 0
     check_match := false
