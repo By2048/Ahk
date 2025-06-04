@@ -4,25 +4,7 @@ RegisterSoftware( "7zG"  , "ZipDialog" )
 
 RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 
-
-UnZipPath := [ Folders.Temp , Folders.Ram ]
-
-
-ZipSetPath(path) {
-    ControlSetText(path, "Edit1", "A")
-}
-ZipSetPathPrev() {
-    path := ControlGetText("Edit1", "A")
-    path := LoopList(UnZipPath, path, -1)
-    ZipSetPath(path)
-}
-ZipSetPathNext() {
-    path := ControlGetText("Edit1", "A")
-    path := LoopList(UnZipPath, path, +1)
-    ZipSetPath(path)
-}
-
-
+#Include    Zip.Tool.ahk
 #Include *i Zip.Private.ahk
 
 
@@ -53,6 +35,8 @@ ZipSetPathNext() {
             Send "{End}{Left}"
         }
     }
+
+    RWin::ZipSetWinCtl()
     
     ; 确认解压
     Enter::ControlClick("Button7", "A")
