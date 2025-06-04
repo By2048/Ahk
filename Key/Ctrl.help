@@ -2,7 +2,7 @@
 |  W |                       | *2 | 隐藏帮助           |
 |  E | Everything            |-------------------------|
 |  R | FFRenamePro           |  - | Notepad            |
-|  T | Torrent               |  = | Notepad++          |
+|  T | Telegram              |  = | Notepad++          |
 |  Y |                       |-------------------------|
 |  U |                       |  [ | VSCode Temp        |
 |  I |                       |  ] | VSCode Node        |
@@ -19,8 +19,8 @@
 |  K | Key History | Virtual |-------------------------|
 |  L | Lnks | Lnk            |       Esc | 任务管理器  |
 |----|-----------------------|      +Esc | SecAnalysis |
-|  Z | Download              | BackSpace | WT          |
-|  X |                       |     Enter | Whiteboard  |
+|  Z | Torrent               | BackSpace | WT          |
+|  X | Download              |     Enter | Whiteboard  |
 |  C | Calc                  |  U D L R  | 窗口移动    |
 |  V | Vpn                   |
 |  B | Image                 |

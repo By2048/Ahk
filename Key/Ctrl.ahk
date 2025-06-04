@@ -6,7 +6,7 @@
  >^w::Return
  >^e::Run Folders.Lnk "Everything.lnk"
  >^r::Run Folders.Lnk "FFRenamePro.lnk"
- >^t::Run Folders.Lnk "Torrent.lnk"
+ >^t::Run Folders.Lnk "Telegram.lnk"
  >^y::Return
  >^u::Return
  >^i::Return
@@ -41,8 +41,8 @@
  >^l::Run Folders.Lnks
 >^+l::Run Folders.Lnk
 
- >^z::Run Folders.Lnk "Download.lnk"
- >^x::Return
+ >^z::Run Folders.Lnk "Torrent.lnk"
+ >^x::Run Folders.Lnk "Download.lnk"
  >^c::Run "Calc"
  >^v::Run Folders.Lnk "Vpn.lnk"
  >^b::Run Folders.Lnk "Image.lnk"
