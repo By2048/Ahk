@@ -20,6 +20,8 @@ FileRename(base)
     ; 字符替换
     name := StrReplace(name, "【", "[")
     name := StrReplace(name, "】", "]")
+    name := StrReplace(name, "（", "(")
+    name := StrReplace(name, "）", ")")
     name := StrReplace(name, "[]", "")
     name := StrReplace(name, "][", "] [")
     name := StrReplace(name, " .", ".")
