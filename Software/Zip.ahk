@@ -8,6 +8,7 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 #Include *i Zip.Private.ahk
 
 
+
 #HotIf CheckWindowActive( "ZipDialog" , "#32770" , "浏览文件夹" )
     \::Send "{Esc}"
 #HotIf
@@ -35,8 +36,6 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
             Send "{End}{Left}"
         }
     }
-
-    RWin::ZipSetWinCtl()
     
     ; 确认解压
     Enter::ControlClick("Button7", "A")
@@ -49,7 +48,8 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
     ]::ZipSetPathNext()
     
     ; 浏览文件夹
-    \::ControlClick("Button1", "A")
+     \::ControlClick("Button1", "A")
+    +\::Send "丨"
 
      F1::
      F2::
@@ -103,6 +103,19 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
         MoveWindowPosition(Position(650, 900))
         SetColumnWidth("SysListView321", Map( 1,150 , 2,420 ))
     }
+#HotIf
+
+
+#HotIf CheckWindowActive( "ZipDialog" ) || CheckWindowActive( "ZipMain" )
+
+    RWin::{
+        title := window.title
+        if ( InStr(title, "正在解压") || InStr(title, "正在复制") )
+            MoveWindowPosition(Position(630,432))
+        else if ( InStr(title, "解压") || InStr(title, "复制") )
+            ZipSetGui()
+    }
+
 #HotIf
 
 
