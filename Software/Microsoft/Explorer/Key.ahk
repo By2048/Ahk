@@ -78,6 +78,9 @@ F6::Return
 ^+e::Return
 ^g::Send "^+e"
 
+; 关闭窗口
+^w::Return
+
 ; 创建新文件夹
 ^+n::Return
 <^n::Send "^+n"

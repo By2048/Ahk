@@ -27,8 +27,9 @@ ErDeleteForever()
     Send "+{Delete}"
     Sleep 66
     Send "!y"
-    Sleep 666
-    Send "{Space}"
+    Sleep 99
+    If WinWaitActive("ahk_exe explorer.exe ahk_class CabinetWClass", "", 3)
+        Send "{Space}"
 }
 
 
@@ -88,7 +89,7 @@ ErGetFocusedItem()
 }
 
 
-ErGetSelectItem()
+ErGetSelectedItems()
 {
     paths := []
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")

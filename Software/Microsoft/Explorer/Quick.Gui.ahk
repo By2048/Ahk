@@ -27,7 +27,7 @@ ErQuickTools(cmd:="")
     G.AddText()
 
     path  := ErGetFocusedItem()
-    paths := ErGetSelectItem()
+    paths := ErGetSelectedItems()
 
     SplitPath(path, &file_name, &path_folder)
 
@@ -62,8 +62,10 @@ ErQuickTools(cmd:="")
         line := G.line
     else if ( paths.Length > 1 && paths.Length < 10 )
         line := StrReplace(G.info, "{----}", "{ " paths.Length " }")
-    else if ( paths.Length >= 10 )
+    else if ( paths.Length >= 10 && paths.Length < 100 )
         line := StrReplace(G.info, "-{----}-", "{ " paths.Length " }")
+    else if ( paths.Length >= 100 )
+        line := StrReplace(G.info, "--{----}--", "{ " paths.Length "  }")
     else
         line := G.line
     GLine := G.AddText(G.style.text, line)

@@ -24,7 +24,7 @@ ErQuickRun()
 ErQuickPreview()
 {
     path  := ErGetFocusedItem()
-    paths := ErGetSelectItem()
+    paths := ErGetSelectedItems()
 
     if ( paths.Length != 1 )
         return
@@ -113,6 +113,7 @@ ErQuickUnZip()
         Send "{Enter}"
         Sleep 333
         Try WinActivate("ahk_exe 7zG.exe ahk_class #32770")
+        Try ZipSetGui()
     }
 }
 
