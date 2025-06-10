@@ -1,6 +1,6 @@
 
-RegisterPosition( "Telegram" , Position(2000 , 1357) , "Default" )
-RegisterPosition( "Telegram" , Position(1000 , 1357) , "Backup"  )
+RegisterPosition( "Telegram" , Position(2345 , 1357) , "Default" )
+RegisterPosition( "Telegram" , Position(1234 , 1357) , "Backup"  )
 RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
 
@@ -21,21 +21,23 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     !PgUp::Send "^{PgUp}"
     !PgDn::Send "^{PgDn}"
 
+    F1::TGSavedMessage()
+
     NumLock::   Send "{Esc}"
     NumpadHome::Send "^c"
     NumpadEnd:: Send "^v"
     NumpadPgDn::Send "{Enter}"
-    NumpadPgUp::Send "{RButton}{Down 3}{Enter}"
+    NumpadPgUp::TGSavedMessage()
     NumpadIns:: Send "^{PgDn}"
     NumpadDel:: Send "^{PgUp}"
 
-    #p::
-    #[::
-    #]::{
+    <#p::
+    <#[::
+    <#]::{
         offset := 12
         hight  := Screen.h - offset * 2
-        left   := Screen.w *  16/25 - offset * 1.5
-        right  := Screen.w *   9/25 - offset * 1.5
+        left   := Screen.w *  17/25 - offset * 1.5
+        right  := Screen.w *   8/25 - offset * 1.5
         if ( InStr(A_ThisHotkey, "p") )
             pos := Position( offset , "Center" , Screen.w - offset * 2 , hight )
         if ( InStr(A_ThisHotkey, "[") )
@@ -43,6 +45,17 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
         if ( InStr(A_ThisHotkey, "]") )
             pos := Position( Screen.w - right - offset , "Center" , right , hight )
         MoveWindowPosition(pos)
+    }
+
+    TGSavedMessage()
+    {
+        Send "{RButton}"
+        Sleep 333
+        image := A_InitialWorkingDir . "\Image\Software\Telegram\forward.png"
+        MouseClickImage(image)
+        Sleep 333
+        image := A_InitialWorkingDir . "\Image\Software\Telegram\saved_message.png"
+        MouseClickImage(image)
     }
 
 #HotIf
