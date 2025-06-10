@@ -16,8 +16,6 @@
 
     \::^+s
 
-    BackSpace::Esc
-
     Insert::^c
     Delete::^t
 
