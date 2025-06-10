@@ -1,9 +1,14 @@
 ﻿
 ; PowerToy
-; #o Orc
-<#t:: Send "^!t"   ; 窗口置顶
-<#x:: Send "#^!x"  ; 裁剪
-<#+x::Send "#^!+x" ; 锁定
+<#o::Send "#^!o"   ;Orc
+<#t::Send "#^!t"   ;窗口置顶
+<#x:: Send "#^!x"  ;裁剪
+<#+x::Send "#^!+x" ;锁定
+
+<#i::Send "#v"  ;剪切板粘贴
+<#n::Send "#k"  ;打开“连接”快速操作
+<#m:: Send "#," ;显示隐藏所有应用
+<#+m::Send "#d" ;切换隐藏所有应用界面
 
 <#g::
 <#+g::{
@@ -29,9 +34,6 @@
 <#[::Send "#+t"
 <#]::Send "#t"
 
-;插入表情
-<#j::#`;
-
 <#,::Send "#x" ;系统菜单
 <#.::Run "control" ;控制面板
 <#+.::{ ;环境编辑器
@@ -41,50 +43,34 @@
     Send "^{Tab 2}"
     Send "!n"
 }
-<#/::{
+<#/::{ ;设置 基础
     Send "{Blind}{vkFF}"
-    Run "MS-Settings:" ;设置 基础
+    Run "MS-Settings:"
 }
-<#+/::Run Folders.Config "\Windows.msc" ;设置 高级
+<#+/::{ ;设置 高级
+    Send "{Blind}{vkFF}"
+    Run Folders.Config "\Windows.msc" 
+}
 
 ;类似于Vim的快捷键操作工具
 <#;::Run HuntAndPeck . " /tray" ;任务栏
 <#'::Run HuntAndPeck . " /hint" ;当前应用
 
-; 复制文件路径
-<#c::{
-    hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if ( ! hwnd )
-        return
-    result := ""
-    for Win in ComObject("Shell.Application").Windows
-        if ( Win.hwnd == hwnd )
-            for item in Win.Document.SelectedItems
-                result := result . "`n" . item.path
-    result := LTrim(result, "`n")
-    A_Clipboard := result
-    ClipWait()
-    HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
-}
-
-; Windows原生剪切板内容处理粘贴
-; #v::Return
-
 ; 同步复制
-<#+c::{
+<#c::{
+    Global JQB
     A_Clipboard := ""
     Send "^c"
     ClipWait()
-    HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
-    if ( FileExist(JQB.Windows) )
-        FileDelete(JQB.Windows)
+    Sleep 123
     file := FileOpen(JQB.Windows, "w", "UTF-8")
     file.Write(A_Clipboard)
     file.Close()
+    HelpText(A_Clipboard, "CenterDown", "Screen", 1000)
 }
 
 ; 同步粘贴
-<#+v::{
+<#v::{
     Global JQB
     FileEncoding("UTF-8")
     origin := A_Clipboard
@@ -104,57 +90,15 @@
     }
     A_Clipboard := content
     ClipWait(1)
+    Sleep 123
     Send "^v"
     if ( StrLen(content) > 15 )
         content := SubStr(content, 1, 5) . "..." . SubStr(content, -5)
     HelpText(A_Clipboard, "CenterDown", "Screen", 333)
     A_Clipboard := origin
+    ClipWait(1)
     Try FileDelete(JQB.Phone)
 }
-
-; 文件重命名
-<#h::
-<#+h::{
-    Send "{Blind}{vkFF}"
-    
-    win_id := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
-    if ( ! win_id )
-        return
-
-    ; 获取Explorer当前选择的项目
-    folder := ""
-    files  := []
-    data := Map( "folder" , ""  ,  "select" , [] )
-    for win in ComObject("Shell.Application").Windows {
-        if ( win.hwnd == win_id ) {
-            folder := win.Document.Folder.Self.Path
-            for item in win.Document.SelectedItems
-                files.Push(item.path)
-        }
-    }
-
-    if ( ! files )
-        return
-
-    if ( A_ThisHotkey == "<#h" )
-        for file in files
-            RenameToMd5(file)
-
-    if ( A_ThisHotkey == "<#+h" ) {
-        for file in files {
-            RenameToData(file)
-            Sleep 1000
-        }
-    }
-}
-
-; 打开“连接”快速操作
-<#n::{
-    Sleep 300
-    Send "#k"
-}
-<#m:: Send "#," ;显示隐藏所有应用
-<#+m::Send "#d" ;切换隐藏所有应用界面
 
 ; 屏幕截图 临时 | 长久
 <#Insert:: ScreenShotFull(Folders.Image)

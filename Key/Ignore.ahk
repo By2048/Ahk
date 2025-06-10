@@ -26,44 +26,7 @@
 ^Esc::Return  ;开始菜单
 ^+Esc::Return ;任务管理器
 
-#a::Return  ;打开操作中心
-#w::Return  ;打开WindwsInk
-#s::Return  ;打开搜索
-#+s::Return ;获取部分屏幕
-#x::Return  ;系统菜单
-#h::Return  ;听写
-#k::Return  ;打开“连接”快速操作
-#m::Return  ;最小化所有窗口
-#r::Return  ;Run
-#i::Return  ;打开系统设置
-#u::Return  ;显示器设置
-
-#,::Return ;透明窗口显示桌面
-#.::Return ;输入法表情界面
 #F1::Return ;系统帮助
-#Pause::Return ;控制面板\所有控制面板项\系统
-#PrintScreen::Return ;不明
-; #Home::Return ;最小化活动桌面窗口之外的所有窗口
-
-; 快速切换任务栏程序
-#t::Return
-#+t::Return
-
-; 打开任务视图
-#Tab::Return
-#+Tab::Return
-
-#^q::Return ;快速助手
-#^o::Return ;屏幕键盘
-#^n::Return ;讲述人
-#^m::Return ;放大镜
-#^s::Return ;语音识别
-#^f::Return ;查找计算机
-
-#^d::Return     ;创建虚拟桌面
-#^F4::Return    ;关闭当前虚拟桌面
-#^Left::Return  ;向左切换虚拟桌面
-#^Right::Return ;向右切换虚拟桌面
 
 ; 切换到激活的应用
 #1::Return
@@ -76,7 +39,46 @@
 #8::Return
 #9::Return
 
-; 缩放
+#a::Return  ;打开操作中心
+#w::Return  ;打开WindwsInk
+#s::Return  ;打开搜索
+#+s::Return ;获取部分屏幕
+#x::Return  ;系统菜单
+#v::Return  ;剪切板历史粘贴
+#h::Return  ;听写
+#k::Return  ;打开“连接”快速操作
+#m::Return  ;最小化所有窗口
+#r::Return  ;Run
+#i::Return  ;打开系统设置
+#u::Return  ;显示器设置
+#t::Return  ;快速切换任务栏程序
+#+t::Return ;
+
+#^q::Return ;快速助手
+#^o::Return ;屏幕键盘
+#^n::Return ;讲述人
+#^m::Return ;放大镜
+#^s::Return ;语音识别
+#^f::Return ;查找计算机
+
+#`;::Return ;插入表情
+#,::Return  ;透明窗口显示桌面
+#.::Return  ;输入法表情界面
+
+; 打开任务视图
+#Tab::Return
+#+Tab::Return
+
+#^d::Return     ;创建虚拟桌面
+#^F4::Return    ;关闭当前虚拟桌面
+#^Left::Return  ;向左切换虚拟桌面
+#^Right::Return ;向右切换虚拟桌面
+
+; UI调整
 ; #0::Return
 ; #-::Return
 ; #=::Return
+
+; 在其他位置进行了替换
+; #Home::Return  ;最小化活动桌面窗口之外的所有窗口
+; #Pause::Return ;控制面板\所有控制面板项\系统
