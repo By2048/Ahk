@@ -13,7 +13,7 @@ RegisterHelpInfo("Wallpaper" , "Software\Wallpaper.help")
         y1 := y_origin - 400
         x2 := x_origin + 80
         y2 := y_origin + 800
-        MouseClickImageXYWH(x1, y1, x2, y2, image, "Window", 99)
+        MouseClickImage(image, x1, y1, x2, y2, "Window", "Left", 99)
     }
 
     PageTool(mode) {
@@ -21,19 +21,8 @@ RegisterHelpInfo("Wallpaper" , "Software\Wallpaper.help")
         y := 1242
         w := 1000
         h := 55
-        xx := x + w
-        yy := y + h
-        ; GuiTool(x,y,w,h)
         image := A_InitialWorkingDir . "\Image\Software\Wallpaper\Black\" . mode . ".png"
-        MouseClickImageXYWH(x, y, xx, yy, image, "Screen", 99)
-    }
-
-    GuiTool(x, y, w, h) {
-        G := Gui()
-        G.Opt("-DPIScale +Border +Disabled +Owner -SysMenu -Caption")
-        G.Opt("+LastFound")
-        WinSetTransColor("F1ECED 100", G)
-        G.Show(Format("x{} y{} w{} h{}", x, y, w, h))
+        MouseClickImage(image, x, y, x+w, y+h, "Screen", "Left", 99)
     }
 
     #\::{
