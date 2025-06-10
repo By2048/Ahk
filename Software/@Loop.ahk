@@ -24,6 +24,13 @@ Loop {
         continue
     }
 
+    if ( win_process_name == "ZipDialog" || win_process_name == "ZipMain" ) {
+        if ( InStr(win_title, "解压") || InStr(win_title, "复制") ) {
+            Sleep 999
+            continue
+        }
+    }
+
     if ( win_class == "#32770" && win_title == "打开" ) {
         MoveWindowDefault()
         continue
