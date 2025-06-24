@@ -29,7 +29,7 @@
     ; 全屏
     #Enter::Send "{F11}"
     
-    +\::Send "{F5}"
+    +\::Send "丨"
 
     ![::ErActivateLeft()
     !]::ErActivateRight()
