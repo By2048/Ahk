@@ -16,6 +16,16 @@ ZipSetPathNext() {
 }
 
 
+ZipSetName()
+{
+    name   := ControlGetText("Edit2", "A")
+    rename := FileRename(name)
+    rename := Trim(rename)
+    ControlSetText(rename, "Edit2", "A")
+    ControlFocus("Edit2", "A")
+    Send "{End}"
+}
+
 
 ZipSetGui()
 {
