@@ -91,7 +91,8 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     }
     
     ; 设置位置 文件名称排序 设置列 设置路径
-    NumpadEnd::{
+    NumpadEnd::
+    #\::{
         MoveWindowPosition(Position(1300,1000))
         BTSetListView()
         ControlClick("SysHeader321", "A")
