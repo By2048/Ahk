@@ -29,6 +29,12 @@ RegisterPosition("Everything", Position(1700 , 1200))
     F3::Return
     CapsLock::Send "{F3}"
     Insert::Send "{F3}"
+    ^+v::{
+        Send "{F3}"
+        Send "^a"
+        Send "{Backspace}"
+        Send "^v"
+    }
 
     ; 切换焦点
     F6::Return
