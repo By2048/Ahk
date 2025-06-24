@@ -1,6 +1,8 @@
 
 RegisterPosition( "Telegram" , Position(2345 , 1357) , "Default" )
 RegisterPosition( "Telegram" , Position(1234 , 1357) , "Backup"  )
+RegisterPosition( "Telegram__SavedMessages" , Position("[Center][2]", -20, 0.7) , "Default" )
+
 RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
 
@@ -34,6 +36,7 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     <#p::
     <#[::
     <#]::{
+        Send "{Blind}{vkFF}"
         offset := 12
         hight  := Screen.h - offset * 2
         left   := Screen.w *  17/25 - offset * 1.5
