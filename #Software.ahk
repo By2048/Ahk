@@ -55,6 +55,7 @@
 #Include Software\Develop\NetSarang.ahk
 #Include Software\Develop\Obsidian.ahk
 #Include Software\Develop\Postman.ahk
+#Include Software\Develop\PowerShell.ahk
 #Include Software\Develop\Terminal.ahk
 #Include Software\Develop\VSCode.ahk
 
