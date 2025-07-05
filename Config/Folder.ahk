@@ -2,7 +2,7 @@
 Folders :=
 {
     Ram    : "V:\#\" ,
-    Temp   : "T:\#\" ,
+    Temp   : "T:\"   ,
 
     Admin  : "C:\Users\Administrator\" ,
     
