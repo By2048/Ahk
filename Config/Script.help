@@ -3,6 +3,6 @@
 |  FFplay      FFprobe     Git         Go          Jar           |
 |  Java        JavaW       Lua         LuaC        LuaW          |
 |  PSL         Scrcpy      TaskKill    Vim         Zip           |
-|  Py          Pip         Py-         Pip-        Py=           |
-|  Pip=        RustC       RustUp      Cargo       VV            |
-|  VVV         Script      Rename      Windows                   |
+|  WebP        Py          Pip         RustC       RustUp        |
+|  Cargo       VV          VVV         Script      Rename        |
+|  Windows                                                       |

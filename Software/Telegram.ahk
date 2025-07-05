@@ -20,8 +20,8 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     
     ^PgUp::Return
     ^PgDn::Return
-    !PgUp::Send "^{PgUp}"
-    !PgDn::Send "^{PgDn}"
+    ; !PgUp::Send "^{PgUp}"
+    ; !PgDn::Send "^{PgDn}"
 
     F1::TGSavedMessage()
 

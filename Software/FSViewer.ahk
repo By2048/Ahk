@@ -105,7 +105,10 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
     }
 
     [::Send "m9"
-    ]::Send "{Left}"
+    ]::{
+        Send "{Left}"
+        Sleep 111
+    }
     \::{
         Send "{Right}"
         Sleep 111
