@@ -1,6 +1,9 @@
 ﻿
 UnZipPath := [ Folders.Temp , Folders.Ram ]
 
+ZipSetPassword(password) {
+    ControlSetText(password, "Edit3", "A")
+}
 ZipSetPath(path) {
     ControlSetText(path, "Edit1", "A")
 }

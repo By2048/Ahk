@@ -14,6 +14,11 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 #HotIf
 
 
+#HotIf CheckWindowActive( "ZipDialog" , "#32770" , "正在解压*" )
+    Enter::ControlClick("Button3", "A")
+#HotIf
+
+
 #HotIf    CheckWindowActive( "ZipDialog" , "#32770" , "解压*" )
        || CheckWindowActive( "ZipMain"   , "#32770" , "复制*" )
 
@@ -50,6 +55,13 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
     ; 浏览文件夹
      \::ControlClick("Button1", "A")
     +\::Send "丨"
+
+    ^+c::{
+        name := ControlGetText("Edit2", "A")
+        A_Clipboard := name
+        ClipWait(1)
+        HelpText(name, "CenterDown", "Screen", 666)
+    }
 
      F1::
      F2::
