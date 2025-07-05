@@ -6,15 +6,19 @@ FileRename(base)
     #Include *i File.Rename.Snippet.ahk
 
     ; 字符删除
-    name := StrReplace(name, "●", " ")
-    name := StrReplace(name, "！", " ")
     name := StrReplace(name, " - ", " ")
+    name := StrReplace(name, " _ ", " ")
+    
+    name := StrReplace(name, "·", " ")
+    name := StrReplace(name, ".", " ")
+    name := StrReplace(name, "。", " ")
+    name := StrReplace(name, "●", " ")
     name := StrReplace(name, "《", "")
     name := StrReplace(name, "》", "")
-    name := StrReplace(name, "，", " ")
-    name := StrReplace(name, "：", " ")
     name := StrReplace(name, ",",  " ")
-    name := StrReplace(name, "。", " ")
+    name := StrReplace(name, "，", " ")
+    name := StrReplace(name, "！", " ")
+    name := StrReplace(name, "：", " ")
     name := StrReplace(name, "[]", "")
     name := StrReplace(name, Chr(10), " ") ; 换行符 Line Feed       / LF
     name := StrReplace(name, Chr(13), " ") ; 回车符 Carriage Return / CR
