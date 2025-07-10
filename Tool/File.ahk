@@ -10,7 +10,6 @@ FileRename(base)
     name := StrReplace(name, " _ ", " ")
     
     name := StrReplace(name, "·", " ")
-    name := StrReplace(name, ".", " ")
     name := StrReplace(name, "。", " ")
     name := StrReplace(name, "●", " ")
     name := StrReplace(name, "《", "")
@@ -57,7 +56,7 @@ FileRename(base)
     name := RegExReplace(temp, "(.*?)(\d{4})(_|-)(\d{1})(_|-)(\d{1})(.*?)", "$1$2-0$4-0$6$7")
     ; 2025.04.10 > 2025-04-10
     name := RegExReplace(temp, "(.*?)(\d{4})(.)(\d{2})(.)(\d{2})(.*?)", "$1$2-$4-$6$7")
-    
+
     ; ]A > ] A
     name := RegExReplace(name, "(.*?)(\]|\))(\S)(.*?)", "$1$2 $3$4")
     ; A[ > A [
