@@ -1,10 +1,13 @@
 ﻿
 UnZipPath := [ Folders.Temp , Folders.Ram ]
 
+#Include *i Zip.Tool.Private.ahk
+
 ZipSetPassword(password) {
     ControlSetText(password, "Edit3", "A")
 }
 ZipSetPath(path) {
+    path := StrReplace(path, "\\", "\")
     ControlSetText(path, "Edit1", "A")
 }
 ZipSetPathPrev() {
@@ -19,7 +22,7 @@ ZipSetPathNext() {
 }
 
 
-ZipSetName()
+ZipSetGuiName()
 {
     name   := ControlGetText("Edit2", "A")
     rename := FileRename(name)
@@ -30,7 +33,7 @@ ZipSetName()
 }
 
 
-ZipSetGui()
+ZipSetGuiPos()
 {
     GetActiveWindowInfo(False)
 

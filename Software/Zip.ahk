@@ -125,7 +125,7 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
         if ( InStr(title, "正在解压") || InStr(title, "正在复制") )
             MoveWindowPosition(Position(630,432))
         else if ( InStr(title, "解压") || InStr(title, "复制") )
-            ZipSetGui()
+            ZipSetGuiPos()
     }
 
 #HotIf

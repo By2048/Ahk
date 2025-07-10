@@ -107,14 +107,16 @@ ErQuickUnZip()
     if ( InStr(path, ".bc!") )
         return
 
-    if ( InStr(path, ".zip") Or InStr(path, ".7z") Or InStr(path, ".rar") ) {
-        Send "{AppsKey}"
-        Send "{7}"
-        Send "{Enter}"
+    if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
+        SplitPath(path, &name, &dir, &ext, &name_no_ext, &drive)
+        command := ZipDialog " x " "`"" path "`"" " -ad " "-o" "`"" dir "\" name_no_ext "`""
+        Run command
         Sleep 333
         Try WinActivate("ahk_exe 7zG.exe ahk_class #32770")
-        Try ZipSetGui()
-        Try ZipSetName()
+        Sleep 99
+        Try ZipSetGuiPos()
+        Try ZipSetGuiName()
+        Try ZipSetGuiPwd()
     }
 }
 
