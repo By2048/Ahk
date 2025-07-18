@@ -3,6 +3,9 @@
 Debug := 0
 
 
+_ := 0
+
+
 ; 存储当前窗口的信息
 ; 缓存处理 优化相关性能
 Window := {
@@ -40,8 +43,9 @@ Window := {
 Arg := {
     ;
     lwin_click : 0 ,
-    rwin_click : 0 ,
     lwin_press : 0 ,
+
+    rwin_click : 0 ,
     rwin_press : 0 ,
 
     lctrl_click : 0 ,
@@ -52,8 +56,17 @@ Arg := {
     
     lshift_click : 0 ,
     rshift_click : 0 ,
+    
+    up_cnt    : 0 ,
+    down_cnt  : 0 ,
+    left_cnt  : 0 ,
+    right_cnt : 0 ,
+    
+    scroll_cnt   : 0 ,
+    scroll_click : 0 ,
 
-    scroll_cnt     : 0 ,
+    backslash_cnt : 0 ,
+    
     pause_click    : 0 ,
     numlock_click  : 0 ,
     capslock_click : 0 ,
