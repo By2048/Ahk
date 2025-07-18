@@ -115,8 +115,7 @@ ErQuickUnZip()
         Try WinActivate("ahk_exe 7zG.exe ahk_class #32770")
         Sleep 99
         Try ZipSetGuiPos()
-        Try ZipSetGuiName()
-        Try ZipSetGuiPwd()
+        Try ZipSetGuiText()
     }
 }
 

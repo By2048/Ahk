@@ -14,11 +14,6 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 #HotIf
 
 
-#HotIf CheckWindowActive( "ZipDialog" , "#32770" , "正在解压*" )
-    Enter::ControlClick("Button3", "A")
-#HotIf
-
-
 #HotIf    CheckWindowActive( "ZipDialog" , "#32770" , "解压*" )
        || CheckWindowActive( "ZipMain"   , "#32770" , "复制*" )
 
@@ -41,9 +36,6 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
             Send "{End}{Left}"
         }
     }
-    
-    ; 确认解压
-    Enter::ControlClick("Button7", "A")
     
     `;::ZipSetPath(Folders.Temp)
      '::ZipSetPath(Folders.Ram )
@@ -118,14 +110,48 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 #HotIf
 
 
-#HotIf CheckWindowActive( "ZipDialog" ) || CheckWindowActive( "ZipMain" )
+#HotIf CheckWindowActive( "ZipMain | ZipDialog" )
+
+    ZipGuiInit() {
+        if ( InStr(window.title, "确认文件替换") ) {
+            MoveWindowPosition( Position(820,588) )
+            ctl_rename := "Button3"
+            ctl_all_no := "Button5"
+            ctl_cancel := "Button6"
+            ; 
+            ControlGetPos(&x, &y, &w, &h, ctl_rename, "A")
+            ControlMove(x,  , w, h, ctl_cancel, "A")
+            ; 
+            ControlFocus(ctl_cancel, "A")
+            ControlSend("{Tab}", ctl_all_no, "A")
+        }
+
+        if ( InStr(window.title, "正在解压") ) {
+            MoveWindowPosition( Position(630,432) )
+            return
+        }
+
+        if ( InStr(window.title, "解压") ) {
+            ZipSetGuiPos()
+            ZipSetGuiText()
+            return
+        }
+    }
+
+    ~Enter::{
+        if ( InStr(window.title, "正在解压") ) {
+            ControlClick("Button3", "A") 
+        } else if ( InStr(window.title, "解压") ) {
+            ControlClick("Button7", "A") ;确认解压
+        } else {
+            Send "{Enter}"
+        }
+        Sleep 333
+        Try ZipGuiInit()
+    }
 
     RWin::{
-        title := window.title
-        if ( InStr(title, "正在解压") || InStr(title, "正在复制") )
-            MoveWindowPosition(Position(630,432))
-        else if ( InStr(title, "解压") || InStr(title, "复制") )
-            ZipSetGuiPos()
+        ZipGuiInit()
     }
 
 #HotIf
