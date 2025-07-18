@@ -33,7 +33,7 @@
 
 
 ; 文件重命名 MD5
-<!f::{
+<!m::{
     paths := ErGetSelectedItems()
     if ( ! paths.Length )
         return
