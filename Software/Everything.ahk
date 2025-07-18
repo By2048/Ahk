@@ -5,11 +5,12 @@ RegisterPosition("Everything", Position(1700 , 1200))
 #HotIf CheckWindowActive("Everything")
 
     Esc::{
-        if ( InStr(A_PriorHotkey , A_ThisHotkey) && ( A_TimeSincePriorHotkey < 456 ) )
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) )
             Send "{Esc}"
     }
 
-    ~RShift::{
+    RWin::{
+        MoveWindowDefault()
         cfg := " 1:名称:750  2:路径:600  3:大小:120  4:修改时间:180 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321", cfg)
@@ -28,7 +29,13 @@ RegisterPosition("Everything", Position(1700 , 1200))
     ; 输入框
     F3::Return
     CapsLock::Send "{F3}"
-    Insert::Send "{F3}"
+    Insert::{
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) )
+            Send "{F3}{Delete}"
+        else
+            Send "{F3}{End}"
+    }
+
     ^+v::{
         Send "{F3}"
         Send "^a"
