@@ -63,11 +63,6 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
             Send "{AppsKey}{Up 4}{Enter}"
     }
 
-    BackSpace::{
-        if ( InStr(A_PriorHotkey , A_ThisHotkey) && ( A_TimeSincePriorHotkey < 456 ) )
-            Send "!x"
-    }
-
 #HotIf
 
 
@@ -79,20 +74,18 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
         else
             MouseMove(Screen.w - 300, Screen.h - 300, 0)
     }
-    BackSpace::{
-        if ( InStr(A_PriorHotkey , A_ThisHotkey) && ( A_TimeSincePriorHotkey < 456 ) )
-            Send "!x"
-    }
 #HotIf
 
 
 #HotIf CheckWindowActive( "FSViewer" )
 
-    F1::Send "m1"
-    F2::Send "m2"
-    F3::Send "m3"
-    F5::Return ;刷新
-    F7::Return ;随机排序
+     F1::Send "m1"
+     F2::Send "m2"
+     F3::Send "m3"
+     F5::Return ;刷新
+     F7::Return ;随机排序
+    F11::Return ;全屏
+    F12::Return ;设置
 
     `::Send "m"
 
@@ -104,14 +97,36 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
             Send "{Delete}"
     }
 
+    BackSpace::{
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) ) {
+            Arg.backslash_cnt := 0
+            Send "!x"
+        } else {
+            Send "{F5}"
+        }
+    }
+
     [::Send "m9"
     ]::{
         Send "{Left}"
-        Sleep 111
+        Sleep 123
     }
+
+    \ Up::{
+        Arg.backslash_cnt := Arg.backslash_cnt + 1
+        if ( Arg.backslash_cnt < 3 )
+            Send "{F5}"
+        if ( Arg.backslash_cnt < 22 && Mod(Arg.backslash_cnt, 3) == 0 )
+            Send "{F5}"
+        if ( Arg.backslash_cnt < 99 && Mod(Arg.backslash_cnt, 7) == 0 )
+            Send "{F5}"
+        if ( (Arg.backslash_cnt, 11) == 0 )
+            Send "{F5}"
+    }
+
     \::{
         Send "{Right}"
-        Sleep 111
+        Sleep 123
     }
 
     `;::Send "{Home}!{Left}{Home}"
