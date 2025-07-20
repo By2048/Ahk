@@ -27,6 +27,9 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
 ; Chrome键盘快捷键 https://support.google.com/chrome/answer/157179
 
 
+#Include *i Chrome.Private.ahk
+
+
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "近期的下载记录" )
     NumpadEnd::MouseClickTool(40, 123)
 #HotIf
@@ -114,16 +117,13 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
         }
     }
 
-#HotIf
-
-
-#HotIf CheckWindowActive( "Chrome" )
-
+    
     #Include Key\Base.ahk
     #Include Key\Fxx.ahk
     #Include Key\Insert.ahk
     #Include Key\Joy.ahk
     #Include Key\Mouse.ahk
-    #Include Key\Private.ahk
+    
+    #Include *i Key\Private.ahk
 
 #HotIf
