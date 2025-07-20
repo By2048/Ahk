@@ -18,8 +18,6 @@ FileRename(base)
     name := StrReplace(name, "，", " ")
     name := StrReplace(name, "！", " ")
     name := StrReplace(name, "：", " ")
-    name := StrReplace(name, "[]", "")
-    name := StrReplace(name, "()", "")
     name := StrReplace(name, Chr(10), " ") ; 换行符 Line Feed       / LF
     name := StrReplace(name, Chr(13), " ") ; 回车符 Carriage Return / CR
     
@@ -40,13 +38,15 @@ FileRename(base)
     name := StrReplace(name, "( [", "[")
     name := StrReplace(name, "])",  "]")
     name := StrReplace(name, "] )", "]")
-
-    ; 空格调整
+    ;
     name := StrReplace(name, "][", "] [")
     name := StrReplace(name, "][", "] [")
     name := StrReplace(name, ")[", ") [")
     name := StrReplace(name, "](", "] (")
-    
+    ;
+    name := StrReplace(name, "[]", "")
+    name := StrReplace(name, "()", "")
+
     ; REGEX
     temp := name
     ; 2000_11_1 > 2000_11_01
