@@ -4,6 +4,9 @@ RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
 RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
 
+#Include *i FSViewer.Private.ahk
+
+
 #HotIf CheckWindowActive( "FSViewer" , "" , "*删除*" )
     Delete::Send "!n"
     Insert::Send "!y"
@@ -54,14 +57,6 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
             MouseMove(x_origin, y_origin, 0)
         }
     }
-    
-    BackSpace & Delete::{
-        ControlFocus("TJamShellTree.UnicodeClass1", "A")
-        ControlFocus("TJamShellTree.UnicodeClass1", "A")
-        ControlFocus("TJamShellTree.UnicodeClass1", "A")
-        if ( ControlGetClassNN(ControlGetFocus("A")) == "TJamShellTree.UnicodeClass1" )
-            Send "{AppsKey}{Up 4}{Enter}"
-    }
 
 #HotIf
 
@@ -89,39 +84,10 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
     `::Send "m"
 
-    Delete::{
-        control_name := ControlGetClassNN(ControlGetFocus("A"))
-        if ( control_name == "TJamShellTree.UnicodeClass1" )
-            Send "{AppsKey}{Up 4}{Enter}"
-        else
-            Send "{Delete}"
-    }
-
-    BackSpace::{
-        if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) ) {
-            Arg.backslash_cnt := 0
-            Send "!x"
-        } else {
-            Send "{F5}"
-        }
-    }
-
     [::Send "m9"
     ]::{
         Send "{Left}"
         Sleep 123
-    }
-
-    \ Up::{
-        Arg.backslash_cnt := Arg.backslash_cnt + 1
-        if ( Arg.backslash_cnt < 3 )
-            Send "{F5}"
-        if ( Arg.backslash_cnt < 22 && Mod(Arg.backslash_cnt, 3) == 0 )
-            Send "{F5}"
-        if ( Arg.backslash_cnt < 99 && Mod(Arg.backslash_cnt, 7) == 0 )
-            Send "{F5}"
-        if ( (Arg.backslash_cnt, 11) == 0 )
-            Send "{F5}"
     }
 
     \::{
