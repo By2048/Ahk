@@ -1,2 +1,0 @@
-
-#Include Chromium\HotIF.ahk

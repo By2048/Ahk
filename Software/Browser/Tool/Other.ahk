@@ -66,22 +66,3 @@ GoogleTranslate(origin)
     result := http . url . ".translate.goog" . path . "?_x_tr_sl=auto&_x_tr_tl=zh-CN"
     return result
 }
-
-
-
-RedirectTo(url)
-{
-    tmp := A_Clipboard
-    A_Clipboard := url
-    ClipWait(1)
-    Send "!d"
-    Sleep 55
-    Send "^v"
-    Sleep 55
-    Send "{Enter}"
-    A_Clipboard := tmp
-    ClipWait(1)
-}
-
-
-#Include Tool.Url.ahk

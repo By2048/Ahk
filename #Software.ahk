@@ -49,7 +49,6 @@
 #Include Software\Browser\Edge.ahk
 #Include Software\Browser\FireFox.ahk
 #Include Software\Browser\Opera.ahk
-#Include Software\Browser\Chromium.ahk
 
 #Include Software\Develop\Navicat.ahk
 #Include Software\Develop\NetSarang.ahk

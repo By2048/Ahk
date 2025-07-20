@@ -1,4 +1,19 @@
 ﻿
+RedirectTo(url)
+{
+    tmp := A_Clipboard
+    A_Clipboard := url
+    ClipWait(1)
+    Send "!d"
+    Sleep 55
+    Send "^v"
+    Sleep 55
+    Send "{Enter}"
+    A_Clipboard := tmp
+    ClipWait(1)
+}
+
+
 UrlChange(origin)
 {
     result := origin
@@ -40,7 +55,7 @@ UrlChange(origin)
     if ( InStr(origin, "learn.microsoft.com/en-us/") )
         result := StrReplace(origin, "/en-us/", "/zh-cn/")
 
-    #Include *i Tool.Url.Snippet.ahk
+    #Include *i Url.Snippet.ahk
 
     return result
 }
