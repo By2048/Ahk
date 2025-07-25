@@ -43,8 +43,11 @@ FileRename(base)
     name := StrReplace(name, "][", "] [")
     name := StrReplace(name, ")[", ") [")
     name := StrReplace(name, "](", "] (")
+    name := StrReplace(name, "] ] [", "] [")
+    name := StrReplace(name, "] [ [", "] [")
     ; 
     name := StrReplace(name, "] ｜ [", "] [")
+    name := StrReplace(name, "] _ [", "] [")
     ;
     name := StrReplace(name, "[]", "")
     name := StrReplace(name, "()", "")
