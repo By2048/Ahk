@@ -61,6 +61,8 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
         SetColumnWidth("SysListView323" , cfg)
     }
 
+    +\::Send "丨"
+
     [::ControlSetText("V:\", "Edit1", "A")
     ]::ControlSetText("T:\", "Edit1", "A")
     \::ControlClick("Button2", "A")
