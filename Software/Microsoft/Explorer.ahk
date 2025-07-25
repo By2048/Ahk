@@ -151,6 +151,12 @@
     RWin & RCtrl::Return
     RWin & RAlt:: Return
 
+    BackSpace::{
+        if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) )
+            if ( ControlGetClassNN(ControlGetFocus("A")) == "DirectUIHWND3" )
+                Send "!{Up}"
+    }
+
     CapsLock & LShift::MouseMove(window.w/9, window.h-99, 0)
 
     ; 功能区展开缩放
@@ -161,13 +167,21 @@
     ; ^w::Return
     !CapsLock::Send "^w"
 
-    #\::{
-        Send "{Blind}{vkFF}"
-        ErResetPosition()
-    }
+    #[::
+    #]::
+    #\::
     #+\::{
+        offset := 10
+        GetActiveWindowInfo()
+        pos_a := Position(offset                           , offset                            , window.w, window.h)
+        pos_b := Position(A_ScreenWidth - window.w - offset, A_ScreenHeight - window.h - offset, window.w, window.h)
         Send "{Blind}{vkFF}"
-        ErResetPosition(columns:="Name")
+        Switch A_ThisHotkey {
+            Case "#["  : MoveWindowPosition(pos_a)
+            Case "#]"  : MoveWindowPosition(pos_b)
+            Case "#\"  : ErResetPosition()
+            Case "#+\" : ErResetPosition(columns:="Name")
+        }
     }
  
     ; 全屏
