@@ -134,3 +134,17 @@ FilePath(path, name)
     file_path := file_dir . "\" . name
     return file_path
 }
+
+
+; 保留一个匹配项 替换其他所有匹配项
+KeepOne(original_text, search_text)
+{
+    if ( ! InStr(original_text, search_text) )
+        return original_text    
+    pos := InStr(original_text, search_text)
+    temp := StrReplace(original_text, search_text)
+    ; 在第一个匹配项的位置重新插入搜索文本
+    result := SubStr(temp, 1, pos-1) . search_text . SubStr(temp, pos)
+    return result
+}
+
