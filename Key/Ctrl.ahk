@@ -45,7 +45,7 @@
  >^x::Run Folders.Lnk "Download.lnk"
  >^c::Run "Calc"
  >^v::Run Folders.Lnk "Vpn.lnk"
- >^b::Run Folders.Lnk "Image.lnk"
+;>^b::Run Folders.Lnk "Image.lnk"
  >^n::Run Folders.Lnk "Music.lnk"
  >^m::Run Folders.Lnk "Video.lnk"
 
