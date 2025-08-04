@@ -1,7 +1,8 @@
 
 RegisterSoftware( "FSViewer" , "FSViewer" )
-RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
 RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
+RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
+RegisterPosition( "FSViewer__批量转换" , Position(1800 , 1200) )
 
 
 #Include *i FSViewer.Private.ahk
@@ -10,6 +11,11 @@ RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 #HotIf CheckWindowActive( "FSViewer" , "" , "*删除*" )
     Delete::Send "!n"
     Insert::Send "!y"
+#HotIf
+
+
+#HotIf CheckWindowActive( "FSViewer" , "" , " 批量转换* | 重命名* " )
+
 #HotIf
 
 

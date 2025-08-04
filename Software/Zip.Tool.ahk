@@ -29,8 +29,6 @@ ZipSetGuiText()
     rule  := "ahk_id " window.id
     name  := ControlGetText(ctl_folder, rule)
 
-    ; ZipSetPath()
-    ; ZipSetPassword("")
     #Include *i Zip.Tool.Text.Private.ahk
 
     rename := FileRename(name)
