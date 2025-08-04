@@ -152,9 +152,11 @@
     RWin & RAlt:: Return
 
     BackSpace::{
-        if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) )
-            if ( ControlGetClassNN(ControlGetFocus("A")) == "DirectUIHWND3" )
-                Send "!{Up}"
+        ; if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) )
+        if ( ControlGetClassNN(ControlGetFocus("A")) == "DirectUIHWND3" )
+            Send "!{Up}"
+        else
+            Send "{BackSpace}"
     }
 
     CapsLock & LShift::MouseMove(window.w/9, window.h-99, 0)
