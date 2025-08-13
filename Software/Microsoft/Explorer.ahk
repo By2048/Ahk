@@ -51,6 +51,7 @@
 #HotIf
 
 #HotIf CheckWindowActive( "Explorer" , "OperationStatusWindow" , "删除文件" )
+    <+Space::
     !Enter::{
         Send "!a"
         Send "!y"
