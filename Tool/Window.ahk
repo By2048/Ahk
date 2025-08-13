@@ -237,11 +237,11 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
 {
     GetActiveWindowInfo()
 
-    win_process := StrLower(window.process_name)
-    win_class   := StrLower(window.class       )
-    win_title   := StrLower(window.title       )
+    win_process := Trim(StrLower(window.process_name))
+    win_class   := Trim(StrLower(window.class       ))
+    win_title   := Trim(StrLower(window.title       ))
 
-    win_title := StrReplace(win_title, " ", "")
+    win_title   := StrReplace(win_title, " ", "")
 
     rule_process := StrLower(_process_)
     rule_class   := StrLower(_class_  )
