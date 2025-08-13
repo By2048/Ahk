@@ -4,6 +4,9 @@ RegisterPosition("Everything", Position(1700 , 1200))
 
 #HotIf CheckWindowActive("Everything")
 
+    `;::Send ":"
+    +;::Send ";"
+
     Esc::{
         if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) )
             Send "{Esc}"
