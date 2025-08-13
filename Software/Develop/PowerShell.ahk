@@ -27,7 +27,8 @@ RegisterPosition( "PowerShell" , Position("[Center][2]",1210,1112) , "Backup"  )
         Send "^c"
         Send "^c"
         Sleep 99
-        WinClose("A")
+        if ( CheckWindowActive("PowerShell") )
+            WinClose("A")
     }
 
 #HotIf
