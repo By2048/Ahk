@@ -64,3 +64,35 @@
     HelpText(data, "CenterDown", "Screen", 666)
 }
 
+
+>!n::{
+    GetActiveWindowInfo()
+    folder := window.title
+    path   := folder . "\" . '~~~'
+    if ( FileExist(path) )
+        return
+    FileOpen(path, "w").Close()
+    ; ErActivateMenu()
+    ; Sleep 99
+    ; Send "w{End}{Up}{Enter}"
+    ; Sleep 99
+    ; Send "^a"
+    ; Send "~~~"
+    ; Send "{Enter}"
+    ; Sleep 99
+    ; Send "!y"
+}
+>!m::{
+    GetActiveWindowInfo()
+    folder := window.title
+    path   := folder . "\" . '~~~'
+    if ( FileExist(path) )
+        return
+    DirCreate(path)
+    ; ErActivateMenu()
+    ; Sleep 99
+    ; Send "wf"
+    ; Sleep 99
+    ; Send "~~~"
+    ; Send "{Enter}"
+}
