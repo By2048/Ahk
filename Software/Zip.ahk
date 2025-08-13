@@ -126,11 +126,6 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
             ControlSend("{Tab}", ctl_all_no, "A")
         }
 
-        if ( InStr(window.title, "正在解压") ) {
-            MoveWindowPosition( Position(630,432) )
-            return
-        }
-
         if ( InStr(window.title, "解压") ) {
             ZipSetGuiPos()
             ZipSetGuiText()
