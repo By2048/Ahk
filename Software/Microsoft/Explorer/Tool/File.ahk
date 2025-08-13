@@ -23,12 +23,14 @@ ErDeleteForever()
 {
     Sleep 99
     Send "{Esc}"
-    Sleep 33
+    Sleep 99
     Send "+{Delete}"
-    Sleep 66
+    Sleep 123
     Send "!y"
     Sleep 99
-    If WinWaitActive("ahk_exe explorer.exe ahk_class CabinetWClass", "", 3)
+    rule := "ahk_exe explorer.exe ahk_class CabinetWClass"
+    Try WinActivate(rule)
+    If WinActive(rule)
         Send "{Space}"
 }
 
