@@ -5,10 +5,7 @@ RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
 RegisterPosition( "FSViewer__批量转换" , Position(1800 , 1200) )
 
 
-#Include *i FSViewer.Private.ahk
-
-
-#HotIf CheckWindowActive( "FSViewer" , "" , "*删除*" )
+#HotIf CheckWindowActive( "FSViewer" , "" , "删除*" )
     Delete::Send "!n"
     Insert::Send "!y"
 #HotIf
@@ -19,6 +16,9 @@ RegisterPosition( "FSViewer__批量转换" , Position(1800 , 1200) )
 #HotIf
 
 
+#Include *i FSViewer.Private.ahk
+
+
 #HotIf CheckWindowActive( "FSViewer" , "" , "另存为" )
     $[::Send "["
     $]::Send "]"
@@ -26,6 +26,17 @@ RegisterPosition( "FSViewer__批量转换" , Position(1800 , 1200) )
     $p::Send "p"
     $`::Send "``"
     $BackSpace::Send "{BackSpace}"
+#HotIf
+
+
+#HotIf CheckWindowActive( "FSViewer" , "TFullScreenWindow" )
+    AppsKey::{
+        MouseGetPos(&mouse_x, &mouse_y)
+        if ( Abs(mouse_x - Screen.w/2) > 5 ) || ( mouse_y > 5 )
+            MouseMove(Screen.w/2, 0, 0)
+        else
+            MouseMove(Screen.w - 300, Screen.h - 300, 0)
+    }
 #HotIf
 
 
@@ -64,17 +75,6 @@ RegisterPosition( "FSViewer__批量转换" , Position(1800 , 1200) )
         }
     }
 
-#HotIf
-
-
-#HotIf CheckWindowActive( "FSViewer" , "TFullScreenWindow" )
-    AppsKey::{
-        MouseGetPos(&mouse_x, &mouse_y)
-        if ( Abs(mouse_x - Screen.w/2) > 5 ) || ( mouse_y > 5 )
-            MouseMove(Screen.w/2, 0, 0)
-        else
-            MouseMove(Screen.w - 300, Screen.h - 300, 0)
-    }
 #HotIf
 
 
