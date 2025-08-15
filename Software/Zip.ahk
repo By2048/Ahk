@@ -8,6 +8,12 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 #Include *i Zip.Private.ahk
 
 
+#HotIf CheckWindowActive( "ZipDialog" , "#32770" , "确认文件替换" )
+    BackSpace::Send "{Esc}"
+    \::ControlClick("Button5", "A")     ;全否
+    Enter::ControlClick("Button2", "A") ;全是
+#HotIf
+
 
 #HotIf CheckWindowActive( "ZipDialog" , "#32770" , "浏览文件夹" )
     \::Send "{Esc}"
