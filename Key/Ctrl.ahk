@@ -9,7 +9,7 @@
  >^t::Run Folders.Lnk "Telegram.lnk"
  >^y::Return
  >^u::Return
- >^i::Return
+;>^i::Return
  >^o::Return
  >^p::Return
 
