@@ -32,19 +32,19 @@ ErQuickPreview()
     if ( InStr(FileGetAttrib(path), "D") )
         return
 
-    if ( InStr(path, ".bc!") || InStr(path, ".torrent") )
+    if ( InStr(path,".bc!") || InStr(path,".torrent") )
         return
 
-    if ( InStr(path, ".png") || InStr(path, ".jpg") || InStr(path, ".jpeg") || InStr(path, ".bmp") ) {
+    if ( InStr(path,".png") || InStr(path,".jpg") || InStr(path,".jpeg") || InStr(path,".bmp") ) {
         cmd := AHK " E:\Project\Ahk\Cmd\Image.ahk "
         cmd .= Format("`"{}`"", path)
         Run cmd
         return
     }
 
-    if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
+    if ( InStr(path,".zip") || InStr(path,".7z") || InStr(path,".rar") || InStr(path,".cbz") ) {
         cmd := PSL " -NoLogo -File "
-        cmd .= "E:\Script\PSL\Image.ps1 "
+        cmd .= "E:\Script\PSL\Image.ps1 -Path "
         cmd .= Format("`"{}`"", path)
         Run cmd
         return

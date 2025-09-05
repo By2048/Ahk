@@ -92,8 +92,8 @@ ErQuickTools(cmd:="")
         
         GLine := G.AddText(G.style.text, G.line)
         
-        if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
-            if ( ! InStr(path, ".bc!") && ! InStr(path, ".torrent") ) {
+        if ( InStr(path,".zip") || InStr(path,".7z") || InStr(path,".rar") || InStr(path,".cbz") ) {
+            if ( ! InStr(path,".bc!") && ! InStr(path,".torrent") ) {
                 G.AddText(G.style.text, "UnZip")
                 Arg.ErQuick.command := "ErQuickUnZip"
             }
