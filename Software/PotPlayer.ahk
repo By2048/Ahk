@@ -25,16 +25,16 @@ RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Scre
     }
 
     PotPlayerOpenFile() {
-        if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
-            if ( A_TimeSincePriorHotkey < 333 ) {
-                PotPlayerPlayList()
-                Sleep 99
-                Send "^f"
-                Sleep 333
-                WinActivate("ahk_exe PotPlayerMini64.exe ahk_class PotPlayer64")
-                Sleep 99
-                Send "{F6}"
-            }
+        if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) ) {
+            PotPlayerPlayList()
+            Sleep 99
+            Send "^f"
+            Send "{F6}"
+
+            ; Sleep 333
+            ; WinActivate("ahk_exe PotPlayerMini64.exe ahk_class PotPlayer64")
+            ; Sleep 99
+            ; Send "{F6}"
         }
     }
 

@@ -85,7 +85,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     !Enter::
     +Enter::
     NumLock::{
-        ControlClick("Button27", "A")
+        ControlClick("Button28", "A")
     }
 
     NumpadHome::{

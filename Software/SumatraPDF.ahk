@@ -4,6 +4,10 @@ RegisterHelpInfo("SumatraPDF", FilePath(A_LineFile, "SumatraPDF.help"))
 
 #HotIf CheckWindowActive("SumatraPDF")
 
+    NumLock::WinClose("A")
+
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
     ; 重命名
     F2::Return
     !r::Send "{F2}"
