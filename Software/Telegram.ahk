@@ -21,13 +21,13 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     !PgUp::Send "^{PgUp}"
     !PgDn::Send "^{PgDn}"
 
-    F1::TGSavedMessage()
+    F1::TGForwardSavedMessage()
 
     NumLock::   Send "{Esc}"
     NumpadHome::Send "^c"
     NumpadEnd:: Send "^v"
     NumpadPgDn::Send "{Enter}"
-    NumpadPgUp::TGSavedMessage()
+    NumpadPgUp::TGForwardSavedMessage()
     NumpadIns:: Send "^{PgDn}"
     NumpadDel:: Send "^{PgUp}"
 
@@ -62,7 +62,7 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
         MoveWindowPosition(pos)
     }
 
-    TGSavedMessage()
+    TGForwardSavedMessage()
     {
         Send "{RButton}"
         Sleep 333
@@ -70,6 +70,14 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
         MouseClickImage(image)
         Sleep 333
         image := A_InitialWorkingDir . "\Image\Software\Telegram\saved_message.png"
+        MouseClickImage(image)
+    }
+
+    TGSavedFile()
+    {
+        Send "{RButton}"
+        Sleep 99
+        image := A_InitialWorkingDir . "\Image\Software\Telegram\save_file.png"
         MouseClickImage(image)
     }
 
