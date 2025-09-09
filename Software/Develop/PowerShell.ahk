@@ -18,11 +18,11 @@ RegisterPosition( "PowerShell" , Position("[Center][2]",1210,1112) , "Backup"  )
         MoveWindowDefault()
     }
 
-    Delete & Insert::{
+    BackSpace & Insert::{
         WinClose("A")
     }
 
-    Delete & BackSpace::{
+    BackSpace & Delete::{
         Send "^c"
         Send "^c"
         Send "^c"
