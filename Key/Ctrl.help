@@ -1,17 +1,17 @@
-|  Q | QDir PC | File        | *1 | Maye               |
-|  W |                       | *2 | 隐藏帮助           |
-|  E | Everything            |-------------------------|
-|  R | FFRenamePro           |  - | Notepad            |
-|  T | Telegram              |  = | Notepad++          |
-|  Y |                       |-------------------------|
-|  U |                       |  [ | VSCode Temp        |
-|  I |                       |  ] | VSCode Node        |
-|  O |                       |  \ | VSCode Windows     |
-|  P |                       |  : | VSCode             |
-|----------------------------|  " | VSCode Default     |
-|  A | AntiMicroX            |-------------------------|
-|  S | Sandboxie             |  , | 我的电脑           |
-|  D | DuplicateCleaner      | +, | 回收站             |
+|  Q | QDir PC | File        | *1 | Maye               | ToDo    | !Software |
+|  W |                       | *2 | 隐藏帮助           | Library | !Data     |
+|  E | Everything            |-------------------------| Book    | !File     |
+|  R | FFRenamePro           |  - | Notepad            | Doc     | !NAS      |
+|  T | Telegram              |  = | Notepad++          |---------|-----------|
+|  Y |                       |-------------------------| Config  | TV        |
+|  U |                       |  [ | VSCode Temp        | Script  | Movie     |
+|  I | #Image                |  ] | VSCode Node        | Work    | Anime     |
+|  O |                       |  \ | VSCode Windows     | Program | Resource  |
+|  P |                       |  : | VSCode             |---------|-----------|
+|----------------------------|  " | VSCode Default     | Git     | Sync      |
+|  A | AntiMicroX            |-------------------------| GitX    | Video     |
+|  S | Sandboxie             |  , | 我的电脑           | GitPy   | Image     |
+|  D | DuplicateCleaner      | +, | 回收站             | Project | Temp      |
 |  F | File Sync | Watch     |  . | T:\                |
 |  G | Geek                  | +. | V:\#\              |
 |  H | Spy AHK | GH          |  / | Chrome             |
@@ -23,6 +23,6 @@
 |  X | Download              |     Enter | Whiteboard  |
 |  C | Calc                  |  U D L R  | 窗口移动    |
 |  V | Vpn                   |
-|  B | Image                 |
+|  B | @Image                |
 |  N | Music                 |
 |  M | Video                 |
