@@ -78,26 +78,30 @@
         HelpText("No File", "CenterDown",  , 333)
         return
     }
+    
     content := ""
     try {
         content := FileRead(JQB.Phone)
+    }
+    try {
         FileDelete(JQB.Phone)
     }
     if ( ! content ) {
         HelpText("No Data", "CenterDown",  , 333)
-        Try FileDelete(JQB.Phone)
         return
     }
+
     A_Clipboard := content
     ClipWait(1)
     Sleep 123
     Send "^v"
+
     if ( StrLen(content) > 15 )
         content := SubStr(content, 1, 5) . "..." . SubStr(content, -5)
-    HelpText(A_Clipboard, "CenterDown", "Screen", 333)
+    HelpText(content, "CenterDown", "Screen", 333)
+
     A_Clipboard := origin
     ClipWait(1)
-    Try FileDelete(JQB.Phone)
 }
 
 ; 屏幕截图 临时 | 长久
