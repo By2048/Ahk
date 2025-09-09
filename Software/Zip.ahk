@@ -73,7 +73,7 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
     F10::
     F11::
     F12::
-     !`:: 
+     !`::
      !1:: 
      !2:: 
      !3:: 
@@ -86,9 +86,8 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
      !0:: 
      !-:: 
      !=:: 
-     !,:: 
-     !.:: 
-     !/::
+    !`;::
+     !'::
     CapsLock:: {
         SetEditPrefix("Edit2")
     }
@@ -155,6 +154,15 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
         ZipGuiInit()
     }
 
+    ; 注册表相关操作 Clear History
+    >!/::{
+        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Compression", "ArcHistory"   )
+        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Extraction",  "PathHistory"  )
+        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "FolderHistory")
+        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "CopyHistory"  )
+        HelpText("`n  Clear History  `n", "Center", "Screen", 1000)
+    }
+
 #HotIf
 
 
@@ -179,15 +187,6 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
             cfg := " 1:名称:666  2:文件夹:100  3:文件:100  4:大小:159 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth("SysListView321", cfg)
-    }
-
-    ; 注册表相关操作 Clear History
-    >!/::{
-        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Compression", "ArcHistory"   )
-        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Extraction",  "PathHistory"  )
-        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "FolderHistory")
-        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "CopyHistory"  )
-        HelpText("`n  Clear History  `n", "Center", "Screen", 1000)
     }
 
     ; 选择所有
