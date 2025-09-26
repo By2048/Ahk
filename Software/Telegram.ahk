@@ -16,11 +16,6 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
 #HotIf CheckWindowActive("Telegram")
     
-    ^PgUp::Return
-    ^PgDn::Return
-    !PgUp::Send "^{PgUp}"
-    !PgDn::Send "^{PgDn}"
-
     F1::TGForwardSavedMessage()
 
     NumLock::   Send "{Esc}"
