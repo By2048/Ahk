@@ -68,6 +68,37 @@ ErSetPathNext()
 }
 
 
+ErNavigate(path)
+{
+    path := RTrim(path, "\")
+    if ( ! DirExist(path) )
+        return
+    for Win in ComObject("Shell.Application").Windows {
+        if ( Win.hwnd != window.id )
+            continue
+        if ( Win.Document.Folder.Self.Path != path ) {
+            Win.Navigate(path)
+            break
+        }
+    }
+}
+
+
+; 检测是否在主界面
+; 返回 win_id
+ErCheckWin()
+{
+    win_id := WinGetID("A")
+    win_class := WinGetClass("A")
+    win_process_name := WinGetProcessName("A")
+    if ( win_process_name != "explorer.exe" )
+        return
+    if ( win_class != "CabinetWClass" && win_class != "ExploreWClass" )
+        return
+    return win_id
+}
+
+
 ; 设置列和列宽
 ; ItemNameDisplay:800 ItemDate:200 Size:150
 ; ItemNameDisplay:450 Comment:500 ItemDate:200
@@ -89,14 +120,8 @@ ErSetColumns(config)
         config_widths.Push(width)
     }
 
-    win_id := WinGetID("A")
-    win_class := WinGetClass("A")
-    win_process_name := WinGetProcessName("A")
-
-    if ( win_process_name != "explorer.exe" )
-        return
-
-    if ( win_class != "CabinetWClass" && win_class != "ExploreWClass" )
+    win_id := ErCheckWin()
+    if ( ! win_id )
         return
 
     obj := 0
@@ -106,15 +131,6 @@ ErSetColumns(config)
 
     if ( ! obj )
         return
-
-    IID_IServiceProvider := "{6D5140C1-7436-11CE-8034-00AA006009FA}"
-    IID_TopLevelBrowser  := "{4C96BE40-915C-11CF-99D3-00AA004AE837}"
-    SID_SShellBrowser    := "{000214E2-0000-0000-C000-000000000046}"
-    IID_IFolderView2     := "{1AF3A467-214F-4298-908E-06B03E0B39F9}"
-    IID_IColumnManager   := "{D8EC27BB-3F3B-4042-B10A-4ACFD924D453}"
-
-    CM_ENUM_ALL     := 0x1
-    CM_ENUM_VISIBLE := 0x2
 
 	isp := ComObjQuery(obj, IID_IServiceProvider)
 	isb := ComObjQuery(isp, IID_TopLevelBrowser, SID_SShellBrowser)
@@ -148,4 +164,81 @@ ErSetColumns(config)
         NumPut("UInt", column_width, StrPtr(column_info_ptr), 12)
         ComCall(3, icm, "Ptr", StrPtr(property_key_ptr), "Ptr", StrPtr(column_info_ptr))
     }
+
+    ErSortColumns("ItemNameDisplay 1")
+}
+
+
+; 排序列
+; ItemNameDisplay 1 | 顺序
+; Size -1 | 逆序
+; Name 0 | 反序
+ErSortColumns(config)
+{
+    if ( ! config )
+        return
+
+    win_id := ErCheckWin()
+    if ( ! win_id )
+        return
+
+    obj := 0
+	for Win in ComObject("Shell.Application").Windows
+		if ( Win.HWND == win_id )
+			obj := Win
+
+	isp := ComObjQuery(obj, IID_IServiceProvider)
+	isb := ComObjQuery(isp, IID_TopLevelBrowser, SID_SShellBrowser)
+
+    if ( ComCall(15, isb, "Ptr*", &isv := 0) < 0 )
+        return
+
+    ifv2 := ComObjQuery(isv,  IID_IFolderView2)
+	icm  := ComObjQuery(ifv2, IID_IColumnManager)
+
+    sort_name  := ""
+    sort_order := 0
+
+    if ( InStr( config , " " ) ) {
+        sort_name  := StrSplit(config, " ")[1]
+        sort_order := StrSplit(config, " ")[2]
+    } else {
+        sort_name  := config
+        sort_order := 0
+    }
+    sort_name := "System." . sort_name
+
+    ; GetSortColumnCount
+    ComCall(26, ifv2, "UIntP", &sort_column_count := 0)
+
+    ; Windows不能设置多条件排序
+    if ( sort_column_count != 1 )
+        return
+
+    ; GetSortColumns
+    VarSetStrCapacity(&sort_column_ptr,  24)
+    ComCall(28, ifv2, "Ptr", StrPtr(sort_column_ptr), "Int", 1)
+
+    current_column_ptr := StrPtr(sort_column_ptr)
+    DllCall("propsys\PSGetNameFromPropertyKey", "Ptr", current_column_ptr, "Ptr*", &column_name_ptr := 0 )
+    current_sort_name  := StrGet(column_name_ptr, "UTF-16")        
+    current_sort_order := NumGet(current_column_ptr, 20, "Int")
+
+    DllCall("ole32\CoTaskMemFree", "Ptr", column_name_ptr)
+
+    if (current_sort_name == sort_name && current_sort_order == sort_order)
+        return
+
+    if ( sort_order == 0 )
+        sort_order := -current_sort_order
+    
+    VarSetStrCapacity(&sort_column_ptr, 24)
+    DllCall("RtlZeroMemory", "Ptr", StrPtr(sort_column_ptr), "UInt", 24)
+
+    current_item_ptr := StrPtr(sort_column_ptr)
+    DllCall("propsys\PSGetPropertyKeyFromName", "Str", sort_name, "Ptr", current_item_ptr)
+    NumPut("Int", sort_order, current_item_ptr, 20) ; 设置排序方向
+    
+    ComCall(27, ifv2, "Ptr", StrPtr(sort_column_ptr), "Int", 1) ; 应用排序
+
 }

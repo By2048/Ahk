@@ -1,4 +1,5 @@
 ﻿
+#Include Explorer\Define.ahk
 #Include Explorer\Config.ahk
 
 #Include Explorer\Tool\File.ahk
@@ -196,6 +197,9 @@
     !]::ErActivateRight()
     !\::ErActivateMenu()
 
+    `;::ErSortColumns("Size")
+     '::ErSortColumns("ItemNameDisplay")
+
     `::Send "~"
 
     \::{
@@ -213,6 +217,7 @@
     }
 
     #Include Explorer\Key\Mouse.ahk
+    #Include Explorer\Key\Private.ahk
     #Include Explorer\Key\JoyWin.ahk
     #Include Explorer\Key\Extend.ahk
 
