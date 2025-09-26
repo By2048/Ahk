@@ -3,7 +3,7 @@
 Numpad8::Send "{Left}"
 
 ; 下
-Numpad2::Send "m9"
+Numpad2::FSViewerShowProgrssBar()
 
 ; 左
 Numpad4::Send "{Right}"
@@ -17,7 +17,7 @@ Numpad6::Send "{Right}"
 Numpad9::Send "{Enter}"
 
 ; 下
-Numpad3::Send "{Delete}{Enter}"
+Numpad3::FSViewerPowerShell()
 
 ; 左
 Numpad7::Send "!x"
