@@ -1,8 +1,7 @@
 ﻿
 #Include *i Ctrl.Private.ahk
 
- >^q::Run Folders.Config "QPC.qdr"
->^+q::Run Folders.Config "QFile.qdr"
+ >^q::Return
  >^w::Return
  >^e::Run Folders.Lnk "Everything.lnk"
  >^r::Run Folders.Lnk "FFRenamePro.lnk"
@@ -21,21 +20,7 @@
  >^g::Run Folders.Lnk "Geek.lnk"
  >^h::Run AHK " " AhkSpy
 >^+h::Run AhkSpyPlus
- >^j::{
-    Run Folders.Lnk "JetBrains.lnk"
-    loop 33 {
-        try {
-            WinActivate("ahk_exe jetbrains-toolbox.exe")
-            window := GetActiveWindowInfo()
-            if ( window.process_name == "jetbrains-toolbox" ) {
-                MoveWindowPosition(Position(window.w, window.h))
-                break
-            }
-        } catch {
-            Sleep 10
-        }
-    }
-}
+;>^j::Return
  >^k::KeyHistory()
 >^+k::KeyboardGUI()
  >^l::Run Folders.Lnks
@@ -47,28 +32,29 @@
  >^v::Run Folders.Lnk "Vpn.lnk"
 ;>^b::Return
  >^n::Run Folders.Lnk "Music.lnk"
- >^m::Run Folders.Lnk "Video.lnk"
+ >^m::Run Folders.Lnk "Media.lnk"
 
- >^[::Run VSCode " --profile %Temp    " Folders.Config "VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
- >^]::Run VSCode " --profile %Note    " Folders.Config "VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
- >^\::Run VSCode " --profile %Windows " Folders.Config "VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
+  >^[::Run VSCode " --profile %Temp    " Folders.Config "VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
+  >^]::Run VSCode " --profile %Note    " Folders.Config "VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
+  >^\::Run VSCode " --profile %Windows " Folders.Config "VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
+ >^+\::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
 
->^`;::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
- >^'::Run VSCode        " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
+ >^`;::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
+>^+`;::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
+  >^'::Run Folders.Disks.Temp
+ >^+'::Run Folders.Ram
 
- >^,::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
->^+,::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
- >^.::Run Folders.Disks.Temp
->^+.::Run Folders.Ram
+ >^,::Run Folders.Lnk "OneCommander.lnk"
+ >^.::Run Folders.Config "Windows.qdr"
+
  >^/::Run Folders.Script "Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
 >^+/::Run Folders.Script "Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
 
  >^Esc::Run "TaskMgr" ;任务管理器
 >^+Esc::Run Folders.Lnk "SecAnalysis.lnk"
 
-    >^Enter::Run Folders.Lnks "\#AppStore\Whiteboard.lnk"
+>^Enter::Run Folders.Lnks "\#AppStore\Whiteboard.lnk"
 >^BackSpace::Run WT " -d " Folders.Disks.Temp
-
 
 >^-::Run "Notepad"
 >^=::Run Folders.Lnk "Notepad++.lnk"
