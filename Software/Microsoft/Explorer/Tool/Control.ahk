@@ -241,4 +241,6 @@ ErSortColumns(config)
     
     ComCall(27, ifv2, "Ptr", StrPtr(sort_column_ptr), "Int", 1) ; 应用排序
 
+    Send "{Home}"
+
 }

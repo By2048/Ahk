@@ -85,7 +85,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     !Enter::
     +Enter::
     NumLock::{
-        ControlClick("Button28", "A")
+        ControlClick("Button29", "A")
     }
 
     NumpadHome::{
@@ -198,6 +198,12 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
         Send "{Up 3}"
         Send "{Enter}"
         Send "{Enter}"
+        Sleep 333
+        data := A_Clipboard
+        data := StrReplace(data, ".zip", "")
+        Sleep 333
+        A_Clipboard := data
+        ClipWait(1)
     }
 
     ; 取消代理

@@ -139,6 +139,7 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
     }
 
     ~Enter::{
+        Send "{Blind}{vkFF}"
         if ( InStr(window.title, "正在解压") ) {
             ControlClick("Button3", "A") 
         } else if ( InStr(window.title, "解压") ) {

@@ -1,10 +1,10 @@
 
-RegisterHelpInfo("FFRenamePro", FilePath(A_LineFile, "FFRenamePro.help"))
+RegisterHelpInfo( "FFRenamePro" , FilePath(A_LineFile, "FFRenamePro.help") )
 
-RegisterPosition("FFRenamePro" , Position(2100 , 1234))
+RegisterPosition( "FFRenamePro" , Position(2100 , 1234) )
 
 
-#HotIf CheckWindowActive("FFRenamePro")
+#HotIf CheckWindowActive( "FFRenamePro" )
 
     Esc::{
         window := GetActiveWindowInfo(False)

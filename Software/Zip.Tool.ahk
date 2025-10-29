@@ -29,7 +29,7 @@ ZipSetGuiText()
     rule  := "ahk_id " window.id
     name  := ControlGetText(ctl_folder, rule)
 
-    #Include *i Zip.Tool.Text.Private.ahk
+    #Include *i Zip.AutoGuiText.Private.ahk
 
     rename := FileRename(name)
     rename := RTrim(rename, "\")

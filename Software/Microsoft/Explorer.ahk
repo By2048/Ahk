@@ -164,16 +164,16 @@
     CapsLock & LShift::MouseMove(window.w/9, window.h-99, 0)
 
     ; 功能区展开缩放
-    ^F1::Return
+    ; ^F1::Return
     ^AppsKey::^F1
 
     ; 关闭活动窗口
     ; ^w::Return
     !CapsLock::Send "^w"
 
-    #[::
-    #]::
-    #\::
+    <#[::
+    <#]::
+     #\::
     #+\::{
         offset := 10
         GetActiveWindowInfo()
