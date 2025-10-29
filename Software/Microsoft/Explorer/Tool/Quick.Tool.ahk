@@ -43,7 +43,7 @@ ErQuickPreview()
     }
 
     if ( InStr(path,".zip") || InStr(path,".7z") || InStr(path,".rar") || InStr(path,".cbz") ) {
-        cmd := PSL " -NoLogo -File "
+        cmd := PSL " -NoProfile -NoLogo -File "
         cmd .= "E:\Script\PSL\Image.ps1 -Path "
         cmd .= Format("`"{}`"", path)
         Run cmd
@@ -100,23 +100,16 @@ ErQuickUnZip()
 {
     path  := Arg.ErQuick.path_focus
     paths := Arg.ErQuick.path_selects
-
     if ( paths.Length != 1 )
         return
-
-    if ( InStr(path, ".bc!") )
-        return
-
-    if ( InStr(path, ".zip") || InStr(path, ".7z") || InStr(path, ".rar") ) {
-        SplitPath(path, &name, &dir, &ext, &name_no_ext, &drive)
-        command := ZipDialog " x " "`"" path "`"" " -ad " "-o" "`"" dir "\" name_no_ext "`""
-        Run command
-        Sleep 333
-        Try WinActivate("ahk_exe 7zG.exe ahk_class #32770")
-        Sleep 99
-        Try ZipSetGuiPos()
-        Try ZipSetGuiText()
-    }
+    SplitPath(path, &name, &dir, &ext, &name_no_ext, &drive)
+    command := ZipDialog " x " "`"" path "`"" " -ad " "-o" "`"" dir "\" name_no_ext "`""
+    Run command
+    Sleep 333
+    Try WinActivate("ahk_exe 7zG.exe ahk_class #32770")
+    Sleep 99
+    Try ZipSetGuiPos()
+    Try ZipSetGuiText()
 }
 
 
