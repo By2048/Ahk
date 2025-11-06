@@ -33,14 +33,14 @@ Arg.TerminalCommand := False
 
     ;-------------------------------;
 
-    ~LShift::{
-        if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
-            if ( A_TimeSincePriorHotkey < 333 ) {
-                Send "^+p"
-                Arg.TerminalCommand := True
-            }
-        }
-    }
+    ; ~LShift::{
+    ;     if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
+    ;         if ( A_TimeSincePriorHotkey < 333 ) {
+    ;             Send "^+p"
+    ;             Arg.TerminalCommand := True
+    ;         }
+    ;     }
+    ; }
 
     ; 关闭窗格
     NumLock::Send "{F13}"
