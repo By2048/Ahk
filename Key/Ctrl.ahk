@@ -39,12 +39,12 @@
   >^\::Run VSCode " --profile %Windows " Folders.Config "VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
  >^+\::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
 
- >^`;::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
->^+`;::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
-  >^'::Run Folders.Disks.Temp
- >^+'::Run Folders.Ram
+ >^`;::Run Folders.Disks.Temp
+>^+`;::Run Folders.Ram
+  >^'::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
+ >^+'::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
 
- >^,::Run Folders.Lnk "OneCommander.lnk"
+ >^,::Run Folders.Lnk    "OneCommander.lnk"
  >^.::Run Folders.Config "Windows.qdr"
 
  >^/::Run Folders.Script "Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
