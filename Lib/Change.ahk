@@ -10,6 +10,13 @@ StrToBool(value)
 }
 
 
+StrRemove(original_text, search_text)
+{
+    temp := StrReplace(original_text, search_text)
+    return temp
+}
+
+
 ; 屏幕参数名转换
 ScreenNameToId(screen_name)
 {
@@ -148,3 +155,12 @@ KeepOne(original_text, search_text)
     return result
 }
 
+
+MoveEnd(original_text, search_text)
+{
+    if ( ! InStr(original_text, search_text) )
+        return original_text    
+    temp := StrReplace(original_text, search_text)
+    result := Trim(temp) . " " . search_text
+    return result
+}
