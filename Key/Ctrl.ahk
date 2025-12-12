@@ -1,30 +1,30 @@
 ﻿
 #Include *i Ctrl.Private.ahk
 
- >^q::Return
- >^w::Return
+ >^q::Run Folders.Config "Windows.qdr"
+ >^w::Run Folders.Lnks "\#AppStore\Whiteboard.lnk"
  >^e::Run Folders.Lnk "Everything.lnk"
  >^r::Run Folders.Lnk "FFRenamePro.lnk"
  >^t::Run Folders.Lnk "Telegram.lnk"
  >^y::Return
  >^u::Return
-;>^i::Return
- >^o::Return
- >^p::Return
+ >^i::Return
+ >^o::Run Folders.Lnk "OneCommander.lnk"
+ >^p::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
+ >^[::Run VSCode " --profile %Temp    " Folders.Config "VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
+ >^]::Run VSCode " --profile %Note    " Folders.Config "VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
+ >^\::Run VSCode " --profile %Windows " Folders.Config "VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
 
  >^a::Run Folders.Lnk "AntiMicroX.lnk"
  >^s::Run Folders.Lnk "Sandboxie.lnk"
  >^d::Run Folders.Lnk "DuplicateCleaner.lnk"
  >^f::Run Folders.Lnk "FreeFileSync.lnk"
->^+f::Run Folders.Lnk "RealTimeSync.lnk"
  >^g::Run Folders.Lnk "Geek.lnk"
  >^h::Run AHK " " AhkSpy
->^+h::Run AhkSpyPlus
 ;>^j::Return
  >^k::KeyHistory()
->^+k::KeyboardGUI()
+
  >^l::Run Folders.Lnks
->^+l::Run Folders.Lnk
 
  >^z::Run Folders.Lnk "Torrent.lnk"
  >^x::Run Folders.Lnk "Download.lnk"
@@ -34,27 +34,13 @@
  >^n::Run Folders.Lnk "Music.lnk"
  >^m::Run Folders.Lnk "Media.lnk"
 
-  >^[::Run VSCode " --profile %Temp    " Folders.Config "VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
-  >^]::Run VSCode " --profile %Note    " Folders.Config "VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
-  >^\::Run VSCode " --profile %Windows " Folders.Config "VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
- >^+\::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
+ >^Enter::Run "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}::" ;我的电脑
+     >^'::Run Folders.ToDo
+    >^`;::Run Folders.Download
 
- >^`;::Run Folders.Disks.Temp
->^+`;::Run Folders.Ram
-  >^'::Run "::{20d04fe0-3aea-1069-a2d8-08002b30309d}::" ;我的电脑
- >^+'::Run "::{645ff040-5081-101b-9f08-00aa002f954e}::" ;回收站
-
- >^,::Run Folders.Lnk    "OneCommander.lnk"
- >^.::Run Folders.Config "Windows.qdr"
-
- >^/::Run Folders.Script "Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
->^+/::Run Folders.Script "Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
-
- >^Esc::Run "TaskMgr" ;任务管理器
->^+Esc::Run Folders.Lnk "SecAnalysis.lnk"
-
->^Enter::Run Folders.Lnks "\#AppStore\Whiteboard.lnk"
->^BackSpace::Run WT " -d " Folders.Disks.Temp
+     >^/::Run Folders.Disks.Temp
+     >^.::Run Folders.Ram
+     >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
 
 >^-::Run "Notepad"
 >^=::Run Folders.Lnk "Notepad++.lnk"
@@ -63,6 +49,15 @@
 >^Down:: MoveWindowOffset(   0 , +10 )
 >^Left:: MoveWindowOffset( -10 ,   0 )
 >^Right::MoveWindowOffset( +10 ,   0 )
+
+>^Esc::Run "TaskMgr" ;任务管理器
+
+   >^Insert::Return
+   >^Delete::Return
+>^BackSpace::Run WT " -d " Folders.Disks.Temp
+
+RCtrl & RShift::Run Folders.Script "Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
+RCtrl & LShift::Run Folders.Script "Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
 
 
 Arg.ctrl_show    := False

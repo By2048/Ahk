@@ -1,28 +1,28 @@
-|  Q | QDir PC | File        | *1 | Maye               | ToDo    | !Software |
-|  W |                       | *2 | 隐藏帮助           | Library | !Data     |
-|  E | Everything            |-------------------------| Book    | !File     |
-|  R | FFRenamePro           |  - | Notepad            | Doc     | !NAS      |
-|  T | Telegram              |  = | Notepad++          |---------|-----------|
-|  Y |                       |-------------------------| Config  | TV        |
-|  U |                       |  [ | VSCode Temp        | Script  | Movie     |
-|  I | #Image                |  ] | VSCode Node        | Work    | Anime     |
-|  O |                       |  \ | VSCode Windows     | Program | Resource  |
-|  P |                       |  : | VSCode             |---------|-----------|
-|----------------------------|  " | VSCode Default     | Git     | Sync      |
-|  A | AntiMicroX            |-------------------------| GitX    | Video     |
-|  S | Sandboxie             |  , | 我的电脑           | GitPy   | Image     |
-|  D | DuplicateCleaner      | +, | 回收站             | Project | Temp      |
-|  F | File Sync | Watch     |  . | T:\                |
-|  G | Geek                  | +. | V:\#\              |
-|  H | Spy AHK | GH          |  / | Chrome             |
-|  J | JetBrains             | +/ | Chrome Default     |
-|  K | Key History | Virtual |-------------------------|
-|  L | Lnks | Lnk            |       Esc | 任务管理器  |
-|----|-----------------------|      +Esc | SecAnalysis |
-|  Z | Torrent               | BackSpace | WT          |
-|  X | Download              |     Enter | Whiteboard  |
-|  C | Calc                  |  U D L R  | 窗口移动    |
-|  V | Vpn                   |
-|  B | @Image                |
-|  N | Music                 |
-|  M | Video                 |
+|  Q | QDir Windows     | *1 | 隐藏               | Book      |
+|  W | Whiteboard       | *2 | Maye               | Library   |
+|  E | Everything       | *3 | Help               | Web       |
+|  R | FFRenamePro      |-------------------------| Program   |
+|  T | Telegram         |  - | Notepad            |-----------|
+|  Y |                  |  = | Notepad++          | !Software |
+|  U |                  |-------------------------| !Data     |
+|  I |                  |  [ | VSCode Temp        | !File     |
+|  O | OneCommander     |  ] | VSCode Node        | !NAS      |
+|  P | VSCodeDefault    |  \ | VSCode Windows     |-----------|
+|-----------------------|-------------------------| Recourse  |
+|  A | AntiMicroX       | Enter | 我的电脑        | TV        |
+|  S | Sandboxie        |   "   | 回收站          | Anime     |
+|  D | DuplicateCleaner |   ;   | { Ram      }    | Video     |
+|  F | File Sync        |   /   | { Temp     }    |
+|  G | Geek             |   .   | { ToDo     }    |
+|  H | Spy AHK          |   ,   | { Download }    |
+|  J | JetBrains        |-------------------------|
+|  K | Key History      |       Esc | 任务管理器  |
+|  L | Lnks             | BackSpace | Terminal    |
+|-----------------------|     Enter | Whiteboard  |
+|  Z | Torrent          |-------------------------|
+|  X | Download         |  U D L R  | 窗口移动    |
+|  C | Calc             |-------------------------|
+|  V | Vpn              | RShift | Chrome         |
+|  B | @Image           | LShift | ChromeDefault  |
+|  N | Music            |                         |
+|  M | Video            |                         |
