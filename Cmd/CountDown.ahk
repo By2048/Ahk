@@ -3,8 +3,10 @@
 
 #SingleInstance Ignore
 
-
-^!AppsKey::ExitApp()
+CapsLock::
+{
+    ExitApp()
+}
 
 
 font_size     := 55
