@@ -31,7 +31,10 @@
 
 :o:\WinAdmin::Windows\Administrator
 
-:o:\PSL::PowerShell
+:o:\PSL::{
+    Send "{Blind}{vkFF}"
+    SendInput "PowerShell"
+}
 
 
 #Include *i #Input.Private.ahk
