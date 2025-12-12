@@ -155,7 +155,7 @@
 
     BackSpace::{
         ; if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) )
-        if ( ControlGetClassNN(ControlGetFocus("A")) == "DirectUIHWND3" )
+        if ( ControlGetClassNN(ControlGetFocus("A")) == ExplorerMain )
             Send "!{Up}"
         else
             Send "{BackSpace}"
@@ -204,7 +204,7 @@
 
     \::{
         if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) )
-            if ( ControlGetClassNN(ControlGetFocus("A")) == "DirectUIHWND3" )
+            if ( ControlGetClassNN(ControlGetFocus("A")) == ExplorerMain )
                 ErQuickPreview()
     }
 

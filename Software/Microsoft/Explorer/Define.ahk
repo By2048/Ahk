@@ -7,3 +7,6 @@ IID_IColumnManager   := "{D8EC27BB-3F3B-4042-B10A-4ACFD924D453}"
 
 CM_ENUM_ALL     := 0x1
 CM_ENUM_VISIBLE := 0x2
+
+ExplorerTree := "SysTreeView321"
+ExplorerMain := "DirectUIHWND3"

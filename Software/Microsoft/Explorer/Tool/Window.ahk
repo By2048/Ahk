@@ -53,16 +53,16 @@ ErResetPosition(columns:="")
     ErSetColumns(config)
 
     ; 搜索框
-    Try {
-        GetActiveWindowInfo(False)
-        info := window.controls.DirectUIHWND1
-        if ( Abs(info.w - input_width + check_offset + 10) > check_offset ) {
-            MouseMove(info.x , info.y + info.h/2)
-            offset := GetOffset("X")
-            MouseMove(info.x + offset , info.y + info.h/2)
-            MoveControlUDLR(info, "Left", total_width - input_width, offset)
-        }
-    }
+    ; Try {
+    ;     GetActiveWindowInfo(False)
+    ;     info := window.controls.DirectUIHWND1
+    ;     if ( Abs(info.w - input_width + check_offset + 10) > check_offset ) {
+    ;         MouseMove(info.x , info.y + info.h/2)
+    ;         offset := GetOffset("X")
+    ;         MouseMove(info.x + offset , info.y + info.h/2)
+    ;         MoveControlUDLR(info, "Left", total_width - input_width, offset)
+    ;     }
+    ; }
 
     ; 左侧树状信息
     Try {
@@ -78,7 +78,7 @@ ErResetPosition(columns:="")
 
     ; 右侧预览
     ; GetActiveWindowInfo(False)
-    ; info := window.controls.DirectUIHWND3
+    ; info := window.controls.%ExplorerMain%
     ; if ( Abs(total_width - (info.x + info.w) - preview_width) > check_offset * 2 ) {
     ;     MouseMove(info.x + info.w , info.y + info.h / 2)
     ;     offset := GetOffset("X")

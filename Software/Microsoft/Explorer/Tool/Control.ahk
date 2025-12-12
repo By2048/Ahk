@@ -1,7 +1,7 @@
 ﻿
 ErActivateLeft()
 {
-    ControlFocus("SysTreeView321", "A")
+    ControlFocus(ExplorerTree, "A")
 }
 
 
@@ -9,8 +9,8 @@ ErActivateRight()
 {
     win_class := WinGetClass("A")
     if ( win_class == "CabinetWClass" )
-        ControlFocus("DirectUIHWND3", "A")
-    else if ( win_class == "#32770" )
+        ControlFocus(ExplorerMain, "A")
+    if ( win_class == "#32770" )
         ControlFocus("DirectUIHWND2", "A")
     Send "{Space}"
 }
@@ -22,7 +22,7 @@ ErActivateMenu()
     offset_x := 0
     offset_y := 0
     if ( window.class == "CabinetWClass" ) {
-        info     := window.controls.DirectUIHWND3
+        info     := window.controls.%ExplorerMain%
         offset_x := 20
         offset_y := -13
     } else if ( window.class == "#32770" ) {
