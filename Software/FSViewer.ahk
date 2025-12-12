@@ -52,7 +52,7 @@ RegisterPosition( "FSViewer__批量转换" , Position(1800 , 1200) )
         total_height := 1357
 
         folder_width    := 425
-        thumbnail_width := 691
+        thumbnail_width := 870
         MoveWindowPosition(Position(total_width , total_height))
         
         window   := GetActiveWindowInfo(False)

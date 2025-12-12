@@ -3,6 +3,11 @@ UnZipPath := [ Folders.Temp , Folders.Ram ]
 
 #Include *i Zip.Tool.Private.ahk
 
+ZipSetTitleAuto() {
+    title := StrLower(window.title)
+    title := StrReplace(title, ": T:\# ~ -\", " |   ")
+    WinSetTitle(title, "A")
+}
 ZipSetPassword(password) {
     ControlSetText(password, "Edit3", "A")
 }
@@ -37,6 +42,8 @@ ZipSetGuiText()
     ControlSetText(rename, ctl_folder, rule)
     ControlFocus(ctl_folder, rule)
     Send "{End}"
+
+    Try ZipSetTitleAuto()
 }
 
 

@@ -4,6 +4,9 @@ RegisterPosition( "Telegram__SavedMessages" , Position("[Center][2]", -20, 0.7) 
 RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
 
+#Include *i Telegram.Private.ahk
+
+
 #HotIf CheckWindowActive("Telegram" , "Qt*" , "Media*")
     NumpadHome::Send "^="
     NumpadEnd:: Send "^-"
@@ -15,8 +18,15 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
 
 #HotIf CheckWindowActive("Telegram")
-    
-    F1::TGForwardSavedMessage()
+
+    ; F1::{
+    ;     MouseClickTool(753, 81, "Screen")
+    ;     Sleep 666
+    ;     MouseClickTool(864, 770, "Screen")
+    ; }
+    ; F2::{
+    ;     MouseClickTool(2505, 1383, "Screen")
+    ; }
 
     NumLock::   Send "{Esc}"
     NumpadHome::Send "^c"
