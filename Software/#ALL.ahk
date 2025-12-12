@@ -69,6 +69,12 @@ RegisterSoftware("NVIDIA Share" , "GeForceTool")
 #HotIf
 
 
+RegisterPosition("Motrix" , Position(1500 , 999))
+#HotIf CheckWindowActive("Motrix")
+    CapsLock::Send "^n"
+#HotIf
+
+
 ; 文件预览
 #HotIf CheckWindowActive("PowerToys.Peek.UI")
          Esc::Send "#z"
