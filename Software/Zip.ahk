@@ -43,12 +43,15 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
         }
     }
     
-    `;::ZipSetPath(Folders.Temp)
-     '::ZipSetPath(Folders.Ram )
+    `;::ZipSetPath(Folders.Resource      )
+     '::ZipSetPath(Folders.Resources.Xxx )
 
-    [::ZipSetPathPrev()
+     .::ZipSetPath(Folders.Temp)
+     /::ZipSetPath(Folders.Ram )
 
-    ]::ZipSetPathNext()
+     [::ZipSetPathPrev()
+
+     ]::ZipSetPathNext()
     
     ; 浏览文件夹
      \::ControlClick("Button1", "A")
