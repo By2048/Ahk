@@ -10,10 +10,10 @@
  >^u::Return
  >^i::Return
  >^o::Run Folders.Lnk "OneCommander.lnk"
- >^p::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
- >^[::Run VSCode " --profile %Temp    " Folders.Config "VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
- >^]::Run VSCode " --profile %Note    " Folders.Config "VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
- >^\::Run VSCode " --profile %Windows " Folders.Config "VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
+ >^p::Run VSCode " --profile #Temp    " Folders.Config "VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
+ >^[::Run VSCode " --profile #Note    " Folders.Config "VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
+ >^]::Run VSCode " --profile #Default " Folders.Config "VSCode\%Project.code-workspace", A_InitialWorkingDir, "Hide"
+ >^\::Run VSCode " --profile #Default " Folders.Config "VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
 
  >^a::Run Folders.Lnk "AntiMicroX.lnk"
  >^s::Run Folders.Lnk "Sandboxie.lnk"
@@ -42,8 +42,9 @@
      >^.::Run Folders.Ram
      >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
 
->^-::Run "Notepad"
->^=::Run Folders.Lnk "Notepad++.lnk"
+>^0::Run "Notepad"
+>^-::Run Folders.Lnk "Notepad++.lnk"
+>^=::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
 
 >^Up::   MoveWindowOffset(   0 , -10 )
 >^Down:: MoveWindowOffset(   0 , +10 )
@@ -58,7 +59,6 @@
 
 RCtrl & RShift::Run Folders.Script "Software\Chrome.cmd",        A_InitialWorkingDir, "Hide"
 RCtrl & LShift::Run Folders.Script "Software\ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
-
 
 Arg.ctrl_show    := False
 Arg.ctrl_content := ""
