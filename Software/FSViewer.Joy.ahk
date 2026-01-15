@@ -3,7 +3,11 @@
 Numpad8::Send "{Left}"
 
 ; 下
-Numpad2::FSViewerShowProgrssBar()
+Numpad2 Up::FSViewerRefreshImage()
+Numpad2::{
+    Send "{Right}"
+    Sleep 123
+}
 
 ; 左
 Numpad4::Send "{Right}"

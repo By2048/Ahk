@@ -31,6 +31,7 @@ RegisterPosition( "FSViewer__批量转换" , Position(1800 , 1200) )
 
 #HotIf CheckWindowActive( "FSViewer" , "TFullScreenWindow" )
     FSViewerShowProgrssBar() {
+        Send "{F5}"
         MouseGetPos(&mouse_x, &mouse_y)
         if ( Abs(mouse_x - Screen.w/2) > 5 ) || ( mouse_y > 5 )
             MouseMove(Screen.w/2, 0, 0)
@@ -93,20 +94,24 @@ RegisterPosition( "FSViewer__批量转换" , Position(1800 , 1200) )
 
     `::Send "m"
 
-    [::Send "m9"
-    ]::{
-        Send "{Left}"
-        Sleep 123
-    }
+    [::Left
+    ]::Left
+
+    `;::End
+     '::Home
+    
+    Home::Right
+    PgUp::Right
+    PgDn::Right
+    End:: Right
 
     \::{
         Send "{Right}"
         Sleep 123
     }
 
-    `;::Send "{Home}!{Left}{Home}"
-     '::Send "{End}!{Right}"
-
+    ,::Send "{Home}!{Left}{Home}"
+    .::Send "{End}!{Right}"
     /::{
         EN()
         Sleep 99
