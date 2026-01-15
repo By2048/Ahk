@@ -34,13 +34,16 @@
  >^n::Run Folders.Lnk "Music.lnk"
  >^m::Run Folders.Lnk "Media.lnk"
 
- >^Enter::Run "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}::" ;我的电脑
-     >^'::Run Folders.ToDo
-    >^`;::Run Folders.Download
+; >^CapsLock::{}
 
-     >^/::Run Folders.Disks.Temp
-     >^.::Run Folders.Ram
-     >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
+ >^Enter::Run "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}::" ;我的电脑
+
+ >^'::Run Folders.ToDo
+>^`;::Run Folders.Download
+
+ >^/::Run Folders.Disks.Temp
+ >^.::Run Folders.Ram
+ >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
 
 >^0::Run "Notepad"
 >^-::Run Folders.Lnk "Notepad++.lnk"
