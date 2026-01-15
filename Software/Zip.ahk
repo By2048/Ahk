@@ -8,15 +8,72 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 #Include *i Zip.Private.ahk
 
 
+ZipControl :=
+{
+    ListView : "SysListView321" ,
+
+    StaticUnzipTo  : "Static1" ,
+    StaticPathMode : "Static2" ,
+    StaticOverMode : "Static3" ,
+
+    ButtonSelectPath   : "Button1" ,
+    ButtonUserFolder   : "Button2" ,
+    ButtonShowPassword : "Button5" ,
+
+    ButtonIgnoreRepeatFolder : "Button3" ,
+    ButtonRestoreSecurity    : "Button6" ,
+
+    ButtonYes  : "Button7" ,
+    ButtonNo   : "Button8" ,
+    ButtonHelp : "Button9" ,
+
+    ButtonPasswordWrap  : "Button4" ,
+    ButtonPasswordCheck : "Button5" ,
+
+    ComboBoxFolderPath : "ComboBox1" ,
+    ComboBoxPathMode   : "ComboBox2" ,
+    ComboBoxOverMode   : "ComboBox3" ,
+    
+    EditFolderPath : "Edit1" ,
+    EditFolderName : "Edit2" ,
+    EditPassword   : "Edit3" ,
+
+    ReplaceFile :
+    {
+        ButtonYesAll : "Button2" ,
+        ButtonNoAll  : "Button5" ,
+        ButtonRename : "Button3" ,
+        ButtonCancel : "Button6" ,
+    } , 
+
+    InputPassword :
+    {
+        EditPassword : "Edit1" ,
+        ButtonYes    : "Button2" ,
+        ButtonNo     : "Button3" ,
+    } ,
+
+    Progress :
+    {
+        ButtonClose : "Button3" ,
+    } ,
+
+}
+
+
 #HotIf CheckWindowActive( "ZipDialog" , "#32770" , "确认文件替换" )
     BackSpace::Send "{Esc}"
-    \::ControlClick("Button5", "A")     ;全否
-    Enter::ControlClick("Button2", "A") ;全是
+        \::ControlClick(ZipControl.ReplaceFile.ButtonNoAll,  "A")
+    Enter::ControlClick(ZipControl.ReplaceFile.ButtonYesAll, "A")
 #HotIf
 
 
 #HotIf CheckWindowActive( "ZipDialog" , "#32770" , "浏览文件夹" )
-    \::Send "{Esc}"
+    \::{
+        Send "{Esc}"
+        Sleep 300
+        ControlFocus(ZipControl.ButtonYes, "A")
+    }
 #HotIf
 
 
@@ -29,16 +86,16 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
         ; Edit1 文件夹路径
         ; Edit2 文件夹名字
         ; Edit3 密码
-        if ( contro_name == "Edit1" ) {
-            ControlFocus("Edit2", "A") 
+        if ( contro_name == ZipControl.EditFolderPath ) {
+            ControlFocus(ZipControl.EditFolderName, "A") 
             Send "{End}{Left}"
-        } else if ( contro_name == "Edit2" ) {
-            ControlFocus("Edit3", "A")
-        } else if ( contro_name == "Edit3" ) {
-            ControlFocus("Edit1", "A") 
+        } else if ( contro_name == ZipControl.EditFolderName ) {
+            ControlFocus(ZipControl.EditPassword, "A")
+        } else if ( contro_name == ZipControl.EditPassword ) {
+            ControlFocus(ZipControl.EditFolderPath, "A") 
             Send "{End}"
         } else {
-            ControlFocus("Edit2", "A") 
+            ControlFocus(ZipControl.EditFolderName, "A") 
             Send "{End}{Left}"
         }
     }
@@ -54,11 +111,13 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
      ]::ZipSetPathNext()
     
     ; 浏览文件夹
-     \::ControlClick("Button1", "A")
+     \::{
+        ControlClick(ZipControl.ButtonSelectPath, "A")         
+     }
     +\::Send "丨"
 
     ^+c::{
-        name := ControlGetText("Edit2", "A")
+        name := ControlGetText(ZipControl.EditFolderName, "A")
         A_Clipboard := name
         ClipWait(1)
         HelpText(name, "CenterDown", "Screen", 666)
@@ -92,7 +151,7 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
     !`;::
      !'::
     CapsLock:: {
-        SetEditPrefix("Edit2")
+        SetEditPrefix(ZipControl.EditFolderName)
     }
 
     #Include *i Zip.Joy.ahk
@@ -120,33 +179,16 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 
 #HotIf CheckWindowActive( "ZipMain | ZipDialog" )
 
-    ZipGuiInit() {
-        if ( InStr(window.title, "确认文件替换") ) {
-            MoveWindowPosition( Position(820,588) )
-            ctl_rename := "Button3"
-            ctl_all_no := "Button5"
-            ctl_cancel := "Button6"
-            ; 
-            ControlGetPos(&x, &y, &w, &h, ctl_rename, "A")
-            ControlMove(x,  , w, h, ctl_cancel, "A")
-            ; 
-            ControlFocus(ctl_cancel, "A")
-            ControlSend("{Tab}", ctl_all_no, "A")
-        }
-
-        if ( InStr(window.title, "解压") ) {
-            ZipSetGuiPos()
-            ZipSetGuiText()
-            return
-        }
-    }
-
     ~Enter::{
         Send "{Blind}{vkFF}"
-        if ( InStr(window.title, "正在解压") ) {
-            ControlClick("Button3", "A") 
-        } else if ( InStr(window.title, "解压") ) {
-            ControlClick("Button7", "A") ;确认解压
+        ; if ( InStr(window.title, "正在解压") ) {
+        ;     ControlClick("Button3", "A") 
+        if ( InStr(window.title, "解压") ) {
+            if ( InStr(window.title, "100%") || InStr(window.title, "0%") ) {
+                ControlClick(ZipControl.Progress.ButtonClose, "A")
+            } else {
+                ControlClick(ZipControl.ButtonYes, "A") ;确认解压
+            }
         } else {
             Send "{Enter}"
         }
@@ -154,9 +196,7 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
         Try ZipGuiInit()
     }
 
-    RWin::{
-        ZipGuiInit()
-    }
+    RWin::ZipGuiInit()
 
     ; 注册表相关操作 Clear History
     >!/::{
@@ -190,7 +230,7 @@ RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
         if ( InStr(window.title, ".iso") )
             cfg := " 1:名称:666  2:文件夹:100  3:文件:100  4:大小:159 "
         cfg := GetColumnConfig(cfg)
-        SetColumnWidth("SysListView321", cfg)
+        SetColumnWidth(ZipControl.ListView, cfg)
     }
 
     ; 选择所有
