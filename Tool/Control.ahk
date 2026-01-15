@@ -28,6 +28,10 @@ SetEditPrefix(control)
     for _key, _code in Folders.Prefix
         text := LTrim(text, _code)
     text := Format("{1} {2}", Folders.Prefix.Get(key), LTrim(text))
+    text := Trim(text)
     ControlSetText(text, control, "A")
-    ControlSend("{Home}{Right 2}", control, "A")    
+    if InStr(key, "CapsLock") 
+        ControlSend("{End}", control, "A")
+    else
+        ControlSend("{Home}{Right 2}", control, "A")
 }
