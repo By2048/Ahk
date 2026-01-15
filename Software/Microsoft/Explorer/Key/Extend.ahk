@@ -1,7 +1,6 @@
 
-; 文件重命名 规则
-<!e::{
-    Send "{Blind}{vkFF}"
+ErGetFileName()
+{
     Send "{F2}"
     Sleep 33
     Send "^a"
@@ -9,19 +8,46 @@
     Send "{End}"
     ClipWait(1)
     Sleep 99
-    name   := A_Clipboard
-    rename := FileRename(name)
-    A_Clipboard := rename
+    name := A_Clipboard
+    return name
+}
+ErSetFileName(name)
+{
+    temp := A_Clipboard
+    A_Clipboard := name
     ClipWait(1)
     Sleep 99
     Send "^a"
     Send "^v"
     Send "{End}"
+    A_Clipboard := temp
+    ClipWait(1)
+}
+
+
+; 文件重命名 规则
+>!e::{
+    Send "{Blind}{vkFF}"
+    name   := ErGetFileName()
+    rename := FileRename(name)
+    ErSetFileName(rename)
 }
 
 
 ; 文件重命名 日期
-<!d::{
+>!s::{
+    Send "{Blind}{vkFF}"
+    name := ErGetFileName()
+    if ( InStr(name , "§") )
+        name := StrReplace(name , "§" , "")
+    else
+        name := name . " §"
+    ErSetFileName(name)
+}
+
+
+; 文件重命名 日期
+>!d::{
     paths := ErGetSelectedItems()
     if ( ! paths.Length )
         return
@@ -33,7 +59,7 @@
 
 
 ; 文件重命名 MD5
-<!m::{
+>h::{
     paths := ErGetSelectedItems()
     if ( ! paths.Length )
         return
@@ -43,14 +69,14 @@
 
 
 ; 复制选中的文件路径
-!c::{
+>!c::{
     path := ErGetFocusedItem()
     A_Clipboard := path
     ClipWait(1)
     Sleep 99
     HelpText(A_Clipboard, "CenterDown", "Screen", 666)
 }
-!+c::{
+>!+c::{
     paths := ErGetSelectedItems()
     if ( ! paths.Length )
         return

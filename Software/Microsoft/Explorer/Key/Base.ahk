@@ -8,6 +8,8 @@
 
 ; !Enter::Return ; 属性对话框
 
+<!e::Return ;浏览器中打开帮助
+
 ^!1::Return ;超大图标
 ^!2::Return ;大图标
 ^!3::Return ;中等图标

@@ -54,7 +54,7 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
        || CheckWindowActive( "" , "#32770" , "图像另存为" )
        
     #IncludeAgain .\Microsoft\Explorer\Key\Base.ahk
-    #IncludeAgain .\Microsoft\Explorer\Key\Date.ahk
+    #IncludeAgain .\Microsoft\Explorer\Key\Input.ahk
     
     MButton::WinClose("A")
 

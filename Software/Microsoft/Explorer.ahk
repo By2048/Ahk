@@ -191,8 +191,6 @@
     ; 全屏
     #Enter::Send "{F11}"
     
-    +\::Send "丨"
-
     ![::ErActivateLeft()
     !]::ErActivateRight()
     !\::ErActivateMenu()
@@ -229,6 +227,6 @@
 
     #IncludeAgain Explorer\Key\Base.ahk
     
-    #IncludeAgain Explorer\Key\Date.ahk
+    #IncludeAgain Explorer\Key\Input.ahk
 
 #HotIf
