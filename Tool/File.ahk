@@ -69,21 +69,19 @@ FileRename(base)
     name := StrRemove(name, "[ ]"  )
     name := StrRemove(name, "( )"  )
     name := StrRemove(name, "[-]"  )
+    name := StrRemove(name, "[+]"  )
     name := StrRemove(name, "(-)"  )
+    name := StrRemove(name, "[ & ]")
+    name := StrRemove(name, "[ + ]")
     name := StrRemove(name, "[ - ]")
     name := StrRemove(name, "( - )")
 
-    ; REGEX
-    temp := name
-
-    ; 2000_11_1 > 2000_11_01
-    name := RegExReplace(temp, "(.*?)(\d{4})(_|-)(\d{2})(_|-)(\d{1})(.*?)", "$1$2-$4-0$6$7")
-    ; 2000_1_11 > 2000-01-11
-    name := RegExReplace(temp, "(.*?)(\d{4})(_|-)(\d{1})(_|-)(\d{2})(.*?)", "$1$2-0$4-$6$7")
-    ; 2000_1_1 > 2000_01_01
-    name := RegExReplace(temp, "(.*?)(\d{4})(_|-)(\d{1})(_|-)(\d{1})(.*?)", "$1$2-0$4-0$6$7")
     ; 2025.04.10 > 2025-04-10
-    name := RegExReplace(temp, "(.*?)(\d{4})(.)(\d{2})(.)(\d{2})(.*?)", "$1$2-$4-$6$7")
+    ; 2025.4.10 > 2025-04-10
+    name := RegExReplace(name, "(.*?)(\d{4})(\.|\_|\-)(\d{1,2})(\.|\_|\-)(\d{1,2})(.*?)", "$1$2-$4-$6$7")
+
+    ; 2000.1 > 2000-1
+    name := RegExReplace(name, "(.*?)(\d{4})(\.|\_|\-)(\d{1,2})(.*?)", "$1$2-$4$5")
 
     ; ]A > ] A
     name := RegExReplace(name, "(.*?)(\]|\))(\S)(.*?)", "$1$2 $3$4")
