@@ -1,16 +1,23 @@
 ﻿
+Links := "T:\#\"
+
+LN(tag) { 
+    return Links . tag . "\"
+}
+
+
 Folders :=
 {
-    Ram    : "V:\#\" ,
-    Temp   : "T:\"   ,
+    Ram    : LN("Ram")    ,
+    Temp   : LN("Temp")   ,
 
-    Admin  : "C:\Users\Administrator\" ,
+    Admin  : LN("Admin")  ,
     
-    Lnk    : "D:\#Lnk\#\" ,
-    Lnks   : "D:\#Lnk\"   ,
+    Lnk    : LN("Lnk")    ,
+    Lnks   : LN("Lnks")   ,
 
-    Config : "E:\Config\" ,
-    Script : "E:\Script\" ,
+    Config : LN("Config") ,
+    Script : LN("Script") ,
 }
 
 
