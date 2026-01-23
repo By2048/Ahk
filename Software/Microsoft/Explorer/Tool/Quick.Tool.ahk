@@ -44,7 +44,7 @@ ErQuickPreview()
 
     if ( InStr(path,".zip") || InStr(path,".7z") || InStr(path,".rar") || InStr(path,".cbz") ) {
         cmd := PSL " -NoProfile -NoLogo -File "
-        cmd .= "E:\Script\PSL\Image.ps1 -Path "
+        cmd .= "E:\Script\PSL\!Image.ps1 -Path "
         cmd .= Format("`"{}`"", path)
         Run cmd
         return
