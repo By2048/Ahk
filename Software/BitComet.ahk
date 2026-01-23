@@ -11,6 +11,17 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
 #HotIf
 
 
+#HotIf CheckWindowActive("BitComet", "#32770", "从 URL 打开 Torrent")
+    Enter::{
+        ControlClick("Button1", "A")
+    }
+    \::
+    Esc::{
+        ControlClick("Button2", "A")
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive("BitComet", "#32770", "删除任务确认")
     Delete::{
         Send "{Esc}"
@@ -154,6 +165,19 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
         ControlClick( "SysLink2"  , "A" )
         Sleep 999
         Try WinClose("ahk_exe BitComet.exe ahk_class #32770 通知")
+    }
+    
+    CapsLock::{
+        code := A_Clipboard
+        if ( StrLen(code) == 40 ) {
+            if ( RegExMatch(code, "\w+") ) {
+                Send "^u"
+                Sleep 500
+                Send "^v"
+                Sleep 300
+                Send "^{Enter}"
+            }
+        }
     }
 
     NumpadIns::Send "!{F4}"

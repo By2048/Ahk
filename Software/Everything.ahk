@@ -1,6 +1,10 @@
 
 #HotIf CheckWindowActive("Everything")
 
+    F1::Return
+    F2::Return ;重命名
+    F3::Return ;输入框
+
     `;::Send ":"
     +;::Send ";"
 
@@ -22,13 +26,23 @@
         WinClose("A")
     }
 
-    ; 重命名
-    F2::Return
     ^r::Send "{F2}"
 
-    ; 输入框
-    F3::Return
-    CapsLock::Send "{F3}"
+    CapsLock::{
+        if ( A_Clipboard != "" ) {
+            Send "{F3}"
+            Sleep 100
+            Send "^v"
+            Sleep 100
+            Send "{End}"
+            A_Clipboard := ""
+        } else {
+            Send "{F3}"
+            Send "^a"
+            Send "{Delete}"
+        }
+    }
+
     Insert::{
         if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) )
             Send "{F3}{Delete}"

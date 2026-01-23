@@ -1,8 +1,10 @@
 
 RegisterSoftware( "FSViewer" , "FSViewer" )
+
 RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
+
 RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
-RegisterPosition( "FSViewer__批量转换" , Position(1800 , 1200) )
+RegisterPosition( "FSViewer__批量转换"     , Position(1800 , 1200) )
 
 
 #HotIf CheckWindowActive( "FSViewer" , "" , "删除*" )
@@ -94,20 +96,31 @@ RegisterPosition( "FSViewer__批量转换" , Position(1800 , 1200) )
 
     `::Send "m"
 
-    [::Left
-    ]::Left
+    [::Send "{Left}"
+    ]::Send "{Left}"
 
-    `;::End
-     '::Home
+    `;::Send "{End}"
+     '::Send "{Home}"
     
-    Home::Right
-    PgUp::Right
-    PgDn::Right
-    End:: Right
-
     \::{
         Send "{Right}"
         Sleep 123
+    }
+    Home::{
+        Sleep 369
+        Send "{Right}"
+    }
+    PgUp::{
+        Send "{Right}"
+        Sleep 99
+    }
+    PgDn::{
+        Send "{Right}"
+        Sleep 55
+    }
+    End::{
+        Send "{Right}"
+        Sleep 11
     }
 
     ,::Send "{Home}!{Left}{Home}"

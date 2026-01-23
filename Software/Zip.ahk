@@ -101,7 +101,7 @@ ZipControl :=
     }
     
     `;::ZipSetPath(Folders.Resource      )
-     '::ZipSetPath(Folders.Resources.Xxx )
+     '::ZipSetPath(Folders.ResourceOther )
 
      .::ZipSetPath(Folders.Temp)
      /::ZipSetPath(Folders.Ram )
@@ -178,6 +178,8 @@ ZipControl :=
 
 
 #HotIf CheckWindowActive( "ZipMain | ZipDialog" )
+
+    Esc::WinClose("A")
 
     ~Enter::{
         Send "{Blind}{vkFF}"
