@@ -7,9 +7,6 @@ RegisterPosition( "FDM__%]" , Position("[Center][2]", 1357 , 777 , 555) )
 RegisterPosition( "FDM" , Position(1500 , 999) , "Default" )
 RegisterPosition( "FDM" , Position("[Center][2]" , Screens.2.h - ( 567 + 200) , 0.96 , 567) , "Backup" )
 
-RegisterSoftware( "SandMan" , "Sandboxie" )
-RegisterPosition( "Sandboxie" , Position(0.7 ,  0.7) )
-
 RegisterPosition( "qBittorrent" , Position(0.9 ,  0.8) )
 
 RegisterPosition( "Calibre" , Position(0.8 ,  0.8) )

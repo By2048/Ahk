@@ -1,23 +1,20 @@
 ﻿
-Links := "T:\#\"
-
-LN(tag) { 
-    return Links . tag . "\"
+LN(tag) {
+    return "A:\" . tag . "\"
+}
+LNK(tag) {
+    return "A:\#Lnk\" . tag . ".lnk"
+}
+EXE(tag) {
+    return "D:\#Lnk\" . tag . ".lnk"
 }
 
 
 Folders :=
 {
-    Ram    : LN("Ram")    ,
-    Temp   : LN("Temp")   ,
-
-    Admin  : LN("Admin")  ,
-    
-    Lnk    : LN("Lnk")    ,
-    Lnks   : LN("Lnks")   ,
-
-    Config : LN("Config") ,
-    Script : LN("Script") ,
+    Ram    : "V:\"  ,
+    Temp   : "T:\"  ,
+    Admin  : "A:\"  ,
 }
 
 

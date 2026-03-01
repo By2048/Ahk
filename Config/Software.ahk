@@ -24,12 +24,12 @@ Zip         := "D:\7-Zip\7z.exe"
 ZipGui      := "D:\7-Zip\7zFM.exe"
 ZipDialog   := "D:\7-Zip\7zG.exe"
 
-AhkSpyPlus    := "E:\GitX\AhkSpy\AhkSpy.exe"
-Chrome        := "E:\Script\Chrome.cmd"
-ChromeTmp     := "E:\Script\ChromeTmp.cmd"
-ChromeDefault := "E:\Script\ChromeDefault.cmd"
-VSCode        := "E:\Script\Software\VSCode.cmd"
-VSCodeDefault := "E:\Script\Software\VSCodeDefault.cmd"
+AhkSpyPlus    := "A:\GitX\AhkSpy\AhkSpy.exe"
+Chrome        := "A:\Script\Software\Chrome.cmd"
+ChromeTmp     := "A:\Script\Software\ChromeTmp.cmd"
+ChromeDefault := "A:\Script\Software\ChromeDefault.cmd"
+VSCode        := "A:\Script\Software\VSCode.cmd"
+VSCodeDefault := "A:\Script\Software\VSCodeDefault.cmd"
 
 
 ; 自定义名字替换
