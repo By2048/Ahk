@@ -20,10 +20,13 @@ ClipboardChange(origin)
 
 
 
-AriaDownload(url, folder:=Folders.Temp, name:="")
+AriaDownload(url, folder:="", name:="")
 {
     if ( ! url )
         return
+
+    if ( ! folder )
+        folder := LN("Temp")
 
     if ( ! name )
         name := RegExReplace(url, "(http.?:/)(/.*/)([\d\w\-_]+\.[\d\w]+)", "$3")

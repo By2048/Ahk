@@ -103,7 +103,7 @@ ErQuickTools(cmd:="")
 
         if ( ! Arg.ErQuick.command ) {
             G.AddText(G.style.text, "MoveToTemp")
-            Arg.ErQuick.command := "ErQuickMove | " Folders.Temp
+            Arg.ErQuick.command := "ErQuickMove | " LN("Temp")
         }
         
     }

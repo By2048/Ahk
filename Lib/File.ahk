@@ -2,8 +2,8 @@
 ; 获取Windows系统的文件信息
 GetFileInfo(path)
 {
-    ; path        : E:\Project\Ahk\Image\RCtrl.png
-    ; path_folder : E:\Project\Ahk\Image\
+    ; path        : A:\Project\Ahk\Image\RCtrl.png
+    ; path_folder : A:\Project\Ahk\Image\
     ; path_file   : RCtrl.png
     SplitPath(path, &path_file, &path_folder)
 
