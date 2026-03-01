@@ -6,7 +6,7 @@ RegisterSoftware( "Clash Nyanpasu" , "ClashNyanpasu" )
 RegisterPosition( "ClashNyanpasu" , Position(1700 , 1111) )
 
 RegisterSoftware( "clash-verge" , "ClashVerge" )
-RegisterPosition( "ClashVerge" , Position(1357 , 1111) )
+RegisterPosition( "ClashVerge" , Position(1700 , 1111) )
 
 RegisterSoftware( "v2rayN" , "v2rayN" )
 RegisterPosition( "v2rayN" , Position(1940 , 999) )
