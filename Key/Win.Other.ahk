@@ -59,10 +59,10 @@ LWin & RShift::{
         key   := "CurrentTheme"
         theme := RegRead(path, key, "")
         if ( InStr(theme, "HCBlack") ) {
-            Run "E:\Config\Default.theme"
+            Run "A:\Config\Default.theme"
             HelpText("`n  Windows Theme Default  `n", "Center", "Screen", 1000)
         } else if ( InStr(theme, "Default") ) {
-            Run "E:\Config\HCBlack.theme"
+            Run "A:\Config\HCBlack.theme"
             HelpText("`n  Windows Theme HCBlack  `n", "Center", "Screen", 1000)
         }
         Sleep 999

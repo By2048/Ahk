@@ -49,7 +49,7 @@
 }
 <#+/::{ ;设置 高级
     Send "{Blind}{vkFF}"
-    Run Folders.Config "\Windows.msc" 
+    Run LN("Config") "Windows.msc" 
 }
 
 ;类似于Vim的快捷键操作工具
@@ -105,9 +105,9 @@
 }
 
 ; 屏幕截图 临时 | 长久
-<#Insert:: ScreenShotFull(Folders.Image)
-<#+Insert::ScreenShotFull(Folders.Temp )
+<#Insert:: ScreenShotFull(LN("ImageTemp"))
+<#+Insert::ScreenShotFull(LN("Temp")     )
 
 ;软件截图 临时 | 长久
-<#Delete:: ScreenShotSoftware(Folders.Image)
-<#+Delete::ScreenShotSoftware(Folders.Temp )
+<#Delete:: ScreenShotSoftware(LN("ImageTemp"))
+<#+Delete::ScreenShotSoftware(LN("Temp")     )
