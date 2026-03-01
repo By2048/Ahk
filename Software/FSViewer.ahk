@@ -94,6 +94,39 @@ RegisterPosition( "FSViewer__批量转换"     , Position(1800 , 1200) )
     F11::Return ;全屏
     F12::Return ;设置
 
+    ; 清理缩略图缓存
+    F8::{
+        Send "{F10}"
+        Send "{Right 10}"
+        Send "{Down 4}"
+        Send "{Enter}"
+        Sleep 333
+        ControlClick("TMyButton.UnicodeClass4", "A") ;清理
+        Sleep 666
+        ControlClick("TTntButton.UnicodeClass2", "A") ;确定
+    }
+
+    ; 创建缩略图缓存
+    F9::{
+        Send "{F10}"
+        Send "{Right 10}"
+        Send "{Down 3}"
+        Send "{Enter}"
+        Sleep 333
+        ControlClick("TMyButton.UnicodeClass3", "A") ;添加
+        Send "{Left 22}"
+        Send "{Right}"
+        Send "{Down 2}"
+        Send "{Right}"
+        Send "{Down 22}"
+        Send "{Up 2}"
+        Send "{Right 2}"
+        Send "{Enter}"
+        Sleep 666
+        ControlClick("TMyButton.UnicodeClass2", "A") ;扫描
+    }
+
+
     `::Send "m"
 
     [::Send "{Left}"
@@ -138,8 +171,6 @@ RegisterPosition( "FSViewer__批量转换"     , Position(1800 , 1200) )
     ![::ControlFocus("TJamShellTree.UnicodeClass1" , "A")
     !]::ControlFocus("TTntListView.UnicodeClass1"  , "A")
     !\::ControlFocus("TImageEnView1"               , "A")
-
-    LAlt & RAlt::Send "{F12}"
 
     #Include FSViewer.Joy.ahk
     #Include FSViewer.Mouse.ahk
