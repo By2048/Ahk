@@ -1,11 +1,10 @@
 
 RegisterPosition("DiskGenius" , Position(2222,1248))
 
+DiskGenius_Backup_Path := "A:\Backup\Disk"
 
 
 #HotIf CheckWindowActive( "DiskGenius" , "#32770" , "设置保存目录列表文件路径" )
-
-    Global DiskGenius_Backup_Path := "F:\Backup\Disk"
 
     ; 备份磁盘树
     F1::{
