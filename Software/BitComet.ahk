@@ -2,10 +2,28 @@
 RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 
+BTControl := 
+{
+    NewTask :
+    {
+        EditFolder           : "Edit1"          ,
+        EditFileName         : "Edit2"          ,
+        ButtonSelectFolder   : "Button2"        ,
+        ButtonSelectAll      : "Button8"        ,
+        ButtonDownloadNow    : "Button31"       ,
+        ButtonDownloadLater  : "Button32"       ,
+        ButtonDownloadCancel : "Button33"       ,
+        SysListViewFiles     : "SysListView321" ,
+        SysListViewQueue     : "SysListView323" ,
+        SysHeaderFiles       : "SysHeader321"   ,
+    }
+}
+
+
 #HotIf CheckWindowActive("BitComet", "#32770", "BitComet")
-    AppsKey::
     NumLock::
-    NumpadHome::{
+    NumpadHome::
+    AppsKey::{
         Try WinClose("A")
     }
 #HotIf
@@ -28,7 +46,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     }
     Insert::{
         ControlClick("Button1", "A")
-        Send "{Enter}"
+        Send "{Enter}"   
     }
     BackSpace::{
         ControlClick("Button2", "A")
@@ -44,9 +62,9 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 
 #HotIf CheckWindowActive("BitComet", "#32770", "通知")
-    AppsKey::    
+    NumpadHome::
     NumLock::    
-    NumpadHome::{
+    AppsKey::{
         Try WinClose("A")
     }
     NumpadEnd::
@@ -65,27 +83,28 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     BTSetListView() {
         cfg := " 1:名称:999  2:大小:111  3:%:77 "
         cfg := GetColumnConfig(cfg)
-        SetColumnWidth("SysListView321" , cfg)
-        SetColumnWidth("SysListView322" , cfg)
+        SetColumnWidth(BTControl.NewTask.SysListViewFiles , cfg)
+        ; 
         cfg := " 1:下载顺序:111  2:文件名称:777  3:大小:123 4:%:77 5:当前优先级:123 "
         cfg := GetColumnConfig(cfg)
-        SetColumnWidth("SysListView323" , cfg)
+        SetColumnWidth(BTControl.NewTask.SysListViewQueue , cfg)
     }
 
     +\::Send "丨"
 
-    [::ControlSetText("V:\", "Edit1", "A")
-    ]::ControlSetText("T:\", "Edit1", "A")
-    \::ControlClick("Button2", "A")
+    [::ControlSetText(LN("Ram") , BTControl.NewTask.EditFolder, "A")
+    ]::ControlSetText(LN("Temp"), BTControl.NewTask.EditFolder, "A")
     
     ; 选择下载文件夹
-    MButton::{
-        ControlClick("Button2", "A")
+    \::
+    MButton::
+    {
+        ControlClick(BTControl.NewTask.ButtonSelectFolder, "A")
     }
 
     ; 复制下载名
     ^+c::{
-        text := ControlGetText("Edit2", "A")
+        text := ControlGetText(BTControl.NewTask.EditFileName, "A")
         A_Clipboard := text
         ClipWait()
         HelpText("`n" text "`n", "Center", "Screen", 666)
@@ -93,10 +112,10 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
     ; 立即下载
     `::
+    NumLock::
     !Enter::
-    +Enter::
-    NumLock::{
-        ControlClick("Button29", "A")
+    +Enter::{
+        ControlClick(BTControl.NewTask.ButtonDownloadNow, "A")
     }
 
     NumpadHome::{
@@ -108,10 +127,10 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     #\::{
         MoveWindowPosition(Position(1300,1000))
         BTSetListView()
-        ControlClick("SysHeader321", "A")
-        ControlSetText(Folders.Temp, "Edit1", "A")
+        ControlClick(BTControl.NewTask.SysHeaderFiles, "A")
+        ControlSetText(LN("Temp"), "Edit1", "A")
         Sleep 99
-        ControlGetPos(&x, &y, &w, &h, "SysListView321", "A")
+        ControlGetPos(&x, &y, &w, &h, BTControl.NewTask.SysListViewFiles, "A")
         CoordMode("Mouse", "Client")
         MouseClickTool(x + 11, y + 44, "Client", "Right")
         Send "{Down 2}{Enter}"
@@ -121,13 +140,13 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     NumpadPgUp::
     NumpadPgDn::{
         SetControlDelay(-1)
-        paths := [ Folders.Ram , Folders.Temp ]
-        path  := ControlGetText("Edit1", "A")
+        paths := [ LN("Ram") , LN("Temp") ]
+        path  := ControlGetText(BTControl.NewTask.EditFolder, "A")
         if ( InStr(A_ThisHotkey, "PgUp") )
             path := LoopList(paths, path, -1)
         if ( InStr(A_ThisHotkey, "PgDn") )
             path := LoopList(paths, path, +1)
-        ControlSetText(path, "Edit1", "A")
+        ControlSetText(path, BTControl.NewTask.EditFolder, "A")
     }
 
     ; 文件大小排序
@@ -137,7 +156,7 @@ RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
     
     ; 全选
     NumpadDel::{
-        ControlSetChecked(True, "Button5", "A")
+        ControlSetChecked(True, BTControl.NewTask.ButtonSelectAll, "A")
     }
 
     !Tab::^Tab
