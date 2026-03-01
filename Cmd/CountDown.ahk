@@ -3,11 +3,12 @@
 
 #SingleInstance Ignore
 
-CapsLock::
+TraySetIcon(A_ScriptDir "\CountDown.png")
+
+F12::
 {
     ExitApp()
 }
-
 
 font_size     := 55
 font_color    := "8000FF"
@@ -73,6 +74,7 @@ Timer() {
         GText.Text := " Over "
         Sleep(500)
         SetTimer( , 0)
+        SoundBeep(500, 888)
     }
 }
 
