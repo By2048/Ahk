@@ -24,6 +24,15 @@ Loop {
         continue
     }
 
+    if ( win_process_name == "Mouse" ) {
+        Sleep 999
+        continue
+    }
+    if ( win_process_name == "KeyTest" ) {
+        Sleep 999
+        continue
+    }
+
     if ( win_process_name == "ZipDialog" || win_process_name == "ZipMain" ) {
         if ( InStr(win_title, "解压") || InStr(win_title, "复制") ) {
             Sleep 999
