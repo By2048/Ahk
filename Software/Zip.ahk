@@ -100,11 +100,17 @@ ZipControl :=
         }
     }
     
-    `;::ZipSetPath(Folders.Resource      )
-     '::ZipSetPath(Folders.ResourceOther )
+    `;::ZipSetPath(LN("Resource")      )
+     '::ZipSetPath(LN("ResourceOther") )
 
-     .::ZipSetPath(Folders.Temp)
-     /::ZipSetPath(Folders.Ram )
+     ,::{
+        name := window.title
+        name := StrSplit(name, "|")[2]
+        name := Trim(name)
+        ZipSetName(name)
+     }
+     .::ZipSetPath(LN("Temp"))
+     /::ZipSetPath(LN("Ram") )
 
      [::ZipSetPathPrev()
 
@@ -179,9 +185,12 @@ ZipControl :=
 
 #HotIf CheckWindowActive( "ZipMain | ZipDialog" )
 
-    Esc::WinClose("A")
+    Esc::{
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) )
+            WinClose("A")
+    }
 
-    ~Enter::{
+    $Enter::{
         Send "{Blind}{vkFF}"
         ; if ( InStr(window.title, "正在解压") ) {
         ;     ControlClick("Button3", "A") 
@@ -191,9 +200,9 @@ ZipControl :=
             } else {
                 ControlClick(ZipControl.ButtonYes, "A") ;确认解压
             }
-        } else {
-            Send "{Enter}"
+            return
         }
+        Send "{Enter}"
         Sleep 333
         Try ZipGuiInit()
     }
@@ -227,7 +236,7 @@ ZipControl :=
     }
 
     #\::{
-        MoveWindowPosition(Position(1100 , 1000))
+        MoveWindowPosition(Position(1500 , 1000))
         cfg := " 1:名称:666  3:文件夹:100  2:文件:100  4:大小:159 "
         if ( InStr(window.title, ".iso") )
             cfg := " 1:名称:666  2:文件夹:100  3:文件:100  4:大小:159 "

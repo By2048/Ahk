@@ -1,10 +1,13 @@
 ﻿
-UnZipPath := [ Folders.Temp , Folders.Ram ]
+UnZipPath := [ LN("Temp") , LN("Ram") ]
 
 
 #Include *i Zip.Tool.Private.ahk
 
 
+ZipSetName(password) {
+    ControlSetText(password, ZipControl.EditFolderName, "A")
+}
 ZipSetPassword(password) {
     ControlSetText(password, ZipControl.EditPassword, "A")
 }
