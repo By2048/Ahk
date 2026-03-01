@@ -35,6 +35,7 @@
 #Include Software\Music.ahk
 #Include Software\PotPlayer.ahk
 #Include Software\Q-Dir.ahk
+#Include Software\Sandboxie.ahk
 #Include Software\Snipaste.ahk
 #Include Software\SumatraPDF.ahk
 #Include Software\Telegram.ahk
