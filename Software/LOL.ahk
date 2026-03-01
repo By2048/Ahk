@@ -7,8 +7,8 @@ RegisterSoftware("League of Legends" , "LOL_Game"  )
 
 #HotIf CheckWindowActive( " LOL_Client | LOL_Game " )
 
-    #Insert::ScreenShotSoftware(Folders.Temp , True )
-    #Delete::ScreenShotFull    (Folders.Temp , True )
+    #Insert::ScreenShotSoftware(LN("Temp") , True )
+    #Delete::ScreenShotFull    (LN("Temp") , True )
 
 #HotIf
 
