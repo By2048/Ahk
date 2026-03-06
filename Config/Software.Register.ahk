@@ -14,8 +14,6 @@ RegisterPosition( "Calibre" , Position(0.8 ,  0.8) )
 RegisterSoftware( "哔哩哔哩" , "BiliBili" )
 RegisterPosition( "BiliBili" , Position(0.7 , 0.88) )
 
-RegisterPosition( "Maye" , Position(1160 , 999) )
-
 RegisterPosition( "DouYin" , Position(2333 , 1333) )
 
 RegisterPosition( "PikPak" , Position(1666 , 1100) )

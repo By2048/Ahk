@@ -63,7 +63,7 @@ RegisterSoftware("NVIDIA Share" , "GeForceTool")
     }
 #HotIf
 
-
+RegisterPosition( "Maye" , Position(1000 , 900) )
 #HotIf CheckWindowActive("Maye")
     CapsLock::Send "{Esc}"
 #HotIf
