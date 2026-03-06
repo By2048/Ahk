@@ -92,8 +92,8 @@ BTControl :=
 
     +\::Send "丨"
 
-    [::ControlSetText(LN("Ram") , BTControl.NewTask.EditFolder, "A")
-    ]::ControlSetText(LN("Temp"), BTControl.NewTask.EditFolder, "A")
+    [::ControlSetText(LN("Cache"), BTControl.NewTask.EditFolder, "A")
+    ]::ControlSetText(LN("Temp") , BTControl.NewTask.EditFolder, "A")
     
     ; 选择下载文件夹
     \::
@@ -140,7 +140,7 @@ BTControl :=
     NumpadPgUp::
     NumpadPgDn::{
         SetControlDelay(-1)
-        paths := [ LN("Ram") , LN("Temp") ]
+        paths := [ LN("Cache") , LN("Temp") ]
         path  := ControlGetText(BTControl.NewTask.EditFolder, "A")
         if ( InStr(A_ThisHotkey, "PgUp") )
             path := LoopList(paths, path, -1)

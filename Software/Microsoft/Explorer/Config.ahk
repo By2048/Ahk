@@ -13,11 +13,11 @@ RegisterHelpInfo( "Explorer_Progman" , "Key\Win.Fxx.Private.help" )
 
 
 ; 快速切换地址栏路径
-ExplorerAddressPaths := [ LN("Temp") , LN("Ram") ]
+ExplorerAddressPaths := [ LN("Temp") , LN("Cache") ]
 
 
 ; Quick工具路径
-ExplorerQuickPaths := [  [ LN("Temp") , LN("Ram") ]  ]
+ExplorerQuickPaths := [  [ LN("Temp") , LN("Cache") ]  ]
 
 
 #Include *i Config.Private.ahk

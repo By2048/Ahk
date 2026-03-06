@@ -41,7 +41,7 @@
 >^`;::Run LNK("Download")
 
  >^/::Run LNK("Temp")
- >^.::Run LNK("Ram")
+ >^.::Run LNK("Cache")
  >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
 
 >^0::Return
