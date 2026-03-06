@@ -6,16 +6,6 @@ FileRename(base)
     #Include *i File.Rename.Snippet.ahk
 
     ; 字符删除
-    ; name := StrReplace(name, " - ", " ")
-    ; name := StrReplace(name, " _ ", " ")
-    ; name := StrReplace(name, " + ", " ")
-
-    ; 去除移动标签时产生的空格
-    name := StrReplace(name, A_Tab, " ")
-    name := StrReplace(name, "  " , " ")
-    name := StrReplace(name, "  " , " ")
-    name := StrReplace(name, "  " , " ")
-    
     name := StrReplace(name, "·", " ")
     name := StrReplace(name, "。", " ")
     name := StrReplace(name, "●", " ")
@@ -94,19 +84,20 @@ FileRename(base)
     ; name := RegExReplace(temp, "(.*?)(\d{2})(.)(\d{2})(.)(\d{2})(.*?)", "$1 $2-$4-$6 $7")
     ; 04.10 > 04-10
     ; name := RegExReplace(name, "(.*?)(\d{2})(\.)(\d{2})(.*?)", "$1$2-$4$5")
-
-    name := StrReplace(name, A_Tab, " ")
-    name := StrReplace(name, "  " , " ")
-    name := StrReplace(name, "  " , " ")
-    name := StrReplace(name, "  " , " ")
-
+    
     name := StrReplace(name, " .", ".")
     name := StrReplace(name, "--", "-")
     name := StrReplace(name, "--", "-")
     name := StrReplace(name, "__", "_")
     name := StrReplace(name, "__", "_")
+
+    name := StrReplace(name, A_Tab, " ")
+    name := StrReplace(name, "  " , " ")
+    name := StrReplace(name, "  " , " ")
+    name := StrReplace(name, "  " , " ")
     
     name := Trim(name, " ")
+    name := Trim(name, "\")
     name := Trim(name, "_")
     name := Trim(name, "-")
 
