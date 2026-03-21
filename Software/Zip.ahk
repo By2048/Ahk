@@ -33,7 +33,7 @@ ZipControl :=
     ComboBoxFolderPath : "ComboBox1" ,
     ComboBoxPathMode   : "ComboBox2" ,
     ComboBoxOverMode   : "ComboBox3" ,
-    
+
     EditFolderPath : "Edit1" ,
     EditFolderName : "Edit2" ,
     EditPassword   : "Edit3" ,
@@ -44,7 +44,7 @@ ZipControl :=
         ButtonNoAll  : "Button5" ,
         ButtonRename : "Button3" ,
         ButtonCancel : "Button6" ,
-    } , 
+    } ,
 
     InputPassword :
     {
@@ -87,40 +87,35 @@ ZipControl :=
         ; Edit2 文件夹名字
         ; Edit3 密码
         if ( contro_name == ZipControl.EditFolderPath ) {
-            ControlFocus(ZipControl.EditFolderName, "A") 
+            ControlFocus(ZipControl.EditFolderName, "A")
             Send "{End}{Left}"
         } else if ( contro_name == ZipControl.EditFolderName ) {
             ControlFocus(ZipControl.EditPassword, "A")
         } else if ( contro_name == ZipControl.EditPassword ) {
-            ControlFocus(ZipControl.EditFolderPath, "A") 
+            ControlFocus(ZipControl.EditFolderPath, "A")
             Send "{End}"
         } else {
-            ControlFocus(ZipControl.EditFolderName, "A") 
+            ControlFocus(ZipControl.EditFolderName, "A")
             Send "{End}{Left}"
         }
     }
-    
-    `;::ZipSetPath(LN("Resource")      )
-     '::ZipSetPath(LN("ResourceOther") )
 
-     ,::{
+    AppsKey::{
         name := window.title
         name := StrSplit(name, "|")[2]
         name := Trim(name)
         ZipSetName(name)
-     }
-     .::ZipSetPath(LN("Temp"))
-     /::ZipSetPath(LN("Ram") )
+    }
 
-     [::ZipSetPathPrev()
+    [::ZipSetPathPrev()
+    ]::ZipSetPathNext()
+    \::ControlClick(ZipControl.ButtonSelectPath, "A")
 
-     ]::ZipSetPathNext()
-    
-    ; 浏览文件夹
-     \::{
-        ControlClick(ZipControl.ButtonSelectPath, "A")         
-     }
     +\::Send "丨"
+
+    ,::ZipSetPath(LN("Sync"))
+    .::ZipSetPath(LN("Temp"))
+    /::ZipSetPath(LN("Cache") )
 
     ^+c::{
         name := ControlGetText(ZipControl.EditFolderName, "A")
@@ -142,18 +137,18 @@ ZipControl :=
     F11::
     F12::
      !`::
-     !1:: 
-     !2:: 
-     !3:: 
-     !4:: 
-     !5:: 
-     !6:: 
-     !7:: 
-     !8:: 
-     !9:: 
-     !0:: 
-     !-:: 
-     !=:: 
+     !1::
+     !2::
+     !3::
+     !4::
+     !5::
+     !6::
+     !7::
+     !8::
+     !9::
+     !0::
+     !-::
+     !=::
     !`;::
      !'::
     CapsLock:: {
@@ -193,7 +188,7 @@ ZipControl :=
     $Enter::{
         Send "{Blind}{vkFF}"
         ; if ( InStr(window.title, "正在解压") ) {
-        ;     ControlClick("Button3", "A") 
+        ;     ControlClick("Button3", "A")
         if ( InStr(window.title, "解压") ) {
             if ( InStr(window.title, "100%") || InStr(window.title, "0%") ) {
                 ControlClick(ZipControl.Progress.ButtonClose, "A")
@@ -280,6 +275,18 @@ ZipControl :=
             Send Format("{Down {1}}", item)
             Send "{Enter}"
         }
+    }
+
+#HotIf
+
+
+#HotIf CheckWindowActive( "WinRAR" , "WinRarWindow" )
+
+    #\::{
+        MoveWindowPosition(Position(1300 , 1000))
+        cfg := " 1:名称:678  2:大小:135 "
+        cfg := GetColumnConfig(cfg)
+        SetColumnWidth(ZipControl.ListView, cfg)
     }
 
 #HotIf

@@ -20,7 +20,7 @@ Numpad9::Send "{Enter}"
 Numpad3::Send "{Esc}"
 
 ; 左
-Numpad7::ZipSetPath(LN("Ram"))
+Numpad7::ZipSetPath(LN("Cache"))
 
 ; 右
 Numpad1::ZipSetPath(LN("Temp"))

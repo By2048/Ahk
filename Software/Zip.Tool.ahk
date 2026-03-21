@@ -1,5 +1,5 @@
 ﻿
-UnZipPath := [ LN("Temp") , LN("Ram") ]
+UnZipPath := [ LN("Temp") , LN("Cache") ]
 
 
 #Include *i Zip.Tool.Private.ahk
@@ -31,17 +31,11 @@ ZipGuiInit()
 {
     if ( InStr(window.title, "确认文件替换") ) {
         MoveWindowPosition( Position(820,588) )
-        ctl_rename := "Button3"
-        ctl_all_no := "Button5"
-        ctl_cancel := "Button6"
-        ; 
         ControlGetPos(&x, &y, &w, &h, ZipControl.ReplaceFile.ButtonRename, "A")
         ControlMove(x,  , w, h, ZipControl.ReplaceFile.ButtonCancel, "A")
-        ; 
         ControlFocus(ZipControl.ReplaceFile.ButtonCancel, "A")
         ControlSend("{Tab}", ZipControl.ReplaceFile.ButtonNoAll, "A")
     }
-    
     if ( InStr(window.title, "解压") ) {
         ZipSetGuiPos()
         ZipSetGuiText()
@@ -50,7 +44,7 @@ ZipGuiInit()
 }
 
 
-ZipSetGuiText() 
+ZipSetGuiText()
 {
     title := StrLower(window.title)
     rule  := "ahk_id " window.id
@@ -89,13 +83,13 @@ ZipSetGuiPos()
     ctl_w := window.controls.%ZipControl.EditFolderPath%.w - 60
     ctl_h := window.controls.%ZipControl.EditFolderPath%.h + 90
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.EditFolderPath, rule)
-    
+
     ctl_x := window.controls.%ZipControl.ComboBoxFolderPath%.x + 60
     ctl_y := window.controls.%ZipControl.ComboBoxFolderPath%.y - 35
     ctl_w := window.controls.%ZipControl.ComboBoxFolderPath%.w - 60
     ctl_h := window.controls.%ZipControl.ComboBoxFolderPath%.h
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.ComboBoxFolderPath, rule)
-    
+
     ctl_x := window.controls.%ZipControl.ButtonSelectPath%.x
     ctl_y := window.controls.%ZipControl.ButtonSelectPath%.y - 35
     ctl_w := window.controls.%ZipControl.ButtonSelectPath%.w
@@ -109,7 +103,7 @@ ZipSetGuiPos()
     ctl_w := window.controls.%ZipControl.ButtonUserFolder%.w
     ctl_h := window.controls.%ZipControl.ButtonUserFolder%.h
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.ButtonUserFolder, rule)
-    
+
     ctl_x := window.controls.%ZipControl.EditFolderName%.x
     ctl_y := window.controls.%ZipControl.EditFolderName%.y - 33
     ctl_w := window.controls.%ZipControl.EditFolderPath%.w   + 70
@@ -123,7 +117,7 @@ ZipSetGuiPos()
     ctl_w := window.controls.%ZipControl.StaticPathMode%.w
     ctl_h := window.controls.%ZipControl.StaticPathMode%.h
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.StaticPathMode, rule)
-    
+
     ctl_x := window.controls.%ZipControl.ComboBoxPathMode%.x + 90
     ctl_y := window.controls.%ZipControl.ComboBoxPathMode%.y - 45
     ctl_w := window.controls.%ZipControl.ComboBoxPathMode%.w - 90
@@ -137,18 +131,18 @@ ZipSetGuiPos()
     ctl_w := window.controls.%ZipControl.StaticOverMode%.w
     ctl_h := window.controls.%ZipControl.StaticOverMode%.h
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.StaticOverMode, rule)
-    
+
     ctl_x := window.controls.%ZipControl.ComboBoxOverMode%.x + 90
     ctl_y := window.controls.%ZipControl.ComboBoxOverMode%.y - 130
     ctl_w := window.controls.%ZipControl.ComboBoxOverMode%.w - 90
     ctl_h := window.controls.%ZipControl.ComboBoxOverMode%.h
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.ComboBoxOverMode, rule)
-    
+
     ; --------------------------------------------------------------------------------- ;
 
     ctl_x := window.controls.%ZipControl.ButtonPasswordWrap%.x
     ctl_y := window.controls.%ZipControl.ButtonPasswordWrap%.y + 10
-    ctl_w := window.controls.%ZipControl.ButtonPasswordWrap%.w 
+    ctl_w := window.controls.%ZipControl.ButtonPasswordWrap%.w
     ctl_h := window.controls.%ZipControl.ButtonPasswordWrap%.h - 10
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.ButtonPasswordWrap, rule)
 
@@ -165,7 +159,7 @@ ZipSetGuiPos()
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.ButtonShowPassword, rule)
 
     ; --------------------------------------------------------------------------------- ;
-        
+
     ctl_x := 20
     ctl_y := window.controls.%ZipControl.ButtonIgnoreRepeatFolder%.y + 10
     ctl_w := window.controls.%ZipControl.ButtonIgnoreRepeatFolder%.w - 90
@@ -174,28 +168,28 @@ ZipSetGuiPos()
 
     ctl_x := 20
     ctl_y := window.controls.%ZipControl.ButtonRestoreSecurity%.y
-    ctl_w := window.controls.%ZipControl.ButtonRestoreSecurity%.w 
+    ctl_w := window.controls.%ZipControl.ButtonRestoreSecurity%.w
     ctl_h := window.controls.%ZipControl.ButtonRestoreSecurity%.h
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.ButtonRestoreSecurity, rule)
-    
+
     ; --------------------------------------------------------------------------------- ;
 
     ControlHide(ZipControl.ButtonHelp, rule)
-    
+
     ctl_x := window.controls.%ZipControl.ButtonHelp%.x
     ctl_y := window.controls.%ZipControl.ButtonHelp%.y - 130
-    ctl_w := window.controls.%ZipControl.ButtonYes%.w 
+    ctl_w := window.controls.%ZipControl.ButtonYes%.w
     ctl_h := window.controls.%ZipControl.ButtonYes%.h
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.ButtonYes, rule)
-    
+
     ctl_x := window.controls.%ZipControl.ButtonNo%.x
     ctl_y := window.controls.%ZipControl.ButtonNo%.y - 130
-    ctl_w := window.controls.%ZipControl.ButtonNo%.w 
+    ctl_w := window.controls.%ZipControl.ButtonNo%.w
     ctl_h := window.controls.%ZipControl.ButtonNo%.h
     ControlMove(ctl_x, ctl_y, ctl_w, ctl_h, ZipControl.ButtonNo, rule)
-    
+
     ; --------------------------------------------------------------------------------- ;
-    
+
     x := window.x
     y := window.y
     w := window.w
