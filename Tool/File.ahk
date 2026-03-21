@@ -4,6 +4,10 @@ FileRename(base)
     name := base
 
     #Include *i File.Rename.Snippet.ahk
+    
+    name := StrReplace(name, "  " , " ")
+    name := StrReplace(name, "  " , " ")
+    name := StrReplace(name, "  " , " ")
 
     ; 字符删除
     name := StrReplace(name, "·", " ")
@@ -91,7 +95,6 @@ FileRename(base)
     name := StrReplace(name, "__", "_")
     name := StrReplace(name, "__", "_")
 
-    name := StrReplace(name, A_Tab, " ")
     name := StrReplace(name, "  " , " ")
     name := StrReplace(name, "  " , " ")
     name := StrReplace(name, "  " , " ")

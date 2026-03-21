@@ -77,7 +77,7 @@ GetWindowConfig(window, config)
         }
 
     }
-    
+
     return win_config
 }
 
@@ -124,7 +124,7 @@ GetActiveWindowInfo(cache:=True)
         win_id    := 0
         win_title := ""
     }
-    
+
     ; 缓存数据
     if ( window.cache_id == win_id )
         if ( window.cache_title == win_title )
@@ -249,19 +249,23 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
 
     Check(win, cfg) {
         status := True
+        cfg := Trim(cfg)
         if ( InStr(cfg, "|") ) {
             status := False
             for item in StrSplit(cfg, "|") {
                 item := Trim(item)
                 if ( InStr(item, "*") ) {
-                    if ( InStr(win, StrReplace(item, "*", "")) )
+                    item := StrReplace(item, "*", "")
+                    if ( InStr(win, item) )
                         status := True
                 } else if (item == win) {
                     status := True
                 }
             }
         } else if ( InStr(cfg, "*") ) {
-            if ( ! InStr(win, StrReplace(cfg, "*", "")) )
+            cfg := StrReplace(cfg, "*", "")
+            cfg := Trim(cfg)
+            if ( ! InStr(win, cfg) )
                 status := False
         } else if ( cfg != win ) {
             status := False
@@ -338,8 +342,8 @@ SetWindow(x:=0, y:=0, w:=0, h:=0, offset:=3, step:=False)
     if ( h == 0 )
         h := window.h
 
-    if (   Abs(win_x - x) > offset 
-        || Abs(win_y - y) > offset 
+    if (   Abs(win_x - x) > offset
+        || Abs(win_y - y) > offset
         || Abs(win_w - w) > offset
         || Abs(win_h - h) > offset ) {
         if ( step ) {
