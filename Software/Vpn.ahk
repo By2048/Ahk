@@ -10,8 +10,22 @@ RegisterPosition( "ClashVerge" , Position(1700 , 1111) )
 
 RegisterSoftware( "v2rayN" , "v2rayN" )
 RegisterPosition( "v2rayN" , Position(1940 , 999) )
-RegisterHelpInfo( "v2rayN", "Software\Vpn.help" )
 
+RegisterSoftware( "FlClash" , "FlClash" )
+RegisterPosition( "FlClash" , Position("[Center][1]" , 1000 , 900) , "Default" )
+RegisterPosition( "FlClash" , Position("[Center][2]" , 1000 , 900) , "Backup"  )
+
+
+#HotIf CheckWindowActive( "EnableLoopback" )
+    #\::{
+        MoveWindowPosition(Position(1860 , 1000))
+        _1 := " 1   2   3   4   5   6   7   "
+        _2 := " -   -   -   -   -   -   -   "
+        _3 := " 400 400 200 300 150 200 150 "
+        config := GetColumnConfig(_1, _2, _3)
+        SetColumnWidth("WindowsForms10.SysListView32.app.0.141b42a_r8_ad11" , config)
+    }
+#HotIf
 
 
 #HotIf CheckWindowActive( "v2rayN" )
@@ -94,17 +108,4 @@ RegisterHelpInfo( "v2rayN", "Software\Vpn.help" )
         MoveWindowPosition([ x, y, window.w, window.h ])
     }
 
-#HotIf
-
-
-
-#HotIf CheckWindowActive( "EnableLoopback" )
-    #\::{
-        MoveWindowPosition(Position(1860 , 1000))
-        _1 := " 1   2   3   4   5   6   7   "
-        _2 := " -   -   -   -   -   -   -   "
-        _3 := " 400 400 200 300 150 200 150 "
-        config := GetColumnConfig(_1, _2, _3)
-        SetColumnWidth("WindowsForms10.SysListView32.app.0.141b42a_r8_ad11" , config)
-    }
 #HotIf

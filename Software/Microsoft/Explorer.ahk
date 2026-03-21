@@ -132,7 +132,7 @@
     Insert::{
         ErQuickToolsHide()
     }
-    
+
     Delete::ErQuickRun()
 
     Enter::ErQuickMove()
@@ -187,10 +187,10 @@
             Case "#+\" : ErResetPosition(columns:="Name")
         }
     }
- 
+
     ; 全屏
     #Enter::Send "{F11}"
-    
+
     ![::ErActivateLeft()
     !]::ErActivateRight()
     !\::ErActivateMenu()
@@ -226,7 +226,7 @@
 #HotIf CheckWindowActive( "Explorer" )
 
     #IncludeAgain Explorer\Key\Base.ahk
-    
+
     #IncludeAgain Explorer\Key\Input.ahk
 
 #HotIf

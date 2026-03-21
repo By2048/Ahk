@@ -24,14 +24,9 @@ Loop {
         continue
     }
 
-    if ( win_process_name == "Mouse" ) {
-        Sleep 999
-        continue
-    }
-    if ( win_process_name == "KeyTest" ) {
-        Sleep 999
-        continue
-    }
+
+    #Include *i @Loop.Snippet.ahk
+
 
     if ( win_process_name == "ZipDialog" || win_process_name == "ZipMain" ) {
         if ( InStr(win_title, "解压") || InStr(win_title, "复制") ) {
@@ -47,12 +42,6 @@ Loop {
 
     if ( win_class == "#32770" && win_title == "浏览文件夹" ) {
         MoveWindowDefault()
-        continue
-    }
-
-    ; Excel 居中
-    if ( win_process_name == "Excel" && win_class == "NUIDialog" ) {
-        MoveWindowCenter()
         continue
     }
 

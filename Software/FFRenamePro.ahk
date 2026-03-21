@@ -22,7 +22,6 @@ RegisterPosition( "FFRenamePro" , Position(2100 , 1234) )
 
     ; 参数设置
     ^s::Return
-    !AppsKey::Send "^s"
 
     ; 添加文件或文件夹
     ^o::Return

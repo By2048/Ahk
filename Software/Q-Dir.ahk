@@ -37,7 +37,7 @@ RegisterPosition( "Q-Dir_#32770_MiniBrowserOK" , Position(1555, 1333) )
 
         split_box_left   := tree_width + scroll_bar_width
         split_box_right  := box_left_width + scroll_bar_width * 2
-        split_box_bottom := total_height * 0.44
+        split_box_bottom := total_height * 0.6
 
         MouseGetPos(&x_origin, &y_origin)
 

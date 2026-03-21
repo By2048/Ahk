@@ -24,6 +24,7 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     ;     Sleep 666
     ;     MouseClickTool(864, 770, "Screen")
     ; }
+    
     ; F2::{
     ;     MouseClickTool(2505, 1383, "Screen")
     ; }
@@ -35,6 +36,9 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     NumpadPgUp::TGForwardSavedMessage()
     NumpadIns:: Send "^{PgDn}"
     NumpadDel:: Send "^{PgUp}"
+
+    #BackSpace::Return
+    #+BackSpace::Return
 
     <#p::
     <#\::

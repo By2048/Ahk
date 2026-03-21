@@ -11,7 +11,7 @@
 |-----------------------|-------------------------| Recourse  |
 |  A | AntiMicroX       | Enter | 我的电脑        | TV        |
 |  S | Sandboxie        |   "   | 回收站          | Anime     |
-|  D | DuplicateCleaner |   ;   | { Ram      }    | Video     |
+|  D | DuplicateCleaner |   ;   | { Cache    }    | Video     |
 |  F | File Sync        |   /   | { Temp     }    |
 |  G | Geek             |   .   | { ToDo     }    |
 |  H | Spy AHK          |   ,   | { Download }    |

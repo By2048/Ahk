@@ -66,6 +66,5 @@
 
     ; 设置
     ^p::Return
-    ^AppsKey::Send "^p"
 
 #HotIf

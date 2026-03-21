@@ -40,15 +40,15 @@ LAlt & LWin::{
     EN()
     HelpText("`n  English  `n", "Center", "Screen", 300)
 }
-; 
+;
 ; 关闭窗口
 RAlt  & RWin::Send "!{F4}"
 RCtrl & RWin::Send "^w"
-; 
+;
 ; 调整窗口大小
 RWin & RAlt:: MoveWindowQuick("Mini")
 RWin & RCtrl::MoveWindowQuick("Main")
-; 
+;
 ; 快速功能键
 LCtrl & LAlt:: Send "{NumLock}"
 LAlt  & LCtrl::Send "{ScrollLock}"

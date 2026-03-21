@@ -12,9 +12,9 @@ EXE(tag) {
 
 Folders :=
 {
-    Ram    : "V:\"  ,
-    Temp   : "T:\"  ,
-    Admin  : "A:\"  ,
+    Admin  : "A:\"   ,
+    Temp   : "T:\"   ,
+    Cache  : "V:\#\" ,
 }
 
 
