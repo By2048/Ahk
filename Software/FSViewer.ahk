@@ -1,4 +1,4 @@
-
+﻿
 RegisterSoftware( "FSViewer" , "FSViewer" )
 
 RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
@@ -126,8 +126,40 @@ RegisterPosition( "FSViewer__批量转换"     , Position(1800 , 1200) )
         ControlClick("TMyButton.UnicodeClass2", "A") ;扫描
     }
 
-
-    `::Send "m"
+    ; 转换图片为小图片
+    F11::{
+        title := WinGetTitle("A")
+        if ( InStr(title, "FastStone") ) {
+            Send "{F10}"
+            Send "{Right 9}"
+            Send "{Down 3}"
+            Send "{Enter}"
+            ; Sleep 666
+            ; text := WinGetText("A")
+            ; text := Trim(text, " " )
+            ; text := Trim(text, "`n")
+            ; text := StrSplit(text, "`n")[1]
+            ; text := Trim(text)
+            ; HelpText(text, "Center")
+            ; if ( text != "批量转换" )
+            ;     Send "^{Tab}"
+            return
+        }
+        if ( InStr(title, "批量转换") ) {
+            folder_current := Trim( ControlGetText("TTntEdit.UnicodeClass1", "A") , "\" )
+            folder_input   := "V:\#\#Image"
+            folder_output  := "V:\#\~Image"
+            if ( folder_current != folder_input ) {
+                ControlSetText(folder_input,  "TTntEdit.UnicodeClass1", "A") ;文件夹 输入
+                ControlSetText(folder_output, "TTntEdit.UnicodeClass2", "A") ;文件夹 输出
+                ControlSend("{Enter}", "TTntEdit.UnicodeClass1", "A") ;确定
+                Sleep 999
+                ControlClick("TPngBitBtn.UnicodeClass4", "A") ;全部添加
+            } else {
+                ControlClick("TPngBitBtn.UnicodeClass1", "A") ;开始
+            }
+        }
+    }
 
     [::Send "{Left}"
     ]::Send "{Left}"

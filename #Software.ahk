@@ -31,7 +31,6 @@
 #Include Software\FreeFileSync.ahk
 #Include Software\FSViewer.ahk
 #Include Software\Geek.ahk
-#Include Software\LOL.ahk
 #Include Software\Music.ahk
 #Include Software\PotPlayer.ahk
 #Include Software\Q-Dir.ahk
@@ -45,6 +44,9 @@
 #Include Software\Wallpaper.ahk
 #Include Software\WPS.ahk
 #Include Software\Zip.ahk
+
+#Include Software\Game\@.ahk
+#Include Software\Game\LOL.ahk
 
 #Include Software\Browser\Chrome.ahk
 #Include Software\Browser\Edge.ahk
