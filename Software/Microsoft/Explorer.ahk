@@ -171,20 +171,21 @@
     ; ^w::Return
     !CapsLock::Send "^w"
 
-    #[::
-    #]::
-     #\::
-    #+\::{
+     <#[::
+     <#]::
+     <#\::
+    <#+\::{
         offset := 10
         GetActiveWindowInfo()
         pos_a := Position(offset                           , offset                            , window.w, window.h)
         pos_b := Position(A_ScreenWidth - window.w - offset, A_ScreenHeight - window.h - offset, window.w, window.h)
         Send "{Blind}{vkFF}"
-        Switch A_ThisHotkey {
-            Case "#["  : MoveWindowPosition(pos_a)
-            Case "#]"  : MoveWindowPosition(pos_b)
-            Case "#\"  : ErResetPosition()
-            Case "#+\" : ErResetPosition(columns:="Name")
+        key := StrReplace(A_ThisHotkey, "<#", "")
+        Switch key {
+            Case "["  : MoveWindowPosition(pos_a)
+            Case "]"  : MoveWindowPosition(pos_b)
+            Case "\"  : ErResetPosition()
+            Case "+\" : ErResetPosition(columns:="Name")
         }
     }
 

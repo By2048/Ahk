@@ -12,8 +12,8 @@ RegisterSoftware( "v2rayN" , "v2rayN" )
 RegisterPosition( "v2rayN" , Position(1940 , 999) )
 
 RegisterSoftware( "FlClash" , "FlClash" )
-RegisterPosition( "FlClash" , Position("[Center][1]" , 1000 , 900) , "Default" )
-RegisterPosition( "FlClash" , Position("[Center][2]" , 1000 , 900) , "Backup"  )
+RegisterPosition( "FlClash" , Position( "[Center][1]" , 1000 , 963) , "Default" )
+RegisterPosition( "FlClash" , Position( "[Center][2]" , 1000 , 963) , "Backup"  )
 
 
 #HotIf CheckWindowActive( "EnableLoopback" )

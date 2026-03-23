@@ -1,4 +1,4 @@
-
+﻿
 RegisterSoftware("scrcpy" , "Scrcpy")
 RegisterHelpInfo("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
 #HotIf CheckWindowActive("Scrcpy")
@@ -69,12 +69,6 @@ RegisterPosition( "Maye" , Position(1000 , 900) )
 #HotIf
 
 
-RegisterPosition("Motrix" , Position(1500 , 999))
-#HotIf CheckWindowActive("Motrix")
-    CapsLock::Send "^n"
-#HotIf
-
-
 ; 文件预览
 #HotIf CheckWindowActive("PowerToys.Peek.UI")
          Esc::Send "#z"
@@ -90,17 +84,6 @@ RegisterPosition("Motrix" , Position(1500 , 999))
     ; 读档
     F7::Return
     AppsKey::Send "{F7}"
-#HotIf
-
-
-RegisterSoftware("IDMan" , "IDM")
-#HotIf CheckWindowActive("IDM")
-    #\::{
-        MoveWindowPosition(Position(1500 , 1000))
-        cfg := " 1:文件名:500  2:路径:600  3:大小:120  4:修改时间:180 "
-        cfg := GetColumnConfig(cfg)
-        SetColumnWidth("SysListView321", cfg)
-    }
 #HotIf
 
 

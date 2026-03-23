@@ -189,7 +189,6 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         fsviewer_activate_left_menu()
         Send "{Down 7}"
         Send "{Enter}"
-        Sleep 99
         MouseMove(Arg.mouse_x, Arg.mouse_y, 0)
     }
 

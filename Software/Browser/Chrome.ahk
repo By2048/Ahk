@@ -51,7 +51,7 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
         return
     }
 
-    ~RWin::Return
+    ; ~RWin::Return
 
     ; 书签第一个
     !\::
@@ -117,13 +117,13 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
         }
     }
 
-    
+
     #Include Key\Base.ahk
     #Include Key\Fxx.ahk
     #Include Key\Insert.ahk
     #Include Key\Joy.ahk
     #Include Key\Mouse.ahk
-    
+
     #Include *i Key\Private.ahk
 
 #HotIf

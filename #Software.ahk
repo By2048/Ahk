@@ -23,7 +23,6 @@
 #Include Software\#ALL.ahk
 
 #Include Software\Android.ahk
-#Include Software\BitComet.ahk
 #Include Software\DiskGenius.ahk
 #Include Software\Everything.ahk
 #Include Software\FFRenamePro.ahk
@@ -61,6 +60,11 @@
 #Include Software\Develop\PowerShell.ahk
 #Include Software\Develop\Terminal.ahk
 #Include Software\Develop\VSCode.ahk
+
+#Include Software\Download\BitComet.ahk
+#Include Software\Download\FDM.ahk
+#Include Software\Download\IDM.ahk
+#Include Software\Download\Motrix.ahk
 
 #Include Software\JetBrains\ToolBox.ahk
 #Include Software\JetBrains\IDEA.ahk

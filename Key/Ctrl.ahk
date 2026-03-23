@@ -1,7 +1,7 @@
 ﻿
 #Include *i Ctrl.Private.ahk
 
- >^q::Run LN("Config\Windows.qdr") 
+ >^q::Run LN("Config\Windows.qdr")
  >^w::Run LN("Run") "#AppStore\Whiteboard.lnk"
  >^e::Run EXE("Everything")
  >^r::Run EXE("FFRenamePro")
@@ -23,7 +23,7 @@
  >^h::Run AHK " " AhkSpy
 ;>^j::Return
  >^k::KeyHistory()
- >^l::Run "A:\"
+ >^l::Run LNK("ToDo")
 
  >^z::Run EXE("Torrent")
  >^x::Run EXE("Download")
@@ -37,8 +37,8 @@
 
  >^Enter::Run "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}::" ;我的电脑
 
- >^'::Run LNK("ToDo")
->^`;::Run LNK("Download")
+ >^`;::Run LNK("Download")
+  >^'::Run Folders.Admin
 
  >^/::Run LNK("Temp")
  >^.::Run LNK("Cache")
@@ -110,7 +110,7 @@ CtrlGui()
     }
 
     InitGui("Dark")
-    
+
     G.Add("Text", "-Center -Border", Arg.ctrl_content)
     G.Show("NA Center")
 

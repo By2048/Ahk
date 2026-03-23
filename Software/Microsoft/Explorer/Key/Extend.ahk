@@ -1,4 +1,4 @@
-
+﻿
 ErGetFileName()
 {
     Sleep 33
@@ -90,7 +90,7 @@ ErSetFileName(name)
 <!n::{
     GetActiveWindowInfo()
     folder := window.title
-    path   := folder . "\" . '~~~'
+    path   := folder . "\" . '~ ~ ~'
     if ( FileExist(path) )
         return
     FileOpen(path, "w").Close()
@@ -107,7 +107,7 @@ ErSetFileName(name)
 <!m::{
     GetActiveWindowInfo()
     folder := window.title
-    path   := folder . "\" . '~~~'
+    path   := folder . "\" . '~ ~ ~'
     if ( FileExist(path) )
         return
     DirCreate(path)
