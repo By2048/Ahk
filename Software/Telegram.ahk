@@ -1,8 +1,14 @@
-
+﻿
 RegisterPosition( "Telegram__SavedMessages" , Position("[Center][2]", -20, 0.7) , "Default" )
 
 RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
+TelegramArg :=
+{
+    CurrentTitle : "" ,
+    LastTitle    : "" ,
+    Folders      : []
+}
 
 #Include *i Telegram.Private.ahk
 
@@ -17,6 +23,41 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 #HotIf
 
 
+#HotIf CheckWindowActive("Telegram" , "#32770" , "SaveFile" )
+    ; NumLock::Send "!s"
+    ~CapsLock::{
+        TelegramArg.CurrentTitle := WinGetTitle("A")
+        folder_current := ControlGetText("ToolbarWindow324", "A")
+        folder_current := StrReplace(folder_current, "地址: ")
+        win_title := TelegramArg.CurrentTitle
+        win_class := WinGetClass("A")
+        if ( win_class != "#32770" || win_title != "Save File" )
+            return
+        move_folder := TG_get_folder_by_title(TelegramArg.LastTitle)
+        if ( ! move_folder )
+            return
+        if ( folder_current == move_folder )
+            return
+        ; HelpText(folder_current " >>> " move_folder)
+        Send "!d"
+        Send "{Backspace}"
+        Sleep 111
+        SendText move_folder
+        Sleep 111
+        Send "{Enter}"
+        Sleep 333
+        ControlFocus("DirectUIHWND2", "A")
+        ; _ := WinGetTitle("A")
+        ; _ := ControlGetText("Edit2", "A")
+        ; HelpText(xxx)
+        ; ControlSetText(move_folder, "Edit2", "A")
+        ; Sleep 333
+        ; ControlSend("{Enter}", "Edit2", "A")
+        SetCapsLockState("Off")
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive("Telegram")
 
     ; F1::{
@@ -24,16 +65,28 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
     ;     Sleep 666
     ;     MouseClickTool(864, 770, "Screen")
     ; }
-    
+
     ; F2::{
     ;     MouseClickTool(2505, 1383, "Screen")
     ; }
+
+    ; CapsLock::{
+    ;     title := window.title
+    ;     Send "^f"
+    ;     Send title
+    ; }
+
+    ~*LButton::{
+        try {
+            TelegramArg.LastTitle := WinGetTitle("A")
+        }
+    }
 
     NumLock::   Send "{Esc}"
     NumpadHome::Send "^c"
     NumpadEnd:: Send "^v"
     NumpadPgDn::Send "{Enter}"
-    NumpadPgUp::TGForwardSavedMessage()
+    NumpadPgUp::TG_forward_saved_message()
     NumpadIns:: Send "^{PgDn}"
     NumpadDel:: Send "^{PgUp}"
 
@@ -71,23 +124,24 @@ RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
         MoveWindowPosition(pos)
     }
 
-    TGForwardSavedMessage()
-    {
-        Send "{RButton}"
-        Sleep 333
-        image := A_InitialWorkingDir . "\Image\Software\Telegram\forward.png"
-        MouseClickImage(image)
-        Sleep 333
-        image := A_InitialWorkingDir . "\Image\Software\Telegram\saved_message.png"
-        MouseClickImage(image)
-    }
-
-    TGSavedFile()
-    {
-        Send "{RButton}"
-        Sleep 99
-        image := A_InitialWorkingDir . "\Image\Software\Telegram\save_file.png"
-        MouseClickImage(image)
-    }
-
 #HotIf
+
+
+TG_forward_saved_message()
+{
+    Send "{RButton}"
+    Sleep 333
+    image := A_InitialWorkingDir . "\Image\Software\Telegram\forward.png"
+    MouseClickImage(image)
+    Sleep 333
+    image := A_InitialWorkingDir . "\Image\Software\Telegram\saved_message.png"
+    MouseClickImage(image)
+}
+
+TG_saved_file()
+{
+    Send "{RButton}"
+    Sleep 99
+    image := A_InitialWorkingDir . "\Image\Software\Telegram\save_file.png"
+    MouseClickImage(image)
+}

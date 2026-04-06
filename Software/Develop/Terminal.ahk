@@ -4,10 +4,6 @@ RegisterSoftware( "WindowsTerminal" , "Terminal" )
 RegisterHelpInfo( "Terminal" , FilePath(A_LineFile , "Terminal.help") )
 RegisterHelpInfo( "Terminal" , "Config\Script.help"                   )
 
-RegisterPosition( "Terminal" , Position(2200 , 1248)              , "Default" )
-RegisterPosition( "Terminal" , Position("[Center][2]" , 0 , 1600) , "Backup"  )
-
-
 Arg.TerminalCommand := False
 
 
@@ -26,7 +22,7 @@ Arg.TerminalCommand := False
 
     `;::Send ":"
     +;::Send ";"
-    
+
     #Include *i Terminal.Private.ahk
     #Include *i Terminal.Cmd.Private.ahk
     #Include *i Terminal.Path.Private.ahk
@@ -86,5 +82,25 @@ Arg.TerminalCommand := False
     ; 字号重置
     ^WheelUp::Return
     ^WheelDown::Return
+
+     <#[::
+     <#]::
+     <#\::
+    <#+\::{
+        Send "{Blind}{vkFF}"
+        pos_info := Position("[Center][2]" , -3 , -555)
+        x := Screens.2.x + 3
+        y := Screens.2.y + Screens.2.h * ( 3 / 4 )
+        w := Screens.2.w - 6
+        h := Screens.2.h / 4
+        pos_mini := Position(x, y, w, h)
+        key := StrReplace(A_ThisHotkey, "<#", "")
+        Switch key {
+            Case "\"  : MoveWindowPosition(Position(2200 , 1248))
+            Case "+\" : MoveWindowPosition(Position(1100 , 1248))
+            Case "]"  : MoveWindowPosition(pos_info)
+            Case "["  : MoveWindowPosition(pos_mini)
+        }
+    }
 
 #HotIf

@@ -17,14 +17,15 @@
 JQB_Phone
 JQB_Windows
 
+Backup.ahk
 Private.ahk
 Script.txt
 
-/@.ahk
-/Test.ahk
-/Debug.ahk
+@.ahk
+Test.ahk
+Debug.ahk
 
-/Test.cmd
+Test.cmd
 
-/desktop.ini
+desktop.ini
 

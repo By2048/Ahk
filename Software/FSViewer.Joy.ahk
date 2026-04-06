@@ -1,46 +1,50 @@
-
+﻿
 ; 上
-Numpad8::Send "{Left}"
-
-; 下
-Numpad2 Up::FSViewerRefreshImage()
-Numpad2::{
+Numpad8::
+{
     Send "{Right}"
-    Sleep 123
+}
+
+; 下
+Numpad2::
+{
+    Send "{Left}"
 }
 
 ; 左
-Numpad4::Send "{Right}"
+Numpad4::
+{
+    Send "{Right}"
+    Sleep 99
+}
 
 ; 右
-Numpad6::Send "{Right}"
+Numpad6::
+{
+    Send "{Right}"
+    Sleep 33
+}
 
 ;---------------------------------;
 
 ; 上
-Numpad9::Send "{Enter}"
+Numpad9::fsviewer_delete_folder()
 
 ; 下
-Numpad3::FSViewerPowerShell()
+Numpad3::fsviewer_move_to_collection(FSViewerCollection.Collection)
 
 ; 左
-Numpad7::Send "!x"
+Numpad7::fsviewer_move_to_collection(FSViewerCollection.CartoonOther)
 
 ; 右
-Numpad1::{
-    EN()
-    Sleep 99
-    Send "{m}"
-    Send "^{Tab 3}"
-    Send "{Esc}"
-}
+Numpad1::fsviewer_move_to_collection(FSViewerCollection.Cartoon)
 
 ;---------------------------------;
 
-NumpadAdd::Send "{Home}!{Left}{Home}"
+NumpadAdd:: Send "!{Right}"
 
 NumpadMult::Send "{Home}"
 
-NumpadDiv::Send "{End}"
+NumpadDiv:: Send "{End}"
 
-NumpadSub::Send "{End}!{Right}"
+NumpadSub:: Send "!{Left}"

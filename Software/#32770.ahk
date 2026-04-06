@@ -1,4 +1,4 @@
-
+﻿
 RegisterPosition("_#32770"           , Position(1522 , 1122) )
 RegisterPosition("_#32770_SaveFile"  , Position(1522 , 1122) )
 RegisterPosition("_#32770_SaveVideo" , Position(1522 , 1122) )
@@ -52,70 +52,55 @@ RegisterPosition("_#32770_浏览计算机"  , Position(666 , 1122)  )
        || CheckWindowActive( "" , "#32770" , "更改图标|另存为|浏览" )
        || CheckWindowActive( "" , "#32770" , "SaveFile|SaveVideo" )
        || CheckWindowActive( "" , "#32770" , "图像另存为" )
-       
-    #IncludeAgain .\Microsoft\Explorer\Key\Base.ahk
-    #IncludeAgain .\Microsoft\Explorer\Key\Input.ahk
-    
-    MButton::WinClose("A")
 
-    ; 文件名修改框
-    Insert::{
+    #IncludeAgain .\Microsoft\Explorer\Key.ahk
+    #IncludeAgain .\Microsoft\Explorer\Key.Input.ahk
+
+    er_32770_focus()
+    {
         ControlFocus("Edit1", "A")
         Send "{End}^{Left}{Left}"
     }
-
-    NumLock::{
+    er_32770_rename()
+    {
         name := ControlGetText("Edit1", "A")
-        name := StrReplace(name, "  " , " ")
-        name := StrReplace(name, "  " , " ")
-        name := StrReplace(name, "  " , " ")
-        name := Trim(name)
-        ControlSetText(name, "Edit1", "A")
-        Send "!s"
-    }
-
-    CapsLock::
-    NumpadHome::{
-        name := ControlGetText("Edit1", "A")
-
         name := FileRename(name)
-        ; 
-        name := StrReplace(name, "#", " ")
-        name := StrReplace(name, "@", " ")
-        name := StrReplace(name, "|", " ")
-        name := StrReplace(name, "\", " ")
-        name := StrReplace(name, "/", " ")
-        name := StrReplace(name, ":", " ")
-        ; 
-        name := name . " "
-        ; 
         ControlSetText(name, "Edit1", "A")
         ControlFocus("Edit1", "A")
         Send "{End}"
     }
-    NumpadEnd::ControlSetText(A_Clipboard, "Edit1", "A")
-
-    NumpadPgDn::ErSetPathNext()
-    NumpadPgUp::ErSetPathPrev()
-
-    ![::ErActivateLeft()
-    !]::ErActivateRight()
-    !\::ErActivateMenu()
-
-    NumpadIns::WinClose("A")
-
-    ; 默认位置
-    NumpadDel::
-    #\::{
+    er_32770_move_to_default()
+    {
         MoveWindowDefault()
         try {
             window := GetActiveWindowInfo(False)
             info := window.controls.DirectUIHWND2  ;左侧信息栏
             MoveControlUDLR(info, "Left", 300, 6)
-        } catch {
-            return
         }
         Send "^!7"  ;平铺模式
     }
+    er_32770_set_clipboard()
+    {
+        ControlSetText(A_Clipboard, "Edit1", "A")
+    }
+
+    Insert::er_32770_focus()
+    +Insert::er_32770_rename()
+
+    NumLock::Send "!s"
+    NumpadHome::er_32770_rename()
+    NumpadEnd::er_32770_set_clipboard()
+    NumpadPgDn::ErSetPathNext()
+    NumpadPgUp::ErSetPathPrev()
+    NumpadIns::WinClose("A")
+    NumpadDel::er_32770_move_to_default()
+
+    MButton::WinClose("A")
+
+    #\::er_32770_move_to_default()
+
+    ![::ErActivateLeft()
+    !]::ErActivateRight()
+    !\::ErActivateMenu()
 
 #HotIf
