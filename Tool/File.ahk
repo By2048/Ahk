@@ -4,12 +4,11 @@ FileRename(base)
     name := base
 
     #Include *i File.Rename.Snippet.ahk
-    
+
     name := StrReplace(name, "  " , " ")
     name := StrReplace(name, "  " , " ")
     name := StrReplace(name, "  " , " ")
 
-    ; 字符删除
     name := StrReplace(name, "·", " ")
     name := StrReplace(name, "。", " ")
     name := StrReplace(name, "●", " ")
@@ -20,15 +19,18 @@ FileRename(base)
     name := StrReplace(name, "”", " ")
     name := StrReplace(name, "/", " ")
     name := StrReplace(name, "\", " ")
+    name := StrReplace(name, "|", " ")
+    name := StrReplace(name, ":", " ")
+
+    name := StrReplace(name, Chr(10), " ") ; 换行符 Line Feed       / LF
+    name := StrReplace(name, Chr(13), " ") ; 回车符 Carriage Return / CR
+
     name := StrReplace(name, "，", " ")
     name := StrReplace(name, "！", " ")
     name := StrReplace(name, "：", " ")
     name := StrReplace(name, "｜", " ")
     name := StrReplace(name, "／", " ")
-    name := StrReplace(name, Chr(10), " ") ; 换行符 Line Feed       / LF
-    name := StrReplace(name, Chr(13), " ") ; 回车符 Carriage Return / CR
-    
-    ; 字符替换
+
     name := StrReplace(name, "〔", "[")
     name := StrReplace(name, "〕", "]")
     name := StrReplace(name, "［", "[")
@@ -37,7 +39,7 @@ FileRename(base)
     name := StrReplace(name, "）", ")")
     name := StrReplace(name, "【", "[")
     name := StrReplace(name, "】", "]")
-    ;
+
     name := StrReplace(name, "[["    , "["  )
     name := StrReplace(name, "[["    , "["  )
     name := StrReplace(name, "]]"    , "]"  )
@@ -88,7 +90,7 @@ FileRename(base)
     ; name := RegExReplace(temp, "(.*?)(\d{2})(.)(\d{2})(.)(\d{2})(.*?)", "$1 $2-$4-$6 $7")
     ; 04.10 > 04-10
     ; name := RegExReplace(name, "(.*?)(\d{2})(\.)(\d{2})(.*?)", "$1$2-$4$5")
-    
+
     name := StrReplace(name, " .", ".")
     name := StrReplace(name, "--", "-")
     name := StrReplace(name, "--", "-")
@@ -98,7 +100,7 @@ FileRename(base)
     name := StrReplace(name, "  " , " ")
     name := StrReplace(name, "  " , " ")
     name := StrReplace(name, "  " , " ")
-    
+
     name := Trim(name, " ")
     name := Trim(name, "\")
     name := Trim(name, "_")
