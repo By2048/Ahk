@@ -40,8 +40,7 @@
     HelpText("`n  切换静音  `n", "Center", "Screen", 500)
 }
 
-; 终端
->#Space::Run WT " --focus --size 124,36 -d " Folders.Temp
+>#Space::Send "^!{Space}"
 
 ; 窗口大小调整
 >#Up::   MoveWindowOffset( 0 , 0 ,   0 , -10 )

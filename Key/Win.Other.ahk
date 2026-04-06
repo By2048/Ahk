@@ -33,68 +33,42 @@ LWin & Tab::{
 }
 
 
+; 切换 虚拟网卡 系统代理
+RWin & LShift::
+RWin & RShift::
+{
+    If ( GetKeyState("LWin", "P") )
+        return
 
-; 切换Windows默认标题栏
-; LWin & AppsKey::{
-;     if ( IsDesktops() ) {
-;         HelpText("`n Desktop Return `n", "Center", "Screen1", 500)
-;         return
-;     }
-;     WS_CAPTION := 0xC00000
-;     style := WinGetStyle("A")
-;     WinSetStyle(Format("^{}", WS_CAPTION), "A")
-;     if ( ! (style & WS_CAPTION) )
-;         HelpText("`n Windows Title Show `n", "Center", "Screen1", 500)
-;     else
-;         HelpText("`n Windows Title Hide `n", "Center", "Screen1", 500)
-; }
-
-
-
-; 切换系统 主题|亮暗
-LWin & RShift::{
-    if ( GetKeyState("LShift") ) {
-        ; 系统主题
-        path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes"
-        key   := "CurrentTheme"
-        theme := RegRead(path, key, "")
-        if ( InStr(theme, "HCBlack") ) {
-            Run "A:\Config\Default.theme"
-            HelpText("`n  Windows Theme Default  `n", "Center", "Screen", 1000)
-        } else if ( InStr(theme, "Default") ) {
-            Run "A:\Config\HCBlack.theme"
-            HelpText("`n  Windows Theme HCBlack  `n", "Center", "Screen", 1000)
+    ; 虚拟网卡
+    if ( A_ThisHotkey == "RWin & LShift" )
+    {
+        Send "^!+/"
+        locator  := ComObject("WbemScripting.SWbemLocator")
+        service  := locator.ConnectServer(".", "root\cimv2")
+        adapters := service.ExecQuery("SELECT * FROM Win32_NetworkAdapter")
+        ; 创建虚拟网卡需要一些时间 此处检测已有的网卡 Info与实际状态相反
+        info := "`n  VNA ON  `n"
+        for adapter in adapters { ; Name Description NetConnectionID
+            if ( InStr(adapter.NetConnectionID , "Clash" ) )
+                info := "`n  VNA OFF  `n"
         }
-        Sleep 999
-        Try WinClose("ahk_exe ApplicationFrameHost.exe ahk_class ApplicationFrameWindow")
-    } else {
-        ; 系统亮暗
-        path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
-        key   := "AppsUseLightTheme"
-        theme := RegRead(path, key, "")
-        if ( theme == "0" ) {
-            RegWrite(1, "REG_DWORD", path, key)
-            HelpText("`n  Light  `n", "Center", "Screen", 1000)
-        } else if ( theme == "1" ) {
-            RegWrite(0, "REG_DWORD", path, key)
-            HelpText("`n  Dark  `n", "Center", "Screen", 1000)
-        }
+        HelpText(info, "Center", "Screen1", 1000)
     }
-}
 
-
-
-; 设置代理
-RWin & RShift::{
-    path := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-    key  := "ProxyEnable"
-    ; Windows代理
-    state := RegRead(path, key, "")
-    if ( state == "0" ) {
-        RegWrite(1, "REG_DWORD", path, key)
-        HelpText("`n  Proxy On  `n", "Center", "Screen1", 500)
-    } else if ( state == "1" ) {
-        RegWrite(0, "REG_DWORD", path, key)
-        HelpText("`n  Proxy Off  `n", "Center", "Screen1", 1000)
+    ; 系统代理
+    if ( A_ThisHotkey == "RWin & RShift" )
+    {
+        Send "^!/"
+        path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
+        key   := "ProxyEnable"
+        state := RegRead(path, key, "")
+        ; RegWrite(1, "REG_DWORD", path, key)
+        info  := ""
+        if ( state == "0" )
+            info := "`n  Proxy ON  `n"
+        else if ( state == "1" )
+            info := "`n  Proxy OFF  `n"
+        HelpText(info, "Center", "Screen", 1000)
     }
 }

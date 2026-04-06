@@ -49,7 +49,7 @@
 }
 <#+/::{ ;设置 高级
     Send "{Blind}{vkFF}"
-    Run LN("Config") "Windows.msc" 
+    Run LN("Config") "Windows.msc"
 }
 
 ;类似于Vim的快捷键操作工具
@@ -78,7 +78,7 @@
         HelpText("No File", "CenterDown",  , 333)
         return
     }
-    
+
     content := ""
     try {
         content := FileRead(JQB.Phone)
@@ -105,9 +105,24 @@
 }
 
 ; 屏幕截图 临时 | 长久
-<#Insert:: ScreenShotFull(LN("ImageTemp"))
+<#Insert:: ScreenShotFull(LN("Temp\#Image"))
 <#+Insert::ScreenShotFull(LN("Temp")     )
 
 ;软件截图 临时 | 长久
-<#Delete:: ScreenShotSoftware(LN("ImageTemp"))
+<#Delete:: ScreenShotSoftware(LN("Temp\#Image"))
 <#+Delete::ScreenShotSoftware(LN("Temp")     )
+
+; 切换系统亮暗
+<#AppsKey::{
+    ; if ( GetKeyState("LShift") ) {
+    path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+    key   := "AppsUseLightTheme"
+    theme := RegRead(path, key, "")
+    if ( theme == "0" ) {
+        RegWrite(1, "REG_DWORD", path, key)
+        HelpText("`n  Light  `n", "Center", "Screen", 1000)
+    } else if ( theme == "1" ) {
+        RegWrite(0, "REG_DWORD", path, key)
+        HelpText("`n  Dark  `n", "Center", "Screen", 1000)
+    }
+}
