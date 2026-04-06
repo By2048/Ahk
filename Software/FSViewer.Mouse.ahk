@@ -1,11 +1,11 @@
-
+﻿
 NumLock::Send "{Esc}"
 
-NumpadHome::Send "{Enter}"
-NumpadEnd:: Send "{Delete}"
+NumpadHome::fsviewer_move_to_collection(FSViewerCollection.Cartoon)
+NumpadEnd:: fsviewer_move_to_collection(FSViewerCollection.Collection)
 
-NumpadPgUp::Send "!{Left}"
-NumpadPgDn::Send "!{Right}"
+NumpadPgDn::Send "{End}!{Right}"
+NumpadPgUp::Send "{Home}!{Left}{Home}"
 
-NumpadIns::Send "{Home}"
-NumpadDel::Send "{End}"
+NumpadIns::fsviewer_move_folder()
+NumpadDel::fsviewer_delete_folder()

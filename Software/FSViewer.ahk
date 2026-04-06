@@ -7,7 +7,7 @@ RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
 RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Position(1800 , 1200) )
 
 
-#Include *i FSViewer.Private.ahk
+#Include *i FSViewer.Snippet.ahk
 
 
 #HotIf CheckWindowActive( "FSViewer" , "" , " 批量转换* " )
@@ -34,14 +34,14 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         Sleep 666
         ;
         ; 设置大小
-        ControlClick("TMyButton.UnicodeClass3", "A") ; 高级属性
-        Sleep 666
-        if ( A_ThisHotkey == "-" )
-            ControlClick("TMyRadioButton.UnicodeClass2", "A") ; 以一边为基础改变大小
-        if ( A_ThisHotkey == "=" )
-            ControlClick("TMyRadioButton.UnicodeClass3", "A") ; 百分比
-        Sleep 333
-        ControlClick("TMyButton.UnicodeClass5", "A") ; 确定
+        ; ControlClick("TMyButton.UnicodeClass3", "A") ; 高级属性
+        ; Sleep 666
+        ; if ( A_ThisHotkey == "-" )
+        ;     ControlClick("TMyRadioButton.UnicodeClass2", "A") ; 以一边为基础改变大小
+        ; if ( A_ThisHotkey == "=" )
+        ;     ControlClick("TMyRadioButton.UnicodeClass3", "A") ; 百分比
+        ; Sleep 333
+        ; ControlClick("TMyButton.UnicodeClass5", "A") ; 确定
     }
 
     ; 转换图片为小图片
@@ -62,6 +62,25 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
 
 #HotIf
 
+
+#HotIf CheckWindowActive( "FSViewer" , "FastStoneImageViewerMainForm.UnicodeClass" )
+
+    BackSpace & Delete::{
+        ControlFocus("TJamShellTree.UnicodeClass1", "A")
+        ControlFocus("TJamShellTree.UnicodeClass1", "A")
+        ControlFocus("TJamShellTree.UnicodeClass1", "A")
+        if ( ControlGetClassNN(ControlGetFocus("A")) == "TJamShellTree.UnicodeClass1" )
+            Send "{AppsKey}{Up 4}{Enter}"
+    }
+
+#HotIf
+
+
+#HotIf CheckWindowActive( "FSViewer" , "TFullScreenWindow" )
+
+    \ Up::fsviewer_refresh_image()
+
+#HotIf
 
 
 #HotIf CheckWindowActive( "FSViewer" , "TTntForm.UnicodeClass" , "删除文件夹" )
@@ -168,29 +187,9 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     ;  F10::Return ;切换焦点
     ;  F11::Return ;全屏
 
-    fsviewer_activate_left_menu()
-    {
-        CoordMode("Mouse", "Screen")
-        MouseGetPos(&x, &y)
-        Arg.mouse_x := x
-        Arg.mouse_y := y
-        MouseMove(7, A_ScreenHeight/2 , 0)
-        Sleep 99
-        ctl := "TJamShellTree.UnicodeClass1"
-        ControlFocus(ctl, "A")
-        Sleep 99
-        if ( ControlGetClassNN(ControlGetFocus("A")) != ctl )
-            return
-        Send "^{Left 33}"
-        Send "{AppsKey}"
-    }
+    Arg.move_win_top_bottom := "None"
 
-    AppsKey::{
-        fsviewer_activate_left_menu()
-        Send "{Down 7}"
-        Send "{Enter}"
-        MouseMove(Arg.mouse_x, Arg.mouse_y, 0)
-    }
+    AppsKey::fsviewer_move_folder()
 
     F1::
     F2::
@@ -202,17 +201,7 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     F8::
     F9::
     {
-        EN()
-        fsviewer_activate_left_menu()
-        Send "{Down 7}"
-        Send "{Enter}"
-        MouseMove(Arg.mouse_x, Arg.mouse_y, 0)
-        Sleep 555
-        Try WinActivate("ahk_exe FSViewer.exe ahk_class TCopyMoveFolder.UnicodeClass")
-        Send "^{Tab 3}"
-        Sleep 111
-        key := StrReplace(A_ThisHotkey, "F", "")
-        Send key
+       fsviewer_move_to_collection()
     }
 
     ; 清理缩略图缓存
@@ -280,13 +269,37 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     ;         Send "^{Tab}"
     ; }
 
-    CapsLock::{
-        fsviewer_activate_left_menu()
-        Send "{Up 4}"
-        Send "{Enter}"
-        Sleep 99
-        MouseMove(Arg.mouse_x, Arg.mouse_y, 0)
+    / Up::{
+        Send "{F5}"
+        Arg.refresh_image := -1
     }
+
+    Insert::{
+        fsviewer_powershell_switch()
+    }
+
+    Delete::{
+        control_name := ControlGetClassNN(ControlGetFocus("A"))
+        if ( control_name == "TJamShellTree.UnicodeClass1" )
+            Send "{AppsKey}{Up 4}{Enter}"
+        else
+            Send "{Delete}"
+    }
+
+    BackSpace::{
+        if ( WinExist("ahk_exe psl.exe") ) {
+            Send "{F5}"
+            return
+        } else {
+            Arg.backslash_cnt := 0
+            Arg.refresh_image := 0
+        }
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) ) {
+            Send "!x"
+        }
+    }
+
+    CapsLock::fsviewer_delete_folder()
 
     `::Send "c"
     Tab::Send "m"
@@ -342,6 +355,9 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     !\::{
         ControlFocus("TImageEnView1"               , "A")
     }
+
+    BackSpace & Insert::Send "!x"
+    BackSpace & Delete::WinClose("A")
 
     #Include FSViewer.Joy.ahk
     #Include FSViewer.Mouse.ahk

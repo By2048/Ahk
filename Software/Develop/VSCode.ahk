@@ -78,7 +78,8 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
     }
 
     ; 命令 / 文件
-    >^Space::Send "^+/"
+    <^Space::Send "^+/"
+
     >!Space::Send "!+/"
 
     ; 项目 结构
