@@ -1,28 +1,28 @@
-|  Q | QDir Windows     |  *1  | 隐藏             |
-|  W | Whiteboard       |  *2  | Maye             |
-|  E | Everything       |  *3  | Help             |
-|  R | FFRenamePro      |-------------------------|
-|  T | Telegram         |   0  |                  |
-|  Y |                  |   -  | Notepad          |
-|  U |                  |   =  | VSCode           |
-|  I |                  |   [  | VSCode Temp      |
-|  O | OneCommander     |   ]  | VSCode Node      |
-|  P | VSCodeDefault    |   \  | VSCode Windows   |
-|-----------------------|   '  | Download         |
-|  A | AntiMicroX       |   "  | Resource         |
-|  S | Sandboxie        |   ,  | 回收站           |
-|  D | DuplicateCleaner |   .  | Cache            |
-|  F | FileSync         |   /  | Temp             |
-|  G | Geek             |-------------------------|
-|  H | Spy AHK          |  U D L R  | 窗口移动    |
-|  J | JetBrains        |       Esc | 任务管理器  |
-|  K | Key History      |    Insert | #Data       |
-|  L |                  |    Delete | #File       |
-|-----------------------| BackSpace | #Admin      |
-|  Z | Torrent          |       Tab |             |
-|  X | Download         |   AppsKey |             |
-|  C | Calc             |  CapsLock | ToDo        |
-|  V | Vpn              |     Enter | 我的电脑    |
-|  B | Image            |    RShift | Chrome      |
-|  N | Music            |    LShift | Chrome      |
-|  M | Video            |     Space | Terminal    |
+|  Q | QDir Windows     | *1 | 隐藏               | Book      |
+|  W | Whiteboard       | *2 | Maye               | Library   |
+|  E | Everything       | *3 | Help               | Web       |
+|  R | FFRenamePro      |-------------------------| Program   |
+|  T | Telegram         |  - |                    |-----------|
+|  Y |                  |  = | Notepad            | !Software |
+|  U |                  |-------------------------| !Data     |
+|  I |                  |  [ | VSCode Temp        | !File     |
+|  O | OneCommander     |  ] | VSCode Node        | !NAS      |
+|  P | VSCodeDefault    |  \ | VSCode Windows     |-----------|
+|-----------------------|-------------------------| Recourse  |
+|  A | AntiMicroX       | Enter | 我的电脑        | TV        |
+|  S | Sandboxie        |   "   | 回收站          | Anime     |
+|  D | DuplicateCleaner |   ;   | { Cache    }    | Video     |
+|  F | File Sync        |   /   | { Temp     }    |
+|  G | Geek             |   .   | { ToDo     }    |
+|  H | Spy AHK          |   ,   | { Download }    |
+|  J | JetBrains        |-------------------------|
+|  K | Key History      |       Esc | 任务管理器  |
+|  L | Lnks             | BackSpace | Terminal    |
+|-----------------------|     Enter | Whiteboard  |
+|  Z | Torrent          |-------------------------|
+|  X | Download         |  U D L R  | 窗口移动    |
+|  C | Calc             |-------------------------|
+|  V | Vpn              | RShift | Chrome         |
+|  B | @Image           | LShift | ChromeDefault  |
+|  N | Music            |                         |
+|  M | Video            |                         |

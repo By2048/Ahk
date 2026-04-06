@@ -23,7 +23,7 @@
  >^h::Run AHK " " AhkSpy
 ;>^j::Return
  >^k::KeyHistory()
- >^l::Return
+ >^l::Run LNK("ToDo")
 
  >^z::Run EXE("Torrent")
  >^x::Run EXE("Download")
@@ -33,37 +33,31 @@
  >^n::Run EXE("Music")
  >^m::Run EXE("Media")
 
+; >^CapsLock::{}
+
+ >^Enter::Run "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}::" ;我的电脑
+
+ >^`;::Run LNK("Download")
+  >^'::Run Folders.Admin
+
+ >^/::Run LNK("Temp")
+ >^.::Run LNK("Cache")
+ >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
+
 >^0::Return
 >^-::Run EXE("Notepad3")
 >^=::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
 
- >^`;::Run LNK("Download")
-  >^'::Run LNK("Resource")
-
-  >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
-  >^.::Run LNK("Cache")
-  >^/::Run LNK("Temp")
-
-  >^Up::   MoveWindowOffset(   0 , -10 )
+>^Up::   MoveWindowOffset(   0 , -10 )
 >^Down:: MoveWindowOffset(   0 , +10 )
 >^Left:: MoveWindowOffset( -10 ,   0 )
 >^Right::MoveWindowOffset( +10 ,   0 )
 
 >^Esc::Run "TaskMgr" ;任务管理器
 
->^CapsLock::Run LNK("ToDo")
-
->^Enter::Run "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}::" ;我的电脑
-
->^AppsKey::Return
-
->^Tab::Return
-
->^Space::Run WT " --focus --size 124,36 -d " Folders.Temp
-
-   >^Insert::Run LNK("#Data")
-   >^Delete::Run LNK("#File")
->^BackSpace::Run LNK("#Admin")
+   >^Insert::Return
+   >^Delete::Return
+>^BackSpace::Run WT " -d " Folders.Temp
 
 RCtrl & RShift::Run LN("Script\Software") "Chrome.cmd",        A_InitialWorkingDir, "Hide"
 RCtrl & LShift::Run LN("Script\Software") "ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
