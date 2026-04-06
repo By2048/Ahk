@@ -1,15 +1,4 @@
 ﻿
-LN(tag) {
-    return "A:\" . tag . "\"
-}
-LNK(tag) {
-    return "A:\#Lnk\" . tag . ".lnk"
-}
-EXE(tag) {
-    return "D:\#Lnk\" . tag . ".lnk"
-}
-
-
 Folders :=
 {
     Admin  : "A:\"   ,
@@ -21,7 +10,7 @@ Folders :=
 Folders.Prefix := Map(
 
     "CapsLock" , ""
-    
+
     , "F1"  , "✔"
     , "F2"  , "✖"
     , "F3"  , "✅"
@@ -71,7 +60,7 @@ Folders.Columns :=
 ; 设置 文件夹选项 查看 在标题栏中显示完整路径
 ; "ItemNameDisplay:800 ItemDate:200 Size:150"
 Folders.Paths := Map(
-    
+
     "回收站"                          , Folders.Columns.Recycle ,
     "C:\"                            , Folders.Columns.Name    ,
     "C:\Users"                       , Folders.Columns.Name    ,
@@ -85,3 +74,20 @@ Folders.Paths := Map(
 
 
 #Include *i Folder.Private.ahk
+
+
+LN(tag) {
+    path := Folders.Admin . "\" . tag . "\"
+    path := StrReplace(path, "\\", "\")
+    return path
+}
+LNK(tag) {
+    path := Folders.Admin . "\#Lnk\" . tag . ".lnk"
+    path := StrReplace(path, "\\", "\")
+    return path
+}
+EXE(tag) {
+    path := Folders.Admin . "\#Exe\" . tag . ".lnk"
+    path := StrReplace(path, "\\", "\")
+    return path
+}
