@@ -1,17 +1,15 @@
+﻿
+RegisterPosition( "MMC" , Position(2000 , 1222) )
+
 
 #HotIf CheckWindowActive( "MMC" , "#32770" , "添加或删除管理单元" )
-    RShift::
-    #\::{
-        SetColumnWidth( "SysListView321" , Map( 1,125 , 2,135) )
-    }
+    #\::SetColumnWidth( "SysListView321" , Map( 1,125 , 2,135) )
 #HotIf
 
 
 #HotIf CheckWindowActive( "MMC" , "MMCMainFrame" , "*[Windows]*" )
-    !BackSpace::
-    NumLock::{
-        Send "!fxn"
-    }
+    !BackSpace::Send "!fxn"
+       NumLock::Send "!fxn"
 #HotIf
 
 
@@ -49,7 +47,7 @@
 
 
 #HotIf CheckWindowActive( "MMC" , "MMCMainFrame" , "*服务*" )
-    CapsLock::F5
+    CapsLock::Send "{F5}"
     #\::{
         MoveWindowPosition(Position(1888 , 1222))
         name  := "SysListView321"
@@ -98,7 +96,7 @@
 
 
 
-RegisterPosition( "MMC" , Position(2000 , 1222) )
+
 #HotIf CheckWindowActive( "MMC" )
     #\::{
         MoveWindowPosition(Position(2000 , 1222))

@@ -4,22 +4,22 @@ ErQuickTools(cmd:="")
     Global G , Arg
 
     InitGui("Light")
-    
-    Arg.ErQuick.path_focus   := ""
-    Arg.ErQuick.path_selects := []
-    Arg.ErQuick.file_name    := ""
 
-    G.MarginX := Arg.ErQuick.margin_x
-    G.MarginY := Arg.ErQuick.margin_y
+    ErQuickCfg.path_focus   := ""
+    ErQuickCfg.path_selects := []
+    ErQuickCfg.file_name    := ""
+
+    G.MarginX := ErQuickCfg.margin_x
+    G.MarginY := ErQuickCfg.margin_y
 
     G.Opt("+DPIScale +AlwaysOnTop +Disabled +Owner -SysMenu -Caption +Border")
 
-    G.width      := Arg.ErQuick.width
-    G.line       := Arg.ErQuick.line
-    G.info       := Arg.ErQuick.info
-    G.font_color := Arg.ErQuick.font_color
-    G.back_color := Arg.ErQuick.back_color
- 
+    G.width      := ErQuickCfg.width
+    G.line       := ErQuickCfg.line
+    G.info       := ErQuickCfg.info
+    G.font_color := ErQuickCfg.font_color
+    G.back_color := ErQuickCfg.back_color
+
     G.style := {}
     G.style.text := "C" G.font_color " W" G.width
     G.style.text_disabled := G.style.text " Disabled"
@@ -31,14 +31,14 @@ ErQuickTools(cmd:="")
 
     SplitPath(path, &file_name, &path_folder)
 
-    Arg.ErQuick.path_focus   := path
-    Arg.ErQuick.path_selects := paths
-    Arg.ErQuick.path_folder  := path_folder
-    Arg.ErQuick.file_name    := file_name
-    Arg.ErQuick.file_rename  := file_name
+    ErQuickCfg.path_focus   := path
+    ErQuickCfg.path_selects := paths
+    ErQuickCfg.path_folder  := path_folder
+    ErQuickCfg.file_name    := file_name
+    ErQuickCfg.file_rename  := file_name
 
     ; 选择的文件
-    G.SetFont(Format("s{}", Arg.ErQuick.title_size), Arg.ErQuick.font_name)
+    G.SetFont(Format("s{}", ErQuickCfg.title_size), ErQuickCfg.font_name)
     title_info := ""
     if ( paths.Length == 1 )
         title_info := file_name
@@ -55,9 +55,9 @@ ErQuickTools(cmd:="")
         title_info := name_first . "`n- - - - - - - - -`n" . name_last
     }
     G.AddText(G.style.text, title_info)
-    
+
     ; 分割线
-    G.SetFont(Format("s{}", Arg.ErQuick.folder_size), Arg.ErQuick.font_name)
+    G.SetFont(Format("s{}", ErQuickCfg.folder_size), ErQuickCfg.font_name)
     if ( paths.Length == 1 )
         line := G.line
     else if ( paths.Length > 1 && paths.Length < 10 )
@@ -71,49 +71,49 @@ ErQuickTools(cmd:="")
     GLine := G.AddText(G.style.text, line)
 
     ; 快速移动文件夹
-    G.SetFont(Format("s{}", Arg.ErQuick.folder_size), Arg.ErQuick.font_name)
-    for folder in ExplorerQuickPaths[Arg.ErQuick.page] {
+    G.SetFont(Format("s{}", ErQuickCfg.folder_size), ErQuickCfg.font_name)
+    for folder in ExplorerQuickPaths[ErQuickCfg.page] {
         text := G.AddText(G.style.text_disabled, "  " folder)
         text.folder := folder
     }
 
     ; 重命名文件
-    if ( Arg.ErQuick.page == 1 && cmd == "Rename" ) {
+    if ( ErQuickCfg.page == 1 && cmd == "Rename" ) {
         GLine := G.AddText(G.style.text, G.line)
-        file_rename := FileRename(Arg.ErQuick.file_name)
-        Arg.ErQuick.file_rename := file_rename
-        Arg.ErQuick.command := "ErQuickRename"
-        G.SetFont(Format("s{}", Arg.ErQuick.title_size), Arg.ErQuick.font_name)
+        file_rename := FileRename(ErQuickCfg.file_name)
+        ErQuickCfg.file_rename := file_rename
+        ErQuickCfg.command := "ErQuickRename"
+        G.SetFont(Format("s{}", ErQuickCfg.title_size), ErQuickCfg.font_name)
         G.AddText(G.style.text, file_rename)
     }
-    
+
     ; 首页
-    if ( Arg.ErQuick.page == 1 && cmd == "" ) {
-        
+    if ( ErQuickCfg.page == 1 && cmd == "" ) {
+
         GLine := G.AddText(G.style.text, G.line)
-        
+
         if ( InStr(path,".zip") || InStr(path,".7z") || InStr(path,".rar") || InStr(path,".cbz") ) {
             if ( ! InStr(path,".bc!") && ! InStr(path,".torrent") ) {
                 G.AddText(G.style.text, "UnZip")
-                Arg.ErQuick.command := "ErQuickUnZip"
+                ErQuickCfg.command := "ErQuickUnZip"
             }
         }
 
-        #Include *i Quick.Gui.Snippet.ahk
+        #Include *i Tool.Gui.Snippet.ahk
 
-        if ( ! Arg.ErQuick.command ) {
+        if ( ! ErQuickCfg.command ) {
             G.AddText(G.style.text, "MoveToTemp")
-            Arg.ErQuick.command := "ErQuickMove | " LN("Temp")
+            ErQuickCfg.command := "ErQuickMove | " LN("Temp")
         }
-        
+
     }
-    
+
     G.AddText()
     G.Show("Center NA")
     G.ShowStatus := True
 
-    Arg.ErQuick.show   := True
-    Arg.ErQuick.folder := ""
+    ErQuickCfg.show   := True
+    ErQuickCfg.folder := ""
 }
 
 
@@ -129,7 +129,7 @@ ErQuickToolsSwitchMenu(step:=+1)
         if ( G[control_name].HasOwnProp("folder") )
             text_controls.Push(control_name)
     }
-    
+
     if ( step == -1 ) {
         obj := []
         loop text_controls.Length
@@ -141,23 +141,23 @@ ErQuickToolsSwitchMenu(step:=+1)
     for control_name in text_controls {
         if ( G[control_name].Enabled ) {
             check_index := A_Index
-            G[control_name].Opt("+Background" Arg.ErQuick.select_back)
+            G[control_name].Opt("+Background" ErQuickCfg.select_back)
             G[control_name].Enabled := False
             continue
         }
         if ( check_index ) {
-            G[control_name].Opt("+Background" Arg.ErQuick.select_fore)
+            G[control_name].Opt("+Background" ErQuickCfg.select_fore)
             G[control_name].Enabled := True
-            Arg.ErQuick.folder := G[control_name].folder
+            ErQuickCfg.folder := G[control_name].folder
             break
         }
     }
 
     if ( check_index == text_controls.Length ) || ( check_index == 0 ) {
-        G[text_controls[1]].Opt("+Background" Arg.ErQuick.select_fore)
+        G[text_controls[1]].Opt("+Background" ErQuickCfg.select_fore)
         G[text_controls[1]].Enabled := True
-        Arg.ErQuick.folder := G[text_controls[1]].folder
-    } 
+        ErQuickCfg.folder := G[text_controls[1]].folder
+    }
 }
 
 
@@ -165,13 +165,13 @@ ErQuickToolsSwitchMenu(step:=+1)
 ErQuickToolsSwitchPage(step:=+1)
 {
     if ( step == +1 ) {
-        Arg.ErQuick.page := Arg.ErQuick.page + 1
-        if ( Arg.ErQuick.page > ExplorerQuickPaths.Length )
-            Arg.ErQuick.page := ExplorerQuickPaths.Length
+        ErQuickCfg.page := ErQuickCfg.page + 1
+        if ( ErQuickCfg.page > ExplorerQuickPaths.Length )
+            ErQuickCfg.page := ExplorerQuickPaths.Length
     } else if ( step == -1 ) {
-        Arg.ErQuick.page := Arg.ErQuick.page - 1
-        if ( Arg.ErQuick.page < 1 )
-            Arg.ErQuick.page := 1
+        ErQuickCfg.page := ErQuickCfg.page - 1
+        if ( ErQuickCfg.page < 1 )
+            ErQuickCfg.page := 1
     }
     ErQuickTools()
 }
@@ -183,15 +183,15 @@ ErQuickToolsHide()
     Global G , Arg
     Try G.Destroy()
 
-    Arg.ErQuick.show    := False
-    Arg.ErQuick.page    := 1
-    Arg.ErQuick.folder  := ""
-    Arg.ErQuick.command := ""
+    ErQuickCfg.show    := False
+    ErQuickCfg.page    := 1
+    ErQuickCfg.folder  := ""
+    ErQuickCfg.command := ""
 
-    Arg.ErQuick.path_focus   := ""
-    Arg.ErQuick.path_selects := []
+    ErQuickCfg.path_focus   := ""
+    ErQuickCfg.path_selects := []
 
-    Arg.ErQuick.path_folder  := ""
-    Arg.ErQuick.file_name    := ""
-    Arg.ErQuick.file_rename  := ""
+    ErQuickCfg.path_folder  := ""
+    ErQuickCfg.file_name    := ""
+    ErQuickCfg.file_rename  := ""
 }

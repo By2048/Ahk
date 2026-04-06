@@ -1,4 +1,4 @@
-
+﻿
 ; 任务管理器
 RegisterSoftware( "taskmgr" , "TaskMgr" )
 
@@ -13,7 +13,8 @@ RegisterSoftware( "taskmgr" , "TaskMgr" )
 
     !CapsLock::Send "!{F4}"
 
-    #\::{
+    #\::
+    {
         MoveWindowPosition(Position(1666 , 1222))
 
         ; 详细信息
@@ -29,7 +30,7 @@ RegisterSoftware( "taskmgr" , "TaskMgr" )
                     ,  9 , 99    ;I/O 写入
                     , 10 , 99    ;I/O 其他
                     , 11 , 250   ;命令行
-                    , 12 , 88  ) ;GPU   
+                    , 12 , 88  ) ;GPU
         SetColumnWidth(name, width)
 
         ; 服务

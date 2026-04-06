@@ -1,9 +1,8 @@
-
-; 注册表
-
+﻿
 RegisterSoftware( "regedit" , "RegEdit" )
 
 RegisterHelpInfo("RegEdit", FilePath(A_LineFile, "RegEdit.help"))
+
 
 #HotIf CheckWindowActive( "RegEdit" )
 
@@ -13,7 +12,8 @@ RegisterHelpInfo("RegEdit", FilePath(A_LineFile, "RegEdit.help"))
     F5::Return
     $CapsLock::Send "{F5}"
 
-    #\::{
+    #\::
+    {
         total_width  := 2222
         total_height := 1222
         MoveWindowPosition(Position(total_width , total_height))

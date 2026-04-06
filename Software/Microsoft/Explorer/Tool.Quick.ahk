@@ -3,7 +3,7 @@ ErQuickRun()
 {
     Global G
     Try G.Destroy()
-    fun_arg := Arg.ErQuick.command
+    fun_arg := ErQuickCfg.command
     if ( ! fun_arg )
         return
     if ( fun_arg == "None" ) || ( ! fun_arg )
@@ -55,22 +55,22 @@ ErQuickPreview()
 ErQuickMove(folder:="")
 {
     if ( folder )
-        Arg.ErQuick.folder := folder
-    
-    if ( ! Arg.ErQuick.folder ) {
+        ErQuickCfg.folder := folder
+
+    if ( ! ErQuickCfg.folder ) {
         ErQuickToolsHide()
         return
     }
 
-    path_focus   := Arg.ErQuick.path_focus
-    path_selects := Arg.ErQuick.path_selects
+    path_focus   := ErQuickCfg.path_focus
+    path_selects := ErQuickCfg.path_selects
 
     if ( path_selects.Length == 1 ) {
         if ( InStr(FileGetAttrib(path_focus), "A") )
-            FileMove(path_focus, Arg.ErQuick.folder, 1)
+            FileMove(path_focus, ErQuickCfg.folder, 1)
         else if ( InStr(FileGetAttrib(path_focus), "D") ) {
             source := path_focus . "\*.*"
-            target := Arg.ErQuick.folder . StrSplit(path_focus, "\")[-1]
+            target := ErQuickCfg.folder . StrSplit(path_focus, "\")[-1]
             DirCreate(target)
             MoveFilesAndFolders(source, target, 0)
             DirDelete(path_focus, 1)
@@ -89,7 +89,7 @@ ErQuickMove(folder:="")
             }
         }
         for path in path_selects
-            FileMove(path, Arg.ErQuick.folder, 1)
+            FileMove(path, ErQuickCfg.folder, 1)
     }
 
     ErQuickToolsHide()
@@ -98,8 +98,8 @@ ErQuickMove(folder:="")
 
 ErQuickUnZip()
 {
-    path  := Arg.ErQuick.path_focus
-    paths := Arg.ErQuick.path_selects
+    path  := ErQuickCfg.path_focus
+    paths := ErQuickCfg.path_selects
     if ( paths.Length != 1 )
         return
     SplitPath(path, &name, &dir, &ext, &name_no_ext, &drive)
@@ -115,16 +115,16 @@ ErQuickUnZip()
 
 ErQuickRename()
 {
-    name_old := Arg.ErQuick.file_name
-    name_new := Arg.ErQuick.file_rename
+    name_old := ErQuickCfg.file_name
+    name_new := ErQuickCfg.file_rename
     if ( name_old == name_new ) {
         ErQuickToolsHide()
         return
     }
-    path_old := Arg.ErQuick.path_folder . "\" . name_old
-    path_new := Arg.ErQuick.path_folder . "\" . name_new
+    path_old := ErQuickCfg.path_folder . "\" . name_old
+    path_new := ErQuickCfg.path_folder . "\" . name_new
 
     FileMove(path_old, path_new)
-    
+
     ErQuickToolsHide()
 }

@@ -1,5 +1,5 @@
 ﻿
-ErGetFileName()
+er_get_filename()
 {
     Sleep 33
     A_Clipboard := ""
@@ -12,7 +12,7 @@ ErGetFileName()
         name := A_Clipboard
     return name
 }
-ErSetFileName(name)
+er_set_filename(name)
 {
     Sleep 33
     A_Clipboard := name
@@ -25,20 +25,20 @@ ErSetFileName(name)
 
 ; 文件重命名 规则
 <!e::{
-    name   := ErGetFileName()
+    name   := er_get_filename()
     rename := FileRename(name)
-    ErSetFileName(rename)
+    er_set_filename(rename)
 }
 
 
 ; 文件添加同步符号
 <!s::{
-    name := ErGetFileName()
+    name := er_get_filename()
     if ( InStr(name , "§") )
         name := StrReplace(name , "§" , "")
     else
         name := name . " §"
-    ErSetFileName(name)
+    er_set_filename(name)
 }
 
 

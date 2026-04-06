@@ -1,10 +1,59 @@
 ﻿
+#Include Tool.Gui.ahk
+#Include Tool.Quick.ahk
+
+
+ErDelete()
+{
+    Send "!y"
+    Sleep 99
+    Send "{Space}"
+}
+ErDeleteForever()
+{
+    Sleep 99
+    Send "{Esc}"
+    Sleep 99
+    Send "+{Delete}"
+    Sleep 123
+    Send "!y"
+    Sleep 99
+    rule := "ahk_exe explorer.exe ahk_class CabinetWClass"
+    Try WinActivate(rule)
+    If WinActive(rule)
+        Send "{Space}"
+}
+
+
+ErGetFocusedItem()
+{
+    hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
+    if ( ! hwnd )
+        return
+    path := ""
+    for Win in ComObject("Shell.Application").Windows
+        if ( Win.hwnd == hwnd )
+            path := Win.Document.FocusedItem.Path
+    return path
+}
+ErGetSelectedItems()
+{
+    paths := []
+    hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
+    if ( ! hwnd )
+        return paths
+    for Win in ComObject("Shell.Application").Windows
+        if ( Win.hwnd == hwnd )
+            for item in Win.Document.SelectedItems
+                paths.Push(item.Path)
+    return paths
+}
+
+
 ErActivateLeft()
 {
     ControlFocus(ExplorerTree, "A")
 }
-
-
 ErActivateRight()
 {
     win_class := WinGetClass("A")
@@ -14,8 +63,6 @@ ErActivateRight()
         ControlFocus("DirectUIHWND2", "A")
     Send "{Space}"
 }
-
-
 ErActivateMenu()
 {
     window   := GetActiveWindowInfo()
@@ -96,6 +143,96 @@ ErCheckWin()
     if ( win_class != "CabinetWClass" && win_class != "ExploreWClass" )
         return
     return win_id
+}
+
+
+ErModeSwitch()
+{
+    CoordMode("Mouse", "Window")
+    CoordMode("Pixel", "Window")
+    window := GetActiveWindowInfo()
+    check_x := window.w - 35
+    check_y := window.h - 18
+    color := PixelGetColor(check_x, check_y)
+    pic_mode_on  := 0x666666
+    lst_mode_off := 0x333333
+    if ( color == pic_mode_on )
+        Send "^!6"
+    if ( color == lst_mode_off )
+        Send "^!2"
+}
+
+
+ErResetPosition(columns:="")
+{
+    check_offset  := 30
+    tree_width    := 325
+    preview_width := 411
+    input_width   := 209
+    total_height  := 1250
+    total_width   := 1960 - preview_width - check_offset/2
+
+    MouseGetPos(&x_origin, &y_origin)
+    WinGetPos(&origin_win_x, &origin_win_y, &origin_win_w, &origin_win_h, "A")
+    MoveWindowPosition(Position(total_width , total_height))
+    GetActiveWindowInfo(False)
+
+    if ( window.title == "控制面板" )
+        return
+
+    ; 通过鼠标移动移动窗口,通过此操作Window可以在下次启动时使用修改后的位置
+    if (    origin_win_x != window.x || origin_win_y != window.y
+         || origin_win_w != window.w || origin_win_h != window.h ) {
+        MouseMove(window.cw/2, window.ch, 0)
+        MouseClickDrag("Left", 0, 0, 0, -50, 0, "R")
+        MouseClickDrag("Left", 0, 0, 0,  50, 0, "R")
+    }
+
+    if ( ! columns )
+        config := Folders.Paths.Get(window.title, Folders.Columns.Default)
+    else {
+        if ( Folders.Columns.HasOwnProp(columns) )
+            config := Folders.Columns.%columns%
+        else
+            config := Folders.Columns.Default
+    }
+    ErSetColumns(config)
+
+    ; 搜索框
+    ; Try {
+    ;     GetActiveWindowInfo(False)
+    ;     info := window.controls.DirectUIHWND1
+    ;     if ( Abs(info.w - input_width + check_offset + 10) > check_offset ) {
+    ;         MouseMove(info.x , info.y + info.h/2)
+    ;         offset := GetOffset("X")
+    ;         MouseMove(info.x + offset , info.y + info.h/2)
+    ;         MoveControlUDLR(info, "Left", total_width - input_width, offset)
+    ;     }
+    ; }
+
+    ; 左侧树状信息
+    Try {
+        GetActiveWindowInfo(False)
+        info := window.controls.SysTreeView321
+        if ( Abs(info.w - tree_width) > check_offset ) {
+            MouseMove(info.x + info.w , info.y + info.h/2)
+            offset := GetOffset("X")
+            MouseMove(info.x + info.w + offset , info.y + info.h/2)
+            MoveControlUDLR(info, "Right", tree_width, offset)
+        }
+    }
+
+    ; 右侧预览
+    ; GetActiveWindowInfo(False)
+    ; info := window.controls.%ExplorerMain%
+    ; if ( Abs(total_width - (info.x + info.w) - preview_width) > check_offset * 2 ) {
+    ;     MouseMove(info.x + info.w , info.y + info.h / 2)
+    ;     offset := GetOffset("X")
+    ;     MouseMove(info.x + info.w + offset , info.y + info.h / 2)
+    ;     MoveControlUDLR(info, "Right", info.x + info.w + preview_width, offset)
+    ; }
+
+    MouseMove(x_origin, y_origin, 0)
 }
 
 
@@ -221,7 +358,7 @@ ErSortColumns(config)
 
     current_column_ptr := StrPtr(sort_column_ptr)
     DllCall("propsys\PSGetNameFromPropertyKey", "Ptr", current_column_ptr, "Ptr*", &column_name_ptr := 0 )
-    current_sort_name  := StrGet(column_name_ptr, "UTF-16")        
+    current_sort_name  := StrGet(column_name_ptr, "UTF-16")
     current_sort_order := NumGet(current_column_ptr, 20, "Int")
 
     DllCall("ole32\CoTaskMemFree", "Ptr", column_name_ptr)
@@ -231,16 +368,17 @@ ErSortColumns(config)
 
     if ( sort_order == 0 )
         sort_order := -current_sort_order
-    
+
     VarSetStrCapacity(&sort_column_ptr, 24)
     DllCall("RtlZeroMemory", "Ptr", StrPtr(sort_column_ptr), "UInt", 24)
 
     current_item_ptr := StrPtr(sort_column_ptr)
     DllCall("propsys\PSGetPropertyKeyFromName", "Str", sort_name, "Ptr", current_item_ptr)
     NumPut("Int", sort_order, current_item_ptr, 20) ; 设置排序方向
-    
+
     ComCall(27, ifv2, "Ptr", StrPtr(sort_column_ptr), "Int", 1) ; 应用排序
 
     Send "{Home}"
 
 }
+
