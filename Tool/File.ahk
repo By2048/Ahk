@@ -1,7 +1,23 @@
 ﻿
-FileRename(base)
+FileRename(base_name)
 {
-    name := base
+    base_name := Trim(base_name, " ")
+    base_name := Trim(base_name, "\")
+    base_name := Trim(base_name, "/")
+
+    file_name_no_ext := base_name
+    file_ext         := ""
+
+    if ( InStr(base_name, ":") )
+        if ( InStr(base_name, "\") || InStr(base_name, "/") )
+            SplitPath(base_name, &_file_name_, &_file_dir_, &file_ext, &file_name_no_ext, &_file_drive_)
+
+    file_types := ".zip .rar .7z .jpg .jpeg .png"
+    for ( file_type in StrSplit(file_types, " ") )
+        if ( InStr(base_name, file_type, false) )
+            SplitPath(base_name, &_file_name_, &_file_dir_, &file_ext, &file_name_no_ext, &_file_drive_)
+
+    name := file_name_no_ext
 
     #Include *i File.Rename.Snippet.ahk
 
@@ -70,6 +86,7 @@ FileRename(base)
     name := StrRemove(name, "[ & ]")
     name := StrRemove(name, "[ + ]")
     name := StrRemove(name, "[ - ]")
+    name := StrRemove(name, "[ _ ]")
     name := StrRemove(name, "( - )")
 
     ; 2025.04.10 > 2025-04-10
@@ -105,6 +122,9 @@ FileRename(base)
     name := Trim(name, "\")
     name := Trim(name, "_")
     name := Trim(name, "-")
+
+    if ( file_ext )
+        name := name . "." . StrReplace(file_ext, ".", "")
 
     return name
 }
