@@ -23,14 +23,35 @@
 
 ; ------------------------------------------------- ;
 
-LWin  & LCtrl::Return
-LWin  & RCtrl::Return
-LWin  & LAlt:: Return
-LWin  & RAlt:: Return
-RWin  & RAlt:: Return
-RWin  & RCtrl::Return
-LCtrl & LWin:: Return
-LAlt  & LWin:: Return
+LWin & LCtrl::  Return
+LWin & RCtrl::  Return
+LWin & LAlt::   Return
+LWin & RAlt::   Return
+LWin & LShift:: Return
+LWin & RShift:: Return
+
+RWin & LCtrl::  Return
+RWin & RCtrl::  Return
+RWin & LAlt::   Return
+RWin & RAlt::   Return
+RWin & LShift:: Return
+RWin & RShift:: Return
+
+LCtrl & LWin::  Return
+LCtrl & RWin::  Return
+LCtrl & LShift::Return
+LCtrl & RShift::Return
+
+RCtrl & LWin::  Return
+RCtrl & RWin::  Return
+RCtrl & RShift::Return
+RCtrl & LShift::Return
+
+LAlt & LWin::   Return
+LAlt & RWin::   Return
+
+RAlt & LWin::   Return
+RAlt & RWin::   Return
 
 ; ------------------------------------------------- ;
 
