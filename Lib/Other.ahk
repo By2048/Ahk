@@ -1,4 +1,4 @@
-
+﻿
 ; 比较颜色区别
 ; F0F0F0 | 60ABF0
 CheckColor(color_a, color_b, offset:=9)
@@ -31,7 +31,7 @@ LoopList(data, current, step:=+1, circle:=false)
     next_index  := 0
     check_match := false
 
-    for loop_item in data {
+    for ( loop_item in data ) {
         if ( loop_item == current ) {
             check_match := true
             if ( step == +1 )
@@ -40,10 +40,10 @@ LoopList(data, current, step:=+1, circle:=false)
                 else {
                     if ( circle )
                         next_index := +1
-                    else 
+                    else
                         next_index := -1
                 }
-            if ( step == -1 ) 
+            if ( step == -1 )
                 if ( A_Index > 1 )
                     next_index := A_Index - 1
                 else {

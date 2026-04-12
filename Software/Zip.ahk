@@ -251,7 +251,7 @@ ZipControl :=
         else
             max_select := 19
 
-        Loop max_select {
+        Loop ( max_select ) {
             Send "{RButton}"
             Sleep 300
             Send Format("{Down {1}}", A_Index)
@@ -269,7 +269,7 @@ ZipControl :=
         else
             all_select := [ 17, 18, 2 ]
 
-        for index, item in all_select {
+        for ( index, item in all_select ) {
             Send "{RButton}"
             Sleep 300
             Send Format("{Down {1}}", item)

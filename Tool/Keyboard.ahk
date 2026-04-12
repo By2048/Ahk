@@ -42,8 +42,8 @@ KeyboardGUI()
 
     keyboard_x := keyboard_border
     keyboard_y := keyboard_border
-    for index, data in keyboard_lines {
-        for index, item in data {
+    for ( index, data in keyboard_lines ) {
+        for ( index, item in data ) {
             keyboard_txt := item[1]
             keyboard_txt := StrReplace(keyboard_txt, " ", "`n")
             if ( item.Length == 2 )

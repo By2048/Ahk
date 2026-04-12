@@ -290,16 +290,14 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         if ( WinExist("ahk_exe psl.exe") ) {
             Send "{F5}"
             return
-        } else {
-            Arg.backslash_cnt := 0
-            Arg.refresh_image := 0
         }
-        if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) ) {
-            Send "!x"
-        }
+        Arg.backslash_cnt := 0
+        Arg.refresh_image := 0
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) )
+            fsviewer_delete_folder()
     }
 
-    CapsLock::fsviewer_delete_folder()
+    CapsLock::Return
 
     `::Send "c"
     Tab::Send "m"

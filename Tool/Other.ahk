@@ -116,7 +116,7 @@ GetColumnConfig(args*)
         cfg := Trim(cfg)
         cfg := RegExReplace(cfg, "\s+", " ")
         cfg := StrSplit(cfg, " ")
-        for item in cfg {
+        for ( item in cfg ) {
             item := StrSplit(item, ":")
             index := item[1] + 0
             name  := item[2]
@@ -141,7 +141,7 @@ GetColumnConfig(args*)
         name  := StrSplit(name,  " ")
         if ( index.Length != width.Length )
             return result
-        loop index.Length {
+        loop ( index.Length ) {
             key   := index[A_Index] + 0
             value := width[A_Index] + 0
             result[key] := value
@@ -193,7 +193,7 @@ GetOffset(direction:="X", step:=3, total:=10, cursor:="")
     xx := x_origin
     yy := y_origin
     offset := 0
-    Loop total {
+    Loop ( total ) {
         move := step * A_Index
         if ( Mod(A_Index, 2) )
             move := 0 - move

@@ -25,7 +25,7 @@ ZH_Count(data)
     end_code := ToBase(0x9fa5 , 10)
     data := StrSplit(data)
     result := 0
-    for index, value in data {
+    for ( index, value in data ) {
         value := Ord(value)
         if ( value > start_code && value < end_code )
             result := result + 1
@@ -38,7 +38,7 @@ SendData(data)
     data   := StrSplit(data)
     result := ""
     ; 转换每个字符为{U+16进制Unicode编码}
-    for key, val in data
+    for ( key, val in data )
         result .= "{U+" Format("{:X}", ord(val)) "}"
     SendInput(result)
 }

@@ -52,12 +52,12 @@
     {
         length := PyCharm.FloatWindow.Length
         config := []
-        loop length 
+        loop ( length )
             config.Push(PyCharm.FloatWindow.Pop())
         PyCharm.FloatWindow := []
 
         win_left := 0
-        loop length {
+        loop ( length ) {
             win := config[A_Index]
             if ( A_Index == 1 )
                 win.x := Screen.x + Screen.w/2 - win.w/2
@@ -67,7 +67,7 @@
             PyCharm.FloatWindow.InsertAt(1, win)
             win_left := win.x
         }
-        loop length {
+        loop ( length ) {
             win := PyCharm.FloatWindow[A_Index]
             WinMove(win.x, win.y, win.w, win.h, AID(win.id))
         }

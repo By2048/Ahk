@@ -47,9 +47,10 @@ RWin & RShift::
         locator  := ComObject("WbemScripting.SWbemLocator")
         service  := locator.ConnectServer(".", "root\cimv2")
         adapters := service.ExecQuery("SELECT * FROM Win32_NetworkAdapter")
-        ; 创建虚拟网卡需要一些时间 此处检测已有的网卡 Info与实际状态相反
+        ; 创建删除虚拟网卡需要一些时间 此处检测已有的网卡 Info与实际状态相反
+        ; Name Description NetConnectionID
         info := "`n  VNA ON  `n"
-        for adapter in adapters { ; Name Description NetConnectionID
+        for ( adapter in adapters ) {
             if ( InStr(adapter.NetConnectionID , "Clash" ) )
                 info := "`n  VNA OFF  `n"
         }

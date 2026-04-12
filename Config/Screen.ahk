@@ -4,7 +4,7 @@
 Screens := {} ;所有屏幕相关信息
 Screen  := {} ;主窗口信息
 
-Loop Screens_Info.Length {
+Loop ( Screens_Info.Length ) {
     screen       := {}
     screen.id    := Screens_Info[A_Index].ID
     screen.index := A_Index

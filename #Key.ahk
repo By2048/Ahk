@@ -26,7 +26,7 @@
 #NoTrayIcon
 
 
-For Arg_Index, Arg_Value In A_Args {
+For ( Arg_Index, Arg_Value In A_Args ) {
     If ( Arg_Value == "Start" )
         Reload()
     If ( Arg_Value == "Stop" )

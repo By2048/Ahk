@@ -1,4 +1,4 @@
-
+﻿
 #Include Win.Dexpot.ahk
 #Include Win.Other.ahk
 #Include Win.Left.ahk
@@ -42,7 +42,7 @@
     volume_offset  := 5
     volume_steps   := [ 9, 22, 33, 44, 50, 55, 66, 77, 88, 100 ]
     volume_current := Round(SoundGetVolume())
-    for index, volume in volume_steps {
+    for ( index, volume in volume_steps ) {
         if ( Abs(volume_current - volume) < volume_offset ) {
             if ( InStr(A_ThisHotkey, "PgDn") ) {
                 if ( index == 1 )

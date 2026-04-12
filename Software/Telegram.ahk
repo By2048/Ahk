@@ -3,7 +3,7 @@ RegisterPosition( "Telegram__SavedMessages" , Position("[Center][2]", -20, 0.7) 
 
 RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
-TelegramArg :=
+Telegram :=
 {
     CurrentTitle : "" ,
     LastTitle    : "" ,
@@ -26,14 +26,14 @@ TelegramArg :=
 #HotIf CheckWindowActive("Telegram" , "#32770" , "SaveFile" )
     ; NumLock::Send "!s"
     ~CapsLock::{
-        TelegramArg.CurrentTitle := WinGetTitle("A")
+        Telegram.CurrentTitle := WinGetTitle("A")
         folder_current := ControlGetText("ToolbarWindow324", "A")
         folder_current := StrReplace(folder_current, "地址: ")
-        win_title := TelegramArg.CurrentTitle
+        win_title := Telegram.CurrentTitle
         win_class := WinGetClass("A")
         if ( win_class != "#32770" || win_title != "Save File" )
             return
-        move_folder := TG_get_folder_by_title(TelegramArg.LastTitle)
+        move_folder := TG_get_folder_by_title(Telegram.LastTitle)
         if ( ! move_folder )
             return
         if ( folder_current == move_folder )
@@ -78,7 +78,7 @@ TelegramArg :=
 
     ~*LButton::{
         try {
-            TelegramArg.LastTitle := WinGetTitle("A")
+            Telegram.LastTitle := WinGetTitle("A")
         }
     }
 

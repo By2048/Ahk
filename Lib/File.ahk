@@ -12,7 +12,7 @@ GetFileInfo(path)
     file   := folder.ParseName(path_file)
 
     result := {}
-    Loop 333 {
+    Loop ( 333 ) {
         detail_key   := folder.GetDetailsOf(folder.Items, A_Index)
         detail_value := folder.GetDetailsOf(file, A_Index)
         ; \u200e chr(8206) in detail_value (WTF)
@@ -28,7 +28,7 @@ GetFileInfo(path)
 GetImageSize(path)
 {
     result := {}
-    
+
     info := GetFileInfo(path)
     if ( ! info )
         return
@@ -41,7 +41,7 @@ GetImageSize(path)
     } catch {
         return result
     }
-    
+
     result.width  := width
     result.height := height
     result.w      := result.width
@@ -124,7 +124,7 @@ MoveFilesAndFolders(SourcePattern, DestinationFolder, DoOverwrite := false)
     ErrorCount := 0
     if ( DoOverwrite == 1 )
         DoOverwrite := 2  ; 请参阅 DirMove 了解模式 2 与模式 1 的区别.
-    
+
     ; 首先移动所有文件(不是文件夹)
     try
         FileMove(SourcePattern, DestinationFolder, DoOverwrite)
@@ -138,7 +138,7 @@ MoveFilesAndFolders(SourcePattern, DestinationFolder, DoOverwrite := false)
             DirMove(A_LoopFilePath, DestinationFolder "\" A_LoopFileName, DoOverwrite)
         catch {
             ErrorCount += 1
-            text := "Could not move " A_LoopFilePath " into " DestinationFolder 
+            text := "Could not move " A_LoopFilePath " into " DestinationFolder
             MsgBox(text)
         }
     }

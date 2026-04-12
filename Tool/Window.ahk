@@ -33,7 +33,7 @@ GetWindowConfig(window, config)
     win_config  := [] ;参数
     match_count := 0  ;满足的条件数
 
-    for config_name, config_value in config {
+    for ( config_name, config_value in config ) {
 
         config_items        := StrSplit(config_name, "_")
         config_process_name := ""
@@ -89,7 +89,7 @@ GetWindowScreen(window)
     ; 某些窗口全屏时 xy为-11,-11
     Window_Screen_Offset := 19
     result := { x : 0  ,  y : 0  ,  w : 0  ,  h : 0 }
-    loop Screens.Count {
+    loop ( Screens.Count ) {
         if ( window.x >= Screens.%A_Index%.x - Window_Screen_Offset ) {
             if ( window.x <= Screens.%A_Index%.x + Screens.%A_Index%.w - Window_Screen_Offset ) {
                 result.x := Screens.%A_Index%.x
@@ -191,12 +191,12 @@ GetActiveWindowInfo(cache:=True)
     ; 控件信息
     win_controls := {}
     length := Min(win_controls_id.Length, win_controls_name.Length)
-    loop length {
+    loop ( length ) {
         k := win_controls_name[A_Index]
         v := win_controls_id[A_Index]
         win_controls.%k% := { id : v }
     }
-    for control_name, control_args in win_controls.OwnProps() {
+    for ( control_name, control_args in win_controls.OwnProps() ) {
         try {
             ControlGetPos(&x, &y,&w, &h, control_name, rule)
             control_text := ControlGetText(control_name, rule)
@@ -252,7 +252,7 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
         cfg := Trim(cfg)
         if ( InStr(cfg, "|") ) {
             status := False
-            for item in StrSplit(cfg, "|") {
+            for ( item in StrSplit(cfg, "|") ) {
                 item := Trim(item)
                 if ( InStr(item, "*") ) {
                     item := StrReplace(item, "*", "")
