@@ -47,7 +47,7 @@ er_set_filename(name)
     paths := ErGetSelectedItems()
     if ( ! paths.Length )
         return
-    for path in paths {
+    for ( path in paths ) {
         RenameToData(path)
         Sleep 1000
     }
@@ -59,7 +59,7 @@ er_set_filename(name)
     paths := ErGetSelectedItems()
     if ( ! paths.Length )
         return
-    for path in paths
+    for ( path in paths )
         RenameToMd5(path)
 }
 
@@ -77,7 +77,7 @@ er_set_filename(name)
     if ( ! paths.Length )
         return
     data := ""
-    for path in paths
+    for ( path in paths )
         data := data . path . "`n"
     data := RTrim(data, "`n")
     A_Clipboard := data

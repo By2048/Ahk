@@ -1,8 +1,4 @@
 ﻿
-#Include Tool.Gui.ahk
-#Include Tool.Quick.ahk
-
-
 ErDelete()
 {
     Send "!y"
@@ -31,7 +27,7 @@ ErGetFocusedItem()
     if ( ! hwnd )
         return
     path := ""
-    for Win in ComObject("Shell.Application").Windows
+    for ( Win in ComObject("Shell.Application").Windows )
         if ( Win.hwnd == hwnd )
             path := Win.Document.FocusedItem.Path
     return path
@@ -42,9 +38,9 @@ ErGetSelectedItems()
     hwnd := WinActive("ahk_exe explorer.exe ahk_class CabinetWClass")
     if ( ! hwnd )
         return paths
-    for Win in ComObject("Shell.Application").Windows
+    for ( Win in ComObject("Shell.Application").Windows )
         if ( Win.hwnd == hwnd )
-            for item in Win.Document.SelectedItems
+            for ( item in Win.Document.SelectedItems )
                 paths.Push(item.Path)
     return paths
 }
@@ -120,7 +116,7 @@ ErNavigate(path)
     path := RTrim(path, "\")
     if ( ! DirExist(path) )
         return
-    for Win in ComObject("Shell.Application").Windows {
+    for ( Win in ComObject("Shell.Application").Windows ) {
         if ( Win.hwnd != window.id )
             continue
         if ( Win.Document.Folder.Self.Path != path ) {
@@ -248,7 +244,7 @@ ErSetColumns(config)
     config_all    := []
     config_names  := []
     config_widths := []
-    for item in StrSplit(config, " ") {
+    for ( item in StrSplit(config, " ") ) {
         name  := StrSplit(item, ":")[1]
         width := StrSplit(item, ":")[2] + 0
         name  := "System." . name
@@ -283,7 +279,7 @@ ErSetColumns(config)
 
     ; ErSetColumns
     VarSetStrCapacity(&property_key_ptr, column_count * 20)
-    for column_name in config_names {
+    for ( column_name in config_names ) {
         offset := (A_Index - 1) * 20
         DllCall("propsys\PSGetPropertyKeyFromName", "Str", column_name, "Ptr", StrPtr(property_key_ptr) + offset)
     }
@@ -292,7 +288,7 @@ ErSetColumns(config)
     ; ErSetColumnsWidth
     VarSetStrCapacity(&property_key_ptr,  20)
     VarSetStrCapacity(&column_info_ptr,  184)
-    for item in config_all {
+    for ( item in config_all ) {
         column_name  := item[1]
         column_width := item[2]
         DllCall("propsys\PSGetPropertyKeyFromName", "Ptr", StrPtr(column_name), "Ptr", StrPtr(property_key_ptr))

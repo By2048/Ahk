@@ -1,13 +1,7 @@
 ﻿
-ErQuickTools(cmd:="")
+ErQuickTools()
 {
-    Global G , Arg
-
     InitGui("Light")
-
-    ErQuickCfg.path_focus   := ""
-    ErQuickCfg.path_selects := []
-    ErQuickCfg.file_name    := ""
 
     G.MarginX := ErQuickCfg.margin_x
     G.MarginY := ErQuickCfg.margin_y
@@ -37,14 +31,14 @@ ErQuickTools(cmd:="")
     ErQuickCfg.file_name    := file_name
     ErQuickCfg.file_rename  := file_name
 
-    ; 选择的文件
+    ; 选择的文件 多个文件只显示第一个最后一个
     G.SetFont(Format("s{}", ErQuickCfg.title_size), ErQuickCfg.font_name)
     title_info := ""
     if ( paths.Length == 1 )
         title_info := file_name
     else if ( paths.Length < 13 ) {
         title_info := ""
-        for path in paths {
+        for ( path in paths ) {
             name := StrSplit(path, "\")[-1]
             title_info := title_info . name . "`n"
         }
@@ -56,7 +50,7 @@ ErQuickTools(cmd:="")
     }
     G.AddText(G.style.text, title_info)
 
-    ; 分割线
+    ; 第一个分割线 分割线中间显示数量
     G.SetFont(Format("s{}", ErQuickCfg.folder_size), ErQuickCfg.font_name)
     if ( paths.Length == 1 )
         line := G.line
@@ -68,30 +62,28 @@ ErQuickTools(cmd:="")
         line := StrReplace(G.info, "--{----}--", "{ " paths.Length "  }")
     else
         line := G.line
-    GLine := G.AddText(G.style.text, line)
+    G.AddText(G.style.text, line)
 
-    ; 快速移动文件夹
-    G.SetFont(Format("s{}", ErQuickCfg.folder_size), ErQuickCfg.font_name)
-    for folder in ExplorerQuickPaths[ErQuickCfg.page] {
-        text := G.AddText(G.style.text_disabled, "  " folder)
-        text.folder := folder
-    }
+    ; 第一页 快速重命名|快速命令
+    if ( ErQuickCfg.page == 1 ) {
 
-    ; 重命名文件
-    if ( ErQuickCfg.page == 1 && cmd == "Rename" ) {
-        GLine := G.AddText(G.style.text, G.line)
-        file_rename := FileRename(ErQuickCfg.file_name)
-        ErQuickCfg.file_rename := file_rename
-        ErQuickCfg.command := "ErQuickRename"
-        G.SetFont(Format("s{}", ErQuickCfg.title_size), ErQuickCfg.font_name)
-        G.AddText(G.style.text, file_rename)
-    }
+        ; 快速重命名文件
+        G.SetFont(Format("s{}", ErQuickCfg.rename_size), ErQuickCfg.font_name)
+        if ( paths.Length == 1 ) {
+            file_name   := ErQuickCfg.file_name
+            file_rename := FileRename(file_name)
+            if ( file_rename != file_name ) {
+                ErQuickCfg.file_rename := file_rename
+                G.AddText(G.style.text, ErQuickCfg.file_rename)
+            } else {
+                ErQuickCfg.file_rename := file_name
+                G.AddText(G.style.text, "~ ~ ~ ~ ~")
+            }
+        }
 
-    ; 首页
-    if ( ErQuickCfg.page == 1 && cmd == "" ) {
+        G.AddText("")
 
-        GLine := G.AddText(G.style.text, G.line)
-
+        ; 根据文件名执行的快速命令
         if ( InStr(path,".zip") || InStr(path,".7z") || InStr(path,".rar") || InStr(path,".cbz") ) {
             if ( ! InStr(path,".bc!") && ! InStr(path,".torrent") ) {
                 G.AddText(G.style.text, "UnZip")
@@ -99,13 +91,21 @@ ErQuickTools(cmd:="")
             }
         }
 
-        #Include *i Tool.Gui.Snippet.ahk
+        #Include *i Gui.Snippet.ahk
 
         if ( ! ErQuickCfg.command ) {
-            G.AddText(G.style.text, "MoveToTemp")
-            ErQuickCfg.command := "ErQuickMove | " LN("Temp")
+            G.AddText(G.style.text, "MoveToCache")
+            ErQuickCfg.command := "ErQuickMove | " LN("Cache")
         }
+    }
 
+    ; 快速移动文件夹
+    if ( ErQuickCfg.page >1 ) {
+        G.SetFont(Format("s{}", ErQuickCfg.folder_size), ErQuickCfg.font_name)
+        for ( folder in ExplorerQuickPaths[ErQuickCfg.page] ) {
+            text := G.AddText(G.style.text_disabled, "  " folder)
+            text.folder := folder
+        }
     }
 
     G.AddText()
@@ -125,20 +125,20 @@ ErQuickToolsSwitchMenu(step:=+1)
     text_controls := []
     win_controls  := WinGetControls(G.Hwnd)
 
-    for control_name in win_controls {
+    for ( control_name in win_controls ) {
         if ( G[control_name].HasOwnProp("folder") )
             text_controls.Push(control_name)
     }
 
     if ( step == -1 ) {
         obj := []
-        loop text_controls.Length
+        loop ( text_controls.Length )
             obj.Push(text_controls[0 - A_Index])
         text_controls := obj
     }
 
     check_index := 0
-    for control_name in text_controls {
+    for ( control_name in text_controls ) {
         if ( G[control_name].Enabled ) {
             check_index := A_Index
             G[control_name].Opt("+Background" ErQuickCfg.select_back)
@@ -164,14 +164,18 @@ ErQuickToolsSwitchMenu(step:=+1)
 
 ErQuickToolsSwitchPage(step:=+1)
 {
-    if ( step == +1 ) {
+    min_page := 2
+    max_page := ExplorerQuickPaths.Length
+    if ( step == 0 ) {
+        ErQuickCfg.page := min_page
+    } else if ( step == +1 ) {
         ErQuickCfg.page := ErQuickCfg.page + 1
-        if ( ErQuickCfg.page > ExplorerQuickPaths.Length )
-            ErQuickCfg.page := ExplorerQuickPaths.Length
+        if ( ErQuickCfg.page > max_page )
+            ErQuickCfg.page := max_page
     } else if ( step == -1 ) {
         ErQuickCfg.page := ErQuickCfg.page - 1
-        if ( ErQuickCfg.page < 1 )
-            ErQuickCfg.page := 1
+        if ( ErQuickCfg.page < min_page )
+            ErQuickCfg.page := min_page
     }
     ErQuickTools()
 }

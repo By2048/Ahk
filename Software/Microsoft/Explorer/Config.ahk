@@ -28,15 +28,16 @@ RegisterHelpInfo( "Explorer_Progman" , "Key\Win.Fxx.Private.help" )
 ; 快速切换地址栏路径
 ExplorerAddressPaths := [ LN("Temp") , LN("Cache") ]
 
-; Quick工具路径
-ExplorerQuickPaths := [  [ LN("Temp") , LN("Cache") ]  ]
+; 快速移动路径
+ExplorerQuickPaths := [  ]
 
 ErQuickCfg :=
 {
     show    : False ,
     page    : 1     ,
     folder  : ""    ,
-    command : ""    ,
+
+    command : ""  ,
 
     path_focus   : "" ,
     path_selects : "" ,
@@ -49,6 +50,7 @@ ErQuickCfg :=
 
     folder_size : 13 ,
     title_size  : 9  ,
+    rename_size : 11 ,
 
     font_name  : "Verdana"  ,
     font_color : "000000" ,

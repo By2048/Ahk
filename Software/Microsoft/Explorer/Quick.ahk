@@ -80,7 +80,7 @@ ErQuickMove(folder:="")
     }
 
     if ( path_selects.Length > 1 ) {
-        for path in path_selects {
+        for ( path in path_selects ) {
             if ( InStr(FileGetAttrib(path), "D") ) {
                 text := "`n  Selected Path Contains Folders  `n"
                 HelpText(text, "Center", "Screen", 1500)
@@ -88,7 +88,7 @@ ErQuickMove(folder:="")
                 return
             }
         }
-        for path in path_selects
+        for ( path in path_selects )
             FileMove(path, ErQuickCfg.folder, 1)
     }
 
