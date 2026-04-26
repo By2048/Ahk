@@ -1,8 +1,8 @@
 ﻿
 NumLock::Send "{Esc}"
 
-NumpadHome::fsviewer_move_to_collection(FSViewerCollection.Cartoon)
-NumpadEnd:: fsviewer_move_to_collection(FSViewerCollection.Collection)
+NumpadHome::fsviewer_move_to_collection(FSViewer.Collection.Cartoon)
+NumpadEnd:: fsviewer_move_to_collection(FSViewer.Collection.Collection)
 
 NumpadPgDn::Send "{End}!{Right}"
 NumpadPgUp::Send "{Home}!{Left}{Home}"

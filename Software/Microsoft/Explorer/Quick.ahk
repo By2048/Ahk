@@ -44,8 +44,9 @@ ErQuickPreview()
 
     if ( InStr(path,".zip") || InStr(path,".7z") || InStr(path,".rar") || InStr(path,".cbz") ) {
         cmd := PSL " -NoProfile -NoLogo -File "
-        cmd .= "A:\Script\PSL\File\Setup.ps1 -Path "
-        cmd .= Format("`"{}`"", path)
+        cmd .= " A:\Script\PSL\File\Setup.ps1 "
+        cmd .= " -Path " Format("`"{}`"", path)
+        cmd .= " -Mode Preview -Quality 80 "
         Run cmd
         return
     }

@@ -31,13 +31,13 @@ Numpad6::
 Numpad9::fsviewer_delete_folder()
 
 ; 下
-Numpad3::fsviewer_move_to_collection(FSViewerCollection.Collection)
+Numpad3::fsviewer_move_to_collection(FSViewer.Collection.Collection)
 
 ; 左
-Numpad7::fsviewer_move_to_collection(FSViewerCollection.CartoonOther)
+Numpad7::fsviewer_move_to_collection(FSViewer.Collection.CartoonOther)
 
 ; 右
-Numpad1::fsviewer_move_to_collection(FSViewerCollection.Cartoon)
+Numpad1::fsviewer_move_to_collection(FSViewer.Collection.Cartoon)
 
 ;---------------------------------;
 

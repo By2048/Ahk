@@ -7,6 +7,26 @@ RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
 RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Position(1800 , 1200) )
 
 
+FSViewer :=
+{
+    Refresh : 0 ,
+    move_win_top_bottom : "None" ,
+
+    Collection :
+    {
+        AI              : 1 ,
+        Adult           : 2 ,
+        CollectionOther : 3 ,
+        Collection      : 4 ,
+        Cartoon         : 5 ,
+        CartoonOther    : 6 ,
+        CartoonMark     : 7 ,
+        CartoonLoLi     : 8 ,
+        Anime           : 9
+    }
+}
+
+
 #Include *i FSViewer.Snippet.ahk
 
 
@@ -59,6 +79,9 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
             ControlClick("TPngBitBtn.UnicodeClass1", "A") ;开始
         }
     }
+
+    ; 开始
+    Enter::ControlClick("TPngBitBtn.UnicodeClass1", "A")
 
 #HotIf
 
@@ -187,7 +210,7 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     ;  F10::Return ;切换焦点
     ;  F11::Return ;全屏
 
-    Arg.move_win_top_bottom := "None"
+    FSViewer.move_win_top_bottom := "None"
 
     AppsKey::fsviewer_move_folder()
 
@@ -271,7 +294,7 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
 
     / Up::{
         Send "{F5}"
-        Arg.refresh_image := -1
+        FSViewer.refresh := -1
     }
 
     Insert::{
@@ -292,10 +315,14 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
             return
         }
         Arg.backslash_cnt := 0
-        Arg.refresh_image := 0
-        if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) )
-            fsviewer_delete_folder()
+        FSViewer.refresh := 0
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) )
+            if ( A_TimeSincePriorHotkey < 456 )
+                fsviewer_delete_folder()
     }
+
+    BackSpace & \::Send "{Esc}"
+    \ & BackSpace::Send "{Esc}"
 
     CapsLock::Return
 
@@ -352,6 +379,15 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     !3::
     !\::{
         ControlFocus("TImageEnView1"               , "A")
+    }
+
+    !Tab::{
+        Send "{Blind}{vkFF}"
+        Send "{F12}"
+        Sleep 333
+        ControlSetChecked(-1 , "TMyCheckBox.UnicodeClass3", "A") ; 自动切换下一个目录
+        Sleep 99
+        ControlClick("TMyButton.UnicodeClass5", "A") ; 确定
     }
 
     BackSpace & Insert::Send "!x"

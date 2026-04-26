@@ -60,6 +60,7 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
     ^CapsLock::Return
     ^+CapsLock::Return
     ~!CapsLock::Send "^{CapsLock}"
+        ; HelpText("123", "Center", "Screen", 666)
     ~!+CapsLock::Send "^+{CapsLock}"
 
     ; 特殊按键覆盖 F4

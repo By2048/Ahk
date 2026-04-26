@@ -59,11 +59,11 @@
 
 >^Tab::Return
 
->^Space::Run WT " --focus --size 124,36 -d " Folders.Temp
+>^Space::Run WTMini
 
    >^Insert::Run LNK("#Data")
    >^Delete::Run LNK("#File")
->^BackSpace::Run LNK("#Admin")
+>^BackSpace::Run Folders.Admin
 
 RCtrl & RShift::Run LN("Script\Software") "Chrome.cmd",        A_InitialWorkingDir, "Hide"
 RCtrl & LShift::Run LN("Script\Software") "ChromeDefault.cmd", A_InitialWorkingDir, "Hide"

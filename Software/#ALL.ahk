@@ -42,6 +42,7 @@ RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
     #\::MoveWindowPosition( Position(2500 , 1357) )
     `;:::
     +;::`;
+    !c::Send "^{F6}" ;复制文件夹
 #HotIf
 
 
