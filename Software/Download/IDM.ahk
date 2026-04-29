@@ -3,18 +3,28 @@ RegisterSoftware( "IDMan" , "IDM" )
 RegisterPosition( "IDM" , Position(1111 , 999) )
 
 #HotIf CheckWindowActive( "IDM" )
-    CapsLock::{
+
+     CapsLock::
+    +CapsLock::
+    {
         window := GetActiveWindowInfo(False)
         text   := window.text
         title  := window.title
+
         if ( InStr(title, "Internet Download Manager") )
             Send "{LAlt}{Enter}{Enter}"
         if ( InStr(title, "输入新任务的地址") )
             Send "!k"
         if ( InStr(title, "下载文件信息") )
             Send "!s"
-        if ( InStr(text, "IDM DwnlProgress Window") || InStr(title, "%") )
-            MoveWindowPosition(Position(1010 , 777))
+
+        if ( InStr(text, "IDM DwnlProgress Window") || InStr(title, "%") ) {
+            if ( A_ThisHotkey == "CapsLock" )
+                MoveWindowPosition(Position(1010 , 777))
+            if ( A_ThisHotkey == "+CapsLock" )
+                MoveWindowPosition(Position("[Center][2]", Screens.2.h - 1111, 1010, 777))
+        }
+
     }
 #HotIf
 
