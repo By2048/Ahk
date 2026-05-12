@@ -23,16 +23,18 @@ Telegram :=
 #HotIf
 
 
-#HotIf CheckWindowActive("Telegram" , "#32770" , "SaveFile" )
+#HotIf CheckWindowActive("Telegram" , "#32770" , "SaveFile|SaveVideo" )
     ; NumLock::Send "!s"
+    ~LShift::{
+    }
     ~CapsLock::{
         Telegram.CurrentTitle := WinGetTitle("A")
         folder_current := ControlGetText("ToolbarWindow324", "A")
         folder_current := StrReplace(folder_current, "地址: ")
         win_title := Telegram.CurrentTitle
         win_class := WinGetClass("A")
-        if ( win_class != "#32770" || win_title != "Save File" )
-            return
+        ; if ( win_class != "#32770" || win_title != "Save File" )
+        ;     return
         move_folder := TG_get_folder_by_title(Telegram.LastTitle)
         if ( ! move_folder )
             return

@@ -1,20 +1,4 @@
 ﻿
-RegisterSoftware("scrcpy" , "Scrcpy")
-RegisterHelpInfo("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
-#HotIf CheckWindowActive("Scrcpy")
-    #\::
-    #+\::{
-        GetActiveWindowInfo(False)
-        win_w := window.cw
-        win_h := window.ch
-        if ( A_ThisHotKey == "#\" )
-            MoveWindowPosition(Position(55, "Center", win_w, win_h))
-        if ( A_ThisHotKey == "#+\" )
-            MoveWindowPosition(Position("[Center][2]", win_w, win_h))
-    }
-#HotIf
-
-
 RegisterSoftware("antimicrox" , "AntiMicroX")
 RegisterPosition("AntiMicroX" , Position(1234 , 1111))
 RegisterPosition("AntiMicroX__按键" , Position(1600 , 666))
@@ -85,31 +69,6 @@ RegisterPosition( "Maye" , Position(1000 , 900) )
     ; 读档
     F7::Return
     AppsKey::Send "{F7}"
-#HotIf
-
-
-RegisterSoftware("Adobe Premiere Pro" , "PR")
-#HotIf CheckWindowActive("PR")
-    #\::{
-        x := 2
-        y := 0
-        w := A_ScreenWidth  - x * 2
-        h := A_ScreenHeight + 9
-        MoveWindowPosition( [ x, y, w, h ] )
-    }
-#HotIf
-
-
-RegisterSoftware("Photoshop" , "PS")
-#HotIf CheckWindowActive("PS")
-    #\::MoveWindowPosition( [ 0, 0, A_ScreenWidth, A_ScreenHeight ] )
-    #+\::{
-        x := 40
-        y := 20
-        w := A_ScreenWidth  - x * 2
-        h := A_ScreenHeight - y * 2
-        MoveWindowPosition( [ x, y, w, h ] )
-    }
 #HotIf
 
 

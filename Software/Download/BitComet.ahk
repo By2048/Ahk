@@ -2,7 +2,7 @@
 RegisterHelpInfo("BitComet", FilePath(A_LineFile, "BitComet.help"))
 
 
-BTControl := 
+BTControl :=
 {
     NewTask :
     {
@@ -46,7 +46,7 @@ BTControl :=
     }
     Insert::{
         ControlClick("Button1", "A")
-        Send "{Enter}"   
+        Send "{Enter}"
     }
     BackSpace::{
         ControlClick("Button2", "A")
@@ -63,7 +63,7 @@ BTControl :=
 
 #HotIf CheckWindowActive("BitComet", "#32770", "通知")
     NumpadHome::
-    NumLock::    
+    NumLock::
     AppsKey::{
         Try WinClose("A")
     }
@@ -84,7 +84,7 @@ BTControl :=
         cfg := " 1:名称:999  2:大小:111  3:%:77 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth(BTControl.NewTask.SysListViewFiles , cfg)
-        ; 
+        ;
         cfg := " 1:下载顺序:111  2:文件名称:777  3:大小:123 4:%:77 5:当前优先级:123 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth(BTControl.NewTask.SysListViewQueue , cfg)
@@ -94,7 +94,7 @@ BTControl :=
 
     [::ControlSetText(LN("Cache"), BTControl.NewTask.EditFolder, "A")
     ]::ControlSetText(LN("Temp") , BTControl.NewTask.EditFolder, "A")
-    
+
     ; 选择下载文件夹
     \::
     MButton::
@@ -121,7 +121,7 @@ BTControl :=
     NumpadHome::{
         Try WinClose("A")
     }
-    
+
     ; 设置位置 文件名称排序 设置列 设置路径
     NumpadEnd::
     #\::{
@@ -153,7 +153,7 @@ BTControl :=
     NumpadIns::{
         MouseClickTool(1094, 404, "Window")
     }
-    
+
     ; 全选
     NumpadDel::{
         ControlSetChecked(True, BTControl.NewTask.ButtonSelectAll, "A")
@@ -161,7 +161,7 @@ BTControl :=
 
     !Tab::^Tab
     !+Tab::^+Tab
-    
+
 #HotIf
 
 
@@ -185,7 +185,7 @@ BTControl :=
         Sleep 999
         Try WinClose("ahk_exe BitComet.exe ahk_class #32770 通知")
     }
-    
+
     CapsLock::{
         code := A_Clipboard
         if ( StrLen(code) == 40 ) {
@@ -207,7 +207,7 @@ BTControl :=
     NumpadDel::
     #\::{
         Send "{Blind}{vkFF}"
-        
+
         total_width  := 2333
         total_height := 999
         left_width   := 255
@@ -293,5 +293,5 @@ BTControl :=
     }
 
     ^!AppsKey::Reload
-    
+
 #HotIf

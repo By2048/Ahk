@@ -72,26 +72,26 @@ RegisterPosition( "FlClash" , Position( "[Center][2]" , 1000 , 963) , "Backup"  
     }
 
     ; 一键更新
-    ^!AppsKey::{
-        HelpText("`nStart ...`n", "Center", "Screen")
-        ; 更新订阅
-        MouseClickTool(240, 90, "Window", "Left")
-        Send "{Down 2}{Enter}"
-        Sleep 5000
-        ; 去重
-        MouseClickTool(30, 207, "Window", "Right")
-        Send "{Down 4}{Enter}"
-        Sleep 1500
-        ; 测试
-        MouseClickTool(30, 207, "Window", "Left")
-        Send "^r"
-        Sleep 1500
-        ; 更新Geo
-        MouseClickTool(685, 90, "Window")
-        Send "{Up 2}{Enter}"
-        Sleep 1000
-        HelpText("`nOver`n", "Center", "Screen", 1000)
-    }
+    ; ^!AppsKey::{
+    ;     HelpText("`nStart ...`n", "Center", "Screen")
+    ;     ; 更新订阅
+    ;     MouseClickTool(240, 90, "Window", "Left")
+    ;     Send "{Down 2}{Enter}"
+    ;     Sleep 5000
+    ;     ; 去重
+    ;     MouseClickTool(30, 207, "Window", "Right")
+    ;     Send "{Down 4}{Enter}"
+    ;     Sleep 1500
+    ;     ; 测试
+    ;     MouseClickTool(30, 207, "Window", "Left")
+    ;     Send "^r"
+    ;     Sleep 1500
+    ;     ; 更新Geo
+    ;     MouseClickTool(685, 90, "Window")
+    ;     Send "{Up 2}{Enter}"
+    ;     Sleep 1000
+    ;     HelpText("`nOver`n", "Center", "Screen", 1000)
+    ; }
 
 
     #BackSpace::MouseClickTool(1052, 73, "Window", "Left")
