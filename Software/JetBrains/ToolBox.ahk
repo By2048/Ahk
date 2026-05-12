@@ -43,6 +43,11 @@ RegisterSoftware( "jetbrains-toolbox" , "JetBrainsToolBox" )
     ^q::Return
     #BackSpace::Send "^q"
 
+    RWin::
+    {
+        MoveWindowPosition( Position("Center", window.w, window.h) )
+    }
+
     ; add/delete to/from favorites
     ; hide the project from the Toolbox App
     ; !=::Return

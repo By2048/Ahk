@@ -1,10 +1,7 @@
-
+﻿
 Loop {
 
     Sleep 1000
-
-    if ( Debug )
-        continue
 
     try {
         GetActiveWindowInfo()

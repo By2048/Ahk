@@ -64,6 +64,10 @@ er_set_filename(name)
 }
 
 
+; 备份文件 xxx.file -> xxx.file.backup
+; <!b::{}
+
+
 ; 复制选中的文件路径
 <!c::{
     path := ErGetFocusedItem()
@@ -93,6 +97,7 @@ er_set_filename(name)
     path   := folder . "\" . '~ ~ ~'
     if ( FileExist(path) )
         return
+    HelpText("`n  " path "  `n", "Center", "Screen", 999)
     FileOpen(path, "w").Close()
     ; ErActivateMenu()
     ; Sleep 99
@@ -110,6 +115,7 @@ er_set_filename(name)
     path   := folder . "\" . '~ ~ ~'
     if ( FileExist(path) )
         return
+    HelpText("`n  " path "  `n", "Center", "Screen", 999)
     DirCreate(path)
     ; ErActivateMenu()
     ; Sleep 99
