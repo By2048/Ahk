@@ -25,21 +25,20 @@
 }
 
 ; AI
-LWin::{
-    Send "{Blind}{vkFF}"
-    if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
-        if ( A_TimeSincePriorHotkey < 333 ) {
-            Send "^!+{Help}"
-            PyCharm.DoubleLWin    := True
-            PyCharm.CapsLockToEsc := True
-        }
-    }
-}
+; LWin::{
+;     Send "{Blind}{vkFF}"
+;     if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
+;         if ( A_TimeSincePriorHotkey < 333 ) {
+;             Send "^!+{Help}"
+;             PyCharm.DoubleLWin    := True
+;             PyCharm.CapsLockToEsc := True
+;         }
+;     }
+; }
 
 ; Jump
-LAlt::{
+~RAlt::{
     Send "{Blind}{vkFF}"
-    Global Arg
     if ( PyCharm.ClickCnt > 0 ) {
         PyCharm.ClickCnt += 1
         return
@@ -47,7 +46,8 @@ LAlt::{
         PyCharm.ClickCnt := 1
     }
     SetTimer(Timer, -500)
-    Timer() {
+    Timer()
+    {
         if ( PyCharm.ClickCnt == 1 )
             Send "{Help}" ;行首尾跳转
         else if ( PyCharm.ClickCnt == 2 )
@@ -161,7 +161,7 @@ RShift & LAlt::Send "^+\"
 <#+=::Send "^!+{NumpadAdd}"  ;IDE 增加
 
  <#Enter::Send "^!{NumpadDiv}"  ;窗口全屏
-<#+Enter::Send "^!+{NumpadDiv}" ;Zen模式   
+<#+Enter::Send "^!+{NumpadDiv}" ;Zen模式
 
  <^Esc::Send "{Blind}^{Pause}"
  <!Esc::Send "{Blind}!{Pause}"

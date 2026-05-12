@@ -1,4 +1,22 @@
 ﻿
+PyCharm :=
+{
+    ClickCnt : 0 ,
+
+    CapsLockToEsc    : False ,
+    CapsLockActivate : False ,
+
+    DoubleLWin   : False ,
+    DoubleLAlt   : False ,
+    DoubleLCtrl  : False ,
+    DoubleLShift : False ,
+
+    AppsKeyActivate   : False ,
+    AppsKeyEnterCount : 0     ,
+
+    FloatWindow : [] ,
+}
+
 RegisterPosition( "PyCharm_SunAwtFrame" , Position( -13 ,  0 , 2584 , 1451 ) , "Default" )
 RegisterPosition( "PyCharm_SunAwtFrame" , Position( 19  , 29 , 2522 , 1393 ) , "Backup"  )
 

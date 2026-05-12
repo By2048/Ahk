@@ -58,3 +58,5 @@
 #HotIf CheckWindowActive("PyCharm", "SunAwtDialog", "书签")
     $CapsLock::^CapsLock
 #HotIf
+
+
