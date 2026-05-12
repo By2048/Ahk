@@ -1,14 +1,11 @@
 ﻿
-; 调试模式
-Debug := 0
-
-
 _ := 0
 
 
 ; 存储当前窗口的信息
 ; 缓存处理 优化相关性能
-Window := {
+Window :=
+{
     ;
     cache_id     :  0 ,
     cache_title  : "" ,
@@ -40,7 +37,8 @@ Window := {
 
 
 ; 各种临时性数据
-Arg := {
+Arg :=
+{
     ;
     lwin_click : 0 ,
     lwin_press : 0 ,
@@ -53,20 +51,20 @@ Arg := {
 
     lalt_click : 0 ,
     ralt_click : 0 ,
-    
+
     lshift_click : 0 ,
     rshift_click : 0 ,
-    
+
     up_cnt    : 0 ,
     down_cnt  : 0 ,
     left_cnt  : 0 ,
     right_cnt : 0 ,
-    
+
     scroll_cnt   : 0 ,
     scroll_click : 0 ,
 
     backslash_cnt : 0 ,
-    
+
     pause_click    : 0 ,
     numlock_click  : 0 ,
     capslock_click : 0 ,
@@ -79,8 +77,9 @@ Arg := {
 
 
 ; 手机<->电脑 剪切板文件
-JQB := { 
-    ; 
-    Phone   : A_ScriptDir . "\Data\JQB_Phone"   , 
+JQB :=
+{
+    ;
+    Phone   : A_ScriptDir . "\Data\JQB_Phone"   ,
     Windows : A_ScriptDir . "\Data\JQB_Windows"
 }

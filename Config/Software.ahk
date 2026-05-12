@@ -11,7 +11,7 @@ PSLMini       := PSL " -NoProfile -NoLogo "
 PSLMiniFile   := PSL " -NoProfile -NoLogo -File "
 
 AHK           := "D:\AutoHotkey\#\AutoHotkey.exe"
-AhkSpy        := "D:\AutoHotkey\V2\WindowSpy.ahk"
+AhkSpy        := "D:\AutoHotkey\#\WindowSpy.ahk"
 BDown         := "D:\BBDown\BBDown.exe"
 Aria          := "D:\Aria2\aria2c.exe"
 ADB           := "D:\Adb\adb.exe"
