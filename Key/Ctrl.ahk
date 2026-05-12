@@ -21,7 +21,7 @@
  >^f::Run EXE("FreeFileSync")
  >^g::Run EXE("Geek")
  >^h::Run AHK " " AhkSpy
-;>^j::Return
+ >^j::Run EXE("JetBrains")
  >^k::KeyHistory()
  >^l::Return
 
@@ -38,32 +38,33 @@
 >^=::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
 
  >^`;::Run LNK("Download")
-  >^'::Run LNK("Resource")
+  >^'::Run LNK("Sync")
 
-  >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
-  >^.::Run LNK("Cache")
-  >^/::Run LNK("Temp")
+>^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
+>^/::Run LNK("Temp")
+>^.::Run LNK("Cache")
 
-  >^Up::   MoveWindowOffset(   0 , -10 )
+  >^Up:: MoveWindowOffset(   0 , -10 )
 >^Down:: MoveWindowOffset(   0 , +10 )
 >^Left:: MoveWindowOffset( -10 ,   0 )
 >^Right::MoveWindowOffset( +10 ,   0 )
 
 >^Esc::Run "TaskMgr" ;任务管理器
 
->^CapsLock::Run LNK("ToDo")
-
->^Enter::Run "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}::" ;我的电脑
-
->^AppsKey::Return
-
 >^Tab::Return
 
 >^Space::Run WTMini
 
-   >^Insert::Run LNK("#Data")
-   >^Delete::Run LNK("#File")
 >^BackSpace::Run Folders.Admin
+
+>^Enter::Run "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}::" ;我的电脑
+
+>^CapsLock::Run LNK("ToDo")
+
+>^Insert::Run Folders.Data
+>^Delete::Run Folders.File
+
+>^AppsKey::Return
 
 RCtrl & RShift::Run LN("Script\Software") "Chrome.cmd",        A_InitialWorkingDir, "Hide"
 RCtrl & LShift::Run LN("Script\Software") "ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
@@ -71,8 +72,8 @@ RCtrl & LShift::Run LN("Script\Software") "ChromeDefault.cmd", A_InitialWorkingD
 Arg.ctrl_show    := False
 Arg.ctrl_content := ""
 
-~RCtrl::{
-    Global Arg
+~RCtrl::
+{
     if ( Arg.rctrl_click > 0 ) {
         Arg.rctrl_click += 1
         return
@@ -84,7 +85,6 @@ Arg.ctrl_content := ""
 
 CtrlTimer()
 {
-    Global Arg
     if ( Arg.rctrl_click == 1 ) {
         if ( Arg.ctrl_show )
             CtrlGui()
@@ -101,8 +101,6 @@ CtrlTimer()
 
 CtrlGui()
 {
-    Global G , Arg
-
     if ( Arg.ctrl_show ) {
         Try G.Destroy()
         Arg.ctrl_show := False

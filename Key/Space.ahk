@@ -20,7 +20,7 @@
 ~Space &  Down::MouseMoveDC(   0,  100)
 ~Space &  Left::MouseMoveDC(-100,    0)
 ~Space & Right::MouseMoveDC( 100,    0)
- 
+
 ~Space & LAlt::Send "{LButton}"
 ~Space & RAlt::Send "{RButton}"
 
