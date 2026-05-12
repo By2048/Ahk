@@ -21,9 +21,9 @@ LoadProgress()
 
     cfg := Format("c{} w{} h{} Smooth", G.color, G.width, G.height)
     progress := G.Add("Progress", cfg, move_current)
-    
+
     G.Show("NA Center")
-    
+
     loop {
         move_current   := move_current + move_step
         progress.Value := move_current
@@ -35,5 +35,5 @@ LoadProgress()
     }
 
     G.Destroy()
-    
+
 }

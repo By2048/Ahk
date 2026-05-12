@@ -22,6 +22,7 @@
 #Include Software\#32770.ahk
 #Include Software\#ALL.ahk
 
+#Include Software\Adobe.ahk
 #Include Software\Android.ahk
 #Include Software\DiskGenius.ahk
 #Include Software\Everything.ahk

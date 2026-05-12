@@ -1,4 +1,27 @@
 ﻿
+FSViewer :=
+{
+    refresh : 0 ,
+    move_win_top_bottom : "None" ,
+    Collection :
+    [
+        [ "Adult"        , LN("Sync") "Resource\Adult\"           ] ,
+        [ "Anime"        , LN("Sync") "Resource\Anime\"           ] ,
+        [ "Collection"   , LN("Sync") "Resource\Collection\"      ] ,
+        [ "AI"           , LN("Sync") "Resource\AI\"              ] ,
+        [ "CartoonMain"  , LN("Sync") "Resource\Cartoon\% ~\"     ] ,
+        [ "CartoonOther" , LN("Sync") "Resource\Cartoon\& ~\"     ] ,
+        [ "CartoonXxxx"  , LN("Sync") "Resource\Cartoon\@ ~\"     ] ,
+        [ "CartoonLoLi"  , LN("Sync") "Resource\Cartoon\# LoLi\"  ] ,
+        [ "CartoonMark"  , LN("Sync") "Resource\Cartoon\# Mark\"  ] ,
+    ]
+}
+
+For item In FSViewer.Collection
+    item[2] := StrReplace( item[2], LN("Sync"), "V:\#Sync\" )
+
+
+
 RegisterSoftware( "FSViewer" , "FSViewer" )
 
 RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
@@ -7,27 +30,7 @@ RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
 RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Position(1800 , 1200) )
 
 
-FSViewer :=
-{
-    Refresh : 0 ,
-    move_win_top_bottom : "None" ,
-
-    Collection :
-    {
-        AI              : 1 ,
-        Adult           : 2 ,
-        CollectionOther : 3 ,
-        Collection      : 4 ,
-        Cartoon         : 5 ,
-        CartoonOther    : 6 ,
-        CartoonMark     : 7 ,
-        CartoonLoLi     : 8 ,
-        Anime           : 9
-    }
-}
-
-
-#Include *i FSViewer.Snippet.ahk
+#Include *i FSViewer.Private.ahk
 
 
 #HotIf CheckWindowActive( "FSViewer" , "" , " 批量转换* " )
@@ -310,15 +313,15 @@ FSViewer :=
     }
 
     BackSpace::{
-        if ( WinExist("ahk_exe psl.exe") ) {
-            Send "{F5}"
-            return
-        }
-        Arg.backslash_cnt := 0
-        FSViewer.refresh := 0
-        if ( InStr(A_PriorHotkey , A_ThisHotkey) )
-            if ( A_TimeSincePriorHotkey < 456 )
-                fsviewer_delete_folder()
+        ; if ( WinExist("ahk_exe psl.exe") ) {
+        ;     Send "{F5}"
+        ;     return
+        ; }
+        ; Arg.backslash_cnt := 0
+        ; FSViewer.refresh := 0
+        ; if ( InStr(A_PriorHotkey , A_ThisHotkey) )
+            ; if ( A_TimeSincePriorHotkey < 456 )
+        fsviewer_delete_folder()
     }
 
     BackSpace & \::Send "{Esc}"
@@ -326,8 +329,8 @@ FSViewer :=
 
     CapsLock::Return
 
-    `::Send "c"
-    Tab::Send "m"
+    ; `::Send "c"
+    ; Tab::Send "m"
 
     [::Send "{Left}"
     ]::Send "{Left}"
