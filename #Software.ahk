@@ -24,6 +24,7 @@
 
 #Include Software\Adobe.ahk
 #Include Software\Android.ahk
+#Include Software\Bambu.ahk
 #Include Software\DiskGenius.ahk
 #Include Software\Everything.ahk
 #Include Software\FFRenamePro.ahk
@@ -84,10 +85,10 @@
 CoordMode("Mouse", "Window")
 CoordMode("Pixel", "Window")
 
-SetWinDelay(99)
-SetKeyDelay(33)
-SetMouseDelay(9)
-SetControlDelay(-1)
+SetWinDelay(100)
+SetKeyDelay(10)
+SetMouseDelay(10)
+SetControlDelay(0)
 
 For ( Arg_Index, Arg_Value In A_Args ) {
     If ( Arg_Value == "Start" )
