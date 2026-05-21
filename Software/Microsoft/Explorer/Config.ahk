@@ -34,7 +34,7 @@ ExplorerQuickPaths := [  ]
 ErQuickCfg :=
 {
     show    : False ,
-    page    : 1     ,
+    page    : 0     ,
     folder  : ""    ,
 
     command : ""  ,
