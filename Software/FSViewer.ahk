@@ -3,23 +3,8 @@ FSViewer :=
 {
     refresh : 0 ,
     move_win_top_bottom : "None" ,
-    Collection :
-    [
-        [ "Adult"        , LN("Sync") "Resource\Adult\"           ] ,
-        [ "Anime"        , LN("Sync") "Resource\Anime\"           ] ,
-        [ "Collection"   , LN("Sync") "Resource\Collection\"      ] ,
-        [ "AI"           , LN("Sync") "Resource\AI\"              ] ,
-        [ "CartoonMain"  , LN("Sync") "Resource\Cartoon\% ~\"     ] ,
-        [ "CartoonOther" , LN("Sync") "Resource\Cartoon\& ~\"     ] ,
-        [ "CartoonXxxx"  , LN("Sync") "Resource\Cartoon\@ ~\"     ] ,
-        [ "CartoonLoLi"  , LN("Sync") "Resource\Cartoon\# LoLi\"  ] ,
-        [ "CartoonMark"  , LN("Sync") "Resource\Cartoon\# Mark\"  ] ,
-    ]
+    Collection : Map( "Default" , Folders.Temp )
 }
-
-For item In FSViewer.Collection
-    item[2] := StrReplace( item[2], LN("Sync"), "V:\#Sync\" )
-
 
 
 RegisterSoftware( "FSViewer" , "FSViewer" )
@@ -27,10 +12,11 @@ RegisterSoftware( "FSViewer" , "FSViewer" )
 RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
 
 RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
-RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Position(1800 , 1200) )
+RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Position(1500 , 999) )
 
 
 #Include *i FSViewer.Private.ahk
+#Include *i FSViewer.Tool.ahk
 
 
 #HotIf CheckWindowActive( "FSViewer" , "" , " 批量转换* " )
@@ -67,8 +53,9 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         ; ControlClick("TMyButton.UnicodeClass5", "A") ; 确定
     }
 
-    ; 转换图片为小图片
-    F12::{
+    ; 图片转码
+    BackSpace::
+    {
         folder_current := Trim( ControlGetText("TTntEdit.UnicodeClass1", "A") , "\" )
         folder_input   := "V:\#\#Image"
         folder_output  := "V:\#\~Image"
@@ -78,11 +65,8 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
             ControlSend("{Enter}", "TTntEdit.UnicodeClass1", "A") ;确定
             Sleep 999
             ControlClick("TPngBitBtn.UnicodeClass4", "A") ;全部添加
-        } else {
-            ControlClick("TPngBitBtn.UnicodeClass1", "A") ;开始
         }
     }
-
     ; 开始
     Enter::ControlClick("TPngBitBtn.UnicodeClass1", "A")
 
@@ -110,9 +94,6 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
 
 
 #HotIf CheckWindowActive( "FSViewer" , "TTntForm.UnicodeClass" , "删除文件夹" )
-    CapsLock::{
-        Send "!y"
-    }
     Esc::{
         Send "!n"
     }
@@ -156,53 +137,8 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
 
 
 #HotIf CheckWindowActive( "FSViewer" , "FastStoneImageViewerMainForm.UnicodeClass" )
-
-    #\::
-    #+\::{
-        Send "{Blind}{vkFF}"
-        total_width     := A_ScreenWidth
-        total_height    := A_ScreenHeight
-        MoveWindowPosition(Position(total_width , total_height))
-
-        if ( A_ThisHotkey == "#\" ) {
-            folder_width    := 425
-            thumbnail_width := 870
-        } else if ( A_ThisHotkey == "#+\" ) {
-            folder_width    := 700
-            thumbnail_width := 150
-        }
-
-        window   := GetActiveWindowInfo(False)
-        ctl_name := "TJamShellTree.UnicodeClass1"
-        ctl_info := window.controls.%ctl_name%
-        if ( Abs(ctl_info.w - folder_width) > 15 ) {
-            MouseGetPos(&x_origin, &y_origin)
-            MouseMove(ctl_info.w , ctl_info.y + ctl_info.h / 2)
-            offset := GetOffset("X")
-            MoveControlUDLR(ctl_info, "Right", folder_width, offset)
-            MouseMove(x_origin, y_origin, 0)
-        }
-
-        window   := GetActiveWindowInfo(False)
-        ctl_name := "TTntListView.UnicodeClass1"
-        ctl_info := window.controls.%ctl_name%
-        if ( Abs(ctl_info.w - thumbnail_width) > 10 ) {
-            MouseGetPos(&x_origin, &y_origin)
-            MouseMove(ctl_info.x + ctl_info.w , ctl_info.y + ctl_info.h / 2)
-            offset := GetOffset("X")
-            MoveControlUDLR(ctl_info, "Right", folder_width + thumbnail_width, offset)
-            MouseMove(x_origin, y_origin, 0)
-        }
-
-        Send "{F10}"
-        Send "{Right 4}{Enter}"
-        Send "{Down 2}{Enter}"
-        if ( A_ThisHotkey == "#\" )
-            Send "{Enter}"
-        else if ( A_ThisHotkey == "#+\" )
-            Send "{Down 2}{Enter}"
-    }
-
+    #\:: fsviewer_move_position()
+    #+\::fsviewer_move_position()
 #HotIf
 
 
@@ -217,21 +153,8 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
 
     AppsKey::fsviewer_move_folder()
 
-    F1::
-    F2::
-    F3::
-    F4::
-    F5::
-    F6::
-    F7::
-    F8::
-    F9::
-    {
-       fsviewer_move_to_collection()
-    }
-
     ; 清理缩略图缓存
-    F10::{
+    +0::{
         Send "{F10}"
         Send "{Right 10}"
         Send "{Down 4}"
@@ -242,8 +165,16 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         ControlClick("TTntButton.UnicodeClass2", "A") ;确定
     }
 
-    ; 创建缩略图缓存
-    F11::{
+    ; 图片转码
+    +BackSpace::{
+        Send "{F10}"
+        Send "{Right 9}"
+        Send "{Down 3}"
+        Send "{Enter}"
+    }
+
+    ; 创建缩略图缓存 V:\#\
+    +8::{
         EN()
         Send "{F10}"
         Send "{Right 10}"
@@ -260,23 +191,6 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         Send "{Enter}"
         Sleep 666
         ControlClick("TMyButton.UnicodeClass2", "A") ;扫描
-    }
-
-    ; 转换图片为小图片
-    F12::{
-        Send "{F10}"
-        Send "{Right 9}"
-        Send "{Down 3}"
-        Send "{Enter}"
-        ; Sleep 666
-        ; text := WinGetText("A")
-        ; text := Trim(text, " " )
-        ; text := Trim(text, "`n")
-        ; text := StrSplit(text, "`n")[1]
-        ; text := Trim(text)
-        ; HelpText(text, "Center")
-        ; if ( text != "批量转换" )
-        ;     Send "^{Tab}"
     }
 
     ; 批量重命名
@@ -300,10 +214,6 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         FSViewer.refresh := -1
     }
 
-    Insert::{
-        fsviewer_powershell_switch()
-    }
-
     Delete::{
         control_name := ControlGetClassNN(ControlGetFocus("A"))
         if ( control_name == "TJamShellTree.UnicodeClass1" )
@@ -313,21 +223,19 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     }
 
     BackSpace::{
-        ; if ( WinExist("ahk_exe psl.exe") ) {
-        ;     Send "{F5}"
-        ;     return
-        ; }
-        ; Arg.backslash_cnt := 0
-        ; FSViewer.refresh := 0
-        ; if ( InStr(A_PriorHotkey , A_ThisHotkey) )
-            ; if ( A_TimeSincePriorHotkey < 456 )
-        fsviewer_delete_folder()
+        if ( WinExist("ahk_exe psl.exe") ) {
+            Send "{F5}"
+            return
+        }
+        Arg.backslash_cnt := 0
+        FSViewer.refresh := 0
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) )
+            if ( A_TimeSincePriorHotkey < 456 )
+               fsviewer_delete_folder()
     }
 
     BackSpace & \::Send "{Esc}"
     \ & BackSpace::Send "{Esc}"
-
-    CapsLock::Return
 
     ; `::Send "c"
     ; Tab::Send "m"
@@ -385,9 +293,8 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     }
 
     !Tab::{
-        Send "{Blind}{vkFF}"
         Send "{F12}"
-        Sleep 333
+        Sleep 666
         ControlSetChecked(-1 , "TMyCheckBox.UnicodeClass3", "A") ; 自动切换下一个目录
         Sleep 99
         ControlClick("TMyButton.UnicodeClass5", "A") ; 确定
