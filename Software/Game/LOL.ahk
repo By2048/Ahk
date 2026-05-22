@@ -4,6 +4,8 @@ RegisterSoftware("TenSafe_1"         , "LOL_TX"    )
 RegisterSoftware("LeagueClientUx"    , "LOL_Client")
 RegisterSoftware("League of Legends" , "LOL_Game"  )
 
+RegisterPosition( "LeagueAkari"  , Position(2200 , 1234) )
+
 
 #HotIf CheckWindowActive( " LOL_Client | LOL_Game " )
     #Insert::ScreenShotSoftware(LN("Temp") , True )
