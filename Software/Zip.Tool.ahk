@@ -37,8 +37,8 @@ ZipGuiInit()
         ControlSend("{Tab}", ZipControl.ReplaceFile.ButtonNoAll, "A")
     }
     if ( InStr(window.title, "解压") ) {
-        ZipSetGuiPos()
         ZipSetGuiText()
+        ZipSetGuiPos()
         return
     }
 }
@@ -46,7 +46,7 @@ ZipGuiInit()
 
 ZipSetGuiText()
 {
-    title := StrLower(window.title)
+    title := Trim(window.title)
     rule  := "ahk_id " window.id
     name  := ControlGetText(ZipControl.EditFolderName, rule)
 
