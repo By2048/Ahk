@@ -37,7 +37,7 @@ LWin & Tab::{
 RWin & LShift::
 RWin & RShift::
 {
-    If ( GetKeyState("LWin", "P") )
+    if ( GetKeyState("LWin", "P") )
         return
 
     ; 虚拟网卡
@@ -61,15 +61,16 @@ RWin & RShift::
     if ( A_ThisHotkey == "RWin & RShift" )
     {
         Send "^!/"
+        Sleep 123
         path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
         key   := "ProxyEnable"
         state := RegRead(path, key, "")
         ; RegWrite(1, "REG_DWORD", path, key)
         info  := ""
         if ( state == "0" )
-            info := "`n  Proxy ON  `n"
-        else if ( state == "1" )
             info := "`n  Proxy OFF  `n"
+        else if ( state == "1" )
+            info := "`n  Proxy ON  `n"
         HelpText(info, "Center", "Screen", 1000)
     }
 }

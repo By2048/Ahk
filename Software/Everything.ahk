@@ -1,12 +1,9 @@
-
-#HotIf CheckWindowActive("Everything")
+﻿
+#HotIf CheckWindowActive( "Everything" )
 
     F1::Return
     F2::Return ;重命名
     F3::Return ;输入框
-
-    `;::Send ":"
-    +;::Send ";"
 
     Esc::{
         if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) )

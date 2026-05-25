@@ -7,9 +7,6 @@
 
 <#Esc::Return
 
-`;::Send ":"
-+;::Send ";"
-
 <#Left::Return
 <#+Left::Return
 <#Right::Return

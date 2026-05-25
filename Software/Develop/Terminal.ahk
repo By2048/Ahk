@@ -20,9 +20,6 @@ Arg.TerminalCommand := False
      `::Send "_"
     +`::Send "~"
 
-    `;::Send ":"
-    +;::Send ";"
-
     #Include *i Terminal.Private.ahk
     #Include *i Terminal.Cmd.Private.ahk
     #Include *i Terminal.Path.Private.ahk

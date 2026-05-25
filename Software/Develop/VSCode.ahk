@@ -35,9 +35,6 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
 #HotIf CheckWindowActive("VSCode")
 
-    `;::Send ":"
-    +;::Send ";"
-
     ; ~*LShift::{
     ;     if InStr(A_PriorHotkey, "LShift")
     ;         if ( A_TimeSincePriorHotkey < 333 ) {

@@ -3,7 +3,8 @@ FSViewer :=
 {
     refresh : 0 ,
     move_win_top_bottom : "None" ,
-    Collection : Map( "Default" , Folders.Temp )
+    Collection : Map( "Default" , Folders.Temp  ,
+                      "Sync"    , LN("Sync")    )
 }
 
 
@@ -292,12 +293,12 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         ControlFocus("TImageEnView1"               , "A")
     }
 
-    !Tab::{
+    +Tab::{
         Send "{F12}"
         Sleep 666
-        ControlSetChecked(-1 , "TMyCheckBox.UnicodeClass3", "A") ; 自动切换下一个目录
-        Sleep 99
-        ControlClick("TMyButton.UnicodeClass5", "A") ; 确定
+        ControlSetChecked(-1 , "TMyCheckBox.UnicodeClass2", "A") ;自动切换下一个目录
+        Sleep 999
+        ControlClick("TMyButton.UnicodeClass5", "A") ;确定
     }
 
     BackSpace & Insert::Send "!x"

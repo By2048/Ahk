@@ -61,10 +61,10 @@
 
 >^CapsLock::Run LNK("ToDo")
 
->^Insert::Run Folders.Data
->^Delete::Run Folders.File
+>^Insert:: Run Folders.Data
+>^Delete:: Run Folders.File
+>^AppsKey::Run Folders.Software
 
->^AppsKey::Return
 
 RCtrl & RShift::Run LN("Script\Software") "Chrome.cmd",        A_InitialWorkingDir, "Hide"
 RCtrl & LShift::Run LN("Script\Software") "ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
