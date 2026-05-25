@@ -21,11 +21,12 @@ Backup.ahk
 Private.ahk
 Script.txt
 
+~
+~~~
+~ ~ ~
+
 @.ahk
 Test.ahk
 Debug.ahk
 
-Test.cmd
-
 desktop.ini
-
