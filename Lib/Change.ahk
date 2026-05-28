@@ -22,7 +22,7 @@ ScreenNameToId(screen_name)
 {
 
     screen_name := Format("{:L}", screen_name)
-    if ( ! screen_name ) 
+    if ( ! screen_name )
         return "1"
     if ( screen_name == "screen" || screen_name == "main" )
         return "1"
@@ -147,7 +147,7 @@ FilePath(path, name)
 KeepOne(original_text, search_text)
 {
     if ( ! InStr(original_text, search_text) )
-        return original_text    
+        return original_text
     pos := InStr(original_text, search_text)
     temp := StrReplace(original_text, search_text)
     ; 在第一个匹配项的位置重新插入搜索文本
@@ -159,7 +159,7 @@ KeepOne(original_text, search_text)
 MoveEnd(original_text, search_text)
 {
     if ( ! InStr(original_text, search_text) )
-        return original_text    
+        return original_text
     temp := StrReplace(original_text, search_text)
     result := Trim(temp) . " " . search_text
     return result

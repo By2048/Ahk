@@ -27,3 +27,22 @@ If ( Screens.Count < 2 )
     Screens.2 := Screens.1
 Else
     Screens.2 := Screens.2
+
+
+; 任务栏信息
+Taskbar :=
+{
+    x : 0 ,
+    y : 0 ,
+    w : 0 ,
+    h : 0
+}
+
+Try {
+    rule := "ahk_exe Explorer.EXE ahk_class Shell_TrayWnd"
+    WinGetPos(&x, &y, &w, &h, rule)
+    Taskbar.x := x
+    Taskbar.y := y
+    Taskbar.w := w
+    Taskbar.h := h
+}

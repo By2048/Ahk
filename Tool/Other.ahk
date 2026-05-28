@@ -43,7 +43,7 @@ ScreenShotFull(path:="", slient:=True)
     cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, x, y, w, h, path)
     Run cmd
 
-    Sleep 333
+    Sleep 500
     HelpText("`n ScreenShot Full `n", "Center", "Screen", 666)
 }
 
@@ -74,7 +74,7 @@ ScreenShotSoftware(path:="", slient:=True)
     cmd  := Format("{} snip --area {} {} {} {} -o {}", Snipaste, win_x, win_y, win_w, win_h, path)
     Run cmd
 
-    Sleep 333
+    Sleep 500
     HelpText("`n ScreenShot Software `n", "Center", "Screen", 666)
 }
 
