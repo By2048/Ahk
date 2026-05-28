@@ -1,5 +1,6 @@
 ﻿
-Screens := {
+Screens :=
+{
     Main    : {} ,
     Default : {} ,
     Backup  : {} ,

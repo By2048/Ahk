@@ -1,5 +1,5 @@
-
-#Include .\Screen.ahk
+﻿
+#Include System.ahk
 
 #SingleInstance Ignore
 
@@ -66,7 +66,8 @@ G.Show(Format("NA x{1} y{2} w{3} h{4}", gui_x, gui_y, gui_w, gui_h))
 
 SetTimer(Timer, 500)
 
-Timer() {
+Timer()
+{
     seconds := DateDiff(time_end, A_Now, "Seconds")
     GText.Text := Fmt(seconds)
     if ( ! seconds ) {
@@ -78,7 +79,8 @@ Timer() {
     }
 }
 
-Fmt(seconds) {
+Fmt(seconds)
+{
     time_hou  := seconds // 60 // 60
     time_min  := seconds // 60 - time_hou * 60
     time_sec  := Mod(seconds, 60)
@@ -107,4 +109,3 @@ Fmt(seconds) {
     }
     return time_text
 }
-
