@@ -1,5 +1,5 @@
 ﻿
-FileRename(base_name)
+RenameFile(base_name)
 {
     base_name := Trim(base_name, " ")
     base_name := Trim(base_name, "\")
@@ -19,7 +19,7 @@ FileRename(base_name)
 
     name := file_name_no_ext
 
-    #Include *i File.Rename.Snippet.ahk
+    #Include *i Rename.Snippet.ahk
 
     name := StrReplace(name, "  " , " ")
     name := StrReplace(name, "  " , " ")
@@ -128,3 +128,5 @@ FileRename(base_name)
 
     return name
 }
+
+

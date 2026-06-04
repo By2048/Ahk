@@ -26,7 +26,7 @@ er_set_filename(name)
 ; 文件重命名 规则
 <!e::{
     name   := er_get_filename()
-    rename := FileRename(name)
+    rename := RenameFile(name)
     er_set_filename(rename)
 }
 

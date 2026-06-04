@@ -6,7 +6,7 @@
 #Include Lib\File.ahk
 
 #Include Tool\Config.ahk
-#Include Tool\File.ahk
+#Include Tool\Rename.ahk
 #Include Tool\Help.ahk
 #Include Tool\Language.ahk
 #Include Tool\Mouse.ahk
@@ -89,12 +89,5 @@ SetWinDelay(100)
 SetKeyDelay(10)
 SetMouseDelay(10)
 SetControlDelay(0)
-
-For ( Arg_Index, Arg_Value In A_Args ) {
-    If ( Arg_Value == "Start" )
-        Reload()
-    If ( Arg_Value == "Stop" )
-        ExitApp()
-}
 
 #Include Software\@Loop.ahk

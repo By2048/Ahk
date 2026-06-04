@@ -71,7 +71,7 @@ ErQuickTools()
         G.SetFont(Format("s{}", ErQuickCfg.rename_size), ErQuickCfg.font_name)
         if ( paths.Length == 1 ) {
             file_name   := ErQuickCfg.file_name
-            file_rename := FileRename(file_name)
+            file_rename := RenameFile(file_name)
             if ( file_rename != file_name ) {
                 ErQuickCfg.file_rename := file_rename
                 G.AddText(G.style.text, ErQuickCfg.file_rename)
@@ -182,6 +182,8 @@ ErQuickToolsSwitchPage(step:=+1)
 
 ErQuickToolsHide()
 {
+    Try G.Destroy()
+
     ErQuickCfg.show    := False
     ErQuickCfg.page    := 0
     ErQuickCfg.folder  := ""

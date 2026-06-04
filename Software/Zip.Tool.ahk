@@ -52,7 +52,7 @@ ZipSetGuiText()
 
     #Include *i Zip.Tool.Auto.Private.ahk
 
-    rename := FileRename(name)
+    rename := RenameFile(name)
     rename := RTrim(rename, "\")
     rename := RTrim(rename, " ")
     ControlSetText(rename, ZipControl.EditFolderName, rule)
