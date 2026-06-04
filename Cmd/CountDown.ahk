@@ -1,7 +1,7 @@
 ﻿
 #Include System.ahk
 
-#SingleInstance Ignore
+#SingleInstance Force
 
 TraySetIcon(A_ScriptDir "\CountDown.png")
 
