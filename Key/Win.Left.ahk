@@ -58,11 +58,9 @@
 
 ; 同步复制
 <#c::{
-    Global JQB
     A_Clipboard := ""
     Send "^c"
-    ClipWait()
-    Sleep 123
+    ClipWait(1)
     file := FileOpen(JQB.Windows, "w", "UTF-8")
     file.Write(A_Clipboard)
     file.Close()
