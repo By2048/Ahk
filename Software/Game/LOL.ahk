@@ -7,6 +7,35 @@ RegisterSoftware("League of Legends" , "LOL_Game"  )
 RegisterPosition( "LeagueAkari"  , Position(2200 , 1234) )
 
 
+#HotIf CheckWindowActive( "LeagueAkari" , "" , "MiniAkari" )
+    #\::
+    {
+        ; w := 400
+        ; h := 500
+        ; x := Screens.2.x + 20
+        ; y := Screens.2.y + Screens.2.h - Taskbar.h - h - 20
+        ; MoveWindowPosition( [x, y, w, h] )
+
+        ; window := GetActiveWindowInfo(false)
+        ; h := window.h
+        ; y := Screens.2.y + Screens.2.h - Taskbar.h - h - 20
+
+        w := 400
+        h := 500
+        x := Screen.x + Screen.w - w
+        y := Screen.y + Screen.h - h
+        MoveWindowPosition( [x, y, w, h] )
+
+        window := GetActiveWindowInfo(false)
+        h := window.h
+        w := window.w
+        x := Screen.x + Screen.w - w
+        y := Screen.y + Screen.h - h
+        MoveWindowPosition( [x, y, w, h] )
+    }
+#HotIf
+
+
 #HotIf CheckWindowActive( " LOL_Client | LOL_Game " )
     #Insert::ScreenShotSoftware(LN("Temp") , True )
     #Delete::ScreenShotFull    (LN("Temp") , True )
