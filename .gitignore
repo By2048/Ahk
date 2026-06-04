@@ -16,6 +16,18 @@
 /Data/*
 /Test/*
 
+~
+~~~
+~ ~ ~
+~ * ~
+
+*~
+
+@.ahk
+Test.*
+
+desktop.ini
+
 JQB_Phone
 JQB_Windows
 
@@ -23,13 +35,3 @@ Backup.ahk
 Debug.ahk
 Private.ahk
 Script.txt
-
-~
-~~~
-~ ~ ~
-~ * ~
-
-@.ahk
-Test.*
-
-desktop.ini
