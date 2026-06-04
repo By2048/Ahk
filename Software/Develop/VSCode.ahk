@@ -35,6 +35,12 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
 #HotIf CheckWindowActive("VSCode")
 
+     `::~
+    +`::`
+
+    `;:::
+    +;::;
+
     ; ~*LShift::{
     ;     if InStr(A_PriorHotkey, "LShift")
     ;         if ( A_TimeSincePriorHotkey < 333 ) {
@@ -56,9 +62,11 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
     ; 关闭标签页
     ^CapsLock::Return
     ^+CapsLock::Return
-    ~!CapsLock::Send "^{CapsLock}"
-        ; HelpText("123", "Center", "Screen", 666)
-    ~!+CapsLock::Send "^+{CapsLock}"
+    ; ~!CapsLock::Send "^{CapsLock}"
+    ; ~!+CapsLock::Send "^+{CapsLock}"
+
+    !CapsLock::Send "!{CtrlBreak}"
+    !+CapsLock::Send "!+{CtrlBreak}"
 
     ; 特殊按键覆盖 F4
     !F4::Send "!{F16}"

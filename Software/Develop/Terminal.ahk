@@ -17,14 +17,15 @@ Arg.TerminalCommand := False
 
 #HotIf CheckWindowActive( "Terminal" )
 
-     `::Send "_"
-    +`::Send "~"
+     `::~
+    +`::`
+
+    `;:::
+    +;::;
 
     #Include *i Terminal.Private.ahk
     #Include *i Terminal.Cmd.Private.ahk
     #Include *i Terminal.Path.Private.ahk
-
-    ;-------------------------------;
 
     ; ~LShift::{
     ;     if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {

@@ -5,6 +5,12 @@
 #Include Key.Joy.ahk
 #Include Key.Mouse.ahk
 
+ `::~
++`::`
+
+`;:::
++;::;
+
 <#Esc::Return
 
 <#Left::Return
