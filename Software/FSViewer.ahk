@@ -1,10 +1,12 @@
 ﻿
 FSViewer :=
 {
-    refresh : 0 ,
-    move_win_top_bottom : "None" ,
+    Refresh : 0 ,
+    Move_win_top_bottom : "None" ,
     Collection : Map( "Default" , Folders.Temp  ,
-                      "Sync"    , LN("Sync")    )
+                      "Sync"    , LN("Sync")    ) ,
+    ImageInput  : Folders.Cache "#Image" ,
+    ImageOutput : Folders.Cache "~Image" ,
 }
 
 
@@ -58,11 +60,9 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     BackSpace::
     {
         folder_current := Trim( ControlGetText("TTntEdit.UnicodeClass1", "A") , "\" )
-        folder_input   := "V:\#\#Image"
-        folder_output  := "V:\#\~Image"
-        if ( folder_current != folder_input ) {
-            ControlSetText(folder_input,  "TTntEdit.UnicodeClass1", "A") ;文件夹 输入
-            ControlSetText(folder_output, "TTntEdit.UnicodeClass2", "A") ;文件夹 输出
+        if ( folder_current != FSViewer.ImageInput ) {
+            ControlSetText(FSViewer.ImageInput,  "TTntEdit.UnicodeClass1", "A") ;文件夹 输入
+            ControlSetText(FSViewer.ImageOutput, "TTntEdit.UnicodeClass2", "A") ;文件夹 输出
             ControlSend("{Enter}", "TTntEdit.UnicodeClass1", "A") ;确定
             Sleep 999
             ControlClick("TPngBitBtn.UnicodeClass4", "A") ;全部添加
@@ -89,7 +89,7 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
 
 #HotIf CheckWindowActive( "FSViewer" , "TFullScreenWindow" )
 
-    \ Up::fsviewer_refresh_image()
+    ; \ Up::fsviewer_refresh_image()
 
 #HotIf
 
@@ -223,6 +223,12 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
             Send "{Delete}"
     }
 
+    Esc::{
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) )
+            if ( A_TimeSincePriorHotkey < 456 )
+               Send "{Esc}"
+    }
+
     BackSpace::{
         if ( WinExist("ahk_exe psl.exe") ) {
             Send "{F5}"
@@ -235,8 +241,8 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
                fsviewer_delete_folder()
     }
 
-    BackSpace & \::Send "{Esc}"
-    \ & BackSpace::Send "{Esc}"
+    ; BackSpace & \::Send "{Esc}"
+    ; \ & BackSpace::Send "{Esc}"
 
     ; `::Send "c"
     ; Tab::Send "m"
@@ -301,8 +307,12 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         ControlClick("TMyButton.UnicodeClass5", "A") ;确定
     }
 
-    BackSpace & Insert::Send "!x"
-    BackSpace & Delete::WinClose("A")
+    MButton::
+    BackSpace & Insert::
+    BackSpace & Delete::
+    {
+        Send "!x"
+    }
 
     #Include FSViewer.Joy.ahk
     #Include FSViewer.Mouse.ahk

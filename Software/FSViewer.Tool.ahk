@@ -142,7 +142,12 @@ fsviewer_move_to_collection(name:="")
         return
 
     folder_name := RegExReplace(win_title, "(移动 `")(.*)(`" 到文件夹)", "$2")
-    if ( folder_name == "#" || folder_name == "~" || folder_name == "~ ~ ~" )
+    folder_name := StrReplace(folder_name, " ", "")
+    if ( folder_name == "#" || folder_name == "#~" || folder_name == "#~~" )
+        return
+    if ( folder_name == "@" || folder_name == "@~" || folder_name == "@~~" )
+        return
+    if ( folder_name == "~" || folder_name == "~~" || folder_name == "~~~" )
         return
     if ( folder_name == "#Image" || folder_name == "%Image" || folder_name == "~Image")
         return

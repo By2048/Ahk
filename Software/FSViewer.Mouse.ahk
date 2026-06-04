@@ -1,13 +1,11 @@
 ﻿
-NumLock::Send "{Esc}"
+NumLock::Send "{End}!{Right}"
 
-NumpadHome::fsviewer_move_to_collection("Cartoon Main")
-NumpadEnd:: fsviewer_move_to_collection("Cartoon Other")
+NumpadHome::fsviewer_move_to_collection("Cartoon Main" )
+NumpadEnd:: fsviewer_move_to_collection("Delete"       )
 
-NumpadPgDn::Send "{End}!{Right}"
-NumpadPgUp::fsviewer_move_to_collection("Delete")
+NumpadPgDn::fsviewer_move_to_collection("Cartoon Other")
+NumpadPgUp::fsviewer_move_to_collection("Cartoon Xxxx" )
 
-; Send "{Home}!{Left}{Home}"
-
-NumpadIns::fsviewer_move_to_collection("Cartoon Mark")
-NumpadDel::fsviewer_move_to_collection("Cartoon LoLi")
+NumpadIns:: fsviewer_move_to_collection("Cartoon Mark" )
+NumpadDel:: fsviewer_move_to_collection("Collection"   )
