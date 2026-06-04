@@ -53,7 +53,7 @@
 
 >^Tab::Return
 
->^Space::Run WTMini
+>^Space::Run WTBase
 
 >^BackSpace::Run Folders.Admin
 
@@ -61,13 +61,13 @@
 
 >^CapsLock::Run LNK("ToDo")
 
->^Insert:: Run Folders.Data
->^Delete:: Run Folders.File
->^AppsKey::Run Folders.Software
+>^Insert:: Run Folders.Software
+>^Delete:: Run Folders.Data
+>^AppsKey::Run "C:\Users\" A_UserName
 
 
-RCtrl & RShift::Run LN("Script\Software") "Chrome.cmd",        A_InitialWorkingDir, "Hide"
-RCtrl & LShift::Run LN("Script\Software") "ChromeDefault.cmd", A_InitialWorkingDir, "Hide"
+RCtrl & RShift::Run LN("Script\Software") "Chrome.ps1",        A_InitialWorkingDir, "Hide"
+RCtrl & LShift::Run LN("Script\Software") "ChromeDefault.ps1", A_InitialWorkingDir, "Hide"
 
 Arg.ctrl_show    := False
 Arg.ctrl_content := ""
