@@ -1,8 +1,4 @@
 ﻿
-; AutoHotkey 路径 Setup.cmd 中解析取 [15,-1] 内的值
-;             15                            -1
-AutoHotkey := "D:\AutoHotkey\#\AutoHotkey.exe"
-
 ; 注册表信息保存位置
 Reg_Path := "HKEY_CURRENT_USER\SOFTWARE\AutoHotkey"
 

@@ -10,6 +10,8 @@
 /.vscode/
 /.idea/
 
+/Backup/
+
 /@/
 /Data/*
 /Test/*
@@ -18,15 +20,16 @@ JQB_Phone
 JQB_Windows
 
 Backup.ahk
+Debug.ahk
 Private.ahk
 Script.txt
 
 ~
 ~~~
 ~ ~ ~
+~ * ~
 
 @.ahk
-Test.ahk
-Debug.ahk
+Test.*
 
 desktop.ini

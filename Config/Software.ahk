@@ -2,14 +2,13 @@
 ; 可执行文件路径
 CMD           := "C:\Windows\System32\cmd.exe"
 TaskKill      := "C:\Windows\SysWOW64\taskkill.exe"
-
+RoboCopy      := "C:\Windows\SysWOW64\Robocopy.exe"
 WT            := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
-WTMini        := WT " --focus --size 124,36 -d " Folders.Temp
+WTBase        := WT " --focus --size 124,36 -d " Folders.Temp
 
 PSL           := "D:\PowerShell\psl.exe"
-PSLMini       := PSL " -NoProfile -NoLogo "
-PSLMiniFile   := PSL " -NoProfile -NoLogo -File "
-
+PSLBase       := PSL " -NoProfile -NoLogo "
+PSLMini       := "D:\PowerShell\psl-mini.exe -NoProfile -NoLogo "
 AHK           := "D:\AutoHotkey\#\AutoHotkey.exe"
 AhkSpy        := "D:\AutoHotkey\#\WindowSpy.ahk"
 BDown         := "D:\BBDown\BBDown.exe"
@@ -30,11 +29,11 @@ ZipGui        := "D:\7-Zip\7zFM.exe"
 ZipDialog     := "D:\7-Zip\7zG.exe"
 
 AhkSpyPlus    := "A:\GitX\AhkSpy\AhkSpy.exe"
-Chrome        := "A:\Script\Software\Chrome.cmd"
-ChromeTmp     := "A:\Script\Software\ChromeTmp.cmd"
-ChromeDefault := "A:\Script\Software\ChromeDefault.cmd"
-VSCode        := "A:\Script\Software\VSCode.cmd"
-VSCodeDefault := "A:\Script\Software\VSCodeDefault.cmd"
+Chrome        := "A:\Script\Software\Chrome.ps1"
+ChromeTmp     := "A:\Script\Software\ChromeTmp.ps1"
+ChromeDefault := "A:\Script\Software\ChromeDefault.ps1"
+VSCode        := "A:\Script\Software\VSCode.ps1"
+VSCodeDefault := "A:\Script\Software\VSCodeDefault.ps1"
 
 
 ; 自定义名字替换
