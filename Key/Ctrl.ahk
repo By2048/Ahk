@@ -59,18 +59,21 @@
 
 >^Enter::Run "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}::" ;我的电脑
 
->^CapsLock::Run LNK("ToDo")
-
 >^Insert:: Run Folders.Software
 >^Delete:: Run Folders.Data
->^AppsKey::Run "C:\Users\" A_UserName
+>^AppsKey::Run LNK("ToDo")
 
+>^CapsLock::{
+    command := PSL " " LN("Script\Software") "Chrome.ps1 chat.deepseek.com"
+    Run command, A_InitialWorkingDir, "Hide"
+}
 
-RCtrl & RShift::Run LN("Script\Software") "Chrome.ps1",        A_InitialWorkingDir, "Hide"
-RCtrl & LShift::Run LN("Script\Software") "ChromeDefault.ps1", A_InitialWorkingDir, "Hide"
+RCtrl & RShift::Run PSL " " LN("Script\Software") "Chrome.ps1",        Ln("Temp"), "Hide"
+RCtrl & LShift::Run PSL " " LN("Script\Software") "ChromeDefault.ps1", Ln("Temp"), "Hide"
 
 Arg.ctrl_show    := False
 Arg.ctrl_content := ""
+
 
 ~RCtrl::
 {

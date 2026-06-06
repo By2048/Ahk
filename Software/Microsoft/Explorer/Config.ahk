@@ -1,5 +1,4 @@
 ﻿
-
 IID_IServiceProvider := "{6D5140C1-7436-11CE-8034-00AA006009FA}"
 IID_TopLevelBrowser  := "{4C96BE40-915C-11CF-99D3-00AA004AE837}"
 SID_SShellBrowser    := "{000214E2-0000-0000-C000-000000000046}"
@@ -11,19 +10,6 @@ CM_ENUM_VISIBLE := 0x2
 
 ExplorerTree := "SysTreeView321"
 ExplorerMain := "DirectUIHWND3"
-
-
-RegisterSoftware( "explorer" , "Explorer" )
-
-RegisterHelpInfo( "Explorer_CabinetWClass" , FilePath(A_LineFile, "#.help" ) )
-
-RegisterHelpInfo( "Explorer_WorkerW" , "Key\Win.help"             )
-RegisterHelpInfo( "Explorer_WorkerW" , "Key\Win.Other.help"       )
-RegisterHelpInfo( "Explorer_WorkerW" , "Key\Win.Fxx.Private.help" )
-
-RegisterHelpInfo( "Explorer_Progman" , "Key\Win.help"             )
-RegisterHelpInfo( "Explorer_Progman" , "Key\Win.Other.help"       )
-RegisterHelpInfo( "Explorer_Progman" , "Key\Win.Fxx.Private.help" )
 
 ; 快速切换地址栏路径
 ExplorerAddressPaths := [ LN("Temp") , LN("Cache") ]

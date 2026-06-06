@@ -60,8 +60,8 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
     !+Tab::Send "^+{Tab}"
 
     ; 关闭标签页
-    ^CapsLock::Return
-    ^+CapsLock::Return
+    <^CapsLock::Return
+    <^+CapsLock::Return
     ; ~!CapsLock::Send "^{CapsLock}"
     ; ~!+CapsLock::Send "^+{CapsLock}"
 
