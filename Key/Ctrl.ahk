@@ -10,10 +10,10 @@
  >^u::Return
  >^i::Return
  >^o::Run EXE("OneCommander")
- >^p::Run VSCode " --profile #Temp    " LN("Config") "VSCode\%Temp.code-workspace"   , A_InitialWorkingDir, "Hide"
- >^[::Run VSCode " --profile #Note    " LN("Config") "VSCode\%Note.code-workspace"   , A_InitialWorkingDir, "Hide"
- >^]::Run VSCode " --profile #Default " LN("Config") "VSCode\%Project.code-workspace", A_InitialWorkingDir, "Hide"
- >^\::Run VSCode " --profile #Default " LN("Config") "VSCode\%Windows.code-workspace", A_InitialWorkingDir, "Hide"
+ >^p::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Temp"    LN("Config\VSCode") "%Temp.code-workspace"   , LN("Temp"), "Hide"
+ >^[::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Note"    LN("Config\VSCode") "Note.code-workspace"    , LN("Temp"), "Hide"
+ >^]::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Default" LN("Config\VSCode") "%Project.code-workspace", LN("Temp"), "Hide"
+ >^\::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Default" LN("Config\VSCode") "%Windows.code-workspace", LN("Temp"), "Hide"
 
  >^a::Run EXE("AntiMicroX")
  >^s::Run EXE("Sandboxie")
@@ -64,12 +64,12 @@
 >^AppsKey::Run LNK("ToDo")
 
 >^CapsLock::{
-    command := PSL " " LN("Script\Software") "Chrome.ps1 chat.deepseek.com"
+    command := PSLMini LN("Script\Software") "Chrome.ps1 chat.deepseek.com"
     Run command, A_InitialWorkingDir, "Hide"
 }
 
-RCtrl & RShift::Run PSL " " LN("Script\Software") "Chrome.ps1",        Ln("Temp"), "Hide"
-RCtrl & LShift::Run PSL " " LN("Script\Software") "ChromeDefault.ps1", Ln("Temp"), "Hide"
+RCtrl & RShift::Run PSLMini LN("Script\Software") "Chrome.ps1",        LN("Temp"), "Hide"
+RCtrl & LShift::Run PSLMini LN("Script\Software") "ChromeDefault.ps1", LN("Temp"), "Hide"
 
 Arg.ctrl_show    := False
 Arg.ctrl_content := ""

@@ -29,7 +29,7 @@ If ( -Not (Test-Path $AutoHotkey) ) {
 }
 
 Write-Host ""
-Write-Host " ======== $PWD ========"
+Write-Host " ===== $PWD ====="
 Write-Host ""
 
 # ExitAll 结束所有 AutoHotkey 进程并退出

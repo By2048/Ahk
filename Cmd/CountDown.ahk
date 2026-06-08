@@ -5,7 +5,9 @@
 
 TraySetIcon(A_ScriptDir "\CountDown.png")
 
-F12::
+<^Esc::
+<^AppsKey::
+<^CapsLock::
 {
     ExitApp()
 }
