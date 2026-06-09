@@ -10,10 +10,10 @@
  >^u::Return
  >^i::Return
  >^o::Run EXE("OneCommander")
- >^p::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Temp"    LN("Config\VSCode") "%Temp.code-workspace"   , LN("Temp"), "Hide"
- >^[::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Note"    LN("Config\VSCode") "Note.code-workspace"    , LN("Temp"), "Hide"
- >^]::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Default" LN("Config\VSCode") "%Project.code-workspace", LN("Temp"), "Hide"
- >^\::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Default" LN("Config\VSCode") "%Windows.code-workspace", LN("Temp"), "Hide"
+ >^p::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Temp    " LN("Config\VSCode") "%Temp.code-workspace    ", LN("Temp"), "Hide"
+ >^[::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Note    " LN("Config\VSCode") "Note.code-workspace     ", LN("Temp"), "Hide"
+ >^]::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Default " LN("Config\VSCode") "%Project.code-workspace ", LN("Temp"), "Hide"
+ >^\::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Default " LN("Config\VSCode") "%Windows.code-workspace ", LN("Temp"), "Hide"
 
  >^a::Run EXE("AntiMicroX")
  >^s::Run EXE("Sandboxie")
