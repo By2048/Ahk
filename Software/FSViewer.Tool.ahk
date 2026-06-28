@@ -1,34 +1,9 @@
 ﻿
-fsviewer_refresh_image()
-{
-    if ( FSViewer.refresh == -1 )
-        return
-    if ( FSViewer.refresh == 0 ) {
-        if ( FileExist("V:\#Cache\%Image\(0First0).png") )
-            FSViewer.refresh := 1
-        else
-            FSViewer.refresh := -1
-    }
-    Arg.backslash_cnt := Arg.backslash_cnt + 1
-    if ( Arg.backslash_cnt <= 5 )
-        Send "{F5}"
-    else if ( Mod(Arg.backslash_cnt, 3) == 0 )
-        Send "{F5}"
-    ; if ( Arg.backslash_cnt < 22 && Mod(Arg.backslash_cnt, 3) == 0 )
-        ; Send "{F5}"
-    ; if ( Arg.backslash_cnt < 99 && Mod(Arg.backslash_cnt, 7) == 0 )
-        ; Send "{F5}"
-    ; if ( (Arg.sh_cnt, 11) == 0 )
-        ; Send "{F5}"
-}
-
-
 fsviewer_powershell_switch()
 {
     rule := "ahk_exe psl.exe"
     if ( ! WinExist(rule) ) {
         FSViewer.move_win_top_bottom := "None"
-        FSViewer.refresh := -1
         return
     }
     if ( FSViewer.move_win_top_bottom == "None" ) {

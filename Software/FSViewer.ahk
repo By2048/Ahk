@@ -172,6 +172,7 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         Send "{Right 9}"
         Send "{Down 3}"
         Send "{Enter}"
+        MoveWindowDefault()
     }
 
     ; 创建缩略图缓存 V:\#\
@@ -210,13 +211,9 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     ;         Send "^{Tab}"
     ; }
 
-    / Up::{
-        Send "{F5}"
-        FSViewer.refresh := -1
-    }
-
     Delete::{
-        control_name := ControlGetClassNN(ControlGetFocus("A"))
+        control_name := ""
+        try control_name := ControlGetClassNN(ControlGetFocus("A"))
         if ( control_name == "TJamShellTree.UnicodeClass1" )
             Send "{AppsKey}{Up 4}{Enter}"
         else
@@ -230,15 +227,10 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     }
 
     BackSpace::{
-        if ( WinExist("ahk_exe psl.exe") ) {
-            Send "{F5}"
-            return
-        }
-        Arg.backslash_cnt := 0
-        FSViewer.refresh := 0
+        Send "{F5}"
         if ( InStr(A_PriorHotkey , A_ThisHotkey) )
             if ( A_TimeSincePriorHotkey < 456 )
-               fsviewer_delete_folder()
+               Send "!x"
     }
 
     ; BackSpace & \::Send "{Esc}"
@@ -282,6 +274,8 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         Send "m"
         Send "^{Tab 3}"
         Send "{Esc}"
+        Sleep 99
+        Send "{F5}"
     }
 
     ^r::Send "{F2}"
@@ -301,17 +295,10 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
 
     +Tab::{
         Send "{F12}"
-        Sleep 666
-        ControlSetChecked(-1 , "TMyCheckBox.UnicodeClass2", "A") ;自动切换下一个目录
         Sleep 999
+        ControlSetChecked(-1 , "TMyCheckBox.UnicodeClass2", "A") ;自动切换下一个目录
+        Sleep 666
         ControlClick("TMyButton.UnicodeClass5", "A") ;确定
-    }
-
-    MButton::
-    BackSpace & Insert::
-    BackSpace & Delete::
-    {
-        Send "!x"
     }
 
     #Include FSViewer.Joy.ahk
