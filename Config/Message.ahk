@@ -2,8 +2,8 @@
 ; https://docs.microsoft.com/en-us/windows/win32/controls/lvm-setcolumnwidth
 ; https://wiki.winehq.org/List_Of_Windows_Messages
 
-Message := {
-
+Message :=
+{
     WM_NULL                        : 0x0000 ,
     WM_CREATE                      : 0x0001 ,
     WM_DESTROY                     : 0x0002 ,
@@ -1008,4 +1008,3 @@ Message := {
     WM_RASDIALEVENT                : 0xcccd ,
 
 }
-

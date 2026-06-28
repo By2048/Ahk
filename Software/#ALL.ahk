@@ -1,4 +1,48 @@
 ﻿
+RegisterHelpInfo( "Default" , "Key\Win.help"       )
+RegisterHelpInfo( "Default" , "Key\Win.Other.help" )
+
+; 开启关闭 Windows 功能
+RegisterPosition( "OptionalFeatures_NativeHWNDHost" , Position(800 , 1000) )
+
+; 搜索
+RegisterSoftware( "SearchApp" , "Search" )
+RegisterSoftware( "SearchUI"  , "Search" )
+
+; 开始菜单
+RegisterSoftware( "ShellExperienceHost"     , "Start" )
+RegisterSoftware( "StartMenuExperienceHost" , "Start" )
+RegisterPosition( "Start" , Position(488 , 600) )
+
+; 画图
+RegisterPosition( "MsPaint" , Position(0.62 , 0.82) )
+
+; 资源监视器
+RegisterSoftware( "perfmon" , "SystemMonitor" )
+RegisterPosition( "SystemMonitor" , Position(2250 , 1350) )
+
+RegisterPosition( "qBittorrent" , Position(0.9 ,  0.8) )
+
+RegisterPosition( "Calibre" , Position(0.8 ,  0.8) )
+
+RegisterSoftware( "哔哩哔哩"  , "BiliBili" )
+RegisterPosition( "BiliBili" , Position(0.7 , 0.88) )
+
+RegisterPosition( "DouYin" , Position(2333 , 1333) )
+
+RegisterPosition( "PikPak" , Position(1666 , 1100) )
+
+RegisterPosition( "Upscayl" , Position(2233 , 1357) )
+
+RegisterPosition( "Office Tool Plus" , Position(1900 , 1100) )
+
+RegisterPosition( "Python__Anaconda" , Position(2666, 1666) )
+
+RegisterPosition( "Thunder"             , Position(0.7 , 0.8) )
+RegisterPosition( "Thunder__新建任务面板" , Position(0.3 , 0.4) )
+
+RegisterPosition( "OneCommander" , Position(-9 , -9) )
+
 RegisterSoftware("antimicrox" , "AntiMicroX")
 RegisterPosition("AntiMicroX" , Position(1234 , 1111))
 RegisterPosition("AntiMicroX__按键" , Position(1600 , 666))
@@ -6,12 +50,11 @@ RegisterPosition("AntiMicroX__按键" , Position(1600 , 666))
     $RWin::MoveWindowDefault()
 #HotIf
 
+RegisterSoftware( "localsend_app" , "LocalSend" )
+RegisterPosition( "LocalSend" , Position(1111 , 777) )
 
 RegisterSoftware( "dopus" , "ExplorerDO" )
 RegisterPosition( "ExplorerDO" , Position(2468 , 1357) )
-#HotIf CheckWindowActive("ExplorerDO")
-#HotIf
-
 
 RegisterSoftware("Duplicate Cleaner 5" , "DuplicateCleaner")
 RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
@@ -29,12 +72,10 @@ RegisterPosition("DuplicateCleaner" , Position(-100 , -50))
     !c::Send "^{F6}" ;复制文件夹
 #HotIf
 
-
 RegisterSoftware("NVIDIA Share" , "GeForceTool")
 #HotIf CheckWindowActive( "GeForceTool" )
     Esc::Send "^!{Insert}"
 #HotIf
-
 
 ; 火绒U盘工具
 #HotIf CheckWindowActive("HipsTray")
@@ -53,13 +94,11 @@ RegisterPosition( "Maye" , Position(1000 , 900) )
     CapsLock::Send "{Esc}"
 #HotIf
 
-
 ; 文件预览
 #HotIf CheckWindowActive("PowerToys.Peek.UI")
          Esc::Send "#z"
     CapsLock::Send "#z"
 #HotIf
-
 
 ; 游戏模拟器
 #HotIf CheckWindowActive("WinKawaks")
@@ -71,11 +110,9 @@ RegisterPosition( "Maye" , Position(1000 , 900) )
     AppsKey::Send "{F7}"
 #HotIf
 
-
 #HotIf CheckWindowActive("MediaInfo")
     AppsKey::Send "!ys"
 #HotIf
-
 
 #HotIf CheckWindowActive("PicView")
     NumLock::WinClose("A")
