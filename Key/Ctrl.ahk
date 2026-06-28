@@ -29,9 +29,9 @@
  >^x::Run EXE("Download")
  >^c::Run "Calc"
  >^v::Run EXE("Vpn")
-;>^b::Return
+ >^b::Run EXE("Media")
  >^n::Run EXE("Music")
- >^m::Run EXE("Media")
+; ^m::
 
 >^0::Return
 >^-::Run EXE("Notepad3")
@@ -75,7 +75,7 @@ Arg.ctrl_show    := False
 Arg.ctrl_content := ""
 
 
-~RCtrl::
+~RCtrl Up::
 {
     if ( Arg.rctrl_click > 0 ) {
         Arg.rctrl_click += 1
