@@ -100,10 +100,10 @@ RegisterPosition( "PyCharm__运行" , Position(0.8 , 0.8) )
 RegisterPosition( "PyCharm__终端" , Position(0.8 , 0.9) )
 RegisterPosition( "PyCharm__调试" , Position(0.8 , 0.9) )
 Try {
-    x := Screens.2.x
-    y := ( Screens.2.y + Screens.2.h ) / 2 - Screens.2.y / 2 - 200
-    w := Screens.2.w
-    h := Screens.2.h / 2
+    x := Screen2.x
+    y := ( Screen2.y + Screen2.h ) / 2 - Screen2.y / 2 - 200
+    w := Screen2.w
+    h := Screen2.h / 2
     RegisterPosition( "PyCharm__运行" , Position( x , y , w , h ) , "Backup" )
     RegisterPosition( "PyCharm__终端" , Position( x , y , w , h ) , "Backup" )
     RegisterPosition( "PyCharm__调试" , Position( x , y , w , h ) , "Backup" )

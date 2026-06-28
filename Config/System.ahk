@@ -2,9 +2,13 @@
 ; 初始化系统屏幕相关信息
 
 Screens := {} ;所有屏幕相关信息
-Screen  := {} ;主窗口信息
+Screen  := {} ;主窗口
+ScreenO := {} ;副窗口
+Screen1 := {} ;主窗口
+Screen2 := {} ;副窗口
 
-Loop ( Screens_Info.Length ) {
+Loop ( Screens_Info.Length )
+{
     screen       := {}
     screen.id    := Screens_Info[A_Index].ID
     screen.index := A_Index
@@ -20,13 +24,19 @@ Loop ( Screens_Info.Length ) {
 
 Screens.Count := Screens_Info.Length
 
-Screen := Screens.1
-
 ; 补全设置
-If ( Screens.Count < 2 )
-    Screens.2 := Screens.1
-Else
-    Screens.2 := Screens.2
+If ( Screens.Count == 1 )
+{
+    Screen  := Screens.1
+    ScreenO := Screens.1
+    Screen1 := Screens.1
+    Screen2 := Screens.1
+} Else {
+    Screen  := Screens.1
+    ScreenO := Screens.2
+    Screen1 := Screens.1
+    Screen2 := Screens.2
+}
 
 
 ; 任务栏信息

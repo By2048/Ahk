@@ -50,6 +50,18 @@ ZipSetGuiText()
     rule  := "ahk_id " window.id
     name  := ControlGetText(ZipControl.EditFolderName, rule)
 
+    SplitPath(title, &fname, &fdir, &fext, &fname_no_ext, &fdrive)
+
+    new_title := title
+
+    if ( ! ( InStr(title, "解压") && InStr(title, "|") ) )
+        new_title := " 解压  |  " . fname_no_ext . "  |  " . fext
+
+    if ( title == "解压" )
+        new_title := "    |  解压  |"
+
+    WinSetTitle(new_title, "A")
+
     #Include *i Zip.Tool.Auto.Private.ahk
 
     rename := RenameFile(name)

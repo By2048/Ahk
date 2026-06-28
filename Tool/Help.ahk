@@ -81,22 +81,21 @@ HelpText(data:="", xy:="right_down", screen_name:="screen1", sleep_time:=0)
     screen_id := screen_id > Screens.Count ? screen_id - 1 : screen_id
     screen_id := screen_id > Screens.Count ? screen_id - 1 : screen_id
     if ( screen_id == "1" )
-        screen_config := Screens.1
+        screen_config := Screen1
     else if ( screen_id == "2" )
-        screen_config := Screens.2
-    else if ( screen_id == "3" )
-        screen_config := Screens.3
+        screen_config := Screen2
     screen_id  := screen_config.id
     screen_dpi := screen_config.dpi
     screen_x   := screen_config.x
     screen_y   := screen_config.y
     screen_w   := screen_config.w
     screen_h   := screen_config.h
-    ; 屏幕3 只使用上半部分
-    if ( screen_id == "3" ) {
-        screen_h  := screen_h  / 2
-        screen_yy := screen_yy / 2
-    }
+
+    ; 只使用上半部分
+    ; if ( screen_id == "2" ) {
+    ;     screen_h  := screen_h  / 2
+    ;     screen_yy := screen_yy / 2
+    ; }
 
     gui_x := 0
     gui_y := 0

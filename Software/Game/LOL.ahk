@@ -12,13 +12,13 @@ RegisterPosition( "LeagueAkari"  , Position(2200 , 1234) )
     {
         ; w := 400
         ; h := 500
-        ; x := Screens.2.x + 20
-        ; y := Screens.2.y + Screens.2.h - Taskbar.h - h - 20
+        ; x := Screen2.x + 20
+        ; y := Screen2.y + Screen2.h - Taskbar.h - h - 20
         ; MoveWindowPosition( [x, y, w, h] )
 
         ; window := GetActiveWindowInfo(false)
         ; h := window.h
-        ; y := Screens.2.y + Screens.2.h - Taskbar.h - h - 20
+        ; y := Screen2.y + Screen2.h - Taskbar.h - h - 20
 
         w := 400
         h := 500

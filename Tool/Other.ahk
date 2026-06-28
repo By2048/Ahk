@@ -90,12 +90,12 @@ SnipasteImage(image:="", screen:="Screen")
     screen_id := ScreenNameToId(screen)
 
     if ( screen_id == "1" ) {
-        x := Screens.1.x + (Screens.1.w - image_w) / 2
-        y := Screens.1.y + (Screens.1.h - image_h) / 2
+        x := Screen1.x + (Screen1.w - image_w) / 2
+        y := Screen1.y + (Screen1.h - image_h) / 2
     }
     if ( screen_id == "2" ) {
-        x := Screens.2.x + Screens.2.w/2 - image_w/2
-        y := Screens.2.y + Screens.2.h/2 - image_h/2
+        x := Screen2.x + Screen2.w/2 - image_w/2
+        y := Screen2.y + Screen2.h/2 - image_h/2
     }
     x := Round(x)
     y := Round(y)

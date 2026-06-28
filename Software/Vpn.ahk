@@ -103,9 +103,9 @@ RegisterPosition( "FlClash" , Position( "[Center][2]" , 1000 , 900) , "Backup"  
             Send "{RButton}"
             return
         }
-        x := Screens.2.x + Screens.2.w - window.w - 100
-        y := Screens.2.y + Screens.2.h - window.h - 135
-        MoveWindowPosition([ x, y, window.w, window.h ])
+        x := Screen2.x + Screen2.w - window.w - 100
+        y := Screen2.y + Screen2.h - window.h - 135
+        MoveWindowPosition( [ x, y, window.w, window.h ] )
     }
 
 #HotIf

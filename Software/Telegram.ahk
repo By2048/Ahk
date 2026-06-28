@@ -104,25 +104,25 @@ Telegram :=
     <#+]::{
         Send "{Blind}{vkFF}"
         offset := 12
-        hight  := Screen.h - offset * 2
-        left_mian   := Screen.w * 17/25 - offset * 1.5
-        right_mini  := Screen.w *  8/25 - offset * 1.5
-        left_split  := Screen.w *   1/2 - offset * 1.5
-        right_split := Screen.w *   1/2 - offset * 1.5
+        hight  := Screen1.h - offset * 2
+        left_mian   := Screen1.w * 17/25 - offset * 1.5
+        right_mini  := Screen1.w *  8/25 - offset * 1.5
+        left_split  := Screen1.w *   1/2 - offset * 1.5
+        right_split := Screen1.w *   1/2 - offset * 1.5
         if ( InStr(A_ThisHotkey, "#\") )
-            pos := Position( "[Center][1]", Screen.w - offset * 2 , hight )
+            pos := Position( "[Center][1]", Screen1.w - offset * 2 , hight )
         if ( InStr(A_ThisHotkey, "#+\") )
-            pos := Position( "[Center][2]", Screens.2.w - offset , Screens.2.h * 3/5 )
+            pos := Position( "[Center][2]", Screen2.w - offset , Screen2.h * 3/5 )
         if ( InStr(A_ThisHotkey, "#p") )
             pos := Position( offset , "Center" , Screen.w - offset * 2 , hight )
         if ( InStr(A_ThisHotkey, "#[") )
             pos := Position( offset , "Center" , left_mian , hight )
         if ( InStr(A_ThisHotkey, "#]") )
-            pos := Position( Screen.w - right_mini - offset , "Center" , right_mini , hight )
+            pos := Position( Screen1.w - right_mini - offset , "Center" , right_mini , hight )
         if ( InStr(A_ThisHotkey, "#+[") )
             pos := Position( offset , "Center" , left_split , hight )
         if ( InStr(A_ThisHotkey, "#+]") )
-            pos := Position( Screen.w - right_split - offset , "Center" , right_split , hight )
+            pos := Position( Screen1.w - right_split - offset , "Center" , right_split , hight )
         MoveWindowPosition(pos)
     }
 

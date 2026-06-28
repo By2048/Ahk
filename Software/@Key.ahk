@@ -1,4 +1,4 @@
-
+﻿
 ; Window Center
 ; Window Default
 ; Window Backup
@@ -57,7 +57,7 @@
 ~RShift::{
 
     Send "{Blind}{vkFF}"
-    
+
     Global G , Arg
 
     try {

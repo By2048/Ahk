@@ -22,7 +22,7 @@ RegisterPosition( "IDM" , Position(1111 , 999) )
             if ( A_ThisHotkey == "CapsLock" )
                 MoveWindowPosition(Position(1010 , 777))
             if ( A_ThisHotkey == "+CapsLock" )
-                MoveWindowPosition(Position("[Center][2]", Screens.2.h - 1111, 1010, 777))
+                MoveWindowPosition(Position("[Center][2]", Screen2.h - 1111, 1010, 777))
         }
 
     }
