@@ -1,5 +1,4 @@
 ﻿
-; 切换应用
 Global win_tab := False
 Global win_shift_tab := False
 
@@ -11,10 +10,7 @@ Global win_shift_tab := False
 }
 
 #HotIf ( win_tab == True ) || ( win_shift_tab == True )
-    ~*CapsLock Up::{
-        Send "{Shift Up}"
-        SetCapsLockState("Off")
-    }
+    ~*CapsLock Up::Send "{Shift Up}"
     ~*LShift Up::Send "{Shift Up}"
     LWin & Tab::Send "{Alt Down}{Tab}"
     LWin & LShift::Send "{Alt Down}{Shift Down}{Tab}"
