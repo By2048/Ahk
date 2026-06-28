@@ -42,15 +42,20 @@ Folders.Paths := Map(
 LN(tag) {
     path := Folders.Admin . "\" . tag . "\"
     path := StrReplace(path, "\\", "\")
-    return path
+    if ( InStr( DirExist(path) , "D" ) )
+        return path
+    return Folders.Temp
 }
 LNK(tag) {
     path := Folders.Admin . "\#Lnk\" . tag . ".lnk"
     path := StrReplace(path, "\\", "\")
-    return path
+    if ( FileExist(path) )
+        return path
+    return Folders.Temp
 }
 EXE(tag) {
     path := Folders.Software . "\#Exe\" . tag . ".lnk"
     path := StrReplace(path, "\\", "\")
-    return path
+    if ( FileExist(path) )
+        return path
 }
