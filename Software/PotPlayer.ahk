@@ -1,17 +1,14 @@
 ﻿
 RegisterSoftware( "PotPlayerMini64" , "PotPlayer" )
 
-
 RegisterHelpInfo( "PotPlayer" , FilePath(A_LineFile, "PotPlayer.help")        )
 RegisterHelpInfo( "PotPlayer" , FilePath(A_LineFile, "PotPlayer.NumPad.help") )
-
 
 RegisterPosition( "PotPlayer"          , Position(Screen.w * 4/6 , Screen.h * 4/6) )
 RegisterPosition( "PotPlayer_#32770"   , Position(1500 , 1200)                     )
 RegisterPosition( "PotPlayer__播放列表" , Position(10 , "[Center][1]" , 700 , 1000) )
 
-RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Screens.2.w * 3/4) , "Backup" )
-
+RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screen2.w - 20 , Screen2.w * 3/4) , "Backup" )
 
 
 #HotIf CheckWindowActive("PotPlayer")
@@ -24,39 +21,12 @@ RegisterPosition( "PotPlayer" , Position("[Center][2]" , Screens.2.w - 20 , Scre
             Send "{F6}"
     }
 
-    PotPlayerOpenFile() {
-        if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) ) {
-            PotPlayerPlayList()
-            Sleep 99
-            Send "^f"
-            Send "{F6}"
+    ; if ( A_PriorHotkey == A_ThisHotkey && A_TimeSincePriorHotkey < 333 )
 
-            ; Sleep 333
-            ; WinActivate("ahk_exe PotPlayerMini64.exe ahk_class PotPlayer64")
-            ; Sleep 99
-            ; Send "{F6}"
-        }
-    }
+    Insert::Return
+    Delete::Send "+{Delete}"
 
-    PotPlayerDeleteFile() {
-        if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {
-            if ( A_TimeSincePriorHotkey < 333 ) {
-                Send "+{Delete}!{y}"
-                Sleep 99
-                PotPlayerPlayList()
-                Sleep 99
-                Send "{Enter}"
-            }
-        }
-    }
-
-    $Insert::PotPlayerOpenFile()
-    $Delete::PotPlayerDeleteFile()
-
-    ~CapsLock::{
-        if ( InStr(A_PriorHotkey, A_ThisHotkey) && (A_TimeSincePriorHotkey < 333) )
-            WinClose("A")
-    }
+    CapsLock::Return
 
     #Enter::Send "!{Enter}"
     #+Enter::Send "^{Enter}"

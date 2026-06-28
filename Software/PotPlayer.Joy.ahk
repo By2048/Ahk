@@ -1,7 +1,7 @@
+﻿
+Numpad8::Return
 
-Numpad8::PotPlayerDeleteFile()
-
-Numpad2::PotPlayerOpenFile()
+Numpad2::Return
 
 Numpad4::Send "{Left}"
 

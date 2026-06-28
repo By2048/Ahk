@@ -1,8 +1,8 @@
-
+﻿
 NumLock::WinClose("A")
 
 NumpadHome::Send "{F6}"
-NumpadEnd::MoveWindowDefault()
+NumpadEnd::Send "+{Delete}"
 
 NumpadPgUp::Send "{PgUp}"
 NumpadPgDn::Send "{PgDn}"
