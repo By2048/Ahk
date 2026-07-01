@@ -18,23 +18,27 @@ Param
     [String] $Command
 )
 
-$AutoHotkey            = "D:\AutoHotkey\#\AutoHotkey.exe" 
-$AutoHotkeyExeName     = "AutoHotkey.exe"
-$AutoHotkeyProcessName = "AutoHotkey"
+$AutoHotkey = "D:\AutoHotkey\#\AutoHotkey.exe"
+$Project    = "A:\Project\Ahk"
+$Deploy     = "V:\#Software\Ahk"
 
 If ( -Not (Test-Path $AutoHotkey) ) {
     Write-Host
     Write-Host "  [X] " $AutoHotkey
     Write-Host
+    Exit
 }
 
+$AutoHotkeyProcess = (Get-Item $AutoHotkey).BaseName
+$AutoHotkeyProcessWin32 = (Get-Item $AutoHotkey).Name
+
 Write-Host ""
-Write-Host " ===== $PWD ====="
+Write-Host " ===== $PSScriptRoot ====="
 Write-Host ""
 
 # ExitAll 结束所有 AutoHotkey 进程并退出
 If ( $Command -eq "ExitAll" ) {
-    Stop-Process -Name "AutoHotkey" -Force -ErrorAction SilentlyContinue
+    Stop-Process -Name $AutoHotkeyProcess -Force -ErrorAction SilentlyContinue
     return
 }
 
@@ -43,21 +47,18 @@ If ( -Not $Command ) {
     $Command = "Start"
 }
 
-$Run = Split-Path $PSCommandPath -Parent
+$Run = $PSScriptRoot
 
 # Update：执行部署（同步项目文件，结束所有进程）
 If ( ($Command -eq "Start") -or ($Command -eq "Update") )
 {
-    $Folder  = "A:\#"
-    $Deploy  = "Ahk"
-    $Project = "A:\Project\Ahk"
-    if ( (Test-Path $Folder) -and (Test-Path $Project) ) {
-        $Run = Join-Path $Folder $Deploy
+    Stop-Process -Name $AutoHotkeyProcess -Force -ErrorAction SilentlyContinue
+    if ( (Test-Path (Split-Path $Deploy -Parent)) -and (Test-Path $Project) ) {
         Write-Host "  Copy  = $Project\"
-        Write-Host "        + $Run\"
-        RoboCopy "$Project" "$Run" /MIR /XD ".vscode" ".git" /NFL /NDL /NJH /NJS
+        Write-Host "        + $Deploy\"
+        RoboCopy "$Project" "$Deploy" /MIR /XD ".vscode" ".git" /NFL /NDL /NJH /NJS
+        $Run = $Deploy
     }
-    Stop-Process -Name "AutoHotkey" -Force -ErrorAction SilentlyContinue
 }
 
 Set-Location $Run
@@ -71,10 +72,10 @@ $DemoAhk     = "@.ahk"
 # ExitApp 结束所有进程 保留 Base.ahk
 If ( $Command -eq "ExitApp" )
 {
-    # $obj = Get-CimInstance Win32_Process | Where-Object Name -eq $AutoHotkeyExeName
+    # $obj = Get-CimInstance Win32_Process | Where-Object Name -eq AutoHotkey.exe
     $obj = Get-CimInstance Win32_Process `
-               -Filter " Name='$AutoHotkeyExeName' " `
-               -Property ProcessId, CommandLine
+             -Filter " Name='$AutoHotkeyProcessWin32' " `
+             -Property ProcessId, CommandLine
     foreach ( $item in $obj ) {
         if ( $item.CommandLine -notlike "*base.ahk*" ) {
             Stop-Process -Id $item.ProcessId -Force -ErrorAction SilentlyContinue
