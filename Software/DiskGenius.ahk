@@ -1,4 +1,4 @@
-
+﻿
 RegisterPosition("DiskGenius" , Position(2222,1248))
 
 DiskGenius_Backup_Path := "A:\Backup\Disk"
@@ -13,7 +13,7 @@ DiskGenius_Backup_Path := "A:\Backup\Disk"
             Send "!s"
             return
         }
-        
+
         re_rule   := "(\w+)\((\w+)\) - (\d{4}-\d{2}-\d{2}) (\d{2}-\d{2})-\d{2}\.html", "$3_$4 $2 $1.html"
         re_result := "$3_$4 $2 $1.html"
         old_path := ControlGetText("Edit1", "A")
@@ -32,12 +32,12 @@ DiskGenius_Backup_Path := "A:\Backup\Disk"
 
 
 #HotIf CheckWindowActive( "DiskGenius" )
-    
+
     ; 备份磁盘树
     F1::{
         Send "{AppsKey}"
         Sleep 123
-        Send "{Down 22}"
+        Send "{Down 23}"
         Sleep 123
         Send "{Enter}"
     }
@@ -48,12 +48,12 @@ DiskGenius_Backup_Path := "A:\Backup\Disk"
     ; 激活右边
     !]::MouseClickControl("SysTabControl321", 3, 3)
 
-    #\::{
-        Send "{Blind}{vkFF}"
-        MoveWindowPosition(Position(2222,1248))
+    #\::
+    {
+        MoveWindowPosition( Position( 2222 , 1248 ) )
 
         ; 磁盘树
-        tree_width   := 468
+        tree_width   := 555
         check_offset := 9
         move_offset  := 13
         GetActiveWindowInfo()
@@ -61,23 +61,31 @@ DiskGenius_Backup_Path := "A:\Backup\Disk"
         if ( Abs(info.w - tree_width) > check_offset )
             MoveControlUDLR(info, "Right", tree_width, move_offset)
 
+        ; 分区参数
         _1 := " 1     2        3       4     5        6    7    8        9    10    11    12 "
         _2 := " 卷标  序号状态  文件系统  标识  起始柱面  磁头  扇区  终止柱面  磁头  扇区  容量  属性 "
-        _3 := " 333   130      130     100   123      123  123  123      123  123   150  135  "
+        _3 := " 333   111      111     100   123      123  123  123      123  123   150  99  "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView321" , config)
 
+        ; 扇区编辑
         _1 := " 1     2     3        4     5        6        7        "
         _2 := " 名称  大小   文件类型  属性   短文件名  修改时间  创建时间  "
-        _3 := " 369   100   200      80    200      210      210      "
+        _3 := " 400   100   123      80    150      210      210      "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView322" , config)
 
+        ; 浏览文件
         _1 := " 1     2     3        4     5        6        7        "
         _2 := " 名称  大小   文件类型  属性   短文件名  修改时间  创建时间  "
-        _3 := " 600   100   200      80    300      210      210      "
+        _3 := " 600   123   200      80    200      210      210      "
         config := GetColumnConfig(_1, _2, _3)
         SetColumnWidth("SysListView323" , config)
+
+        ; 隐藏广告
+        ControlHide("Static30", "A")
+        ControlHide("Static31", "A")
+        ControlHide("Static32", "A")
     }
 
 #HotIf

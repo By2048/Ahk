@@ -1,6 +1,4 @@
 ﻿
-RegisterPosition( "Telegram__SavedMessages" , Position("[Center][2]", -20, 0.7) , "Default" )
-
 RegisterHelpInfo( "Telegram" , FilePath(A_LineFile, "Telegram.help") )
 
 Telegram :=
@@ -24,9 +22,7 @@ Telegram :=
 
 
 #HotIf CheckWindowActive("Telegram" , "#32770" , "SaveFile|SaveVideo" )
-    ; NumLock::Send "!s"
-    ~LShift::{
-    }
+    NumLock::Send "!s"
     ~CapsLock::{
         Telegram.CurrentTitle := WinGetTitle("A")
         folder_current := ControlGetText("ToolbarWindow324", "A")
@@ -57,6 +53,25 @@ Telegram :=
         ; ControlSend("{Enter}", "Edit2", "A")
         SetCapsLockState("Off")
     }
+#HotIf
+
+
+#HotIf CheckWindowActive("Telegram" , "" , "Telegraph")
+
+    CapsLock::
+    NumLock::
+    AppsKey::
+    {
+        MouseClickTool(window.w - 40, 60, "Window", "Left")
+        Sleep 111
+        Send "{Down}"
+        Sleep 33
+        Send "{Enter}"
+    }
+    NumpadHome::WinClose("A")
+    NumpadEnd::WinClose("A")
+    Shift::WinClose("A")
+
 #HotIf
 
 
@@ -101,8 +116,16 @@ Telegram :=
     <#[::
     <#]::
     <#+[::
-    <#+]::{
+    <#+]::
+    {
         Send "{Blind}{vkFF}"
+        if ( window.title == "SavedMessages" && InStr(A_ThisHotkey, "#\") ) {
+            MoveWindowPosition( Position("[Center][2]", -20, 0.7) )
+            return
+        } else if ( window.title == "Telegraph" && InStr(A_ThisHotkey, "#\") ) {
+            MoveWindowPosition( Position(2222, 1234) )
+            return
+        }
         offset := 12
         hight  := Screen1.h - offset * 2
         left_mian   := Screen1.w * 17/25 - offset * 1.5
