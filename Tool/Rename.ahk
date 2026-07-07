@@ -55,6 +55,7 @@ RenameFile(base_name)
     name := StrReplace(name, "）", ")")
     name := StrReplace(name, "【", "[")
     name := StrReplace(name, "】", "]")
+    name := StrReplace(name, "—",  "-")
 
     name := StrReplace(name, "[["    , "["  )
     name := StrReplace(name, "[["    , "["  )
@@ -75,6 +76,9 @@ RenameFile(base_name)
     name := StrReplace(name, "] ] [" , "] [")
     name := StrReplace(name, "] [ [" , "] [")
     name := StrReplace(name, "] & [" , "] [")
+
+    name := StrReplace(name, " - -"  , " -"  )
+    name := StrReplace(name, "- [ [" , " - [")
 
     name := StrRemove(name, "[]"   )
     name := StrRemove(name, "()"   )
