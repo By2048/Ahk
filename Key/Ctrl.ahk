@@ -10,10 +10,10 @@
  >^u::Return
  >^i::Return
  >^o::Run EXE("OneCommander")
- >^p::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Temp    " LN("Config\VSCode") "%Temp.code-workspace    ", LN("Temp"), "Hide"
- >^[::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Note    " LN("Config\VSCode") "Note.code-workspace     ", LN("Temp"), "Hide"
- >^]::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Default " LN("Config\VSCode") "%Project.code-workspace ", LN("Temp"), "Hide"
- >^\::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Default " LN("Config\VSCode") "%Windows.code-workspace ", LN("Temp"), "Hide"
+ >^p::Return
+ >^[::Run LNK("Admin")
+ >^]::Run LNK("Sync")
+ >^\::Run LNK("ToDo")
 
  >^a::Run EXE("AntiMicroX")
  >^s::Run EXE("Sandboxie")
@@ -37,8 +37,8 @@
 >^-::Run EXE("Notepad3")
 >^=::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
 
- >^`;::Run LNK("Download")
-  >^'::Run LNK("Sync")
+ >^`;::Run LNK("Resource")
+  >^'::Run LNK("Download")
 
 >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
 >^/::Run LNK("Temp")
@@ -61,7 +61,8 @@
 
 >^Insert:: Run Folders.Software
 >^Delete:: Run Folders.Data
->^AppsKey::Run LNK("ToDo")
+>^AppsKey::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Default " LN("Config\VSCode") "Windows.code-workspace ", LN("Temp"), "Hide"
+
 
 >^CapsLock::{
     command := PSLMini LN("Script\Software") "Chrome.ps1 chat.deepseek.com"
