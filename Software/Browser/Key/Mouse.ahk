@@ -1,4 +1,4 @@
-
+﻿
 NumLock::Return
 
 MButton::Send "^t"
@@ -13,13 +13,15 @@ NumpadIns::Send "^+t"
 NumpadDel::Send "^r"
 
 ;前进
-~Lbutton & RButton::{
+~Lbutton & RButton::
+{
     Send "{Blind}{vkFF}"
     Send "!{Right}"
 }
 
 ;后退
-~RButton & Lbutton::{
+~RButton & Lbutton::
+{
     Send "{Blind}{vkFF}"
     Send "!{Left}"
     Sleep 250
