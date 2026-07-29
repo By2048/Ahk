@@ -6,7 +6,6 @@
 TraySetIcon(A_ScriptDir "\CountDown.png")
 
 <^Esc::
-<^AppsKey::
 <^CapsLock::
 {
     ExitApp()
@@ -71,13 +70,13 @@ SetTimer(Timer, 500)
 Timer()
 {
     seconds := DateDiff(time_end, A_Now, "Seconds")
-    GText.Text := Fmt(seconds)
-    if ( ! seconds ) {
-        Sleep(500)
+    if ( seconds <= 0 ) {
+        Sleep(1000)
         GText.Text := " Over "
-        Sleep(500)
-        SetTimer( , 0)
+        ; SetTimer( , 0)
         SoundBeep(500, 888)
+    } else {
+        GText.Text := Fmt(seconds)
     }
 }
 
