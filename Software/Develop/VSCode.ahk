@@ -35,11 +35,7 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
 #HotIf CheckWindowActive("VSCode")
 
-     `::~
-    +`::`
-
-    `;:::
-    +;::;
+    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
 
     ; ~*LShift::{
     ;     if InStr(A_PriorHotkey, "LShift")

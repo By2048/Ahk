@@ -21,8 +21,6 @@ RegisterPosition( "MsPaint" , Position(0.62 , 0.82) )
 RegisterSoftware( "perfmon" , "SystemMonitor" )
 RegisterPosition( "SystemMonitor" , Position(2250 , 1350) )
 
-RegisterPosition( "qBittorrent" , Position(0.9 ,  0.8) )
-
 RegisterPosition( "Calibre" , Position(0.8 ,  0.8) )
 
 RegisterSoftware( "哔哩哔哩"  , "BiliBili" )

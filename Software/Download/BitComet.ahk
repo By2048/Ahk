@@ -178,13 +178,15 @@ BTControl :=
 
 #HotIf CheckWindowActive("BitComet")
 
-    MButton::{
-        ControlClick( "Static155" , "A" )
-        Sleep 999
-        ControlClick( "SysLink2"  , "A" )
-        Sleep 999
-        Try WinClose("ahk_exe BitComet.exe ahk_class #32770 通知")
+    NumpadIns::Send "!{F4}"
+
+    ; 显示详细信息
+    NumLock::{
+        Send "!v"
+        Send "{Down 4}"
+        Send "{Enter}"
     }
+
 
     CapsLock::{
         code := A_Clipboard
@@ -199,7 +201,6 @@ BTControl :=
         }
     }
 
-    NumpadIns::Send "!{F4}"
 
     ^n::Send "^u"
     ^+n::Send "^n"
@@ -236,7 +237,7 @@ BTControl :=
     }
 
     ; 复制名称
-    ^+c::{
+    +c::{
         Send "{AppsKey}"
         Send "{Up 3}"
         Send "{Enter}"
@@ -278,20 +279,25 @@ BTControl :=
         Send "{Enter}"
     }
 
-    ; 显示详细信息
-    NumLock::{
-        Send "!v"
-        Send "{Down 4}"
-        Send "{Enter}"
-    }
-
-    ^AppsKey::{
-        MouseGetPos(&x, &y, &win_id, &win_control)
+    ^s::{
+        MouseGetPos(&_, &_, &win_id, &win_control)
         A_Clipboard := win_control
         ClipWait()
         HelpText(win_control, "CenterDown", "Screen", "900")
     }
 
-    ^!AppsKey::Reload
+    \::{
+        if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) ) {
+            x := window.w - 60
+            y := window.h - 30
+            MouseClickTool(x, y, "Window")
+            Sleep 666
+            if ( ! CheckWindowActive("BitComet", "#32770", "通知") )
+                return
+            ControlClick("SysLink2", "A")
+            WinClose("A")
+            ; Try WinClose("ahk_exe BitComet.exe ahk_class #32770 通知")
+        }
+    }
 
 #HotIf

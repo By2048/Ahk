@@ -78,7 +78,7 @@ fsviewer_move_folder()
 }
 
 
-fsviewer_move_folder_test()
+fsviewer_test()
 {
     ctl_edit_folder := "TTntEdit.UnicodeClass1"
     ctl_btn_move    := "TMyButton.UnicodeClass4"
@@ -92,16 +92,19 @@ fsviewer_move_folder_test()
     folder_current := ControlGetText(ctl_edit_folder, "A")
     ControlSetText("V:\#\", ctl_edit_folder, "A")
     ControlFocus(ctl_btn_move, "A")
-    ; MsgBox folder_current
+    MsgBox folder_current
 }
 
 
-fsviewer_move_to_collection(name:="")
+fsviewer_move_to_collection(collection_name:="")
 {
-    HelpText("`n  "  name "  `n", "CenterDown", "Screen")
+    HelpText("`n  "  collection_name "  `n", "CenterDown", "Screen")
+    SetTimer(HelpText, -777)
 
-    if ( ! InStr(name, ":\") )
-        name := StrReplace(name, " ", "")
+    ctl_base_folder := "TTntEdit.UnicodeClass1"
+    folder_path := ControlGetText(ctl_base_folder, "A")
+
+    folder_move := fsviewer_get_collection_path(folder_path, collection_name)
 
     EN()
     fsviewer_move_folder()
@@ -126,20 +129,17 @@ fsviewer_move_to_collection(name:="")
         return
     if ( folder_name == "#Image" || folder_name == "%Image" || folder_name == "~Image")
         return
+    if ( folder_name == "T #" || folder_name == "T !" )
+        return
+    if ( folder_name == "V #" || folder_name == "V !" )
+        return
 
-    if ( InStr(name, ":\") )
-        folder_move := name
-    else
-        folder_move := FSViewer.Collection.Get(name)
     folder_current := ControlGetText(ctl_edit_folder, "A")
     ControlSetText(folder_move, ctl_edit_folder, "A")
     Sleep 123
-
-    ControlFocus(ctl_btn_move, "A")
-    ControlClick(ctl_btn_move, "A")
-
-    Sleep 555
-    HelpText()
+    Send "!m"
+    ; ControlFocus(ctl_btn_move, "A")
+    ; ControlClick(ctl_btn_move, "A")
 }
 
 

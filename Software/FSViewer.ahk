@@ -3,8 +3,7 @@ FSViewer :=
 {
     Refresh : 0 ,
     Move_win_top_bottom : "None" ,
-    Collection : Map( "Default" , Folders.Temp  ,
-                      "Sync"    , LN("Sync")    ) ,
+    Collection  : Map( "Default" , Folders.Temp ) ,
     ImageInput  : Folders.Cache "#Image" ,
     ImageOutput : Folders.Cache "~Image" ,
 }
@@ -12,7 +11,7 @@ FSViewer :=
 
 RegisterSoftware( "FSViewer" , "FSViewer" )
 
-RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.help") )
+RegisterHelpInfo( "FSViewer" , FilePath(A_LineFile, "FSViewer.Private.help") )
 
 RegisterPosition( "FSViewer_#32770_另存为" , Position(1414 , 1000) )
 RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Position(1500 , 999) )

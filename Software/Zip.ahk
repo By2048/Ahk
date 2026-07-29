@@ -224,11 +224,11 @@ ZipControl :=
         WinClose("A")
     }
 
-    BackSpace::{
-        Send "{Blind}{vkFF}"
-        if ( InStr(A_PriorHotkey , A_ThisHotkey) && ( A_TimeSincePriorHotkey < 456 ) )
-            WinClose("A")
-    }
+    ; BackSpace::{
+    ;     Send "{Blind}{vkFF}"
+    ;     if ( InStr(A_PriorHotkey , A_ThisHotkey) && ( A_TimeSincePriorHotkey < 456 ) )
+    ;         WinClose("A")
+    ; }
 
     #\::{
         MoveWindowPosition(Position(1500 , 1000))

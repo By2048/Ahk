@@ -99,6 +99,8 @@ Telegram :=
         }
     }
 
+    LShift::Send "{LButton}{Enter}"
+
     NumLock::   Send "{Esc}"
     NumpadHome::Send "^c"
     NumpadEnd:: Send "^v"

@@ -30,6 +30,11 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
 #Include *i Chrome.Private.ahk
 
 
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "无标题 - Google Chrome" )
+    Esc::Send "^w"
+#HotIf
+
+
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "近期的下载记录" )
     NumpadEnd::MouseClickTool(40, 123)
 #HotIf
@@ -39,6 +44,24 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
     F2::Return
     ^r::Send "{F2}"
     $AppsKey::Send "{AppsKey}"
+#HotIf
+
+#HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "修改书签" )
+
+    RShift::
+    RWin::{
+        MoveWindowCenter()
+    }
+    ; 修改名称
+    Insert::{
+        MouseClickTool( 666, 123, "Window" )
+        Sleep 99
+        Send "{End}"
+    }
+    Enter::{
+        MouseClickTool( 500, 1030, "Window" )
+    }
+
 #HotIf
 
 
@@ -83,20 +106,24 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
     ^d::Return
     ^+d::Return
     !d::{
+        ; open
         Send "^d"
         Sleep 55
         Send "{Tab}"
         Sleep 55
         Send "{Enter}"
         Sleep 111
-        Send "{Tab 3}{Enter}"
-        Sleep 111
-        Send "{End}"
-        Send "{Enter}"
-        Sleep 111
+        Send "{Up}{Enter}"
+        Sleep 333
+        ; gui
+        Send "{Tab 2}"
+        Send "{Left 5}{Right}"
         if ( CheckWindowActive( "Chrome" , "*WidgetWin*" , "修改书签" ) )
             MoveWindowPosition( Position( 777 , 1111 ) )
-        Send "{Tab 2}{Left 4}{Right}"
+        ; MoveWindowCenter()
+        ; Send "{Enter}"
+        ; Sleep 111
+        ; Send "{Tab 2}{Left 4}{Right}"
     }
     !+d::{
         Send "^d"

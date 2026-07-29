@@ -21,51 +21,40 @@ NumpadEnter::Joy("Enter")
 
 Joy(key)
 {
-    if ( key == "U" ) {
-        Send "{Left}"
-    }
-    if ( key == "D" ) {
-        Send "{Right}"
-    }
-    if ( key == "L" ) {
-        Send "{Right}"
-        Sleep 99
-    }
-    if ( key == "R" ) {
-        Send "{Right}"
-        Sleep 33
-    }
+    Switch key
+    {
+        Case "U" :
+            Send "{Left}"
+        Case "D" :
+            Send "{Right}"
+        Case "L" :
+            Send "{Right}"
+            Sleep 99
+        Case "R" :
+            Send "{Right}"
+            Sleep 33
 
-    if ( key == "Up"    ) {
-        fsviewer_move_to_collection("Cartoon Main")
-    }
-    if ( key == "Down"  ) {
-        fsviewer_move_to_collection("Delete")
-    }
-    if ( key == "Left"  ) {
-        fsviewer_move_to_collection("Cartoon Xxxx")
-    }
-    if ( key == "Right" ) {
-        fsviewer_move_to_collection("Cartoon Other")
-    }
+        Case "Up"    :
+            fsviewer_move_to_collection("Cartoon Main")
+        Case "Down"  :
+            fsviewer_move_to_collection("Delete")
+        Case "Left"  :
+            fsviewer_move_to_collection("Cartoon Xxxx")
+        Case "Right" :
+            fsviewer_move_to_collection("Cartoon Other")
 
-    if ( key == "Add"  ) {
-        Send "{End}!{Right}"
-    }
-    if ( key == "Mult" ) {
-        Send "{Home}!{Left}{Home}"
-    }
-    if ( key == "Div"  ) {
-        fsviewer_move_to_collection("Cartoon LoLi")
-    }
-    if ( key == "Sub"  ) {
-        fsviewer_move_to_collection("Cartoon Mark")
-    }
+        Case "Add"  :
+            Send "{End}!{Right}"
+        Case "Mult" :
+            Send "{Home}!{Left}{Home}"
+        Case "Div"  :
+            fsviewer_move_to_collection("Cartoon LoLi")
+        Case "Sub"  :
+            fsviewer_move_to_collection("Cartoon Mark")
 
-    if ( key == "Zero"  ) {
-        fsviewer_move_to_collection("Collection BDSM")
-    }
-    if ( key == "Enter" ) {
-        fsviewer_move_to_collection("Collection GURO")
+        Case "Zero"  :
+            fsviewer_move_to_collection("Collection BDSM")
+        Case "Enter" :
+            fsviewer_move_to_collection("Collection GURO")
     }
 }

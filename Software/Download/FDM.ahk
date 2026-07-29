@@ -8,8 +8,8 @@ RegisterSoftware( "fdm" , "FDM" )
     #\::
     {
         if ( InStr(win_title, "[") && InStr(win_title, "]") ) {
-            w := 777
-            h := 555
+            w := 789
+            h := 567
             ww := w / Screen1.Dpi * Screen2.Dpi
             hh := h / Screen1.Dpi * Screen2.Dpi
             x := Screen2.x + Screen2.w/2 - ww/2
@@ -21,16 +21,13 @@ RegisterSoftware( "fdm" , "FDM" )
 
     }
 
+    fdm_capslock_click := 0
     CapsLock::
     {
-        if ( CheckWindowActive( "FDM" , "" , "添加下载" ) ) {
-            Send "{Enter}"
-        } else if ( CheckWindowActive( "FDM" , "" , "新的下载" ) ) {
-            Send "{Enter}"
-        } else if ( CheckWindowActive( "FDM" , "" , "FreeDownloadManager" ) ) {
-            Send "^n"
+        if ( fdm_capslock_click == 0 ) {
+            fdm_capslock_click := 1
         } else {
-            Send "{CapsLock}"
+            Send "{Enter}"
         }
     }
 
