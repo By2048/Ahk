@@ -11,7 +11,8 @@ A_IconTip := " [ " A_InitialWorkingDir " ] "
 
 
 ; 启动脚本
-LWin & RWin::{
+LWin & RWin::
+{
     Send("{Blind}{vkFF}")
     SetNumLockState("Off")
     SetCapsLockState("Off")
@@ -28,8 +29,10 @@ LWin & RWin::{
     Reload()
 }
 
+
 ; 停止脚本
-RWin & LWin::{
+RWin & LWin::
+{
     Send("{Blind}{vkFF}")
     TraySetIcon(A_InitialWorkingDir . "\Image\Icon\Ahk_Error.png")
     if ( GetKeyState("RShift", "P") || GetKeyState("LShift", "P") ) {

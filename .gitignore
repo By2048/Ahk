@@ -2,6 +2,7 @@
 *.Private.*
 *.Snippet.*
 *.Backup.*
+*.Replace.*
 *.Demo.*
 *.Test.*
 
@@ -32,6 +33,6 @@ JQB_Phone
 JQB_Windows
 
 Backup.ahk
-Debug.ahk
 Private.ahk
+Debug.ahk
 Script.txt
