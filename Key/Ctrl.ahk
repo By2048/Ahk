@@ -25,7 +25,7 @@
  >^k::KeyHistory()
  >^l::Return
 
- >^z::Run EXE("Torrent")
+ >^z::Run QBittorrent " --profile=D:\", Folders.Temp, "Hide"
  >^x::Run EXE("Download")
  >^c::Run "Calc"
  >^v::Run EXE("Vpn")
@@ -37,7 +37,7 @@
 >^-::Run EXE("Notepad3")
 >^=::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
 
- >^`;::Run LNK("Resource")
+ >^`;::Run LNK("Resource~")
   >^'::Run LNK("Download")
 
 >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站

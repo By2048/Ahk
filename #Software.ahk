@@ -64,6 +64,7 @@
 #Include Software\Develop\VSCode.ahk
 
 #Include Software\Download\BitComet.ahk
+#Include Software\Download\qBittorrent.ahk
 #Include Software\Download\FDM.ahk
 #Include Software\Download\IDM.ahk
 #Include Software\Download\Motrix.ahk

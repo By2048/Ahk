@@ -27,6 +27,7 @@ PotPlayer     := "D:\PotPlayer\PotPlayerMini64.exe"
 Zip           := "D:\7-Zip\7z.exe"
 ZipGui        := "D:\7-Zip\7zFM.exe"
 ZipDialog     := "D:\7-Zip\7zG.exe"
+QBittorrent   := "D:\QBittorrent\qBittorrent.exe"
 
 Chrome        := "A:\Script\Software\Chrome.ps1"
 ChromeTmp     := "A:\Script\Software\ChromeTmp.ps1"
