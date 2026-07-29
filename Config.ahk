@@ -17,6 +17,8 @@ Screens_Info :=
 
 ;---------------------------------------------------------------------------;
 
+#Include *i Config.Private.ahk
+
 #Include Config\Base.ahk
 #Include Config\Gui.ahk
 #Include Config\Folder.ahk
@@ -24,7 +26,6 @@ Screens_Info :=
 #Include Config\System.ahk
 #Include Config\Software.ahk
 #Include Config\Status.ahk
-
 #Include *i Config\Private.ahk
 
 #Include Lib\Change.ahk

@@ -4,7 +4,7 @@ CMD           := "C:\Windows\System32\cmd.exe"
 TaskKill      := "C:\Windows\SysWOW64\taskkill.exe"
 RoboCopy      := "C:\Windows\SysWOW64\Robocopy.exe"
 WT            := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
-WTBase        := WT " --focus --size 124,36 -d " Folders.Temp
+WTBase        := WT " --focus --size 124,36 -d T:\"
 
 PSL           := "D:\PowerShell\psl.exe"
 PSLBase       := PSL " -NoProfile -NoLogo "

@@ -5,7 +5,7 @@ Folders :=
     Windows  : "C:\"   ,
     Software : "D:\"   ,
     Data     : "E:\"   ,
-    Temp     : "T:\"   ,
+    Temp     : "T:\#\" ,
     Cache    : "V:\#\" ,
 }
 
