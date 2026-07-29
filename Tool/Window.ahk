@@ -247,6 +247,8 @@ CheckWindowActive(_process_:="", _class_:="", _title_:="")
     rule_class   := StrLower(_class_  )
     rule_title   := StrLower(_title_  )
 
+    rule_title   := StrReplace(rule_title, " ", "")
+
     Check(win, cfg) {
         status := True
         cfg := Trim(cfg)
