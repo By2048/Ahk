@@ -10,7 +10,7 @@
  >^u::Return
  >^i::Return
  >^o::Run EXE("OneCommander")
- >^p::Return
+ >^p::Run EXE("PiliPlus")
  >^[::Run LNK("Admin")
  >^]::Run LNK("Sync")
  >^\::Run LNK("ToDo")
@@ -35,7 +35,7 @@
 
 >^0::Return
 >^-::Run EXE("Notepad3")
->^=::Run VSCodeDefault " --profile 默认 --new-window", A_InitialWorkingDir, "Hide"
+>^=::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile 默认 ", Folders.Temp, "Hide"
 
  >^`;::Run LNK("Resource~")
   >^'::Run LNK("Download")
