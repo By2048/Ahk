@@ -15,4 +15,18 @@ RegisterPosition( "qBittorrent" , Position(2345 , 1100) )
 
     NumLock::Send "{Enter}"
 
+    ; Esc::S
+    `::Send "{Enter}"
+
+    F1::Return
+
+    ; 退出
+    ^q::Return
+
+    ; 锁定
+    ^l::Return
+
+    ; 复制文件名
+    ^+c::Send "{AppsKey}cn"
+
 #HotIf

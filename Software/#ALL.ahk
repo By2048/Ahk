@@ -115,3 +115,7 @@ RegisterPosition( "Maye" , Position(1000 , 900) )
 #HotIf CheckWindowActive("PicView")
     NumLock::WinClose("A")
 #HotIf
+
+#HotIf CheckWindowActive("PiliPlus")
+    NumLock::Send "{Esc}"
+#HotIf

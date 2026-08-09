@@ -23,9 +23,9 @@ Arg.TerminalCommand := False
     `;:::
     +;::;
 
-    #Include *i Terminal.Private.ahk
-    #Include *i Terminal.Cmd.Private.ahk
-    #Include *i Terminal.Path.Private.ahk
+    #Include *i Terminal.Private.Key.ahk
+    #Include *i Terminal.Private.Cmd.ahk
+    #Include *i Terminal.Private.Path.ahk
 
     ; ~LShift::{
     ;     if ( InStr(A_PriorHotkey, A_ThisHotkey) ) {

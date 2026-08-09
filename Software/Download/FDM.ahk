@@ -2,6 +2,9 @@
 RegisterSoftware( "fdm" , "FDM" )
 
 
+fdm_capslock_click := 0
+
+
 #HotIf CheckWindowActive( "FDM" )
 
     RWin::
@@ -21,14 +24,7 @@ RegisterSoftware( "fdm" , "FDM" )
 
     }
 
-    fdm_capslock_click := 0
-    CapsLock::
-    {
-        if ( fdm_capslock_click == 0 ) {
-            fdm_capslock_click := 1
-        } else {
-            Send "{Enter}"
-        }
-    }
+    LShift::Send "^n"
+    CapsLock::Enter
 
 #HotIf
