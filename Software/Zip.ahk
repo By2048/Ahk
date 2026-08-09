@@ -4,8 +4,11 @@ RegisterSoftware( "7zG"  , "ZipDialog" )
 
 RegisterHelpInfo("Zip", FilePath(A_LineFile, "Zip.help"))
 
-#Include    Zip.Tool.ahk
+
+#Include Zip.Tool.ahk
+
 #Include *i Zip.Private.ahk
+#Include *i Zip.Mouse.ahk
 
 
 ZipControl :=
@@ -204,21 +207,12 @@ ZipControl :=
 
     RWin::ZipGuiInit()
 
-    ; 注册表相关操作 Clear History
-    >!/::{
-        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Compression", "ArcHistory"   )
-        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Extraction",  "PathHistory"  )
-        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "FolderHistory")
-        RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "CopyHistory"  )
-        HelpText("`n  Clear History  `n", "Center", "Screen", 1000)
-    }
 
 #HotIf
 
 
 #HotIf CheckWindowActive( "ZipMain" )
 
-    NumLock::
     !CapsLock::{
         Send "{Blind}{vkFF}"
         WinClose("A")

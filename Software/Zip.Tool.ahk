@@ -212,3 +212,14 @@ ZipSetGuiPos()
 
     ControlFocus(ZipControl.ButtonYes, rule)
 }
+
+
+; 注册表相关操作 Clear History
+ZipClearHistory()
+{
+    RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Compression", "ArcHistory"   )
+    RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\SOFTWARE\7-Zip\Extraction",  "PathHistory"  )
+    RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "FolderHistory")
+    RegWrite("", "REG_BINARY", "HKEY_CURRENT_USER\Software\7-Zip\FM",          "CopyHistory"  )
+    ; HelpText("`n  Clear History  `n", "Center", "Screen", 1000)
+}
