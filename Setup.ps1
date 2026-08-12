@@ -32,7 +32,7 @@ Write-Host ""
 Write-Host " ===== $PSScriptRoot ====="
 Write-Host ""
 
-If ( -Not $Command )  {  $Command = "Start"  }
+If ( -Not $Command )  { $Command = "Start" }
 
 Set-Location $PSScriptRoot
 
@@ -47,6 +47,7 @@ If ( $Command -eq "Start" )
 {
     Start-Process -FilePath $AutoHotkey -ArgumentList $BaseAhk
     Write-Host "  $Command $BaseAhk"
+    Write-Host ""
 }
 
 # Exit 结束所有进程 保留 Base.ahk
@@ -63,7 +64,6 @@ If ( ($Command -eq "Reload") -or ($Command -eq "Exit") )
     If ( $Command -eq "Exit" )  { return }
 }
 
-# Reload 不启动 Base.ahk 直接重启其他脚本
 Start-Process -FilePath $AutoHotkey -ArgumentList $KeyAhk
 Write-Host "  $Command $KeyAhk"
 
@@ -73,7 +73,6 @@ Write-Host "  $Command $InputAhk"
 Start-Process -FilePath $AutoHotkey -ArgumentList $SoftwareAhk
 Write-Host "  $Command $SoftwareAhk"
 
-# 启动临时脚本 @.ahk
 Write-Host ""
 Start-Process -FilePath $AutoHotkey -ArgumentList $DemoAhk
 Write-Host "  $Command $DemoAhk"
