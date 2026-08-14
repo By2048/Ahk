@@ -41,6 +41,9 @@ ZipControl :=
     EditFolderName : "Edit2" ,
     EditPassword   : "Edit3" ,
 
+    EditFolderLeft  : "Edit1" ,
+    EditFolderRight : "Edit2" ,
+
     ReplaceFile :
     {
         ButtonYesAll : "Button2" ,
@@ -183,21 +186,23 @@ ZipControl :=
 
 #HotIf CheckWindowActive( "ZipMain | ZipDialog" )
 
-    Esc::{
+    Esc::
+    {
         if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) )
             WinClose("A")
     }
 
-    $Enter::{
+    $Enter::
+    {
         Send "{Blind}{vkFF}"
         ; if ( InStr(window.title, "正在解压") ) {
         ;     ControlClick("Button3", "A")
-        if ( InStr(window.title, "解压") ) {
-            if ( InStr(window.title, "100%") || InStr(window.title, "0%") ) {
+        if ( InStr(window.title, "解压") )
+        {
+            if ( InStr(window.title, "100%") || InStr(window.title, "0%") )
                 ControlClick(ZipControl.Progress.ButtonClose, "A")
-            } else {
+            else
                 ControlClick(ZipControl.ButtonYes, "A") ;确认解压
-            }
             return
         }
         Send "{Enter}"
@@ -205,8 +210,38 @@ ZipControl :=
         Try ZipGuiInit()
     }
 
-    RWin::ZipGuiInit()
+    ,::
+    .::
+    /::
+    \::
+    {
+        ControlGetPos(&lx, &ly, &lw, &lh, ZipControl.EditFolderLeft,  "A")
+        ControlGetPos(&rx, &ry, &rw, &rh, ZipControl.EditFolderRight, "A")
+        if ( lx > rx ) {
+            temp := ZipControl.EditFolderLeft
+            ZipControl.EditFolderLeft  := ZipControl.EditFolderRight
+            ZipControl.EditFolderRight := temp
+        }
+        folder_left  := ControlGetText(ZipControl.EditFolderLeft,  "A")
+        folder_right := ControlGetText(ZipControl.EditFolderRight, "A")
+        if ( A_ThisHotkey == "," )
+            ControlSetText(folder_right, ZipControl.EditFolderLeft, "A")
+        if ( A_ThisHotkey == "." )
+            ControlSetText(folder_left, ZipControl.EditFolderRight, "A")
+        if ( A_ThisHotkey == "\" ) {
+            ControlSetText(Ln("Resource~"), ZipControl.EditFolderLeft,  "A")
+            ControlSetText(Ln("Resource~"), ZipControl.EditFolderRight, "A")
+        }
+        if ( A_ThisHotkey == "/" ) {
+            ControlSetText(Ln("Temp"),     ZipControl.EditFolderLeft,  "A")
+            ControlSetText(Ln("Download"), ZipControl.EditFolderRight, "A")
+        }
+        WinRedraw("A")
+        ControlSend("{Enter}", ZipControl.EditFolderLeft,  "A")
+        ControlSend("{Enter}", ZipControl.EditFolderRight, "A")
+    }
 
+    RWin::ZipGuiInit()
 
 #HotIf
 
