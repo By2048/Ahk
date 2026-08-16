@@ -1,4 +1,4 @@
-
+﻿
 RegisterSoftware("firefox" , "FireFox")
 
 
@@ -6,6 +6,6 @@ RegisterSoftware("firefox" , "FireFox")
 
     #Include Key\Base.ahk
 
-    #Include Key\Insert.ahk
+    #Include Key\Other.ahk
 
 #HotIf

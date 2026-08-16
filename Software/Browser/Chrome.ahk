@@ -47,7 +47,6 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
 #HotIf
 
 #HotIf CheckWindowActive( "Chrome" , "*WidgetWin*" , "修改书签" )
-
     RShift::
     RWin::{
         MoveWindowCenter()
@@ -61,7 +60,6 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
     Enter::{
         MouseClickTool( 500, 1030, "Window" )
     }
-
 #HotIf
 
 
@@ -147,7 +145,7 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
 
     #Include Key\Base.ahk
     #Include Key\Fxx.ahk
-    #Include Key\Insert.ahk
+    #Include Key\Other.ahk
     #Include Key\Joy.ahk
     #Include Key\Mouse.ahk
 

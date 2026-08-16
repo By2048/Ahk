@@ -27,6 +27,10 @@
 ; 清理浏览记录
 ; ^+Delete::Return
 
+; 向右或向左移动标签页
+; ^+PgUp::Return
+; ^+PgDn::Return
+
 ; 关闭窗口
 ^w::Return
 ^F4::Return

@@ -1,4 +1,4 @@
-
+﻿
 RegisterSoftware("opera" , "Opera")
 
 
@@ -6,6 +6,6 @@ RegisterSoftware("opera" , "Opera")
 
     #Include Key\Base.ahk
 
-    #Include Key\Insert.ahk
+    #Include Key\Other.ahk
 
 #HotIf

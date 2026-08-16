@@ -15,3 +15,6 @@ Insert & Delete::Send "!{Home}"
 Insert & BackSpace::Send "^t"
 Insert & \::        Send "^n"
 Insert & Enter::    Send "^+n"
+
+; 刷新
+Delete & Insert::Send "^r"
