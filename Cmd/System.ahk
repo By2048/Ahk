@@ -11,7 +11,8 @@ Screens.Count   := MonitorGetCount()
 
 Screens.Primary := MonitorGetPrimary()
 
-Loop ( Screens.Count ) {
+Loop ( Screens.Count )
+{
     obj := {}
     obj.id   := A_Index
     obj.name := MonitorGetName(obj.id)

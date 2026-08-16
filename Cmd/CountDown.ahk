@@ -22,6 +22,7 @@ font_border_y := 1
 ; 1s 1m 1h
 config := ""
 
+
 if ( A_Args.Length == 1 )
     config := A_Args[1]
 

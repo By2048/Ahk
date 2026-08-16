@@ -1,12 +1,12 @@
 ﻿
 Folders :=
 {
-    Admin    : "A:\"   ,
-    Windows  : "C:\"   ,
-    Software : "D:\"   ,
-    Data     : "E:\"   ,
-    Temp     : "T:\#\" ,
-    Cache    : "V:\#\" ,
+    Admin    : "A:\" ,
+    Windows  : "C:\" ,
+    Software : "D:\" ,
+    Data     : "E:\" ,
+    Temp     : "T:\" ,
+    Cache    : "V:\" ,
 }
 
 Folders.Columns :=

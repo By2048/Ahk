@@ -15,6 +15,9 @@ RegisterPosition( "qBittorrent" , Position(2345 , 1100) )
 
     NumLock::Send "{Enter}"
 
+    NumpadHome::Send "{Esc}"
+    NumpadEnd::Send "{Esc}"
+
     ; Esc::S
     `::Send "{Enter}"
 

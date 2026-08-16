@@ -36,7 +36,7 @@ ErQuickPreview()
         return
 
     if ( InStr(path,".png") || InStr(path,".jpg") || InStr(path,".jpeg") || InStr(path,".bmp") ) {
-        cmd := AHK " A:\Project\Ahk\Cmd\Image.ahk "
+        cmd := AHK " D:\#Ahk\Cmd\Image.ahk "
         cmd .= Format("`"{}`"", path)
         Run cmd
         return

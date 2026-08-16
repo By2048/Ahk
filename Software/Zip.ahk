@@ -228,11 +228,11 @@ ZipControl :=
             ControlSetText(folder_right, ZipControl.EditFolderLeft, "A")
         if ( A_ThisHotkey == "." )
             ControlSetText(folder_left, ZipControl.EditFolderRight, "A")
-        if ( A_ThisHotkey == "\" ) {
+        if ( A_ThisHotkey == "/" ) {
             ControlSetText(Ln("Resource~"), ZipControl.EditFolderLeft,  "A")
             ControlSetText(Ln("Resource~"), ZipControl.EditFolderRight, "A")
         }
-        if ( A_ThisHotkey == "/" ) {
+        if ( A_ThisHotkey == "\" ) {
             ControlSetText(Ln("Temp"),     ZipControl.EditFolderLeft,  "A")
             ControlSetText(Ln("Download"), ZipControl.EditFolderRight, "A")
         }
