@@ -80,19 +80,33 @@ fsviewer_move_folder()
 
 fsviewer_test()
 {
-    ctl_edit_folder := "TTntEdit.UnicodeClass1"
-    ctl_btn_move    := "TMyButton.UnicodeClass4"
-    fsviewer_activate_left_menu()
-    Send "{Down 7}{Enter}"
-    ; Send "^{Tab 3}"
-    Sleep 123
-    GetActiveWindowInfo(false)
-    if ( ! ( InStr(window.title, "移动") && InStr(window.title, "到文件夹") ) )
-        return
-    folder_current := ControlGetText(ctl_edit_folder, "A")
-    ControlSetText("V:\#\", ctl_edit_folder, "A")
-    ControlFocus(ctl_btn_move, "A")
-    MsgBox folder_current
+    ctl := "TJamShellTree.UnicodeClass1"
+    ControlFocus(ctl, "A")
+    ControlSend("{AppsKey down}{AppsKey up}", ctl, "A")
+}
+
+
+fsviewer_get_collection_path(folder_path:="", collection_name:="")
+{
+    if ( InStr(collection_name, ":\") )
+        return collection_name
+
+    collection_name := StrReplace(collection_name, " ", "")
+    folder_move := FSViewer.Collection.Get(collection_name)
+
+    if ( InStr(folder_path, "T:\") )
+        if ( collection_name == "Delete" )
+            folder_move := "T:\!\"
+        else
+            folder_move := "T:\#Sync\" folder_move
+
+    if ( InStr(folder_path, "A:\") && InStr(folder_path, "\T #\") )
+        if ( collection_name == "Delete" )
+            folder_move := "A:\# !\T !\"
+        else
+            folder_move := "A:\Sync\" folder_move
+
+    return folder_move
 }
 
 

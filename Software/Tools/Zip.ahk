@@ -210,10 +210,12 @@ ZipControl :=
         Try ZipGuiInit()
     }
 
-    ,::
-    .::
-    /::
-    \::
+     ,::
+     .::
+    `;::
+     '::
+     /::
+     \::
     {
         ControlGetPos(&lx, &ly, &lw, &lh, ZipControl.EditFolderLeft,  "A")
         ControlGetPos(&rx, &ry, &rw, &rh, ZipControl.EditFolderRight, "A")
@@ -228,6 +230,14 @@ ZipControl :=
             ControlSetText(folder_right, ZipControl.EditFolderLeft, "A")
         if ( A_ThisHotkey == "." )
             ControlSetText(folder_left, ZipControl.EditFolderRight, "A")
+        if ( A_ThisHotkey == ";" ) {
+            ; ControlSetText("", ZipControl.EditFolderLeft,  "A")
+            ; ControlSetText("", ZipControl.EditFolderRight, "A")
+        }
+        if ( A_ThisHotkey == "'" ) {
+            ControlSetText(Folders.Cache, ZipControl.EditFolderLeft,  "A")
+            ControlSetText(Folders.Temp, ZipControl.EditFolderRight, "A")
+        }
         if ( A_ThisHotkey == "/" ) {
             ControlSetText(Ln("Resource~"), ZipControl.EditFolderLeft,  "A")
             ControlSetText(Ln("Resource~"), ZipControl.EditFolderRight, "A")
@@ -248,10 +258,7 @@ ZipControl :=
 
 #HotIf CheckWindowActive( "ZipMain" )
 
-    !CapsLock::{
-        Send "{Blind}{vkFF}"
-        WinClose("A")
-    }
+    !CapsLock::WinClose("A")
 
     ; BackSpace::{
     ;     Send "{Blind}{vkFF}"
@@ -259,11 +266,16 @@ ZipControl :=
     ;         WinClose("A")
     ; }
 
-    #\::{
+    #\::
+    {
         MoveWindowPosition(Position(1500 , 1000))
-        cfg := " 1:名称:666  3:文件夹:100  2:文件:100  4:大小:159 "
-        if ( InStr(window.title, ".iso") )
+        title := window.title
+        if ( InStr(title, ".zip") )
+            cfg := " 1:名称:666  3:文件夹:100  2:文件:100  4:大小:159 "
+        else if ( InStr(window.title, ".iso") )
             cfg := " 1:名称:666  2:文件夹:100  3:文件:100  4:大小:159 "
+        else
+            cfg := " 1:名称:860  2:大小:159 "
         cfg := GetColumnConfig(cfg)
         SetColumnWidth(ZipControl.ListView, cfg)
     }

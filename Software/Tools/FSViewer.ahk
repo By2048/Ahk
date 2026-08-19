@@ -6,6 +6,7 @@ FSViewer :=
     Collection  : Map( "Default" , Folders.Temp ) ,
     ImageInput  : Folders.Cache "#Image" ,
     ImageOutput : Folders.Cache "~Image" ,
+    Control : {}
 }
 
 
@@ -19,71 +20,6 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
 
 #Include *i FSViewer.Private.ahk
 #Include *i FSViewer.Tool.ahk
-
-
-#HotIf CheckWindowActive( "FSViewer" , "" , " 批量转换* " )
-
-    ; 小尺寸
-    -::
-    =::
-    {
-        ; 选择webp
-        ControlClick("TTntComboBox.UnicodeClass2", "A")
-        Sleep 333
-        Send "{Down 9}"
-        Send "{Enter}"
-        Sleep 666
-        ; 设置
-        ControlClick("TMyButton.UnicodeClass4", "A")
-        Sleep 666
-        if ( A_ThisHotkey == "-" )
-            ControlClick("TMyRadioButton.UnicodeClass2", "A") ; 90%
-        if ( A_ThisHotkey == "=" )
-            ControlClick("TMyRadioButton.UnicodeClass1", "A") ; 无损
-        Sleep 333
-        ControlClick("TMyButton.UnicodeClass3", "A") ; 确定
-        Sleep 666
-        ;
-        ; 设置大小
-        ; ControlClick("TMyButton.UnicodeClass3", "A") ; 高级属性
-        ; Sleep 666
-        ; if ( A_ThisHotkey == "-" )
-        ;     ControlClick("TMyRadioButton.UnicodeClass2", "A") ; 以一边为基础改变大小
-        ; if ( A_ThisHotkey == "=" )
-        ;     ControlClick("TMyRadioButton.UnicodeClass3", "A") ; 百分比
-        ; Sleep 333
-        ; ControlClick("TMyButton.UnicodeClass5", "A") ; 确定
-    }
-
-    ; 图片转码
-    BackSpace::
-    {
-        folder_current := Trim( ControlGetText("TTntEdit.UnicodeClass1", "A") , "\" )
-        if ( folder_current != FSViewer.ImageInput ) {
-            ControlSetText(FSViewer.ImageInput,  "TTntEdit.UnicodeClass1", "A") ;文件夹 输入
-            ControlSetText(FSViewer.ImageOutput, "TTntEdit.UnicodeClass2", "A") ;文件夹 输出
-            ControlSend("{Enter}", "TTntEdit.UnicodeClass1", "A") ;确定
-            Sleep 999
-            ControlClick("TPngBitBtn.UnicodeClass4", "A") ;全部添加
-        }
-    }
-    ; 开始
-    Enter::ControlClick("TPngBitBtn.UnicodeClass1", "A")
-
-#HotIf
-
-
-#HotIf CheckWindowActive( "FSViewer" , "FastStoneImageViewerMainForm.UnicodeClass" )
-
-    BackSpace & Delete::{
-        ControlFocus("TJamShellTree.UnicodeClass1", "A")
-        ControlFocus("TJamShellTree.UnicodeClass1", "A")
-        ControlFocus("TJamShellTree.UnicodeClass1", "A")
-        if ( ControlGetClassNN(ControlGetFocus("A")) == "TJamShellTree.UnicodeClass1" )
-            Send "{AppsKey}{Up 4}{Enter}"
-    }
-
-#HotIf
 
 
 #HotIf CheckWindowActive( "FSViewer" , "TFullScreenWindow" )
@@ -139,6 +75,12 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
 #HotIf CheckWindowActive( "FSViewer" , "FastStoneImageViewerMainForm.UnicodeClass" )
     #\:: fsviewer_move_position()
     #+\::fsviewer_move_position()
+    BackSpace & Delete::
+    {
+        ControlFocus("TJamShellTree.UnicodeClass1", "A")
+        if ( ControlGetClassNN(ControlGetFocus("A")) == "TJamShellTree.UnicodeClass1" )
+            Send "{AppsKey}{Up 4}{Enter}"
+    }
 #HotIf
 
 
@@ -152,47 +94,6 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     FSViewer.move_win_top_bottom := "None"
 
     AppsKey::fsviewer_move_folder()
-
-    ; 清理缩略图缓存
-    +0::{
-        Send "{F10}"
-        Send "{Right 10}"
-        Send "{Down 4}"
-        Send "{Enter}"
-        Sleep 333
-        ControlClick("TMyButton.UnicodeClass4", "A") ;清理
-        Sleep 666
-        ControlClick("TTntButton.UnicodeClass2", "A") ;确定
-    }
-
-    ; 图片转码
-    +BackSpace::{
-        Send "{F10}"
-        Send "{Right 9}"
-        Send "{Down 3}"
-        Send "{Enter}"
-        MoveWindowDefault()
-    }
-
-    ; 创建缩略图缓存 V:\#\
-    +8::{
-        EN()
-        Send "{F10}"
-        Send "{Right 10}"
-        Send "{Down 3}"
-        Send "{Enter}"
-        Sleep 333
-        ControlClick("TMyButton.UnicodeClass3", "A") ;添加
-        Send "{Left 22}"
-        Send "{Right}"
-        Send "{Down 2}"
-        Send "{Right}"
-        Send "Ram"
-        Send "{Right 2}"
-        Send "{Enter}"
-        Sleep 666
-        ControlClick("TMyButton.UnicodeClass2", "A") ;扫描
-    }
 
     ; 批量重命名
     ; F12::{
@@ -298,6 +199,16 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         ControlSetChecked(-1 , "TMyCheckBox.UnicodeClass2", "A") ;自动切换下一个目录
         Sleep 666
         ControlClick("TMyButton.UnicodeClass5", "A") ;确定
+    }
+
+    ; 图片转码
+    +BackSpace::{
+        Send "{F10}"
+        Send "{Right 9}"
+        Send "{Down 3}"
+        Send "{Enter}"
+        Sleep 333
+        MoveWindowDefault()
     }
 
     #Include FSViewer.Joy.ahk

@@ -18,13 +18,38 @@ RegisterPosition( "qBittorrent" , Position(2345 , 1100) )
     NumpadHome::Send "{Esc}"
     NumpadEnd::Send "{Esc}"
 
+    ; 打开
+    ^o::Return
+    ^+o::Return
+
+    CapsLock::Send "^+o"
+
     ; Esc::S
     `::Send "{Enter}"
 
+    ; 设置
+    !o::Return
+    ^AppsKey::Send "!o"
+
     F1::Return
+
+    ; 启动
+    ^s::Return
+
+    ; 统计
+    ; ^i::Return
+
+    ; 停止
+    ^p::Return
 
     ; 退出
     ^q::Return
+
+    ; 制作torrent
+    ^n::Return
+
+    ; 暂停会话
+    ^+p::Return
 
     ; 锁定
     ^l::Return

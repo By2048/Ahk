@@ -18,66 +18,16 @@
 #Include Key\Ctrl.Ignore.ahk
 
 #Include Software\@Key.ahk
-
 #Include Software\#32770.ahk
 #Include Software\#ALL.ahk
 
-#Include Software\Adobe.ahk
-#Include Software\Android.ahk
-#Include Software\Bambu.ahk
-#Include Software\DiskGenius.ahk
-#Include Software\Everything.ahk
-#Include Software\FFRenamePro.ahk
-#Include Software\FoxMail.ahk
-#Include Software\FreeFileSync.ahk
-#Include Software\FSViewer.ahk
-#Include Software\Geek.ahk
-#Include Software\Music.ahk
-#Include Software\PotPlayer.ahk
-#Include Software\Q-Dir.ahk
-#Include Software\Sandboxie.ahk
-#Include Software\Snipaste.ahk
-#Include Software\SumatraPDF.ahk
-#Include Software\Telegram.ahk
-#Include Software\Tencent.ahk
-#Include Software\VMware.ahk
-#Include Software\Vpn.ahk
-#Include Software\Wallpaper.ahk
-#Include Software\WPS.ahk
-#Include Software\Zip.ahk
-
 #Include Software\Game\@.ahk
-#Include Software\Game\LOL.ahk
-
-#Include Software\Browser\Chrome.ahk
-#Include Software\Browser\Edge.ahk
-#Include Software\Browser\FireFox.ahk
-#Include Software\Browser\Opera.ahk
-#Include Software\Browser\Electron.ahk
-
-#Include Software\Develop\Navicat.ahk
-#Include Software\Develop\NetSarang.ahk
-#Include Software\Develop\Obsidian.ahk
-#Include Software\Develop\Postman.ahk
-#Include Software\Develop\PowerShell.ahk
-#Include Software\Develop\Terminal.ahk
-#Include Software\Develop\VSCode.ahk
-
-#Include Software\Download\BitComet.ahk
-#Include Software\Download\qBittorrent.ahk
-#Include Software\Download\FDM.ahk
-#Include Software\Download\IDM.ahk
-#Include Software\Download\Motrix.ahk
-
-#Include Software\JetBrains\ToolBox.ahk
-#Include Software\JetBrains\PyCharm\@.ahk
-
-#Include Software\Microsoft\Explorer\@.ahk
-#Include Software\Microsoft\MMC.ahk
-#Include Software\Microsoft\Office.ahk
-#Include Software\Microsoft\RegEdit.ahk
-#Include Software\Microsoft\TaskMgr.ahk
-#Include Software\Microsoft\Windows.ahk
+#Include Software\Browser\@.ahk
+#Include Software\Develop\@.ahk
+#Include Software\Download\@.ahk
+#Include Software\JetBrains\@.ahk
+#Include Software\Microsoft\@.ahk
+#Include Software\Tools\@.ahk
 
 #SingleInstance Force
 #HotString EndChars `t`n`s
