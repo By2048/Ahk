@@ -3,12 +3,14 @@
 CMD           := "C:\Windows\System32\cmd.exe"
 TaskKill      := "C:\Windows\SysWOW64\taskkill.exe"
 RoboCopy      := "C:\Windows\SysWOW64\Robocopy.exe"
-WT            := "C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps\wt.exe"
+
+WT            := "D:\WindowsTerminal\wt.exe"
 WTBase        := WT " --focus --size 124,36 -d T:\"
 
 PSL           := "D:\PowerShell\psl.exe"
 PSLBase       := PSL " -NoProfile -NoLogo "
-PSLMini       := "D:\PowerShell\psl-mini.exe -NoProfile -NoLogo "
+PSLMini       := StrReplace(PSLBase, "psl.exe", "psl-mini.exe")
+
 AHK           := "D:\AutoHotkey\#\AutoHotkey.exe"
 AhkSpy        := "D:\AutoHotkey\#\WindowSpy.ahk"
 BDown         := "D:\BBDown\BBDown.exe"
@@ -30,7 +32,6 @@ ZipDialog     := "D:\7-Zip\7zG.exe"
 QBittorrent   := "D:\QBittorrent\qBittorrent.exe"
 
 Chrome        := "A:\Script\Software\Chrome.ps1"
-ChromeTmp     := "A:\Script\Software\ChromeTmp.ps1"
 ChromeDefault := "A:\Script\Software\ChromeDefault.ps1"
 VSCode        := "A:\Script\Software\VSCode.ps1"
 VSCodeDefault := "A:\Script\Software\VSCodeDefault.ps1"
