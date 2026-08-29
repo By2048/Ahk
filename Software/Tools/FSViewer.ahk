@@ -91,6 +91,8 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     ;  F10::Return ;切换焦点
     ;  F11::Return ;全屏
 
+    Help::VSCodeWorkSpace("FSViewer")
+
     FSViewer.move_win_top_bottom := "None"
 
     AppsKey::fsviewer_move_folder()
@@ -139,6 +141,13 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
     ; `::Send "c"
     ; Tab::Send "m"
 
+    `::Send "m1"
+
+    1::Send "m2"
+    2::Send "m3"
+    3::Send "m4"
+    4::Send "m5"
+
     [::Send "{Left}"
     ]::Send "{Left}"
 
@@ -165,6 +174,9 @@ RegisterPosition( "FSViewer_TBatchConvert.UnicodeClass_批量转换*"    , Posit
         Send "{Right}"
         Sleep 11
     }
+
+    RAlt::Return
+    RAlt Up::Send "{Delete}{Enter}"
 
     ,::Send "{Home}!{Left}{Home}"
     .::Send "{End}!{Right}"

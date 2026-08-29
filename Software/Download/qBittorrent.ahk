@@ -2,6 +2,9 @@
 RegisterPosition( "qBittorrent" , Position(2345 , 1100) )
 
 
+#Include *i qBittorrent.Private.ahk
+
+
 #HotIf CheckWindowActive("qBittorrent", "", "移除 Torrent")
 
     Insert::Send "+{Tab}{Enter}"
@@ -23,9 +26,6 @@ RegisterPosition( "qBittorrent" , Position(2345 , 1100) )
     ^+o::Return
 
     CapsLock::Send "^+o"
-
-    ; Esc::S
-    `::Send "{Enter}"
 
     ; 设置
     !o::Return

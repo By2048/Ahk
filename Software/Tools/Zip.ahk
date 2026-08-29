@@ -210,47 +210,6 @@ ZipControl :=
         Try ZipGuiInit()
     }
 
-     ,::
-     .::
-    `;::
-     '::
-     /::
-     \::
-    {
-        ControlGetPos(&lx, &ly, &lw, &lh, ZipControl.EditFolderLeft,  "A")
-        ControlGetPos(&rx, &ry, &rw, &rh, ZipControl.EditFolderRight, "A")
-        if ( lx > rx ) {
-            temp := ZipControl.EditFolderLeft
-            ZipControl.EditFolderLeft  := ZipControl.EditFolderRight
-            ZipControl.EditFolderRight := temp
-        }
-        folder_left  := ControlGetText(ZipControl.EditFolderLeft,  "A")
-        folder_right := ControlGetText(ZipControl.EditFolderRight, "A")
-        if ( A_ThisHotkey == "," )
-            ControlSetText(folder_right, ZipControl.EditFolderLeft, "A")
-        if ( A_ThisHotkey == "." )
-            ControlSetText(folder_left, ZipControl.EditFolderRight, "A")
-        if ( A_ThisHotkey == ";" ) {
-            ; ControlSetText("", ZipControl.EditFolderLeft,  "A")
-            ; ControlSetText("", ZipControl.EditFolderRight, "A")
-        }
-        if ( A_ThisHotkey == "'" ) {
-            ControlSetText(Folders.Cache, ZipControl.EditFolderLeft,  "A")
-            ControlSetText(Folders.Temp, ZipControl.EditFolderRight, "A")
-        }
-        if ( A_ThisHotkey == "/" ) {
-            ControlSetText(Ln("Resource~"), ZipControl.EditFolderLeft,  "A")
-            ControlSetText(Ln("Resource~"), ZipControl.EditFolderRight, "A")
-        }
-        if ( A_ThisHotkey == "\" ) {
-            ControlSetText(Ln("Temp"),     ZipControl.EditFolderLeft,  "A")
-            ControlSetText(Ln("Download"), ZipControl.EditFolderRight, "A")
-        }
-        WinRedraw("A")
-        ControlSend("{Enter}", ZipControl.EditFolderLeft,  "A")
-        ControlSend("{Enter}", ZipControl.EditFolderRight, "A")
-    }
-
     RWin::ZipGuiInit()
 
 #HotIf

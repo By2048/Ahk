@@ -37,7 +37,8 @@ Arg.TerminalCommand := False
     ; }
 
     ; 关闭窗格
-    NumLock::Send "{F13}"
+    NumLock::WinClose("A")
+
     !CapsLock::Send "{F13}"
 
     ; 关闭窗口

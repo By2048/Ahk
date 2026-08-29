@@ -37,6 +37,8 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
     #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
 
+    Help::VSCodeWorkSpace("VSCode")
+
     ; ~*LShift::{
     ;     if InStr(A_PriorHotkey, "LShift")
     ;         if ( A_TimeSincePriorHotkey < 333 ) {

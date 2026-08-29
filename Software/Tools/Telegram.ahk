@@ -59,7 +59,6 @@ Telegram :=
 #HotIf CheckWindowActive("Telegram" , "" , "Telegraph")
 
     CapsLock::
-    NumLock::
     AppsKey::
     {
         MouseClickTool(window.w - 40, 60, "Window", "Left")
@@ -68,7 +67,10 @@ Telegram :=
         Sleep 33
         Send "{Enter}"
     }
-    NumpadHome::WinClose("A")
+    NumLock::
+    NumpadHome::{
+        WinClose("A")
+    }
     NumpadEnd::WinClose("A")
     Shift::WinClose("A")
 
@@ -99,7 +101,9 @@ Telegram :=
         }
     }
 
-    LShift::Send "{LButton}{Enter}"
+    LShift & LAlt::{
+        Send "{LButton}{Enter}"
+    }
 
     NumLock::   Send "{Esc}"
     NumpadHome::Send "^c"

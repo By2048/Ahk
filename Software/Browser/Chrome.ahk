@@ -72,6 +72,8 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
         return
     }
 
+    Help::VSCodeWorkSpace("Chrome")
+
     ; ~RWin::Return
 
     ; 书签第一个

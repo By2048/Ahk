@@ -1,7 +1,7 @@
 ﻿
 RegisterSoftware( "flux_down" , "Flux" )
 
-RegisterPosition( "Flux" , Position(1500 , 999) )
+RegisterPosition( "Flux" , Position(1500 , 900) )
 
 
 #HotIf CheckWindowActive( "Flux" )
