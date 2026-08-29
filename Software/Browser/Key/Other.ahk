@@ -9,7 +9,7 @@ Insert & F11::Send "^+c"
 Insert & F12::Send "{F12}"
 
 ; 主页
-Insert & Delete::Send "!{Home}"
+Insert & Delete::Send "^r"
 
 ; 新 窗口 标签
 Insert & BackSpace::Send "^t"
@@ -17,4 +17,4 @@ Insert & \::        Send "^n"
 Insert & Enter::    Send "^+n"
 
 ; 刷新
-Delete & Insert::Send "^r"
+Delete & Insert::Send "!{Home}"
