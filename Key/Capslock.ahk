@@ -4,8 +4,8 @@
 
 
 ; 切换到显示器中心
-~CapsLock & Tab::{
-
+~CapsLock & Tab::
+{
     CoordMode("Mouse", "Screen")
     MouseGetPos(&x_current, &y_current)
 

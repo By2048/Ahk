@@ -23,21 +23,21 @@
  >^h::Run AHK " " AhkSpy
  >^j::Run EXE("JetBrains")
  >^k::KeyHistory()
- >^l::Return
+ >^l::Run EXE("NeeView")
 
- >^z::Run QBittorrent " --profile=D:\", Folders.Temp, "Hide"
+ >^z::Run EXE("qBittorrent")
  >^x::Run EXE("Download")
  >^c::Run "Calc"
  >^v::Run EXE("Vpn")
  >^b::Run EXE("Media")
  >^n::Run EXE("Music")
-; ^m::
+  ^m::Run EXE("Image")
 
 >^0::Return
 >^-::Run EXE("Notepad3")
->^=::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile 默认 ", Folders.Temp, "Hide"
+>^=::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Temp ", Folders.Temp, "Hide"
 
- >^`;::Run LNK("Resource~")
+ >^`;::Run LNK("Resource")
   >^'::Run LNK("Download")
 
 >^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
@@ -69,21 +69,23 @@
     Run command, A_InitialWorkingDir, "Hide"
 }
 
-RCtrl & RShift::Run PSLMini LN("Script\Software") "Chrome.ps1",        LN("Temp"), "Hide"
-RCtrl & LShift::Run PSLMini LN("Script\Software") "ChromeDefault.ps1", LN("Temp"), "Hide"
+RCtrl & RShift::Run PSLMini LN("Script\Software") "Chrome.ps1",        Folders.Temp, "Hide"
+RCtrl & LShift::Run PSLMini LN("Script\Software") "ChromeDefault.ps1", Folders.Temp, "Hide"
 
 Arg.ctrl_show    := False
 Arg.ctrl_content := ""
 
-
 ~RCtrl Up::
 {
+    if ( Arg.rctrl_click == -1 ) {
+        Arg.rctrl_click := 0
+        return
+    }
     if ( Arg.rctrl_click > 0 ) {
         Arg.rctrl_click += 1
         return
-    } else {
-        Arg.rctrl_click := 1
     }
+    Arg.rctrl_click := 1
     SetTimer(CtrlTimer, -500)
 }
 
