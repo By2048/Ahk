@@ -11,6 +11,7 @@
 #Include Tool\Language.ahk
 #Include Tool\Mouse.ahk
 #Include Tool\Other.ahk
+#Include Tool\Software.ahk
 #Include Tool\Window.ahk
 #Include Tool\Control.ahk
 #Include Tool\Gui.ahk
