@@ -36,36 +36,18 @@ RWin & RShift::
     if ( GetKeyState("LWin", "P") )
         return
 
-    ; 虚拟网卡
-    if ( A_ThisHotkey == "RWin & LShift" )
-    {
-        Send "^!+/"
-        locator  := ComObject("WbemScripting.SWbemLocator")
-        service  := locator.ConnectServer(".", "root\cimv2")
-        adapters := service.ExecQuery("SELECT * FROM Win32_NetworkAdapter")
-        ; 创建删除虚拟网卡需要一些时间 此处检测已有的网卡 Info与实际状态相反
-        ; Name Description NetConnectionID
-        info := "`n  VNA ON  `n"
-        for ( adapter in adapters ) {
-            if ( InStr(adapter.NetConnectionID , "Clash" ) )
-                info := "`n  VNA OFF  `n"
-        }
-        HelpText(info, "Center", "Screen1", 1000)
-    }
-
     ; 系统代理
     if ( A_ThisHotkey == "RWin & RShift" )
     {
         Send "^!/"
-        Sleep 123
+        Sleep 333
         path  := "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
         key   := "ProxyEnable"
         state := RegRead(path, key, "")
-        ; RegWrite(1, "REG_DWORD", path, key)
         info  := ""
         if ( state == "0" )
             info := "`n  Proxy OFF  `n"
-        else if ( state == "1" )
+        if ( state == "1" )
             info := "`n  Proxy ON  `n"
         HelpText(info, "Center", "Screen", 1000)
     }
