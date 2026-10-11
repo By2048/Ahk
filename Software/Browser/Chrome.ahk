@@ -57,7 +57,7 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
         Sleep 99
         Send "{End}"
     }
-    Enter::{
+    +Enter::{
         MouseClickTool( 500, 1030, "Window" )
     }
 #HotIf
@@ -133,7 +133,6 @@ RegisterPosition( "Chrome" , win_pos , "Backup" )
 
     ; 定位地址栏
     Arg.search_input := False
-    CapsLock::
     !Space::{
         if ( ! Arg.search_input ) {
             Arg.search_input := True

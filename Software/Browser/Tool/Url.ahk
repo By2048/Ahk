@@ -34,14 +34,6 @@ UrlChange(origin)
         result := "https://cn.bing.com/search?q=" . keyword
     }
 
-    ; bing -> baidu
-    ; cn.bing.com/search?q=Xxx
-    ; baidu.com/s?wd=Xxx
-    if ( InStr(origin, "cn.bing.com/search?q=") ) {
-        keyword := RegExReplace(origin, "(http.*)(search\?q\=)(.*?)", "$3")
-        result := "https://www.baidu.com/s?wd=" . keyword
-    }
-
     ; .jpg@xxx.xxx
     if ( InStr(origin, ".jpg@") || InStr(origin, ".png@") || InStr(origin, ".webp@") )
         result := RegExReplace(origin, "(http.*)(.\w+)(@)(.*)", "$1$2")

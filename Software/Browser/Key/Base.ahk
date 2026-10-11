@@ -34,7 +34,7 @@
 ; 关闭窗口
 ^w::Return
 ^F4::Return
-~!CapsLock::{
+!CapsLock::{
     Send "{Blind}{vkFF}"
     Send "^w"
 }
@@ -44,7 +44,7 @@
 
 ; 重新打开标签页
 ^+t::Return
-~!+CapsLock::{
+!+CapsLock::{
     Send "{Blind}{vkFF}"
     Send "^+t"
 }

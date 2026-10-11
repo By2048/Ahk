@@ -17,4 +17,5 @@ Insert & \::        Send "^n"
 Insert & Enter::    Send "^+n"
 
 ; 刷新
+Delete::Delete
 Delete & Insert::Send "!{Home}"
