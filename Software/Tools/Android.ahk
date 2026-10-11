@@ -31,4 +31,8 @@ RegisterHelpInfo("Scrcpy" , FilePath(A_LineFile, "Scrcpy.help"))
         if ( A_ThisHotKey == "#+\" )
             MoveWindowPosition(Position("[Center][2]", win_w, win_h))
     }
+    Up::   MouseMoveOffset( 0  ,  -1)
+    Down:: MouseMoveOffset( 0  ,   1)
+    Left:: MouseMoveOffset(-1  ,   0)
+    Right::MouseMoveOffset( 1  ,   0)
 #HotIf

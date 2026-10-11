@@ -1,4 +1,4 @@
-
+﻿
 RegisterHelpInfo( "FFRenamePro" , FilePath(A_LineFile, "FFRenamePro.help") )
 
 RegisterPosition( "FFRenamePro" , Position(2100 , 1234) )
@@ -49,7 +49,11 @@ RegisterPosition( "FFRenamePro" , Position(2100 , 1234) )
 
     ; 隐藏所选项目
     ^h::Return
-    !Delete::Send "^h"
+    ; 移除所选项目
+    ^Delete::Return
+    ;
+    ~Delete & BackSpace::Send "^h"
+    ~BackSpace & Delete::Send "^{Delete}"
 
     ; 结束当前命令 (插入空命令)
     F2::Return
@@ -63,11 +67,11 @@ RegisterPosition( "FFRenamePro" , Position(2100 , 1234) )
 
     ; 刷新
     F5::Return
-    CapsLock::Send "{F5}"
+    RShift::Send "{F5}"
 
     ; 对象过滤设置工具
     F6::Return
-    !/::F6
+    !/::Send "{F6}"
 
     ; 导出列表内容到文件
     F7::Return
@@ -85,10 +89,10 @@ RegisterPosition( "FFRenamePro" , Position(2100 , 1234) )
 
     ; 定义用户自定义元变里<USER0>~<USER9>
     F11::Return
-    !,::F11
+    !,::Send "{F11}"
 
     ; 查看用户自定义元变量<USER0>~<USER9>
     F12::Return
-    !.::F12
+    !.::Send "{F12}"
 
 #HotIf

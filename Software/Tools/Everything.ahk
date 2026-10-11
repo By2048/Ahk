@@ -1,7 +1,8 @@
 ﻿
 #HotIf CheckWindowActive( "Everything" )
 
-    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
+    `;::Send ":"
+    +;::Send ";"
 
     F1::Return
     F2::Return ;重命名

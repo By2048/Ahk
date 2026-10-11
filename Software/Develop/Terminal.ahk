@@ -2,7 +2,7 @@
 RegisterSoftware( "WindowsTerminal" , "Terminal" )
 
 RegisterHelpInfo( "Terminal" , FilePath(A_LineFile , "Terminal.help") )
-RegisterHelpInfo( "Terminal" , "Config\Script.help"                   )
+RegisterHelpInfo( "Terminal" , "Config\Private.help"                   )
 
 Arg.TerminalCommand := False
 
