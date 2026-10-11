@@ -1,28 +1,4 @@
 ﻿
-~Space & w::w
-~Space & s::s
-~Space & a::a
-~Space & d::d
-
-~Space & g::g
-~Space & h::h
-~Space & f::f
-~Space & j::j
-
-~Space & LAlt::LAlt
-~Space & RAlt::RAlt
-
-~Space &      Tab::Tab
-~Space & CapsLock::CapsLock
-~Space &    Shift::Shift
-
-~Space &    Up::Return
-~Space &  Down::Return
-~Space &  Left::Return
-~Space & Right::Return
-
-; ------------------------------------------------- ;
-
 LWin & LCtrl::  Return
 LWin & RCtrl::  Return
 LWin & LAlt::   Return

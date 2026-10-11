@@ -13,13 +13,14 @@
 >#F12::Send "^!{F12}"
 
 ; 通用媒体按键
+>#o::Send "^!o"
 >#p::Send "{Media_Play_Pause}"
 >#[::Send "{Media_Prev}"
 >#]::Send "{Media_Next}"
->#o::Send "^!o" ;添加收藏
 
 ; 显示隐藏任务栏
->#/::{
+>#/::
+{
     rule := "ahk_exe explorer.exe ahk_class Shell_TrayWnd"
     if ( ! WinExist(rule) ) {
         Try WinShow(rule)
@@ -48,6 +49,19 @@
 >#Left:: MoveWindowOffset( 0 , 0 , -10 ,   0 )
 >#Right::MoveWindowOffset( 0 , 0 , +10 ,   0 )
 
-; TIM
-; >#`;::Send "^!;" ;识图
-; >#':: Send "^!'" ;翻译
+
+; 切换Windows默认标题栏
+>#t::
+{
+    if ( IsDesktops() ) {
+        HelpText("`n Desktop Return `n", "Center", "Screen1", 500)
+        return
+    }
+    WS_CAPTION := 0xC00000
+    style := WinGetStyle("A")
+    WinSetStyle(Format("^{}", WS_CAPTION), "A")
+    if ( ! (style & WS_CAPTION) )
+        HelpText("`n Windows Title Show `n", "Center", "Screen1", 500)
+    else
+        HelpText("`n Windows Title Hide `n", "Center", "Screen1", 500)
+}

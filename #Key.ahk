@@ -20,7 +20,6 @@
 #Include Key\Win.ahk
 #Include Key\Ctrl.ahk
 #Include Key\Alt.ahk
-#Include Key\Space.ahk
 #Include Key\CapsLock.ahk
 
 #SingleInstance Force

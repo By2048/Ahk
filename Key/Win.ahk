@@ -11,7 +11,8 @@
 #Home::  ;主显示器 +
 #End::   ;主显示器 -
 #+Home:: ;副显示器 +
-#+End::{ ;副显示器 -
+#+End::  ;副显示器 -
+{
     Switch A_ThisHotkey {
         Case "#Home"  : Send "#^!{Home}"
         Case "#End"   : Send "#^!{End}"
@@ -35,8 +36,10 @@
 ;声音
 #PgUp::Send "{Volume_Up}"
 #PgDn::Send "{Volume_Down}"
+
 #+PgUp::
-#+PgDn::{
+#+PgDn::
+{
     Send "{Volume_Down}{Volume_Up}" ;显示声音调整UI
     ; 调整音量时 不能准确调整到指定数值 存在小数点偏差
     volume_offset  := 5

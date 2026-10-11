@@ -10,10 +10,7 @@
  >^u::Return
  >^i::Return
  >^o::Run EXE("OneCommander")
- >^p::Run EXE("PiliPlus")
- >^[::Run LNK("Admin")
- >^]::Run LNK("Sync")
- >^\::Run LNK("ToDo")
+ >^p::Run EXE("PotPlayer")
 
  >^a::Run EXE("AntiMicroX")
  >^s::Run EXE("Sandboxie")
@@ -23,26 +20,30 @@
  >^h::Run AHK " " AhkSpy
  >^j::Run EXE("JetBrains")
  >^k::KeyHistory()
- >^l::Run EXE("NeeView")
+ >^l::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
 
- >^z::Run EXE("qBittorrent")
- >^x::Run EXE("Download")
- >^c::Run "Calc"
+ >^z::Return
+ >^x::Return
+ >^c::Return
  >^v::Run EXE("Vpn")
- >^b::Run EXE("Media")
- >^n::Run EXE("Music")
-  ^m::Run EXE("Image")
+ >^b::Return
+ >^n::Return
+  ^m::Run EXE("Music")
 
->^0::Return
->^-::Run EXE("Notepad3")
->^=::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Temp ", Folders.Temp, "Hide"
+ >^0::Return
+ >^-::Run EXE("Notepad3")
+ >^=::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Temp ", Disk.Temp, "Hide"
 
- >^`;::Run LNK("Resource")
-  >^'::Run LNK("Download")
+ >^[::Run LNK("Cache")
+ >^]::Run LNK("Sync")
+ >^\::Run LNK("ToDo")
 
->^,::Run "::{645FF040-5081-101B-9F08-00AA002F954E}::" ;回收站
->^/::Run LNK("Temp")
->^.::Run LNK("Cache")
+>^`;::Run LNK("Download")
+ >^'::Run Disk.Temp
+
+ >^,::Run EXE("FDM")
+ >^.::Run EXE("qBittorrent")
+ >^/::Run EXE("NeeView")
 
   >^Up:: MoveWindowOffset(   0 , -10 )
 >^Down:: MoveWindowOffset(   0 , +10 )
@@ -55,28 +56,31 @@
 
 >^Space::Run WTBase
 
->^BackSpace::Run Folders.Admin
+>^BackSpace::Run Disk.Admin
 
 >^Enter::Run "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}::" ;我的电脑
 
->^Insert:: Run Folders.Software
->^Delete:: Run Folders.Data
+>^Insert:: Run Disk.Software
+>^Delete:: Run Disk.Data
 >^AppsKey::Run PSLMini LN("Script\Software") "VSCode.ps1 --profile #Default " LN("Config\VSCode") "Windows.code-workspace ", LN("Temp"), "Hide"
 
 
 >^CapsLock::{
-    command := PSLMini LN("Script\Software") "Chrome.ps1 chat.deepseek.com"
-    Run command, A_InitialWorkingDir, "Hide"
+    ; command := PSLMini LN("Script\Software") "Chrome.ps1 chat.deepseek.com"
+    ; Run command, A_InitialWorkingDir, "Hide"
+    Run "D:\DeepSeek\DeepSeek Harness.exe"
 }
 
-RCtrl & RShift::Run PSLMini LN("Script\Software") "Chrome.ps1",        Folders.Temp, "Hide"
-RCtrl & LShift::Run PSLMini LN("Script\Software") "ChromeDefault.ps1", Folders.Temp, "Hide"
+RCtrl & RShift::Run PSLMini LN("Script\Software") "Chrome.ps1",        Disk.Temp, "Hide"
+RCtrl & LShift::Run PSLMini LN("Script\Software") "ChromeDefault.ps1", Disk.Temp, "Hide"
 
 Arg.ctrl_show    := False
 Arg.ctrl_content := ""
 
 ~RCtrl Up::
 {
+    if ( GetKeyState("CapsLock", "P") )
+        return
     if ( Arg.rctrl_click == -1 ) {
         Arg.rctrl_click := 0
         return
