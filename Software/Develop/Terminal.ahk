@@ -83,22 +83,39 @@ Arg.TerminalCommand := False
     ^WheelDown::Return
 
      <#[::
+    <#+[::
      <#]::
+    <#+]::
      <#\::
-    <#+\::{
-        Send "{Blind}{vkFF}"
-        pos_info := Position("[Center][2]" , -3 , -555)
-        x := Screen2.x + 3
-        y := Screen2.y + Screen2.h * ( 3 / 4 )
-        w := Screen2.w - 6
-        h := Screen2.h / 4
-        pos_mini := Position(x, y, w, h)
-        key := StrReplace(A_ThisHotkey, "<#", "")
-        Switch key {
-            Case "\"  : MoveWindowPosition(Position(2200 , 1248))
-            Case "+\" : MoveWindowPosition(Position(1100 , 1248))
-            Case "]"  : MoveWindowPosition(pos_info)
-            Case "["  : MoveWindowPosition(pos_mini)
+    <#+\::
+    {
+        w  := Screen2.w - 6
+        h  := Screen2.h - 500
+        x  := Screen2.x + Screen2.w/2-w/2
+        y  := Screen2.y + Screen2.h/2-h/2
+        yy := y - Taskbar.h
+        pos_backup_main_a := Position(x, y , w, h)
+        pos_backup_main_b := Position(x, yy, w, h)
+
+        w  := Screen2.w - 6
+        h  := 555
+        x  := Screen2.x + Screen2.w/2-w/2
+        y  := Screen2.y + Screen2.h - h
+        yy := y - Taskbar.h
+        pos_backup_mini_a := Position(x, yy, w, h)
+        pos_backup_mini_b := Position(x, y , w, h)
+
+        pos_main := Position(2200 , 1248)
+        pos_mini := Position(1100 , 1248)
+
+        Switch StrReplace(A_ThisHotkey, "<#", "")
+        {
+            Case "\"  : MoveWindowPosition(pos_main         )
+            Case "+\" : MoveWindowPosition(pos_mini         )
+            Case "]"  : MoveWindowPosition(pos_backup_main_a)
+            Case "+]" : MoveWindowPosition(pos_backup_main_b)
+            Case "["  : MoveWindowPosition(pos_backup_mini_a)
+            Case "+[" : MoveWindowPosition(pos_backup_mini_b)
         }
     }
 

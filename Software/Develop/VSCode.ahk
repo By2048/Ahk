@@ -35,8 +35,6 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
 
 #HotIf CheckWindowActive("VSCode")
 
-    #IncludeAgain *i %A_InitialWorkingDir%\Key\Replace.ahk
-
     Help::VSCodeWorkSpace("VSCode")
 
     ; ~*LShift::{
@@ -87,24 +85,24 @@ RegisterPosition( "VSCode" , Position("[Center][2]" , -10 , 1600) , "Backup"  )
     >!Space::Send "!+/"
 
     ; 项目 结构
-    CapsLock & [::{
-        if ( ! GetKeyState("LShift", "P") )
-            Send "^!["
-        else
-            Send "^!+["
-    }
-    CapsLock & ]::{
-        if ( ! GetKeyState("LShift", "P") )
-            Send "^!]"
-        else
-            Send "^!+]"
-    }
+    ; CapsLock & [::{
+    ;     if ( ! GetKeyState("LShift", "P") )
+    ;         Send "^!["
+    ;     else
+    ;         Send "^!+["
+    ; }
+    ; CapsLock & ]::{
+    ;     if ( ! GetKeyState("LShift", "P") )
+    ;         Send "^!]"
+    ;     else
+    ;         Send "^!+]"
+    ; }
 
     ; 窗口大小调整
-    CapsLock & Left:: Send "^!{Left}"
-    CapsLock & Right::Send "^!{Right}"
-    CapsLock & Up::   Send "^!{Up}"
-    CapsLock & Down:: Send "^!{Down}"
+    ; CapsLock & Left:: Send "^!{Left}"
+    ; CapsLock & Right::Send "^!{Right}"
+    ; CapsLock & Up::   Send "^!{Up}"
+    ; CapsLock & Down:: Send "^!{Down}"
 
     ; 代码注释
     LAlt & RShift::{
