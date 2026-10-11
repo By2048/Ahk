@@ -2,11 +2,12 @@
 ; True False
 StrToBool(value)
 {
-    if ( value == "True" )
+    value := StrLower(value)
+    if ( value == "true" || value == "t" || value == "yes" || value == "y" )
         return True
-    if ( value == "False" )
+    if ( value == "false" || value == "f" || value == "no" || value == "n" )
         return False
-    return value
+    return false
 }
 
 

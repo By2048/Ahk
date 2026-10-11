@@ -37,7 +37,7 @@ HelpKeysShow(step:=0)
     }
 
     InitGui("Dark")
-    
+
     content := hotkeys_config[hotkeys_index]
     GContent := G.Add("Text", "-Center -Border", content)
     GContent.GetPos(&cx, &cy, &cw, &ch)
@@ -86,5 +86,4 @@ HelpKeysSnipaste()
     [::HelpKeysShow(-1)
     ]::HelpKeysShow(+1)
     \::HelpKeysSnipaste()
-    CapsLock::Return
 #HotIf

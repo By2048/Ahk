@@ -6,7 +6,7 @@
 
 
 
-MouseMoveDC(x_right, y_down)
+MouseMoveOffset(x_right, y_down)
 {
     CoordMode("Mouse", "Screen")
     MouseGetPos(&x, &y)
@@ -56,9 +56,9 @@ MouseClickControl(control, x:=1, y:=1, key:="Left", count:=1, speed:=0)
 
 
 
-MouseClickImage(image, 
-                x1:=0, y1:=0, x2:=0, y2:=0, 
-                mode:="Screen", key:="Left", 
+MouseClickImage(image,
+                x1:=0, y1:=0, x2:=0, y2:=0,
+                mode:="Screen", key:="Left",
                 offset:=0, trans:="")
 {
     if ( mode == "Screen" ) {
