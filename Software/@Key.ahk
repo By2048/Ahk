@@ -2,9 +2,13 @@
 ; Window Center
 ; Window Default
 ; Window Backup
-~RWin::{
+~RWin::
+{
 
     Send "{Blind}{vkFF}"
+
+    if ( GetKeyState("CapsLock", "P") )
+        return
 
     Global Arg
 
@@ -54,11 +58,14 @@
 
 ; 快捷键帮助
 ; 项目信息
-~RShift::{
-
+~RShift::
+{
     Send "{Blind}{vkFF}"
 
     Global G , Arg
+
+    if ( GetKeyState("CapsLock", "P") )
+        return
 
     try {
         if ( G.ShowStatus )

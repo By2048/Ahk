@@ -10,7 +10,7 @@ RegisterHelpInfo("RegEdit", FilePath(A_LineFile, "RegEdit.help"))
     ^r::Send "{F2}"
 
     F5::Return
-    $CapsLock::Send "{F5}"
+    RShift::Send "{F5}"
 
     #\::
     {

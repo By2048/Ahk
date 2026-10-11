@@ -89,20 +89,20 @@ RegisterSoftware("NVIDIA Share" , "GeForceTool")
 
 RegisterPosition( "Maye" , Position(1000 , 900) )
 #HotIf CheckWindowActive("Maye")
-    CapsLock::Send "{Esc}"
+    Space::Send "{Esc}"
 #HotIf
 
 ; 文件预览
 #HotIf CheckWindowActive("PowerToys.Peek.UI")
-         Esc::Send "#z"
-    CapsLock::Send "#z"
+      Esc::Send "#z"
+    Space::Send "#z"
 #HotIf
 
 ; 游戏模拟器
 #HotIf CheckWindowActive("WinKawaks")
     ; 存档
     F5::Return
-    CapsLock & Enter::Send "{F5}"
+    !Enter::Send "{F5}"
     ; 读档
     F7::Return
     AppsKey::Send "{F7}"
