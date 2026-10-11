@@ -1,23 +1,30 @@
 ﻿
 RegisterPosition( "qBittorrent" , Position(2345 , 1100) )
 
+RegisterPosition( "qBittorrent__zip" , Position(1800 , 900) )
+
 
 #Include *i qBittorrent.Private.ahk
 
 
 #HotIf CheckWindowActive("qBittorrent", "", "移除 Torrent")
-
     Insert::Send "+{Tab}{Enter}"
     Delete::Send "{Esc}"
     BackSpace::Send "{Tab}{Space}{Tab}{Enter}"
-
 #HotIf
+
+
+
+#HotIf CheckWindowActive("qBittorrent", "", "从 URL 下载")
+    NumLock::Send "{Enter}"
+    Space::Send "{Enter}"
+#HotIf
+
 
 
 #HotIf CheckWindowActive("qBittorrent")
 
     NumLock::Send "{Enter}"
-
     NumpadHome::Send "{Esc}"
     NumpadEnd::Send "{Esc}"
 
@@ -25,7 +32,7 @@ RegisterPosition( "qBittorrent" , Position(2345 , 1100) )
     ^o::Return
     ^+o::Return
 
-    CapsLock::Send "^+o"
+    Space::Send "^+o"
 
     ; 设置
     !o::Return

@@ -4,8 +4,8 @@ RegisterPosition( "IDM" , Position(1111 , 999) )
 
 #HotIf CheckWindowActive( "IDM" )
 
-     CapsLock::
-    +CapsLock::
+     Tab::
+    +Tab::
     {
         window := GetActiveWindowInfo(False)
         text   := window.text
@@ -19,9 +19,9 @@ RegisterPosition( "IDM" , Position(1111 , 999) )
             Send "!s"
 
         if ( InStr(text, "IDM DwnlProgress Window") || InStr(title, "%") ) {
-            if ( A_ThisHotkey == "CapsLock" )
+            if ( A_ThisHotkey == "Tab" )
                 MoveWindowPosition(Position(1010 , 777))
-            if ( A_ThisHotkey == "+CapsLock" )
+            if ( A_ThisHotkey == "+Tab" )
                 MoveWindowPosition(Position("[Center][2]", Screen2.h - 1111, 1010, 777))
         }
 
@@ -29,7 +29,7 @@ RegisterPosition( "IDM" , Position(1111 , 999) )
 #HotIf
 
 #HotIf CheckWindowActive( "IDM" )
-    ; CapsLock::MoveWindowPosition(Position(1111 , 999))
+    ; RWin::MoveWindowPosition(Position(1111 , 999))
     ; cfg := " 1:文件名:500  4:大小:150  8:剩余时间:620  6:传输速度:220  5:状态:180 "
     ; cfg := GetColumnConfig(cfg)
     ; SetColumnWidth("SysListView321", cfg)
