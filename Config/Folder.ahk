@@ -1,5 +1,5 @@
 ﻿
-Folders :=
+Disk :=
 {
     Admin    : "A:\" ,
     Windows  : "C:\" ,
@@ -7,6 +7,12 @@ Folders :=
     Data     : "E:\" ,
     Temp     : "T:\" ,
     Cache    : "V:\" ,
+}
+
+Folders :=
+{
+    Temp  : "T:\#\" ,
+    Cache : "V:\#\" ,
 }
 
 Folders.Columns :=
@@ -40,21 +46,21 @@ Folders.Paths := Map(
 #Include *i Folder.Private.ahk
 
 LN(tag) {
-    path := Folders.Admin . "\" . tag . "\"
+    path := Disk.Admin . "\" . tag . "\"
     path := StrReplace(path, "\\", "\")
     if ( InStr( DirExist(path) , "D" ) )
         return path
-    return Folders.Temp
+    return Disk.Temp
 }
 LNK(tag) {
-    path := Folders.Admin . "\#Lnk\" . tag . ".lnk"
+    path := Disk.Admin . "\#Lnk\" . tag . ".lnk"
     path := StrReplace(path, "\\", "\")
     if ( FileExist(path) )
         return path
-    return Folders.Temp
+    return Disk.Temp
 }
 EXE(tag) {
-    path := Folders.Software . "\#Exe\" . tag . ".lnk"
+    path := Disk.Software . "\#Exe\" . tag . ".lnk"
     path := StrReplace(path, "\\", "\")
     if ( FileExist(path) )
         return path
