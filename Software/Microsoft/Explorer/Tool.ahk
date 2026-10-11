@@ -1,4 +1,14 @@
 ﻿
+IID_IServiceProvider := "{6D5140C1-7436-11CE-8034-00AA006009FA}"
+IID_TopLevelBrowser  := "{4C96BE40-915C-11CF-99D3-00AA004AE837}"
+SID_SShellBrowser    := "{000214E2-0000-0000-C000-000000000046}"
+IID_IFolderView2     := "{1AF3A467-214F-4298-908E-06B03E0B39F9}"
+IID_IColumnManager   := "{D8EC27BB-3F3B-4042-B10A-4ACFD924D453}"
+
+CM_ENUM_ALL     := 0x1
+CM_ENUM_VISIBLE := 0x2
+
+
 ErDelete()
 {
     Send "!y"
@@ -45,16 +55,29 @@ ErGetSelectedItems()
     return paths
 }
 
+ErGetTreeStatus()
+{
+    DetectHiddenText(False)
+    text := WinGetText("A")
+    if ( InStr(text, "树视图") )
+        return true
+    else
+        return false
+}
+ErSwitchTree()
+{
+    Send "!vn{Space}"
+}
 
 ErActivateLeft()
 {
-    ControlFocus(ExplorerTree, "A")
+    ControlFocus(Explorer.Ctl.Tree, "A")
 }
 ErActivateRight()
 {
     win_class := WinGetClass("A")
     if ( win_class == "CabinetWClass" )
-        ControlFocus(ExplorerMain, "A")
+        ControlFocus(Explorer.Ctl.Main, "A")
     if ( win_class == "#32770" )
         ControlFocus("DirectUIHWND2", "A")
     Send "{Space}"
@@ -65,7 +88,7 @@ ErActivateMenu()
     offset_x := 0
     offset_y := 0
     if ( window.class == "CabinetWClass" ) {
-        info     := window.controls.%ExplorerMain%
+        info     := window.controls.%Explorer.Ctl.Main%
         offset_x := 20
         offset_y := -13
     } else if ( window.class == "#32770" ) {
@@ -91,7 +114,7 @@ ErSetPathPrev()
     Sleep 33
     path := ControlGetText("Edit2", "A")
     path := RTrim(path, "\") . "\"
-    path := LoopList(ExplorerAddressPaths, path, -1)
+    path := LoopList(Explorer.Address, path, -1)
     ControlSetText(path, "Edit2", "A")
     Send "{Enter}"
     Sleep 99
@@ -103,7 +126,7 @@ ErSetPathNext()
     Sleep 33
     path := ControlGetText("Edit2", "A")
     path := RTrim(path, "\") . "\"
-    path := LoopList(ExplorerAddressPaths, path, +1)
+    path := LoopList(Explorer.Address, path, +1)
     ControlSetText(path, "Edit2", "A")
     Send "{Enter}"
     Sleep 99
@@ -161,12 +184,11 @@ ErModeSwitch()
 
 ErResetPosition(columns:="")
 {
-    check_offset  := 30
-    tree_width    := 325
-    preview_width := 411
-    input_width   := 209
-    total_height  := 1250
-    total_width   := 1960 - preview_width - check_offset/2
+    check_offset := Explorer.Pos.check_offset
+    tree_width   := Explorer.Pos.tree_width
+    input_width  := Explorer.Pos.input_width
+    total_height := Explorer.Pos.total_height
+    total_width  := Explorer.Pos.total_width
 
     MouseGetPos(&x_origin, &y_origin)
     WinGetPos(&origin_win_x, &origin_win_y, &origin_win_w, &origin_win_h, "A")
@@ -217,16 +239,6 @@ ErResetPosition(columns:="")
             MoveControlUDLR(info, "Right", tree_width, offset)
         }
     }
-
-    ; 右侧预览
-    ; GetActiveWindowInfo(False)
-    ; info := window.controls.%ExplorerMain%
-    ; if ( Abs(total_width - (info.x + info.w) - preview_width) > check_offset * 2 ) {
-    ;     MouseMove(info.x + info.w , info.y + info.h / 2)
-    ;     offset := GetOffset("X")
-    ;     MouseMove(info.x + info.w + offset , info.y + info.h / 2)
-    ;     MoveControlUDLR(info, "Right", info.x + info.w + preview_width, offset)
-    ; }
 
     MouseMove(x_origin, y_origin, 0)
 }

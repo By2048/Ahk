@@ -102,7 +102,7 @@ ErQuickTools()
     ; 快速移动文件夹 配置文件中设置顺序
     if ( ErQuickCfg.page >= 1 ) {
         G.SetFont(Format("s{}", ErQuickCfg.folder_size), ErQuickCfg.font_name)
-        for ( folder in ExplorerQuickPaths[ErQuickCfg.page] ) {
+        for ( folder in ErQuickCfg.paths[ErQuickCfg.page] ) {
             text := G.AddText(G.style.text_disabled, "  " folder)
             text.folder := folder
         }
@@ -163,7 +163,7 @@ ErQuickToolsSwitchMenu(step:=+1)
 ErQuickToolsSwitchPage(step:=+1)
 {
     min_page := 1
-    max_page := ExplorerQuickPaths.Length
+    max_page := ErQuickCfg.paths.Length
     if ( step == 0 ) {
         ErQuickCfg.page := min_page
     } else if ( step == +1 ) {

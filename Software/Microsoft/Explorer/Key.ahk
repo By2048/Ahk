@@ -39,6 +39,9 @@
 !=::Send "^!6"
 !-::Send "^!7"
 
+; 功能区展开缩放
+^F1::Return
+
 ; 帮助
 F1::Return
 
@@ -68,21 +71,22 @@ F6::Return
 !Tab::Send "{F6}"
 !+Tab::Send "+{F6}"
 
-; 删除
-^d::Return
+; 关闭活动窗口
+^w::Return
+!CapsLock::Send "^w"
 
 ; 下拉列表 地址栏
 !d::Return
 ^l::Return
 !/::Send "!d"
 
+; 删除
+^d::Return
+
 ; 显示选定文件夹上的所有文件夹
 ; 树状目录中定位到文件夹
 ^+e::Return
 ^g::Send "^+e"
-
-; 关闭窗口
-^w::Return
 
 ; 创建新文件夹
 ^+n::Return

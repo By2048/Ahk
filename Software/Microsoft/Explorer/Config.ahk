@@ -1,21 +1,23 @@
 ﻿
-IID_IServiceProvider := "{6D5140C1-7436-11CE-8034-00AA006009FA}"
-IID_TopLevelBrowser  := "{4C96BE40-915C-11CF-99D3-00AA004AE837}"
-SID_SShellBrowser    := "{000214E2-0000-0000-C000-000000000046}"
-IID_IFolderView2     := "{1AF3A467-214F-4298-908E-06B03E0B39F9}"
-IID_IColumnManager   := "{D8EC27BB-3F3B-4042-B10A-4ACFD924D453}"
+Explorer :=
+{
+    Pos : {
+        check_offset  : 30    ,
+        tree_width    : 325   ,
+        input_width   : 209   ,
+        total_height  : 1250  ,
+        total_width   : 1534  ,
+    },
 
-CM_ENUM_ALL     := 0x1
-CM_ENUM_VISIBLE := 0x2
+    Ctl : {
+        Tree : "SysTreeView321" ,
+        Main : "DirectUIHWND3" ,
+    },
 
-ExplorerTree := "SysTreeView321"
-ExplorerMain := "DirectUIHWND3"
+    ; 快速切换地址栏路径
+    Address : [ LN("Temp") , LN("Cache") ] ,
+}
 
-; 快速切换地址栏路径
-ExplorerAddressPaths := [ LN("Temp") , LN("Cache") ]
-
-; 快速移动路径
-ExplorerQuickPaths := [  ]
 
 ErQuickCfg :=
 {
@@ -23,7 +25,8 @@ ErQuickCfg :=
     page    : 0     ,
     folder  : ""    ,
 
-    command : ""  ,
+    paths   : []  ,  ; 快速移动路径
+    command : ""  ,  ; 快速命令
 
     path_focus   : "" ,
     path_selects : "" ,

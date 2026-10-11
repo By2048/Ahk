@@ -63,9 +63,72 @@ er_set_filename(name)
         RenameToMd5(path)
 }
 
+<!j::{
+    Send "{Blind}{vkFF}"
+    path := ErGetFocusedItem()
+    paths := ErGetSelectedItems()
+    if ( ! DirExist(path) )
+        return
+    Send "{Enter}"
+    Sleep 123
+    Send "^a"
+    Send "^x"
+    Sleep 234
+    Send "{Backspace}"
+    Sleep 456
+    Send "^v"
+}
+
+
+<!z:: ; 压缩文件到文件夹
+<!x:: ; 解压文件到当前目录
+{
+    path := ErGetFocusedItem()
+    SplitPath(path, &name)
+    SplitPath(path, &file_name, &file_dir, &file_ext, &file_name_no_ext, &file_drive)
+
+    if ( A_ThisHotkey == "<!z" ) {
+        if ( ! DirExist(path) ) {
+            HelpText("`n  Not Dir  `n", "Center", "Screen", 999)
+            return
+        }
+    }
+    if ( A_ThisHotkey == "<!x" ) {
+        if ( DirExist(file_dir "\" file_name_no_ext) ) {
+            HelpText("`n  Dir Exist  `n", "Center", "Screen", 999)
+            return
+        }
+    }
+
+    command := ""
+    if ( A_ThisHotkey == "<!x" ) {
+        unzip_file := path
+        unzip_path := file_dir "\" file_name_no_ext
+        command := Zip " x `"" unzip_file "`" -o`"" unzip_path "`" -r -mx0 -bb0 -bso0"
+        command := StrReplace(command, '"', '""')
+        command := PSLMini ' -Command "' command '"'
+    }
+    if ( A_ThisHotkey == "<!z" ) {
+        zip_path := path "\*"
+        zip_file := path ".zip"
+        command := Zip " a -r -tzip -mx0 -bb0 -bso0 `"" zip_file "`" `"" zip_path "`""
+        command := StrReplace(command, '"', '""')
+        command := PSLMini ' -Command "' command '"'
+    }
+
+    if ( InStr(A_PriorHotkey , A_ThisHotkey) && (A_TimeSincePriorHotkey < 456) ) {
+        Run command
+        HelpText("`n  " name "  `n", "Center", "Screen", 1234)
+    }
+}
+
 
 ; 备份文件 xxx.file -> xxx.file.backup
-; <!b::{}
+<!b::{
+    ; path := ErGetFocusedItem()
+    ; if ( DirExist(path)  )
+    ; if ( FileExist(path) )
+}
 
 
 ; 复制选中的文件路径
